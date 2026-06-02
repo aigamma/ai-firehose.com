@@ -1,6 +1,8 @@
 import { fetchYouTube } from "./youtube.mjs";
 import { fetchHackerNews } from "./hackernews.mjs";
 import { fetchArxiv } from "./arxiv.mjs";
+import { fetchGitHub } from "./github.mjs";
+import { fetchBlogs } from "./blogs.mjs";
 
 /*
   Source aggregator. Runs every adapter, tolerant of any one failing (a flaky
@@ -12,6 +14,8 @@ export async function fetchAll({ maxAgeDays = 100 } = {}) {
     ["youtube", () => fetchYouTube({ maxAgeDays, perChannel: 15 })],
     ["hackernews", () => fetchHackerNews({ maxAgeDays, limit: 40 })],
     ["arxiv", () => fetchArxiv({ maxAgeDays, limit: 30 })],
+    ["github", () => fetchGitHub({ maxAgeDays, limit: 25 })],
+    ["blogs", () => fetchBlogs({ maxAgeDays, perFeed: 5 })],
   ];
   const results = await Promise.allSettled(adapters.map(([, fn]) => fn()));
   const items = [];
