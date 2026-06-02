@@ -105,6 +105,11 @@ async function main() {
   const store = loadCache("items");
   const classifiedIds = new Set();
   for (const it of classified) {
+    // Stamp first-ingest time once, so an item with a missing or unparseable
+    // published_at still has an effective timestamp the retention prune can age
+    // out (one quarter after it first entered the store).
+    if (store[it.id]?.ingested_at && it.ingested_at == null) it.ingested_at = store[it.id].ingested_at;
+    if (it.ingested_at == null) it.ingested_at = TODAY;
     store[it.id] = it;
     classifiedIds.add(it.id);
   }
@@ -114,7 +119,11 @@ async function main() {
   const collapsed = Object.keys(store).length - Object.keys(deduped).length;
   const cutoffMs = TODAY - RETENTION_DAYS * 86400000;
   for (const [id, it] of Object.entries(deduped)) {
-    const t = new Date(it.published_at).getTime();
+    // Effective timestamp: parsed published_at, falling back to ingested_at.
+    // An undateable item thus expires one quarter after first ingest rather than
+    // living forever, honoring the rolling-quarter contract.
+    const tPub = new Date(it.published_at).getTime();
+    const t = Number.isFinite(tPub) ? tPub : it.ingested_at;
     if (Number.isFinite(t) && t < cutoffMs) delete deduped[id];
   }
   const corpus = Object.values(deduped);
@@ -265,23 +274,37 @@ async function main() {
   console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
   try {
     const liveIds = await listIds(host);
-    const keep = new Set(Object.keys(store));
+    // Reconcile against the deduped + retention-pruned object that produced the
+    // artifacts, not the raw pre-collapse store, so collapsed duplicates and
+    // aged-out vectors are deleted from Pinecone and vector cost stays flat.
+    const keep = new Set(Object.keys(deduped));
     const stale = liveIds.filter((id) => !keep.has(id));
     await deleteByIds(host, stale);
     console.log(`   pinecone ${liveIds.length} vectors, removed ${stale.length} aged-out`);
   } catch (e) {
     console.log(`   reconcile skipped: ${e.message}`);
   }
-  const routes = ["/", ...NAV.map((n) => n.route), "/about", ...glossary.slice(0, 80).map((c) => `/technique/${c.id}`)];
+  // Emit every published concept hub (one /technique/<id> per glossary/c/<id>.json),
+  // not a truncated slice, so the sitemap covers the whole live glossary. A concept
+  // marked dormant (no items inside the retention window) is dropped if the flag exists.
+  const hubRoutes = glossary.filter((c) => !c.dormant).map((c) => `/technique/${c.id}`);
+  const routes = ["/", ...NAV.map((n) => n.route), "/about", ...hubRoutes];
   const urls = [...new Set(routes)].map((r) => `  <url><loc>https://${SITE.domain}${r}</loc></url>`).join("\n");
   writeFileSync(resolve(DATA, "../sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 
   console.log("6. digests per horizon...");
   for (const h of HORIZONS) {
     const cutoff = TODAY - h.days * 86400000;
-    const newItems = working
+    // Dedup by url (fallback id) before slicing: a collapsed re-edit or a cross-posted
+    // story can carry one url under two internal ids and would otherwise show twice.
+    const newItemsByUrl = new Map();
+    for (const c of working
       .filter((c) => { const t = new Date(c.published_at).getTime(); return Number.isFinite(t) && t >= cutoff; })
-      .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+      .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))) {
+      const k = c.url || c.id;
+      if (!newItemsByUrl.has(k)) newItemsByUrl.set(k, c);
+    }
+    const newItems = [...newItemsByUrl.values()]
       .slice(0, 12)
       .map((c) => ({ kind: c.kind, title: c.title, source: c.source, author_or_channel: c.author_or_channel || "", published_at: c.published_at, url: c.url, concepts: (c.concepts || []).map(slugify) }));
     const all = [];
@@ -293,8 +316,14 @@ async function main() {
           .filter((e) => e.attention > 0)
       );
     }
-    const movers = [...all].sort((a, b) => Math.abs(b.momentum - 100) - Math.abs(a.momentum - 100)).slice(0, 8);
-    const outliers = all.filter((e) => e.outlier?.breakout || e.outlier?.new_entrant).slice(0, 8);
+    // A concept can surface on more than one kind's board; dedup by concept id so the
+    // same entry does not appear twice in movers or outliers.
+    const uniqById = (rows) => {
+      const seenIds = new Set();
+      return rows.filter((e) => (seenIds.has(e.id) ? false : seenIds.add(e.id)));
+    };
+    const movers = uniqById([...all].sort((a, b) => Math.abs(b.momentum - 100) - Math.abs(a.momentum - 100))).slice(0, 8);
+    const outliers = uniqById(all.filter((e) => e.outlier?.breakout || e.outlier?.new_entrant)).slice(0, 8);
     writeJson(`digests/${h.key}.json`, { horizon: h.key, generated: GENERATED, synthetic: false, new_items: newItems, movers, outliers });
   }
 
@@ -315,9 +344,15 @@ async function main() {
   });
 
   console.log("5e. RSS feed (subscribable firehose)...");
-  const feedRows = [...working]
+  const sortedFeed = [...working]
     .filter((it) => it.published_at)
-    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+  // Dedup by url, keeping the newest: items are already sorted newest-first, so the
+  // first time a url is seen is its freshest version. Prevents a collapsed re-edit or
+  // a cross-posted story from appearing twice in the feed.
+  const feedByUrl = new Map();
+  for (const it of sortedFeed) if (it.url && !feedByUrl.has(it.url)) feedByUrl.set(it.url, it);
+  const feedRows = [...feedByUrl.values()]
     .slice(0, 50)
     .map((it) =>
       [

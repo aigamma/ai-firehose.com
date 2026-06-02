@@ -50,5 +50,9 @@ export async function classifyItem(item, { model = MODELS.bulk } = {}) {
   // the model returns (summary and stance are displayed; see lib/text.mjs).
   r.summary = stripEmDashes(r.summary);
   if (r.stance) r.stance = stripEmDashes(r.stance);
+  // concepts and entities flow verbatim into cluster names and glossary/concept
+  // labels, so sanitize them too. stripEmDashes leaves non-strings untouched.
+  if (Array.isArray(r.concepts)) r.concepts = r.concepts.map(stripEmDashes);
+  if (Array.isArray(r.entities)) r.entities = r.entities.map(stripEmDashes);
   return r;
 }
