@@ -1,19 +1,26 @@
 # Deployment
 
 Two targets: the Fly.io ingestion worker (heavy, scheduled, writes artifacts) and
-the Netlify site (static plus one read function). Nothing is deployed yet; this is
-the runbook. The actual commands need Eric's accounts, credits, and DNS.
+the Netlify site (static plus one read function). The GitHub repo and Netlify site
+are live; the Fly worker is the one remaining piece. This is the runbook.
+
+Current state: the GitHub remote is `https://github.com/aigamma/ai-firehose.com`
+(public, MIT). The Netlify site `ai-firehose` is deployed with continuous deploy
+from `main`, and `/api/retrieve` is verified working. DNS is switched to Netlify
+and propagating, with the Let's Encrypt cert issued. The Fly worker is not yet
+deployed, so the data does not refresh on a schedule yet (section 1).
 
 ## 0. Prerequisites
 
-- A GitHub remote for this repo (none is configured yet). Create one and push:
-  `git remote add origin https://github.com/<owner>/ai-firehose.com.git` then
-  `git push -u origin main`. The worker and Netlify both build from it.
+- The GitHub remote `origin` points at `https://github.com/aigamma/ai-firehose.com`.
+  New branches push with `git push -u`. The worker and Netlify both build from it.
 - Keys available in sibling `.env` files (see `docs/OPERATIONS.md`). The
   `ai-firehose` Pinecone index already exists.
 
-## 1. Fly.io worker
+## 1. Fly.io worker (not yet deployed: the remaining piece)
 
+This is the one piece still to do. Until it runs, the site serves whatever
+artifacts are committed to `main`; deploying it turns on the daily data refresh.
 The worker clones the repo, runs the pipeline, and pushes the rebuilt artifacts
 back, which triggers a Netlify build. It needs a GitHub token to push.
 
@@ -22,7 +29,7 @@ back, which triggers a Netlify build. It needs a GitHub token to push.
 fly launch --no-deploy -c worker/fly.toml      # or: fly apps create <name>; edit app name in fly.toml
 fly secrets set -c worker/fly.toml \
   PINECONE_API_KEY=... VOYAGE_API_KEY=... ANTHROPIC_API_KEY=... OPENAI_API_KEY=... \
-  REPO_URL=https://github.com/<owner>/ai-firehose.com.git \
+  REPO_URL=https://github.com/aigamma/ai-firehose.com.git \
   GH_TOKEN=<fine-grained PAT with contents:write>
 fly deploy -c worker/fly.toml --dockerfile worker/Dockerfile
 # run it daily as a scheduled Machine:
@@ -40,10 +47,16 @@ Cost: the rolling-quarter corpus keeps it near the civil reference (Pinecone plu
 a few dollars of Voyage) plus Claude classification (Haiku) on new items only
 (the classify cache makes re-runs cheap). Record runs in `docs/INGESTION_LOG.md`.
 
-## 2. Netlify site
+## 2. Netlify site (live)
+
+The site `ai-firehose` is deployed with continuous deploy from GitHub `main`:
+every push to `main` (including the worker's daily artifact push) triggers a
+production build. The env vars `VOYAGE_API_KEY`, `PINECONE_API_KEY`, and
+`PINECONE_INDEX` (`ai-firehose`) are set, and `/api/retrieve` is verified working.
+
+To reproduce from scratch (connect the GitHub repo in the Netlify UI, or):
 
 ```
-# connect the GitHub repo in the Netlify UI, or:
 netlify init
 # build command: npm run build   publish: dist   functions: netlify/functions
 netlify env:set VOYAGE_API_KEY ...
@@ -56,14 +69,17 @@ netlify deploy --build --prod
 short cache plus stale-while-revalidate. The `retrieve` function powers semantic
 search. Optionally add the IndexNow plugin (port from aigamma or worldthought).
 
-## 3. DNS
+## 3. DNS (propagating)
 
-Point `ai-firehose.com` at Netlify (apex plus `www`) per the Netlify dashboard.
-Currently not pointed.
+A Netlify DNS zone exists for `ai-firehose.com`, and the GoDaddy nameservers are
+switched to Netlify's (`dns1.p01.nsone.net` through `dns4.p01.nsone.net`). DNS is
+propagating and the Let's Encrypt cert is issued. Once propagation completes the
+apex and `www` resolve through Netlify automatically.
 
 ## 4. The chain
 
-1. The Fly worker ingests on its daily schedule and pushes new artifacts to `main`.
+1. The Fly worker ingests on its daily schedule and pushes new artifacts to `main`
+   (steps 2 and 3 already run on every push; step 1 starts once the worker deploys).
 2. The push triggers a Netlify production build of the static site.
 3. The site reads the fresh artifacts from `/data`; `/api/retrieve` serves live
    semantic search.

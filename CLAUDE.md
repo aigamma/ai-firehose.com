@@ -102,7 +102,7 @@ See `STEERING_DOCS.md` for the tiered map and a "when to read what" cheat sheet.
 
 ## Current State
 
-The site is feature-complete and deploy-ready. Build and the worker test suite (`npm test`) are green. Routes are code-split (Home eager, the rest lazy behind a Suspense boundary). Nothing is deployed yet (no GitHub remote, DNS not pointed).
+The site is feature-complete and deployed. Build and the worker test suite (`npm test`) are green, and CI (`.github/workflows/ci.yml`) runs `npm install`, `npm test`, and `npm run build` on every push and PR to `main`. Routes are code-split (Home eager, the rest lazy behind a Suspense boundary). The GitHub repo is public and MIT-licensed at `https://github.com/aigamma/ai-firehose.com` and `main` is pushed; the Netlify site `ai-firehose` is live with continuous deploy from `main` and a verified `/api/retrieve`; DNS is switched to Netlify and propagating with the cert issued. The Fly worker is not yet deployed, so the daily data refresh is the one piece still pending.
 
 **Pipeline (`worker/`).** Seven source adapters behind one aggregator (`sources/index.mjs`): YouTube (primary, with a captions-then-Whisper transcript path gated by `ENABLE_TRANSCRIPTS`), Hacker News, arXiv, GitHub, blogs and newsletters (`sources/blogs.json`), Hugging Face daily papers, and Reddit (403 from datacenter IPs; works from residential or Fly). `run.mjs` runs: fetch, classify (Claude), the AI-grown concept resolution (`concepts.mjs`), embed and upsert (Voyage, Pinecone), the rotation math on a decayed attention level (`rotation.mjs`), the network precompute (`network.mjs`: centroids, constellation, clusters, spectrums, neighbors, influence), AI-written glossary definitions (`define.mjs`), digests, the Pinecone retention reconcile, sitemap, RSS, and stats. An accumulating retention-pruned store (`worker/.cache/items.json`) plus a classification cache keep runs stable and cheap. Corpus is roughly 250 items.
 
@@ -110,6 +110,6 @@ The site is feature-complete and deploy-ready. Build and the worker test suite (
 
 **Notes.** Local `public/data` holds a real run's output (the demo seed is replaced). Served artifacts ship only what a page renders: the glossary index is slim and each concept hub loads on demand, spectrums are positions-only with the axis vectors held in `worker/.cache`. The one-time migration that reshaped the committed artifacts is `worker/pipeline/slim_artifacts.mjs` (idempotent). The `ai-firehose` Pinecone index lives in the civil project, isolated by name.
 
-**Pending** (needs Eric's accounts, credits, DNS): create a GitHub remote and push, deploy the Fly worker and Netlify site, point DNS. Minor stretch: an X (Twitter) adapter, optional text wiki-linking in prose.
+**Pending**: deploy the Fly worker (turns on the daily data refresh), and let DNS finish propagating to Netlify. Minor stretch: an X (Twitter) adapter, optional text wiki-linking in prose.
 
 When a subsystem changes, update this section and the relevant tier-2 doc in the same commit. Keep this section evergreen and scannable, not a chronological pile.
