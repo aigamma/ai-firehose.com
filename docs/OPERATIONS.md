@@ -10,7 +10,9 @@ Keys are pulled from sibling repo `.env` files at setup time, never committed, t
 - Anthropic: from the sibling sites' envs.
 - OpenAI (optional dual-check and possibly Whisper): from civil's functions env.
 
-Names are listed in `.env.example`. To set worker secrets: `fly secrets set PINECONE_API_KEY=... VOYAGE_API_KEY=... ANTHROPIC_API_KEY=...` in `worker/`. To set the site function key: add `VOYAGE_API_KEY` and `PINECONE_*` in the Netlify UI.
+Names are listed in `.env.example`. For local runs, `worker/.env.local` (gitignored) is built from the sibling files and used via `node --env-file=worker/.env.local`. To set worker secrets: `fly secrets set PINECONE_API_KEY=... VOYAGE_API_KEY=... ANTHROPIC_API_KEY=...` in `worker/`. To set the site function key: add `VOYAGE_API_KEY` and `PINECONE_*` in the Netlify UI.
+
+The `ai-firehose` Pinecone index was created with the civil project's key, so it currently lives in that Pinecone project alongside `civil-rights` (isolated by index name; `pinecone.mjs` resolves the host from the index name and never writes to a sibling index). Optionally migrate it to a dedicated `ai-firehose` Pinecone project later.
 
 ## Schedule
 
