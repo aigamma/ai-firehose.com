@@ -10,7 +10,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requireKeys } from "../lib/env.mjs";
-import { fetchYouTube } from "../sources/youtube.mjs";
+import { fetchAll } from "../sources/index.mjs";
 import { classifyItem } from "./classify.mjs";
 import { embed } from "../lib/voyage.mjs";
 import { ensureIndex, upsert } from "../lib/pinecone.mjs";
@@ -75,10 +75,15 @@ async function classifyAll(items) {
 }
 
 async function main() {
-  console.log(`1. fetch youtube (max ${MAX}, ${RETENTION_DAYS}d)...`);
-  let items = await fetchYouTube({ maxAgeDays: RETENTION_DAYS, perChannel: 15 });
+  console.log(`1. fetch all sources (max ${MAX}, ${RETENTION_DAYS}d)...`);
+  let items = await fetchAll({ maxAgeDays: RETENTION_DAYS });
   const seen = new Set();
-  items = items.filter((it) => (seen.has(it.source_id) ? false : seen.add(it.source_id))).slice(0, MAX);
+  items = items
+    .filter((it) => {
+      const k = `${it.source}:${it.source_id}`;
+      return seen.has(k) ? false : seen.add(k);
+    })
+    .slice(0, MAX);
   console.log(`   ${items.length} unique items`);
 
   console.log("2. classify with Claude...");
