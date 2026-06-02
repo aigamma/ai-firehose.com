@@ -24,7 +24,7 @@ import { defineConcepts } from "./define.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
-import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV } from "../../src/data/registry.js";
+import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV, DEFAULT_HORIZON } from "../../src/data/registry.js";
 
 requireKeys();
 const DATA = resolve(dirname(fileURLToPath(import.meta.url)), "../../public/data");
@@ -155,10 +155,11 @@ async function main() {
     levelByKind[kind] = Object.fromEntries(Object.entries(byKind[kind] || {}).map(([id, s]) => [id, decayedLevel(s)]));
   }
   const conceptTotals = {};
+  const hubRotation = {}; // concept id -> its rotation status for the hub horizon (its primary kind's board)
   for (const kind of KIND_KEYS) {
     const series = byKind[kind] || {};
     for (const h of HORIZONS) {
-      const rows = rotationForEntities(levelByKind[kind], h.windows)
+      const ranked = rotationForEntities(levelByKind[kind], h.windows)
         .map((r) => ({
           id: r.id, label: labels[r.id] || r.id,
           attention: Math.round(windowSum(series[r.id] || [], h.days)),
@@ -166,9 +167,17 @@ async function main() {
           sparkline: r.sparkline, outlier: r.outlier,
         }))
         .filter((e) => e.attention > 0)
-        .sort((a, b) => b.attention - a.attention)
-        .slice(0, 16);
-      writeJson(`attention/${kind}_${h.key}.json`, { kind, horizon: h.key, generated: GENERATED, synthetic: false, entities: rows });
+        .sort((a, b) => b.attention - a.attention);
+      // The hub shows a concept's rotation for the default horizon, taken from its
+      // primary kind's board (full ranked list, not just the displayed top 16).
+      if (h.key === DEFAULT_HORIZON) {
+        for (const e of ranked) {
+          if (primaryKind[e.id] === kind) {
+            hubRotation[e.id] = { horizon: h.key, quadrant: e.quadrant, ratio: e.ratio, momentum: e.momentum, sparkline: e.sparkline };
+          }
+        }
+      }
+      writeJson(`attention/${kind}_${h.key}.json`, { kind, horizon: h.key, generated: GENERATED, synthetic: false, entities: ranked.slice(0, 16) });
     }
     for (const [id, s] of Object.entries(series)) conceptTotals[id] = (conceptTotals[id] || 0) + s.reduce((a, b) => a + b, 0);
   }
@@ -222,6 +231,7 @@ async function main() {
       aliases: c.aliases,
       kind: primaryKind[c.id] || "technique",
       attention: Math.round(conceptTotals[c.id] || 0),
+      rotation: hubRotation[c.id] || null,
       neighbors: (neighbors[c.id] || []).slice(0, 6),
       axis_positions: axisPosById[c.id] || [],
       top_items: (conceptToItems[c.id] || [])

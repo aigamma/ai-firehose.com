@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
-import { getKind } from "../data/registry.js";
+import Sparkline from "../components/Sparkline.jsx";
+import { getKind, QUADRANTS } from "../data/registry.js";
 
 export default function TechniqueHub() {
   const { slug } = useParams();
@@ -36,6 +37,23 @@ export default function TechniqueHub() {
       </div>
 
       {c.definition && <p className="lede">{c.definition}</p>}
+
+      {c.rotation && (
+        <section className="card">
+          <div className="card-head">
+            <h2>Momentum</h2>
+            <span className="faint mono" style={{ marginLeft: "auto" }}>past {c.rotation.horizon}</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+            <span className="badge" title={QUADRANTS[c.rotation.quadrant]?.note}>
+              <span className="dot" style={{ background: `var(${QUADRANTS[c.rotation.quadrant]?.colorVar})` }} />
+              {QUADRANTS[c.rotation.quadrant]?.label}
+            </span>
+            <Sparkline values={c.rotation.sparkline} width={120} height={32} stroke={`var(${QUADRANTS[c.rotation.quadrant]?.colorVar})`} />
+            <span className="faint mono">ratio {c.rotation.ratio} · momentum {c.rotation.momentum}</span>
+          </div>
+        </section>
+      )}
 
       <div className="grid cols-2">
         <section className="card">

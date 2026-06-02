@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defSnippet, slimGlossaryConcept, slimSpectrumAxis, axisVectors, DEF_SNIPPET } from "./artifacts.mjs";
@@ -61,6 +61,27 @@ test("committed glossary index is slim and a hub carries the full payload", () =
   const hub = read(`glossary/c/${sample.id}.json`);
   assert.equal(hub.id, sample.id);
   assert.ok("neighbors" in hub && "axis_positions" in hub && "top_items" in hub, "hub keeps the full payload");
+});
+
+test("hub rotation, where present, is well-formed and is absent from the slim index", () => {
+  const quads = new Set(["leading", "improving", "weakening", "lagging"]);
+  let withRotation = 0;
+  for (const f of readdirSync(resolve(DATA, "glossary/c"))) {
+    const h = JSON.parse(readFileSync(resolve(DATA, "glossary/c", f), "utf8"));
+    assert.ok("rotation" in h, `${h.id} hub must carry a rotation field (object or null)`);
+    if (h.rotation) {
+      withRotation++;
+      assert.ok(quads.has(h.rotation.quadrant), `${h.id} rotation.quadrant must be a real quadrant`);
+      assert.ok(Array.isArray(h.rotation.sparkline) && h.rotation.sparkline.length > 0, `${h.id} rotation.sparkline`);
+      assert.equal(typeof h.rotation.ratio, "number");
+      assert.equal(typeof h.rotation.momentum, "number");
+      assert.ok(h.rotation.horizon, `${h.id} rotation.horizon`);
+    }
+  }
+  assert.ok(withRotation > 0, "expected some hubs to carry rotation");
+  for (const c of read("glossary/index.json").concepts) {
+    assert.equal(c.rotation, undefined, `${c.id} slim index entry must not carry rotation`);
+  }
 });
 
 test("committed spectrums carry no axis_vector or raw position, and neighbors.json is gone", () => {
