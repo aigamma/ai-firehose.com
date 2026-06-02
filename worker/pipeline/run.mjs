@@ -178,10 +178,40 @@ async function main() {
 
   console.log("5b. network: neighbors, clusters, spectrums, influence...");
   const canonById = Object.fromEntries(canon.map((c) => [c.id, c]));
-  writeJson("neighbors.json", { generated: GENERATED, neighbors: computeNeighbors(canon) });
-  writeJson("clusters.json", { generated: GENERATED, clusters: computeClusters(canon, conceptTotals) });
-  writeJson("spectrums.json", { generated: GENERATED, axes: await computeSpectrums(canon, AXES_ANCHORS, embed) });
-  writeJson("influence.json", { generated: GENERATED, ...computeInfluence(working, canonById) });
+  const neighbors = computeNeighbors(canon);
+  const clusters = computeClusters(canon, conceptTotals);
+  const spectrums = await computeSpectrums(canon, AXES_ANCHORS, embed);
+  const influence = computeInfluence(working, canonById);
+  writeJson("neighbors.json", { generated: GENERATED, neighbors });
+  writeJson("clusters.json", { generated: GENERATED, clusters });
+  writeJson("spectrums.json", { generated: GENERATED, axes: spectrums });
+  writeJson("influence.json", { generated: GENERATED, ...influence });
+
+  console.log("5c. glossary index (per-concept integration hubs)...");
+  const conceptToItems = {};
+  for (const it of working) {
+    for (const id of new Set((it.concepts || []).map(slugify))) (conceptToItems[id] ||= []).push(it);
+  }
+  const axisPosById = {};
+  for (const ax of spectrums) {
+    for (const p of ax.positions) (axisPosById[p.id] ||= []).push({ slug: ax.slug, title: ax.title, position: p.position_normalized });
+  }
+  const glossary = canon
+    .map((c) => ({
+      id: c.id,
+      label: c.label,
+      aliases: c.aliases,
+      kind: primaryKind[c.id] || "technique",
+      attention: Math.round(conceptTotals[c.id] || 0),
+      neighbors: (neighbors[c.id] || []).slice(0, 6),
+      axis_positions: axisPosById[c.id] || [],
+      top_items: (conceptToItems[c.id] || [])
+        .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+        .slice(0, 6)
+        .map((it) => ({ title: it.title, url: it.url, author_or_channel: it.author_or_channel, published_at: it.published_at, kind: it.kind })),
+    }))
+    .sort((a, b) => b.attention - a.attention);
+  writeJson("glossary/index.json", { generated: GENERATED, count: glossary.length, concepts: glossary });
 
   console.log("6. digests per horizon...");
   for (const h of HORIZONS) {

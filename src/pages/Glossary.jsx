@@ -1,0 +1,48 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import useData from "../lib/useData.js";
+import { getKind } from "../data/registry.js";
+
+export default function Glossary() {
+  const { data } = useData("/data/glossary/index.json");
+  const [q, setQ] = useState("");
+  const all = data?.concepts || [];
+  const concepts = all.filter((c) => {
+    if (!q) return true;
+    const s = q.toLowerCase();
+    return c.label.toLowerCase().includes(s) || (c.aliases || []).some((a) => a.toLowerCase().includes(s));
+  });
+
+  return (
+    <div className="stack" style={{ paddingTop: 24 }}>
+      <h1>Glossary of Techniques</h1>
+      <p className="lede muted">
+        {data?.count || 0} concepts, AI-discovered and self-organizing. Near-duplicate names are merged; each links to its hub.
+      </p>
+      <input className="search" placeholder="Search concepts and aliases..." value={q} onChange={(e) => setQ(e.target.value)} />
+      <div className="card">
+        <ul className="feed">
+          {concepts.map((c) => {
+            const k = getKind(c.kind);
+            return (
+              <li key={c.id}>
+                {k && (
+                  <span className={`badge ${k.badgeClass}`}>
+                    <span className="dot" style={{ background: `var(${k.accentVar})` }} />
+                    {k.singular}
+                  </span>
+                )}
+                <span className="lead-label">
+                  <Link to={`/technique/${c.id}`}>{c.label}</Link>
+                  {c.aliases?.length ? <span className="faint mono"> +{c.aliases.length}</span> : null}
+                </span>
+                <span className="faint mono">att {c.attention}</span>
+              </li>
+            );
+          })}
+          {!concepts.length && <li className="muted">No matches.</li>}
+        </ul>
+      </div>
+    </div>
+  );
+}
