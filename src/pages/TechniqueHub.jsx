@@ -33,6 +33,7 @@ export default function TechniqueHub() {
           </span>
         )}
         <span className="faint mono">attention {c.attention}</span>
+        {c.first_seen && <span className="faint">tracking since {c.first_seen.slice(0, 10)}</span>}
         {c.aliases?.length > 0 && <span className="faint">also: {c.aliases.join(", ")}</span>}
       </div>
 

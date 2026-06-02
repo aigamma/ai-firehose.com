@@ -15,6 +15,11 @@ import { embed } from "../lib/voyage.mjs";
   keeps the true merges while refusing the loose ones.
 */
 
+// The classifier should return concepts as an array, but tolerate a comma-joined
+// string so one malformed item cannot silently lose all its concepts: a bare string
+// would otherwise iterate character by character and every char drops out as junk.
+const toConceptList = (c) => (Array.isArray(c) ? c : typeof c === "string" ? c.split(",") : []);
+
 const STOP = new Set(["ai", "the", "a", "an", "of", "for", "and", "to", "in", "on", "with", "vs", "based", "using", "your", "new"]);
 const tokens = (s) =>
   String(s)
@@ -53,7 +58,7 @@ export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8, embed
   const isJunk = (s) => s.length < 2 || s.length > 60 || !/[a-z]/i.test(s);
   const freq = new Map();
   for (const it of items) {
-    for (const c of it.concepts || []) {
+    for (const c of toConceptList(it.concepts)) {
       const key = String(c || "").trim();
       if (key && !isJunk(key)) freq.set(key, (freq.get(key) || 0) + 1);
     }
@@ -91,7 +96,7 @@ export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8, embed
 
   const remap = (concepts = []) => {
     const out = new Set();
-    for (const c of concepts) {
+    for (const c of toConceptList(concepts)) {
       const cc = labelToCanon.get(String(c || "").trim());
       if (cc) out.add(cc.label);
     }

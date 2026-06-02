@@ -22,3 +22,10 @@ test("merges synonyms but keeps distinct AI-X concepts apart", async () => {
   assert.ok(canon.some((c) => c.label === "generative AI"), "generative AI stays distinct");
   assert.ok(canon.some((c) => c.label === "self-improving AI"), "self-improving AI stays distinct");
 });
+
+test("tolerates a comma-joined string concepts field instead of dropping it as junk", async () => {
+  const items = [{ concepts: "LLMs, generative AI" }];
+  const { canon, remap } = await canonicalizeConcepts(items, { embedFn: fakeEmbed });
+  assert.deepEqual(canon.map((c) => c.label).sort(), ["LLMs", "generative AI"], "the string splits into two concepts, not characters");
+  assert.deepEqual(remap("LLMs, generative AI").sort(), ["LLMs", "generative AI"], "remap also coerces a string");
+});

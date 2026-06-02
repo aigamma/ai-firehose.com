@@ -231,6 +231,7 @@ async function main() {
       aliases: c.aliases,
       kind: primaryKind[c.id] || "technique",
       attention: Math.round(conceptTotals[c.id] || 0),
+      first_seen: (conceptToItems[c.id] || []).map((it) => it.published_at).filter(Boolean).sort()[0] || null,
       rotation: hubRotation[c.id] || null,
       neighbors: (neighbors[c.id] || []).slice(0, 6),
       axis_positions: axisPosById[c.id] || [],

@@ -42,7 +42,7 @@ Neighbors are computed every rebuild and denormalized into the hubs, so no stand
 
 `glossary/index.json`: `{ generated, count, concepts: [{ id, label, kind, attention, aliases, def_snippet }] }`. The light list and search payload.
 
-`glossary/c/<slug>.json`: `{ id, label, kind, attention, rotation: { horizon, quadrant, ratio, momentum, sparkline } | null, aliases, definition, neighbors: [{ id, label, score }], axis_positions: [{ slug, title, position }], top_items: [{ title, url, author_or_channel, published_at, kind }] }`. The full per-concept hub, fetched on demand. `rotation` is the concept's status on its primary kind's board for the default horizon (null when it has no attention in that window), and powers the hub Momentum card.
+`glossary/c/<slug>.json`: `{ id, label, kind, attention, first_seen, rotation: { horizon, quadrant, ratio, momentum, sparkline } | null, aliases, definition, neighbors: [{ id, label, score }], axis_positions: [{ slug, title, position }], top_items: [{ title, url, author_or_channel, published_at, kind }] }`. The full per-concept hub, fetched on demand. `rotation` is the concept's status on its primary kind's board for the default horizon (null when it has no attention in that window), and powers the hub Momentum card.
 
 `spectrums.json`: `{ generated, axes: [{ slug, title, pole_a, pole_b, positions: [{ id, label, position_normalized }] }] }`. The `axis_vector` per axis is held out of the served payload (see the table above).
 

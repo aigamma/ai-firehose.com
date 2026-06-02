@@ -69,6 +69,7 @@ test("hub rotation, where present, is well-formed and is absent from the slim in
   for (const f of readdirSync(resolve(DATA, "glossary/c"))) {
     const h = JSON.parse(readFileSync(resolve(DATA, "glossary/c", f), "utf8"));
     assert.ok("rotation" in h, `${h.id} hub must carry a rotation field (object or null)`);
+    assert.ok("first_seen" in h, `${h.id} hub must carry a first_seen field`);
     if (h.rotation) {
       withRotation++;
       assert.ok(quads.has(h.rotation.quadrant), `${h.id} rotation.quadrant must be a real quadrant`);
