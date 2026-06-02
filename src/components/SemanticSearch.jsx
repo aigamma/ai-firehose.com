@@ -10,13 +10,13 @@ export default function SemanticSearch() {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
 
-  const run = async (e) => {
-    e?.preventDefault();
-    if (!q.trim()) return;
+  const run = async (query = q) => {
+    const term = (query || "").trim();
+    if (!term) return;
     setLoading(true);
     setErr(null);
     try {
-      const r = await fetch(`/api/retrieve?q=${encodeURIComponent(q)}${kind ? `&kind=${kind}` : ""}`);
+      const r = await fetch(`/api/retrieve?q=${encodeURIComponent(term)}${kind ? `&kind=${kind}` : ""}`);
       if (!r.ok) throw new Error(`search unavailable (HTTP ${r.status})`);
       const j = await r.json();
       setResults(j.results || []);
@@ -30,7 +30,7 @@ export default function SemanticSearch() {
 
   return (
     <div>
-      <form onSubmit={run} style={{ display: "flex", gap: 8 }}>
+      <form onSubmit={(e) => { e.preventDefault(); run(); }} style={{ display: "flex", gap: 8 }}>
         <input
           className="search"
           placeholder="Search the corpus by meaning, for example: agents that browse the web"
@@ -45,6 +45,15 @@ export default function SemanticSearch() {
         </select>
         <button className="btn" type="submit">Search</button>
       </form>
+      {!results && !loading && (
+        <div className="chips" style={{ marginTop: 10 }}>
+          {["agents that browse the web", "open weight models you can run locally", "test-time compute", "AI automation for business"].map((ex) => (
+            <button key={ex} type="button" className="chip" onClick={() => { setQ(ex); run(ex); }}>
+              {ex}
+            </button>
+          ))}
+        </div>
+      )}
       {loading && <p className="muted" style={{ marginTop: 10 }}>Searching…</p>}
       {err && (
         <p className="faint" style={{ marginTop: 10 }}>
