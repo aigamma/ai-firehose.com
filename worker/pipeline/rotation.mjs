@@ -44,10 +44,14 @@ export function computeRotation(entitySeries, benchmarkSeries, windows) {
   const n = entitySeries.length;
   const ratio = ratioSeries[n - 1];
   const momentum = momentumSeries[n - 1];
+  // Clamp the displayed values to a readable band so a residual spike on thin
+  // data cannot fling a dot off the plane. The clamp preserves which side of 100
+  // a value is on, so the quadrant is unchanged.
+  const clamp = (x) => Math.max(55, Math.min(145, x));
   return {
     rs: round1(rs[n - 1] || 0),
-    ratio: round1(ratio),
-    momentum: round1(momentum),
+    ratio: round1(clamp(ratio)),
+    momentum: round1(clamp(momentum)),
     quadrant: quadrantOf(ratio, momentum),
     ratioSeries,
     momentumSeries,
