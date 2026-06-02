@@ -175,6 +175,21 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
   transition: background var(--motion-mid) var(--ease-out), box-shadow var(--motion-mid) var(--ease-out); }
 .btn:hover { background: color-mix(in oklab, var(--accent-strong) 88%, white); box-shadow: 0 2px 10px color-mix(in oklab, var(--accent) 35%, transparent); }
 
+/* Theme toggle pill (mirrors robotlogic.org): a rounded chip whose icon, label,
+   and colors preview the theme it will switch TO. */
+.theme-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 36px; padding: 0 16px; border: 0; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.02em; cursor: pointer; box-shadow: var(--shadow);
+  transition: background var(--motion-mid) var(--ease-out), color var(--motion-mid) var(--ease-out);
+}
+.theme-pill svg { width: 16px; height: 16px; }
+[data-theme="dark"] .theme-pill { background: #e7e5e4; color: #1c1917; }
+[data-theme="dark"] .theme-pill:hover { background: #ffffff; }
+[data-theme="light"] .theme-pill { background: #292524; color: #ffffff; }
+[data-theme="light"] .theme-pill:hover { background: #1c1917; }
+
 /* Cards and grids */
 .card {
   background: var(--surface); border: 1px solid var(--border);

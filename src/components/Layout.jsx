@@ -5,8 +5,35 @@ import useTheme from "../hooks/useTheme.js";
 import ScrollToTop from "./ScrollToTop.jsx";
 import CommandPalette from "./CommandPalette.jsx";
 
+// Inline lucide Sun and Moon (the same icons robotlogic.org uses) so the pill
+// needs no icon dependency. 24x24 viewBox, stroked with currentColor.
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  );
+}
+
 export default function Layout() {
   const { theme, toggle } = useTheme();
+  const isDark = theme === "dark";
   return (
     <>
       <ScrollToTop />
@@ -17,7 +44,6 @@ export default function Layout() {
             <span>
               <span className="spark">⌁</span> {SITE.name}
             </span>
-            <span className="tag">{SITE.tagline}</span>
           </NavLink>
           <nav className="nav">
             {NAV.map((n) => (
@@ -34,13 +60,13 @@ export default function Layout() {
           <div className="header-tools">
             <CommandPalette />
             <button
-              className="icon-btn"
+              className="theme-pill"
               onClick={toggle}
-              aria-label="Toggle light and dark theme"
-              aria-pressed={theme === "dark"}
-              title="Toggle theme"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
-              {theme === "dark" ? "☀" : "☾"}
+              {isDark ? <SunIcon /> : <MoonIcon />}
+              {isDark ? "Light" : "Dark"}
             </button>
           </div>
         </div>
@@ -55,7 +81,7 @@ export default function Layout() {
       <footer className="site-footer">
         <div className="container">
           A personal instrument for staying organized and courageous on the AI frontier.
-          Sibling to worldthought.com and aigamma.com. The corpus self-expires at one quarter,
+          Sibling to <a href="https://worldthought.com" target="_blank" rel="noopener noreferrer">worldthought.com</a> and <a href="https://aigamma.com" target="_blank" rel="noopener noreferrer">aigamma.com</a>. The corpus self-expires at one quarter,
           so nothing here is ever stale. <a href="/feed.xml">RSS</a>.
         </div>
       </footer>
