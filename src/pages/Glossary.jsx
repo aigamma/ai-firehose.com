@@ -25,7 +25,7 @@ export default function Glossary() {
       <p className="lede muted">
         {data?.count || 0} concepts, AI-discovered and self-organizing. Near-duplicate names are merged; each links to its hub.
       </p>
-      <input className="search" placeholder="Search concepts and aliases..." value={q} onChange={(e) => setQ(e.target.value)} />
+      <input className="search" aria-label="Search concepts and aliases" placeholder="Search concepts and aliases..." value={q} onChange={(e) => setQ(e.target.value)} />
       <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         <div className="segmented" role="group" aria-label="Filter by kind">
           <button aria-pressed={kind === ""} onClick={() => setKind("")}>All {all.length}</button>

@@ -106,7 +106,7 @@ export default function Explore() {
         <div className="card-head">
           <h2>Concept Spectrums</h2>
           {axes.length > 0 && (
-            <select className="select" value={axis?.slug} onChange={(e) => setAxisSlug(e.target.value)} style={{ marginLeft: "auto" }}>
+            <select className="select" aria-label="Select a discourse axis" value={axis?.slug} onChange={(e) => setAxisSlug(e.target.value)} style={{ marginLeft: "auto" }}>
               {axes.map((a) => (
                 <option key={a.slug} value={a.slug}>{a.title}</option>
               ))}

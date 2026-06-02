@@ -33,6 +33,7 @@ export default function SemanticSearch() {
       <form onSubmit={(e) => { e.preventDefault(); run(); }} style={{ display: "flex", gap: 8 }}>
         <input
           className="search"
+          aria-label="Search the corpus by meaning"
           placeholder="Search the corpus by meaning, for example: agents that browse the web"
           value={q}
           onChange={(e) => setQ(e.target.value)}
