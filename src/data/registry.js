@@ -51,6 +51,22 @@ export const QUADRANTS = {
   lagging:   { key: "lagging",   label: "Lagging",   colorVar: "--q-lagging",   badgeClass: "q-lagging",   note: "Trailing and fading" },
 };
 
+// Identity palette for the rotation plane's trailing trajectories. The chart
+// draws only the top 6 topics, so each trail is colored by IDENTITY (one hue per
+// topic, assigned by plotted index) rather than by quadrant, which is easier to
+// follow when tracking a single trajectory at low item counts. Chosen to stay
+// clearly distinct from the quadrant palette (greens/blues/oranges/reds) and the
+// kind accents, and from each other on the dark wash: violet, magenta, gold,
+// cyan, lime, coral.
+export const TRAIL_PALETTE = [
+  "#a78bfa", // violet
+  "#f472b6", // magenta
+  "#fbbf24", // gold
+  "#22d3ee", // cyan
+  "#a3e635", // lime
+  "#fb7185", // coral
+];
+
 // AI-discourse concept axes (v1). Pole anchors (the multi-sentence embedding
 // text) live with the worker prompts; here we keep slugs and display titles.
 // Editable: add an axis here and author its anchors in worker/pipeline/prompts.

@@ -19,6 +19,7 @@ import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { collapseStore } from "./store.mjs";
 import { pruneByRetention } from "./retention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
+import { computeBoards } from "./boards.mjs";
 import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
@@ -171,30 +172,29 @@ async function main() {
   for (const kind of KIND_KEYS) {
     levelByKind[kind] = Object.fromEntries(Object.entries(byKind[kind] || {}).map(([id, s]) => [id, decayedLevel(s)]));
   }
+  // The served boards (top 16 per kind per horizon, entities carrying `trail`) are
+  // built by the shared pure function so run.mjs and the offline recompute cannot
+  // drift apart. Same envelope as before.
+  const boards = computeBoards(working, { todayMs: TODAY, retentionDays: RETENTION_DAYS, horizons: HORIZONS, kinds: KINDS });
+  for (const kind of KIND_KEYS) {
+    for (const h of HORIZONS) {
+      writeJson(`attention/${kind}_${h.key}.json`, {
+        kind, horizon: h.key, generated: GENERATED, synthetic: false, entities: boards[`${kind}_${h.key}`],
+      });
+    }
+  }
+  // The hub shows a concept's rotation for the default horizon, taken from its
+  // primary kind's board, computed over the FULL ranked list (not just the
+  // displayed top 16), so a concept ranking below 16 still gets a hub reading.
   const conceptTotals = {};
-  const hubRotation = {}; // concept id -> its rotation status for the hub horizon (its primary kind's board)
+  const hubRotation = {}; // concept id -> its rotation status for the hub horizon
+  const hubWindows = HORIZONS.find((h) => h.key === DEFAULT_HORIZON).windows;
   for (const kind of KIND_KEYS) {
     const series = byKind[kind] || {};
-    for (const h of HORIZONS) {
-      const ranked = rotationForEntities(levelByKind[kind], h.windows)
-        .map((r) => ({
-          id: r.id, label: labels[r.id] || r.id,
-          attention: Math.round(windowSum(series[r.id] || [], h.days)),
-          rs: r.rs, ratio: r.ratio, momentum: r.momentum, quadrant: r.quadrant,
-          sparkline: r.sparkline, outlier: r.outlier,
-        }))
-        .filter((e) => e.attention > 0)
-        .sort((a, b) => b.attention - a.attention);
-      // The hub shows a concept's rotation for the default horizon, taken from its
-      // primary kind's board (full ranked list, not just the displayed top 16).
-      if (h.key === DEFAULT_HORIZON) {
-        for (const e of ranked) {
-          if (primaryKind[e.id] === kind) {
-            hubRotation[e.id] = { horizon: h.key, quadrant: e.quadrant, ratio: e.ratio, momentum: e.momentum, sparkline: e.sparkline };
-          }
-        }
-      }
-      writeJson(`attention/${kind}_${h.key}.json`, { kind, horizon: h.key, generated: GENERATED, synthetic: false, entities: ranked.slice(0, 16) });
+    for (const r of rotationForEntities(levelByKind[kind], hubWindows)) {
+      if (primaryKind[r.id] !== kind) continue;
+      if (Math.round(windowSum(series[r.id] || [], HORIZONS.find((h) => h.key === DEFAULT_HORIZON).days)) <= 0) continue;
+      hubRotation[r.id] = { horizon: DEFAULT_HORIZON, quadrant: r.quadrant, ratio: r.ratio, momentum: r.momentum, sparkline: r.sparkline };
     }
     for (const [id, s] of Object.entries(series)) conceptTotals[id] = (conceptTotals[id] || 0) + s.reduce((a, b) => a + b, 0);
   }

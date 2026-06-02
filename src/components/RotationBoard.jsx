@@ -34,6 +34,9 @@ function RotationBoard({ kindKey, horizon }) {
   const { data, loading, error } = useData(`/data/attention/${kindKey}_${horizon}.json`);
   const entities = data?.entities || [];
   const leaders = [...entities].sort((a, b) => b.momentum - a.momentum).slice(0, 4);
+  // New entrants are intentionally excluded from the plane (one mention has no
+  // trajectory and would pin to the clamp corner), so list them compactly below.
+  const surfaced = entities.filter((e) => e.outlier?.new_entrant);
 
   return (
     <div>
@@ -49,6 +52,16 @@ function RotationBoard({ kindKey, horizon }) {
       ) : entities.length ? (
         <>
           <RotationChart entities={entities} />
+          {surfaced.length > 0 && (
+            <p className="just-surfaced">
+              <span className="eyebrow">Just surfaced</span>
+              {surfaced.map((e) => (
+                <Link key={e.id} to={`/technique/${e.id}`} className="surfaced-item">
+                  {e.label}
+                </Link>
+              ))}
+            </p>
+          )}
           <ul className="leaders">
             {leaders.map((e) => (
               <li key={e.id}>

@@ -1,0 +1,57 @@
+/*
+  Rotation board construction, extracted from run.mjs so the same pure logic can
+  be replayed offline (worker/pipeline/recompute_boards.mjs) without re-running
+  the whole ingest. computeBoards reproduces exactly what run.mjs does for the
+  per-kind, per-horizon attention boards:
+
+    buildSeries (raw weighted daily mentions per kind per concept)
+    -> decayedLevel per kind   (the smooth, price-like level the rotation math eats)
+    -> rotationForEntities per kind per horizon
+    -> attach label + windowed (per-horizon) displayed attention
+    -> filter attention > 0
+    -> sort by attention desc
+    -> slice top 16
+
+  It returns a flat map keyed `${kind}_${horizon}` to the entities array, so a
+  caller can wrap each in the served envelope. Entities now carry `trail`, the
+  trailing (ratio, momentum) trajectory, alongside the prior fields. Pure: no I/O,
+  no clock; the caller supplies todayMs so day-windows are reproducible.
+*/
+import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
+import { rotationForEntities } from "./rotation.mjs";
+
+export function computeBoards(working, { todayMs, retentionDays, horizons, kinds }) {
+  const kindKeys = kinds.map((k) => k.key);
+  const { byKind, labels } = buildSeries(working, { days: retentionDays, todayMs });
+  // Rotation runs on the smooth decayed level; the displayed attention stays the
+  // raw weighted mentions in the horizon's window.
+  const levelByKind = {};
+  for (const kind of kindKeys) {
+    levelByKind[kind] = Object.fromEntries(
+      Object.entries(byKind[kind] || {}).map(([id, s]) => [id, decayedLevel(s)])
+    );
+  }
+  const boards = {};
+  for (const kind of kindKeys) {
+    const series = byKind[kind] || {};
+    for (const h of horizons) {
+      const ranked = rotationForEntities(levelByKind[kind], h.windows)
+        .map((r) => ({
+          id: r.id,
+          label: labels[r.id] || r.id,
+          attention: Math.round(windowSum(series[r.id] || [], h.days)),
+          rs: r.rs,
+          ratio: r.ratio,
+          momentum: r.momentum,
+          quadrant: r.quadrant,
+          sparkline: r.sparkline,
+          trail: r.trail,
+          outlier: r.outlier,
+        }))
+        .filter((e) => e.attention > 0)
+        .sort((a, b) => b.attention - a.attention);
+      boards[`${kind}_${h.key}`] = ranked.slice(0, 16);
+    }
+  }
+  return boards;
+}
