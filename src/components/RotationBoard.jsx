@@ -15,10 +15,10 @@ export default function RotationBoard({ kindKey, horizon }) {
   return (
     <div>
       <h3>
-        <span className={`badge ${kind.badgeClass}`}>
+        <Link to={kind.route} className={`badge ${kind.badgeClass}`}>
           <span className="dot" style={{ background: `var(${kind.accentVar})` }} />
           {kind.label}
-        </span>
+        </Link>
       </h3>
       <p className="faint" style={{ margin: "4px 0 8px" }}>rotating by {kind.entity}</p>
       {entities.length ? (

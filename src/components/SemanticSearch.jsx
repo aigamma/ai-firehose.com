@@ -56,12 +56,15 @@ export default function SemanticSearch() {
           {results.map((x, i) => {
             const k = getKind(x.kind);
             return (
-              <li key={i}>
-                {k && <span className={`badge ${k.badgeClass}`}>{k.singular}</span>}
-                <span className="lead-label">
-                  <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
-                </span>
-                <span className="faint mono">{x.score}</span>
+              <li key={i} className="feed-rich">
+                <div className="feed-head">
+                  {k && <span className={`badge ${k.badgeClass}`}>{k.singular}</span>}
+                  <span className="lead-label">
+                    <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
+                  </span>
+                  <span className="faint mono">{x.score}</span>
+                </div>
+                {x.summary && <div className="faint gloss-def">{x.summary}</div>}
               </li>
             );
           })}
