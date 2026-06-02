@@ -30,9 +30,11 @@ fly machine run . -c worker/fly.toml --schedule daily
 ```
 
 The image bakes node, python3, ffmpeg, git, and yt-dlp. `ENABLE_TRANSCRIPTS=1`
-turns on YouTube caption enrichment (captions via yt-dlp; an audio plus Whisper
-fallback can be added). `worker/publish.sh` is the entrypoint: clone, run, commit
-`public/data` and `public/sitemap.xml`, push to `main`.
+turns on YouTube transcript enrichment: captions via yt-dlp first, then an audio
+plus OpenAI Whisper (`whisper-1`) fallback for caption-less videos (needs
+`OPENAI_API_KEY`). `worker/publish.sh` is the entrypoint: clone, run, commit the
+artifacts (`public/data`, `public/sitemap.xml`, `public/feed.xml`) and the
+accumulating corpus (`worker/.cache/items.json`), then push to `main`.
 
 Cost: the rolling-quarter corpus keeps it near the civil reference (Pinecone plus
 a few dollars of Voyage) plus Claude classification (Haiku) on new items only
