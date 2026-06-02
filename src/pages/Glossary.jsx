@@ -25,18 +25,21 @@ export default function Glossary() {
           {concepts.map((c) => {
             const k = getKind(c.kind);
             return (
-              <li key={c.id}>
-                {k && (
-                  <span className={`badge ${k.badgeClass}`}>
-                    <span className="dot" style={{ background: `var(${k.accentVar})` }} />
-                    {k.singular}
+              <li key={c.id} className="gloss-row">
+                <div className="gloss-head">
+                  {k && (
+                    <span className={`badge ${k.badgeClass}`}>
+                      <span className="dot" style={{ background: `var(${k.accentVar})` }} />
+                      {k.singular}
+                    </span>
+                  )}
+                  <span className="lead-label">
+                    <Link to={`/technique/${c.id}`}>{c.label}</Link>
+                    {c.aliases?.length ? <span className="faint mono"> +{c.aliases.length}</span> : null}
                   </span>
-                )}
-                <span className="lead-label">
-                  <Link to={`/technique/${c.id}`}>{c.label}</Link>
-                  {c.aliases?.length ? <span className="faint mono"> +{c.aliases.length}</span> : null}
-                </span>
-                <span className="faint mono">att {c.attention}</span>
+                  <span className="faint mono">att {c.attention}</span>
+                </div>
+                {c.definition && <div className="faint gloss-def">{c.definition}</div>}
               </li>
             );
           })}

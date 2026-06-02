@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
-import Placeholder from "./pages/Placeholder.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Explore from "./pages/Explore.jsx";
 import Glossary from "./pages/Glossary.jsx";
 import TechniqueHub from "./pages/TechniqueHub.jsx";
@@ -26,7 +26,7 @@ export default function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/methodology" element={<Methodology />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<Placeholder title="Not Found" notFound />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
