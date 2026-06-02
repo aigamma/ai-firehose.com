@@ -12,17 +12,22 @@ async function getHost() {
   return cachedHost;
 }
 
-export async function semanticSearch(q, { kind, topK = 30, topN = 8 } = {}) {
+// The live dependencies are injectable (defaulting to the real Voyage/Pinecone
+// calls) so the two-stage flow, including its fail-open fallback, can be unit
+// tested offline. Both call sites use the two-argument form and are unaffected.
+const LIVE = { embedQuery, rerank, query, getHost };
+
+export async function semanticSearch(q, { kind, topK = 30, topN = 8 } = {}, deps = LIVE) {
   if (!q || !q.trim()) return [];
-  const qv = await embedQuery(q);
+  const qv = await deps.embedQuery(q);
   const filter = kind ? { kind: { $eq: kind } } : undefined;
-  const matches = await query(await getHost(), qv, { topK, filter, includeMetadata: true });
+  const matches = await deps.query(await deps.getHost(), qv, { topK, filter, includeMetadata: true });
   if (!matches.length) return [];
 
   let ordered = matches.slice(0, topN);
   try {
     const docs = matches.map((m) => (m.metadata?.summary || m.metadata?.title || "").slice(0, 1000));
-    const rr = await rerank(q, docs, Math.min(topN, docs.length));
+    const rr = await deps.rerank(q, docs, Math.min(topN, docs.length));
     ordered = rr.map((r) => ({ ...matches[r.index], _rr: r.relevance_score }));
   } catch {
     /* fail open to dense order */

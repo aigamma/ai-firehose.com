@@ -17,6 +17,7 @@ import { ensureIndex, upsert, listIds, deleteByIds } from "../lib/pinecone.mjs";
 import { hash16, itemId, slugify } from "../lib/hash.mjs";
 import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { collapseStore } from "./store.mjs";
+import { pruneByRetention } from "./retention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
@@ -117,15 +118,10 @@ async function main() {
   // hash (new id) and must replace, not accumulate beside, its prior version.
   const deduped = collapseStore(store, classifiedIds);
   const collapsed = Object.keys(store).length - Object.keys(deduped).length;
-  const cutoffMs = TODAY - RETENTION_DAYS * 86400000;
-  for (const [id, it] of Object.entries(deduped)) {
-    // Effective timestamp: parsed published_at, falling back to ingested_at.
-    // An undateable item thus expires one quarter after first ingest rather than
-    // living forever, honoring the rolling-quarter contract.
-    const tPub = new Date(it.published_at).getTime();
-    const t = Number.isFinite(tPub) ? tPub : it.ingested_at;
-    if (Number.isFinite(t) && t < cutoffMs) delete deduped[id];
-  }
+  // Effective timestamp: parsed published_at, falling back to ingested_at. An
+  // undateable item thus expires one quarter after first ingest rather than living
+  // forever, honoring the rolling-quarter contract. (Pure core in retention.mjs.)
+  pruneByRetention(deduped, { nowMs: TODAY, retentionDays: RETENTION_DAYS });
   const corpus = Object.values(deduped);
   saveCache("items", deduped);
   console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length}${collapsed ? `, collapsed ${collapsed} duplicate` : ""})`);
