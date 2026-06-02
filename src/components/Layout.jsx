@@ -34,6 +34,7 @@ export default function Layout() {
             className="icon-btn"
             onClick={toggle}
             aria-label="Toggle light and dark theme"
+            aria-pressed={theme === "dark"}
             title="Toggle theme"
           >
             {theme === "dark" ? "☀" : "☾"}

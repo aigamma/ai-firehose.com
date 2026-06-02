@@ -13,18 +13,25 @@
   --surface: #141820;
   --surface-2: #1b212c;
   --surface-3: #232b39;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Card edges read as real seams on the dark wash (raised from 0.09). */
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
 
   /* Text */
   --text: #e6e9ef;
   --text-strong: #f5f7fa;
   --muted: #9aa4b2;
-  --faint: #6b7480;
+  /* Lifted toward --muted so faint text clears WCAG AA (>=4.5:1) on the
+     surfaces it sits on; the old #6b7480 failed at roughly 3 to 3.75:1. */
+  --faint: #949cab;
 
   /* Primary accent */
   --accent: #4a9eff;
   --accent-soft: rgba(74, 158, 255, 0.14);
+  /* Darker blue used only as a button/fill behind white text, where the
+     bright --accent failed AA (white on #4a9eff is roughly 2.75:1).
+     White on #1a5fcc is about 5.9:1. --accent stays for links and borders. */
+  --accent-strong: #1a5fcc;
 
   /* Kind accents (distinct from quadrant colors on purpose) */
   --kind-technique: #7b8cf2; /* indigo */
@@ -40,11 +47,15 @@
   /* Typography */
   --font-base: Calibri, "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  /* Reserved for one editorial moment (a quote or lede); not forced anywhere. */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
   /* Motion */
   --motion-fast: 130ms;
   --motion-mid: 240ms;
   --motion-slow: 400ms;
+  --motion-ambient: 4s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Geometry */
   --radius: 12px;
@@ -60,16 +71,22 @@
   --surface: #ffffff;
   --surface-2: #eef2f7;
   --surface-3: #e3e9f1;
-  --border: rgba(15, 23, 36, 0.10);
-  --border-strong: rgba(15, 23, 36, 0.20);
+  /* Solid, visible seams so cards keep real edges on the pale wash. */
+  --border: rgba(15, 23, 36, 0.14);
+  --border-strong: rgba(15, 23, 36, 0.24);
 
   --text: #1a1f28;
   --text-strong: #0c1118;
   --muted: #56616f;
-  --faint: #8a94a2;
+  /* Darkened toward --muted so faint text clears WCAG AA on light surfaces;
+     the old #8a94a2 failed at roughly 2.5 to 3:1. #606978 is about 4.9:1+. */
+  --faint: #606978;
 
   --accent: #1f6fe5;
   --accent-soft: rgba(31, 111, 229, 0.10);
+  /* Darker blue for white-on-fill (buttons, pressed segments); white on
+     #175bbf is about 6.4:1. --accent stays for links and borders. */
+  --accent-strong: #175bbf;
 
   --kind-technique: #5466d8;
   --kind-tool: #128c74;
@@ -116,6 +133,11 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .muted { color: var(--muted); }
 .faint { color: var(--faint); }
 .mono { font-family: var(--font-mono); font-size: 0.9em; }
+/* Small uppercase mono instrument-panel label, for section eyebrows. */
+.eyebrow {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint);
+}
 .stack > * + * { margin-top: 1rem; }
 
 /* Header and navigation */
@@ -131,11 +153,11 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 }
 .brand { display: flex; align-items: baseline; gap: 9px; font-weight: 750; color: var(--text-strong); }
 .brand .spark { color: var(--accent); }
-.brand .tag { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+.brand .tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
 .nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
 .nav a {
   color: var(--muted); padding: 6px 11px; border-radius: var(--radius-sm);
-  font-weight: 550; transition: color var(--motion-fast), background var(--motion-fast);
+  font-weight: 550; transition: color var(--motion-mid) var(--ease-out), background var(--motion-mid) var(--ease-out);
 }
 .nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
 .nav a.active { color: var(--text-strong); background: var(--accent-soft); }
@@ -144,16 +166,32 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
   display: inline-flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; border-radius: var(--radius-sm);
   background: var(--surface-2); border: 1px solid var(--border);
-  color: var(--text); cursor: pointer; transition: background var(--motion-fast);
+  color: var(--text); cursor: pointer;
+  transition: background var(--motion-mid) var(--ease-out), border-color var(--motion-mid) var(--ease-out);
 }
-.icon-btn:hover { background: var(--surface-3); }
-.btn { background: var(--accent); color: #fff; border: 0; border-radius: var(--radius-sm); padding: 0 16px; height: 38px; font-weight: 600; font-family: inherit; cursor: pointer; }
-.btn:hover { filter: brightness(1.08); }
+.icon-btn:hover { background: var(--surface-3); border-color: var(--border-strong); }
+/* --accent-strong (not --accent) so white label text clears WCAG AA on the fill. */
+.btn { background: var(--accent-strong); color: #fff; border: 0; border-radius: var(--radius-sm); padding: 0 16px; height: 38px; font-weight: 600; font-family: inherit; cursor: pointer;
+  transition: background var(--motion-mid) var(--ease-out), box-shadow var(--motion-mid) var(--ease-out); }
+.btn:hover { background: color-mix(in oklab, var(--accent-strong) 88%, white); box-shadow: 0 2px 10px color-mix(in oklab, var(--accent) 35%, transparent); }
 
 /* Cards and grids */
 .card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 18px;
+}
+/* Accent-tinted left-border cards. A card given --tile-accent (inline, or via
+   a kind/quadrant helper) gets a colored left seam plus a faint diagonal wash,
+   so the meaning palette reads on the card itself, not only in the legend.
+   Hover brightens the seam by mixing the accent into the neutral border. */
+.card.accent,
+.card[style*="--tile-accent"] {
+  border-left: 3px solid var(--tile-accent, var(--accent));
+  background-image: linear-gradient(135deg, color-mix(in oklab, var(--tile-accent, var(--accent)) 6%, transparent), transparent 60%);
+}
+.card.accent:hover,
+.card[style*="--tile-accent"]:hover {
+  border-color: color-mix(in oklab, var(--tile-accent, var(--accent)) 30%, var(--border));
 }
 .card .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .card .card-head h2 { margin: 0; }
@@ -168,13 +206,16 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .segmented button {
   border: 0; background: transparent; color: var(--muted);
   padding: 7px 16px; border-radius: 999px; cursor: pointer; font-weight: 600;
-  font-family: inherit; font-size: 0.92rem; transition: all var(--motion-fast);
+  font-family: inherit; font-size: 0.92rem;
+  transition: color var(--motion-mid) var(--ease-out), background var(--motion-mid) var(--ease-out);
 }
-.segmented button:hover { color: var(--text); }
-.segmented button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.segmented button:hover { color: var(--text); background: color-mix(in oklab, var(--surface-3) 60%, transparent); }
+/* --accent-strong so the white label on the pressed segment clears WCAG AA. */
+.segmented button[aria-pressed="true"] { background: var(--accent-strong); color: #fff; }
 
-/* Badges */
-.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 650;
+/* Badges read as small mono instrument-panel labels (kind/quadrant chips). */
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 650;
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;
   padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border-strong); }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .kind-technique { color: var(--kind-technique); }
@@ -207,6 +248,9 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .leaders { list-style: none; margin: 12px 0 0; padding: 0; }
 .leaders li { display: flex; align-items: center; gap: 9px; padding: 5px 0; border-top: 1px solid var(--border); font-size: 0.86rem; }
 .lead-label { flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Rank and score readouts in feeds and leaderboards read as mono instrument
+   numerals (wide-tracked, faint). Scoped here so item titles stay untouched. */
+.leaders .mono, .feed .mono { text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); }
 
 /* Feeds (outliers, what is new) */
 .feed { list-style: none; margin: 0; padding: 0; }
@@ -215,7 +259,8 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 
 /* Demo-data ribbon, shown until the live worker runs */
 .synthetic-ribbon {
-  display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
+  display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
   color: #1a1206; background: var(--q-weakening); padding: 3px 10px; border-radius: 999px;
 }
 
@@ -225,9 +270,10 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .theme { border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; }
 .theme-label { font-weight: 650; color: var(--text-strong); margin-bottom: 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: 0.78rem; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); font-family: inherit; cursor: pointer; }
-.chip:hover { background: var(--surface-3); text-decoration: none; }
-.spectrum-poles { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+.chip { font-size: 0.78rem; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); font-family: inherit; cursor: pointer;
+  transition: background var(--motion-mid) var(--ease-out), border-color var(--motion-mid) var(--ease-out); }
+.chip:hover { background: var(--surface-3); border-color: var(--border-strong); text-decoration: none; }
+.spectrum-poles { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
 .spectrum-track { position: relative; height: 26px; border-radius: 999px; border: 1px solid var(--border);
   background: linear-gradient(90deg, color-mix(in oklab, var(--q-lagging) 28%, transparent), color-mix(in oklab, var(--q-leading) 28%, transparent)); }
 .spectrum-track.mini { height: 14px; }
@@ -238,17 +284,34 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 50; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 var(--radius-sm) 0; }
 .skip-link:focus { left: 0; }
 
-/* Breakout hero: the single biggest mover for the horizon */
+/* Breakout hero: the single biggest mover for the horizon. Carries one
+   ambient breathing glow (worldthought's 4s signature) to draw the eye. */
 .breakout { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-radius: var(--radius);
-  border: 1px solid var(--border-strong); background: linear-gradient(90deg, var(--accent-soft), transparent); color: var(--text); }
+  border: 1px solid var(--border-strong); background: linear-gradient(90deg, var(--accent-soft), transparent); color: var(--text);
+  transition: border-color var(--motion-mid) var(--ease-out), background var(--motion-mid) var(--ease-out);
+  animation: breakoutGlow var(--motion-ambient) ease-in-out infinite; }
 .breakout:hover { text-decoration: none; border-color: var(--accent); }
+
+@keyframes breakoutGlow {
+  0%, 100% { box-shadow: 0 0 6px color-mix(in oklab, var(--accent) 30%, transparent); }
+  50%      { box-shadow: 0 0 20px color-mix(in oklab, var(--accent) 55%, transparent); }
+}
 .breakout strong { font-size: 1.05rem; color: var(--text-strong); }
-.breakout-tag { font-size: 0.7rem; font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; color: #1a1206; background: var(--q-leading); padding: 3px 9px; border-radius: 999px; }
+.breakout-tag { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1206; background: var(--q-leading); padding: 3px 9px; border-radius: 999px; }
 
 /* Visual polish */
 a { text-underline-offset: 3px; }
-.card { box-shadow: var(--shadow); transition: border-color var(--motion-fast); }
-.hero h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+.card { box-shadow: var(--shadow); transition: border-color var(--motion-mid) var(--ease-out), box-shadow var(--motion-mid) var(--ease-out); }
+/* Hero headline paints the momentum spectrum through its text: lagging to
+   leading, left to right. Fallback color first for non-supporting engines. */
+.hero h1 {
+  font-size: 2.2rem; letter-spacing: -0.02em;
+  color: var(--text-strong);
+  background-image: linear-gradient(90deg, var(--q-lagging), var(--q-weakening), var(--q-improving), var(--q-leading));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .hero .lede { font-size: 1.1rem; }
 .feed li:hover, .leaders li:hover { background: color-mix(in oklab, var(--surface-2) 45%, transparent); }
 .segmented button[aria-pressed="true"] { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
@@ -273,4 +336,7 @@ a { text-underline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+  /* Kill the ambient breakout glow and any other looping animation. */
+  .breakout { animation: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }

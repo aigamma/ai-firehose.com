@@ -8,5 +8,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        // Split the React runtime into a long-lived vendor chunk so app-code
+        // changes do not bust the cached framework bundle on redeploys.
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
   },
 });

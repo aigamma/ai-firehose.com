@@ -16,22 +16,24 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ai-firehose.com/" />
+    <meta property="og:site_name" content="AI Firehose" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary" />
     <meta
       name="description"
       content="A daily outlier hunt across the AI industry. What is new in the past day, week, month, and quarter, ranked by relative rotation. Personal intelligence dashboard."
     />
     <script>
-      // Set the theme before first paint to avoid a flash of the wrong theme.
+      // Dark-first: set the theme before first paint to avoid a flash. Default
+      // to dark unless the visitor has explicitly chosen light. The OS
+      // prefers-color-scheme is intentionally ignored, so the site is dark by
+      // default for everyone, with the toggle as the only opt-out.
       (function () {
         try {
-          var t = localStorage.getItem('aifh-theme');
-          if (t !== 'light' && t !== 'dark') {
-            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-          }
+          var t = localStorage.getItem('aifh-theme') === 'light' ? 'light' : 'dark';
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {
-          /* dark is the default in the html tag */
+          document.documentElement.setAttribute('data-theme', 'dark');
         }
       })();
     </script>

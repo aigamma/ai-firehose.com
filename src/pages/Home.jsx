@@ -1,10 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import RotationBoard from "../components/RotationBoard.jsx";
 import Constellation from "../components/Constellation.jsx";
 import useData from "../lib/useData.js";
-import { SITE, KINDS, HORIZONS, QUADRANTS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
+import { SITE, KINDS, HORIZONS, QUADRANTS, quadrantOf, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
+
+// A distinct load-failure notice, visually separate from the dashed ".empty"
+// awaiting-ingestion box, so a real error is never read as "no data yet".
+function LoadError({ label }) {
+  return (
+    <div
+      role="alert"
+      style={{
+        border: "1px solid var(--q-lagging)",
+        borderLeftWidth: 3,
+        borderRadius: "var(--radius)",
+        padding: 16,
+        color: "var(--muted)",
+        background: "color-mix(in oklab, var(--q-lagging) 8%, transparent)",
+      }}
+    >
+      <strong style={{ display: "block", marginBottom: 4, color: "var(--text)" }}>{label}</strong>
+      Unable to load. Retry shortly.
+    </div>
+  );
+}
 
 function QuadrantLegend() {
   return (
@@ -30,23 +51,37 @@ function Reasons({ outlier }) {
 export default function Home() {
   const [horizon, setHorizon] = useState(DEFAULT_HORIZON);
   const h = getHorizon(horizon);
-  const { data: digest } = useData(`/data/digests/${horizon}.json`);
-  const { data: constellation } = useData(`/data/constellation.json`);
+  const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
+  const { data: constellation, loading: constellationLoading, error: constellationError } = useData(`/data/constellation.json`);
   const { data: clustersD } = useData(`/data/clusters.json`);
   const synthetic = digest?.synthetic || constellation?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
-  // Arrow keys cycle the horizon (Day to Quarter), unless typing in a field.
+  // Arrow keys cycle the horizon (Day to Quarter), but ONLY when focus is within
+  // the switcher, so the global page is not robbed of arrow-key scrolling and
+  // reading. The listener binds to the switcher container and reads the current
+  // horizon through a ref, so the effect attaches once instead of re-binding on
+  // every horizon change.
+  const switcherRef = useRef(null);
+  const horizonRef = useRef(horizon);
+  horizonRef.current = horizon;
   useEffect(() => {
+    const el = switcherRef.current;
+    if (!el) return undefined;
     const onKey = (e) => {
-      if (e.target?.matches?.("input, select, textarea")) return;
-      const i = HORIZONS.findIndex((x) => x.key === horizon);
-      if (e.key === "ArrowRight" && i < HORIZONS.length - 1) setHorizon(HORIZONS[i + 1].key);
-      if (e.key === "ArrowLeft" && i > 0) setHorizon(HORIZONS[i - 1].key);
+      const i = HORIZONS.findIndex((x) => x.key === horizonRef.current);
+      if (e.key === "ArrowRight" && i < HORIZONS.length - 1) {
+        e.preventDefault();
+        setHorizon(HORIZONS[i + 1].key);
+      }
+      if (e.key === "ArrowLeft" && i > 0) {
+        e.preventDefault();
+        setHorizon(HORIZONS[i - 1].key);
+      }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [horizon]);
+    el.addEventListener("keydown", onKey);
+    return () => el.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <div className="stack">
@@ -56,7 +91,9 @@ export default function Home() {
       </section>
 
       <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-        <HorizonSwitch value={horizon} onChange={setHorizon} />
+        <span ref={switcherRef} style={{ display: "inline-flex" }}>
+          <HorizonSwitch value={horizon} onChange={setHorizon} />
+        </span>
         <span className="muted">
           What is new in the past <strong>{h.label.toLowerCase()}</strong>.
         </span>
@@ -97,9 +134,11 @@ export default function Home() {
         <section className="card">
           <div className="card-head">
             <h2>Constellation</h2>
-            <span className="faint mono" style={{ marginLeft: "auto" }}>idea-space map</span>
+            <span className="eyebrow" style={{ marginLeft: "auto" }}>idea-space map</span>
           </div>
-          {constellation?.points ? (
+          {constellationError ? (
+            <LoadError label="Idea-space map" />
+          ) : constellation?.points ? (
             <>
               <Constellation points={constellation.points} clusters={clustersD?.clusters || []} />
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 10 }}>
@@ -112,19 +151,21 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <div className="empty"><strong>Idea-space map</strong>Awaiting ingestion.</div>
+            <div className="empty"><strong>Idea-space map</strong>{constellationLoading ? "Loading…" : "Awaiting ingestion."}</div>
           )}
         </section>
 
         <section className="card">
           <div className="card-head"><h2>Outliers</h2></div>
-          {digest?.outliers?.length ? (
+          {digestError ? (
+            <LoadError label="Breakouts and new entrants" />
+          ) : digest?.outliers?.length ? (
             <ul className="feed">
               {digest.outliers.map((o, i) => {
                 const kind = getKind(o.kind);
                 return (
                   <li key={i}>
-                    <span className="dot" style={{ background: `var(${QUADRANTS[o.quadrant].colorVar})` }} />
+                    <span className="dot" style={{ background: `var(${quadrantOf(o.quadrant).colorVar})` }} />
                     <span className="lead-label">
                       <Link to={`/technique/${o.id}`}>{o.label}</Link>
                     </span>
@@ -135,7 +176,7 @@ export default function Home() {
               })}
             </ul>
           ) : (
-            <div className="empty"><strong>Breakouts and new entrants</strong>Awaiting ingestion.</div>
+            <div className="empty"><strong>Breakouts and new entrants</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
           )}
         </section>
       </div>
@@ -143,9 +184,11 @@ export default function Home() {
       <section className="card">
         <div className="card-head">
           <h2>What Is New</h2>
-          <span className="faint mono" style={{ marginLeft: "auto" }}>past {h.label.toLowerCase()}</span>
+          <span className="eyebrow" style={{ marginLeft: "auto" }}>past {h.label.toLowerCase()}</span>
         </div>
-        {digest?.new_items?.length ? (
+        {digestError ? (
+          <LoadError label={`New in the past ${h.label.toLowerCase()}`} />
+        ) : digest?.new_items?.length ? (
           <ul className="feed">
             {digest.new_items.map((it, i) => {
               const kind = getKind(it.kind);
@@ -181,7 +224,7 @@ export default function Home() {
             })}
           </ul>
         ) : (
-          <div className="empty"><strong>New in the past {h.label.toLowerCase()}</strong>Awaiting ingestion.</div>
+          <div className="empty"><strong>New in the past {h.label.toLowerCase()}</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
         )}
       </section>
     </div>

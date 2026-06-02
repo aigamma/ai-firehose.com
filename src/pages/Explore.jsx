@@ -5,6 +5,27 @@ import SemanticSearch from "../components/SemanticSearch.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { KINDS } from "../data/registry.js";
 
+// A distinct load-failure notice, visually separate from the dashed ".empty"
+// awaiting-ingestion box, so a real error is never read as "no data yet".
+function LoadError({ label }) {
+  return (
+    <div
+      role="alert"
+      style={{
+        border: "1px solid var(--q-lagging)",
+        borderLeftWidth: 3,
+        borderRadius: "var(--radius)",
+        padding: 16,
+        color: "var(--muted)",
+        background: "color-mix(in oklab, var(--q-lagging) 8%, transparent)",
+      }}
+    >
+      <strong style={{ display: "block", marginBottom: 4, color: "var(--text)" }}>{label}</strong>
+      Unable to load. Retry shortly.
+    </div>
+  );
+}
+
 function SpectrumView({ axis }) {
   const pts = axis.positions || [];
   return (
@@ -39,9 +60,9 @@ function SpectrumView({ axis }) {
 }
 
 export default function Explore() {
-  const { data: clustersD } = useData("/data/clusters.json");
-  const { data: spectrumsD } = useData("/data/spectrums.json");
-  const { data: influenceD } = useData("/data/influence.json");
+  const { data: clustersD, loading: clustersLoading, error: clustersError } = useData("/data/clusters.json");
+  const { data: spectrumsD, loading: spectrumsLoading, error: spectrumsError } = useData("/data/spectrums.json");
+  const { data: influenceD, loading: influenceLoading, error: influenceError } = useData("/data/influence.json");
   const { data: stats } = useData("/data/stats.json");
   useDocumentTitle("Explore");
   const axes = spectrumsD?.axes || [];
@@ -80,9 +101,11 @@ export default function Explore() {
       <section className="card">
         <div className="card-head">
           <h2>Themes</h2>
-          <span className="faint mono" style={{ marginLeft: "auto" }}>k-means clusters</span>
+          <span className="eyebrow" style={{ marginLeft: "auto" }}>k-means clusters</span>
         </div>
-        {clustersD?.clusters?.length ? (
+        {clustersError ? (
+          <LoadError label="Themes" />
+        ) : clustersD?.clusters?.length ? (
           <div className="grid cols-2">
             {clustersD.clusters.map((c) => (
               <div key={c.cluster_id} className="theme">
@@ -98,7 +121,7 @@ export default function Explore() {
             ))}
           </div>
         ) : (
-          <div className="empty"><strong>Themes</strong>Awaiting ingestion.</div>
+          <div className="empty"><strong>Themes</strong>{clustersLoading ? "Loading…" : "Awaiting ingestion."}</div>
         )}
       </section>
 
@@ -113,15 +136,23 @@ export default function Explore() {
             </select>
           )}
         </div>
-        {axis ? <SpectrumView axis={axis} /> : <div className="empty"><strong>Spectrums</strong>Awaiting ingestion.</div>}
+        {spectrumsError ? (
+          <LoadError label="Spectrums" />
+        ) : axis ? (
+          <SpectrumView axis={axis} />
+        ) : (
+          <div className="empty"><strong>Spectrums</strong>{spectrumsLoading ? "Loading…" : "Awaiting ingestion."}</div>
+        )}
       </section>
 
       <section className="card">
         <div className="card-head">
           <h2>Strongest Connections</h2>
-          <span className="faint mono" style={{ marginLeft: "auto" }}>co-mention</span>
+          <span className="eyebrow" style={{ marginLeft: "auto" }}>co-mention</span>
         </div>
-        {influenceD?.edges?.length ? (
+        {influenceError ? (
+          <LoadError label="Connections" />
+        ) : influenceD?.edges?.length ? (
           <ul className="feed">
             {influenceD.edges.slice(0, 12).map((e, i) => (
               <li key={i}>
@@ -135,7 +166,7 @@ export default function Explore() {
             ))}
           </ul>
         ) : (
-          <div className="empty"><strong>Connections</strong>Not enough co-mentions yet.</div>
+          <div className="empty"><strong>Connections</strong>{influenceLoading ? "Loading…" : "Not enough co-mentions yet."}</div>
         )}
       </section>
     </div>

@@ -5,7 +5,7 @@ import RotationChart from "../components/RotationChart.jsx";
 import Sparkline from "../components/Sparkline.jsx";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
-import { getKind, QUADRANTS, DEFAULT_HORIZON, getHorizon } from "../data/registry.js";
+import { getKind, QUADRANTS, quadrantOf, DEFAULT_HORIZON, getHorizon } from "../data/registry.js";
 
 // Per-kind deep view: the full rotation plane plus the complete leaderboard for
 // one kind (Techniques, Tools, or Opinions) at the chosen horizon.
@@ -45,11 +45,11 @@ export default function KindView({ kindKey }) {
 
       {entities.length ? (
         <div className="grid cols-2">
-          <section className="card">
+          <section className="card" style={{ "--tile-accent": `var(${kind.accentVar})` }}>
             <div className="card-head"><h2>Rotation Plane</h2></div>
             <RotationChart entities={entities} />
           </section>
-          <section className="card">
+          <section className="card" style={{ "--tile-accent": `var(${kind.accentVar})` }}>
             <div className="card-head">
               <h2>Leaderboard</h2>
               <span className="faint mono" style={{ marginLeft: "auto" }}>{entities.length} entities</span>
@@ -57,9 +57,9 @@ export default function KindView({ kindKey }) {
             <ul className="feed">
               {entities.map((e) => (
                 <li key={e.id}>
-                  <span className="dot" style={{ background: `var(${QUADRANTS[e.quadrant].colorVar})` }} />
+                  <span className="dot" style={{ background: `var(${quadrantOf(e.quadrant).colorVar})` }} />
                   <span className="lead-label"><Link to={`/technique/${e.id}`}>{e.label}</Link></span>
-                  <Sparkline values={e.sparkline} stroke={`var(${QUADRANTS[e.quadrant].colorVar})`} />
+                  <Sparkline values={e.sparkline} stroke={`var(${quadrantOf(e.quadrant).colorVar})`} />
                   <span className="faint mono">att {e.attention} · m {e.momentum}</span>
                 </li>
               ))}

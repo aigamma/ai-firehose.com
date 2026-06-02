@@ -1,5 +1,6 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { QUADRANTS } from "../data/registry.js";
+import { quadrantOf } from "../data/registry.js";
 
 // A lean SVG rotation scatter (the "rotation plane"). ratio on x, momentum on y,
 // both centered at 100. The normalization is Mansfield Relative Performance
@@ -16,7 +17,15 @@ function domainDev(entities) {
   return dev * 1.12;
 }
 
-export default function RotationChart({ entities = [] }) {
+// Activate a point on Enter or Space, mirroring click-to-navigate.
+function onPointKey(e, go) {
+  if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+    e.preventDefault();
+    go();
+  }
+}
+
+function RotationChart({ entities = [] }) {
   const navigate = useNavigate();
   if (!entities.length) return null;
   const dev = domainDev(entities);
@@ -26,7 +35,7 @@ export default function RotationChart({ entities = [] }) {
   const mapY = (v) => S - PAD - ((v - lo) / (hi - lo)) * (S - 2 * PAD);
   const cx = mapX(100);
   const cy = mapY(100);
-  const qv = (q) => `var(${QUADRANTS[q].colorVar})`;
+  const qv = (q) => `var(${quadrantOf(q).colorVar})`;
   const rdot = (a) => 3 + Math.sqrt(Math.max(0, a)) * 0.9;
 
   const rects = [
@@ -47,11 +56,29 @@ export default function RotationChart({ entities = [] }) {
       <text x={PAD} y={PAD + 10} fontSize="9" fill="var(--q-improving)">Improving</text>
       <text x={S - PAD} y={S - PAD - 4} textAnchor="end" fontSize="9" fill="var(--q-weakening)">Weakening</text>
       <text x={PAD} y={S - PAD - 4} fontSize="9" fill="var(--q-lagging)">Lagging</text>
-      {entities.map((e) => (
-        <circle key={e.id} cx={mapX(e.ratio)} cy={mapY(e.momentum)} r={rdot(e.attention)} fill={qv(e.quadrant)} opacity="0.85" style={{ cursor: "pointer" }} onClick={() => navigate(`/technique/${e.id}`)}>
-          <title>{`${e.label}  ratio ${e.ratio}  momentum ${e.momentum}  (${e.quadrant})`}</title>
-        </circle>
-      ))}
+      {entities.map((e) => {
+        const go = () => navigate(`/technique/${e.id}`);
+        return (
+          <circle
+            key={e.id}
+            cx={mapX(e.ratio)}
+            cy={mapY(e.momentum)}
+            r={rdot(e.attention)}
+            fill={qv(e.quadrant)}
+            opacity="0.85"
+            style={{ cursor: "pointer" }}
+            tabIndex={0}
+            role="button"
+            aria-label={`${e.label}: ratio ${e.ratio}, momentum ${e.momentum} (${e.quadrant})`}
+            onClick={go}
+            onKeyDown={(ev) => onPointKey(ev, go)}
+          >
+            <title>{`${e.label}  ratio ${e.ratio}  momentum ${e.momentum}  (${e.quadrant})`}</title>
+          </circle>
+        );
+      })}
     </svg>
   );
 }
+
+export default memo(RotationChart);

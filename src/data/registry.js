@@ -94,3 +94,10 @@ export const NAV = [
 
 export const getHorizon = (key) => HORIZONS.find((h) => h.key === key) || HORIZONS.find((h) => h.key === DEFAULT_HORIZON);
 export const getKind = (key) => KINDS.find((k) => k.key === key);
+
+// Safe quadrant lookup. A malformed artifact row (a missing or unknown
+// `quadrant`) must not crash a board, so callers read through this instead of
+// indexing QUADRANTS directly. Returns the same shape as a real entry, with a
+// neutral fallback color and the raw value (or "unknown") as the label.
+export const quadrantOf = (q) =>
+  QUADRANTS[q] || { key: q || "unknown", label: q || "unknown", colorVar: "--muted", badgeClass: "", note: "" };
