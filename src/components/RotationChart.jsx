@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { QUADRANTS } from "../data/registry.js";
 
 // A lean SVG rotation scatter (the "rotation plane"). ratio on x, momentum on y,
@@ -16,6 +17,7 @@ function domainDev(entities) {
 }
 
 export default function RotationChart({ entities = [] }) {
+  const navigate = useNavigate();
   if (!entities.length) return null;
   const dev = domainDev(entities);
   const lo = 100 - dev;
@@ -46,7 +48,7 @@ export default function RotationChart({ entities = [] }) {
       <text x={S - PAD} y={S - PAD - 4} textAnchor="end" fontSize="9" fill="var(--q-weakening)">Weakening</text>
       <text x={PAD} y={S - PAD - 4} fontSize="9" fill="var(--q-lagging)">Lagging</text>
       {entities.map((e) => (
-        <circle key={e.id} cx={mapX(e.ratio)} cy={mapY(e.momentum)} r={rdot(e.attention)} fill={qv(e.quadrant)} opacity="0.85">
+        <circle key={e.id} cx={mapX(e.ratio)} cy={mapY(e.momentum)} r={rdot(e.attention)} fill={qv(e.quadrant)} opacity="0.85" style={{ cursor: "pointer" }} onClick={() => navigate(`/technique/${e.id}`)}>
           <title>{`${e.label}  ratio ${e.ratio}  momentum ${e.momentum}  (${e.quadrant})`}</title>
         </circle>
       ))}

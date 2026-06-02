@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import { getKind, QUADRANTS } from "../data/registry.js";
 import RotationChart from "./RotationChart.jsx";
@@ -28,7 +29,7 @@ export default function RotationBoard({ kindKey, horizon }) {
               <li key={e.id}>
                 <span className="dot" style={{ background: `var(${QUADRANTS[e.quadrant].colorVar})` }} />
                 <span className="lead-label" title={`${e.quadrant} · ratio ${e.ratio} · momentum ${e.momentum}`}>
-                  {e.label}
+                  <Link to={`/technique/${e.id}`}>{e.label}</Link>
                 </span>
                 <Sparkline values={e.sparkline} stroke={`var(${QUADRANTS[e.quadrant].colorVar})`} />
               </li>

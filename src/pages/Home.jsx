@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import RotationBoard from "../components/RotationBoard.jsx";
 import Constellation from "../components/Constellation.jsx";
@@ -87,7 +88,9 @@ export default function Home() {
                 return (
                   <li key={i}>
                     <span className="dot" style={{ background: `var(${QUADRANTS[o.quadrant].colorVar})` }} />
-                    <span className="lead-label">{o.label}</span>
+                    <span className="lead-label">
+                      <Link to={`/technique/${o.id}`}>{o.label}</Link>
+                    </span>
                     {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
                     <Reasons outlier={o.outlier} />
                   </li>
