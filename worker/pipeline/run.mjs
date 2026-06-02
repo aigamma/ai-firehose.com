@@ -37,6 +37,9 @@ function writeJson(rel, obj) {
   writeFileSync(p, `${JSON.stringify(obj, null, 2)}\n`);
 }
 
+const xmlEsc = (s) =>
+  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+
 async function classifyAll(items) {
   const cache = loadCache("classify");
   const keyOf = (it) => `${it.source}:${it.source_id}:${hash16(it.summary_text || it.title)}`;
@@ -253,6 +256,39 @@ async function main() {
     const outliers = all.filter((e) => e.outlier?.breakout || e.outlier?.new_entrant).slice(0, 8);
     writeJson(`digests/${h.key}.json`, { horizon: h.key, generated: GENERATED, synthetic: false, new_items: newItems, movers, outliers });
   }
+
+  console.log("5e. RSS feed (subscribable firehose)...");
+  const feedRows = [...working]
+    .filter((it) => it.published_at)
+    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+    .slice(0, 50)
+    .map((it) =>
+      [
+        "    <item>",
+        `      <title>${xmlEsc(it.title)}</title>`,
+        `      <link>${xmlEsc(it.url)}</link>`,
+        `      <guid isPermaLink="false">${xmlEsc(it.id)}</guid>`,
+        `      <pubDate>${new Date(it.published_at).toUTCString()}</pubDate>`,
+        `      <category>${xmlEsc(it.kind || "")}</category>`,
+        `      <description>${xmlEsc(`${it.author_or_channel || it.source}: ${(it.summary || it.title || "").slice(0, 500)}`)}</description>`,
+        "    </item>",
+      ].join("\n")
+    )
+    .join("\n");
+  const rss = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0">',
+    "  <channel>",
+    `    <title>${xmlEsc(SITE.name)}: What Is New</title>`,
+    `    <link>https://${SITE.domain}/</link>`,
+    `    <description>${xmlEsc(SITE.description)}</description>`,
+    `    <lastBuildDate>${new Date(TODAY).toUTCString()}</lastBuildDate>`,
+    feedRows,
+    "  </channel>",
+    "</rss>",
+    "",
+  ].join("\n");
+  writeFileSync(resolve(DATA, "../feed.xml"), rss);
 
   console.log("DONE. Real artifacts written to public/data.");
 }

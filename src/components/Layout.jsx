@@ -46,7 +46,7 @@ export default function Layout() {
         <div className="container">
           A personal instrument for staying organized and courageous on the AI frontier.
           Sibling to worldthought.com and aigamma.com. The corpus self-expires at one quarter,
-          so nothing here is ever stale.
+          so nothing here is ever stale. <a href="/feed.xml">RSS</a>.
         </div>
       </footer>
     </>
