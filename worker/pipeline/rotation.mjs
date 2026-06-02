@@ -35,6 +35,11 @@ export function relativeStrengthSeries(entitySeries, benchmarkSeries) {
 // a faster smoother (the momentum arm).
 export function computeRotation(entitySeries, benchmarkSeries, windows) {
   const { smooth, slow, fast } = windows;
+  // Total function: an empty series (no reachable caller today, but this math runs
+  // unattended for a quarter) returns a neutral reading instead of NaN.
+  if (!entitySeries.length) {
+    return { rs: 0, ratio: 100, momentum: 100, quadrant: quadrantOf(100, 100), ratioSeries: [], momentumSeries: [], sparkline: [] };
+  }
   const rs = relativeStrengthSeries(entitySeries, benchmarkSeries);
   const sRS = ema(rs, smooth);
   const sRSslow = ema(sRS, slow);
