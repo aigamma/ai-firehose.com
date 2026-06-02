@@ -117,7 +117,13 @@ export default function Home() {
                       {kind.singular}
                     </span>
                   )}
-                  <span className="lead-label">{it.title}</span>
+                  <span className="lead-label">
+                    {it.url && it.url !== "#" ? (
+                      <a href={it.url} target="_blank" rel="noreferrer">{it.title}</a>
+                    ) : (
+                      it.title
+                    )}
+                  </span>
                   <span className="faint mono">{it.author_or_channel || it.source}</span>
                 </li>
               );

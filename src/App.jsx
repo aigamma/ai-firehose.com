@@ -5,6 +5,8 @@ import Placeholder from "./pages/Placeholder.jsx";
 import Explore from "./pages/Explore.jsx";
 import Glossary from "./pages/Glossary.jsx";
 import TechniqueHub from "./pages/TechniqueHub.jsx";
+import Methodology from "./pages/Methodology.jsx";
+import About from "./pages/About.jsx";
 import { KINDS } from "./data/registry.js";
 
 // Routes are derived from the registry where possible. Per-kind deep views and
@@ -21,8 +23,8 @@ export default function App() {
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/methodology" element={<Placeholder title="Methodology" phase="Phase 6" />} />
-        <Route path="/about" element={<Placeholder title="About" phase="Phase 6" />} />
+        <Route path="/methodology" element={<Methodology />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<Placeholder title="Not Found" notFound />} />
       </Route>
     </Routes>
