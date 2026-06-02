@@ -24,7 +24,7 @@ import { defineConcepts } from "./define.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
-import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV, DEFAULT_HORIZON } from "../../src/data/registry.js";
+import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV, DEFAULT_HORIZON, TAXONOMY } from "../../src/data/registry.js";
 
 requireKeys();
 const DATA = resolve(dirname(fileURLToPath(import.meta.url)), "../../public/data");
@@ -113,7 +113,10 @@ async function main() {
   console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length})`);
 
   console.log("2b. concept resolution (fuzzy-merge near-duplicate tags)...");
-  const { canon, remap } = await canonicalizeConcepts(corpus);
+  // Thresholds come from the registry (the single source of truth): bind at or
+  // above mergeThreshold; in the band down to reviewFloor bind only with a lexical
+  // signal; below reviewFloor, create a new concept.
+  const { canon, remap } = await canonicalizeConcepts(corpus, { high: TAXONOMY.mergeThreshold, mid: TAXONOMY.reviewFloor });
   const working = corpus.map((it) => ({ ...it, concepts: remap(it.concepts) }));
   writeJson("glossary/_concepts.json", {
     generated: GENERATED,

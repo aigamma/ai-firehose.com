@@ -71,13 +71,16 @@ export const AXES = [
 // similarity (voyage-3 cosine), so near-duplicates collapse onto one concept
 // with aliases instead of fragmenting. See docs/INGESTION.md (Concept resolution).
 export const TAXONOMY = {
+  // Injected into the resolver (worker/pipeline/concepts.mjs) each run.
   // Bind a candidate to an existing concept when cosine >= mergeThreshold.
   mergeThreshold: 0.86,
-  // In [reviewFloor, mergeThreshold): ambiguous, queue for in-repo review.
+  // In [reviewFloor, mergeThreshold): bind only when a lexical signal agrees
+  // (a shared significant token, or one label is an acronym of the other);
+  // otherwise treat as distinct. This resolves the ambiguous band automatically.
   reviewFloor: 0.78,
-  // Below reviewFloor: the model creates a NEW concept (name + definition),
-  // staged in public/data/glossary/_proposed.json for approval before it
-  // enters the canonical taxonomy. Thresholds are tuned once data accrues.
+  // Below reviewFloor: the model coins a NEW canonical concept, which currently
+  // enters the taxonomy directly. A public/data/glossary/_proposed.json human
+  // approval gate is intended but not yet implemented. Thresholds tuned as data accrues.
 };
 
 // Top navigation, derived where possible. Adding a kind above adds its nav item.

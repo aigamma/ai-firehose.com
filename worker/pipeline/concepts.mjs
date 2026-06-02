@@ -12,7 +12,9 @@ import { embed } from "../lib/voyage.mjs";
   merge on very high cosine (near-identical, for example case variants), OR on
   moderate cosine PLUS a lexical signal (a shared significant token, or one label
   is an acronym of the other, for example LLM and large language models). This
-  keeps the true merges while refusing the loose ones.
+  keeps the true merges while refusing the loose ones. In production the high and
+  mid thresholds are injected from registry TAXONOMY (mergeThreshold, reviewFloor),
+  the single source of truth; the defaults here are a fallback for direct and test calls.
 */
 
 // The classifier should return concepts as an array, but tolerate a comma-joined
