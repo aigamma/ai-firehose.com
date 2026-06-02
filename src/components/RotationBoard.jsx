@@ -8,7 +8,7 @@ import Sparkline from "./Sparkline.jsx";
 // strongest movers. Loads its own attention artifact for the given horizon.
 export default function RotationBoard({ kindKey, horizon }) {
   const kind = getKind(kindKey);
-  const { data } = useData(`/data/attention/${kindKey}_${horizon}.json`);
+  const { data, loading } = useData(`/data/attention/${kindKey}_${horizon}.json`);
   const entities = data?.entities || [];
   const leaders = [...entities].sort((a, b) => b.momentum - a.momentum).slice(0, 4);
 
@@ -39,7 +39,7 @@ export default function RotationBoard({ kindKey, horizon }) {
       ) : (
         <div className="empty">
           <strong>{kind.label} rotation</strong>
-          Awaiting ingestion.
+          {loading ? "Loading…" : "Awaiting ingestion."}
         </div>
       )}
     </div>
