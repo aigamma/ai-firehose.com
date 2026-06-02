@@ -14,6 +14,10 @@ Names are listed in `.env.example`. For local runs, `worker/.env.local` (gitigno
 
 The `ai-firehose` Pinecone index was created with the civil project's key, so it currently lives in that Pinecone project alongside `civil-rights` (isolated by index name; `pinecone.mjs` resolves the host from the index name and never writes to a sibling index). Optionally migrate it to a dedicated `ai-firehose` Pinecone project later.
 
+## State: the Accumulating Corpus
+
+The rolling-quarter corpus lives in `worker/.cache/items.json`, the retention-pruned raw items that are the substrate for every rebuild and the recovery source above. This is **durable state, not a cache**, so it is committed to the repo: each scheduled run clones fresh, loads the corpus, adds the new feed items, prunes by `published_at`, and commits the updated `items.json` back alongside the artifacts. Without this, a clone-fresh run would start empty, the corpus would collapse to the latest feed snapshot, and the Pinecone reconcile would delete everything else. The other `.cache` files (classify, definitions, axis_vectors) are regenerable and stay gitignored: they cost a little Claude/Voyage spend to rebuild but are never the source of truth.
+
 ## Schedule
 
 The Fly worker runs the full pipeline daily by default (tunable). Because YouTube is the leading indicator, its RSS poll can run more often than the full rebuild. The Day horizon benefits from at least one refresh per day; Week, Month, and Quarter tolerate daily.

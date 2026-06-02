@@ -21,7 +21,9 @@ node worker/pipeline/run.mjs
 if [ -n "$REPO_URL" ] && [ -n "$GH_TOKEN" ]; then
   git config user.email "worker@ai-firehose.com"
   git config user.name "ai-firehose worker"
-  git add public/data public/sitemap.xml
+  # Commit the rebuilt artifacts (public/data, sitemap, feed) AND the accumulating
+  # corpus (items.json) so the rolling quarter survives the next clone-fresh run.
+  git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json
   if git diff --cached --quiet; then
     echo "no artifact changes"
   else

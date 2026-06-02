@@ -13,7 +13,13 @@ __pycache__/
 
 # Local-only scratch and downloaded media
 .tmp/
-worker/.cache/
+# The .cache holds regenerable caches (classify, definitions, axis_vectors) AND the
+# accumulating retention-pruned corpus, items.json. The corpus is durable state, not a
+# cache: it must persist across runs or the rolling quarter never accumulates and the
+# Pinecone reconcile prunes the index down to the latest feed snapshot. So commit
+# items.json and ignore the rest of the directory.
+worker/.cache/*
+!worker/.cache/items.json
 *.mp3
 *.m4a
 *.wav
