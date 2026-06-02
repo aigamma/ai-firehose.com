@@ -7,6 +7,7 @@ import Glossary from "./pages/Glossary.jsx";
 import TechniqueHub from "./pages/TechniqueHub.jsx";
 import Methodology from "./pages/Methodology.jsx";
 import About from "./pages/About.jsx";
+import KindView from "./pages/KindView.jsx";
 import { KINDS } from "./data/registry.js";
 
 // Routes are derived from the registry where possible. Per-kind deep views and
@@ -18,7 +19,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         {KINDS.map((k) => (
-          <Route key={k.key} path={k.route} element={<Placeholder title={k.label} phase="Phases 4 and 5" />} />
+          <Route key={k.key} path={k.route} element={<KindView kindKey={k.key} />} />
         ))}
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
