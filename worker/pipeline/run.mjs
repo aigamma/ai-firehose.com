@@ -28,7 +28,7 @@ requireKeys();
 const DATA = resolve(dirname(fileURLToPath(import.meta.url)), "../../public/data");
 const TODAY = Date.now();
 const GENERATED = new Date().toISOString().slice(0, 10);
-const MAX = Number(process.argv[2]) || 60;
+const MAX = Number(process.argv[2]) || 300; // backstop only; per-source limits bound volume. Must exceed the sum of source limits so no source is truncated.
 const KIND_KEYS = KINDS.map((k) => k.key);
 
 function writeJson(rel, obj) {

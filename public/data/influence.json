@@ -22,6 +22,10 @@
       "label": "agentic workflows"
     },
     {
+      "id": "code-generation",
+      "label": "code generation"
+    },
+    {
       "id": "agentic-ai",
       "label": "agentic AI"
     },
@@ -34,12 +38,20 @@
       "label": "prompt engineering"
     },
     {
-      "id": "code-generation",
-      "label": "code generation"
+      "id": "context-management",
+      "label": "context management"
     },
     {
-      "id": "large-language-models",
-      "label": "large language models"
+      "id": "inverse-graphics",
+      "label": "inverse graphics"
+    },
+    {
+      "id": "vision-language-models",
+      "label": "vision-language models"
+    },
+    {
+      "id": "video-generation",
+      "label": "video generation"
     },
     {
       "id": "ai-assisted-coding",
@@ -48,10 +60,6 @@
     {
       "id": "agent-orchestration",
       "label": "agent orchestration"
-    },
-    {
-      "id": "video-generation",
-      "label": "video generation"
     },
     {
       "id": "benchmark",
@@ -78,16 +86,16 @@
       "label": "AGI"
     },
     {
+      "id": "large-language-models",
+      "label": "large language models"
+    },
+    {
       "id": "mathematical-reasoning",
       "label": "mathematical reasoning"
     },
     {
       "id": "skills",
       "label": "skills"
-    },
-    {
-      "id": "context-management",
-      "label": "context management"
     },
     {
       "id": "data-integration",
@@ -98,20 +106,52 @@
       "label": "multi-agent systems"
     },
     {
+      "id": "3d-understanding",
+      "label": "3D understanding"
+    },
+    {
       "id": "world-models",
       "label": "world models"
     },
     {
-      "id": "trajectory-reuse",
-      "label": "trajectory reuse"
+      "id": "reinforcement-learning",
+      "label": "reinforcement learning"
     },
     {
-      "id": "embodiment-centric-generation",
-      "label": "embodiment-centric generation"
+      "id": "noise-optimization",
+      "label": "noise optimization"
+    },
+    {
+      "id": "lora",
+      "label": "LoRA"
+    },
+    {
+      "id": "reward-modeling",
+      "label": "reward modeling"
+    },
+    {
+      "id": "causal-video-diffusion",
+      "label": "causal video diffusion"
+    },
+    {
+      "id": "cross-attention",
+      "label": "cross-attention"
     },
     {
       "id": "file-handling",
       "label": "file handling"
+    },
+    {
+      "id": "chain-of-thought",
+      "label": "chain-of-thought"
+    },
+    {
+      "id": "task-decomposition",
+      "label": "task decomposition"
+    },
+    {
+      "id": "test-time-scaling",
+      "label": "test-time scaling"
     }
   ],
   "edges": [
@@ -137,6 +177,11 @@
     },
     {
       "from": "agentic-workflows",
+      "to": "code-generation",
+      "count": 4
+    },
+    {
+      "from": "agentic-workflows",
       "to": "ai-agents",
       "count": 4
     },
@@ -156,11 +201,6 @@
       "count": 3
     },
     {
-      "from": "agentic-workflows",
-      "to": "code-generation",
-      "count": 3
-    },
-    {
       "from": "ai-agents",
       "to": "prompt-engineering",
       "count": 3
@@ -176,13 +216,33 @@
       "count": 3
     },
     {
-      "from": "code-generation",
-      "to": "large-language-models",
+      "from": "automation",
+      "to": "claude-code",
       "count": 3
     },
     {
-      "from": "automation",
-      "to": "claude-code",
+      "from": "ai-agents",
+      "to": "context-management",
+      "count": 3
+    },
+    {
+      "from": "inverse-graphics",
+      "to": "vision-language-models",
+      "count": 3
+    },
+    {
+      "from": "test-time-compute",
+      "to": "video-generation",
+      "count": 3
+    },
+    {
+      "from": "test-time-compute",
+      "to": "vision-language-models",
+      "count": 3
+    },
+    {
+      "from": "agentic-ai",
+      "to": "vision-language-models",
       "count": 3
     },
     {
@@ -241,17 +301,22 @@
       "count": 2
     },
     {
+      "from": "code-generation",
+      "to": "large-language-models",
+      "count": 2
+    },
+    {
       "from": "mathematical-reasoning",
       "to": "test-time-compute",
       "count": 2
     },
     {
       "from": "agentic-ai",
-      "to": "test-time-compute",
+      "to": "mathematical-reasoning",
       "count": 2
     },
     {
-      "from": "large-language-models",
+      "from": "agentic-ai",
       "to": "test-time-compute",
       "count": 2
     },
@@ -311,11 +376,6 @@
       "count": 2
     },
     {
-      "from": "ai-agents",
-      "to": "context-management",
-      "count": 2
-    },
-    {
       "from": "context-management",
       "to": "test-time-compute",
       "count": 2
@@ -331,6 +391,11 @@
       "count": 2
     },
     {
+      "from": "ai-agents",
+      "to": "multi-agent-systems",
+      "count": 2
+    },
+    {
       "from": "agent-orchestration",
       "to": "multi-agent-systems",
       "count": 2
@@ -341,23 +406,73 @@
       "count": 2
     },
     {
+      "from": "3d-understanding",
+      "to": "inverse-graphics",
+      "count": 2
+    },
+    {
+      "from": "code-generation",
+      "to": "inverse-graphics",
+      "count": 2
+    },
+    {
+      "from": "3d-understanding",
+      "to": "vision-language-models",
+      "count": 2
+    },
+    {
+      "from": "code-generation",
+      "to": "vision-language-models",
+      "count": 2
+    },
+    {
+      "from": "3d-understanding",
+      "to": "code-generation",
+      "count": 2
+    },
+    {
       "from": "video-generation",
       "to": "world-models",
       "count": 2
     },
     {
-      "from": "trajectory-reuse",
-      "to": "world-models",
+      "from": "reinforcement-learning",
+      "to": "test-time-compute",
       "count": 2
     },
     {
-      "from": "embodiment-centric-generation",
+      "from": "noise-optimization",
+      "to": "test-time-compute",
+      "count": 2
+    },
+    {
+      "from": "lora",
+      "to": "test-time-compute",
+      "count": 2
+    },
+    {
+      "from": "reward-modeling",
+      "to": "test-time-compute",
+      "count": 2
+    },
+    {
+      "from": "lora",
       "to": "video-generation",
       "count": 2
     },
     {
-      "from": "test-time-compute",
-      "to": "video-generation",
+      "from": "lora",
+      "to": "vision-language-models",
+      "count": 2
+    },
+    {
+      "from": "video-generation",
+      "to": "vision-language-models",
+      "count": 2
+    },
+    {
+      "from": "causal-video-diffusion",
+      "to": "cross-attention",
       "count": 2
     },
     {
@@ -366,8 +481,38 @@
       "count": 2
     },
     {
+      "from": "test-time-compute",
+      "to": "world-models",
+      "count": 2
+    },
+    {
+      "from": "chain-of-thought",
+      "to": "mathematical-reasoning",
+      "count": 2
+    },
+    {
       "from": "ai-agents",
       "to": "code-generation",
+      "count": 2
+    },
+    {
+      "from": "multi-agent-systems",
+      "to": "task-decomposition",
+      "count": 2
+    },
+    {
+      "from": "multi-agent-systems",
+      "to": "test-time-scaling",
+      "count": 2
+    },
+    {
+      "from": "reinforcement-learning",
+      "to": "vision-language-models",
+      "count": 2
+    },
+    {
+      "from": "agentic-ai",
+      "to": "inverse-graphics",
       "count": 2
     }
   ]
