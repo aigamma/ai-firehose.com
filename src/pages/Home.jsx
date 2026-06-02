@@ -149,21 +149,32 @@ export default function Home() {
             {digest.new_items.map((it, i) => {
               const kind = getKind(it.kind);
               return (
-                <li key={i}>
-                  {kind && (
-                    <span className={`badge ${kind.badgeClass}`}>
-                      <span className="dot" style={{ background: `var(${kind.accentVar})` }} />
-                      {kind.singular}
-                    </span>
-                  )}
-                  <span className="lead-label">
-                    {it.url && it.url !== "#" ? (
-                      <a href={it.url} target="_blank" rel="noreferrer">{it.title}</a>
-                    ) : (
-                      it.title
+                <li key={i} className="feed-rich">
+                  <div className="feed-head">
+                    {kind && (
+                      <span className={`badge ${kind.badgeClass}`}>
+                        <span className="dot" style={{ background: `var(${kind.accentVar})` }} />
+                        {kind.singular}
+                      </span>
                     )}
-                  </span>
-                  <span className="faint mono">{it.author_or_channel || it.source}</span>
+                    <span className="lead-label">
+                      {it.url && it.url !== "#" ? (
+                        <a href={it.url} target="_blank" rel="noreferrer">{it.title}</a>
+                      ) : (
+                        it.title
+                      )}
+                    </span>
+                    <span className="faint mono">{it.author_or_channel || it.source}</span>
+                  </div>
+                  {it.concepts?.length > 0 && (
+                    <div className="chips">
+                      {it.concepts.slice(0, 4).map((slug) => (
+                        <Link key={slug} to={`/technique/${slug}`} className="chip">
+                          {slug.replace(/-/g, " ")}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </li>
               );
             })}
