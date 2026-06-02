@@ -1,11 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import useData from "../lib/useData.js";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { getKind } from "../data/registry.js";
 
 export default function TechniqueHub() {
   const { slug } = useParams();
   const { data } = useData("/data/glossary/index.json");
   const c = (data?.concepts || []).find((x) => x.id === slug);
+  useDocumentTitle(c?.label || "Technique");
 
   if (data && !c) {
     return (

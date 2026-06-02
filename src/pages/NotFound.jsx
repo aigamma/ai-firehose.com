@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
 export default function NotFound() {
+  useDocumentTitle("Not Found");
   return (
     <div className="stack" style={{ paddingTop: 56, textAlign: "center" }}>
       <h1>Not Found</h1>

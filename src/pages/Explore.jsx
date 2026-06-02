@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import SemanticSearch from "../components/SemanticSearch.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { KINDS } from "../data/registry.js";
 
 function SpectrumView({ axis }) {
@@ -42,6 +43,7 @@ export default function Explore() {
   const { data: spectrumsD } = useData("/data/spectrums.json");
   const { data: influenceD } = useData("/data/influence.json");
   const { data: stats } = useData("/data/stats.json");
+  useDocumentTitle("Explore");
   const axes = spectrumsD?.axes || [];
   const [axisSlug, setAxisSlug] = useState(null);
   const axis = axes.find((a) => a.slug === axisSlug) || axes[0];

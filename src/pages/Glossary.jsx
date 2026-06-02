@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { getKind } from "../data/registry.js";
 
 export default function Glossary() {
   const { data } = useData("/data/glossary/index.json");
   const [q, setQ] = useState("");
+  useDocumentTitle("Glossary");
   const all = data?.concepts || [];
   const concepts = all.filter((c) => {
     if (!q) return true;

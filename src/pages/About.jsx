@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
 export default function About() {
+  useDocumentTitle("About");
   return (
     <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
       <h1>About</h1>

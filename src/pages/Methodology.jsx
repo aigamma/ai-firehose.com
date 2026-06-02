@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { RETENTION_DAYS, AXES, KINDS } from "../data/registry.js";
 
 export default function Methodology() {
   const { data: stats } = useData("/data/stats.json");
+  useDocumentTitle("Methodology");
   return (
     <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
       <h1>Methodology</h1>

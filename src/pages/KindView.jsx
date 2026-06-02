@@ -4,6 +4,7 @@ import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import RotationChart from "../components/RotationChart.jsx";
 import Sparkline from "../components/Sparkline.jsx";
 import useData from "../lib/useData.js";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { getKind, QUADRANTS, DEFAULT_HORIZON, getHorizon } from "../data/registry.js";
 
 // Per-kind deep view: the full rotation plane plus the complete leaderboard for
@@ -14,6 +15,7 @@ export default function KindView({ kindKey }) {
   const h = getHorizon(horizon);
   const { data } = useData(`/data/attention/${kindKey}_${horizon}.json`);
   const entities = data?.entities || [];
+  useDocumentTitle(kind?.label);
   if (!kind) return null;
 
   return (
