@@ -50,11 +50,12 @@ const cosine = (a, b) => {
 };
 
 export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8 } = {}) {
+  const isJunk = (s) => s.length < 2 || s.length > 60 || !/[a-z]/i.test(s);
   const freq = new Map();
   for (const it of items) {
     for (const c of it.concepts || []) {
       const key = String(c || "").trim();
-      if (key) freq.set(key, (freq.get(key) || 0) + 1);
+      if (key && !isJunk(key)) freq.set(key, (freq.get(key) || 0) + 1);
     }
   }
   const labels = [...freq.keys()];

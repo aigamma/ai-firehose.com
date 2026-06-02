@@ -19,6 +19,8 @@ import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
+import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
+import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
 import { HORIZONS, KINDS, RETENTION_DAYS } from "../../src/data/registry.js";
 
@@ -173,6 +175,13 @@ async function main() {
     }));
   }
   writeJson("constellation.json", { method: "pca-power-iteration", dim: 1024, sample_count: points.length, generated: GENERATED, synthetic: false, points });
+
+  console.log("5b. network: neighbors, clusters, spectrums, influence...");
+  const canonById = Object.fromEntries(canon.map((c) => [c.id, c]));
+  writeJson("neighbors.json", { generated: GENERATED, neighbors: computeNeighbors(canon) });
+  writeJson("clusters.json", { generated: GENERATED, clusters: computeClusters(canon, conceptTotals) });
+  writeJson("spectrums.json", { generated: GENERATED, axes: await computeSpectrums(canon, AXES_ANCHORS, embed) });
+  writeJson("influence.json", { generated: GENERATED, ...computeInfluence(working, canonById) });
 
   console.log("6. digests per horizon...");
   for (const h of HORIZONS) {
