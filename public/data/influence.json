@@ -14,28 +14,36 @@
       "label": "Claude Code"
     },
     {
-      "id": "automation",
-      "label": "automation"
-    },
-    {
       "id": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "id": "code-generation",
-      "label": "code generation"
+      "id": "automation",
+      "label": "automation"
     },
     {
       "id": "agentic-ai",
       "label": "agentic AI"
     },
     {
-      "id": "ai-operating-systems",
-      "label": "AI Operating Systems"
+      "id": "code-generation",
+      "label": "code generation"
     },
     {
       "id": "prompt-engineering",
       "label": "prompt engineering"
+    },
+    {
+      "id": "agi",
+      "label": "AGI"
+    },
+    {
+      "id": "generative-ai",
+      "label": "generative AI"
+    },
+    {
+      "id": "ai-operating-systems",
+      "label": "AI Operating Systems"
     },
     {
       "id": "context-management",
@@ -58,8 +66,8 @@
       "label": "AI-assisted coding"
     },
     {
-      "id": "agent-orchestration",
-      "label": "agent orchestration"
+      "id": "workflow-orchestration",
+      "label": "workflow orchestration"
     },
     {
       "id": "benchmark",
@@ -74,16 +82,8 @@
       "label": "cybersecurity"
     },
     {
-      "id": "generative-ai",
-      "label": "generative AI"
-    },
-    {
       "id": "llms",
       "label": "LLMs"
-    },
-    {
-      "id": "agi",
-      "label": "AGI"
     },
     {
       "id": "large-language-models",
@@ -100,6 +100,10 @@
     {
       "id": "data-integration",
       "label": "data integration"
+    },
+    {
+      "id": "memory-systems",
+      "label": "memory systems"
     },
     {
       "id": "multi-agent-systems",
@@ -150,6 +154,10 @@
       "label": "file handling"
     },
     {
+      "id": "async-agents",
+      "label": "async agents"
+    },
+    {
       "id": "chain-of-thought",
       "label": "chain-of-thought"
     },
@@ -160,6 +168,18 @@
     {
       "id": "test-time-scaling",
       "label": "test-time scaling"
+    },
+    {
+      "id": "computer-use",
+      "label": "computer use"
+    },
+    {
+      "id": "chart-parsing",
+      "label": "chart parsing"
+    },
+    {
+      "id": "visual-question-answering",
+      "label": "visual question answering"
     }
   ],
   "edges": [
@@ -171,11 +191,16 @@
     {
       "from": "claude-code",
       "to": "test-time-compute",
-      "count": 5
+      "count": 6
     },
     {
-      "from": "ai-agents",
+      "from": "agentic-workflows",
       "to": "automation",
+      "count": 6
+    },
+    {
+      "from": "agentic-ai",
+      "to": "ai-agents",
       "count": 5
     },
     {
@@ -194,12 +219,12 @@
       "count": 4
     },
     {
-      "from": "agentic-ai",
-      "to": "ai-agents",
+      "from": "automation",
+      "to": "claude-code",
       "count": 4
     },
     {
-      "from": "ai-operating-systems",
+      "from": "ai-agents",
       "to": "automation",
       "count": 4
     },
@@ -219,13 +244,18 @@
       "count": 3
     },
     {
-      "from": "automation",
-      "to": "code-generation",
+      "from": "agi",
+      "to": "generative-ai",
       "count": 3
     },
     {
-      "from": "automation",
-      "to": "claude-code",
+      "from": "ai-agents",
+      "to": "ai-operating-systems",
+      "count": 3
+    },
+    {
+      "from": "ai-operating-systems",
+      "to": "automation",
       "count": 3
     },
     {
@@ -249,6 +279,11 @@
       "count": 3
     },
     {
+      "from": "automation",
+      "to": "code-generation",
+      "count": 3
+    },
+    {
       "from": "agentic-ai",
       "to": "vision-language-models",
       "count": 3
@@ -259,18 +294,8 @@
       "count": 2
     },
     {
-      "from": "agent-orchestration",
-      "to": "agentic-ai",
-      "count": 2
-    },
-    {
-      "from": "agent-orchestration",
-      "to": "agentic-workflows",
-      "count": 2
-    },
-    {
-      "from": "agent-orchestration",
-      "to": "code-generation",
+      "from": "agentic-ai",
+      "to": "workflow-orchestration",
       "count": 2
     },
     {
@@ -279,7 +304,7 @@
       "count": 2
     },
     {
-      "from": "automation",
+      "from": "code-generation",
       "to": "video-generation",
       "count": 2
     },
@@ -301,11 +326,6 @@
     {
       "from": "agi",
       "to": "llms",
-      "count": 2
-    },
-    {
-      "from": "agi",
-      "to": "generative-ai",
       "count": 2
     },
     {
@@ -334,18 +354,13 @@
       "count": 2
     },
     {
-      "from": "ai-agents",
-      "to": "ai-operating-systems",
-      "count": 2
-    },
-    {
       "from": "ai-operating-systems",
       "to": "test-time-compute",
       "count": 2
     },
     {
-      "from": "agentic-workflows",
-      "to": "automation",
+      "from": "ai-operating-systems",
+      "to": "workflow-orchestration",
       "count": 2
     },
     {
@@ -379,6 +394,11 @@
       "count": 2
     },
     {
+      "from": "ai-agents",
+      "to": "memory-systems",
+      "count": 2
+    },
+    {
       "from": "agentic-workflows",
       "to": "claude-code",
       "count": 2
@@ -399,18 +419,8 @@
       "count": 2
     },
     {
-      "from": "ai-agents",
+      "from": "automation",
       "to": "multi-agent-systems",
-      "count": 2
-    },
-    {
-      "from": "agent-orchestration",
-      "to": "multi-agent-systems",
-      "count": 2
-    },
-    {
-      "from": "ai-agents",
-      "to": "large-language-models",
       "count": 2
     },
     {
@@ -509,6 +519,11 @@
       "count": 2
     },
     {
+      "from": "agentic-workflows",
+      "to": "async-agents",
+      "count": 2
+    },
+    {
       "from": "chain-of-thought",
       "to": "mathematical-reasoning",
       "count": 2
@@ -529,13 +544,33 @@
       "count": 2
     },
     {
+      "from": "computer-use",
+      "to": "multi-agent-systems",
+      "count": 2
+    },
+    {
       "from": "reinforcement-learning",
       "to": "vision-language-models",
       "count": 2
     },
     {
+      "from": "chart-parsing",
+      "to": "visual-question-answering",
+      "count": 2
+    },
+    {
       "from": "agentic-ai",
       "to": "inverse-graphics",
+      "count": 2
+    },
+    {
+      "from": "automation",
+      "to": "computer-use",
+      "count": 2
+    },
+    {
+      "from": "agentic-workflows",
+      "to": "workflow-orchestration",
       "count": 2
     }
   ]

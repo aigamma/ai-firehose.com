@@ -257,6 +257,22 @@ async function main() {
     writeJson(`digests/${h.key}.json`, { horizon: h.key, generated: GENERATED, synthetic: false, new_items: newItems, movers, outliers });
   }
 
+  console.log("5f. corpus stats...");
+  const srcCounts = {};
+  const kindCounts = {};
+  for (const it of working) {
+    srcCounts[it.source] = (srcCounts[it.source] || 0) + 1;
+    kindCounts[it.kind] = (kindCounts[it.kind] || 0) + 1;
+  }
+  writeJson("stats.json", {
+    generated: GENERATED,
+    retention_days: RETENTION_DAYS,
+    total_items: working.length,
+    concepts: canon.length,
+    by_source: srcCounts,
+    by_kind: kindCounts,
+  });
+
   console.log("5e. RSS feed (subscribable firehose)...");
   const feedRows = [...working]
     .filter((it) => it.published_at)

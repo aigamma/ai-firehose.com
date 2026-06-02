@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import useData from "../lib/useData.js";
 import { RETENTION_DAYS } from "../data/registry.js";
 
 export default function Methodology() {
+  const { data: stats } = useData("/data/stats.json");
   return (
     <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
       <h1>Methodology</h1>
@@ -9,6 +11,25 @@ export default function Methodology() {
         How AI Firehose turns a daily flood into something navigable. Everything here is computed from real
         sources. The only hand-curation is which YouTube teachers to trust.
       </p>
+
+      {stats && (
+        <section className="card">
+          <div className="card-head">
+            <h2>By the Numbers</h2>
+            <span className="faint mono" style={{ marginLeft: "auto" }}>updated {stats.generated}</span>
+          </div>
+          <p className="muted" style={{ marginTop: 0 }}>
+            {stats.total_items} items and {stats.concepts} concepts, retained for {stats.retention_days} days.
+          </p>
+          <div className="chips">
+            {Object.entries(stats.by_source || {})
+              .sort((a, b) => b[1] - a[1])
+              .map(([s, n]) => (
+                <span key={s} className="chip">{s} {n}</span>
+              ))}
+          </div>
+        </section>
+      )}
 
       <h2>The Outlier Hunt</h2>
       <p>
