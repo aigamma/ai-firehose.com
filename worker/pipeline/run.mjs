@@ -21,6 +21,7 @@ import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { defineConcepts } from "./define.mjs";
+import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
 import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV } from "../../src/data/registry.js";
@@ -197,15 +198,11 @@ async function main() {
   // projection, so it is parked in the worker cache, not shipped to the browser.
   // neighbors are denormalized into the per-concept hubs below, so the standalone
   // neighbors.json (fetched by nothing) is no longer published.
-  const axesPublic = spectrums.map(({ axis_vector, positions, ...ax }) => ({
-    ...ax,
-    positions: positions.map(({ position, ...p }) => p), // keep position_normalized; drop unused raw
-  }));
-  writeJson("spectrums.json", { generated: GENERATED, axes: axesPublic });
+  writeJson("spectrums.json", { generated: GENERATED, axes: spectrums.map(slimSpectrumAxis) });
   mkdirSync(resolve(DATA, "../../worker/.cache"), { recursive: true });
   writeFileSync(
     resolve(DATA, "../../worker/.cache/axis_vectors.json"),
-    `${JSON.stringify({ generated: GENERATED, axes: spectrums.map((a) => ({ slug: a.slug, axis_vector: a.axis_vector })) }, null, 2)}\n`
+    `${JSON.stringify({ generated: GENERATED, axes: axisVectors(spectrums) }, null, 2)}\n`
   );
   writeJson("influence.json", { generated: GENERATED, ...influence });
 
@@ -239,17 +236,7 @@ async function main() {
   // plus a light index for the list and search. Previously the full hub set (~1MB)
   // shipped on every glossary view and every hub view.
   for (const c of glossary) writeJson(`glossary/c/${c.id}.json`, c);
-  const SNIPPET = 180;
-  const index = glossary.map((c) => ({
-    id: c.id,
-    label: c.label,
-    kind: c.kind,
-    attention: c.attention,
-    aliases: c.aliases || [],
-    def_snippet: c.definition
-      ? (c.definition.length > SNIPPET ? `${c.definition.slice(0, SNIPPET).trimEnd()}…` : c.definition)
-      : "",
-  }));
+  const index = glossary.map(slimGlossaryConcept);
   writeJson("glossary/index.json", { generated: GENERATED, count: index.length, concepts: index });
 
   console.log("5d. reconcile Pinecone with the retained store + write sitemap...");

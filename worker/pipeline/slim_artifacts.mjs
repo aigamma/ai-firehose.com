@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 
 const DATA = resolve(dirname(fileURLToPath(import.meta.url)), "../../public/data");
 const read = (rel) => JSON.parse(readFileSync(resolve(DATA, rel), "utf8"));
@@ -26,7 +27,6 @@ const write = (rel, obj) => {
   mkdirSync(dirname(p), { recursive: true });
   writeFileSync(p, `${JSON.stringify(obj, null, 2)}\n`);
 };
-const SNIPPET = 180;
 
 // 1. Glossary: split fat index into per-concept hubs + a slim index.
 const gi = read("glossary/index.json");
@@ -34,16 +34,7 @@ const concepts = gi.concepts || [];
 const isFat = concepts[0] && (concepts[0].neighbors !== undefined || concepts[0].top_items !== undefined);
 if (isFat) {
   for (const c of concepts) write(`glossary/c/${c.id}.json`, c);
-  const index = concepts.map((c) => ({
-    id: c.id,
-    label: c.label,
-    kind: c.kind,
-    attention: c.attention,
-    aliases: c.aliases || [],
-    def_snippet: c.definition
-      ? (c.definition.length > SNIPPET ? `${c.definition.slice(0, SNIPPET).trimEnd()}…` : c.definition)
-      : "",
-  }));
+  const index = concepts.map(slimGlossaryConcept);
   write("glossary/index.json", { generated: gi.generated, count: index.length, concepts: index });
   console.log(`glossary: split ${concepts.length} hubs + slimmed index`);
 } else {
@@ -60,14 +51,10 @@ if (hasVectors || hasRawPos) {
     mkdirSync(cacheDir, { recursive: true });
     writeFileSync(
       resolve(cacheDir, "axis_vectors.json"),
-      `${JSON.stringify({ generated: sp.generated, axes: sp.axes.map((a) => ({ slug: a.slug, axis_vector: a.axis_vector })) }, null, 2)}\n`
+      `${JSON.stringify({ generated: sp.generated, axes: axisVectors(sp.axes) }, null, 2)}\n`
     );
   }
-  const axes = sp.axes.map(({ axis_vector, positions, ...ax }) => ({
-    ...ax,
-    positions: (positions || []).map(({ position, ...p }) => p),
-  }));
-  write("spectrums.json", { generated: sp.generated, axes });
+  write("spectrums.json", { generated: sp.generated, axes: sp.axes.map(slimSpectrumAxis) });
   console.log(`spectrums: slimmed ${sp.axes.length} axes (vectors:${hasVectors}, rawpos:${hasRawPos})`);
 } else {
   console.log("spectrums: already slim, skipped");

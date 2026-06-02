@@ -102,7 +102,7 @@ See `STEERING_DOCS.md` for the tiered map and a "when to read what" cheat sheet.
 
 ## Current State
 
-The site is feature-complete and deploy-ready. Build and the worker test suite (`npm test`, 9 passing) are green. Nothing is deployed yet (no GitHub remote, DNS not pointed).
+The site is feature-complete and deploy-ready. Build and the worker test suite (`npm test`, 15 passing) are green. Routes are code-split (Home eager, the rest lazy behind a Suspense boundary). Nothing is deployed yet (no GitHub remote, DNS not pointed).
 
 **Pipeline (`worker/`).** Seven source adapters behind one aggregator (`sources/index.mjs`): YouTube (primary, with a captions-then-Whisper transcript path gated by `ENABLE_TRANSCRIPTS`), Hacker News, arXiv, GitHub, blogs and newsletters (`sources/blogs.json`), Hugging Face daily papers, and Reddit (403 from datacenter IPs; works from residential or Fly). `run.mjs` runs: fetch, classify (Claude), the AI-grown concept resolution (`concepts.mjs`), embed and upsert (Voyage, Pinecone), the rotation math on a decayed attention level (`rotation.mjs`), the network precompute (`network.mjs`: centroids, constellation, clusters, spectrums, neighbors, influence), AI-written glossary definitions (`define.mjs`), digests, the Pinecone retention reconcile, sitemap, RSS, and stats. An accumulating retention-pruned store (`worker/.cache/items.json`) plus a classification cache keep runs stable and cheap. Corpus is roughly 250 items.
 

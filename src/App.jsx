@@ -1,18 +1,19 @@
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import Explore from "./pages/Explore.jsx";
-import Glossary from "./pages/Glossary.jsx";
-import TechniqueHub from "./pages/TechniqueHub.jsx";
-import Methodology from "./pages/Methodology.jsx";
-import About from "./pages/About.jsx";
-import KindView from "./pages/KindView.jsx";
 import { KINDS } from "./data/registry.js";
 
-// Routes are derived from the registry where possible. Per-kind deep views and
-// the embedding-driven surfaces arrive in later phases; for now they are honest
-// placeholders so navigation and the steering harness can be exercised end to end.
+// Home loads eagerly because it is the landing route. Every other page splits into
+// its own chunk (loaded on navigation behind the Suspense boundary in Layout), so
+// the initial bundle carries only the dashboard plus shared code.
+const KindView = lazy(() => import("./pages/KindView.jsx"));
+const Glossary = lazy(() => import("./pages/Glossary.jsx"));
+const TechniqueHub = lazy(() => import("./pages/TechniqueHub.jsx"));
+const Explore = lazy(() => import("./pages/Explore.jsx"));
+const Methodology = lazy(() => import("./pages/Methodology.jsx"));
+const About = lazy(() => import("./pages/About.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 export default function App() {
   return (
     <Routes>

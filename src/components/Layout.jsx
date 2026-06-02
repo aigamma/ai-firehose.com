@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SITE, NAV } from "../data/registry.js";
 import useTheme from "../hooks/useTheme.js";
@@ -41,7 +42,9 @@ export default function Layout() {
       </header>
 
       <main id="main" className="container">
-        <Outlet />
+        <Suspense fallback={<div className="stack" style={{ paddingTop: 40 }}><p className="muted">Loading…</p></div>}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer className="site-footer">
