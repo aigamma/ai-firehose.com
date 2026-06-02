@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
-import { RETENTION_DAYS } from "../data/registry.js";
+import { RETENTION_DAYS, AXES } from "../data/registry.js";
 
 export default function Methodology() {
   const { data: stats } = useData("/data/stats.json");
@@ -70,6 +70,18 @@ export default function Methodology() {
         similarity, so near-duplicate names (LLM and large language models) collapse onto one concept with
         aliases rather than fragmenting. The result is the self-organizing <Link to="/glossary">Glossary</Link>.
       </p>
+
+      <h2>The Discourse Axes</h2>
+      <p>
+        Beyond clustering, every concept is projected onto seven hand-authored axes of AI discourse. Each pole is
+        embedded as a short anchor, and a concept sits where its meaning falls between them. Browse them on the{" "}
+        <Link to="/explore">Explore</Link> page.
+      </p>
+      <ul>
+        {AXES.map((a) => (
+          <li key={a.slug}>{a.title}</li>
+        ))}
+      </ul>
 
       <h2>Sources</h2>
       <p>

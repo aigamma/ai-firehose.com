@@ -87,7 +87,17 @@ export default function Home() {
             <span className="faint mono" style={{ marginLeft: "auto" }}>idea-space map</span>
           </div>
           {constellation?.points ? (
-            <Constellation points={constellation.points} />
+            <>
+              <Constellation points={constellation.points} />
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 10 }}>
+                {KINDS.map((k) => (
+                  <span key={k.key} className={`badge ${k.badgeClass}`}>
+                    <span className="dot" style={{ background: `var(${k.accentVar})` }} />
+                    {k.label}
+                  </span>
+                ))}
+              </div>
+            </>
           ) : (
             <div className="empty"><strong>Idea-space map</strong>Awaiting ingestion.</div>
           )}
