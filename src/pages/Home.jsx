@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import RotationBoard from "../components/RotationBoard.jsx";
 import Constellation from "../components/Constellation.jsx";
 import useData from "../lib/useData.js";
-import { SITE, KINDS, QUADRANTS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
+import { SITE, KINDS, HORIZONS, QUADRANTS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
 
 function QuadrantLegend() {
   return (
@@ -34,6 +34,18 @@ export default function Home() {
   const { data: constellation } = useData(`/data/constellation.json`);
   const synthetic = digest?.synthetic || constellation?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
+
+  // Arrow keys cycle the horizon (Day to Quarter), unless typing in a field.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target?.matches?.("input, select, textarea")) return;
+      const i = HORIZONS.findIndex((x) => x.key === horizon);
+      if (e.key === "ArrowRight" && i < HORIZONS.length - 1) setHorizon(HORIZONS[i + 1].key);
+      if (e.key === "ArrowLeft" && i > 0) setHorizon(HORIZONS[i - 1].key);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [horizon]);
 
   return (
     <div className="stack">

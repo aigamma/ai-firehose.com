@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
-import { RETENTION_DAYS, AXES } from "../data/registry.js";
+import { RETENTION_DAYS, AXES, KINDS } from "../data/registry.js";
 
 export default function Methodology() {
   const { data: stats } = useData("/data/stats.json");
@@ -27,6 +27,13 @@ export default function Methodology() {
               .map(([s, n]) => (
                 <span key={s} className="chip">{s} {n}</span>
               ))}
+          </div>
+          <div className="kindbar" title="Distribution by kind">
+            {KINDS.map((k) => {
+              const total = Object.values(stats.by_kind || {}).reduce((a, b) => a + b, 0) || 1;
+              const n = stats.by_kind?.[k.key] || 0;
+              return <span key={k.key} title={`${k.label} ${n}`} style={{ width: `${(n / total) * 100}%`, background: `var(${k.accentVar})` }} />;
+            })}
           </div>
         </section>
       )}
