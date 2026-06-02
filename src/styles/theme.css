@@ -199,6 +199,22 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 /* Focus visibility for keyboard users */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
+/* Leaderboards under each rotation board */
+.leaders { list-style: none; margin: 12px 0 0; padding: 0; }
+.leaders li { display: flex; align-items: center; gap: 9px; padding: 5px 0; border-top: 1px solid var(--border); font-size: 0.86rem; }
+.lead-label { flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Feeds (outliers, what is new) */
+.feed { list-style: none; margin: 0; padding: 0; }
+.feed li { display: flex; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--border); }
+.feed li:first-child { border-top: 0; }
+
+/* Demo-data ribbon, shown until the live worker runs */
+.synthetic-ribbon {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
+  color: #1a1206; background: var(--q-weakening); padding: 3px 10px; border-radius: 999px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
