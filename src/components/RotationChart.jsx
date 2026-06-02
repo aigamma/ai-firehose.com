@@ -1,8 +1,9 @@
 import { QUADRANTS } from "../data/registry.js";
 
-// A lean SVG relative-rotation scatter (a Relative Rotation Graph). ratio on x,
-// momentum on y, both centered at 100. Chosen over Plotly to keep the bundle
-// small; the quadrant model is the same as aigamma.com's.
+// A lean SVG rotation scatter (the "rotation plane"). ratio on x, momentum on y,
+// both centered at 100. The normalization is Mansfield Relative Performance
+// (Roy Mansfield, 1979), the prior-art math aigamma.com cites; "RRG" is a
+// trademark and is avoided. Chosen over Plotly to keep the bundle small.
 const S = 320;
 const PAD = 30;
 

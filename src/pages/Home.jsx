@@ -55,7 +55,7 @@ export default function Home() {
       <section className="card">
         <div className="card-head">
           <h2>Relative Rotation</h2>
-          <span className="faint mono" style={{ marginLeft: "auto" }}>three boards, one quadrant model</span>
+          <span className="faint mono" style={{ marginLeft: "auto" }}>Mansfield Relative Performance (1979)</span>
         </div>
         <QuadrantLegend />
         <div className="grid cols-3" style={{ marginTop: 16 }}>

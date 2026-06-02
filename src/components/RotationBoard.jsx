@@ -3,7 +3,7 @@ import { getKind, QUADRANTS } from "../data/registry.js";
 import RotationChart from "./RotationChart.jsx";
 import Sparkline from "./Sparkline.jsx";
 
-// One per-kind rotation board: the RRG scatter plus a short leaderboard of the
+// One per-kind rotation board: the rotation scatter plus a short leaderboard of the
 // strongest movers. Loads its own attention artifact for the given horizon.
 export default function RotationBoard({ kindKey, horizon }) {
   const kind = getKind(kindKey);

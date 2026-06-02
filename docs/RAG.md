@@ -29,7 +29,7 @@ Built at network-rebuild time, served from `/data`:
 | `neighbors.json` | cosine kNN via Pinecone query | "see also" across sources |
 | `influence.json` | derivation and mention edges | network view |
 | `glossary/<slug>.json` | hub assembled from the above | technique integration hub |
-| `attention/<kind>_<horizon>.json` | the rotation math below | drives the RRG boards |
+| `attention/<kind>_<horizon>.json` | the rotation math below | drives the rotation boards |
 | `digests/<horizon>.json` | new items plus entered or jumped entities plus outliers | What Is New |
 
 ### Artifact Schemas (initial)

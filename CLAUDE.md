@@ -10,6 +10,8 @@ Em dashes (the long dash, U+2014) are forbidden in any generative text on this p
 
 Headings and titles use Title Case. Cite claims: AI-written summaries and definitions must trace to the item they describe.
 
+Do not use "RRG" or "Relative Rotation Graph": those name a trademark. This project uses the older prior-art math, Mansfield Relative Performance (Roy Mansfield, 1979), and the neutral terms "rotation plane", "rotation ratio", and "rotation momentum", mirroring aigamma.com/rotations. Cite Mansfield where the methodology is explained.
+
 ## Pacing Constraints
 
 Eric is on Claude Max 20x with consistent unused weekly headroom and pre-paid overage credits. Do not throttle token usage, insert sleep gaps, or split independent work across wakeups to conserve cache. Optimize for wall-clock time and visible progress.
