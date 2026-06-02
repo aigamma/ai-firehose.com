@@ -86,6 +86,15 @@ export async function fetchYouTube({ maxAgeDays = 100, perChannel = 15 } = {}) {
     }
     await sleep(400); // small spacing to ease the feed endpoint's rate mitigation
   }
+  // Optional transcript enrichment (Fly worker only; gated so it never runs
+  // where yt-dlp is absent). Replaces title+description with the full transcript.
+  if (process.env.ENABLE_TRANSCRIPTS === "1" && items.length) {
+    const { transcribeYouTube } = await import("../pipeline/transcript.mjs");
+    for (const it of items) {
+      const t = await transcribeYouTube(it.url).catch(() => null);
+      if (t) it.summary_text = `${it.title}\n\n${t}`.slice(0, 6000);
+    }
+  }
   return items;
 }
 

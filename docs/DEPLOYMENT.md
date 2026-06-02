@@ -1,28 +1,70 @@
 # Deployment
 
-Two deploy targets: the Fly.io worker (heavy, scheduled) and the Netlify site (static plus one read function).
+Two targets: the Fly.io ingestion worker (heavy, scheduled, writes artifacts) and
+the Netlify site (static plus one read function). Nothing is deployed yet; this is
+the runbook. The actual commands need Eric's accounts, credits, and DNS.
 
-## Fly.io Worker
+## 0. Prerequisites
 
-- `worker/Dockerfile`: Node plus Python, with `yt-dlp`, `ffmpeg`, and the Whisper implementation installed. Installs npm and pip deps.
-- `worker/fly.toml`: app `ai-firehose-worker`. The pipeline runs on a schedule (a Fly scheduled Machine, or a small process running a cron inside the container) executing `npm run ingest` daily.
-- Secrets via `fly secrets set` (see `docs/OPERATIONS.md`). Deploy with `fly deploy` from `worker/`.
-- The worker commits rebuilt artifacts back to the repo and pushes, which triggers the Netlify build. Use a race-safe rebase-and-push (the worldthought refresh-rag pattern) so a concurrent push does not clobber.
+- A GitHub remote for this repo (none is configured yet). Create one and push:
+  `git remote add origin https://github.com/<owner>/ai-firehose.com.git` then
+  `git push -u origin main`. The worker and Netlify both build from it.
+- Keys available in sibling `.env` files (see `docs/OPERATIONS.md`). The
+  `ai-firehose` Pinecone index already exists.
 
-## Netlify Site
+## 1. Fly.io worker
 
-- Connect the GitHub repo. Build `npm run build`, publish `dist`, functions `netlify/functions` (see `netlify.toml`).
-- Environment variables for the `retrieve` function (Pinecone and Voyage) set in the Netlify UI.
-- Add the IndexNow plugin later (port from aigamma or worldthought) for SEO ping on deploy.
+The worker clones the repo, runs the pipeline, and pushes the rebuilt artifacts
+back, which triggers a Netlify build. It needs a GitHub token to push.
 
-## DNS
+```
+# from the repo root (so the build context includes worker/publish.sh)
+fly launch --no-deploy -c worker/fly.toml      # or: fly apps create <name>; edit app name in fly.toml
+fly secrets set -c worker/fly.toml \
+  PINECONE_API_KEY=... VOYAGE_API_KEY=... ANTHROPIC_API_KEY=... OPENAI_API_KEY=... \
+  REPO_URL=https://github.com/<owner>/ai-firehose.com.git \
+  GH_TOKEN=<fine-grained PAT with contents:write>
+fly deploy -c worker/fly.toml --dockerfile worker/Dockerfile
+# run it daily as a scheduled Machine:
+fly machine run . -c worker/fly.toml --schedule daily
+```
 
-Point `ai-firehose.com` at Netlify (currently not pointed). Add the apex and `www` per Netlify's instructions.
+The image bakes node, python3, ffmpeg, git, and yt-dlp. `ENABLE_TRANSCRIPTS=1`
+turns on YouTube caption enrichment (captions via yt-dlp; an audio plus Whisper
+fallback can be added). `worker/publish.sh` is the entrypoint: clone, run, commit
+`public/data` and `public/sitemap.xml`, push to `main`.
 
-## The Chain
+Cost: the rolling-quarter corpus keeps it near the civil reference (Pinecone plus
+a few dollars of Voyage) plus Claude classification (Haiku) on new items only
+(the classify cache makes re-runs cheap). Record runs in `docs/INGESTION_LOG.md`.
 
-1. The worker ingests on schedule and pushes new artifacts to `main`.
+## 2. Netlify site
+
+```
+# connect the GitHub repo in the Netlify UI, or:
+netlify init
+# build command: npm run build   publish: dist   functions: netlify/functions
+netlify env:set VOYAGE_API_KEY ...
+netlify env:set PINECONE_API_KEY ...
+netlify env:set PINECONE_INDEX ai-firehose
+netlify deploy --build --prod
+```
+
+`netlify.toml` already routes `/api/*` to functions and serves `/data/*` with a
+short cache plus stale-while-revalidate. The `retrieve` function powers semantic
+search. Optionally add the IndexNow plugin (port from aigamma or worldthought).
+
+## 3. DNS
+
+Point `ai-firehose.com` at Netlify (apex plus `www`) per the Netlify dashboard.
+Currently not pointed.
+
+## 4. The chain
+
+1. The Fly worker ingests on its daily schedule and pushes new artifacts to `main`.
 2. The push triggers a Netlify production build of the static site.
-3. The site reads the fresh artifacts from `/data`; the `retrieve` function serves live semantic search.
+3. The site reads the fresh artifacts from `/data`; `/api/retrieve` serves live
+   semantic search.
 
-Push at milestones, batch intermediate pushes during active development (pushes consume Netlify build minutes).
+Push at milestones; the worker's daily push is the production cadence. During
+development, commit locally and push sparingly to conserve build minutes.
