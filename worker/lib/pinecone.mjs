@@ -72,12 +72,14 @@ export async function fetchByIds(host, ids, namespace = "") {
 
 export async function deleteByIds(host, ids, namespace = "") {
   if (!ids.length) return;
-  const r = await fetch(`https://${host}/vectors/delete`, {
-    method: "POST",
-    headers: headers(),
-    body: JSON.stringify({ ids, namespace }),
-  });
-  if (!r.ok) throw new Error(`Pinecone delete ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  for (let i = 0; i < ids.length; i += 1000) {
+    const r = await fetch(`https://${host}/vectors/delete`, {
+      method: "POST",
+      headers: headers(),
+      body: JSON.stringify({ ids: ids.slice(i, i + 1000), namespace }),
+    });
+    if (!r.ok) throw new Error(`Pinecone delete ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  }
 }
 
 // Enumerate vector ids (serverless list endpoint, paginated). Used for

@@ -13,7 +13,7 @@ import { requireKeys } from "../lib/env.mjs";
 import { fetchAll } from "../sources/index.mjs";
 import { classifyItem } from "./classify.mjs";
 import { embed } from "../lib/voyage.mjs";
-import { ensureIndex, upsert } from "../lib/pinecone.mjs";
+import { ensureIndex, upsert, listIds, deleteByIds } from "../lib/pinecone.mjs";
 import { hash16, itemId, slugify } from "../lib/hash.mjs";
 import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
@@ -22,7 +22,7 @@ import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
-import { HORIZONS, KINDS, RETENTION_DAYS } from "../../src/data/registry.js";
+import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV } from "../../src/data/registry.js";
 
 requireKeys();
 const DATA = resolve(dirname(fileURLToPath(import.meta.url)), "../../public/data");
@@ -217,6 +217,20 @@ async function main() {
     }))
     .sort((a, b) => b.attention - a.attention);
   writeJson("glossary/index.json", { generated: GENERATED, count: glossary.length, concepts: glossary });
+
+  console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
+  try {
+    const liveIds = await listIds(host);
+    const keep = new Set(Object.keys(store));
+    const stale = liveIds.filter((id) => !keep.has(id));
+    await deleteByIds(host, stale);
+    console.log(`   pinecone ${liveIds.length} vectors, removed ${stale.length} aged-out`);
+  } catch (e) {
+    console.log(`   reconcile skipped: ${e.message}`);
+  }
+  const routes = ["/", ...NAV.map((n) => n.route), "/about", ...glossary.slice(0, 80).map((c) => `/technique/${c.id}`)];
+  const urls = [...new Set(routes)].map((r) => `  <url><loc>https://${SITE.domain}${r}</loc></url>`).join("\n");
+  writeFileSync(resolve(DATA, "../sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 
   console.log("6. digests per horizon...");
   for (const h of HORIZONS) {
