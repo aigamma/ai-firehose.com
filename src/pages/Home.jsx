@@ -33,6 +33,7 @@ export default function Home() {
   const { data: digest } = useData(`/data/digests/${horizon}.json`);
   const { data: constellation } = useData(`/data/constellation.json`);
   const synthetic = digest?.synthetic || constellation?.synthetic;
+  const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
   return (
     <div className="stack">
@@ -52,6 +53,16 @@ export default function Home() {
           </span>
         )}
       </div>
+
+      {breakout && (
+        <Link to={`/technique/${breakout.id}`} className="breakout">
+          <span className="breakout-tag">Breaking out</span>
+          <strong>{breakout.label}</strong>
+          <span className="faint mono">
+            {getKind(breakout.kind)?.singular} · momentum {breakout.momentum} · attention {breakout.attention}
+          </span>
+        </Link>
+      )}
 
       <section className="card">
         <div className="card-head">

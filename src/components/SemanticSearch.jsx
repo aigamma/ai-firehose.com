@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { getKind } from "../data/registry.js";
+import { getKind, KINDS } from "../data/registry.js";
 
 // Live semantic search over the corpus. Calls /api/retrieve (the Netlify
 // function). In plain `npm run dev` there is no function, so it fails gracefully.
 export default function SemanticSearch() {
   const [q, setQ] = useState("");
+  const [kind, setKind] = useState("");
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
@@ -15,7 +16,7 @@ export default function SemanticSearch() {
     setLoading(true);
     setErr(null);
     try {
-      const r = await fetch(`/api/retrieve?q=${encodeURIComponent(q)}`);
+      const r = await fetch(`/api/retrieve?q=${encodeURIComponent(q)}${kind ? `&kind=${kind}` : ""}`);
       if (!r.ok) throw new Error(`search unavailable (HTTP ${r.status})`);
       const j = await r.json();
       setResults(j.results || []);
@@ -36,6 +37,12 @@ export default function SemanticSearch() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
+        <select className="select" value={kind} onChange={(e) => setKind(e.target.value)} aria-label="Filter by kind">
+          <option value="">All</option>
+          {KINDS.map((k) => (
+            <option key={k.key} value={k.key}>{k.label}</option>
+          ))}
+        </select>
         <button className="btn" type="submit">Search</button>
       </form>
       {loading && <p className="muted" style={{ marginTop: 10 }}>Searching…</p>}
