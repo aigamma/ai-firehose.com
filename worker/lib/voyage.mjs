@@ -14,12 +14,22 @@ async function post(path, body) {
   return r.json();
 }
 
+// Voyage returns each embedding tagged with its input index. Reorder by that index
+// so a batch can never be silently misaligned with its inputs, the one failure that
+// would corrupt every downstream similarity, cluster, neighbor, and spectrum.
+export function orderEmbeddings(data, length) {
+  const out = new Array(length);
+  for (const d of data) out[d.index] = d.embedding;
+  return out;
+}
+
 // Embed documents (ingest) or a query. Batches at 128 (Voyage input limit).
 export async function embed(texts, inputType = "document", model = "voyage-3") {
   const out = [];
   for (let i = 0; i < texts.length; i += 128) {
-    const j = await post("/embeddings", { input: texts.slice(i, i + 128), model, input_type: inputType });
-    for (const d of j.data) out.push(d.embedding);
+    const batch = texts.slice(i, i + 128);
+    const j = await post("/embeddings", { input: batch, model, input_type: inputType });
+    out.push(...orderEmbeddings(j.data, batch.length));
   }
   return out;
 }
