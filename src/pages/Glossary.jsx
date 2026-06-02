@@ -16,6 +16,8 @@ export default function Glossary() {
     const s = q.toLowerCase();
     return c.label.toLowerCase().includes(s) || (c.aliases || []).some((a) => a.toLowerCase().includes(s));
   });
+  const counts = {};
+  for (const c of all) counts[c.kind] = (counts[c.kind] || 0) + 1;
 
   return (
     <div className="stack" style={{ paddingTop: 24 }}>
@@ -26,12 +28,14 @@ export default function Glossary() {
       <input className="search" placeholder="Search concepts and aliases..." value={q} onChange={(e) => setQ(e.target.value)} />
       <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         <div className="segmented" role="group" aria-label="Filter by kind">
-          <button aria-pressed={kind === ""} onClick={() => setKind("")}>All</button>
+          <button aria-pressed={kind === ""} onClick={() => setKind("")}>All {all.length}</button>
           {KINDS.map((k) => (
-            <button key={k.key} aria-pressed={kind === k.key} onClick={() => setKind(k.key)}>{k.label}</button>
+            <button key={k.key} aria-pressed={kind === k.key} onClick={() => setKind(k.key)}>
+              {k.label} {counts[k.key] || 0}
+            </button>
           ))}
         </div>
-        <span className="faint mono">{concepts.length} shown</span>
+        {(q || kind) && <span className="faint mono">{concepts.length} shown</span>}
       </div>
       <div className="card">
         <ul className="feed">
