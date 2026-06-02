@@ -95,9 +95,11 @@ export default function Methodology() {
       <h2>Sources</h2>
       <p>
         The primary source is a curated set of high-signal YouTube teachers, who tend to surface the most
-        interesting developments early. Alongside them are arXiv (research) and Hacker News (launches and
-        debate), with more to come. Each source carries an authority weight that scales how strongly it moves
-        the rotation, so a trusted teacher covering a new topic registers as a leading indicator.
+        interesting developments early. Alongside them: arXiv (research), Hacker News (launches and debate),
+        GitHub (trending repositories), Hugging Face (daily papers and models), and a manifest of lab blogs and
+        newsletters, with community sources such as Reddit. Each source carries an authority weight that scales
+        how strongly it moves the rotation, so a trusted teacher covering a new topic registers as a leading
+        indicator.
       </p>
 
       <h2>No Chatbot</h2>
