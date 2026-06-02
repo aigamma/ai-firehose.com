@@ -1,11 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { SITE, NAV } from "../data/registry.js";
 import useTheme from "../hooks/useTheme.js";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 export default function Layout() {
   const { theme, toggle } = useTheme();
   return (
     <>
+      <ScrollToTop />
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="container bar">
