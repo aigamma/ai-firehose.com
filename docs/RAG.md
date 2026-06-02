@@ -24,15 +24,15 @@ Built at network-rebuild time, served from `/data`:
 |---|---|---|
 | `centroids.json` | mean-pool the entity's item vectors, L2 normalize | per-entity position |
 | `constellation.json` | power-iteration PCA to 2D, pinned seed | unified map, normalized to [-1, 1] |
-| `clusters.json` | k-means, k near sqrt(N), seed 42, 12 restarts; Claude names | auto themes |
+| `clusters.json` | deterministic k-means (k near sqrt(N), seed-spread init, up to 60 iterations); labeled by its top member concepts | auto themes (LLM naming is intended, not yet wired) |
 | `spectrums.json` | concept axes: `axis_vector = normalize(embed(pole_a) - embed(pole_b))`, project centroids | served file is positions-only (`{id, label, position_normalized}`); the 1024-dim `axis_vector` and the raw `position` are stripped from the payload. Vectors are parked in `worker/.cache/axis_vectors.json` for future live projection |
 | `influence.json` | derivation and mention edges | network view |
 | `glossary/c/<slug>.json` | per-concept hub assembled from the above | full hub (definition, neighbors, axis_positions, top_items), fetched on demand by `/technique/:slug` |
 | `glossary/index.json` | slim list derived from the hubs | `{id, label, kind, attention, aliases, def_snippet}` per concept; drives the glossary list and search |
-
-Neighbors are computed every rebuild and denormalized into the hubs, so no standalone `neighbors.json` is served (it was fetched by nothing).
 | `attention/<kind>_<horizon>.json` | the rotation math below | drives the rotation boards |
 | `digests/<horizon>.json` | new items plus entered or jumped entities plus outliers | What Is New |
+
+Neighbors are computed every rebuild and denormalized into the hubs, so no standalone `neighbors.json` is served (it was fetched by nothing).
 
 ### Artifact Schemas (initial)
 
@@ -75,4 +75,4 @@ Seven AI-discourse axes (slugs in `registry.js` `AXES`): open vs closed, scaling
 
 ## Determinism and Cost
 
-Pinned PCA seed, k-means seed 42, stable sort, content-hash gating make the network rebuild reproducible: unchanged data is a no-op, one new item recomputes only what changed. With the rolling-quarter corpus, expect costs near the civil reference (about 25 dollars per month) plus Whisper per caption-less video. See `docs/OPERATIONS.md`.
+A pinned PCA start vector, deterministic k-means init (seed-spread, no RNG), stable sort, and content-hash gating make the network rebuild reproducible: unchanged data is a no-op, one new item recomputes only what changed. With the rolling-quarter corpus, expect costs near the civil reference (about 25 dollars per month) plus Whisper per caption-less video. See `docs/OPERATIONS.md`.

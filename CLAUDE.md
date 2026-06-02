@@ -73,7 +73,7 @@ Tags and concepts are not a fixed vocabulary. The classifier discovers candidate
 
 ### Determinism in Precompute
 
-Pinned PCA seed, k-means seed 42, stable sort, content-hash gating. The one-command `network` rebuild regenerates every dependent artifact in dependency order and is safe to re-run. Ported from civil's stage-14 `network` step.
+Pinned PCA start vector, deterministic k-means init (seed-spread, no RNG), stable sort, content-hash gating. The one-command `network` rebuild regenerates every dependent artifact in dependency order and is safe to re-run. Ported from civil's stage-14 `network` step.
 
 ### No Chatbot
 
@@ -81,7 +81,7 @@ The embedding layer powers organization, visualization, and a live semantic sear
 
 ## Stack and Keys
 
-Pinecone (vector store, index `ai-firehose`, voyage-3 at 1024-dim cosine, single namespace plus metadata filters). Voyage (`voyage-3` embeddings, `rerank-2` for live search). Claude (Opus for gates, cluster naming, glossary definitions; Sonnet or Haiku for bulk classification). OpenAI optional (dual-check, possibly Whisper). Keys are pulled from sibling repo `.env` files at build time, then set as Fly.io secrets and Netlify environment variables. Never commit keys.
+Pinecone (vector store, index `ai-firehose`, voyage-3 at 1024-dim cosine, single namespace plus metadata filters). Voyage (`voyage-3` embeddings, `rerank-2` for live search). Claude (Haiku does the bulk classification and the glossary definitions today; a Sonnet `quality` tier is defined in `MODELS` for future quality passes). Opus gates, LLM cluster naming, and an OpenAI dual-check are intended but not yet wired; OpenAI may also host Whisper. Keys are pulled from sibling repo `.env` files at build time, then set as Fly.io secrets and Netlify environment variables. Never commit keys.
 
 ## Multi-Agent Collaboration
 
