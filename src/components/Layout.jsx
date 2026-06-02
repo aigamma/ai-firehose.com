@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { SITE, NAV } from "../data/registry.js";
 import useTheme from "../hooks/useTheme.js";
 import ScrollToTop from "./ScrollToTop.jsx";
+import CommandPalette from "./CommandPalette.jsx";
 
 export default function Layout() {
   const { theme, toggle } = useTheme();
@@ -30,15 +31,18 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
-          <button
-            className="icon-btn"
-            onClick={toggle}
-            aria-label="Toggle light and dark theme"
-            aria-pressed={theme === "dark"}
-            title="Toggle theme"
-          >
-            {theme === "dark" ? "☀" : "☾"}
-          </button>
+          <div className="header-tools">
+            <CommandPalette />
+            <button
+              className="icon-btn"
+              onClick={toggle}
+              aria-label="Toggle light and dark theme"
+              aria-pressed={theme === "dark"}
+              title="Toggle theme"
+            >
+              {theme === "dark" ? "☀" : "☾"}
+            </button>
+          </div>
         </div>
       </header>
 
