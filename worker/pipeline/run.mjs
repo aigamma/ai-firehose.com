@@ -18,6 +18,8 @@ import { hash16, itemId, slugify } from "../lib/hash.mjs";
 import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 import { pca2d } from "./precompute.mjs";
+import { canonicalizeConcepts } from "./concepts.mjs";
+import { loadCache, saveCache } from "../lib/cache.mjs";
 import { HORIZONS, KINDS, RETENTION_DAYS } from "../../src/data/registry.js";
 
 requireKeys();
@@ -34,13 +36,28 @@ function writeJson(rel, obj) {
 }
 
 async function classifyAll(items) {
+  const cache = loadCache("classify");
+  const keyOf = (it) => `${it.source}:${it.source_id}:${hash16(it.summary_text || it.title)}`;
   const out = [];
+  const todo = [];
+  let hits = 0;
+  for (const it of items) {
+    const cached = cache[keyOf(it)];
+    if (cached) {
+      out.push({ ...it, ...cached });
+      hits += 1;
+    } else {
+      todo.push(it);
+    }
+  }
   const BATCH = 5;
-  for (let i = 0; i < items.length; i += BATCH) {
+  for (let i = 0; i < todo.length; i += BATCH) {
     const res = await Promise.all(
-      items.slice(i, i + BATCH).map(async (it) => {
+      todo.slice(i, i + BATCH).map(async (it) => {
         try {
-          return { ...it, ...(await classifyItem(it)) };
+          const c = await classifyItem(it);
+          cache[keyOf(it)] = c;
+          return { ...it, ...c };
         } catch (e) {
           console.error(`  classify fail (${it.title}): ${e.message}`);
           return null;
@@ -48,8 +65,10 @@ async function classifyAll(items) {
       })
     );
     out.push(...res.filter(Boolean));
-    console.log(`  classified ${Math.min(i + BATCH, items.length)}/${items.length}`);
+    console.log(`  classified ${Math.min(i + BATCH, todo.length)}/${todo.length} new (${hits} cache hits)`);
   }
+  if (todo.length) saveCache("classify", cache);
+  else console.log(`  all ${hits} items from cache`);
   return out;
 }
 
@@ -63,27 +82,60 @@ async function main() {
   console.log("2. classify with Claude...");
   const classified = await classifyAll(items);
   if (!classified.length) throw new Error("nothing classified");
+  for (const it of classified) it.id = itemId(it.kind, it.source, it.source_id, hash16(it.summary_text || it.title));
 
-  console.log("3. embed + upsert to Pinecone...");
-  const vecs = await embed(classified.map((c) => `${c.title}\n\n${c.summary}`), "document");
+  // Accumulate into a persistent store so the artifacts reflect the whole
+  // retained corpus, not just whichever feeds succeeded this run. Prune by
+  // retention (published_at). The store keeps RAW classifier concepts; the
+  // canonical mapping is recomputed each run.
+  console.log("2a. merge into store + prune by retention...");
+  const store = loadCache("items");
+  for (const it of classified) store[it.id] = it;
+  const cutoffMs = TODAY - RETENTION_DAYS * 86400000;
+  for (const [id, it] of Object.entries(store)) {
+    const t = new Date(it.published_at).getTime();
+    if (Number.isFinite(t) && t < cutoffMs) delete store[id];
+  }
+  const corpus = Object.values(store);
+  saveCache("items", store);
+  console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length})`);
+
+  console.log("2b. concept resolution (fuzzy-merge near-duplicate tags)...");
+  const { canon, remap } = await canonicalizeConcepts(corpus);
+  const working = corpus.map((it) => ({ ...it, concepts: remap(it.concepts) }));
+  writeJson("glossary/_concepts.json", {
+    generated: GENERATED,
+    count: canon.length,
+    concepts: canon
+      .map((c) => ({ id: c.id, label: c.label, aliases: c.aliases }))
+      .sort((a, b) => b.aliases.length - a.aliases.length || a.label.localeCompare(b.label)),
+  });
+  console.log(`   ${canon.length} canonical concepts (merged from raw labels)`);
+
+  console.log("3. embed + upsert this run's items to Pinecone...");
+  const runIds = new Set(classified.map((c) => c.id));
+  const fresh = working.filter((c) => runIds.has(c.id));
   const host = await ensureIndex();
-  await upsert(
-    host,
-    classified.map((c, i) => ({
-      id: itemId(c.kind, c.source, c.source_id, hash16(c.summary_text || c.title)),
-      values: vecs[i],
-      metadata: {
-        kind: c.kind, source: c.source, title: c.title, url: c.url,
-        author_or_channel: c.author_or_channel || "", published_at: c.published_at || "",
-        concepts: c.concepts || [], entities: c.entities || [],
-        source_authority_weight: c.source_authority_weight ?? 0.8, summary: c.summary || "",
-      },
-    }))
-  );
-  console.log(`   upserted ${classified.length}`);
+  if (fresh.length) {
+    const vecs = await embed(fresh.map((c) => `${c.title}\n\n${c.summary}`), "document");
+    await upsert(
+      host,
+      fresh.map((c, i) => ({
+        id: c.id,
+        values: vecs[i],
+        metadata: {
+          kind: c.kind, source: c.source, title: c.title, url: c.url,
+          author_or_channel: c.author_or_channel || "", published_at: c.published_at || "",
+          concepts: c.concepts || [], entities: c.entities || [],
+          source_authority_weight: c.source_authority_weight ?? 0.8, summary: c.summary || "",
+        },
+      }))
+    );
+  }
+  console.log(`   upserted ${fresh.length} (corpus ${working.length})`);
 
   console.log("4. attention series + rotation per kind and horizon...");
-  const { byKind, labels, primaryKind } = buildSeries(classified, { days: RETENTION_DAYS, todayMs: TODAY });
+  const { byKind, labels, primaryKind } = buildSeries(working, { days: RETENTION_DAYS, todayMs: TODAY });
   // Rotation runs on the smooth decayed level; the displayed attention stays the
   // raw weighted mentions in the window.
   const levelByKind = {};
@@ -109,12 +161,12 @@ async function main() {
     for (const [id, s] of Object.entries(series)) conceptTotals[id] = (conceptTotals[id] || 0) + s.reduce((a, b) => a + b, 0);
   }
 
-  console.log("5. constellation (PCA over concept embeddings)...");
-  const conceptIds = Object.keys(conceptTotals);
+  console.log("5. constellation (PCA over canonical concept embeddings)...");
+  const idToVec = Object.fromEntries(canon.map((c) => [c.id, c.vec]));
+  const conceptIds = Object.keys(conceptTotals).filter((id) => idToVec[id]);
   let points = [];
   if (conceptIds.length) {
-    const cvecs = await embed(conceptIds.map((id) => labels[id] || id), "document");
-    const xy = pca2d(cvecs);
+    const xy = pca2d(conceptIds.map((id) => idToVec[id]));
     points = conceptIds.map((id, i) => ({
       id, kind: primaryKind[id] || "technique", label: labels[id] || id,
       attention: Math.round(conceptTotals[id]), x: xy[i]?.x ?? 0, y: xy[i]?.y ?? 0,
@@ -125,7 +177,7 @@ async function main() {
   console.log("6. digests per horizon...");
   for (const h of HORIZONS) {
     const cutoff = TODAY - h.days * 86400000;
-    const newItems = classified
+    const newItems = working
       .filter((c) => { const t = new Date(c.published_at).getTime(); return Number.isFinite(t) && t >= cutoff; })
       .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
       .slice(0, 12)
