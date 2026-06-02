@@ -1,5 +1,6 @@
 import { complete, MODELS } from "../lib/anthropic.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
+import { stripEmDashes } from "../lib/text.mjs";
 
 /*
   One-sentence concept definitions for the glossary hubs. Generated for the top
@@ -21,7 +22,7 @@ export async function defineConcepts(concepts, conceptToItems = {}, { limit = 60
     const prompt = `Concept: ${c.label}\nKind: ${c.kind}\nSeen in:\n${ctx || "- (no examples)"}\n\nWrite the one-sentence definition.`;
     try {
       const text = await complete({ model, system: SYSTEM, prompt, maxTokens: 120 });
-      cache[c.id] = text.replace(/\s+/g, " ").trim();
+      cache[c.id] = stripEmDashes(text.replace(/\s+/g, " ").trim());
       made += 1;
     } catch {
       /* skip on error; try again next run */

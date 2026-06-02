@@ -6,7 +6,7 @@ This document is auto-loaded into every agent's context. If a contributor (human
 
 ## Writing Rules (apply to all generative output)
 
-Em dashes (the long dash, U+2014) are forbidden in any generative text on this project: UI copy, JSX strings, code comments, Markdown docs, JSON artifact content (summaries, definitions, cluster names, headlines), and all prompts shipped to models. Replace an em dash with the punctuation the sentence actually wants: comma, colon, semicolon, period, parentheses, or "and". En dashes (U+2013) are allowed only for numeric ranges.
+Em dashes (the long dash, U+2014) are forbidden in any generative text on this project: UI copy, JSX strings, code comments, Markdown docs, JSON artifact content (summaries, definitions, cluster names, headlines), and all prompts shipped to models. Replace an em dash with the punctuation the sentence actually wants: comma, colon, semicolon, period, parentheses, or "and". En dashes (U+2013) are allowed only for numeric ranges. Model-generated prose (classifier summaries and stances, glossary definitions) is additionally sanitized through `worker/lib/text.mjs` before it enters the corpus, because a prompt instruction alone does not guarantee a model complies. Verbatim source titles are quotes, not generative text, and are left intact.
 
 Headings and titles use Title Case. Cite claims: AI-written summaries and definitions must trace to the item they describe.
 

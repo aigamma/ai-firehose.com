@@ -1,4 +1,5 @@
 import { structured, MODELS } from "../lib/anthropic.mjs";
+import { stripEmDashes } from "../lib/text.mjs";
 
 /*
   Classification without guessing. Claude returns schema-valid JSON via a forced
@@ -44,5 +45,10 @@ export async function classifyItem(item, { model = MODELS.bulk } = {}) {
   ]
     .filter(Boolean)
     .join("\n");
-  return structured({ model, system: SYSTEM, prompt, tool: TOOL, maxTokens: 700 });
+  const r = await structured({ model, system: SYSTEM, prompt, tool: TOOL, maxTokens: 700 });
+  // Defense in depth: the prompt forbids em dashes, but enforce it on the prose
+  // the model returns (summary and stance are displayed; see lib/text.mjs).
+  r.summary = stripEmDashes(r.summary);
+  if (r.stance) r.stance = stripEmDashes(r.stance);
+  return r;
 }
