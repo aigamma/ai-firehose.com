@@ -1,0 +1,53 @@
+# Steering Document Hierarchy
+
+A one-page map of the project's documents, ranked by where to start and what each is for. Use it to decide what to read before you work, and where a new insight belongs.
+
+## The Hierarchy at a Glance
+
+| Tier | What it is | When to read | Documents |
+|---|---|---|---|
+| 1. Orientation | "Read first." What this is, the conventions, the contracts. | New contributor, human or AI. | `CLAUDE.md`, `README.md` |
+| 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, ops, or deploy work. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md` |
+| 3. Cumulative wisdom | "Read to understand why, and to avoid past mistakes." | Before any non-trivial change. Append to it when you learn something. | `LESSONS_LEARNED.md` |
+| 4. Run record | "Read to see what the pipeline has actually done." | Tuning rotation windows or thresholds, debugging a bad run. | `docs/INGESTION_LOG.md` |
+
+## Tier 1: Orientation
+
+### `CLAUDE.md` (root)
+The central, auto-loaded guide. Project context and north star, writing rules, pacing, the dialectical absorption protocol, architecture, the core contracts (idempotency, retention, classification without guessing, the AI-grown taxonomy, determinism, no chatbot), the stack, multi-agent collaboration, the documentation map, commands, and current state. If you read one document, read this.
+
+### `README.md` (root)
+Public-facing overview for someone landing on the GitHub repo or curious about the site. Shorter and higher-level than `CLAUDE.md`.
+
+## Tier 2: Active Reference
+
+- `docs/INGESTION.md`: the pipeline stages, the concept-resolution algorithm (AI-discovered, AI-created, then fitted loosely by embedding similarity), and the rolling-quarter prune. Read before touching `worker/`.
+- `docs/RAG.md`: the embedding substrate, Pinecone and Voyage setup, the precompute artifacts and their JSON schemas, the relative-rotation math. Read before touching `rag/` or the artifacts.
+- `docs/SOURCES.md`: every source adapter, with YouTube primary (RSS plus yt-dlp plus Whisper, Apify only as paid fallback), and the source authority weighting. Read before adding or changing a source.
+- `docs/OPERATIONS.md`: keys and where they come from, the daily schedule, cost ceilings, monitoring, and recovery recipes.
+- `docs/DEPLOYMENT.md`: the Fly worker and the Netlify site, DNS, and the deploy chain.
+
+## Tier 3: Cumulative Wisdom
+
+### `LESSONS_LEARNED.md` (root)
+Append-only. Every session that learns something (a better contract, a failure mode, a sourcing rule, a tuning result) appends an entry. This is where the harness gets smarter over time. Read it before you work; add to it before you finish.
+
+## Tier 4: Run Record
+
+### `docs/INGESTION_LOG.md`
+Append-only per-run log: what ran, when, by which agent or model, with what counts and anomalies. The substrate for tuning the rotation windows and the taxonomy thresholds.
+
+## When to Read What (cheat sheet)
+
+| You are about to... | Read first |
+|---|---|
+| Contribute for the first time | `CLAUDE.md`, then `LESSONS_LEARNED.md` |
+| Touch the ingestion pipeline or a source | `docs/INGESTION.md`, `docs/SOURCES.md` |
+| Touch the embedding substrate or artifacts | `docs/RAG.md` |
+| Change the rotation math or thresholds | `docs/RAG.md`, `docs/INGESTION_LOG.md` |
+| Deploy or change infrastructure | `docs/DEPLOYMENT.md`, `docs/OPERATIONS.md` |
+| Discover a new rule or insight mid-session | Put it in `CLAUDE.md` (if a convention) or `LESSONS_LEARNED.md` (if a lesson). Never rely on session memory. |
+
+## Maintenance Rule
+
+Every commit that materially changes a subsystem updates its tier-2 doc in the same commit. A working tree where the code changed but the doc lies is a process failure. Tier 3 and Tier 4 are append-only and grow over time; Tiers 1 and 2 are kept evergreen.

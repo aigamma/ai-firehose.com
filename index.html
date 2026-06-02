@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Firehose: The Bleeding Edge, Organized</title>
+    <meta
+      name="description"
+      content="A daily outlier hunt across the AI industry. What is new in the past day, week, month, and quarter, ranked by relative rotation. Personal intelligence dashboard."
+    />
+    <script>
+      // Set the theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var t = localStorage.getItem('aifh-theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          /* dark is the default in the html tag */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

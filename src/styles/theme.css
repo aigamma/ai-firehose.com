@@ -1,0 +1,204 @@
+/*
+  ai-firehose.com theme.
+  Dark first, with a real light toggle (data-theme="light").
+  Color encodes meaning: each kind (technique/tool/opinion) has an accent,
+  and each rotation quadrant (leading/improving/weakening/lagging) has a color.
+  Ported in spirit from worldthought.com (layered dark surfaces, radial wash)
+  and aigamma.com (the quadrant palette).
+*/
+
+:root {
+  /* Surfaces (dark) */
+  --bg: #0d0f13;
+  --surface: #141820;
+  --surface-2: #1b212c;
+  --surface-3: #232b39;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --text: #e6e9ef;
+  --text-strong: #f5f7fa;
+  --muted: #9aa4b2;
+  --faint: #6b7480;
+
+  /* Primary accent */
+  --accent: #4a9eff;
+  --accent-soft: rgba(74, 158, 255, 0.14);
+
+  /* Kind accents (distinct from quadrant colors on purpose) */
+  --kind-technique: #7b8cf2; /* indigo */
+  --kind-tool: #29c2a3;      /* teal */
+  --kind-opinion: #e85aa0;   /* pink */
+
+  /* Rotation quadrants (the aigamma palette) */
+  --q-leading: #2ecc71;   /* outperforming and gaining */
+  --q-improving: #4a9eff; /* underperforming but gaining */
+  --q-weakening: #f0a030; /* outperforming but fading */
+  --q-lagging: #d85a30;   /* underperforming and fading */
+
+  /* Typography */
+  --font-base: Calibri, "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Motion */
+  --motion-fast: 130ms;
+  --motion-mid: 240ms;
+  --motion-slow: 400ms;
+
+  /* Geometry */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --maxw: 1180px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e3e9f1;
+  --border: rgba(15, 23, 36, 0.10);
+  --border-strong: rgba(15, 23, 36, 0.20);
+
+  --text: #1a1f28;
+  --text-strong: #0c1118;
+  --muted: #56616f;
+  --faint: #8a94a2;
+
+  --accent: #1f6fe5;
+  --accent-soft: rgba(31, 111, 229, 0.10);
+
+  --kind-technique: #5466d8;
+  --kind-tool: #128c74;
+  --kind-opinion: #c63f86;
+
+  --q-leading: #1aa85a;
+  --q-improving: #1f6fe5;
+  --q-weakening: #c8821a;
+  --q-lagging: #c24420;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Soft layered wash, like worldthought, kept subtle. */
+  background-image:
+    radial-gradient(900px 600px at 12% -8%, rgba(74, 158, 255, 0.08), transparent 60%),
+    radial-gradient(800px 600px at 100% 0%, rgba(232, 90, 160, 0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { color: var(--text-strong); line-height: 1.2; font-weight: 650; }
+h1 { font-size: 1.9rem; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.25rem; margin: 0 0 0.6rem; }
+h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+.mono { font-family: var(--font-mono); font-size: 0.9em; }
+.stack > * + * { margin-top: 1rem; }
+
+/* Header and navigation */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .bar {
+  display: flex; align-items: center; gap: 18px;
+  height: 58px;
+}
+.brand { display: flex; align-items: baseline; gap: 9px; font-weight: 750; color: var(--text-strong); }
+.brand .spark { color: var(--accent); }
+.brand .tag { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a {
+  color: var(--muted); padding: 6px 11px; border-radius: var(--radius-sm);
+  font-weight: 550; transition: color var(--motion-fast), background var(--motion-fast);
+}
+.nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.nav a.active { color: var(--text-strong); background: var(--accent-soft); }
+
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); cursor: pointer; transition: background var(--motion-fast);
+}
+.icon-btn:hover { background: var(--surface-3); }
+
+/* Cards and grids */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px;
+}
+.card .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card .card-head h2 { margin: 0; }
+.grid { display: grid; gap: 16px; }
+@media (min-width: 820px) {
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Segmented control (horizon switch) */
+.segmented { display: inline-flex; background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
+.segmented button {
+  border: 0; background: transparent; color: var(--muted);
+  padding: 7px 16px; border-radius: 999px; cursor: pointer; font-weight: 600;
+  font-family: inherit; font-size: 0.92rem; transition: all var(--motion-fast);
+}
+.segmented button:hover { color: var(--text); }
+.segmented button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+
+/* Badges */
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 650;
+  padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border-strong); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.kind-technique { color: var(--kind-technique); }
+.kind-tool { color: var(--kind-tool); }
+.kind-opinion { color: var(--kind-opinion); }
+.q-leading { color: var(--q-leading); }
+.q-improving { color: var(--q-improving); }
+.q-weakening { color: var(--q-weakening); }
+.q-lagging { color: var(--q-lagging); }
+
+/* Empty states (the scaffold before the worker has run) */
+.empty {
+  border: 1px dashed var(--border-strong); border-radius: var(--radius);
+  padding: 26px; text-align: center; color: var(--muted);
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, color-mix(in oklab, var(--surface-2) 60%, transparent) 10px, color-mix(in oklab, var(--surface-2) 60%, transparent) 20px);
+}
+.empty strong { color: var(--text); display: block; margin-bottom: 4px; }
+
+/* Hero */
+.hero { padding: 40px 0 18px; }
+.hero .lede { font-size: 1.05rem; color: var(--muted); max-width: 60ch; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 24px 0; color: var(--muted); font-size: 0.86rem; }
+
+/* Focus visibility for keyboard users */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

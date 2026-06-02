@@ -1,0 +1,36 @@
+# Netlify serves the static React site plus one light read function
+# (/api/retrieve, the non-chat semantic search proxy). The heavy
+# ingestion and precompute run on the Fly.io worker, not here.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# API routes go to functions. This must come before the SPA fallback.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Single-page-app fallback for client-side routing.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Content-hashed build assets are immutable.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Precomputed data artifacts are rebuilt by the worker. Short cache with a
+# long stale-while-revalidate tail so the site stays fast and fresh.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400"
