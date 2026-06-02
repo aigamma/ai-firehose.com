@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
-import { getKind } from "../data/registry.js";
+import { getKind, KINDS } from "../data/registry.js";
 
 export default function Glossary() {
   const { data } = useData("/data/glossary/index.json");
   const [q, setQ] = useState("");
+  const [kind, setKind] = useState("");
   useDocumentTitle("Glossary");
   const all = data?.concepts || [];
   const concepts = all.filter((c) => {
+    if (kind && c.kind !== kind) return false;
     if (!q) return true;
     const s = q.toLowerCase();
     return c.label.toLowerCase().includes(s) || (c.aliases || []).some((a) => a.toLowerCase().includes(s));
@@ -22,6 +24,15 @@ export default function Glossary() {
         {data?.count || 0} concepts, AI-discovered and self-organizing. Near-duplicate names are merged; each links to its hub.
       </p>
       <input className="search" placeholder="Search concepts and aliases..." value={q} onChange={(e) => setQ(e.target.value)} />
+      <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+        <div className="segmented" role="group" aria-label="Filter by kind">
+          <button aria-pressed={kind === ""} onClick={() => setKind("")}>All</button>
+          {KINDS.map((k) => (
+            <button key={k.key} aria-pressed={kind === k.key} onClick={() => setKind(k.key)}>{k.label}</button>
+          ))}
+        </div>
+        <span className="faint mono">{concepts.length} shown</span>
+      </div>
       <div className="card">
         <ul className="feed">
           {concepts.map((c) => {
