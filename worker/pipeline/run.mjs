@@ -16,6 +16,7 @@ import { embed } from "../lib/voyage.mjs";
 import { ensureIndex, upsert, listIds, deleteByIds } from "../lib/pinecone.mjs";
 import { hash16, itemId, slugify } from "../lib/hash.mjs";
 import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
+import { collapseStore } from "./store.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
@@ -100,17 +101,25 @@ async function main() {
   // retained corpus, not just whichever feeds succeeded this run. Prune by
   // retention (published_at). The store keeps RAW classifier concepts; the
   // canonical mapping is recomputed each run.
-  console.log("2a. merge into store + prune by retention...");
+  console.log("2a. merge into store + collapse re-edited duplicates + prune by retention...");
   const store = loadCache("items");
-  for (const it of classified) store[it.id] = it;
-  const cutoffMs = TODAY - RETENTION_DAYS * 86400000;
-  for (const [id, it] of Object.entries(store)) {
-    const t = new Date(it.published_at).getTime();
-    if (Number.isFinite(t) && t < cutoffMs) delete store[id];
+  const classifiedIds = new Set();
+  for (const it of classified) {
+    store[it.id] = it;
+    classifiedIds.add(it.id);
   }
-  const corpus = Object.values(store);
-  saveCache("items", store);
-  console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length})`);
+  // One entry per source item: a re-titled or edited source gets a new content
+  // hash (new id) and must replace, not accumulate beside, its prior version.
+  const deduped = collapseStore(store, classifiedIds);
+  const collapsed = Object.keys(store).length - Object.keys(deduped).length;
+  const cutoffMs = TODAY - RETENTION_DAYS * 86400000;
+  for (const [id, it] of Object.entries(deduped)) {
+    const t = new Date(it.published_at).getTime();
+    if (Number.isFinite(t) && t < cutoffMs) delete deduped[id];
+  }
+  const corpus = Object.values(deduped);
+  saveCache("items", deduped);
+  console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length}${collapsed ? `, collapsed ${collapsed} duplicate` : ""})`);
 
   console.log("2b. concept resolution (fuzzy-merge near-duplicate tags)...");
   // Thresholds come from the registry (the single source of truth): bind at or
