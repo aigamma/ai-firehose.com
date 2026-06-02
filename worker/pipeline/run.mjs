@@ -334,12 +334,15 @@ async function main() {
     .join("\n");
   const rss = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<rss version="2.0">',
+    '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     "  <channel>",
     `    <title>${xmlEsc(SITE.name)}: What Is New</title>`,
     `    <link>https://${SITE.domain}/</link>`,
+    `    <atom:link href="https://${SITE.domain}/feed.xml" rel="self" type="application/rss+xml" />`,
     `    <description>${xmlEsc(SITE.description)}</description>`,
+    "    <language>en</language>",
     `    <lastBuildDate>${new Date(TODAY).toUTCString()}</lastBuildDate>`,
+    "    <generator>ai-firehose</generator>",
     feedRows,
     "  </channel>",
     "</rss>",
