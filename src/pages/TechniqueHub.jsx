@@ -34,6 +34,8 @@ export default function TechniqueHub() {
         {c.aliases?.length > 0 && <span className="faint">also: {c.aliases.join(", ")}</span>}
       </div>
 
+      {c.definition && <p className="lede">{c.definition}</p>}
+
       <div className="grid cols-2">
         <section className="card">
           <div className="card-head"><h2>Where It Sits</h2></div>

@@ -20,6 +20,7 @@ import { rotationForEntities } from "./rotation.mjs";
 import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
+import { defineConcepts } from "./define.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
 import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV } from "../../src/data/registry.js";
@@ -219,6 +220,8 @@ async function main() {
         .map((it) => ({ title: it.title, url: it.url, author_or_channel: it.author_or_channel, published_at: it.published_at, kind: it.kind })),
     }))
     .sort((a, b) => b.attention - a.attention);
+  const defs = await defineConcepts(glossary, conceptToItems, { limit: 60 });
+  for (const c of glossary) if (defs[c.id]) c.definition = defs[c.id];
   writeJson("glossary/index.json", { generated: GENERATED, count: glossary.length, concepts: glossary });
 
   console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
