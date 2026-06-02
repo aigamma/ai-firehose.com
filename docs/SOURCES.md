@@ -12,6 +12,16 @@ Eric's favorite high-signal teachers are the primary input and a leading indicat
 - **Transcription fallback.** When captions are absent, download audio with `yt-dlp` and transcribe with Whisper. This is the exact transcript pattern civil uses. The Whisper host (whisper.cpp on the worker vs the OpenAI Whisper API) is decided in Phase 1 by cost and quality.
 - **Apify.** Documented only as a paid fallback if RSS or yt-dlp is blocked at scale. The default path is from scratch.
 
+**Managing channels.** Curate with the registry CLI (no API key):
+
+```
+node worker/sources/youtube_registry.mjs add @handle --weight=0.9 --kind=mixed
+node worker/sources/youtube_registry.mjs remove @handle
+node worker/sources/youtube_registry.mjs list
+```
+
+It resolves a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
+
 ## Other Sources
 
 - **arXiv.** Public Atom API across cs.AI, cs.LG, cs.CL, cs.CV. Technique and research signal.
