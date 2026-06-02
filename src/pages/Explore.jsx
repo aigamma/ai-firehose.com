@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
+import SemanticSearch from "../components/SemanticSearch.jsx";
 
 function SpectrumView({ axis }) {
   const pts = axis.positions || [];
@@ -50,6 +51,14 @@ export default function Explore() {
       <p className="lede muted">
         The shape of the conversation: the themes it clusters into, where ideas sit on the axes of AI discourse, and which ideas travel together.
       </p>
+
+      <section className="card">
+        <div className="card-head">
+          <h2>Semantic Search</h2>
+          <span className="faint mono" style={{ marginLeft: "auto" }}>Pinecone + Voyage rerank</span>
+        </div>
+        <SemanticSearch />
+      </section>
 
       <section className="card">
         <div className="card-head">
