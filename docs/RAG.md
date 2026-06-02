@@ -25,10 +25,12 @@ Built at network-rebuild time, served from `/data`:
 | `centroids.json` | mean-pool the entity's item vectors, L2 normalize | per-entity position |
 | `constellation.json` | power-iteration PCA to 2D, pinned seed | unified map, normalized to [-1, 1] |
 | `clusters.json` | k-means, k near sqrt(N), seed 42, 12 restarts; Claude names | auto themes |
-| `spectrums.json` | concept axes: `axis_vector = normalize(embed(pole_a) - embed(pole_b))`, project centroids | persists `axis_vector` for live projection |
-| `neighbors.json` | cosine kNN via Pinecone query | "see also" across sources |
+| `spectrums.json` | concept axes: `axis_vector = normalize(embed(pole_a) - embed(pole_b))`, project centroids | served file is positions-only (`{id, label, position_normalized}`); the 1024-dim `axis_vector` and the raw `position` are stripped from the payload. Vectors are parked in `worker/.cache/axis_vectors.json` for future live projection |
 | `influence.json` | derivation and mention edges | network view |
-| `glossary/<slug>.json` | hub assembled from the above | technique integration hub |
+| `glossary/c/<slug>.json` | per-concept hub assembled from the above | full hub (definition, neighbors, axis_positions, top_items), fetched on demand by `/technique/:slug` |
+| `glossary/index.json` | slim list derived from the hubs | `{id, label, kind, attention, aliases, def_snippet}` per concept; drives the glossary list and search |
+
+Neighbors are computed every rebuild and denormalized into the hubs, so no standalone `neighbors.json` is served (it was fetched by nothing).
 | `attention/<kind>_<horizon>.json` | the rotation math below | drives the rotation boards |
 | `digests/<horizon>.json` | new items plus entered or jumped entities plus outliers | What Is New |
 
@@ -38,9 +40,13 @@ Built at network-rebuild time, served from `/data`:
 
 `attention/<kind>_<horizon>.json`: `{ kind, horizon, generated, entities: [{ id|slug, label, attention, rs, ratio, momentum, quadrant, sparkline: number[], outlier: { breakout, new_entrant, quadrant_jump } }] }`.
 
-`glossary/<slug>.json`: `{ slug, title, definition, first_seen, aliases, axis_positions, quadrant, sparkline, neighbors, representative_items, dormant }`.
+`glossary/index.json`: `{ generated, count, concepts: [{ id, label, kind, attention, aliases, def_snippet }] }`. The light list and search payload.
 
-(Schemas are extended as phases land; keep this table and the writers in sync.)
+`glossary/c/<slug>.json`: `{ id, label, kind, attention, aliases, definition, neighbors: [{ id, label, score }], axis_positions: [{ slug, title, position }], top_items: [{ title, url, author_or_channel, published_at, kind }] }`. The full per-concept hub, fetched on demand.
+
+`spectrums.json`: `{ generated, axes: [{ slug, title, pole_a, pole_b, positions: [{ id, label, position_normalized }] }] }`. The `axis_vector` per axis is held out of the served payload (see the table above).
+
+(Schemas are extended as phases land; keep this table and the writers in sync. Rule: a served artifact ships only the fields a page renders. Audit consumers with a raw recursive grep before adding a field, since the dedicated search tool ignores the built `dist/` bundle.)
 
 ## Relative-Rotation Math (ported from aigamma)
 

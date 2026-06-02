@@ -4,6 +4,14 @@ Append-only cumulative wisdom for AI Firehose. The lesson from one session is ab
 
 ---
 
+## Session 2, 2026-06-02: Overnight hardening (split the heavy JSON payloads)
+
+- **Precomputed artifacts are a served payload, not a scratch dump: ship only what a page renders.** The glossary `index.json` had grown to 1.08 MB because it carried the full hub (definition, neighbors with scores, axis_positions, top_items) for all 427 concepts, and both the glossary list and every `/technique/:slug` hub downloaded the whole thing to use a slice of it. `spectrums.json` was 591 KB because each axis embedded its 1024-dim `axis_vector` (needed only by a not-yet-built server projection) plus a raw `position` next to the `position_normalized` the UI actually reads. `neighbors.json` (287 KB) was served but fetched by nothing (already denormalized into the hubs). Why it matters: this is a static site, so every committed artifact is downloaded by real visitors, and the heaviest sat on the two most data-rich pages. How to apply: split per-entity hubs into `glossary/c/<id>.json` fetched on demand, keep a slim `index.json` (`id, label, kind, attention, aliases, def_snippet`) for list and search, strip any field no consumer reads, and park server-only data (axis vectors) outside `public/`. Result: glossary list 1.08 MB to 88 KB, each hub about 4 KB, spectrums 591 to 398 KB, neighbors removed. The fix touched both the generator (`run.mjs`) and the already-committed artifacts (`worker/pipeline/slim_artifacts.mjs`, an idempotent one-time migration), because fixing only the generator would leave the live tree heavy until the next ingest.
+
+- **Audit who actually fetches an artifact before adding fields to it.** Grep each artifact name across `src/` and `netlify/`. A field only the precompute step or a future feature needs does not belong in the browser payload. Caveat learned here: the dedicated ripgrep-based search tool respects `.gitignore`, so it silently skips the built `dist/` bundle and even returned empty for strings that exist in tracked source during this session; a raw recursive `grep` is the authoritative cross-check before deleting or reshaping a served file.
+
+- **The MAX backstop and per-source limits are working: a real run produced 258 items across 6 of 7 sources.** YouTube 104, Hacker News 32, arXiv 30, blog 34, GitHub 25, Hugging Face 33; Reddit still 0 from this datacenter IP (expected, works from Fly or residential). 427 concepts after AI-grown resolution. How to apply: this is a healthy reference distribution to sanity-check future runs against; a sudden collapse in one source's count is an adapter regression, not a quiet day.
+
 ## Session 1, 2026-06-01: Founding (planning and scaffold)
 
 The decisions and principles that shaped the project, captured so a fresh agent inherits them without re-deriving them.

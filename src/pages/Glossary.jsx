@@ -41,7 +41,7 @@ export default function Glossary() {
                   </span>
                   <span className="faint mono">att {c.attention}</span>
                 </div>
-                {c.definition && <div className="faint gloss-def">{c.definition}</div>}
+                {c.def_snippet && <div className="faint gloss-def">{c.def_snippet}</div>}
               </li>
             );
           })}

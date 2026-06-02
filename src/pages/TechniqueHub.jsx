@@ -5,11 +5,11 @@ import { getKind } from "../data/registry.js";
 
 export default function TechniqueHub() {
   const { slug } = useParams();
-  const { data } = useData("/data/glossary/index.json");
-  const c = (data?.concepts || []).find((x) => x.id === slug);
+  const { data: c, loading } = useData(`/data/glossary/c/${slug}.json`);
   useDocumentTitle(c?.label || "Technique");
 
-  if (data && !c) {
+  if (loading) return <div className="stack" style={{ paddingTop: 40 }}><h1>Loading…</h1></div>;
+  if (!c) {
     return (
       <div className="stack" style={{ paddingTop: 40 }}>
         <h1>Unknown concept</h1>
@@ -19,7 +19,6 @@ export default function TechniqueHub() {
       </div>
     );
   }
-  if (!c) return <div className="stack" style={{ paddingTop: 40 }}><h1>Loading…</h1></div>;
 
   const k = getKind(c.kind);
   return (
