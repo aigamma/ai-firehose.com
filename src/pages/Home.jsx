@@ -52,6 +52,9 @@ export default function Home() {
             demo data
           </span>
         )}
+        {digest?.generated && (
+          <span className="faint mono" style={{ marginLeft: "auto" }}>updated {digest.generated}</span>
+        )}
       </div>
 
       {breakout && (

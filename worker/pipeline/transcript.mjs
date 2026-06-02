@@ -1,14 +1,13 @@
 /*
-  YouTube transcript enrichment for the Fly worker. Captions via yt-dlp (fast, no
-  model). Gated by ENABLE_TRANSCRIPTS so it never runs where yt-dlp is absent
-  (for example this dev sandbox). Returns transcript text or null; callers fall
-  back to title plus description. An audio plus Whisper fallback for caption-less
-  videos can be added later (download audio with yt-dlp, transcribe with the
-  OpenAI audio API); captions cover the common case.
+  YouTube transcript enrichment for the Fly worker. Two paths, both via yt-dlp:
+  captions first (fast, no model), then an audio plus OpenAI transcription
+  fallback for caption-less videos. Gated by ENABLE_TRANSCRIPTS so it never runs
+  where yt-dlp is absent (for example this dev sandbox). Returns transcript text
+  or null; callers fall back to title plus description.
 */
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -33,19 +32,47 @@ function vttToText(vtt) {
     .trim();
 }
 
+// Audio plus OpenAI transcription. Best-effort; respects the 25 MB API limit.
+async function audioFallback(url, dir, maxChars) {
+  if (!process.env.OPENAI_API_KEY) return null;
+  try {
+    await exec("yt-dlp", ["-x", "--audio-format", "mp3", "--audio-quality", "5", "-o", join(dir, "%(id)s.%(ext)s"), url], { timeout: 240000 });
+    const mp3 = readdirSync(dir).find((f) => f.endsWith(".mp3"));
+    if (!mp3) return null;
+    const path = join(dir, mp3);
+    if (statSync(path).size > 25 * 1024 * 1024) return null;
+    const form = new FormData();
+    form.append("file", new Blob([readFileSync(path)]), mp3);
+    form.append("model", "whisper-1");
+    const r = await fetch("https://api.openai.com/v1/audio/transcriptions", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+      body: form,
+    });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j.text || "").slice(0, maxChars) || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function transcribeYouTube(url, { maxChars = 6000 } = {}) {
   if (!(await ytDlpAvailable())) return null;
   const dir = mkdtempSync(join(tmpdir(), "aifh-"));
   try {
-    await exec(
-      "yt-dlp",
-      ["--skip-download", "--write-auto-subs", "--write-subs", "--sub-langs", "en.*", "--sub-format", "vtt", "-o", join(dir, "%(id)s.%(ext)s"), url],
-      { timeout: 90000 }
-    );
+    try {
+      await exec(
+        "yt-dlp",
+        ["--skip-download", "--write-auto-subs", "--write-subs", "--sub-langs", "en.*", "--sub-format", "vtt", "-o", join(dir, "%(id)s.%(ext)s"), url],
+        { timeout: 90000 }
+      );
+    } catch {
+      /* no captions; fall through to audio */
+    }
     const vtt = readdirSync(dir).find((f) => f.endsWith(".vtt"));
-    return vtt ? vttToText(readFileSync(join(dir, vtt), "utf8")).slice(0, maxChars) : null;
-  } catch {
-    return null;
+    if (vtt) return vttToText(readFileSync(join(dir, vtt), "utf8")).slice(0, maxChars);
+    return await audioFallback(url, dir, maxChars);
   } finally {
     try {
       rmSync(dir, { recursive: true, force: true });
