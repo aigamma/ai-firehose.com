@@ -9,8 +9,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "ingest": "node worker/pipeline/run.mjs",
-    "network": "node worker/pipeline/network.mjs"
+    "ingest": "node --env-file=worker/.env.local worker/pipeline/run.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "react": "^18.3.1",

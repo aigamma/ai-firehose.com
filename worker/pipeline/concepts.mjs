@@ -49,7 +49,7 @@ const cosine = (a, b) => {
   return d / (Math.sqrt(na) * Math.sqrt(nb) || 1);
 };
 
-export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8 } = {}) {
+export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8, embedFn = embed } = {}) {
   const isJunk = (s) => s.length < 2 || s.length > 60 || !/[a-z]/i.test(s);
   const freq = new Map();
   for (const it of items) {
@@ -61,7 +61,7 @@ export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8 } = {}
   const labels = [...freq.keys()];
   if (!labels.length) return { canon: [], remap: (x) => x || [] };
 
-  const vecs = await embed(labels, "document");
+  const vecs = await embedFn(labels, "document");
   const vecByLabel = new Map(labels.map((l, i) => [l, vecs[i]]));
   const order = [...labels].sort((a, b) => freq.get(b) - freq.get(a) || a.length - b.length);
 

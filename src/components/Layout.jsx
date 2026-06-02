@@ -6,6 +6,7 @@ export default function Layout() {
   const { theme, toggle } = useTheme();
   return (
     <>
+      <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="container bar">
           <NavLink to="/" className="brand">
@@ -37,7 +38,7 @@ export default function Layout() {
         </div>
       </header>
 
-      <main className="container">
+      <main id="main" className="container">
         <Outlet />
       </main>
 
