@@ -32,6 +32,7 @@ export default function Home() {
   const h = getHorizon(horizon);
   const { data: digest } = useData(`/data/digests/${horizon}.json`);
   const { data: constellation } = useData(`/data/constellation.json`);
+  const { data: clustersD } = useData(`/data/clusters.json`);
   const synthetic = digest?.synthetic || constellation?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
@@ -100,7 +101,7 @@ export default function Home() {
           </div>
           {constellation?.points ? (
             <>
-              <Constellation points={constellation.points} />
+              <Constellation points={constellation.points} clusters={clustersD?.clusters || []} />
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 10 }}>
                 {KINDS.map((k) => (
                   <span key={k.key} className={`badge ${k.badgeClass}`}>
