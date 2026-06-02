@@ -22,14 +22,15 @@ async function ytDlpAvailable() {
   }
 }
 
-function vttToText(vtt) {
-  return vtt
+export function vttToText(vtt) {
+  const lines = vtt
     .split(/\r?\n/)
     .filter((l) => l && !/-->/.test(l) && !/^WEBVTT/.test(l) && !/^\d+$/.test(l) && !/^(Kind|Language):/.test(l))
-    .join(" ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+    .map((l) => l.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  // Auto-generated captions repeat each line as the rolling window advances; drop a
+  // line identical to its predecessor so the transcript (and its token cost) stays lean.
+  return lines.filter((l, i) => l !== lines[i - 1]).join(" ").replace(/\s+/g, " ").trim();
 }
 
 // Audio plus OpenAI transcription. Best-effort; respects the 25 MB API limit.
