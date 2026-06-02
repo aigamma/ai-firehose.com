@@ -16,6 +16,9 @@ export default function Constellation({ points = [], clusters = [] }) {
   const r = (a) => 2.5 + Math.sqrt(Math.max(0, a)) * 0.8;
   const byId = Object.fromEntries(points.map((p) => [p.id, p]));
   const regions = (clusters || [])
+    .slice()
+    .sort((a, b) => (b.size || 0) - (a.size || 0))
+    .slice(0, 6)
     .map((c) => {
       const pts = (c.members || []).map((m) => byId[m.id]).filter(Boolean);
       if (pts.length < 3) return null;

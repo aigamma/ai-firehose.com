@@ -11,6 +11,7 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 - **Trending leaderboards and an outliers strip.** The biggest movers, the breakouts, the brand-new entrants.
 - **A Glossary of Techniques.** An AI-grown, self-organizing taxonomy where each technique is an integration hub linking to the items, neighbors, and discourse axes around it.
 - **Live semantic search.** Non-chat retrieval across the corpus.
+- **Explore and subscribe.** Themes, concept spectrums, and an influence graph on the Explore page, plus a subscribable RSS feed (`/feed.xml`) of everything new.
 
 ## How It Stays Fresh
 
