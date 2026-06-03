@@ -125,6 +125,7 @@ export const TAXONOMY = {
 export const NAV = [
   { label: "Home", route: "/" },
   ...KINDS.map((k) => ({ label: k.label, route: k.route })),
+  { label: "Watch", route: "/watch" },
   { label: "Glossary", route: "/glossary" },
   { label: "Explore", route: "/explore" },
   { label: "Methodology", route: "/methodology" },

@@ -47,6 +47,8 @@ Built at network-rebuild time, served from `/data`:
 | `glossary/index.json` | slim list derived from the hubs | `{id, label, kind, attention, aliases, def_snippet}` per concept; drives the glossary list and search |
 | `attention/<kind>_<horizon>.json` | the rotation math below | drives the rotation boards |
 | `digests/<horizon>.json` | new items plus entered or jumped entities plus outliers | What Is New |
+| `digests/briefing_<horizon>.json` | the agentic daily briefing (`worker/pipeline/briefing.mjs`): a cited, sanitized prose summary of the window | the Home briefing lede |
+| `creators.json` | featured creators resolved from RSS plus the corpus join (`scripts/build_creators.mjs`) | the Watch page and the Home watch teaser; see `docs/SOURCES.md` |
 
 Neighbors are computed every rebuild and denormalized into the hubs, so no standalone `neighbors.json` is served (it was fetched by nothing).
 
@@ -59,6 +61,10 @@ Neighbors are computed every rebuild and denormalized into the hubs, so no stand
 `glossary/c/<slug>.json`: `{ id, label, kind, attention, first_seen, rotation: { horizon, quadrant, ratio, momentum, sparkline } | null, aliases, definition, neighbors: [{ id, label, score }], axis_positions: [{ slug, title, position }], top_items: [{ title, url, author_or_channel, published_at, kind }] }`. The full per-concept hub, fetched on demand. `rotation` is the concept's status on its primary kind's board for the default horizon (null when it has no attention in that window), and powers the hub Momentum card.
 
 `spectrums.json`: `{ generated, axes: [{ slug, title, pole_a, pole_b, positions: [{ id, label, position_normalized }] }] }`. The `axis_vector` per axis is held out of the served payload (see the table above).
+
+`digests/briefing_<horizon>.json`: `{ horizon, generated, severity (0..3), headline, body, cited_concepts: [{ slug, label }], cited_items: [{ n, title, url, author_or_channel }], model, prompt_version }`. The `body` carries inline `[n]` markers that reference `cited_items[].n` (the new-item index), rendered as numbered superscript citation links. Headline and body are sanitized and em-dash-free (the style test scans them).
+
+`creators.json`: `{ generated, source, creators: [{ channel_id, name, handle, channelUrl, blurb, videos: [{ videoId, title, published, url, thumbnail, kind, summary, concepts: [{ slug, label }] }] }], pinned: [{ videoId, title, url, thumbnail, note, ... }] }`. `source` is `build`, `worker`, or `fallback`. `summary` and `concepts` are the corpus join (the Citation Contract); a video not yet in the corpus carries an empty summary until the next ingest.
 
 (Schemas are extended as phases land; keep this table and the writers in sync. Rule: a served artifact ships only the fields a page renders. Audit consumers with a raw recursive grep before adding a field, since the dedicated search tool ignores the built `dist/` bundle.)
 

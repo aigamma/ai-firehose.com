@@ -8,7 +8,9 @@
   "engines": { "node": ">=20" },
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/build_creators.mjs || echo creators resolver soft-failed, using committed creators.json",
     "build": "vite build",
+    "creators": "node scripts/build_creators.mjs",
     "preview": "vite preview",
     "ingest": "node --env-file=worker/.env.local worker/pipeline/run.mjs",
     "test": "node --test"

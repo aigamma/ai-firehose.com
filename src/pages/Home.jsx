@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import UnifiedRotationChart from "../components/UnifiedRotationChart.jsx";
 import Briefing from "../components/Briefing.jsx";
+import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
 import ItemCard from "../components/ItemCard.jsx";
 import Sparkline from "../components/Sparkline.jsx";
 import useData from "../lib/useData.js";
@@ -56,6 +57,8 @@ export default function Home() {
   const h = getHorizon(horizon);
   const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
   const { entities, loading: attnLoading, error: attnError, anyData: anyAttn } = useUnifiedAttention(horizon);
+  const { data: creators } = useData("/data/creators.json");
+  const featuredCreator = creators?.creators?.find((c) => c.videos?.length);
   const synthetic = digest?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
@@ -231,6 +234,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {featuredCreator && (
+        <section className="card">
+          <div className="card-head">
+            <h2>Watch</h2>
+            <Link to="/watch" className="eyebrow" style={{ marginLeft: "auto" }}>See all in Watch</Link>
+          </div>
+          <CreatorSpotlight creator={featuredCreator} compact />
+        </section>
+      )}
 
       <section className="card">
         <div className="card-head">

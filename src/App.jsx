@@ -11,6 +11,7 @@ const KindView = lazy(() => import("./pages/KindView.jsx"));
 const Glossary = lazy(() => import("./pages/Glossary.jsx"));
 const TechniqueHub = lazy(() => import("./pages/TechniqueHub.jsx"));
 const Explore = lazy(() => import("./pages/Explore.jsx"));
+const Watch = lazy(() => import("./pages/Watch.jsx"));
 const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/watch" element={<Watch />} />
         <Route path="/methodology" element={<Methodology />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />

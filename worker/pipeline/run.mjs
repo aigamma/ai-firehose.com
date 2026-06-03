@@ -24,6 +24,7 @@ import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
+import { buildCreators } from "../../scripts/build_creators.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
@@ -386,6 +387,17 @@ async function main() {
     "",
   ].join("\n");
   writeFileSync(resolve(DATA, "../feed.xml"), rss);
+
+  // Featured creators (the Watch surface). Refreshes public/data/creators.json from
+  // the curated registry plus this run's fresh corpus (the RAG join). The same
+  // resolver runs at build time as a prebuild step, so the artifact stays current
+  // even between worker runs; here the worker keeps the committed fallback fresh.
+  console.log("5g. featured creators (Watch surface)...");
+  try {
+    await buildCreators({ source: "worker" });
+  } catch (e) {
+    console.error(`creators: ${e.message}`);
+  }
 
   console.log("DONE. Real artifacts written to public/data.");
 }

@@ -325,6 +325,33 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .briefing-body .cite a { font-weight: 700; padding: 0 1px; }
 .briefing-reads { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
 
+/* Watch surface: favorite creators and a pinned playlist. The lite-YouTube facade
+   is a 16:9 thumbnail with a play badge that swaps to the nocookie embed on click,
+   so no YouTube script or cookie loads until the reader opts in (and no layout
+   shift on the swap). Each tile carries the corpus-joined cited summary and concept
+   hub chips (the RAG join). */
+.creator-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.creator-name { font-weight: 700; color: var(--text-strong); font-size: 1.05rem; }
+.creator-blurb { font-size: 0.9rem; flex-basis: 100%; }
+.video-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.video-tile { display: flex; flex-direction: column; gap: 8px; }
+.lite-yt { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; background: var(--surface-2); border: 1px solid var(--border); }
+.lite-yt:hover { border-color: var(--accent); }
+.lite-yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lite-yt__play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; border-radius: 50%; background: rgba(0, 0, 0, 0.55);
+  display: grid; place-items: center; color: #fff;
+  transition: background var(--motion-fast) var(--ease-out), transform var(--motion-fast) var(--ease-out);
+}
+.lite-yt__play svg { margin-left: 3px; } /* optically center the play triangle */
+.lite-yt:hover .lite-yt__play { background: var(--accent-strong); transform: translate(-50%, -50%) scale(1.06); }
+.lite-yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-meta { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.video-title { font-weight: 600; color: var(--text); font-size: 0.9rem; line-height: 1.35; }
+.video-title:hover { color: var(--accent); }
+.pin-note { font-size: 0.84rem; margin: 0; }
+
 /* Feeds (outliers, what is new) */
 .feed { list-style: none; margin: 0; padding: 0; }
 .feed li { display: flex; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--border); }

@@ -29,7 +29,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // The feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx even
 // for valid channels). Retry with backoff; a few attempts reliably succeed.
-async function fetchFeed(id, attempts = 5) {
+export async function fetchFeed(id, attempts = 5) {
   let last = "";
   for (let i = 1; i <= attempts; i += 1) {
     try {
@@ -44,7 +44,7 @@ async function fetchFeed(id, attempts = 5) {
   throw new Error(last || "failed");
 }
 
-function parseEntries(xml, channel) {
+export function parseEntries(xml, channel) {
   return xml
     .split(/<entry>/)
     .slice(1)

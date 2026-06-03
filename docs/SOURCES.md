@@ -34,6 +34,19 @@ It resolves a handle, URL, or UC id to the channel id from the authoritative RSS
 
 `source_authority_weight` (and per-channel `authority_weight` for YouTube) feeds `w_source` in the attention math (`docs/RAG.md`). Favorite teachers and primary labs are weighted high; noisy community sources lower. This is what makes a trusted teacher's coverage a leading indicator rather than just one more mention.
 
+## Featured Creators and the Watch Surface
+
+`sources/featured.json` is a separate, presentation-only registry that drives the Watch page and the Home watch teaser. It is deliberately distinct from `youtube_channels.json`: that one is an ingestion and rotation-weighting source of truth, so featuring a creator on the dashboard never perturbs the rotation math. `featured.json` has `creators[]` (`channel_id`, `name`, `handle`, `blurb`, `active`, optional `latest_count`) and a `pinned[]` playlist (`videoId`, `note`).
+
+The resolver `scripts/build_creators.mjs` turns it into the served artifact `public/data/creators.json` (schema in `docs/RAG.md`). It uses no API key: it polls each creator's free RSS feed for the latest videos (reusing `fetchFeed` and `parseEntries` exported from `worker/sources/youtube.mjs`), then joins each video to its classified record in the corpus (`worker/.cache/items.json`) so every video carries the model-written `summary` and its `concepts` as links into the glossary hubs (the RAG join, the Citation Contract). The corpus is also the fallback: when RSS is blocked (Netlify build IPs are datacenter IPs, and the feed is flaky from those), a creator resolves from the corpus, which already holds the recent uploads, and a fully blocked build keeps the previously committed `creators.json` rather than emptying. The resolver runs as a `prebuild` npm step (so every Netlify deploy refreshes it) and again in the worker `run.mjs` (so the committed fallback stays fresh). Per-video semantic neighbors (related videos by vector similarity) are a documented future enhancement; the concept hubs already provide the related-concepts surface.
+
+### The Curation Workflow (the agentic terminal)
+
+Eric curates Watch by asking Claude Code, which edits the one file `sources/featured.json`, commits, and pushes; Netlify's `prebuild` then refreshes the artifact and the video appears.
+
+- **Feature a creator.** Resolve the channel id (`node worker/sources/youtube_registry.mjs resolve @handle`), append a `creators[]` entry with a one-line `blurb` (no em dashes), optionally `npm run creators` to verify locally, then commit and push.
+- **Pin a video.** Extract the `v=` id from the watch URL (validate `^[\w-]{11}$`), append `{ videoId, note }` to `pinned[]`, optionally `npm run creators`, then commit and push.
+
 ## Adding a Source
 
 Implement the adapter interface, register it, set a default authority weight, and document it here in the same commit (the maintenance rule). The classifier and the rest of the pipeline are source-agnostic downstream of fetch.

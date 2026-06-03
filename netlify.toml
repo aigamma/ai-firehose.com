@@ -36,7 +36,12 @@
     Cache-Control = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400"
 
 # Security headers for all routes. CSP allows the inline theme-bootstrap script
-# and JSX inline styles ('unsafe-inline'); everything else is same-origin.
+# and JSX inline styles ('unsafe-inline'); everything else is same-origin, except
+# the Watch surface: img-src grants YouTube thumbnails (i.ytimg.com) and frame-src
+# grants the click-to-play embed (youtube-nocookie.com only). Without these two the
+# Watch feature works in `npm run dev` but silently fails in production. The runtime
+# makes no XHR to YouTube (RSS and the corpus join happen at build), so connect-src
+# stays same-origin.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -44,4 +49,4 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
