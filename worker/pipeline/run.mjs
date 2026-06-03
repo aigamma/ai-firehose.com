@@ -26,6 +26,7 @@ import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
 import { buildGlossary } from "../../scripts/build_glossary.mjs";
+import { embedGlossary } from "./embed_glossary.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
@@ -260,6 +261,14 @@ async function main() {
   // durable and persist regardless of retention; the corpus supplies attention,
   // rotation, neighbors, and items where a slug appears in both. See docs/GLOSSARY.md.
   buildGlossary();
+  // Make RAG aware of the durable glossary: embed the authored entries into the same
+  // Pinecone space as the corpus, so semantic search returns the knowledge layer too.
+  // Best-effort; a Voyage hiccup must not sink the run.
+  try {
+    await embedGlossary();
+  } catch (e) {
+    console.log(`   glossary embed skipped: ${e.message}`);
+  }
 
   console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
   try {
@@ -268,7 +277,10 @@ async function main() {
     // artifacts, not the raw pre-collapse store, so collapsed duplicates and
     // aged-out vectors are deleted from Pinecone and vector cost stays flat.
     const keep = new Set(Object.keys(deduped));
-    const stale = liveIds.filter((id) => !keep.has(id));
+    // Preserve the durable glossary vectors (glossary:: prefix): they are the
+    // permanent knowledge layer, not corpus items, so they are absent from `deduped`
+    // and must never be reconciled away.
+    const stale = liveIds.filter((id) => !keep.has(id) && !id.startsWith("glossary::"));
     await deleteByIds(host, stale);
     console.log(`   pinecone ${liveIds.length} vectors, removed ${stale.length} aged-out`);
   } catch (e) {

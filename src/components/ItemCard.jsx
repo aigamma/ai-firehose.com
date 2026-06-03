@@ -50,7 +50,11 @@ export default function ItemCard({ item, linkConcepts = false }) {
       <div className="feed-head" style={{ flexWrap: "wrap" }}>
         {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
         <span className="lead-label" style={{ flex: "1 1 auto", whiteSpace: "normal" }}>
-          <a href={item.url} target="_blank" rel="noreferrer">{item.title || item.url}</a>
+          {item.url && item.url.startsWith("/") ? (
+            <Link to={item.url}>{item.title || item.url}</Link>
+          ) : (
+            <a href={item.url} target="_blank" rel="noreferrer">{item.title || item.url}</a>
+          )}
         </span>
         {pct && (
           <span className="mono" style={{ fontVariantNumeric: "tabular-nums", color: "var(--faint)" }} title="Relevance">
