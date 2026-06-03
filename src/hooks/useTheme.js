@@ -2,6 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 
 const KEY = "aifh-theme";
 
+// The active surface background per theme, mirroring --bg in src/styles/theme.css.
+// The mobile browser-chrome color (theme-color meta) is kept in sync with these,
+// so light-mode users do not get dark chrome.
+const BG = { dark: "#0d0f13", light: "#f6f8fb" };
+
 function currentTheme() {
   if (typeof document !== "undefined") {
     const t = document.documentElement.getAttribute("data-theme");
@@ -17,6 +22,8 @@ export default function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", BG[theme] || BG.dark);
     try {
       localStorage.setItem(KEY, theme);
     } catch (e) {

@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
 // Fetch a precomputed JSON artifact from /data. Three states are kept distinct:
-//   - error: a network, HTTP (non-404), or JSON parse failure. Surfaced so the
-//     UI can show an honest "Unable to load" message.
-//   - data === null with no error: a 404, i.e. the artifact does not exist yet.
-//     This is the honest "awaiting ingestion" empty state before the worker runs.
+//   - error: a network or HTTP (non-404) failure. Surfaced so the UI can show an
+//     honest "Unable to load" message.
+//   - data === null with no error: the artifact does not exist yet. This is the
+//     honest "awaiting ingestion" empty state before the worker runs. It covers
+//     both a literal 404 and the Netlify SPA fallback (netlify.toml rewrites a
+//     missing /data/*.json to /index.html with HTTP 200), which we detect by a
+//     non-JSON content type or a body that fails to JSON-parse, so a missing
+//     artifact reads as empty rather than crashing on parsed HTML.
 //   - data: the parsed artifact.
 //
 // A module-level cache keyed on path means repeat navigations resolve
@@ -21,7 +25,20 @@ function load(path) {
     .then((r) => {
       if (r.status === 404) return null;
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.json();
+      // A missing artifact can return 200 via the Netlify SPA fallback, serving
+      // index.html instead of JSON. Treat a non-JSON content type as the same
+      // "does not exist yet" empty case a 404 produces.
+      const ct = r.headers.get("content-type") || "";
+      if (!ct.includes("application/json")) return null;
+      // Even with a JSON content type, fall back to empty rather than error if
+      // the body does not actually parse (a truncated or HTML response).
+      return r.text().then((body) => {
+        try {
+          return JSON.parse(body);
+        } catch {
+          return null;
+        }
+      });
     })
     .then((data) => {
       cache.set(path, data);

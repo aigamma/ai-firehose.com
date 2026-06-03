@@ -28,6 +28,18 @@ export async function defineConcepts(concepts, conceptToItems = {}, { limit = 60
       /* skip on error; try again next run */
     }
   }
-  if (made) saveCache("definitions", cache);
+  // Prune definitions for concepts that have left the corpus, so the cache
+  // tracks the rolling-quarter taxonomy like everything else. We key on the full
+  // current concept set, not the cost-bounded `top` slice, so a still-present
+  // concept that just fell below `limit` this run keeps its paid-for definition.
+  const live = new Set(concepts.map((c) => c.id));
+  let pruned = 0;
+  for (const id of Object.keys(cache)) {
+    if (!live.has(id)) {
+      delete cache[id];
+      pruned += 1;
+    }
+  }
+  if (made || pruned) saveCache("definitions", cache);
   return cache;
 }

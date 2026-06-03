@@ -36,6 +36,7 @@ export async function ensureIndex({ name = ENV.pineconeIndex, dimension = 1024, 
     info = await describeIndex(name);
   }
   if (!info?.host) throw new Error("Pinecone index host not ready after wait");
+  if (info?.status?.ready === false) throw new Error("Pinecone index host present but not ready after wait");
   return info.host;
 }
 

@@ -19,10 +19,13 @@ export async function fetchHuggingFace({ maxAgeDays = 100, limit = 30 } = {}) {
       const published = pub ? new Date(pub).toISOString() : null;
       if (published && new Date(published).getTime() < cutoff) continue;
       if (!paper.title) continue;
+      // No paper.id means no stable id and a dead /papers/ URL, so skip rather
+      // than emit a title-keyed item with a broken link.
+      if (!paper.id) continue;
       out.push({
         source: "huggingface",
-        source_id: `paper:${paper.id || paper.title}`,
-        url: `https://huggingface.co/papers/${paper.id || ""}`,
+        source_id: `paper:${paper.id}`,
+        url: `https://huggingface.co/papers/${paper.id}`,
         title: String(paper.title).replace(/\s+/g, " ").trim(),
         summary_text: [paper.title, (paper.summary || "").replace(/\s+/g, " ").slice(0, 1500)].filter(Boolean).join("\n\n"),
         author_or_channel: "HF Papers",

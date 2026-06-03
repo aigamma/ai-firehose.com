@@ -6,28 +6,27 @@
 set -e
 
 WORKDIR=/repo
-if [ -n "$REPO_URL" ] && [ -n "$GH_TOKEN" ]; then
-  AUTH_URL=$(printf '%s' "$REPO_URL" | sed "s#https://#https://x-access-token:$GH_TOKEN@#")
-  rm -rf "$WORKDIR"
-  git clone --depth 1 "$AUTH_URL" "$WORKDIR"
-  cd "$WORKDIR"
-else
-  echo "REPO_URL/GH_TOKEN not set; running in place without publish"
-  cd /app
+# The Docker image bakes only this script (no worker/ tree at /app), so the
+# pipeline can only run from a fresh clone. Both env vars are required.
+if [ -z "$REPO_URL" ] || [ -z "$GH_TOKEN" ]; then
+  echo "REPO_URL and GH_TOKEN are required (the image has no worker/ tree to run in place)" >&2
+  exit 1
 fi
+AUTH_URL=$(printf '%s' "$REPO_URL" | sed "s#https://#https://x-access-token:$GH_TOKEN@#")
+rm -rf "$WORKDIR"
+git clone --depth 1 "$AUTH_URL" "$WORKDIR"
+cd "$WORKDIR"
 
 node worker/pipeline/run.mjs
 
-if [ -n "$REPO_URL" ] && [ -n "$GH_TOKEN" ]; then
-  git config user.email "worker@ai-firehose.com"
-  git config user.name "ai-firehose worker"
-  # Commit the rebuilt artifacts (public/data, sitemap, feed) AND the accumulating
-  # corpus (items.json) so the rolling quarter survives the next clone-fresh run.
-  git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json
-  if git diff --cached --quiet; then
-    echo "no artifact changes"
-  else
-    git commit -m "data: scheduled ingestion"
-    git push origin HEAD:main
-  fi
+git config user.email "worker@ai-firehose.com"
+git config user.name "ai-firehose worker"
+# Commit the rebuilt artifacts (public/data, sitemap, feed) AND the accumulating
+# corpus (items.json) so the rolling quarter survives the next clone-fresh run.
+git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json
+if git diff --cached --quiet; then
+  echo "no artifact changes"
+else
+  git commit -m "data: scheduled ingestion"
+  git push origin HEAD:main
 fi
