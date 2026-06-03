@@ -75,31 +75,32 @@ export default function Home() {
 
   return (
     <div className="stack">
-      <section className="hero">
-        <h1>{SITE.tagline}</h1>
-        <p className="lede">{SITE.description}</p>
-      </section>
+      <header className="masthead">
+        <p className="masthead-kicker">{SITE.name}</p>
+        <h1 className="masthead-title">{SITE.tagline}</h1>
+        <p className="masthead-stand">{SITE.description}</p>
+      </header>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+      <div className="dateline">
         <span ref={switcherRef} style={{ display: "inline-flex" }}>
           <HorizonSwitch value={horizon} onChange={setHorizon} />
         </span>
-        <span className="muted">
-          What is new in the past <strong>{h.label.toLowerCase()}</strong>.
-        </span>
+        <span className="dateline-phrase">The past {h.label.toLowerCase()} on the frontier</span>
         {synthetic && (
           <span className="synthetic-ribbon" title="Placeholder data until the live worker runs">
             demo data
           </span>
         )}
         {digest?.generated && (
-          <span className="faint mono" style={{ marginLeft: "auto" }}>updated {digest.generated}</span>
+          <span className="faint mono dateline-stamp">updated {digest.generated}</span>
         )}
       </div>
 
+      <Briefing horizon={horizon} />
+
       {breakout && (
         <Link to={`/technique/${breakout.id}`} className="breakout">
-          <span className="breakout-tag">Breaking out</span>
+          <span className="breakout-tag">Breaking Out</span>
           <strong>{breakout.label}</strong>
           <span className="faint mono">
             {getKind(breakout.kind)?.singular} · {(breakout.delta ?? 0) >= 0 ? "+" : ""}{Math.round(breakout.delta ?? 0)} vs prior {h.label.toLowerCase()} · attention {breakout.attention}
@@ -107,15 +108,13 @@ export default function Home() {
         </Link>
       )}
 
-      <Briefing horizon={horizon} />
-
       <section className="card">
         <div className="card-head">
-          <h2>What Is Trending</h2>
+          <h2>What Moved</h2>
           <span className="faint mono" style={{ marginLeft: "auto" }}>growth vs the prior {h.label.toLowerCase()}</span>
         </div>
-        <p className="muted" style={{ margin: "0 0 14px", maxWidth: "74ch" }}>
-          Each topic is ranked by how much attention it gained or lost against the {h.label.toLowerCase()} before. The bar is its current attention: the further it fills from left to right, the more of the {h.label.toLowerCase()}'s conversation that topic holds, with each column scaled to its own busiest topic. The signed number is that change, green when rising and red when cooling, and topics that just broke out or first surfaced are flagged.
+        <p className="muted" style={{ margin: "0 0 14px", maxWidth: "70ch" }}>
+          The topics that gained or lost the most attention against the {h.label.toLowerCase()} before. The bar is the share of the conversation each holds now, green when rising and red when cooling.
         </p>
         {attnError ? (
           <LoadError label="Trend boards" />
@@ -145,7 +144,7 @@ export default function Home() {
 
       <section className="card">
         <div className="card-head">
-          <h2>What Is New</h2>
+          <h2>Fresh Off the Wire</h2>
           <span className="eyebrow" style={{ marginLeft: "auto" }}>past {h.label.toLowerCase()}</span>
         </div>
         {digestError ? (

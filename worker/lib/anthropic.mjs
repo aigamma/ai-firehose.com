@@ -1,14 +1,18 @@
 import { ENV } from "./env.mjs";
 
-// Anthropic client. Bulk classification runs on Haiku (cheap, fast); quality
-// gates (concept definitions, cluster names) run on Sonnet. Structured output
-// is a forced tool call, so the model must return schema-valid JSON.
+// Anthropic client. Three tiers chosen by stakes, not by default: bulk (Haiku)
+// for high-volume day-to-day work (classifying each item); quality (Sonnet) for
+// the middle tier (cluster naming, future passes); enduring (Opus 4.8) for the
+// durable, high-stakes prose a smart reader keeps, the daily brief and the
+// glossary definitions. Structured output is a forced tool call, so the model
+// must return schema-valid JSON.
 const URL = "https://api.anthropic.com/v1/messages";
 const VERSION = "2023-06-01";
 
 export const MODELS = {
   bulk: "claude-haiku-4-5-20251001",
   quality: "claude-sonnet-4-6",
+  enduring: "claude-opus-4-8",
 };
 
 async function call(body) {

@@ -63,7 +63,7 @@ function stateHash(state) {
 // Generate (or reuse) the briefing for one window. Returns the result object, or
 // null if the model call fails and there is no cached prior. Idempotent: identical
 // state returns the cached result with no API call.
-export async function generateBriefing(state, { model = MODELS.quality } = {}) {
+export async function generateBriefing(state, { model = MODELS.enduring } = {}) {
   const cache = loadCache("briefing");
   const h = stateHash(state);
   const prior = cache[state.horizon];

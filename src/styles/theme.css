@@ -249,9 +249,35 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 }
 .empty strong { color: var(--text); display: block; margin-bottom: 4px; }
 
-/* Hero */
+/* Hero (legacy, still used by interior pages) */
 .hero { padding: 40px 0 18px; }
 .hero .lede { font-size: 1.05rem; color: var(--muted); max-width: 60ch; }
+
+/* Masthead: the editorial front page header on Home. A mono kicker, a serif
+   nameplate, and an italic standfirst, over a hairline dateline. This is the
+   analyst's page, not a control panel: editorial, not instrumental. */
+.masthead { padding: 46px 0 8px; max-width: 62ch; }
+.masthead-kicker {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.24em; color: var(--accent); margin: 0 0 16px;
+}
+.masthead-title {
+  font-family: var(--font-serif); font-weight: 600; color: var(--text-strong);
+  font-size: clamp(2.1rem, 5.2vw, 3.3rem); line-height: 1.03; letter-spacing: -0.02em; margin: 0;
+}
+.masthead-stand {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.32rem); line-height: 1.5;
+  color: var(--muted); margin: 18px 0 0; max-width: 56ch;
+}
+/* Dateline: the hairline rule under the masthead. Horizon control on the left,
+   the window phrase set in italic serif, the freshness stamp on the right edge. */
+.dateline {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding-top: 16px; border-top: 1px solid var(--border-strong);
+}
+.dateline-phrase { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.02rem; }
+.dateline-stamp { margin-left: auto; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 24px 0; color: var(--muted); font-size: 0.86rem; }
@@ -478,6 +504,18 @@ a { text-underline-offset: 3px; }
   .nav { gap: 2px; }
   .nav a { padding: 5px 8px; font-size: 0.9rem; }
 }
+
+/* Choreographed front-page entrance: each top-level block rises in, staggered
+   top to bottom, so the page reads like it is being set rather than dumped. The
+   reduced-motion block below zeroes the duration, so it lands instantly there. */
+@keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.stack > * { animation: riseIn var(--motion-slow) var(--ease-out) both; }
+.stack > *:nth-child(2) { animation-delay: 70ms; }
+.stack > *:nth-child(3) { animation-delay: 140ms; }
+.stack > *:nth-child(4) { animation-delay: 210ms; }
+.stack > *:nth-child(5) { animation-delay: 280ms; }
+.stack > *:nth-child(6) { animation-delay: 350ms; }
+.stack > *:nth-child(n+7) { animation-delay: 420ms; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }

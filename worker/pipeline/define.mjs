@@ -12,7 +12,7 @@ import { stripEmDashes } from "../lib/text.mjs";
 const SYSTEM =
   "You write one-sentence, factual definitions of AI concepts for a glossary. No hype, no em dashes. If it is a tool or product, say what it is and what it does. If it is a technique, say what it is and what problem it addresses. If it is a discourse theme, state the question at stake. One sentence, under 40 words.";
 
-export async function defineConcepts(concepts, conceptToItems = {}, { limit = 60, model = MODELS.bulk } = {}) {
+export async function defineConcepts(concepts, conceptToItems = {}, { limit = 60, model = MODELS.enduring } = {}) {
   const cache = loadCache("definitions");
   const top = [...concepts].sort((a, b) => (b.attention || 0) - (a.attention || 0)).slice(0, limit);
   let made = 0;

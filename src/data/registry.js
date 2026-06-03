@@ -10,9 +10,9 @@
 export const SITE = {
   name: "AI Firehose",
   domain: "ai-firehose.com",
-  tagline: "The bleeding edge, organized.",
+  tagline: "Your Standing Brief on the AI Frontier",
   description:
-    "A daily outlier hunt across the AI industry. What is new in the past day, week, month, and quarter, ranked by relative rotation. A personal instrument for staying organized and courageous on the frontier.",
+    "We read the whole AI firehose so you do not have to, then distill it into one brief: what is new, what is breaking out, and what is worth your time, across the day, week, month, and quarter. You take what you want and leave the rest.",
 };
 
 // Rolling-quarter retention. Nothing older than this is kept in Pinecone or the
