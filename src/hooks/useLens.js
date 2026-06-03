@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { toggleFollow as applyToggle } from "../lib/lens.js";
 
 // A localStorage-backed personalization lens: the set of concepts a reader follows.
 // This is the "bottled just for you" layer in its first form, with no account and no
@@ -41,10 +42,7 @@ export default function useLens() {
   }, []);
 
   const toggleFollow = useCallback((id) => {
-    setLens((l) => ({
-      ...l,
-      follows: l.follows.includes(id) ? l.follows.filter((x) => x !== id) : [...l.follows, id],
-    }));
+    setLens((l) => ({ ...l, follows: applyToggle(l.follows, id) }));
   }, []);
   const isFollowing = useCallback((id) => lens.follows.includes(id), [lens.follows]);
   const clearFollows = useCallback(() => setLens((l) => ({ ...l, follows: [] })), []);
