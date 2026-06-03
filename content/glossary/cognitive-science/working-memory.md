@@ -4,7 +4,7 @@ slug: working-memory
 kind: technique
 category: Cognitive Science and Neuroscience
 aliases: short-term working memory, the cognitive workspace
-related: global-workspace-theory, dual-process-theory, attention, context-window, recurrent-neural-network, transformer
+related: global-workspace-theory, dual-process-theory, attention-mechanism, context-window, recurrent-neural-network, transformer
 summary: The brain's limited-capacity system for holding and manipulating a small amount of information over short timescales, the mental workspace that supports reasoning, language, and planning. Its sharp capacity limit shapes much of human cognition.
 ---
 

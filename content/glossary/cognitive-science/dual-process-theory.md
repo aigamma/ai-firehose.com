@@ -4,7 +4,7 @@ slug: dual-process-theory
 kind: technique
 category: Cognitive Science and Neuroscience
 aliases: System 1 and System 2, two-system theory, dual-system theory
-related: working-memory, global-workspace-theory, bayesian-brain, reasoning, chain-of-thought, neural-network
+related: working-memory, global-workspace-theory, bayesian-brain, reasoning-model, chain-of-thought, neural-network
 summary: A framework in cognitive psychology holding that the mind operates with two distinct kinds of process: a fast, automatic, intuitive mode (System 1) and a slow, effortful, deliberate mode (System 2). It explains both the efficiency and the systematic errors of human thought.
 ---
 

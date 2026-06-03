@@ -4,7 +4,7 @@ slug: perplexity
 kind: technique
 category: Evaluation and Benchmarks
 aliases: PPL
-related: cross-entropy, language-model, calibration, bits-per-character, log-likelihood
+related: cross-entropy, large-language-model, calibration, maximum-likelihood-estimation
 summary: An intrinsic measure of how well a language model predicts a text, defined as the exponential of the average per-token cross-entropy. Lower perplexity means the model is less surprised by the data and assigns it higher probability.
 ---
 

@@ -4,7 +4,7 @@ slug: elo-rating
 kind: technique
 category: Evaluation and Benchmarks
 aliases: Elo, Elo score, Bradley-Terry rating
-related: llm-as-judge, mmlu, calibration, pairwise-comparison
+related: llm-as-judge, mmlu, calibration, humaneval
 summary: A method for ranking competitors from pairwise win-loss outcomes, originally for chess, now widely used to rank language models from head-to-head human preference votes such as those collected by Chatbot Arena.
 ---
 

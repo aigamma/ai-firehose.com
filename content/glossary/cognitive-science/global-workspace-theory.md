@@ -4,7 +4,7 @@ slug: global-workspace-theory
 kind: technique
 category: Cognitive Science and Neuroscience
 aliases: GWT, global neuronal workspace, global workspace
-related: working-memory, dual-process-theory, bayesian-brain, attention, neural-network, transformer
+related: working-memory, dual-process-theory, bayesian-brain, attention-mechanism, neural-network, transformer
 summary: A theory of consciousness and cognition in which many specialized, parallel processors compete for access to a limited central workspace; whatever wins is broadcast brain-wide and becomes conscious and globally available. It frames consciousness as a mechanism for flexible information sharing.
 ---
 

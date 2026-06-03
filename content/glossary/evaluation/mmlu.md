@@ -4,7 +4,7 @@ slug: mmlu
 kind: technique
 category: Evaluation and Benchmarks
 aliases: Massive Multitask Language Understanding
-related: benchmark-contamination, perplexity, f1-score, llm-as-judge, few-shot-learning
+related: benchmark-contamination, perplexity, f1-score, llm-as-judge, humaneval
 summary: A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number.
 ---
 

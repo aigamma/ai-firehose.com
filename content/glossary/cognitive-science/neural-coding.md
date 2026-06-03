@@ -4,7 +4,7 @@ slug: neural-coding
 kind: technique
 category: Cognitive Science and Neuroscience
 aliases: neural code, neural representation, spike coding
-related: spiking-neural-network, hebbian-learning, predictive-coding, bayesian-brain, neuromorphic-computing, embedding
+related: spiking-neural-network, hebbian-learning, predictive-coding, bayesian-brain, neuromorphic-computing, embedding-model
 summary: The study of how neurons represent and transmit information through their patterns of electrical activity, whether by firing rate, precise spike timing, or the joint activity of populations. It is the question of what the brain's signals actually mean.
 ---
 

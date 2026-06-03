@@ -4,7 +4,7 @@ slug: calibration
 kind: technique
 category: Evaluation and Benchmarks
 aliases: model calibration, confidence calibration, expected calibration error
-related: perplexity, precision-and-recall, roc-auc, f1-score, temperature-scaling
+related: perplexity, precision-and-recall, roc-auc, f1-score, hallucination
 summary: The property that a model's stated confidence matches its actual accuracy. A well-calibrated model that says it is 80 percent sure is right about 80 percent of the time. Measured by expected calibration error and visualized with reliability diagrams.
 ---
 
