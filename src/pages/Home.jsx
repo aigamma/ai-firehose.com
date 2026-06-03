@@ -7,6 +7,8 @@ import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
 import ItemCard from "../components/ItemCard.jsx";
 import useData from "../lib/useData.js";
 import useUnifiedAttention from "../lib/useUnifiedAttention.js";
+import useLens from "../hooks/useLens.js";
+import { filterByLens } from "../lib/lens.js";
 import { SITE, HORIZONS, KINDS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
 
 // A distinct load-failure notice, visually separate from the dashed ".empty"
@@ -43,8 +45,18 @@ export default function Home() {
   // hero: the strongest breakout by growth, else the single biggest mover. Both read
   // the live boards (which carry `delta`), not the digest, so the lede always matches
   // what the boards show.
-  const byKind = KINDS.map((k) => ({ kind: k, list: entities.filter((e) => e.kind === k.key) }));
-  const sortedByDelta = [...entities].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0));
+  // The personalization lens (opt-in, default off): when on and the reader follows
+  // anything, narrow the boards and the new-items to their followed concepts. The
+  // briefing stays global (it is the analyst's overview); the lens narrows the lists.
+  const [lensOn, setLensOn] = useState(false);
+  const { follows } = useLens();
+  const lensActive = lensOn && follows.length > 0;
+  const viewEntities = lensActive ? filterByLens(entities, follows) : entities;
+  const newItems = digest?.new_items || [];
+  const viewItems = lensActive ? filterByLens(newItems, follows) : newItems;
+
+  const byKind = KINDS.map((k) => ({ kind: k, list: viewEntities.filter((e) => e.kind === k.key) }));
+  const sortedByDelta = [...viewEntities].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0));
   const breakout = sortedByDelta.find((e) => e.outlier?.breakout) || sortedByDelta[0];
 
   // Arrow keys cycle the horizon (Day to Quarter), but ONLY when focus is within
@@ -86,6 +98,20 @@ export default function Home() {
           <HorizonSwitch value={horizon} onChange={setHorizon} />
         </span>
         <span className="dateline-phrase">The past {h.label.toLowerCase()} on the frontier</span>
+        {follows.length > 0 ? (
+          <button
+            type="button"
+            className="chip"
+            aria-pressed={lensActive}
+            onClick={() => setLensOn((v) => !v)}
+            title={lensActive ? "Showing only the concepts you follow. Click to show everything." : "Filter this page to the concepts you follow."}
+            style={lensActive ? { borderColor: "var(--accent)", color: "var(--accent)" } : undefined}
+          >
+            {lensActive ? `Your lens (${follows.length})` : `Show your lens (${follows.length})`}
+          </button>
+        ) : (
+          <Link to="/lens" className="chip" title="Follow concepts to personalize this page">Personalize</Link>
+        )}
         {synthetic && (
           <span className="synthetic-ribbon" title="Placeholder data until the live worker runs">
             demo data
@@ -118,6 +144,11 @@ export default function Home() {
         </p>
         {attnError ? (
           <LoadError label="Trend boards" />
+        ) : lensActive && !viewEntities.length ? (
+          <div className="empty">
+            <strong>Nothing in your lens moved this {h.label.toLowerCase()}</strong>
+            Turn off your lens above to show everything, or follow more concepts.
+          </div>
         ) : anyAttn ? (
           <div className="heat-grid">
             {byKind.map(({ kind, list }) => (
@@ -149,12 +180,14 @@ export default function Home() {
         </div>
         {digestError ? (
           <LoadError label={`New in the past ${h.label.toLowerCase()}`} />
-        ) : digest?.new_items?.length ? (
+        ) : viewItems.length ? (
           <div className="grid cols-2">
-            {digest.new_items.map((it, i) => (
+            {viewItems.map((it, i) => (
               <ItemCard key={it.id || i} item={it} linkConcepts />
             ))}
           </div>
+        ) : lensActive ? (
+          <div className="empty"><strong>Nothing new in your lens this {h.label.toLowerCase()}</strong>Turn off your lens above, or follow more concepts.</div>
         ) : (
           <div className="empty"><strong>New in the past {h.label.toLowerCase()}</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
         )}
