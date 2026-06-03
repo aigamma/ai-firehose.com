@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 792,
-  "durable_count": 395,
+  "count": 795,
+  "durable_count": 398,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1548,6 +1548,19 @@
       "attention": 4,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "contrastive-decoding",
+      "label": "Contrastive Decoding",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "contrastive decoding",
+        "DoLa"
+      ],
+      "def_snippet": "A decoding method that scores candidate tokens by the difference between a strong model's and a weaker model's log-probabilities, suppressing the generic continuations both agree on and favoring what the strong model uniquely prefers, which improves coherence and factuality.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "contrastive-learning",
@@ -4371,6 +4384,19 @@
       "def_snippet": ""
     },
     {
+      "id": "logit-bias",
+      "label": "Logit Bias",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "logit bias",
+        "token bias"
+      ],
+      "def_snippet": "An inference control that adds a fixed offset to the logits of specified tokens before sampling, nudging the model toward or away from particular words or symbols without retraining, used to ban tokens, steer vocabulary, or shape outputs.",
+      "durable": true,
+      "category": "Inference and Sampling"
+    },
+    {
       "id": "logit-lens",
       "label": "Logit Lens",
       "kind": "technique",
@@ -4803,6 +4829,19 @@
       "def_snippet": "The object that defines an inner product in each tangent space of a manifold, supplying the local rule for measuring lengths, angles, and ultimately distances and curvature across a possibly curved space.",
       "durable": true,
       "category": "Geometry and Manifolds"
+    },
+    {
+      "id": "min-p-sampling",
+      "label": "Min-P Sampling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "min-p",
+        "min p sampling"
+      ],
+      "def_snippet": "A sampling method that keeps only tokens whose probability is at least a set fraction of the most likely token's probability, so the cutoff adapts to the model's confidence: focused when it is sure, diverse when it is not.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "mind-body-problem",
