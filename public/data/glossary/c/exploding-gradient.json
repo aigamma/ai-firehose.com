@@ -1,0 +1,64 @@
+{
+  "id": "exploding-gradient",
+  "label": "Exploding Gradient",
+  "kind": "technique",
+  "category": "Deep Learning Architectures",
+  "aliases": [
+    "exploding gradients",
+    "exploding gradient problem"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The failure mode in which gradients grow exponentially large as they backpropagate through many layers or time steps, causing unstable, divergent updates and often NaNs; the counterpart to the vanishing-gradient problem.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The exploding-gradient problem is what happens when the signal that trains a network grows out of control. Backpropagation computes gradients by multiplying terms layer by layer (or, in a recurrent network, time step by time step), and if those terms are consistently larger than one, the product grows exponentially with depth. The result is gradients so large that a single update throws the weights far past anything useful, producing wild oscillations, a loss that spikes to infinity, or NaNs that contaminate the rest of training."
+    },
+    {
+      "type": "p",
+      "text": "It is most notorious in recurrent neural networks unrolled over long sequences, where the same weights are applied many times and small instabilities compound, but it appears in any sufficiently deep network. Its symptoms are unmistakable: training that was proceeding suddenly diverges."
+    },
+    {
+      "type": "p",
+      "text": "The direct remedy is gradient clipping, which caps the gradient's magnitude so no single step can blow up, and it is standard wherever the problem is expected. The structural defenses are the same ones that help deep training generally: careful weight initialization to keep the multiplicative factors near one, normalization layers, residual connections that give gradients a clean path backward, and gated architectures like the LSTM that were designed partly to tame it."
+    },
+    {
+      "type": "p",
+      "text": "It is the mirror image of the vanishing-gradient problem, where the per-layer factors are smaller than one and the gradient shrinks to nothing instead. Both are about the same multiplicative dynamics of backpropagation through depth, just in opposite directions, and much of the architecture of modern deep learning exists to keep that product near one."
+    }
+  ],
+  "related": [
+    {
+      "slug": "vanishing-gradient",
+      "label": "Vanishing Gradient",
+      "kind": "technique"
+    },
+    {
+      "slug": "gradient-clipping",
+      "label": "Gradient Clipping",
+      "kind": "technique"
+    },
+    {
+      "slug": "backpropagation",
+      "label": "Backpropagation",
+      "kind": "technique"
+    },
+    {
+      "slug": "recurrent-neural-network",
+      "label": "Recurrent Neural Network",
+      "kind": "technique"
+    },
+    {
+      "slug": "residual-connection",
+      "label": "Residual Connection",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

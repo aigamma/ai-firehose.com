@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 819,
-  "durable_count": 426,
+  "count": 824,
+  "durable_count": 432,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -807,6 +807,19 @@
       "def_snippet": "A training technique that normalizes each layer's pre-activations across the current mini-batch to zero mean and unit variance, then rescales them with learned parameters, which stabilizes and accelerates the training of deep networks.",
       "durable": true,
       "category": "Deep Learning Architectures"
+    },
+    {
+      "id": "batch-size",
+      "label": "Batch Size",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "batch size",
+        "mini-batch size"
+      ],
+      "def_snippet": "The number of training examples used to compute each gradient update; it trades off the stability of the gradient estimate, memory use, and training speed, and interacts closely with the learning rate.",
+      "durable": true,
+      "category": "Optimization"
     },
     {
       "id": "batch-ranking",
@@ -2288,11 +2301,15 @@
     },
     {
       "id": "early-stopping",
-      "label": "early stopping",
+      "label": "Early Stopping",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "early stopping"
+      ],
+      "def_snippet": "A regularization technique that halts training when performance on a held-out validation set stops improving, capturing the model at its point of best generalization before it begins to overfit the training data.",
+      "durable": true,
+      "category": "Optimization"
     },
     {
       "id": "edge-deployment",
@@ -2533,6 +2550,18 @@
       "category": "Probability and Information Theory"
     },
     {
+      "id": "epoch",
+      "label": "Epoch",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "training epoch"
+      ],
+      "def_snippet": "One complete pass of the training algorithm over the entire training dataset; training usually runs for many epochs, and how many is a key hyperparameter balancing underfitting against overfitting.",
+      "durable": true,
+      "category": "Optimization"
+    },
+    {
       "id": "equivariance",
       "label": "Equivariance",
       "kind": "technique",
@@ -2667,6 +2696,19 @@
       "def_snippet": "A symbolic AI program that captures a human specialist's knowledge as a large set of if-then rules and applies them to give expert-level advice in a narrow domain. Expert systems were the commercial flagship of classical AI.",
       "durable": true,
       "category": "Foundations and History"
+    },
+    {
+      "id": "exploding-gradient",
+      "label": "Exploding Gradient",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "exploding gradients",
+        "exploding gradient problem"
+      ],
+      "def_snippet": "The failure mode in which gradients grow exponentially large as they backpropagate through many layers or time steps, causing unstable, divergent updates and often NaNs; the counterpart to the vanishing-gradient problem.",
+      "durable": true,
+      "category": "Deep Learning Architectures"
     },
     {
       "id": "exploration",
@@ -3364,6 +3406,19 @@
       "def_snippet": "Gradient checkpointing is a memory-saving technique that trades extra computation for lower memory use during training, storing only a few activations on the forward pass and recomputing the rest on the fly during backpropagation.",
       "durable": true,
       "category": "Systems and Infrastructure"
+    },
+    {
+      "id": "gradient-clipping",
+      "label": "Gradient Clipping",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "gradient clipping",
+        "clip-by-norm"
+      ],
+      "def_snippet": "A stabilization technique that caps the magnitude of gradients before an update, preventing an occasional huge gradient from blowing up the weights; it is especially important in recurrent networks and large-model training.",
+      "durable": true,
+      "category": "Optimization"
     },
     {
       "id": "gradient-descent",
@@ -8979,6 +9034,20 @@
       "def_snippet": "A regularization technique that pulls the model's weights toward zero at every step, either by adding a penalty on their squared magnitude to the loss function or by shrinking them directly, which discourages overfitting and favors simpler solutions.",
       "durable": true,
       "category": "Optimization"
+    },
+    {
+      "id": "weight-initialization",
+      "label": "Weight Initialization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "weight initialization",
+        "Xavier initialization",
+        "He initialization"
+      ],
+      "def_snippet": "How a neural network's weights are set before training begins; a poor scheme makes signals vanish or explode as they pass through the layers and stalls learning, while principled schemes like Xavier and He keep activations and gradients well-scaled.",
+      "durable": true,
+      "category": "Deep Learning Architectures"
     },
     {
       "id": "weight-normalization",

@@ -1,0 +1,15 @@
+---
+title: Epoch
+slug: epoch
+kind: technique
+category: Optimization
+aliases: training epoch
+related: batch-size, stochastic-gradient-descent, learning-rate, overfitting
+summary: One complete pass of the training algorithm over the entire training dataset; training usually runs for many epochs, and how many is a key hyperparameter balancing underfitting against overfitting.
+---
+
+An epoch is one full sweep through all the training data. Because models train on mini-batches rather than the whole dataset at once, a single epoch is actually many parameter updates, one per batch, continuing until every example has been seen exactly once. Run a second epoch and the model sees the whole dataset again, usually reshuffled.
+
+The number of epochs is a basic training decision. Too few and the model has not learned the data (underfitting); too many and it starts memorizing the training set at the expense of generalization (overfitting). The right number is found empirically, and early stopping automates the choice by ending training when validation performance stops improving rather than after a fixed count.
+
+It helps to keep three terms straight. An iteration (or step) is one batch update; an epoch is however many iterations it takes to cover the dataset once, so the number of iterations per epoch is the dataset size divided by the batch size. A notable exception to the many-epochs norm is large-language-model pretraining, where the corpus is so vast that the model often sees the data for only a single pass, or even less, making the notion of epochs less central there than in classical training.
