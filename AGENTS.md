@@ -13,12 +13,14 @@ This is the agent-discovery entry point for **AI Firehose** (ai-firehose.com), a
 
 ## Agent-Specific Override Files
 
-When agent-specific instructions are needed beyond the project-wide conventions, place them in the agent's conventional location rather than expanding this file:
+When agent-specific instructions are needed beyond the project-wide conventions, place them in the agent's conventional location rather than expanding this file. Each is a thin pointer to `CLAUDE.md`, so there is no duplicated content and no drift:
 
 - **Claude Code**: `CLAUDE.md` (canonical, the content this file delegates to)
-- **Cursor**: `.cursor/rules/*.mdc` (when added)
-- **GitHub Copilot**: `.github/copilot-instructions.md` (when added)
-- **Codex, Aider, others**: their own conventional locations
+- **Cursor**: `.cursor/rules/project-context.mdc` (`alwaysApply: true`)
+- **GitHub Copilot**: `.github/copilot-instructions.md`
+- **OpenCode**: `opencode.md` (belt-and-suspenders alongside this file)
+- **Antigravity Gemini**: `GEMINI.md`
+- **Codex, Aider, others**: this `AGENTS.md`, the cross-vendor convention they read natively
 
 The per-model driving prompts for the ensemble accumulate in the prompt library at `D:\prompts` (`codex`, `cursor`, `antigravity`). The principle: this file stays a delegator, substance lives in `CLAUDE.md`, agent-specific overrides live in their own locations. No duplicated content, no drift.
 
@@ -28,4 +30,5 @@ The per-model driving prompts for the ensemble accumulate in the prompt library 
 2. Read `LESSONS_LEARNED.md` for accumulated wisdom.
 3. Read `STEERING_DOCS.md` to find the tier-2 doc for the subsystem you are touching.
 4. Read that subsystem doc (for example `docs/INGESTION.md` before touching the pipeline).
-5. Before your turn ends, absorb any new process insight back into the docs (the protocol in `CLAUDE.md`).
+5. If you are onboarding a feature, read `docs/FEATURE_PLAYBOOK.md`, the repeatable recipe with a dedicated path for a fully Pinecone/Voyage-integrated feature.
+6. Before your turn ends, absorb any new process insight back into the docs (the protocol in `CLAUDE.md`, routed by the "Sources of Truth and How to Update Them" table).

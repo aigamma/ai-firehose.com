@@ -1,0 +1,38 @@
+---
+description: Project-wide context for AI Firehose (ai-firehose.com), a personal AI-industry intelligence dashboard built on a non-chat embedding and RAG substrate. Points Cursor (chat, Composer, or agent mode, including when driven by other models routed through Cursor) at the authoritative project documentation.
+alwaysApply: true
+---
+
+# AI Firehose: Cursor context
+
+This is **AI Firehose** (`aigamma/ai-firehose.com` on GitHub), a personal AI-industry intelligence dashboard structured as a daily outlier hunt. It ingests the most salient AI signal each day, organizes it with a non-chat embedding and RAG substrate (Pinecone plus Voyage), and surfaces what is new and breaking out across Day, Week, Month, and Quarter. It is the third in a personal trilogy with aigamma.com (quantitative modeling) and worldthought.com (cited philosophy pages); the RAG substrate is ported from the civil project.
+
+## Authoritative documents (read these first)
+
+Cursor: before answering substantive questions or proposing edits in this repo, ensure you have the context from these files. They are the project's binding conventions; do not infer project structure from filenames alone.
+
+1. **[`CLAUDE.md`](mdc:CLAUDE.md)** is the canonical project guide. It contains:
+   - The Writing Rules (em dashes are forbidden in all generative output; never use "RRG" or "Relative Rotation Graph", this project cites Mansfield Relative Performance, 1979; Title Case headings; cite claims).
+   - The Core Contracts (idempotency, the rolling-quarter retention, classification without guessing, the AI-grown taxonomy by embedding similarity, determinism in precompute, and the no-chatbot rule). These are non-negotiable for any pipeline or data work.
+   - Documentation as Durable Source of Truth, and the Dialectical Absorption Protocol, including the "Sources of Truth and How to Update Them" routing table.
+   - The architecture (subsystems: `src/` React frontend, `worker/` Fly ingestion worker, `rag/` embedding substrate, `netlify/functions/` the one read function, `public/data/` served artifacts, `docs/` tier-2 docs).
+
+2. **[`STEERING_DOCS.md`](mdc:STEERING_DOCS.md)** is the one-page map of the document hierarchy and a "when to read what" cheat sheet.
+
+3. **[`docs/FEATURE_PLAYBOOK.md`](mdc:docs/FEATURE_PLAYBOOK.md)** is the repeatable recipe for onboarding a feature, with a dedicated path for a fully Pinecone/Voyage-integrated one. Read it before adding any feature.
+
+4. **[`LESSONS_LEARNED.md`](mdc:LESSONS_LEARNED.md)** is append-only cumulative wisdom. Read it before any non-trivial change; append to it when you learn something.
+
+Note: `CLAUDE.md` also contains a "Pacing Constraints" section that is Claude-Code-specific (it references Eric's Anthropic billing relationship and parallel-subagent patterns native to Claude Code's harness). That section does not apply to Cursor; read past it.
+
+## The self-improvement rule (non-negotiable for every agent)
+
+When you discover a convention, a failure mode, a better contract, or a process improvement, commit it to the right durable doc before the turn ends, per the routing table in `CLAUDE.md`. Private session memory and chat transcripts decay across sessions; the repository does not. A working tree where the docs lie is a process failure, no different from code that lies.
+
+## Quick start for a new Cursor session
+
+Composer or Agent mode: start any non-trivial task by ensuring `CLAUDE.md` is in context, then read the tier-2 doc for the subsystem you are touching (`docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`). Every commit that materially changes a subsystem updates that subsystem's tier-2 doc in the same commit.
+
+## Why this file exists
+
+Cursor reads `.cursor/rules/*.mdc` files automatically. With `alwaysApply: true`, this rule is injected into Cursor's system prompt for every chat, Composer, or Agent invocation in this repository. The content is intentionally a pointer to `CLAUDE.md` rather than a duplicate, so the canonical conventions live in exactly one place and never drift between Cursor's view and Claude Code's view. The same hub-and-spoke pattern applies to the root `AGENTS.md` (cross-vendor), `.github/copilot-instructions.md` (Copilot), `opencode.md` (OpenCode), and `GEMINI.md` (Antigravity Gemini).

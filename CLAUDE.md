@@ -36,6 +36,22 @@ The protocol every session follows:
 4. Every commit that materially changes a subsystem updates that subsystem's tier-2 doc in the same commit.
 5. `docs/INGESTION_LOG.md` records each pipeline run (what, when, by which agent or model, counts, anomalies). It is the substrate for tuning the rotation windows and thresholds.
 
+### Sources of Truth and How to Update Them
+
+Private session memory and chat transcripts decay across sessions; the repository does not. So when you learn something durable, route it to the right home, do not leave it in a session note. A working tree where the docs lie is a process failure, no different from code that lies.
+
+| What you learned or changed | Where it goes |
+|---|---|
+| A project-wide convention, contract, or north-star decision | `CLAUDE.md` (this file): the relevant section, plus the `Current State` section when a subsystem's shape changes |
+| A subsystem detail (pipeline, embedding, sources, ops, deploy) | that subsystem's tier-2 doc in `docs/`, in the same commit as the code |
+| A lesson, failure mode, or "do this not that" from a session | `LESSONS_LEARNED.md` (append-only, newest on top) |
+| A per-run record (counts, anomalies, what ran) | `docs/INGESTION_LOG.md` (append-only) |
+| A change to the document hierarchy itself, or a new tier-2 doc | `STEERING_DOCS.md` (the map) |
+| A repeatable way to onboard a feature | `docs/FEATURE_PLAYBOOK.md` |
+| A structural constant (kind, horizon, quadrant, axis, threshold, retention) | `src/data/registry.js`, the single source of truth the code derives from |
+
+Any agent, in any tool (Claude Code, Cursor, Copilot, OpenCode, Antigravity Gemini, Codex, Aider), inherits this rule through the thin pointer files that delegate here. The pointers never duplicate content, so there is one source of truth and no drift.
+
 This section applies to itself: it lives here, in the auto-loaded doc, because the rule about durable docs is itself a durable insight.
 
 ## Architecture
@@ -91,7 +107,7 @@ The cross-project prompt library is at `D:\prompts` (per-model directories plus 
 
 ## Documentation Map
 
-See `STEERING_DOCS.md` for the tiered map and a "when to read what" cheat sheet. Tier-2 docs: `docs/INGESTION.md` (the pipeline, concept resolution, retention), `docs/RAG.md` (embedding substrate, Pinecone and Voyage, precompute artifacts and schemas), `docs/SOURCES.md` (every source adapter, YouTube primary), `docs/OPERATIONS.md` (keys, schedules, costs, recovery), `docs/DEPLOYMENT.md` (Fly and Netlify). Cumulative wisdom: `LESSONS_LEARNED.md`. Run log: `docs/INGESTION_LOG.md`.
+See `STEERING_DOCS.md` for the tiered map and a "when to read what" cheat sheet. Tier-2 docs: `docs/INGESTION.md` (the pipeline, concept resolution, retention), `docs/RAG.md` (embedding substrate, Pinecone and Voyage, precompute artifacts and schemas, the citation contract), `docs/SOURCES.md` (every source adapter, YouTube primary, the featured-creators curation workflow), `docs/OPERATIONS.md` (keys, schedules, costs, recovery), `docs/DEPLOYMENT.md` (Fly and Netlify), `docs/FEATURE_PLAYBOOK.md` (the repeatable recipe for onboarding a feature, with a dedicated fully-RAG-integrated path). Cumulative wisdom: `LESSONS_LEARNED.md`. Run log: `docs/INGESTION_LOG.md`. Cross-vendor agent delegation: `AGENTS.md` plus the thin pointers `.cursor/rules/project-context.mdc`, `.github/copilot-instructions.md`, `opencode.md`, `GEMINI.md`.
 
 ## Commands
 

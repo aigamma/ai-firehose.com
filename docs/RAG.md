@@ -16,6 +16,23 @@ Each vector carries: `id`, `kind` (technique|tool|opinion), `source`, `source_au
 
 `netlify/functions/retrieve.mjs`: embed the query (voyage-3, `input_type=query`), Pinecone dense query for top-K, Voyage `rerank-2` to top-N, apply a similarity floor, return the citation payload. Fail-open: if Voyage rerank errors, fall back to dense order. No generation, no chat.
 
+## Citation Contract
+
+Every surface that attributes a claim, whether live search results, the agentic daily briefing, or a Watch video card, emits the same citation payload, so attribution reads uniformly across the site and a future surface inherits it for free. This mirrors civil's `CitationPayload` and worldthought's "cite the source, never invent it" discipline. The shape is the existing `ItemCard` shape:
+
+```
+{ id, kind, title, url, author_or_channel, published_at, concepts: string[], summary, score? }
+```
+
+Rules:
+
+- A model claim must trace to an item (rendered as the title linked to `url`) or to a concept (rendered as a wiki-link to its hub at `/technique/<slug>`). The project's "cite claims" Writing Rule is enforced here: generated prose that names a development links it to the item or concept it came from.
+- `concepts[]` are glossary slugs; the renderer turns each into a hub link. This is the worldthought person-page-as-hub pattern: the concept hub is the citation target, carrying the definition, neighbors, axes, and momentum.
+- Never fabricate a `url`, a `title`, or a `published_at`. If a field is unknown, omit it; the card still renders from what is present.
+- Verbatim source titles are quotes, left intact (they may contain an em dash); generated prose around them follows the no-em-dash rule and is sanitized through `worker/lib/text.mjs`.
+
+The agentic daily briefing (`worker/pipeline/briefing.mjs`) and the featured-creators artifact (`scripts/build_creators.mjs`) both carry `cited_items` and concept references in this shape. See `docs/FEATURE_PLAYBOOK.md` for how a new feature adopts the contract.
+
 ## Precompute Artifacts
 
 Built at network-rebuild time, served from `/data`:
