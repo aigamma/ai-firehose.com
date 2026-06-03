@@ -21,9 +21,18 @@ Authoring is interactive and Opus-authored: open a console (Claude Code) and ask
 - Writes one `public/data/glossary/c/<slug>.json` hub per entry, MERGED with any corpus hub of the same slug: the authored definition, body, related mesh, and `durable: true` overlay the corpus `attention`, `rotation`, `neighbors`, and `top_items`.
 - Merges every authored entry into `public/data/glossary/index.json` (the slim list and search payload), marked `durable: true` with its `category`.
 - Attaches a cited image to the hub when the slug appears in the `content/glossary/images.json` sidecar (see Cited Images).
+- Emits `public/data/glossary/atlas.json`, the category-level knowledge graph (see The Atlas View), in the same pass, so the map can never drift from the hubs it summarizes.
 - Idempotent and re-runnable.
 
 The build is the self-healing mechanism for the durable layer: because `content/glossary` is the committed source of truth and `build_glossary` runs on every Netlify deploy (`prebuild`) and at the end of the worker's glossary step (`run.mjs`), a corpus rebuild can never permanently drop the authored entries. They are re-merged every time.
+
+## The Atlas View (the category constellation)
+
+The authored `related` mesh is a real knowledge graph, but it was only ever visible one hub at a time. The Atlas view makes the SHAPE of the whole knowledge base legible at a glance, which is the project's north star: turn a firehose into something navigable.
+
+`scripts/lib/atlas.mjs` is a pure, deterministic builder (no RNG, no `Date`, no I/O, so it satisfies the determinism-in-precompute contract and is unit-tested in `scripts/lib/atlas.test.mjs`). It runs inside `build_glossary` and emits `public/data/glossary/atlas.json`. The grain is the CATEGORY, not the concept, on purpose: ~31 sized, linked category nodes are navigable where a 453-node hairball is not. For each category it records the concept count, kind mix, internal-link cohesion, and top concepts; it then walks the `related` mesh to weight undirected cross-category edges. Positions are precomputed on a unit circle (ordered by count, then name), so the client is a dumb plotter. The `related` cross-link gate (`check_glossary.mjs`) guarantees no dangling edges, so the graph is clean by construction.
+
+`src/pages/Glossary.jsx` renders it as a fourth view alongside Knowledge, Trending, and All. The SVG constellation is the visual (nodes colored by a stable hue, sized by count; curved edges whose opacity and width scale with link weight; hovering cross-highlights a node and its edges). The readable, keyboard-accessible, clickable HTML legend below is the accessible equivalent and the filter control: clicking a category, in the legend or the constellation, drops into that category's focused Knowledge list. The map is desktop-first; on narrow screens the constellation scales down and the legend carries the interaction.
 
 ## Durability Contract
 
