@@ -3,7 +3,7 @@ title: Approximate Nearest Neighbor
 slug: approximate-nearest-neighbor
 kind: technique
 category: RAG, Embeddings, and Retrieval
-aliases: ANN, approximate nearest neighbor search, ANN search
+aliases: approximate nearest neighbor search, ANN search
 related: hnsw, vector-database, semantic-search, embedding-model, dense-retrieval
 summary: A family of algorithms that find vectors close to a query vector without checking every candidate, trading a small, tunable loss in accuracy for an enormous gain in speed, which is what makes vector search practical at scale.
 ---

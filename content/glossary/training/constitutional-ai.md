@@ -3,7 +3,7 @@ title: Constitutional AI
 slug: constitutional-ai
 kind: technique
 category: Training and Fine-Tuning
-aliases: CAI, RLAIF, reinforcement learning from AI feedback
+aliases: CAI
 related: rlhf, dpo, instruction-tuning, fine-tuning, pretraining
 summary: An alignment method that trains a model to be helpful and harmless using AI-generated feedback guided by a written set of principles (a constitution), reducing reliance on human-labeled comparisons.
 ---

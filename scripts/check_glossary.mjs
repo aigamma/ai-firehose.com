@@ -86,11 +86,59 @@ export function findBrokenPaths() {
   return broken.sort((a, b) => `${a.path}${a.step}`.localeCompare(`${b.path}${b.step}`));
 }
 
+// The wiki-linker (src/lib/richtext.js) claims each surface form for exactly ONE
+// concept: a concept's own LABEL wins (Pass 1), and aliases fill in only the surfaces
+// no label took (Pass 2, first writer wins). So a surface that is an alias of two or
+// more concepts and is no concept's label resolves to whichever concept happens to sort
+// first, a silent, arbitrary mislink in the navigable mesh. This finds those ambiguous
+// aliases among the authored entries so each is reassigned to its rightful single owner,
+// or dropped when truly ambiguous (the acronyms ANN and SSL each name two real and
+// distinct concepts, so neither should auto-link). Mirrors the linker's own
+// normalization (lowercased, trimmed, length >= 3, must contain a letter) so the gate
+// reflects exactly what the linker will do. Scope is the authored durable layer; the
+// AI-discovered corpus aliases turn over each quarter and are out of scope here.
+export function findAmbiguousAliases() {
+  const files = existsSync(CONTENT) ? walk(CONTENT) : [];
+  const linkable = (s) => {
+    const k = String(s || "").toLowerCase().trim();
+    return k.length >= 3 && /[a-z]/.test(k) ? k : null;
+  };
+  const entries = files.map((f) => {
+    const fm = frontmatter(readFileSync(f, "utf8"));
+    return {
+      slug: fm.slug || basename(f, ".md"),
+      title: fm.title || "",
+      aliases: (fm.aliases || "").split(",").map((s) => s.trim()).filter(Boolean),
+    };
+  });
+  const labelOwned = new Set();
+  for (const e of entries) {
+    const k = linkable(e.title);
+    if (k) labelOwned.add(k);
+  }
+  const aliasOwners = new Map(); // surface -> Set(slug)
+  for (const e of entries) {
+    for (const a of e.aliases) {
+      const k = linkable(a);
+      if (!k) continue;
+      if (!aliasOwners.has(k)) aliasOwners.set(k, new Set());
+      aliasOwners.get(k).add(e.slug);
+    }
+  }
+  const out = [];
+  for (const [surface, owners] of aliasOwners) {
+    if (labelOwned.has(surface)) continue; // a label claims it first: benign, label wins
+    if (owners.size > 1) out.push({ surface, owners: [...owners].sort() });
+  }
+  return out.sort((a, b) => a.surface.localeCompare(b.surface));
+}
+
 function main() {
   const related = findBrokenRelated();
   const paths = findBrokenPaths();
-  if (!related.length && !paths.length) {
-    console.log("check_glossary: OK, all related links and learning-path steps resolve.");
+  const aliases = findAmbiguousAliases();
+  if (!related.length && !paths.length && !aliases.length) {
+    console.log("check_glossary: OK, related links and learning-path steps resolve, no ambiguous aliases.");
     return;
   }
   if (related.length) {
@@ -101,7 +149,11 @@ function main() {
     console.error(`check_glossary: ${paths.length} dangling learning-path step(s):`);
     for (const b of paths) console.error(`  path ${b.path}  ->  ${b.step}`);
   }
-  console.error("\nFix the slug to a real concept (or add the missing entry); otherwise the link is dead.");
+  if (aliases.length) {
+    console.error(`check_glossary: ${aliases.length} ambiguous alias(es) (alias of >1 concept, no label owner, auto-links arbitrarily):`);
+    for (const b of aliases) console.error(`  alias  "${b.surface}"  claimed by  ${b.owners.join(", ")}`);
+  }
+  console.error("\nFix the slug to a real concept, or reassign/drop the alias so each surface form has one owner.");
   process.exitCode = 1;
 }
 

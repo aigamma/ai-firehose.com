@@ -3,7 +3,7 @@ title: Self-Supervised Learning
 slug: self-supervised-learning
 kind: technique
 category: Core Machine Learning
-aliases: self-supervised learning, SSL
+aliases: self-supervised learning
 related: supervised-learning, unsupervised-learning, pretraining, contrastive-learning, masked-language-modeling
 summary: A learning paradigm where the supervision signal is generated from the data itself, by hiding part of each example and training the model to predict it, which lets models learn rich representations from vast unlabeled data and is the engine behind modern pretraining.
 ---

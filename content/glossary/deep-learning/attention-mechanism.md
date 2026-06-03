@@ -3,7 +3,7 @@ title: Attention Mechanism
 slug: attention-mechanism
 kind: technique
 category: Deep Learning Architectures
-aliases: attention, self-attention, scaled dot-product attention
+aliases: attention, self-attention
 related: recurrent-neural-network, lstm, residual-connection, layer-normalization, autoencoder, vanishing-gradient
 summary: A mechanism that lets a model compute each output as a weighted sum over all input positions, with the weights determined by learned relevance, so it can draw on the most pertinent context regardless of distance.
 ---

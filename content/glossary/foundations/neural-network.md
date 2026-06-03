@@ -3,7 +3,7 @@ title: Neural Network
 slug: neural-network
 kind: technique
 category: Foundations and History
-aliases: artificial neural network, ANN, neural net
+aliases: artificial neural network, neural net
 related: perceptron, deep-learning, connectionism, machine-learning, symbolic-ai, the-bitter-lesson
 summary: A machine learning model composed of layers of simple interconnected units, loosely inspired by biological neurons, whose connection weights are learned from data. It is the core model family behind deep learning and most modern AI.
 ---

@@ -3,7 +3,7 @@ title: Semi-Supervised Learning
 slug: semi-supervised-learning
 kind: technique
 category: Core Machine Learning
-aliases: semi-supervised learning, SSL
+aliases: semi-supervised learning
 related: supervised-learning, unsupervised-learning, self-supervised-learning, active-learning
 summary: A paradigm that trains on a small amount of labeled data together with a large amount of unlabeled data, using structure in the unlabeled data to improve a model that the labels alone could not, bridging supervised and unsupervised learning.
 ---

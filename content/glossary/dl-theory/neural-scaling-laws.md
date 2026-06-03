@@ -3,7 +3,7 @@ title: Neural Scaling Laws
 slug: neural-scaling-laws
 kind: technique
 category: Deep Learning Theory
-aliases: scaling law, neural scaling law, Chinchilla scaling
+aliases: neural scaling law
 related: scaling-laws, pretraining, large-language-model, emergent-ability, generalization, the-bitter-lesson
 summary: Empirical power-law relationships showing that a model's loss falls predictably as model size, dataset size, and training compute increase, letting researchers forecast performance and allocate resources before training.
 ---

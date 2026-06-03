@@ -3,7 +3,7 @@ title: Riemannian Manifold
 slug: riemannian-manifold
 kind: technique
 category: Geometry and Manifolds
-aliases: Riemannian geometry, Riemannian metric
+aliases: Riemannian geometry
 related: manifold, metric-tensor, geodesic, curvature, tangent-space, information-geometry
 summary: A smooth manifold equipped with a metric tensor that defines an inner product in every tangent space, giving the manifold a consistent notion of length, angle, distance, and curvature.
 ---

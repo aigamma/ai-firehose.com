@@ -3,7 +3,7 @@ title: Instruction-Tuning
 slug: instruction-tuning
 kind: technique
 category: Training and Fine-Tuning
-aliases: instruction tuning, supervised fine-tuning, SFT
+aliases: instruction tuning
 related: fine-tuning, rlhf, dpo, pretraining, transfer-learning, constitutional-ai
 summary: A form of supervised fine-tuning on datasets of instructions paired with desired responses, which teaches a base model to follow natural-language commands rather than merely continue text.
 ---

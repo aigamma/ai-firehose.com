@@ -3,7 +3,7 @@ title: Fine-Tuning
 slug: fine-tuning
 kind: technique
 category: Training and Fine-Tuning
-aliases: finetuning, supervised fine-tuning, SFT
+aliases: finetuning
 related: pretraining, transfer-learning, lora, parameter-efficient-fine-tuning, instruction-tuning, catastrophic-forgetting, rlhf
 summary: The process of continuing to train an already pretrained model on a smaller, task-specific or domain-specific dataset, so its general knowledge is specialized toward a particular use.
 ---

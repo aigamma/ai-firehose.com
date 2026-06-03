@@ -3,7 +3,7 @@ title: Differential Geometry
 slug: differential-geometry
 kind: technique
 category: Advanced Mathematics
-aliases: differential geometry, smooth manifold, differential geometric
+aliases: differential geometry, differential geometric
 related: riemannian-manifold, metric-tensor, geodesic, curvature, lie-group, information-geometry
 summary: The study of smooth curved spaces using calculus, equipping manifolds with notions of tangent direction, distance, and curvature, and providing the geometric foundation for working on curved representation spaces.
 ---

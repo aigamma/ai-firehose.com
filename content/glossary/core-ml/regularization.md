@@ -3,7 +3,7 @@ title: Regularization
 slug: regularization
 kind: technique
 category: Core Machine Learning
-aliases: regularize, L1 regularization, L2 regularization, weight decay
+aliases: regularize, L1 regularization
 related: overfitting, underfitting, bias-variance-tradeoff, cross-validation, support-vector-machine
 summary: A family of techniques that constrain or penalize a model's complexity during training in order to reduce overfitting and improve how well it generalizes to new data.
 ---
