@@ -32,7 +32,7 @@ Each run appends to `docs/INGESTION_LOG.md` (counts: fetched, new, classified, e
 
 ## Recovery Recipes
 
-- **Stale or wrong artifacts.** Re-run `npm run network` (deterministic; safe). It rebuilds every derived artifact from the current Pinecone state.
+- **Stale or wrong artifacts.** Re-run the worker (`npm run ingest`); its network stage deterministically rebuilds every derived artifact from the current Pinecone state. For only the attention boards, `node worker/pipeline/recompute_boards.mjs` replays the committed store offline.
 - **Bad classification on an item.** Correct or remove the item, re-run; content-hash idempotency re-embeds only what changed.
 - **Pinecone index lost or recreated.** Re-ingest from the staged raw items within the retention window; older items are intentionally gone.
 - **Threshold drift (taxonomy fragmenting or over-merging).** Adjust `TAXONOMY` in the registry, re-run `network`, and note the change in `docs/INGESTION_LOG.md`.

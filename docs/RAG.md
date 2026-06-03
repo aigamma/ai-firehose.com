@@ -1,12 +1,12 @@
 # RAG and Embedding Substrate
 
-The non-chat embedding layer, ported from `C:\civil\rag`. It powers organization, the visualizations, the relative-rotation math, and one live semantic search endpoint. There is no chatbot.
+The non-chat embedding layer, reimplemented natively in the worker from the approach proven at civil (there is no separate top-level rag directory and no Python). It powers organization, the visualizations, the relative-rotation math, and one live semantic search endpoint. There is no chatbot.
 
 ## Substrate
 
 - **Pinecone.** Index `ai-firehose`, serverless, cosine, 1024-dim. Single namespace plus metadata filters (cross-kind similarity matters for clusters and neighbors, so no namespace-per-kind).
 - **Voyage.** `voyage-3` for embeddings (`input_type=document` on ingest, `query` on retrieval). `rerank-2` for the live search second stage.
-- **Ports.** `rag/shared.mjs` (env, Pinecone and Voyage helpers), `rag/ingest.mjs` (idempotent upsert), `rag/retrieve.mjs` (two-stage retrieval). Precompute scripts: `rag/precompute.mjs`, `rag/precompute_concept_axes.mjs`, `rag/precompute_clusters_neighbors.py`, `rag/precompute_influence.py`.
+- **Modules.** Shared helpers in `worker/lib/`: `worker/lib/voyage.mjs` (Voyage embeddings and rerank), `worker/lib/pinecone.mjs` (vector upsert and query), and `worker/lib/retrieve.mjs` (two-stage retrieval), over `worker/lib/env.mjs`, `worker/lib/cache.mjs`, and `worker/lib/hash.mjs`. Idempotent embed-and-upsert is orchestrated by `worker/pipeline/run.mjs`; the network precompute (centroids, clusters, spectrums, neighbors, influence) is `worker/pipeline/network.mjs`. All JavaScript; no Python.
 
 ## Item Vector Metadata
 

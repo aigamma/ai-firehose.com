@@ -7,7 +7,7 @@ Gemini (including the Antigravity Gemini agent in this project's ensemble): this
 - The **Writing Rules**: em dashes are forbidden in all generative output; never use "RRG" or "Relative Rotation Graph" (this project cites Mansfield Relative Performance, 1979, and uses "rotation plane", "rotation ratio", "rotation momentum"); Title Case headings; cite claims.
 - The **Core Contracts** (non-negotiable for pipeline or data work): idempotency, the rolling-quarter retention, classification without guessing, the AI-grown taxonomy by embedding similarity, determinism in precompute, and the no-chatbot rule.
 - **Documentation as Durable Source of Truth, and the Dialectical Absorption Protocol**, with the "Sources of Truth and How to Update Them" routing table.
-- The architecture (subsystems `src/`, `worker/`, `rag/`, `netlify/functions/`, `public/data/`, `docs/`).
+- The architecture (subsystems `src/`, `worker/`, `netlify/functions/`, `public/data/`, `docs/`).
 
 For onboarding a feature, read `docs/FEATURE_PLAYBOOK.md`. For the document map and "when to read what", read `STEERING_DOCS.md`. For cumulative wisdom, read `LESSONS_LEARNED.md`.
 

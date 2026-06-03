@@ -9,7 +9,7 @@ If OpenCode also discovers this file (some configurations read root-level `openc
 - The **Writing Rules**: no em dashes in generative output; never "RRG" or "Relative Rotation Graph" (cite Mansfield Relative Performance, 1979); Title Case headings; cite claims.
 - The **Core Contracts** (non-negotiable for pipeline or data work): idempotency, the rolling-quarter retention, classification without guessing, the AI-grown taxonomy, determinism in precompute, and the no-chatbot rule.
 - **Documentation as Durable Source of Truth, and the Dialectical Absorption Protocol**, with the "Sources of Truth and How to Update Them" routing table.
-- The architecture (subsystems `src/`, `worker/`, `rag/`, `netlify/functions/`, `public/data/`, `docs/`).
+- The architecture (subsystems `src/`, `worker/`, `netlify/functions/`, `public/data/`, `docs/`).
 
 For onboarding a feature, read `docs/FEATURE_PLAYBOOK.md`. For the document map, read `STEERING_DOCS.md`.
 

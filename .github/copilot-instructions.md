@@ -9,7 +9,7 @@ GitHub Copilot: this file is auto-injected into your context for any chat, inlin
 - The **Writing Rules**: em dashes are forbidden in all generative output (UI copy, JSX strings, comments, Markdown, JSON artifact content, and model prompts); never use "RRG" or "Relative Rotation Graph" (this project cites Mansfield Relative Performance, 1979, and uses "rotation plane", "rotation ratio", "rotation momentum"); Title Case headings; cite claims.
 - The **Core Contracts** (non-negotiable for pipeline or data work): idempotency (content-hash every chunk, deterministic vector IDs), the rolling-quarter retention (nothing older than `RETENTION_DAYS` is kept), classification without guessing (strict-schema Claude pass), the AI-grown taxonomy (concept resolution by voyage-3 cosine), determinism in precompute, and the no-chatbot rule (the embedding layer powers organization, visualization, and one live semantic search surface only).
 - **Documentation as Durable Source of Truth, and the Dialectical Absorption Protocol**, including the "Sources of Truth and How to Update Them" routing table.
-- The architecture (subsystems `src/`, `worker/`, `rag/`, `netlify/functions/`, `public/data/`, `docs/`).
+- The architecture (subsystems `src/`, `worker/`, `netlify/functions/`, `public/data/`, `docs/`).
 
 For onboarding a feature, read **[`docs/FEATURE_PLAYBOOK.md`](../docs/FEATURE_PLAYBOOK.md)**.
 

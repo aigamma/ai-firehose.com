@@ -22,7 +22,7 @@ Public-facing overview for someone landing on the GitHub repo or curious about t
 ## Tier 2: Active Reference
 
 - `docs/INGESTION.md`: the pipeline stages, the concept-resolution algorithm (AI-discovered, AI-created, then fitted loosely by embedding similarity), and the rolling-quarter prune. Read before touching `worker/`.
-- `docs/RAG.md`: the embedding substrate, Pinecone and Voyage setup, the precompute artifacts and their JSON schemas, the relative-rotation math. Read before touching `rag/` or the artifacts.
+- `docs/RAG.md`: the embedding substrate, Pinecone and Voyage setup, the precompute artifacts and their JSON schemas, the relative-rotation math. Read before touching `worker/lib/` (the embedding substrate) or the artifacts.
 - `docs/SOURCES.md`: every source adapter, with YouTube primary (RSS plus yt-dlp plus Whisper, Apify only as paid fallback), and the source authority weighting. Read before adding or changing a source.
 - `docs/OPERATIONS.md`: keys and where they come from, the daily schedule, cost ceilings, monitoring, and recovery recipes.
 - `docs/DEPLOYMENT.md`: the Fly worker and the Netlify site, DNS, and the deploy chain.

@@ -31,7 +31,7 @@ Tags and concepts are an AI-grown taxonomy, not a fixed vocabulary. The resolver
    - otherwise (below `reviewFloor`, or in the band with no lexical support): **create a new canonical concept**.
 4. **Definitions.** The top concepts by attention get a one-sentence cited definition (Claude, cached by id, em-dash sanitized) for their hubs.
 
-New concepts currently enter the canonical taxonomy directly. The intended `public/data/glossary/_proposed.json` human-approval gate (proposed concepts held out of the live set until approved in-repo) is **not yet implemented**; when added it becomes the pipeline's one human-authored stop. The resolution collapses near-duplicates onto one concept with aliases while still letting genuinely new ideas enter. Thresholds are tuned against real voyage-3 cosine once data accrues; record tuning in `docs/INGESTION_LOG.md`.
+New concepts currently enter the canonical taxonomy directly. The intended human-approval gate (proposed concepts staged in a `_proposed.json` file, held out of the live set until approved in-repo) is **not yet implemented**; when added it becomes the pipeline's one human-authored stop. The resolution collapses near-duplicates onto one concept with aliases while still letting genuinely new ideas enter. Thresholds are tuned against real voyage-3 cosine once data accrues; record tuning in `docs/INGESTION_LOG.md`.
 
 ## Retention Prune
 
@@ -48,4 +48,4 @@ The pipeline is currently fully automatic end to end. The intended human-authore
 ## Running It
 
 - `npm run ingest` runs one full pass (Phase 1+).
-- `npm run network` runs only the deterministic rebuild (Phase 2+), useful after editing concept anchors or approving concepts.
+- The deterministic Phase 2+ rebuild is the network stage of `npm run ingest` (run it after editing concept anchors); `node worker/pipeline/recompute_boards.mjs` rebuilds just the attention boards offline from the committed store.

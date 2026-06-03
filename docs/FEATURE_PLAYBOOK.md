@@ -63,6 +63,6 @@ A committed artifact under `public/data/` is downloaded by every visitor, so it 
 
 ## Reference Implementations
 
-- **Track A**: the unified rotation plane (`src/components/UnifiedRotationChart.jsx`, `src/lib/useUnifiedAttention.js`). Reads three existing `attention/*` artifacts, merges them client-side, prunes the long tail via the `ROTATION` registry constant.
+- **Track A**: a client-side visualization over precomputed artifacts. The live example is the trend heat boards (`src/components/TrendBoard.jsx`, fed by `src/lib/useUnifiedAttention.js`), which read the `attention/*` artifacts and rank topics by windowed growth. (This replaced an earlier rotation plane; see `LESSONS_LEARNED.md`, Session 6.)
 - **Track B, prose**: the agentic daily briefing (`worker/pipeline/briefing.mjs`, `worker/pipeline/prompts/briefing.mjs`, the `digests/briefing_<horizon>.json` artifact, `src/components/Briefing.jsx`).
 - **Track B, joined corpus**: the featured-creators Watch surface (`sources/featured.json`, `scripts/build_creators.mjs`, the `creators.json` artifact, `src/pages/Watch.jsx`), which joins curated videos to their classified corpus records for cited summaries, concept-hub links, and semantic neighbors. Curation workflow is in `docs/SOURCES.md`.
