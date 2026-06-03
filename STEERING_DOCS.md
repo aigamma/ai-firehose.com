@@ -54,6 +54,11 @@ Append-only per-run log: what ran, when, by which agent or model, with what coun
 | Deploy or change infrastructure | `docs/DEPLOYMENT.md`, `docs/OPERATIONS.md` |
 | Discover a new rule or insight mid-session | Put it in `CLAUDE.md` (if a convention) or `LESSONS_LEARNED.md` (if a lesson). Never rely on session memory. |
 
+## Forward Plan
+
+### `docs/ROADMAP.md`
+The prioritized backlog of what to build next, split into unblocked work and items that need Eric (credentials, deploys, pushes). It is the fuel for continuous development: an autonomous build session (in-turn parallel subagents, or a `/schedule` cron) reads it, pulls the top unblocked item, ships and verifies it, then checks it off. Forward-looking, so it sits beside the tiers rather than inside them.
+
 ## Maintenance Rule
 
 Every commit that materially changes a subsystem updates its tier-2 doc in the same commit. A working tree where the code changed but the doc lies is a process failure. Tier 3 and Tier 4 are append-only and grow over time; Tiers 1 and 2 are kept evergreen.

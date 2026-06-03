@@ -9,6 +9,11 @@
   reference, so a commit cannot quietly land drift. The docs become continuously
   tested against the real tree: an oracle, not a promise.
 
+  It also runs the inverse check (findUndocumentedDirs): every committed top-level
+  directory must be named by some current-state doc, so a whole subsystem cannot
+  land undocumented (the mcp/ server did exactly that before this check existed).
+  Tooling and config dirs (.github, .cursor, .claude) are exempt.
+
   Judged against the COMMITTED tree (`git ls-files`), not the local filesystem, on
   purpose: an untracked or gitignored path (an empty rag/ dir, a built dist/, a
   worker/.cache/) exists locally but not in a fresh CI clone, so a filesystem check
@@ -111,6 +116,21 @@ export function findNewStaleRefs() {
   return findStaleRefs().filter((b) => !known.has(keyOf(b)));
 }
 
+// Tree -> doc: catch a committed top-level subsystem that NO current-state doc
+// names (the inverse of findStaleRefs). This is what would have caught the mcp/
+// server landing undocumented. Tooling/config dirs are exempt; every other
+// committed top-level directory must be named by some current-state doc.
+const INFRA_TOPS = new Set([".github", ".cursor", ".claude"]);
+export function findUndocumentedDirs() {
+  const dirs = new Set();
+  for (const p of trackedPaths()) {
+    const i = p.indexOf("/");
+    if (i > 0) dirs.add(p.slice(0, i));
+  }
+  const docText = docFiles().map((f) => readFileSync(resolve(ROOT, f), "utf8")).join("\n");
+  return [...dirs].sort().filter((d) => !INFRA_TOPS.has(d) && !docText.includes(`${d}/`));
+}
+
 function main() {
   if (process.argv.includes("--write-baseline")) {
     const known = findStaleRefs().map(keyOf);
@@ -128,9 +148,15 @@ function main() {
   const known = baseline();
   const fresh = all.filter((b) => !known.has(keyOf(b)));
   const debt = all.filter((b) => known.has(keyOf(b)));
+  const undoc = findUndocumentedDirs();
   if (debt.length) console.log(`check_docs_fresh: ${debt.length} baselined stale ref(s) still owed (tracked debt).`);
+  if (undoc.length) {
+    console.error(`check_docs_fresh: ${undoc.length} committed top-level dir(s) named by no current-state doc:`);
+    for (const d of undoc) console.error(`  [undocumented] ${d}/ (add a line to CLAUDE.md, or to INFRA_TOPS if it is tooling)`);
+    process.exitCode = 1;
+  }
   if (!fresh.length) {
-    console.log("check_docs_fresh: OK, no NEW stale doc references.");
+    if (!undoc.length) console.log("check_docs_fresh: OK, no NEW stale doc references, every committed subsystem is documented.");
     return;
   }
   console.error(`check_docs_fresh: ${fresh.length} NEW stale doc reference(s):`);
