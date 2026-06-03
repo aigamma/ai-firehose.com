@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 757,
-  "durable_count": 356,
+  "count": 764,
+  "durable_count": 364,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1605,15 +1605,16 @@
     },
     {
       "id": "cross-attention",
-      "label": "cross-attention",
+      "label": "Cross-Attention",
       "kind": "technique",
       "attention": 8,
       "aliases": [
-        "sliding-window attention",
-        "cross-encoder reranking",
-        "Multi-Head Latent Attention"
+        "cross attention",
+        "encoder-decoder attention"
       ],
-      "def_snippet": "Cross-attention is a mechanism that allows a model to selectively focus on and integrate information from one input modality or sequence when processing another, enabling contextua…"
+      "def_snippet": "Attention in which the queries come from one sequence while the keys and values come from another, letting a model condition its output on a separate input such as a source sentence, an image, or retrieved text.",
+      "durable": true,
+      "category": "Transformers and LLMs"
     },
     {
       "id": "cross-entropy",
@@ -3179,6 +3180,18 @@
       "category": "Mechanistic Interpretability"
     },
     {
+      "id": "group-relative-policy-optimization",
+      "label": "Group Relative Policy Optimization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GRPO"
+      ],
+      "def_snippet": "A reinforcement-learning algorithm for language models that estimates each response's advantage by comparing it to a group of responses to the same prompt, removing the separate value network that proximal policy optimization needs and making reasoning-style training cheaper and simpler.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
+    },
+    {
       "id": "group-theory",
       "label": "Group Theory",
       "kind": "technique",
@@ -3208,12 +3221,39 @@
       "category": "Graph and Geometric Learning"
     },
     {
+      "id": "grouped-query-attention",
+      "label": "Grouped-Query Attention",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GQA",
+        "grouped query attention"
+      ],
+      "def_snippet": "An attention variant that lets several query heads share a single key and value projection instead of each head owning its own, shrinking the KV cache and the memory bandwidth that dominate inference, with little loss in quality.",
+      "durable": true,
+      "category": "Transformers and LLMs"
+    },
+    {
       "id": "grpo",
       "label": "GRPO",
       "kind": "technique",
       "attention": 2,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "hallucination",
+      "label": "Hallucination",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "hallucination",
+        "confabulation",
+        "faithfulness"
+      ],
+      "def_snippet": "A fluent, confident model output that is factually wrong or unsupported by its source, arising because language models are trained to produce likely text rather than to track truth.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "hallucination-detection",
@@ -6115,6 +6155,20 @@
       "def_snippet": ""
     },
     {
+      "id": "reasoning-model",
+      "label": "Reasoning Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "reasoning models",
+        "large reasoning model",
+        "inference-time reasoning"
+      ],
+      "def_snippet": "A language model trained to spend variable inference-time compute on an extended internal chain of thought before answering, usually via reinforcement learning on verifiable rewards, trading latency for sharply better performance on math, code, and logic.",
+      "durable": true,
+      "category": "Frontier Architectures"
+    },
+    {
       "id": "relu",
       "label": "Rectified Linear Unit",
       "kind": "technique",
@@ -6681,6 +6735,20 @@
       "category": "Transformers and LLMs"
     },
     {
+      "id": "self-consistency",
+      "label": "Self-Consistency",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "self consistency",
+        "majority voting",
+        "sample and vote"
+      ],
+      "def_snippet": "A decoding strategy that samples several independent chain-of-thought solutions at nonzero temperature and returns the answer they agree on most often, spending extra inference compute to raise accuracy on reasoning tasks.",
+      "durable": true,
+      "category": "Inference and Sampling"
+    },
+    {
       "id": "self-hosted",
       "label": "self-hosted",
       "kind": "tool",
@@ -7113,6 +7181,21 @@
       "def_snippet": ""
     },
     {
+      "id": "structured-decoding",
+      "label": "Structured Decoding",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "constrained decoding",
+        "constrained generation",
+        "grammar-constrained decoding",
+        "JSON mode"
+      ],
+      "def_snippet": "Constraining a model's token choices at each step so the output is guaranteed to match a formal schema or grammar, such as valid JSON or a regular expression, by masking the logits of any token that would break the structure.",
+      "durable": true,
+      "category": "Inference and Sampling"
+    },
+    {
       "id": "structured-state-space",
       "label": "Structured State Space",
       "kind": "technique",
@@ -7247,6 +7330,19 @@
       "def_snippet": "The classical approach to artificial intelligence that represents knowledge as explicit symbols and rules, and produces intelligent behavior by manipulating those symbols with logic and search. It dominated the field from the 1950s into the 1980s.",
       "durable": true,
       "category": "Foundations and History"
+    },
+    {
+      "id": "synthetic-data",
+      "label": "Synthetic Data",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "synthetic data",
+        "model-generated data"
+      ],
+      "def_snippet": "Training data generated by a model rather than gathered from humans, used to teach capabilities at scale (instructions, reasoning traces, preference labels) when human data is scarce, costly, or unsafe to collect.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
     },
     {
       "id": "system-evolution",
