@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 780,
-  "durable_count": 381,
+  "count": 786,
+  "durable_count": 389,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1331,13 +1331,17 @@
     },
     {
       "id": "computer-use",
-      "label": "computer use",
-      "kind": "tool",
+      "label": "Computer Use",
+      "kind": "technique",
       "attention": 13,
       "aliases": [
-        "computer use agents"
+        "computer use",
+        "computer-using agent",
+        "GUI agent"
       ],
-      "def_snippet": "Computer use is an AI capability that enables models to control computers by viewing screens and operating keyboards and mice to accomplish tasks autonomously."
+      "def_snippet": "An agent capability in which a model operates a computer the way a person does, by viewing the screen and issuing mouse and keyboard actions, letting it use arbitrary software through its graphical interface rather than a bespoke API.",
+      "durable": true,
+      "category": "Agents and Tool Use"
     },
     {
       "id": "concept-spawning",
@@ -1393,6 +1397,19 @@
       "def_snippet": "The approach to artificial intelligence and cognition that models intelligent behavior with networks of many simple, interconnected units whose learned connection strengths encode knowledge. It is the intellectual home of neural networks.",
       "durable": true,
       "category": "Foundations and History"
+    },
+    {
+      "id": "consistency-model",
+      "label": "Consistency Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "consistency models",
+        "consistency distillation"
+      ],
+      "def_snippet": "A generative model trained so that every point along a diffusion trajectory maps to the same clean origin, letting it produce a high-quality sample in one or a few steps instead of the dozens or hundreds a diffusion model needs.",
+      "durable": true,
+      "category": "Generative Models"
     },
     {
       "id": "constitutional-ai",
@@ -1698,6 +1715,19 @@
       "def_snippet": "CUDA is the parallel programming platform and software stack that lets developers run general-purpose computation on a particular vendor's GPUs, and it is the foundation almost every deep learning framework builds on to turn neural network operations into fast GPU code.",
       "durable": true,
       "category": "Systems and Infrastructure"
+    },
+    {
+      "id": "curriculum-learning",
+      "label": "Curriculum Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "curriculum learning",
+        "easy-to-hard training"
+      ],
+      "def_snippet": "A training strategy that orders examples from easy to hard rather than presenting them randomly, so a model builds competence gradually, which can speed convergence and improve final performance on difficult tasks.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
     },
     {
       "id": "curvature",
@@ -2022,6 +2052,19 @@
         "autoregressive diffusion"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "diffusion-transformer",
+      "label": "Diffusion Transformer",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "DiT",
+        "diffusion transformer"
+      ],
+      "def_snippet": "A diffusion model whose denoising network is a transformer operating on sequences of image or video patches, replacing the U-Net backbone, which scales cleanly with compute and underlies recent high-end image and video generators.",
+      "durable": true,
+      "category": "Generative Models"
     },
     {
       "id": "dimensionality-reduction",
@@ -5128,16 +5171,17 @@
     },
     {
       "id": "multimodal-learning",
-      "label": "multimodal learning",
-      "kind": "tool",
+      "label": "Multimodal Learning",
+      "kind": "technique",
       "attention": 9,
       "aliases": [
-        "multimodal",
+        "multimodality",
         "multimodal AI",
-        "multimodal models",
-        "multimodal benchmarking"
+        "cross-modal learning"
       ],
-      "def_snippet": "Multimodal learning trains machine learning models on data combining multiple types of input such as text, images, audio, or video to perform tasks requiring understanding across m…"
+      "def_snippet": "Training models to jointly represent and relate information from more than one modality (text, images, audio, video), so content in one can be aligned with, retrieved by, or generated from another.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "mutual-information",
@@ -6335,6 +6379,19 @@
       "def_snippet": "A language model trained to spend variable inference-time compute on an extended internal chain of thought before answering, usually via reinforcement learning on verifiable rewards, trading latency for sharply better performance on math, code, and logic.",
       "durable": true,
       "category": "Frontier Architectures"
+    },
+    {
+      "id": "rectified-flow",
+      "label": "Rectified Flow",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "rectified flow",
+        "reflow"
+      ],
+      "def_snippet": "A generative approach that trains a model to follow straight-line paths between noise and data, so the learned trajectory is nearly straight and can be integrated in very few steps, the basis of several recent fast, high-quality image generators.",
+      "durable": true,
+      "category": "Generative Models"
     },
     {
       "id": "relu",
@@ -7767,6 +7824,20 @@
       "def_snippet": ""
     },
     {
+      "id": "text-to-image",
+      "label": "Text-to-Image Generation",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "text-to-image",
+        "text to image",
+        "T2I"
+      ],
+      "def_snippet": "The task and model class that generate an image from a natural-language description, today dominated by diffusion models conditioned on a text embedding, with prompt adherence controlled by classifier-free guidance.",
+      "durable": true,
+      "category": "Generative Models"
+    },
+    {
       "id": "tf-idf",
       "label": "TF-IDF",
       "kind": "technique",
@@ -8337,6 +8408,20 @@
         "ViT"
       ],
       "def_snippet": "An architecture that applies the transformer directly to images by cutting each image into a grid of patches, embedding the patches as tokens, and processing them with self-attention, dispensing with convolution.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
+      "id": "vision-language-model",
+      "label": "Vision-Language Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "VLM",
+        "multimodal LLM",
+        "vision language model"
+      ],
+      "def_snippet": "A model that jointly processes images and text, typically by projecting visual features into a language model's token space so it can describe, answer questions about, and reason over images alongside text.",
       "durable": true,
       "category": "Computer Vision"
     },
