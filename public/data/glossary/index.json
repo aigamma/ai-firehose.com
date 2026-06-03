@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 816,
-  "durable_count": 421,
+  "count": 819,
+  "durable_count": 426,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1858,6 +1858,20 @@
       "def_snippet": "Data integration combines information from multiple sources into a unified format or system, enabling models to access diverse data for training or inference."
     },
     {
+      "id": "data-leakage",
+      "label": "Data Leakage",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "data leakage",
+        "train-test leakage",
+        "target leakage"
+      ],
+      "def_snippet": "A methodological flaw in which information from outside the training set, especially from the test set or the future, slips into training, so a model scores far better in evaluation than it will in reality; the most common reason a model looks great and then fails in deployment.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "data-parallelism",
       "label": "Data Parallelism",
       "kind": "technique",
@@ -2069,10 +2083,13 @@
       "kind": "technique",
       "attention": 2,
       "aliases": [
-        "Privacy Inference Attack",
-        "privacy-preserving inference"
+        "differential privacy",
+        "DP",
+        "DP-SGD"
       ],
-      "def_snippet": ""
+      "def_snippet": "A mathematical framework that bounds how much any single training example can influence a model's outputs, giving a provable privacy guarantee: an observer cannot tell whether any one individual's data was used, even with arbitrary side knowledge.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "diffusion-dpo",
@@ -2790,6 +2807,19 @@
       "def_snippet": "A family of techniques that reveal what a neuron, channel, or learned feature responds to, either by optimizing an input to maximally activate it or by collecting the real inputs that activate it most strongly.",
       "durable": true,
       "category": "Mechanistic Interpretability"
+    },
+    {
+      "id": "federated-learning",
+      "label": "Federated Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "federated learning",
+        "collaborative learning"
+      ],
+      "def_snippet": "A training approach where many devices or institutions collaboratively train a shared model without their raw data ever leaving home; each computes updates locally and only the updates are aggregated, so the data stays private and decentralized.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "feed-forward-architecture",
@@ -3725,6 +3755,21 @@
       "def_snippet": "Representations that place data in negatively curved hyperbolic space rather than flat Euclidean space, exploiting hyperbolic volume's exponential growth to embed hierarchies and trees with low distortion.",
       "durable": true,
       "category": "Geometry and Manifolds"
+    },
+    {
+      "id": "hyperparameter-optimization",
+      "label": "Hyperparameter Optimization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "hyperparameter tuning",
+        "HPO",
+        "grid search",
+        "random search"
+      ],
+      "def_snippet": "The search for the configuration settings that are fixed before training (learning rate, model size, regularization strength, and so on) rather than learned from data, automated by strategies from grid and random search to Bayesian optimization.",
+      "durable": true,
+      "category": "Core Machine Learning"
     },
     {
       "id": "hyde",
@@ -5138,13 +5183,16 @@
     },
     {
       "id": "model-compression",
-      "label": "model compression",
+      "label": "Model Compression",
       "kind": "technique",
       "attention": 1,
       "aliases": [
-        "post-training compression"
+        "model compression",
+        "model optimization"
       ],
-      "def_snippet": ""
+      "def_snippet": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "model-context-protocol",
