@@ -1,8 +1,8 @@
 /*
   Full ingestion pipeline (v1: YouTube primary).
   fetch -> classify -> embed + upsert -> attention series -> rotation per kind and
-  horizon -> constellation (PCA over concept embeddings) -> digests -> write real
-  artifacts into public/data (replacing the synthetic seed).
+  horizon -> digests -> write real artifacts into public/data (replacing the
+  synthetic seed).
 
   Run: node --env-file=worker/.env.local worker/pipeline/run.mjs [maxItems]
 */
@@ -20,7 +20,6 @@ import { collapseStore } from "./store.mjs";
 import { pruneByRetention } from "./retention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 import { computeBoards } from "./boards.mjs";
-import { pca2d } from "./precompute.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { defineConcepts } from "./define.mjs";
@@ -199,20 +198,7 @@ async function main() {
     for (const [id, s] of Object.entries(series)) conceptTotals[id] = (conceptTotals[id] || 0) + s.reduce((a, b) => a + b, 0);
   }
 
-  console.log("5. constellation (PCA over canonical concept embeddings)...");
-  const idToVec = Object.fromEntries(canon.map((c) => [c.id, c.vec]));
-  const conceptIds = Object.keys(conceptTotals).filter((id) => idToVec[id]);
-  let points = [];
-  if (conceptIds.length) {
-    const xy = pca2d(conceptIds.map((id) => idToVec[id]));
-    points = conceptIds.map((id, i) => ({
-      id, kind: primaryKind[id] || "technique", label: labels[id] || id,
-      attention: Math.round(conceptTotals[id]), x: xy[i]?.x ?? 0, y: xy[i]?.y ?? 0,
-    }));
-  }
-  writeJson("constellation.json", { method: "pca-power-iteration", dim: 1024, sample_count: points.length, generated: GENERATED, synthetic: false, points });
-
-  console.log("5b. network: neighbors, clusters, spectrums, influence...");
+  console.log("5. network: neighbors, clusters, spectrums, influence...");
   const canonById = Object.fromEntries(canon.map((c) => [c.id, c]));
   const neighbors = computeNeighbors(canon);
   const clusters = computeClusters(canon, conceptTotals);

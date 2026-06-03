@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 //
 // A module-level cache keyed on path means repeat navigations resolve
 // synchronously from memory instead of refetching the large static artifacts
-// (constellation, clusters, spectrums are each tens to hundreds of KB).
+// (clusters, spectrums are each tens to hundreds of KB).
 // Concurrent identical fetches are deduped through an in-flight-promise map.
 const cache = new Map();
 const inflight = new Map();

@@ -4,7 +4,7 @@ The non-chat embedding layer, ported from `C:\civil\rag`. It powers organization
 
 ## Substrate
 
-- **Pinecone.** Index `ai-firehose`, serverless, cosine, 1024-dim. Single namespace plus metadata filters (cross-kind similarity matters for the unified constellation, so no namespace-per-kind).
+- **Pinecone.** Index `ai-firehose`, serverless, cosine, 1024-dim. Single namespace plus metadata filters (cross-kind similarity matters for clusters and neighbors, so no namespace-per-kind).
 - **Voyage.** `voyage-3` for embeddings (`input_type=document` on ingest, `query` on retrieval). `rerank-2` for the live search second stage.
 - **Ports.** `rag/shared.mjs` (env, Pinecone and Voyage helpers), `rag/ingest.mjs` (idempotent upsert), `rag/retrieve.mjs` (two-stage retrieval). Precompute scripts: `rag/precompute.mjs`, `rag/precompute_concept_axes.mjs`, `rag/precompute_clusters_neighbors.py`, `rag/precompute_influence.py`.
 
@@ -23,7 +23,6 @@ Built at network-rebuild time, served from `/data`:
 | Artifact | Algorithm | Notes |
 |---|---|---|
 | `centroids.json` | mean-pool the entity's item vectors, L2 normalize | per-entity position |
-| `constellation.json` | power-iteration PCA to 2D, pinned seed | unified map, normalized to [-1, 1] |
 | `clusters.json` | deterministic k-means (k near sqrt(N), seed-spread init, up to 60 iterations); labeled by its top member concepts | auto themes (LLM naming is intended, not yet wired) |
 | `spectrums.json` | concept axes: `axis_vector = normalize(embed(pole_a) - embed(pole_b))`, project centroids | served file is positions-only (`{id, label, position_normalized}`); the 1024-dim `axis_vector` and the raw `position` are stripped from the payload. Vectors are parked in `worker/.cache/axis_vectors.json` for future live projection |
 | `influence.json` | derivation and mention edges | network view |
@@ -35,8 +34,6 @@ Built at network-rebuild time, served from `/data`:
 Neighbors are computed every rebuild and denormalized into the hubs, so no standalone `neighbors.json` is served (it was fetched by nothing).
 
 ### Artifact Schemas (initial)
-
-`constellation.json`: `{ method, dim, sample_count, points: [{ id|slug, kind, label, attention, x, y }] }`.
 
 `attention/<kind>_<horizon>.json`: `{ kind, horizon, generated, entities: [{ id|slug, label, attention, rs, ratio, momentum, quadrant, sparkline: number[], outlier: { breakout, new_entrant, quadrant_jump } }] }`.
 

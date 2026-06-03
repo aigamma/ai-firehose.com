@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import RotationBoard from "../components/RotationBoard.jsx";
-import Constellation from "../components/Constellation.jsx";
 import useData from "../lib/useData.js";
 import { SITE, KINDS, HORIZONS, QUADRANTS, quadrantOf, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
 
@@ -52,9 +51,7 @@ export default function Home() {
   const [horizon, setHorizon] = useState(DEFAULT_HORIZON);
   const h = getHorizon(horizon);
   const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
-  const { data: constellation, loading: constellationLoading, error: constellationError } = useData(`/data/constellation.json`);
-  const { data: clustersD } = useData(`/data/clusters.json`);
-  const synthetic = digest?.synthetic || constellation?.synthetic;
+  const synthetic = digest?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
   // Arrow keys cycle the horizon (Day to Quarter), but ONLY when focus is within
@@ -130,56 +127,30 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="grid cols-2">
-        <section className="card">
-          <div className="card-head">
-            <h2>Constellation</h2>
-            <span className="eyebrow" style={{ marginLeft: "auto" }}>idea-space map</span>
-          </div>
-          {constellationError ? (
-            <LoadError label="Idea-space map" />
-          ) : constellation?.points ? (
-            <>
-              <Constellation points={constellation.points} clusters={clustersD?.clusters || []} />
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 10 }}>
-                {KINDS.map((k) => (
-                  <span key={k.key} className={`badge ${k.badgeClass}`}>
-                    <span className="dot" style={{ background: `var(${k.accentVar})` }} />
-                    {k.label}
+      <section className="card">
+        <div className="card-head"><h2>Outliers</h2></div>
+        {digestError ? (
+          <LoadError label="Breakouts and new entrants" />
+        ) : digest?.outliers?.length ? (
+          <ul className="feed">
+            {digest.outliers.map((o, i) => {
+              const kind = getKind(o.kind);
+              return (
+                <li key={i}>
+                  <span className="dot" style={{ background: `var(${quadrantOf(o.quadrant).colorVar})` }} />
+                  <span className="lead-label">
+                    <Link to={`/technique/${o.id}`}>{o.label}</Link>
                   </span>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="empty"><strong>Idea-space map</strong>{constellationLoading ? "Loading…" : "Awaiting ingestion."}</div>
-          )}
-        </section>
-
-        <section className="card">
-          <div className="card-head"><h2>Outliers</h2></div>
-          {digestError ? (
-            <LoadError label="Breakouts and new entrants" />
-          ) : digest?.outliers?.length ? (
-            <ul className="feed">
-              {digest.outliers.map((o, i) => {
-                const kind = getKind(o.kind);
-                return (
-                  <li key={i}>
-                    <span className="dot" style={{ background: `var(${quadrantOf(o.quadrant).colorVar})` }} />
-                    <span className="lead-label">
-                      <Link to={`/technique/${o.id}`}>{o.label}</Link>
-                    </span>
-                    {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
-                    <Reasons outlier={o.outlier} />
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <div className="empty"><strong>Breakouts and new entrants</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
-          )}
-        </section>
-      </div>
+                  {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
+                  <Reasons outlier={o.outlier} />
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <div className="empty"><strong>Breakouts and new entrants</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
+        )}
+      </section>
 
       <section className="card">
         <div className="card-head">

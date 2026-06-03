@@ -7,7 +7,6 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 ## What It Does
 
 - **Three relative-rotation boards.** Techniques, Tools, and Opinions each rotate through Leading, Improving, Weakening, and Lagging quadrants, using relative-strength math (borrowed from market rotation graphs) applied to attention rather than price.
-- **A unified constellation.** A 2D map of the whole idea space, every item placed by its embedding, colored by kind, sized by attention. Outliers sit at the edges or move fast.
 - **Trending leaderboards and an outliers strip.** The biggest movers, the breakouts, the brand-new entrants.
 - **A Glossary of Techniques.** An AI-grown, self-organizing taxonomy where each technique is an integration hub linking to the items, neighbors, and discourse axes around it.
 - **Live semantic search.** Non-chat retrieval across the corpus.

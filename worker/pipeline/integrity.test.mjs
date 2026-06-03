@@ -5,8 +5,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 // Referential integrity of the served artifacts: every /technique/:id the UI can
-// link to (constellation, rotation boards, clusters, spectrums, influence, digests,
-// glossary, and hub neighbors) must resolve to a per-concept hub file. Guards
+// link to (rotation boards, clusters, spectrums, influence, digests, glossary, and
+// hub neighbors) must resolve to a per-concept hub file. Guards
 // against an id-space drift, e.g. a digest storing raw slugs instead of canonical
 // concept ids, which would render as dead "Unknown concept" links.
 
@@ -24,7 +24,6 @@ test("every /technique/:id link target across served artifacts has a hub file", 
     if (miss.length) dangling[name] = miss.slice(0, 10);
   };
 
-  check("constellation.points", J("constellation.json").points.map((p) => p.id));
   check("glossary.index", J("glossary/index.json").concepts.map((c) => c.id));
   check("clusters.members", J("clusters.json").clusters.flatMap((c) => (c.members || []).map((m) => m.id)));
   check("spectrums.positions", J("spectrums.json").axes.flatMap((a) => a.positions.map((p) => p.id)));

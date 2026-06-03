@@ -105,26 +105,6 @@ for (const kind of KINDS) {
   }
 }
 
-// Unified constellation across kinds.
-const points = [];
-for (const kind of KINDS) {
-  const rng = seedFrom(`constellation:${kind}`);
-  for (const label of POOLS[kind]) {
-    points.push({
-      id: `${kind}:${slug(label)}`,
-      kind,
-      label,
-      attention: Math.round(8 + rng() * 92),
-      x: Math.round((rng() * 2 - 1) * 1000) / 1000,
-      y: Math.round((rng() * 2 - 1) * 1000) / 1000,
-    });
-  }
-}
-writeFileSync(
-  resolve(DATA, "constellation.json"),
-  JSON.stringify({ method: "synthetic", dim: 1024, sample_count: points.length, generated: GENERATED, synthetic: true, points }, null, 2)
-);
-
 // Digests per horizon: new items, top movers, outliers.
 for (const horizon of HORIZONS) {
   const rng = seedFrom(`digest:${horizon}`);
