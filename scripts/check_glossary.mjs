@@ -1,14 +1,15 @@
 /*
-  Glossary cross-link integrity check.
+  Glossary and learning-path cross-link integrity check.
 
   build_glossary.mjs resolves each authored `related:` slug to a concept and SILENTLY
   DROPS any that do not resolve (the `.filter((r) => r.label)` at the related-mesh step),
   so a typo'd or stale related slug just vanishes from the hub with no error. That is
-  silent rot in the knowledge graph: the cross-link a reader expects is quietly missing.
-  This surfaces it. Every authored `related:` slug must resolve to a real concept (a hub
-  at public/data/glossary/c/<slug>.json, or another authored entry). The wrapping test
-  fails `npm test` on a dangling cross-link, so it cannot disappear unnoticed. This is
-  the doc anti-staleness discipline (see check_docs_fresh.mjs) extended to the KB.
+  silent rot in the knowledge graph. This surfaces it, and it also validates the curated
+  learning paths (public/data/learning-paths.json): every related slug AND every path
+  step must resolve to a real concept (a hub at public/data/glossary/c/<slug>.json, or an
+  authored entry whose hub the build will write). The wrapping test fails `npm test` on a
+  dangling link, so it cannot disappear unnoticed. The doc anti-staleness discipline (see
+  check_docs_fresh.mjs) extended to the knowledge base and the paths that teach it.
 */
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { resolve, dirname, basename, join } from "node:path";
@@ -17,6 +18,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT = resolve(ROOT, "content/glossary");
 const HUBS = resolve(ROOT, "public/data/glossary/c");
+const PATHS = resolve(ROOT, "public/data/learning-paths.json");
 
 function walk(dir) {
   const out = [];
@@ -40,36 +42,66 @@ function frontmatter(text) {
   return fm;
 }
 
-// A related slug resolves if a concept hub exists for it (the runtime link target) or
-// it is another authored entry (whose hub the build will write). Returns danglers.
-export function findBrokenRelated() {
-  const hubs = new Set(
-    existsSync(HUBS) ? readdirSync(HUBS).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5)) : []
+// Slugs that resolve to a real concept hub (the runtime link target) or to an authored
+// entry whose hub the build will write.
+function validSlugs() {
+  const hubs = existsSync(HUBS) ? readdirSync(HUBS).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5)) : [];
+  const authored = (existsSync(CONTENT) ? walk(CONTENT) : []).map(
+    (f) => frontmatter(readFileSync(f, "utf8")).slug || basename(f, ".md"),
   );
+  return new Set([...hubs, ...authored]);
+}
+
+export function findBrokenRelated() {
+  const valid = validSlugs();
   const files = existsSync(CONTENT) ? walk(CONTENT) : [];
-  const entries = files.map((f) => {
-    const fm = frontmatter(readFileSync(f, "utf8"));
-    return { slug: fm.slug || basename(f, ".md"), related: fm.related || "" };
-  });
-  const valid = new Set([...hubs, ...entries.map((e) => e.slug)]);
   const broken = [];
-  for (const { slug, related } of entries) {
-    for (const r of related.split(",").map((s) => s.trim()).filter(Boolean)) {
+  for (const f of files) {
+    const fm = frontmatter(readFileSync(f, "utf8"));
+    const slug = fm.slug || basename(f, ".md");
+    for (const r of (fm.related || "").split(",").map((s) => s.trim()).filter(Boolean)) {
       if (!valid.has(r)) broken.push({ slug, related: r });
     }
   }
   return broken.sort((a, b) => `${a.slug}${a.related}`.localeCompare(`${b.slug}${b.related}`));
 }
 
+// Every step of every curated learning path must resolve to a real concept, or the Learn
+// page links to a hub that does not exist.
+export function findBrokenPaths() {
+  if (!existsSync(PATHS)) return [];
+  const valid = validSlugs();
+  let data;
+  try {
+    data = JSON.parse(readFileSync(PATHS, "utf8"));
+  } catch {
+    return [{ path: "(invalid JSON)", step: "learning-paths.json" }];
+  }
+  const broken = [];
+  for (const p of data.paths || []) {
+    for (const step of p.steps || []) {
+      if (!valid.has(step)) broken.push({ path: p.slug || p.title || "(unnamed)", step });
+    }
+  }
+  return broken.sort((a, b) => `${a.path}${a.step}`.localeCompare(`${b.path}${b.step}`));
+}
+
 function main() {
-  const broken = findBrokenRelated();
-  if (!broken.length) {
-    console.log("check_glossary: OK, all related links resolve.");
+  const related = findBrokenRelated();
+  const paths = findBrokenPaths();
+  if (!related.length && !paths.length) {
+    console.log("check_glossary: OK, all related links and learning-path steps resolve.");
     return;
   }
-  console.error(`check_glossary: ${broken.length} dangling related link(s) (silently dropped by the build):`);
-  for (const b of broken) console.error(`  ${b.slug}  ->  ${b.related}`);
-  console.error("\nFix the related slug in content/glossary (or add the missing entry); otherwise the link is dropped from the hub mesh.");
+  if (related.length) {
+    console.error(`check_glossary: ${related.length} dangling related link(s) (silently dropped by the build):`);
+    for (const b of related) console.error(`  related  ${b.slug}  ->  ${b.related}`);
+  }
+  if (paths.length) {
+    console.error(`check_glossary: ${paths.length} dangling learning-path step(s):`);
+    for (const b of paths) console.error(`  path ${b.path}  ->  ${b.step}`);
+  }
+  console.error("\nFix the slug to a real concept (or add the missing entry); otherwise the link is dead.");
   process.exitCode = 1;
 }
 

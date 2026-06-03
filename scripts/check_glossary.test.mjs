@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { findBrokenRelated } from "./check_glossary.mjs";
+import { findBrokenRelated, findBrokenPaths } from "./check_glossary.mjs";
 
 // The doc anti-staleness discipline, extended to the knowledge graph: a glossary
 // `related:` slug that does not resolve to a real concept is silently dropped from
@@ -12,5 +12,14 @@ test("every glossary related link resolves to a real concept", () => {
     broken,
     [],
     `\nDangling related links (silently dropped by the build):\n${broken.map((b) => `  ${b.slug} -> ${b.related}`).join("\n")}\n`,
+  );
+});
+
+test("every learning-path step resolves to a real concept", () => {
+  const broken = findBrokenPaths();
+  assert.deepEqual(
+    broken,
+    [],
+    `\nDangling learning-path steps:\n${broken.map((b) => `  ${b.path} -> ${b.step}`).join("\n")}\n`,
   );
 });
