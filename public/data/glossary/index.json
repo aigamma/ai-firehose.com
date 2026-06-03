@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 824,
-  "durable_count": 432,
+  "count": 830,
+  "durable_count": 438,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -269,6 +269,19 @@
       "attention": 2,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "agentic-rag",
+      "label": "Agentic RAG",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "agentic RAG",
+        "agentic retrieval"
+      ],
+      "def_snippet": "Retrieval-augmented generation driven by an agent that decides when and what to retrieve, issues multiple queries, evaluates the results, and iterates, rather than a single fixed retrieve-then-generate step, so RAG can handle multi-hop and open-ended questions.",
+      "durable": true,
+      "category": "Agents and Tool Use"
     },
     {
       "id": "agentic-workflow",
@@ -961,6 +974,20 @@
       "def_snippet": "A transformer-based language model from Google, released in 2018, that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, and is fine-tuned for a wide range of NLP tasks.",
       "durable": true,
       "category": "NLP Foundations"
+    },
+    {
+      "id": "best-of-n-sampling",
+      "label": "Best-of-N Sampling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "best-of-n",
+        "BoN",
+        "rejection ranking"
+      ],
+      "def_snippet": "An inference strategy that generates N candidate responses and selects the best according to a scorer (a reward model, a verifier, or a heuristic), spending parallel compute to lift quality on tasks where judging an answer is easier than producing one.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "bias-variance-tradeoff",
@@ -4688,6 +4715,20 @@
       "category": "Inference and Sampling"
     },
     {
+      "id": "long-context",
+      "label": "Long Context",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "long context",
+        "long-context window",
+        "extended context"
+      ],
+      "def_snippet": "A model's ability to process and use very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning, while straining the quadratic cost of attention, the size of the KV cache, and the model's ability to actually attend across the full window.",
+      "durable": true,
+      "category": "Transformers and LLMs"
+    },
+    {
       "id": "lstm",
       "label": "Long Short-Term Memory",
       "kind": "technique",
@@ -6550,6 +6591,20 @@
       "category": "Mechanistic Interpretability"
     },
     {
+      "id": "process-reward-model",
+      "label": "Process Reward Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "PRM",
+        "process reward model",
+        "step-level reward"
+      ],
+      "def_snippet": "A reward model that scores each step of a model's reasoning rather than only the final answer, giving dense feedback that better guides training and search for multi-step problems; contrasted with an outcome reward model that judges only the result.",
+      "durable": true,
+      "category": "Alignment and Safety"
+    },
+    {
       "id": "process-outcome-evaluation",
       "label": "process-outcome evaluation",
       "kind": "tool",
@@ -6937,6 +6992,19 @@
       "def_snippet": "A variant of RLHF in which the preference labels used to train the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply, and the mechanism behind constitutional AI.",
       "durable": true,
       "category": "Training and Fine-Tuning"
+    },
+    {
+      "id": "rejection-sampling",
+      "label": "Rejection Sampling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "rejection sampling",
+        "rejection sampling fine-tuning"
+      ],
+      "def_snippet": "A method that generates candidates and keeps only those passing a check (a verifier, a test suite, or a quality threshold), discarding the rest; used both at inference to enforce constraints and in training to distill a model's own correct outputs.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "remote-control",
@@ -8855,6 +8923,20 @@
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "verifier",
+      "label": "Verifier",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "verifier",
+        "solution verifier",
+        "checker"
+      ],
+      "def_snippet": "A model or procedure that judges whether a candidate output is correct, used to select among samples, filter training data, and supply the reward in reinforcement learning on verifiable tasks; verifying is often easier and more reliable than generating.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "video-generation",
