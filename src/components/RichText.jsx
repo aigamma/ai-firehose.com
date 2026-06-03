@@ -20,7 +20,7 @@ function renderTokens(tokens, keyPrefix, citeMap) {
         return tk.v;
       case "wiki":
         return (
-          <Link key={key} to={`/technique/${tk.slug}`} className="wikilink">
+          <Link key={key} to={`/technique/${tk.slug}`} className={`wikilink wikilink-${tk.kind || "default"}`}>
             {tk.v}
           </Link>
         );

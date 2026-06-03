@@ -163,12 +163,13 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
   const byId = new Map((index.concepts || []).map((c) => [c.id, c]));
   const authoredById = new Map(entries.map((e) => [e.slug, e]));
   const labelOf = (slug) => authoredById.get(slug)?.title || byId.get(slug)?.label || null;
+  const kindOf = (slug) => authoredById.get(slug)?.kind || byId.get(slug)?.kind || null;
 
   let written = 0;
   for (const e of entries) {
     const hubPath = resolve(data, "c", `${e.slug}.json`);
     const prior = readJson(hubPath, {});
-    const related = e.related.map((slug) => ({ slug, label: labelOf(slug) })).filter((r) => r.label);
+    const related = e.related.map((slug) => ({ slug, label: labelOf(slug), kind: kindOf(slug) })).filter((r) => r.label);
     writeJson(hubPath, {
       ...prior,
       id: e.slug,

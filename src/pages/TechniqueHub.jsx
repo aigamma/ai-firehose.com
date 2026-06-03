@@ -27,8 +27,8 @@ export default function TechniqueHub() {
   const k = getKind(c.kind);
   const hasSidecards = c.axis_positions?.length || c.neighbors?.length;
   return (
-    <div className="stack" style={{ paddingTop: 24 }}>
-      <h1>{c.label}</h1>
+    <div className="stack" style={{ paddingTop: 24, "--tile-accent": k ? `var(${k.accentVar})` : "var(--accent)" }}>
+      <h1 className="hub-title">{c.label}</h1>
       <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
         {k && (
           <span className={`badge ${k.badgeClass}`}>
@@ -42,7 +42,7 @@ export default function TechniqueHub() {
         {c.aliases?.length > 0 && <span className="faint">also: {c.aliases.join(", ")}</span>}
       </div>
 
-      {c.definition && <p className="lede">{c.definition}</p>}
+      {c.definition && <p className="hub-def">{c.definition}</p>}
 
       {c.body?.length > 0 && <RichText blocks={c.body} currentSlug={slug} className="prose" />}
 
@@ -51,7 +51,7 @@ export default function TechniqueHub() {
           <span className="eyebrow">Related</span>
           <div className="chips">
             {c.related.map((r) => (
-              <Link key={r.slug} to={`/technique/${r.slug}`} className="chip">{r.label}</Link>
+              <Link key={r.slug} to={`/technique/${r.slug}`} className={`chip chip-${r.kind || "default"}`}>{r.label}</Link>
             ))}
           </div>
         </div>

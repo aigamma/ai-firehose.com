@@ -469,24 +469,48 @@ a { text-underline-offset: 3px; }
 .card-head h2 { letter-spacing: -0.01em; }
 .brand .spark { font-size: 1.1em; }
 
-/* Wiki-style auto-links inside prose (the briefing body and authored hub bodies). A
-   subtle dotted underline makes the deep mesh discoverable without turning prose into
-   a wall of blue links. */
-.wikilink { color: var(--text); text-decoration: underline; text-decoration-style: dotted; text-decoration-color: color-mix(in oklab, var(--accent) 55%, transparent); text-underline-offset: 3px; }
-.wikilink:hover { color: var(--accent); text-decoration-style: solid; }
+/* Wiki-style auto-links inside prose (the briefing body, item summaries, and authored
+   hub bodies). Bold and colored by the KIND of concept they point to: technique
+   indigo, tool teal, opinion pink, the accent for everything else. Color encodes
+   meaning (the project ethos) and turns dense prose into a navigable, colored mesh
+   instead of a wall of grey terminal text. The underline fills in and a soft tint
+   blooms on hover. */
+.wikilink { font-weight: 600; color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+  transition: border-color var(--motion-fast) var(--ease-out), background var(--motion-fast) var(--ease-out); }
+.wikilink:hover { border-bottom-color: currentColor; text-decoration: none;
+  background: color-mix(in oklab, currentColor 13%, transparent); border-radius: 3px; }
+.wikilink-technique { color: var(--kind-technique); }
+.wikilink-tool { color: var(--kind-tool); }
+.wikilink-opinion { color: var(--kind-opinion); }
 
-/* Authored knowledge body: readable long-form prose on a concept hub. */
-.prose { max-width: 72ch; }
-.prose .rt-p { margin: 0 0 14px; line-height: 1.7; color: var(--text); }
-.prose .rt-h { font-size: 1.05rem; letter-spacing: -0.01em; margin: 22px 0 8px; color: var(--text-strong); }
-.prose .rt-ul { margin: 0 0 14px; padding-left: 22px; line-height: 1.7; }
-.prose .rt-ul li { margin-bottom: 4px; }
-.prose .rt-quote { margin: 0 0 14px; padding: 4px 0 4px 16px; border-left: 3px solid var(--border-strong); color: var(--muted); }
-.prose .rt-code { margin: 0 0 14px; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow-x: auto; font-size: 0.85rem; }
-.prose code, .briefing-body code { font-family: var(--font-mono); font-size: 0.88em; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+/* Authored knowledge body: readable, slightly larger long-form prose on a concept
+   hub. Headings, list markers, and quotes pick up the concept's kind color through
+   --tile-accent (set on the hub container). */
+.prose { max-width: 74ch; font-size: 1.02rem; }
+.prose .rt-p { margin: 0 0 15px; line-height: 1.75; color: var(--text); }
+.prose .rt-h { font-size: 1.08rem; letter-spacing: -0.01em; margin: 24px 0 8px; color: var(--text-strong);
+  padding-left: 11px; border-left: 3px solid var(--tile-accent, var(--accent)); }
+.prose .rt-ul { margin: 0 0 15px; padding-left: 22px; line-height: 1.75; }
+.prose .rt-ul li { margin-bottom: 5px; }
+.prose .rt-ul li::marker { color: var(--tile-accent, var(--accent)); }
+.prose .rt-quote { margin: 0 0 15px; padding: 8px 0 8px 16px; border-left: 3px solid var(--tile-accent, var(--accent)); color: var(--muted); font-style: italic; }
+.prose .rt-code { margin: 0 0 15px; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow-x: auto; font-size: 0.85rem; }
+.prose code, .briefing-body code, .summary-clamp code { font-family: var(--font-mono); font-size: 0.88em; color: var(--kind-tool); background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+.prose strong, .briefing-body strong { color: var(--text-strong); font-weight: 680; }
 
-/* Related concept mesh on a hub, and the durable Knowledge badge. */
+/* Concept hub chrome: a kind-colored accent rail on the title and an editorial serif
+   definition lede, both keyed off --tile-accent (the concept's kind color). */
+.hub-title { margin: 0; padding-left: 14px; border-left: 4px solid var(--tile-accent, var(--accent)); }
+.hub-def { font-family: var(--font-serif); font-size: 1.18rem; line-height: 1.5; color: var(--text-strong);
+  padding-left: 14px; border-left: 4px solid color-mix(in oklab, var(--tile-accent, var(--accent)) 45%, transparent); }
+
+/* Related concept mesh on a hub: chips colored by their own kind. */
 .related-mesh { display: flex; flex-direction: column; gap: 8px; }
+.chip.chip-technique { color: var(--kind-technique); border-color: color-mix(in oklab, var(--kind-technique) 45%, var(--border)); }
+.chip.chip-tool { color: var(--kind-tool); border-color: color-mix(in oklab, var(--kind-tool) 45%, var(--border)); }
+.chip.chip-opinion { color: var(--kind-opinion); border-color: color-mix(in oklab, var(--kind-opinion) 45%, var(--border)); }
+.chip.chip-technique:hover, .chip.chip-tool:hover, .chip.chip-opinion:hover { background: color-mix(in oklab, currentColor 14%, transparent); text-decoration: none; }
 .durable-badge { color: var(--kind-tool); border-color: color-mix(in oklab, var(--kind-tool) 50%, var(--border-strong)); }
 .kindbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; margin-top: 10px; border: 1px solid var(--border); }
 .kindbar span { display: block; }

@@ -20,23 +20,23 @@ const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 // noise (a one-letter alias would link half the page).
 export function buildMatcher(concepts = []) {
   const map = new Map();
-  const add = (surface, slug, label) => {
+  const add = (surface, slug, label, kind) => {
     const key = String(surface || "").toLowerCase().trim();
     if (key.length < 3 || !/[a-z]/.test(key)) return; // skip 1-2 char or non-alpha noise
-    if (!map.has(key)) map.set(key, { slug, label });
+    if (!map.has(key)) map.set(key, { slug, label, kind });
   };
   // Pass 1: labels are authoritative. A concept's own name always wins the surface
   // form, even if another concept lists it as an alias (self-attention is its own
   // hub, not a synonym of attention-mechanism).
   for (const c of concepts) {
     const slug = c.id || c.slug;
-    if (slug && c.label) add(c.label, slug, c.label);
+    if (slug && c.label) add(c.label, slug, c.label, c.kind);
   }
   // Pass 2: aliases fill in only where no label already claimed the surface form.
   for (const c of concepts) {
     const slug = c.id || c.slug;
     if (!slug) continue;
-    for (const a of Array.isArray(c.aliases) ? c.aliases : []) add(a, slug, c.label || a);
+    for (const a of Array.isArray(c.aliases) ? c.aliases : []) add(a, slug, c.label || a, c.kind);
   }
   const terms = [...map.keys()].sort((a, b) => b.length - a.length);
   const re = terms.length ? new RegExp(`\\b(${terms.map(esc).join("|")})\\b`, "gi") : null;
@@ -55,7 +55,7 @@ function wikiLink(text, matcher, currentSlug, linked) {
     const info = matcher.map.get(surface.toLowerCase());
     if (!info || info.slug === currentSlug || linked.has(info.slug)) continue;
     if (m.index > last) out.push({ t: "text", v: text.slice(last, m.index) });
-    out.push({ t: "wiki", slug: info.slug, v: surface });
+    out.push({ t: "wiki", slug: info.slug, kind: info.kind, v: surface });
     linked.add(info.slug);
     last = m.index + surface.length;
   }
