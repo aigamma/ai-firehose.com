@@ -54,6 +54,15 @@ Any agent, in any tool (Claude Code, Cursor, Copilot, OpenCode, Antigravity Gemi
 
 This section applies to itself: it lives here, in the auto-loaded doc, because the rule about durable docs is itself a durable insight.
 
+### Enforcement: the Anti-Staleness Gates
+
+The durable-docs rule is enforced by code, not goodwill, so a working tree where the docs or the knowledge graph lie fails CI instead of drifting silently. Two committed checks, both wrapped in `node:test` so `npm test` runs them, judge against the COMMITTED tree (via `git ls-files`, never the local disk, so local and CI agree):
+
+- `scripts/check_docs_fresh.mjs`: every backtick-quoted source path and `npm run` script named in the current-state docs (`CLAUDE.md`, `AGENTS.md`, `STEERING_DOCS.md`, `README.md`, the cross-vendor pointers, the tier-2 `docs/`) must exist. The append-only history logs (`LESSONS_LEARNED.md`, `docs/INGESTION_LOG.md`) are excluded by design, since they legitimately name files later deleted. A `scripts/docs_stale_baseline.json` ratchet tracks any pre-existing debt so the gate fails only on NEW drift; do not add entries to silence a fresh break, fix the doc.
+- `scripts/check_glossary.mjs`: every authored `related:` slug (which `build_glossary.mjs` silently drops when it does not resolve) AND every step of every curated learning path (`public/data/learning-paths.json`) must resolve to a real concept hub.
+
+How to apply: when you add a class of cross-reference that could rot, extend or copy these checks rather than trusting review; `git add` new files before running a gate, since it judges the staged or committed tree; and treat a one-shot gate failure as possibly a race with a concurrent commit, re-checking before you "fix" it.
+
 ## Architecture
 
 Subsystems, each in its own directory:
