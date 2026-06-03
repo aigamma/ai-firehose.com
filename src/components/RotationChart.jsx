@@ -81,7 +81,7 @@ function RotationChart({ entities = [] }) {
 
   return (
     <>
-      <svg viewBox={`0 0 ${S} ${S}`} width="100%" role="img" aria-label="Relative rotation plane with trailing trajectories" style={{ display: "block" }}>
+      <svg viewBox={`0 0 ${S} ${S}`} width="100%" role="group" aria-label="Relative rotation plane with trailing trajectories. Each topic is a focusable marker." style={{ display: "block" }}>
         {rects.map((r) => (
           <rect key={r.q} x={r.x} y={r.y} width={Math.max(0, r.w)} height={Math.max(0, r.h)} fill={qv(r.q)} opacity="0.07" />
         ))}
