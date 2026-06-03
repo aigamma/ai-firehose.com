@@ -6,12 +6,15 @@ A one-page map of the project's documents, ranked by where to start and what eac
 
 | Tier | What it is | When to read | Documents |
 |---|---|---|---|
-| 1. Orientation | "Read first." What this is, the conventions, the contracts. | New contributor, human or AI. | `CLAUDE.md`, `README.md` |
+| 1. Orientation | "Read first." What this is, the conventions, the contracts. | New contributor, human or AI. | `OVERVIEW.md`, `CLAUDE.md`, `README.md` |
 | 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, glossary, ops, or deploy work, or onboarding a feature. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/GLOSSARY.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`, `docs/FEATURE_PLAYBOOK.md` |
 | 3. Cumulative wisdom | "Read to understand why, and to avoid past mistakes." | Before any non-trivial change. Append to it when you learn something. | `LESSONS_LEARNED.md` |
 | 4. Run record | "Read to see what the pipeline has actually done." | Tuning rotation windows or thresholds, debugging a bad run. | `docs/INGESTION_LOG.md` |
 
 ## Tier 1: Orientation
+
+### `OVERVIEW.md` (root)
+The human-friendly guided tour: what the project is, what you can do on the site, what is under the hood, why it is trustworthy, and the numbers, written for a smart human (and usable as presentation notes). Start here for the warm, narrative picture, then go to `CLAUDE.md` for the technical canon.
 
 ### `CLAUDE.md` (root)
 The central, auto-loaded guide. Project context and north star, writing rules, pacing, the dialectical absorption protocol, architecture, the core contracts (idempotency, retention, classification without guessing, the AI-grown taxonomy, determinism, no chatbot), the stack, multi-agent collaboration, the documentation map, commands, and current state. If you read one document, read this.

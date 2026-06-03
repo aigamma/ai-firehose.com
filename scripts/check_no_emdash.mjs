@@ -34,6 +34,7 @@ const SCOPES = [
 const FILES = [
   "CLAUDE.md",
   "README.md",
+  "OVERVIEW.md",
   "AGENTS.md",
   "STEERING_DOCS.md",
   "LESSONS_LEARNED.md",

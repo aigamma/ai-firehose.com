@@ -63,7 +63,7 @@ function makeExists(tracked) {
 // Current-state docs only. History logs excluded by design (see header).
 export function docFiles() {
   const fixed = [
-    "CLAUDE.md", "AGENTS.md", "STEERING_DOCS.md", "README.md",
+    "CLAUDE.md", "AGENTS.md", "STEERING_DOCS.md", "README.md", "OVERVIEW.md",
     "GEMINI.md", "opencode.md",
     ".github/copilot-instructions.md", ".cursor/rules/project-context.mdc",
   ];

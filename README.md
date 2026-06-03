@@ -6,13 +6,12 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 
 ## What It Does
 
-- **A daily briefing.** A cited, model-written summary of what is new and what is breaking out, the lede of the dashboard. Every claim links to the item or the concept it came from.
-- **One unified rotation plane.** Techniques, Tools, and Opinions plotted together through Leading, Improving, Weakening, and Lagging quadrants, colored and shaped by kind, using Mansfield Relative Performance (1979) applied to attention rather than price. The long tail is pruned so only what is actually moving shows.
-- **A written briefing column.** The biggest movers, the breakouts, and the brand-new entrants, beside the plane.
+- **A daily briefing.** A cited, model-written summary of what is new and what is breaking out, the lede of the dashboard, written at full strength by Claude Opus. Every claim links to the item or the concept it came from.
+- **Trend boards, What Moved.** The topics that gained or lost the most attention this window versus the equal window before it, ranked per kind (Techniques, Tools, Opinions), with a magnitude bar and breakout and just-surfaced flags. The whole page switches between Day, Week, Month, and Quarter.
+- **A durable knowledge base.** 453 Opus-authored concepts across 31 categories, explorable as an Atlas constellation, woven into the live trending taxonomy by wiki-style auto-linking, and studyable through curated learning paths and flashcards.
+- **For You.** An opt-in personal lens: follow the concepts you care about and the boards and new-items narrow to your slice.
 - **Watch.** Embedded videos from favorite AI teachers, each joined to the corpus so it carries a cited summary and links into the concepts it covers. Curated in-repo.
-- **A Glossary of Techniques.** An AI-grown, self-organizing taxonomy where each technique is an integration hub linking to the items, neighbors, and discourse axes around it.
-- **Live semantic search.** Non-chat retrieval across the corpus.
-- **Explore and subscribe.** Themes, concept spectrums, and an influence graph on the Explore page, plus a subscribable RSS feed (`/feed.xml`) of everything new.
+- **Live semantic search.** Non-chat retrieval across the corpus and knowledge base, on the Explore page alongside themes, spectrums, and connections, plus a subscribable RSS feed (`/feed.xml`).
 
 ## How It Stays Fresh
 
@@ -24,4 +23,4 @@ A static React and Vite site on Netlify reads precomputed JSON artifacts. A sche
 
 ## For Contributors (human or AI)
 
-Start with [`CLAUDE.md`](CLAUDE.md), the canonical guide. [`AGENTS.md`](AGENTS.md) delegates there for cross-vendor agents. [`STEERING_DOCS.md`](STEERING_DOCS.md) maps every document. Run the site locally with `npm install` then `npm run dev`.
+For a human-friendly tour of what the project is and everything in it, read [`OVERVIEW.md`](OVERVIEW.md). Then start with [`CLAUDE.md`](CLAUDE.md), the canonical technical guide. [`AGENTS.md`](AGENTS.md) delegates there for cross-vendor agents, and [`STEERING_DOCS.md`](STEERING_DOCS.md) maps every document. Run the site locally with `npm install` then `npm run dev`.
