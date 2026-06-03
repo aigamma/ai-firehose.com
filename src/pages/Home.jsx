@@ -58,10 +58,21 @@ export default function Home() {
   const synthetic = digest?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
 
-  // Top Movers: the strongest trend shifts, excluding new entrants (those are
-  // surfaced separately under "Just Surfaced", so the brief does not say the same
-  // thing twice). digest.movers is already sorted by |momentum - 100| descending.
-  const movers = (digest?.movers || []).filter((m) => !m.outlier?.new_entrant).slice(0, 5);
+  // Top Movers: the biggest trend shifts (largest |momentum - 100|) among entities
+  // that have a real trajectory, deduped by concept across kinds. Derived from the
+  // merged boards rather than digest.movers, which in a sparse window is dominated
+  // by new entrants (those are surfaced separately under Just Surfaced, so the brief
+  // does not say the same thing twice).
+  const movers = [];
+  const seenMover = new Set();
+  for (const e of [...entities]
+    .filter((e) => !e.outlier?.new_entrant)
+    .sort((a, b) => Math.abs((b.momentum ?? 100) - 100) - Math.abs((a.momentum ?? 100) - 100))) {
+    if (seenMover.has(e.id)) continue;
+    seenMover.add(e.id);
+    movers.push(e);
+    if (movers.length >= 6) break;
+  }
 
   // Just Surfaced: new entrants across all three kinds (the plane omits them, they
   // have no trajectory). Dedupe by id; a concept can surface on more than one board.
@@ -157,7 +168,7 @@ export default function Home() {
           <div className="dash-brief">
             <div className="brief-block">
               <div className="brief-head"><span className="eyebrow">Top Movers</span></div>
-              {digestError ? (
+              {attnError ? (
                 <LoadError label="Top movers" />
               ) : movers.length ? (
                 <ul className="leaders">
@@ -173,7 +184,7 @@ export default function Home() {
                   ))}
                 </ul>
               ) : (
-                <p className="faint" style={{ margin: 0 }}>{digestLoading ? "Loading…" : "No strong movers this window."}</p>
+                <p className="faint" style={{ margin: 0 }}>{attnLoading ? "Loading…" : "No strong movers this window."}</p>
               )}
             </div>
 
