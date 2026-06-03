@@ -1,0 +1,17 @@
+---
+title: Online Learning
+slug: online-learning
+kind: technique
+category: Core Machine Learning
+aliases: online learning, incremental learning, streaming learning
+related: supervised-learning, stochastic-gradient-descent, catastrophic-forgetting, reinforcement-learning
+summary: A paradigm where the model learns from data arriving in a stream, updating incrementally on each new example or small batch rather than training once over a fixed dataset, suited to data that never stops or that changes over time.
+---
+
+Online learning treats data as a stream rather than a finished collection. Instead of training once over a fixed dataset and then freezing the model, an online learner updates itself continuously as new examples arrive, one at a time or in small batches, never assuming it has seen all the data. This is the natural setting whenever data keeps coming and the world keeps changing: recommendation systems, fraud detection, market prediction, and any deployed model that must adapt to fresh behavior.
+
+The contrast is with batch or offline learning, which assumes a static dataset available all at once and trains over it in repeated passes. Online learning gives that up in exchange for two things: the ability to incorporate new information immediately, and a bounded memory footprint, since it need not store the whole history. Mechanically it often looks like stochastic gradient descent taken to its logical end, one update per incoming example, and it overlaps with the bandit and reinforcement-learning settings where data arrives through interaction.
+
+A defining challenge is concept drift: the statistical patterns in the stream change over time, so a model must keep adapting rather than settle, which is why online learners weight recent data and sometimes forget old data deliberately.
+
+The deeper hazard is catastrophic forgetting. A model that updates on new data can overwrite what it learned from old data, and balancing the need to absorb new patterns against the need to retain old ones is the stability-plasticity dilemma at the core of online and continual learning.
