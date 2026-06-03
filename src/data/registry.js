@@ -10,7 +10,7 @@
 export const SITE = {
   name: "AI Firehose",
   domain: "ai-firehose.com",
-  tagline: "Your Standing Brief on the AI Frontier",
+  // Used by the RSS feed (worker/pipeline/run.mjs); not rendered on the page.
   description:
     "We read the whole AI firehose so you do not have to, then distill it into one brief: what is new, what is breaking out, and what is worth your time, across the day, week, month, and quarter. You take what you want and leave the rest.",
 };

@@ -88,9 +88,7 @@ export default function Home() {
   return (
     <div className="stack">
       <header className="masthead">
-        <p className="masthead-kicker">{SITE.name}</p>
-        <h1 className="masthead-title">{SITE.tagline}</h1>
-        <p className="masthead-stand">{SITE.description}</p>
+        <h1 className="masthead-kicker">{SITE.name}</h1>
       </header>
 
       <div className="dateline">
