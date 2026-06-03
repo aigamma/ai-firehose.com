@@ -6,8 +6,10 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 
 ## What It Does
 
-- **Three relative-rotation boards.** Techniques, Tools, and Opinions each rotate through Leading, Improving, Weakening, and Lagging quadrants, using relative-strength math (borrowed from market rotation graphs) applied to attention rather than price.
-- **Trending leaderboards and an outliers strip.** The biggest movers, the breakouts, the brand-new entrants.
+- **A daily briefing.** A cited, model-written summary of what is new and what is breaking out, the lede of the dashboard. Every claim links to the item or the concept it came from.
+- **One unified rotation plane.** Techniques, Tools, and Opinions plotted together through Leading, Improving, Weakening, and Lagging quadrants, colored and shaped by kind, using Mansfield Relative Performance (1979) applied to attention rather than price. The long tail is pruned so only what is actually moving shows.
+- **A written briefing column.** The biggest movers, the breakouts, and the brand-new entrants, beside the plane.
+- **Watch.** Embedded videos from favorite AI teachers, each joined to the corpus so it carries a cited summary and links into the concepts it covers. Curated in-repo.
 - **A Glossary of Techniques.** An AI-grown, self-organizing taxonomy where each technique is an integration hub linking to the items, neighbors, and discourse axes around it.
 - **Live semantic search.** Non-chat retrieval across the corpus.
 - **Explore and subscribe.** Themes, concept spectrums, and an influence graph on the Explore page, plus a subscribable RSS feed (`/feed.xml`) of everything new.
@@ -18,7 +20,7 @@ The corpus self-expires. Nothing older than about one quarter is retained, so th
 
 ## Architecture
 
-A static React and Vite site on Netlify reads precomputed JSON artifacts. A scheduled worker on Fly.io ingests every day: fetch, transcribe, classify, embed, and rebuild the derived artifacts. Pinecone stores the vectors, Voyage embeds and reranks, and Claude classifies and writes definitions. There is no chatbot; the embedding layer powers organization and visualization.
+A static React and Vite site on Netlify reads precomputed JSON artifacts. A scheduled worker on Fly.io ingests every day: fetch, transcribe, classify, embed, and rebuild the derived artifacts. Pinecone stores the vectors, Voyage embeds and reranks, and Claude classifies, writes the glossary definitions, and writes the daily briefing. There is no chatbot; the embedding layer powers organization and visualization.
 
 ## For Contributors (human or AI)
 
