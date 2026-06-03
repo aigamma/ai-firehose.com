@@ -1,0 +1,64 @@
+{
+  "id": "positional-encoding",
+  "label": "Positional Encoding",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "positional encodings",
+    "position encoding",
+    "sinusoidal encoding"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A method for injecting word-order information into a transformer, which is otherwise blind to sequence position because self-attention treats its inputs as an unordered set.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Positional encoding is how a transformer learns where each token sits in a sequence. Self-attention is permutation invariant: if you shuffle the input tokens, the raw mechanism produces the same set of outputs, because it compares every token with every other without any built-in notion of first, second, or last. Since word order obviously carries meaning (\"dog bites man\" is not \"man bites dog\"), the model needs order information added back in explicitly, and that is the job of positional encoding."
+    },
+    {
+      "type": "p",
+      "text": "The original transformer used a fixed sinusoidal scheme. Each position is assigned a vector built from sine and cosine functions at a range of frequencies, and that vector is added to the token embedding before the first attention layer. The frequencies span many scales, so the encoding gives the model both a fine sense of nearby offsets and a coarse sense of absolute position, and because the functions are smooth and deterministic, the model can in principle generalize to positions beyond those seen in training. A common alternative is a learned positional embedding, a lookup table of one trainable vector per position, which fits the training distribution well but does not extend past the longest sequence it ever saw."
+    },
+    {
+      "type": "p",
+      "text": "These early approaches are absolute: they tag each token with where it is in the sequence. A large body of later work moved toward relative and rotary schemes, which encode how far apart two tokens are rather than their absolute slots. Relative position biases add a learned term to the attention scores based on the distance between query and key, and rotary position embedding rotates the query and key vectors by an angle proportional to position so that their dot product naturally depends on their offset. These methods tend to extrapolate better to longer inputs and are now standard in large language models."
+    },
+    {
+      "type": "p",
+      "text": "Positional encoding is tightly bound up with the context window. Because a model only ever practices with positions inside its training length, behavior can degrade when asked to handle longer inputs, and much of the engineering behind extending context (interpolating or scaling the position signal) is really about stretching the positional encoding gracefully. Understanding it is therefore essential to understanding both how a transformer represents order and why making sequences longer is not free."
+    }
+  ],
+  "related": [
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention"
+    },
+    {
+      "slug": "transformer",
+      "label": "Transformer"
+    },
+    {
+      "slug": "rotary-position-embedding",
+      "label": "Rotary Position Embedding"
+    },
+    {
+      "slug": "multi-head-attention",
+      "label": "Multi-Head Attention"
+    },
+    {
+      "slug": "token-embedding",
+      "label": "Token Embedding"
+    },
+    {
+      "slug": "context-window",
+      "label": "Context Window"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,68 @@
+{
+  "id": "vc-dimension",
+  "label": "VC Dimension",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "VC dimension",
+    "Vapnik-Chervonenkis dimension",
+    "VC"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A measure of the capacity or expressive power of a class of models, defined as the size of the largest set of points that the class can label in all possible ways. It controls how many samples are needed to learn and how tightly training error predicts true error.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The VC dimension, named for Vladimir Vapnik and Alexey Chervonenkis, is the central capacity measure of classical statistical learning theory. It quantifies how flexible a family of classifiers is, not by counting parameters but by asking how many points the family can fit arbitrarily. A model class is powerful in this sense if it can carve up data in many different ways, and that power is exactly what makes it both able to learn rich patterns and liable to memorize noise."
+    },
+    {
+      "type": "p",
+      "text": "The definition rests on the idea of shattering. A set of points is shattered by a class of classifiers if, for every possible assignment of binary labels to those points, some classifier in the class realizes that labeling. The VC dimension is the size of the largest point set the class can shatter. For linear classifiers in the plane, the answer is three: any three points in general position can be split in all eight ways by a line, but no set of four can, since some labelings (the exclusive-or arrangement) no line can separate. In d dimensions a linear classifier with a bias term has VC dimension d plus one, which matches the intuition that more parameters usually buy more capacity."
+    },
+    {
+      "type": "p",
+      "text": "VC dimension matters because it converts a vague notion of model complexity into a single number that drives the core theorems of learning. A class is PAC learnable if and only if its VC dimension is finite, and the Sample Complexity needed for a given accuracy grows roughly in proportion to it. The fundamental theorem of statistical learning bounds the Generalization gap, the difference between training error and true error, by a quantity that grows with the VC dimension and shrinks as the square root of the sample size. Fewer effective degrees of freedom relative to the data means a tighter guarantee that low training error implies low test error."
+    },
+    {
+      "type": "p",
+      "text": "This framing also explains the classical bias-variance picture and the practice of model selection. Empirical Risk Minimization over a class with small VC dimension is safe, because the training error closely tracks the truth, but such a class may be too rigid to express the target, an instance of strong Inductive Bias. A class with large VC dimension can express more but risks overfitting, so structural risk minimization deliberately trades capacity against fit. In this sense VC dimension is the quantitative backbone of the bias-variance tradeoff."
+    },
+    {
+      "type": "p",
+      "text": "The catch is that VC dimension is a worst-case, distribution-free quantity, and it badly mispredicts the behavior of modern overparameterized networks, whose VC dimension is enormous yet which generalize well. The Double Descent phenomenon, where test error falls again past the point of zero training error, lies entirely outside what classical VC bounds anticipate. VC dimension remains essential for understanding capacity and for the theory of simpler models, but it is not the whole story for deep learning, which has pushed the field toward data-dependent and algorithm-dependent measures of complexity."
+    }
+  ],
+  "related": [
+    {
+      "slug": "pac-learning",
+      "label": "PAC Learning"
+    },
+    {
+      "slug": "sample-complexity",
+      "label": "Sample Complexity"
+    },
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias"
+    },
+    {
+      "slug": "empirical-risk-minimization",
+      "label": "Empirical Risk Minimization"
+    },
+    {
+      "slug": "double-descent",
+      "label": "Double Descent"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

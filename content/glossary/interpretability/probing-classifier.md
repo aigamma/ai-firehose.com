@@ -1,0 +1,17 @@
+---
+title: Probing Classifier
+slug: probing-classifier
+kind: technique
+category: Mechanistic Interpretability
+aliases: probe, diagnostic classifier, linear probe
+related: linear-representation-hypothesis, mechanistic-interpretability, activation-steering, feature-visualization, logit-lens, sparse-autoencoder
+summary: A simple supervised classifier trained on a model's frozen internal activations to test whether a given piece of information is linearly decodable from them, used to map what a network represents at each layer.
+---
+
+A probing classifier is a diagnostic tool, usually a single linear layer, trained to predict some property of an input from the frozen hidden activations of a model you are studying. You freeze the target model, run your data through it, harvest the activations at a chosen layer, and fit the probe to predict a label of interest: part of speech, sentiment, whether a chess position is winning, the truth of a stated fact. If the probe succeeds, the conclusion is that the information it predicts is present in those activations and, when the probe is linear, present in a linearly accessible form. The probe never changes the model; it is a readout, an instrument pressed against the network to ask what it knows.
+
+Probes matter because they give a cheap, quantitative map of where and how information lives inside a model. By running the same probe across layers you can watch a property emerge, sharpen, and sometimes fade, charting how representations build up through depth. This makes probing one of the foundational techniques of interpretability, the standard first move when you want to know whether a concept is encoded at all before investing in heavier circuit analysis. It has produced striking findings, including evidence that language models trained only on transcripts develop internal representations of the state of the game or world they are modeling.
+
+The method's logic, and its main caveat, both turn on the choice of probe. A linear probe is preferred precisely because it is weak: if a mere linear map can extract the property, the model has done the representational work and laid the information out along accessible directions, which ties probing directly to the linear representation hypothesis. A powerful nonlinear probe, by contrast, can learn to compute the property itself from activations that do not really represent it, so a high accuracy says more about the probe than the model. Good practice controls for this with baselines, such as probing randomized features or fitting the probe to random labels, to confirm that the signal comes from the network and not the classifier.
+
+Probing connects to the rest of the toolkit as its correlational anchor. It establishes that information is decodable but not that the model uses it, which is the gap that interventional methods like activation steering and ablation are meant to close: a property you can probe and also steer with is one the model genuinely computes with. The directions a probe discovers are often the same directions used to build steering vectors, and the cleaner, monosemantic features from a sparse autoencoder frequently make better probe targets than raw activations. As a quick, rigorous test of what a representation contains, the probing classifier remains one of the most widely used instruments in the field.

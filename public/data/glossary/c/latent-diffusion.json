@@ -1,0 +1,59 @@
+{
+  "id": "latent-diffusion",
+  "label": "Latent Diffusion",
+  "kind": "technique",
+  "category": "Generative Models",
+  "aliases": [
+    "latent diffusion model",
+    "LDM"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A diffusion model that runs in the compressed latent space of an autoencoder rather than on raw pixels, drastically cutting compute while preserving quality, the design behind most large text-to-image systems.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Latent diffusion is the engineering insight that made high-resolution generative diffusion affordable. A standard diffusion model operates directly on pixels, which is enormously expensive at high resolution because the network must process millions of values at every one of many denoising steps. Latent diffusion first trains an autoencoder, typically a variational autoencoder, to compress an image into a small latent grid that retains its essential structure while discarding imperceptible detail. The diffusion process then runs entirely in that compact latent space, and only at the very end does the autoencoder's decoder expand the finished latent back into a full-resolution image."
+    },
+    {
+      "type": "p",
+      "text": "This design matters because it is the reason text-to-image generation became practical and widespread. Moving the diffusion into a latent space perhaps tens of times smaller than the pixel space cuts both training and sampling cost by a large factor, which is what let these systems run on consumer hardware and reach broad use. Most of the large open and commercial image generators of recent years are latent diffusion models, and the same recipe extends to video and audio by choosing an appropriate autoencoder for the medium."
+    },
+    {
+      "type": "p",
+      "text": "The structure has a clean division of labor. The autoencoder is responsible for perceptual compression, learning to throw away the high-frequency detail that a human would not notice and to reconstruct it on demand, while the diffusion model is responsible for the hard generative work of arranging semantic content, done entirely on the smaller latent representation. Training and sampling otherwise follow the standard denoising diffusion recipe, just applied to latent vectors instead of pixels. Conditioning on a text prompt is injected into the denoising network, usually through cross-attention to a text encoding, and the strength of that conditioning is controlled with classifier-free guidance."
+    },
+    {
+      "type": "p",
+      "text": "Latent diffusion inherits both the strengths and the residual costs of the underlying diffusion model. It is stable to train and produces diverse, high-fidelity samples, but it still requires multiple sequential denoising steps to generate, so it is slower per sample than a single-pass generative adversarial network, which is why faster samplers, distillation, and flow matching remain active concerns. It also introduces one dependency of its own: the final image quality is bounded by the fidelity of the autoencoder, so a weak decoder can blur fine detail no matter how good the diffusion in latent space is. In practice the trade has been overwhelmingly favorable, which is why the latent formulation is now the default for large-scale image synthesis."
+    }
+  ],
+  "related": [
+    {
+      "slug": "diffusion-model",
+      "label": "Diffusion Model"
+    },
+    {
+      "slug": "denoising-diffusion",
+      "label": "Denoising Diffusion"
+    },
+    {
+      "slug": "variational-autoencoder",
+      "label": "Variational Autoencoder"
+    },
+    {
+      "slug": "classifier-free-guidance",
+      "label": "Classifier-Free Guidance"
+    },
+    {
+      "slug": "score-based-model",
+      "label": "Score-Based Model"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

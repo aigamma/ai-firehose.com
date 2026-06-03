@@ -1,0 +1,60 @@
+{
+  "id": "eigenvalue",
+  "label": "Eigenvalue",
+  "kind": "technique",
+  "category": "Linear Algebra for ML",
+  "aliases": [
+    "eigenvalues",
+    "characteristic value",
+    "spectrum"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A scalar that tells you how much a matrix stretches or shrinks vectors along one of its special unchanging directions, capturing the essential scaling behavior of a linear transformation.",
+  "body": [
+    {
+      "type": "p",
+      "text": "An eigenvalue is a number attached to a square matrix that measures the matrix's pure stretching action along a particular direction. Most directions get both rotated and rescaled when a matrix acts on them, but a few special directions, the eigenvectors, are only rescaled: the matrix sends such a vector to a multiple of itself. That multiplier is the eigenvalue. An eigenvalue of two means vectors along that direction double in length; an eigenvalue of one half means they shrink; a negative eigenvalue means they flip and rescale; and an eigenvalue of one means that direction is left completely unchanged."
+    },
+    {
+      "type": "p",
+      "text": "Eigenvalues matter because they expose what a linear transformation really does, stripped of the coordinate system you happened to write it in. The full set of eigenvalues, called the spectrum, summarizes the matrix's behavior compactly. Their magnitudes tell you which directions a repeated application of the matrix will amplify and which it will damp out, which governs whether an iterative process converges or explodes. The product of all eigenvalues equals the determinant, the factor by which the transformation scales volume, and their sum equals the trace."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning, eigenvalues appear wherever a problem reduces to a symmetric matrix. Principal component analysis finds the directions of greatest variance in data by taking the eigenvectors of the covariance matrix, and the corresponding eigenvalues say how much variance each direction carries, which is what lets you keep the few that matter and discard the rest. The eigenvalues of the Hessian, the matrix of second derivatives of a loss, describe the local curvature of the loss landscape: large ones mean steep, narrow valleys and small or negative ones mean flat regions or saddle points, both of which shape how optimization behaves."
+    },
+    {
+      "type": "p",
+      "text": "Computing eigenvalues means solving for the scalars that make the matrix, minus that scalar times the identity, collapse a direction to zero, the characteristic equation. Real symmetric matrices are especially well behaved: their eigenvalues are always real and their eigenvectors form a clean orthogonal basis, which is the foundation of the spectral theorem. For non-square or non-symmetric matrices the natural generalization is the singular-value-decomposition, whose singular values play the role eigenvalues play for symmetric matrices."
+    }
+  ],
+  "related": [
+    {
+      "slug": "eigenvector",
+      "label": "Eigenvector"
+    },
+    {
+      "slug": "matrix",
+      "label": "Matrix"
+    },
+    {
+      "slug": "linear-transformation",
+      "label": "Linear Transformation"
+    },
+    {
+      "slug": "singular-value-decomposition",
+      "label": "Singular Value Decomposition"
+    },
+    {
+      "slug": "vector",
+      "label": "Vector"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,17 @@
+---
+title: Bias-Variance Tradeoff
+slug: bias-variance-tradeoff
+kind: technique
+category: Core Machine Learning
+aliases: bias variance tradeoff, bias-variance decomposition
+related: overfitting, underfitting, regularization, cross-validation, random-forest
+summary: The fundamental tension in supervised learning between bias, the error from a model being too simple, and variance, the error from a model being too sensitive to its training data, which a model cannot minimize both of at once.
+---
+
+The bias-variance tradeoff is the conceptual backbone for reasoning about model error. The expected prediction error of a model decomposes into three parts: bias, variance, and irreducible noise. Bias is the error from wrong or oversimplified assumptions, how far the model's average prediction sits from the truth. Variance is the error from sensitivity to the particular training sample, how much the model's predictions would swing if it were retrained on a different draw of data. Noise is the irreducible randomness no model can remove.
+
+The tradeoff matters because bias and variance pull in opposite directions, and lowering one typically raises the other. A simple model has high bias and low variance: it makes strong assumptions, so it is stable but systematically wrong, which is Underfitting. A complex model has low bias and high variance: it can fit almost anything, so it tracks the noise and swings with the sample, which is Overfitting. There is no setting that drives both to zero, so every model choice is a position on this spectrum.
+
+Understanding the decomposition turns model debugging from guesswork into diagnosis. If both training and validation error are high, bias dominates and the model needs more capacity. If training error is low but validation error is high, variance dominates and the model needs constraint or more data. This single distinction tells you which direction to move, which is why the tradeoff is taught as the organizing principle of supervised learning rather than as one technique among many.
+
+The standard tools map directly onto the two terms. Regularization deliberately adds a little bias to cut a lot of variance, sliding a model back from overfitting toward the sweet spot. Ensemble methods like a Random Forest average many high-variance models to cancel their variance while keeping bias low. Cross-Validation estimates the total error so you can locate the balance point empirically. Almost every choice in the rest of core machine learning, model complexity, dataset size, and the strength of any constraint, is in the end a negotiation of this one tradeoff.

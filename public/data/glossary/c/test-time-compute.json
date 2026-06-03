@@ -1,8 +1,11 @@
 {
   "id": "test-time-compute",
-  "label": "test-time compute",
-  "aliases": [],
-  "kind": "opinion",
+  "label": "Test-Time Compute",
+  "aliases": [
+    "inference-time compute",
+    "test-time scaling"
+  ],
+  "kind": "technique",
   "attention": 79,
   "first_seen": "2026-03-28T18:59:16+00:00",
   "rotation": {
@@ -134,5 +137,48 @@
       "kind": "opinion"
     }
   ],
-  "definition": "Test-time compute refers to allocating additional computational resources during inference to improve model outputs, raising questions about whether scaling computation at prediction time offers better returns than scaling training-time resources."
+  "definition": "The strategy of spending more computation at inference time, rather than only at training time, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query.",
+  "category": "Inference and Sampling",
+  "durable": true,
+  "source": "authored",
+  "body": [
+    {
+      "type": "p",
+      "text": "Test-time compute refers to the deliberate use of extra computation when a model answers a question, as opposed to the computation spent once during training. The traditional picture of a language model is that all the cost is paid up front in training, after which each inference is a cheap single pass. Test-time compute breaks that assumption: it treats the amount of work done per query as a dial that can be turned up to buy better answers, trading latency and money at inference for accuracy."
+    },
+    {
+      "type": "p",
+      "text": "It matters because, for hard reasoning problems, spending more compute at inference can rival or exceed the gains from making the model itself larger. A smaller model that is allowed to think longer, by producing an extended chain-of-thought, sampling many independent solutions and voting, or searching over candidate steps, can match a much bigger model answering in one shot. This reframing, that inference is a place to invest compute and not just to harvest a trained model, is the basis of the reasoning-model wave and the rationale behind systems that visibly deliberate before answering."
+    },
+    {
+      "type": "p",
+      "text": "The mechanisms come in several shapes. The simplest is sequential: let the model generate a long reasoning trace so it can work through intermediate steps before committing to a final answer. Another is parallel: sample many candidate solutions at a nonzero temperature and aggregate them, by majority vote or by scoring with a verifier model. A third is search: expand and prune a tree of reasoning steps, closer in spirit to beam search than to plain decoding. These can be layered, and a separate model is often trained to judge which candidate reasoning is actually correct."
+    },
+    {
+      "type": "p",
+      "text": "The defining property of test-time compute is a smooth scaling curve: accuracy tends to rise predictably as the compute budget per query grows, giving a knob that can be set per request according to how much the answer is worth. That makes inference efficiency directly valuable, since cheaper tokens mean more thinking for the same cost, which is why test-time scaling is usually deployed alongside serving optimizations like speculative-decoding and quantization. The cost is real, more latency and more spend on every hard query, so the budget is matched to the difficulty of the task rather than applied uniformly."
+    }
+  ],
+  "related": [
+    {
+      "slug": "chain-of-thought",
+      "label": "Chain of Thought"
+    },
+    {
+      "slug": "speculative-decoding",
+      "label": "Speculative Decoding"
+    },
+    {
+      "slug": "greedy-decoding",
+      "label": "Greedy Decoding"
+    },
+    {
+      "slug": "beam-search",
+      "label": "Beam Search"
+    },
+    {
+      "slug": "temperature",
+      "label": "Temperature"
+    }
+  ]
 }

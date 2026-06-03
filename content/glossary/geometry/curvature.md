@@ -1,0 +1,17 @@
+---
+title: Curvature
+slug: curvature
+kind: technique
+category: Geometry and Manifolds
+aliases: curved space, Gaussian curvature, Ricci curvature
+related: manifold, riemannian-manifold, geodesic, metric-tensor, hyperbolic-embeddings, information-geometry
+summary: A measure of how much a space bends away from being flat, detectable from within the space by how nearby geodesics spread apart or converge and by whether the angles of a triangle sum to more or less than 180 degrees.
+---
+
+Curvature measures how far a space departs from being flat. The crucial fact, due to Gauss, is that curvature is intrinsic: an inhabitant who can only make measurements within a surface, never stepping outside it, can still detect and quantify how curved it is. On a flat plane the angles of a triangle sum to exactly 180 degrees and two parallel lines stay forever the same distance apart. On a positively curved surface like a sphere, triangle angles sum to more than 180 degrees and initially parallel geodesics bend toward each other and eventually meet. On a negatively curved surface like a saddle, triangle angles sum to less than 180 degrees and geodesics diverge, racing apart faster than they would on a flat sheet.
+
+The cleanest way to feel curvature is through geodesics, the straightest available paths. Fire two geodesics off in nearly the same direction and watch the gap between them. If the gap shrinks, curvature is positive; if it grows faster than linearly, curvature is negative; if it grows exactly linearly, the space is flat. This spreading and converging of geodesics is governed by the metric tensor, and packaging it precisely gives the formal curvature objects: the full Riemann tensor captures the bending in every pair of directions, while contracted summaries like Ricci curvature and scalar curvature distill it into coarser numbers. Gaussian curvature is the single number that suffices for a two-dimensional surface.
+
+Curvature matters in machine learning because the geometry of a representation space determines what it can encode efficiently. Flat Euclidean space, the default for most embeddings, has zero curvature, and its volume grows only polynomially with radius. Hierarchies and trees, by contrast, have exponentially many nodes at each level, so they cannot be packed into flat space without crushing distances together. Negatively curved hyperbolic space has volume that grows exponentially with radius, giving it room to embed trees with low distortion. This is the entire motivation behind hyperbolic embeddings: match the curvature of the space to the combinatorial structure of the data, and faithful representation becomes possible where flat space fails.
+
+Curvature also appears in optimization and in statistics. The loss landscape of a neural network is a high-dimensional surface, and its local curvature, encoded in the Hessian of second derivatives, controls how an optimizer behaves: sharp, high-curvature directions demand small steps while flat directions permit large ones, which is the geometric reason adaptive and second-order methods exist. In information geometry the space of probability distributions is a curved Riemannian manifold whose curvature, derived from the Fisher information, reflects how distinguishable nearby distributions are. In every case curvature is the quantity that tells you the rules of distance and direction are not the familiar flat ones, and that you must account for the bending of the space to reason correctly within it.

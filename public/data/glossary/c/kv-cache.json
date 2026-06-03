@@ -1,7 +1,10 @@
 {
   "id": "kv-cache",
-  "label": "KV cache",
-  "aliases": [],
+  "label": "KV Cache",
+  "aliases": [
+    "key-value cache",
+    "KV caching"
+  ],
   "kind": "technique",
   "attention": 2,
   "first_seen": "2026-05-27T20:00:00.000Z",
@@ -89,6 +92,50 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-05-27T20:00:00.000Z",
       "kind": "technique"
+    }
+  ],
+  "category": "Transformers and LLMs",
+  "durable": true,
+  "source": "authored",
+  "definition": "An inference optimization that stores the key and value vectors of already-processed tokens so a transformer generating text does not recompute them for every new token, trading memory for a large speedup.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The kv-cache is the optimization that makes transformer text generation practical. Language models generate one token at a time, and each new token attends back over every token before it. Without caching, producing the hundredth token would require recomputing the attention keys and values for the previous ninety-nine, and the thousandth token would redo nearly a thousand, so the total work would grow with the square of the output length. The kv-cache removes this waste by remembering what was already computed."
+    },
+    {
+      "type": "p",
+      "text": "The insight is that in a decoder-only transformer, the key and value vectors a token produces never change once that token is fixed, because each position only attends to itself and earlier positions. So during generation the model computes the key and value for each new token exactly once and stores them in a per-layer, per-head buffer. To produce the next token, it only needs to compute that single new token's query and compare it against the cached keys and values of the whole history. This turns the cost of each generation step from growing with the sequence length down to roughly constant per step, which is the difference between usable and unusable latency for long outputs."
+    },
+    {
+      "type": "p",
+      "text": "The cost of this speedup is memory. The cache holds key and value vectors for every layer, every attention head, and every token in the context, so its size grows linearly with the length of the sequence and can come to dominate the memory footprint of serving a model, often exceeding the size of the model weights themselves for long contexts. This pressure is exactly why architectural variants like multi-query attention and grouped-query attention exist: by sharing keys and values across heads, they shrink the cache dramatically while barely affecting quality, and techniques such as paged attention manage the cache memory more efficiently across many simultaneous requests."
+    },
+    {
+      "type": "p",
+      "text": "The kv-cache also frames how generation is discussed in practice. The initial pass that processes the prompt and fills the cache is the prefill phase, compute-bound because it handles many tokens at once; the token-by-token generation that follows is the decode phase, memory-bound because each step does little compute but must read the entire growing cache. Because the cache scales with the context window, it is one of the concrete reasons longer contexts cost more, and managing it well is central to efficient large language model serving."
+    }
+  ],
+  "related": [
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention"
+    },
+    {
+      "slug": "multi-head-attention",
+      "label": "Multi-Head Attention"
+    },
+    {
+      "slug": "context-window",
+      "label": "Context Window"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model"
+    },
+    {
+      "slug": "next-token-prediction",
+      "label": "Next-Token Prediction"
     }
   ]
 }

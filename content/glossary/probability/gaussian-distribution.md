@@ -1,0 +1,19 @@
+---
+title: Gaussian Distribution
+slug: gaussian-distribution
+kind: technique
+category: Probability and Information Theory
+aliases: normal distribution, Gaussian, bell curve, normal
+related: variance, expectation, probability-distribution, maximum-likelihood-estimation, entropy, bayesian-inference
+summary: The bell-shaped continuous distribution defined by a mean and a variance, which arises whenever many small independent effects add together and serves as the default model for noise and uncertainty.
+---
+
+The Gaussian distribution, also called the normal distribution, is the bell-shaped curve that recurs more than any other distribution in statistics and machine learning. In one dimension it is specified by just two numbers: a mean that sets the center and a variance that sets the width. Its density falls off as the exponential of the negative squared distance from the mean, scaled by the variance, which gives the familiar symmetric bell with light, rapidly decaying tails. Roughly two-thirds of the mass lies within one standard deviation of the mean and about ninety-five percent within two, a rule of thumb that makes the distribution easy to reason about.
+
+The Gaussian is special because of the central limit theorem, which states that the sum of many independent random effects, whatever their individual distributions, tends toward a Gaussian as their number grows. This is why measurement noise, aggregated errors, and countless natural quantities are approximately Gaussian: they are sums of many small influences. The theorem gives the Gaussian a privileged, almost inevitable status as the model of noise, and it is the reason that assuming Gaussian errors is so often a reasonable default rather than an arbitrary convenience.
+
+A second reason for its dominance is mathematical tractability. The Gaussian is the maximum-entropy distribution among all distributions with a given mean and variance, meaning it is the least committal, most honest choice when only those two moments are known. It is closed under the operations that matter: sums of Gaussians are Gaussian, linear transformations of Gaussians are Gaussian, and, crucially, conditioning and marginalizing a multivariate Gaussian both yield Gaussians. This closure is what makes Gaussian models analytically solvable where other distributions force approximation.
+
+The Gaussian is woven through machine learning at every level. Fitting one by maximum-likelihood-estimation recovers the sample mean and variance, and least-squares regression is exactly maximum likelihood under Gaussian noise, which links the squared-error loss to a probabilistic assumption. Weight initialization schemes draw from Gaussians. Gaussian processes treat entire functions as draws from a multivariate Gaussian, giving nonparametric regression with calibrated uncertainty. Variational autoencoders and diffusion models build their latent spaces and their noise schedules on Gaussians precisely because the algebra stays tractable.
+
+The multivariate generalization replaces the scalar variance with a covariance matrix that encodes both the spread along each dimension and the correlations between them. The contours of equal density become ellipsoids whose shape and orientation the covariance matrix sets. This multivariate form is the backbone of Gaussian mixture models, Kalman filters, linear discriminant analysis, and Bayesian linear regression. For all its simplicity, the Gaussian is the single most consequential distribution in the field, the default against which departures, heavy tails, skew, multimodality, are defined and measured.

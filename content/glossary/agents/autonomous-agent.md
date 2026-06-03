@@ -1,0 +1,17 @@
+---
+title: Autonomous Agent
+slug: autonomous-agent
+kind: technique
+category: Agents and Tool Use
+aliases: autonomous agents, fully autonomous agent
+related: ai-agent, agentic-workflow, planning, task-decomposition, reflection, agent-memory, tool-use, multi-agent-system
+summary: An agent given a high-level goal and broad freedom to decide its own steps, choosing what to do and which tools to use over a long horizon with little or no human intervention along the way.
+---
+
+An autonomous agent is an agent operating at the high-independence end of the spectrum. It is handed a goal stated at a high level ("fix this bug", "research this market", "plan this trip") and is then left to work out, on its own, the steps required to achieve it. Unlike a scripted agentic-workflow, where the developer fixes the sequence of steps in advance, an autonomous agent decides its own next action at every turn, choosing which tools to call and in what order, and continuing across many iterations until it judges the goal met. The defining trait is latitude: the human specifies the destination, and the agent chooses the route.
+
+This degree of independence is attractive because it generalizes. A scripted workflow only handles the situations its author anticipated, whereas an autonomous agent can in principle tackle goals whose solution path was not known ahead of time, adapting as it discovers what the task actually requires. That same freedom is what makes autonomy hard. Errors compound over a long horizon: a wrong turn early can send the agent down a costly dead end, and without a fixed script there are fewer guardrails to catch it. Autonomous agents are therefore more capable in their reach but harder to make reliable, predictable, and safe than their more constrained counterparts.
+
+An autonomous agent leans heavily on every core agent capability at once. Strong planning is essential, since the agent must sequence its own steps over a long horizon, usually breaking the goal down through task-decomposition. Robust agent-memory lets it remember what it has tried and learned across many steps so it does not loop or repeat work. Disciplined tool-use, mediated by function-calling, is how it actually affects the world. And reflection is what keeps it honest, letting it notice when an approach is failing and change course rather than persisting blindly. Weakness in any one of these tends to surface quickly when the agent runs unsupervised.
+
+Because the stakes of unsupervised action are real, autonomous agents are built with explicit limits: caps on steps, time, and cost; sandboxing and permissioning around any tool that can change external state; and human checkpoints for consequential or irreversible actions. The broader field generally advises matching agency to need, reaching for full autonomy only when a task genuinely demands it and a bounded agentic-workflow will not do. When a single autonomous agent is not enough, several can be combined into a multi-agent-system, distributing an open-ended goal across cooperating peers.

@@ -1,0 +1,17 @@
+---
+title: Autoencoder
+slug: autoencoder
+kind: technique
+category: Deep Learning Architectures
+aliases: autoencoder, auto-encoder, AE
+related: multilayer-perceptron, convolutional-neural-network, latent-space, backpropagation, dropout, attention-mechanism
+summary: A neural network trained to reconstruct its own input through a narrow bottleneck, forcing it to learn a compressed latent representation that captures the data's most salient structure.
+---
+
+An autoencoder is a neural network trained to copy its input to its output, but through a constraint that makes the task nontrivial. It has two halves: an encoder that maps the input down to a lower-dimensional code, and a decoder that maps that code back up to a reconstruction of the original. The training objective is simply to make the reconstruction match the input, typically by minimizing a reconstruction error such as mean squared error, with the weights learned by backpropagation and gradient descent.
+
+Autoencoders matter because they are a workhorse of unsupervised representation learning. The narrow middle layer, the bottleneck, forces the network to discard noise and redundancy and keep only the structure needed to rebuild the input, so the code becomes a compressed summary of the data. Because the targets are the inputs themselves, no labels are required, which makes autoencoders useful for dimensionality reduction, denoising, anomaly detection, and pretraining when labeled data is scarce.
+
+The mechanism is best understood through the latent space, the space of codes the encoder produces. A well-trained autoencoder organizes that space so that similar inputs map to nearby codes, learning a nonlinear manifold on which the data lives. With linear layers and a squared-error loss an autoencoder recovers something close to principal component analysis, but with nonlinear activation functions and depth it captures far richer structure. Variants strengthen the learned representation in different ways: a denoising autoencoder corrupts the input and asks the network to restore the clean version, while a sparse autoencoder penalizes the code so that few units are active at once, related in spirit to dropout.
+
+Autoencoders connect to much of the broader field. The variational autoencoder reshapes the bottleneck into a probability distribution, turning the model into a generative one that can sample new data by decoding points drawn from the latent space, and interpolating along a path there yields smooth transitions between examples. The encoder-decoder template itself, compress then reconstruct, recurs across architectures, from the convolutional neural network used for image autoencoding to the attention mechanism at the heart of sequence-to-sequence transformers and the masked-reconstruction objectives that pretrain many large models.

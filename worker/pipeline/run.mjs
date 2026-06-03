@@ -25,6 +25,7 @@ import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence }
 import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
+import { buildGlossary } from "../../scripts/build_glossary.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
@@ -254,6 +255,11 @@ async function main() {
   for (const c of glossary) writeJson(`glossary/c/${c.id}.json`, c);
   const index = glossary.map(slimGlossaryConcept);
   writeJson("glossary/index.json", { generated: GENERATED, count: index.length, concepts: index });
+  // Merge the DURABLE authored knowledge layer (content/glossary) on top of the
+  // corpus glossary, so a worker run never drops it. Authored entries are marked
+  // durable and persist regardless of retention; the corpus supplies attention,
+  // rotation, neighbors, and items where a slug appears in both. See docs/GLOSSARY.md.
+  buildGlossary();
 
   console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
   try {

@@ -1,0 +1,17 @@
+---
+title: Generative Adversarial Network
+slug: generative-adversarial-network
+kind: technique
+category: Generative Models
+aliases: GAN, GANs
+related: variational-autoencoder, diffusion-model, autoregressive-model, normalizing-flow, latent-diffusion
+summary: A generative model trained as a two-player game between a generator that produces synthetic samples and a discriminator that tries to tell real data from fake, each improving by competing against the other.
+---
+
+A generative adversarial network is a way to learn a data distribution by pitting two neural networks against each other. The generator takes a vector of random noise and maps it to a sample, an image, an audio clip, a row of tabular data, while the discriminator receives a mix of real samples and generated ones and outputs the probability that each is real. The generator wins when its outputs fool the discriminator, and the discriminator wins when it catches them. Training drives the two toward an equilibrium where the generated samples are statistically indistinguishable from real data.
+
+GANs mattered because, for several years after their introduction in 2014, they produced the sharpest and most photorealistic images of any generative method. Unlike a variational autoencoder, which tends to blur fine detail because it optimizes a pixel-wise reconstruction term, a GAN is judged only by whether a learned critic can spot the fakes, so it is rewarded for crisp, convincing texture. Architectures in the StyleGAN family produced human faces that people could not reliably distinguish from photographs, and the approach spread into super-resolution, image-to-image translation, and data augmentation.
+
+Mechanically, the generator and discriminator are optimized in alternation by gradient descent on opposing objectives, a minimax game. The discriminator is updated to better classify real versus fake, then the generator is updated to push the discriminator's score on its own samples upward. Because the two objectives are adversarial rather than a single loss being minimized, training is notoriously unstable. Common failure modes include mode collapse, where the generator learns to emit only a few convincing samples and ignores the diversity of the data, and vanishing gradients, where a discriminator that is too strong stops giving the generator a useful signal. Variants such as the Wasserstein GAN reformulate the objective to give smoother gradients and more stable training.
+
+GANs sit alongside the other major families of generative modeling, and the contrast is instructive. An autoregressive model factorizes the data into a product of conditional probabilities and generates one element at a time. A normalizing flow builds an exactly invertible transformation so it can compute likelihoods directly. A GAN does neither: it never evaluates a likelihood and instead learns implicitly through the adversarial signal, which buys sample quality at the cost of a tractable density and stable optimization. In recent years the diffusion model has largely overtaken the GAN for high-fidelity image synthesis, offering comparable or better quality with far more stable training, though GANs remain valued where fast single-pass generation matters because they produce a sample in one forward call rather than many iterative steps.

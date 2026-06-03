@@ -1,0 +1,69 @@
+{
+  "id": "cross-entropy",
+  "label": "Cross-Entropy",
+  "kind": "technique",
+  "category": "Probability and Information Theory",
+  "aliases": [
+    "cross entropy",
+    "cross-entropy loss",
+    "log loss",
+    "negative log likelihood"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A measure of the average number of bits needed to encode outcomes from one distribution using a code optimized for another, and the standard loss function for training classifiers and language models.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Cross-entropy measures the cost of being wrong about a distribution. If the true distribution over outcomes is p but you encode events using a code designed for a different distribution q, the average number of bits you spend is the cross-entropy H(p, q) = minus the sum of p times log q. It is always at least the entropy of p, which is the cost of the optimal code, and the gap between them is exactly the kl-divergence from q to p. Cross-entropy is therefore entropy plus penalty: the irreducible uncertainty of p, plus the waste from using the wrong model q."
+    },
+    {
+      "type": "p",
+      "text": "This quantity is the workhorse loss function of supervised learning. In classification, the true distribution p is a one-hot vector that places all its mass on the correct label, and the model's predicted distribution q comes from a softmax over the network's outputs. Minimizing the cross-entropy then reduces to maximizing the log probability the model assigns to the correct class, which is why the cross-entropy loss is also called the negative log-likelihood. Training a language model to predict the next token is the same loss applied at every position in a sequence."
+    },
+    {
+      "type": "p",
+      "text": "Cross-entropy matters because it is both principled and well-behaved for optimization. Minimizing it is identical to maximum-likelihood-estimation, the most foundational principle of statistical fitting, so the loss is not an arbitrary engineering choice but the information-theoretic expression of fitting a model to data. Practically, paired with the softmax, its gradient takes the strikingly simple form of the predicted probabilities minus the true labels, which is numerically stable and avoids the vanishing gradients that plague squared-error loss on saturated outputs."
+    },
+    {
+      "type": "p",
+      "text": "The connection to kl-divergence clarifies what optimization is doing. Because the entropy of the fixed true distribution does not depend on the model, minimizing cross-entropy is exactly minimizing the kl-divergence between the truth and the model: training pushes the predicted distribution toward the true one. When the labels are hard one-hot targets the entropy term vanishes entirely, and cross-entropy and kl-divergence coincide, which is why the two terms are often used loosely as if interchangeable in the classification setting."
+    },
+    {
+      "type": "p",
+      "text": "In practice cross-entropy underlies far more than basic classification. Label smoothing replaces hard targets with a softened distribution to improve calibration and generalization, which amounts to a modified cross-entropy. Knowledge distillation trains a student to match a teacher's full predicted distribution by minimizing the cross-entropy between them. Reinforcement learning from human feedback and contrastive objectives both reduce, at their core, to cross-entropy terms. Whenever a model is trained to match or predict a categorical distribution, cross-entropy is almost certainly the objective."
+    }
+  ],
+  "related": [
+    {
+      "slug": "entropy",
+      "label": "Entropy"
+    },
+    {
+      "slug": "kl-divergence",
+      "label": "KL Divergence"
+    },
+    {
+      "slug": "softmax",
+      "label": "Softmax"
+    },
+    {
+      "slug": "maximum-likelihood-estimation",
+      "label": "Maximum Likelihood Estimation"
+    },
+    {
+      "slug": "probability-distribution",
+      "label": "Probability Distribution"
+    },
+    {
+      "slug": "mutual-information",
+      "label": "Mutual Information"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

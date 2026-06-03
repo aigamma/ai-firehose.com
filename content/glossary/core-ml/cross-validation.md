@@ -1,0 +1,17 @@
+---
+title: Cross-Validation
+slug: cross-validation
+kind: technique
+category: Core Machine Learning
+aliases: cross validation, k-fold cross-validation, CV
+related: overfitting, underfitting, bias-variance-tradeoff, regularization, supervised-learning
+summary: A resampling procedure that estimates how well a model will generalize by repeatedly training on part of the data and testing on the held-out remainder, then averaging the results.
+---
+
+Cross-validation is the standard procedure for estimating a model's performance on data it has not seen. Rather than relying on a single train-test split, which can be lucky or unlucky depending on which examples happen to land in the test set, cross-validation rotates the split. The data is partitioned into several parts and the model is trained and evaluated multiple times, each time holding out a different part as the test set, so that every example is used for testing exactly once. Averaging the scores yields a more reliable estimate than any single split could.
+
+Cross-validation matters because the number that decides whether a model is good is its performance on unseen data, and that number must be estimated honestly. Reporting accuracy on the training data is meaningless, since a model that overfits scores well there while failing in deployment. Cross-validation exposes Overfitting directly by always scoring on held-out examples, and its averaging makes the estimate stable even when the dataset is small enough that a single test set would be noisy.
+
+The most common form is k-fold cross-validation, which splits the data into k equal folds (k is often 5 or 10), trains on k minus 1 of them, and tests on the remaining one, repeating until each fold has served as the test set. Stratified variants preserve the class balance in each fold, and leave-one-out is the extreme case where k equals the number of examples. A strict rule governs all of it: the test fold must never influence training in any way, including feature scaling or feature selection, or the estimate is contaminated and optimistic.
+
+Cross-validation connects to the rest of core machine learning chiefly as the tool for tuning and model selection. The strength of Regularization, the depth of a Decision Tree, the kernel of a Support Vector Machine, and the choice between competing models are all settled by comparing cross-validated scores. Because it gives an empirical reading of generalization error, it is also how practitioners locate the balance point of the Bias-Variance Tradeoff in practice, choosing the model complexity whose held-out error is lowest.

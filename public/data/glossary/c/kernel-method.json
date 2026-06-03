@@ -1,0 +1,56 @@
+{
+  "id": "kernel-method",
+  "label": "Kernel Method",
+  "kind": "technique",
+  "category": "Core Machine Learning",
+  "aliases": [
+    "kernel methods",
+    "kernel trick",
+    "kernel function"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A class of techniques that handle nonlinear patterns by implicitly mapping data into a high-dimensional space and computing inner products there directly through a kernel function, without ever forming the coordinates.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A kernel method is a way to give linear algorithms nonlinear power. Many models, including the Support Vector Machine, depend on the data only through inner products between pairs of points, a measure of their similarity. A kernel function computes the inner product that the points would have after being mapped into some richer, higher-dimensional feature space, but it does so directly from the original points, without ever building that high-dimensional representation. This shortcut is the kernel trick, and it lets a linear method draw highly nonlinear boundaries in the original space."
+    },
+    {
+      "type": "p",
+      "text": "Kernel methods matter because real data is rarely linearly separable, yet linear models are simple, well understood, and come with convex optimization and strong theory. The kernel trick keeps those advantages while removing the linearity restriction. It made support vector machines the dominant classifiers of their era and, more broadly, gave a principled and computationally efficient route to nonlinear modeling: the feature space can be enormous, even infinite-dimensional, while the computation stays tied to the number of training examples rather than the dimension."
+    },
+    {
+      "type": "p",
+      "text": "The key requirement is that a valid kernel must correspond to a genuine inner product in some feature space, a condition formalized by Mercer's theorem and equivalent to the kernel matrix being positive semidefinite. Common choices include the polynomial kernel, which adds feature interactions up to a chosen degree, and the radial basis function (Gaussian) kernel, which corresponds to an infinite-dimensional space and measures similarity as a smooth function of distance. The choice of kernel and its parameters encodes a prior about what similarity means for the problem and is normally selected by Cross-Validation."
+    },
+    {
+      "type": "p",
+      "text": "Kernel methods connect across core machine learning as a general technique, not a single model: the trick kernelizes many algorithms that are written in terms of inner products. Principal Component Analysis becomes kernel PCA to capture nonlinear structure, K-Means becomes kernel k-means to find non-spherical clusters, and ridge regression becomes kernel ridge regression. The control parameter in these methods, such as the bandwidth of the RBF kernel, acts as a form of Regularization, governing how flexible the resulting nonlinear fit is and therefore where it sits on the boundary between underfitting and Overfitting."
+    }
+  ],
+  "related": [
+    {
+      "slug": "support-vector-machine",
+      "label": "Support Vector Machine"
+    },
+    {
+      "slug": "principal-component-analysis",
+      "label": "Principal Component Analysis"
+    },
+    {
+      "slug": "k-means",
+      "label": "K-Means"
+    },
+    {
+      "slug": "regularization",
+      "label": "Regularization"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,7 +1,9 @@
 {
   "id": "model-context-protocol",
   "label": "Model Context Protocol",
-  "aliases": [],
+  "aliases": [
+    "MCP"
+  ],
   "kind": "tool",
   "attention": 5,
   "first_seen": "2026-02-26T17:25:13Z",
@@ -89,6 +91,54 @@
       "author_or_channel": "tirth8205",
       "published_at": "2026-02-26T17:25:13Z",
       "kind": "tool"
+    }
+  ],
+  "category": "Agents and Tool Use",
+  "durable": true,
+  "source": "authored",
+  "definition": "An open protocol that standardizes how applications expose tools, data, and prompts to language models, so any compliant model or agent can connect to any compliant data source or tool through one common interface.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The Model Context Protocol (MCP) is an open standard, introduced by Anthropic in late 2024, for connecting language-model applications to external tools and data. It defines a common wire format and set of conventions so that a model host (the client) and a provider of capabilities (the server) can talk to each other without bespoke glue. An MCP server exposes some set of resources: tools the model can call, data sources it can read, and prompt templates it can use. Any MCP-compliant client (a chat application, an IDE, an agent runtime) can connect to any MCP server and immediately use what it offers, the same way a USB port lets any compliant device plug into any compliant host."
+    },
+    {
+      "type": "p",
+      "text": "The problem MCP addresses is combinatorial. Before a shared standard, every integration between a model application and an external system was a one-off: connecting M applications to N tools meant building and maintaining roughly M times N custom connectors, each with its own format and quirks. A standard protocol collapses that to M plus N. A tool provider implements one MCP server and is reachable by every compliant client; an application implements one MCP client and gains access to the whole ecosystem of servers. This is the same leverage that standard protocols brought to other parts of computing, applied to the boundary between models and the world."
+    },
+    {
+      "type": "p",
+      "text": "Technically, MCP builds on function-calling and the broader practice of tool-use. A server advertises its tools with names and parameter schemas, exactly the descriptions a model needs to issue a structured call, plus resources (readable context the model can pull in) and prompts (reusable templates). The client mediates: it presents the server's tools to the model, relays the model's structured requests to the server, executes them, and returns results. Communication runs over defined transports (for example, standard input and output for a local server, or HTTP for a remote one), so servers can be small local processes or networked services. A human typically stays in the loop to approve which servers a client may use and what they are permitted to touch."
+    },
+    {
+      "type": "p",
+      "text": "MCP matters because it turns tool integration from a private, repeated engineering effort into a shared ecosystem that any ai-agent can draw on. An agent runtime that speaks MCP can be granted new abilities simply by pointing it at additional servers, no code change required, which makes the agent's tool-use and even its agent-memory pluggable. It composes with everything else in the agent stack: the same agentic-workflow logic and react-prompting loops run unchanged, but the catalog of actions they can take is now an open, growing set of interoperable servers rather than a fixed, hand-wired list."
+    }
+  ],
+  "related": [
+    {
+      "slug": "tool-use",
+      "label": "Tool Use"
+    },
+    {
+      "slug": "function-calling",
+      "label": "Function Calling"
+    },
+    {
+      "slug": "ai-agent",
+      "label": "AI Agent"
+    },
+    {
+      "slug": "agentic-workflow",
+      "label": "Agentic Workflow"
+    },
+    {
+      "slug": "agent-memory",
+      "label": "Agent Memory"
+    },
+    {
+      "slug": "autonomous-agent",
+      "label": "Autonomous Agent"
     }
   ]
 }

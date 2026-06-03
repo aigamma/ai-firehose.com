@@ -1,0 +1,64 @@
+{
+  "id": "constitutional-ai",
+  "label": "Constitutional AI",
+  "kind": "technique",
+  "category": "Training and Fine-Tuning",
+  "aliases": [
+    "CAI",
+    "RLAIF",
+    "reinforcement learning from AI feedback"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "An alignment method that trains a model to be helpful and harmless using AI-generated feedback guided by a written set of principles (a constitution), reducing reliance on human-labeled comparisons.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Constitutional AI (CAI) is an approach to aligning a language model in which the model is steered by an explicit, written set of principles, called a constitution, rather than primarily by case-by-case human judgments. The constitution is a list of natural-language rules describing the desired behavior, for example to avoid harmful, deceptive, or discriminatory responses and to be helpful and honest. The model uses these principles to critique and improve its own outputs, so the supervision that shapes its behavior comes largely from the model itself, guided by the constitution, instead of from large volumes of human-labeled examples."
+    },
+    {
+      "type": "p",
+      "text": "Constitutional AI matters because it addresses two practical limits of reinforcement learning from human feedback (RLHF). First, collecting human preference labels at the scale alignment requires is slow and costly, and exposing human raters to harmful content to label it has real downsides. Second, behavior defined implicitly through thousands of individual labels is hard to inspect or audit. CAI makes the values explicit and legible in a written document that can be reviewed and revised, and it shifts much of the labeling burden from humans to the model, an approach often called reinforcement learning from AI feedback (RLAIF)."
+    },
+    {
+      "type": "p",
+      "text": "The method has two phases. In a supervised phase, the model generates responses, then is prompted to critique each response against a principle from the constitution and revise it accordingly; the revised responses become fine-tuning data, instilling the constitutional behavior through ordinary supervised learning. In a reinforcement phase, the model compares pairs of its own responses and chooses which better satisfies the constitution, producing AI-generated preference labels. Those labels train a preference model that then guides optimization, exactly where human comparisons would sit in RLHF. Humans still write the constitution and oversee the process, but they no longer hand-label most outputs."
+    },
+    {
+      "type": "p",
+      "text": "The trade-offs are real. The quality of alignment depends heavily on how well the constitution is written and on the model's ability to apply its principles faithfully, and a capable model is needed to generate useful self-critiques in the first place. AI-generated feedback can also inherit the model's own blind spots. In practice CAI is often combined with some human feedback rather than replacing it entirely, and the choice of optimization can use RLHF-style reinforcement learning or simpler preference methods such as direct preference optimization (DPO)."
+    },
+    {
+      "type": "p",
+      "text": "Constitutional AI is best understood as a variation on the preference-alignment stage that builds on instruction-tuning and parallels RLHF and DPO, swapping much of the human feedback for principle-guided AI feedback. It is notable both as a scalable alignment technique and as an attempt to make a model's values explicit and reviewable, which connects training methodology to the broader project of building transparent, trustworthy systems."
+    }
+  ],
+  "related": [
+    {
+      "slug": "rlhf",
+      "label": "RLHF"
+    },
+    {
+      "slug": "dpo",
+      "label": "DPO"
+    },
+    {
+      "slug": "instruction-tuning",
+      "label": "Instruction-Tuning"
+    },
+    {
+      "slug": "fine-tuning",
+      "label": "Fine-Tuning"
+    },
+    {
+      "slug": "pretraining",
+      "label": "Pretraining"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

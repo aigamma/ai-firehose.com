@@ -1,0 +1,17 @@
+---
+title: Symbolic AI
+slug: symbolic-ai
+kind: technique
+category: Foundations and History
+aliases: GOFAI, good old-fashioned AI, classical AI
+related: artificial-intelligence, expert-system, connectionism, neural-network, the-bitter-lesson, machine-learning
+summary: The classical approach to artificial intelligence that represents knowledge as explicit symbols and rules, and produces intelligent behavior by manipulating those symbols with logic and search. It dominated the field from the 1950s into the 1980s.
+---
+
+Symbolic AI is the tradition that treats intelligence as the manipulation of symbols. Knowledge is written down explicitly, as logical statements, rules, and structured representations, and a program reasons by applying operations to those symbols: searching a space of possibilities, chaining rules, or deducing conclusions from premises. The name "good old-fashioned AI," or GOFAI, was coined by the philosopher John Haugeland to mark this lineage, which grew directly out of the founding vision of the field that intelligence could be precisely described and therefore mechanized.
+
+The approach rests on a clear and appealing hypothesis, articulated by Allen Newell and Herbert Simon as the physical symbol system hypothesis: a system that manipulates symbols has the necessary and sufficient means for general intelligent action. On this view, thinking just is symbol processing, and the path to AI is to find the right symbols and the right rules. This made the work transparent and inspectable. Because the knowledge was explicit, you could read a system's rules, trace exactly why it reached a conclusion, and correct it by editing the rules, a property modern statistical systems conspicuously lack.
+
+Symbolic AI matters both for what it built and for the lesson its limits taught. Its signature successes were the expert system, which captured a specialist's know-how as hundreds of if-then rules, along with logic-based planners, theorem provers, and the parsers of early natural language work. These systems worked impressively inside narrow, well-defined domains. Their weakness was brittleness: they failed abruptly at the edges of their hand-coded knowledge, could not learn from data, and foundered on tasks like vision and speech where the rules resist being written down. Capturing enough common-sense knowledge by hand proved a bottomless task, a problem that helped trigger an AI winter when expensive symbolic systems underdelivered.
+
+The contrast with connectionism defines much of the field's history. Where symbolic AI encodes knowledge top-down as rules, neural networks learn it bottom-up from examples, and the bitter lesson argues that the learned, data-driven approach has tended to win as computation grows. Symbolic AI is not obsolete, though: it remains strong wherever problems are genuinely rule-governed, such as formal verification, constraint solving, and planning, and a current research thread, neuro-symbolic AI, tries to fuse the interpretable reasoning of symbols with the perceptual learning of neural networks.

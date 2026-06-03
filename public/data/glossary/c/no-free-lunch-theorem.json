@@ -1,0 +1,64 @@
+{
+  "id": "no-free-lunch-theorem",
+  "label": "No Free Lunch Theorem",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "no free lunch",
+    "NFL theorem",
+    "no free lunch theorems"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A set of results, associated with David Wolpert, showing that averaged over all possible problems no learning algorithm or optimizer outperforms any other. Superior performance on real tasks always comes from assumptions matched to those tasks, never from a universally best method.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The No Free Lunch theorem is a formal statement of an uncomfortable truth: there is no universally best learning algorithm. Proved by David Wolpert for supervised learning and, with William Macready, for optimization in the mid 1990s, it shows that when performance is averaged uniformly over all possible target functions, every algorithm achieves exactly the same expected result. An algorithm that does better than chance on one set of problems must do correspondingly worse on the complementary set, so across the space of all problems the gains and losses cancel exactly."
+    },
+    {
+      "type": "p",
+      "text": "The intuition is a counting argument. Once a learner has seen a training sample, the labels of the unseen points are still completely unconstrained if every possible labeling of the input space is considered equally likely. Whatever rule the learner uses to extrapolate, for every world where that rule guesses the unseen labels well there is a mirror world, identical on the training data but opposite off it, where the same rule guesses equally badly. With no assumption favoring one world over another, no extrapolation rule can have an edge. The theorem makes this informal symmetry exact."
+    },
+    {
+      "type": "p",
+      "text": "The point of the result is not that learning is hopeless but that learning is impossible without assumptions. Every algorithm that works in practice does so because it encodes an Inductive Bias, a built-in preference for some hypotheses over others, and the real world happens to reward that preference. Smoothness priors, the bias toward simple explanations expressed by Occams Razor, convolutional weight sharing for images, and attention for sequences are all such commitments. The No Free Lunch theorem says these biases are not optional niceties but the very source of any above-chance Generalization. There is no free lunch, only lunches paid for with assumptions."
+    },
+    {
+      "type": "p",
+      "text": "This reframes what it means to do machine learning well. The job is not to find one master algorithm but to match the inductive bias of a method to the structure of the problem at hand, which is why feature engineering, architecture choice, and domain knowledge remain decisive. It also clarifies the scope of other theory: a PAC Learning guarantee always holds relative to a fixed concept class, and a Universal Approximation Theorem promises only that a representation exists, not that any algorithm will find the right one from finite data. Both live inside the assumptions that No Free Lunch insists upon."
+    },
+    {
+      "type": "p",
+      "text": "The theorem is sometimes overstated. Its sharpest form assumes a uniform distribution over all target functions and closed-loop measures that strip out resampling, conditions that real problems violate, since natural data is highly structured and far from uniform over all conceivable functions. The honest reading is therefore a guardrail against hype: claims of a single algorithm that is best on everything are incoherent, and any benchmark win reflects a fit between method and task rather than universal superiority. Knowing this keeps practitioners focused on the assumptions that actually carry the weight."
+    }
+  ],
+  "related": [
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias"
+    },
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "pac-learning",
+      "label": "PAC Learning"
+    },
+    {
+      "slug": "occams-razor",
+      "label": "Occam's Razor"
+    },
+    {
+      "slug": "universal-approximation-theorem",
+      "label": "Universal Approximation Theorem"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

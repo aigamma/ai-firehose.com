@@ -1,0 +1,17 @@
+---
+title: Neural Ordinary Differential Equation
+slug: neural-ode
+kind: technique
+category: Frontier Architectures
+aliases: neural ODE, neural ODEs, ODE network, continuous-depth network
+related: state-space-model, structured-state-space, kolmogorov-arnold-network, energy-based-model, world-model
+summary: A model that replaces the discrete stacked layers of a network with a continuous transformation defined by a learned differential equation, so the hidden state evolves smoothly over a notional depth and is computed by a numerical ODE solver.
+---
+
+A neural ordinary differential equation, or neural ODE, reframes a deep network as a continuous process rather than a fixed stack of layers. In a conventional residual network each layer updates the hidden state by adding a small learned increment, so the state changes in discrete jumps as it passes through the stack. A neural ODE takes the limit of infinitely many infinitely small such steps. The update rule becomes the derivative of the hidden state with respect to a continuous depth variable, and that derivative is parameterized by a neural network. The output is obtained by integrating this differential equation from the input value to the end of the interval using a numerical ODE solver.
+
+This continuous-depth view matters for a few reasons. The number of solver steps is no longer fixed by the architecture but chosen adaptively by the solver, which can spend more evaluations where the dynamics are stiff and fewer where they are smooth, trading compute for accuracy at inference time without retraining. The formulation is also a natural fit for irregularly sampled time series and physical systems, because the model is defined for any real-valued time rather than only at integer layer indices. And because the transformation is the flow of a differential equation, it is invertible by construction, which makes the approach attractive for building generative models with exact likelihoods.
+
+The training method is what makes neural ODEs practical. Backpropagating through every internal operation of the solver would consume memory proportional to the number of steps, which can be large and is not known in advance. Instead the gradients are obtained by solving a second differential equation, the adjoint, backward in time. The adjoint method computes the required gradients with memory that does not grow with the depth of integration, treating the solver as a black box and recovering sensitivities by integrating an auxiliary system. This constant-memory training is the core technical advantage that the original work demonstrated.
+
+Neural ODEs connect to several neighboring ideas in this category. They share their continuous-time dynamics with the deep state space model, which can be read as a linear neural ODE specialized for sequence mixing and discretized for efficiency. They pair naturally with normalizing flows, where the continuous formulation yields the continuous normalizing flow whose change of density is governed by the trace of the dynamics. And as differentiable models of dynamics, they are a building block for a world model that learns the evolution of an environment, and they connect to physics-informed learning where the governing equations are partially known. The broader lesson is that depth, time, and the integration of a learned vector field can be treated as one continuous object.

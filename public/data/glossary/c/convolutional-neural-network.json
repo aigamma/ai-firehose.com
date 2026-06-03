@@ -1,0 +1,60 @@
+{
+  "id": "convolutional-neural-network",
+  "label": "Convolutional Neural Network",
+  "kind": "technique",
+  "category": "Deep Learning Architectures",
+  "aliases": [
+    "CNN",
+    "ConvNet",
+    "convolutional network"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A neural network that applies learnable convolutional filters across an input grid such as an image, exploiting spatial locality and weight sharing to detect translation-invariant features with far fewer parameters than a fully connected network.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A convolutional neural network is a neural network built around the convolution operation, designed for data laid out on a grid, most often images. Instead of connecting every input to every neuron as a multilayer perceptron does, a CNN slides small learnable filters across the input, computing a weighted sum over a local patch at each position. The result is a feature map that records where in the input a given pattern appears."
+    },
+    {
+      "type": "p",
+      "text": "CNNs matter because they encode two strong priors that match the structure of natural images: locality and translation invariance. Pixels that are near each other are correlated, so a small filter that looks at a local neighborhood is enough to detect an edge or a texture. And because the same filter is reused at every position, a feature like a vertical edge is detected wherever it occurs, while the shared weights cut the parameter count dramatically compared to a fully connected layer. This weight sharing is what made training deep image models tractable."
+    },
+    {
+      "type": "p",
+      "text": "A typical CNN interleaves convolutional layers, a nonlinear activation function such as ReLU, and pooling layers that downsample the feature maps to summarize a region and add a degree of spatial tolerance. Early layers learn low-level features like edges and color blobs; deeper layers compose these into parts and eventually whole objects. The stack usually ends in a few fully connected layers that map the learned features to class scores, and the whole network is trained end to end with backpropagation and gradient descent."
+    },
+    {
+      "type": "p",
+      "text": "Training very deep CNNs exposed problems that drove later innovations. The vanishing gradient made deep stacks hard to optimize until the residual connection let gradients flow through skip paths, and batch normalization stabilized the distribution of activations between layers so training could proceed faster and at higher learning rates. CNNs dominated computer vision for most of the 2010s and remain strong for vision tasks, though the attention mechanism and vision transformers have since become serious competitors at scale."
+    }
+  ],
+  "related": [
+    {
+      "slug": "multilayer-perceptron",
+      "label": "Multilayer Perceptron"
+    },
+    {
+      "slug": "activation-function",
+      "label": "Activation Function"
+    },
+    {
+      "slug": "relu",
+      "label": "Rectified Linear Unit"
+    },
+    {
+      "slug": "residual-connection",
+      "label": "Residual Connection"
+    },
+    {
+      "slug": "batch-normalization",
+      "label": "Batch Normalization"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

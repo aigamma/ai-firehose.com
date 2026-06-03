@@ -1,0 +1,19 @@
+---
+title: Manifold
+slug: manifold
+kind: technique
+category: Geometry and Manifolds
+aliases: manifolds, smooth manifold, data manifold
+related: riemannian-manifold, curvature, geodesic, manifold-hypothesis, latent-space, tangent-space, dimensionality-reduction
+summary: A space that looks flat and ordinary when you zoom in on any small piece of it, even though its global shape may be curved or twisted, generalizing curves and surfaces to any number of dimensions.
+---
+
+A manifold is a space that is locally like ordinary flat space even when it is globally curved. The defining property is that around every point there is a small neighborhood that can be mapped smoothly onto a patch of flat Euclidean space of some fixed dimension. A circle is a one-dimensional manifold: any short arc of it looks like a straight line segment, though the whole loop closes back on itself. The surface of a sphere is a two-dimensional manifold: any small region looks like a flat sheet, which is why a map of a city ignores the curvature of the Earth without consequence. The dimension of the manifold is the number of coordinates you need to describe one of these local patches, not the dimension of the surrounding space it might be embedded in.
+
+This local-versus-global distinction is what makes the concept powerful. A manifold can be intrinsically simple, needing only a few coordinates to pin down a point, while sitting inside a much higher-dimensional ambient space. A sheet of paper curled into a tube lives in three dimensions but is intrinsically two-dimensional, because nothing about distances measured along the paper changes when you roll it. Quantities that depend only on the surface itself, like the length of a path drawn on the paper, are called intrinsic; quantities that depend on how the surface is placed in the larger space are extrinsic. Much of geometry is the project of separating the two.
+
+Manifolds matter in machine learning because the manifold hypothesis holds that real high-dimensional data, images, audio, and text, does not fill its ambient space but concentrates on or near a low-dimensional manifold inside it. The space of all natural photographs is an astronomically small, highly structured subset of the space of all possible pixel grids. If the data truly lies on a manifold of modest intrinsic dimension, then learning amounts to discovering that manifold and finding coordinates for it. This is exactly what an autoencoder or any representation learner is doing when it compresses inputs into a latent space.
+
+To do calculus on a manifold you need extra structure layered on top of the bare space. A smooth manifold supports differentiation, which lets you attach a tangent space, the flat space of velocity vectors, at every point. Adding a way to measure lengths and angles in those tangent spaces, an object called the metric tensor, upgrades it to a Riemannian manifold and makes notions like distance, geodesic, and curvature precise. Without a metric a manifold knows its shape only up to stretching; with one it acquires true geometry.
+
+The manifold viewpoint reframes many familiar tasks. Dimensionality reduction is the attempt to find honest low-dimensional coordinates for a data manifold. Interpolation in a generative model is the attempt to move along the manifold rather than cutting across the empty ambient space between two points, which is why a geodesic-aware traversal of a latent space yields plausible intermediate samples while a naive straight-line blend can pass through regions the data never occupies. Seeing data as a manifold, rather than as an unstructured cloud of vectors, is the conceptual move that ties representation learning to centuries of differential geometry.

@@ -1,0 +1,17 @@
+---
+title: Chain Rule
+slug: chain-rule
+kind: technique
+category: Calculus and Analysis
+aliases: chain rule of calculus
+related: derivative, partial-derivative, gradient, jacobian, backpropagation, directional-derivative
+summary: The rule for differentiating composed functions, stating that the derivative of a composition is the product of the derivatives of its parts, which is the mathematical foundation of backpropagation.
+---
+
+The chain rule tells you how to differentiate a function built by feeding one function into another. If an output depends on an intermediate quantity, which in turn depends on an input, the rate of change of the output with respect to the input is the product of two rates: how the output changes with the intermediate, times how the intermediate changes with the input. Influence multiplies along the chain. For functions of many variables the same principle holds in matrix form, where the relevant rates of change are jacobians and the multiplication is matrix multiplication.
+
+The chain rule matters because every deep neural network is a deep composition of functions, layer after layer, and training requires the derivative of the final loss with respect to parameters buried many layers back. The chain rule is what makes that derivative computable at all. It converts the intractable question "how does this early weight affect the loss many transformations later" into a sequence of local derivatives that can each be computed easily and then multiplied together. Without it there would be no practical way to assign credit and blame to parameters in a multilayer model.
+
+Backpropagation is the chain rule applied with a specific, efficient ordering. Rather than recomputing shared sub-expressions, it does a single forward pass to record intermediate values, then a single backward pass that propagates the gradient from the output toward the inputs, multiplying by each layer's local jacobian as it goes. This reverse accumulation is dramatically cheaper than working forward when there is one scalar loss and many parameters, and it is the reason a network with billions of weights can be trained. Automatic differentiation in every framework is, at its core, a careful implementation of the chain rule over a computation graph.
+
+The chain rule also illuminates why training can fail. Because gradients are products of many factors, those products can shrink toward zero across depth, the vanishing gradient problem, or grow without bound, the exploding gradient problem. The multiplicative structure that makes the chain rule so powerful is the same structure that makes deep networks delicate, motivating residual connections, normalization, and careful initialization. Conceptually the chain rule connects the local derivatives of individual operations to the global gradient that gradient descent consumes, and it is the bridge between every other object in this category and how learning actually happens.

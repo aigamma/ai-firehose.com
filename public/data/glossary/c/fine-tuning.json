@@ -1,12 +1,12 @@
 {
   "id": "fine-tuning",
-  "label": "fine-tuning",
+  "label": "Fine-Tuning",
   "aliases": [
-    "Supervised fine-tuning",
-    "preference-based fine-tuning",
-    "Parameter-efficient fine-tuning"
+    "finetuning",
+    "supervised fine-tuning",
+    "SFT"
   ],
-  "kind": "tool",
+  "kind": "technique",
   "attention": 9,
   "first_seen": "2026-05-28T22:00:11+00:00",
   "rotation": {
@@ -124,5 +124,60 @@
       "kind": "technique"
     }
   ],
-  "definition": "Fine-tuning is the process of training a pre-trained model on task-specific data to adapt its weights for particular applications or domains."
+  "definition": "The process of continuing to train an already pretrained model on a smaller, task-specific or domain-specific dataset, so its general knowledge is specialized toward a particular use.",
+  "category": "Training and Fine-Tuning",
+  "durable": true,
+  "source": "authored",
+  "body": [
+    {
+      "type": "p",
+      "text": "Fine-tuning takes a model that has already been pretrained on a broad corpus and continues training it on a smaller, more focused dataset. The pretrained weights provide a strong starting point that already encodes language, reasoning, and world knowledge; fine-tuning nudges those weights so the model performs better on a narrower target, whether that is a domain (legal contracts, medical notes), a task (classification, summarization), or a behavior (following instructions, adopting a house style). It is the most direct way to put transfer learning into practice."
+    },
+    {
+      "type": "p",
+      "text": "Fine-tuning matters because it makes large models economical to specialize. Pretraining a foundation model from scratch is prohibitively expensive, but fine-tuning one reuses that investment and reaches strong task performance with far less data and compute, often a few thousand to a few hundred thousand examples instead of trillions of tokens. This is why the dominant workflow in modern machine learning is pretrain once, fine-tune many times, with one base model spawning many specialized descendants."
+    },
+    {
+      "type": "p",
+      "text": "In its classic form, full fine-tuning updates every parameter of the model using supervised learning on labeled examples, minimizing a loss with gradient descent exactly as in pretraining, only on the new data and usually with a smaller learning rate to avoid erasing what was already learned. When the training data consists of instruction and response pairs, this is called supervised fine-tuning (SFT) or instruction-tuning, and it is typically the first step in turning a base model into an assistant before reinforcement learning from human feedback (RLHF) or direct preference optimization (DPO) refine its behavior further."
+    },
+    {
+      "type": "p",
+      "text": "Full fine-tuning has two costs that motivate alternatives. First, updating and storing a complete copy of a multi-billion-parameter model for every task is expensive in memory and disk. Second, training too aggressively on a narrow dataset can overwrite general competence, a failure mode called catastrophic forgetting. Both pressures gave rise to parameter-efficient fine-tuning, a family of methods, most prominently LoRA, that freeze the original weights and train only a small set of new ones, capturing most of the benefit at a fraction of the cost."
+    },
+    {
+      "type": "p",
+      "text": "Fine-tuning sits at the center of the model adaptation story. It depends on pretraining for its starting point, it realizes transfer learning, and it branches into the parameter-efficient and preference-based techniques (LoRA, RLHF, DPO) that the rest of this category describes. Knowing when to fine-tune, versus when prompting or retrieval would suffice, is one of the core judgment calls in applied machine learning."
+    }
+  ],
+  "related": [
+    {
+      "slug": "pretraining",
+      "label": "Pretraining"
+    },
+    {
+      "slug": "transfer-learning",
+      "label": "Transfer Learning"
+    },
+    {
+      "slug": "lora",
+      "label": "LoRA"
+    },
+    {
+      "slug": "parameter-efficient-fine-tuning",
+      "label": "Parameter-Efficient Fine-Tuning"
+    },
+    {
+      "slug": "instruction-tuning",
+      "label": "Instruction-Tuning"
+    },
+    {
+      "slug": "catastrophic-forgetting",
+      "label": "Catastrophic Forgetting"
+    },
+    {
+      "slug": "rlhf",
+      "label": "RLHF"
+    }
+  ]
 }

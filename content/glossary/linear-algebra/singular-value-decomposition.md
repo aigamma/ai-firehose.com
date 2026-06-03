@@ -1,0 +1,17 @@
+---
+title: Singular Value Decomposition
+slug: singular-value-decomposition
+kind: technique
+category: Linear Algebra for ML
+aliases: SVD, singular values, singular vectors
+related: matrix, eigenvalue, eigenvector, matrix-multiplication, linear-transformation, basis
+summary: A factorization that breaks any matrix into a rotation, a set of axis scalings, and another rotation, exposing the geometry of a linear transformation and providing the foundation for low-rank approximation.
+---
+
+The singular value decomposition, or SVD, factors any matrix, of any shape, into three simpler matrices multiplied together: an orthogonal rotation, a diagonal matrix of nonnegative scalings called singular values, and a second orthogonal rotation. Read as a sequence of actions on a vector, it says that every linear transformation, however complicated it looks, is really just a rotation into a new set of axes, a pure stretch along those axes, and a final rotation into the output space. This is the most universal and revealing factorization in linear algebra, because unlike eigen-decomposition it works for rectangular and non-invertible matrices too.
+
+The singular values are the heart of it. They are the stretch factors along the transformation's principal axes, always nonnegative and conventionally listed from largest to smallest. The largest singular value is the maximum amount the matrix can stretch any unit vector, and the smallest measures how close the matrix comes to collapsing a direction to zero. The number of nonzero singular values is the rank of the matrix, the true dimensionality of its action, and the spread between the largest and smallest indicates how numerically stable it is to invert. For a symmetric positive matrix the singular values coincide with the eigenvalues.
+
+The SVD's most important use is approximation. Keeping only the largest few singular values, and zeroing the rest, gives the best possible low-rank approximation of the matrix, the closest simpler matrix in a precise sense. This single fact powers a great deal of machine learning and data analysis: principal component analysis is the SVD of centered data, latent semantic analysis compresses word-document matrices, recommender systems factor a sparse ratings matrix into user and item factors, and image and model compression discard the small singular values that carry little signal. Truncating to a low rank is also how parameter-efficient fine-tuning methods adapt large models cheaply.
+
+Conceptually, the SVD ties the whole subject together. The columns of its two rotation matrices are the left and right singular vectors, orthonormal bases for the output and input spaces that play, for any matrix, the role that eigenvectors play for symmetric ones. Reading a transformation through its SVD turns an opaque grid of numbers into a clear geometric story of which directions it amplifies, which it suppresses, and which it ignores, which is why it recurs throughout numerical computing, statistics, and modern machine learning.

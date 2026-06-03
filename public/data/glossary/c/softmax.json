@@ -1,0 +1,68 @@
+{
+  "id": "softmax",
+  "label": "Softmax",
+  "kind": "technique",
+  "category": "Probability and Information Theory",
+  "aliases": [
+    "softmax function",
+    "softargmax",
+    "normalized exponential"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A function that turns a vector of real-valued scores into a probability distribution by exponentiating each score and normalizing, used to produce categorical outputs and attention weights in neural networks.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The softmax function converts an arbitrary vector of real numbers into a probability-distribution over the same number of categories. It exponentiates each input, called a logit, and divides by the sum of all the exponentials, so the outputs are strictly positive and sum to one. Exponentiating ensures positivity and amplifies differences, so a logit that is somewhat larger than the others receives a disproportionately large share of the probability, while normalizing makes the result a valid distribution. Softmax is the standard final layer of a classifier and the mechanism that produces the weights inside attention."
+    },
+    {
+      "type": "p",
+      "text": "Softmax matters because it is the bridge between the unconstrained real-valued world of a neural network's internals and the constrained simplex of probabilities the task requires. A network computes scores with no inherent meaning as probabilities; softmax maps them onto a distribution that can be interpreted, sampled from, and scored against a target. It is the multi-class generalization of the logistic sigmoid, reducing to it in the two-class case, and it is paired almost universally with cross-entropy loss, a combination whose gradient simplifies to the predicted probabilities minus the true labels, clean and numerically stable."
+    },
+    {
+      "type": "p",
+      "text": "A practical subtlety is that the exponentials can overflow when logits are large, so implementations subtract the maximum logit before exponentiating. This shift leaves the output unchanged, because softmax is invariant to adding a constant to every input, but it keeps the arithmetic in a safe range. This invariance also means the logits are identified only up to an additive constant, which is why a softmax over k categories has only k minus one effective degrees of freedom."
+    },
+    {
+      "type": "p",
+      "text": "The temperature parameter controls how sharp or soft the resulting distribution is. Dividing the logits by a temperature before applying softmax interpolates between two extremes: a low temperature drives the output toward a one-hot, nearly deterministic choice of the largest logit, while a high temperature flattens it toward the uniform distribution of maximum entropy. Temperature is the standard knob for controlling randomness when sampling from a language model, trading off diversity against confidence, and it is central to knowledge distillation, where a raised temperature exposes the soft structure in a teacher's predictions."
+    },
+    {
+      "type": "p",
+      "text": "Softmax is connected to deeper ideas across the field. It is exactly the distribution that maximum-entropy reasoning produces under linear constraints, and it is the Gibbs or Boltzmann distribution of statistical physics, with the logits playing the role of negative energies. Inside the transformer, attention applies softmax to query-key similarity scores to decide how much each position attends to every other. From the last layer of a classifier to the core of attention to the sampling of generated text, softmax is one of the most frequently invoked operations in modern machine learning."
+    }
+  ],
+  "related": [
+    {
+      "slug": "cross-entropy",
+      "label": "Cross-Entropy"
+    },
+    {
+      "slug": "entropy",
+      "label": "Entropy"
+    },
+    {
+      "slug": "probability-distribution",
+      "label": "Probability Distribution"
+    },
+    {
+      "slug": "kl-divergence",
+      "label": "KL Divergence"
+    },
+    {
+      "slug": "expectation",
+      "label": "Expectation"
+    },
+    {
+      "slug": "gaussian-distribution",
+      "label": "Gaussian Distribution"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

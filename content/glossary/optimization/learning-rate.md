@@ -1,0 +1,17 @@
+---
+title: Learning Rate
+slug: learning-rate
+kind: technique
+category: Optimization
+aliases: step size, alpha
+related: gradient-descent, stochastic-gradient-descent, learning-rate-schedule, momentum, adam, loss-landscape
+summary: The scalar that controls how large a step gradient descent takes at each update, scaling the gradient before it is subtracted from the parameters. It is the single most important hyperparameter in training.
+---
+
+The learning rate is the step size in gradient descent. After the gradient of the loss function is computed, the optimizer does not move the parameters by the full gradient; it multiplies the gradient by the learning rate, a small positive scalar, and subtracts that. The learning rate therefore answers a single question at every step: given the direction downhill, how far do we actually walk before recomputing?
+
+It matters because it sits at the center of the speed-versus-stability tradeoff that governs all of training. Set the learning rate too high and the steps overshoot the bottom of each valley in the loss landscape, bouncing across it or diverging to infinity. Set it too low and training is stable but glacially slow, and the optimizer is more likely to stall in the first shallow local minimum or flat region it encounters. The useful range is often narrow and problem specific, which is why practitioners typically search over learning rates on a logarithmic scale (for example 0.1, 0.01, 0.001) rather than tuning any other single value first.
+
+The reason a fixed good learning rate is hard to find is that the ideal step size changes during training and even across parameters. Early on, far from any solution, large steps make rapid progress; late in training, near a minimum, the same large steps prevent the model from settling. Different directions in the loss landscape also have very different curvature, so a step size that is right for one parameter is wrong for another. These two facts motivate the two main responses: a learning-rate schedule that shrinks the global step size over time, and adaptive optimizers like Adam and RMSprop that give each parameter its own effective rate by dividing by a running estimate of that parameter's gradient magnitude.
+
+Because of its outsized effect, the learning rate is the hyperparameter to tune first and the one most worth getting right. Techniques such as the learning-rate range test (briefly increasing the rate and watching where the loss starts to fall and where it explodes) and warmup (starting small and ramping up) exist specifically to locate and exploit the usable band. Momentum interacts with it too, since accumulated velocity effectively amplifies the step, so the two are tuned together.

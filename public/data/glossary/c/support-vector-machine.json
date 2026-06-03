@@ -1,0 +1,60 @@
+{
+  "id": "support-vector-machine",
+  "label": "Support Vector Machine",
+  "kind": "technique",
+  "category": "Core Machine Learning",
+  "aliases": [
+    "SVM",
+    "support vector machines",
+    "support vector classifier"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A supervised learning model that classifies data by finding the decision boundary that separates the classes with the widest possible margin, using only the hardest examples nearest the boundary.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A support vector machine is a supervised classifier built on a single geometric idea: among the many boundaries that could separate two classes, prefer the one that leaves the widest gap. The boundary is a hyperplane, and the margin is the distance from that hyperplane to the closest training points on either side. The SVM finds the hyperplane that maximizes this margin. Only the few points sitting on the margin's edge actually determine the boundary; these are the support vectors, and the rest of the data could be removed without changing the answer."
+    },
+    {
+      "type": "p",
+      "text": "Support vector machines matter because the maximum-margin principle gives strong generalization, especially when the number of features is large relative to the number of examples, a regime where many models overfit. The wide margin is a built-in form of Regularization: by pushing the boundary as far as possible from both classes, the SVM resists fitting to noise near the decision surface. Before deep learning dominated, SVMs were the default high-accuracy classifier for text, images, and bioinformatics, and they remain a strong baseline on small to medium datasets."
+    },
+    {
+      "type": "p",
+      "text": "The deeper reason SVMs are powerful is the Kernel Method. Real data is often not linearly separable, so a straight hyperplane will not do. The kernel trick implicitly maps the data into a much higher-dimensional space where a linear separator does exist, and computes the necessary inner products in that space without ever constructing the coordinates explicitly. With a radial basis function kernel an SVM can carve out highly nonlinear boundaries while its mathematics stays that of a linear model. A soft-margin variant adds a penalty parameter that allows some points to violate the margin, trading a wider margin for a few misclassifications and controlling Overfitting."
+    },
+    {
+      "type": "p",
+      "text": "Support vector machines connect to the rest of core machine learning as the canonical margin-based method and the showcase application of kernels. They contrast with a Decision Tree, which partitions feature space into axis-aligned boxes rather than separating it with a single optimal boundary. Training an SVM is a convex optimization problem, so it has a unique global solution, an attractive property the non-convex training of neural networks lacks. Their main practical limits are cost on very large datasets and sensitivity to the choice of kernel and its parameters, which are normally tuned by Cross-Validation."
+    }
+  ],
+  "related": [
+    {
+      "slug": "kernel-method",
+      "label": "Kernel Method"
+    },
+    {
+      "slug": "supervised-learning",
+      "label": "Supervised Learning"
+    },
+    {
+      "slug": "regularization",
+      "label": "Regularization"
+    },
+    {
+      "slug": "decision-tree",
+      "label": "Decision Tree"
+    },
+    {
+      "slug": "overfitting",
+      "label": "Overfitting"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

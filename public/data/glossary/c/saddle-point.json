@@ -1,0 +1,62 @@
+{
+  "id": "saddle-point",
+  "label": "Saddle Point",
+  "kind": "technique",
+  "category": "Optimization",
+  "aliases": [
+    "saddle points"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A point in the loss landscape where the gradient vanishes but which is neither a peak nor a valley: it curves up in some directions and down in others. Saddle points stall plain gradient descent and dominate the critical points of high-dimensional networks.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A saddle point is a critical point of the loss landscape where the gradient is zero yet the point is not a minimum. The defining feature is mixed curvature: along some directions the surface curves upward, like the bottom of a valley, while along others it curves downward, like the top of a ridge. The namesake is a horse saddle, which dips front to back where you sit but rises left to right toward the stirrups. At the exact saddle there is no slope, so a method that moves by following the gradient finds nothing pushing it anywhere."
+    },
+    {
+      "type": "p",
+      "text": "This matters because saddle points are the characteristic way gradient-based optimization stalls. Plain gradient descent steps in proportion to the gradient, so as it approaches a saddle the steps shrink toward zero and progress crawls, even though escape is possible by moving along one of the downward directions. The optimizer can linger for a long time on the surrounding near-flat plateau before drifting off the saddle. This slow creep, rather than getting permanently stuck, is the practical cost."
+    },
+    {
+      "type": "p",
+      "text": "The reason saddle points are central to deep learning is a counting argument about high dimensions. At any critical point, whether it is a minimum, a maximum, or a saddle depends on the signs of the curvature in all the directions. For a true local minimum every one of the millions of directions must curve upward, which is exceedingly unlikely by chance; almost always at least one direction curves down, making the point a saddle. Consequently the vast majority of critical points in a large network's landscape are saddle points, and they, not bad local minima, are the dominant obstacle to optimization. This realization shifted the field's attention away from the local-minimum trap of classical theory."
+    },
+    {
+      "type": "p",
+      "text": "The fix is built into the optimizers practitioners already use. Momentum carries accumulated velocity through the flat region so the optimizer coasts off the saddle instead of stalling. The sampling noise in stochastic gradient descent perturbs the parameters off the exact saddle and onto a downhill direction. Adaptive methods like Adam and RMSprop, by rescaling each direction by its recent gradient magnitude, take larger relative steps along the shallow escape directions. Together these are much of why modern training escapes the saddle points that would freeze a naive descent."
+    }
+  ],
+  "related": [
+    {
+      "slug": "loss-landscape",
+      "label": "Loss Landscape"
+    },
+    {
+      "slug": "local-minimum",
+      "label": "Local Minimum"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "stochastic-gradient-descent",
+      "label": "Stochastic Gradient Descent"
+    },
+    {
+      "slug": "momentum",
+      "label": "Momentum"
+    },
+    {
+      "slug": "loss-function",
+      "label": "Loss Function"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

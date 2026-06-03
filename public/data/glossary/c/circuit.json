@@ -1,0 +1,68 @@
+{
+  "id": "circuit",
+  "label": "Circuit",
+  "kind": "technique",
+  "category": "Mechanistic Interpretability",
+  "aliases": [
+    "circuits",
+    "neural circuit",
+    "computational circuit"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A subgraph of features and the weighted connections between them that together implement a specific, human-understandable computation inside a neural network, and the basic unit of explanation in mechanistic interpretability.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A circuit is a small, identifiable piece of a neural network that carries out a particular function: a set of features, the neurons or attention heads that compute them, and the weights that wire them together into an algorithm. The term is borrowed deliberately from electronics. Just as an adder or a multiplexer is a recognizable subassembly inside a chip, a circuit inside a model is a recognizable subassembly inside the larger computation, one whose behavior you can state in plain language. Circuits are the unit in which mechanistic interpretability tries to express its findings, because a model understood as a collection of named circuits is a model you can reason about."
+    },
+    {
+      "type": "p",
+      "text": "Circuits matter because they convert interpretability from a collection of observations into a causal theory. Describing what a single feature represents is useful, but a model does not compute with isolated features; it composes them. A circuit captures that composition: how an early feature feeds a later one, how two attention heads cooperate across positions, how information is written into the residual stream by one component and read out by another. Recovering circuits is therefore what lets researchers claim to have reverse-engineered a behavior rather than merely correlated with it, and it is the level at which an audit for deception or an unsafe capability would have to operate."
+    },
+    {
+      "type": "p",
+      "text": "In a transformer, circuits are traced through the residual stream, the shared channel that every layer reads from and writes to. Attention heads move information between token positions while the feed-forward layers transform it in place, and a circuit is the specific route a signal takes through these components. Researchers identify circuits with a combination of techniques: ablating a component and watching the behavior break, patching activations from one input into another to localize where a computation lives, and reading intermediate states with the logit lens. The discipline insists on intervention, because a circuit story that only fits the activations is a hypothesis until cutting the proposed wire actually severs the behavior."
+    },
+    {
+      "type": "p",
+      "text": "The canonical example is the induction head, a two-head circuit that implements in-context copying and turns out to underwrite much of a model's few-shot learning. Other documented circuits handle tasks like indirect object identification and basic modular arithmetic, the last of which connects circuits to grokking, where a network is seen to abandon a memorized table in favor of a clean computational circuit. Finding circuits at scale is hard, largely because superposition spreads features across overlapping directions rather than tidy neurons, which is why the sparse autoderiving of monosemantic features has become a prerequisite for circuit analysis: you cannot wire together components you cannot first name."
+    }
+  ],
+  "related": [
+    {
+      "slug": "mechanistic-interpretability",
+      "label": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "induction-head",
+      "label": "Induction Head"
+    },
+    {
+      "slug": "superposition",
+      "label": "Superposition"
+    },
+    {
+      "slug": "polysemanticity",
+      "label": "Polysemanticity"
+    },
+    {
+      "slug": "feature-visualization",
+      "label": "Feature Visualization"
+    },
+    {
+      "slug": "activation-steering",
+      "label": "Activation Steering"
+    },
+    {
+      "slug": "logit-lens",
+      "label": "Logit Lens"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

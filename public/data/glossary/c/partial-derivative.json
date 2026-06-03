@@ -1,0 +1,63 @@
+{
+  "id": "partial-derivative",
+  "label": "Partial Derivative",
+  "kind": "technique",
+  "category": "Calculus and Analysis",
+  "aliases": [
+    "partial derivatives",
+    "partials"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The derivative of a multivariable function with respect to one of its inputs while all the other inputs are held fixed, measuring how the output responds to a change along a single coordinate axis.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A partial derivative is the derivative of a function of several variables taken with respect to just one of those variables, treating every other variable as a constant. If a function depends on inputs x and y, its partial derivative with respect to x answers a narrow question: holding y fixed, how fast does the output change as x alone varies? It is the ordinary derivative restricted to a single coordinate direction, and it is written with the rounded symbol so it is not confused with the total derivative of a single-variable function."
+    },
+    {
+      "type": "p",
+      "text": "Partial derivatives matter because the functions optimized in machine learning depend on enormous numbers of variables at once, every weight and bias in a model. To improve the model you need to know the separate influence of each parameter on the loss, and that separate influence is exactly a partial derivative. Collecting the partial derivatives with respect to all the inputs into one vector produces the gradient, the central object that gradient descent follows downhill. So the partial derivative is the atomic unit from which the gradient, and therefore all of training, is assembled."
+    },
+    {
+      "type": "p",
+      "text": "Computing a partial derivative uses the same rules as ordinary differentiation, with the simplification that anything not involving the chosen variable is a constant and differentiates to zero. The subtlety appears when variables are coupled through intermediate quantities, which is the rule rather than the exception in a deep network. There the chain rule for several variables applies: the total effect of one input propagates through every path that connects it to the output, and the contributions along those paths are summed. Backpropagation is precisely the bookkeeping that organizes this sum efficiently."
+    },
+    {
+      "type": "p",
+      "text": "Partial derivatives are the building blocks of the higher-order structures used throughout the field. The full set of first-order partials of a scalar function is the gradient; the matrix of first-order partials of a vector-valued function is the jacobian; the matrix of second-order partials, the partials of the partials, is the hessian, which encodes local curvature. A directional derivative is a weighted combination of partial derivatives that measures change along an arbitrary direction rather than a single axis. Mastering the partial derivative therefore unlocks the whole vocabulary of multivariable calculus that optimization depends on."
+    }
+  ],
+  "related": [
+    {
+      "slug": "derivative",
+      "label": "Derivative"
+    },
+    {
+      "slug": "gradient",
+      "label": "Gradient"
+    },
+    {
+      "slug": "jacobian",
+      "label": "Jacobian"
+    },
+    {
+      "slug": "hessian",
+      "label": "Hessian"
+    },
+    {
+      "slug": "directional-derivative",
+      "label": "Directional Derivative"
+    },
+    {
+      "slug": "chain-rule",
+      "label": "Chain Rule"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

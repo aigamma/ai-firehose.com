@@ -1,0 +1,64 @@
+{
+  "id": "tangent-space",
+  "label": "Tangent Space",
+  "kind": "technique",
+  "category": "Geometry and Manifolds",
+  "aliases": [
+    "tangent space",
+    "tangent plane",
+    "tangent vector"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The flat vector space of all possible velocity directions at a single point of a manifold, providing the local linear approximation in which calculus and inner products on a curved space are carried out.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The tangent space at a point of a manifold is the flat vector space that best approximates the manifold right there. For a curve, it is the tangent line; for a surface, it is the tangent plane resting against the surface at that point; in general it is a flat space of the same dimension as the manifold, attached at a single point, holding every possible velocity vector a path through that point could have. Each element is a tangent vector, an arrow describing an instantaneous direction and speed of motion along the manifold. The key idea is that although the manifold is curved, the tangent space is perfectly flat, so the familiar linear-algebra operations of adding vectors, scaling them, and taking inner products all work there even when they make no sense on the curved manifold itself."
+    },
+    {
+      "type": "p",
+      "text": "Tangent spaces are the foundation of calculus on manifolds. A curved space has no global coordinate system in which differentiation behaves simply, but at each point the tangent space provides a local linear model in which derivatives live. The velocity of a path is a tangent vector; the gradient of a function defined on the manifold is a tangent vector; the generalization of a derivative, the differential of a map between manifolds, is a linear map between their tangent spaces. This is the same move that underlies all of differential calculus, replacing a curved or nonlinear object with its best linear approximation, applied pointwise across an entire manifold. The collection of all the tangent spaces, one glued to every point, forms the tangent bundle."
+    },
+    {
+      "type": "p",
+      "text": "On a Riemannian manifold the tangent space is where the geometry actually lives, because the metric tensor is defined as an inner product on each tangent space. That inner product is what lets you measure the length of a tangent vector and the angle between two of them, and integrating those lengths along a path gives the length used to define geodesics and distance. The metric can differ from one tangent space to the next, which is precisely how a manifold encodes varying curvature: the rule for measuring vectors changes as you move from point to point. Without tangent spaces there would be nowhere for the metric to act, and notions like distance and curvature could not be defined."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning, tangent spaces appear wherever optimization or interpolation is done on a curved representation. Riemannian optimization computes a gradient in the tangent space at the current point and then moves along a geodesic in that direction, using an exponential map to step back onto the manifold and a logarithm map to translate a destination point into a tangent direction; this is exactly how hyperbolic embeddings and optimization over rotation or covariance matrices are trained without ever leaving the valid set. The same tangent-space-and-exponential-map recipe is what makes geometric interpolation in a curved latent space well defined. Even the local linear structure that explanation methods probe around an input, and the first-order view of how a model's output changes as the input moves, is a tangent-space picture in disguise. The tangent space is the bridge that lets flat-space tools operate on curved data."
+    }
+  ],
+  "related": [
+    {
+      "slug": "manifold",
+      "label": "Manifold"
+    },
+    {
+      "slug": "riemannian-manifold",
+      "label": "Riemannian Manifold"
+    },
+    {
+      "slug": "metric-tensor",
+      "label": "Metric Tensor"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic"
+    },
+    {
+      "slug": "curvature",
+      "label": "Curvature"
+    },
+    {
+      "slug": "latent-space",
+      "label": "Latent Space"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,19 @@
+---
+title: Reward Model
+slug: reward-model
+kind: technique
+category: Alignment and Safety
+aliases: reward model, preference model, RLHF reward model
+related: reward-hacking, scalable-oversight, ai-alignment, specification-gaming, ai-safety, deceptive-alignment
+summary: A model trained to predict how good an output is according to human preferences, used as a learned stand-in for a hand-written objective so that a system can be optimized against human judgment at scale.
+---
+
+A reward model is a learned objective. Instead of hand-writing a function that scores a system's outputs, you train a separate model to predict the score a human would assign, and then optimize the main system against that prediction. This is the heart of reinforcement learning from human feedback (RLHF), the dominant method for fine-tuning large language models toward helpful and harmless behavior. The reward model lets human judgment, which is rich but slow and expensive, be distilled into a fast automatic signal that can drive millions of optimization steps.
+
+The standard recipe trains the reward model from comparisons. Human annotators are shown two or more candidate outputs for the same input and pick which they prefer, and the reward model is trained so that preferred outputs receive higher scores than dispreferred ones. Comparisons are used rather than absolute ratings because people are far more consistent at ranking two options than at assigning calibrated numerical scores. The resulting model maps any output to a scalar reward, and a policy is then optimized, usually with a reinforcement learning algorithm, to produce outputs the reward model scores highly while not drifting too far from its original behavior.
+
+Reward models exist to address the outer-alignment problem in ai-alignment: the intended objective ("be helpful, honest, and harmless") is far too rich and context-dependent to specify by hand, so it is learned from examples of human preference instead. This is also why reward models are a key tool for scalable-oversight, since a reward model can encode aggregate human judgment and, in amplified schemes, judgments that no single quick human pass could produce. In effect the reward model is how fuzzy human values are compiled into something an optimizer can consume.
+
+The central danger is that the reward model is only an approximation of true human preference, and optimizing hard against an approximation invites reward-hacking. The policy is rewarded for high reward-model scores, not for genuinely good outputs, so it is pushed to find inputs that the reward model scores highly but a human would not endorse, adversarial outputs that exploit the reward model's blind spots. This is a direct instance of specification-gaming, with the learned reward model playing the role of the gameable specification, and it is why RLHF setups limit how far the policy may move from its starting point and periodically refresh the reward model with new human data.
+
+Reward models therefore sit at the productive center of modern alignment practice and also concentrate its open problems. They are how today's most capable models are steered toward intended behavior, which makes their quality, coverage, and robustness directly load-bearing for ai-safety. Their weaknesses (susceptibility to gaming, the cost and noise of the human labels they learn from, and the difficulty of capturing values that humans themselves disagree on) are active research areas, as is the question of how reward models should handle oversight, correction, and the incentives studied under deceptive-alignment.

@@ -1,0 +1,17 @@
+---
+title: Weight Decay
+slug: weight-decay
+kind: technique
+category: Optimization
+aliases: L2 regularization, ridge penalty
+related: loss-function, adam, gradient-descent, stochastic-gradient-descent, loss-landscape, local-attractor-basin
+summary: A regularization technique that pulls the model's weights toward zero at every step, either by adding a penalty on their squared magnitude to the loss function or by shrinking them directly, which discourages overfitting and favors simpler solutions.
+---
+
+Weight decay is a regularization method that biases training toward small parameter values. In its classic form it adds a term to the loss function proportional to the sum of the squared weights, the L2 penalty. Because the optimizer minimizes the total loss, it now has to balance fitting the data against keeping the weights small, and at each gradient descent step this extra term contributes a force that pulls every weight a little toward zero. The name comes from this continual shrinkage: absent a gradient pushing back, a weight steadily decays.
+
+It matters because it is one of the most reliable defenses against overfitting. A model with large, finely tuned weights can carve a complicated decision surface that memorizes the training data, including its noise, and then fails on new data. Penalizing weight magnitude expresses a preference for smoother, simpler functions, which usually generalize better. In the loss landscape this nudges the optimizer toward wider, flatter local attractor basins rather than sharp ones, and those flatter solutions are the ones that tend to transfer to unseen examples. The strength of the effect is set by a single coefficient, often the most impactful regularization hyperparameter to tune.
+
+Mechanically the two views are nearly equivalent for plain gradient descent. Adding the squared-weight penalty to the loss means its gradient includes a term proportional to the weights themselves, so the update subtracts a fraction of each weight in addition to following the data gradient. This is identical to multiplying every weight by a number slightly less than one each step, hence decay. The coefficient controls how aggressive the shrinkage is: too little and regularization has no effect, too much and the model is pulled so hard toward zero that it underfits.
+
+The equivalence breaks down with adaptive optimizers, which is a subtlety worth knowing. In Adam, folding the L2 penalty into the gradient causes it to be rescaled by the same per-parameter second-moment denominator that adapts the step size, so weights with large gradients get less effective decay, distorting the regularization. AdamW fixes this by decoupling weight decay from the adaptive update, shrinking the weights directly by a fixed fraction outside the gradient computation. This decoupled form generalizes better and is now standard for training large models, which is why the distinction between L2 regularization and true weight decay, often treated as synonyms, actually matters in practice.

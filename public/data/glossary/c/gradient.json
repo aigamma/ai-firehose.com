@@ -1,0 +1,64 @@
+{
+  "id": "gradient",
+  "label": "Gradient",
+  "kind": "technique",
+  "category": "Calculus and Analysis",
+  "aliases": [
+    "gradients",
+    "grad",
+    "nabla"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The vector of all the partial derivatives of a scalar function, pointing in the direction of steepest increase of the function and with a length equal to that steepest rate of change.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The gradient of a scalar function of several variables is the vector that collects its partial derivatives, one component for each input. It bundles the separate sensitivities of the output to each input into a single geometric object. Its defining property is directional: at any point the gradient points in the direction in which the function increases most steeply, and its magnitude is the rate of that steepest ascent. Move directly against the gradient and you descend the function as fast as locally possible."
+    },
+    {
+      "type": "p",
+      "text": "The gradient is arguably the single most important object in machine learning, because training is the act of following it. A loss function assigns an error to every setting of a model's parameters, and its gradient with respect to those parameters tells the optimizer which way and how strongly to adjust each one to reduce the error. Gradient descent simply takes repeated small steps in the direction opposite the gradient. Every modern network, from a small classifier to a frontier language model, is fit by computing this vector and stepping against it, over and over."
+    },
+    {
+      "type": "p",
+      "text": "The gradient connects the local rate of change in any direction to a single vector through the directional derivative: the rate of change of the function along a given unit direction equals the dot product of the gradient with that direction. This is why the gradient is the direction of steepest ascent, since a dot product is largest when the two vectors are aligned. It also explains a key geometric fact: the gradient is always perpendicular to the level sets (the contours of constant value) of the function, because moving along a contour produces no change and so has zero dot product with the gradient."
+    },
+    {
+      "type": "p",
+      "text": "In practice the gradient is rarely formed by hand. Automatic differentiation, via the chain rule applied backward through a computation graph (backpropagation), produces it exactly and cheaply for functions with millions of inputs. The gradient sits in the middle of a hierarchy of derivative objects: it is the first-order derivative of a scalar function, the jacobian generalizes it to vector-valued functions by stacking many gradients as rows, and the hessian is its own derivative, the matrix describing how the gradient itself changes and thus the local curvature that second-order optimizers exploit."
+    }
+  ],
+  "related": [
+    {
+      "slug": "partial-derivative",
+      "label": "Partial Derivative"
+    },
+    {
+      "slug": "derivative",
+      "label": "Derivative"
+    },
+    {
+      "slug": "directional-derivative",
+      "label": "Directional Derivative"
+    },
+    {
+      "slug": "jacobian",
+      "label": "Jacobian"
+    },
+    {
+      "slug": "hessian",
+      "label": "Hessian"
+    },
+    {
+      "slug": "chain-rule",
+      "label": "Chain Rule"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

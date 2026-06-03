@@ -1,0 +1,58 @@
+{
+  "id": "frame-problem",
+  "label": "Frame Problem",
+  "kind": "technique",
+  "category": "Philosophy of Mind and AI",
+  "aliases": [
+    "the frame problem"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Originally a technical difficulty in AI (McCarthy and Hayes, 1969) about representing what stays unchanged when an action occurs, later generalized by philosophers into the puzzle of how a mind decides what is relevant without checking everything.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The frame problem began as a precise technical issue in symbolic AI. John McCarthy and Patrick Hayes named it in their 1969 paper \"Some Philosophical Problems from the Standpoint of Artificial Intelligence\". When you represent the world in logic and an agent performs an action, you must update the description of the world to reflect what changed. The trouble is the vast number of things that do not change. Moving a cup does not alter the color of the walls, the date, the price of tea, or the position of the moon. In a strict logical formalism, none of this non-change is free; the system needs axioms, the so-called frame axioms, stating that each such fact persists across the action. Writing them out for every action and every fact is combinatorially hopeless, and the technical frame problem is the challenge of representing and reasoning about what stays the same efficiently."
+    },
+    {
+      "type": "p",
+      "text": "AI made real headway on the narrow version. Techniques such as the situation calculus with successor-state axioms, default and nonmonotonic logics, and the assumption that unmentioned facts persist (a closed-world style default) tame the bookkeeping for circumscribed domains. These are genuine solutions to the problem McCarthy and Hayes posed. But the difficulty did not disappear so much as migrate, because the deeper question is not how to state that most things stay the same but how an agent knows which few things might have changed, or might be relevant, without exhaustively considering everything."
+    },
+    {
+      "type": "p",
+      "text": "Philosophers, Daniel Dennett and Jerry Fodor most influentially, generalized the issue into a problem about relevance and is now often called the epistemological or philosophical frame problem. Dennett's 1984 essay \"Cognitive Wheels\" dramatizes it with a robot that, trying to retrieve its spare battery from a room with a time bomb, is paralyzed because it cannot tell which of the countless side effects of its plan matter and which can be ignored. A first robot fails to notice the bomb rides out with the battery; a second grinds to a halt deducing endless irrelevant consequences (that moving the wagon does not change the wall color, and so on); a third gets lost trying to decide which consequences are even worth considering. The puzzle is that relevance seems holistic: in principle, almost any fact could become pertinent given the right circumstances, so no fixed, local rule for ignoring things is guaranteed safe. Fodor took this to expose a deep obstacle for the computational-theory-of-mind, since computation operates on the local, formal properties of representations, while relevance appears to depend on their global, contextual significance."
+    },
+    {
+      "type": "p",
+      "text": "The frame problem matters for AI because it names a gap between formal competence and the effortless, context-sensitive relevance judgments that biological intelligence makes constantly and invisibly. Humans simply do not consider whether the moon moved when they pick up a cup; the irrelevant never even arises, and how that filtering works is not well understood. Embodied cognition offers one line of response, suggesting that an agent coupled to its environment through a body offloads much of the relevance problem onto the world and onto fast perception-action loops, so that not everything needs to be represented and reasoned over symbolically. Modern statistical and neural systems sidestep the classical formulation by learning soft, distributed associations rather than reasoning over explicit axioms, yet a learned analogue of the relevance problem persists in their brittleness and their failures of common-sense generalization. For these reasons the frame problem remains a touchstone in debates about what genuine artificial-general-intelligence would require, and a reminder that representing the world is not the same as knowing what about it matters now."
+    }
+  ],
+  "related": [
+    {
+      "slug": "computational-theory-of-mind",
+      "label": "Computational Theory of Mind"
+    },
+    {
+      "slug": "embodied-cognition",
+      "label": "Embodied Cognition"
+    },
+    {
+      "slug": "artificial-general-intelligence",
+      "label": "Artificial General Intelligence"
+    },
+    {
+      "slug": "symbol-grounding-problem",
+      "label": "Symbol Grounding Problem"
+    },
+    {
+      "slug": "emergence",
+      "label": "Emergence"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,60 @@
+{
+  "id": "rotary-position-embedding",
+  "label": "Rotary Position Embedding",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "RoPE",
+    "rotary embeddings",
+    "rotary positional encoding"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A positional encoding scheme that rotates the query and key vectors by an angle proportional to each token's position, so that attention scores depend naturally on the relative distance between tokens.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Rotary position embedding, almost always called RoPE, is the positional encoding used in most current large language models. It addresses the same need as any positional encoding, giving a permutation-invariant transformer a sense of word order, but it does so in a way that makes the relative distance between two tokens fall out of the math directly, rather than tagging each token with an absolute slot. This relative behavior is much of why RoPE extends to longer sequences more gracefully than the older additive schemes."
+    },
+    {
+      "type": "p",
+      "text": "The core idea is rotation. Instead of adding a position vector to the token embedding, RoPE pairs up the coordinates of each query and key vector and rotates each pair by an angle that is proportional to the token's position, using a spread of rotation frequencies across the pairs. The decisive property is that the dot product between a rotated query at one position and a rotated key at another depends only on their difference in position, not on where either sits absolutely. Since attention scores are exactly those dot products, the attention a token pays to another becomes a function of how far apart they are, which is precisely the relative-position behavior that is wanted, achieved without any extra learned parameters."
+    },
+    {
+      "type": "p",
+      "text": "RoPE is applied inside each attention layer, to the query and key vectors just before their scores are computed, and not to the value vectors. Because the rotation depends only on position, it composes cleanly with the rest of self-attention and adds negligible compute. It is also compatible with the kv-cache: each token's keys are rotated once when first computed and stored in their rotated form, so caching works exactly as it does without RoPE."
+    },
+    {
+      "type": "p",
+      "text": "A major practical reason RoPE became dominant is context extension. Because position enters as a rotation angle with a known frequency structure, the scheme can be stretched to lengths beyond training by interpolating or rescaling those angles, which underlies popular methods for growing a model's context window after the fact. RoPE thus connects the abstract requirement to encode order with the very concrete engineering goal of longer contexts, which is why it has largely displaced the original sinusoidal and learned absolute positional encodings in modern transformer design."
+    }
+  ],
+  "related": [
+    {
+      "slug": "positional-encoding",
+      "label": "Positional Encoding"
+    },
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention"
+    },
+    {
+      "slug": "multi-head-attention",
+      "label": "Multi-Head Attention"
+    },
+    {
+      "slug": "context-window",
+      "label": "Context Window"
+    },
+    {
+      "slug": "transformer",
+      "label": "Transformer"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

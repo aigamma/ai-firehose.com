@@ -1,0 +1,63 @@
+{
+  "id": "information-geometry",
+  "label": "Information Geometry",
+  "kind": "technique",
+  "category": "Geometry and Manifolds",
+  "aliases": [
+    "information geometry",
+    "statistical manifold"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The field that treats families of probability distributions as a curved Riemannian manifold, using the Fisher information as its metric so that distance corresponds to statistical distinguishability between distributions.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Information geometry is the study of probability distributions through the lens of differential geometry. The central move is to treat a parameterized family of distributions as a manifold: each setting of the parameters is a point, and as the parameters vary continuously you trace out a smooth surface called a statistical manifold. The family of all Gaussian distributions, parameterized by mean and variance, is a two-dimensional manifold; the family of categorical distributions over k outcomes is a manifold of dimension k minus one. Once distributions are points on a manifold, the tools of geometry, distance, geodesic, and curvature, become available to reason about statistics."
+    },
+    {
+      "type": "p",
+      "text": "The structure that makes this manifold geometric rather than merely a coordinate grid is its metric, and the natural choice is the Fisher information. The Fisher information metric measures how sharply the distribution changes as you nudge the parameters: in regions where a small parameter change produces a distribution that is easy to tell apart from its neighbor, the metric is large and the points are far apart; where a parameter change barely alters the distribution, the metric is small and the points are close. Distance on this Riemannian manifold therefore measures statistical distinguishability, how many samples it would take to tell two distributions apart, rather than the arbitrary numerical difference of their parameters. This is the right notion, because the same numerical change in a parameter can mean a lot or a little depending on where you are in the family."
+    },
+    {
+      "type": "p",
+      "text": "This reframing pays off across machine learning and statistics. The most direct application is natural gradient descent, which corrects the ordinary gradient by the inverse Fisher metric so that each optimization step moves the distribution by a controlled amount in the space of distributions rather than in the raw parameter space. The benefit is invariance: natural gradient updates do not depend on how the model happens to be parameterized, so reparameterizing the network does not change the trajectory, and ill-conditioned parameterizations that cripple plain gradient descent are handled gracefully. Trust-region methods used in reinforcement learning rely on the same geometry to cap how far a policy distribution is allowed to shift per update."
+    },
+    {
+      "type": "p",
+      "text": "Information geometry also clarifies ideas that look purely algebraic at first glance. The Kullback-Leibler divergence between two nearby distributions is, to leading order, one half the squared Fisher distance between them, which is why KL behaves like a squared distance even though it is not symmetric and is not literally a metric. Geodesics on the statistical manifold describe the most efficient paths of statistical change, and the curvature of the manifold reflects how the family bends, with exponential families enjoying especially clean flat-like structure under the right connection. For an engineer, the practical takeaway is that probability spaces have an intrinsic geometry set by the Fisher information, and respecting it, rather than treating parameters as a flat Euclidean vector, leads to better-behaved optimization and sounder reasoning about how distributions relate."
+    }
+  ],
+  "related": [
+    {
+      "slug": "fisher-information",
+      "label": "Fisher Information"
+    },
+    {
+      "slug": "riemannian-manifold",
+      "label": "Riemannian Manifold"
+    },
+    {
+      "slug": "metric-tensor",
+      "label": "Metric Tensor"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic"
+    },
+    {
+      "slug": "curvature",
+      "label": "Curvature"
+    },
+    {
+      "slug": "manifold",
+      "label": "Manifold"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

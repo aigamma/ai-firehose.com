@@ -1,0 +1,67 @@
+{
+  "id": "ai-safety",
+  "label": "AI Safety",
+  "kind": "technique",
+  "category": "Alignment and Safety",
+  "aliases": [
+    "AI safety",
+    "safe AI"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems.",
+  "body": [
+    {
+      "type": "p",
+      "text": "AI safety is the engineering and research discipline aimed at making AI systems that reliably do not cause harm, including as they become more capable. It is a broad umbrella. At its center is ai-alignment, the problem of making a system pursue the intended goal, but safety also covers robustness (does the system fail gracefully under distribution shift, noise, or adversarial input?), monitoring and assurance (can we tell what the system is doing and detect when it goes wrong?), and the governance and deployment practices that surround the technical artifact. The unifying question is whether we can trust the system in the situations where trust matters."
+    },
+    {
+      "type": "p",
+      "text": "It helps to separate the layers. Alignment asks whether the system is trying to do the right thing. Robustness and security ask whether it does the right thing reliably, including when conditions are unusual or when someone is actively trying to break it, the concern that motivates red-teaming and the study of the jailbreak. Monitoring asks whether we would notice and could intervene if it did the wrong thing, which connects to corrigibility and to interpretability. A system can fail at any layer independently: a well-intentioned model can still be brittle, and a robust model can still be competently pursuing the wrong goal."
+    },
+    {
+      "type": "p",
+      "text": "AI safety becomes more pressing as systems grow more capable, because the usual safety net of catching errors after the fact weakens. A more capable system acts faster, in more domains, and with more autonomy, so a flaw can produce harm before human oversight reacts, and a capable goal-directed system may even resist correction through the pressures of instrumental-convergence. Many safety problems also have the property that they are invisible at low capability and emerge at high capability, reward-hacking and specification-gaming both get worse as the optimizer gets stronger, which means safety cannot be validated solely by observing that today's weaker systems behave well."
+    },
+    {
+      "type": "p",
+      "text": "The field is methodologically diverse. Empirical work trains and probes real models: learning objectives from human feedback via a reward-model, hardening models through adversarial training, and measuring failures through red-teaming. Theoretical and conceptual work studies the structure of the problem: mesa-optimization, deceptive-alignment, and the convergent drives that make misalignment dangerous. Oversight research, including scalable-oversight, asks how to keep human judgment meaningful as systems surpass human ability. Interpretability tries to read what models are actually doing inside. And governance work addresses evaluation standards, deployment policy, and coordination, recognizing that not every safety problem is solved at the level of the model alone."
+    },
+    {
+      "type": "p",
+      "text": "The defining premise of ai-safety is that capability and safety do not advance automatically together: a more capable system is not thereby a safer one, and in several respects is harder to make safe. The field exists to close that gap deliberately, so that increases in what AI systems can do are matched by increases in our ability to ensure they do it without harm."
+    }
+  ],
+  "related": [
+    {
+      "slug": "ai-alignment",
+      "label": "AI Alignment"
+    },
+    {
+      "slug": "scalable-oversight",
+      "label": "Scalable Oversight"
+    },
+    {
+      "slug": "red-teaming",
+      "label": "Red-Teaming"
+    },
+    {
+      "slug": "corrigibility",
+      "label": "Corrigibility"
+    },
+    {
+      "slug": "reward-hacking",
+      "label": "Reward Hacking"
+    },
+    {
+      "slug": "instrumental-convergence",
+      "label": "Instrumental Convergence"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

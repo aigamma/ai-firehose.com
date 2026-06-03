@@ -1,0 +1,19 @@
+---
+title: Transfer Learning
+slug: transfer-learning
+kind: technique
+category: Training and Fine-Tuning
+aliases: transfer-learning
+related: pretraining, fine-tuning, lora, parameter-efficient-fine-tuning, knowledge-distillation, catastrophic-forgetting, instruction-tuning
+summary: The principle of reusing knowledge a model learned on one task or dataset to improve learning on a different but related task, rather than training every new model from scratch.
+---
+
+Transfer learning is the broad principle that knowledge gained while solving one problem can be carried over to help solve another. Rather than starting each new model from random weights and learning everything from its own data, transfer learning begins from a model that has already learned useful, general representations elsewhere and adapts those to the target task. It is less a single algorithm than the organizing idea behind most of modern machine learning practice, the reason the field moved away from training bespoke models per task and toward reusing powerful general-purpose ones.
+
+Transfer learning matters because learning from scratch is data-hungry and expensive, while many of the features a model needs are not task-specific. The low-level structure of language, the edges and textures of images, broad world knowledge: these are shared across countless downstream tasks. By learning them once on a large dataset and reusing them, transfer learning lets a new task succeed with far less labeled data and compute than it would otherwise require, and often reaches higher accuracy than any from-scratch model the limited target data could support.
+
+In practice, the dominant recipe is pretrain then adapt. A model is pretrained with self-supervision on a large general corpus, producing reusable representations, and then specialized to a target task. The adaptation can take several forms: full fine-tuning, which updates all the weights; parameter-efficient fine-tuning such as LoRA, which freezes the backbone and trains a small added component; feature extraction, which freezes the model and trains only a new output head on top of its representations; or, with the largest models, no weight changes at all, just prompting the pretrained model directly. Instruction-tuning is a transfer-learning step that generalizes across tasks, and knowledge distillation is transfer learning between models rather than tasks.
+
+The central challenge of transfer learning is preserving what was transferred while absorbing the new task. Adapt too gently and the model never specializes; adapt too aggressively and it overwrites its general knowledge, the failure known as catastrophic forgetting. Much of the design of fine-tuning methods, smaller learning rates, frozen backbones, low-rank adapters, is really about managing this balance so the transferred knowledge survives.
+
+Transfer learning is the umbrella concept that unifies this category. Pretraining creates the transferable knowledge, fine-tuning and its parameter-efficient variants are how that knowledge is transferred to new tasks, distillation transfers it to new models, and catastrophic forgetting is what goes wrong when a transfer overwrites too much. Seeing these techniques as facets of one principle is the clearest way to navigate the model adaptation landscape.

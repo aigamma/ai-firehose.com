@@ -1,0 +1,19 @@
+---
+title: Catastrophic Forgetting
+slug: catastrophic-forgetting
+kind: technique
+category: Training and Fine-Tuning
+aliases: catastrophic interference, catastrophic forgetting
+related: fine-tuning, transfer-learning, lora, parameter-efficient-fine-tuning, pretraining, instruction-tuning
+summary: The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one.
+---
+
+Catastrophic forgetting is a failure mode in which a neural network, trained on a new task or dataset, abruptly loses competence it had previously acquired. The cause is structural: a network stores everything it knows in the same shared set of weights, and gradient descent adjusts those weights to fit whatever data it currently sees, with no regard for the older skills they also encode. Fitting the new data overwrites the parameter values that represented the old knowledge. Because the loss is computed only on current data, nothing pushes back against this erasure, and the degradation can be sudden and severe rather than gradual, hence catastrophic.
+
+Catastrophic forgetting matters because it directly limits how models are adapted and updated. It is the reason you cannot simply keep fine-tuning a model on each new task in sequence and expect it to accumulate all of them; later training tends to wipe out earlier capabilities. It constrains continual learning, where a model should learn an ongoing stream of tasks, and it makes practitioners cautious when specializing a general model, because over-aggressive fine-tuning on a narrow domain can quietly destroy the broad competence the base model had. Understanding it is essential to reasoning about what fine-tuning costs as well as what it buys.
+
+The phenomenon arises from the distributed, overlapping way knowledge is represented. The same neurons and connections participate in many learned behaviors, so an update that improves one can damage others that depend on the same parameters, an effect also called interference. Training on a narrow new distribution, with a learning rate that is too high or for too many steps, moves the weights far from where the old knowledge lived. The risk is highest when the new data is small and unrepresentative of everything the model previously handled.
+
+Many techniques exist to mitigate it, and they share a common goal of protecting old knowledge while admitting new. Lowering the learning rate and limiting training steps keeps weights near their starting point. Parameter-efficient fine-tuning methods like LoRA freeze the original weights entirely and train only a small added component, so the base knowledge cannot be overwritten, only supplemented, which is one reason these methods resist forgetting so well. Other approaches replay or mix in samples of the old data, or add a regularization penalty that discourages changing the parameters most important to prior tasks.
+
+Catastrophic forgetting is the natural antagonist of transfer learning: where transfer learning is about successfully carrying knowledge forward, catastrophic forgetting is what happens when adaptation destroys that knowledge instead. It shapes the design of fine-tuning, motivates parameter-efficient methods, and underlies why pretraining is treated as a precious asset to be adapted carefully rather than retrained casually.

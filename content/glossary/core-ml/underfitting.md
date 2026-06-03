@@ -1,0 +1,17 @@
+---
+title: Underfitting
+slug: underfitting
+kind: technique
+category: Core Machine Learning
+aliases: underfit, underfitted
+related: overfitting, bias-variance-tradeoff, regularization, cross-validation
+summary: The failure mode in which a model is too simple to capture the underlying pattern in its data, so it performs poorly on both training and new data.
+---
+
+Underfitting is the failure mode opposite to Overfitting. A model underfits when it lacks the capacity or flexibility to represent the real structure in the data, so it misses the pattern even on the examples it was trained on. The symptom is poor performance everywhere: training error is high and test error is roughly as high, because the model is too crude to have learned much of anything. Fitting a straight line to data that clearly curves is the textbook case.
+
+Underfitting matters because it is the other way a model can fail, and the cure is the reverse of the cure for overfitting. Whereas an overfit model needs to be constrained, an underfit model needs to be made more expressive: add features, raise the polynomial degree or tree depth, reduce excessive Regularization, or switch to a more powerful model class. Diagnosing which failure you face, too simple or too complex, dictates which direction to move, so confusing the two wastes effort pushing the wrong lever.
+
+In the language of the Bias-Variance Tradeoff, underfitting is the high-bias regime. Bias is the error from wrong assumptions baked into the model, the systematic gap between what the model can express and the truth. An underfit model has high bias and low variance: its predictions are stable across different training samples but consistently off, because the model imposes a shape the data does not have. Reducing bias means increasing model complexity, which raises variance, which is exactly the tension the tradeoff names.
+
+Underfitting connects to the rest of core machine learning as the lower bound on a model's usefulness, the floor you must clear before Overfitting even becomes a concern. The healthy workflow often starts with a simple model that underfits, then adds capacity until training error is acceptable, then reins in complexity with Regularization and validates with Cross-Validation to keep the new capacity from tipping over into overfitting. Good modeling is the search for the balance point between these two errors.

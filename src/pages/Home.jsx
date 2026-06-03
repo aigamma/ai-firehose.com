@@ -115,7 +115,7 @@ export default function Home() {
           <span className="faint mono" style={{ marginLeft: "auto" }}>growth vs the prior {h.label.toLowerCase()}</span>
         </div>
         <p className="muted" style={{ margin: "0 0 14px", maxWidth: "74ch" }}>
-          Each topic ranked by how much attention it gained or lost against the {h.label.toLowerCase()} before. The bar is current attention, the number is the change. Breakouts and freshly surfaced topics are flagged.
+          Each topic is ranked by how much attention it gained or lost against the {h.label.toLowerCase()} before. The bar is its current attention: the further it fills from left to right, the more of the {h.label.toLowerCase()}'s conversation that topic holds, with each column scaled to its own busiest topic. The signed number is that change, green when rising and red when cooling, and topics that just broke out or first surfaced are flagged.
         </p>
         {attnError ? (
           <LoadError label="Trend boards" />

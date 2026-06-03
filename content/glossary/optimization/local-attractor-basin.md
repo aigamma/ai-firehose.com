@@ -1,0 +1,17 @@
+---
+title: Local Attractor Basin
+slug: local-attractor-basin
+kind: technique
+category: Optimization
+aliases: basin of attraction, attractor basin
+related: local-minimum, loss-landscape, gradient-descent, stochastic-gradient-descent, saddle-point, loss-function
+summary: The region of the loss landscape surrounding a local minimum from which a descent-based optimizer flows into that minimum. Its size and flatness determine which solution training reaches and how well that solution generalizes.
+---
+
+A local attractor basin is the catchment area of a local minimum in the loss landscape. If you imagine releasing a ball anywhere within the basin and letting it roll downhill, it ends up at the same minimum at the bottom. Formally it is the set of starting parameter values from which a gradient-following optimizer converges to that particular minimum. The landscape is partitioned into many such basins, one per minimum, separated by the ridges and saddle points that mark where flow tips one way rather than the other.
+
+The concept matters because it reframes what determines the outcome of training. Which solution a model lands in is decided not only by the optimizer but by which basin the initial parameters fall into and how the trajectory navigates between basins. Two runs from different random initializations can descend into different basins and reach genuinely different solutions, even at similar loss. This is why initialization schemes and the early, high-learning-rate phase of training are so consequential: they effectively choose the basin before fine-tuning ever begins.
+
+The geometry of the basin is tied directly to generalization, which is one of the most useful ideas in modern optimization. A wide, flat basin means the loss stays low across a broad region of parameter space, so small perturbations to the weights barely change the error, and such solutions tend to perform well on unseen data. A narrow, sharp basin means the model sits at the bottom of a steep pit where any displacement spikes the loss, and these solutions tend to generalize worse. Much of the practical art of training is, implicitly, steering toward wide basins.
+
+The optimizers in common use interact with basins in ways worth understanding. The sampling noise in stochastic gradient descent acts like a temperature: it lets the optimizer hop over the low barriers between basins and tends to settle in wider, flatter ones, because narrow basins are easy to be knocked out of. Momentum supplies inertia that can carry the parameters across a ridge into a neighboring, possibly better, basin that plain gradient descent would never escape. A learning-rate schedule then cools this exploration over time, freezing the optimizer into one basin as the rate shrinks toward the end of training.

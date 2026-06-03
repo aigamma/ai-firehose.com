@@ -1,0 +1,17 @@
+---
+title: Principal Component Analysis
+slug: principal-component-analysis
+kind: technique
+category: Core Machine Learning
+aliases: PCA, principal components
+related: unsupervised-learning, k-means, kernel-method
+summary: An unsupervised technique that reduces the dimensionality of data by finding the orthogonal directions of greatest variance and projecting the data onto a few of them, preserving as much structure as possible.
+---
+
+Principal component analysis is the most common method for dimensionality reduction and a cornerstone of Unsupervised Learning. High-dimensional data, with hundreds or thousands of features, is hard to visualize, expensive to model, and often redundant because many features are correlated. PCA finds a new set of axes, the principal components, ordered so that the first captures the largest possible variance in the data, the second captures the most of what remains while being perpendicular to the first, and so on. Keeping only the leading few components compresses the data while retaining most of its variation.
+
+PCA matters because it makes high-dimensional data tractable. It enables two- or three-dimensional visualization of complex datasets, speeds up and stabilizes downstream models by stripping out redundant and noisy dimensions, and decorrelates features so that each carries independent information. It is also a denoising tool, since low-variance directions often hold mostly noise, and a compression tool, since a few components can stand in for many original features with little loss.
+
+Mechanically, PCA centers the data and computes the directions along which it varies most, which are the eigenvectors of the covariance matrix, equivalently obtained from a singular value decomposition. Each eigenvector is a principal component and its eigenvalue measures how much variance lies along it. Projecting the data onto the top components yields the reduced representation, and the cumulative share of variance explained guides how many components to keep. Because variance depends on scale, the features are usually standardized first, or one large-scale feature will dominate the result spuriously.
+
+PCA is fundamentally a linear method, which both defines its strengths and bounds it, and connects it to neighboring techniques. When the important structure lies on a curved surface rather than a flat subspace, a linear projection misses it, and a Kernel Method extends PCA to kernel PCA to capture nonlinear structure, while manifold methods unfold curved data more faithfully. PCA pairs naturally with K-Means, applied beforehand to reduce dimensionality so that distances between points are more meaningful and clustering is faster and cleaner. As an unsupervised method it uses no labels, distinguishing it from supervised dimensionality reduction techniques that project data to best separate known classes.

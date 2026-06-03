@@ -1,0 +1,17 @@
+---
+title: Chain of Thought
+slug: chain-of-thought
+kind: technique
+category: Inference and Sampling
+aliases: CoT, chain-of-thought prompting
+related: test-time-compute, temperature, greedy-decoding, logits
+summary: A prompting and generation technique in which a model is induced to produce intermediate reasoning steps before its final answer, which improves accuracy on multi-step problems by letting the model work through them in its output.
+---
+
+Chain of thought is the practice of having a model write out its reasoning step by step instead of jumping straight to an answer. For a multi-step problem, arithmetic, logic, a question that requires combining several facts, asking the model to show intermediate steps produces markedly more accurate final answers than demanding the answer alone. The reasoning trace can be elicited with an instruction as simple as asking the model to think step by step, or by giving examples that themselves contain worked-out reasoning.
+
+It matters because a transformer does a fixed amount of computation per token, so forcing all the work into a single answer token caps how much reasoning the model can do. Generating a chain of thought relaxes that limit: each intermediate token is another step of computation, and earlier steps become context the later steps can attend to and build on. The model effectively uses its own output as a scratchpad, decomposing a hard problem into a sequence of easier ones that it can solve in order.
+
+This makes chain of thought the most direct instance of test-time-compute: it improves answers purely by spending more tokens at inference, with no change to the model's weights. Longer, more careful reasoning costs more latency and more output but buys accuracy on exactly the problems where a one-shot answer is unreliable. It also tends to favor lower-randomness decoding for the reasoning itself, since a stray high-temperature token early in a derivation can derail every step that depends on it.
+
+Chain of thought reshaped both how models are prompted and how they are built. As a prompting method it is a near-free upgrade for reasoning tasks. As a training target it gave rise to reasoning models that are tuned to generate long internal deliberations by default, sometimes hidden from the user, before emitting a concise answer. The reasoning trace also offers a partial window into how a model reached its conclusion, useful for debugging and verification, though the written steps are not guaranteed to be a faithful account of the computation that actually produced the answer.

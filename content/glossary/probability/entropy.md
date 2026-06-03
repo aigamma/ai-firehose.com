@@ -1,0 +1,19 @@
+---
+title: Entropy
+slug: entropy
+kind: technique
+category: Probability and Information Theory
+aliases: Shannon entropy, information entropy
+related: cross-entropy, kl-divergence, mutual-information, probability-distribution, softmax, expectation
+summary: A measure of the average uncertainty or information content of a random variable, equal to the expected number of bits needed to encode outcomes drawn from its distribution.
+---
+
+Entropy measures how uncertain a random variable is, or equivalently how much information you gain on average by observing its outcome. Introduced by Claude Shannon, the entropy of a discrete distribution is the negative sum over outcomes of each probability times its logarithm, H = minus the sum of p times log p, which is also the expectation of the negative log probability. Using base-two logarithms, entropy is measured in bits and has a concrete operational meaning: it is the minimum average number of bits per symbol needed to encode messages drawn from that distribution, the theoretical limit that compression algorithms approach.
+
+The intuition is that rare events are surprising and common events are not. The surprise of an outcome is the negative log of its probability, large when the probability is small. Entropy is the average surprise across the distribution. A fair coin has one bit of entropy, the most uncertain a binary variable can be. A biased coin that almost always lands heads has low entropy, because the outcome is nearly certain and carries little information. A distribution that puts all its mass on one outcome has zero entropy: there is nothing left to learn from observing it.
+
+Entropy matters in machine learning because it is the natural currency of uncertainty and the basis for the loss functions that dominate the field. Cross-entropy, the expected number of bits to encode samples from one distribution using a code optimized for another, is the standard training objective for classification and language modeling. Kl-divergence, the gap between cross-entropy and entropy, measures how far an approximating distribution is from the truth. These quantities are not arbitrary choices: they fall directly out of the information-theoretic meaning of entropy.
+
+The concept appears wherever distributions need to be scored or compared. Decision trees split on the feature that most reduces entropy, the information gain criterion. The softmax function is intimately tied to entropy through the principle of maximum entropy, which says that among all distributions consistent with given constraints, the least committal, most honest choice is the one with the highest entropy. Maximum-entropy reasoning derives the Gaussian, the exponential, and the uniform distributions as the most noncommittal distributions under different constraints.
+
+Entropy also generalizes in directions that pervade modern systems. Conditional entropy measures remaining uncertainty about one variable once another is known, and the drop from entropy to conditional entropy is mutual-information, the amount one variable reveals about another. Differential entropy extends the idea to continuous distributions. In reinforcement learning, an entropy bonus encourages a policy to stay stochastic and keep exploring. Across all these settings, entropy is the single concept that turns uncertainty into a measurable, optimizable quantity.

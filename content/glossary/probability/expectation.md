@@ -1,0 +1,19 @@
+---
+title: Expectation
+slug: expectation
+kind: technique
+category: Probability and Information Theory
+aliases: expected value, mean, expectation operator
+related: variance, probability-distribution, entropy, maximum-likelihood-estimation, gaussian-distribution
+summary: The probability-weighted average of a random variable, the long-run mean value you would expect over many independent draws from its distribution.
+---
+
+The expectation of a random variable is its average outcome weighted by probability, the center of mass of its probability-distribution. For a discrete variable it is the sum over outcomes of each value times its probability; for a continuous variable it is the integral of the value times its density. Written E[X], it answers the question: if you drew from this distribution again and again, what would the values average out to? By the law of large numbers, the empirical average of many independent samples converges to the expectation, which is what makes it a meaningful single-number summary.
+
+Expectation matters because almost every quantity that machine learning tries to minimize or estimate is an expectation. The risk a model incurs is the expected loss over the data distribution. Because that true distribution is unknown, training minimizes the empirical risk, the average loss over the training set, which is the sample estimate of the expectation. Reinforcement learning maximizes the expected cumulative reward of a policy. Even the entropy of a distribution is an expectation, the expected value of the negative log probability. The expectation operator is the connective tissue running through these objectives.
+
+The single most useful property of expectation is linearity: the expectation of a sum is the sum of the expectations, regardless of whether the variables are independent. E[aX + bY] equals a times E[X] plus b times E[Y], always. This is what makes expectations tractable to compute and manipulate even when the underlying variables interact in complicated ways, and it is the workhorse behind countless derivations, including the bias-variance decomposition and the analysis of estimators.
+
+Expectation is also the foundation for the other moments that describe a distribution. The variance is the expected squared deviation from the mean, a second-moment quantity built directly on top of the first. Covariance, skewness, and the moment-generating function are all expectations of suitable functions of the variable. In this sense the expectation is the primitive operation, and the rest of the descriptive machinery of probability is assembled from it.
+
+Because exact expectations require integrating over the whole distribution, which is usually impossible, much of modern machine learning is about estimating them. Monte Carlo methods approximate an expectation by averaging over samples. Stochastic gradient descent works because a mini-batch gradient is an unbiased estimate of the expected gradient. Variational inference and the reparameterization trick exist to make expectations differentiable so they can be optimized. Wherever a model learns from data, it is, underneath, estimating and optimizing expectations.

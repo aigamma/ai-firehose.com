@@ -1,0 +1,17 @@
+---
+title: Random Forest
+slug: random-forest
+kind: technique
+category: Core Machine Learning
+aliases: random forests, random decision forest
+related: decision-tree, overfitting, bias-variance-tradeoff, supervised-learning
+summary: An ensemble method that trains many decorrelated decision trees on random subsets of the data and features, then averages or votes their predictions to produce a more accurate and stable model than any single tree.
+---
+
+A random forest is an ensemble of Decision Trees engineered to be diverse. A lone decision tree is accurate but unstable, with high variance that makes its predictions swing with small changes in the training data. A random forest tames that instability by training hundreds of trees and combining them: for classification the trees vote, and for regression their predictions are averaged. Because the errors of many independent trees tend to cancel, the aggregate is far more accurate and far more stable than any individual tree.
+
+Random forests matter because they are among the most reliable off-the-shelf models for tabular data. They deliver strong accuracy with little tuning, resist Overfitting far better than a single tree, handle mixed feature types and missing values gracefully, and provide a built-in estimate of feature importance. For a great many real-world prediction problems, a random forest is the sensible first model to try and a hard baseline to beat.
+
+The method works by injecting two sources of randomness so the trees disagree in useful ways. First is bagging: each tree is trained on a bootstrap sample, a random draw of the training data taken with replacement, so no two trees see quite the same examples. Second is feature subsampling: at each split, a tree may only choose from a random subset of the features rather than all of them. This second trick is the crucial one, because it stops every tree from leaning on the same one or two dominant features and decorrelates their errors, which is what makes the averaging pay off. Examples left out of a tree's bootstrap sample, the out-of-bag samples, give a free estimate of generalization error without a separate validation set.
+
+Random forests sit squarely in the Bias-Variance Tradeoff as the textbook variance-reduction technique. Each deep tree is a low-bias, high-variance learner, and averaging many decorrelated ones slashes the variance while leaving the low bias largely intact, which is the whole source of the gain. The forest contrasts with boosting, the other major tree ensemble, which builds trees sequentially to reduce bias rather than in parallel to reduce variance. The cost is interpretability: a single Decision Tree can be read at a glance, but a forest of hundreds is effectively a black box, which is the price paid for the accuracy.

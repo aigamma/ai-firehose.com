@@ -1,0 +1,17 @@
+---
+title: Derivative
+slug: derivative
+kind: technique
+category: Calculus and Analysis
+aliases: derivatives, rate of change
+related: partial-derivative, gradient, chain-rule, directional-derivative, integral, taylor-expansion
+summary: The instantaneous rate of change of a function with respect to its input, equal to the slope of the function's graph at a point and the limit of its average rate of change as the interval shrinks to zero.
+---
+
+The derivative of a function measures how fast its output changes as its input changes. Geometrically it is the slope of the tangent line to the function's graph at a given point. Formally it is defined as a limit: the average rate of change over a small interval, the difference in outputs divided by the difference in inputs, evaluated as that interval shrinks toward zero. When this limit exists the function is differentiable at the point, and the derivative is itself a new function that reports the slope everywhere the original is smooth.
+
+The derivative matters because almost everything in machine learning is trained by following slopes downhill. A loss function reports how wrong a model is, and its derivative with respect to each parameter says which way to nudge that parameter to reduce the error. Without derivatives there is no gradient descent, no backpropagation, and no efficient way to fit the millions or billions of parameters in a modern network. Optimization, sensitivity analysis, and the very notion of a smooth, learnable surface all rest on this single idea.
+
+Mechanically, derivatives obey a small set of rules that make them computable for any expression built from simpler pieces. The power rule, product rule, quotient rule, and especially the chain rule let you differentiate arbitrarily nested functions by composing the derivatives of their parts. Automatic differentiation, the technology inside every deep learning framework, is just the systematic, exact application of these rules to a computation graph, which is why a network's gradients can be obtained without anyone writing them by hand.
+
+The derivative generalizes in several directions that the rest of calculus builds on. When a function takes many inputs, the derivative with respect to one input while holding the others fixed is the partial derivative, and the vector that collects all of them is the gradient. The derivative along an arbitrary direction rather than along a coordinate axis is the directional derivative. Stacking the first derivatives of a vector-valued function gives the jacobian, and differentiating a second time gives curvature information captured by the hessian. The reverse operation, accumulating a rate of change back into a total, is the integral.

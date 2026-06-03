@@ -1,0 +1,19 @@
+---
+title: Generalization
+slug: generalization
+kind: technique
+category: Learning Theory
+aliases: generalize, generalization gap, out-of-sample performance
+related: vc-dimension, pac-learning, double-descent, inductive-bias, empirical-risk-minimization, sample-complexity
+summary: The ability of a trained model to perform well on new, unseen data drawn from the same distribution as its training data, rather than merely fitting the examples it was trained on. It is the central goal of supervised learning.
+---
+
+Generalization is the whole point of machine learning. A model that simply memorizes its training set has learned nothing useful; what matters is performance on data it has never seen. Generalization is the property of doing well out of sample, on fresh draws from the same underlying distribution that produced the training data. The difference between a model's error on the training set and its expected error on new data is called the generalization gap, and keeping that gap small while also keeping training error low is the dual objective every learning procedure is really chasing.
+
+The classical account of generalization is the bias-variance tradeoff. A model that is too simple has high bias: it cannot represent the target and underfits both the training and the test data. A model that is too flexible has high variance: it fits the training data closely, including its noise, and so swings wildly on new inputs, the failure called overfitting. The sweet spot sits in between, with just enough capacity to capture the signal but not so much that it chases the noise. This is why capacity measures like the VC Dimension matter, since they bound how large the generalization gap can be for a model class of a given flexibility.
+
+Statistical learning theory makes these intuitions rigorous. A PAC Learning guarantee is precisely a bound on the generalization gap that holds with high probability, and the Sample Complexity tells you how many examples are needed to drive that gap below a chosen tolerance. The recipe of Empirical Risk Minimization, fitting the model to minimize error on the training sample, generalizes well exactly when the model class is restricted enough that low sample error reliably implies low true error. Crucially, no method generalizes for free: the No Free Lunch Theorem shows that any above-chance generalization rests on an Inductive Bias matched to the problem.
+
+In practice, generalization is encouraged by a toolbox of techniques rather than capacity control alone. Regularization penalizes complex solutions, early stopping halts training before the model overfits, data augmentation enlarges the effective sample, and dropout injects noise that prevents fragile co-adaptation. Holding out a validation set to estimate the generalization gap, and a separate test set for a final unbiased measure, is the standard protocol for detecting overfitting before it reaches production. Each of these is a way of biasing the search toward solutions likely to transfer.
+
+Deep learning has complicated the classical story in instructive ways. Modern networks have far more parameters than training examples and can fit random labels perfectly, which by old reasoning should mean catastrophic overfitting, yet they often generalize remarkably well. The Double Descent curve shows test error falling a second time once a model is pushed well past the interpolation threshold, contradicting the simple U-shaped tradeoff. Explaining why overparameterized models generalize, through implicit regularization, the geometry of the loss landscape, and the bias of the optimizer toward flat or simple solutions, is one of the most active questions in current learning theory.

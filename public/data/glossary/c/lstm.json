@@ -1,0 +1,55 @@
+{
+  "id": "lstm",
+  "label": "Long Short-Term Memory",
+  "kind": "technique",
+  "category": "Deep Learning Architectures",
+  "aliases": [
+    "LSTM",
+    "long short-term memory network"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A gated recurrent network that adds a protected cell state and input, forget, and output gates, letting it carry information across many time steps and learn long-range dependencies that a plain recurrent network cannot.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Long short-term memory is a type of recurrent neural network designed specifically to learn long-range dependencies in sequences. It augments the recurrent hidden state with a separate cell state, a memory channel that runs along the sequence with only minor linear interactions, plus a set of learned gates that regulate what the network reads from, writes to, and exposes out of that memory. Introduced by Hochreiter and Schmidhuber in 1997, it became the default sequence model for nearly two decades."
+    },
+    {
+      "type": "p",
+      "text": "The LSTM matters because it directly solves the vanishing gradient problem that cripples a plain recurrent neural network. In an ordinary RNN, gradients must pass through a nonlinearity and a weight multiplication at every step, so error signals decay exponentially and long-range dependencies cannot be learned. The LSTM cell state provides a nearly uninterrupted path along which gradients flow backward in time without repeated shrinking, so the network can connect events tens or hundreds of steps apart."
+    },
+    {
+      "type": "p",
+      "text": "The mechanism rests on three gates, each a small layer with a sigmoid activation function that outputs values between zero and one and acts as a soft mask. The forget gate decides how much of the existing cell state to retain. The input gate decides how much new candidate information to write into it. The output gate decides how much of the resulting cell state to expose as the hidden state at that step. By learning these gates from data, the network learns when to remember, when to overwrite, and when to release information, all trained end to end with backpropagation through time."
+    },
+    {
+      "type": "p",
+      "text": "LSTMs powered a generation of applications, from machine translation and speech recognition to text generation, and the simpler GRU is a closely related gated variant. They have largely been superseded by the attention mechanism and the transformer, which capture long-range structure in parallel rather than through a sequential recurrence and scale better to long contexts and large datasets. Still, the LSTM remains a clear and instructive demonstration of how gating tames gradient flow, and it stays useful where data is limited or strictly streaming."
+    }
+  ],
+  "related": [
+    {
+      "slug": "recurrent-neural-network",
+      "label": "Recurrent Neural Network"
+    },
+    {
+      "slug": "vanishing-gradient",
+      "label": "Vanishing Gradient"
+    },
+    {
+      "slug": "attention-mechanism",
+      "label": "Attention Mechanism"
+    },
+    {
+      "slug": "activation-function",
+      "label": "Activation Function"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

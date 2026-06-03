@@ -1,0 +1,64 @@
+{
+  "id": "convexity",
+  "label": "Convexity",
+  "kind": "technique",
+  "category": "Calculus and Analysis",
+  "aliases": [
+    "convex",
+    "convex function",
+    "convex optimization"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A property of a function whose graph curves upward everywhere, so that any local minimum is also the global minimum, which makes optimization reliable and well understood.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A function is convex when the line segment joining any two points on its graph lies on or above the graph itself, meaning the surface never dips below its own chords. Equivalently, a convex function curves upward everywhere: it has no humps or dips that would let it rise after falling. For a smooth function this is captured by the second derivative being nonnegative, or in many dimensions by the hessian being positive semidefinite at every point. A convex set, the companion idea, is a region that contains the entire segment between any two of its points."
+    },
+    {
+      "type": "p",
+      "text": "Convexity matters because it makes optimization trustworthy. The defining payoff is that a convex function has no spurious local minima: any point where the gradient is zero is automatically the global minimum, and any descent procedure that stops moving has genuinely found the best answer rather than getting stuck in an inferior basin. This is why classical machine learning models with convex objectives, such as linear regression, logistic regression, and support vector machines, can be solved to provable global optimality, and why an entire mature field of convex optimization with strong guarantees exists around them."
+    },
+    {
+      "type": "p",
+      "text": "The link to curvature is direct and practical. Strong convexity, a lower bound on the curvature, guarantees a fast and predictable convergence rate for gradient descent, while the conditioning of the hessian, the ratio of its largest to smallest eigenvalue, sets how quickly that convergence happens. A second-order Taylor expansion makes this concrete: near a minimum a convex function looks like an upward bowl whose shape is the hessian, and the rounder the bowl the easier the descent. These facts give convex problems both clean theory and dependable algorithms."
+    },
+    {
+      "type": "p",
+      "text": "Deep learning largely lives outside this comfortable regime, because the loss landscape of a neural network is highly non-convex, riddled with saddle points and many minima. The value of convexity here is as a lens and a benchmark rather than a literal description: techniques are often analyzed by how they behave on convex surrogates, loss functions are sometimes designed to be convex in a final layer, and intuitions about bowls, curvature, and conditioning carry over locally even when the global picture is rugged. Understanding convexity is therefore the baseline against which the difficulty of real, non-convex training is measured."
+    }
+  ],
+  "related": [
+    {
+      "slug": "hessian",
+      "label": "Hessian"
+    },
+    {
+      "slug": "gradient",
+      "label": "Gradient"
+    },
+    {
+      "slug": "derivative",
+      "label": "Derivative"
+    },
+    {
+      "slug": "taylor-expansion",
+      "label": "Taylor Expansion"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "loss-landscape",
+      "label": "Loss Landscape"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

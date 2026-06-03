@@ -7,7 +7,7 @@ A one-page map of the project's documents, ranked by where to start and what eac
 | Tier | What it is | When to read | Documents |
 |---|---|---|---|
 | 1. Orientation | "Read first." What this is, the conventions, the contracts. | New contributor, human or AI. | `CLAUDE.md`, `README.md` |
-| 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, ops, or deploy work, or onboarding a feature. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`, `docs/FEATURE_PLAYBOOK.md` |
+| 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, glossary, ops, or deploy work, or onboarding a feature. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/GLOSSARY.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`, `docs/FEATURE_PLAYBOOK.md` |
 | 3. Cumulative wisdom | "Read to understand why, and to avoid past mistakes." | Before any non-trivial change. Append to it when you learn something. | `LESSONS_LEARNED.md` |
 | 4. Run record | "Read to see what the pipeline has actually done." | Tuning rotation windows or thresholds, debugging a bad run. | `docs/INGESTION_LOG.md` |
 
@@ -26,6 +26,7 @@ Public-facing overview for someone landing on the GitHub repo or curious about t
 - `docs/SOURCES.md`: every source adapter, with YouTube primary (RSS plus yt-dlp plus Whisper, Apify only as paid fallback), and the source authority weighting. Read before adding or changing a source.
 - `docs/OPERATIONS.md`: keys and where they come from, the daily schedule, cost ceilings, monitoring, and recovery recipes.
 - `docs/DEPLOYMENT.md`: the Fly worker and the Netlify site, DNS, and the deploy chain.
+- `docs/GLOSSARY.md`: the durable knowledge layer. The two-layer model (authored durable knowledge versus the trending corpus), authoring entries, the build into served artifacts, the durability contract, and wiki-style auto-linking. Read before touching the glossary or `content/glossary`.
 - `docs/FEATURE_PLAYBOOK.md`: the repeatable recipe for onboarding a feature, with a dedicated path for a fully Pinecone/Voyage-integrated one (the embedding integration, the citation contract, the agentic-summary pattern, the served-artifact rule, the UI integration, and the closing checklist). Read before adding any feature.
 
 ## Tier 3: Cumulative Wisdom

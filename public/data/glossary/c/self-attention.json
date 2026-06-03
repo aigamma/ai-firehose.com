@@ -1,0 +1,63 @@
+{
+  "id": "self-attention",
+  "label": "Self-Attention",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "scaled dot-product attention",
+    "self attention"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The mechanism that lets every token in a sequence weigh and gather information from every other token, computing a context-dependent representation as a weighted sum over the whole sequence.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Self-attention is the core operation of the transformer, the architecture behind nearly every modern large language model. Its job is to let each position in a sequence look at every other position and decide how much each one matters for the meaning at hand. The word \"bank\" attends differently when \"river\" is nearby than when \"money\" is, and self-attention is what lets the model resolve that from context."
+    },
+    {
+      "type": "p",
+      "text": "The mechanism projects each token into three vectors: a query, a key, and a value. To compute the new representation of a token, the model takes that token's query and compares it against the keys of all tokens by a dot product, producing a score for each pair. The scores are scaled and passed through a softmax to become weights that sum to one, and the output is the weighted sum of the value vectors. A token whose key aligns with the query contributes strongly; one that does not is largely ignored. Because this is \"scaled dot-product attention,\" the scaling by the square root of the key dimension keeps the scores from growing so large that the softmax saturates."
+    },
+    {
+      "type": "p",
+      "text": "Crucially, self-attention is permutation invariant: shuffle the tokens and the raw mechanism gives the same answer, because it has no built-in sense of order. Sequence order is restored separately through positional encoding. The operation is also fully parallel across positions, unlike a recurrent neural network that must process tokens one after another, which is the property that let transformers scale to enormous data and parameter counts."
+    },
+    {
+      "type": "p",
+      "text": "In practice the model runs several attention computations in parallel, multi-head attention, so different heads can specialize in different relationships such as syntax, coreference, or long-range topic. The cost is that comparing every token with every other is quadratic in sequence length, which is the central bottleneck the context window confronts and which the kv-cache and a long line of efficient-attention variants try to relieve."
+    }
+  ],
+  "related": [
+    {
+      "slug": "attention-mechanism",
+      "label": "Attention Mechanism"
+    },
+    {
+      "slug": "multi-head-attention",
+      "label": "Multi-Head Attention"
+    },
+    {
+      "slug": "transformer",
+      "label": "Transformer"
+    },
+    {
+      "slug": "positional-encoding",
+      "label": "Positional Encoding"
+    },
+    {
+      "slug": "kv-cache",
+      "label": "KV Cache"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

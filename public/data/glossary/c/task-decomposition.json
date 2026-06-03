@@ -1,11 +1,11 @@
 {
   "id": "task-decomposition",
-  "label": "task decomposition",
+  "label": "Task Decomposition",
   "aliases": [
-    "task DAG",
-    "task routing"
+    "task decomposition",
+    "subtask decomposition"
   ],
-  "kind": "tool",
+  "kind": "technique",
   "attention": 6,
   "first_seen": "2026-05-31T20:00:00.000Z",
   "rotation": null,
@@ -106,6 +106,58 @@
       "author_or_channel": "open-multi-agent",
       "published_at": "2026-03-31T19:07:34Z",
       "kind": "tool"
+    }
+  ],
+  "category": "Agents and Tool Use",
+  "durable": true,
+  "source": "authored",
+  "definition": "The technique of breaking a large or complex goal into smaller, more tractable subtasks that an agent can solve one at a time and then combine, rather than attempting the whole goal in a single step.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Task decomposition is the act of splitting a hard goal into a set of smaller subtasks. Faced with an objective too large to accomplish in one move (\"write a research report\", \"refactor this module\", \"plan a launch\"), an agent first breaks it into parts, a sequence or tree of subtasks, each of which is simpler and more directly solvable. The agent then works the subtasks individually and assembles their results into the finished whole. Decomposition is the bridge between a goal that is too big to attack head-on and the concrete, bite-sized actions an agent can actually carry out."
+    },
+    {
+      "type": "p",
+      "text": "The technique matters because both the difficulty and the reliability of a task scale badly with its size. A model asked to do too much at once tends to lose track of requirements, conflate steps, and make compounding errors, all within a single overloaded context. Smaller subtasks each fit comfortably in the model's attention, can be checked individually, and fail in isolation rather than dragging down the entire effort. Decomposition also exposes structure: once a goal is broken into parts, their dependencies become visible, which is precisely what planning needs in order to sequence the work correctly."
+    },
+    {
+      "type": "p",
+      "text": "In language-model agents, decomposition is usually prompted. The model is asked to enumerate the steps or subgoals needed to reach the objective, sometimes producing a flat to-do list, sometimes a tree where subtasks spawn further subtasks. It can be done up front (decompose fully, then execute) or recursively and on the fly (break off the next piece, solve it, then decompose what remains). The subtasks may be tackled in sequence when they depend on one another, or in parallel when they are independent. Carrying the list of subtasks and their completion state is a job for agent-memory, so the agent always knows what is done and what is left."
+    },
+    {
+      "type": "p",
+      "text": "Task decomposition is tightly bound to planning, which it feeds, and is a core move in almost every non-trivial agentic-workflow. It is what makes a long-horizon autonomous-agent tractable, since such an agent must continually break its overarching goal into the next actionable step. It also underlies the supervisor pattern in a multi-agent-system, where one agent decomposes the work and hands the resulting subtasks to specialized workers. Pairing decomposition with reflection, checking whether the subtasks truly cover the goal and whether each was done correctly, is what keeps a divided task from quietly drifting away from its original aim."
+    }
+  ],
+  "related": [
+    {
+      "slug": "planning",
+      "label": "Planning"
+    },
+    {
+      "slug": "ai-agent",
+      "label": "AI Agent"
+    },
+    {
+      "slug": "agentic-workflow",
+      "label": "Agentic Workflow"
+    },
+    {
+      "slug": "multi-agent-system",
+      "label": "Multi-Agent System"
+    },
+    {
+      "slug": "reflection",
+      "label": "Reflection"
+    },
+    {
+      "slug": "autonomous-agent",
+      "label": "Autonomous Agent"
+    },
+    {
+      "slug": "agent-memory",
+      "label": "Agent Memory"
     }
   ]
 }

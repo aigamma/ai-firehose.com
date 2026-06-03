@@ -1,0 +1,60 @@
+{
+  "id": "tokenization",
+  "label": "Tokenization",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "tokenizer",
+    "tokenizing",
+    "subword tokenization"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The step that breaks raw text into discrete units called tokens, the atomic symbols a language model actually reads and predicts, before they are mapped to vectors.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Tokenization is the first thing that happens to text on its way into a language model. A model cannot operate on raw characters or whole sentences directly; it works over a fixed vocabulary of discrete symbols called tokens, and tokenization is the process of cutting a string into a sequence of those symbols. Everything downstream, the embeddings, the attention, the predicted probabilities, is defined over tokens, so the choice of tokenizer quietly shapes what the model can see and say."
+    },
+    {
+      "type": "p",
+      "text": "Modern language models almost always tokenize at the subword level, a middle ground between two extremes. Splitting on whole words gives short sequences but a huge vocabulary and no way to handle a word never seen in training. Splitting into individual characters handles anything but produces very long sequences and forces the model to relearn spelling from scratch. Subword tokenization keeps common words as single tokens while breaking rare or novel words into reusable pieces, so \"tokenization\" might become \"token\" plus \"ization,\" and an unfamiliar name still decomposes into known fragments. Byte-pair encoding is the most common algorithm for building such a vocabulary, learning frequent character pairs to merge from a corpus."
+    },
+    {
+      "type": "p",
+      "text": "The mechanics are a lookup. The tokenizer holds a vocabulary that maps each token string to an integer id, applies its splitting rules to the input, and emits the corresponding sequence of ids, often inserting special tokens to mark the start of text, the boundary between turns, or the end of a sequence. That id sequence is what the token embedding layer turns into vectors. At generation time the process runs in reverse: the model predicts token ids, which are looked up and stitched back into a string."
+    },
+    {
+      "type": "p",
+      "text": "Tokenization has consequences that surprise newcomers. Because a token is usually a chunk of several characters, the length of the context window is measured in tokens, not words or letters, and the same passage can cost very different token counts in different languages or scripts. Tasks that hinge on individual characters, such as counting letters, reversing a string, or some arithmetic, are harder for a model precisely because it perceives clumps rather than characters. And since the model can only ever produce tokens in its vocabulary, the tokenizer sets the outer boundary of what it can express, which is why tokenization is a genuine architectural decision rather than mere preprocessing."
+    }
+  ],
+  "related": [
+    {
+      "slug": "byte-pair-encoding",
+      "label": "Byte-Pair Encoding"
+    },
+    {
+      "slug": "token-embedding",
+      "label": "Token Embedding"
+    },
+    {
+      "slug": "context-window",
+      "label": "Context Window"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model"
+    },
+    {
+      "slug": "next-token-prediction",
+      "label": "Next-Token Prediction"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,17 @@
+---
+title: Matrix Multiplication
+slug: matrix-multiplication
+kind: technique
+category: Linear Algebra for ML
+aliases: matmul, matrix product, matrix-vector product
+related: matrix, vector, dot-product, linear-transformation, tensor
+summary: The operation that combines two matrices into a third by taking dot products of rows with columns, which composes linear transformations and is the dominant computation in deep learning.
+---
+
+Matrix multiplication combines a matrix of shape m by n with a matrix of shape n by p to produce a matrix of shape m by p. Each entry of the result is the dot product of one row from the left matrix with one column from the right matrix. The inner dimensions must match, the n shared between them, which is the single rule that governs whether two matrices can be multiplied at all and the first thing to check when shapes do not line up. Unlike multiplying numbers, the order matters: the product of A and B is generally not the product of B and A.
+
+The reason this particular rule is the right one is that it composes functions. A matrix represents a linear transformation, and multiplying two matrices produces the single matrix that applies one transformation after the other. Rotating then scaling space is itself a linear transformation, and its matrix is exactly the product of the rotation and scaling matrices. The matrix-vector product is the special case where the right operand has one column: it is the act of feeding a vector through a transformation to get its output vector.
+
+Matrix multiplication is the dominant cost of modern machine learning. A forward pass through a neural network is a chain of matrix multiplications, each layer multiplying its weight matrix by the batch of incoming activations, interleaved with nonlinearities. Training adds more of the same to compute gradients. This is why hardware accelerators, GPUs and TPUs, are built first and foremost to multiply matrices fast, and why expressing a model as large dense matrix products, rather than many small operations, is what makes it run efficiently.
+
+Because the operation is so central, it generalizes. Batched matrix multiplication runs many independent products at once across the leading axes of a tensor, which is how attention layers multiply per-head query and key matrices for every example in a batch simultaneously. The same contraction underlies convolution when it is unrolled, and the singular-value-decomposition expresses any matrix as a product of three simpler matrices. Mastering which dimensions contract and which are preserved is the practical core of reading and writing model code.

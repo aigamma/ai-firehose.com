@@ -1,0 +1,17 @@
+---
+title: Linear Representation Hypothesis
+slug: linear-representation-hypothesis
+kind: technique
+category: Mechanistic Interpretability
+aliases: linear representation hypothesis, linearity hypothesis, linear features
+related: superposition, sparse-autoencoder, activation-steering, probing-classifier, polysemanticity, mechanistic-interpretability
+summary: The hypothesis that neural networks encode high-level concepts as linear directions in activation space, so that features can be read with linear probes, added and removed by vector arithmetic, and combined to form the representations the model computes with.
+---
+
+The linear representation hypothesis holds that the concepts a neural network learns are stored as directions in its activation space, and that these directions combine roughly linearly. Under this view a feature is a vector: the presence of a concept corresponds to moving along its direction, the strength of the concept to how far, and the model's full representation at a layer to a sum of many such feature directions. The hypothesis does not claim the network's overall function is linear, only that the code in which it stores meaning is, so that the geometry of activation space lines up with the semantics of what the model knows.
+
+This idea is load-bearing for the whole interpretability enterprise, because almost every practical method assumes some version of it. If concepts are directions, then a linear probing classifier can read them out, a steering vector can edit them by simple addition, and a sparse autoencoder can hope to recover them as the atoms of an overcomplete dictionary. The hypothesis is what licenses treating features rather than neurons as the true units of computation, and it is the reason vector arithmetic on representations works at all. When these methods succeed, they are evidence for the hypothesis; when they fail, they mark its boundaries.
+
+The evidence is substantial and long-running, stretching back to the famous word-embedding analogies where "king" minus "man" plus "woman" lands near "queen," an early sign that a semantic relation could be a direction. In modern models, linear probes recover a wide range of properties, steering vectors reliably push behavior along single directions, and sparse autoencoders extract large dictionaries of features that are individually monosemantic and additively composable. Superposition fits inside this frame as the claim that the network packs many such linear directions into a space too small to hold them orthogonally, which is why the directions overlap and why neurons end up polysemantic.
+
+The hypothesis is a working assumption, not a law, and its limits are an active frontier. Some concepts appear to be encoded nonlinearly, as multidimensional subspaces, manifolds, or in circular and periodic structure, the periodic features in grokked arithmetic models being one example where a single linear direction is the wrong description. Refinements distinguish where linearity holds from where it does not, and ask which representations are linear by training pressure rather than by accident. Still, as the simplest assumption that makes interpretability tractable and that holds well enough to have produced most of the field's tools, the linear representation hypothesis remains the conceptual backbone connecting superposition, probing, steering, and the sparse autoencoder into a single picture of how models store what they know.

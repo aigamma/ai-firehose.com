@@ -1,0 +1,17 @@
+---
+title: Connectionism
+slug: connectionism
+kind: technique
+category: Foundations and History
+aliases: parallel distributed processing, PDP
+related: neural-network, perceptron, symbolic-ai, deep-learning, machine-learning, the-bitter-lesson
+summary: The approach to artificial intelligence and cognition that models intelligent behavior with networks of many simple, interconnected units whose learned connection strengths encode knowledge. It is the intellectual home of neural networks.
+---
+
+Connectionism is the school of thought that explains intelligence as the emergent behavior of large networks of simple processing units. No single unit is intelligent; knowledge lives in the pattern of connection strengths, the weights, between units, and it is learned by adjusting those weights in response to data. This is a deliberate alternative to representing knowledge as explicit symbols and rules. Where symbolic AI writes knowledge down, connectionism grows it from examples, distributing each concept across many units rather than storing it in one place.
+
+The lineage runs from the perceptron of the late 1950s through the parallel distributed processing movement of the 1980s, when David Rumelhart, James McClelland, and Geoffrey Hinton revived the field by showing that multilayer networks trained with backpropagation could learn the nonlinear functions a single perceptron could not. The biological inspiration is explicit: the artificial neuron is a loose abstraction of how brain neurons sum inputs and fire, and the appeal of connectionism has always been that it offers a path to intelligence that resembles, at least in spirit, the only known example of it.
+
+Connectionism matters because it is the direct ancestor of essentially all modern AI. Deep learning is connectionism at scale: the same idea of stacked layers of weighted units, trained by gradient descent on large datasets, now run with billions of parameters and vast computation. Its strengths are exactly the ones symbolic systems lacked. Connectionist models learn from raw data, generalize to inputs they have never seen, and degrade gracefully rather than failing abruptly when pushed past their training, because no single brittle rule is doing the work.
+
+The tradeoff is interpretability. A connectionist model's knowledge is smeared across millions of numbers with no human-readable rules to inspect, which makes it hard to say why it produced a given output, the opposite of an expert system's transparent rule trace. The history of AI can be read as a long contest between these two paradigms, and the bitter lesson argues that the connectionist, learning-driven side has tended to win as compute has grown. The current frontier of combining the two, neuro-symbolic AI, is an attempt to keep connectionism's learning while recovering some of symbolic AI's reasoning and transparency.

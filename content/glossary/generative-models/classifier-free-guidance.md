@@ -1,0 +1,17 @@
+---
+title: Classifier-Free Guidance
+slug: classifier-free-guidance
+kind: technique
+category: Generative Models
+aliases: CFG, guidance scale
+summary: A sampling technique for conditional diffusion models that strengthens adherence to a condition, such as a text prompt, by extrapolating away from the model's unconditional prediction, with no separate classifier required.
+related: diffusion-model, denoising-diffusion, latent-diffusion, score-based-model
+---
+
+Classifier-free guidance is the standard trick for making a conditional diffusion model follow its condition more closely, for example to make a text-to-image system adhere tightly to the prompt. A plain conditional model, asked for an image of a specific subject, will often produce something only loosely related, because the condition is just one influence among many on each denoising step. Classifier-free guidance sharpens that influence at sampling time by combining two predictions, one made with the condition and one made without it, and pushing the result in the direction the condition indicates.
+
+It matters because it is the simple, near-universal lever that controls the trade-off between fidelity to the prompt and diversity of the output in modern generators. Turning the guidance scale up makes samples cling more tightly to the condition and look cleaner and more on-prompt; turning it down yields more varied, sometimes more natural results that stray further from the request. Almost every large text-to-image, text-to-video, and conditional audio system exposes this control, and it is a major reason such systems can be steered so precisely from a text description. Its predecessor, classifier guidance, required training a separate classifier on noisy data to provide the steering gradient; the classifier-free variant removed that dependency entirely, which is what made it ubiquitous.
+
+The method works by training a single network to operate in two modes. During training the condition is randomly dropped on some fraction of examples, replaced by a null token, so the same model learns both the conditional and the unconditional prediction. At sampling time the model is run twice per step, once with the real condition and once with the null, and the final prediction is the unconditional one plus an amplified version of the difference between the conditional and unconditional predictions. The guidance scale sets that amplification: a scale of zero ignores the condition, a scale of one is ordinary conditional sampling, and larger values extrapolate further in the conditional direction. Seen through the lens of a score-based model, this is adding extra weight to the score of the condition given the data, which mathematically explains why it steers generation.
+
+The cost and the caveats are worth stating plainly. Because the network is evaluated twice at every denoising step, classifier-free guidance roughly doubles the compute of sampling. Push the guidance scale too high and the benefit reverses: samples can become oversaturated, lose fine texture, or collapse in diversity, so the scale is a hyperparameter tuned per system and per use. Classifier-free guidance is specific to the conditional generation setting of diffusion models, including the dominant latent diffusion form, and it composes with the surrounding denoising diffusion machinery rather than replacing any of it, acting purely as a modification of how each prediction is formed during sampling.

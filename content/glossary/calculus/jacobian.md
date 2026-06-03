@@ -1,0 +1,17 @@
+---
+title: Jacobian
+slug: jacobian
+kind: technique
+category: Calculus and Analysis
+aliases: jacobian matrix, jacobians
+related: gradient, partial-derivative, derivative, hessian, chain-rule, directional-derivative
+summary: The matrix of all first-order partial derivatives of a vector-valued function, with one row per output and one column per input, describing the function's best local linear approximation.
+---
+
+The jacobian is the matrix that collects every first-order partial derivative of a function that has several inputs and several outputs. Each row corresponds to one output, each column to one input, and the entry in a given row and column is the partial derivative of that output with respect to that input. It is the natural generalization of both the derivative and the gradient: for a single-output function the jacobian is a single row, the gradient transposed, and for a single-input single-output function it collapses back to the ordinary derivative.
+
+The jacobian matters because it is the best linear approximation of a vector-valued function near a point. Just as the derivative gives the slope of the tangent line and the gradient gives the tangent plane of a scalar function, the jacobian gives the linear map that locally approximates a function from one vector space to another. This makes it the central object whenever a system transforms vectors: in robotics it relates joint velocities to end-effector velocities, in change-of-variables for probability densities its determinant measures how the transformation stretches or compresses volume, and in the analysis of dynamical systems its eigenvalues reveal local stability.
+
+In machine learning the jacobian appears wherever the chain rule is applied across layers, because backpropagation is fundamentally the multiplication of layer jacobians. The gradient of a scalar loss with respect to early parameters is obtained by chaining together the jacobians of each intervening transformation. The properties of these matrices govern training dynamics directly: when their products shrink signals toward zero the result is the vanishing gradient problem, and when they amplify signals it is the exploding gradient problem. Techniques like careful initialization and normalization are partly attempts to keep these jacobian products well-behaved.
+
+The jacobian sits one rung below the hessian in the hierarchy of derivative objects. Taking the jacobian of the gradient of a scalar function yields the hessian, the matrix of second derivatives that captures curvature. Frameworks rarely materialize a full jacobian for large models because it would be enormous; instead they compute jacobian-vector and vector-jacobian products, the cheap directional pieces that reverse-mode and forward-mode automatic differentiation provide, which is all that gradient computation actually requires.

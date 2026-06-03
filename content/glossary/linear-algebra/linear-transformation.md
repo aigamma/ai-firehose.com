@@ -1,0 +1,17 @@
+---
+title: Linear Transformation
+slug: linear-transformation
+kind: technique
+category: Linear Algebra for ML
+aliases: linear map, linear transformations, linear operator
+related: matrix, vector, matrix-multiplication, basis, eigenvector, vector-space
+summary: A function between vector spaces that preserves addition and scaling, so it maps straight lines to straight lines and the origin to the origin, and is represented concretely by a matrix.
+---
+
+A linear transformation is a function that takes vectors to vectors while respecting the two operations that define a vector space: the transformation of a sum equals the sum of the transformations, and the transformation of a scaled vector equals the scaling of its transformation. These two conditions are strict, and they have a strong geometric consequence. A linear transformation keeps the origin fixed, sends straight lines to straight lines, and keeps parallel lines parallel and evenly spaced. It can rotate, scale, shear, reflect, and project space, but it can never bend a line or move the origin.
+
+The crucial fact is that every linear transformation between finite-dimensional spaces is a matrix, and applying it is matrix-multiplication. Once you know where a transformation sends each basis vector, you know where it sends every vector, because any vector is a combination of basis vectors and the transformation respects combinations. Stacking those images as columns gives the matrix, and the abstract idea and the concrete grid of numbers become two views of one object. Composing transformations corresponds to multiplying their matrices.
+
+Linear transformations are the skeleton of deep learning. Each layer of a network applies a linear transformation, the weight matrix, to its input, and then a nonlinear activation bends the result so that stacking layers can express curved decision boundaries. Without the nonlinearity the composition of many linear layers would itself be a single linear transformation, and the network could represent nothing a single layer could not. Understanding which parts of a model are linear and which break linearity is key to understanding what it can learn.
+
+The structure of a linear transformation is read off from special vectors and subspaces. Its eigenvectors are the directions it merely stretches, the natural axes along which it acts most simply. Its null space is the set of vectors it crushes to zero, and its range is the set of vectors it can produce, the two together governing what information it preserves and what it discards. For transformations that are not square or not invertible, the singular-value-decomposition lays bare the geometry as a rotation, a set of axis scalings, and another rotation.

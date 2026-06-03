@@ -1,8 +1,9 @@
 {
   "id": "mechanistic-interpretability",
-  "label": "mechanistic interpretability",
+  "label": "Mechanistic Interpretability",
   "aliases": [
-    "interpretability"
+    "mech interp",
+    "mechanistic interpretability research"
   ],
   "kind": "technique",
   "attention": 1,
@@ -91,6 +92,66 @@
       "author_or_channel": "BAIR Blog",
       "published_at": "2026-03-13T09:00:00.000Z",
       "kind": "technique"
+    }
+  ],
+  "category": "Mechanistic Interpretability",
+  "durable": true,
+  "source": "authored",
+  "definition": "A research program that reverse-engineers the internal computations of neural networks into human-understandable algorithms, treating a trained model as an artifact to be decompiled rather than a black box to be predicted.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Mechanistic interpretability is the effort to explain what a neural network does by understanding how it does it, at the level of individual weights, neurons, and the connections between them. Where most interpretability methods are content to correlate inputs with outputs or to attribute a prediction to salient features, mechanistic interpretability aims for something stronger: a causal account of the internal algorithm the network has learned, expressed in terms a person can follow. The guiding metaphor is decompilation. A trained model is compiled computation, and the task is to recover its source."
+    },
+    {
+      "type": "p",
+      "text": "The field matters because capability has outrun understanding. Large models are deployed widely while their internal reasoning remains opaque, which makes it hard to anticipate failures, detect deception, or trust a system in a high-stakes setting. A faithful mechanistic account would let an engineer say not just that a model tends to behave a certain way but why, and under what conditions that behavior would break. This is the central bet of interpretability-driven AI safety: that you can audit a system more reliably by reading its mechanisms than by testing its outputs alone."
+    },
+    {
+      "type": "p",
+      "text": "In practice the work proceeds by identifying circuits, the subgraphs of neurons and attention heads that implement a specific behavior, and by characterizing the features those neurons represent. Progress has been complicated by two findings. Polysemanticity means that a single neuron often responds to several unrelated concepts, so neurons are not clean units of meaning. Superposition explains why: networks pack more features into a layer than it has dimensions, storing them as overlapping directions in activation space. Much of the modern toolkit, especially the sparse autoencoder, exists to undo superposition and recover features that are individually interpretable."
+    },
+    {
+      "type": "p",
+      "text": "The methods span a spectrum from descriptive to causal. Feature visualization and the probing classifier reveal what information a layer carries. The logit lens reads a model's intermediate guesses by projecting hidden states onto the vocabulary. Activation steering and ablation intervene on the computation to test whether a proposed mechanism is actually load-bearing. The discipline insists on this last step, because a story that merely fits the activations is not yet a mechanism; a mechanism makes predictions that survive intervention."
+    },
+    {
+      "type": "p",
+      "text": "Foundational case studies show the program is tractable. Researchers traced the induction head, a two-head circuit that performs in-context copying and underwrites much of a transformer's few-shot ability. Studies of grokking found that delayed generalization corresponds to a network discarding a memorized solution in favor of a clean algorithmic circuit, an interpretability result with direct bearing on how generalization works. These results, partial as they are, support the field's animating claim: that the computations inside a network are not irreducibly alien but can be understood, one circuit at a time."
+    }
+  ],
+  "related": [
+    {
+      "slug": "circuit",
+      "label": "Circuit"
+    },
+    {
+      "slug": "superposition",
+      "label": "Superposition"
+    },
+    {
+      "slug": "sparse-autoencoder",
+      "label": "Sparse Autoencoder"
+    },
+    {
+      "slug": "feature-visualization",
+      "label": "Feature Visualization"
+    },
+    {
+      "slug": "probing-classifier",
+      "label": "Probing Classifier"
+    },
+    {
+      "slug": "logit-lens",
+      "label": "Logit Lens"
+    },
+    {
+      "slug": "activation-steering",
+      "label": "Activation Steering"
+    },
+    {
+      "slug": "linear-representation-hypothesis",
+      "label": "Linear Representation Hypothesis"
     }
   ]
 }

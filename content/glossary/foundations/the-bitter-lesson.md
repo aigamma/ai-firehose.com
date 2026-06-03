@@ -1,0 +1,17 @@
+---
+title: The Bitter Lesson
+slug: the-bitter-lesson
+kind: technique
+category: Foundations and History
+aliases: bitter lesson
+related: machine-learning, deep-learning, symbolic-ai, neural-network, connectionism, moravecs-paradox
+summary: Rich Sutton's 2019 observation that, over the history of AI, general methods that scale with computation have repeatedly beaten approaches that build in human knowledge by hand. The lesson is "bitter" because researchers keep relearning it.
+---
+
+The bitter lesson is the title of a short, influential 2019 essay by the reinforcement learning pioneer Rich Sutton. Its claim is a reading of seventy years of AI history: the approaches that win in the long run are general methods that leverage ever-increasing computation, such as search and learning, rather than methods that try to encode human insight about the problem. Time and again, researchers built systems around their own hard-won domain knowledge, and time and again those systems were eventually overtaken by simpler, more general methods given more data and more compute.
+
+The essay marshals concrete evidence. In computer chess, the hand-crafted positional knowledge of human experts lost to brute-force search. In Go, human strategic heuristics were surpassed by systems that learned from self-play and search. In speech recognition and computer vision, decades of carefully engineered features, phonetic rules, and edge detectors were displaced by neural networks that learned their own representations from raw data. The pattern is consistent across the field: the data-driven, compute-hungry approach of machine learning and connectionism keeps beating the knowledge-engineering approach of symbolic AI and the expert system.
+
+The lesson is called bitter for two reasons. The first is psychological. Researchers want their understanding of a problem to be what makes the machine smart, so being told that the machine does better by learning on its own, with their cleverness factored out, is genuinely deflating. The second is that the lesson is hard to internalize: the field relearns it repeatedly, because in the short term building in human knowledge usually does improve a system, and only over a longer horizon does the scalable general method pull ahead. Sutton's point is that we should stop trying to hand-build the contents of intelligence and instead build methods that can discover those contents themselves.
+
+The bitter lesson is descriptive history offered as prescriptive advice, and it is debated on both counts. Critics note that human knowledge still seeds the methods that scale, that the right architecture and the right data are themselves forms of built-in insight, and that compute is not free or infinite. But as a heuristic it has been strikingly predictive of the deep learning era, where the dominant recipe has been a general architecture, a large dataset, and a great deal of computation. It also pairs with Moravec's paradox: the parts of intelligence hardest to hand-code, perception and motor skill, are exactly where learned, compute-scaled methods have delivered the most.

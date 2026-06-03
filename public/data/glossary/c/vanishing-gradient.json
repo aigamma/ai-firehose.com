@@ -1,0 +1,59 @@
+{
+  "id": "vanishing-gradient",
+  "label": "Vanishing Gradient",
+  "kind": "technique",
+  "category": "Deep Learning Architectures",
+  "aliases": [
+    "vanishing gradient problem",
+    "vanishing gradients"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A training pathology in deep networks where gradients shrink exponentially as they propagate backward through many layers, so early layers receive almost no learning signal and effectively stop training.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The vanishing gradient problem is a failure mode of training deep neural networks in which the gradient signal grows exponentially smaller as it travels backward through the layers. Because backpropagation computes each layer's gradient by repeatedly multiplying terms via the chain rule, and because many of those terms are less than one in magnitude, their product can decay toward zero by the time it reaches the early layers. Those layers then receive a negligible update from gradient descent and learn extremely slowly or not at all."
+    },
+    {
+      "type": "p",
+      "text": "This problem matters because it was, for years, the central obstacle to building deep networks. A network can only learn if every layer gets a usable gradient, so when the signal vanishes before reaching the bottom, adding depth stops helping and can hurt. The difficulty was especially acute for the recurrent neural network, where the same recurrent weight matrix is applied at every time step, so gradients across a long sequence are multiplied by it many times over and decay over time rather than over depth. The mirror image, the exploding gradient, occurs when the repeated factors are larger than one and the signal blows up instead."
+    },
+    {
+      "type": "p",
+      "text": "The mechanism comes down to two compounding causes: the choice of activation function and the depth of the multiplication chain. Saturating activations like the sigmoid and tanh have derivatives that approach zero for large-magnitude inputs, so a saturated unit contributes a near-zero factor to the product. Stack many such factors, or repeat one across many time steps, and the gradient is crushed. The problem is therefore not a bug but a direct consequence of how gradients compose through deep, nonlinear stacks."
+    },
+    {
+      "type": "p",
+      "text": "Much of modern architecture exists to defeat this effect, which is why the term recurs across so many concepts. Replacing saturating activations with the non-saturating ReLU keeps the positive-side gradient at one and largely preserves the signal. The residual connection adds an identity shortcut that carries the gradient backward unattenuated, making networks of hundreds of layers trainable. The LSTM introduces a protected cell state so gradients survive across long sequences, and the attention mechanism gives every position a short direct path to every other. Careful initialization and normalization layers further keep activation and gradient magnitudes in a healthy range. Understanding the vanishing gradient is, in effect, understanding why deep learning is engineered the way it is."
+    }
+  ],
+  "related": [
+    {
+      "slug": "activation-function",
+      "label": "Activation Function"
+    },
+    {
+      "slug": "relu",
+      "label": "Rectified Linear Unit"
+    },
+    {
+      "slug": "residual-connection",
+      "label": "Residual Connection"
+    },
+    {
+      "slug": "lstm",
+      "label": "Long Short-Term Memory"
+    },
+    {
+      "slug": "recurrent-neural-network",
+      "label": "Recurrent Neural Network"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

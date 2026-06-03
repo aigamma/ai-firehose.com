@@ -1,0 +1,17 @@
+---
+title: AI Agent
+slug: ai-agent
+kind: technique
+category: Agents and Tool Use
+aliases: agent, LLM agent
+related: autonomous-agent, agentic-workflow, react-prompting, tool-use, planning, agent-memory, multi-agent-system, reflection
+summary: A system that wraps a language model in a loop where the model decides actions, calls tools, observes the results, and repeats until a goal is met, rather than producing a single answer in one pass.
+---
+
+An AI agent is a language model embedded in a control loop that lets it act, not just answer. A plain model maps a prompt to a single completion. An agent instead gives the model a goal, a set of tools it can invoke, and a loop: the model proposes an action, the surrounding program executes it, the result is fed back as a new observation, and the model decides what to do next. The loop runs until the model judges the goal reached or a stopping condition fires. This shift, from one-shot text generation to an iterative perceive-decide-act cycle, is what separates an agent from a bare model call.
+
+The reason agents matter is that many real tasks cannot be solved in a single forward pass. Booking travel, debugging a failing test, or researching a question all require gathering information that is not in the prompt, taking actions whose outcomes are uncertain, and adjusting course based on what comes back. By interleaving reasoning with tool use, an agent can fetch a web page, run code, query a database, or call an API, then incorporate the result before committing to a final answer. The model supplies the judgment and the surrounding harness supplies the hands.
+
+Mechanically, an agent is built from a few cooperating parts. A planning component decides what to do, often expressed through patterns like react-prompting or explicit task-decomposition. A tool layer, exposed through function-calling, defines the actions the model is allowed to take and validates its requests. An agent-memory component carries state across steps, since the model itself is stateless between calls. A reflection step lets the agent critique its own intermediate work and retry. The orchestration code stitches these together and enforces limits on steps, cost, and permissions.
+
+Agents sit on a spectrum of independence. A tightly scripted agentic-workflow constrains the model to a fixed sequence of steps, which is predictable and easy to debug. An autonomous-agent is given a goal and broad latitude to choose its own path, which is more flexible but harder to control. When one agent is not enough, several can be composed into a multi-agent-system, dividing labor across specialized roles. Across all of these, the defining idea is constant: a model that can take actions in the world and learn from their results, one step at a time.

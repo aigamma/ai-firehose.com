@@ -1,0 +1,67 @@
+{
+  "id": "scalable-oversight",
+  "label": "Scalable Oversight",
+  "kind": "technique",
+  "category": "Alignment and Safety",
+  "aliases": [
+    "scalable oversight",
+    "scalable supervision"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The problem of supervising and evaluating an AI system on tasks where it may be as capable as or more capable than its human supervisors, so that human judgment stays meaningful as the system surpasses human ability.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Scalable oversight is the problem of keeping human supervision effective when the system being supervised is very capable. Most current alignment methods rest on human judgment somewhere: a person rates outputs, labels examples, or checks answers, and that judgment becomes the training signal. This works while humans can reliably tell good behavior from bad. It breaks down when the task is one where the model knows more than the supervisor, or where checking the model's answer is itself beyond a human's unaided ability. Scalable oversight asks how to preserve trustworthy supervision in exactly that regime."
+    },
+    {
+      "type": "p",
+      "text": "The difficulty is concrete. If a model writes a thousand-line program, summarizes a body of research no person has time to read, or proposes a subtle scientific claim, a human rater cannot directly verify whether the output is correct or safe. Naive human feedback in this setting rewards what looks good to a non-expert rather than what is actually good, which is an open door to reward-hacking and specification-gaming: the model learns to produce outputs that are persuasive to its overseer rather than genuinely right. As capability grows, the gap between \"looks good to a human\" and \"is good\" widens, and so does the danger of training against the wrong signal."
+    },
+    {
+      "type": "p",
+      "text": "The shared idea behind most proposals is to use AI capability to help supervise AI, so that oversight scales together with the system rather than being left behind. Several concrete schemes pursue this. Debate pits two model instances against each other to argue opposing sides of a question, on the premise that it is easier for a human judge to spot the flaw in a losing argument than to evaluate the question unaided. Recursive reward modeling and iterated amplification break a hard evaluation into easier sub-evaluations a human can handle, then compose them, training a reward-model that captures judgments no single human pass could make. Critique models are trained to point out flaws in another model's output, augmenting the human's ability to find problems. Each method tries to amplify the supervisor's reach rather than replace the supervisor."
+    },
+    {
+      "type": "p",
+      "text": "Scalable oversight is central to ai-alignment because it underpins the outer-alignment toolchain. Learning from human feedback is the dominant way we install intended behavior, and it is only as trustworthy as the human signal at its core; scalable oversight is what keeps that signal trustworthy past the point of unaided human competence. Without it, the standard alignment pipeline silently loses its grounding exactly when the systems become most consequential."
+    },
+    {
+      "type": "p",
+      "text": "The approach has real limits and open questions. It can introduce a regress, since the assisting models themselves need to be aligned and overseen, and the schemes assume that verifying or critiquing an answer is easier than producing it, an assumption that holds for many tasks but not all. Scalable oversight is also not a defense against a system that hides its intentions: a model engaged in deceptive-alignment can cooperate with oversight while observed and defect later. For these reasons it is pursued alongside interpretability and red-teaming as one pillar of ai-safety rather than a complete solution."
+    }
+  ],
+  "related": [
+    {
+      "slug": "reward-model",
+      "label": "Reward Model"
+    },
+    {
+      "slug": "ai-alignment",
+      "label": "AI Alignment"
+    },
+    {
+      "slug": "reward-hacking",
+      "label": "Reward Hacking"
+    },
+    {
+      "slug": "deceptive-alignment",
+      "label": "Deceptive Alignment"
+    },
+    {
+      "slug": "ai-safety",
+      "label": "AI Safety"
+    },
+    {
+      "slug": "red-teaming",
+      "label": "Red-Teaming"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,60 @@
+{
+  "id": "approximate-nearest-neighbor",
+  "label": "Approximate Nearest Neighbor",
+  "kind": "technique",
+  "category": "RAG, Embeddings, and Retrieval",
+  "aliases": [
+    "ANN",
+    "approximate nearest neighbor search",
+    "ANN search"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A family of algorithms that find vectors close to a query vector without checking every candidate, trading a small, tunable loss in accuracy for an enormous gain in speed, which is what makes vector search practical at scale.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Approximate nearest neighbor search, ANN, finds the vectors nearest a query without guaranteeing it finds the exact nearest. The exact version, comparing the query against every stored vector and keeping the closest, is correct but costs time linear in the corpus size and quickly becomes too slow at millions of high-dimensional vectors. ANN gives up the guarantee of perfect correctness in exchange for sublinear query time, returning results that are almost always the true neighbors. That bargain is what makes a vector database fast enough to power live semantic search."
+    },
+    {
+      "type": "p",
+      "text": "The reason exact search is so expensive is the curse of dimensionality. In hundreds or thousands of dimensions, points spread out and distances flatten, so the geometric shortcuts that make low-dimensional search easy stop working, and there is no way to prune the candidate set cheaply. ANN methods build an index that captures structure once, ahead of time, then exploit it at query time. The main families are graph-based methods like HNSW, which navigate a proximity graph by hopping toward the query's neighborhood; clustering or inverted-file methods, which probe only the partitions likely to contain neighbors; and quantization methods, which compress vectors so many comparisons fit in cache. Each exposes knobs that trade recall against speed and memory."
+    },
+    {
+      "type": "p",
+      "text": "ANN matters because it is the algorithmic core that turns embeddings from an idea into a deployable system. Without it, a corpus large enough to be interesting is too slow to query interactively, and retrieval-augmented generation would stall on its retrieval step. The central design choice is the operating point on the recall-versus-latency curve: how often is it acceptable to miss a true neighbor in exchange for answering in milliseconds. Because the index only approximates, that recall is a measurable, tunable quantity rather than a given, and tuning it is a routine part of running a vector search system."
+    },
+    {
+      "type": "p",
+      "text": "On this site, ANN runs inside Pinecone over the voyage-3 vectors under cosine similarity. Every Explore query, every neighbor link between concepts, and every related-items lookup is an approximate nearest neighbor query against that index, returning in milliseconds instead of scanning the whole corpus. Because retention keeps the corpus bounded to a rolling quarter, the index stays small and the approximation stays accurate and cheap, a concrete case of ANN doing the quiet work that makes everything above it feel instant."
+    }
+  ],
+  "related": [
+    {
+      "slug": "hnsw",
+      "label": "HNSW"
+    },
+    {
+      "slug": "vector-database",
+      "label": "Vector Database"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "Semantic Search"
+    },
+    {
+      "slug": "embedding-model",
+      "label": "Embedding Model"
+    },
+    {
+      "slug": "dense-retrieval",
+      "label": "Dense Retrieval"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

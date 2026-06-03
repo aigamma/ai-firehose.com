@@ -1,0 +1,17 @@
+---
+title: Score-Based Model
+slug: score-based-model
+kind: technique
+category: Generative Models
+aliases: score-based generative model, score matching, NCSN
+summary: A generative model that learns the score, the gradient of the log probability density, of data corrupted at many noise levels, then generates by following that gradient from noise toward high-density regions.
+related: diffusion-model, denoising-diffusion, flow-matching, normalizing-flow, latent-diffusion
+---
+
+A score-based model generates data by learning a vector field that points toward where the data is dense. The score is a precise quantity: the gradient of the log probability density with respect to the input, a vector at every point in data space that indicates the direction of steepest increase in likelihood. If you know the score everywhere, you can generate samples by starting from random noise and repeatedly nudging in the score's direction while injecting a little randomness, a procedure called Langevin dynamics that walks samples uphill into the high-density regions where realistic data lives.
+
+Score-based models matter because they provide the theoretical backbone that explains why diffusion models work, and they arrived at the same place from a different starting point. The clean way to estimate a score is to learn it not on the raw data but on data corrupted with noise at many levels, from barely perturbed down to nearly pure noise. Generation then anneals from high noise to low noise, following the score at each level, which is exactly the trajectory a diffusion model traces in reverse. Recognizing that the noise-prediction target of denoising diffusion and the score-estimation target of these models are equivalent up to a scaling was a unifying insight that connected two research lines into one family.
+
+Estimating the score directly is hard because it would seem to require knowing the very density you are trying to model, but score matching sidesteps this. Denoising score matching, the practical variant, trains a network to remove noise from corrupted samples, and the optimal denoiser turns out to be a simple rescaling of the score. So the model never needs the true density; it only needs pairs of clean and noised data, which are trivial to produce. This is the same simulation-free, regression-style training that makes denoising diffusion scalable, viewed through the lens of densities and gradients rather than noise.
+
+The continuous-time formulation ties everything together. Casting the noising process as a stochastic differential equation gives a reverse-time equation, driven by the score, that turns noise back into data, and this single view contains diffusion sampling as a special case. It also borders the deterministic transport picture of flow matching, which learns a velocity field rather than a score but pursues the same noise-to-data mapping, and it stands in contrast to a normalizing flow, which models the density exactly through an invertible map instead of estimating only its gradient. The score-based perspective is, in short, the language in which much of the modern theory of diffusion-style generation is written.

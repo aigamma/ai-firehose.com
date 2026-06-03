@@ -1,0 +1,68 @@
+{
+  "id": "empirical-risk-minimization",
+  "label": "Empirical Risk Minimization",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "ERM",
+    "empirical risk",
+    "empirical risk minimisation"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The core principle behind most supervised learning: since the true error over the data distribution cannot be computed, a model is chosen by minimizing the average loss measured on the training sample, which serves as a proxy for the true risk.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Empirical Risk Minimization, usually abbreviated ERM, is the principle that underlies almost all supervised learning. The quantity we actually care about is the true risk, the expected loss of a model over the entire data distribution, but that distribution is unknown and the expectation cannot be computed directly. ERM replaces it with the empirical risk, the average loss over the finite training sample we do have, and selects the model that minimizes this observable surrogate. Fitting a model to its training data by minimizing a loss function is ERM in action, whether the loss is squared error, cross-entropy, or hinge loss."
+    },
+    {
+      "type": "p",
+      "text": "The principle is justified by the law of large numbers: as the sample grows, the empirical risk converges to the true risk, so the minimizer of the former should approach the minimizer of the latter. The subtlety is that this convergence must hold uniformly across the whole hypothesis class, not just for a single fixed model, because ERM searches over many candidates and can exploit any one that happens to look good on the sample by chance. Guaranteeing uniform convergence is exactly the business of statistical learning theory, and it is what links ERM to Generalization and to the PAC Learning framework, whose guarantees are precisely the conditions under which minimizing empirical risk drives true risk low."
+    },
+    {
+      "type": "p",
+      "text": "Whether ERM succeeds depends entirely on the capacity of the hypothesis class, which is the crucial caveat. If the class is too rich, the model can fit the training sample perfectly, including its noise, achieving near-zero empirical risk while the true risk stays high. This is overfitting, and the size of the gap is controlled by capacity measures such as the VC Dimension. The fundamental theorem of statistical learning says that ERM over a class of finite VC dimension generalizes, with a sample-size requirement set by the Sample Complexity. Plain ERM is therefore safe only when the hypothesis class carries enough Inductive Bias to keep its effective capacity in check."
+    },
+    {
+      "type": "p",
+      "text": "When unconstrained ERM would overfit, it is tamed by adding structure. Regularized risk minimization augments the empirical loss with a penalty on model complexity, an explicit nod to Occams Razor that biases the search toward simpler solutions. Structural risk minimization goes further, organizing hypotheses into a nested sequence of classes of growing capacity and choosing the class that best balances fit against complexity. These refinements keep the ERM principle while controlling the variance that pure error minimization would otherwise invite."
+    },
+    {
+      "type": "p",
+      "text": "ERM also frames one of the open puzzles of deep learning. Modern networks driven to zero empirical risk on training data, even data with random labels, should by classical reasoning overfit badly, yet they frequently generalize well, and the Double Descent curve shows test error improving as such interpolating models grow. The reconciliation is that ERM by gradient descent does not pick an arbitrary zero-loss solution but is implicitly biased toward particular well-behaved ones. Understanding this implicit regularization, why the optimizer's chosen minimizer of the empirical risk also minimizes the true risk in the overparameterized regime, is among the deepest questions in current learning theory."
+    }
+  ],
+  "related": [
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "pac-learning",
+      "label": "PAC Learning"
+    },
+    {
+      "slug": "vc-dimension",
+      "label": "VC Dimension"
+    },
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias"
+    },
+    {
+      "slug": "sample-complexity",
+      "label": "Sample Complexity"
+    },
+    {
+      "slug": "occams-razor",
+      "label": "Occam's Razor"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

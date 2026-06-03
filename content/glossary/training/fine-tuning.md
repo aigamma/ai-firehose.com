@@ -1,0 +1,19 @@
+---
+title: Fine-Tuning
+slug: fine-tuning
+kind: technique
+category: Training and Fine-Tuning
+aliases: finetuning, supervised fine-tuning, SFT
+related: pretraining, transfer-learning, lora, parameter-efficient-fine-tuning, instruction-tuning, catastrophic-forgetting, rlhf
+summary: The process of continuing to train an already pretrained model on a smaller, task-specific or domain-specific dataset, so its general knowledge is specialized toward a particular use.
+---
+
+Fine-tuning takes a model that has already been pretrained on a broad corpus and continues training it on a smaller, more focused dataset. The pretrained weights provide a strong starting point that already encodes language, reasoning, and world knowledge; fine-tuning nudges those weights so the model performs better on a narrower target, whether that is a domain (legal contracts, medical notes), a task (classification, summarization), or a behavior (following instructions, adopting a house style). It is the most direct way to put transfer learning into practice.
+
+Fine-tuning matters because it makes large models economical to specialize. Pretraining a foundation model from scratch is prohibitively expensive, but fine-tuning one reuses that investment and reaches strong task performance with far less data and compute, often a few thousand to a few hundred thousand examples instead of trillions of tokens. This is why the dominant workflow in modern machine learning is pretrain once, fine-tune many times, with one base model spawning many specialized descendants.
+
+In its classic form, full fine-tuning updates every parameter of the model using supervised learning on labeled examples, minimizing a loss with gradient descent exactly as in pretraining, only on the new data and usually with a smaller learning rate to avoid erasing what was already learned. When the training data consists of instruction and response pairs, this is called supervised fine-tuning (SFT) or instruction-tuning, and it is typically the first step in turning a base model into an assistant before reinforcement learning from human feedback (RLHF) or direct preference optimization (DPO) refine its behavior further.
+
+Full fine-tuning has two costs that motivate alternatives. First, updating and storing a complete copy of a multi-billion-parameter model for every task is expensive in memory and disk. Second, training too aggressively on a narrow dataset can overwrite general competence, a failure mode called catastrophic forgetting. Both pressures gave rise to parameter-efficient fine-tuning, a family of methods, most prominently LoRA, that freeze the original weights and train only a small set of new ones, capturing most of the benefit at a fraction of the cost.
+
+Fine-tuning sits at the center of the model adaptation story. It depends on pretraining for its starting point, it realizes transfer learning, and it branches into the parameter-efficient and preference-based techniques (LoRA, RLHF, DPO) that the rest of this category describes. Knowing when to fine-tune, versus when prompting or retrieval would suffice, is one of the core judgment calls in applied machine learning.

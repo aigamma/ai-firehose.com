@@ -1,0 +1,17 @@
+---
+title: Byte-Pair Encoding
+slug: byte-pair-encoding
+kind: technique
+category: Transformers and LLMs
+aliases: BPE, byte pair encoding, byte-level BPE
+related: tokenization, token-embedding, context-window, large-language-model
+summary: A subword tokenization algorithm that builds a vocabulary by repeatedly merging the most frequent adjacent pair of symbols in a corpus, balancing a compact vocabulary against the ability to represent any input.
+---
+
+Byte-pair encoding, usually shortened to BPE, is the algorithm most large language models use to build their tokenizer. It originated as a simple data compression scheme and was adapted to natural language processing as a way to learn a subword vocabulary from data rather than fixing one by hand. Its appeal is that it finds a practical compromise: frequent words become single tokens, while rare words and never-before-seen strings still decompose cleanly into smaller known pieces.
+
+Training a BPE vocabulary is an iterative merge procedure. You start by treating each text as a sequence of base symbols, originally individual characters and in the byte-level variant the raw bytes, so that nothing is ever out of vocabulary. You then count every adjacent pair of symbols across the corpus, find the single most frequent pair, and merge it into a new combined symbol that is added to the vocabulary. Repeating this thousands of times grows the vocabulary from base symbols up through common letter groups, then morphemes, then whole frequent words, stopping when the vocabulary reaches a target size. The ordered list of merges learned during training is exactly what is replayed at inference time to tokenize new text.
+
+The byte-level form, used by the GPT family among others, runs BPE over UTF-8 bytes instead of Unicode characters. This guarantees that any possible input, in any language or script, with any emoji or control character, can always be encoded, because every byte value is a valid starting symbol. It removes the need for a special unknown token entirely, at the cost of occasionally spending several tokens on a single unusual character.
+
+BPE matters because it directly determines the token sequences that flow into a model, and therefore both cost and behavior. A well-fitted BPE vocabulary keeps common text dense, so more meaning fits inside a fixed context window, while a poor fit for a given language inflates token counts and wastes budget. It is the concrete mechanism behind subword tokenization, and understanding it explains why model inputs are counted in tokens, why those token boundaries rarely line up with word boundaries, and why each learned token eventually gets its own row in the token embedding table.

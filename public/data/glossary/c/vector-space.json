@@ -1,0 +1,63 @@
+{
+  "id": "vector-space",
+  "label": "Vector Space",
+  "kind": "technique",
+  "category": "Linear Algebra for ML",
+  "aliases": [
+    "vector spaces",
+    "linear space"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A set of objects that can be added together and scaled by numbers while obeying a fixed list of consistency rules, providing the arena in which all of linear algebra and most machine learning representations live.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A vector space is any collection of objects, called vectors, that you can add together and multiply by numbers, called scalars, such that the results stay inside the collection and obey a short list of natural rules. Addition must be commutative and associative, there must be a zero vector that changes nothing, every vector must have a negative that cancels it, and scaling must distribute over addition sensibly. These axioms are deliberately minimal, and anything satisfying them earns the full power of linear algebra, regardless of what its elements actually are."
+    },
+    {
+      "type": "p",
+      "text": "The payoff of this abstraction is reach. Lists of numbers form the familiar example, but so do polynomials, continuous functions, the solutions of a linear differential equation, and the space of all possible images of a given size. Because they all share the same two operations and the same axioms, a single body of theory, the same notions of dimension, basis, and linear transformation, applies to every one of them at once. In machine learning the relevant spaces are usually high-dimensional spaces of real-valued vectors, where embeddings, parameters, and activations all live."
+    },
+    {
+      "type": "p",
+      "text": "What gives a vector space its grip is structure built on top of the axioms. A basis is a minimal set of directions from which every vector can be uniquely reconstructed by scaling and adding, and the number of vectors in a basis is the dimension, a fixed property of the space. Choosing a basis turns abstract vectors into concrete coordinate lists, and changing basis re-expresses the same vectors in a new coordinate system without altering the underlying objects. The functions between vector spaces that respect addition and scaling are the linear transformations, represented concretely by a matrix."
+    },
+    {
+      "type": "p",
+      "text": "Most vector spaces in practice carry extra geometry. Adding a dot product, or more generally an inner product, equips the space with lengths, angles, and the notion of orthogonality, turning it into an inner product space; adding just a norm gives lengths and distances without angles. This added geometry is what lets machine learning speak of how similar two embeddings are, how far a prediction is from a target, and which directions are independent, all of which are statements about the structure of a vector space."
+    }
+  ],
+  "related": [
+    {
+      "slug": "vector",
+      "label": "Vector"
+    },
+    {
+      "slug": "basis",
+      "label": "Basis"
+    },
+    {
+      "slug": "norm",
+      "label": "Norm"
+    },
+    {
+      "slug": "dot-product",
+      "label": "Dot Product"
+    },
+    {
+      "slug": "linear-transformation",
+      "label": "Linear Transformation"
+    },
+    {
+      "slug": "matrix",
+      "label": "Matrix"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

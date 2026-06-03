@@ -1,0 +1,64 @@
+{
+  "id": "integral",
+  "label": "Integral",
+  "kind": "technique",
+  "category": "Calculus and Analysis",
+  "aliases": [
+    "integration",
+    "integrals",
+    "antiderivative"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The accumulation of a quantity over an interval or region, computing a total such as an area under a curve, and the inverse operation to the derivative.",
+  "body": [
+    {
+      "type": "p",
+      "text": "An integral accumulates a quantity that varies continuously, summing up infinitely many infinitesimal contributions into a finite total. The definite integral of a function over an interval is the signed area between its graph and the horizontal axis, defined rigorously as the limit of sums of thin rectangles as their width shrinks to zero. The indefinite integral, or antiderivative, runs the derivative backward: it is the family of functions whose derivative is the given function. The fundamental theorem of calculus ties these together, showing that differentiation and integration are inverse operations and that a definite integral can be evaluated using an antiderivative."
+    },
+    {
+      "type": "p",
+      "text": "The integral matters in machine learning because probability is built on it. A continuous probability density is meaningful only through integration: the probability of an event is the integral of the density over a region, the normalizing constant that makes a density valid is an integral over all outcomes, and an expectation, the average of a function under a distribution, is an integral of that function weighted by the density. Training objectives are frequently expectations, so the loss a model minimizes is often an integral in disguise, and reasoning about it correctly means reasoning about integration."
+    },
+    {
+      "type": "p",
+      "text": "In practice most integrals that arise in modeling cannot be solved in closed form, which shapes much of the field's machinery. High-dimensional integrals over latent variables or parameters are approximated rather than computed exactly, through Monte Carlo sampling, which estimates an expectation by averaging over draws, or through variational methods, which replace an intractable integral with a tractable bound. These approximation strategies are a large part of why probabilistic and generative models look the way they do, and why sampling is so central to them."
+    },
+    {
+      "type": "p",
+      "text": "The integral is the natural counterpart to the derivative that anchors the rest of this category. Where the derivative and the gradient report instantaneous rates of change, the integral accumulates change back into totals, and the two are linked by the fundamental theorem. The same accumulation idea appears in continuous-time models, where the state of a system is the integral of its rate of change, including the neural differential equations that treat a network's forward pass as integration along a trajectory. Understanding integration alongside differentiation completes the basic toolkit on which probability, expectation, and continuous modeling all rest."
+    }
+  ],
+  "related": [
+    {
+      "slug": "derivative",
+      "label": "Derivative"
+    },
+    {
+      "slug": "taylor-expansion",
+      "label": "Taylor Expansion"
+    },
+    {
+      "slug": "gradient",
+      "label": "Gradient"
+    },
+    {
+      "slug": "partial-derivative",
+      "label": "Partial Derivative"
+    },
+    {
+      "slug": "convexity",
+      "label": "Convexity"
+    },
+    {
+      "slug": "chain-rule",
+      "label": "Chain Rule"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

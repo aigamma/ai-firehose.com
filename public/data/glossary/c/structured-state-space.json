@@ -1,0 +1,64 @@
+{
+  "id": "structured-state-space",
+  "label": "Structured State Space",
+  "kind": "technique",
+  "category": "Frontier Architectures",
+  "aliases": [
+    "S4",
+    "structured state space sequence model",
+    "HiPPO"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The structured state space sequence model (S4), the breakthrough parameterization that made deep state space models work on long sequences by initializing the state matrix to provably remember the past and computing the recurrence efficiently as a convolution.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Structured state space refers to the structured state space sequence model, known as S4, the work that turned the state space model from a promising idea into a competitive deep learning architecture. A plain linear recurrence struggles on long sequences for two linked reasons: a randomly chosen state transition matrix tends either to forget the distant past or to blow up numerically, and computing the recurrence directly over a long sequence is slow. S4 addresses both by imposing structure on the state matrix and by exploiting that structure to compute the layer as a convolution. The word structured names exactly this: the state matrix is not arbitrary but constrained to a special, efficiently computable form."
+    },
+    {
+      "type": "p",
+      "text": "The memory problem is solved by initialization. S4 starts the state matrix from HiPPO, a construction derived to optimally compress a continuous history onto a basis of orthogonal polynomials. Initialized this way, the hidden state of the recurrence approximately reconstructs the entire input seen so far, so the model can carry information across tens of thousands of steps without it decaying away. This single choice is what let state space models suddenly excel on long-range benchmarks that defeated transformers and recurrent networks alike, capturing dependencies far longer than attention could afford over the same length."
+    },
+    {
+      "type": "p",
+      "text": "The speed problem is solved by the same duality that defines the family. Because the recurrence is linear and time-invariant in S4, its effect over a whole sequence equals convolution with a single long kernel determined by the A, B, and C matrices. S4's technical core is a method to compute that kernel quickly despite the large state, using a structured (diagonal plus low-rank) form of A and operating in the frequency domain. Training therefore runs as a parallel convolution, while inference can fall back to the cheap step-by-step recurrence. Later work showed that a purely diagonal state matrix (the S4D and S5 variants) recovers most of the benefit with a much simpler implementation."
+    },
+    {
+      "type": "p",
+      "text": "Structured state space is the foundation the rest of this category builds on. Mamba takes S4's diagonal SSM and makes its parameters input-dependent, trading the convolutional view for a selective scan. The retentive network and linear attention can be seen as state space models with particular fixed transitions, and the hyena operator generalizes the long-convolution view that S4 introduced. S4 is also where the continuous-time character of these models is clearest: it is literally a discretized linear differential equation, which ties it to the neural ODE and to classical control theory, and that lineage is why the whole family inherits both a recurrent and a convolutional face."
+    }
+  ],
+  "related": [
+    {
+      "slug": "state-space-model",
+      "label": "State Space Model"
+    },
+    {
+      "slug": "mamba",
+      "label": "Mamba"
+    },
+    {
+      "slug": "linear-attention",
+      "label": "Linear Attention"
+    },
+    {
+      "slug": "retentive-network",
+      "label": "Retentive Network"
+    },
+    {
+      "slug": "hyena",
+      "label": "Hyena"
+    },
+    {
+      "slug": "neural-ode",
+      "label": "Neural Ordinary Differential Equation"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,67 @@
+{
+  "id": "react-prompting",
+  "label": "ReAct Prompting",
+  "kind": "technique",
+  "category": "Agents and Tool Use",
+  "aliases": [
+    "ReAct",
+    "reason and act"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A prompting pattern that interleaves explicit reasoning steps with tool-calling actions, so a language model thinks, acts, observes the result, and thinks again in a repeating loop.",
+  "body": [
+    {
+      "type": "p",
+      "text": "ReAct, short for Reason and Act, is a prompting pattern that structures an agent's turn as an alternating sequence of thoughts and actions. Instead of asking a model to answer directly or to plan everything up front, ReAct prompts it to emit a short reasoning trace (\"I need the current price, so I should search\"), then an action (\"search: stock price of X\"), then to wait for an observation (the search result), and then to reason again about what that observation implies. The pattern, introduced in a 2022 paper by Yao and colleagues, repeats this thought-action-observation cycle until the model produces a final answer."
+    },
+    {
+      "type": "p",
+      "text": "The pattern matters because reasoning and acting reinforce each other. Pure reasoning, as in chain-of-thought, lets a model plan but gives it no way to check its assumptions against the world, so it can confidently follow a false premise. Pure acting, calling tools without articulated reasoning, makes the model's choices opaque and brittle. ReAct couples the two: the reasoning decides which action to take, and the observation from that action grounds and corrects the next round of reasoning. This grounding measurably reduces the hallucination that arises when a model invents facts it could have looked up."
+    },
+    {
+      "type": "p",
+      "text": "In practice a ReAct loop is driven by the surrounding harness. The model is prompted with the goal, the available tools, and the running transcript of prior thoughts, actions, and observations. It generates the next thought and a single action, the harness parses that action (often expressed through function-calling), executes it, appends the real result as an observation, and calls the model again with the extended transcript. Because each step is small and explicit, the trace is auditable: a developer can read exactly why the agent did what it did, which makes failures easier to diagnose than a single opaque completion."
+    },
+    {
+      "type": "p",
+      "text": "ReAct is one of the foundational loops behind a working ai-agent and underpins many an agentic-workflow. It composes naturally with related ideas: task-decomposition can break a hard goal into subgoals that each get their own ReAct loop, planning can sequence those subgoals, and reflection can be inserted to let the agent critique its trace before continuing. The result is a simple, legible scaffold that turns a static model into something that reasons about, and reaches into, its environment."
+    }
+  ],
+  "related": [
+    {
+      "slug": "ai-agent",
+      "label": "AI Agent"
+    },
+    {
+      "slug": "tool-use",
+      "label": "Tool Use"
+    },
+    {
+      "slug": "function-calling",
+      "label": "Function Calling"
+    },
+    {
+      "slug": "planning",
+      "label": "Planning"
+    },
+    {
+      "slug": "agentic-workflow",
+      "label": "Agentic Workflow"
+    },
+    {
+      "slug": "reflection",
+      "label": "Reflection"
+    },
+    {
+      "slug": "task-decomposition",
+      "label": "Task Decomposition"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

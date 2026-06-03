@@ -1,0 +1,60 @@
+{
+  "id": "double-descent",
+  "label": "Double Descent",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "double descent",
+    "deep double descent",
+    "model-wise double descent"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A phenomenon in which a model's test error, as a function of its capacity, first falls, then rises to a peak near the point where it just fits the training data, and then falls a second time as capacity grows further into the overparameterized regime.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Double descent is the empirical curve that broke the textbook picture of overfitting. Classical learning theory predicts a U-shaped relationship between model capacity and test error: error falls as the model gains enough flexibility to capture the signal, then rises as added flexibility lets it chase noise. Double descent shows that this U is only the first half of the story. As capacity keeps increasing past the point where the model exactly interpolates the training data, test error, after spiking, begins to fall again, often reaching a new minimum below the bottom of the classical U. The single peak in the middle is the interpolation threshold, where the model has just barely enough degrees of freedom to drive training error to zero."
+    },
+    {
+      "type": "p",
+      "text": "The shape comes in several flavors. Model-wise double descent varies the number of parameters, sample-wise varies the dataset size, and epoch-wise varies training time, with the characteristic peak appearing as a function of each. The danger zone is always the interpolation threshold, the regime where the number of effective parameters roughly equals the number of training points. There the model is forced to fit every example with no slack to spare, so it latches onto noise and produces brittle, high-variance solutions. Push past that boundary into heavy overparameterization and the behavior reverses, with error descending a second time. The term was popularized by Belkin and collaborators around 2019 and demonstrated at scale in deep networks by Nakkiran and colleagues."
+    },
+    {
+      "type": "p",
+      "text": "Double descent matters because it reconciles two facts that once seemed contradictory: classical theory warns against having more parameters than data, yet the largest and most overparameterized neural networks generalize best. The resolution is that capacity counted crudely, for example by the VC Dimension or raw parameter count, is the wrong axis once a model can interpolate. Beyond the threshold, many distinct zero-training-error solutions exist, and the relevant question is which one the learning procedure selects. The optimizer's Inductive Bias, its tendency to find low-norm, smooth, or flat solutions, picks a well-behaved interpolant out of the many available, and that implicit preference is what makes the second descent possible."
+    },
+    {
+      "type": "p",
+      "text": "The phenomenon reshapes practical intuition about Generalization and model selection. The old fear that more parameters than samples guarantees disaster is wrong in the overparameterized regime, and the historically risky choice is in fact the middle, near interpolation, where one should either back off or push well past. It also gives a subtler reading of Occams Razor: simplicity is not the same as fewer parameters, since a huge network can still encode a simple function through the bias of how it is trained. The honest lesson of double descent is that what controls generalization is not raw capacity but the effective complexity of the solution the training process actually lands on."
+    }
+  ],
+  "related": [
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "vc-dimension",
+      "label": "VC Dimension"
+    },
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias"
+    },
+    {
+      "slug": "empirical-risk-minimization",
+      "label": "Empirical Risk Minimization"
+    },
+    {
+      "slug": "occams-razor",
+      "label": "Occam's Razor"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

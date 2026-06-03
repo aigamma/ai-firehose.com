@@ -1,0 +1,17 @@
+---
+title: Unsupervised Learning
+slug: unsupervised-learning
+kind: technique
+category: Core Machine Learning
+aliases: unsupervised machine learning
+related: supervised-learning, reinforcement-learning, k-means, principal-component-analysis, kernel-method
+summary: A machine learning paradigm in which a model finds structure, patterns, or groupings in data that carries no labels, learning from the inputs alone.
+---
+
+Unsupervised learning is the discovery of structure in unlabeled data. Unlike Supervised Learning, there is no correct answer attached to each example; the algorithm sees only the inputs and must infer how they are organized. The two classic goals are clustering, which partitions examples into groups of similar items, and dimensionality reduction, which compresses many features into a few that capture most of the variation. Density estimation, which models how the data is distributed, is a third.
+
+Unsupervised learning matters because labels are scarce and the world is mostly unlabeled. Raw text, images, sensor logs, and user behavior arrive in vast quantities with no annotation, and labeling them by hand is expensive or impossible. Unsupervised methods extract value from that raw material directly: segmenting customers into behavioral groups, compressing high-dimensional data for visualization, detecting anomalies as points that fit no cluster, and learning representations that later make supervised tasks easier.
+
+How it works depends on the goal. K-Means clusters by alternately assigning points to the nearest center and recomputing those centers from the points assigned to them. Principal Component Analysis reduces dimensionality by finding the orthogonal directions of greatest variance and projecting the data onto them. Other approaches model the data as a mixture of probability distributions, or build embeddings in which geometric distance reflects semantic similarity. The recurring theme is an objective defined purely on the inputs, since no labels exist to compare against.
+
+Unsupervised learning connects to the rest of the field as the counterpart to Supervised Learning and Reinforcement Learning, distinguished by the absence of a supervision signal. The boundary is not absolute: self-supervised learning, which manufactures labels from the data itself (predicting a masked word from its context), powers the pretraining of modern large language models and blurs the line. Evaluation is the chief difficulty, because without ground-truth labels there is often no single correct answer to measure a clustering or an embedding against.

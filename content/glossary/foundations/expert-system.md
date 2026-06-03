@@ -1,0 +1,17 @@
+---
+title: Expert System
+slug: expert-system
+kind: technique
+category: Foundations and History
+aliases: expert systems, rule-based system, knowledge-based system
+related: symbolic-ai, ai-winter, artificial-intelligence, machine-learning, connectionism
+summary: A symbolic AI program that captures a human specialist's knowledge as a large set of if-then rules and applies them to give expert-level advice in a narrow domain. Expert systems were the commercial flagship of classical AI.
+---
+
+An expert system is a program designed to replicate the decision making of a human expert within a tightly bounded domain. Its knowledge is stored explicitly in a knowledge base, typically as hundreds or thousands of if-then rules elicited from specialists, and a separate component called the inference engine applies those rules to the facts of a specific case, chaining them together to reach a conclusion. The design cleanly separates what the system knows, the rules, from how it reasons, the engine, which made expert systems the most successful and most commercialized form of symbolic AI.
+
+Canonical examples defined the genre. MYCIN, built at Stanford in the 1970s, diagnosed bacterial infections and recommended antibiotics, and in tests performed comparably to specialists. DENDRAL inferred molecular structures from mass-spectrometry data, and XCON configured computer orders for Digital Equipment Corporation, reportedly saving the company tens of millions of dollars a year. These successes triggered a commercial boom in the 1980s, complete with dedicated companies, specialized hardware, and the sense that capturing expertise in rules was a reliable path to useful AI.
+
+Expert systems matter as much for their limits as their wins, because those limits drove a major turn in the field. They were brittle: outside the narrow band of cases their rules anticipated, they failed abruptly rather than degrading gracefully, having no general knowledge or common sense to fall back on. They could not learn from experience; every piece of knowledge had to be hand-coded and hand-maintained by knowledge engineers, an expensive bottleneck that scaled poorly. And eliciting tacit expertise from human specialists, much of which experts cannot articulate as rules, proved far harder than expected.
+
+These weaknesses help explain the second AI winter, when the costly expert-system industry collapsed under its own maintenance burden and the competition from cheaper general-purpose machines. The deeper significance is the contrast with what followed. Expert systems encode knowledge top-down, by hand, in the symbolic AI tradition; machine learning, and especially the connectionist approach of neural networks, learns knowledge bottom-up from data. The shift from hand-built rules to learned models is one of the central movements in the history of the field, and the expert system is the high-water mark of the approach that the data-driven era largely displaced.

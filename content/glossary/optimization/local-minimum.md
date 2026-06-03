@@ -1,0 +1,17 @@
+---
+title: Local Minimum
+slug: local-minimum
+kind: technique
+category: Optimization
+aliases: local minima, local optimum
+related: loss-landscape, loss-function, saddle-point, local-attractor-basin, gradient-descent, stochastic-gradient-descent
+summary: A point in the loss landscape that is lower than every point in its immediate neighborhood but not necessarily the lowest point overall, where the gradient vanishes and a descent-based optimizer can come to rest.
+---
+
+A local minimum is a low point of the loss landscape relative to its surroundings. At a local minimum the loss is smaller than at every nearby point, so the gradient is zero (there is no downhill direction within reach) and the curvature is upward in every direction. An optimizer that only ever moves downhill, which is what gradient descent does, will naturally settle into a local minimum and stop, because from there every small step would raise the loss.
+
+The reason this concept carries weight is the contrast with the global minimum, the single lowest point in the entire landscape. Classical optimization theory worried that gradient descent might get trapped in a poor local minimum far above the global best and report a bad solution as final. For small or carefully shaped problems this is a real concern, and it is the textbook explanation for why a descent method can fail to find the best answer: it found a basin bottom, just not the deepest one.
+
+In deep learning, however, the picture is more reassuring, and understanding why is important. In the extremely high-dimensional landscapes of large networks, for a critical point to be a true local minimum the curvature must be upward in every one of millions of directions simultaneously, which is statistically rare. Most points where the gradient vanishes are instead saddle points, which go down in at least one direction. Moreover the local minima that do exist tend to cluster at nearly the same low loss as the global minimum, so falling into one of them is usually fine. The practical obstacle to optimization is therefore less often a bad local minimum and more often slow progress through saddle points and flat plateaus.
+
+The geometry around a local minimum still matters for more than just where the optimizer stops. The basin of attraction surrounding it, the local attractor basin, determines which starting points flow into it, and the width of that basin is linked to generalization: wide, flat minima tend to generalize better than sharp, narrow ones. The noise in stochastic gradient descent helps here, since random fluctuations can bump the optimizer out of a sharp, shallow minimum and bias it toward wider basins, and momentum can carry it across small barriers that plain gradient descent would never leave.

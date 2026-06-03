@@ -1,0 +1,56 @@
+{
+  "id": "temperature",
+  "label": "Temperature",
+  "kind": "technique",
+  "category": "Inference and Sampling",
+  "aliases": [],
+  "durable": true,
+  "source": "authored",
+  "definition": "A scalar that rescales a model's output logits before they are turned into probabilities, controlling how random or deterministic the next-token choice is. Low temperature sharpens the distribution toward the most likely token; high temperature flattens it toward uniform.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Temperature is the primary knob for the randomness of a language model's output. At each step a model produces a vector of logits, one raw score per token in the vocabulary, and a softmax turns those scores into a probability distribution. Temperature divides every logit by a constant before that softmax runs. With a temperature of 1.0 the distribution is left as the model produced it; below 1.0 the gaps between scores are exaggerated and probability piles onto the top candidates; above 1.0 the gaps shrink and probability spreads out toward the long tail."
+    },
+    {
+      "type": "p",
+      "text": "The reason it matters is that the same model can behave very differently depending on this one number. A temperature near 0 makes the model nearly deterministic and is the right choice for tasks with a single correct answer: extraction, classification, code that must compile, arithmetic. A temperature around 0.7 to 1.0 injects the variation that creative writing, brainstorming, and dialogue depend on. Push it well above 1.0 and the text degrades into incoherence as rare, ungrammatical tokens start to win."
+    },
+    {
+      "type": "p",
+      "text": "Mechanically the effect is pure rescaling. Dividing the logits by a temperature T below 1 multiplies their differences, so a token that was modestly ahead becomes overwhelmingly likely after the softmax. Dividing by a T above 1 compresses those differences toward zero, and in the limit of very large T the distribution approaches uniform, every token equally probable. At exactly T equal to 0 the operation is undefined as a division, so implementations treat it as a degenerate case and simply take the maximum, which is greedy decoding."
+    },
+    {
+      "type": "p",
+      "text": "Temperature is almost always combined with a truncation method rather than used alone. top-p (nucleus sampling) and top-k first restrict the candidate set to a plausible head of the distribution, and temperature then reshapes the probabilities inside that surviving set. The ordering matters: truncating first removes the garbage tail, so raising temperature afterward adds variety without inviting nonsense. Tuning these together, rather than reaching for temperature in isolation, is how practitioners dial in the balance between reliability and surprise."
+    }
+  ],
+  "related": [
+    {
+      "slug": "top-p",
+      "label": "Top-p"
+    },
+    {
+      "slug": "top-k",
+      "label": "Top-k"
+    },
+    {
+      "slug": "greedy-decoding",
+      "label": "Greedy Decoding"
+    },
+    {
+      "slug": "logits",
+      "label": "Logits"
+    },
+    {
+      "slug": "repetition-penalty",
+      "label": "Repetition Penalty"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

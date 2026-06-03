@@ -1,0 +1,60 @@
+{
+  "id": "relu",
+  "label": "Rectified Linear Unit",
+  "kind": "technique",
+  "category": "Deep Learning Architectures",
+  "aliases": [
+    "ReLU",
+    "rectified linear unit",
+    "rectifier"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "An activation function that outputs the input unchanged when positive and zero otherwise, whose simplicity and non-saturating positive region made deep networks far easier and faster to train.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The rectified linear unit, or ReLU, is an activation function that returns its input when the input is positive and returns zero otherwise. It is the simplest useful nonlinearity in deep learning, computed as the maximum of zero and the input, yet its adoption around 2010 to 2012 was a turning point that helped make modern deep networks practical. It is now the default activation in the convolutional neural network and a common choice throughout the multilayer perceptron."
+    },
+    {
+      "type": "p",
+      "text": "ReLU matters chiefly because it mitigates the vanishing gradient problem that plagued the saturating activation functions before it. For any positive input its derivative is exactly one, so gradients pass backward through it undiminished, unlike the sigmoid and tanh whose derivatives shrink toward zero in saturation. This constant unit gradient on the positive side lets error signals reach early layers of a deep stack, which is a large part of why networks suddenly became deeper and trained faster once ReLU was widely adopted."
+    },
+    {
+      "type": "p",
+      "text": "Beyond gradient flow, ReLU is cheap and induces useful sparsity. Computing a maximum with zero is far faster than the exponentials a sigmoid requires, which speeds both training and inference. Because it outputs exactly zero for all negative inputs, roughly half of a layer's units are typically inactive for any given input, yielding sparse activations that are efficient and can aid generalization. It composes naturally with batch normalization, which is commonly placed just before it in a convolutional block."
+    },
+    {
+      "type": "p",
+      "text": "ReLU does have a well-known failure mode, the dying ReLU: a unit whose input stays negative across the data outputs zero permanently, receives zero gradient, and never recovers, effectively dropping out of the network. This motivated variants such as Leaky ReLU and Parametric ReLU, which allow a small nonzero slope for negative inputs, and smoother relatives like GELU and SiLU favored in transformers. Even so, plain ReLU remains the standard baseline activation, the function most networks reach for first."
+    }
+  ],
+  "related": [
+    {
+      "slug": "activation-function",
+      "label": "Activation Function"
+    },
+    {
+      "slug": "vanishing-gradient",
+      "label": "Vanishing Gradient"
+    },
+    {
+      "slug": "convolutional-neural-network",
+      "label": "Convolutional Neural Network"
+    },
+    {
+      "slug": "multilayer-perceptron",
+      "label": "Multilayer Perceptron"
+    },
+    {
+      "slug": "batch-normalization",
+      "label": "Batch Normalization"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

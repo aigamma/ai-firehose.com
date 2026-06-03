@@ -1,0 +1,17 @@
+---
+title: Activation Steering
+slug: activation-steering
+kind: technique
+category: Mechanistic Interpretability
+aliases: activation addition, steering vectors, representation engineering
+related: linear-representation-hypothesis, sparse-autoencoder, mechanistic-interpretability, probing-classifier, circuit, feature-visualization
+summary: A control technique that edits a model's behavior at inference time by adding a direction vector into its hidden activations, shifting the representation toward or away from a target concept without changing any weights.
+---
+
+Activation steering is a way to influence what a model does by intervening directly on its internal state rather than on its inputs or its weights. During a forward pass you add a fixed vector, a steering vector, into the residual stream at a chosen layer, nudging the activation in a direction associated with some concept or behavior. Add a vector pointing toward sycophancy and the model becomes more agreeable; subtract a vector for toxicity and outputs grow more guarded. Because the edit happens at runtime and touches only the activations, it is a lightweight form of control that needs no retraining and can be toggled per request or even per token.
+
+The technique matters for two reasons at once. Practically, it offers a cheap and granular lever over behavior that sits between prompting, which is easy but blunt, and fine-tuning, which is precise but costly and permanent. Scientifically, it is a causal probe. If adding a particular direction reliably produces a particular behavior, that direction is not merely correlated with the concept; it is part of how the model represents and acts on it. In this sense activation steering is the interventional complement to descriptive methods like the probing classifier, supplying the cut-the-wire test that mechanistic interpretability demands before it will call a representation load-bearing.
+
+The method works because of the linear representation hypothesis, the finding that many concepts are encoded as roughly linear directions in activation space, so that meaning can be added and removed with simple vector arithmetic. A steering vector is usually obtained as a contrast: run the model on inputs that exhibit a concept and on matched inputs that do not, and take the difference of their mean activations. The resulting direction, scaled by a coefficient that sets the strength, is injected at inference. Increasingly the directions come instead from a sparse autoencoder, whose monosemantic features make far cleaner and more targeted steering handles than raw difference vectors, letting an operator clamp a single named feature on or off.
+
+Activation steering connects the interpretability toolkit to alignment and control. It turns a feature discovered by interpretability into an actuator, which is why it appears both in safety research, as a way to suppress unsafe or deceptive tendencies, and in capability work, as a way to dial traits up or down on demand. Its limits are the same as its premises: steering is only as clean as the directions are linear and disentangled, push the coefficient too far and fluency collapses, and a vector estimated from one distribution may not transfer to another. The method is best understood as the practical payoff of the linear representation hypothesis: if concepts really are directions, then editing behavior is, to first order, arithmetic on those directions.

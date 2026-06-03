@@ -1,0 +1,17 @@
+---
+title: Tensor
+slug: tensor
+kind: technique
+category: Linear Algebra for ML
+aliases: tensors, ndarray, multidimensional array
+related: vector, matrix, matrix-multiplication, linear-transformation
+summary: A multidimensional array of numbers that generalizes scalars, vectors, and matrices to any number of axes, and the central data structure of modern deep learning frameworks.
+---
+
+A tensor is the generalization of a vector and a matrix to an arbitrary number of dimensions, which in this context are called axes or ranks. A single number is a rank-zero tensor, a vector is rank one, a matrix is rank two, and from there you keep stacking: a rank-three tensor is a box of numbers, a rank-four tensor a list of such boxes, and so on. The rank is just how many indices you need to address a single element, and the shape is the size along each axis.
+
+Tensors matter because real machine learning data is rarely flat. A color image is naturally a rank-three tensor of height, width, and three color channels. A batch of such images adds a fourth axis for the batch. A sequence of token embeddings fed to a transformer is a rank-three tensor of batch, sequence position, and embedding dimension. Keeping data in its natural multidimensional shape, rather than flattening it, lets a model exploit structure like spatial locality and sequence order.
+
+Operationally, the tensor is the unit that frameworks such as PyTorch and TensorFlow are built around, and the name of the latter says so directly. These libraries store tensors, move them to a GPU, and run the dense arithmetic on them in parallel, recording a graph of operations so that gradients can be propagated back through it automatically. Almost every line of a model definition is creating, reshaping, or combining tensors.
+
+The operations on tensors extend the familiar ones. Elementwise addition and scaling work exactly as they do for a vector, just across more axes. Matrix-multiplication generalizes to batched and higher-order contractions that multiply along chosen axes while leaving others untouched, and broadcasting lets a smaller tensor stretch to meet a larger one without copying data. In pure mathematics and physics a tensor carries a stricter meaning tied to how its components transform under a change of basis, but in deep learning the word almost always means simply a multidimensional array, the rank-N cousin of the matrix.
