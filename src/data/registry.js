@@ -90,6 +90,7 @@ export const NAV = [
   ...KINDS.map((k) => ({ label: k.label, route: k.route })),
   { label: "Watch", route: "/watch" },
   { label: "Glossary", route: "/glossary" },
+  { label: "Review", route: "/review" },
   { label: "Explore", route: "/explore" },
   { label: "Methodology", route: "/methodology" },
 ];

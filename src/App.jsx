@@ -14,6 +14,7 @@ const Explore = lazy(() => import("./pages/Explore.jsx"));
 const Watch = lazy(() => import("./pages/Watch.jsx"));
 const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
+const Review = lazy(() => import("./pages/Review.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route key={k.key} path={k.route} element={<KindView kindKey={k.key} />} />
         ))}
         <Route path="/glossary" element={<Glossary />} />
+        <Route path="/review" element={<Review />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/watch" element={<Watch />} />
