@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { getKind } from "../data/registry.js";
 
 // Concepts arrive from Pinecone metadata as either a string array or a single
@@ -33,7 +34,10 @@ function formatScore(score) {
 // One semantic-search result. The title links out to the source (results are
 // external URLs, so a plain anchor, not a Link). The kind chip and a left accent
 // seam carry the kind's color via --tile-accent, matching the rotation boards.
-export default function ItemCard({ item }) {
+// When `linkConcepts` is set (the Home "What Is New" feed, where concepts are
+// glossary slugs), each concept chip becomes a wiki-link into its hub, per the
+// citation contract; otherwise chips are plain text (the default, for search).
+export default function ItemCard({ item, linkConcepts = false }) {
   const kind = getKind(item.kind);
   const concepts = conceptLabels(item.concepts);
   const date = formatDate(item.published_at);
@@ -62,13 +66,17 @@ export default function ItemCard({ item }) {
         </div>
       )}
 
-      {item.summary && <p className="gloss-def faint" style={{ margin: "8px 0 0" }}>{item.summary}</p>}
+      {item.summary && <p className="gloss-def faint summary-clamp" style={{ margin: "8px 0 0" }}>{item.summary}</p>}
 
       {concepts.length > 0 && (
         <div className="chips" style={{ marginTop: 10 }}>
-          {concepts.map((c) => (
-            <span key={c} className="chip">{c}</span>
-          ))}
+          {concepts.map((c) =>
+            linkConcepts ? (
+              <Link key={c} to={`/technique/${c}`} className="chip">{c.replace(/-/g, " ")}</Link>
+            ) : (
+              <span key={c} className="chip">{c}</span>
+            )
+          )}
         </div>
       )}
     </article>

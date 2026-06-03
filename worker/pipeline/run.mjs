@@ -288,7 +288,11 @@ async function main() {
     }
     const newItems = [...newItemsByUrl.values()]
       .slice(0, 12)
-      .map((c) => ({ kind: c.kind, title: c.title, source: c.source, author_or_channel: c.author_or_channel || "", published_at: c.published_at, url: c.url, concepts: (c.concepts || []).map(slugify) }));
+      // Carry `id` (a stable React key and the concept-hub citation target) and the
+      // classifier `summary` (already on the row, set at upsert) so the Home "What
+      // Is New" feed can render a cited ItemCard, not just a title. See the Citation
+      // Contract in docs/RAG.md. Verbatim, no extra model cost.
+      .map((c) => ({ id: c.id, kind: c.kind, title: c.title, source: c.source, author_or_channel: c.author_or_channel || "", published_at: c.published_at, url: c.url, summary: c.summary || "", concepts: (c.concepts || []).map(slugify) }));
     const all = [];
     for (const kind of KIND_KEYS) {
       const series = byKind[kind] || {};

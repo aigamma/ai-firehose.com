@@ -288,9 +288,26 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 
 /* "Just surfaced": the new entrants the plane intentionally omits (no trajectory
    yet). A compact eyebrow label followed by inline links, wrapping. */
-.just-surfaced { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 12px 0 0; }
+.just-surfaced { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 0; }
 .just-surfaced .surfaced-item { font-size: 0.84rem; color: var(--text); }
 .just-surfaced .surfaced-item:hover { color: var(--accent); }
+
+/* Home dashboard: the large unified rotation plane beside a written briefing
+   column. Both tracks get min-width:0 so the width:100% SVG and any nowrap label
+   can shrink inside the grid instead of forcing horizontal overflow. Below 980px
+   the brief stacks under the plane and both span full width. */
+.dash-main { display: grid; gap: 22px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 980px) {
+  .dash-main { grid-template-columns: minmax(0, 1.6fr) minmax(290px, 1fr); }
+}
+.dash-plane { min-width: 0; }
+.dash-brief { min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.brief-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+/* The secondary per-topic rotation legend sits one notch quieter than the kind row. */
+.rot-kinds { margin-top: 14px; }
+.rot-kinds + .rot-legend { margin-top: 8px; opacity: 0.9; }
+/* Clamp long item summaries so the What Is New grid stays scannable. */
+.summary-clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Feeds (outliers, what is new) */
 .feed { list-style: none; margin: 0; padding: 0; }

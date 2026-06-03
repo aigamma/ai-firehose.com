@@ -1,6 +1,7 @@
 import { memo, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { quadrantOf, TRAIL_PALETTE } from "../data/registry.js";
+import { clampVal, truncate, trailPoints, onPointKey, axisExtent } from "../lib/rotationGeo.js";
 
 // A lean SVG rotation plane (the "rotation plane"). ratio on x, momentum on y,
 // both centered at 100. The normalization is Mansfield Relative Performance
@@ -11,44 +12,12 @@ import { quadrantOf, TRAIL_PALETTE } from "../data/registry.js";
 // over tinted quadrant zones, with a pill row that is both legend and per-topic
 // show/hide control. aigamma colors trails by current quadrant because it draws
 // 14 topics; we draw only the top 6, so we color by IDENTITY (one hue per
-// trail) which is easier to follow at low item counts.
+// trail) which is easier to follow at low item counts. The clamp, trail, label,
+// and axis-extent helpers are shared with UnifiedRotationChart via rotationGeo.js
+// so the two planes cannot drift.
 const S = 320;
 const PAD = 30;
 const HEAD_LIMIT = 6;
-
-// Clamp matches the worker's trail clamp (55..145) so a single stray point can
-// never blow out the axis range.
-const clampVal = (v) => Math.max(55, Math.min(145, v));
-
-// Truncate a head label so it does not overrun the plane on the right edge.
-function truncate(label, n = 16) {
-  const s = String(label || "");
-  return s.length > n ? `${s.slice(0, n - 1)}…` : s;
-}
-
-// The points to plot for one entity: its trail (oldest to newest) if present and
-// well-formed, otherwise just the head [ratio, momentum]. Every point is clamped
-// defensively in case an artifact slips an out-of-range value through.
-function trailPoints(e) {
-  const raw = Array.isArray(e.trail) ? e.trail : null;
-  const pts = (raw && raw.length
-    ? raw
-    : [[e.ratio, e.momentum]]
-  )
-    .filter((p) => Array.isArray(p) && p.length >= 2 && Number.isFinite(p[0]) && Number.isFinite(p[1]))
-    .map((p) => [clampVal(p[0]), clampVal(p[1])]);
-  // Fall back to the head if filtering emptied the trail.
-  if (!pts.length) pts.push([clampVal(e.ratio), clampVal(e.momentum)]);
-  return pts;
-}
-
-// Activate a point on Enter or Space, mirroring click-to-navigate.
-function onPointKey(e, go) {
-  if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
-    e.preventDefault();
-    go();
-  }
-}
 
 function RotationChart({ entities = [] }) {
   const navigate = useNavigate();
@@ -56,7 +25,7 @@ function RotationChart({ entities = [] }) {
   // The plotted set: the top entities by attention (already sorted descending in
   // the artifact) that are NOT new entrants. New entrants have one mention and no
   // trajectory; plotting them would pin a dot to the clamp corner and mislead, so
-  // RotationBoard surfaces them separately in a "Just surfaced" line.
+  // they are surfaced separately in a "Just surfaced" line instead.
   const plotted = useMemo(
     () => entities.filter((e) => !e.outlier?.new_entrant).slice(0, HEAD_LIMIT),
     [entities]
@@ -79,17 +48,8 @@ function RotationChart({ entities = [] }) {
   );
 
   // Axis range spans ALL plotted trail points (not just heads) and is symmetric
-  // around 100, so toggling a topic's visibility never warps the layout. Half-
-  // extent is at least 1.5, then padded by ~1.18.
-  const dev = useMemo(() => {
-    let d = 1.5;
-    for (const t of traces) {
-      for (const [rx, my] of t.points) {
-        d = Math.max(d, Math.abs(rx - 100), Math.abs(my - 100));
-      }
-    }
-    return d * 1.18;
-  }, [traces]);
+  // around 100, so toggling a topic's visibility never warps the layout.
+  const dev = useMemo(() => axisExtent(traces), [traces]);
 
   // Visibility toggles. A hidden Set keeps "all visible" as the empty default, so
   // a topic is shown unless explicitly hidden.

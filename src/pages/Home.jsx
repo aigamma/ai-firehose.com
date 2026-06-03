@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
-import RotationBoard from "../components/RotationBoard.jsx";
+import UnifiedRotationChart from "../components/UnifiedRotationChart.jsx";
+import ItemCard from "../components/ItemCard.jsx";
+import Sparkline from "../components/Sparkline.jsx";
 import useData from "../lib/useData.js";
-import { SITE, KINDS, HORIZONS, QUADRANTS, quadrantOf, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
+import useUnifiedAttention from "../lib/useUnifiedAttention.js";
+import { SITE, HORIZONS, QUADRANTS, quadrantOf, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
 
 // A distinct load-failure notice, visually separate from the dashed ".empty"
 // awaiting-ingestion box, so a real error is never read as "no data yet".
@@ -51,8 +54,25 @@ export default function Home() {
   const [horizon, setHorizon] = useState(DEFAULT_HORIZON);
   const h = getHorizon(horizon);
   const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
+  const { entities, loading: attnLoading, error: attnError, anyData: anyAttn } = useUnifiedAttention(horizon);
   const synthetic = digest?.synthetic;
   const breakout = digest?.outliers?.[0] || digest?.movers?.[0];
+
+  // Top Movers: the strongest trend shifts, excluding new entrants (those are
+  // surfaced separately under "Just Surfaced", so the brief does not say the same
+  // thing twice). digest.movers is already sorted by |momentum - 100| descending.
+  const movers = (digest?.movers || []).filter((m) => !m.outlier?.new_entrant).slice(0, 5);
+
+  // Just Surfaced: new entrants across all three kinds (the plane omits them, they
+  // have no trajectory). Dedupe by id; a concept can surface on more than one board.
+  const surfaced = [];
+  const seen = new Set();
+  for (const e of entities) {
+    if (e.outlier?.new_entrant && !seen.has(e.id)) {
+      seen.add(e.id);
+      surfaced.push(e);
+    }
+  }
 
   // Arrow keys cycle the horizon (Day to Quarter), but ONLY when focus is within
   // the switcher, so the global page is not robbed of arrow-key scrolling and
@@ -120,36 +140,82 @@ export default function Home() {
           <span className="faint mono" style={{ marginLeft: "auto" }}>Mansfield Relative Performance (1979)</span>
         </div>
         <QuadrantLegend />
-        <div className="grid cols-3" style={{ marginTop: 16 }}>
-          {KINDS.map((k) => (
-            <RotationBoard key={k.key} kindKey={k.key} horizon={horizon} />
-          ))}
-        </div>
-      </section>
+        <div className="dash-main" style={{ marginTop: 16 }}>
+          <div className="dash-plane">
+            {attnError ? (
+              <LoadError label="Rotation plane" />
+            ) : anyAttn ? (
+              <UnifiedRotationChart entities={entities} />
+            ) : (
+              <div className="empty">
+                <strong>Rotation plane</strong>
+                {attnLoading ? "Loading…" : "Awaiting ingestion."}
+              </div>
+            )}
+          </div>
 
-      <section className="card">
-        <div className="card-head"><h2>Outliers</h2></div>
-        {digestError ? (
-          <LoadError label="Breakouts and new entrants" />
-        ) : digest?.outliers?.length ? (
-          <ul className="feed">
-            {digest.outliers.map((o, i) => {
-              const kind = getKind(o.kind);
-              return (
-                <li key={i}>
-                  <span className="dot" style={{ background: `var(${quadrantOf(o.quadrant).colorVar})` }} />
-                  <span className="lead-label">
-                    <Link to={`/technique/${o.id}`}>{o.label}</Link>
-                  </span>
-                  {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
-                  <Reasons outlier={o.outlier} />
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <div className="empty"><strong>Breakouts and new entrants</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
-        )}
+          <div className="dash-brief">
+            <div className="brief-block">
+              <div className="brief-head"><span className="eyebrow">Top Movers</span></div>
+              {digestError ? (
+                <LoadError label="Top movers" />
+              ) : movers.length ? (
+                <ul className="leaders">
+                  {movers.map((m) => (
+                    <li key={m.id}>
+                      <span className="dot" style={{ background: `var(${quadrantOf(m.quadrant).colorVar})` }} />
+                      <span className="lead-label" title={`${m.quadrant} · ratio ${m.ratio} · momentum ${m.momentum}`}>
+                        <Link to={`/technique/${m.id}`}>{m.label}</Link>
+                      </span>
+                      <Sparkline values={m.sparkline} stroke={`var(${quadrantOf(m.quadrant).colorVar})`} />
+                      <span className="mono">m {m.momentum}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="faint" style={{ margin: 0 }}>{digestLoading ? "Loading…" : "No strong movers this window."}</p>
+              )}
+            </div>
+
+            <div className="brief-block">
+              <div className="brief-head"><span className="eyebrow">Breaking Out</span></div>
+              {digestError ? (
+                <LoadError label="Breakouts and new entrants" />
+              ) : digest?.outliers?.length ? (
+                <ul className="feed">
+                  {digest.outliers.map((o, i) => {
+                    const kind = getKind(o.kind);
+                    return (
+                      <li key={i}>
+                        <span className="dot" style={{ background: `var(${quadrantOf(o.quadrant).colorVar})` }} />
+                        <span className="lead-label">
+                          <Link to={`/technique/${o.id}`}>{o.label}</Link>
+                        </span>
+                        {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
+                        <Reasons outlier={o.outlier} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="faint" style={{ margin: 0 }}>{digestLoading ? "Loading…" : "No breakouts this window."}</p>
+              )}
+            </div>
+
+            {surfaced.length > 0 && (
+              <div className="brief-block">
+                <div className="brief-head"><span className="eyebrow">Just Surfaced</span></div>
+                <p className="just-surfaced">
+                  {surfaced.map((e) => (
+                    <Link key={e.id} to={`/technique/${e.id}`} className="surfaced-item">
+                      {e.label}
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </section>
 
       <section className="card">
@@ -160,40 +226,11 @@ export default function Home() {
         {digestError ? (
           <LoadError label={`New in the past ${h.label.toLowerCase()}`} />
         ) : digest?.new_items?.length ? (
-          <ul className="feed">
-            {digest.new_items.map((it, i) => {
-              const kind = getKind(it.kind);
-              return (
-                <li key={i} className="feed-rich">
-                  <div className="feed-head">
-                    {kind && (
-                      <span className={`badge ${kind.badgeClass}`}>
-                        <span className="dot" style={{ background: `var(${kind.accentVar})` }} />
-                        {kind.singular}
-                      </span>
-                    )}
-                    <span className="lead-label">
-                      {it.url && it.url !== "#" ? (
-                        <a href={it.url} target="_blank" rel="noreferrer">{it.title}</a>
-                      ) : (
-                        it.title
-                      )}
-                    </span>
-                    <span className="faint mono">{it.author_or_channel || it.source}</span>
-                  </div>
-                  {it.concepts?.length > 0 && (
-                    <div className="chips">
-                      {it.concepts.slice(0, 4).map((slug) => (
-                        <Link key={slug} to={`/technique/${slug}`} className="chip">
-                          {slug.replace(/-/g, " ")}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <div className="grid cols-2">
+            {digest.new_items.map((it, i) => (
+              <ItemCard key={it.id || i} item={it} linkConcepts />
+            ))}
+          </div>
         ) : (
           <div className="empty"><strong>New in the past {h.label.toLowerCase()}</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
         )}

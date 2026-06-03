@@ -23,10 +23,14 @@ export const RETENTION_DAYS = 100;
 
 // The three kinds. Each rotates on its own board; the entity that rotates
 // differs per kind. All three share one attention-and-rotation computation.
+// Each kind also carries a marker `shape` for the unified rotation plane, where
+// color alone cannot separate three kinds for a colorblind reader. The shape is a
+// redundant encoding (technique circle, tool triangle, opinion square) drawn only
+// on the head marker; tail dots stay circles (shape is illegible at 2.5px).
 export const KINDS = [
-  { key: "technique", label: "Techniques", singular: "Technique", entity: "concept", route: "/techniques", accentVar: "--kind-technique", badgeClass: "kind-technique" },
-  { key: "tool",      label: "Tools",      singular: "Tool",      entity: "product", route: "/tools",      accentVar: "--kind-tool",      badgeClass: "kind-tool" },
-  { key: "opinion",   label: "Opinions",   singular: "Opinion",   entity: "theme",   route: "/opinions",   accentVar: "--kind-opinion",   badgeClass: "kind-opinion" },
+  { key: "technique", label: "Techniques", singular: "Technique", entity: "concept", route: "/techniques", accentVar: "--kind-technique", badgeClass: "kind-technique", shape: "circle" },
+  { key: "tool",      label: "Tools",      singular: "Tool",      entity: "product", route: "/tools",      accentVar: "--kind-tool",      badgeClass: "kind-tool",      shape: "triangle" },
+  { key: "opinion",   label: "Opinions",   singular: "Opinion",   entity: "theme",   route: "/opinions",   accentVar: "--kind-opinion",   badgeClass: "kind-opinion",   shape: "square" },
 ];
 
 // The four time depths. Each is a nested window inside the single retained
@@ -66,6 +70,24 @@ export const TRAIL_PALETTE = [
   "#a3e635", // lime
   "#fb7185", // coral
 ];
+
+// The unified rotation plane (Home) plots all three kinds on one set of axes and
+// must prune the boring long tail so the chart stays readable. These knobs are the
+// single place to tune that pruning and the label declutter. Per kind: drop new
+// entrants (surfaced separately), keep the top `perKind` by attention, then keep
+// only the ones that are actually moving (`breakout` or `quadrant_jump`, or a
+// ratio/momentum at least `rsMin`/`momMin` off the neutral 100), but never drop a
+// kind to zero. Cap the whole plane at `maxTotal`. Label only the breakouts and the
+// top `labelPerKind` per kind; the rest carry their name on hover. The single-kind
+// chart (RotationChart, on the deep views) keeps its own HEAD_LIMIT and is untouched.
+export const ROTATION = {
+  perKind: 5,
+  maxTotal: 15,
+  momMin: 6,
+  rsMin: 8,
+  labelPerKind: 2,
+  labelMinGap: 13, // px, the greedy vertical declutter spacing between head labels
+};
 
 // AI-discourse concept axes (v1). Pole anchors (the multi-sentence embedding
 // text) live with the worker prompts; here we keep slugs and display titles.
