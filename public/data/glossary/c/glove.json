@@ -1,0 +1,63 @@
+{
+  "id": "glove",
+  "label": "GloVe",
+  "kind": "technique",
+  "category": "NLP Foundations",
+  "aliases": [
+    "Global Vectors",
+    "global vectors for word representation"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A word embedding method from Stanford that learns word vectors by factorizing a global word-word co-occurrence matrix, combining the corpus-wide statistics of count-based methods with the geometry of prediction-based ones.",
+  "body": [
+    {
+      "type": "p",
+      "text": "GloVe, short for Global Vectors for word representation, is a technique for learning word embeddings introduced by Jeffrey Pennington, Richard Socher, and Christopher Manning at Stanford in 2014. Like word2vec, it produces dense vectors in which words used in similar ways sit near each other, but it arrives there by a different route. GloVe is built explicitly on the statistics of how often words co-occur across an entire corpus, rather than on sliding a prediction window over local context."
+    },
+    {
+      "type": "p",
+      "text": "The method first builds a large co-occurrence matrix whose entry for a pair of words counts how often they appear together within a context window, aggregated over the whole corpus. GloVe then learns word vectors whose dot products approximate the logarithm of these co-occurrence counts. The training objective is a weighted least-squares regression that downweights very rare and very frequent pairs, so common but uninformative pairings do not dominate. The result is a vector space where, as in word2vec, meaningful relationships appear as consistent directional offsets, supporting the same analogy arithmetic."
+    },
+    {
+      "type": "p",
+      "text": "GloVe matters as the count-based counterpart to word2vec's prediction-based learning, and the contrast clarified the field. word2vec captures local context one window at a time; GloVe folds in global co-occurrence ratios directly. The authors argued that ratios of co-occurrence probabilities, not raw probabilities, are what encode meaning, since the ratio of how often \"ice\" versus \"steam\" co-occurs with \"solid\" cleanly separates the two. In practice the two methods produce embeddings of broadly comparable quality, and which performs better depends on the corpus and task."
+    },
+    {
+      "type": "p",
+      "text": "GloVe shares the central limitation of its generation: its embeddings are static. Each word has one vector no matter the sentence, so the financial and geographic senses of \"bank\" collapse into a single compromise point, and word order within a window is ignored. These context-free vectors were nonetheless the standard pretrained input layer for neural NLP for several years, distributed as downloadable files trained on web-scale corpora and dropped into downstream models."
+    },
+    {
+      "type": "p",
+      "text": "In the path toward modern systems, GloVe and word2vec together established the practice of pretraining representations on unlabeled text and reusing them everywhere, the seed of transfer learning in NLP. The static word vector gave way to the contextual representations of bert, where masked-language-modeling lets a word's vector depend on its neighbors, and ultimately to the transformer, whose self-attention recomputes each token's representation from the entire sequence. GloVe is a foundational waypoint on that line."
+    }
+  ],
+  "related": [
+    {
+      "slug": "word2vec",
+      "label": "word2vec"
+    },
+    {
+      "slug": "word-embedding",
+      "label": "Word Embedding"
+    },
+    {
+      "slug": "tf-idf",
+      "label": "TF-IDF"
+    },
+    {
+      "slug": "n-gram-model",
+      "label": "N-Gram Model"
+    },
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

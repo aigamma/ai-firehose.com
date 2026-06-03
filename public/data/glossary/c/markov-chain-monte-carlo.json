@@ -1,0 +1,62 @@
+{
+  "id": "markov-chain-monte-carlo",
+  "label": "Markov Chain Monte Carlo",
+  "kind": "technique",
+  "category": "Probabilistic Machine Learning",
+  "aliases": [
+    "MCMC"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A family of algorithms that sample from a complex probability distribution by simulating a Markov chain whose long-run equilibrium is that distribution, used to approximate otherwise intractable Bayesian posteriors and expectations.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Markov chain Monte Carlo, or MCMC, is a family of algorithms for drawing samples from a probability distribution that you can evaluate up to a constant but cannot sample from directly. The central trick is to construct a Markov chain, a random walk whose next state depends only on the current one, that is carefully designed so its long-run equilibrium distribution is exactly the target distribution. Run the chain long enough and the states it visits become samples from the target, even when the target is a high-dimensional posterior with no closed form."
+    },
+    {
+      "type": "p",
+      "text": "MCMC matters because it is the workhorse of exact-in-the-limit [Bayesian inference](bayesian-inference). The hard part of any Bayesian calculation is the normalizing constant, the integral over all parameter values; MCMC never needs it, because the algorithms depend only on ratios of the unnormalized density, in which the constant cancels. That single property unlocks posteriors over models that would otherwise be impossible to handle, and it lets you estimate any [expectation](expectation) under the posterior, a predictive mean, a tail probability, a credible interval, simply by averaging a function over the collected samples. For decades, before scalable alternatives existed, MCMC was effectively how Bayesian statistics was done in practice."
+    },
+    {
+      "type": "p",
+      "text": "The mechanics are easiest to see in the Metropolis-Hastings algorithm. From the current state it proposes a candidate move, then accepts or rejects that candidate with a probability built from the ratio of target densities at the two points. Moves toward higher-density regions are usually accepted and moves toward lower-density regions are sometimes accepted, and this accept-reject rule is exactly what forces the chain's equilibrium to be the target. Gibbs sampling is a special case that updates one variable at a time from its conditional distribution, and modern gradient-aware variants such as Hamiltonian Monte Carlo and the No-U-Turn Sampler use the gradient of the log-density to propose long, efficient moves, which is why they power general-purpose probabilistic programming systems. In every case the early samples, collected before the chain reaches equilibrium, are discarded as burn-in, and the practitioner must check that the chain has mixed and explored the whole distribution."
+    },
+    {
+      "type": "p",
+      "text": "MCMC sits opposite [variational inference](variational-inference) on the central tradeoff of approximate Bayesian computation. MCMC is asymptotically exact but can be slow, sequential, and hard to diagnose, especially on large datasets and highly correlated posteriors; variational inference is fast and scalable but only approximate. It is also closely related to [importance sampling](importance-sampling), another Monte Carlo estimator, but MCMC's adaptive, density-following walk explores high-dimensional spaces far more efficiently than drawing independent weighted samples from a fixed proposal. Knowing when a problem calls for the exactness of MCMC versus the speed of variational methods is one of the practical judgments at the center of probabilistic machine learning."
+    }
+  ],
+  "related": [
+    {
+      "slug": "bayesian-inference",
+      "label": "Bayesian Inference"
+    },
+    {
+      "slug": "importance-sampling",
+      "label": "Importance Sampling"
+    },
+    {
+      "slug": "variational-inference",
+      "label": "Variational Inference"
+    },
+    {
+      "slug": "probability-distribution",
+      "label": "Probability Distribution"
+    },
+    {
+      "slug": "expectation",
+      "label": "Expectation"
+    },
+    {
+      "slug": "gaussian-distribution",
+      "label": "Gaussian Distribution"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

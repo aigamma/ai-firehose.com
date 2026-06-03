@@ -1,0 +1,19 @@
+---
+title: Temporal Difference Learning
+slug: temporal-difference-learning
+kind: technique
+category: Reinforcement Learning
+aliases: TD learning, TD error
+related: value-function, q-learning, bellman-equation, actor-critic, reinforcement-learning, markov-decision-process
+summary: A class of reinforcement learning methods that learn value estimates from experience by bootstrapping, updating each prediction toward a target built from the next reward plus the current estimate of the following state's value.
+---
+
+Temporal difference learning, usually shortened to TD learning, is one of the central ideas in reinforcement learning, introduced by Richard Sutton in the 1980s. It learns to predict the long-run value of states or actions directly from experience, without a model of the environment and without waiting for the final outcome. The name refers to the quantity it learns from: the difference between two successive predictions made at different moments in time.
+
+What makes TD learning distinctive is bootstrapping, learning a guess from a guess. After taking one step and seeing the reward and next state, the agent forms a target equal to that reward plus its own current estimate of the next state's value, then nudges its prediction for the original state toward that target. The gap between target and prediction is the TD error. This is a sampled, incremental version of the bellman-equation, which asserts exactly that a state's value should equal the reward plus the discounted value of what follows.
+
+TD learning matters because it occupies a productive middle ground between two extremes. Monte Carlo methods wait until an episode ends and update toward the full observed return, which is unbiased but high in variance and unusable in continuing tasks that never terminate. Pure planning requires a known model. TD learning needs neither: it updates after every single step, online and incrementally, and it works in problems that go on indefinitely. That combination of low variance and model-free, step-by-step learning is why it scales to hard problems.
+
+The TD error is also a remarkably general learning signal. In TD(0) it trains a state value-function. Applied to action values with a max over next actions it becomes q-learning; applied with the action the policy actually takes it becomes SARSA. In actor-critic methods the same TD error trains the critic and simultaneously serves as the advantage that updates the actor. Multi-step variants and eligibility traces, written TD(lambda), blend short bootstrapped targets with longer Monte Carlo returns to tune the bias-variance balance.
+
+Beyond engineering, TD learning has a striking tie to neuroscience. The phasic firing of dopamine neurons in the brain closely tracks a reward prediction error, the biological analogue of the TD error, which has made TD learning a leading computational account of how animals learn from reward. That convergence of a machine learning algorithm and a brain mechanism is part of why the idea is considered foundational rather than merely useful.

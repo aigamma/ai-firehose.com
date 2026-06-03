@@ -1,0 +1,59 @@
+{
+  "id": "conjugate-gradient",
+  "label": "Conjugate Gradient",
+  "kind": "technique",
+  "category": "Advanced Optimization",
+  "aliases": [
+    "CG",
+    "conjugate gradient method"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "An iterative optimization method that minimizes a quadratic function by stepping along a sequence of mutually conjugate directions, achieving fast convergence using only gradients and no explicit curvature matrix.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Conjugate gradient is an iterative method for minimizing quadratic functions, and by extension for solving large linear systems, that captures much of the speed of second-order optimization while using only first-order information. It was designed to fix the central flaw of steepest descent on stretched, valley-shaped surfaces: gradient descent repeatedly steps perpendicular to the contours, which on an elongated bowl produces a slow zig-zag down the valley, undoing part of its own progress on every step."
+    },
+    {
+      "type": "p",
+      "text": "The fix is to choose search directions that do not interfere with each other. Two directions are called conjugate with respect to the curvature matrix when a line search along one does not spoil the minimization already achieved along the others. By building each new direction to be conjugate to all the previous ones, the method never has to revisit a direction it has already optimized. For a quadratic in n variables, conjugate gradient is therefore guaranteed to reach the exact minimum in at most n steps, and usually far fewer when the curvature is favorable."
+    },
+    {
+      "type": "p",
+      "text": "What makes it practical at scale is that it constructs these conjugate directions cheaply. Each iteration combines the current gradient with the previous search direction using a single scalar, so the method needs only gradient evaluations and a few vectors of storage. It never forms or inverts the Hessian, which is what makes Newton's method intractable for large problems. This combination, near-Newton convergence on quadratics at gradient-descent memory cost, is why conjugate gradient is a default workhorse for very large sparse linear systems in scientific computing."
+    },
+    {
+      "type": "p",
+      "text": "For the non-quadratic loss landscapes of machine learning, nonlinear conjugate gradient variants (Fletcher-Reeves, Polak-Ribiere) apply the same recurrence with periodic restarts, since the conjugacy guarantee only holds locally where the surface looks quadratic. In deep learning it is most visible inside other algorithms rather than as a top-level optimizer: trust region and Hessian-free methods use conjugate gradient as their inner solver to approximately apply an inverse Hessian without ever building it, and it sits conceptually beside lbfgs as the other great way to get curvature-aware steps from gradients alone."
+    }
+  ],
+  "related": [
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "newtons-method",
+      "label": "Newton's Method"
+    },
+    {
+      "slug": "lbfgs",
+      "label": "L-BFGS"
+    },
+    {
+      "slug": "trust-region",
+      "label": "Trust Region"
+    },
+    {
+      "slug": "loss-landscape",
+      "label": "Loss Landscape"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

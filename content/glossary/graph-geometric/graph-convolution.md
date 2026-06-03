@@ -1,0 +1,17 @@
+---
+title: Graph Convolution
+slug: graph-convolution
+kind: technique
+category: Graph and Geometric Learning
+aliases: graph convolutional network, GCN, spectral convolution
+related: graph-neural-network, message-passing, spectral-graph-theory, convolutional-neural-network, node-embedding, graph-attention-network
+summary: The generalization of the convolution operation from regular grids to arbitrary graphs, in which each node mixes its features with those of its neighbors, forming the most common building block of graph neural networks.
+---
+
+Graph convolution generalizes the convolution at the heart of a convolutional neural network from a regular pixel grid to an arbitrary graph. On an image, a convolution slides a small filter over a fixed neighborhood of each pixel. A graph has no fixed neighborhood size and no consistent spatial layout, so a graph convolution instead defines a node's new feature as a weighted combination of its own features and those of its neighbors, typically normalized by node degrees. The familiar grid convolution turns out to be the special case where the graph is a regular lattice, which is what makes this a genuine generalization rather than a loose analogy.
+
+It matters because the graph convolution is the default workhorse layer of the field: stacking a few of them gives a strong, cheap baseline graph neural network for node classification, link prediction, and graph-level tasks. Each layer spreads information one hop outward, so k stacked graph convolutions let every node see its k-hop neighborhood. This locality is also a useful inductive bias, encoding the assumption that connected nodes tend to be similar, an assumption that holds across citation networks, social graphs, molecules, and recommender systems.
+
+There are two complementary derivations of the same operation. The spectral view, grounded in spectral graph theory, defines convolution through the eigenvectors of the graph Laplacian, treating filtering as multiplication in the graph's frequency domain just as classical convolution is multiplication in the Fourier domain. Because using the full eigenbasis is expensive and tied to one fixed graph, practical models approximate it with low-order polynomials of the Laplacian, which localizes the filter to a few hops and removes the need to ever compute an eigendecomposition. The spatial view simply describes the result directly as neighborhood aggregation, which is one instance of message passing. The two views meet at the popular graph convolutional network, whose layer is a first-order spectral approximation that reads, in spatial terms, as a degree-normalized average over each node and its neighbors.
+
+Graph convolution connects outward in several directions. Where it weights neighbors by fixed structural coefficients, the graph attention network replaces those coefficients with learned, content-dependent attention. Its output is a node embedding, a coordinate placing structurally and functionally similar nodes near one another. And it sits inside geometric deep learning as the canonical permutation-equivariant layer for graph-structured data, the relational counterpart to the translation-equivariant convolution on grids and a close cousin of the self-attention used in transformers.

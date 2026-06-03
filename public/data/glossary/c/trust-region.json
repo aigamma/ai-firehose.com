@@ -1,0 +1,59 @@
+{
+  "id": "trust-region",
+  "label": "Trust Region",
+  "kind": "technique",
+  "category": "Advanced Optimization",
+  "aliases": [
+    "trust region method",
+    "trust-region optimization"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "An optimization strategy that builds a local model of the objective and minimizes it only within a bounded region where the model is trusted to be accurate, expanding or shrinking that region based on how well the model predicted the actual improvement.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Trust region methods are a robust alternative to line-search optimization, and they directly cure the instability that makes raw Newton's method dangerous far from a minimum. Both Newton and trust region build a local quadratic model of the objective from the gradient and curvature. The difference is what they do with it. A line-search method commits to the direction the model recommends and then searches for a good distance to travel along it. A trust region method instead fixes a radius first, a region around the current point within which it trusts the quadratic model to be accurate, and finds the best step inside that ball, capping the step length up front."
+    },
+    {
+      "type": "p",
+      "text": "The cleverness is that the radius is managed adaptively using the model's own track record. After each tentative step the method compares the improvement the model predicted against the improvement actually achieved, a ratio that measures how trustworthy the local approximation just proved to be. When the agreement is good the region is enlarged so future steps can be bolder; when the model badly overpredicts the gain the step is rejected and the region is shrunk, forcing a shorter, safer move. This feedback loop lets the method take aggressive near-Newton steps where the surface is well-behaved and automatically retreat to cautious steps where it is not, without ever needing the Hessian to be positive definite, the condition Newton's method requires and frequently violates."
+    },
+    {
+      "type": "p",
+      "text": "This robustness is why trust region methods matter, especially on nonconvex problems with saddle points and indefinite curvature, exactly the terrain of neural network loss landscapes. They will make progress where a pure Newton step would diverge and where gradient descent would crawl. The inner job of minimizing the quadratic within the radius is itself solved approximately and cheaply, very often by a truncated conjugate gradient iteration, which is what allows the approach to scale without forming the Hessian explicitly. This Hessian-free style brought trust region ideas to deep learning."
+    },
+    {
+      "type": "p",
+      "text": "Trust region thinking also reaches well beyond classical optimization. In reinforcement learning, Trust Region Policy Optimization limits each policy update to a region of small Kullback-Leibler divergence, applying the same \"do not step outside where you are confident\" discipline to keep learning stable, a constraint measured by the same Fisher geometry that defines the natural gradient. The enduring contribution is the principle of controlling the step by the reliability of the model rather than by a fixed learning rate, the complementary alternative to line search throughout nonlinear optimization."
+    }
+  ],
+  "related": [
+    {
+      "slug": "newtons-method",
+      "label": "Newton's Method"
+    },
+    {
+      "slug": "conjugate-gradient",
+      "label": "Conjugate Gradient"
+    },
+    {
+      "slug": "lbfgs",
+      "label": "L-BFGS"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "natural-gradient",
+      "label": "Natural Gradient"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

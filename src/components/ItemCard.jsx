@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getKind } from "../data/registry.js";
+import RichText from "./RichText.jsx";
 
 // Concepts arrive from Pinecone metadata as either a string array or a single
 // comma-joined string (the worker tolerates both). Coerce to a clean label list
@@ -66,7 +67,11 @@ export default function ItemCard({ item, linkConcepts = false }) {
         </div>
       )}
 
-      {item.summary && <p className="gloss-def faint summary-clamp" style={{ margin: "8px 0 0" }}>{item.summary}</p>}
+      {item.summary && (
+        <p className="gloss-def faint summary-clamp" style={{ margin: "8px 0 0" }}>
+          <RichText as="span" text={item.summary} />
+        </p>
+      )}
 
       {concepts.length > 0 && (
         <div className="chips" style={{ marginTop: 10 }}>

@@ -1,0 +1,69 @@
+{
+  "id": "fourier-transform",
+  "label": "Fourier Transform",
+  "kind": "technique",
+  "category": "Advanced Mathematics",
+  "aliases": [
+    "Fourier transform",
+    "Fourier analysis",
+    "frequency domain",
+    "FFT"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A transformation that re-expresses a signal as a sum of pure oscillations of different frequencies, moving between the time or space domain and the frequency domain and turning convolution into simple multiplication.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The Fourier transform rewrites a signal as a combination of pure waves. Any reasonable function of time or space can be decomposed into sinusoids of different frequencies, each weighted by a complex amplitude that records how strongly that frequency is present and with what phase. The transform maps the original signal, viewed in the time or space domain, to this profile of amplitudes across frequency, the frequency domain, and an inverse transform reconstructs the signal exactly. A musical chord viewed as a pressure wave over time looks complicated; viewed in the frequency domain it is just a few sharp spikes at the constituent notes. That change of viewpoint, from how a signal evolves to what it is made of, is the entire idea."
+    },
+    {
+      "type": "p",
+      "text": "What makes the transform more than a clever change of coordinates is the convolution theorem: convolution in one domain is plain pointwise multiplication in the other. Filtering, smoothing, and the sliding-window correlations that are expensive to compute directly become elementwise products in the frequency domain, which is why so much of signal processing is done there. The Fast Fourier Transform computes the discrete version in time proportional to n log n rather than n squared, a speedup so consequential that it is one of the most important algorithms ever written, enabling real-time audio, image, and communications processing across the whole of engineering."
+    },
+    {
+      "type": "p",
+      "text": "There is a clean linear-algebra reason the transform is so canonical. The sinusoids are the eigenvectors of any system that is invariant to shifts, so the Fourier transform is the spectral-decomposition that simultaneously diagonalizes all shift-invariant (convolution) operators. Feeding a pure frequency through such a system returns the same frequency, only rescaled, and that scaling is the system's frequency response. Seen through group-theory, the transform is harmonic analysis on the translation group: it decomposes signals into the irreducible representations of that group. This is also why generalizations exist, replacing translation with the rotation group to get spherical harmonics, the analysis behind spherical convolutions and steerable filters."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning the Fourier transform recurs in several roles. Because convolution is multiplication in the frequency domain, the convolution at the heart of a convolutional-neural-network can be analyzed and sometimes computed spectrally, and a network's behavior is often understood through which frequencies it preserves or suppresses, a perspective that explains spectral bias, the tendency of neural networks to fit low frequencies first. Fourier features, which lift inputs through sines and cosines at many frequencies, let models represent high-frequency detail that raw coordinates struggle to capture, a trick central to coordinate-based networks and closely related in spirit to the sinusoidal positional-encoding that injects order into a transformer. Spectral methods on graphs define frequency through the graph Laplacian and design filters there."
+    },
+    {
+      "type": "p",
+      "text": "More abstractly, the Fourier transform is a change of basis in an infinite-dimensional hilbert-space, swapping the basis of point-localized impulses for the basis of perfectly periodic waves, two complementary descriptions of the same object connected by an exact, invertible, energy-preserving map (Parseval's theorem). The deep tradeoff it exposes, that a signal cannot be arbitrarily sharp in both time and frequency at once, is the uncertainty principle, the same mathematics that governs quantum measurement. For an engineer the practical summary is simpler: when a problem involves periodicity, convolution, or shift-invariance, moving to the frequency domain usually makes the structure obvious and the computation cheap."
+    }
+  ],
+  "related": [
+    {
+      "slug": "spectral-decomposition",
+      "label": "Spectral Decomposition"
+    },
+    {
+      "slug": "hilbert-space",
+      "label": "Hilbert Space"
+    },
+    {
+      "slug": "convolutional-neural-network",
+      "label": "Convolutional Neural Network"
+    },
+    {
+      "slug": "eigenvector",
+      "label": "Eigenvector"
+    },
+    {
+      "slug": "group-theory",
+      "label": "Group Theory"
+    },
+    {
+      "slug": "positional-encoding",
+      "label": "Positional Encoding"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

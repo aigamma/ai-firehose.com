@@ -1,0 +1,17 @@
+---
+title: Working Memory
+slug: working-memory
+kind: technique
+category: Cognitive Science and Neuroscience
+aliases: short-term working memory, the cognitive workspace
+related: global-workspace-theory, dual-process-theory, attention, context-window, recurrent-neural-network, transformer
+summary: The brain's limited-capacity system for holding and manipulating a small amount of information over short timescales, the mental workspace that supports reasoning, language, and planning. Its sharp capacity limit shapes much of human cognition.
+---
+
+Working memory is the cognitive system that holds information in an active, immediately accessible state while you use it. It is what keeps a phone number alive between hearing it and dialing, what tracks the start of a sentence while you parse its end, and what holds the intermediate steps of a mental calculation. It is more than passive short-term storage: working memory both retains information and manipulates it, which is why it is so tightly bound up with reasoning, comprehension, and planning. Its defining property is a severe capacity limit, classically estimated by George Miller in 1956 as about seven items and revised downward by later work to roughly four chunks.
+
+The influential model of working memory comes from Alan Baddeley and Graham Hitch, who in 1974 proposed a multi-component system rather than a single store. A central executive directs attention and coordinates the rest; a phonological loop holds verbal and acoustic material by silently rehearsing it; a visuospatial sketchpad holds visual and spatial imagery; and a later-added episodic buffer integrates these streams with long-term memory into coherent episodes. This decomposition explains a great deal of data, including why a verbal task and a spatial task interfere far less with each other than two verbal tasks do, since they compete for different subsystems.
+
+Working memory is woven into broader theories of cognition. In global-workspace-theory the limited workspace that broadcasts conscious content is essentially this same capacity-limited resource, and the bottleneck of attention is what gates entry into it. In dual-process-theory the slow, deliberate, effortful mode of thinking is precisely the kind that loads working memory heavily, while fast automatic processing largely bypasses it. The persistent four-item ceiling is one of the most robust facts in psychology, and individual differences in working-memory capacity correlate strongly with measures of fluid intelligence and reading comprehension, which is part of why it is so central to accounts of human reasoning.
+
+The concept maps cleanly onto problems in artificial intelligence, where keeping relevant information available across time is a recurring challenge. A recurrent-neural-network maintains a hidden state that acts as a compressed working memory of everything it has read, and the long short-term memory architecture was designed expressly to hold information longer without it decaying. The transformer takes a different route: its context-window is an explicit external working memory that the attention mechanism can read from in full at every step, trading biological realism for capacity that dwarfs the human four-item limit. Research on memory-augmented networks, external memory banks, and scratchpad or chain-of-thought prompting can all be read as efforts to give models a more capable and more deliberately managed working memory, closing some of the distance to the flexible mental workspace that human cognition relies on.

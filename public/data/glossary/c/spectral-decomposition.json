@@ -1,0 +1,69 @@
+{
+  "id": "spectral-decomposition",
+  "label": "Spectral Decomposition",
+  "kind": "technique",
+  "category": "Advanced Mathematics",
+  "aliases": [
+    "spectral decomposition",
+    "eigendecomposition",
+    "spectral theorem",
+    "spectral analysis"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The factorization of a symmetric or self-adjoint operator into its eigenvalues and an orthogonal basis of eigenvectors, expressing a complicated linear action as independent scalings along perpendicular directions.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Spectral decomposition expresses a symmetric linear operator as a set of independent stretches along mutually perpendicular directions. The spectral theorem guarantees that any real symmetric matrix can be written as an orthogonal basis of eigenvectors paired with real eigenvalues: in that special coordinate system the matrix becomes diagonal, so its otherwise tangled action splits into separate one-dimensional scalings that do not interfere. Each eigenvector is a direction the matrix only stretches or shrinks, and the corresponding eigenvalue is the factor by which it does so. The collection of all eigenvalues is the spectrum, which is where the name comes from, and it captures the operator's essential behavior independent of the arbitrary coordinates you first wrote it in."
+    },
+    {
+      "type": "p",
+      "text": "The reason this factorization is so powerful is that almost every operation on the matrix becomes trivial once you are in the eigenbasis. Applying the matrix many times just raises each eigenvalue to a power, so the long-run behavior of an iterated linear process is dictated by the largest-magnitude eigenvalues. Inverting the matrix inverts each eigenvalue. Applying a function such as a square root or an exponential applies that function to each eigenvalue, which is how matrix functions are defined. The largest and smallest eigenvalues bound how much the operator can amplify or shrink any vector, and their ratio, the condition number, predicts how sensitive a linear system is and how fast iterative solvers and optimizers converge."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning, spectral decomposition is the engine inside several core techniques. Principal-component-analysis is the spectral decomposition of the data's covariance matrix: the eigenvectors are the directions of greatest variance and the eigenvalues say how much variance each carries, which is what lets you keep the few informative directions and discard the rest. The curvature of a loss-landscape is read from the spectral decomposition of the hessian, whose eigenvalues distinguish steep narrow valleys (large positive) from flat plateaus (near zero) and saddle directions (negative), directly explaining why optimization stalls or accelerates in different regions. Spectral clustering builds a graph Laplacian and uses its smallest eigenvectors to embed and partition data whose clusters are not linearly separable."
+    },
+    {
+      "type": "p",
+      "text": "The idea generalizes well beyond symmetric matrices. For a rectangular or non-symmetric matrix the natural analogue is the singular-value-decomposition, which factors any matrix into orthogonal input and output directions linked by nonnegative singular values, and which underlies low-rank approximation, matrix completion in recommender systems, and modern parameter-efficient fine-tuning that injects low-rank updates. On graphs, the eigenvectors of the Laplacian define a notion of frequency, turning the fourier-transform into a tool for signals on networks and grounding the design of spectral graph neural networks."
+    },
+    {
+      "type": "p",
+      "text": "At its deepest, spectral decomposition is the finite-dimensional face of a sweeping principle: a self-adjoint operator can be diagonalized, and its action understood as a superposition of independent modes. That same principle, applied to the operator of differentiation, produces the sines and cosines of the fourier-transform; applied to a covariance operator it produces principal components; applied to a graph it produces spectral embeddings. Recognizing a problem as the spectral decomposition of the right operator turns an opaque, coupled linear action into a transparent set of independent, scalar-weighted directions, which is one of the most reliably useful moves in all of applied mathematics."
+    }
+  ],
+  "related": [
+    {
+      "slug": "eigenvalue",
+      "label": "Eigenvalue"
+    },
+    {
+      "slug": "eigenvector",
+      "label": "Eigenvector"
+    },
+    {
+      "slug": "singular-value-decomposition",
+      "label": "Singular Value Decomposition"
+    },
+    {
+      "slug": "principal-component-analysis",
+      "label": "Principal Component Analysis"
+    },
+    {
+      "slug": "fourier-transform",
+      "label": "Fourier Transform"
+    },
+    {
+      "slug": "hessian",
+      "label": "Hessian"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

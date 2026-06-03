@@ -1,0 +1,17 @@
+---
+title: Model Parallelism
+slug: model-parallelism
+kind: technique
+category: Systems and Infrastructure
+aliases: model parallel, sharded model training
+related: data-parallelism, tensor-parallelism, pipeline-parallelism, gpu, gradient-checkpointing, memory-bandwidth
+summary: Model parallelism is the family of techniques that splits a single model's parameters across multiple accelerators so a network too large to fit in one device's memory can still be trained and run, with the pieces exchanging activations as data flows through them.
+---
+
+Model parallelism is the approach to distributed training that partitions the model itself across devices, rather than replicating it. It exists to solve a problem that data-parallelism cannot: when a model has so many parameters that a single accelerator's memory cannot hold the weights, their gradients, and the optimizer state all at once, no amount of copying helps, because each copy would still overflow. Model parallelism instead places different parts of the network on different devices, so that together they store one model that no single device could.
+
+The cost of splitting the model is communication. In data parallelism the devices only need to talk once per step to average gradients; in model parallelism the devices hold different pieces of the same forward pass, so activations have to be passed from the device holding one part to the device holding the next, both going forward and coming back during backpropagation. This makes model parallelism far more sensitive to interconnect speed and memory-bandwidth, and the way the split is arranged is chosen specifically to keep this cross-device traffic manageable.
+
+Model parallelism is best understood as an umbrella over two complementary ways to cut up a network. Tensor-parallelism splits within a layer: a single large matrix-multiplication is divided across devices, each computing a slice of the same operation, and their partial results are combined. Pipeline-parallelism splits between layers: contiguous groups of layers become stages assigned to different devices, and data flows through the stages like an assembly line. The two address different axes of size and are routinely used together, tensor-parallelism across the devices in one tightly connected group and pipeline-parallelism across groups.
+
+These techniques matter because they are what physically make frontier models possible; a model with hundreds of billions of parameters simply does not fit anywhere except spread across many accelerators. In practice model parallelism is layered with data-parallelism on the outside and with memory-saving tricks like gradient-checkpointing, producing the multi-dimensional parallel configurations that large training runs use. The whole apparatus exists so that the parameter counts and total compute demanded by the scaling-laws can be realized on hardware whose individual chips are, by themselves, far too small to hold the result.

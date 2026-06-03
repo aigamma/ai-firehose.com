@@ -1,0 +1,67 @@
+{
+  "id": "actor-critic",
+  "label": "Actor-Critic",
+  "kind": "technique",
+  "category": "Reinforcement Learning",
+  "aliases": [
+    "actor-critic methods",
+    "advantage actor-critic"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A reinforcement learning architecture that combines a policy (the actor) with a learned value estimator (the critic), using the critic's estimates to reduce the variance of the policy's gradient updates.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Actor-critic methods fuse the two main families of reinforcement learning into one system. The actor is a parameterized policy that chooses actions, exactly as in policy-gradient methods. The critic is a learned value-function that estimates how good states or actions are, in the spirit of value-based methods. The actor learns by gradient ascent, and the critic supplies the signal that tells the actor which way is up. Each half does what it is best at, and the pair trains together."
+    },
+    {
+      "type": "p",
+      "text": "The reason this combination is so widely used is that it fixes the chief weakness of plain policy gradients: high variance. A bare REINFORCE update weights each action by the full Monte Carlo return, a noisy scalar that makes learning slow and unstable. The critic replaces that raw return with a low-variance estimate of value, so the actor gets a far cleaner gradient. The cost is a small amount of bias from the critic's imperfect estimates, a trade that is almost always worth making in practice."
+    },
+    {
+      "type": "p",
+      "text": "The signal the critic typically provides is the advantage, how much better an action did than the critic expected from that state. Concretely, the critic computes a temporal-difference error using the bellman-equation relationship: reward plus discounted value of the next state, minus value of the current state. That same temporal-difference-learning error trains the critic toward accuracy and simultaneously serves as the advantage estimate that scales the actor's update. One quantity does double duty."
+    },
+    {
+      "type": "p",
+      "text": "Actor-critic is best understood as a spectrum between pure Monte Carlo policy gradients and pure value bootstrapping. By choosing how many real reward steps to use before deferring to the critic's estimate, often via a technique called generalized advantage estimation, a practitioner dials the bias-variance trade explicitly. This flexibility, plus the ability to update online from incomplete episodes, is why actor-critic is the backbone of most modern algorithms."
+    },
+    {
+      "type": "p",
+      "text": "Many state-of-the-art methods are actor-critic at heart. Advantage Actor-Critic (A2C) and its asynchronous variant A3C popularized the design; proximal-policy-optimization adds a clipped objective on top of an actor-critic core, and it is the algorithm most often used to fine-tune large language models in rlhf. Whenever a single network has both a policy head and a value head, an actor-critic structure is usually what makes the training stable."
+    }
+  ],
+  "related": [
+    {
+      "slug": "policy-gradient",
+      "label": "Policy Gradient"
+    },
+    {
+      "slug": "value-function",
+      "label": "Value Function"
+    },
+    {
+      "slug": "temporal-difference-learning",
+      "label": "Temporal Difference Learning"
+    },
+    {
+      "slug": "proximal-policy-optimization",
+      "label": "Proximal Policy Optimization"
+    },
+    {
+      "slug": "reinforcement-learning",
+      "label": "Reinforcement Learning"
+    },
+    {
+      "slug": "bellman-equation",
+      "label": "Bellman Equation"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

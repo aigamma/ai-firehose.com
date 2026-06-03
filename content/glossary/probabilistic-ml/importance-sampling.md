@@ -1,0 +1,17 @@
+---
+title: Importance Sampling
+slug: importance-sampling
+kind: technique
+category: Probabilistic Machine Learning
+aliases: importance sampling estimator
+related: markov-chain-monte-carlo, expectation, probability-distribution, variational-inference, evidence-lower-bound, kl-divergence
+summary: A Monte Carlo technique for estimating an expectation under one distribution by drawing samples from a different, easier distribution and reweighting them, used when the target distribution is hard to sample directly.
+---
+
+Importance sampling is a Monte Carlo technique for estimating an [expectation](expectation) under a distribution you cannot easily sample from. The idea is to draw samples from a different, more convenient distribution, the proposal, and then correct for having used the wrong distribution by weighting each sample. The weight is the ratio of the target density to the proposal density at that sample, the importance weight. Averaging the quantity of interest times its weight gives an unbiased estimate of the expectation under the target, even though not a single sample came from the target itself.
+
+Importance sampling matters because the situation it addresses is pervasive: you can write down a target distribution and evaluate its density, but you have no direct way to draw from it. This is the everyday predicament of Bayesian computation, where the target is an intractable posterior. It is also the natural tool for estimating rare-event probabilities, where naive sampling almost never lands in the region of interest, so a proposal is deliberately shifted to oversample the rare region and the weights restore correctness. The same reweighting logic appears throughout machine learning whenever data or samples are generated under one distribution but an expectation is needed under another, as in off-policy reinforcement learning.
+
+The mechanics are simple but the practice is delicate. Multiply each sample's value by its importance weight, average, and you have your estimate; a self-normalized variant divides by the sum of the weights, which removes the need to know the target's normalizing constant at the cost of a small bias. The method lives or dies by the proposal. If the proposal is a poor match for the target, especially if it has lighter tails so the target places mass where the proposal rarely visits, a handful of samples acquire enormous weights and dominate the average, making the estimate high-variance and unreliable. The effective sample size, which collapses when a few weights dominate, is the standard diagnostic for this failure.
+
+Importance sampling sits alongside [Markov chain Monte Carlo](markov-chain-monte-carlo) as one of the two foundational Monte Carlo strategies, and the two have complementary strengths: importance sampling draws independent samples and parallelizes trivially but degrades badly in high dimensions, whereas MCMC explores high-dimensional targets adaptively but produces correlated samples. Importance sampling also threads directly into variational methods. A tighter, importance-weighted version of the [evidence lower bound](evidence-lower-bound) uses several weighted samples to squeeze the bound closer to the true log evidence, which improves the training of latent variable models such as the [variational autoencoder](variational-autoencoder). In that role importance sampling is not a standalone algorithm so much as a reweighting principle that sharpens the estimators at the core of probabilistic machine learning.

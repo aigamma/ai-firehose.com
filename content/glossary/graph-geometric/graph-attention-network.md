@@ -1,0 +1,17 @@
+---
+title: Graph Attention Network
+slug: graph-attention-network
+kind: technique
+category: Graph and Geometric Learning
+aliases: GAT
+related: graph-neural-network, message-passing, graph-convolution, self-attention, multi-head-attention, transformer
+summary: A graph neural network that weights each neighbor's contribution with a learned attention score, so a node listens more to the neighbors most relevant to it rather than treating all neighbors equally.
+---
+
+A graph attention network, or GAT, is a graph neural network whose aggregation step is attention. In a plain graph convolution every neighbor of a node contributes with a fixed weight set by the graph structure, typically normalized by node degree. A GAT instead learns, for each edge, how much one node should attend to another, computing a score from the two nodes' feature vectors and using a softmax over a node's neighbors to turn those scores into weights that sum to one. The node's new representation is then the attention-weighted sum of its neighbors' transformed features.
+
+This matters because not all neighbors are equally informative. In a citation graph one referenced paper may be central to an article's topic while another is a passing mention; in a molecule one bonded atom may dominate a reaction. Fixed structural weights cannot express that, but learned attention can, letting the model allocate influence by content. Because the attention weights are computed from features rather than read off the adjacency matrix, a GAT also generalizes naturally to nodes and graphs unseen during training, an inductive setting where methods tied to a fixed graph spectrum struggle.
+
+Mechanically a GAT is message passing with attention-weighted edges. Each node projects its features, scores each neighbor, normalizes the scores with a softmax restricted to that neighborhood, and aggregates. As in the transformer, the attention is usually multi-head: several independent attention functions run in parallel and their outputs are concatenated or averaged, which stabilizes training and lets different heads specialize on different relational patterns. The attention is masked to the graph's edges, so a node only ever attends to its actual neighbors.
+
+The graph attention network makes vivid the deep equivalence between attention and graphs. Self-attention in a transformer is exactly a graph attention mechanism run on the complete graph, where every token attends to every other token; a GAT is the same computation restricted to a sparse, given edge set. Seen through geometric deep learning, the transformer and the GAT are two points on one spectrum, separated only by which edges exist. This is also why sparse-attention transformers, which attend over a chosen subset of token pairs, are precisely graph attention networks on a designed graph, and why the two research lines keep converging.

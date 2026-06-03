@@ -1,0 +1,17 @@
+---
+title: Evidence Lower Bound
+slug: evidence-lower-bound
+kind: technique
+category: Probabilistic Machine Learning
+aliases: ELBO, variational lower bound
+related: variational-inference, kl-divergence, variational-autoencoder, latent-variable-model, expectation-maximization, bayesian-inference
+summary: A tractable lower bound on the log evidence of a probabilistic model that, when maximized, simultaneously fits the model and tightens an approximate posterior, serving as the core training objective for variational methods.
+---
+
+The evidence lower bound, almost always called the ELBO, is the objective function at the heart of variational methods in probabilistic machine learning. The evidence is the marginal likelihood of the observed data, the probability the model assigns to what was actually seen after integrating out all hidden variables. That integral is the quantity Bayesian inference needs and almost never can compute. The ELBO is a quantity that is always less than or equal to the log evidence and, crucially, can be evaluated and optimized using only things the model can compute. Maximizing it pushes the intractable evidence up from below.
+
+The ELBO matters because it converts inference into optimization, which is what makes modern probabilistic modeling scalable. It does double duty in a single expression. The log evidence equals the ELBO plus the [KL divergence](kl-divergence) between an approximate posterior and the true posterior, and because that KL divergence is never negative, the ELBO is a genuine lower bound and the gap between them is exactly the approximation error. Since the log evidence is a fixed number for given data, raising the ELBO must shrink that KL gap. So one objective accomplishes two goals at once: it fits the model's parameters to the data and it drives the approximate posterior toward the true one. This is the formal foundation of [variational inference](variational-inference).
+
+Written out, the ELBO has two interpretable terms. The first is the expected log-likelihood of the data under the approximate posterior, a reconstruction term that rewards explanations of the data that are actually probable. The second is the negative KL divergence between the approximate posterior and the prior, a regularization term that penalizes posteriors straying too far from prior beliefs. Maximizing the ELBO balances fitting the data against staying close to the prior, and that reconstruction-versus-regularization tension is visible directly in the loss. The same bound underlies [expectation maximization](expectation-maximization), which is coordinate ascent on the ELBO with an exact posterior in the E step.
+
+The ELBO is most famous as the training objective of the [variational autoencoder](variational-autoencoder). There an encoder network produces the approximate posterior over a latent code, a decoder network produces the likelihood, and the entire system is trained by maximizing the ELBO with stochastic gradients, the reparameterization trick making those gradients low-variance. The two ELBO terms map cleanly onto the autoencoder picture: the expected log-likelihood becomes a reconstruction loss and the KL term keeps the [latent space](latent-space) close to its prior so it stays smooth and samplable. Diffusion models are trained on a closely related variational bound, a sum of per-step terms that is itself an ELBO over the denoising process, which is why the ELBO is fairly described as the unifying objective behind a large swath of deep generative modeling.

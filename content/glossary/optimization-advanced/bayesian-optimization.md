@@ -1,0 +1,17 @@
+---
+title: Bayesian Optimization
+slug: bayesian-optimization
+kind: technique
+category: Advanced Optimization
+aliases: BO, sequential model-based optimization
+related: evolutionary-strategy, simulated-annealing, gradient-descent
+summary: A sample-efficient global optimization method for expensive black-box functions that fits a probabilistic surrogate model of the objective and uses it to decide, through an acquisition function, the single most informative point to evaluate next.
+---
+
+Bayesian optimization is the method of choice for optimizing expensive black-box functions, problems where each evaluation costs minutes, hours, or real money and where you therefore cannot afford the thousands of queries that gradient descent or an evolutionary strategy would consume. Its canonical application is hyperparameter tuning: finding the learning rate, depth, and regularization that make a model train best, when assessing any single configuration means running a full training job. The defining goal is to find a good optimum in as few evaluations as possible.
+
+It achieves this by being model-based and deliberate. Bayesian optimization fits a probabilistic surrogate, most often a Gaussian process, to the points evaluated so far. Crucially, the surrogate predicts not just an expected objective value at every untried point but also a calibrated uncertainty about that prediction, high where data is dense and low confidence where the space is unexplored. This map of belief and doubt over the whole search space is what lets the method reason about where to look next instead of merely reacting to its last sample.
+
+The choice of the next point is made by maximizing an acquisition function, a cheap criterion computed from the surrogate that scores how worthwhile each candidate would be to evaluate. Popular choices such as expected improvement and upper confidence bound explicitly balance exploitation, sampling where the surrogate predicts a good value, against exploration, sampling where its uncertainty is large and a surprise might hide. The method evaluates the true expensive objective only at the single winning point, folds the result back into the surrogate, and repeats. Each costly query is therefore spent on the most informative location the current belief can identify, which is the entire reason Bayesian optimization reaches good solutions in dramatically fewer evaluations than gradient-free competitors.
+
+This makes Bayesian optimization the standard tool for sample-constrained tuning across machine learning, drug and materials discovery, expensive simulations, and physical experiment design. Its limitation is the mirror image of its strength: maintaining and inverting the Gaussian process grows costly as evaluations accumulate, and the approach is built for low-dimensional, expensive problems rather than the high-dimensional, cheap-gradient setting where gradient descent dominates. Within the derivative-free family it is the sample-efficient, model-based extreme, contrasting with the model-free random search of simulated annealing and the population sampling of evolutionary strategy methods.

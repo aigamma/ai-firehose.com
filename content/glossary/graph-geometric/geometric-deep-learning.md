@@ -1,0 +1,17 @@
+---
+title: Geometric Deep Learning
+slug: geometric-deep-learning
+kind: technique
+category: Graph and Geometric Learning
+aliases: GDL
+related: equivariance, group-equivariant-network, graph-neural-network, convolutional-neural-network, manifold, transformer
+summary: A unifying framework that organizes deep learning architectures by the symmetries and geometric structure of their data, deriving models from the principle that a network should respect the transformations under which its data's meaning is unchanged.
+---
+
+Geometric deep learning is a research program and a way of thinking that explains the major neural network architectures as instances of one principle: build into the model the symmetry group of the data. Rather than treating the convolutional neural network, the graph neural network, the recurrent network, and the transformer as a grab bag of unrelated inventions, it shows each is the natural architecture for a particular kind of domain, a grid, a graph, a sequence, a set, or a manifold, once you insist that the network respect that domain's symmetries. The framework is sometimes summarized by the slogan that geometry, in the sense of symmetry, is the right organizing principle for deep learning.
+
+This perspective matters because it turns architecture design from art into something closer to derivation. If you know the symmetry of your problem, the freedom to permute nodes, to translate a grid, to rotate a molecule in space, you can read off the constraints a sound model must satisfy and rule out architectures that violate them. That is enormously valuable for new domains where no standard model exists, such as physical simulation on irregular meshes, protein structure, or learning on curved surfaces. It also clarifies why the workhorse models succeed: each one bakes in the correct inductive bias for its data and therefore generalizes from far fewer examples than an unconstrained network would need.
+
+The technical core is equivariance. A layer is equivariant to a group of transformations when transforming its input and then applying the layer gives the same result as applying the layer and then transforming the output, so the symmetry passes cleanly through the network instead of being scrambled. Convolution is equivariant to translation, message passing in a graph neural network is equivariant to permutation of nodes, and a group-equivariant network extends this to rotations and reflections. Stacking equivariant layers, interspersed with invariant pooling where you finally want a symmetry-free answer, is the standard blueprint the framework prescribes.
+
+The geometric view ties directly to the manifold picture of data. The manifold hypothesis holds that high-dimensional data concentrates on a low-dimensional curved surface, and geometric deep learning supplies architectures that operate intrinsically on such domains, respecting their curvature and coordinate freedom rather than flattening them into a grid. From this vantage the transformer is a graph neural network on the complete graph: permutation-equivariant self-attention over a fully connected set of tokens, with positional encoding added precisely to break the permutation symmetry when sequence order carries meaning. Geometric deep learning thus offers a single lens through which graphs, grids, sequences, and manifolds, and the networks built for each, become one connected story.

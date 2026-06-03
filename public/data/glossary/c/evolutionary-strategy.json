@@ -1,0 +1,56 @@
+{
+  "id": "evolutionary-strategy",
+  "label": "Evolutionary Strategy",
+  "kind": "technique",
+  "category": "Advanced Optimization",
+  "aliases": [
+    "ES",
+    "CMA-ES",
+    "evolution strategies"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A family of derivative-free, population-based optimization methods that improve a probability distribution over candidate solutions by sampling, evaluating, and re-weighting toward the best samples, requiring only the objective's value and never its gradient.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Evolutionary strategies are population-based, derivative-free optimizers inspired by natural selection. Rather than tracking a single point and stepping along its gradient, an evolutionary strategy maintains a distribution over candidate solutions, usually a Gaussian, and improves it generation by generation. It samples a population of candidates from the distribution, evaluates the objective on each, and shifts the distribution toward the candidates that scored best, repeating until the population converges on a good region. Selection plays the role that the gradient plays in gradient descent: it supplies the direction of improvement, but it is inferred from ranked function values rather than computed from derivatives."
+    },
+    {
+      "type": "p",
+      "text": "Each generation runs a sample-evaluate-update loop. New candidates are drawn by perturbing the current mean with random noise; the best performers are kept and the rest discarded; and their positions are used to move the mean and, in the more sophisticated variants, to reshape the covariance that controls the spread and orientation of future samples. The leading method, CMA-ES (Covariance Matrix Adaptation), adapts that full covariance so the search ellipsoid stretches along productive directions and shrinks across unproductive ones, automatically learning the local scale and correlation structure of the landscape. This adaptive covariance gives CMA-ES a curvature-aware character reminiscent of second-order methods, and it is in fact closely related to a natural gradient step taken on the parameters of the sampling distribution."
+    },
+    {
+      "type": "p",
+      "text": "Evolutionary strategies matter precisely where gradients are unavailable, unreliable, or unhelpful. They need only a black-box objective value, so they handle non-differentiable, discontinuous, or noisy functions and objectives accessed through a simulator with no analytic form. Because evaluations are independent they parallelize almost perfectly across machines, and because selection depends only on the rank of the scores rather than their magnitudes, they are robust to noise and to badly scaled or deceptive objectives. They also resist getting stuck: a spread-out population explores several basins at once, unlike gradient descent, which descends into whichever single basin it started in."
+    },
+    {
+      "type": "p",
+      "text": "This robustness comes at the price of sample efficiency, since estimating progress from a population of evaluations needs many more objective queries than reading a single exact gradient, which is why deep networks trained on differentiable losses still use backpropagation. But where the objective is a black box, such as tuning a controller, designing through a physics simulator, or optimizing the non-differentiable reward of a reinforcement learning policy, evolutionary strategies are a serious, scalable alternative. They sit in the derivative-free optimization family beside simulated annealing and Bayesian optimization, trading the gradient's precision for the freedom to optimize functions a gradient method cannot touch."
+    }
+  ],
+  "related": [
+    {
+      "slug": "simulated-annealing",
+      "label": "Simulated Annealing"
+    },
+    {
+      "slug": "bayesian-optimization",
+      "label": "Bayesian Optimization"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "natural-gradient",
+      "label": "Natural Gradient"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

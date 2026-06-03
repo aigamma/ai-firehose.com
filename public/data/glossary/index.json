@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 631,
-  "durable_count": 226,
+  "count": 757,
+  "durable_count": 356,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -67,6 +67,19 @@
       "def_snippet": "A control technique that edits a model's behavior at inference time by adding a direction vector into its hidden activations, shifting the representation toward or away from a target concept without changing any weights.",
       "durable": true,
       "category": "Mechanistic Interpretability"
+    },
+    {
+      "id": "actor-critic",
+      "label": "Actor-Critic",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "actor-critic methods",
+        "advantage actor-critic"
+      ],
+      "def_snippet": "A reinforcement learning architecture that combines a policy (the actor) with a learned value estimator (the critic), using the critic's estimates to reduce the variance of the policy's gradient updates.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "adam",
@@ -791,6 +804,19 @@
       "category": "Probability and Information Theory"
     },
     {
+      "id": "bayesian-brain",
+      "label": "Bayesian Brain",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Bayesian brain hypothesis",
+        "the brain as inference engine"
+      ],
+      "def_snippet": "The hypothesis that the brain represents the world with probability distributions and updates them by approximate Bayesian inference, combining prior expectations with incoming sensory evidence to infer the hidden causes of its sensations.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
       "id": "bayesian-inference",
       "label": "Bayesian Inference",
       "kind": "technique",
@@ -803,6 +829,19 @@
       "def_snippet": "A framework that treats unknown quantities as random variables with probability distributions, starting from a prior and using observed data to compute a posterior distribution of belief through Bayes' theorem.",
       "durable": true,
       "category": "Probability and Information Theory"
+    },
+    {
+      "id": "bayesian-optimization",
+      "label": "Bayesian Optimization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "BO",
+        "sequential model-based optimization"
+      ],
+      "def_snippet": "A sample-efficient global optimization method for expensive black-box functions that fits a probabilistic surrogate model of the objective and uses it to decide, through an acquisition function, the single most informative point to evaluate next.",
+      "durable": true,
+      "category": "Advanced Optimization"
     },
     {
       "id": "beam-search",
@@ -825,6 +864,19 @@
       "def_snippet": ""
     },
     {
+      "id": "bellman-equation",
+      "label": "Bellman Equation",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Bellman equation",
+        "Bellman optimality equation"
+      ],
+      "def_snippet": "A recursive consistency condition stating that the value of a state equals the immediate reward plus the discounted value of the states that follow, providing the mathematical foundation for nearly every reinforcement learning algorithm.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "benchmark",
       "label": "benchmark",
       "kind": "tool",
@@ -837,12 +889,38 @@
       "def_snippet": "A benchmark is a standardized test or dataset that measures and compares the performance of AI systems on specific tasks or capabilities."
     },
     {
+      "id": "benchmark-contamination",
+      "label": "Benchmark Contamination",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "data contamination",
+        "test set leakage",
+        "train-test contamination"
+      ],
+      "def_snippet": "The leakage of benchmark test data into a model's training corpus, so that high scores reflect memorization of the answers rather than genuine capability. It silently inflates reported results and undermines comparison.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "benchmark-gaming",
       "label": "benchmark gaming",
       "kind": "opinion",
       "attention": 2,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "bert",
+      "label": "BERT",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "Bidirectional Encoder Representations from Transformers"
+      ],
+      "def_snippet": "A transformer-based language model from Google, released in 2018, that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, and is fine-tuned for a wide range of NLP tasks.",
+      "durable": true,
+      "category": "NLP Foundations"
     },
     {
       "id": "bias-variance-tradeoff",
@@ -856,6 +934,19 @@
       "def_snippet": "The fundamental tension in supervised learning between bias, the error from a model being too simple, and variance, the error from a model being too sensitive to its training data, which a model cannot minimize both of at once.",
       "durable": true,
       "category": "Core Machine Learning"
+    },
+    {
+      "id": "bleu-score",
+      "label": "BLEU Score",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "BLEU",
+        "Bilingual Evaluation Understudy"
+      ],
+      "def_snippet": "An n-gram overlap metric for machine translation that scores a candidate against one or more reference translations by modified n-gram precision, multiplied by a brevity penalty. Higher is better, on a 0 to 1 scale.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "bm25",
@@ -920,6 +1011,20 @@
       "def_snippet": ""
     },
     {
+      "id": "calibration",
+      "label": "Calibration",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "model calibration",
+        "confidence calibration",
+        "expected calibration error"
+      ],
+      "def_snippet": "The property that a model's stated confidence matches its actual accuracy. A well-calibrated model that says it is 80 percent sure is right about 80 percent of the time. Measured by expected calibration error and visualized with reliability diagrams.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "catastrophic-forgetting",
       "label": "Catastrophic Forgetting",
       "kind": "technique",
@@ -931,6 +1036,21 @@
       "def_snippet": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one.",
       "durable": true,
       "category": "Training and Fine-Tuning"
+    },
+    {
+      "id": "category-theory",
+      "label": "Category Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "category",
+        "functor",
+        "natural transformation",
+        "categorical"
+      ],
+      "def_snippet": "A highly general branch of mathematics that studies structures through the structure-preserving maps between them rather than their internal contents, organizing objects, arrows, and their compositions into categories.",
+      "durable": true,
+      "category": "Advanced Mathematics"
     },
     {
       "id": "causal-video-diffusion",
@@ -1099,6 +1219,18 @@
       "def_snippet": ""
     },
     {
+      "id": "clip",
+      "label": "CLIP",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Contrastive Language-Image Pretraining"
+      ],
+      "def_snippet": "A model trained to align images and text in a shared embedding space by contrastive learning over large numbers of image-caption pairs, enabling zero-shot classification and image-text retrieval.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
       "id": "code-coverage",
       "label": "code coverage",
       "kind": "technique",
@@ -1221,6 +1353,19 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "conjugate-gradient",
+      "label": "Conjugate Gradient",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "CG",
+        "conjugate gradient method"
+      ],
+      "def_snippet": "An iterative optimization method that minimizes a quadratic function by stepping along a sequence of mutually conjugate directions, achieving fast convergence using only gradients and no explicit curvature matrix.",
+      "durable": true,
+      "category": "Advanced Optimization"
     },
     {
       "id": "connectionism",
@@ -1359,6 +1504,33 @@
       "category": "RAG, Embeddings, and Retrieval"
     },
     {
+      "id": "control-problem",
+      "label": "Control Problem",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "AI control problem",
+        "the control problem"
+      ],
+      "def_snippet": "The problem of how to ensure that an artificial intelligence far more capable than humans remains under meaningful human control and acts in accordance with human values, given that a sufficiently powerful misaligned system would be extremely difficult to constrain or stop.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
+      "id": "convex-optimization",
+      "label": "Convex Optimization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "convex optimization",
+        "convex program",
+        "convex programming"
+      ],
+      "def_snippet": "The branch of optimization that minimizes a convex function over a convex set, a class of problems where any local minimum is global and efficient algorithms find the provably best solution.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
       "id": "convexity",
       "label": "Convexity",
       "kind": "technique",
@@ -1473,6 +1645,19 @@
       "category": "Core Machine Learning"
     },
     {
+      "id": "cuda",
+      "label": "CUDA",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "compute unified device architecture",
+        "CUDA kernels"
+      ],
+      "def_snippet": "CUDA is the parallel programming platform and software stack that lets developers run general-purpose computation on a particular vendor's GPUs, and it is the foundation almost every deep learning framework builds on to turn neural network operations into fast GPU code.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
       "id": "curvature",
       "label": "Curvature",
       "kind": "technique",
@@ -1532,11 +1717,13 @@
     },
     {
       "id": "data-augmentation",
-      "label": "data augmentation",
+      "label": "Data Augmentation",
       "kind": "technique",
       "attention": 1,
       "aliases": [],
-      "def_snippet": ""
+      "def_snippet": "A regularization technique that enlarges a training set by applying label-preserving random transformations to existing examples, teaching a model the invariances it should respect and reducing overfitting.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "data-center",
@@ -1557,6 +1744,20 @@
         "cloud integration"
       ],
       "def_snippet": "Data integration combines information from multiple sources into a unified format or system, enabling models to access diverse data for training or inference."
+    },
+    {
+      "id": "data-parallelism",
+      "label": "Data Parallelism",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "data parallel",
+        "distributed data parallel",
+        "DDP"
+      ],
+      "def_snippet": "Data parallelism is the most common way to train a model across many accelerators: each device holds a full copy of the model, processes a different slice of the batch, and the devices average their gradients every step so all copies stay identical.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "dataset-annotation",
@@ -1657,6 +1858,20 @@
       "def_snippet": ""
     },
     {
+      "id": "dependency-parsing",
+      "label": "Dependency Parsing",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "dependency parser",
+        "syntactic parsing",
+        "dependency tree"
+      ],
+      "def_snippet": "A syntactic analysis that determines the grammatical structure of a sentence by linking each word to the word it depends on, producing a tree of labeled head-and-dependent relations.",
+      "durable": true,
+      "category": "NLP Foundations"
+    },
+    {
       "id": "derivative",
       "label": "Derivative",
       "kind": "technique",
@@ -1694,6 +1909,20 @@
       "attention": 2,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "differential-geometry",
+      "label": "Differential Geometry",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "differential geometry",
+        "smooth manifold",
+        "differential geometric"
+      ],
+      "def_snippet": "The study of smooth curved spaces using calculus, equipping manifolds with notions of tangent direction, distance, and curvature, and providing the geometric foundation for working on curved representation spaces.",
+      "durable": true,
+      "category": "Advanced Mathematics"
     },
     {
       "id": "differential-privacy",
@@ -1861,6 +2090,20 @@
       "category": "Deep Learning Architectures"
     },
     {
+      "id": "dual-process-theory",
+      "label": "Dual Process Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "System 1 and System 2",
+        "two-system theory",
+        "dual-system theory"
+      ],
+      "def_snippet": "A framework in cognitive psychology holding that the mind operates with two distinct kinds of process: a fast, automatic, intuitive mode (System 1) and a slow, effortful, deliberate mode (System 2). It explains both the efficiency and the systematic errors of human thought.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
       "id": "early-stopping",
       "label": "early stopping",
       "kind": "technique",
@@ -1914,6 +2157,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "elo-rating",
+      "label": "Elo Rating",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Elo",
+        "Elo score",
+        "Bradley-Terry rating"
+      ],
+      "def_snippet": "A method for ranking competitors from pairwise win-loss outcomes, originally for chess, now widely used to rank language models from head-to-head human preference votes such as those collected by Chatbot Arena.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "embedded-systems",
@@ -1980,6 +2237,20 @@
       "def_snippet": "The appearance of properties or behaviors at the level of a whole system that its parts do not have in isolation; central to debates about consciousness, complex systems, and the surprising capabilities of large AI models.",
       "durable": true,
       "category": "Philosophy of Mind and AI"
+    },
+    {
+      "id": "emergent-ability",
+      "label": "Emergent Ability",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "emergent abilities",
+        "emergent capabilities",
+        "emergence in large language models"
+      ],
+      "def_snippet": "A capability that is absent or near chance in smaller models and appears, sometimes abruptly, only once a model passes a threshold of scale, so its presence is not predictable from smaller models alone.",
+      "durable": true,
+      "category": "Deep Learning Theory"
     },
     {
       "id": "empirical-risk-minimization",
@@ -2063,6 +2334,19 @@
       "category": "Probability and Information Theory"
     },
     {
+      "id": "equivariance",
+      "label": "Equivariance",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "equivariant",
+        "equivariant network"
+      ],
+      "def_snippet": "A property of a function whereby transforming the input produces a correspondingly transformed output, so that symmetries of the data are preserved through the computation rather than destroyed by it.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
       "id": "error-accumulation",
       "label": "error accumulation",
       "kind": "technique",
@@ -2097,12 +2381,39 @@
       "def_snippet": ""
     },
     {
+      "id": "evidence-lower-bound",
+      "label": "Evidence Lower Bound",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "ELBO",
+        "variational lower bound"
+      ],
+      "def_snippet": "A tractable lower bound on the log evidence of a probabilistic model that, when maximized, simultaneously fits the model and tightens an approximate posterior, serving as the core training objective for variational methods.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
       "id": "evolution-based-search",
       "label": "evolution-based search",
       "kind": "technique",
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "evolutionary-strategy",
+      "label": "Evolutionary Strategy",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "ES",
+        "CMA-ES",
+        "evolution strategies"
+      ],
+      "def_snippet": "A family of derivative-free, population-based optimization methods that improve a probability distribution over candidate solutions by sampling, evaluating, and re-weighting toward the best samples, requiring only the objective's value and never its gradient.",
+      "durable": true,
+      "category": "Advanced Optimization"
     },
     {
       "id": "expectation",
@@ -2117,6 +2428,19 @@
       "def_snippet": "The probability-weighted average of a random variable, the long-run mean value you would expect over many independent draws from its distribution.",
       "durable": true,
       "category": "Probability and Information Theory"
+    },
+    {
+      "id": "expectation-maximization",
+      "label": "Expectation Maximization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "EM",
+        "EM algorithm"
+      ],
+      "def_snippet": "An iterative algorithm for fitting models with hidden variables, alternating between inferring a distribution over the latent variables and updating the parameters to maximize the expected likelihood.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "expert-system",
@@ -2143,6 +2467,19 @@
       "def_snippet": ""
     },
     {
+      "id": "exploration-exploitation",
+      "label": "Exploration and Exploitation",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "exploration-exploitation tradeoff",
+        "explore-exploit dilemma"
+      ],
+      "def_snippet": "The fundamental tradeoff in reinforcement learning between exploiting the best option found so far and exploring uncertain options that might prove better, since an agent can only learn about actions by trying them.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "expo",
       "label": "Expo",
       "kind": "tool",
@@ -2157,6 +2494,20 @@
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "extended-mind",
+      "label": "Extended Mind",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "extended mind thesis",
+        "active externalism",
+        "EMT"
+      ],
+      "def_snippet": "The thesis, argued by Andy Clark and David Chalmers in 1998, that the mind is not confined to the brain but can literally extend into the tools and environment a person uses, when those external resources play the same functional role as internal cognition.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
     },
     {
       "id": "extensible-framework",
@@ -2175,6 +2526,21 @@
       "def_snippet": ""
     },
     {
+      "id": "f1-score",
+      "label": "F1 Score",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "F1",
+        "F-score",
+        "F-measure",
+        "F-beta"
+      ],
+      "def_snippet": "The harmonic mean of precision and recall, a single score between 0 and 1 that balances a classifier's false positives against its false negatives. It is high only when both precision and recall are high.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "feature-ablation",
       "label": "feature ablation",
       "kind": "technique",
@@ -2189,6 +2555,19 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "feature-pyramid",
+      "label": "Feature Pyramid",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "FPN",
+        "feature pyramid network"
+      ],
+      "def_snippet": "A multi-scale representation that combines feature maps from several depths of a convolutional network so that objects of very different sizes can be recognized using features at an appropriate resolution.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "feature-visualization",
@@ -2309,6 +2688,35 @@
       "def_snippet": ""
     },
     {
+      "id": "flat-minima",
+      "label": "Flat Minima",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "flat minimum",
+        "wide minima",
+        "sharp minima"
+      ],
+      "def_snippet": "Minima of the loss where the loss stays low across a wide neighborhood of the parameters, a low-curvature basin that is empirically linked to better generalization than a narrow, sharp minimum.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
+      "id": "flops",
+      "label": "FLOPs",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "floating-point operations",
+        "FLOP",
+        "FLOPS",
+        "floating-point operations per second"
+      ],
+      "def_snippet": "FLOPs counts the floating-point arithmetic operations a computation performs, and the per-second rate of the same name measures how fast hardware can do that arithmetic, making it the standard unit for both the cost of training a model and the speed of an accelerator.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
       "id": "flow-matching",
       "label": "Flow Matching",
       "kind": "technique",
@@ -2370,6 +2778,21 @@
       "def_snippet": ""
     },
     {
+      "id": "fourier-transform",
+      "label": "Fourier Transform",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Fourier transform",
+        "Fourier analysis",
+        "frequency domain",
+        "FFT"
+      ],
+      "def_snippet": "A transformation that re-expresses a signal as a sum of pure oscillations of different frequencies, moving between the time or space domain and the frequency domain and turning convolution into simple multiplication.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
       "id": "foveated-imaging",
       "label": "foveated imaging",
       "kind": "technique",
@@ -2402,10 +2825,30 @@
     {
       "id": "free-energy-principle",
       "label": "Free Energy Principle",
-      "kind": "tool",
+      "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "FEP",
+        "active inference",
+        "variational free energy"
+      ],
+      "def_snippet": "A unifying theory proposing that any self-organizing system that resists disorder must act and perceive so as to minimize a quantity called variational free energy, an upper bound on the surprise of its sensory inputs. Perception, learning, and action all become instances of the same optimization.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
+      "id": "free-will",
+      "label": "Free Will",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "freedom of the will",
+        "libertarian free will",
+        "compatibilism"
+      ],
+      "def_snippet": "The question of whether and in what sense agents can act freely and be morally responsible for their actions, given that the world may be wholly governed by prior causes, and the long debate over whether freedom and determinism can be reconciled.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
     },
     {
       "id": "frontier-models",
@@ -2455,6 +2898,19 @@
       "def_snippet": "The bell-shaped continuous distribution defined by a mean and a variance, which arises whenever many small independent effects add together and serves as the default model for noise and uncertainty.",
       "durable": true,
       "category": "Probability and Information Theory"
+    },
+    {
+      "id": "gaussian-process",
+      "label": "Gaussian Process",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GP",
+        "Gaussian processes"
+      ],
+      "def_snippet": "A distribution over functions in which any finite set of function values is jointly Gaussian, giving a nonparametric Bayesian model that predicts with calibrated uncertainty.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "generalization",
@@ -2517,12 +2973,65 @@
       "category": "Geometry and Manifolds"
     },
     {
+      "id": "geometric-deep-learning",
+      "label": "Geometric Deep Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GDL"
+      ],
+      "def_snippet": "A unifying framework that organizes deep learning architectures by the symmetries and geometric structure of their data, deriving models from the principle that a network should respect the transformations under which its data's meaning is unchanged.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
       "id": "geopolitical-competition",
       "label": "geopolitical competition",
       "kind": "opinion",
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "global-workspace-theory",
+      "label": "Global Workspace Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GWT",
+        "global neuronal workspace",
+        "global workspace"
+      ],
+      "def_snippet": "A theory of consciousness and cognition in which many specialized, parallel processors compete for access to a limited central workspace; whatever wins is broadcast brain-wide and becomes conscious and globally available. It frames consciousness as a mechanism for flexible information sharing.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
+      "id": "glove",
+      "label": "GloVe",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Global Vectors",
+        "global vectors for word representation"
+      ],
+      "def_snippet": "A word embedding method from Stanford that learns word vectors by factorizing a global word-word co-occurrence matrix, combining the corpus-wide statistics of count-based methods with the geometry of prediction-based ones.",
+      "durable": true,
+      "category": "NLP Foundations"
+    },
+    {
+      "id": "gpu",
+      "label": "GPU",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "graphics processing unit",
+        "GPUs",
+        "accelerator"
+      ],
+      "def_snippet": "A graphics processing unit is a massively parallel processor, originally built for rendering images, that has become the dominant hardware for training and running neural networks because deep learning is overwhelmingly dense linear algebra it can execute thousands of operations at once.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "gpu-utilization",
@@ -2547,6 +3056,20 @@
       "def_snippet": "The vector of all the partial derivatives of a scalar function, pointing in the direction of steepest increase of the function and with a length equal to that steepest rate of change.",
       "durable": true,
       "category": "Calculus and Analysis"
+    },
+    {
+      "id": "gradient-checkpointing",
+      "label": "Gradient Checkpointing",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "activation checkpointing",
+        "gradient checkpoint",
+        "rematerialization"
+      ],
+      "def_snippet": "Gradient checkpointing is a memory-saving technique that trades extra computation for lower memory use during training, storing only a few activations on the forward pass and recomputing the rest on the fly during backpropagation.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "gradient-descent",
@@ -2578,6 +3101,58 @@
       "def_snippet": ""
     },
     {
+      "id": "graph-attention-network",
+      "label": "Graph Attention Network",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GAT"
+      ],
+      "def_snippet": "A graph neural network that weights each neighbor's contribution with a learned attention score, so a node listens more to the neighbors most relevant to it rather than treating all neighbors equally.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
+      "id": "graph-convolution",
+      "label": "Graph Convolution",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "graph convolutional network",
+        "GCN",
+        "spectral convolution"
+      ],
+      "def_snippet": "The generalization of the convolution operation from regular grids to arbitrary graphs, in which each node mixes its features with those of its neighbors, forming the most common building block of graph neural networks.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
+      "id": "graph-neural-network",
+      "label": "Graph Neural Network",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "GNN"
+      ],
+      "def_snippet": "A neural network that operates directly on graph-structured data, learning representations of nodes, edges, and whole graphs by repeatedly aggregating information from each node's neighbors.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
+      "id": "graphical-model",
+      "label": "Graphical Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "probabilistic graphical model",
+        "PGM",
+        "Bayesian network"
+      ],
+      "def_snippet": "A framework that represents a joint probability distribution as a graph, where nodes are random variables and the absence of edges encodes conditional independence, making large distributions compact and inference tractable.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
       "id": "greedy-decoding",
       "label": "Greedy Decoding",
       "kind": "technique",
@@ -2602,6 +3177,35 @@
       "def_snippet": "A training phenomenon in which a network first memorizes its data and only much later, after long continued training at near-perfect training accuracy, abruptly generalizes, having replaced a memorized solution with a true algorithmic circuit.",
       "durable": true,
       "category": "Mechanistic Interpretability"
+    },
+    {
+      "id": "group-theory",
+      "label": "Group Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "group",
+        "symmetry group",
+        "group action",
+        "abstract algebra"
+      ],
+      "def_snippet": "The mathematical study of symmetry, formalized as a set of transformations that can be composed and undone, providing the language for invariance and equivariance in machine learning.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
+      "id": "group-equivariant-network",
+      "label": "Group-Equivariant Network",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "G-CNN",
+        "group equivariant convolutional network",
+        "steerable network"
+      ],
+      "def_snippet": "A neural network whose layers are equivariant to a chosen symmetry group such as rotations and reflections, so that transforming the input produces a correspondingly transformed output and the symmetry is guaranteed by construction rather than learned from data.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
     },
     {
       "id": "grpo",
@@ -2633,6 +3237,35 @@
       "category": "Philosophy of Mind and AI"
     },
     {
+      "id": "hebbian-learning",
+      "label": "Hebbian Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Hebb's rule",
+        "Hebbian plasticity",
+        "\"fire together",
+        "wire together\""
+      ],
+      "def_snippet": "A learning rule from neuroscience stating that when one neuron repeatedly helps fire another, the connection between them strengthens. It is the original local, unsupervised account of how synapses change, and a recurring alternative to backpropagation.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
+      "id": "hegelian-dialectic",
+      "label": "Hegelian Dialectic",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "dialectic",
+        "dialectical method",
+        "thesis antithesis synthesis"
+      ],
+      "def_snippet": "G. W. F. Hegel's account of how thought and reality develop through the generation and resolution of internal contradictions, each stage giving rise to its own negation and then to a higher unity that preserves and overcomes both, often summarized as thesis, antithesis, synthesis.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
       "id": "hessian",
       "label": "Hessian",
       "kind": "technique",
@@ -2644,6 +3277,34 @@
       "def_snippet": "The square matrix of all second-order partial derivatives of a scalar function, describing the local curvature of the function and how its gradient changes from point to point.",
       "durable": true,
       "category": "Calculus and Analysis"
+    },
+    {
+      "id": "hidden-markov-model",
+      "label": "Hidden Markov Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "HMM",
+        "hidden Markov models"
+      ],
+      "def_snippet": "A probabilistic model of sequences in which an unobserved state evolves as a Markov chain and each state emits a visible observation, used to infer hidden structure behind a stream of data.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
+      "id": "hilbert-space",
+      "label": "Hilbert Space",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Hilbert space",
+        "inner product space",
+        "reproducing kernel Hilbert space",
+        "RKHS"
+      ],
+      "def_snippet": "A complete vector space equipped with an inner product, generalizing ordinary Euclidean geometry to infinite dimensions and providing the setting for kernels, Fourier analysis, and embeddings.",
+      "durable": true,
+      "category": "Advanced Mathematics"
     },
     {
       "id": "hill-climbing",
@@ -2723,6 +3384,16 @@
       "category": "Geometry and Manifolds"
     },
     {
+      "id": "image-classification",
+      "label": "Image Classification",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [],
+      "def_snippet": "The task of assigning a whole image to one category from a fixed set of labels, the canonical benchmark problem of computer vision and the training objective from which most visual representations are first learned.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
       "id": "image-restoration",
       "label": "image restoration",
       "kind": "tool",
@@ -2731,6 +3402,41 @@
         "image quality assessment"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "image-tokenization",
+      "label": "Image Tokenization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [],
+      "def_snippet": "The process of converting a continuous image into a sequence of discrete or vector tokens, so that transformer architectures built for sequences can process pixels the way they process words.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
+      "id": "implicit-regularization",
+      "label": "Implicit Regularization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "implicit bias",
+        "implicit bias of gradient descent"
+      ],
+      "def_snippet": "The tendency of an optimization algorithm to prefer some solutions over others among the many that fit the training data equally well, even with no explicit penalty added to the loss.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
+      "id": "importance-sampling",
+      "label": "Importance Sampling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "importance sampling estimator"
+      ],
+      "def_snippet": "A Monte Carlo technique for estimating an expectation under one distribution by drawing samples from a different, easier distribution and reweighting them, used when the target distribution is hard to sample directly.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "in-context-scoring",
@@ -2778,6 +3484,19 @@
         "inference infrastructure"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "information-bottleneck",
+      "label": "Information Bottleneck",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "IB",
+        "information bottleneck principle"
+      ],
+      "def_snippet": "A principle that frames learning as compressing the input into a representation that discards everything irrelevant while keeping the information needed to predict the target.",
+      "durable": true,
+      "category": "Deep Learning Theory"
     },
     {
       "id": "information-geometry",
@@ -2849,6 +3568,33 @@
       "def_snippet": "The accumulation of a quantity over an interval or region, computing a total such as an area under a curve, and the inverse operation to the derivative.",
       "durable": true,
       "category": "Calculus and Analysis"
+    },
+    {
+      "id": "integrated-information-theory",
+      "label": "Integrated Information Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "IIT",
+        "phi",
+        "integrated information"
+      ],
+      "def_snippet": "A theory of consciousness proposed by Giulio Tononi in 2004 that identifies conscious experience with integrated information, a quantity called phi, and claims a system is conscious to the degree that its parts form an irreducible causal whole.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
+      "id": "intentional-stance",
+      "label": "Intentional Stance",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "the intentional stance",
+        "intentional systems theory"
+      ],
+      "def_snippet": "Daniel Dennett's account (1971, 1987) of how we predict and explain behavior by treating a system as a rational agent with beliefs and desires, a strategy whose success, not the system's inner stuff, is what makes it correct to call the system a believer.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
     },
     {
       "id": "intentionality",
@@ -2948,6 +3694,19 @@
       "category": "Core Machine Learning"
     },
     {
+      "id": "kalman-filter",
+      "label": "Kalman Filter",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Kalman filtering",
+        "linear quadratic estimation"
+      ],
+      "def_snippet": "A recursive algorithm that estimates the hidden state of a linear dynamical system from noisy measurements, maintaining a Gaussian belief that it updates optimally as each new observation arrives.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
       "id": "kernel-method",
       "label": "Kernel Method",
       "kind": "technique",
@@ -3029,6 +3788,34 @@
       "category": "Transformers and LLMs"
     },
     {
+      "id": "lbfgs",
+      "label": "L-BFGS",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "limited-memory BFGS",
+        "quasi-Newton method"
+      ],
+      "def_snippet": "A limited-memory quasi-Newton optimizer that approximates the inverse Hessian from a short history of recent gradients, gaining much of Newton's method's fast convergence at a memory cost only a few times that of gradient descent.",
+      "durable": true,
+      "category": "Advanced Optimization"
+    },
+    {
+      "id": "lagrange-multiplier",
+      "label": "Lagrange Multiplier",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Lagrange multiplier",
+        "Lagrangian",
+        "KKT conditions",
+        "dual variable"
+      ],
+      "def_snippet": "A method for optimizing a function subject to constraints by introducing a new variable for each constraint, converting a constrained problem into an unconstrained stationarity condition and revealing the price of each constraint.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
       "id": "large-language-model",
       "label": "Large Language Model",
       "kind": "technique",
@@ -3095,6 +3882,19 @@
       "category": "Geometry and Manifolds"
     },
     {
+      "id": "latent-variable-model",
+      "label": "Latent Variable Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "latent variable models",
+        "LVM"
+      ],
+      "def_snippet": "A probabilistic model that explains observed data through hidden, unobserved variables, positing a compact underlying cause that generates the visible data and must be inferred rather than measured.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
       "id": "layer-normalization",
       "label": "Layer Normalization",
       "kind": "technique",
@@ -3143,6 +3943,20 @@
       "def_snippet": "A rule that changes the learning rate over the course of training rather than holding it fixed, typically starting larger for fast early progress and shrinking toward the end so the optimizer can settle precisely into a minimum.",
       "durable": true,
       "category": "Optimization"
+    },
+    {
+      "id": "lie-group",
+      "label": "Lie Group",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Lie group",
+        "Lie algebra",
+        "continuous symmetry group"
+      ],
+      "def_snippet": "A group that is also a smooth manifold, so its symmetry operations form a continuum that can be differentiated, providing the mathematics of continuous symmetry behind rotation-equivariant and other geometric deep learning.",
+      "durable": true,
+      "category": "Advanced Mathematics"
     },
     {
       "id": "linear-attention",
@@ -3213,6 +4027,20 @@
         "LLM workflows"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "llm-as-judge",
+      "label": "LLM as Judge",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "LLM-as-a-judge",
+        "model-graded evaluation",
+        "AI judge"
+      ],
+      "def_snippet": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two. A scalable proxy for human judgment on open-ended tasks that have no fixed answer key.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "llm-costs",
@@ -3389,6 +4217,19 @@
       "category": "Optimization"
     },
     {
+      "id": "lottery-ticket-hypothesis",
+      "label": "Lottery Ticket Hypothesis",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "winning ticket",
+        "lottery tickets"
+      ],
+      "def_snippet": "The conjecture that a randomly initialized dense network contains a small subnetwork which, trained in isolation from its original initialization, can match the full network's accuracy.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
       "id": "low-level-vision",
       "label": "low-level vision",
       "kind": "tool",
@@ -3484,6 +4325,30 @@
       "def_snippet": ""
     },
     {
+      "id": "markov-chain-monte-carlo",
+      "label": "Markov Chain Monte Carlo",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "MCMC"
+      ],
+      "def_snippet": "A family of algorithms that sample from a complex probability distribution by simulating a Markov chain whose long-run equilibrium is that distribution, used to approximate otherwise intractable Bayesian posteriors and expectations.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
+    },
+    {
+      "id": "markov-decision-process",
+      "label": "Markov Decision Process",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "MDP"
+      ],
+      "def_snippet": "The mathematical framework that formalizes sequential decision making under uncertainty, defined by states, actions, transition probabilities, and rewards, and serving as the standard model on which reinforcement learning is built.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "mask-conditioning",
       "label": "mask conditioning",
       "kind": "tool",
@@ -3500,6 +4365,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "masked-language-modeling",
+      "label": "Masked Language Modeling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "MLM",
+        "masked LM",
+        "cloze pretraining"
+      ],
+      "def_snippet": "A self-supervised pretraining objective that hides a fraction of the tokens in a text and trains a model to predict them from the surrounding context on both sides, producing deeply bidirectional representations.",
+      "durable": true,
+      "category": "NLP Foundations"
     },
     {
       "id": "mathematical-reasoning",
@@ -3564,6 +4443,21 @@
       "def_snippet": ""
     },
     {
+      "id": "measure-theory",
+      "label": "Measure Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "measure",
+        "Lebesgue measure",
+        "measurable space",
+        "sigma-algebra"
+      ],
+      "def_snippet": "The branch of mathematics that assigns a consistent notion of size, length, area, volume, or probability to sets, providing the rigorous foundation on which modern probability and integration are built.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
       "id": "mechanistic-interpretability",
       "label": "Mechanistic Interpretability",
       "kind": "technique",
@@ -3583,6 +4477,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "memory-bandwidth",
+      "label": "Memory Bandwidth",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "bandwidth",
+        "memory-bound",
+        "HBM bandwidth"
+      ],
+      "def_snippet": "Memory bandwidth is the rate at which data can be moved between an accelerator's memory and its arithmetic units, and it is frequently the true bottleneck in deep learning, since many workloads stall waiting for data rather than for compute.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "memory-systems",
@@ -3610,6 +4518,20 @@
       "category": "Alignment and Safety"
     },
     {
+      "id": "message-passing",
+      "label": "Message Passing",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "message-passing neural network",
+        "MPNN",
+        "neighborhood aggregation"
+      ],
+      "def_snippet": "The core computation of a graph neural network, in which each node computes its new representation by gathering and aggregating messages from its neighbors, then updating itself, repeated layer by layer.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
       "id": "metric-tensor",
       "label": "Metric Tensor",
       "kind": "technique",
@@ -3624,6 +4546,32 @@
       "category": "Geometry and Manifolds"
     },
     {
+      "id": "mind-body-problem",
+      "label": "Mind-Body Problem",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "mind body problem",
+        "the mind-body problem"
+      ],
+      "def_snippet": "The long-standing question of how the mind relates to the physical body and brain, whether mental states are physical, nonphysical, or something else, and how subjective experience fits into a physical world.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
+      "id": "mirror-descent",
+      "label": "Mirror Descent",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "mirror descent algorithm",
+        "Bregman gradient descent"
+      ],
+      "def_snippet": "A generalization of gradient descent that performs the update step in a transformed dual space chosen to match the geometry of the problem, replacing Euclidean distance with a Bregman divergence.",
+      "durable": true,
+      "category": "Advanced Optimization"
+    },
+    {
       "id": "mitre-atlas",
       "label": "MITRE ATLAS",
       "kind": "tool",
@@ -3632,6 +4580,21 @@
         "MITRE ATT&CK"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "mixed-precision-training",
+      "label": "Mixed Precision Training",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "mixed precision",
+        "automatic mixed precision",
+        "AMP",
+        "FP16 training"
+      ],
+      "def_snippet": "Mixed precision training speeds up and shrinks the memory of training by doing most arithmetic in a low-precision floating-point format while keeping a high-precision copy of the weights and a few sensitive operations in full precision to preserve accuracy.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "mixture-of-experts",
@@ -3664,12 +4627,37 @@
       "def_snippet": ""
     },
     {
+      "id": "mmlu",
+      "label": "MMLU",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Massive Multitask Language Understanding"
+      ],
+      "def_snippet": "A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "mobile-app-development",
       "label": "mobile app development",
       "kind": "tool",
       "attention": 6,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "mode-connectivity",
+      "label": "Mode Connectivity",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "linear mode connectivity",
+        "loss landscape connectivity"
+      ],
+      "def_snippet": "The finding that distinct minima reached by independent training runs are not isolated valleys but are joined by continuous paths through the loss landscape along which the loss stays low.",
+      "durable": true,
+      "category": "Deep Learning Theory"
     },
     {
       "id": "model-compression",
@@ -3692,6 +4680,19 @@
       "def_snippet": "An open protocol that standardizes how applications expose tools, data, and prompts to language models, so any compliant model or agent can connect to any compliant data source or tool through one common interface.",
       "durable": true,
       "category": "Agents and Tool Use"
+    },
+    {
+      "id": "model-parallelism",
+      "label": "Model Parallelism",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "model parallel",
+        "sharded model training"
+      ],
+      "def_snippet": "Model parallelism is the family of techniques that splits a single model's parameters across multiple accelerators so a network too large to fit in one device's memory can still be trained and run, with the pieces exchanging activations as data flows through them.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "model-releases",
@@ -3724,6 +4725,18 @@
       "def_snippet": ""
     },
     {
+      "id": "model-based-reinforcement-learning",
+      "label": "Model-Based Reinforcement Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "model-based RL"
+      ],
+      "def_snippet": "A family of reinforcement learning methods in which the agent learns or is given a model of the environment's dynamics and rewards, then uses that model to plan or to generate simulated experience, typically improving sample efficiency.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "momentary-visual-events",
       "label": "momentary visual events",
       "kind": "tool",
@@ -3753,6 +4766,33 @@
         "depth estimation"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "monte-carlo-tree-search",
+      "label": "Monte Carlo Tree Search",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "MCTS",
+        "UCT"
+      ],
+      "def_snippet": "A planning algorithm that searches a decision tree by selectively simulating many possible futures, concentrating its effort on the most promising lines of play, and famously the search method behind AlphaGo.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
+      "id": "moral-patienthood",
+      "label": "Moral Patienthood",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "moral patient",
+        "moral status",
+        "moral considerability"
+      ],
+      "def_snippet": "The property of being an entity whose interests or welfare matter morally for its own sake, so that it can be wronged, distinguished from moral agency, the capacity to be held responsible for actions.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
     },
     {
       "id": "moravecs-paradox",
@@ -3938,12 +4978,68 @@
       "category": "Probability and Information Theory"
     },
     {
+      "id": "n-gram-model",
+      "label": "N-Gram Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "n-gram",
+        "language model n-gram",
+        "bigram model",
+        "trigram model"
+      ],
+      "def_snippet": "A classic statistical language model that estimates the probability of the next word from the previous n minus one words, using counts of short word sequences gathered from a corpus.",
+      "durable": true,
+      "category": "NLP Foundations"
+    },
+    {
       "id": "n8n",
       "label": "n8n",
       "kind": "tool",
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "named-entity-recognition",
+      "label": "Named-Entity Recognition",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "NER",
+        "entity extraction",
+        "named entity recognition"
+      ],
+      "def_snippet": "An information-extraction task that locates spans of text referring to real-world entities such as people, organizations, locations, dates, and amounts, and labels each span with its type.",
+      "durable": true,
+      "category": "NLP Foundations"
+    },
+    {
+      "id": "natural-gradient",
+      "label": "Natural Gradient",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "natural gradient descent",
+        "Fisher information optimization"
+      ],
+      "def_snippet": "An optimization method that rescales the gradient by the inverse Fisher information matrix, following the direction of steepest descent in the geometry of the model's probability distributions rather than in raw parameter coordinates.",
+      "durable": true,
+      "category": "Advanced Optimization"
+    },
+    {
+      "id": "neural-coding",
+      "label": "Neural Coding",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "neural code",
+        "neural representation",
+        "spike coding"
+      ],
+      "def_snippet": "The study of how neurons represent and transmit information through their patterns of electrical activity, whether by firing rate, precise spike timing, or the joint activity of populations. It is the question of what the brain's signals actually mean.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
     },
     {
       "id": "neural-network",
@@ -3985,12 +5081,65 @@
       "def_snippet": ""
     },
     {
+      "id": "neural-scaling-laws",
+      "label": "Neural Scaling Laws",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "scaling law",
+        "neural scaling law",
+        "Chinchilla scaling"
+      ],
+      "def_snippet": "Empirical power-law relationships showing that a model's loss falls predictably as model size, dataset size, and training compute increase, letting researchers forecast performance and allocate resources before training.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
+      "id": "neural-tangent-kernel",
+      "label": "Neural Tangent Kernel",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "NTK",
+        "tangent kernel"
+      ],
+      "def_snippet": "A kernel that describes how an infinitely wide neural network evolves under gradient descent, showing that in this limit training reduces to a linear model in a fixed feature space.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
       "id": "neurochemistry-simulation",
       "label": "neurochemistry simulation",
       "kind": "tool",
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "neuromorphic-computing",
+      "label": "Neuromorphic Computing",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "neuromorphic engineering",
+        "brain-inspired computing"
+      ],
+      "def_snippet": "An approach to computer hardware that mimics the structure and dynamics of biological brains, colocating memory and computation and processing information through event-driven spikes. It aims for the brain's extreme energy efficiency rather than raw clock speed.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
+    },
+    {
+      "id": "newtons-method",
+      "label": "Newton's Method",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Newton-Raphson",
+        "second-order optimization"
+      ],
+      "def_snippet": "A second-order optimization method that uses both the gradient and the curvature (the Hessian matrix) of a function to jump toward a minimum, converging far faster than gradient descent near a well-behaved optimum.",
+      "durable": true,
+      "category": "Advanced Optimization"
     },
     {
       "id": "next-token-prediction",
@@ -4037,6 +5186,19 @@
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "node-embedding",
+      "label": "Node Embedding",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "node embeddings",
+        "graph embedding"
+      ],
+      "def_snippet": "A learned vector representation of a node in a graph, placing each node at a coordinate in a continuous space so that graph-proximate or functionally similar nodes lie close together.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
     },
     {
       "id": "noise-optimization",
@@ -4091,6 +5253,16 @@
       "attention": 6,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "object-detection",
+      "label": "Object Detection",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [],
+      "def_snippet": "The task of finding every object of interest in an image and reporting both its category and a bounding box around its location, combining recognition with localization.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "observability",
@@ -4206,6 +5378,31 @@
       "def_snippet": ""
     },
     {
+      "id": "optical-flow",
+      "label": "Optical Flow",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [],
+      "def_snippet": "A dense field of per-pixel motion vectors describing how each point in an image moves from one video frame to the next, the standard low-level representation of apparent motion in a scene.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
+      "id": "optimal-transport",
+      "label": "Optimal Transport",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "optimal transport",
+        "Wasserstein distance",
+        "earth mover's distance",
+        "Monge-Kantorovich problem"
+      ],
+      "def_snippet": "A theory of the cheapest way to move one probability distribution onto another given a cost of moving mass, yielding the Wasserstein distance, a geometry-aware way to compare distributions.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
       "id": "optimizer",
       "label": "optimizer",
       "kind": "opinion",
@@ -4275,6 +5472,32 @@
       "def_snippet": ""
     },
     {
+      "id": "paged-attention",
+      "label": "Paged Attention",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "paged attention",
+        "PagedAttention"
+      ],
+      "def_snippet": "Paged attention is a memory management technique for serving language models that stores the key-value cache in small non-contiguous blocks, borrowing the idea of virtual memory paging so many requests can share GPU memory efficiently and waste far less of it.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
+      "id": "panpsychism",
+      "label": "Panpsychism",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "panpsychist",
+        "constitutive panpsychism"
+      ],
+      "def_snippet": "The view that consciousness or experience is a fundamental and ubiquitous feature of the physical world, present in some primitive form even in the smallest constituents of matter, rather than something that appears only in complex brains.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
       "id": "parallel-decoding",
       "label": "parallel decoding",
       "kind": "technique",
@@ -4317,6 +5540,20 @@
       "def_snippet": "The derivative of a multivariable function with respect to one of its inputs while all the other inputs are held fixed, measuring how the output responds to a change along a single coordinate axis.",
       "durable": true,
       "category": "Calculus and Analysis"
+    },
+    {
+      "id": "pass-at-k",
+      "label": "Pass at K",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "pass@k",
+        "pass-at-1",
+        "pass@1"
+      ],
+      "def_snippet": "The standard metric for code generation: the probability that at least one of k sampled solutions to a problem passes its tests. Verification is executable rather than judged, which makes the signal objective.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "paste-detection",
@@ -4363,6 +5600,18 @@
       "def_snippet": ""
     },
     {
+      "id": "perplexity",
+      "label": "Perplexity",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "PPL"
+      ],
+      "def_snippet": "An intrinsic measure of how well a language model predicts a text, defined as the exponential of the average per-token cross-entropy. Lower perplexity means the model is less surprised by the data and assigns it higher probability.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "personalization",
       "label": "personalization",
       "kind": "tool",
@@ -4371,6 +5620,19 @@
         "Test-time personalization"
       ],
       "def_snippet": "Personalization is a tool that adapts AI system outputs, recommendations, or interactions to individual users based on their preferences, behavior, or characteristics."
+    },
+    {
+      "id": "phenomenology",
+      "label": "Phenomenology",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "phenomenological method",
+        "lived experience"
+      ],
+      "def_snippet": "A philosophical tradition founded by Edmund Husserl in the early twentieth century that studies the structures of conscious experience from the first-person point of view, describing how the world is given to a subject rather than explaining it from the outside.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
     },
     {
       "id": "philosophical-zombie",
@@ -4393,6 +5655,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "pipeline-parallelism",
+      "label": "Pipeline Parallelism",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "pipeline parallel",
+        "inter-layer parallelism",
+        "pipeline model parallelism"
+      ],
+      "def_snippet": "Pipeline parallelism splits a model's layers into consecutive stages placed on different accelerators and streams micro-batches of data through them like an assembly line, so a deep model too large for one device fits across several while keeping the devices busy.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "piv-loop",
@@ -4442,6 +5718,19 @@
       "def_snippet": ""
     },
     {
+      "id": "policy-gradient",
+      "label": "Policy Gradient",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "policy gradient methods",
+        "REINFORCE"
+      ],
+      "def_snippet": "A family of reinforcement learning methods that directly optimize a parameterized policy by following the gradient of expected reward, adjusting the policy's parameters to make high-reward actions more likely.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "policy-sharing",
       "label": "policy sharing",
       "kind": "technique",
@@ -4471,6 +5760,19 @@
       "def_snippet": ""
     },
     {
+      "id": "pooling",
+      "label": "Pooling",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "max pooling",
+        "average pooling"
+      ],
+      "def_snippet": "A downsampling operation in convolutional networks that summarizes each small neighborhood of a feature map into a single value, shrinking spatial resolution while retaining the strongest or average response.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
       "id": "positional-encoding",
       "label": "Positional Encoding",
       "kind": "technique",
@@ -4493,12 +5795,32 @@
       "def_snippet": ""
     },
     {
+      "id": "precision-and-recall",
+      "label": "Precision and Recall",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "precision",
+        "recall",
+        "sensitivity",
+        "positive predictive value"
+      ],
+      "def_snippet": "The two foundational metrics for classification and retrieval. Precision is the fraction of predicted positives that are correct; recall is the fraction of actual positives that were found. They trade off against each other.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "predictive-coding",
-      "label": "predictive coding",
+      "label": "Predictive Coding",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "predictive processing",
+        "hierarchical predictive coding"
+      ],
+      "def_snippet": "A theory of brain function in which the cortex is a hierarchy of generative models that constantly predict their own incoming signals, and only the prediction error, the mismatch between expectation and input, is passed forward for further processing.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
     },
     {
       "id": "predictive-pacing",
@@ -4653,12 +5975,43 @@
       "def_snippet": ""
     },
     {
+      "id": "proximal-gradient",
+      "label": "Proximal Gradient",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "proximal gradient method",
+        "ISTA",
+        "forward-backward splitting"
+      ],
+      "def_snippet": "An optimization method for objectives that split into a smooth part and a simple nonsmooth part, alternating a gradient step on the smooth term with a proximal step that handles the nonsmooth term exactly.",
+      "durable": true,
+      "category": "Advanced Optimization"
+    },
+    {
       "id": "proximal-policy-optimization",
       "label": "Proximal Policy Optimization",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "PPO"
+      ],
+      "def_snippet": "A policy gradient algorithm that improves a policy in small, bounded steps by clipping how far each update can move the action probabilities, giving stable and reliable training; it is the default optimizer for reinforcement learning from human feedback.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
+      "id": "q-learning",
+      "label": "Q-Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Q-function",
+        "action-value learning"
+      ],
+      "def_snippet": "A reinforcement learning algorithm that learns the long-run value of taking each action in each state, then acts greedily with respect to those learned values, without ever needing a model of the environment.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "qa-testing",
@@ -4899,6 +6252,20 @@
       "def_snippet": ""
     },
     {
+      "id": "representation-collapse",
+      "label": "Representation Collapse",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "dimensional collapse",
+        "mode collapse of representations",
+        "neural collapse"
+      ],
+      "def_snippet": "A failure mode in which a model's learned representations lose diversity and collapse toward a single point or a low-dimensional subspace, so different inputs map to nearly the same embedding and the representation stops being useful.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
       "id": "reranking",
       "label": "Reranking",
       "kind": "technique",
@@ -5008,6 +6375,19 @@
       "def_snippet": ""
     },
     {
+      "id": "reward-shaping",
+      "label": "Reward Shaping",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "shaping rewards",
+        "potential-based shaping"
+      ],
+      "def_snippet": "The practice of adding supplementary reward signals to guide a reinforcement learning agent toward desired behavior, most safely done with potential-based functions that speed learning without changing which policy is optimal.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "riemannian-manifold",
       "label": "Riemannian Manifold",
       "kind": "technique",
@@ -5086,6 +6466,20 @@
       "def_snippet": ""
     },
     {
+      "id": "roc-auc",
+      "label": "ROC AUC",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "AUC",
+        "AUROC",
+        "area under the ROC curve"
+      ],
+      "def_snippet": "The area under the receiver operating characteristic curve, a threshold-independent measure of how well a binary classifier ranks positives above negatives. It equals the probability that a random positive is scored higher than a random negative; 0.5 is chance, 1.0 is perfect.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "roi-tracking",
       "label": "ROI tracking",
       "kind": "opinion",
@@ -5114,6 +6508,20 @@
       "def_snippet": "A positional encoding scheme that rotates the query and key vectors by an angle proportional to each token's position, so that attention scores depend naturally on the relative distance between tokens.",
       "durable": true,
       "category": "Transformers and LLMs"
+    },
+    {
+      "id": "rouge",
+      "label": "ROUGE",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "Recall-Oriented Understudy for Gisting Evaluation",
+        "ROUGE-L",
+        "ROUGE-N"
+      ],
+      "def_snippet": "A family of recall-oriented overlap metrics for automatic summarization that scores a generated summary against reference summaries by shared n-grams or longest common subsequence. Higher is better.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "rpa",
@@ -5319,6 +6727,16 @@
       "category": "RAG, Embeddings, and Retrieval"
     },
     {
+      "id": "semantic-segmentation",
+      "label": "Semantic Segmentation",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [],
+      "def_snippet": "The task of assigning a category label to every pixel in an image, producing a dense map that partitions the scene into regions by what each pixel belongs to.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
       "id": "sensor-attention",
       "label": "sensor attention",
       "kind": "technique",
@@ -5327,6 +6745,19 @@
         "attention mechanism"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "sequence-to-sequence",
+      "label": "Sequence-to-Sequence",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "seq2seq",
+        "encoder-decoder"
+      ],
+      "def_snippet": "A neural architecture that maps an input sequence to an output sequence of possibly different length using an encoder that reads the input into a representation and a decoder that generates the output one step at a time.",
+      "durable": true,
+      "category": "NLP Foundations"
     },
     {
       "id": "service-offerings",
@@ -5353,6 +6784,18 @@
       "def_snippet": ""
     },
     {
+      "id": "sharpness-aware-minimization",
+      "label": "Sharpness-Aware Minimization",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "SAM"
+      ],
+      "def_snippet": "An optimization method that minimizes not the loss at a point but the worst-case loss in a small neighborhood around it, steering training toward flat, low-curvature minima that tend to generalize better.",
+      "durable": true,
+      "category": "Deep Learning Theory"
+    },
+    {
       "id": "shuffle-model",
       "label": "Shuffle Model",
       "kind": "technique",
@@ -5371,6 +6814,19 @@
         "terminal multiplexing"
       ],
       "def_snippet": ""
+    },
+    {
+      "id": "simulated-annealing",
+      "label": "Simulated Annealing",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "SA",
+        "annealing optimization"
+      ],
+      "def_snippet": "A global optimization method that searches a landscape by random moves which are always accepted when they improve the objective and sometimes accepted when they worsen it, with the probability of accepting worse moves cooled gradually toward zero to settle into a good minimum.",
+      "durable": true,
+      "category": "Advanced Optimization"
     },
     {
       "id": "singular-value-decomposition",
@@ -5527,6 +6983,34 @@
       "category": "Alignment and Safety"
     },
     {
+      "id": "spectral-decomposition",
+      "label": "Spectral Decomposition",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "spectral decomposition",
+        "eigendecomposition",
+        "spectral theorem",
+        "spectral analysis"
+      ],
+      "def_snippet": "The factorization of a symmetric or self-adjoint operator into its eigenvalues and an orthogonal basis of eigenvectors, expressing a complicated linear action as independent scalings along perpendicular directions.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
+      "id": "spectral-graph-theory",
+      "label": "Spectral Graph Theory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "graph Laplacian",
+        "graph spectrum"
+      ],
+      "def_snippet": "The study of a graph through the eigenvalues and eigenvectors of matrices associated with it, especially the graph Laplacian, revealing connectivity, clusters, and a notion of frequency on the graph.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
       "id": "speculative-ai-futures",
       "label": "speculative AI futures",
       "kind": "opinion",
@@ -5546,6 +7030,20 @@
       "def_snippet": "An inference acceleration method in which a small fast draft model proposes several tokens ahead and the large target model verifies them in a single parallel pass, accepting the run of tokens that match its own distribution. It speeds up generation without changing the output distribution.",
       "durable": true,
       "category": "Inference and Sampling"
+    },
+    {
+      "id": "spiking-neural-network",
+      "label": "Spiking Neural Network",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "SNN",
+        "spiking network",
+        "third-generation neural network"
+      ],
+      "def_snippet": "A class of neural network whose units communicate with discrete, time-stamped spikes rather than continuous values, modeling neurons that accumulate input and fire only when a threshold is crossed. They are the most biologically faithful artificial networks and the native software of neuromorphic hardware.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
     },
     {
       "id": "sql-write-queries",
@@ -5826,6 +7324,33 @@
       "category": "Calculus and Analysis"
     },
     {
+      "id": "technological-singularity",
+      "label": "Technological Singularity",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "the singularity",
+        "intelligence explosion"
+      ],
+      "def_snippet": "The hypothesized future point at which artificial intelligence becomes capable of improving itself, triggering a runaway acceleration of capability that rapidly surpasses human intelligence and renders the subsequent future difficult or impossible to predict.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
+      "id": "teleology",
+      "label": "Teleology",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "teleological",
+        "final cause",
+        "purpose"
+      ],
+      "def_snippet": "The explanation of things by reference to their ends, purposes, or goals rather than only their prior causes, originating with Aristotle's final cause, and a recurring question in biology, philosophy of mind, and the design of goal-directed AI systems.",
+      "durable": true,
+      "category": "Philosophy and AI, Advanced"
+    },
+    {
       "id": "temperature",
       "label": "Temperature",
       "kind": "technique",
@@ -5834,6 +7359,19 @@
       "def_snippet": "A scalar that rescales a model's output logits before they are turned into probabilities, controlling how random or deterministic the next-token choice is. Low temperature sharpens the distribution toward the most likely token; high temperature flattens it toward uniform.",
       "durable": true,
       "category": "Inference and Sampling"
+    },
+    {
+      "id": "temporal-difference-learning",
+      "label": "Temporal Difference Learning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "TD learning",
+        "TD error"
+      ],
+      "def_snippet": "A class of reinforcement learning methods that learn value estimates from experience by bootstrapping, updating each prediction toward a target built from the next reward plus the current estimate of the following state's value.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "temporal-fidelity",
@@ -5856,6 +7394,20 @@
       "def_snippet": "A multidimensional array of numbers that generalizes scalars, vectors, and matrices to any number of axes, and the central data structure of modern deep learning frameworks.",
       "durable": true,
       "category": "Linear Algebra for ML"
+    },
+    {
+      "id": "tensor-parallelism",
+      "label": "Tensor Parallelism",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "tensor parallel",
+        "intra-layer parallelism",
+        "tensor model parallelism"
+      ],
+      "def_snippet": "Tensor parallelism splits the work inside a single layer across multiple accelerators, dividing each large matrix multiplication into slices computed on different devices and then combining the partial results, so one layer is too big for one device can still be evaluated.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
     },
     {
       "id": "test-time-compute",
@@ -5909,6 +7461,19 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "tf-idf",
+      "label": "TF-IDF",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "term frequency-inverse document frequency",
+        "tfidf"
+      ],
+      "def_snippet": "A classic weighting scheme that scores how important a term is to a document by multiplying how often the term appears in that document by how rare the term is across the whole collection.",
+      "durable": true,
+      "category": "NLP Foundations"
     },
     {
       "id": "the-bitter-lesson",
@@ -6038,6 +7603,47 @@
       "category": "Inference and Sampling"
     },
     {
+      "id": "topological-data-analysis",
+      "label": "Topological Data Analysis",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "TDA",
+        "persistent homology"
+      ],
+      "def_snippet": "A family of methods that extract the shape of data, its connected pieces, loops, and higher-dimensional voids, using tools from topology to find structure that is robust to noise and invariant to bending or stretching.",
+      "durable": true,
+      "category": "Graph and Geometric Learning"
+    },
+    {
+      "id": "topology",
+      "label": "Topology",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "topological space",
+        "topological",
+        "homeomorphism",
+        "open set"
+      ],
+      "def_snippet": "The study of the properties of shapes and spaces that survive continuous deformation such as stretching and bending but not tearing or gluing, formalizing nearness without relying on distance.",
+      "durable": true,
+      "category": "Advanced Mathematics"
+    },
+    {
+      "id": "tpu",
+      "label": "TPU",
+      "kind": "tool",
+      "attention": 0,
+      "aliases": [
+        "tensor processing unit",
+        "TPUs"
+      ],
+      "def_snippet": "A tensor processing unit is a custom chip built specifically to accelerate neural network workloads, organizing its arithmetic around a large hardware array that streams data through a grid of multiply-accumulate units to perform matrix multiplication with very high efficiency.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
       "id": "trading",
       "label": "trading",
       "kind": "tool",
@@ -6131,6 +7737,19 @@
       "def_snippet": ""
     },
     {
+      "id": "trust-region",
+      "label": "Trust Region",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "trust region method",
+        "trust-region optimization"
+      ],
+      "def_snippet": "An optimization strategy that builds a local model of the objective and minimizes it only within a bounded region where the model is trusted to be accurate, expanding or shrinking that region based on how well the model predicted the actual improvement.",
+      "durable": true,
+      "category": "Advanced Optimization"
+    },
+    {
       "id": "turboquant",
       "label": "TurboQuant",
       "kind": "tool",
@@ -6214,6 +7833,19 @@
       "def_snippet": ""
     },
     {
+      "id": "value-function",
+      "label": "Value Function",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "state-value function",
+        "action-value function"
+      ],
+      "def_snippet": "A function that estimates the expected long-run reward an agent will accumulate from a given state, or from a given state-action pair, under a particular policy; it is the core predictive object that most reinforcement learning algorithms learn.",
+      "durable": true,
+      "category": "Reinforcement Learning"
+    },
+    {
       "id": "vanishing-gradient",
       "label": "Vanishing Gradient",
       "kind": "technique",
@@ -6252,6 +7884,19 @@
       "def_snippet": "A generative model that learns a probabilistic mapping between data and a continuous latent space, training an encoder and decoder jointly so that sampling from the latent prior and decoding produces new data.",
       "durable": true,
       "category": "Generative Models"
+    },
+    {
+      "id": "variational-inference",
+      "label": "Variational Inference",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "VI",
+        "variational Bayes"
+      ],
+      "def_snippet": "An approximate Bayesian method that turns intractable posterior inference into optimization by fitting a simple tractable distribution to the true posterior, minimizing the KL divergence between them.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "vc-dimension",
@@ -6364,6 +8009,18 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "vision-transformer",
+      "label": "Vision Transformer",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "ViT"
+      ],
+      "def_snippet": "An architecture that applies the transformer directly to images by cutting each image into a grid of patches, embedding the patches as tokens, and processing them with self-attention, dispensing with convolution.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "vision-language-models",
@@ -6480,12 +8137,40 @@
       "def_snippet": ""
     },
     {
+      "id": "word-embedding",
+      "label": "Word Embedding",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "word vector",
+        "distributed word representation",
+        "embedding vector"
+      ],
+      "def_snippet": "A representation of a word as a dense vector of real numbers, learned so that words used in similar contexts land near each other in the vector space, replacing sparse symbolic word identities with continuous geometry.",
+      "durable": true,
+      "category": "NLP Foundations"
+    },
+    {
       "id": "word-error-rate",
       "label": "Word Error Rate",
       "kind": "technique",
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "word2vec",
+      "label": "word2vec",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "skip-gram",
+        "continuous bag of words",
+        "CBOW"
+      ],
+      "def_snippet": "A family of shallow neural models, introduced at Google in 2013, that learns dense word embeddings by training a network to predict a word from its neighbors or its neighbors from a word.",
+      "durable": true,
+      "category": "NLP Foundations"
     },
     {
       "id": "workflow-orchestration",
@@ -6498,6 +8183,19 @@
         "multi-session orchestration"
       ],
       "def_snippet": "Workflow orchestration is a tool that automates the coordination and sequencing of multiple tasks or AI agents to complete complex processes end-to-end."
+    },
+    {
+      "id": "working-memory",
+      "label": "Working Memory",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "short-term working memory",
+        "the cognitive workspace"
+      ],
+      "def_snippet": "The brain's limited-capacity system for holding and manipulating a small amount of information over short timescales, the mental workspace that supports reasoning, language, and planning. Its sharp capacity limit shapes much of human cognition.",
+      "durable": true,
+      "category": "Cognitive Science and Neuroscience"
     },
     {
       "id": "workspace",

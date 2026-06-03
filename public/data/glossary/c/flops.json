@@ -1,0 +1,65 @@
+{
+  "id": "flops",
+  "label": "FLOPs",
+  "kind": "tool",
+  "category": "Systems and Infrastructure",
+  "aliases": [
+    "floating-point operations",
+    "FLOP",
+    "FLOPS",
+    "floating-point operations per second"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "FLOPs counts the floating-point arithmetic operations a computation performs, and the per-second rate of the same name measures how fast hardware can do that arithmetic, making it the standard unit for both the cost of training a model and the speed of an accelerator.",
+  "body": [
+    {
+      "type": "p",
+      "text": "FLOPs, floating-point operations, is the unit used to measure the amount of arithmetic in a computation. A single multiply or a single add of two decimal numbers is one floating-point operation, and the total work of a neural network is counted in how many of these it performs. The same acronym is also used for a rate, floating-point operations per second, which is the speed at which hardware can carry the arithmetic out. Context usually makes clear whether a number refers to total work, as in the cost of a training run, or to a rate, as in the peak throughput of a chip."
+    },
+    {
+      "type": "p",
+      "text": "FLOPs matters because it is the common currency for both sides of the scaling equation. On the cost side, the total floating-point operations needed to train a model is dominated by the matrix-multiplication in its layers, and a useful rule of thumb is that a forward and backward pass costs roughly six floating-point operations per parameter per training token. Multiplying that out gives the staggering totals, often quoted in the sextillions, that headline frontier training runs. On the speed side, the peak operations per second of a gpu or tpu tells you, in principle, how long that work will take."
+    },
+    {
+      "type": "p",
+      "text": "The gap between those two numbers is where most practical performance questions live. A chip's advertised rate is a peak that assumes the arithmetic units are always fed with data, but real workloads often cannot keep them busy because operands arrive too slowly from memory. This is the distinction between being compute-bound, limited by raw flops, and being memory-bound, limited by memory-bandwidth. Large dense matrix multiplies tend to be compute-bound and so approach peak; operations that touch a lot of data but do little math per value, such as generating one token at a time, are memory-bound and use only a fraction of the rated flops."
+    },
+    {
+      "type": "p",
+      "text": "Because the count depends on numeric format, flops is also tied to precision. Accelerators advertise much higher rates for lower-precision formats, so the half-precision and reduced-precision paths used in mixed-precision-training can multiply effective throughput several times over relative to full precision, at the cost of careful numerical handling. This is one reason low precision is standard for large models. Most importantly, total training flops is the compute axis of the scaling-laws: those empirical curves predict a model's loss as a smooth function of parameters, data, and exactly this measure of arithmetic spent, which is why estimating flops in advance is how practitioners budget a run."
+    }
+  ],
+  "related": [
+    {
+      "slug": "gpu",
+      "label": "GPU"
+    },
+    {
+      "slug": "tpu",
+      "label": "TPU"
+    },
+    {
+      "slug": "memory-bandwidth",
+      "label": "Memory Bandwidth"
+    },
+    {
+      "slug": "matrix-multiplication",
+      "label": "Matrix Multiplication"
+    },
+    {
+      "slug": "scaling-laws",
+      "label": "Scaling Laws"
+    },
+    {
+      "slug": "mixed-precision-training",
+      "label": "Mixed Precision Training"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

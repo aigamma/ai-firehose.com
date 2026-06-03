@@ -1,0 +1,64 @@
+{
+  "id": "image-classification",
+  "label": "Image Classification",
+  "kind": "technique",
+  "category": "Computer Vision",
+  "aliases": [],
+  "durable": true,
+  "source": "authored",
+  "definition": "The task of assigning a whole image to one category from a fixed set of labels, the canonical benchmark problem of computer vision and the training objective from which most visual representations are first learned.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Image classification is the task of taking an entire image and predicting a single label that names what it depicts, choosing from a fixed vocabulary of categories. Given a photograph, a classifier outputs \"tabby cat\" or \"fire truck\" rather than locating where those things are or outlining their shape. It is the simplest framing of visual recognition and, for that reason, the one on which the field was built. The ImageNet benchmark, a dataset of over a million images spread across a thousand categories, turned classification into the proving ground where deep learning first overtook hand-engineered methods in 2012."
+    },
+    {
+      "type": "p",
+      "text": "The task matters out of proportion to its apparent simplicity because the representations a network learns while classifying turn out to be broadly useful. A model trained to tell a thousand object categories apart must, along the way, learn to detect edges, textures, parts, and whole objects. Those learned features transfer to other vision tasks, which is why classification pretraining is the usual first step before [transfer learning](transfer-learning) or [fine-tuning](fine-tuning) onto detection, segmentation, or any narrower problem. The accuracy number on a classification benchmark became the field's shorthand for how good a visual backbone is."
+    },
+    {
+      "type": "p",
+      "text": "Mechanically, a classifier maps an image to a vector of scores, one per category, then passes those scores through a [softmax](softmax) to produce a probability distribution over the labels. Training minimizes the cross-entropy between this predicted distribution and the true one-hot label, a [supervised learning](supervised-learning) setup that needs many labeled examples. Because labeled images are finite and models overfit, classifiers lean heavily on [data augmentation](data-augmentation) and regularization to generalize."
+    },
+    {
+      "type": "p",
+      "text": "The dominant architectures for the job have shifted over time. For most of the 2010s the [convolutional neural network](convolutional-neural-network) ruled, building a hierarchy of features through stacked convolution and [pooling](pooling) layers and reading out a final label from the top. Since 2020 the [vision transformer](vision-transformer) has matched or exceeded convolutional accuracy by splitting the image into patches and applying attention, though it typically needs more data or stronger augmentation to reach the same generalization. Both families ultimately solve the same problem: compress an image down to one decision."
+    }
+  ],
+  "related": [
+    {
+      "slug": "convolutional-neural-network",
+      "label": "Convolutional Neural Network"
+    },
+    {
+      "slug": "vision-transformer",
+      "label": "Vision Transformer"
+    },
+    {
+      "slug": "supervised-learning",
+      "label": "Supervised Learning"
+    },
+    {
+      "slug": "softmax",
+      "label": "Softmax"
+    },
+    {
+      "slug": "pooling",
+      "label": "Pooling"
+    },
+    {
+      "slug": "transfer-learning",
+      "label": "Transfer Learning"
+    },
+    {
+      "slug": "data-augmentation",
+      "label": "Data Augmentation"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

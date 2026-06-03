@@ -1,0 +1,17 @@
+---
+title: Simulated Annealing
+slug: simulated-annealing
+kind: technique
+category: Advanced Optimization
+aliases: SA, annealing optimization
+related: evolutionary-strategy, bayesian-optimization, gradient-descent, loss-landscape
+summary: A global optimization method that searches a landscape by random moves which are always accepted when they improve the objective and sometimes accepted when they worsen it, with the probability of accepting worse moves cooled gradually toward zero to settle into a good minimum.
+---
+
+Simulated annealing is a global optimization method for rugged, nonconvex landscapes where gradient-based descent would get trapped. It takes its name and its mechanism from metallurgy: heating a metal and cooling it slowly lets its atoms settle into a low-energy, well-ordered crystal, whereas rapid quenching freezes in defects. The algorithm treats the objective as an energy to be minimized and mimics that controlled cooling to find a low-energy configuration of the variables.
+
+The defining trick is that simulated annealing is willing to move uphill. At each step it proposes a random nearby candidate. If the candidate is better it is accepted, as any descent method would do. If it is worse it is accepted anyway with a probability that depends on how much worse it is and on a control parameter called the temperature, following the Metropolis acceptance rule. This deliberate willingness to accept worse solutions is what lets the search climb out of a shallow local minimum and cross the barrier into a deeper one, which a strictly downhill method like gradient descent can never do, because gradient descent follows the local slope and halts at the first basin it falls into.
+
+The temperature is the heart of the method and it is lowered on a schedule. Early on, when the temperature is high, almost any move is accepted and the search roams the whole landscape freely, exploring broadly. As the temperature cools, uphill moves become progressively less likely, the search grows pickier, and it concentrates into the most promising basin, finally behaving like pure downhill descent as the temperature approaches zero. This shift from exploration to exploitation, governed by a single cooling parameter, is the entire algorithm. With a slow enough schedule it is provably guaranteed to find the global optimum, though such schedules are usually too slow to use in full.
+
+Simulated annealing matters because it needs no gradient, no continuity, and no convexity. It applies to discrete combinatorial problems such as the traveling salesman, circuit and chip layout, and scheduling, where the very notion of a gradient is undefined and gradient descent simply does not apply. It belongs to the family of metaheuristic, derivative-free global optimizers alongside evolutionary strategy methods and Bayesian optimization, each making a different trade between exploration and exploitation. Its lasting conceptual gift is the explicit, tunable temperature that interpolates between random global search and greedy local descent.

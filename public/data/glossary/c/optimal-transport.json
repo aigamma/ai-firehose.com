@@ -1,0 +1,69 @@
+{
+  "id": "optimal-transport",
+  "label": "Optimal Transport",
+  "kind": "technique",
+  "category": "Advanced Mathematics",
+  "aliases": [
+    "optimal transport",
+    "Wasserstein distance",
+    "earth mover's distance",
+    "Monge-Kantorovich problem"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A theory of the cheapest way to move one probability distribution onto another given a cost of moving mass, yielding the Wasserstein distance, a geometry-aware way to compare distributions.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Optimal transport asks a concrete question with deep consequences: if one probability distribution describes where mass currently sits and another describes where you want it, what is the least expensive plan to rearrange the first into the second? The cost is set by how far each unit of mass must move, typically a power of the ground distance. The problem was posed by Gaspard Monge in 1781 in terms of moving piles of earth, which is why a discrete version is still called the earth mover's distance, and it was given its modern, tractable form by Leonid Kantorovich in the 1940s. Kantorovich's relaxation allows mass to be split, turning a hard combinatorial assignment into a linear program over transport plans, which are joint distributions whose marginals are the two given distributions."
+    },
+    {
+      "type": "p",
+      "text": "The value of the minimal cost is a distance between distributions, the Wasserstein distance. What makes it special is that it respects the geometry of the underlying space. Two distributions placed on nearby but non-overlapping supports are judged close, because moving the mass a short way is cheap, whereas divergences like the kl-divergence see no overlap and blow up to infinity. This geometric sensitivity is exactly what is missing from the pointwise comparisons that dominate classical statistics, and it is why the Wasserstein distance gives meaningful gradients even when two distributions do not share support, a situation that is the norm, not the exception, in high dimensions."
+    },
+    {
+      "type": "p",
+      "text": "That property reshaped generative modeling. The original generative-adversarial-network minimized a divergence that provided vanishing or unstable gradients when the generated and real distributions barely overlapped, which is precisely the early-training regime. The Wasserstein GAN replaced that objective with the Wasserstein distance, exploiting the Kantorovich-Rubinstein duality that rewrites the distance as a maximization over one-Lipschitz functions, a form a neural network can approximate. The result was markedly more stable training and a loss that actually correlates with sample quality. The same distance grades the fidelity of generative samples generally and supplies the geometric backbone for several diffusion-model and flow formulations."
+    },
+    {
+      "type": "p",
+      "text": "Mechanically, optimal transport has a primal and a dual face. The primal seeks the transport plan, a coupling minimizing expected cost; the dual seeks potentials, often called Kantorovich potentials, whose difference is bounded by the cost and whose gap measures the work done. When an honest deterministic map exists, Brenier's theorem says that for squared-Euclidean cost it is the gradient of a convex function, linking transport to convex-optimization. Solving the linear program exactly is expensive, so practitioners add an entropic regularizer and run the Sinkhorn algorithm, a fast iterative matrix scaling that yields a smoothed, differentiable Sinkhorn distance suitable for use inside a training loop."
+    },
+    {
+      "type": "p",
+      "text": "Beyond comparing distributions, optimal transport defines a geometry on the space of distributions itself. The Wasserstein distance turns that space into a metric space whose shortest paths, the displacement interpolations, are geodesics that morph one distribution continuously into another by moving mass along straight lines, rather than by fading one out and the other in. This Wasserstein geometry connects to gradient flows (many physical diffusions are steepest descent of an energy in Wasserstein space), to domain adaptation (aligning a source and target distribution by transporting one onto the other), and to the broader effort to do calculus and optimization directly on distributions. It is one of the cleanest bridges between measure-theory, geometry, and modern generative machine learning."
+    }
+  ],
+  "related": [
+    {
+      "slug": "probability-distribution",
+      "label": "Probability Distribution"
+    },
+    {
+      "slug": "measure-theory",
+      "label": "Measure Theory"
+    },
+    {
+      "slug": "kl-divergence",
+      "label": "KL Divergence"
+    },
+    {
+      "slug": "generative-adversarial-network",
+      "label": "Generative Adversarial Network"
+    },
+    {
+      "slug": "diffusion-model",
+      "label": "Diffusion Model"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,68 @@
+{
+  "id": "differential-geometry",
+  "label": "Differential Geometry",
+  "kind": "technique",
+  "category": "Advanced Mathematics",
+  "aliases": [
+    "differential geometry",
+    "smooth manifold",
+    "differential geometric"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The study of smooth curved spaces using calculus, equipping manifolds with notions of tangent direction, distance, and curvature, and providing the geometric foundation for working on curved representation spaces.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Differential geometry is calculus on curved spaces. Where ordinary calculus works on flat Euclidean space, differential geometry develops the same machinery (derivatives, integrals, vector fields, flows) on a smooth manifold, a space that is curved globally but looks like flat space in any small neighborhood. The local flatness is what makes calculus possible at all: at each point of the manifold there is a tangent space, the flat linear approximation that holds all the velocity vectors a curve through that point can have, and differentiation happens there. Stitching these local linear pictures together coherently across the whole manifold, while tracking how they twist relative to one another, is the technical core of the subject."
+    },
+    {
+      "type": "p",
+      "text": "The structure that turns a bare smooth manifold into a space you can actually measure is the metric tensor, a smoothly varying inner product on each tangent space. With it a manifold becomes a riemannian-manifold and acquires lengths, angles, areas, and the rest of metric geometry. From the metric you derive how to differentiate vector fields along the manifold (the connection and its covariant derivative), which in turn defines the geodesic, the straightest possible path, as a curve whose velocity is carried along without turning. The failure of this parallel transport to bring a vector back unchanged after a small loop is exactly curvature, the local quantity that says how far the space departs from flat. These three layers, metric, connection, and curvature, are the working vocabulary of the field."
+    },
+    {
+      "type": "p",
+      "text": "The subject's reach in mathematics and physics is enormous. Gauss's study of surfaces and Riemann's generalization to arbitrary dimensions culminated in the geometry that Einstein used for general relativity, where gravity is curvature of spacetime. Gauge theories that describe the other fundamental forces are differential geometry as well, phrased in the language of connections on fiber bundles. The same constructions, abstracted, feed back into pure mathematics through topology and through the theory of the lie-group, where a continuous symmetry group is itself a smooth manifold and its local structure is read off with differential-geometric tools."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning the relevance is direct whenever a representation space or a parameter space is not flat. Treating the family of a model's probability distributions as a curved manifold is information-geometry, whose metric is the Fisher information; natural gradient methods then take each optimization step along the geometry this metric defines rather than in raw coordinates, so updates respect how much the model's outputs actually change. Embedding hierarchical data into negatively curved (hyperbolic) space exploits differential geometry to fit trees with far less distortion than flat space allows. Optimizing over constrained sets such as rotation matrices, positive-definite covariance matrices, or unit-norm directions is Riemannian optimization, where each gradient step moves along a geodesic on the relevant manifold so the iterate never leaves the valid set."
+    },
+    {
+      "type": "p",
+      "text": "The unifying lesson differential geometry offers practitioners is that distance and direction are choices, encoded by the metric, not fixed facts of the ambient coordinates. Picking the metric tensor is picking what nearness and straightness mean for a problem, and the curvature that results dictates how paths spread, how volumes grow, and how optimization behaves. This is the same insight a geodesic and a riemannian-manifold express locally, set here in its full generality: once you accept that your data or your parameters live on a curved space, differential geometry is the toolkit that lets you do calculus there correctly."
+    }
+  ],
+  "related": [
+    {
+      "slug": "riemannian-manifold",
+      "label": "Riemannian Manifold"
+    },
+    {
+      "slug": "metric-tensor",
+      "label": "Metric Tensor"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic"
+    },
+    {
+      "slug": "curvature",
+      "label": "Curvature"
+    },
+    {
+      "slug": "lie-group",
+      "label": "Lie Group"
+    },
+    {
+      "slug": "information-geometry",
+      "label": "Information Geometry"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

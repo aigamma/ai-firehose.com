@@ -1,0 +1,19 @@
+---
+title: Calibration
+slug: calibration
+kind: technique
+category: Evaluation and Benchmarks
+aliases: model calibration, confidence calibration, expected calibration error
+related: perplexity, precision-and-recall, roc-auc, f1-score, temperature-scaling
+summary: The property that a model's stated confidence matches its actual accuracy. A well-calibrated model that says it is 80 percent sure is right about 80 percent of the time. Measured by expected calibration error and visualized with reliability diagrams.
+---
+
+Calibration is the alignment between a model's confidence and its correctness. A model is well calibrated when, across all the predictions it makes with a stated probability of p, it turns out to be right a fraction p of the time. If a weather model says 70 percent chance of rain on a hundred days and it rains on roughly seventy of them, the model is calibrated. Calibration is orthogonal to accuracy: a model can be highly accurate yet overconfident, or only moderately accurate yet perfectly honest about its own uncertainty. The two properties answer different questions, one about how often the model is right and one about whether you can trust the number it attaches to being right.
+
+It matters most wherever a probability feeds a decision. A medical triage system, a fraud threshold, a self-driving perception stack, and a retrieval-augmented answer that should abstain when unsure all consume the model's confidence, not just its top guess. If the confidence is inflated, downstream thresholds are silently wrong and risk is mispriced. Modern deep networks are notoriously overconfident: they often achieve high accuracy while assigning 99 percent confidence to predictions that are right far less often, which makes calibration a first-class evaluation concern rather than an afterthought. For language models the same issue appears as confidently stated hallucinations, fluent text delivered with no signal that the model is guessing.
+
+Calibration is measured by bucketing predictions by their stated confidence and comparing, within each bucket, the average confidence against the observed accuracy. Plotting accuracy versus confidence yields a reliability diagram, where the diagonal is perfect calibration and points below it indicate overconfidence. Summarizing the gaps gives the expected calibration error, a weighted average of the bucket-wise differences between confidence and accuracy. When a model is miscalibrated but otherwise good, post-hoc fixes such as temperature scaling, Platt scaling, or isotonic regression rescale its output probabilities to restore alignment without changing which answer ranks first, so accuracy is untouched while the confidences become trustworthy.
+
+The concept has subtleties. Calibration is a property of an aggregate, so it can be satisfied on average while being wrong for specific subgroups, a fairness hazard when a model is well calibrated overall but overconfident for a minority slice. Expected calibration error is also sensitive to how many buckets are used and can mask compensating errors, and being calibrated says nothing about being accurate or useful: a model that predicts the base rate for every input can be perfectly calibrated and worthless. Calibration is therefore a complement to performance metrics, never a substitute for them.
+
+Calibration underpins the rest of the evaluation stack. It is presupposed by perplexity, which only rewards a model whose token probabilities are honest, and it governs whether the threshold behind precision-and-recall and the f1-score sits where you think it does. It is closely tied to roc-auc, which measures whether a model ranks positives above negatives (discrimination) while calibration measures whether the attached probabilities are literally correct: a model can have excellent ranking and terrible calibration at the same time.

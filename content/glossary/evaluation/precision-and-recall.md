@@ -1,0 +1,19 @@
+---
+title: Precision and Recall
+slug: precision-and-recall
+kind: technique
+category: Evaluation and Benchmarks
+aliases: precision, recall, sensitivity, positive predictive value
+related: f1-score, roc-auc, calibration, rouge, bleu-score
+summary: The two foundational metrics for classification and retrieval. Precision is the fraction of predicted positives that are correct; recall is the fraction of actual positives that were found. They trade off against each other.
+---
+
+Precision and recall are the two questions you ask of any system that flags a subset of items as positive, whether that system is a spam filter, a search engine, a tumor detector, or a retrieval step in a RAG pipeline. Precision asks: of everything the system flagged, how much was right? Recall asks: of everything that should have been flagged, how much did the system catch? They are computed from the same four outcome counts, true positives, false positives, true negatives, and false negatives, but they emphasize different failures. Precision punishes false positives; recall punishes false negatives.
+
+They matter because a single accuracy figure hides the kind of mistake a model makes, and the two kinds rarely cost the same. In cancer screening a missed case (low recall) can be fatal while a false alarm (low precision) merely triggers a follow-up test, so recall is paramount. In a spam filter a false positive that deletes a real email is far worse than a spam message slipping through, so precision dominates. Reporting both numbers forces an honest account of the trade-off the system has chosen and lets a practitioner align that choice with the real stakes.
+
+The two are computed directly from the confusion matrix. Precision is true positives divided by all predicted positives (true positives plus false positives). Recall is true positives divided by all actual positives (true positives plus false negatives). Almost always they trade off: lowering the decision threshold so the model predicts positive more readily raises recall and lowers precision, while raising the threshold does the reverse. Sweeping the threshold traces out a precision-recall curve, and where both must be summarized in one number, the f1-score takes their harmonic mean. In information retrieval the same ideas extend to ranked lists as precision-at-k and recall-at-k.
+
+The central limitation is that neither number is meaningful alone, because either can be trivially maximized at the other's expense. A model that predicts positive for a single item it is certain of can have perfect precision and near-zero recall; a model that predicts positive for everything has perfect recall and precision equal to the base rate. Both metrics also ignore true negatives, so they characterize performance on the positive class only and depend entirely on the chosen threshold and on the class balance of the test set. This threshold and base-rate sensitivity is why threshold-free summaries like roc-auc are often reported alongside them.
+
+Precision and recall are the bedrock the rest of the classification-metric family is built on. The f1-score is their harmonic mean, roc-auc and the precision-recall curve trace how they move as the threshold varies, and the overlap metrics for generated text, rouge and bleu-score, are precision-and-recall counting applied to n-grams. Whether those underlying probabilities deserve trust at a given threshold is the separate concern of calibration.

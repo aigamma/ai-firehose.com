@@ -1,0 +1,19 @@
+---
+title: Named-Entity Recognition
+slug: named-entity-recognition
+kind: technique
+category: NLP Foundations
+aliases: NER, entity extraction, named entity recognition
+related: dependency-parsing, word-embedding, bert, tf-idf, masked-language-modeling
+summary: An information-extraction task that locates spans of text referring to real-world entities such as people, organizations, locations, dates, and amounts, and labels each span with its type.
+---
+
+Named-entity recognition (NER) is the task of finding the words or phrases in a text that name specific real-world things and classifying each one by type. Typical types include person, organization, location, date, and monetary amount, though schemes are often extended to domain-specific categories such as gene, drug, or product. In the sentence "Apple opened a store in Berlin in 2019", an NER system should tag "Apple" as an organization, "Berlin" as a location, and "2019" as a date. It is a foundational building block of information extraction.
+
+NER matters because converting unstructured prose into structured, typed entities is a prerequisite for many downstream applications. Search engines use it to understand queries and index documents, question-answering systems use it to identify candidate answers, knowledge graphs are populated by extracting entities and the relations between them, and analysts use it to scan large document collections for who, where, and when. On this very project's pipeline, entity extraction is part of how items are classified and connected.
+
+Technically, NER is usually framed as a sequence-labeling problem: each token receives a tag, commonly in a BIO scheme that marks the Beginning and Inside of an entity span and the Outside tokens, which lets the model represent multi-word entities like "New York City" as a single unit. Early systems leaned on hand-built rules, gazetteers, which are lists of known names, and statistical models such as conditional random fields driven by features like capitalization and surrounding words. The difficulty is that the same surface form can be different types depending on context, so "Washington" may be a person, a place, or an organization, which makes context essential.
+
+The accuracy of NER rose sharply with the move to learned representations. Static word embeddings such as word2vec and glove gave models a sense of which words behave like names, and the contextual representations from bert, trained with masked-language-modeling, let a model use the full sentence to disambiguate an entity's type, which is exactly where rule-based and static-feature systems struggled. NER is also commonly paired with dependency-parsing, since the grammatical relations around a span give strong evidence about its role and type.
+
+In the longer view, NER illustrates how the transformer era reshaped classic NLP tasks rather than replacing them. The task definition is decades old, but the engine underneath changed from rules and sparse features to contextual transformer embeddings fine-tuned on labeled spans. It remains one of the standard benchmarks on which models like bert are evaluated, and a dependable component in production pipelines that need to turn text into structured facts.

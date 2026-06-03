@@ -1,0 +1,19 @@
+---
+title: Newton's Method
+slug: newtons-method
+kind: technique
+category: Advanced Optimization
+aliases: Newton-Raphson, second-order optimization
+related: gradient-descent, conjugate-gradient, lbfgs, trust-region, natural-gradient, loss-landscape
+summary: A second-order optimization method that uses both the gradient and the curvature (the Hessian matrix) of a function to jump toward a minimum, converging far faster than gradient descent near a well-behaved optimum.
+---
+
+Newton's method is the canonical second-order optimizer. Where gradient descent looks only at the slope of the loss function and takes a fixed-size step downhill, Newton's method also looks at how the slope is changing, the curvature, and uses that information to estimate where the bottom actually is. It builds a local quadratic model of the surface at the current point and jumps straight to the minimum of that quadratic in a single step. On a function that is itself quadratic, it lands on the exact optimum in one move.
+
+The curvature is captured by the Hessian, the matrix of all second partial derivatives of the loss. Each Newton step solves a linear system: it multiplies the gradient by the inverse of the Hessian and steps in that direction. Intuitively, the inverse Hessian rescales and rotates the raw gradient so that directions of high curvature get short steps and directions of low curvature get long ones, correcting the main pathology of gradient descent, which crawls along flat valleys and oscillates across steep ones because it treats every direction with the same learning rate.
+
+This is why Newton's method matters: near a minimum where the surface is smooth and convex, it converges quadratically, meaning the number of correct digits roughly doubles each iteration, while gradient descent converges only linearly. When it works, it works in a handful of steps rather than thousands.
+
+The catch, and the reason it is rarely used directly in deep learning, is cost. For a model with a million parameters the Hessian has a trillion entries, far too large to form, store, or invert. The method can also be unstable far from a minimum, where the local quadratic model is a poor fit and the Hessian may not even be positive definite, sending the step in an ascent direction. Both failures are exactly what the neighboring methods exist to fix.
+
+These limitations spawned a family of practical successors. Quasi-Newton methods like lbfgs approximate the inverse Hessian cheaply from a history of gradients instead of computing it. Conjugate gradient gets Newton-like behavior on quadratics using only gradients and no matrix at all. Trust region methods restrict each step to a region where the quadratic model is trustworthy, taming the instability. And the natural gradient is Newton's idea transplanted onto a different curvature object, the Fisher information matrix, for probability models. Newton's method is therefore less a production algorithm than the conceptual root of all second-order optimization.

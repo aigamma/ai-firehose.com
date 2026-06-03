@@ -1,0 +1,67 @@
+{
+  "id": "gaussian-process",
+  "label": "Gaussian Process",
+  "kind": "technique",
+  "category": "Probabilistic Machine Learning",
+  "aliases": [
+    "GP",
+    "Gaussian processes"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A distribution over functions in which any finite set of function values is jointly Gaussian, giving a nonparametric Bayesian model that predicts with calibrated uncertainty.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A Gaussian process is a probability distribution not over numbers or vectors but over entire functions. The defining property is simple to state: for any finite collection of input points, the corresponding function values follow a joint multivariate Gaussian distribution. A Gaussian process is fully specified by a mean function, which says where the functions are centered, and a covariance function or kernel, which says how strongly the values at two inputs are correlated. Because it places a prior directly on functions, a Gaussian process is a nonparametric model: its flexibility grows with the data instead of being fixed by a chosen number of weights."
+    },
+    {
+      "type": "p",
+      "text": "Gaussian processes matter because they are one of the cleanest ways to do regression with honest uncertainty. Most models return a single best guess; a Gaussian process returns a full predictive probability distribution at every input, so it reports not just the expected value but also how confident it is. That confidence widens far from the observed data and narrows near it, which is exactly the behavior you want when decisions depend on knowing what the model does not know. This makes Gaussian processes a default tool in Bayesian optimization, where each expensive experiment is chosen by trading off predicted value against predicted uncertainty, and in active learning, geostatistics, and the modeling of small scientific datasets."
+    },
+    {
+      "type": "p",
+      "text": "The mechanics rest on conditioning a joint Gaussian on the observed outputs. Given training inputs and their noisy targets, the kernel builds a covariance matrix that encodes the assumed smoothness of the function, and the standard Gaussian conditioning formulas produce a closed-form posterior mean and variance at any new input. The kernel is where modeling choices live: a squared-exponential kernel assumes very smooth functions, while others encode periodicity or abrupt changes. The kernel's free parameters, such as length scale and signal variance, are typically tuned by maximizing the marginal likelihood, an instance of [maximum likelihood estimation](maximum-likelihood-estimation) applied to the model evidence rather than to point predictions."
+    },
+    {
+      "type": "p",
+      "text": "The chief limitation is cost. Exact inference inverts an n-by-n covariance matrix, which scales cubically in the number of training points and makes naive Gaussian processes impractical beyond a few thousand observations. The field's response has been a family of sparse and approximate methods built on a small set of inducing points, and these approximations are frequently fit with [variational inference](variational-inference), which turns the intractable posterior into a tractable optimization problem. That connection places Gaussian processes squarely inside the broader toolkit of approximate Bayesian methods rather than apart from it."
+    },
+    {
+      "type": "p",
+      "text": "Conceptually, a Gaussian process is the infinite-dimensional cousin of [Bayesian inference](bayesian-inference) over a finite parameter vector. A Bayesian linear model with an infinite, cleverly chosen feature expansion is exactly a Gaussian process under the hood, which is why the two views are often interchanged. Seen this way, a Gaussian process is the limit you reach when you stop committing to a fixed parametric form and instead reason directly about the space of functions that could have produced your data."
+    }
+  ],
+  "related": [
+    {
+      "slug": "gaussian-distribution",
+      "label": "Gaussian Distribution"
+    },
+    {
+      "slug": "bayesian-inference",
+      "label": "Bayesian Inference"
+    },
+    {
+      "slug": "probability-distribution",
+      "label": "Probability Distribution"
+    },
+    {
+      "slug": "maximum-likelihood-estimation",
+      "label": "Maximum Likelihood Estimation"
+    },
+    {
+      "slug": "latent-variable-model",
+      "label": "Latent Variable Model"
+    },
+    {
+      "slug": "variational-inference",
+      "label": "Variational Inference"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

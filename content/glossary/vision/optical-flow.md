@@ -1,0 +1,16 @@
+---
+title: Optical Flow
+slug: optical-flow
+kind: technique
+category: Computer Vision
+related: convolutional-neural-network, semantic-segmentation, object-detection, feature-pyramid, vision-transformer
+summary: A dense field of per-pixel motion vectors describing how each point in an image moves from one video frame to the next, the standard low-level representation of apparent motion in a scene.
+---
+
+Optical flow is the pattern of apparent motion between two consecutive video frames, expressed as a vector for every pixel that says how far and in what direction that point appears to have moved. The result is a dense flow field the size of the image, often visualized as a color map where hue encodes direction and saturation encodes speed. It captures the motion of objects, the motion of the camera, and the interplay of the two, and it is the foundational low-level cue for understanding video rather than still images.
+
+Optical flow matters because motion is information that single frames cannot provide. It underpins video stabilization, frame interpolation for slow-motion and higher refresh rates, action recognition, object tracking, and the visual odometry that lets robots and drones estimate their own movement. Where [object detection](object-detection) and [semantic segmentation](semantic-segmentation) describe a static frame, optical flow describes the change between frames, supplying the temporal dimension that those spatial tasks lack.
+
+The problem rests on the brightness-constancy assumption: a small patch of the world keeps roughly the same intensity as it moves, so the task is to find, for each pixel, the displacement that best matches its neighborhood in the next frame. This is fundamentally a correspondence-matching problem, and it is ill-posed in flat or repetitive regions where many displacements look equally good (the aperture problem), so classical methods such as Horn-Schunck and Lucas-Kanade add smoothness assumptions to regularize the answer. Large motions are handled by solving the problem coarse-to-fine across a [feature pyramid](feature-pyramid), estimating big displacements at low resolution and refining them upward.
+
+Modern optical flow is learned. Networks such as FlowNet and RAID-style architectures, most prominently RAFT, predict the flow field directly with a [convolutional neural network](convolutional-neural-network), building an explicit correlation volume that scores how well each pixel matches candidate locations and iteratively refining the estimate. More recent estimators adopt [vision transformer](vision-transformer) components to model long-range matches. Learned flow estimators trained on synthetic data with perfect ground-truth motion now generalize well to real video, making optical flow a dependable building block in larger vision systems.

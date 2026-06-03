@@ -1,0 +1,60 @@
+{
+  "id": "gradient-checkpointing",
+  "label": "Gradient Checkpointing",
+  "kind": "technique",
+  "category": "Systems and Infrastructure",
+  "aliases": [
+    "activation checkpointing",
+    "gradient checkpoint",
+    "rematerialization"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Gradient checkpointing is a memory-saving technique that trades extra computation for lower memory use during training, storing only a few activations on the forward pass and recomputing the rest on the fly during backpropagation.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Gradient checkpointing is a technique for fitting larger models or longer sequences into limited accelerator memory by recomputing intermediate values instead of storing them. To understand the problem it solves, recall that backpropagation needs the activations produced during the forward pass in order to compute gradients on the way back. Normally every layer's activations are kept in memory from the forward pass until they are used in the backward pass, and for a deep network or a long sequence these stored activations can consume more memory than the model's own weights."
+    },
+    {
+      "type": "p",
+      "text": "The technique works by saving only a small subset of activations, the checkpoints, during the forward pass and discarding the rest. When backpropagation reaches a region whose activations were thrown away, it recomputes them by running that region's forward pass again, starting from the nearest saved checkpoint. The gradients are then calculated as usual and the recomputed activations are discarded once more. This is why the technique is also called rematerialization: the missing activations are regenerated on demand rather than remembered. With checkpoints spread evenly through the network, peak activation memory drops dramatically, often from growing with the number of layers to growing only with its square root."
+    },
+    {
+      "type": "p",
+      "text": "The cost of this saving is time. Every checkpointed region is computed twice, once on the original forward pass and once again during the backward pass, which typically adds roughly a third to the total training compute. Gradient checkpointing is therefore a direct trade of flops for memory, and it is worth making whenever memory, not compute, is the binding constraint, which is common when training large models, using long context windows, or running on a gpu with limited capacity. Because the recomputation reads and writes activations, its real cost also depends on memory-bandwidth, not arithmetic alone."
+    },
+    {
+      "type": "p",
+      "text": "Gradient checkpointing is one of several memory levers that are mixed and matched in large training runs. It composes naturally with mixed-precision-training, which shrinks each stored value, and with the parallelism techniques: it is especially valuable in pipeline-parallelism, where activations from many in-flight micro-batches would otherwise pile up, and more broadly within any model-parallelism scheme that is straining a device's memory. By relaxing the memory ceiling on each accelerator, it lets practitioners push toward the model sizes and sequence lengths that the scaling-laws reward without buying more hardware."
+    }
+  ],
+  "related": [
+    {
+      "slug": "gpu",
+      "label": "GPU"
+    },
+    {
+      "slug": "memory-bandwidth",
+      "label": "Memory Bandwidth"
+    },
+    {
+      "slug": "mixed-precision-training",
+      "label": "Mixed Precision Training"
+    },
+    {
+      "slug": "pipeline-parallelism",
+      "label": "Pipeline Parallelism"
+    },
+    {
+      "slug": "model-parallelism",
+      "label": "Model Parallelism"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

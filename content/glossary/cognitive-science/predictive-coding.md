@@ -1,0 +1,17 @@
+---
+title: Predictive Coding
+slug: predictive-coding
+kind: technique
+category: Cognitive Science and Neuroscience
+aliases: predictive processing, hierarchical predictive coding
+related: free-energy-principle, bayesian-brain, neural-coding, hebbian-learning, backpropagation, autoencoder
+summary: A theory of brain function in which the cortex is a hierarchy of generative models that constantly predict their own incoming signals, and only the prediction error, the mismatch between expectation and input, is passed forward for further processing.
+---
+
+Predictive coding proposes that the brain is fundamentally a prediction machine. Rather than passively registering sensory input, each level of the cortical hierarchy holds an internal generative model of what it expects the level below to be reporting, and sends those predictions downward. The lower level compares the prediction to the actual signal and sends back only the residual, the part that was not anticipated. On this view, what flows up the hierarchy is not raw data but prediction error, and what flows down is the brain's best guess about the causes of its sensations.
+
+The idea has deep roots in Hermann von Helmholtz's nineteenth-century notion of perception as unconscious inference, but its modern form was crystallized by Rajesh Rao and Dana Ballard in a 1999 model of the visual cortex, and later generalized by Karl Friston into a broad account of cortical computation. The central claim is economical and testable: the cortex minimizes prediction error by jointly updating its internal models to better fit the input (perception) and, in the active variant, acting on the world to make the input match the prediction (action). Phenomena like the way expectation sharpens perception, and the way surprising stimuli draw outsized neural responses, fall out naturally.
+
+Architecturally the theory makes a specific anatomical bet. Distinct neuronal populations are thought to carry predictions and prediction errors, with feedback connections conveying expectations and feedforward connections conveying the errors that survive them. Precision, the brain's confidence in a given signal, is modeled as a gain on the error units and is widely identified with the role of attention and with neuromodulators such as dopamine. This gives a single framework a surprisingly wide reach, from low-level sensory adaptation to clinical accounts of hallucination and autism framed as miscalibrated precision.
+
+The bridge to artificial systems is direct and increasingly two-way. Predictive coding is a close cousin of the autoencoder, which also learns by reconstructing its input and treating reconstruction error as the training signal, and of self-supervised objectives that train large models to predict masked or future tokens. It is also studied as a biologically plausible alternative to backpropagation: because predictive-coding networks compute updates from locally available error signals rather than a global backward pass, they can, under certain conditions, approximate the same gradients while respecting the locality constraints of real neurons. That makes the theory a leading candidate for how brains might do something like deep learning, and a source of ideas for energy-efficient hardware that learns the way cortex is thought to.

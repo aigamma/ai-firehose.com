@@ -1,0 +1,63 @@
+{
+  "id": "implicit-regularization",
+  "label": "Implicit Regularization",
+  "kind": "technique",
+  "category": "Deep Learning Theory",
+  "aliases": [
+    "implicit bias",
+    "implicit bias of gradient descent"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The tendency of an optimization algorithm to prefer some solutions over others among the many that fit the training data equally well, even with no explicit penalty added to the loss.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Implicit regularization names a puzzle at the center of modern deep learning. An overparameterized network has many more parameters than training examples, so there are infinitely many weight settings that drive the training loss to zero. Most of those settings would generalize terribly. Yet gradient descent, started from a random initialization and run on the bare loss, reliably lands on solutions that generalize well. Something is selecting good minima out of the vast set of zero-loss minima, and because nothing was added to the objective to do so, that something is a property of the optimization procedure itself. That hidden preference is the implicit regularization, also called the implicit bias of gradient descent."
+    },
+    {
+      "type": "p",
+      "text": "The distinction with explicit regularization is the key idea. Classical methods like weight-decay or an L2 penalty change the loss landscape by adding a term that punishes complex solutions; you can see the bias written in the objective. Implicit regularization changes nothing in the objective. It arises from how the algorithm moves: the trajectory gradient descent follows, the order in which it fits patterns, the noise injected by mini-batch sampling in stochastic-gradient-descent, all bias the endpoint toward particular solutions. The effect is real even though the loss function alone cannot account for it, which is why it took the field years to recognize and name."
+    },
+    {
+      "type": "p",
+      "text": "In several simplified settings the bias can be characterized exactly. On separable data, gradient descent on logistic loss converges in direction to the maximum-margin separator, the same solution a support vector machine seeks, even though margin was never mentioned. In matrix and linear problems it tends to find minimum-norm solutions. More generally, the noise in stochastic gradient descent and the use of small step sizes push training toward flat-minima, wide low-curvature basins of the loss landscape that are empirically associated with better generalization. Each of these is a concrete face of the same phenomenon: the dynamics, not the objective, encode a preference for simplicity."
+    },
+    {
+      "type": "p",
+      "text": "Implicit regularization reframes how to think about why deep learning generalizes. Classical capacity measures predict that models this large should overfit, yet they do not, and the resolution is that the effective hypothesis space is not the full set of representable functions but the much smaller set the optimizer actually reaches and prefers. This makes implicit regularization a form of inductive-bias delivered by the training algorithm rather than the architecture, and it sits alongside the neural-tangent-kernel and double-descent as one of the main theoretical handles on overparameterized generalization. It also has a practical edge: choices of optimizer, learning rate, batch size, and initialization are not neutral, because each tunes the implicit bias and therefore which solution you converge to."
+    }
+  ],
+  "related": [
+    {
+      "slug": "regularization",
+      "label": "Regularization"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent"
+    },
+    {
+      "slug": "stochastic-gradient-descent",
+      "label": "Stochastic Gradient Descent"
+    },
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "flat-minima",
+      "label": "Flat Minima"
+    },
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

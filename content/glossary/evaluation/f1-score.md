@@ -1,0 +1,19 @@
+---
+title: F1 Score
+slug: f1-score
+kind: technique
+category: Evaluation and Benchmarks
+aliases: F1, F-score, F-measure, F-beta
+related: precision-and-recall, roc-auc, calibration, rouge, bleu-score
+summary: The harmonic mean of precision and recall, a single score between 0 and 1 that balances a classifier's false positives against its false negatives. It is high only when both precision and recall are high.
+---
+
+The F1 score collapses the two halves of precision-and-recall into one number by taking their harmonic mean. Precision measures how many of the items the model flagged are truly positive; recall measures how many of the truly positive items the model managed to flag. There is usually tension between them: a model can buy precision by being conservative and predicting positive only when certain, at the cost of recall, or buy recall by predicting positive liberally, at the cost of precision. The F1 score rewards a model only when it does well on both at once.
+
+It matters because raw accuracy is misleading on imbalanced data, the common case in real applications. If 99 percent of transactions are legitimate, a model that labels everything "not fraud" is 99 percent accurate and completely useless. The F1 score, computed on the positive (fraud) class, exposes that failure immediately, because the model's recall on fraud is zero and so is its F1. This makes F1 the default headline metric for retrieval, information extraction, named-entity recognition, medical screening, and any setting where the interesting class is rare and both kinds of error carry cost.
+
+The harmonic mean is the key to its behavior. Unlike the arithmetic mean, the harmonic mean is dominated by the smaller of its inputs, so F1 stays low whenever either precision or recall is low, no matter how high the other is. A model with precision 1.0 and recall 0.1 has an F1 of about 0.18, not 0.55. The general F-beta form lets you tilt the balance: beta greater than one weights recall more heavily (appropriate when missing a positive is the costly error, as in disease screening), and beta less than one weights precision more (appropriate when a false alarm is costly). Across many classes, F1 is averaged either "macro" (each class counts equally) or "micro" (each item counts equally), and the choice materially changes the number on skewed data.
+
+The F1 score has notable limitations. It ignores true negatives entirely, so it says nothing about performance on the majority class and can look identical for very different models. It depends on a chosen decision threshold, so a single F1 reflects one operating point rather than the model's full trade-off curve; a model that is worse at every threshold can still post a higher F1 if its default threshold happens to suit the test set. And its standard form gives precision and recall equal weight, an assumption that is rarely correct for a specific real-world cost structure. For a threshold-independent summary, practitioners turn to roc-auc or to a precision-recall curve.
+
+The F1 score is the standard scalar summary of precision-and-recall, a close relative of the threshold-free roc-auc, and the underlying engine of overlap metrics for text: both rouge and the structure of bleu-score combine precision and recall in essentially this way. Because it depends on a threshold, F1 is also entangled with calibration, the question of whether the probabilities behind that threshold are themselves trustworthy.

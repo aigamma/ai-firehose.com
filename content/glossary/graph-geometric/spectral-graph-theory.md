@@ -1,0 +1,17 @@
+---
+title: Spectral Graph Theory
+slug: spectral-graph-theory
+kind: technique
+category: Graph and Geometric Learning
+aliases: graph Laplacian, graph spectrum
+related: graph-convolution, graph-neural-network, eigenvalue, eigenvector, dimensionality-reduction, node-embedding
+summary: The study of a graph through the eigenvalues and eigenvectors of matrices associated with it, especially the graph Laplacian, revealing connectivity, clusters, and a notion of frequency on the graph.
+---
+
+Spectral graph theory analyzes a graph through the spectrum, the eigenvalues and eigenvectors, of matrices that encode its structure, above all the graph Laplacian. The Laplacian is built from the adjacency matrix and the node degrees, and its spectrum turns out to encode a great deal about the graph: the number of times zero appears as an eigenvalue counts the connected components, the smallest nonzero eigenvalue measures how well-knit the graph is, and the eigenvectors define a natural set of smooth-to-oscillating patterns over the nodes. In effect the Laplacian's eigenbasis plays the role for a graph that the Fourier basis plays for signals on a line, giving a notion of low and high frequency on irregular structure.
+
+This matters because the spectrum exposes global properties of a graph that are hard to read off edge by edge. The eigenvector tied to the smallest nonzero eigenvalue, the Fiedler vector, gives a principled way to cut a graph into two well-separated pieces, which is the basis of spectral clustering: embed the nodes using a few low-frequency eigenvectors, then cluster them with an ordinary method like k-means. The same low-frequency eigenvectors serve as coordinates for dimensionality reduction on graphs and as positional information that tells otherwise interchangeable nodes apart.
+
+The connection to modern machine learning runs through the graph convolution. Defining convolution on a graph requires a notion of frequency, and spectral graph theory supplies it: a spectral graph convolution filters a signal by reweighting its components in the Laplacian eigenbasis, exactly mirroring how classical convolution multiplies in the Fourier domain. Computing the full eigendecomposition is costly and binds the filter to one fixed graph, so practical graph neural networks approximate spectral filters with low-order polynomials of the Laplacian. That approximation localizes each filter to a few hops and, crucially, can be evaluated as plain neighborhood aggregation, which is why the spectral and the message-passing pictures of a graph neural network describe the same computation from two directions.
+
+Spectral graph theory also links graphs to geometry. The graph Laplacian is the discrete analogue of the Laplace operator on a smooth manifold, so the eigenvalues and eigenvectors of a graph approximate the vibration modes and intrinsic geometry of an underlying surface that the graph samples. This is the foundation of manifold-learning methods such as Laplacian eigenmaps and diffusion maps, which recover a low-dimensional layout of data from a neighborhood graph, and it gives spectral graph theory a natural place in geometric deep learning, where the smooth and the discrete pictures of shape meet.

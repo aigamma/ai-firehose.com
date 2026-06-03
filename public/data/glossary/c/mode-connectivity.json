@@ -1,0 +1,63 @@
+{
+  "id": "mode-connectivity",
+  "label": "Mode Connectivity",
+  "kind": "technique",
+  "category": "Deep Learning Theory",
+  "aliases": [
+    "linear mode connectivity",
+    "loss landscape connectivity"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The finding that distinct minima reached by independent training runs are not isolated valleys but are joined by continuous paths through the loss landscape along which the loss stays low.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Mode connectivity is a discovery about the shape of the loss landscape in deep networks. Intuition from low-dimensional optimization suggests that different good solutions, the modes of the loss, sit in separate valleys divided by high ridges, so moving from one to another would require climbing over a barrier of high loss. In deep networks this turns out to be false. Garipov and colleagues, and independently Draxler and colleagues, showed in 2018 that two independently trained models can be connected by a simple curve through parameter space, often just a bent path of one or two segments, along which the loss remains as low as at the endpoints. The minima are not isolated; they are linked by low-loss tunnels."
+    },
+    {
+      "type": "p",
+      "text": "The phenomenon comes in two strengths, and the difference is important. General mode connectivity allows the connecting path to curve, and almost any pair of minima can be joined this way. Linear mode connectivity is the stronger and rarer claim that the straight line between two solutions stays low-loss, with no barrier at all. Two networks are usually not linearly connected if trained from scratch with different random seeds, but they often become linearly connected if they share the early part of training before branching, an observation that ties directly to the lottery-ticket-hypothesis, since a winning ticket can be characterized as a subnetwork that is stable to the noise of training in exactly this linear sense."
+    },
+    {
+      "type": "p",
+      "text": "Part of why barriers seem to vanish is symmetry. A neural network's hidden units can be permuted without changing the function it computes, so each solution is really one representative of a large family of equivalent points scattered across parameter space. Much of the apparent separation between two independently trained models is just a mismatch of these permutations. If you first align one network's units to the other's and only then draw the line between them, the barrier often collapses and even from-scratch runs look linearly connected, which suggests that, up to symmetry, the good solutions may occupy essentially one connected region."
+    },
+    {
+      "type": "p",
+      "text": "Mode connectivity reshaped the mental picture of the loss landscape and has practical consequences. Because low-loss paths exist, you can build ensembles cheaply by sampling diverse models along a connecting curve rather than training many from scratch, and weight averaging along such paths finds wide, flat-minima that generalize well. Understanding which models can be merged underpins model-soup methods and informs when two checkpoints can be combined or distilled together through knowledge-distillation. The topic stays active because it links the geometry of the landscape, the role of symmetry, and the empirical reliability of training into one structural fact: in high dimensions, the good solutions of a deep network are connected."
+    }
+  ],
+  "related": [
+    {
+      "slug": "loss-landscape",
+      "label": "Loss Landscape"
+    },
+    {
+      "slug": "flat-minima",
+      "label": "Flat Minima"
+    },
+    {
+      "slug": "local-minimum",
+      "label": "Local Minimum"
+    },
+    {
+      "slug": "lottery-ticket-hypothesis",
+      "label": "Lottery Ticket Hypothesis"
+    },
+    {
+      "slug": "generalization",
+      "label": "Generalization"
+    },
+    {
+      "slug": "knowledge-distillation",
+      "label": "Knowledge Distillation"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

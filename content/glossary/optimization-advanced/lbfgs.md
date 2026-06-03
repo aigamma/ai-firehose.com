@@ -1,0 +1,17 @@
+---
+title: L-BFGS
+slug: lbfgs
+kind: technique
+category: Advanced Optimization
+aliases: limited-memory BFGS, quasi-Newton method
+related: newtons-method, conjugate-gradient, gradient-descent, trust-region, natural-gradient
+summary: A limited-memory quasi-Newton optimizer that approximates the inverse Hessian from a short history of recent gradients, gaining much of Newton's method's fast convergence at a memory cost only a few times that of gradient descent.
+---
+
+L-BFGS is the most widely used quasi-Newton optimizer, a practical answer to the question Newton's method raises but cannot afford: how to get curvature-aware steps without forming or inverting the Hessian. Quasi-Newton methods build up an approximation to the inverse Hessian incrementally from the gradients they observe along the way, on the principle that the change in the gradient between two points reveals how the surface is curving between them. The full BFGS method maintains a dense approximation to that inverse, which is excellent but, like the true Hessian, costs memory quadratic in the number of parameters and so does not scale to large models.
+
+The "L" stands for limited memory, and it is the key idea. Instead of storing the whole approximate matrix, L-BFGS keeps only the last few gradient and step differences, typically five to twenty pairs of vectors, and reconstructs the action of the inverse Hessian on the current gradient through a compact two-loop recursion. It never materializes a matrix at all. This drops the memory cost from quadratic to linear in the parameter count, only a small multiple of what gradient descent needs, while still capturing the dominant curvature directions seen recently. Each step is consequently far better scaled than a raw gradient step, taking short moves across steep directions and long moves along flat ones automatically.
+
+This matters because on smooth, deterministic problems L-BFGS converges in dramatically fewer iterations than gradient descent and is often the default in classical machine learning. It powers logistic regression and conditional random field training, maximum-likelihood fitting, and many full-batch problems in scientific computing, frequently reaching a high-accuracy solution where a first-order method would still be grinding. It sits between conjugate gradient, which uses even less state, and full Newton, which uses far more.
+
+The important caveat is that L-BFGS assumes consistent, low-noise gradients, because its curvature estimate is corrupted by noise in the gradient differences. That makes it a poor fit for the small stochastic mini-batches of deep learning, where the gradient changes meaning from batch to batch, and it is one reason large neural networks are trained with stochastic first-order methods like Adam rather than quasi-Newton ones. On full-batch or lightly-noised objectives, though, L-BFGS remains the standard high-performance optimizer and the textbook embodiment of the quasi-Newton idea.

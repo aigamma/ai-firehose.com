@@ -1,0 +1,19 @@
+---
+title: BLEU Score
+slug: bleu-score
+kind: technique
+category: Evaluation and Benchmarks
+aliases: BLEU, Bilingual Evaluation Understudy
+related: rouge, f1-score, perplexity, llm-as-judge, precision-and-recall
+summary: An n-gram overlap metric for machine translation that scores a candidate against one or more reference translations by modified n-gram precision, multiplied by a brevity penalty. Higher is better, on a 0 to 1 scale.
+---
+
+BLEU, the Bilingual Evaluation Understudy, is the metric that made automatic evaluation of machine translation practical. Proposed by IBM researchers in 2002, it scores a machine-produced translation by how much its word sequences overlap with one or more human reference translations. The intuition is that a good translation will share many of the same short word sequences, n-grams, with what a competent human translator wrote, so counting that overlap gives a cheap, reproducible proxy for human judgment.
+
+BLEU mattered because it broke a bottleneck. Before it, evaluating translation quality meant paying bilingual humans, which was slow and expensive enough to throttle research iteration. BLEU gave the field a fast, automatic, language-agnostic number that correlated reasonably well with human rankings in aggregate, so systems could be compared and tuned overnight. It became the standard reporting metric for translation for two decades, and its design influenced almost every overlap-based metric that followed, including rouge for summarization.
+
+The computation has two parts. First, modified n-gram precision: for each n-gram length, typically one through four, count how many of the candidate's n-grams appear in a reference, but clip each n-gram's count at the maximum number of times it occurs in any single reference so a candidate cannot win by repeating one correct word. These precisions are combined as a geometric mean. Second, a brevity penalty multiplies the result downward when the candidate is shorter than the reference, because precision alone could be gamed by emitting only a few words the model is sure of. Unlike an f1-score, BLEU has no explicit recall term; the brevity penalty is its proxy for not leaving content out.
+
+BLEU's limitations are severe and well known. It rewards surface form, not meaning: a perfectly correct paraphrase that uses different words scores poorly, while a fluent-sounding sentence that overlaps lexically but mistranslates a key term can score well. It ignores synonymy, word order beyond the n-gram window, grammaticality, and adequacy, and it is only meaningful at the corpus level, since sentence-level BLEU is extremely noisy. The single global number is also not interpretable in absolute terms; a BLEU of 35 is meaningful only relative to another system on the identical test set and tokenization. These weaknesses are why modern evaluation has shifted toward embedding-based metrics, learned metrics like COMET, and llm-as-judge scoring that can credit meaning-preserving paraphrase.
+
+BLEU is the archetypal n-gram overlap metric and the direct ancestor of rouge, which adapts the same machinery to summarization but leans on recall instead of precision. It is precision-oriented in the sense of precision-and-recall, with its brevity penalty standing in for recall, and its blindness to paraphrase is exactly the gap that intrinsic measures like perplexity and modern semantic and judge-based evaluations were developed to close.

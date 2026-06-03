@@ -1,0 +1,64 @@
+{
+  "id": "dependency-parsing",
+  "label": "Dependency Parsing",
+  "kind": "technique",
+  "category": "NLP Foundations",
+  "aliases": [
+    "dependency parser",
+    "syntactic parsing",
+    "dependency tree"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A syntactic analysis that determines the grammatical structure of a sentence by linking each word to the word it depends on, producing a tree of labeled head-and-dependent relations.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Dependency parsing is the task of uncovering the grammatical structure of a sentence by identifying, for each word, which other word it modifies or attaches to, and how. The output is a dependency tree: every word points to a single head, with the main verb typically serving as the root, and each link carries a label naming the relation, such as subject, direct object, or modifier. In \"the cat chased the mouse\", \"chased\" is the root, \"cat\" attaches to it as the subject, and \"mouse\" attaches as the object. This contrasts with constituency parsing, which instead groups words into nested phrases."
+    },
+    {
+      "type": "p",
+      "text": "Dependency parsing matters because the relations it exposes are close to meaning. Knowing which noun is the subject and which is the object, or which adjective modifies which noun, gives a structured skeleton that downstream tasks build on. It supports relation extraction, where the path between two entities in the tree signals how they are related, and it strengthens named-entity-recognition by clarifying a span's grammatical role. Because dependency links connect words that may be far apart in linear order, the structure captures long-range grammatical relationships that a flat reading of the sentence obscures."
+    },
+    {
+      "type": "p",
+      "text": "Mechanically, parsers come in two broad families. Transition-based parsers read the sentence left to right and make a sequence of incremental decisions, shift a word or attach one word to another, building the tree in linear time, much like assembling structure on a stack. Graph-based parsers instead score all possible head-and-dependent links and search for the highest-scoring tree that remains well formed. Both families historically relied on features like part-of-speech tags and word identities, and both must respect the constraint that the result is a valid tree with each word having exactly one head."
+    },
+    {
+      "type": "p",
+      "text": "The quality of parsers climbed substantially once they were fed learned representations. Dense word embeddings such as word2vec replaced brittle sparse features, and the contextual embeddings from models like bert, with their grasp of how a word functions in context, pushed parsing accuracy higher still. There is also a notable conceptual echo between dependency structure and self-attention: a transformer's attention links every word to every other word with learned weights, and analyses of trained transformers have found heads whose attention patterns resemble grammatical dependencies, suggesting the models recover syntax-like structure on their own."
+    },
+    {
+      "type": "p",
+      "text": "In the broader arc toward modern NLP, dependency parsing represents the explicit, linguistically grounded view of sentence structure. Classic pipelines computed a parse and then handed the tree to later components, whereas large neural models trained on raw text often capture much of the same structure implicitly, without a separate parsing step. Parsing nonetheless remains valuable where interpretable, explicit grammatical relations are needed, and it is a long-standing benchmark for how well a system understands the form of language rather than just its surface words."
+    }
+  ],
+  "related": [
+    {
+      "slug": "named-entity-recognition",
+      "label": "Named-Entity Recognition"
+    },
+    {
+      "slug": "word-embedding",
+      "label": "Word Embedding"
+    },
+    {
+      "slug": "bert",
+      "label": "BERT"
+    },
+    {
+      "slug": "n-gram-model",
+      "label": "N-Gram Model"
+    },
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}
