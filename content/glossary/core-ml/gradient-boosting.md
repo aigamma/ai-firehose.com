@@ -1,0 +1,17 @@
+---
+title: Gradient Boosting
+slug: gradient-boosting
+kind: technique
+category: Core Machine Learning
+aliases: gradient boosting, GBDT, XGBoost, LightGBM
+related: decision-tree, random-forest, ensemble-learning, bias-variance-tradeoff, overfitting
+summary: An ensemble method that builds a strong predictor by adding simple models (usually shallow decision trees) one at a time, each trained to correct the running sum's errors, the approach behind the libraries that dominate tabular data.
+---
+
+Gradient boosting builds a powerful model out of weak ones by adding them sequentially, each new model aimed at the mistakes of the ensemble so far. Concretely, it fits a shallow decision tree to the current errors (more precisely, to the negative gradient of the loss), adds that tree to the running prediction scaled by a small learning rate, recomputes the errors, and repeats. Hundreds of small trees, each nudging the prediction toward the residual the others missed, sum into a highly accurate model.
+
+The contrast with random forests is the clearest way to understand it. A random forest uses bagging: it trains many trees independently and in parallel on resampled data, then averages them, which mainly reduces variance. Gradient boosting is sequential and dependent: each tree exists to fix the previous ones, which mainly reduces bias. That sequential error-correction is what lets boosting reach very high accuracy.
+
+On tabular and structured data, gradient boosting is often the method to beat. The optimized implementations, XGBoost, LightGBM, and CatBoost, are the default winners of countless data-science competitions and a mainstay of production models on spreadsheet-like data, where deep learning frequently does not pay off.
+
+Its power is also a risk: because it keeps fitting residuals, it can overfit if left unchecked. The remedies are a small learning rate, shallow trees, subsampling, and early stopping on a validation set, the knobs that trade a little training accuracy for genuine generalization.

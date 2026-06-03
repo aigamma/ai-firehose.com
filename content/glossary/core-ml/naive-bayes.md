@@ -1,0 +1,17 @@
+---
+title: Naive Bayes
+slug: naive-bayes
+kind: technique
+category: Core Machine Learning
+aliases: naive Bayes, Bayesian classifier
+related: bayes-theorem, conditional-probability, supervised-learning, logistic-regression
+summary: A probabilistic classifier that applies Bayes' theorem under the simplifying assumption that features are conditionally independent given the class, which makes it fast, simple, and surprisingly effective, especially for text.
+---
+
+Naive Bayes classifies by turning Bayes' theorem into a practical rule. To decide a class, it estimates the probability of each class given the observed features and picks the most probable. Bayes' theorem rewrites that in terms of how likely the features are under each class, which would normally require modeling how all the features interact. The "naive" step is to assume the features are conditionally independent given the class, so the joint likelihood becomes a simple product of each feature's likelihood. That assumption is almost always false, yet it makes the math trivial and the model fast.
+
+The surprise is how well it works anyway. Even when the independence assumption is wrong and the probability estimates are poorly calibrated, the classifier often picks the right class, because the decision only depends on which class scores highest, not on the exact probabilities. It shines on high-dimensional, sparse data, which is why it was for years the standard baseline for text problems like spam filtering and topic classification.
+
+Training is little more than counting: estimate each feature's frequency within each class, with smoothing to handle features never seen with a given class. This makes it extremely cheap to fit and to update.
+
+Its limits follow from its assumption. It cannot capture interactions between features, its probability outputs should not be trusted as well-calibrated confidences, and on problems where feature dependencies matter a discriminative model like logistic regression usually does better. It endures as a fast, strong, interpretable baseline.

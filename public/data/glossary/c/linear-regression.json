@@ -1,0 +1,65 @@
+{
+  "id": "linear-regression",
+  "label": "Linear Regression",
+  "kind": "technique",
+  "category": "Core Machine Learning",
+  "aliases": [
+    "linear regression",
+    "ordinary least squares",
+    "OLS"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The foundational model that fits a linear relationship between input features and a continuous target by minimizing squared error, the simplest supervised learner and the conceptual seed of much of machine learning.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Linear regression predicts a continuous value as a weighted sum of the input features plus an offset. Fitting it means choosing the weights so the line (or hyperplane, in many dimensions) sits as close as possible to the data, where closeness is measured by the squared error between predictions and true values. That objective is its whole identity: minimize the mean squared error."
+    },
+    {
+      "type": "p",
+      "text": "It can be solved two ways, and both are instructive. There is a closed-form solution, the normal equations, that computes the optimal weights directly with linear algebra, and there is gradient descent, which reaches the same answer by stepping downhill on the error surface. Because the squared-error surface is a smooth bowl with a single minimum, the two agree, which makes linear regression the cleanest illustration of how fitting a model works."
+    },
+    {
+      "type": "p",
+      "text": "Its importance is foundational rather than cutting-edge. It is fast, interpretable (each weight is the effect of a feature), and it is the base case that more powerful methods generalize: logistic regression swaps the output for a probability, and a neural network with no hidden layers and no activation is literally linear regression. Understanding it is understanding the skeleton inside fancier models."
+    },
+    {
+      "type": "p",
+      "text": "Its assumptions are also its limits. It presumes a roughly linear relationship, it is sensitive to outliers because squared error punishes them heavily, and with many features it can overfit, which is why regularized variants (ridge and lasso) add a penalty on the weights to keep the fit honest."
+    }
+  ],
+  "related": [
+    {
+      "slug": "logistic-regression",
+      "label": "Logistic Regression",
+      "kind": "technique"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent",
+      "kind": "technique"
+    },
+    {
+      "slug": "loss-function",
+      "label": "Loss Function",
+      "kind": "technique"
+    },
+    {
+      "slug": "overfitting",
+      "label": "Overfitting",
+      "kind": "technique"
+    },
+    {
+      "slug": "regularization",
+      "label": "Regularization",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}
