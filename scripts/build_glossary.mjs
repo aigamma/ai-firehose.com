@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { buildAtlas } from "./lib/atlas.mjs";
 
 /*
   Build the DURABLE glossary layer.
@@ -210,8 +211,16 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
 
   const concepts = [...byId.values()].sort((a, b) => String(a.label || "").localeCompare(String(b.label || "")));
   writeJson(resolve(data, "index.json"), { generated, count: concepts.length, durable_count: entries.length, concepts });
+
+  // The category-level knowledge atlas, derived deterministically from the authored
+  // entries' `related` mesh. Emitted in the same pass so it can never drift from the
+  // hubs it summarizes. See scripts/lib/atlas.mjs and the Glossary Atlas view.
+  const atlas = buildAtlas(entries, { generated });
+  writeJson(resolve(data, "atlas.json"), atlas);
+
   console.log(`build_glossary: ${entries.length} authored entries, ${concepts.length} total in index, wrote ${written} hubs.`);
-  return { authored: entries.length, total: concepts.length };
+  console.log(`build_glossary: atlas ${atlas.categoryCount} categories, ${atlas.edges.length} cross-category edges, ${atlas.crossLinks} links.`);
+  return { authored: entries.length, total: concepts.length, atlas };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
