@@ -44,6 +44,16 @@ export default function TechniqueHub() {
 
       {c.definition && <p className="hub-def">{c.definition}</p>}
 
+      {c.image?.url && (
+        <figure className="hub-figure">
+          <img src={c.image.url} alt={c.image.alt || c.label} loading="lazy" />
+          <figcaption className="faint">
+            {c.image.alt ? `${c.image.alt}. ` : ""}
+            <a href={c.image.source} target="_blank" rel="noreferrer">{c.image.credit || "Source"}</a>
+          </figcaption>
+        </figure>
+      )}
+
       {c.body?.length > 0 && <RichText blocks={c.body} currentSlug={slug} className="prose" />}
 
       {c.related?.length > 0 && (

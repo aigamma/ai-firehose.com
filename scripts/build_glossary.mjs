@@ -160,6 +160,10 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
 
   const index = readJson(resolve(data, "index.json"), { concepts: [] });
   const generated = index.generated || new Date().toISOString().slice(0, 10);
+  // Optional cited-image sidecar: slug -> { url, alt, credit, source }. One file is
+  // far easier to curate than 356 frontmatters. Images are hotlinked from Wikimedia
+  // (allowlisted in the CSP) and credited to their source page (the citation).
+  const images = readJson(resolve(content, "images.json"), {});
   const byId = new Map((index.concepts || []).map((c) => [c.id, c]));
   const authoredById = new Map(entries.map((e) => [e.slug, e]));
   const labelOf = (slug) => authoredById.get(slug)?.title || byId.get(slug)?.label || null;
@@ -182,6 +186,7 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
       definition: e.summary,
       body: e.body,
       related,
+      image: images[e.slug] || undefined,
       attention: prior.attention || 0,
       first_seen: prior.first_seen || generated,
       rotation: prior.rotation || null,

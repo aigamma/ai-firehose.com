@@ -504,6 +504,12 @@ a { text-underline-offset: 3px; }
 .hub-title { margin: 0; padding-left: 14px; border-left: 4px solid var(--tile-accent, var(--accent)); }
 .hub-def { font-family: var(--font-serif); font-size: 1.18rem; line-height: 1.5; color: var(--text-strong);
   padding-left: 14px; border-left: 4px solid color-mix(in oklab, var(--tile-accent, var(--accent)) 45%, transparent); }
+/* Cited lead figure, a clean block under the definition. The image sits on a white
+   pad so transparent or black-on-clear Wikimedia diagrams stay visible on the dark
+   theme; the caption credits the source page (the citation). */
+.hub-figure { margin: 2px 0 6px; max-width: 440px; }
+.hub-figure img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; }
+.hub-figure figcaption { margin-top: 6px; font-size: 0.76rem; line-height: 1.45; }
 
 /* Related concept mesh on a hub: chips colored by their own kind. */
 .related-mesh { display: flex; flex-direction: column; gap: 8px; }
