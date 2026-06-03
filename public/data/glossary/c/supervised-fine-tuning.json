@@ -1,0 +1,64 @@
+{
+  "id": "supervised-fine-tuning",
+  "label": "Supervised Fine-Tuning",
+  "kind": "technique",
+  "category": "Training and Fine-Tuning",
+  "aliases": [
+    "SFT",
+    "supervised finetuning"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Supervised fine-tuning is the step that turns a raw pretrained language model into something that behaves like an assistant. A base model has read enormous amounts of text and can continue it fluently, but it has no particular inclination to follow an instruction, answer a question directly, or adopt a helpful tone. Supervised fine-tuning fixes that by continuing training on a curated dataset of demonstrations, pairs of an input (a prompt or instruction) and an ideal output, using the same next-token prediction loss as pretraining, just on this targeted data."
+    },
+    {
+      "type": "p",
+      "text": "It is the first stage of the standard post-training pipeline: pretrain, then supervised fine-tune on demonstrations, then optionally refine with preference optimization such as RLHF or DPO. Supervised fine-tuning is where the model learns format and behavior by imitation: how to structure an answer, when to refuse, how to use tools, how to reason step by step if the demonstrations do. When the demonstrations are framed as instructions across many tasks, this is instruction tuning, a particular flavor of supervised fine-tuning aimed at broad instruction-following."
+    },
+    {
+      "type": "p",
+      "text": "Its defining limitation is also its definition: the model learns to imitate the demonstrations, so it can only be as good as they are and cannot easily exceed them. It also has no signal about what is wrong, only examples of what is right. That is precisely the gap the later preference-optimization stage fills, by teaching the model from comparisons between better and worse responses rather than from single gold answers."
+    },
+    {
+      "type": "p",
+      "text": "In practice supervised fine-tuning does most of the visible work of making a model usable, while the reinforcement or preference stage sands down the rough edges, and the quality of the demonstration data, increasingly model-generated and filtered, dominates the outcome."
+    }
+  ],
+  "related": [
+    {
+      "slug": "fine-tuning",
+      "label": "Fine-Tuning",
+      "kind": "technique"
+    },
+    {
+      "slug": "instruction-tuning",
+      "label": "Instruction-Tuning",
+      "kind": "technique"
+    },
+    {
+      "slug": "pretraining",
+      "label": "Pretraining",
+      "kind": "technique"
+    },
+    {
+      "slug": "rlhf",
+      "label": "RLHF",
+      "kind": "technique"
+    },
+    {
+      "slug": "dpo",
+      "label": "DPO",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

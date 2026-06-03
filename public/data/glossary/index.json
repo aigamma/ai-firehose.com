@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 768,
-  "durable_count": 368,
+  "count": 779,
+  "durable_count": 380,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1631,6 +1631,19 @@
       "category": "Transformers and LLMs"
     },
     {
+      "id": "cross-encoder",
+      "label": "Cross-Encoder",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "cross encoder",
+        "joint encoder"
+      ],
+      "def_snippet": "A relevance model that takes a query and a candidate document together as a single input and outputs one relevance score, far more accurate than comparing separate embeddings but too slow to scan a whole corpus, so it is used to rerank a shortlist.",
+      "durable": true,
+      "category": "RAG, Embeddings, and Retrieval"
+    },
+    {
       "id": "cross-entropy",
       "label": "Cross-Entropy",
       "kind": "technique",
@@ -1957,6 +1970,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "diffusion-language-model",
+      "label": "Diffusion Language Model",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "diffusion LLM",
+        "text diffusion",
+        "masked diffusion model"
+      ],
+      "def_snippet": "A language model that generates text by iteratively denoising an entire sequence in parallel, the diffusion paradigm borrowed from image generation, rather than predicting one token at a time left to right.",
+      "durable": true,
+      "category": "Frontier Architectures"
     },
     {
       "id": "diffusion-model",
@@ -3182,6 +3209,19 @@
       "category": "Probabilistic Machine Learning"
     },
     {
+      "id": "graph-rag",
+      "label": "GraphRAG",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "graph rag",
+        "graph-based retrieval"
+      ],
+      "def_snippet": "A retrieval-augmented generation approach that builds a knowledge graph of entities and relationships from a corpus, then retrieves and summarizes connected subgraphs, so a model can answer global, multi-hop questions that flat chunk retrieval misses.",
+      "durable": true,
+      "category": "RAG, Embeddings, and Retrieval"
+    },
+    {
       "id": "greedy-decoding",
       "label": "Greedy Decoding",
       "kind": "technique",
@@ -3404,6 +3444,19 @@
       "def_snippet": ""
     },
     {
+      "id": "humaneval",
+      "label": "HumanEval",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "HumanEval",
+        "human eval"
+      ],
+      "def_snippet": "A benchmark of 164 hand-written Python programming problems that scores a model by whether the code it generates passes hidden unit tests, measuring functional correctness rather than text similarity, and reported as pass-at-k.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
+    },
+    {
       "id": "hybrid-retrieval",
       "label": "hybrid retrieval",
       "kind": "tool",
@@ -3450,6 +3503,19 @@
       "def_snippet": "Representations that place data in negatively curved hyperbolic space rather than flat Euclidean space, exploiting hyperbolic volume's exponential growth to embed hierarchies and trees with low distortion.",
       "durable": true,
       "category": "Geometry and Manifolds"
+    },
+    {
+      "id": "hyde",
+      "label": "Hypothetical Document Embeddings",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "HyDE",
+        "hypothetical document embeddings"
+      ],
+      "def_snippet": "A retrieval technique that asks a language model to draft a hypothetical answer to the query, then embeds that draft instead of the query, so the search vector sits in the same space as real documents and matches them more closely.",
+      "durable": true,
+      "category": "RAG, Embeddings, and Retrieval"
     },
     {
       "id": "image-classification",
@@ -4988,6 +5054,19 @@
       "def_snippet": ""
     },
     {
+      "id": "multi-query-attention",
+      "label": "Multi-Query Attention",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "MQA",
+        "multi query attention"
+      ],
+      "def_snippet": "An attention variant in which all query heads share a single key and value head, shrinking the KV cache to its minimum for fast inference, at a cost to quality that grouped-query attention later softened.",
+      "durable": true,
+      "category": "Transformers and LLMs"
+    },
+    {
       "id": "multi-scope-isolation",
       "label": "multi-scope isolation",
       "kind": "tool",
@@ -5108,6 +5187,20 @@
       "def_snippet": "An optimization method that rescales the gradient by the inverse Fisher information matrix, following the direction of steepest descent in the geometry of the model's probability distributions rather than in raw parameter coordinates.",
       "durable": true,
       "category": "Advanced Optimization"
+    },
+    {
+      "id": "needle-in-a-haystack",
+      "label": "Needle in a Haystack",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "needle in a haystack",
+        "NIAH",
+        "long-context retrieval test"
+      ],
+      "def_snippet": "A long-context stress test that hides a specific fact (the needle) at a chosen depth inside a long filler document (the haystack) and asks the model to retrieve it, mapping how reliably a model actually uses information across its full context window.",
+      "durable": true,
+      "category": "Evaluation and Benchmarks"
     },
     {
       "id": "neural-coding",
@@ -6008,11 +6101,17 @@
     },
     {
       "id": "prompt-caching",
-      "label": "prompt caching",
+      "label": "Prompt Caching",
       "kind": "technique",
       "attention": 5,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "prompt caching",
+        "prefix caching",
+        "context caching"
+      ],
+      "def_snippet": "A serving optimization that stores the model's computed key-value state for a fixed prompt prefix so later requests sharing that prefix skip recomputing it, cutting both latency and cost for long, reused system prompts and documents.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "prompt-chaining",
@@ -6102,6 +6201,19 @@
       "attention": 6,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "qlora",
+      "label": "QLoRA",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "quantized low-rank adaptation",
+        "quantized LoRA"
+      ],
+      "def_snippet": "A memory-efficient fine-tuning method that freezes a large model quantized to 4-bit and trains small low-rank LoRA adapters on top, letting a single consumer GPU fine-tune models that would otherwise need a cluster.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
     },
     {
       "id": "qualia",
@@ -6317,6 +6429,19 @@
       "def_snippet": "A machine learning paradigm in which an agent learns to act by interacting with an environment and adjusting its behavior to maximize a cumulative reward signal.",
       "durable": true,
       "category": "Core Machine Learning"
+    },
+    {
+      "id": "rlaif",
+      "label": "Reinforcement Learning from AI Feedback",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "RLAIF",
+        "AI feedback"
+      ],
+      "def_snippet": "A variant of RLHF in which the preference labels used to train the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply, and the mechanism behind constitutional AI.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
     },
     {
       "id": "remote-control",
@@ -6998,6 +7123,20 @@
       "def_snippet": ""
     },
     {
+      "id": "sliding-window-attention",
+      "label": "Sliding Window Attention",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "local attention",
+        "windowed attention",
+        "sliding-window attention"
+      ],
+      "def_snippet": "An attention pattern where each token attends only to a fixed-size window of recent tokens rather than the entire sequence, making attention cost grow linearly with length and bounding the KV cache for long context.",
+      "durable": true,
+      "category": "Transformers and LLMs"
+    },
+    {
       "id": "social-proof",
       "label": "social proof",
       "kind": "tool",
@@ -7303,6 +7442,19 @@
       "def_snippet": "The phenomenon in which a neural network represents more features than it has dimensions by storing them as overlapping, non-orthogonal directions in activation space, which is the leading explanation for why individual neurons are hard to interpret.",
       "durable": true,
       "category": "Mechanistic Interpretability"
+    },
+    {
+      "id": "supervised-fine-tuning",
+      "label": "Supervised Fine-Tuning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "SFT",
+        "supervised finetuning"
+      ],
+      "def_snippet": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning.",
+      "durable": true,
+      "category": "Training and Fine-Tuning"
     },
     {
       "id": "supervised-learning",
