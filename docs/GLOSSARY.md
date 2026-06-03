@@ -20,6 +20,7 @@ Authoring is interactive and Opus-authored: open a console (Claude Code) and ask
 - Parses frontmatter and compiles the Markdown body to typed blocks (paragraph, heading, list, quote, code).
 - Writes one `public/data/glossary/c/<slug>.json` hub per entry, MERGED with any corpus hub of the same slug: the authored definition, body, related mesh, and `durable: true` overlay the corpus `attention`, `rotation`, `neighbors`, and `top_items`.
 - Merges every authored entry into `public/data/glossary/index.json` (the slim list and search payload), marked `durable: true` with its `category`.
+- Attaches a cited image to the hub when the slug appears in the `content/glossary/images.json` sidecar (see Cited Images).
 - Idempotent and re-runnable.
 
 The build is the self-healing mechanism for the durable layer: because `content/glossary` is the committed source of truth and `build_glossary` runs on every Netlify deploy (`prebuild`) and at the end of the worker's glossary step (`run.mjs`), a corpus rebuild can never permanently drop the authored entries. They are re-merged every time.
@@ -38,6 +39,12 @@ The build is the self-healing mechanism for the durable layer: because `content/
 - and a link on the first mention of any glossary term to its hub, Wikipedia-style, never linking a term to its own page.
 
 Labels are authoritative: a concept's own name always wins the surface form over another concept's alias (`self-attention` links to its own hub even if `attention-mechanism` lists it as an alias). The matcher is fetched and compiled once for the whole app (`src/lib/useGlossary.js`), so the cost is one fetch and one regex no matter how many passages render.
+
+The links are rendered bold and colored by the KIND of concept they point to (technique indigo, tool teal, opinion pink, the accent otherwise; the matcher carries each concept's `kind`). Dense prose then reads as a navigable colored mesh rather than a wall of grey terminal text, and the color encodes meaning, the project ethos. Concept hubs key their accent rail, serif definition, heading rails, and Related chips off the concept's kind color (`--tile-accent`).
+
+## Cited Images
+
+Visuals live in one curatable sidecar, `content/glossary/images.json`, mapping slug to `{ url, alt, credit, source }`, rather than in hundreds of frontmatters. The build attaches the record to the matching hub, and the hub renders a lead figure with the image on a white pad (so transparent or black-on-clear Wikimedia diagrams stay legible on the dark theme) and a caption that links to the `source` page: that link is the citation. Images are hotlinked from Wikimedia Commons, so `upload.wikimedia.org` is allowlisted in the `netlify.toml` CSP `img-src` (external images are otherwise blocked in production, the lesson from the Watch surface). Scaling coverage is just adding rows; an entry with no row simply has no figure. Sourced by querying the Wikipedia REST API for genuinely illustrative diagrams and keeping only the strong ones.
 
 ## Adding a Category
 
