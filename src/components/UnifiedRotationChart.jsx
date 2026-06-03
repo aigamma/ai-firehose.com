@@ -1,7 +1,7 @@
 import { memo, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { quadrantOf, getKind, KINDS, ROTATION } from "../data/registry.js";
-import { clampVal, truncate, trailPoints, onPointKey, axisExtent } from "../lib/rotationGeo.js";
+import { clampVal, truncate, trailPoints, onPointKey, axisExtent, pruneForPlane } from "../lib/rotationGeo.js";
 
 // The unified rotation plane on Home: all three kinds on ONE large set of axes
 // (ratio on x, momentum on y, both centered at 100, so combining kinds is
@@ -19,33 +19,6 @@ import { clampVal, truncate, trailPoints, onPointKey, axisExtent } from "../lib/
 // composite `kind::id` (`uid`); navigation still targets the shared concept hub.
 const US = 560;
 const UPAD = 40;
-
-// Prune the long tail. Per kind: drop new entrants (surfaced separately, they have
-// no trajectory), keep the top `perKind` by attention, then keep only the ones
-// actually moving, but never drop a kind to zero. Cap the whole plane at `maxTotal`.
-function prune(entities) {
-  const byKind = new Map();
-  for (const e of entities) {
-    if (!byKind.has(e.kind)) byKind.set(e.kind, []);
-    byKind.get(e.kind).push(e);
-  }
-  const kept = [];
-  for (const list of byKind.values()) {
-    const live = list
-      .filter((e) => !e.outlier?.new_entrant)
-      .sort((a, b) => (b.attention || 0) - (a.attention || 0));
-    const top = live.slice(0, ROTATION.perKind);
-    const moving = top.filter(
-      (e) =>
-        e.outlier?.breakout ||
-        e.outlier?.quadrant_jump ||
-        Math.abs((e.momentum ?? 100) - 100) >= ROTATION.momMin ||
-        Math.abs((e.ratio ?? 100) - 100) >= ROTATION.rsMin
-    );
-    kept.push(...(moving.length ? moving : live.slice(0, 1)));
-  }
-  return kept.sort((a, b) => (b.attention || 0) - (a.attention || 0)).slice(0, ROTATION.maxTotal);
-}
 
 // Greedy 1-D declutter: given labeled heads, push overlapping labels downward by
 // the deficit so head labels do not stack. Returns uid -> adjusted baseline y.
@@ -65,7 +38,7 @@ function UnifiedRotationChart({ entities = [] }) {
 
   const traces = useMemo(
     () =>
-      prune(entities).map((e) => {
+      pruneForPlane(entities).map((e) => {
         const k = getKind(e.kind);
         return {
           uid: `${e.kind}::${e.id}`,
@@ -161,7 +134,7 @@ function UnifiedRotationChart({ entities = [] }) {
 
   return (
     <>
-      <svg viewBox={`0 0 ${US} ${US}`} width="100%" role="img" aria-label="Relative rotation plane for techniques, tools, and opinions" style={{ display: "block" }}>
+      <svg viewBox={`0 0 ${US} ${US}`} width="100%" role="group" aria-label="Relative rotation plane for techniques, tools, and opinions. Each topic is a focusable marker." style={{ display: "block" }}>
         {rects.map((r) => (
           <rect key={r.q} x={r.x} y={r.y} width={Math.max(0, r.w)} height={Math.max(0, r.h)} fill={qv(r.q)} opacity="0.07" />
         ))}

@@ -63,7 +63,11 @@ function corpusMaps() {
   for (const list of byChannel.values()) {
     list.sort((a, b) => new Date(b.published_at || 0) - new Date(a.published_at || 0));
   }
-  return { byVideo, byChannel };
+  // Normalized index (trimmed, lowercased) so a featured.json name that differs from
+  // the corpus channel name only in case or whitespace still matches.
+  const byChannelNorm = new Map();
+  for (const [name, list] of byChannel) byChannelNorm.set(name.trim().toLowerCase(), list);
+  return { byVideo, byChannel, byChannelNorm };
 }
 
 // One resolved video, enriched from the corpus when the video is in it.
@@ -96,9 +100,11 @@ async function resolveCreator(c, defaults, corpus, prior) {
   } catch (e) {
     console.error(`creators ${c.name}: RSS ${e.message}`);
   }
-  // Fallback to the corpus, which already holds the creator's recent uploads.
+  // Fallback to the corpus, which already holds the creator's recent uploads. Match
+  // on the exact channel name, then on the normalized name (case and whitespace).
   if (!ok) {
-    const fromCorpus = (corpus.byChannel.get(c.name) || []).slice(0, count).map((it) => toVideo(it.source_id, {}, corpus));
+    const list = corpus.byChannel.get(c.name) || corpus.byChannelNorm.get((c.name || "").trim().toLowerCase()) || [];
+    const fromCorpus = list.slice(0, count).map((it) => toVideo(it.source_id, {}, corpus));
     if (fromCorpus.length) {
       videos = fromCorpus;
       ok = true;

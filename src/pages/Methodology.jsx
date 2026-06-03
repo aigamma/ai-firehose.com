@@ -59,17 +59,26 @@ export default function Methodology() {
 
       <h2>Relative Rotation</h2>
       <p>
-        Each board (Techniques, Tools, Opinions) places its entities on a rotation plane. The math is the
-        Mansfield Relative Performance normalization (Roy Mansfield, 1979), applied to attention instead of
-        price, the same prior-art approach used on aigamma.com. Relative strength is an entity's share of the
-        total attention in its kind. The rotation ratio expresses that strength as a percentage of its own slow
+        Techniques, Tools, and Opinions share one rotation plane, each topic colored and shaped by its kind. The
+        math is the Mansfield Relative Performance normalization (Roy Mansfield, 1979), applied to attention
+        instead of price, the same prior-art approach used on aigamma.com. Relative strength is a topic's share of
+        the total attention in its kind. The rotation ratio expresses that strength as a percentage of its own slow
         moving average (above 100 leads, below 100 trails), and the rotation momentum applies the same operation
-        again with a faster smoother (above 100 gaining, below 100 fading). The two together place each entity in
+        again with a faster smoother (above 100 gaining, below 100 fading). The two together place each topic in
         one of four quadrants: Leading, Improving, Weakening, Lagging.
       </p>
       <p className="muted">
+        Only the topics actually moving are plotted; the quiet long tail is pruned so the plane stays legible.
         Bursty mentions are first smoothed into a decaying attention level, because raw one-day spikes make the
         normalization degenerate. The displayed values are clamped to a readable band.
+      </p>
+
+      <h2>The Daily Briefing</h2>
+      <p>
+        Each window opens with a short briefing: a model reads the window's movers, breakouts, and new items and
+        writes a few sentences on what is happening, with every claim linked to the concept or the item it came
+        from. It is generated in batch, not in conversation, then sanitized and cached, so it costs nothing when
+        the day is quiet. The aim is one honest paragraph that orients before the charts.
       </p>
 
       <h2>The AI-Grown Taxonomy</h2>
