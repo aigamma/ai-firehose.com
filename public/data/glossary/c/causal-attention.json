@@ -1,0 +1,65 @@
+{
+  "id": "causal-attention",
+  "label": "Causal Attention",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "causal attention",
+    "masked self-attention",
+    "causal masking"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Self-attention with a mask that stops each position from attending to future tokens, enforcing the left-to-right constraint that lets a model train on next-token prediction over a whole sequence at once; the mechanism that makes decoder-only LLMs autoregressive.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Causal attention is ordinary self-attention with one rule added: a token may attend to itself and to earlier tokens, but never to later ones. This is implemented with a mask that zeroes out the attention weights to future positions before the softmax, so information can only flow backward in the sequence. The \"causal\" name reflects that the present cannot depend on the future."
+    },
+    {
+      "type": "p",
+      "text": "This constraint is what makes autoregressive language modeling work. The goal is to predict each next token from only the tokens before it, and during training you want to do that for every position in the sequence simultaneously for efficiency. Causal masking makes that safe: even though the whole sequence is processed in one parallel pass, no position can cheat by looking at the answer (the tokens that come after it). Without the mask, the model would trivially see the token it is supposed to predict."
+    },
+    {
+      "type": "p",
+      "text": "It is the defining difference between a decoder-only language model and a bidirectional encoder like BERT, which uses unmasked attention so every token sees the entire input, appropriate for understanding tasks but not for generation."
+    },
+    {
+      "type": "p",
+      "text": "The causal structure has a useful consequence at inference: because a token's attention never depends on future tokens, the keys and values of past tokens are fixed once computed, which is exactly what the kv-cache stores and reuses to make generation efficient."
+    }
+  ],
+  "related": [
+    {
+      "slug": "self-attention",
+      "label": "Self-Attention",
+      "kind": "technique"
+    },
+    {
+      "slug": "multi-head-attention",
+      "label": "Multi-Head Attention",
+      "kind": "technique"
+    },
+    {
+      "slug": "decoder-only-model",
+      "label": "Decoder-Only Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "next-token-prediction",
+      "label": "Next-Token Prediction",
+      "kind": "technique"
+    },
+    {
+      "slug": "kv-cache",
+      "label": "KV Cache",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

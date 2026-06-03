@@ -1,0 +1,64 @@
+{
+  "id": "encoder-decoder",
+  "label": "Encoder-Decoder",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "encoder-decoder",
+    "seq2seq transformer"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A transformer architecture with two stacks, an encoder that reads the entire input into a representation and a decoder that generates the output while attending to it through cross-attention; the original transformer design, suited to sequence-to-sequence tasks like translation.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The encoder-decoder is the transformer in its original form. It has two halves. The encoder reads the whole input at once with bidirectional self-attention, so every input token can see every other, building a rich representation of the source. The decoder then generates the output one token at a time with causal self-attention over what it has produced so far, and crucially it reaches into the encoder's representation through cross-attention, letting each generated token attend to the most relevant parts of the input."
+    },
+    {
+      "type": "p",
+      "text": "This design fits sequence-to-sequence tasks, where a complete input must be transformed into a complete output: machine translation (the task the transformer was invented for), summarization, and speech recognition. The clean separation lets the encoder fully understand the source before the decoder commits to any output, and cross-attention is the bridge between the two."
+    },
+    {
+      "type": "p",
+      "text": "It contrasts with the two other transformer families. Decoder-only models drop the encoder and fold input and output into a single stream, which turned out to scale better for general language modeling and is why most large language models are decoder-only. Encoder-only models like BERT keep only the bidirectional encoder, ideal for understanding tasks (classification, retrieval) where no generation is needed."
+    },
+    {
+      "type": "p",
+      "text": "Encoder-decoder architectures remain strong where the task is genuinely a mapping from one sequence to another and bidirectional understanding of the full input matters, with T5 a well-known example, even as decoder-only models dominate open-ended generation."
+    }
+  ],
+  "related": [
+    {
+      "slug": "transformer",
+      "label": "Transformer",
+      "kind": "technique"
+    },
+    {
+      "slug": "cross-attention",
+      "label": "Cross-Attention",
+      "kind": "technique"
+    },
+    {
+      "slug": "decoder-only-model",
+      "label": "Decoder-Only Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "sequence-to-sequence",
+      "label": "Sequence-to-Sequence",
+      "kind": "technique"
+    },
+    {
+      "slug": "bert",
+      "label": "BERT",
+      "kind": "tool"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}
