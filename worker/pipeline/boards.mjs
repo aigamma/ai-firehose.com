@@ -13,8 +13,8 @@
     -> slice top 16
 
   It returns a flat map keyed `${kind}_${horizon}` to the entities array, so a
-  caller can wrap each in the served envelope. Entities now carry `trail`, the
-  trailing (ratio, momentum) trajectory, alongside the prior fields. Pure: no I/O,
+  caller can wrap each in the served envelope. Entities carry a `sparkline` trace alongside the displayed `attention` and the
+  `delta`/`trend` heat read; the old rotation `trail` trajectory was removed. Pure: no I/O,
   no clock; the caller supplies todayMs so day-windows are reproducible.
 */
 import { buildSeries, windowSum, windowTrend, decayedLevel } from "./attention.mjs";

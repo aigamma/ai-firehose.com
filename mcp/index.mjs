@@ -182,7 +182,7 @@ async function runTool(name, args) {
         ? { horizon: hub.rotation.horizon, quadrant: hub.rotation.quadrant, momentum: hub.rotation.momentum }
         : undefined,
       first_seen: hub?.first_seen,
-      related: (hub?.neighbors || []).slice(0, 6).map((n) => n.label),
+      related: ((hub?.related?.length ? hub.related : hub?.neighbors) || []).slice(0, 6).map((n) => n.label),
       example_items: (hub?.top_items || []).slice(0, 5).map((t) => ({ title: t.title, url: t.url })),
       page: `${BASE}/technique/${hit.id}`,
     });

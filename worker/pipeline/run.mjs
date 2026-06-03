@@ -175,7 +175,7 @@ async function main() {
   for (const kind of KIND_KEYS) {
     levelByKind[kind] = Object.fromEntries(Object.entries(byKind[kind] || {}).map(([id, s]) => [id, decayedLevel(s)]));
   }
-  // The served boards (top 16 per kind per horizon, entities carrying `trail`) are
+  // The served boards (top 16 per kind per horizon, entities carrying a `sparkline`) are
   // built by the shared pure function so run.mjs and the offline recompute cannot
   // drift apart. Same envelope as before.
   const boards = computeBoards(working, { todayMs: TODAY, retentionDays: RETENTION_DAYS, horizons: HORIZONS, kinds: KINDS });

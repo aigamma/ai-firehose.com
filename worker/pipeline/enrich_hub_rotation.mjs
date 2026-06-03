@@ -37,6 +37,7 @@ for (const f of readdirSync(resolve(DATA, "glossary/c"))) {
     rotation: r, neighbors: h.neighbors, axis_positions: h.axis_positions, top_items: h.top_items,
   };
   if (h.definition !== undefined) next.definition = h.definition;
+  if (h.first_seen !== undefined) next.first_seen = h.first_seen;
   write(`glossary/c/${f}`, next);
   if (r) enriched++;
 }

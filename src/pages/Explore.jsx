@@ -41,6 +41,7 @@ function SpectrumView({ axis }) {
             to={`/technique/${p.id}`}
             className="spectrum-dot"
             title={`${p.label} (${p.position_normalized})`}
+            aria-label={`${p.label} (${p.position_normalized})`}
             style={{ left: `${((p.position_normalized + 1) / 2) * 100}%` }}
           />
         ))}

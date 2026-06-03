@@ -1,7 +1,7 @@
 /*
   The agentic daily briefing: a short, cited, sanitized prose summary of what is
   new and breaking out in each time window. This is the flagship agentic-summary
-  feature, mirroring aigamma.com's narrator (Haiku for cheap passes, a Sonnet
+  feature, mirroring aigamma.com's narrator (Haiku for cheap passes, an Opus 4.8
   synthesis for the prose), grounded in the window's own movers, breakouts, and new
   items, and sanitized through worker/lib/text.mjs. It is idempotent: the result is
   cached on a hash of the window state, so a run with unchanged data reuses the last

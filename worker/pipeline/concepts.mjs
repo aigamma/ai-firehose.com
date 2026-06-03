@@ -66,7 +66,7 @@ export async function canonicalizeConcepts(items, { high = 0.9, mid = 0.8, embed
     }
   }
   const labels = [...freq.keys()];
-  if (!labels.length) return { canon: [], remap: (x) => x || [] };
+  if (!labels.length) return { canon: [], remap: (x) => x || [], high, mid };
 
   const vecs = await embedFn(labels, "document");
   const vecByLabel = new Map(labels.map((l, i) => [l, vecs[i]]));
