@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 795,
-  "durable_count": 398,
+  "count": 799,
+  "durable_count": 403,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1859,6 +1859,20 @@
       "category": "Systems and Infrastructure"
     },
     {
+      "id": "data-poisoning",
+      "label": "Data Poisoning",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "data poisoning",
+        "training-data poisoning",
+        "backdoor attack"
+      ],
+      "def_snippet": "An attack that corrupts a model by injecting malicious examples into its training data, so the model learns attacker-chosen behavior (such as a hidden backdoor trigger or degraded performance) that is hard to detect after training.",
+      "durable": true,
+      "category": "Alignment and Safety"
+    },
+    {
       "id": "dataset-annotation",
       "label": "dataset annotation",
       "kind": "tool",
@@ -3420,6 +3434,20 @@
       "def_snippet": ""
     },
     {
+      "id": "guardrails",
+      "label": "Guardrails",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "guardrails",
+        "safety filters",
+        "output filtering"
+      ],
+      "def_snippet": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment.",
+      "durable": true,
+      "category": "Alignment and Safety"
+    },
+    {
       "id": "hallucination",
       "label": "Hallucination",
       "kind": "technique",
@@ -4762,6 +4790,19 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "membership-inference",
+      "label": "Membership Inference",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "membership inference attack",
+        "MIA"
+      ],
+      "def_snippet": "A privacy attack that determines whether a specific data point was part of a model's training set, exploiting the fact that models behave measurably differently, usually more confidently, on data they were trained on, which can leak sensitive information.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "memory-bandwidth",
@@ -6284,11 +6325,16 @@
     },
     {
       "id": "prompt-injection",
-      "label": "prompt injection",
-      "kind": "opinion",
+      "label": "Prompt Injection",
+      "kind": "technique",
       "attention": 2,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "prompt injection",
+        "indirect prompt injection"
+      ],
+      "def_snippet": "An attack on language-model applications in which adversarial instructions hidden in the model's input (a web page, document, email, or tool result) hijack its behavior, because the model cannot reliably separate trusted instructions from untrusted data in the same context.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "prompt-templates",
@@ -8596,6 +8642,20 @@
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "watermarking",
+      "label": "Watermarking",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "watermarking",
+        "AI watermarking",
+        "statistical watermark"
+      ],
+      "def_snippet": "Techniques that embed a detectable, often statistical, signal into AI-generated text or images so an output can later be identified as machine-made, aimed at provenance, misuse detection, and telling synthetic content apart from human work.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "web-browsing-agents",
