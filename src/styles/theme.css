@@ -309,6 +309,22 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 /* Clamp long item summaries so the What Is New grid stays scannable. */
 .summary-clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
+/* Daily briefing: the agentic-summary lede. A severity-tinted left seam (quiet at
+   sev 1, accent at 2, opinion-pink at 3), the headline, the cited body (numbered
+   superscript links to the source items), and a row of concept hubs it reads on. */
+.briefing { border-left: 3px solid var(--border-strong); }
+.briefing[data-sev="2"] { border-left-color: var(--accent); background-image: linear-gradient(135deg, var(--accent-soft), transparent 62%); }
+.briefing[data-sev="3"] { border-left-color: var(--kind-opinion); background-image: linear-gradient(135deg, color-mix(in oklab, var(--kind-opinion) 9%, transparent), transparent 62%); }
+.briefing-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.briefing-sev { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 2px 8px; border-radius: 999px; color: #11141a; }
+.briefing[data-sev="2"] .briefing-sev { background: var(--accent); }
+.briefing[data-sev="3"] .briefing-sev { background: var(--kind-opinion); color: #fff; }
+.briefing-headline { font-weight: 650; color: var(--text-strong); font-size: 1.05rem; line-height: 1.4; margin: 0 0 8px; }
+.briefing-body { margin: 0; color: var(--text); line-height: 1.6; }
+.briefing-body .cite { font-size: 0.7em; line-height: 0; }
+.briefing-body .cite a { font-weight: 700; padding: 0 1px; }
+.briefing-reads { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+
 /* Feeds (outliers, what is new) */
 .feed { list-style: none; margin: 0; padding: 0; }
 .feed li { display: flex; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--border); }

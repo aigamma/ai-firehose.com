@@ -38,6 +38,15 @@ test("no em dash in model-generated artifact fields", () => {
     const d = J(`digests/${h}.json`);
     for (const e of [...(d.outliers || []), ...(d.movers || [])]) flag(`digest.${h}.label:${e.id}`, e.label);
   }
+  // The agentic briefing's headline and body are model-authored prose, sanitized
+  // through worker/lib/text.mjs; this is the tripwire if that sanitize regresses.
+  // cited_items[].title are verbatim source titles (quotes), so they stay exempt.
+  for (const h of ["day", "week", "month", "quarter"]) {
+    if (!has(`digests/briefing_${h}.json`)) continue;
+    const b = J(`digests/briefing_${h}.json`);
+    flag(`briefing.${h}.headline`, b.headline);
+    flag(`briefing.${h}.body`, b.body);
+  }
 
   assert.deepEqual(offenders, [], `em dash in generated fields: ${offenders.join(", ")}`);
 });

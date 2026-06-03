@@ -23,6 +23,7 @@ import { computeBoards } from "./boards.mjs";
 import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { defineConcepts } from "./define.mjs";
+import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
@@ -311,6 +312,21 @@ async function main() {
     const movers = uniqById([...all].sort((a, b) => Math.abs(b.momentum - 100) - Math.abs(a.momentum - 100))).slice(0, 8);
     const outliers = uniqById(all.filter((e) => e.outlier?.breakout || e.outlier?.new_entrant)).slice(0, 8);
     writeJson(`digests/${h.key}.json`, { horizon: h.key, generated: GENERATED, synthetic: false, new_items: newItems, movers, outliers });
+
+    // Agentic daily briefing: a cited, sanitized prose summary of this window, built
+    // from the window's own richer movers (the full board, new entrants excluded),
+    // breakouts, and new items. Cached on a hash of that state, so an unchanged
+    // window costs nothing. Wrapped so a model hiccup never sinks the run.
+    try {
+      const briefMovers = uniqById(
+        [...all].filter((e) => !e.outlier?.new_entrant).sort((a, b) => Math.abs(b.momentum - 100) - Math.abs(a.momentum - 100))
+      ).slice(0, 8);
+      const state = buildBriefingState({ horizon: h.key, horizonLabel: h.label.toLowerCase(), movers: briefMovers, outliers, newItems });
+      const brief = await generateBriefing(state);
+      if (brief) writeJson(`digests/briefing_${h.key}.json`, { horizon: h.key, generated: GENERATED, ...brief });
+    } catch (e) {
+      console.error(`briefing ${h.key}: ${e.message}`);
+    }
   }
 
   console.log("5f. corpus stats...");

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import UnifiedRotationChart from "../components/UnifiedRotationChart.jsx";
+import Briefing from "../components/Briefing.jsx";
 import ItemCard from "../components/ItemCard.jsx";
 import Sparkline from "../components/Sparkline.jsx";
 import useData from "../lib/useData.js";
@@ -144,6 +145,8 @@ export default function Home() {
           </span>
         </Link>
       )}
+
+      <Briefing horizon={horizon} />
 
       <section className="card">
         <div className="card-head">
