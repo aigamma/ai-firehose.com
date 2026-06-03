@@ -1,9 +1,14 @@
 /*
   Local smoke test for ai-firehose-mcp. Not published (see package.json "files").
   Spawns the server over stdio, performs the MCP handshake, lists tools, and calls
-  each one against the live API. Run from anywhere: node mcp/test-smoke.mjs
+  each one against the live API. Run from anywhere: node mcp/smoke.mjs
   Override the target with AI_FIREHOSE_BASE_URL (defaults to the netlify.app URL,
   which is always reachable even while the apex domain's DNS is propagating).
+
+  Named `smoke.mjs`, NOT `test-smoke.mjs`, on purpose: the repo-root `npm test` is a
+  bare `node --test`, whose auto-discovery matches `test-*.mjs`. This smoke is
+  non-hermetic (it needs mcp/ dependencies and live network), so CI must not run it.
+  Keep it off the `*.test.*`, `test-*`, and `*-test` naming patterns.
 */
 import { spawn } from "node:child_process";
 
