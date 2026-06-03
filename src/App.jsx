@@ -15,6 +15,7 @@ const Watch = lazy(() => import("./pages/Watch.jsx"));
 const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Review = lazy(() => import("./pages/Review.jsx"));
+const Lens = lazy(() => import("./pages/Lens.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         ))}
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/lens" element={<Lens />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/watch" element={<Watch />} />
