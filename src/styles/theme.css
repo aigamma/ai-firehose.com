@@ -267,6 +267,31 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
    numerals (wide-tracked, faint). Scoped here so item titles stay untouched. */
 .leaders .mono, .feed .mono { text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); }
 
+/* Trend heat boards (Home and the kind deep views): topics ranked by how much
+   attention they gained or lost this window. Replaces the rotation plane. */
+.heat-grid { display: grid; gap: 22px 26px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .heat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.heat-board { min-width: 0; }
+.heat-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.heat-head .mono { margin-left: auto; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.heat { list-style: none; margin: 0; padding: 0; }
+.heat-row { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto auto; align-items: center; gap: 10px; padding: 6px 6px; border-top: 1px solid var(--border); }
+.heat-row:first-child { border-top: 0; }
+.heat-row:hover { background: color-mix(in oklab, var(--surface-2) 45%, transparent); border-radius: var(--radius-sm); }
+.heat-rank { color: var(--faint); font-size: 0.72rem; text-align: right; }
+.heat-main { min-width: 0; }
+.heat-label { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.heat-label a { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.heat-bar { display: block; height: 3px; margin-top: 5px; border-radius: 2px; background: var(--border); overflow: hidden; }
+.heat-bar-fill { display: block; height: 100%; border-radius: 2px; min-width: 2px; }
+.heat-tag { font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 1px 6px; border-radius: 999px; white-space: nowrap; }
+.heat-tag.breakout { color: #1a1206; background: var(--q-leading); }
+.heat-tag.new { color: var(--accent); border: 1px solid var(--border-strong); }
+.heat-trend { display: inline-flex; align-items: center; gap: 4px; justify-content: flex-end; min-width: 3.1rem; font-size: 0.78rem; font-weight: 650; }
+.heat-up { color: var(--q-leading); }
+.heat-down { color: var(--q-lagging); }
+.heat-flat { color: var(--muted); }
+
 /* Rotation plane: identity-color pill row that is both legend and per-topic
    show/hide control (mirrors aigamma's symbol toggle). An active pill is filled
    with its topic's identity color; the fill colors are bright, so the label uses

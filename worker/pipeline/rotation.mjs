@@ -49,19 +49,11 @@ export function computeRotation(entitySeries, benchmarkSeries, windows) {
   const n = entitySeries.length;
   const ratio = ratioSeries[n - 1];
   const momentum = momentumSeries[n - 1];
-  // Clamp the displayed values to a readable band so a residual spike on thin
-  // data cannot fling a dot off the plane. The clamp preserves which side of 100
-  // a value is on, so the quadrant is unchanged.
+  // Clamp the displayed ratio and momentum to a readable band so a residual spike
+  // on thin data cannot blow the value out. The clamp preserves which side of 100 a
+  // value is on, so the quadrant is unchanged. These still feed the concept hub's
+  // Momentum card; the Home and kind boards now rank by `trend`/`delta` instead.
   const clamp = (x) => Math.max(55, Math.min(145, x));
-  // The trailing trajectory: the last 8 (ratio, momentum) pairs, oldest to
-  // newest, each passed through the SAME clamp and round1 as the displayed head,
-  // so the final pair equals the displayed [ratio, momentum]. This is what the
-  // rotation plane draws as a comet tail behind each dot. ratioSeries and
-  // momentumSeries are equal length (n), so zip then take the last 8.
-  const trail = ratioSeries
-    .map((r, i) => [r, momentumSeries[i]])
-    .slice(-8)
-    .map(([r, m]) => [round1(clamp(r)), round1(clamp(m))]);
   return {
     rs: round1(rs[n - 1] || 0),
     ratio: round1(clamp(ratio)),
@@ -70,7 +62,6 @@ export function computeRotation(entitySeries, benchmarkSeries, windows) {
     ratioSeries,
     momentumSeries,
     sparkline: entitySeries.slice(-8).map((x) => Math.round(x)),
-    trail,
   };
 }
 
@@ -111,7 +102,6 @@ export function rotationForEntities(entityToSeries, windows, prevQuadrants = {})
       momentum: r.momentum,
       quadrant: r.quadrant,
       sparkline: r.sparkline,
-      trail: r.trail,
       outlier,
     };
   });

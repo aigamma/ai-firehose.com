@@ -27,8 +27,8 @@ It resolves a handle, URL, or UC id to the channel id from the authoritative RSS
 - **arXiv.** Public Atom API across cs.AI, cs.LG, cs.CL, cs.CV. Technique and research signal.
 - **Hugging Face.** Trending models, datasets, and Papers via the authenticated HF MCP (account `ai-gamma`). Tool and technique signal.
 - **GitHub Trending** and **Hacker News / Show HN.** Public endpoints (the HN Firebase API, GitHub search). Tool and launch signal.
-- **Blogs and newsletters.** RSS, driven by a manifest like worldthought's Gutenberg manifest: OpenAI, Anthropic, Google DeepMind, Meta AI, Import AI, The Batch, Latent Space, Simon Willison. Opinion and announcement signal.
-- **Reddit** (r/LocalLLaMA, r/MachineLearning) and **X** curated lists. Community pulse. X access is the hardest; v1 may start read-only or via lists.
+- **Blogs and newsletters.** RSS and Atom, driven by a manifest (`sources/blogs.json`) with a per-feed authority weight. The manifest is curated for breadth across four kinds of signal: frontier-lab blogs (OpenAI, Google DeepMind, Google Research, Google AI, Microsoft Research, NVIDIA Developer, Apple ML Research, weighted 0.8); heavy curated newsletters and analysts (Simon Willison, Import AI, Latent Space, Interconnects, Ahead of AI, Last Week in AI, TLDR AI, ChinAI, Hugging Face, BAIR, weighted 0.65 to 0.75); tech press AI sections (TechCrunch AI, MIT Technology Review AI, plus a Google News query for "artificial intelligence", weighted 0.55); and policy and research-data orgs (NIST news, Epoch AI, weighted 0.6). Some labs publish a clean lab changelog or news feed; where one is not exposed (for example Anthropic, Meta AI, and Mistral do not offer a public RSS endpoint), they are omitted rather than scraped. Opinion and announcement signal. Dead or moved feeds are skipped automatically, so the run never sinks on one bad URL.
+- **Reddit** (r/LocalLLaMA, r/MachineLearning, r/artificial, r/singularity, r/OpenAI, r/StableDiffusion) and **X** curated lists. Community pulse. X access is the hardest; v1 may start read-only or via lists.
 
 ## Authority Weighting
 

@@ -45,7 +45,7 @@ Built at network-rebuild time, served from `/data`:
 | `influence.json` | derivation and mention edges | network view |
 | `glossary/c/<slug>.json` | per-concept hub assembled from the above | full hub (definition, neighbors, axis_positions, top_items), fetched on demand by `/technique/:slug` |
 | `glossary/index.json` | slim list derived from the hubs | `{id, label, kind, attention, aliases, def_snippet}` per concept; drives the glossary list and search |
-| `attention/<kind>_<horizon>.json` | the rotation math below | drives the rotation boards |
+| `attention/<kind>_<horizon>.json` | the trend and rotation math below | drives the trend boards (Home and the kind deep views) |
 | `digests/<horizon>.json` | new items plus entered or jumped entities plus outliers | What Is New |
 | `digests/briefing_<horizon>.json` | the agentic daily briefing (`worker/pipeline/briefing.mjs`): a cited, sanitized prose summary of the window | the Home briefing lede |
 | `creators.json` | featured creators resolved from RSS plus the corpus join (`scripts/build_creators.mjs`) | the Watch page and the Home watch teaser; see `docs/SOURCES.md` |
@@ -54,7 +54,7 @@ Neighbors are computed every rebuild and denormalized into the hubs, so no stand
 
 ### Artifact Schemas (initial)
 
-`attention/<kind>_<horizon>.json`: `{ kind, horizon, generated, entities: [{ id|slug, label, attention, rs, ratio, momentum, quadrant, sparkline: number[], outlier: { breakout, new_entrant, quadrant_jump } }] }`.
+`attention/<kind>_<horizon>.json`: `{ kind, horizon, generated, entities: [{ id|slug, label, attention, rs, ratio, momentum, quadrant, trend, delta, sparkline: number[], outlier: { breakout, new_entrant, quadrant_jump } }] }`. `delta` is the growth in weighted attention this window versus the prior equal window and is the board's sort key; `trend` is that same change normalized to [-1, 1] for the up/steady/down arrow. `ratio`, `momentum`, and `quadrant` are the Mansfield rotation values, retained for the concept hub Momentum card rather than a plane.
 
 `glossary/index.json`: `{ generated, count, concepts: [{ id, label, kind, attention, aliases, def_snippet }] }`. The light list and search payload.
 
@@ -68,9 +68,18 @@ Neighbors are computed every rebuild and denormalized into the hubs, so no stand
 
 (Schemas are extended as phases land; keep this table and the writers in sync. Rule: a served artifact ships only the fields a page renders. Audit consumers with a raw recursive grep before adding a field, since the dedicated search tool ignores the built `dist/` bundle.)
 
-## Relative-Rotation Math (ported from aigamma)
+## Trend and Rotation Math
 
-Per entity `e` at time `t`, within a kind:
+The boards rank by **trend**: how much weighted attention a topic gained or lost this horizon window versus the equally long window just before it. It is clamp-free and discriminates well on sparse, recency-heavy data (`windowTrend` in `worker/pipeline/attention.mjs`, on the RAW per-day series so a board reflects this window's burst rather than smoothing it away).
+
+```
+attention_now(e)   = sum of weighted mentions of e in the last `days`
+attention_prev(e)  = sum of weighted mentions of e in the `days` before that
+delta(e)           = attention_now - attention_prev               # the board sort key
+trend(e)           = delta / (attention_now + attention_prev)     # the same change in [-1, 1]
+```
+
+A **Mansfield Relative Performance** rotation (ratio, momentum, quadrant) is still computed per entity and shown on the concept hub Momentum card. It was the original board visualization, but on this corpus (a few hundred topics over a rolling quarter, most first appearing inside the window) the `[55, 145]` display clamp pinned almost every topic to a wall, so the boards moved to the trend measure above. See `LESSONS_LEARNED.md` (Session 6).
 
 ```
 attention_raw(e,t) = sum over items i in window referencing e of

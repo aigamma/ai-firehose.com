@@ -48,6 +48,26 @@ export function buildSeries(items, { days, todayMs }) {
 export const windowSum = (series, windowDays) =>
   series.slice(Math.max(0, series.length - windowDays)).reduce((s, x) => s + x, 0);
 
+// The heat signal the ranked boards sort by: how much attention GREW this horizon
+// window versus the equally long window just before it, in the same weighted-mention
+// units as the displayed attention. `delta` (now - prev) is the absolute growth and
+// the sort key, so a large breakout outranks a tiny one and a flat-but-large topic
+// does not dominate (its now and prev are both high, so delta is near zero). `trend`
+// is that same change normalized to [-1, 1] for a stable up / steady / down read; it
+// saturates to +1 for a concept with no prior-window history, which is exactly a
+// fresh surge. Deliberately the RAW (bursty) series, not the decayed level: a heat
+// board should reflect this window's burst, not smooth it away. Unlike the rotation
+// ratio it has no [55, 145] clamp, so it never pins to a wall on sparse data.
+export function windowTrend(series, windowDays) {
+  const n = series.length;
+  const d = Math.max(1, Math.min(Math.round(windowDays) || 1, n));
+  const sum = (a) => a.reduce((s, x) => s + x, 0);
+  const now = sum(series.slice(n - d));
+  const prev = sum(series.slice(Math.max(0, n - 2 * d), n - d));
+  const total = now + prev;
+  return { now, prev, delta: now - prev, trend: total > 0 ? (now - prev) / total : 0 };
+}
+
 // Convert bursty daily attention into a smooth, positive attention LEVEL by
 // exponential decay. A single mention then has a continuous, fading presence
 // instead of a one-day spike. This is what the rotation engine consumes: the

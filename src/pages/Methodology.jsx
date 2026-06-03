@@ -57,20 +57,20 @@ export default function Methodology() {
         infrastructure cost stays flat no matter how long the site runs.
       </p>
 
-      <h2>Relative Rotation</h2>
+      <h2>What Is Trending</h2>
       <p>
-        Techniques, Tools, and Opinions share one rotation plane, each topic colored and shaped by its kind. The
-        math is the Mansfield Relative Performance normalization (Roy Mansfield, 1979), applied to attention
-        instead of price, the same prior-art approach used on aigamma.com. Relative strength is a topic's share of
-        the total attention in its kind. The rotation ratio expresses that strength as a percentage of its own slow
-        moving average (above 100 leads, below 100 trails), and the rotation momentum applies the same operation
-        again with a faster smoother (above 100 gaining, below 100 fading). The two together place each topic in
-        one of four quadrants: Leading, Improving, Weakening, Lagging.
+        Techniques, Tools, and Opinions each get a ranked board of the topics moving the most right now. A topic is
+        ranked by how much attention it gained or lost over the chosen window (Day, Week, Month, or Quarter) versus
+        the equally long window just before it, measured in weighted mentions. The bar shows how much attention a
+        topic holds now, the signed number shows the change, and topics that just surfaced or broke out are flagged.
       </p>
       <p className="muted">
-        Only the topics actually moving are plotted; the quiet long tail is pruned so the plane stays legible.
-        Bursty mentions are first smoothed into a decaying attention level, because raw one-day spikes make the
-        normalization degenerate. The displayed values are clamped to a readable band.
+        An earlier version plotted a Mansfield Relative Performance rotation plane (Roy Mansfield, 1979), the
+        prior-art approach used on aigamma.com. On this corpus (a few hundred topics over a rolling quarter, most
+        appearing for the first time within the window) that normalization pinned almost every topic to the edge of
+        its readable band and could not say what was actually trending. The growth measure is honest on sparse,
+        bursty data: it never divides by a near-empty baseline and is not clamped. The underlying momentum and
+        four-quadrant status are still computed, and surface on each concept hub.
       </p>
 
       <h2>The Daily Briefing</h2>

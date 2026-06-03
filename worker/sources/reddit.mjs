@@ -3,7 +3,7 @@
   Reddit can rate-limit or block datacenter IPs (403/429); the aggregator is
   tolerant, so a failure here just means no Reddit items this run.
 */
-const SUBS = ["LocalLLaMA", "MachineLearning", "artificial"];
+const SUBS = ["LocalLLaMA", "MachineLearning", "artificial", "singularity", "OpenAI", "StableDiffusion"];
 const UA = "ai-firehose/0.1 (AI news aggregation; contact via ai-firehose.com)";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

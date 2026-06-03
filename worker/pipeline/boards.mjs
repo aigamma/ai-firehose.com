@@ -17,8 +17,11 @@
   trailing (ratio, momentum) trajectory, alongside the prior fields. Pure: no I/O,
   no clock; the caller supplies todayMs so day-windows are reproducible.
 */
-import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
+import { buildSeries, windowSum, windowTrend, decayedLevel } from "./attention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
+
+const round1 = (x) => Math.round(x * 10) / 10;
+const round2 = (x) => Math.round(x * 100) / 100;
 
 export function computeBoards(working, { todayMs, retentionDays, horizons, kinds }) {
   const kindKeys = kinds.map((k) => k.key);
@@ -36,18 +39,26 @@ export function computeBoards(working, { todayMs, retentionDays, horizons, kinds
     const series = byKind[kind] || {};
     for (const h of horizons) {
       const ranked = rotationForEntities(levelByKind[kind], h.windows)
-        .map((r) => ({
-          id: r.id,
-          label: labels[r.id] || r.id,
-          attention: Math.round(windowSum(series[r.id] || [], h.days)),
-          rs: r.rs,
-          ratio: r.ratio,
-          momentum: r.momentum,
-          quadrant: r.quadrant,
-          sparkline: r.sparkline,
-          trail: r.trail,
-          outlier: r.outlier,
-        }))
+        .map((r) => {
+          const wt = windowTrend(series[r.id] || [], h.days);
+          return {
+            id: r.id,
+            label: labels[r.id] || r.id,
+            attention: Math.round(windowSum(series[r.id] || [], h.days)),
+            rs: r.rs,
+            ratio: r.ratio,
+            momentum: r.momentum,
+            quadrant: r.quadrant,
+            // The heat signal the ranked boards sort by: `delta` is the absolute
+            // growth in weighted attention this window versus the prior equal
+            // window, `trend` its [-1, 1] normalization for the up/steady/down
+            // arrow. Both are clamp-free (windowTrend in attention.mjs).
+            trend: round2(wt.trend),
+            delta: round1(wt.delta),
+            sparkline: r.sparkline,
+            outlier: r.outlier,
+          };
+        })
         .filter((e) => e.attention > 0)
         .sort((a, b) => b.attention - a.attention);
       boards[`${kind}_${h.key}`] = ranked.slice(0, 16);

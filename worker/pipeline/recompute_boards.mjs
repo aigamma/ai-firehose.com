@@ -3,9 +3,10 @@
 
   Replays the committed store (worker/.cache/items.json) through the SAME
   corpus-construction run.mjs uses for the attention boards, but with NO network:
-  no Pinecone, no Voyage, no model calls. Its one job is to add the new `trail`
-  trajectory to every board entity while leaving the existing
-  ratio/momentum/quadrant/attention/sparkline/outlier untouched.
+  no Pinecone, no Voyage, no model calls. It regenerates every served attention
+  board from the committed store, so a board-math change (the `trend`/`delta` heat
+  signal the boards rank by, the displayed attention, the rotation fields) lands in
+  the committed artifacts without a full ingest.
 
   Corpus reconstruction, mirroring run.mjs step 2a and 2b:
     1. collapseStore  (one entry per source item; drop re-edited duplicates)
@@ -108,7 +109,7 @@ function main() {
     }
   }
   console.log(
-    `recompute_boards: ${working.length} items, todayMs=${new Date(todayMs).toISOString()}, generated=${generated}, wrote ${written} board files with trails.`
+    `recompute_boards: ${working.length} items, todayMs=${new Date(todayMs).toISOString()}, generated=${generated}, wrote ${written} board files with trend and delta.`
   );
 }
 
