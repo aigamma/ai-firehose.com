@@ -1,0 +1,59 @@
+{
+  "id": "gaussian-splatting",
+  "label": "Gaussian Splatting",
+  "kind": "technique",
+  "category": "Computer Vision",
+  "aliases": [
+    "3D Gaussian Splatting",
+    "3DGS"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A 3D scene representation that models a scene as millions of tiny colored 3D Gaussians (blobs) which are rasterized to render novel views, achieving real-time, high-quality rendering and largely succeeding NeRF for many uses.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Gaussian splatting represents a 3D scene not as a neural function but as a cloud of millions of tiny 3D Gaussians, soft ellipsoidal blobs each with a position, size and orientation (a covariance), a color, and an opacity. To render a view, these Gaussians are projected onto the image plane and rasterized, splatted, and blended in depth order. Like NeRF, the representation is optimized so that rendered views match a set of input photos, but the scene is stored explicitly as primitives rather than implicitly in a network's weights."
+    },
+    {
+      "type": "p",
+      "text": "That explicitness is the whole advantage. Querying a neural network along every ray, as NeRF does, is slow; rasterizing Gaussians uses the same machinery GPUs were built for, so gaussian splatting renders in real time and trains far faster, while matching or exceeding NeRF's visual quality. Since its 2023 introduction it was adopted remarkably quickly for fast, high-fidelity, and editable 3D reconstruction."
+    },
+    {
+      "type": "p",
+      "text": "The explicit primitives also make scenes easier to manipulate and integrate with traditional graphics pipelines, which suits interactive applications, VR and AR, and content creation."
+    },
+    {
+      "type": "p",
+      "text": "The trade is memory and representation: storing millions of Gaussians is heavy, and an explicit point-like representation handles some effects (reflections, thin structures) differently than an implicit field. The two approaches, the implicit NeRF and the explicit splat, now define the main axis of learned 3D scene representation, and both feed into the broader push toward 3D generation."
+    }
+  ],
+  "related": [
+    {
+      "slug": "neural-radiance-field",
+      "label": "Neural Radiance Field",
+      "kind": "technique"
+    },
+    {
+      "slug": "multilayer-perceptron",
+      "label": "Multilayer Perceptron",
+      "kind": "technique"
+    },
+    {
+      "slug": "vision-transformer",
+      "label": "Vision Transformer",
+      "kind": "technique"
+    },
+    {
+      "slug": "diffusion-model",
+      "label": "Diffusion Model",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

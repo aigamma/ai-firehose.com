@@ -1,0 +1,17 @@
+---
+title: Inverse Reinforcement Learning
+slug: inverse-reinforcement-learning
+kind: technique
+category: Reinforcement Learning
+aliases: IRL, inverse RL, inverse optimal control
+related: imitation-learning, reward-model, reinforcement-learning, rlhf, reward-shaping
+summary: Learning the reward function that explains an expert's behavior, rather than copying the behavior directly, on the premise that the reward is the most compact and transferable description of a task; the inverse of standard RL, which derives behavior from a reward.
+---
+
+Inverse reinforcement learning runs the usual problem backwards. Ordinary reinforcement learning takes a reward function and finds a policy that maximizes it. Inverse RL takes an expert's demonstrated policy and tries to recover the reward function that the expert seems to be optimizing. The motivating belief is that the reward is the most concise and portable description of a task, a few priorities, while the resulting behavior is a sprawling, situation-specific consequence of it. Recover the reward and you have captured the intent.
+
+This is what distinguishes it from behavior cloning, the other branch of imitation learning. Behavior cloning memorizes what the expert did, so it falters in states the expert never visited. Inverse RL learns why the expert did it, and a recovered reward generalizes: an agent can then optimize that reward even in new situations, behaving sensibly where a cloned policy would be lost.
+
+The connection to modern AI is direct and important. RLHF learns a reward model from human preference comparisons and then optimizes a policy against it, which is closely related in spirit to inverse RL, inferring the objective humans want from examples of their judgments rather than copying outputs token for token.
+
+The central difficulty is that the problem is ill-posed: many different reward functions can explain the same observed behavior, including trivial ones, so inverse RL methods need extra assumptions or regularization (such as maximum-entropy formulations) to pick a sensible reward out of the many that fit.

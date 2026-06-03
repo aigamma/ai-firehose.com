@@ -1,0 +1,64 @@
+{
+  "id": "imitation-learning",
+  "label": "Imitation Learning",
+  "kind": "technique",
+  "category": "Reinforcement Learning",
+  "aliases": [
+    "imitation learning",
+    "learning from demonstration"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Learning a policy by mimicking expert demonstrations rather than from a reward signal, used when a reward is hard to specify but examples of good behavior are available; behavior cloning and inverse reinforcement learning are its two main approaches.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Imitation learning sidesteps the hardest part of reinforcement learning: specifying a reward. For many tasks, writing a reward function that captures what you actually want is difficult and dangerous (a misspecified reward invites reward hacking), but demonstrations of good behavior are easy to provide. Imitation learning trains an agent to act well by learning from those demonstrations directly, rather than by trial and error against a reward."
+    },
+    {
+      "type": "p",
+      "text": "There are two main approaches. Behavior cloning treats the problem as plain supervised learning: for each state the expert visited, learn to predict the action they took. Inverse reinforcement learning is subtler: it tries to infer the reward function the expert seems to be optimizing, then runs ordinary RL on that recovered reward, on the view that the reward is a more compact and transferable description of the task than the raw behavior."
+    },
+    {
+      "type": "p",
+      "text": "This framing is more central to modern AI than it first appears. The supervised fine-tuning stage that turns a base language model into an assistant is imitation learning, the model is cloning human demonstrations of good responses, and RLHF then layers a learned reward on top, blending imitation with reinforcement."
+    },
+    {
+      "type": "p",
+      "text": "The classic weakness of pure imitation is distribution shift: an agent that only ever saw expert trajectories has no idea what to do once its own small mistakes carry it into unfamiliar states, where errors then compound. Handling that drift, through interactive data collection or by recovering a reward that generalizes, is much of what distinguishes the approaches."
+    }
+  ],
+  "related": [
+    {
+      "slug": "behavior-cloning",
+      "label": "Behavior Cloning",
+      "kind": "technique"
+    },
+    {
+      "slug": "inverse-reinforcement-learning",
+      "label": "Inverse Reinforcement Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "reinforcement-learning",
+      "label": "Reinforcement Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "supervised-learning",
+      "label": "Supervised Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "rlhf",
+      "label": "RLHF",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}
