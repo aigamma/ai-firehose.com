@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
-  "count": 764,
-  "durable_count": 364,
+  "count": 768,
+  "durable_count": 368,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -1483,6 +1483,20 @@
       "def_snippet": ""
     },
     {
+      "id": "continuous-batching",
+      "label": "Continuous Batching",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "continuous batching",
+        "in-flight batching",
+        "iteration-level scheduling"
+      ],
+      "def_snippet": "An LLM serving technique that adds and evicts requests from the running batch at every decoding step rather than waiting for a whole batch to finish, keeping the GPU saturated and sharply raising throughput under mixed-length workloads.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
       "id": "contract-negotiation",
       "label": "contract negotiation",
       "kind": "opinion",
@@ -2860,6 +2874,20 @@
       "def_snippet": ""
     },
     {
+      "id": "fully-sharded-data-parallel",
+      "label": "Fully Sharded Data Parallel",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "FSDP",
+        "ZeRO",
+        "sharded data parallelism"
+      ],
+      "def_snippet": "A distributed training strategy that shards a model's parameters, gradients, and optimizer states across data-parallel workers and gathers each layer's weights only when needed, so models far larger than one device's memory can be trained without slicing the model itself.",
+      "durable": true,
+      "category": "Systems and Infrastructure"
+    },
+    {
       "id": "function-calling",
       "label": "Function Calling",
       "kind": "technique",
@@ -3883,6 +3911,20 @@
         "diffusion language models"
       ],
       "def_snippet": "Large language models are neural networks trained on vast text corpora to predict and generate human language by processing tokens sequentially through transformer architectures."
+    },
+    {
+      "id": "late-interaction",
+      "label": "Late Interaction",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "ColBERT",
+        "late-interaction retrieval",
+        "token-level retrieval"
+      ],
+      "def_snippet": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens, keeping fine-grained term interactions that a single pooled vector discards.",
+      "durable": true,
+      "category": "RAG, Embeddings, and Retrieval"
     },
     {
       "id": "latent-diffusion",
@@ -7813,6 +7855,20 @@
       "attention": 1,
       "aliases": [],
       "def_snippet": ""
+    },
+    {
+      "id": "tree-of-thoughts",
+      "label": "Tree of Thoughts",
+      "kind": "technique",
+      "attention": 0,
+      "aliases": [
+        "tree of thoughts",
+        "ToT",
+        "tree search reasoning"
+      ],
+      "def_snippet": "A reasoning method that explores multiple candidate reasoning steps as a branching tree, evaluating and expanding promising branches and backtracking from dead ends, so a model searches over solution paths instead of committing to one linear chain.",
+      "durable": true,
+      "category": "Inference and Sampling"
     },
     {
       "id": "tree-search",
