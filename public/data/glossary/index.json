@@ -798,7 +798,7 @@
         "auto-encoder",
         "AE"
       ],
-      "def_snippet": "A neural network trained to reconstruct its own input through a narrow bottleneck, forcing it to learn a compressed latent representation that captures the data's most salient structure.",
+      "def_snippet": "A network trained to copy its input to its output through a narrow bottleneck, a constraint that forces it to learn a compressed code capturing the data's structure. No labels are needed, which makes it a workhorse of unsupervised representation learning, and its compress-then-reconstruct template recurs across the whole field.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -2754,7 +2754,7 @@
       "aliases": [
         "dropout regularization"
       ],
-      "def_snippet": "A regularization technique that randomly zeroes a fraction of a layer's units during each training step, preventing co-adaptation of neurons and reducing overfitting by training an implicit ensemble of subnetworks.",
+      "def_snippet": "A regularizer that randomly zeroes a fraction of a layer's units on every training step, so each pass runs a different thinned subnetwork. The effect is to train an exponentially large ensemble of weight-sharing subnetworks at once and average them, which stops neurons from co-adapting into fragile arrangements and curbs overfitting.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -5199,7 +5199,7 @@
         "layernorm",
         "LN"
       ],
-      "def_snippet": "A normalization technique that standardizes the activations across the features of a single example to zero mean and unit variance, then rescales them, giving batch-independent normalization that suits sequence models and transformers.",
+      "def_snippet": "Normalization that standardizes each example across its own features rather than across the batch, making it entirely batch-independent. That single change removes batch normalization's weaknesses, no train/inference gap, no collapse at batch size one, clean handling of variable-length sequences, which is why it is the normalization of the transformer.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -8055,7 +8055,7 @@
         "RNN",
         "recurrent network"
       ],
-      "def_snippet": "A neural network for sequential data that maintains a hidden state passed from one time step to the next, letting it process inputs of variable length while carrying context forward through the sequence.",
+      "def_snippet": "A network for sequences that carries a hidden state from one step to the next, so it can process inputs of any length while threading context forward. The same shared weights that give it this memory are also its undoing: applied over and over down a long sequence, they make gradients vanish, which is exactly the limit attention removed.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -10596,7 +10596,7 @@
         "Xavier initialization",
         "He initialization"
       ],
-      "def_snippet": "How a neural network's weights are set before training begins; a poor scheme makes signals vanish or explode as they pass through the layers and stalls learning, while principled schemes like Xavier and He keep activations and gradients well-scaled.",
+      "def_snippet": "How a network's weights are set before training begins, a choice that matters far more than it looks. Too small and the signal vanishes through the layers; too large and it explodes; either way a deep network fails to train. Principled schemes, Xavier for symmetric activations and He for ReLU, set the random scale to preserve the signal's magnitude from layer to layer.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
