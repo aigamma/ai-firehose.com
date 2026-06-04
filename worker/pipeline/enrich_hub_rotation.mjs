@@ -24,6 +24,11 @@ for (const kind of ["technique", "tool", "opinion"]) {
   const rel = `attention/${kind}_${DEFAULT_HORIZON}.json`;
   if (!has(rel)) continue;
   for (const e of read(rel).entities) {
+    // The served boards no longer carry rotation (ratio, momentum, quadrant): it is
+    // written to the hubs natively by run.mjs, so this one-time backfill is
+    // superseded and is a no-op against slimmed boards. Guard so it can never write
+    // a hub a rotation object with undefined fields.
+    if (e.quadrant == null) continue;
     rot[`${kind}::${e.id}`] = { horizon: DEFAULT_HORIZON, quadrant: e.quadrant, ratio: e.ratio, momentum: e.momentum, sparkline: e.sparkline };
   }
 }

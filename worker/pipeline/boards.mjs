@@ -13,15 +13,16 @@
     -> slice top 16
 
   It returns a flat map keyed `${kind}_${horizon}` to the entities array, so a
-  caller can wrap each in the served envelope. Entities carry a `sparkline` trace alongside the displayed `attention` and the
-  `delta`/`trend` heat read; the old rotation `trail` trajectory was removed. Pure: no I/O,
+  caller can wrap each in the served envelope. Entities carry the displayed
+  `attention`, the `delta` heat read, and a `sparkline`, and only those: the
+  rotation fields (ratio, momentum, quadrant) live on the concept hub, not the
+  board, so the served board ships only what TrendBoard draws. Pure: no I/O,
   no clock; the caller supplies todayMs so day-windows are reproducible.
 */
 import { buildSeries, windowSum, windowTrend, decayedLevel } from "./attention.mjs";
 import { rotationForEntities } from "./rotation.mjs";
 
 const round1 = (x) => Math.round(x * 10) / 10;
-const round2 = (x) => Math.round(x * 100) / 100;
 
 export function computeBoards(working, { todayMs, retentionDays, horizons, kinds }) {
   const kindKeys = kinds.map((k) => k.key);
@@ -45,18 +46,17 @@ export function computeBoards(working, { todayMs, retentionDays, horizons, kinds
             id: r.id,
             label: labels[r.id] || r.id,
             attention: Math.round(windowSum(series[r.id] || [], h.days)),
-            rs: r.rs,
-            ratio: r.ratio,
-            momentum: r.momentum,
-            quadrant: r.quadrant,
-            // The heat signal the ranked boards sort by: `delta` is the absolute
-            // growth in weighted attention this window versus the prior equal
-            // window, `trend` its [-1, 1] normalization for the up/steady/down
-            // arrow. Both are clamp-free (windowTrend in attention.mjs).
-            trend: round2(wt.trend),
+            // `delta` is the absolute growth in weighted attention this window
+            // versus the prior equal window (clamp-free, windowTrend in
+            // attention.mjs). TrendBoard ranks and draws the arrow from it.
             delta: round1(wt.delta),
             sparkline: r.sparkline,
-            outlier: r.outlier,
+            // Only the two flags TrendBoard renders; the rest of the rotation
+            // outlier payload (z-scores, quadrant jump) is not shipped.
+            outlier:
+              r.outlier?.breakout || r.outlier?.new_entrant
+                ? { breakout: !!r.outlier.breakout, new_entrant: !!r.outlier.new_entrant }
+                : undefined,
           };
         })
         .filter((e) => e.attention > 0)
