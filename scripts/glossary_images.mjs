@@ -235,6 +235,80 @@ async function download(url) {
   return { buf, contentType: r.headers.get("content-type") };
 }
 
+async function mwApi(host, params) {
+  const u = new URL(`https://${host}/w/api.php`);
+  for (const [k, v] of Object.entries(params)) u.searchParams.set(k, v);
+  const r = await fetchRetry(u, { timeout: 25000 });
+  if (!r.ok) throw new Error(`${host} API ${r.status}`);
+  return r.json();
+}
+
+// Every license-clean image USED ON an English Wikipedia article (inline figures, not
+// just the lead), each a ready candidate with license resolved. This is the second well
+// for filling coverage gaps: a Commons File-namespace keyword search misses the good
+// diagram that is actually embedded in the topic's article. Icons and tiny logos are
+// filtered out; results are sorted largest first so real figures surface above sprites.
+async function wikiImages(title, width = 900) {
+  const j = await mwApi("en.wikipedia.org", {
+    action: "query",
+    format: "json",
+    titles: title,
+    generator: "images",
+    gimlimit: "60",
+    prop: "imageinfo",
+    iiprop: "url|size|mime|extmetadata",
+    iiurlwidth: String(width),
+  });
+  // Wikipedia chrome and UI sprites that ride along on most articles; never content.
+  const CHROME = /symbol |oojs ui|question book|commons-logo|wiktionary|wikidata|wikisource|edit-ltr|edit-rtl|ambox|padlock|magnify-clip|red pog|increase2?|decrease2?|steady2?|disambig|text document|crystal |nuvola |gnome-|emblem-|folder|^File:Wiki|portal|stub|loudspeaker|merge-|split-arrows|yes check|x mark|green tick|red x/i;
+  const pages = Object.values(j?.query?.pages || {});
+  return pages
+    .map((p) => recordFromImageinfo(p, width))
+    .filter((r) => r && r.download_url && r.license_ok)
+    .filter((r) => /image\/(png|jpeg|gif|webp|svg)/.test(r.mime || ""))
+    .filter((r) => !CHROME.test(r.title || ""))
+    .filter((r) => (r.width || 0) >= 200 && (r.height || 0) >= 150)
+    .sort((a, b) => (b.width || 0) * (b.height || 0) - (a.width || 0) * (a.height || 0));
+}
+
+// Parse just the frontmatter of an authored entry (slug, title, summary), tolerant.
+function readFrontmatter(raw) {
+  const text = String(raw).replace(/^﻿/, "");
+  if (!text.startsWith("---")) return null;
+  const end = text.indexOf("\n---", 3);
+  if (end < 0) return null;
+  const meta = {};
+  for (const line of text.slice(3, end).split("\n")) {
+    const i = line.indexOf(":");
+    if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+  }
+  return meta;
+}
+
+// Authored concepts that have no image yet, grouped by category folder, with title and
+// summary. The substrate for the gap-filling wave and the generation wishlist.
+function listGaps() {
+  const have = new Set(Object.keys(readJson(IMAGES_JSON, {})));
+  const byFolder = {};
+  for (const folder of readdirSync(CONTENT)) {
+    const dir = join(CONTENT, folder);
+    let st;
+    try {
+      st = statSync(dir);
+    } catch {
+      continue;
+    }
+    if (!st.isDirectory()) continue;
+    for (const f of readdirSync(dir)) {
+      if (!f.endsWith(".md") || f.toLowerCase() === "readme.md") continue;
+      const meta = readFrontmatter(readFileSync(join(dir, f), "utf8"));
+      if (!meta?.slug || have.has(meta.slug)) continue;
+      (byFolder[folder] ||= []).push({ slug: meta.slug, title: meta.title || meta.slug, summary: meta.summary || "" });
+    }
+  }
+  return byFolder;
+}
+
 // ---- staging + finalize ----
 
 const readJson = (p, fb) => {
@@ -260,7 +334,7 @@ function loadStaging() {
 const MIN_BYTES = 1200;
 const MAX_BYTES = 4_500_000;
 
-async function finalize({ keepStage = false } = {}) {
+async function finalize({ keepStage = false, prune = false } = {}) {
   mkdirSync(OUT_DIR, { recursive: true });
   const existing = readJson(IMAGES_JSON, {});
   const staging = loadStaging();
@@ -383,6 +457,23 @@ async function finalize({ keepStage = false } = {}) {
     if (readdirSync(STAGE_DIR).length === 0) rmSync(STAGE_DIR, { recursive: true, force: true });
   }
 
+  // Prune orphans: delete any file in public/images/glossary not referenced by the
+  // finalized images.json. Replacing a concept's image (e.g. swapping a Commons figure for
+  // a non-Wikimedia one, often with a different extension) leaves the old file behind; this
+  // sweeps it. Opt-in (`--prune`) and meant to run only after the drain has converged to
+  // zero drops, so a temporarily-dropped slug's file is not removed mid-retry.
+  if (prune) {
+    const referenced = new Set(Object.values(ordered).map((r) => r.file).filter(Boolean));
+    let removed = 0;
+    for (const f of readdirSync(OUT_DIR)) {
+      if (!referenced.has(f)) {
+        rmSync(join(OUT_DIR, f), { force: true });
+        removed += 1;
+      }
+    }
+    console.log(`finalize: pruned ${removed} orphaned image file(s).`);
+  }
+
   console.log(`finalize: kept ${kept.length}, dropped ${dropped.length}`);
   for (const k of kept) console.log(`  + ${k}`);
   for (const d of dropped) console.log(`  - ${d}`);
@@ -419,6 +510,22 @@ async function main() {
     const query = positional.join(" ").trim();
     const out = await search(query, { limit: Number(flag("limit", 10)), width: Number(flag("width", 800)) });
     console.log(JSON.stringify(out, null, 2));
+  } else if (cmd === "wiki") {
+    const out = await wikiImages(positional.join(" "), Number(flag("width", 900)));
+    console.log(JSON.stringify(out, null, 2));
+  } else if (cmd === "gaps") {
+    const byFolder = listGaps();
+    if (flag("json", false) === true) {
+      console.log(JSON.stringify(byFolder, null, 2));
+    } else {
+      let total = 0;
+      for (const folder of Object.keys(byFolder).sort()) {
+        total += byFolder[folder].length;
+        console.log(`\n## ${folder} (${byFolder[folder].length})`);
+        for (const r of byFolder[folder]) console.log(`- ${r.slug}: ${r.title}`);
+      }
+      console.log(`\nTotal gaps: ${total}`);
+    }
   } else if (cmd === "fetch") {
     const [url, out] = positional;
     if (!url || !out) {
@@ -444,7 +551,7 @@ async function main() {
     const out = await resolveCommonsFile(positional.join(" "), Number(flag("width", 800)));
     console.log(JSON.stringify(out, null, 2));
   } else if (cmd === "finalize") {
-    await finalize({ keepStage: flag("keep-stage", false) === true });
+    await finalize({ keepStage: flag("keep-stage", false) === true, prune: flag("prune", false) === true });
   } else {
     console.log("usage: glossary_images.mjs <search|resolve|finalize> [...]");
     process.exitCode = 1;
