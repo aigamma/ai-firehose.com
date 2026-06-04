@@ -1721,7 +1721,7 @@
         "Hoeffding inequality",
         "tail bound"
       ],
-      "def_snippet": "A mathematical bound showing that the average of many independent random quantities is very unlikely to fall far from its expected value. Concentration inequalities are the engine beneath every generalization guarantee in learning theory.",
+      "def_snippet": "A bound showing that an average of many independent random quantities is very unlikely to stray far from its expected value, with the failure probability falling exponentially in the sample size. It is the engine beneath every generalization guarantee, since asking whether training error reflects true error is exactly asking whether an average has concentrated.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -2948,7 +2948,7 @@
         "empirical risk",
         "empirical risk minimisation"
       ],
-      "def_snippet": "The core principle behind most supervised learning: since the true error over the data distribution cannot be computed, a model is chosen by minimizing the average loss measured on the training sample, which serves as a proxy for the true risk.",
+      "def_snippet": "The principle behind nearly all supervised learning: you cannot compute the true error over the data distribution, so you minimize the average loss on the training sample instead and trust it as a proxy. It works only when the hypothesis class is restricted enough that the proxy converges to the truth uniformly, which is exactly what capacity theory guarantees.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -7213,7 +7213,7 @@
         "PAC-Bayesian analysis",
         "PAC-Bayes bound"
       ],
-      "def_snippet": "A framework that bounds the generalization error of a randomized predictor in terms of how far its learned distribution over hypotheses strays from a prior. It produces some of the only non-vacuous guarantees for deep networks and unifies Bayesian and frequentist learning theory.",
+      "def_snippet": "A framework that bounds the generalization error of a distribution over hypotheses by how far that learned posterior strays, in KL divergence, from a prior fixed before seeing the data. Its KL penalty is a precise statement of Occam's razor, and by choosing the posterior cleverly it yields some of the only non-vacuous generalization bounds for deep networks.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -7943,7 +7943,7 @@
         "Rademacher average",
         "empirical Rademacher complexity"
       ],
-      "def_snippet": "A data-dependent measure of the capacity of a hypothesis class, defined by how well the class can fit pure random noise. It yields some of the tightest known generalization bounds and refines the cruder, distribution-free VC dimension.",
+      "def_snippet": "A data-dependent measure of a model class's capacity, defined by how well the class can fit pure random noise. It refines the cruder, distribution-free VC dimension by measuring complexity on the actual sample, and because bounding the weight norm bounds it, it is one of the few classical tools that says anything meaningful about over-parameterized networks.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -8593,7 +8593,7 @@
         "sample efficiency",
         "data efficiency"
       ],
-      "def_snippet": "The number of training examples a learning algorithm needs to reach a target accuracy with a target confidence. It quantifies the data cost of learning and is governed by the capacity of the model class.",
+      "def_snippet": "The number of training examples a learner needs to reach a target accuracy with a target confidence, the data cost of learning. It scales roughly linearly with the model class's capacity, and it carries a striking asymmetry: tightening the error bar costs far more data than tightening the failure probability.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -10202,7 +10202,7 @@
         "universal approximation theorems",
         "universal approximator"
       ],
-      "def_snippet": "A family of results showing that a feedforward neural network with a single hidden layer of sufficient width can approximate any continuous function on a bounded domain to arbitrary accuracy. It establishes that neural networks are expressive in principle, while saying nothing about whether such a network can be learned.",
+      "def_snippet": "The result that a single-hidden-layer network of sufficient width can approximate any continuous function on a bounded domain to any accuracy. It is the theoretical license that the model family is rich enough, but it is purely an existence statement: it says the right weights exist, nothing about how many neurons, how to find them, or whether they generalize.",
       "durable": true,
       "category": "Learning Theory"
     },
