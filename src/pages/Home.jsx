@@ -86,7 +86,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="stack">
+    <div className="stack home-stack">
       <header className="masthead">
         <h1 className="masthead-kicker">{SITE.name}</h1>
       </header>
