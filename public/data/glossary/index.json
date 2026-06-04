@@ -2530,7 +2530,7 @@
         "determinants",
         "det"
       ],
-      "def_snippet": "A single number computed from a square matrix that measures the signed volume scaling of the linear transformation it represents, zero exactly when the matrix is singular, and a recurring factor in change-of-variables formulas and probabilistic models.",
+      "def_snippet": "A single number squeezed from a square matrix that measures how much the transformation scales volume, with a sign for whether it flips orientation. Its most important value is zero, which means the transformation collapses space into a lower dimension, the exact condition for a matrix to be singular and have no inverse.",
       "durable": true,
       "category": "Linear Algebra for ML"
     },
@@ -5340,7 +5340,7 @@
         "linear transformations",
         "linear operator"
       ],
-      "def_snippet": "A function between vector spaces that preserves addition and scaling, so it maps straight lines to straight lines and the origin to the origin, and is represented concretely by a matrix.",
+      "def_snippet": "A function between vector spaces that preserves addition and scaling, which forces a rigid geometry: it can rotate, scale, shear, and project, but it can never bend a straight line or move the origin. Every such map is a matrix, and a stack of them is exactly a neural network layer, which is why the nonlinearity between layers is essential.",
       "durable": true,
       "category": "Linear Algebra for ML"
     },
@@ -7151,7 +7151,7 @@
         "orthonormal",
         "orthogonal matrix"
       ],
-      "def_snippet": "The generalization of perpendicularity to vector spaces, holding when the dot product of two vectors is zero, the property that makes bases easy to work with and that orthogonal matrices exploit to rotate space without distorting lengths or angles.",
+      "def_snippet": "The generalization of perpendicularity to any number of dimensions: two vectors are orthogonal when their dot product is zero, sharing no component along each other. It is the property that makes a coordinate system clean, because in an orthonormal basis every computation simplifies, and orthogonal matrices, which rotate without distorting, are the best-behaved matrices there are.",
       "durable": true,
       "category": "Linear Algebra for ML"
     },
@@ -7576,7 +7576,7 @@
         "positive semidefinite",
         "symmetric positive definite"
       ],
-      "def_snippet": "A symmetric matrix whose associated quadratic form is always positive, equivalent to having all positive eigenvalues, the property that distinguishes a genuine bowl-shaped minimum from a saddle and that every covariance matrix and valid kernel must satisfy.",
+      "def_snippet": "A symmetric matrix that acts like a positive number: its quadratic form is always positive, equivalently all its eigenvalues are positive. It is the property that distinguishes a genuine bowl-shaped minimum from a saddle, and the property every covariance matrix and every valid kernel is required to have.",
       "durable": true,
       "category": "Linear Algebra for ML"
     },
@@ -8954,7 +8954,7 @@
         "singular values",
         "singular vectors"
       ],
-      "def_snippet": "A factorization that breaks any matrix into a rotation, a set of axis scalings, and another rotation, exposing the geometry of a linear transformation and providing the foundation for low-rank approximation.",
+      "def_snippet": "The factorization that breaks any matrix into a rotation, a set of axis stretches, and another rotation, revealing that every linear transformation, however complicated it looks, is really just those three steps. Keeping only the largest stretches gives the best low-rank approximation, the single fact behind PCA, recommender systems, and parameter-efficient fine-tuning.",
       "durable": true,
       "category": "Linear Algebra for ML"
     },
