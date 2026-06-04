@@ -11,23 +11,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A function that assigns a nonnegative length to every vector, formalizing magnitude and distance, and underpinning loss functions, regularization, and normalization in machine learning.",
+  "definition": "A function that assigns a length to every vector, formalizing size and distance. There is more than one way to measure length, and the choice has real consequences: the L2 norm gives ordinary straight-line distance, while the L1 norm, by making its unit ball a diamond, is what drives models toward sparse solutions.",
   "body": [
     {
       "type": "p",
-      "text": "A norm is a rule that takes a vector and returns a single nonnegative number, its length or magnitude. To count as a norm the rule must satisfy three properties: only the zero vector has length zero, scaling a vector multiplies its length by the same factor, and the length of a sum is never more than the sum of the lengths, the triangle inequality. These properties guarantee that the norm behaves like an honest notion of size, and they let it define distance, since the distance between two vectors is simply the norm of their difference."
+      "text": "A norm answers a simple question, how big is this vector, but the interesting fact is that there is more than one honest answer. A norm is any rule that takes a vector and returns a single nonnegative number, its length, subject to three conditions: only the zero vector has length zero, scaling a vector scales its length by the same factor, and the length of a sum never exceeds the sum of the lengths, the triangle inequality. Any rule meeting these behaves like a genuine notion of size, and it immediately gives a notion of distance, since the distance between two vectors is the norm of their difference."
     },
     {
       "type": "p",
-      "text": "The most common norm is the Euclidean or L2 norm, the ordinary straight-line length, which is the square root of the dot product of a vector with itself, the familiar root of the sum of squared coordinates. It is far from the only one. The L1 norm sums the absolute values of the coordinates, the distance you would travel along a grid of streets, and the L-infinity norm takes the single largest coordinate. Each norm induces a different shape for the set of vectors at distance one, a sphere for L2, a diamond for L1, and a cube for L-infinity, and that shape has real consequences for how models behave."
+      "text": "The most common norm is the Euclidean, or L2, norm, ordinary straight-line length, the square root of a vector's dot product with itself. But it is far from the only one. The L1 norm sums the absolute values of the coordinates, the distance you would walk along a grid of city streets, and the L-infinity norm takes the single largest coordinate. Each induces a different shape for the set of vectors at distance one: a round sphere for L2, a diamond for L1, a cube for L-infinity. That shape is not a curiosity, it has real consequences for how models behave."
     },
     {
       "type": "p",
-      "text": "Norms are everywhere in machine learning because so much of it is about measuring magnitude and distance. A loss function reports the norm of the gap between predictions and targets, with mean squared error being a squared L2 norm. Regularization penalizes the norm of the weight vector to keep a model simple: penalizing the L2 norm shrinks weights smoothly toward zero, while penalizing the L1 norm drives many of them exactly to zero, producing sparse models that use only a few features. Gradient clipping caps the norm of the gradient to keep training stable."
+      "text": "Norms are everywhere in machine learning because so much of it is measuring magnitude and distance. A loss function reports the norm of the gap between predictions and targets, with mean squared error being a squared L2 norm. Regularization penalizes the norm of the weight vector to keep a model simple, and here the choice of norm shows its teeth: penalizing the L2 norm shrinks weights smoothly toward zero, while penalizing the L1 norm drives many of them exactly to zero, producing sparse models that use only a few features. That sparsity comes directly from the diamond shape of the L1 ball, whose corners poke out along the axes. Gradient clipping caps the norm of the gradient to keep training stable."
     },
     {
       "type": "p",
-      "text": "Norms also make vectors comparable by removing scale. Dividing a vector by its norm yields a unit vector that keeps only direction, the step behind cosine similarity and behind normalization layers that rescale activations to a controlled magnitude so that signals neither vanish nor explode as they pass through a deep network. Any norm gives a vector space a geometry of distance, and when that norm comes from a dot product the space also gains angles, which is why the Euclidean norm is the one most often paired with the geometric reasoning of linear algebra."
+      "text": "Norms also make vectors comparable by stripping out scale. Dividing a vector by its norm yields a unit vector that keeps only direction, the step behind cosine similarity and behind the normalization layers that rescale activations to a controlled magnitude so signals neither vanish nor explode through a deep network. Any norm gives a vector space a geometry of distance, and when that norm comes from a dot product the space also gains angles, which is why the Euclidean norm is the one most often paired with the geometric reasoning of linear algebra."
     }
   ],
   "related": [
