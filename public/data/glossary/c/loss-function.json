@@ -10,23 +10,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A function that measures how wrong a model's predictions are by mapping its parameters to a single number, the quantity that training tries to minimize. It defines what \"good\" means for the model.",
+  "definition": "The single number that says how wrong a model is, the quantity training drives down. It is where you specify what the model should do, and its quiet danger is that a model optimizes exactly what you measure: a loss that fails to reward the behavior you actually want produces a model that does the wrong thing perfectly.",
   "body": [
     {
       "type": "p",
-      "text": "A loss function is the scalar measure of a model's error. Given the model's current parameters and some training data, it returns a single number that is large when the predictions are bad and small when they are good. Training is, by definition, the search for the parameters that make this number as small as possible. The loss function therefore encodes the entire objective: it is the formal statement of what the model is being asked to do, and everything the optimizer does is in service of driving it down."
+      "text": "A loss function is the scalar verdict on a model's error. Given the current parameters and some data, it returns one number, large when the predictions are bad and small when they are good, and training is by definition the search for the parameters that make that number as small as possible. The loss therefore is the objective: it is the formal statement of what the model is being asked to do, and everything the optimizer does is in service of pushing it down."
     },
     {
       "type": "p",
-      "text": "It matters because the choice of loss function determines what the model learns, often more than the architecture does. Different tasks call for different losses. Mean squared error penalizes the squared gap between prediction and target and suits regression. Cross-entropy measures the divergence between a predicted probability distribution and the true label and is the standard for classification and for language modeling. A loss that does not actually reward the behavior you want will produce a model that optimizes the wrong thing perfectly, which is why specifying the loss correctly is a central act of model design rather than a detail."
+      "text": "Because the model optimizes exactly what the loss measures, choosing it determines what the model learns, often more than the architecture does. Different tasks demand different losses: mean squared error penalizes the squared gap between prediction and target and suits regression, while cross-entropy measures the divergence between a predicted distribution and the true label and is standard for classification and language modeling. The hazard is sharp and common: a loss that does not actually reward the behavior you want yields a model that optimizes the wrong thing flawlessly, which is why specifying the loss correctly is a central act of design, not a detail, and a close cousin of the alignment problem."
     },
     {
       "type": "p",
-      "text": "Mechanically the loss function must be differentiable (or nearly so) with respect to the parameters, because gradient descent needs its gradient to know which way is downhill. Evaluating the loss over the parameters traces out the loss landscape, the high-dimensional surface the optimizer walks. Its minima are the candidate solutions, its local minima and saddle points are the traps and stalls, and its overall shape is what makes optimization easy or hard. Strictly, the per-example penalty is the loss and the average over the dataset is the cost, though in practice the terms are used interchangeably."
+      "text": "Mechanically the loss must be differentiable, or nearly so, in the parameters, because gradient descent needs its gradient to know which way is downhill. Sweeping the loss across all parameter settings traces the loss landscape, the high-dimensional surface the optimizer walks, whose minima are the candidate solutions and whose saddle points and plateaus are the stalls. Strictly, the per-example penalty is the loss and its average over the dataset is the cost, though the terms are used interchangeably in practice."
     },
     {
       "type": "p",
-      "text": "The loss is also where regularization enters. Adding a penalty term such as weight decay to the loss function changes what the optimizer treats as optimal, trading a little fit to the training data for simpler parameters that generalize better. In this way the loss function is not only the target of optimization but the place where the modeler expresses preferences and priors. Define the loss and you have defined both the goal of training and the terrain that gradient descent, stochastic gradient descent, and adaptive methods like Adam must traverse."
+      "text": "The loss is also where the modeler's preferences and priors enter, beyond raw accuracy. Adding a penalty term such as weight decay changes what the optimizer treats as optimal, trading a little fit to the training data for simpler parameters that generalize better, and auxiliary terms can encode sparsity, smoothness, or fairness. Define the loss and you have defined two things at once: the goal of training, and the terrain that gradient descent and its descendants must cross to reach it. Get it wrong and a perfectly trained model will still do the wrong thing."
     }
   ],
   "related": [

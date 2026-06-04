@@ -9,23 +9,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An optimization algorithm that iteratively steps a model's parameters in the direction of steepest descent of a loss function, so the loss falls toward a minimum.",
+  "definition": "The algorithm that trains almost everything: repeatedly nudge the parameters a small step downhill on the loss surface, against the gradient, and the error falls toward a minimum. It is almost too simple to believe it works, and the deep surprise of modern AI is that this local downhill walk finds excellent solutions in spaces of billions of dimensions.",
   "body": [
     {
       "type": "p",
-      "text": "Gradient descent is the workhorse of machine learning optimization. It treats training as a search over a high-dimensional surface, the loss landscape, whose height at any point is the model's error on the data. The algorithm starts somewhere on that surface and repeatedly walks downhill until it can descend no further."
+      "text": "Nearly every model in modern AI is trained by one humble idea: stand on the loss surface, find which way is downhill, take a small step, and repeat. Gradient descent treats training as a walk over the loss landscape, a surface whose height at any point is the model's error on the data, and it descends that surface one step at a time until it can go no lower. That a procedure this plain trains systems as capable as a frontier language model is one of the genuine surprises of the field."
     },
     {
       "type": "p",
-      "text": "Each iteration computes the gradient of the loss with respect to every parameter, the vector of partial derivatives that points in the direction of steepest increase. Gradient descent moves the parameters a small amount in the opposite direction, against the gradient, scaled by a step size called the learning rate. Choose the learning rate too large and the steps overshoot and diverge; too small and training crawls."
+      "text": "Each step rests on the gradient, the vector of partial derivatives of the loss with respect to every parameter, which points in the direction of steepest increase. Gradient descent moves the opposite way, against the gradient, by an amount set by the learning rate, the single most consequential knob in training: too large and the steps overshoot the valley and diverge, too small and progress crawls. The gradient itself is delivered by backpropagation, which applies the chain rule to push the error backward through the network, so backpropagation to get the gradient and gradient descent to use it are the paired engine under almost all deep learning."
     },
     {
       "type": "p",
-      "text": "The gradient itself is supplied by backpropagation, which applies the chain rule to push error signals backward through the layers of a network. This pairing, backpropagation to get the gradient and gradient descent to use it, is the engine under almost every deep learning model."
+      "text": "The reason this should not obviously work is that the loss landscape of a neural network is wildly non-convex, a million- or billion-dimensional surface riddled with valleys, ridges, and saddle points, while gradient descent is utterly local, seeing only the slope directly underfoot with no map of the whole. By every classical intuition it should get stranded in a poor local minimum. The empirical miracle, and much of why deep learning works at all, is that in very high dimensions almost all the local minima sit at nearly the same low loss, so a blind downhill walk reliably lands somewhere good."
     },
     {
       "type": "p",
-      "text": "Plain \"batch\" gradient descent uses the whole dataset for each step, which is accurate but slow. In practice almost everyone uses stochastic gradient descent or mini-batches, trading exact gradients for far more frequent updates. Pure gradient descent is also prone to crawling through flat regions and stalling near a saddle point, which motivates accelerated variants like momentum and adaptive methods like Adam."
+      "text": "Plain \"batch\" gradient descent uses the whole dataset for every step, which is accurate but far too slow at scale, so in practice everyone uses stochastic gradient descent on small random mini-batches, trading an exact gradient for vastly more frequent, slightly noisy steps. And because the bare method crawls through flat regions and stalls at saddle points where the slope vanishes, it is almost always dressed up: momentum to carry inertia along consistent directions, adaptive methods like Adam to give each parameter its own step size. Every one of these is a refinement of the same four-word instruction: walk downhill, repeat."
     }
   ],
   "related": [

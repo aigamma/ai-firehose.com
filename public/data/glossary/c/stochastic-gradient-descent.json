@@ -9,23 +9,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A variant of gradient descent that estimates the gradient from a small random sample of the data at each step rather than the full dataset, trading exact gradients for far cheaper and more frequent parameter updates.",
+  "definition": "Gradient descent that estimates the gradient from a small random mini-batch instead of the whole dataset, trading an exact gradient for thousands of cheap, noisy steps. The startling part is that the noise is a feature, not a bug: it shakes the optimizer out of traps and biases it toward solutions that generalize.",
   "body": [
     {
       "type": "p",
-      "text": "Stochastic gradient descent is the practical form of gradient descent used to train almost every modern neural network. Plain batch gradient descent computes the gradient of the loss function over the entire training set before taking a single step, which is accurate but prohibitively slow once a dataset has millions of examples. Stochastic gradient descent instead draws one example, or more commonly a small random mini-batch, estimates the gradient from just that sample, and updates the parameters immediately. Over an epoch it makes thousands of small steps instead of one large one."
+      "text": "Stochastic gradient descent rests on a concession that turns out to be an advantage: you do not need the exact gradient to train a model, only a cheap, noisy estimate of it. Plain batch gradient descent computes the gradient of the loss over the entire training set before taking one step, accurate but hopelessly slow once a dataset runs to millions of examples. SGD instead draws a small random mini-batch, estimates the gradient from just that sample, and updates immediately, making thousands of small steps per pass through the data where batch descent would make one. It is the practical form of gradient descent that trains essentially every modern neural network."
     },
     {
       "type": "p",
-      "text": "The word stochastic refers to the randomness introduced by sampling. Each mini-batch gradient is a noisy estimate of the true full-data gradient, correct on average but wrong on any individual step. This noise is not purely a cost. It lets the optimizer escape shallow traps that would stall an exact method, jittering the parameters out of a poor local minimum or off a saddle point where the true gradient is near zero. The same noise is why the loss curve during training is jagged rather than perfectly smooth."
+      "text": "The \"stochastic\" in the name is the sampling noise, and the surprise is that the noise helps. Each mini-batch gradient is correct on average but wrong on any single step, and that jitter lets the optimizer escape shallow traps an exact method would settle into, knocking the parameters out of a poor local minimum or off a saddle point where the true gradient is nearly zero. The same noise is why a training loss curve is jagged rather than smooth, and there is good evidence it biases the optimizer toward flatter, wider minima, which tend to generalize better. A bug by the standards of pure optimization is a feature by the standards of learning."
     },
     {
       "type": "p",
-      "text": "Mechanically each update still follows the gradient descent rule: move the parameters a small amount against the estimated gradient, scaled by the learning rate. Mini-batch size is the knob that trades variance for throughput. Larger batches give smoother, more reliable gradient estimates and use hardware more efficiently, but they take fewer steps per epoch and can converge to sharper, less generalizable solutions. Smaller batches are noisier but often generalize better. Because the noise scale and the step size interact, the learning rate usually needs retuning when the batch size changes."
+      "text": "Each update still follows the gradient descent rule, a small step against the estimated gradient scaled by the learning rate, and the mini-batch size is the knob trading noise for throughput. Larger batches give smoother, more reliable estimates and use hardware more efficiently but take fewer steps per pass and can drift toward sharper, less generalizable solutions; smaller batches are noisier but often generalize better. Because the noise scale and the step size interact, the learning rate usually has to be retuned whenever the batch size changes, a coupling that trips up practitioners who scale one without the other."
     },
     {
       "type": "p",
-      "text": "Stochastic gradient descent is the foundation that the accelerated and adaptive optimizers build on. Momentum smooths the noisy SGD trajectory by averaging recent gradients, while Adam and RMSprop additionally rescale each parameter's step by a running estimate of its gradient magnitude. A learning-rate schedule is almost always layered on top, lowering the step size over training so the noise that helped early exploration does not prevent the model from settling into a minimum at the end."
+      "text": "SGD is the foundation the accelerated and adaptive optimizers are built on. Momentum smooths the noisy trajectory by averaging recent gradients; Adam and RMSprop additionally rescale each parameter's step by a running estimate of its gradient magnitude. A learning-rate schedule is almost always layered on top, lowering the step size over training so the noise that powered early exploration does not stop the model from finally settling into a minimum. Strip those refinements away and what remains, a noisy step downhill on a handful of examples, is still the move that does the actual learning."
     }
   ],
   "related": [

@@ -4069,7 +4069,7 @@
         "GD",
         "steepest descent"
       ],
-      "def_snippet": "An optimization algorithm that iteratively steps a model's parameters in the direction of steepest descent of a loss function, so the loss falls toward a minimum.",
+      "def_snippet": "The algorithm that trains almost everything: repeatedly nudge the parameters a small step downhill on the loss surface, against the gradient, and the error falls toward a minimum. It is almost too simple to believe it works, and the deep surprise of modern AI is that this local downhill walk finds excellent solutions in spaces of billions of dimensions.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5222,7 +5222,7 @@
         "step size",
         "alpha"
       ],
-      "def_snippet": "The scalar that controls how large a step gradient descent takes at each update, scaling the gradient before it is subtracted from the parameters. It is the single most important hyperparameter in training.",
+      "def_snippet": "The scalar that decides how far gradient descent steps each update, multiplying the gradient before it is subtracted from the parameters. It is the single most important hyperparameter in training, and the reason no single value is ever right is that the ideal step changes as training proceeds and differs across parameters.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5601,7 +5601,7 @@
         "objective function",
         "criterion"
       ],
-      "def_snippet": "A function that measures how wrong a model's predictions are by mapping its parameters to a single number, the quantity that training tries to minimize. It defines what \"good\" means for the model.",
+      "def_snippet": "The single number that says how wrong a model is, the quantity training drives down. It is where you specify what the model should do, and its quiet danger is that a model optimizes exactly what you measure: a loss that fails to reward the behavior you actually want produces a model that does the wrong thing perfectly.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5615,7 +5615,7 @@
         "error surface",
         "optimization landscape"
       ],
-      "def_snippet": "The high-dimensional surface formed by plotting a model's loss as a function of its parameters. Training is a walk over this terrain, and its geometry, the valleys, ridges, and plateaus, decides how hard optimization is.",
+      "def_snippet": "The high-dimensional surface you get by plotting a model's loss over every setting of its parameters, the terrain training walks across. Its geometry decides how hard optimization is, and the surprising empirical fact is that the landscapes of huge networks are unusually benign: most minima are about equally good, and the real obstacle is saddle points, not bad valleys.",
       "durable": true,
       "category": "Optimization"
     },
@@ -6320,7 +6320,7 @@
         "heavy ball method",
         "Nesterov momentum"
       ],
-      "def_snippet": "An enhancement to gradient descent that accumulates an exponentially decaying average of past gradients into a velocity term, so updates build speed along consistent directions and damp out oscillation across narrow valleys.",
+      "def_snippet": "An enhancement to gradient descent that gives the optimizer inertia: it steps not by the raw gradient but by a running average of recent gradients, a velocity. The payoff is in narrow ravines, where the back-and-forth components cancel while the true downhill direction accumulates, turning a zig-zagging crawl into a smooth glide.",
       "durable": true,
       "category": "Optimization"
     },
@@ -8426,7 +8426,7 @@
       "aliases": [
         "root mean square propagation"
       ],
-      "def_snippet": "An adaptive optimizer that divides each parameter's update by a running root-mean-square of its recent gradient magnitudes, giving every parameter its own effective learning rate and taming the unstable steps of plain gradient descent.",
+      "def_snippet": "An adaptive optimizer that gives every parameter its own effective learning rate, dividing each update by a running root-mean-square of that parameter's recent gradients. It is best understood as one half of Adam, and as the fix for AdaGrad's fatal flaw of letting the step size decay to zero.",
       "durable": true,
       "category": "Optimization"
     },
@@ -9274,7 +9274,7 @@
         "SGD",
         "mini-batch gradient descent"
       ],
-      "def_snippet": "A variant of gradient descent that estimates the gradient from a small random sample of the data at each step rather than the full dataset, trading exact gradients for far cheaper and more frequent parameter updates.",
+      "def_snippet": "Gradient descent that estimates the gradient from a small random mini-batch instead of the whole dataset, trading an exact gradient for thousands of cheap, noisy steps. The startling part is that the noise is a feature, not a bug: it shakes the optimizer out of traps and biases it toward solutions that generalize.",
       "durable": true,
       "category": "Optimization"
     },
