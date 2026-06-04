@@ -140,10 +140,31 @@ export function sniffImage(buf) {
 
 // ---- network ----
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Fetch with retry/backoff on transient failures (429, 5xx, network errors). Many
+// curation subagents query Commons in parallel, so respecting its rate limit with a
+// backoff (rather than hammering) is the difference between a clean run and a flood of
+// dropped images.
+async function fetchRetry(url, { timeout = 25000, tries = 4 } = {}) {
+  let lastErr;
+  for (let i = 0; i < tries; i += 1) {
+    try {
+      const r = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(timeout) });
+      if (r.status === 429 || r.status >= 500) throw new Error(`HTTP ${r.status}`);
+      return r;
+    } catch (err) {
+      lastErr = err;
+      if (i < tries - 1) await sleep(600 * 2 ** i + Math.floor(i * 250));
+    }
+  }
+  throw lastErr;
+}
+
 async function commonsApi(params) {
   const u = new URL("https://commons.wikimedia.org/w/api.php");
   for (const [k, v] of Object.entries(params)) u.searchParams.set(k, v);
-  const r = await fetch(u, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(25000) });
+  const r = await fetchRetry(u, { timeout: 25000 });
   if (!r.ok) throw new Error(`Commons API ${r.status}`);
   return r.json();
 }
@@ -206,7 +227,7 @@ async function resolveCommonsFile(title, width = 800) {
 }
 
 async function download(url) {
-  const r = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(40000) });
+  const r = await fetchRetry(url, { timeout: 40000 });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   const buf = Buffer.from(await r.arrayBuffer());
   return { buf, contentType: r.headers.get("content-type") };
@@ -388,9 +409,13 @@ async function main() {
       process.exitCode = 1;
       return;
     }
-    mkdirSync(dirname(resolve(out)), { recursive: true });
-    writeFileSync(resolve(out), buf);
-    console.log(`fetch: ${kind}, ${(buf.length / 1024).toFixed(0)}kb -> ${out}`);
+    // Force the correct extension from the sniffed bytes so a viewer renders it
+    // (the provided extension may be wrong, e.g. an SVG that renders as PNG).
+    const base = resolve(out).replace(/\.[a-z0-9]+$/i, "");
+    const finalPath = `${base}.${kind}`;
+    mkdirSync(dirname(finalPath), { recursive: true });
+    writeFileSync(finalPath, buf);
+    console.log(`fetch: ${kind}, ${(buf.length / 1024).toFixed(0)}kb -> ${finalPath}`);
   } else if (cmd === "resolve") {
     const out = await resolveCommonsFile(positional.join(" "), Number(flag("width", 800)));
     console.log(JSON.stringify(out, null, 2));
