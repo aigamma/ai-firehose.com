@@ -10,23 +10,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A rectangular grid of numbers arranged in rows and columns, which represents either a table of data or, more powerfully, a linear transformation that maps vectors to other vectors.",
+  "definition": "A rectangular grid of numbers best understood not as a table but as an action: feed it a vector and it hands back a transformed vector. That dual life, data when stored and a function when applied, is what makes the matrix the workhorse object of machine learning.",
   "body": [
     {
       "type": "p",
-      "text": "A matrix is a rectangular array of numbers with a fixed number of rows and columns. At its plainest it is a table: each row might be one data example and each column one feature, so a dataset of a thousand images with seven hundred eighty four pixels each is a one thousand by seven hundred eighty four matrix. This view alone makes the matrix the standard way to hold a whole batch of vectors in one object, which is why deep learning frameworks pass matrices, not single examples, through every layer."
+      "text": "The most useful thing to know about a matrix is that it is secretly a function. A matrix is a rectangular grid of numbers in rows and columns, and you can certainly read it as a plain table, one row per data example, one column per feature, which is how a batch of a thousand images becomes a single object a network processes at once. But the grid earns its central place in machine learning because of what it does, not what it holds: multiply a matrix by a vector and out comes another vector, transformed. The numbers in the grid are the transformation."
     },
     {
       "type": "p",
-      "text": "The deeper view is that a matrix is a function. A matrix acts on a vector through matrix multiplication and returns a new vector, and this action is always a linear transformation: it sends straight lines to straight lines and keeps the origin fixed, so it can rotate, scale, shear, and project space, but never bend it. Every layer of a neural network is, at its core, a matrix multiplying the incoming vector, followed by a nonlinearity. The numbers inside the weight matrix are exactly what training learns."
+      "text": "The kind of function a matrix performs is always a linear one, which is a strong and useful restriction. It can rotate, scale, shear, reflect, and project space, sending straight lines to straight lines and leaving the origin pinned, but it can never bend a line or curve space. Every layer of a neural network is, at heart, a weight matrix multiplying its incoming vector, and the numbers inside that matrix are exactly what training learns. To train a network is in large part to search for the right matrices."
     },
     {
       "type": "p",
-      "text": "Matrices compose. If one matrix turns vector x into y and a second matrix turns y into z, then the single matrix product of the two performs both steps at once. This is why a deep stack of linear layers, with nothing between them, collapses into a single matrix, and it is the reason nonlinear activation functions are essential: without them depth would buy no extra expressive power. The shapes must line up for composition to be defined, and tracking those shapes is half the practical work of building a model."
+      "text": "Matrices compose, and this is where the deepest practical lesson hides. If one matrix sends x to y and another sends y to z, their product is the single matrix that goes straight from x to z. Stack many linear layers with nothing between them and they collapse, by this same rule, into one matrix, which means a deep tower of pure matrix multiplications can express no more than a single layer could. That collapse is precisely why the nonlinear activation functions between layers are not decoration: they are what stops depth from folding flat, and what lets a deep network represent something a shallow one cannot."
     },
     {
       "type": "p",
-      "text": "Several special structures recur. The identity matrix leaves every vector unchanged and plays the role of the number one. A square matrix may have an inverse that undoes its action, and may have eigenvalue and eigenvector pairs, the directions it merely stretches without rotating. When a matrix is not square or not invertible, the singular-value-decomposition factors it into a rotation, a set of axis stretches, and another rotation, exposing its true geometric effect. A matrix is also just a two-dimensional tensor, the rank-two case of the more general array."
+      "text": "A few structures recur often enough to name. The identity matrix leaves every vector untouched, the matrix version of the number one. A square matrix may have an inverse that undoes its action, and may have eigenvalue and eigenvector pairs, the special directions it merely stretches without turning. When a matrix is rectangular or not invertible, the singular value decomposition factors it into a rotation, a set of axis stretches, and another rotation, laying its true geometric effect bare. And a matrix is just the rank-two case of a tensor, one rung up from a vector. The grid is where the data sits; the function is what the grid means."
     }
   ],
   "related": [
