@@ -728,7 +728,7 @@
         "attention",
         "self-attention"
       ],
-      "def_snippet": "A mechanism that lets a model compute each output as a weighted sum over all input positions, with the weights determined by learned relevance, so it can draw on the most pertinent context regardless of distance.",
+      "def_snippet": "A mechanism that lets a model compute each output as a content-weighted sum over all input positions, focusing on whatever is most relevant regardless of distance. It removed the fundamental bottleneck of recurrence by giving every position direct, parallel access to every other in a single operation, the shift that produced the transformer.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -3205,7 +3205,7 @@
         "exploding gradients",
         "exploding gradient problem"
       ],
-      "def_snippet": "The failure mode in which gradients grow exponentially large as they backpropagate through many layers or time steps, causing unstable, divergent updates and often NaNs; the counterpart to the vanishing-gradient problem.",
+      "def_snippet": "The failure where gradients grow exponentially as they backpropagate through many layers or time steps, so a single update hurls the weights past anything useful and the loss spikes to infinity or NaN. It is the mirror image of the vanishing gradient, the same multiplicative dynamics running the other way, and gradient clipping is the direct fix.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -3752,7 +3752,7 @@
         "SwiGLU",
         "GEGLU"
       ],
-      "def_snippet": "A feedforward building block that multiplies one linear projection of its input by a second, gating projection passed through a nonlinearity, so the layer learns which signals to let through, now standard in the feedforward blocks of large transformers.",
+      "def_snippet": "A feedforward block that multiplies one linear projection of its input by a second projection passed through a nonlinearity, so the layer learns a continuous, content-dependent gate on its own signal, unlike ReLU's fixed threshold. The swish-gated variant, SwiGLU, is now standard inside large transformer feedforward blocks, a tweak with a famously thin theoretical justification that earned permanent adoption anyway.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -3765,7 +3765,7 @@
         "GRU",
         "gated recurrent units"
       ],
-      "def_snippet": "A recurrent network cell that controls its hidden state with two learned gates, an update gate and a reset gate, giving most of the long-range memory of an LSTM with fewer parameters and a simpler structure.",
+      "def_snippet": "A recurrent cell that controls its memory with two learned gates, an update gate and a reset gate, giving most of an LSTM's long-range memory with fewer parameters and no separate cell state. Gating is what defeats the vanishing gradient: when the update gate chooses to preserve the state, the path to a distant step is nearly an identity map, so gradients survive.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -9218,7 +9218,7 @@
         "squeeze and excitation network",
         "SENet"
       ],
-      "def_snippet": "A lightweight module for convolutional networks that learns a per-channel importance weight from global context and rescales each feature map accordingly, a form of channel attention that lets the network emphasize informative channels and suppress weak ones.",
+      "def_snippet": "A lightweight module that learns a per-channel importance weight from global context and rescales each feature map accordingly, a form of channel attention. Where self-attention asks which positions a token should attend to, a squeeze-and-excitation block asks which channels the network should attend to given the whole image, and it costs almost nothing.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
