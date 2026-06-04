@@ -1,4 +1,14 @@
 {
+  "activation-function": {
+    "file": "activation-function.png",
+    "alt": "Schematic of one artificial neuron: inputs x1 through xn each scaled by a weight feed a summation node (the transfer function) that produces a net input, which then passes through an activation function box labeled phi to give the output, with a threshold input.",
+    "caption": "The activation function is the nonlinearity applied after a neuron sums its weighted inputs. Here the weighted sum (the transfer function) produces a net input, and the activation function phi maps it to the neuron's output. Without this nonlinear step a stack of layers would collapse into a single linear map, so the activation is what gives a network its expressive power.",
+    "credit": "Funcs",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Artificial_neuron_structure.svg",
+    "provider": "Wikimedia Commons"
+  },
   "adagrad": {
     "file": "adagrad.svg",
     "alt": "Contour plot of an ill-conditioned objective with the AdaGrad optimizer path descending and turning to reach the minimum at the origin.",
@@ -8,6 +18,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/adagrad.html",
     "provider": "Dive into Deep Learning"
+  },
+  "ai-agent": {
+    "file": "ai-agent.png",
+    "alt": "Block diagram of an agent interacting with its environment: percepts enter the AGENT box through Sensors, feed a What is the world like now block, then an Action to be done block driven by condition-action rules, and leave through Actuators as actions back into the ENVIRONMENT.",
+    "caption": "An agent is a model placed in a loop with its environment: it takes in percepts through sensors, decides what to do, and emits actions through actuators, which change the environment and produce the next percepts. This perceive, decide, act cycle, repeated until the goal is met, is what separates an agent from a model that answers in a single pass.",
+    "credit": "Utkarshraj Atmaram",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:IntelligentAgent-SimpleReflex.png",
+    "provider": "Wikimedia Commons"
+  },
+  "artificial-intelligence": {
+    "file": "artificial-intelligence.png",
+    "alt": "Three nested circles: a large outer circle labeled Artificial Intelligence, a smaller circle inside it labeled Machine Learning, and a smallest circle inside that labeled Deep Learning, each with a short definition.",
+    "caption": "Artificial intelligence is the broad outer container: any machine that mimics intelligent behavior. Machine learning is the subset that learns from data instead of hand-written rules, and deep learning is the narrower subset of machine learning that uses many-layered neural networks. The nesting shows that these are not rivals but successive answers to the same question.",
+    "credit": "Avimanyu786",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:AI-ML-DL.png",
+    "provider": "Wikimedia Commons"
   },
   "attention-mechanism": {
     "file": "attention-mechanism.png",
@@ -28,6 +58,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://en.wikipedia.org/wiki/Autoencoder",
     "provider": "Wikimedia Commons"
+  },
+  "automatic-differentiation": {
+    "file": "automatic-differentiation.png",
+    "alt": "A computation graph for a function of two inputs built bottom to top through operator nodes (sin, times, plus); a large arrow down the left marks the backward propagation of derivative values, with adjoint quantities flowing from the output (seeded at one) back to each input.",
+    "caption": "Automatic differentiation records a program as a graph of elementary operations and applies the chain rule across it to get exact derivatives. In reverse mode, shown here, a forward pass computes the values and a single backward pass propagates derivative contributions from the output (seeded at one) back to every input; applied to a neural network this reverse pass is exactly backpropagation.",
+    "credit": "Berland at English Wikipedia",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:ReverseaccumulationAD.png",
+    "provider": "Wikimedia Commons"
+  },
+  "backpropagation": {
+    "file": "backpropagation.svg",
+    "alt": "Computational graph of a small one-hidden-layer network: the input x is multiplied by weights to give z, an activation gives h, a second weight multiply gives the output o, which with the labels yields the loss; weight-decay terms feed a regularization term s, and the loss plus s give the objective J.",
+    "caption": "Backpropagation treats the network as a computational graph of operations and intermediate values, like this forward graph from input x through the hidden activation h to the loss and objective J. It then applies the chain rule in reverse along these same edges, computing the gradient of the loss with respect to every weight in a single backward pass that costs about as much as the forward one.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/backprop.html",
+    "provider": "Dive into Deep Learning"
   },
   "batch-size": {
     "file": "batch-size.svg",
@@ -59,6 +109,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Prior,_Likelihood,_Posterior_schematic.svg",
     "provider": "Wikimedia Commons"
   },
+  "bias-variance-tradeoff": {
+    "file": "bias-variance-tradeoff.png",
+    "alt": "Plot of error against model complexity showing bias squared falling as complexity rises, variance rising, and the total error forming a U-shaped curve with a marked optimum at the bottom.",
+    "caption": "As model complexity grows, bias falls but variance rises, and their sum, the total error, traces a U. The lowest point marks the optimal complexity: simpler models underfit on the left with high bias, more complex models overfit on the right with high variance, and no single model drives both errors to zero at once.",
+    "credit": "Bigbossfarin",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bias_and_variance_contributing_to_total_error.png",
+    "provider": "Wikimedia Commons"
+  },
+  "calibration": {
+    "file": "calibration.png",
+    "alt": "A reliability diagram plotting the observed fraction of positives against the mean predicted probability for several classifiers, with a dotted diagonal labeled perfectly calibrated, and a histogram below showing how the predictions are distributed.",
+    "caption": "A reliability diagram bins predictions by their stated probability and plots, for each bin, how often those predictions were actually correct. A perfectly calibrated model lies on the diagonal; curves below it (here support vector classification) are overconfident, and curves above it are underconfident.",
+    "credit": "Jan Hendrik Metzen",
+    "license": "BSD",
+    "license_url": "http://opensource.org/licenses/bsd-license.php",
+    "source": "https://commons.wikimedia.org/wiki/File:Calibration_plot.png",
+    "provider": "Wikimedia Commons"
+  },
+  "category-theory": {
+    "file": "category-theory.png",
+    "alt": "On the left, a vertical arrow f from object X to object Y. On the right, a square whose four corners are F(X), G(X), F(Y), G(Y); the vertical arrows are F(f) and G(f), and the horizontal arrows are the components eta-X and eta-Y.",
+    "caption": "The three tiers of category theory in one picture. A morphism f between objects X and Y (left) is sent by two functors F and G to the vertical maps F(f) and G(f), and a natural transformation supplies the horizontal components eta-X and eta-Y. The square commuting (both paths from F(X) to G(Y) agree) is exactly what makes the transformation natural: it relates the two constructions uniformly across every object.",
+    "credit": "Lltrujello",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Natural_Transformation_between_two_functors.svg",
+    "provider": "Wikimedia Commons"
+  },
   "central-limit-theorem": {
     "file": "central-limit-theorem.png",
     "alt": "Panels showing the distribution of the sum of n dice for n from 1 to 5: a flat bar chart for one die that grows more bell-shaped as more dice are added, with a final panel overlaying the curves against a normal.",
@@ -69,6 +149,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Dice_sum_central_limit_theorem.svg",
     "provider": "Wikimedia Commons"
   },
+  "chain-rule": {
+    "file": "chain-rule.png",
+    "alt": "A computation graph for a function of two inputs, with square input nodes feeding circular operator nodes (sin, times, plus) up to the output; each edge is annotated with a derivative formula that multiplies and sums contributions along the paths.",
+    "caption": "The chain rule differentiates a composition by multiplying the local rates of change along the chain, summing over every path from an input to the output. Here the derivative of each node is built from the derivatives of the nodes feeding it (for example the sin node contributes cos(w1) times the incoming rate), which is exactly how a network's gradients are assembled.",
+    "credit": "Berland at English Wikipedia",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:ForwardAccumulationAutomaticDifferentiation.png",
+    "provider": "Wikimedia Commons"
+  },
+  "classification": {
+    "file": "classification.png",
+    "alt": "A grid comparing the decision boundaries of many classifiers across three two-dimensional datasets. Each cell shades the plane into red and blue regions for the two classes, with the training and test points overlaid, and the boundaries differ in shape from one classifier to the next.",
+    "caption": "Classification assigns each input to one of a fixed set of categories by carving the feature space into regions, one per class. Running several classifiers on the same data shows that each draws the boundary differently: some are straight, others curved or patchy. The shaded regions are the learned decision rule, and a new point is labeled by the region it lands in.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html",
+    "provider": "scikit-learn"
+  },
+  "clustering": {
+    "file": "clustering.png",
+    "alt": "A grid of scatter plots: rows are different shaped datasets (two concentric circles, two interleaving moons, blobs, anisotropic and varied-variance blobs, and uniform noise) and columns are different clustering algorithms, each coloring the points by the cluster it assigned.",
+    "caption": "Clustering groups points by similarity with no labels, but algorithms disagree about what a cluster is. Across these dataset shapes, center-based methods like k-means split the concentric circles and moons wrongly, while density-based methods recover the curved shapes. There is no single correct clustering, because the chosen notion of similarity quietly decides the answer.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html",
+    "provider": "scikit-learn"
+  },
   "conditional-probability": {
     "file": "conditional-probability.png",
     "alt": "Venn diagram of the numbers 1 to 10 split into a prime set and an even set, with only the number 2 in the overlap of both.",
@@ -77,6 +187,56 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Conditional_probability_venn_1-10.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "confusion-matrix": {
+    "file": "confusion-matrix.png",
+    "alt": "Four copies of a two-by-two confusion matrix with predicted class on the columns and real class on the rows, each highlighting a different metric computed from the true positive, true negative, false positive, and false negative cells: accuracy, precision, recall, and specificity.",
+    "caption": "A confusion matrix tabulates predictions against truth, splitting them into true positives, true negatives, false positives, and false negatives. Almost every classification metric is a ratio of these four cells: accuracy uses all four, precision divides true positives by all predicted positives, and recall divides them by all actual positives. The breakdown reveals which kind of error a model makes, not just how often it is wrong.",
+    "credit": "Hssiqueira",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Confusion_Matrix_Metrics.png",
+    "provider": "Wikimedia Commons"
+  },
+  "connectionism": {
+    "file": "connectionism.png",
+    "alt": "A row of five units, some filled dark and some empty, each labeled with a feature (singular, masculine, first, second, third person), so that a single concept is encoded as the pattern across all five units.",
+    "caption": "Connectionism stores knowledge in the pattern of activity across many simple units rather than in any one place. A concept is a distributed code: here it is the particular combination of which feature units are on (dark) and which are off, so meaning lives in the whole pattern, not a single dedicated unit.",
+    "credit": "Raquel Garrido Alhama",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Distributed_representation.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "convex-optimization": {
+    "file": "convex-optimization.jpg",
+    "alt": "Two panels. The top, labeled Not convex, is a wavy curve where the straight segment joining two points on it dips below the curve. The bottom, labeled Convex, is a single bowl where the segment joining two points stays above the curve.",
+    "caption": "A function is convex when the straight line between any two points on its graph lies on or above the curve (bottom). This guarantees a single valley, so any local minimum is the global minimum, which is why convex problems can be solved to provable optimality. A non-convex function (top) has multiple dips where an optimizer can get trapped.",
+    "credit": "Varagk",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Convex_vs._Not-convex.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "convexity": {
+    "file": "convexity.png",
+    "alt": "An upward-curving red function with a straight chord drawn between two of its points, P and Q; the chord lies entirely on or above the curve.",
+    "caption": "A function is convex when the straight segment joining any two points on its graph lies on or above the graph itself, as the chord from P to Q does here. The curve never dips below its own chords, which is why a convex function curves upward everywhere and has a single lowest region rather than many separate dips.",
+    "credit": "NalesnikLD",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Convex_function.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "convolutional-neural-network": {
+    "file": "convolutional-neural-network.png",
+    "alt": "Pipeline of a typical convolutional neural network: an input image, then alternating convolution and subsampling stages that produce progressively smaller stacks of feature maps, ending in a fully connected layer and an output.",
+    "caption": "A convolutional neural network alternates convolution stages, which slide learnable filters over the input to build feature maps, with subsampling stages that shrink those maps. Early layers capture low-level patterns and deeper layers compose them into objects, before a fully connected layer maps the features to an output.",
+    "credit": "Aphex34",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Typical_cnn.png",
     "provider": "Wikimedia Commons"
   },
   "covariance": {
@@ -99,6 +259,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Log-loss-curve.png",
     "provider": "Wikimedia Commons"
   },
+  "cross-validation": {
+    "file": "cross-validation.png",
+    "alt": "Diagram of k-fold cross-validation: all data is shown as a row of points, and across iterations 1 to k a different contiguous block is boxed off as the test data while the remaining blocks serve as training data.",
+    "caption": "K-fold cross-validation rotates the test set instead of relying on one lucky split. The data is cut into k blocks, and in each iteration a different block is held out for testing (boxed) while the rest is used for training. Every example is tested exactly once, and averaging the scores gives a stable estimate of how the model generalizes.",
+    "credit": "Gufosowa",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "curvature": {
+    "file": "curvature.jpg",
+    "alt": "A globe with a triangle whose three angles are 90, 90, and 50 degrees, alongside an inset of a small flat triangle whose angles are 90, 50, and 40 degrees.",
+    "caption": "Curvature can be detected from inside a space by the angles of a triangle. On the curved surface of the Earth a triangle's angles sum to more than 180 degrees (here 90 plus 90 plus 50), while on a flat patch they sum to exactly 180, so the excess is a direct measure of how the surface bends.",
+    "credit": "Lars H. Rohwedder",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Triangles_(spherical_geometry).jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "cybernetics": {
+    "file": "cybernetics.png",
+    "alt": "A closed-loop control diagram: a reference input r enters a summing junction, the error e feeds a controller C, whose output u drives a system P to produce output y, which is fed back and subtracted from r.",
+    "caption": "The feedback loop is the central object of cybernetics. The system compares its output y against a target r, computes the error e, and the controller acts to shrink that error, then senses the result and corrects again. This same loop of acting, sensing, and correcting underlies thermostats, reinforcement learning, and gradient descent.",
+    "credit": "Chetvorno, after User:Ap",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Simple_feedback_control_loop.svg",
+    "provider": "Wikimedia Commons"
+  },
   "data-augmentation": {
     "file": "data-augmentation.jpg",
     "alt": "One photograph of a rock surface turned into several training variants: a set of random crops in the top row and a horizontally flipped copy in the bottom row, each still showing the same rock.",
@@ -109,6 +299,106 @@
     "source": "https://commons.wikimedia.org/wiki/File:Data_Augmentation_of_rock_images_revised.jpg",
     "provider": "Wikimedia Commons"
   },
+  "decision-tree": {
+    "file": "decision-tree.png",
+    "alt": "A decision tree predicting Titanic survival: the root asks if the passenger is male, then branches to questions about age and number of siblings or spouses aboard, ending in leaves labeled died or survived with a probability and the percentage of passengers reaching that leaf.",
+    "caption": "A decision tree predicts by asking a sequence of simple yes-or-no questions about the features. Following the path from the root (is the passenger male, then how old, then how many siblings aboard) leads to a leaf holding the prediction, here survival or death, with the probability and the share of passengers that reach it.",
+    "credit": "Stephen Milborrow",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CART_tree_titanic_survivors.png",
+    "provider": "Wikimedia Commons"
+  },
+  "deep-learning": {
+    "file": "deep-learning.jpg",
+    "alt": "A stack of layers reading bottom to top: input photos of animals, then rows of increasingly complex sketched features from short edges, to curves, to body parts, to a whole elephant outline, and finally output labels Penguin, Elephant, Kangaroo.",
+    "caption": "Deep learning stacks many layers that learn a hierarchy of features directly from raw pixels. Early layers near the bottom capture simple edges, later layers compose them into curves, then parts, then whole objects, until the top layer reads off a label. This learned hierarchy of representations is what makes the network deep.",
+    "credit": "Sven Behnke",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Deep_Learning.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "denoising-diffusion": {
+    "file": "denoising-diffusion.png",
+    "alt": "Six images of a rhinoceros generated with an increasing number of sampling steps, labeled Steps 5, 10, 20, 40, 80, and 150: the leftmost is noisy and malformed and each one to the right is sharper and more coherent.",
+    "caption": "Denoising diffusion generates by starting from pure noise and walking backward through the noise schedule, using the network's noise prediction to recover a slightly cleaner image at each step. Running more reverse steps (left to right, from 5 up to 150) lets the sampler follow that trajectory more finely, so the rhinoceros resolves from a noisy blur into a coherent picture.",
+    "credit": "Stable Diffusion WebUI Automatic1111",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_-_Rhino_X_Y_Plot_to_show_different_Steps.png",
+    "provider": "Wikimedia Commons"
+  },
+  "derivative": {
+    "file": "derivative.gif",
+    "alt": "Animation of a curve with a straight line touching it at a single moving point; as the point of contact slides along the curve, the line keeps matching the curve's slope there.",
+    "caption": "The derivative at a point is the slope of the tangent line that just grazes the curve there. As the point of contact slides along the curve, the tangent's slope changes, and that slope read off at every position is itself the derivative function.",
+    "credit": "en:User:Dino",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Graph_of_sliding_derivative_line.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "differential-geometry": {
+    "file": "differential-geometry.png",
+    "alt": "Three surfaces colored by curvature: a hyperboloid with a pinched waist (negative curvature), a straight cylinder (zero curvature), and a sphere (positive curvature).",
+    "caption": "Curvature is the local quantity differential geometry uses to say how far a space departs from flat. A saddle-like surface that curves in opposite directions has negative curvature (left), a cylinder that bends only one way is intrinsically flat with zero curvature (middle), and a sphere that curves the same way in every direction has positive curvature (right). Measuring length, angle, and curvature on such smooth curved spaces is the heart of the subject.",
+    "credit": "Nicoguaro",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Gaussian_curvature.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "differential-privacy": {
+    "file": "differential-privacy.png",
+    "alt": "Two databases, D1 and D2, that differ only in whether one person's record (Joe's data) is included, each fed through the same analysis M, producing answers A and B that are shown as approximately equal.",
+    "caption": "Differential privacy is a property of the analysis, not a hope about the attacker. If two datasets differ in just one individual's record, the analysis must produce nearly indistinguishable outputs, so no observer can tell from the result whether any single person's data was included.",
+    "credit": "Joseph Near, David Darais and Kaitlin Boeckl",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Differential_privacy_informal_definition.png",
+    "provider": "Wikimedia Commons"
+  },
+  "diffusion-model": {
+    "file": "diffusion-model.png",
+    "alt": "A photograph of a rhinoceros shown at successive noise levels from left to right, labeled Z at T equals 0 through Z at T equals n: the clean image at the left is progressively buried under Gaussian noise until the final frame is pure noise.",
+    "caption": "A diffusion model is built on a fixed forward process that adds a little Gaussian noise to a real image step by step, from the clean sample at the left (Z at T equals 0) until nothing remains but pure noise (Z at T equals n). The model itself learns only to run this process in reverse, starting from noise and removing a little at a time until a coherent sample reappears.",
+    "credit": "MrAlanKoh",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Example_of_Forward_Diffusion_Models.png",
+    "provider": "Wikimedia Commons"
+  },
+  "dimensionality-reduction": {
+    "file": "dimensionality-reduction.png",
+    "alt": "Two panels of the same color-graded data: on the left a tangled 2D projection where colors overlap, on the right an unrolled rectangle where the color gradient runs smoothly across the plane.",
+    "caption": "Dimensionality reduction seeks honest low-dimensional coordinates for data that lies on a curved manifold. A naive flat projection (left) tangles points that are far apart along the surface, while unrolling the manifold (right) lays it out so the smooth color gradient is preserved, recovering the data's true two-dimensional structure.",
+    "credit": "Olivier Grisel",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Swissroll_manifold_unrolled.png",
+    "provider": "Wikimedia Commons"
+  },
+  "directional-derivative": {
+    "file": "directional-derivative.png",
+    "alt": "A green surface over a base plane; a direction vector h sits in the plane at a point A, a vertical plane cuts the surface along that direction, and the blue tangent line to the resulting cross-section at the point above A makes an angle alpha with the horizontal.",
+    "caption": "The directional derivative is the rate a function changes as you move from a point along a chosen direction. Cutting the surface with a vertical plane through the direction vector h gives a cross-section curve, and the slope of its tangent line at A (the angle alpha) is the directional derivative, equal to the gradient dotted with the unit direction.",
+    "credit": "Pethrus",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Geometrical_interpretation_of_a_directional_derivative.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "dropout": {
+    "file": "dropout.svg",
+    "alt": "The same multilayer perceptron shown before and after dropout: on the left all five hidden units and their connections are present, and on the right two hidden units have been removed along with every connection to and from them.",
+    "caption": "Dropout randomly zeroes a fraction of a layer's units on each training step, here removing two of the five hidden units. Every step therefore trains a different thinned subnetwork, which stops units from co-adapting and acts like averaging over many networks, reducing overfitting.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/dropout.html",
+    "provider": "Dive into Deep Learning"
+  },
   "early-stopping": {
     "file": "early-stopping.png",
     "alt": "Plot of error versus number of training iterations: the training-set error keeps falling while the validation-set error falls, reaches a minimum, then rises, with the minimum marked as the early-stopping point.",
@@ -117,6 +407,26 @@
     "license": "CC BY-SA 2.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Early-Stopping_Graph.png",
+    "provider": "Wikimedia Commons"
+  },
+  "emergent-ability": {
+    "file": "emergent-ability.png",
+    "alt": "A scatter plot of MMLU benchmark performance in percent against scaled training compute on a logarithmic axis, with individual models such as GPT-3, PaLM, PaLM-2 and GPT-4 labeled and a fitted S-shaped curve rising from near 25 percent at low compute to near 90 percent at high compute.",
+    "caption": "An emergent ability looks like a capability that switches on with scale: performance sits near the chance floor of about 25 percent for smaller models, then rises steeply once compute crosses a threshold, an S-shaped curve that makes the skill hard to forecast from small models alone.",
+    "credit": "Epoch AI",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MMLU_performance_vs_AI_scale.png",
+    "provider": "Wikimedia Commons"
+  },
+  "energy-based-model": {
+    "file": "energy-based-model.png",
+    "alt": "A one-dimensional energy landscape with energy on the vertical axis and states on the horizontal axis: a curve with two valleys and a hill between them, a marker descending from a high-energy point via an update step into the nearer valley labeled attractor, with the deeper valley marked as the minimum energy.",
+    "caption": "An energy-based model learns a scalar energy over configurations, shaping the landscape so that plausible data sits in the low-energy valleys and everything else sits on the hills. Answering a query then becomes a search for the lowest-energy state: starting from some configuration, the model takes gradient update steps that descend the energy until it settles into a minimum.",
+    "credit": "Mrazvan22",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Energy_landscape.png",
     "provider": "Wikimedia Commons"
   },
   "entropy": {
@@ -129,6 +439,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Binary_entropy_plot.svg",
     "provider": "Wikimedia Commons"
   },
+  "equivariance": {
+    "file": "equivariance.png",
+    "alt": "A commutative square: the top and bottom edges apply a group action g to sets X and Y, the left and right edges apply a function f from X to Y, and both paths around the square agree.",
+    "caption": "Equivariance is this square commuting: transforming the input by a symmetry g and then applying the function f gives the same result as applying f first and then transforming the output. The structure of the symmetry passes cleanly through the computation instead of being scrambled.",
+    "credit": "David Benbennick",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Equivariant_commutative_diagram.png",
+    "provider": "Wikimedia Commons"
+  },
   "expectation": {
     "file": "expectation.png",
     "alt": "Two right-skewed distributions with vertical lines marking the mode, median, and mean, where the mean sits farthest to the right toward the long tail.",
@@ -137,6 +457,16 @@
     "license": "CC BY-SA 3.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Comparison_mean_median_mode.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "f1-score": {
+    "file": "f1-score.png",
+    "alt": "A precision-recall curve, colored by decision threshold, with a red dot marking the point of maximum F-score on the curve.",
+    "caption": "As the decision threshold sweeps, a classifier traces a precision-recall curve; the F1 score is the harmonic mean of the two, and the red dot marks the threshold where it is maximized. Because the harmonic mean is pulled toward the smaller value, that best point sits where precision and recall are high together, not where one is traded away for the other.",
+    "credit": "Biggerj1",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PR_curve_with_optimal_fscore.png",
     "provider": "Wikimedia Commons"
   },
   "feature-pyramid": {
@@ -149,14 +479,74 @@
     "source": "https://commons.wikimedia.org/wiki/File:Image_pyramid.svg",
     "provider": "Wikimedia Commons"
   },
-  "fourier-transform": {
-    "file": "fourier-transform.png",
-    "alt": "Frequency-domain plot of a piano chord produced by a constant-Q transform",
-    "caption": "The Fourier transform re-expresses a signal as a sum of frequencies, so a single chord resolves into sharp peaks at its constituent pitches.",
-    "credit": "Em3rgent0rdr",
+  "federated-learning": {
+    "file": "federated-learning.png",
+    "alt": "A central server at the top labeled as coordinating the training of a global AI model, with double-headed arrows down to four phones at the bottom, each holding a local AI model.",
+    "caption": "In federated learning the data never leaves the device. A central server sends the shared model out to many participants, each trains it on its own local data, and only the resulting updates flow back up to be averaged into an improved global model. The two-way arrows are model parameters moving, not raw data.",
+    "credit": "MarcT0K",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://en.wikipedia.org/wiki/Fourier_transform",
+    "source": "https://commons.wikimedia.org/wiki/File:Centralized_federated_learning_protocol.png",
+    "provider": "Wikimedia Commons"
+  },
+  "fisher-information": {
+    "file": "fisher-information.jpg",
+    "alt": "Two nested ellipses around a central true parameter point: a large outer ellipse labeled an arbitrary unbiased estimator and a small inner ellipse labeled the estimator at the Cramer-Rao lower bound.",
+    "caption": "The Fisher information sets the best possible precision of estimation. The Cramer-Rao bound says no unbiased estimator can have variance smaller than the inverse Fisher information, so the tight inner ellipse is the smallest spread any estimator of the true parameter can achieve, while a worse estimator scatters across the wide outer ellipse.",
+    "credit": "idnavid",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cramer-Rao_bound_illustration_variance.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "flat-minima": {
+    "file": "flat-minima.jpg",
+    "alt": "A three-dimensional rendering of a neural network loss surface that is smooth and gently curved, descending into a single wide bowl-shaped basin.",
+    "caption": "A flat minimum sits in a wide, low-curvature basin like this one: the weights can be perturbed a long way before the loss climbs, which makes the solution robust to the small shift from training data to test data and is empirically linked to better generalization.",
+    "credit": "Hao Li, Zheng Xu, Gavin Taylor, Christoph Studer, Tom Goldstein",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://github.com/tomgoldstein/loss-landscape",
+    "provider": "loss-landscape (Li et al.)"
+  },
+  "fourier-transform": {
+    "file": "fourier-transform.gif",
+    "alt": "Animation building a red square wave in the time domain by adding sinusoids one at a time, with a second axis showing a frequency-domain spectrum that grows a sharp spike at each frequency as its sinusoid is added.",
+    "caption": "The Fourier transform re-expresses a signal as a sum of pure oscillations. As sinusoids of higher frequency are added, they build up the square wave in the time domain (red), and each one appears as a sharp spike in the frequency-domain spectrum. The transform moves between these two views, from how a signal evolves in time to what frequencies it is made of.",
+    "credit": "Lucas Vieira",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Fourier_transform_time_and_frequency_domains.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "free-energy-principle": {
+    "file": "free-energy-principle.jpg",
+    "alt": "A diagram applying the same scheme to a cell and a brain. States are split into hidden (external) states, sensory states, active states, and internal states. For the brain, internal states change to minimize free energy F with respect to sensations (perception), and active states change F with respect to the world (action).",
+    "caption": "The free energy principle says a system can lower the surprise of its sensations in two ways, shown by the two equations: change internal states to better explain the input (perception and learning), or change active states to make the world match the prediction (action). This single objective, minimizing variational free energy F, folds perception and action together into what is called active inference.",
+    "credit": "Karl Friston",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MarokovBlanketFreeEnergyFigure.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "gated-recurrent-unit": {
+    "file": "gated-recurrent-unit.svg",
+    "alt": "Diagram of a gated recurrent unit: the previous hidden state and current input feed a reset gate and an update gate (both sigmoid layers) and a candidate state (a tanh layer), and elementwise operators combine them so the update gate interpolates between the old hidden state and the candidate to produce the new hidden state.",
+    "caption": "A gated recurrent unit controls its memory with two learned gates. The reset gate decides how much past state shapes a tanh candidate state, and the update gate interpolates between the old hidden state and that candidate to form the new one. When the update gate preserves the state, the path across time is near identity, so gradients survive over long sequences.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/gru.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "gaussian-curvature": {
+    "file": "gaussian-curvature.png",
+    "alt": "Three shaded surfaces side by side: a saddle-shaped surface of negative curvature, a cylinder of zero curvature, and a sphere of positive curvature.",
+    "caption": "Gaussian curvature is the product of the two principal curvatures, and its sign classifies a surface point. A saddle bends in opposite directions and has negative curvature (left), a cylinder is flat in one direction and has zero curvature (center), and a sphere bows the same way in every direction and has positive curvature (right).",
+    "credit": "Nicoguaro",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Gaussian_curvature.svg",
     "provider": "Wikimedia Commons"
   },
   "gaussian-distribution": {
@@ -199,6 +589,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Small_and_great_circles_3d.png",
     "provider": "Wikimedia Commons"
   },
+  "goal-misgeneralization": {
+    "file": "goal-misgeneralization.png",
+    "alt": "Two side-by-side frames of the CoinRun platformer game: (a) goal position fixed, with the coin at the end of the level, and (b) goal position randomized, with the coin moved elsewhere while the agent still heads to the end of the level.",
+    "caption": "An agent trained where the coin always sits at the end of the level (a) learns to run to the end, a goal indistinguishable from collecting the coin on the training data. When the coin is moved at test time (b) the agent keeps running to the end and skips the coin: its navigation skill transfers but the wrong goal does too. The capability generalizes while the objective does not.",
+    "credit": "Lauro Langosco, Jack Koch, Lee Sharkey, Jacob Pfau, Laurent Orseau, David Krueger",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2105.14111",
+    "provider": "arXiv"
+  },
+  "gradient": {
+    "file": "gradient.png",
+    "alt": "A color heat map of a scalar function with a yellow high region and a purple low region, overlaid with black arrows; the arrows point from low toward high and are longest where the color changes fastest.",
+    "caption": "The gradient collects a function's partial derivatives into a vector that points in the direction of steepest increase. Overlaid on a heat map of the function, each arrow points from the low (purple) toward the high (yellow) values, and its length is largest where the function changes most steeply.",
+    "credit": "Colejhudson",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vector_Field_of_a_Function%27s_Gradient_imposed_over_a_Color_Plot_of_that_Function.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "gradient-boosting": {
+    "file": "gradient-boosting.png",
+    "alt": "Line plot of mean squared error against the number of boosting iterations, dropping steeply over the first hundred iterations from about thirteen thousand toward two thousand, then flattening for the remaining iterations.",
+    "caption": "Gradient boosting adds simple trees one at a time, each fit to the errors the ensemble has not yet corrected. The training error falls sharply at first as each new tree fixes what the others missed, then flattens as little error remains. Adding trees indefinitely risks overfitting, which the learning rate and early stopping hold in check.",
+    "credit": "Chamaemelum",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:GradientBOOST.png",
+    "provider": "Wikimedia Commons"
+  },
   "gradient-descent": {
     "file": "gradient-descent.jpg",
     "alt": "Animation frame showing gradient descent stepping downhill toward the minimum of a 2D loss surface",
@@ -207,6 +627,106 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://en.wikipedia.org/wiki/Gradient_descent",
+    "provider": "Wikimedia Commons"
+  },
+  "graph-attention-network": {
+    "file": "graph-attention-network.png",
+    "alt": "A central node h1 surrounded by neighbors h2 through h6, with a learned attention coefficient alpha on each incoming edge; multiple colored arrows per edge denote attention heads, combined by concatenation or averaging into the updated node h1 prime.",
+    "caption": "A graph attention network learns a weight for each edge instead of fixing it by graph structure. Node h1 scores each neighbor with an attention coefficient alpha, then takes the attention-weighted sum of their features; the several colored arrows per edge are independent attention heads, concatenated or averaged to form the updated representation h1 prime.",
+    "credit": "Petar Velickovic",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Graph_attention_network.png",
+    "provider": "Wikimedia Commons"
+  },
+  "graph-convolution": {
+    "file": "graph-convolution.png",
+    "alt": "A graph convolutional layer: a graph at Layer N with node, edge, and global attributes U, V, E enters; a pooling function rho gathers each node's one-hop neighborhood and an update function f is applied; the same graph with new attributes exits as Layer N+1.",
+    "caption": "A graph convolutional layer updates each node by pooling the features of its one-hop neighbors (the dotted neighborhood) and passing the result through a small learned update function f. Stacking such layers spreads information one hop further each time, the graph counterpart of sliding a convolution filter over a pixel grid.",
+    "credit": "Sanchez-Lengeling, Reif, Pearce, Wiltschko",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://distill.pub/2021/gnn-intro/",
+    "provider": "Distill"
+  },
+  "graph-neural-network": {
+    "file": "graph-neural-network.png",
+    "alt": "Three graph neural network building blocks left to right: a permutation-equivariant layer that updates each node from its neighbors and colors the nodes, a local pooling layer that coarsens the graph to fewer nodes, and a global readout that collapses the whole graph to a single node.",
+    "caption": "A graph neural network is built from three kinds of layer. A permutation-equivariant layer updates every node by aggregating its neighbors (the coloring), optional local pooling coarsens the graph, and a global readout pools all nodes into one fixed-size vector for graph-level prediction. Node, edge, and whole-graph tasks all read off these same learned node representations.",
+    "credit": "NickDiCicco",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:GNN_building_blocks.png",
+    "provider": "Wikimedia Commons"
+  },
+  "group-theory": {
+    "file": "group-theory.png",
+    "alt": "Eight nodes arranged in two nested squares, each node showing the letter F in a different orientation; red arrows connect nodes by a rotation and blue edges connect them by a reflection, labeled with group elements e, a, a-squared, a-cubed, b, and their products.",
+    "caption": "The symmetry group of a shape, drawn as a Cayley graph. Each of the eight nodes is one symmetry of the letter F (the identity e, the three rotations a, a-squared, a-cubed, and four reflections), and following a red arrow applies the rotation generator while a blue edge applies the reflection. The picture shows a group concretely: a closed set of transformations that compose and undo, which is what group theory studies as symmetry.",
+    "credit": "Created by Denisgomes, 2007 Modified by Watchduck, 2011",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Dih_4_Cayley_Graph;_generators_a,_b;_prefix.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "hebbian-learning": {
+    "file": "hebbian-learning.png",
+    "alt": "A plot of synaptic change against the time between the presynaptic and postsynaptic spike. When the presynaptic spike comes first the synapse strengthens (potentiation, red, left), and when it comes after the postsynaptic spike it weakens (depression, blue, right), within a short time window.",
+    "caption": "Spike-timing-dependent plasticity is the precise modern form of Hebbian learning. The synapse strengthens when the input spike arrives just before the neuron fires (potentiation, left) and weakens when it arrives just after (depression, right), so the rule encodes causal order, not mere coincidence. The two French labels read potentiation and depression.",
+    "credit": "Mewtow",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:STDP_standard.png",
+    "provider": "Wikimedia Commons"
+  },
+  "hessian": {
+    "file": "hessian.png",
+    "alt": "A curved three-dimensional surface over the x and y plane bearing several marked critical points, including a local maximum, a local minimum, and a saddle where the surface curves up one way and down the other.",
+    "caption": "The Hessian is the matrix of second partial derivatives, and it encodes a function's local curvature. At a point where the gradient is zero, the signs of the Hessian's eigenvalues classify the surface: all positive gives a local minimum, all negative a local maximum, and mixed signs a saddle point.",
+    "credit": "Kmhkmh",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Second_partial_derivative_test.png",
+    "provider": "Wikimedia Commons"
+  },
+  "hilbert-space": {
+    "file": "hilbert-space.png",
+    "alt": "A point x above a plane E, with a vertical segment dropping to its foot P_E(x) on the plane; the segment meets the plane at a marked right angle, and dashed lines show x projected onto two lines within the plane.",
+    "caption": "A Hilbert space keeps the geometry of ordinary Euclidean space (length, angle, and projection) even in infinite dimensions. The key property pictured here is orthogonal projection: the projection P_E(x) of a point x onto a subspace E is the unique closest point in E, and the leftover vector from x to P_E(x) meets the subspace at a right angle. This is the same projection that underlies least squares and Fourier expansions.",
+    "credit": "Quartl",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Orthogonal_Projection_qtl2.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "hyena": {
+    "file": "hyena.png",
+    "alt": "Diagram of the Hyena operator drawn as a recurrence: an input u is projected, then alternately passed through long-convolution matrices labeled S (shown as banded Toeplitz matrices) and data-controlled diagonal gating matrices labeled D, repeated several times to the output y; on the right, the long filters are generated by a small feed-forward network with a window and positional encoding.",
+    "caption": "Hyena replaces self-attention with a recurrence of two cheap primitives applied in alternation: very long convolutions (the Toeplitz matrices S, giving a global receptive field) and element-wise multiplicative gating controlled by the input (the diagonal matrices D). The convolution filters are not stored explicitly but generated by a small feed-forward network from each position (right), which keeps the parameter count independent of sequence length and lets the long convolutions run efficiently with the fast Fourier transform.",
+    "credit": "Michael Poli et al. (HazyResearch/safari)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/HazyResearch/safari",
+    "provider": "HazyResearch/safari (GitHub)"
+  },
+  "hyperbolic-embeddings": {
+    "file": "hyperbolic-embeddings.png",
+    "alt": "A disk filled with a tiling of triangles that appear large at the center and shrink rapidly toward the circular boundary, never reaching it.",
+    "caption": "Hyperbolic space, drawn here as the Poincare disk, has room that grows exponentially toward its boundary. Every triangle in this tiling is actually the same hyperbolic size; they only look smaller near the rim because distance there is far larger than it appears, and that extra room is what lets exponentially branching trees and hierarchies embed with low distortion.",
+    "credit": "Murdock Grewar",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:*732_tiling_on_the_Poincar%C3%A9_Disk.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "hyperparameter-optimization": {
+    "file": "hyperparameter-optimization.png",
+    "alt": "A two-dimensional hyperparameter space with sampled configurations marked as crosses scattered over a contour map of model performance, and rug marks along each axis showing the distinct values tried for that hyperparameter.",
+    "caption": "Random search picks hyperparameter configurations at random across the space rather than on a fixed grid. Because each trial uses a fresh value on every axis (the rug marks along the edges), random search explores many distinct settings of each hyperparameter for the same budget, which finds good configurations faster than grid search when only a few hyperparameters truly matter.",
+    "credit": "Alexander Elvers",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hyperparameter_Optimization_using_Random_Search.svg",
     "provider": "Wikimedia Commons"
   },
   "image-classification": {
@@ -219,6 +739,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Convolutional_Neural_Network.png",
     "provider": "Wikimedia Commons"
   },
+  "information-bottleneck": {
+    "file": "information-bottleneck.png",
+    "alt": "Two overlapping circles for the entropies H(X) and H(Y); the overlap is labeled the mutual information I(X;Y), the non-overlapping parts are the conditional entropies H(X|Y) and H(Y|X), and the union is the joint entropy H(X,Y).",
+    "caption": "The information bottleneck is stated in the currency this diagram shows: a representation should keep high mutual information with the target (the central overlap I) while squeezing out the input information it does not need, trading compression of the input against prediction of the output.",
+    "credit": "KonradVoelkel",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Entropy-mutual-information-relative-entropy-relation-diagram.svg",
+    "provider": "Wikimedia Commons"
+  },
   "instance-segmentation": {
     "file": "instance-segmentation.webp",
     "alt": "The same photo of balloons shown under four vision tasks: classification (one label), semantic segmentation (all balloons one color), object detection (a labeled box per balloon), and instance segmentation (a distinct colored mask and box for each balloon).",
@@ -227,6 +757,66 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Mask_R-CNN.webp",
+    "provider": "Wikimedia Commons"
+  },
+  "integral": {
+    "file": "integral.gif",
+    "alt": "Animation of a curve with the region beneath it filled by a row of rectangles whose tops reach the curve; as the animation proceeds the rectangles grow narrower and their combined area closes in on the true area under the curve.",
+    "caption": "A definite integral is the area between a curve and the horizontal axis. Approximating that area by a row of rectangles and then letting their width shrink toward zero, as in this animation, makes the staircase of rectangles converge to the exact area, which is the limit that defines the integral.",
+    "credit": "IkamusumeFan",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Riemann_Integration_and_Darboux_Upper_Sums.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "jacobian": {
+    "file": "jacobian.png",
+    "alt": "On the left a regular square grid with a red unit square and two basis arrows; a map f sends them to a curved, deformed grid on the right where the red region is stretched and rotated and the two arrows now span a parallelogram.",
+    "caption": "The Jacobian is the matrix of first partial derivatives that best approximates a vector-valued map by a linear one near a point. It sends the square grid on the left to the warped grid on the right, and the factor by which it scales the area of the small red region is its determinant.",
+    "credit": "Blacklemon67",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jacobian_determinant_and_distortion.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "jailbreak": {
+    "file": "jailbreak.png",
+    "alt": "Flow diagram: an attacker supplies an adversarial prompt that jailbreaks an LLM, the model returns a response, and that response is meant to match the attacker's desired output, which is the attack goal.",
+    "caption": "A jailbreak is an adversarial prompt that slips past a model's refusal training to reach the capability underneath. The attacker crafts an input that steers the model's response toward content it was trained to refuse, so the output matches the attacker's goal rather than the safety policy.",
+    "credit": "CanChen-cc",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jailbreak_Attack_Diagram.png",
+    "provider": "Wikimedia Commons"
+  },
+  "jensens-inequality": {
+    "file": "jensens-inequality.png",
+    "alt": "An upward-curving function with three of its points joined by chords; a dashed vertical segment shows that the averaged point on the chords sits directly above the point on the curve at the same averaged input.",
+    "caption": "Jensen's inequality says that for a convex function the function of an average is at most the average of the function. Because the chords joining points on the curve lie above it, the averaged height on the chords (top of the dashed line) exceeds the curve's height at the averaged input (bottom), which is the gap that drives the evidence lower bound and the non-negativity of KL divergence.",
+    "credit": "LazarIlic0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jensen%27s_Inequality_Proof_Without_Words.png",
+    "provider": "Wikimedia Commons"
+  },
+  "k-means": {
+    "file": "k-means.gif",
+    "alt": "Animation of k-means clustering: data points colored by their assigned cluster, with two centers that move each iteration as points are reassigned to the nearest center, until the assignments stop changing.",
+    "caption": "K-means alternates two steps until it settles. Each point is assigned to the nearest cluster center, then every center is recomputed as the mean of the points now assigned to it. Repeating these steps, shown here over successive iterations, steadily reduces the within-cluster spread and converges to a stable partition.",
+    "credit": "Chire",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:K-means_convergence.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "k-nearest-neighbors": {
+    "file": "k-nearest-neighbors.png",
+    "alt": "A green query point surrounded by red triangles and blue squares. A solid inner circle encloses two red triangles and one blue square; a dashed outer circle encloses three blue squares and two red triangles.",
+    "caption": "To classify the green point, k-nearest neighbors looks at its closest labeled examples and takes their majority vote. With k equal to 3 (solid circle) the two red triangles win; with k equal to 5 (dashed circle) the three blue squares win. The single choice of k can flip the verdict, which makes it the method's key knob.",
+    "credit": "Antti Ajanki",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:KnnClassification.svg",
     "provider": "Wikimedia Commons"
   },
   "kalman-filter": {
@@ -239,6 +829,16 @@
     "source": "https://en.wikipedia.org/wiki/Kalman_filter",
     "provider": "Wikimedia Commons"
   },
+  "kernel-method": {
+    "file": "kernel-method.png",
+    "alt": "Two panels: on the left, red points clustered inside a ring of purple points in two dimensions, not separable by a straight line; on the right, the same points lifted into three dimensions where the red points sit lower and a flat plane can separate them.",
+    "caption": "Data that no straight line can separate in its original space (left) often becomes linearly separable after being mapped into a higher dimension (right). The kernel trick computes the needed inner products in that richer space directly from the original points, so a linear method can draw a nonlinear boundary without ever building the high-dimensional coordinates.",
+    "credit": "Shiyu Ji",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kernel_trick_idea.svg",
+    "provider": "Wikimedia Commons"
+  },
   "kl-divergence": {
     "file": "kl-divergence.png",
     "alt": "Two bar charts side by side over the outcomes 0, 1, 2: distribution P is a skewed binomial, distribution Q is flat and uniform.",
@@ -247,6 +847,36 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Kullback%E2%80%93Leibler_distributions_example_1.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "lagrange-multiplier": {
+    "file": "lagrange-multiplier.png",
+    "alt": "Concentric dashed level curves of an objective function f, each with small gradient arrows pointing inward, crossed by a red constraint curve g equals c; the red and dashed curves are tangent where the constrained optimum sits.",
+    "caption": "The geometry behind Lagrange multipliers. The dashed curves are level sets of the objective f, and the red curve is the constraint g equals c. At the constrained optimum the constraint curve is tangent to a level curve, so the two gradients line up; the multiplier is the scalar that expresses how much one gradient must be scaled to equal the other. Where the curves merely cross, you can still slide along the constraint to a better value.",
+    "credit": "Nexcis",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:LagrangeMultipliers2D.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "latent-diffusion": {
+    "file": "latent-diffusion.png",
+    "alt": "Block diagram of the latent diffusion architecture with three regions: a pink Pixel Space where an encoder E maps an image x to a latent z and a decoder D reconstructs it, a green Latent Space where the diffusion and denoising U-Net operate on the latent with cross-attention, and a Conditioning column feeding text, images, and semantic maps in through an encoder.",
+    "caption": "Latent diffusion runs the whole diffusion process in the small latent space of an autoencoder instead of on raw pixels. An encoder (E) compresses the image into a compact latent, the denoising U-Net does the iterative generative work there while a conditioning signal such as text enters through cross-attention, and only at the end does the decoder (D) expand the finished latent back to a full-resolution image. Moving the expensive denoising off the pixel grid is what made high-resolution generation affordable.",
+    "credit": "Machine Vision and Learning Group, LMU Munich",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_architecture.png",
+    "provider": "Wikimedia Commons"
+  },
+  "latent-space": {
+    "file": "latent-space.png",
+    "alt": "A two-dimensional scatter plot of labeled topics where related items sit close together, such as a cluster of political candidates and a separate cluster of Super Bowl entries.",
+    "caption": "In a learned latent space, geometry encodes meaning: items the model considers similar are placed near one another. This embedding of topics groups the political candidates in one region and the football entries in another, which is why nearest-neighbor search in such a space drives semantic retrieval and clustering.",
+    "credit": "Ewulczyn (WMF)",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2016_02_mini_embedding.png",
     "provider": "Wikimedia Commons"
   },
   "learning-rate": {
@@ -279,6 +909,26 @@
     "source": "https://d2l.ai/chapter_optimization/lr-scheduler.html",
     "provider": "Dive into Deep Learning"
   },
+  "lie-group": {
+    "file": "lie-group.png",
+    "alt": "A unit circle in the plane with the point 1 marked on the right at the origin's level, and three points z, w, and zw on the upper arc.",
+    "caption": "The circle is the simplest Lie group: a group that is also a smooth manifold. Its points are unit-length complex numbers, the group operation multiplies them (which adds their angles, so z times w lands at zw), the identity is the point 1, and every element has an inverse. Because the points vary smoothly, you can do calculus on the symmetry itself, which is what makes continuous symmetry tractable.",
+    "credit": "Oleg Alexandrov",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Circle_as_Lie_group.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "linear-regression": {
+    "file": "linear-regression.png",
+    "alt": "Scatter plot of blue data points with a red straight line of best fit drawn through them.",
+    "caption": "Linear regression fits a straight line through the data by choosing the slope and intercept that minimize the squared vertical gaps between the line and the points. The result is the line that sits as close as possible to all the data, the simplest model of how the output changes with the input.",
+    "credit": "Sewaqu",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Linear_regression.svg",
+    "provider": "Wikimedia Commons"
+  },
   "local-attractor-basin": {
     "file": "local-attractor-basin.png",
     "alt": "Diagram of a region A inside a larger space, with trajectories starting from several different points all flowing inward and converging into region A.",
@@ -297,6 +947,16 @@
     "license": "CC BY-SA 3.0",
     "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Extrema_example.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "logistic-regression": {
+    "file": "logistic-regression.png",
+    "alt": "The logistic sigmoid curve, an S-shaped curve that rises smoothly from zero at the far left through one half at the center to one at the far right.",
+    "caption": "Logistic regression passes a weighted sum of the features through this S-shaped sigmoid, which squashes any real number into the range zero to one. The output is read as the probability of the positive class: large positive scores approach one, large negative scores approach zero, and a score of zero maps to one half.",
+    "credit": "Qef",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Logistic-curve.svg",
     "provider": "Wikimedia Commons"
   },
   "loss-function": {
@@ -319,6 +979,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Rastrigin_function.png",
     "provider": "Wikimedia Commons"
   },
+  "loss-of-plasticity": {
+    "file": "loss-of-plasticity.png",
+    "alt": "A plot of percent correct on the test set against task number over thousands of sequential tasks on Continual ImageNet; the red Backpropagation curve rises then collapses sharply downward below 82 percent, while Continual Backpropagation, L2-Regularization and Shrink and Perturb stay near 89 to 90 percent.",
+    "caption": "Under sustained continual training, a standard backpropagation network (red) loses its ability to keep learning and its accuracy collapses, even though its capacity is unchanged; methods that inject fresh variability or regularize, such as continual backpropagation, retain plasticity and stay high.",
+    "credit": "Shibhansh Dohare and colleagues",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://github.com/shibhansh/loss-of-plasticity",
+    "provider": "loss-of-plasticity (Dohare et al.)"
+  },
+  "lottery-ticket-hypothesis": {
+    "file": "lottery-ticket-hypothesis.png",
+    "alt": "Test accuracy curves over training iterations for a full network and for sparse subnetworks keeping 64, 16.78, 4.40 and 1.15 percent of weights, where the pruned subnetworks reset to their original initialization match the full network, while the control subnetworks with the same structure but random reinitialization train to lower accuracy, the gap widening as sparsity increases.",
+    "caption": "A winning ticket is a sparse subnetwork that, kept at its original initialization, trains to the full network's accuracy (colored lines tracking the base), while the same structure reinitialized at random (the control lines) does notably worse, showing that the lucky starting weights, not just the connectivity, are what matters.",
+    "credit": "Samuel Mueller",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://github.com/SamuelGabriel/LotteryTicketHypothesis-TensorFlow",
+    "provider": "LotteryTicketHypothesis-TensorFlow"
+  },
   "lstm": {
     "file": "lstm.png",
     "alt": "Schematic of a long short-term memory cell showing the input, forget, and output gates and the cell state",
@@ -327,6 +1007,46 @@
     "license": "CC0",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://en.wikipedia.org/wiki/Long_short-term_memory",
+    "provider": "Wikimedia Commons"
+  },
+  "machine-learning": {
+    "file": "machine-learning.png",
+    "alt": "A grid of small scatter plots: three rows are three datasets of red and blue points, and the columns are different classifiers, each shading the plane into colored decision regions that separate the two classes.",
+    "caption": "Machine learning fits a model to labeled examples rather than following hand-coded rules. Here the same red and blue training points (rows are three datasets) are fit by ten different classifiers (columns); each learns a decision boundary, the colored regions, that separates the classes and is meant to generalize to new points.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html",
+    "provider": "scikit-learn"
+  },
+  "mamba": {
+    "file": "mamba.png",
+    "alt": "Diagram of a selective state space model: a hidden state h flows from left (h at t minus 1) to right (h at t) through the state matrix A; the current input x at t is passed through a Project block (the selection mechanism) to produce the input-dependent matrices B, C, and the step size delta, which are discretized and combined to update the state and emit output y, with a side note showing fast GPU SRAM versus slower GPU HBM memory.",
+    "caption": "Mamba makes the state space recurrence selective: the input x is projected to produce the matrices B and C and the step size delta as functions of the current token, so the model decides token by token what to write into its hidden state and what to discard. Because this input-dependent recurrence can no longer be run as a fixed convolution, Mamba uses a hardware-aware scan that keeps the large state in fast GPU SRAM rather than slower HBM.",
+    "credit": "Albert Gu, Tri Dao (state-spaces/mamba)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/state-spaces/mamba",
+    "provider": "state-spaces/mamba (GitHub)"
+  },
+  "manifold": {
+    "file": "manifold.png",
+    "alt": "A sphere with a small patch on top mapped upward by projection lines onto a flat disk, representing a coordinate chart from a region of the sphere to flat space.",
+    "caption": "The defining property of a manifold is that every small region maps smoothly onto a patch of flat space. Here a neighborhood of the sphere is carried by a coordinate chart onto a flat disk, so the curved surface looks ordinary and Euclidean when you zoom in on any one piece.",
+    "credit": "Jitse Niesen, Pbroks13",
+    "license": "Attribution",
+    "license_url": "https://commons.wikimedia.org/wiki/File:Sphere_with_chart.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Sphere_with_chart.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "manifold-optimization": {
+    "file": "manifold-optimization.png",
+    "alt": "A sphere with a flat plane touching it at a single point, marked by a dot, representing the tangent plane to the surface at that point.",
+    "caption": "Manifold optimization moves through the tangent space rather than off the surface. At each point of a curved constraint set (here a sphere) the tangent plane holds the directions a step is actually allowed to take; the Riemannian gradient is the ordinary gradient projected onto this plane, and the optimizer then steps along the manifold so every iterate stays on the valid set instead of being projected back after the fact.",
+    "credit": "Alexwright at English Wikipedia",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Image_Tangent-plane.svg",
     "provider": "Wikimedia Commons"
   },
   "markov-chain": {
@@ -359,6 +1079,66 @@
     "source": "https://commons.wikimedia.org/wiki/File:Maximum_likelihood_poisson.svg",
     "provider": "Wikimedia Commons"
   },
+  "measure-theory": {
+    "file": "measure-theory.png",
+    "alt": "Two panels showing the area under the same hump-shaped curve: the top panel approximates it with tall vertical strips, the bottom panel approximates it with stacked horizontal bands.",
+    "caption": "The two ways to measure the area under a curve. Riemann integration (top) slices the domain into vertical strips, while Lebesgue integration (bottom), the integral built on measure theory, slices the range into horizontal bands and weights each by the measure of the set of inputs that reach it. Slicing the range is what makes the Lebesgue integral handle wildly discontinuous functions and interchange cleanly with limits.",
+    "credit": "Aaron Rotenberg",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:RandLintegrals.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "message-passing": {
+    "file": "message-passing.png",
+    "alt": "A central node x0 connected to four neighbor nodes x1, x2, x3, x4; each neighbor's feature passes through a message function psi, and the four messages flow inward to update x0.",
+    "caption": "One round of message passing: the central node x0 gathers a message from each neighbor, every message computed by the same function psi, then aggregates them with a permutation-invariant operator to update its own state. Stacking k such rounds lets a node's representation absorb everything within k hops.",
+    "credit": "NickDiCicco",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Message_Passing_Neural_Network.png",
+    "provider": "Wikimedia Commons"
+  },
+  "metric-tensor": {
+    "file": "metric-tensor.png",
+    "alt": "A globe in orthographic view overlaid with a regular grid of circles that stay round near the center and flatten into ellipses toward the rim.",
+    "caption": "The metric tensor is the local rule for measuring length and angle, and it can change from place to place. A grid of identical circles on the sphere appears round at the center but squashes into ellipses toward the edge, showing how the same true distance is stretched differently depending on position and direction.",
+    "credit": "Kurubu",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Orthographic_projection_with_Tissot%27s_indicatrix_centering_0%C2%B0N_0%C2%B0E.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "mirror-neuron": {
+    "file": "mirror-neuron.jpg",
+    "alt": "A flowchart. Perception of an action leads to goal attribution, asking whether the action has a goal. If yes, one route is mirror neurons performing internal imitation (embodied simulation); if no, the action is handled by classical inference.",
+    "caption": "This figure illustrates the simulation account of mirror neurons. When an observed action is read as goal-directed, the brain is thought to understand it by internally re-enacting it on its own motor circuitry (embodied simulation) rather than by abstract inference alone, the same mechanism an observer would use to perform the action itself.",
+    "credit": "Svetlognev",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Goal_attribution_and_mirror_neurons.JPG",
+    "provider": "Wikimedia Commons"
+  },
+  "mode-connectivity": {
+    "file": "mode-connectivity.png",
+    "alt": "A two-dimensional loss contour with two trained network minima marked at the lower left and lower right; a solid two-segment path with one bend connects them through the low-loss red region, while a dashed straight line between them dips into a blue high-loss valley.",
+    "caption": "Two independently trained minima are not isolated valleys: the dashed straight line between them crosses high loss, but the solid bent path stays entirely in the low-loss region, the low-loss tunnel that mode connectivity says links distinct solutions.",
+    "credit": "Timur Garipov and colleagues",
+    "license": "BSD-2-Clause",
+    "license_url": "https://opensource.org/licenses/BSD-2-Clause",
+    "source": "https://github.com/timgaripov/dnn-mode-connectivity",
+    "provider": "dnn-mode-connectivity (Garipov et al.)"
+  },
+  "model-context-protocol": {
+    "file": "model-context-protocol.png",
+    "alt": "Two node diagrams compared. On the left, eight nodes labeled A to H are each wired directly to every other node, forming a dense tangle of connections, labeled Impact equals N. On the right, the same eight nodes each connect only to a single central hub, labeled Impact equals 1.",
+    "caption": "MCP applies the standard-hub pattern shown here to the boundary between models and tools. Without a shared standard, connecting many applications to many tools means a separate custom connector for nearly every pair, a tangle that grows as M times N (left). Routing everything through one common protocol collapses that to M plus N (right): a tool implements the standard once and any compliant client can use it.",
+    "credit": "ESB_versus_POINT_2_POINT.gif : Original uploader was Arkramer at nl.wikipedia de",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Enterprise-Service-Bus-NS.svg",
+    "provider": "Wikimedia Commons"
+  },
   "momentum": {
     "file": "momentum.svg",
     "alt": "Contour plot of an elongated, ill-conditioned valley with a momentum optimizer path that overshoots once then spirals inward, settling at the minimum.",
@@ -367,6 +1147,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/momentum.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "multilayer-perceptron": {
+    "file": "multilayer-perceptron.svg",
+    "alt": "Diagram of a multilayer perceptron with an input layer of four units, a fully connected hidden layer of five units, and an output layer of three units, every unit in a layer joined to every unit in the next.",
+    "caption": "A multilayer perceptron stacks fully connected layers: each unit in the hidden layer takes a weighted sum of every input and passes it through a nonlinear activation, and the output layer reads from every hidden unit. This dense layer-to-layer connection, with a nonlinearity between layers, is what lets the network approximate complex functions.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/mlp.html",
     "provider": "Dive into Deep Learning"
   },
   "mutual-information": {
@@ -379,6 +1169,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Entropy-mutual-information-relative-entropy-relation-diagram.svg",
     "provider": "Wikimedia Commons"
   },
+  "needle-in-a-haystack": {
+    "file": "needle-in-a-haystack.png",
+    "alt": "A heatmap with context length in tokens on the horizontal axis and the depth at which a fact is placed in the document on the vertical axis; cells are green where the model retrieved the fact and red where it failed, with more red appearing at longer context lengths.",
+    "caption": "The needle-in-a-haystack test hides one fact at many depths inside documents of many lengths and asks the model to retrieve it, coloring each cell green for success and red for failure. The growing band of red at longer contexts shows that a model's effective context length can fall well short of its advertised window.",
+    "credit": "Greg Kamradt",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://github.com/gkamradt/LLMTest_NeedleInAHaystack",
+    "provider": "gkamradt/LLMTest_NeedleInAHaystack"
+  },
+  "neural-coding": {
+    "file": "neural-coding.png",
+    "alt": "A plot of several overlapping bell-shaped tuning curves of different colors, each peaking at a different position along the stimulus axis, so any given stimulus value activates several neurons by differing amounts.",
+    "caption": "A population code is one answer to how neurons represent information. Each neuron responds most strongly to its own preferred stimulus value, with a broad bell-shaped tuning curve, so a single stimulus lights up many neurons by differing amounts. The value can then be read out far more accurately from the whole population than from any one cell, and the code degrades gracefully when neurons are noisy.",
+    "credit": "AndrewKeenanRichardson, SVG by Phlegmatic",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:PopulationCode.svg",
+    "provider": "Wikimedia Commons"
+  },
   "neural-network": {
     "file": "neural-network.png",
     "alt": "Diagram of a feedforward neural network with an input layer, a hidden layer, and an output layer of connected nodes",
@@ -387,6 +1197,56 @@
     "license": "CC BY-SA 3.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)",
+    "provider": "Wikimedia Commons"
+  },
+  "neural-scaling-laws": {
+    "file": "neural-scaling-laws.png",
+    "alt": "A log-axis plot of optimal tokens per parameter against training compute in FLOP, with fitted lines for two estimates of the compute-optimal policy and a dashed horizontal line marking the rule of thumb of about 20 tokens per parameter, with the Chinchilla model plotted on it.",
+    "caption": "Scaling laws not only predict loss from compute but also set how to spend a budget: the Chinchilla result found that for compute-optimal training the number of parameters and the number of training tokens should grow in roughly equal proportion, near 20 tokens per parameter (dashed line).",
+    "credit": "Epoch AI",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Optimal_ratio_of_training_tokens_to_model_parameters_for_Chinchilla_scaling_law.png",
+    "provider": "Wikimedia Commons"
+  },
+  "neural-tangent-kernel": {
+    "file": "neural-tangent-kernel.gif",
+    "alt": "Plot titled NTK describes NN evolution, showing a spread of pink curves for an ensemble of neural networks and a single blue line for the NTK mean estimator fitting scattered data points.",
+    "caption": "In the infinite-width limit, the neural tangent kernel predicts training as kernel regression with a fixed kernel: the blue NTK mean estimator tracks the average of an ensemble of wide networks (pink), so a nonlinear network behaves like a linear model in a frozen feature space.",
+    "credit": "Dkarkada",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:NTK_evolution.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "neuromorphic-computing": {
+    "file": "neuromorphic-computing.png",
+    "alt": "Diagram of a neuromorphic chip's mesh routing. A source neuron X in one core sends a spike that is routed by axon identifiers across a grid of separate cores, reaching target neurons A through F located on different cores.",
+    "caption": "Neuromorphic hardware colocates many neurons and synapses across a grid of cores and communicates with sparse, asynchronous spikes rather than a global clock. Here one neuron's spike is routed by address to its targets on several cores at once, so memory and computation sit together and work happens only when a spike occurs, the source of the design's low power use. The figure is from Intel's Loihi.",
+    "credit": "Mike Davies, Intel Labs",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Neuron-to-neuron_mesh_routing_model.png",
+    "provider": "Wikimedia Commons"
+  },
+  "node-embedding": {
+    "file": "node-embedding.png",
+    "alt": "Left, a graph with a biased random walk highlighted; right, the same nodes placed in a two-dimensional embedding space where they form two clusters, one red and one blue, with a single bridge node between them.",
+    "caption": "A node embedding maps each node of a graph to a coordinate in a continuous space so that graph-proximate nodes land close together. Here biased random walks over the graph (left) are turned into vectors (right), where the two communities separate into distinct clusters and the bridging node sits between them; closeness in the space now means closeness in the graph.",
+    "credit": "Carlos Eduardo Ravello Joo",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grover-leskovec-2016-node2vec.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "normalizing-flow": {
+    "file": "normalizing-flow.png",
+    "alt": "A chain of nodes z0 through zk linked by invertible functions f1 to fk, with a probability density drawn beneath each node: under z0 a single smooth Gaussian bump, growing through the chain into a complex multi-peaked distribution under zk, which equals the data x.",
+    "caption": "A normalizing flow turns a simple distribution into a complex one through a chain of exactly invertible functions. Samples start as an easy Gaussian (z0, a single smooth bump) and each invertible step bends the density further, until the final variable zk matches the multi-peaked shape of the real data. Because every function is invertible, the same chain can be run backward to read off the exact likelihood of any data point.",
+    "credit": "Janosh Riebesell",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://commons.wikimedia.org/wiki/File:Normalizing-flow.svg",
     "provider": "Wikimedia Commons"
   },
   "object-detection": {
@@ -409,6 +1269,56 @@
     "source": "https://commons.wikimedia.org/wiki/File:Optical_flow_example_v2.png",
     "provider": "Wikimedia Commons"
   },
+  "optimal-transport": {
+    "file": "optimal-transport.png",
+    "alt": "Scatter plot with blue plus signs marking source samples on the lower left and red crosses marking target samples on the upper right, with thin lines connecting sources to targets according to the optimal transport plan.",
+    "caption": "Optimal transport finds the cheapest plan to move one distribution of mass onto another. Here the lines show how mass at each source point (blue) is routed to target points (red) so that the total distance moved is as small as possible; the cost of this best plan is the Wasserstein distance, a way to compare distributions that respects the geometry of the space.",
+    "credit": "POT contributors",
+    "license": "MIT",
+    "license_url": "https://github.com/PythonOT/POT/blob/master/LICENSE",
+    "source": "https://pythonot.github.io/auto_examples/plot_OT_2D_samples.html",
+    "provider": "Python Optimal Transport"
+  },
+  "overfitting": {
+    "file": "overfitting.png",
+    "alt": "Three panels fitting polynomials of degree 1, 4, and 15 to the same noisy samples of a curved true function. Degree 1 is a straight line that misses the curve, degree 4 tracks the true function closely, and degree 15 wiggles through every point.",
+    "caption": "The same data fit by polynomials of increasing flexibility. The degree-15 model on the right overfits: it contorts itself to pass through the noise, so it scores well on these points but its wild swings would generalize poorly. The degree-4 model in the middle, which matches the true function, is the better fit despite not hitting every sample.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
+    "provider": "scikit-learn"
+  },
+  "parallel-transport": {
+    "file": "parallel-transport.png",
+    "alt": "A sphere on which a vector is carried from point A along the equator to B, then up a meridian to the north pole N, then back down to A, returning rotated by an angle alpha.",
+    "caption": "Parallel transport carries a vector along a path while turning it only as much as staying tangent to the surface requires. Moved around the closed loop A to B to the pole and back to A, the vector returns rotated by an angle alpha; this failure to come back unchanged is exactly the curvature enclosed by the loop.",
+    "credit": "Fred the Oyster",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Parallel_Transport.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "partial-derivative": {
+    "file": "partial-derivative.png",
+    "alt": "A three-dimensional bowl-shaped surface z over inputs x and y, sliced by a vertical plane at a fixed value of y; the intersection of the plane and the surface is drawn as a red curve.",
+    "caption": "A partial derivative holds every input but one fixed. Slicing the surface z = f(x, y) with a vertical plane at a constant y leaves the red cross-section, a curve in x alone, and the slope of that curve is the partial derivative of f with respect to x.",
+    "credit": "IkamusumeFan",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Partial_func_eg.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "perceptron": {
+    "file": "perceptron.png",
+    "alt": "Diagram of a single artificial neuron: inputs x1 through xn each multiplied by a weight, fed into a summation node, then through an activation function with a threshold, producing one output.",
+    "caption": "A perceptron is one computing unit. It multiplies each input by a learned weight, sums the results, and passes the total through a threshold to emit a single output. Training nudges the weights toward correct answers. Every neuron in a modern network is this same primitive with a smooth activation in place of the hard threshold.",
+    "credit": "Chrislb",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png",
+    "provider": "Wikimedia Commons"
+  },
   "pooling": {
     "file": "pooling.png",
     "alt": "A 4 by 4 grid of numbers divided into four colored 2 by 2 windows, with an arrow to a 2 by 2 output holding the maximum of each window: 6, 8, 3, 4.",
@@ -417,6 +1327,26 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Max_pooling.png",
+    "provider": "Wikimedia Commons"
+  },
+  "precision-and-recall": {
+    "file": "precision-and-recall.png",
+    "alt": "Diagram of a set of items split into relevant and not relevant, with a circle marking the retrieved items, labeling the four regions true positives, false positives, false negatives, and true negatives, and showing precision and recall as fractions of those regions.",
+    "caption": "Precision is the fraction of retrieved items that are relevant (true positives over everything inside the circle), while recall is the fraction of relevant items that were retrieved (true positives over the whole left band). The same true positives are divided by two different totals, which is why the two metrics trade off.",
+    "credit": "Walber",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Precisionrecall.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "predictive-coding": {
+    "file": "predictive-coding.png",
+    "alt": "A two-level schematic of predictive coding. Each level has a Local Model that sends predictions P downward (blue arrows) and prediction-error units PE, drawn as triangles and circles, that send error upward (red arrows).",
+    "caption": "In predictive coding each cortical level holds a generative model that sends its prediction (P) down to the level below, and the level below returns only the prediction error (PE), the part of the input the prediction failed to explain. Predictions flow down and errors flow up, so what travels up the hierarchy is the mismatch, not the raw signal.",
+    "credit": "YON - Jan C. Hardenbergh",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PredictiveCodingX2.svg",
     "provider": "Wikimedia Commons"
   },
   "principal-component-analysis": {
@@ -439,6 +1369,56 @@
     "source": "https://commons.wikimedia.org/wiki/File:Fair_dice_probability_distribution.svg",
     "provider": "Wikimedia Commons"
   },
+  "process-reward-model": {
+    "file": "process-reward-model.png",
+    "alt": "A tree of numbered nodes connected by colored edges, where each node is a partial chain-of-thought solution state and each edge is a reasoning step, with correct steps drawn in yellow and wrong steps in blue.",
+    "caption": "A process reward model scores the reasoning, not just the answer. Each node here is a partial solution and each edge is one reasoning step labeled correct (yellow) or wrong (blue), giving dense step-level feedback. This pinpoints exactly where a chain of thought goes wrong, unlike an outcome reward model that judges only the final result.",
+    "credit": "Liangchen Luo, Yinxiao Liu, Rosanne Liu, Samrat Phatale, Meiqi Guo, Harsh Lara, Yunxuan Li, Lei Shu, Yun Zhu, Lei Meng, Jiao Sun, Abhinav Rastogi",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2406.06592",
+    "provider": "arXiv"
+  },
+  "random-forest": {
+    "file": "random-forest.png",
+    "alt": "Diagram of random forest bagging: a full dataset is randomly sampled with replacement into several smaller bootstrap datasets, each used to train a separate decision tree, whose predictions are then aggregated.",
+    "caption": "A random forest builds many trees on different random samples of the data, drawn with replacement, so no two trees see quite the same examples. Each tree predicts on its own, and the forest aggregates them by voting or averaging. Because the errors of independent trees tend to cancel, the combination is far more accurate and stable than any single tree.",
+    "credit": "Harry585",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Random_Forest_Bagging_Illustration.png",
+    "provider": "Wikimedia Commons"
+  },
+  "recurrent-neural-network": {
+    "file": "recurrent-neural-network.png",
+    "alt": "A recurrent neural network shown folded as a single cell with a self-loop, and unfolded to the right into a chain of cells across time steps t minus 1, t, and t plus 1, each taking an input x and producing an output o while passing the hidden state h forward.",
+    "caption": "A recurrent network applies the same cell at every step, feeding its hidden state h forward in time. Unfolding the self-loop (left) into a chain (right) shows how context carries across the sequence: the hidden state at each step depends on the current input and the previous state, with the weights U, V, and W shared at every step.",
+    "credit": "fdeloche",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Recurrent_neural_network_unfold.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "regression": {
+    "file": "regression.png",
+    "alt": "Scatter plot of airfare cost against distance to destination, with a fitted straight line, the line equation 0.117 times x plus 83.267, and an R-squared of 0.632 noted.",
+    "caption": "Regression predicts a continuous quantity from input features. Here airfare cost is modeled as a line in the distance, fare equals 0.117 times distance plus 83.267, so each extra mile adds about twelve cents. The R-squared of 0.632 reports the fraction of the variation in fare the line explains, the standard way to score a continuous prediction.",
+    "credit": "ASnieckus",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Linear_regression_of_airfare_on_distance_to_destination.png",
+    "provider": "Wikimedia Commons"
+  },
+  "regularization": {
+    "file": "regularization.png",
+    "alt": "Several data points fit two ways: a blue curve that oscillates wildly to pass exactly through every point, and a smooth green curve that follows the general trend without hitting each point.",
+    "caption": "Without regularization a flexible model can twist to pass through every point (blue), fitting the noise and generalizing badly. Regularization penalizes that complexity, favoring the smooth green curve that captures the underlying trend instead. It trades a little fit on the training points for a model far more likely to hold up on new data.",
+    "credit": "Nicoguaro",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Regularization.svg",
+    "provider": "Wikimedia Commons"
+  },
   "reinforcement-learning": {
     "file": "reinforcement-learning.png",
     "alt": "Diagram of the reinforcement learning loop showing an agent taking actions and receiving state and reward from the environment",
@@ -447,6 +1427,56 @@
     "license": "CC0",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://en.wikipedia.org/wiki/Reinforcement_learning",
+    "provider": "Wikimedia Commons"
+  },
+  "relu": {
+    "file": "relu.png",
+    "alt": "Plot over inputs from minus four to four: the rectifier in blue is flat at zero for negative inputs and a straight line equal to the input for positive inputs, with the smooth softplus curve in green approximating it.",
+    "caption": "The rectified linear unit (blue) outputs zero for negative inputs and the input itself for positive ones, the maximum of zero and the input. Its derivative is exactly one on the positive side, so gradients pass through undiminished, unlike saturating activations; the green softplus is a smooth approximation. The sharp threshold also makes roughly half the units output zero, giving sparse, cheap activations.",
+    "credit": "Qwertyus",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Rectifier_and_softplus_functions.png",
+    "provider": "Wikimedia Commons"
+  },
+  "reproducing-kernel-hilbert-space": {
+    "file": "reproducing-kernel-hilbert-space.png",
+    "alt": "Two panels joined by an arrow labeled phi. The left panel shows two classes of points separated by a curved boundary in the input plane; the right panel shows the same points after a feature map, now separated by a straight line.",
+    "caption": "A reproducing kernel Hilbert space is what makes the kernel trick rigorous. A feature map phi lifts the inputs into a richer (often infinite-dimensional) space where a curved separating boundary in the original input (left) becomes a simple straight one (right). A kernel computes inner products in that feature space directly, so the lift never has to be formed explicitly, and the representer theorem keeps the resulting problem finite.",
+    "credit": "Alisneaky",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Kernel_Machine.png",
+    "provider": "Wikimedia Commons"
+  },
+  "residual-connection": {
+    "file": "residual-connection.svg",
+    "alt": "Two network blocks side by side: a regular block on the left whose stacked layers must learn the full mapping f(x), and a residual block on the right where a skip arrow adds the input x back to the block output, so the layers learn g(x) and the block computes f(x) equals g(x) plus x.",
+    "caption": "In a residual block the input is added back to the output through a skip connection, so the stacked layers only need to learn the residual correction g(x) rather than the full mapping. The identity shortcut also gives gradients a clean path backward, which is what makes very deep networks trainable.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_convolutional-modern/resnet.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "reward-model": {
+    "file": "reward-model.png",
+    "alt": "Flow diagram of reinforcement learning from human feedback: human annotators rank sampled responses into ranking data that trains a reward model, which then guides training of the aligned model through PPO, with a supervised model initializing both.",
+    "caption": "A reward model is a learned stand-in for human judgment. Human annotators rank model responses, those comparisons train the reward model to score any output, and the policy is then optimized to produce outputs the reward model rates highly. This is how the slow, expensive signal of human preference is compiled into a fast automatic reward for reinforcement learning from human feedback.",
+    "credit": "PopoDameron",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:RLHF_diagram.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "riemannian-manifold": {
+    "file": "riemannian-manifold.png",
+    "alt": "A torus, a donut-shaped surface, with a single curved red path winding around it once through the hole and around the tube.",
+    "caption": "A Riemannian manifold is a curved surface equipped with a metric that defines distance, and the shortest path between two points is a geodesic. On this torus the red geodesic curves through the hole and around the tube, the straightest available route given the surface's geometry.",
+    "credit": "Rectas",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Torus_closed_geodesic_n1a.png",
     "provider": "Wikimedia Commons"
   },
   "rmsprop": {
@@ -458,6 +1488,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/rmsprop.html",
     "provider": "Dive into Deep Learning"
+  },
+  "roc-auc": {
+    "file": "roc-auc.png",
+    "alt": "Top: two overlapping class score distributions with a moving threshold, shading the resulting true positives, false positives, true negatives, and false negatives. Bottom: the ROC curve of true positive rate against false positive rate with a diagonal no-skill line and an operating point that moves as the threshold changes.",
+    "caption": "Sliding the decision threshold across the two class score distributions changes the true positive and false positive rates, and plotting that pair at every threshold traces the ROC curve. The area under it (AUC) measures how well the model ranks positives above negatives; the dashed diagonal is chance and the top-left corner is perfect separation.",
+    "credit": "Sharpr, original by kakau",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:ROC_curves.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "rwkv": {
+    "file": "rwkv.png",
+    "alt": "Architecture diagram of one RWKV block: an input embedding passes up through a Layer Norm into a Time Mix block and then another Layer Norm into a Channel Mix block, with token-shift operations feeding each, and a final Layer Norm and output embedding; the time-mix block maintains a running weighted sum gated by a receptance term, and the channel-mix block plays the role of the feed-forward layer.",
+    "caption": "RWKV replaces self-attention with two interacting sub-blocks stacked in each layer. The Time Mix block plays the role of attention but, instead of comparing all pairs of tokens, maintains a running exponentially weighted sum of past key and value signals gated by a receptance term; the Channel Mix block plays the role of the feed-forward layer. Because the time decay lets the past be carried in a single fixed-size state, the same model has an equivalent recurrent form that generates in constant memory and a parallel form that trains efficiently.",
+    "credit": "Bo Peng (BlinkDL/RWKV-LM)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/BlinkDL/RWKV-LM",
+    "provider": "BlinkDL/RWKV-LM (GitHub)"
   },
   "saddle-point": {
     "file": "saddle-point.png",
@@ -479,6 +1529,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:EmiMa-099-semantic-segmentation.png",
     "provider": "Wikimedia Commons"
   },
+  "semi-supervised-learning": {
+    "file": "semi-supervised-learning.gif",
+    "alt": "Schematic of semi-supervised learning: a small set of labeled cat and dog images and a large pool of unlabeled animal images both feed a processing step that sorts the images into a cat category and a dog category.",
+    "caption": "Semi-supervised learning combines a few labeled examples with a large pool of unlabeled ones. The handful of labels anchors the categories, and the structure of the unlabeled data (which images cluster together) is used to sort the rest, reaching better accuracy than the scarce labels could achieve on their own.",
+    "credit": "Rakshath",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Semi-Supervised_Learning.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "sharpness-aware-minimization": {
+    "file": "sharpness-aware-minimization.png",
+    "alt": "A three-dimensional loss surface for a ResNet trained with sharpness-aware minimization, showing a broad, gently sloping minimum at the center.",
+    "caption": "Sharpness-aware minimization minimizes the worst-case loss in a neighborhood rather than the loss at a single point, so it converges to a wide minimum like this instead of the narrow, steep basin standard gradient descent finds, which tends to generalize better.",
+    "credit": "Google Research",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/google-research/sam",
+    "provider": "google-research/sam"
+  },
   "softmax": {
     "file": "softmax.png",
     "alt": "Flow diagram where a network produces three real-valued scores 35.4, 38.1, and minus 5.0 for the classes cat, dog, and horse, and a softmax block converts them into the probabilities 0.06, 0.94, and 0.00.",
@@ -487,6 +1557,46 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Softmax.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "spectral-decomposition": {
+    "file": "spectral-decomposition.png",
+    "alt": "The Mona Lisa shown before and after a horizontal shear. A red arrow lying along the horizontal stays pointing the same way in both images, while a blue arrow is tilted by the transformation.",
+    "caption": "An eigenvector is a direction a linear transformation leaves pointing the same way, only stretching or shrinking it. Under this shear the red arrow keeps its direction (it is an eigenvector) while the blue arrow is rotated. Spectral decomposition rebuilds a symmetric operator from such special directions and their scale factors (eigenvalues), turning a tangled action into independent stretches along perpendicular axes.",
+    "credit": "J. Finkelstein",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Mona_Lisa_with_eigenvector.png",
+    "provider": "Wikimedia Commons"
+  },
+  "spectral-graph-theory": {
+    "file": "spectral-graph-theory.png",
+    "alt": "A graph of eight numbered nodes forming two tightly connected groups, 1-2-3-4 and 5-6-7-8, joined to each other only by two weak edges drawn as dashed lines through node 4.",
+    "caption": "Spectral graph theory reads a graph's structure from the eigenvectors of its Laplacian. The low-frequency eigenvectors expose well-connected communities and the weak edges between them (here the dashed bridge), giving a principled cut into two groups; this is the basis of spectral clustering and of defining a notion of frequency on a graph.",
+    "credit": "BogdanShevchenko",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spectral_clusterization_example.png",
+    "provider": "Wikimedia Commons"
+  },
+  "spiking-neural-network": {
+    "file": "spiking-neural-network.jpg",
+    "alt": "Schematic of a leaky integrate-and-fire neuron. Pulse inputs charge a capacitor representing the membrane; the membrane potential V rises with each input, and when it crosses a dashed threshold the neuron emits a spike and resets to baseline.",
+    "caption": "A spiking neuron does not output a value every step; it integrates incoming pulses, raising its membrane potential V, and fires a single spike only when V crosses a threshold, then resets. Because nothing happens between spikes and the timing of each spike carries information, computation is event-driven and time is a real dimension, unlike a standard continuous-valued unit.",
+    "credit": "Spiking16",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Leaky_Integrate-and-Fire_model_neuron_(schematic).jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "state-space-model": {
+    "file": "state-space-model.png",
+    "alt": "Signal-flow block diagram of a linear state space model: input u enters matrix B and feeds a summing junction whose output is the state derivative x-dot; an integrator produces the state x, which loops back through matrix A and is read out through matrix C, with a direct feedthrough D from u, summing to the output y.",
+    "caption": "A state space model describes a system by a hidden state that evolves over time. The input enters through a matrix B, the integrated state x feeds back through the transition matrix A, and the output y is projected out by a matrix C (with an optional direct path D). Everything the model knows about the past is compressed into that single running state, which is why a sequence model built this way costs the same per step no matter how long the context.",
+    "credit": "Cburnett",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Typical_State_Space_model.svg",
     "provider": "Wikimedia Commons"
   },
   "stochastic-gradient-descent": {
@@ -498,6 +1608,106 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/sgd.html",
     "provider": "Dive into Deep Learning"
+  },
+  "supervised-learning": {
+    "file": "supervised-learning.png",
+    "alt": "Flowchart of supervised learning: labeled observations are split into a training set and a test set; the training set fits a machine learner that produces a prediction model, which is then scored on the test set to give performance stats.",
+    "caption": "Supervised learning starts from observations already paired with correct labels. Those labeled examples are split into a training set, which fits the model, and a held-out test set, which scores it. The learner becomes a prediction model whose accuracy is measured on data it never trained on, the discipline that separates genuine generalization from memorization.",
+    "credit": "EpochFail",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Supervised_machine_learning_in_a_nutshell.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "support-vector-machine": {
+    "file": "support-vector-machine.png",
+    "alt": "Two classes of points separated by a solid line, with two parallel dashed lines marking the margin on either side. The points lying exactly on the dashed lines are circled, and the gap width is labeled two over the norm of w.",
+    "caption": "Among all lines that separate the two classes, a support vector machine picks the one with the widest margin, the gap to the nearest points on each side. Only those closest points, the circled support vectors, determine the boundary; the margin width equals two over the norm of the weight vector, so maximizing it is what gives the model its strong generalization.",
+    "credit": "Larhmam",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:SVM_margin.png",
+    "provider": "Wikimedia Commons"
+  },
+  "swe-bench": {
+    "file": "swe-bench.png",
+    "alt": "A pipeline diagram: a real GitHub issue and a codebase feed a language model, which produces a generated pull request editing several files; a unit-test table then shows tests failing before the patch and passing after it.",
+    "caption": "Each SWE-bench task pairs a real GitHub issue with the actual repository, and the model must produce a patch. The patch is graded by running the project's hidden tests: the task counts as solved only when tests that failed before the change pass after it, an executable check with no partial credit.",
+    "credit": "Carlos E. Jimenez, John Yang, and SWE-bench authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://github.com/princeton-nlp/SWE-bench",
+    "provider": "princeton-nlp/SWE-bench"
+  },
+  "symbolic-ai": {
+    "file": "symbolic-ai.png",
+    "alt": "A game search tree with five levels that alternate between maximizing and minimizing players; leaf values at the bottom are propagated upward by taking the max or min at each level, selecting the best move at the root.",
+    "caption": "Symbolic AI produces intelligent behavior by searching a space of explicit possibilities. This minimax tree shows it: each level is a player choosing the largest or smallest value, and the scores at the leaves are propagated up the tree to pick the best move at the root. Reasoning here is search and rule-following over symbols, not learning from data.",
+    "credit": "Nuno Nogueira (Nmnogueira)",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Minimax.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "tangent-space": {
+    "file": "tangent-space.png",
+    "alt": "A sphere labeled M with a flat plane labeled T_p M resting against it at a point p, holding two vectors u and v drawn in the plane.",
+    "caption": "The tangent space at a point p of a manifold M is the flat plane that best touches the surface there, written T_p M. Although the manifold itself is curved, this plane is perfectly flat, so velocity vectors like u and v can be added, scaled, and compared with ordinary linear algebra.",
+    "credit": "Mathwriter2718",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Tangent_plane_to_sphere_with_vectors.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "task-decomposition": {
+    "file": "task-decomposition.png",
+    "alt": "A tree diagram with the top goal Supper at the root, branching into five subtasks (Menu, Preparation, Cooking, Meal, Cleanup), each of which branches further into concrete leaf tasks such as Menu Selected, Soup Prepared, Soup Cooked, Table Set, and Table Cleared.",
+    "caption": "Task decomposition breaks one large goal into a tree of smaller, tractable subtasks. The overall objective (Supper) is split into a few mid-level parts, each of which is split again into concrete actions an agent can carry out one at a time, then combine. The tree also exposes the dependencies (the cooking of a dish follows its preparation) that planning needs to sequence the work.",
+    "credit": "Practicalpm",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Work_Breakdown_Structure_-_Making_Supper.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "taylor-expansion": {
+    "file": "taylor-expansion.png",
+    "alt": "The sine curve in black with a sequence of Taylor polynomials of increasing degree overlaid in color; each higher-degree polynomial hugs the sine over a wider interval around the origin before peeling away.",
+    "caption": "A Taylor expansion approximates a function near a point by a polynomial built from its derivatives there. Centered at the origin, the degree-one term is the straight tangent line, and each higher-degree polynomial adds curvature and finer corrections, matching the black sine curve over an ever-wider interval.",
+    "credit": "IkamusumeFan",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sintay_SVG.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "the-bitter-lesson": {
+    "file": "the-bitter-lesson.png",
+    "alt": "Scatter plot with publication date on the horizontal axis and training computation in petaFLOP on a logarithmic vertical axis, with points for many AI systems rising by roughly twenty orders of magnitude from 1950 to the 2020s.",
+    "caption": "The bitter lesson argues that general methods which ride increasing computation tend to beat approaches built on hand-coded human knowledge. The resource those methods exploit is shown here: the compute used to train notable AI systems has grown by about twenty orders of magnitude since 1950 (note the logarithmic axis), and the methods that scale with it have repeatedly won.",
+    "credit": "Our World in Data (Epoch AI)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://ourworldindata.org/grapher/artificial-intelligence-training-computation",
+    "provider": "Our World in Data"
+  },
+  "topological-data-analysis": {
+    "file": "topological-data-analysis.png",
+    "alt": "A persistence diagram scatter plot of feature birth on the x-axis against feature death on the y-axis, with dimension-0 features as red dots and dimension-1 features as blue triangles, all lying above the diagonal; points far from the diagonal persist longest.",
+    "caption": "Topological data analysis summarizes the shape of data in a persistence diagram. As a distance threshold grows, topological features appear (birth) and vanish (death); dimension-0 points track connected components and dimension-1 points track loops. Points far above the diagonal live across many scales and signal real structure, while those hugging the diagonal are short-lived noise.",
+    "credit": "Rrrlw",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Persistence_Diagram.png",
+    "provider": "Wikimedia Commons"
+  },
+  "topology": {
+    "file": "topology.gif",
+    "alt": "Animation of a coffee mug smoothly deforming into a doughnut-shaped torus and back, with the mug's handle becoming the hole of the torus.",
+    "caption": "Topology studies the properties of a shape that survive continuous stretching and bending, with no tearing or gluing. By that standard a coffee mug and a doughnut are the same object: each has exactly one hole, and the animation deforms one into the other continuously, the handle becoming the torus hole.",
+    "credit": "Lucas Vieira",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Mug_and_Torus_morph.gif",
+    "provider": "Wikimedia Commons"
   },
   "transformer": {
     "file": "transformer.png",
@@ -527,6 +1737,26 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Example_architecture_of_U-Net_for_producing_k_256-by-256_image_masks_for_a_256-by-256_RGB_image.png",
+    "provider": "Wikimedia Commons"
+  },
+  "underfitting": {
+    "file": "underfitting.png",
+    "alt": "Three panels fitting polynomials of degree 1, 4, and 15 to the same noisy samples of a curved true function. Degree 1 is a straight line that misses the curve, degree 4 tracks the true function closely, and degree 15 wiggles through every point.",
+    "caption": "The degree-1 model on the left underfits: a straight line is too simple to capture the curve in the data, so it is systematically wrong even on the training samples and its error stays high. Adding capacity (the degree-4 fit in the middle) closes that gap before too much capacity tips over into overfitting on the right.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
+    "provider": "scikit-learn"
+  },
+  "vanishing-gradient": {
+    "file": "vanishing-gradient.png",
+    "alt": "Plot from minus ten to ten of the sigmoid function as a solid blue S-curve rising from zero to one, and its derivative as a red dashed curve that peaks at about 0.25 at the center and falls to near zero on both sides.",
+    "caption": "The sigmoid (blue) saturates for large positive or negative inputs, where its derivative (red) is nearly zero, and even at its center the derivative tops out around 0.25. Backpropagation multiplies one such factor per layer, so a chain of these small numbers shrinks the gradient toward zero in early layers, the vanishing gradient that stalls deep training.",
+    "credit": "Unknown",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sigmoid-derivative.png",
     "provider": "Wikimedia Commons"
   },
   "variance": {
@@ -578,5 +1808,35 @@
     "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
     "source": "https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html",
     "provider": "scikit-learn"
+  },
+  "weisfeiler-leman-test": {
+    "file": "weisfeiler-leman-test.png",
+    "alt": "Two different graphs drawn one above the other, both colored by the same color-refinement procedure; the red, green, and blue color classes occur in identical counts in both graphs even though the graphs are not isomorphic.",
+    "caption": "The Weisfeiler-Leman test colors nodes by iteratively hashing each node's color together with its neighbors' colors. These two graphs are not isomorphic, yet they refine to the same histogram of colors, so the test cannot tell them apart. Because standard message-passing networks are exactly as powerful as this test, they cannot distinguish such graphs either, which sets a hard ceiling on their expressiveness.",
+    "credit": "NickDiCicco",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:GNN_representational_limits.png",
+    "provider": "Wikimedia Commons"
+  },
+  "working-memory": {
+    "file": "working-memory.png",
+    "alt": "Diagram of the Baddeley and Hitch working memory model. A Central Executive at the top connects with two-way arrows to three subsystems: the Phonological Loop, the Visuo-spatial Sketchpad, and the Episodic Buffer.",
+    "caption": "The influential Baddeley and Hitch model treats working memory as several components, not one store. A central executive directs attention and coordinates a phonological loop for verbal material, a visuo-spatial sketchpad for imagery, and an episodic buffer that binds them. Because verbal and spatial material use different subsystems, two verbal tasks interfere far more than a verbal and a spatial one.",
+    "credit": "Andykitchen",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BaddeleysWorkingMemory.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "world-model": {
+    "file": "world-model.png",
+    "alt": "Diagram of an agent with a world model across three time steps: at each step an observation from the environment is compressed by a Vision model V into a low-dimensional latent vector, a Memory RNN M integrates the history of those codes to predict future states, and a small Controller C uses the representations from V and M to select an action that feeds back into the environment.",
+    "caption": "A world model splits an agent into a perception part and a dynamics part. A Vision model (V) compresses each raw observation into a compact latent vector, a Memory model (M) integrates the history of those codes to predict how the latent state evolves, and a small Controller (C) chooses actions from V and M. Once the agent can predict what happens next, it can plan inside its own learned simulation rather than only by acting in the real environment.",
+    "credit": "David Ha and Jurgen Schmidhuber",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://worldmodels.github.io/",
+    "provider": "World Models (worldmodels.github.io)"
   }
 }

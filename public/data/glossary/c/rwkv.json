@@ -65,5 +65,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/rwkv.png",
+    "alt": "Architecture diagram of one RWKV block: an input embedding passes up through a Layer Norm into a Time Mix block and then another Layer Norm into a Channel Mix block, with token-shift operations feeding each, and a final Layer Norm and output embedding; the time-mix block maintains a running weighted sum gated by a receptance term, and the channel-mix block plays the role of the feed-forward layer.",
+    "caption": "RWKV replaces self-attention with two interacting sub-blocks stacked in each layer. The Time Mix block plays the role of attention but, instead of comparing all pairs of tokens, maintains a running exponentially weighted sum of past key and value signals gated by a receptance term; the Channel Mix block plays the role of the feed-forward layer. Because the time decay lets the past be carried in a single fixed-size state, the same model has an equivalent recurrent form that generates in constant memory and a parallel form that trains efficiently.",
+    "credit": "Bo Peng (BlinkDL/RWKV-LM)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/BlinkDL/RWKV-LM",
+    "provider": "BlinkDL/RWKV-LM (GitHub)"
+  }
 }

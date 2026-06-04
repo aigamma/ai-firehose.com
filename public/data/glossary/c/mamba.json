@@ -69,5 +69,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/mamba.png",
+    "alt": "Diagram of a selective state space model: a hidden state h flows from left (h at t minus 1) to right (h at t) through the state matrix A; the current input x at t is passed through a Project block (the selection mechanism) to produce the input-dependent matrices B, C, and the step size delta, which are discretized and combined to update the state and emit output y, with a side note showing fast GPU SRAM versus slower GPU HBM memory.",
+    "caption": "Mamba makes the state space recurrence selective: the input x is projected to produce the matrices B and C and the step size delta as functions of the current token, so the model decides token by token what to write into its hidden state and what to discard. Because this input-dependent recurrence can no longer be run as a fixed convolution, Mamba uses a hardware-aware scan that keeps the large state in fast GPU SRAM rather than slower HBM.",
+    "credit": "Albert Gu, Tri Dao (state-spaces/mamba)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/state-spaces/mamba",
+    "provider": "state-spaces/mamba (GitHub)"
+  }
 }

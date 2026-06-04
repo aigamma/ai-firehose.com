@@ -364,7 +364,24 @@ async function finalize({ keepStage = false } = {}) {
   for (const slug of Object.keys(final).sort()) ordered[slug] = final[slug];
   writeFileSync(IMAGES_JSON, `${JSON.stringify(ordered, null, 2)}\n`);
 
-  if (!keepStage && existsSync(STAGE_DIR)) rmSync(STAGE_DIR, { recursive: true, force: true });
+  // Drain staging: a staged slug that succeeded is now baked into images.json, so remove
+  // it from its staging file; only failures (e.g. a transient 429) are kept for the next
+  // finalize run, which then retries just those. An emptied staging file is deleted. So
+  // re-running finalize converges (it never re-downloads what already succeeded) and never
+  // loses a straggler. `--keep-stage` leaves staging untouched, for inspection.
+  if (!keepStage && existsSync(STAGE_DIR)) {
+    const succeeded = new Set(Object.keys(final));
+    for (const f of readdirSync(STAGE_DIR)) {
+      if (!f.endsWith(".json")) continue;
+      const p = join(STAGE_DIR, f);
+      const rows = readJson(p, {});
+      const remaining = {};
+      for (const [slug, row] of Object.entries(rows)) if (!succeeded.has(slug)) remaining[slug] = row;
+      if (Object.keys(remaining).length === 0) rmSync(p, { force: true });
+      else writeFileSync(p, `${JSON.stringify(remaining, null, 2)}\n`);
+    }
+    if (readdirSync(STAGE_DIR).length === 0) rmSync(STAGE_DIR, { recursive: true, force: true });
+  }
 
   console.log(`finalize: kept ${kept.length}, dropped ${dropped.length}`);
   for (const k of kept) console.log(`  + ${k}`);
