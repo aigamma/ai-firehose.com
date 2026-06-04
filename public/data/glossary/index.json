@@ -1040,7 +1040,7 @@
         "Bayesian reasoning",
         "posterior inference"
       ],
-      "def_snippet": "A framework that treats unknown quantities as random variables with probability distributions, starting from a prior and using observed data to compute a posterior distribution of belief through Bayes' theorem.",
+      "def_snippet": "The framework that treats everything unknown, including a model's parameters, as a probability distribution rather than a single best value, updating a prior into a posterior as data arrives. Its defining move is carrying uncertainty through every conclusion, and it reveals that point estimates like MLE are just its impoverished special case, the peak of the posterior with the rest thrown away.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -1370,7 +1370,7 @@
       "aliases": [
         "CLT"
       ],
-      "def_snippet": "The result that the sum or average of many independent random variables tends toward a Gaussian distribution regardless of the original distribution, explaining why the normal distribution appears so pervasively in statistics and machine learning.",
+      "def_snippet": "The result that the sum or average of many independent random variables tends toward a Gaussian regardless of the original distributions, which is why the bell curve appears so universally. It also fixes the rate at which uncertainty shrinks, like one over the square root of the sample size, so quadrupling your data only halves your error.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -2101,7 +2101,7 @@
         "correlation",
         "cross-covariance"
       ],
-      "def_snippet": "A measure of how two random variables vary together, positive when they move in the same direction and negative when they move oppositely, generalized for many variables into the covariance matrix that underlies principal component analysis and the multivariate Gaussian.",
+      "def_snippet": "A measure of how two random variables move together, positive when they rise and fall in step, negative when they trade off. Gathered for many variables into the covariance matrix, it is the shape of a multivariate Gaussian and the object PCA decomposes, but it sees only linear relationships, so zero covariance does not mean independence.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -5777,7 +5777,7 @@
         "Markov property",
         "transition matrix"
       ],
-      "def_snippet": "A sequence of random states in which the next state depends only on the current one and not on the full history, the memoryless model whose transition and stationary distributions underlie sampling algorithms, language models, and reinforcement learning.",
+      "def_snippet": "A model of a system that hops between states where the next state depends only on the present one, not the whole history. That single memoryless assumption is what makes otherwise intractable sequences analyzable, and its stationary distribution, the long-run fraction of time in each state, turns out to be an eigenvector, the same math behind MCMC sampling and PageRank.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -9047,7 +9047,7 @@
         "softargmax",
         "normalized exponential"
       ],
-      "def_snippet": "A function that turns a vector of real-valued scores into a probability distribution by exponentiating each score and normalizing, used to produce categorical outputs and attention weights in neural networks.",
+      "def_snippet": "A function that turns a vector of real-valued scores into a probability distribution by exponentiating each and normalizing. It is the bridge from a network's unconstrained internal numbers to the probabilities a task needs, the final layer of nearly every classifier, the weighting inside attention, and, not by accident, the Boltzmann distribution of statistical physics.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
