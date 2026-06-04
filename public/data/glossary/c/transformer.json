@@ -97,27 +97,27 @@
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
-  "definition": "A neural network architecture built around self-attention rather than recurrence or convolution, which processes a whole sequence in parallel and has become the foundation of nearly every modern large language model.",
+  "definition": "A neural architecture that processes a whole sequence at once through self-attention, having deleted the recurrence and convolution everyone assumed a sequence model needed. That removal is the point: with no step-by-step dependency, the entire sequence trains in parallel, which is what unlocked the scale behind every modern large language model.",
   "body": [
     {
       "type": "p",
-      "text": "The transformer is the architecture that reshaped natural language processing and now underpins most of modern AI. Introduced in 2017 in the paper \"Attention Is All You Need,\" it replaced the recurrent and convolutional designs that came before it with a stack built almost entirely from self-attention and ordinary feedforward layers. Its central idea is that a model does not need to read a sequence left to right; it can look at every position at once and let the data decide which positions matter to which."
+      "text": "The transformer's radical move was a deletion. For years a sequence model meant recurrence, processing tokens one after another while carrying a hidden state, or convolution over local windows. The 2017 paper that introduced the transformer threw both out, and its title said so: \"Attention Is All You Need.\" The bet was that self-attention alone, letting every token look directly at every other and decide what matters, could replace the sequential machinery entirely. It could, and the architecture that resulted now underpins nearly all of modern AI."
     },
     {
       "type": "p",
-      "text": "A transformer processes a sequence by first turning each token into a vector through a token embedding, then adding a positional encoding so the model knows where each token sits. The result flows through a stack of identical layers, each of which contains two main parts: a multi-head attention block that mixes information across positions, and a position-wise feedforward network that transforms each position on its own. Residual connections and layer normalization wrap both parts, which is what lets the stack grow to dozens or hundreds of layers without the signal degrading."
+      "text": "The reason this mattered is not mainly that attention models language better, though it does; it is that removing recurrence removed the sequential bottleneck. A recurrent network must finish token five before it can start token six, so a sequence is processed strictly in order, one step at a time. Self-attention has no such dependency: every position is computed at once, in parallel, which maps directly onto the matrix-multiply hardware that GPUs and TPUs are built for. That parallelism is what let practitioners train on far more data than recurrence ever allowed, and it is the precondition the scaling laws exploit. The transformer did not just raise quality, it made scale affordable."
     },
     {
       "type": "p",
-      "text": "The architecture comes in three shapes. The original encoder-decoder form, used for translation, reads a source sequence with an encoder and generates a target with a decoder that attends back to it. Encoder-only models such as BERT keep only the reading half and are used for classification and retrieval. Decoder-only models, which include the GPT family and most large language models, keep only the generating half and are trained for next-token prediction, attending only to tokens already produced."
+      "text": "Mechanically, a transformer turns each token into a vector with a token embedding, adds a positional encoding so the otherwise order-blind attention knows where each token sits, and passes the result through a stack of identical layers. Each layer has two parts: a multi-head attention block that mixes information across positions, and a position-wise feedforward network that transforms each position on its own. A residual connection and layer normalization wrap both, which is what lets the stack run dozens or hundreds of layers deep without the signal degrading on the way through."
     },
     {
       "type": "p",
-      "text": "What made the transformer dominant is that it is parallel and it scales. Because self-attention has no sequential dependency across positions, every token in a sequence is processed at the same time, which maps efficiently onto modern accelerators and let practitioners train on far more data than recurrent models ever could. That trainability is precisely what the scaling laws exploit: pour in more parameters, more data, and more compute, and transformer performance improves smoothly and predictably."
+      "text": "The architecture comes in three shapes that correspond to three jobs. The original encoder-decoder form reads a source with one stack and generates a target with another that attends back to it, the natural fit for translation. Encoder-only models like BERT keep just the reading half, for understanding tasks such as classification and retrieval. Decoder-only models keep just the generating half, attend only to tokens already produced, and train on next-token prediction; this is the shape of the GPT family and almost every large language model, because it scaled the best across the broadest range of text."
     },
     {
       "type": "p",
-      "text": "The price of this design is that attention costs grow quadratically with sequence length, which is the pressure behind the context window limit and the many efficiency techniques (the kv-cache, sparse and linear attention) that try to relax it. Even so, the core recipe has proven remarkably general, carrying over from text to images, audio, code, and protein structure, which is why the transformer is now treated less as one model and more as a default substrate for sequence learning."
+      "text": "The bill for letting every token see every other is quadratic: attention cost grows with the square of the sequence length, which is the pressure behind the context window limit and the long line of efficiency work, the kv-cache, sparse and linear attention, that tries to relax it. Even so, the core recipe proved startlingly general, carrying from text to images, audio, code, and protein structure, which is why the transformer is now treated less as one model than as the default substrate for learning on sequences of anything."
     }
   ],
   "related": [
