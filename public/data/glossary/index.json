@@ -3502,7 +3502,7 @@
         "wide minima",
         "sharp minima"
       ],
-      "def_snippet": "Minima of the loss where the loss stays low across a wide neighborhood of the parameters, a low-curvature basin that is empirically linked to better generalization than a narrow, sharp minimum.",
+      "def_snippet": "Minima where the loss stays low across a wide neighborhood of the weights, low-curvature basins empirically linked to better generalization than narrow, sharp ones. The reason is robustness: the test loss surface is a slightly shifted copy of the training one, so a wide basin stays low under the shift while a sharp one falls off its steep wall.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -4571,7 +4571,7 @@
         "implicit bias",
         "implicit bias of gradient descent"
       ],
-      "def_snippet": "The tendency of an optimization algorithm to prefer some solutions over others among the many that fit the training data equally well, even with no explicit penalty added to the loss.",
+      "def_snippet": "The tendency of an optimization algorithm to prefer some solutions over others among the many that fit the data equally well, with no penalty added to the loss. It is the leading explanation for why overparameterized networks generalize: the dynamics, not the objective, quietly select good minima, which is also why optimizer, learning rate, batch size, and initialization are never neutral choices.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -4656,7 +4656,7 @@
         "IB",
         "information bottleneck principle"
       ],
-      "def_snippet": "A principle that frames learning as compressing the input into a representation that discards everything irrelevant while keeping the information needed to predict the target.",
+      "def_snippet": "A principle that frames learning as compression: find a representation that throws away everything about the input irrelevant to the label while keeping everything that predicts it. The ideal is a minimal sufficient statistic of the input for the task, and a celebrated, contested claim is that deep networks reach it through a long \"compression phase\" of training.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -5641,7 +5641,7 @@
         "winning ticket",
         "lottery tickets"
       ],
-      "def_snippet": "The conjecture that a randomly initialized dense network contains a small subnetwork which, trained in isolation from its original initialization, can match the full network's accuracy.",
+      "def_snippet": "The conjecture that a randomly initialized dense network already contains a small subnetwork which, trained alone from its original initialization, matches the full network's accuracy. Its deeper implication is that overparameterization helps mainly by buying more \"lottery tickets\", a search advantage in finding a trainable solution, not a representational necessity.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -6219,7 +6219,7 @@
         "linear mode connectivity",
         "loss landscape connectivity"
       ],
-      "def_snippet": "The finding that distinct minima reached by independent training runs are not isolated valleys but are joined by continuous paths through the loss landscape along which the loss stays low.",
+      "def_snippet": "The finding that distinct minima from independent training runs are not isolated valleys but are joined by continuous low-loss paths through the loss landscape. Permutation symmetry explains much of it: once you align two networks' hidden units, the barrier between them often collapses, suggesting that up to symmetry the good solutions occupy essentially one connected region.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -6789,7 +6789,7 @@
         "NTK",
         "tangent kernel"
       ],
-      "def_snippet": "A kernel that describes how an infinitely wide neural network evolves under gradient descent, showing that in this limit training reduces to a linear model in a fixed feature space.",
+      "def_snippet": "A kernel describing how an infinitely wide network evolves under gradient descent. The startling result is that in the infinite-width limit the kernel freezes, so a famously nonlinear, nonconvex network trains exactly like a linear model in a fixed feature space, which makes it both a rare analytic handle on deep learning and a foil that reveals what real, finite networks gain from learning their features.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -8907,7 +8907,7 @@
       "aliases": [
         "SAM"
       ],
-      "def_snippet": "An optimization method that minimizes not the loss at a point but the worst-case loss in a small neighborhood around it, steering training toward flat, low-curvature minima that tend to generalize better.",
+      "def_snippet": "An optimizer that minimizes not the loss at a point but the worst-case loss in a small ball around it, steering training toward flat, low-curvature minima. Its contribution is to make flatness a training target rather than an after-the-fact property of solutions, which it buys with a clever two-step update costing roughly two gradients per step.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
