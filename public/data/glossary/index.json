@@ -2031,7 +2031,7 @@
         "ConvNet",
         "convolutional network"
       ],
-      "def_snippet": "A neural network that applies learnable convolutional filters across an input grid such as an image, exploiting spatial locality and weight sharing to detect translation-invariant features with far fewer parameters than a fully connected network.",
+      "def_snippet": "A neural network for grid data like images that slides small learnable filters across the input, reusing the same weights at every position. That weight sharing is not a trick but a baked-in assumption, that a pattern means the same thing wherever it appears, which lets a CNN see images with a tiny fraction of the parameters a fully connected network would need.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -5548,7 +5548,7 @@
         "LSTM",
         "long short-term memory network"
       ],
-      "def_snippet": "A gated recurrent network that adds a protected cell state and input, forget, and output gates, letting it carry information across many time steps and learn long-range dependencies that a plain recurrent network cannot.",
+      "def_snippet": "A recurrent network built around a protected cell state that information can ride along almost untouched, with learned input, forget, and output gates deciding what to write, keep, and read. The design exists to give the gradient a route through time that is added to rather than repeatedly multiplied, the multiplication that destroys memory in a plain recurrent network.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
