@@ -9,19 +9,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A stabilization technique that caps the magnitude of gradients before an update, preventing an occasional huge gradient from blowing up the weights; it is especially important in recurrent networks and large-model training.",
+  "definition": "A guardrail that caps the size of the gradient before each update, so one freakishly large gradient cannot blow the weights apart or poison the run with NaNs. It treats the symptom of instability, which is why it pairs with the structural fixes, good initialization, normalization, residuals, that address the cause.",
   "body": [
     {
       "type": "p",
-      "text": "Gradient clipping is a simple guardrail against one bad step ruining training. Backpropagation occasionally produces a gradient that is enormous, far larger than usual, and applying it would send the weights flying, destroying learned structure or producing NaNs that poison the rest of training. Clipping bounds the size of the update so a single outsized gradient cannot do that damage."
+      "text": "Gradient clipping is a guardrail against one bad step wrecking an entire training run. Backpropagation occasionally produces a gradient far larger than usual, and applying it would fling the weights across the loss landscape, destroying learned structure or producing NaNs that then poison every subsequent step. Clipping bounds the size of the update so a single outsized gradient cannot do that damage, a cheap insurance policy against a rare but catastrophic event."
     },
     {
       "type": "p",
-      "text": "The common form is clip-by-norm: if the overall norm of the gradient exceeds a threshold, the whole gradient is rescaled down to that norm, which limits the step's magnitude while preserving its direction. A blunter variant, clip-by-value, caps each component individually. Either way the cost is negligible and the protection is real."
+      "text": "The common form is clip-by-norm: if the overall norm of the gradient exceeds a threshold, the whole gradient is rescaled down to that norm, capping the step's magnitude while preserving its direction, which is the property that matters, since you still want to move the right way, just not too far. A blunter variant, clip-by-value, caps each component individually but can distort the direction. Either way the computational cost is negligible and the protection is real."
     },
     {
       "type": "p",
-      "text": "It matters most where exploding gradients are common: recurrent networks unrolled over long sequences, and the training of very deep or very large models, where it is a standard ingredient of the recipe. Clipping treats the symptom; it pairs with the structural fixes for instability, good weight initialization, normalization, and residual connections, that address why the gradients grow in the first place."
+      "text": "It earns its place where exploding gradients are common: recurrent networks unrolled over long sequences, where the same weights are multiplied through many time steps, and the training of very deep or very large models, where it is a standard line in the recipe. The framing worth keeping is that clipping treats the symptom rather than the disease. It pairs with the structural fixes that address why gradients grow in the first place, careful weight initialization, normalization layers, and residual connections, and the combination is what keeps large modern training runs from diverging."
     }
   ],
   "related": [

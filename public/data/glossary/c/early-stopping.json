@@ -89,19 +89,19 @@
   "category": "Optimization",
   "durable": true,
   "source": "authored",
-  "definition": "A regularization technique that halts training when performance on a held-out validation set stops improving, capturing the model at its point of best generalization before it begins to overfit the training data.",
+  "definition": "Halting training when held-out validation performance stops improving, capturing the model at its point of best generalization just before it tips into overfitting. It is the cheapest regularizer there is, because it changes nothing about the model or the loss, only the moment you stop.",
   "body": [
     {
       "type": "p",
-      "text": "Early stopping watches the model generalize and pulls the plug at the right moment. During training the loss on the training data keeps falling, but the loss on a held-out validation set typically falls for a while and then turns and rises, the point where the model stops learning general patterns and starts memorizing the training set. Early stopping monitors that validation curve and ends training at the bottom of it, keeping the checkpoint from just before overfitting set in."
+      "text": "Early stopping watches a model generalize and pulls the plug at the right moment. As training proceeds the loss on the training data keeps falling, but the loss on a held-out validation set typically falls for a while, then turns and rises, marking the point where the model stops learning general patterns and starts memorizing the training set. Early stopping monitors that validation curve and ends training at the bottom of it, keeping the checkpoint from just before overfitting set in."
     },
     {
       "type": "p",
-      "text": "In practice it does not stop at the very first uptick, which could be noise; it waits a set number of evaluations without improvement (the patience) and then stops, restoring the best weights seen. This makes it both a stopping rule and a model-selection rule."
+      "text": "In practice it does not quit at the very first uptick, which might be noise; it waits a set number of evaluations with no improvement, the patience, and then stops, restoring the best weights it saw. That makes it both a stopping rule and a model-selection rule in one, which is part of why it is so widely used."
     },
     {
       "type": "p",
-      "text": "It is one of the cheapest and most widely used forms of regularization, because it changes nothing about the model or the loss, only when to quit. Conceptually it limits how far the model travels into the overfitting regime, complementing other regularizers like weight decay and dropout, and it directly embodies the bias-variance tradeoff: stop too early and the model underfits, too late and it overfits, so the validation set picks the sweet spot."
+      "text": "It is the cheapest and one of the most common forms of regularization precisely because it touches neither the model nor the loss, only the decision of when to quit. Conceptually it bounds how far the model is allowed to travel into the overfitting regime, complementing regularizers like weight decay and dropout that act on the parameters directly, and it is the bias-variance tradeoff made operational: stop too early and the model underfits, too late and it overfits, so the validation curve picks the sweet spot for you. A regularizer that costs nothing and selects the best checkpoint as a side effect is a rare bargain."
     }
   ],
   "related": [

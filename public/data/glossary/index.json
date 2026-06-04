@@ -118,7 +118,7 @@
         "adaptive gradient algorithm",
         "adaptive subgradient method"
       ],
-      "def_snippet": "An optimizer that gives each parameter its own learning rate by dividing the global rate by the square root of the sum of that parameter's past squared gradients, so rarely updated parameters take large steps and frequently updated ones take small steps.",
+      "def_snippet": "The first widely used optimizer to give each parameter its own learning rate, dividing the global rate by the square root of the sum of that parameter's past squared gradients. It is the conceptual seed of RMSprop and Adam, and its one fatal flaw, an ever-growing accumulator that decays the rate to zero, is exactly what those successors were built to repair.",
       "durable": true,
       "category": "Optimization"
     },
@@ -2780,7 +2780,7 @@
       "aliases": [
         "early stopping"
       ],
-      "def_snippet": "A regularization technique that halts training when performance on a held-out validation set stops improving, capturing the model at its point of best generalization before it begins to overfit the training data.",
+      "def_snippet": "Halting training when held-out validation performance stops improving, capturing the model at its point of best generalization just before it tips into overfitting. It is the cheapest regularizer there is, because it changes nothing about the model or the loss, only the moment you stop.",
       "durable": true,
       "category": "Optimization"
     },
@@ -4056,7 +4056,7 @@
         "gradient clipping",
         "clip-by-norm"
       ],
-      "def_snippet": "A stabilization technique that caps the magnitude of gradients before an update, preventing an occasional huge gradient from blowing up the weights; it is especially important in recurrent networks and large-model training.",
+      "def_snippet": "A guardrail that caps the size of the gradient before each update, so one freakishly large gradient cannot blow the weights apart or poison the run with NaNs. It treats the symptom of instability, which is why it pairs with the structural fixes, good initialization, normalization, residuals, that address the cause.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5249,7 +5249,7 @@
         "warmup",
         "linear warmup"
       ],
-      "def_snippet": "A training technique that begins with a very small learning rate and ramps it up to the target value over the first hundreds or thousands of steps, stabilizing the early phase of training when gradients and adaptive statistics are still unreliable.",
+      "def_snippet": "Beginning training with a near-zero learning rate and ramping it up over the first hundreds or thousands of steps, to survive the most fragile moment in a run: the start. It is near-mandatory for transformers trained with Adam, because the optimizer's early per-parameter statistics are estimated from almost no data and would otherwise take wild, high-variance steps.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5353,7 +5353,7 @@
         "EvoLved Sign Momentum",
         "Lion"
       ],
-      "def_snippet": "A memory-efficient optimizer, discovered by automated program search, that updates each parameter using only the sign of a momentum-smoothed gradient, tracking one running average instead of the two that Adam maintains.",
+      "def_snippet": "A memory-efficient optimizer, discovered by automated program search rather than designed by hand, that moves every parameter by a fixed amount in the direction of the sign of a momentum-smoothed gradient. Tracking one running average instead of Adam's two halves the optimizer memory, and its sign-only step is a rare case of machine search producing something simple enough to write down.",
       "durable": true,
       "category": "Optimization"
     },
@@ -6699,7 +6699,7 @@
         "NAG",
         "lookahead momentum"
       ],
-      "def_snippet": "A refinement of momentum that evaluates the gradient at a look-ahead point, the position momentum is about to carry the parameters to, rather than at the current position, giving a more responsive and theoretically faster-converging update.",
+      "def_snippet": "A refinement of momentum that samples the gradient at a look-ahead point, where the velocity is about to carry the parameters, rather than where they are now. The result anticipates an overshoot instead of reacting to it after the fact, and in convex theory it reaches the optimal convergence rate any gradient-only method can achieve.",
       "durable": true,
       "category": "Optimization"
     },
