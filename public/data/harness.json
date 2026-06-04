@@ -1,0 +1,55 @@
+{
+  "generated": "2026-06-04",
+  "latest_lesson": "Session 10, 2026-06-03: A review pass, the gates' blind spots, and run-to-completion",
+  "metrics": {
+    "durable_concepts": 551,
+    "index_entries": 941,
+    "categories": 31,
+    "cross_category_links": 139,
+    "corpus_items": 258,
+    "corpus_concepts": 427,
+    "source_adapters": 7,
+    "staleness_gates": 3,
+    "automated_checks": 20,
+    "tier2_docs": 8,
+    "vendor_pointers": 5,
+    "lessons_sessions": 10
+  },
+  "pillars": [
+    {
+      "key": "conventions",
+      "title": "Conventions It Auto-Loads",
+      "count": 6,
+      "unit": "entry points",
+      "body": "A new agent in any tool inherits the same rules. CLAUDE.md is auto-loaded as the canonical guide; AGENTS.md and the per-vendor pointer files (Cursor, Copilot, OpenCode, Gemini) delegate to it, so there is one source of truth and no drift."
+    },
+    {
+      "key": "memory",
+      "title": "Persistent Memory That Does Not Decay",
+      "count": 10,
+      "unit": "logged sessions",
+      "body": "Session chat is forgotten; the repository is not. Every durable lesson is appended to LESSONS_LEARNED.md, every plan to the ROADMAP, every run to the ingestion log. The rule is to route an insight to the right file before the turn ends, so the next agent starts where the last one stopped."
+    },
+    {
+      "key": "gates",
+      "title": "Automated Anti-Staleness Gates",
+      "count": 3,
+      "unit": "gates",
+      "body": "The durable-docs rule is enforced by code, not goodwill. Committed checks fail the build if a doc names a file that does not exist, if a knowledge-graph cross-link dangles, or if a forbidden em dash slips into authored prose. A working tree where the docs lie does not merge."
+    },
+    {
+      "key": "fanout",
+      "title": "Multi-Agent Fan-Out On Idempotent Contracts",
+      "count": 7,
+      "unit": "source adapters",
+      "body": "Work parallelizes across many agents because the contracts are deterministic and idempotent: content-hash vector ids, a pinned precompute, a self-expiring corpus. Ten agents can author the glossary at once, or one can rebuild every artifact offline, and the output is the same."
+    },
+    {
+      "key": "knowledge",
+      "title": "The Durable Layer It Keeps Fresh",
+      "count": 551,
+      "unit": "authored concepts",
+      "body": "All of the above exists to maintain something: a permanent, authored knowledge base woven into the live trending corpus, that the retention prune never touches and every deploy rebuilds. The harness is the gardener; this is the garden."
+    }
+  ]
+}

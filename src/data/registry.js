@@ -95,6 +95,7 @@ export const NAV = [
   { label: "Learn", route: "/learn" },
   { label: "Explore", route: "/explore" },
   { label: "Methodology", route: "/methodology" },
+  { label: "Harness", route: "/harness" },
 ];
 
 export const getHorizon = (key) => HORIZONS.find((h) => h.key === key) || HORIZONS.find((h) => h.key === DEFAULT_HORIZON);
