@@ -16,6 +16,10 @@ test("licenseOk accepts redistributable licenses, rejects NC/ND/non-free", () =>
   assert.ok(licenseOk("CC0"));
   assert.ok(licenseOk("Public domain"));
   assert.ok(licenseOk("PD-US"));
+  assert.ok(licenseOk("BSD-3-Clause"));
+  assert.ok(licenseOk("MIT License"));
+  assert.ok(licenseOk("Apache-2.0"));
+  assert.ok(!licenseOk("limit")); // must not match the 'mit' substring
   assert.ok(!licenseOk("CC BY-NC 4.0"));
   assert.ok(!licenseOk("CC BY-ND 4.0"));
   assert.ok(!licenseOk("CC BY-NC-SA 3.0"));

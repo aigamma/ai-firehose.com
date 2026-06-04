@@ -1,4 +1,14 @@
 {
+  "adagrad": {
+    "file": "adagrad.svg",
+    "alt": "Contour plot of an ill-conditioned objective with the AdaGrad optimizer path descending and turning to reach the minimum at the origin.",
+    "caption": "AdaGrad gives each parameter its own learning rate by dividing the step by the square root of the sum of that parameter's past squared gradients, so directions with large gradients are damped and rarely updated ones keep large steps. This per-parameter scaling lets it move efficiently across directions of very different steepness.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/adagrad.html",
+    "provider": "Dive into Deep Learning"
+  },
   "attention-mechanism": {
     "file": "attention-mechanism.png",
     "alt": "Overview diagram of an attention mechanism showing queries, keys, and values combined into weighted outputs",
@@ -19,6 +29,126 @@
     "source": "https://en.wikipedia.org/wiki/Autoencoder",
     "provider": "Wikimedia Commons"
   },
+  "batch-size": {
+    "file": "batch-size.svg",
+    "alt": "Plot of training loss versus wall-clock time on a log scale, comparing full-batch gradient descent, single-example stochastic gradient descent, and mini-batches of size 100 and 10.",
+    "caption": "Batch size is how many examples are used per update, and it trades gradient quality against speed. Full-batch descent takes accurate but slow steps and single-example updates are noisy; moderate mini-batches reach a low loss fastest in wall-clock time by using hardware efficiently while keeping the gradient stable.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/minibatch-sgd.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "bayes-theorem": {
+    "file": "bayes-theorem.png",
+    "alt": "Two probability tree diagrams of the same two events: the top tree branches on A first then B, the bottom tree branches on B first then A, with Bayes' theorem written between them.",
+    "caption": "Bayes' theorem inverts the direction of conditioning. The same joint probabilities can be factored two ways, conditioning on A first or on B first; Bayes' rule is the bridge that converts P(B given A) into P(A given B).",
+    "credit": "Gnathan87",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Bayes_theorem_tree_diagrams.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "bayesian-inference": {
+    "file": "bayesian-inference.png",
+    "alt": "Three panels labeled Prior, Likelihood, and Posterior: a broad prior over a parameter, a likelihood from the data, and a narrower posterior concentrated where the two agree.",
+    "caption": "Bayesian inference combines a prior distribution of belief with the likelihood of the observed data to produce a posterior distribution. The posterior concentrates where prior and data agree, carrying uncertainty forward rather than returning a single point estimate.",
+    "credit": "Rbb",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Prior,_Likelihood,_Posterior_schematic.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "central-limit-theorem": {
+    "file": "central-limit-theorem.png",
+    "alt": "Panels showing the distribution of the sum of n dice for n from 1 to 5: a flat bar chart for one die that grows more bell-shaped as more dice are added, with a final panel overlaying the curves against a normal.",
+    "caption": "The central limit theorem says sums of many independent variables tend toward a Gaussian. A single die is flat and uniform, but the distribution of the sum of several dice grows into the familiar bell curve as their number increases.",
+    "credit": "Cmglee",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Dice_sum_central_limit_theorem.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "conditional-probability": {
+    "file": "conditional-probability.png",
+    "alt": "Venn diagram of the numbers 1 to 10 split into a prime set and an even set, with only the number 2 in the overlap of both.",
+    "caption": "Conditioning restricts attention to a smaller world and renormalizes. Among 1 to 10 the even numbers are 2, 4, 6, 8, 10; given that a draw is even, the chance it is also prime is just one in five, since 2 is the only even prime.",
+    "credit": "Guy vandegrift",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Conditional_probability_venn_1-10.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "covariance": {
+    "file": "covariance.png",
+    "alt": "Grid of scatter plots: a top row showing correlation coefficients from plus one through zero to minus one, and a bottom row of strongly patterned shapes that all have a correlation of zero.",
+    "caption": "Covariance, normalized into the correlation coefficient, measures how two variables move together, from plus one through zero to minus one (top rows). It captures only linear association: the strongly dependent shapes in the bottom row all have a correlation of zero.",
+    "credit": "DenisBoigelot",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Correlation_examples2.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "cross-entropy": {
+    "file": "cross-entropy.png",
+    "alt": "Curve of log loss against the probability the model assigns to the true class, near zero when that probability approaches one and rising steeply toward infinity as it approaches zero.",
+    "caption": "Cross-entropy, the log loss used to train classifiers, penalizes the probability a model assigns to the correct class. The loss is small when that probability is near one and grows without bound as it approaches zero, punishing confident wrong predictions hardest.",
+    "credit": "Bfortuner",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Log-loss-curve.png",
+    "provider": "Wikimedia Commons"
+  },
+  "data-augmentation": {
+    "file": "data-augmentation.jpg",
+    "alt": "One photograph of a rock surface turned into several training variants: a set of random crops in the top row and a horizontally flipped copy in the bottom row, each still showing the same rock.",
+    "caption": "Data augmentation manufactures new training examples by transforming existing ones in ways that change appearance but not the label. A single rock photo yields many random crops and a horizontal flip; the network sees far more data than was collected and is pushed to rely on features that survive these transformations rather than memorizing the original.",
+    "credit": "TseKiChun",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Data_Augmentation_of_rock_images_revised.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "early-stopping": {
+    "file": "early-stopping.png",
+    "alt": "Plot of error versus number of training iterations: the training-set error keeps falling while the validation-set error falls, reaches a minimum, then rises, with the minimum marked as the early-stopping point.",
+    "caption": "As training proceeds the training error keeps falling, but the held-out validation error falls only until the model starts to overfit, then turns and rises. Early stopping ends training at the bottom of the validation curve, keeping the checkpoint with the best generalization.",
+    "credit": "Ramazan Gençay",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Early-Stopping_Graph.png",
+    "provider": "Wikimedia Commons"
+  },
+  "entropy": {
+    "file": "entropy.png",
+    "alt": "Plot of the entropy of a single binary variable against its probability of being one, forming a curve that peaks at one bit when the probability is one half and falls to zero at both ends.",
+    "caption": "Entropy measures average uncertainty. For one coin it is largest, one full bit, when the outcome is a fair fifty-fifty and hardest to predict, and it falls to zero at the certain ends where the result carries no information.",
+    "credit": "Brona and Alessio Damato",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Binary_entropy_plot.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "expectation": {
+    "file": "expectation.png",
+    "alt": "Two right-skewed distributions with vertical lines marking the mode, median, and mean, where the mean sits farthest to the right toward the long tail.",
+    "caption": "The expectation, or mean, is the probability-weighted average of every outcome, so on a skewed distribution it is pulled toward the long tail and sits to the right of the mode (the peak) and the median (the middle value).",
+    "credit": "Cmglee",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Comparison_mean_median_mode.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "feature-pyramid": {
+    "file": "feature-pyramid.png",
+    "alt": "A pyramid of an image at successive scales, from Level 0 (original resolution) at the base up to Level 4 (one sixteenth resolution) at the apex, each higher level produced by blurring and subsampling the one below.",
+    "caption": "Scale variation is solved by representing an image at several resolutions at once. Each level is the one below blurred and subsampled, so fine, high-resolution maps near the base catch small objects and coarse maps near the apex catch large ones. A feature pyramid reads predictions from multiple levels for this reason.",
+    "credit": "Cmglee",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Image_pyramid.svg",
+    "provider": "Wikimedia Commons"
+  },
   "fourier-transform": {
     "file": "fourier-transform.png",
     "alt": "Frequency-domain plot of a piano chord produced by a constant-Q transform",
@@ -37,6 +167,16 @@
     "license": "Public domain",
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://en.wikipedia.org/wiki/Normal_distribution",
+    "provider": "Wikimedia Commons"
+  },
+  "gaussian-splatting": {
+    "file": "gaussian-splatting.png",
+    "alt": "The 3D Gaussian splatting pipeline: structure-from-motion points initialize a set of 3D Gaussians, which are projected with a camera pose and passed through a differentiable tile rasterizer to render an image, with adaptive density control and gradient flow refining the Gaussians.",
+    "caption": "Gaussian splatting stores a scene explicitly as many 3D Gaussian blobs rather than in a network's weights. Starting from sparse structure-from-motion points, the Gaussians are projected for a given camera and rasterized into an image; gradients from the rendered image then refine each Gaussian's position, shape, color, and opacity, and adaptive density control adds or removes blobs.",
+    "credit": "Bernhard Kerbl, Georgios Kopanas, Thomas Leimkuhler, George Drettakis",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Methodology.png",
     "provider": "Wikimedia Commons"
   },
   "generative-adversarial-network": {
@@ -69,6 +209,26 @@
     "source": "https://en.wikipedia.org/wiki/Gradient_descent",
     "provider": "Wikimedia Commons"
   },
+  "image-classification": {
+    "file": "image-classification.png",
+    "alt": "Diagram of a convolutional network classifying an image: an input picture passes through convolutional and pooling layers, is flattened, runs through fully connected layers, and outputs class probabilities Rabbit 0.7, Horse 0.3, Pig 0.2.",
+    "caption": "Image classification compresses a whole image down to one labeled decision. Convolutional and pooling layers learn features, the result is flattened and passed through connected layers, and a final layer scores each candidate category, here reading the picture as a rabbit with probability 0.7.",
+    "credit": "Irisbox",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Convolutional_Neural_Network.png",
+    "provider": "Wikimedia Commons"
+  },
+  "instance-segmentation": {
+    "file": "instance-segmentation.webp",
+    "alt": "The same photo of balloons shown under four vision tasks: classification (one label), semantic segmentation (all balloons one color), object detection (a labeled box per balloon), and instance segmentation (a distinct colored mask and box for each balloon).",
+    "caption": "The four core vision tasks on one scene. Classification gives a single label; semantic segmentation paints every balloon the same class color; object detection draws a box per object; instance segmentation, bottom right, gives each individual balloon its own pixel-accurate mask, separating two balloons of the same class as distinct instances.",
+    "credit": "Vandyahmad24",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mask_R-CNN.webp",
+    "provider": "Wikimedia Commons"
+  },
   "kalman-filter": {
     "file": "kalman-filter.png",
     "alt": "Diagram illustrating the predict and update cycle of the Kalman filter estimating a system state over time",
@@ -77,6 +237,86 @@
     "license": "CC0",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://en.wikipedia.org/wiki/Kalman_filter",
+    "provider": "Wikimedia Commons"
+  },
+  "kl-divergence": {
+    "file": "kl-divergence.png",
+    "alt": "Two bar charts side by side over the outcomes 0, 1, 2: distribution P is a skewed binomial, distribution Q is flat and uniform.",
+    "caption": "KL divergence measures how far one distribution is from another. It is the extra cost, in bits, of encoding data drawn from the true distribution P using a code built for the model distribution Q, and it is zero only when the two match.",
+    "credit": "K687 ypo",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Kullback%E2%80%93Leibler_distributions_example_1.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "learning-rate": {
+    "file": "learning-rate.svg",
+    "alt": "Gradient descent on a parabola with a learning rate that is too large: successive steps overshoot the minimum and zig-zag across it with growing amplitude, diverging.",
+    "caption": "The learning rate is the step size. Set it too large and each step overshoots the bottom of the valley; the iterates bounce across the minimum with growing amplitude and diverge instead of converging, which is why the learning rate is the single most important hyperparameter to tune.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/gd.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "learning-rate-schedule": {
+    "file": "learning-rate-schedule.svg",
+    "alt": "Plot of learning rate versus epoch following a cosine curve, starting high near 0.3 and decaying smoothly toward zero by the end of training.",
+    "caption": "A learning-rate schedule changes the step size over training rather than holding it fixed. This cosine-annealed schedule starts large for fast early progress, then decays smoothly toward zero so the optimizer can settle precisely into a minimum at the end.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/lr-scheduler.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "learning-rate-warmup": {
+    "file": "learning-rate-warmup.svg",
+    "alt": "Plot of learning rate versus epoch that ramps linearly up from zero to a peak over the first few epochs, then decays along a cosine curve toward zero.",
+    "caption": "Warmup begins with a near-zero learning rate and ramps it up over the first epochs before the main decay takes over. The gentle start keeps the volatile first steps small and lets an adaptive optimizer's running statistics accumulate, stabilizing the most fragile phase of training.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/lr-scheduler.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "local-attractor-basin": {
+    "file": "local-attractor-basin.png",
+    "alt": "Diagram of a region A inside a larger space, with trajectories starting from several different points all flowing inward and converging into region A.",
+    "caption": "A basin of attraction is the catchment area of a minimum: every starting point inside it flows downhill to the same attractor (region A). Which solution training reaches is decided by which basin the initial parameters fall into, and wide, flat basins tend to generalize better than narrow ones.",
+    "credit": "Yapparina",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Diagram_of_attractor_and_basin.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "local-minimum": {
+    "file": "local-minimum.png",
+    "alt": "A one-dimensional curve with arrows labeling its global maximum, a local maximum, a local minimum, and the global minimum.",
+    "caption": "A local minimum is lower than every nearby point, so the gradient vanishes and a downhill optimizer comes to rest there, but it need not be the global minimum, the lowest point overall. The danger in classical optimization is settling into a local minimum that is not the deepest one.",
+    "credit": "KSmrq",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Extrema_example.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "loss-function": {
+    "file": "loss-function.png",
+    "alt": "Plot of several classification loss functions (zero-one, hinge, log, squared hinge, modified Huber, perceptron) as a function of the decision-function output, all decreasing as the prediction becomes more confidently correct.",
+    "caption": "A loss function maps a prediction to a single penalty that training drives down. Plotting common classification losses against the model's output shows how each penalizes a wrong or unconfident prediction differently, so the choice of loss defines what the model is actually rewarded for learning.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/linear_model/plot_sgd_loss_functions.html",
+    "provider": "scikit-learn"
+  },
+  "loss-landscape": {
+    "file": "loss-landscape.png",
+    "alt": "Three-dimensional surface plot of the Rastrigin function: a rugged landscape covered by a regular grid of many local minima and peaks, with one deepest global minimum near the center.",
+    "caption": "Plotting a loss as a height over parameter space gives a landscape the optimizer must descend. A rugged surface like this, dense with local minima, ridges, and one global minimum, shows why the shape of the terrain, not just the optimizer, decides how hard training is.",
+    "credit": "Diegotorquemada",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Rastrigin_function.png",
     "provider": "Wikimedia Commons"
   },
   "lstm": {
@@ -89,6 +329,56 @@
     "source": "https://en.wikipedia.org/wiki/Long_short-term_memory",
     "provider": "Wikimedia Commons"
   },
+  "markov-chain": {
+    "file": "markov-chain.png",
+    "alt": "State diagram of a two-state Markov chain with states E and A; arrows show E to E at 0.3, E to A at 0.7, A to E at 0.4, and A to A at 0.6.",
+    "caption": "A Markov chain moves between states with the next state depending only on the present one. Each state's outgoing transition probabilities sum to one (0.3 plus 0.7 from E, 0.4 plus 0.6 from A), the rows of its transition matrix.",
+    "credit": "Joxemai4",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Markovkate_01.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "masked-autoencoder": {
+    "file": "masked-autoencoder.png",
+    "alt": "Masked autoencoder pipeline: an input image with most patches hidden, a heavy encoder that processes only the visible patches, and a lightweight decoder that fills in placeholder tokens to reconstruct the full target image.",
+    "caption": "A masked autoencoder learns by filling in the blanks. Most patches are hidden, a heavy encoder processes only the small visible set, and a lightweight decoder reconstructs the missing pixels. Because the target is the image's own content, no labels are needed, and the high masking ratio forces genuine understanding rather than copying nearby pixels.",
+    "credit": "Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollar, Ross Girshick",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Masked_Autoencoder.png",
+    "provider": "Wikimedia Commons"
+  },
+  "maximum-likelihood-estimation": {
+    "file": "maximum-likelihood-estimation.png",
+    "alt": "Curve of the likelihood of observed data as a function of a Poisson rate parameter, rising to a single peak at the value marked lambda-hat and falling away on either side.",
+    "caption": "Maximum likelihood estimation picks the parameter value that makes the observed data most probable. The likelihood is read as a function of the parameter, and the estimate is the value at its peak, here the rate lambda-hat.",
+    "credit": "HilberTraum",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Maximum_likelihood_poisson.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "momentum": {
+    "file": "momentum.svg",
+    "alt": "Contour plot of an elongated, ill-conditioned valley with a momentum optimizer path that overshoots once then spirals inward, settling at the minimum.",
+    "caption": "In a long narrow valley, momentum accumulates a velocity from past gradients: the across-valley components of successive steps cancel while the along-valley components add up, so the path damps its oscillation and travels efficiently toward the minimum instead of zig-zagging.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/momentum.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "mutual-information": {
+    "file": "mutual-information.png",
+    "alt": "Venn diagram of two overlapping circles for the entropies of X and Y, with the overlap labeled mutual information and the non-overlapping parts labeled the conditional entropies.",
+    "caption": "Mutual information is the overlap between two variables' entropies: the uncertainty about one that is removed by learning the other. It equals the entropy of X minus the entropy of X given Y, and it is zero exactly when the variables are independent.",
+    "credit": "KonradVoelkel",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Entropy-mutual-information-relative-entropy-relation-diagram.svg",
+    "provider": "Wikimedia Commons"
+  },
   "neural-network": {
     "file": "neural-network.png",
     "alt": "Diagram of a feedforward neural network with an input layer, a hidden layer, and an output layer of connected nodes",
@@ -97,6 +387,36 @@
     "license": "CC BY-SA 3.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)",
+    "provider": "Wikimedia Commons"
+  },
+  "object-detection": {
+    "file": "object-detection.png",
+    "alt": "Two object-detection pipelines compared: (a) a two-stage detector that generates region proposals before classifying them, and (b) a one-stage detector that predicts boxes directly, both ending in classification (cls) and localization (loc) outputs.",
+    "caption": "Object detection is recognition plus localization: every output carries both a class label (cls) and a box location (loc). Two-stage detectors (a) first propose candidate regions and then classify each, while one-stage detectors (b) predict boxes and labels directly in a single pass, trading some accuracy for speed.",
+    "credit": "Licheng Jiao, Fan Zhang, Fang Liu, Shuyuan Yang",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Object_detector_1stage_vs_2_stage.png",
+    "provider": "Wikimedia Commons"
+  },
+  "optical-flow": {
+    "file": "optical-flow.png",
+    "alt": "A red blob shown at five successive positions numbered 1 to 5 across a black background, with a white arrow tracing its displacement from the first position to the last.",
+    "caption": "Optical flow is the apparent motion between frames, expressed as a displacement vector for each point. Tracking one feature across successive frames (positions 1 to 5) gives the vector (white arrow) describing how far and in which direction it moved, the per-pixel version of which is the dense flow field that drives tracking and video understanding.",
+    "credit": "Unknown",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Optical_flow_example_v2.png",
+    "provider": "Wikimedia Commons"
+  },
+  "pooling": {
+    "file": "pooling.png",
+    "alt": "A 4 by 4 grid of numbers divided into four colored 2 by 2 windows, with an arrow to a 2 by 2 output holding the maximum of each window: 6, 8, 3, 4.",
+    "caption": "Max pooling downsamples a feature map by sliding a window and keeping only the largest value in each region. Each colored 2 by 2 block collapses to its maximum (6, 8, 3, 4), halving width and height and granting a small amount of translation invariance because only the strongest response is kept, not its exact position.",
+    "credit": "Aphex34",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Max_pooling.png",
     "provider": "Wikimedia Commons"
   },
   "principal-component-analysis": {
@@ -109,6 +429,16 @@
     "source": "https://en.wikipedia.org/wiki/Principal_component_analysis",
     "provider": "Wikimedia Commons"
   },
+  "probability-distribution": {
+    "file": "probability-distribution.png",
+    "alt": "Stem plot of the probability mass function of a fair six-sided die, with a height of one sixth above each outcome from 1 to 6.",
+    "caption": "A probability distribution assigns a probability to every outcome. For a fair die the mass function gives one sixth to each face from 1 to 6, and the six values sum to one over the whole space.",
+    "credit": "Oleg Alexandrov",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Fair_dice_probability_distribution.svg",
+    "provider": "Wikimedia Commons"
+  },
   "reinforcement-learning": {
     "file": "reinforcement-learning.png",
     "alt": "Diagram of the reinforcement learning loop showing an agent taking actions and receiving state and reward from the environment",
@@ -118,6 +448,56 @@
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://en.wikipedia.org/wiki/Reinforcement_learning",
     "provider": "Wikimedia Commons"
+  },
+  "rmsprop": {
+    "file": "rmsprop.svg",
+    "alt": "Contour plot of an ill-conditioned objective with the RMSProp optimizer path following a smooth curve from the start point to the minimum.",
+    "caption": "RMSProp divides each parameter's step by a running root-mean-square of its recent gradients, so steep and flat directions are rescaled to comparable effective step sizes. The result is a smooth, confident path to the minimum where a single shared learning rate would zig-zag.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/rmsprop.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "saddle-point": {
+    "file": "saddle-point.png",
+    "alt": "Three-dimensional surface shaped like a saddle, marked at the central point where it curves upward along one axis and downward along the other.",
+    "caption": "At a saddle point the gradient is zero, yet the surface curves up in some directions and down in others, so it is neither a peak nor a valley. Plain gradient descent stalls here because the slope vanishes, and in high-dimensional networks such saddle points, not bad local minima, are the dominant obstacle.",
+    "credit": "Nicoguaro",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Saddle_point.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "semantic-segmentation": {
+    "file": "semantic-segmentation.png",
+    "alt": "A semantic segmentation map where each pixel is colored by its category: a person painted brown, foliage green, and a cup blue, all against a black background.",
+    "caption": "Semantic segmentation labels every pixel with the category it belongs to, producing a dense color map rather than a box. Here one region is painted as person (brown), another as plant (green), another as cup (blue); all pixels of the same class share one color.",
+    "credit": "MartinThoma",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:EmiMa-099-semantic-segmentation.png",
+    "provider": "Wikimedia Commons"
+  },
+  "softmax": {
+    "file": "softmax.png",
+    "alt": "Flow diagram where a network produces three real-valued scores 35.4, 38.1, and minus 5.0 for the classes cat, dog, and horse, and a softmax block converts them into the probabilities 0.06, 0.94, and 0.00.",
+    "caption": "Softmax turns a vector of real-valued scores (logits) into a probability distribution. It exponentiates each score and normalizes, so the outputs are positive and sum to one, and a modestly larger logit (38.1 versus 35.4) wins a disproportionate share of the probability.",
+    "credit": "Fschwarzentruber",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Softmax.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "stochastic-gradient-descent": {
+    "file": "stochastic-gradient-descent.svg",
+    "alt": "Contour plot of a bowl-shaped objective with a stochastic gradient descent path that descends toward the center and then jitters in a noisy cloud around the minimum.",
+    "caption": "Stochastic gradient descent uses a noisy gradient from a small random sample each step, so its path descends roughly toward the minimum and then jitters around it rather than settling exactly. That same noise is what lets it escape shallow traps a smooth method would stall in.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_optimization/sgd.html",
+    "provider": "Dive into Deep Learning"
   },
   "transformer": {
     "file": "transformer.png",
@@ -139,6 +519,26 @@
     "source": "https://en.wikipedia.org/wiki/Turing_test",
     "provider": "Wikimedia Commons"
   },
+  "u-net": {
+    "file": "u-net.png",
+    "alt": "U-Net architecture drawn as a U: a contracting left path of down-convolutions and max pooling, a bottom, and an expanding right path of up-sampling and up-convolutions, with horizontal concat arrows copying feature maps across at matching resolutions.",
+    "caption": "A U-Net is an encoder-decoder shaped like the letter U: the left path downsamples the image into abstract features, the right path upsamples back to full resolution. The horizontal concat connections are the key trick, copying high-detail feature maps across at each level so the decoder can place sharp boundaries that downsampling alone would blur.",
+    "credit": "Mehrdad Yazdani",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Example_architecture_of_U-Net_for_producing_k_256-by-256_image_masks_for_a_256-by-256_RGB_image.png",
+    "provider": "Wikimedia Commons"
+  },
+  "variance": {
+    "file": "variance.png",
+    "alt": "A normal curve shaded into one, two, and three standard deviation bands around the mean, labeled with the percentage of area in each band.",
+    "caption": "The standard deviation, the square root of the variance, is the natural ruler of spread around the mean. About 68 percent of the mass falls within one standard deviation, about 95 percent within two, and about 99.7 percent within three.",
+    "credit": "M. W. Toews",
+    "license": "CC BY 2.5",
+    "license_url": "https://creativecommons.org/licenses/by/2.5/",
+    "source": "https://commons.wikimedia.org/wiki/File:Standard_deviation_diagram.svg",
+    "provider": "Wikimedia Commons"
+  },
   "variational-autoencoder": {
     "file": "variational-autoencoder.png",
     "alt": "Schematic of a variational autoencoder showing the encoder, the sampled latent distribution, and the decoder",
@@ -148,5 +548,35 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://en.wikipedia.org/wiki/Variational_autoencoder",
     "provider": "Wikimedia Commons"
+  },
+  "vision-language-model": {
+    "file": "vision-language-model.png",
+    "alt": "Vision-language model schematic: an image goes through a vision encoder and a projection module into tokens, a text question goes through an LLM tokenizer into tokens, the two token streams merge into the LLM transformer blocks, which output a text answer.",
+    "caption": "A vision-language model gives a language model eyes. A vision encoder turns the image into feature vectors, a projection module maps them into the language model's token space, and these visual tokens join the text tokens in the same transformer, which reasons over both and answers in words (here, that the people are skiing).",
+    "credit": "DevotedWikiEditor",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:VLM_schematic_general_architecture.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "vision-transformer": {
+    "file": "vision-transformer.png",
+    "alt": "Vision transformer pipeline: an image is cut into a grid of patches, each patch is linearly projected into a patch embedding, a CLS token is prepended, a positional encoding is added, the sequence goes through a transformer encoder, and an MLP head outputs logits.",
+    "caption": "A vision transformer treats an image like a sentence. It cuts the picture into fixed-size patches, projects each into an embedding, adds a positional encoding to restore where each patch sat, and feeds the sequence (with a prepended CLS token) through a standard transformer encoder, reading the class from the CLS output. There is no convolution.",
+    "credit": "Daniel Voigt Godoy",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vision_Transformer.png",
+    "provider": "Wikimedia Commons"
+  },
+  "weight-decay": {
+    "file": "weight-decay.png",
+    "alt": "Plot of ridge-regression coefficient values against the regularization strength alpha on a log scale; as alpha grows the many coefficient curves all shrink and converge toward zero.",
+    "caption": "Weight decay adds an L2 penalty on the size of the weights, pulling them toward zero. As the regularization strength rises (moving toward larger alpha), every coefficient shrinks toward zero, trading a little fit for the smaller, simpler weights that tend to generalize better.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html",
+    "provider": "scikit-learn"
   }
 }

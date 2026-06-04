@@ -48,13 +48,15 @@ const UA = "ai-firehose.com glossary image curation (https://ai-firehose.com; er
 
 // ---- pure helpers (unit-tested in glossary_images.test.mjs) ----
 
-// Only redistributable licenses are allowed: public domain, CC0, and the attribution
-// CC licenses. Non-commercial (NC), no-derivatives (ND), and non-free are rejected.
+// Only redistributable licenses are allowed: public domain, CC0, the attribution CC
+// licenses (BY, BY-SA), and the permissive software licenses under which many docs and
+// repo diagrams ship (MIT, BSD, Apache). Non-commercial (NC), no-derivatives (ND), and
+// non-free/all-rights-reserved are rejected (the reject test runs first, so it wins).
 export function licenseOk(shortName) {
   const s = String(shortName || "").toLowerCase();
   if (!s) return false;
   if (/\bnc\b|noncommercial|non-commercial|\bnd\b|noderiv|fair use|non-free|nonfree|all rights/.test(s)) return false;
-  return /public domain|\bpd\b|cc0|cc-?0|cc[ -]?by|creative commons|attribution/.test(s);
+  return /public domain|\bpd\b|cc0|cc-?0|cc[ -]?by|creative commons|attribution|\bmit\b|\bbsd\b|apache|unlicense|\bwtfpl\b|zlib/.test(s);
 }
 
 // Map a license short name to its canonical deed URL, for the attribution link.
@@ -326,6 +328,11 @@ async function finalize({ keepStage = false } = {}) {
       if (!row.license || !licenseOk(row.license)) throw new Error(`missing/forbidden license: ${row.license || "(none)"}`);
       if (!row.alt) throw new Error("missing alt text");
 
+      // Politeness gap between actual downloads: finalize fetches sequentially, and a
+      // tight burst of fresh thumbnail renders makes Commons return 429. Combined with
+      // fetchRetry and finalize being re-runnable (cached files skip), this keeps the
+      // run clean. Respecting an external rate limit, not Anthropic-side throttling.
+      await sleep(250);
       const { buf, contentType } = await download(downloadUrl);
       const kind = sniffImage(buf);
       if (!kind) throw new Error("not a valid image (magic-byte sniff failed)");
