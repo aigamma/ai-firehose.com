@@ -3806,7 +3806,7 @@
         "GP",
         "Gaussian processes"
       ],
-      "def_snippet": "A distribution over functions in which any finite set of function values is jointly Gaussian, giving a nonparametric Bayesian model that predicts with calibrated uncertainty.",
+      "def_snippet": "A probability distribution not over numbers but over entire functions, where any finite set of function values is jointly Gaussian. It is the cleanest way to do regression with honest, calibrated uncertainty, confidence that widens far from the data and narrows near it, and its one real limitation is a cubic cost that caps it at a few thousand points.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -3923,7 +3923,7 @@
       "aliases": [
         "Gibbs sampler"
       ],
-      "def_snippet": "A Markov chain Monte Carlo method that samples a multivariate distribution by repeatedly drawing each variable from its conditional distribution given the current values of all the others, useful whenever those conditionals are easy even when the joint is not.",
+      "def_snippet": "An MCMC method that samples a multivariate distribution by repeatedly drawing each variable from its conditional given the current values of all the others, useful whenever those conditionals are easy even when the joint is not. It is the special case of Metropolis-Hastings where every move is accepted, which costs nothing to tune, but it crawls badly when variables are strongly correlated.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -4342,7 +4342,7 @@
         "HMM",
         "hidden Markov models"
       ],
-      "def_snippet": "A probabilistic model of sequences in which an unobserved state evolves as a Markov chain and each state emits a visible observation, used to infer hidden structure behind a stream of data.",
+      "def_snippet": "A model of sequences in which a hidden state evolves as a Markov chain and each state emits a visible observation, so you infer the hidden process from its observable shadow. Three classic dynamic-programming algorithms, forward, Viterbi, forward-backward, make it usable, and it is the discrete-state cousin of the Kalman filter.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -4583,7 +4583,7 @@
       "aliases": [
         "importance sampling estimator"
       ],
-      "def_snippet": "A Monte Carlo technique for estimating an expectation under one distribution by drawing samples from a different, easier distribution and reweighting them, used when the target distribution is hard to sample directly.",
+      "def_snippet": "A Monte Carlo trick for estimating an expectation under a distribution you cannot sample, by drawing from an easier proposal distribution and reweighting each sample by how much the target favors it. It is unbiased no matter the proposal, but it lives or dies by that choice: a poor match makes a few samples dominate and the estimate useless.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -5789,7 +5789,7 @@
       "aliases": [
         "MCMC"
       ],
-      "def_snippet": "A family of algorithms that sample from a complex probability distribution by simulating a Markov chain whose long-run equilibrium is that distribution, used to approximate otherwise intractable Bayesian posteriors and expectations.",
+      "def_snippet": "A family of algorithms that sample a hard distribution by simulating a Markov chain engineered so its long-run equilibrium is that very distribution. Its magic is that it never needs the normalizing constant, because the algorithms depend only on density ratios in which the constant cancels, which is what makes intractable Bayesian posteriors computable. It is exact in the limit, the slow-but-faithful opposite of variational inference.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -6066,7 +6066,7 @@
         "MH algorithm",
         "accept-reject sampling"
       ],
-      "def_snippet": "The general Markov chain Monte Carlo algorithm that samples any distribution known only up to a constant by proposing random moves and accepting them with a probability that guarantees the chain converges to the target, the foundation beneath most practical Bayesian sampling.",
+      "def_snippet": "The general MCMC recipe for sampling any distribution known only up to a constant: propose a random move, then accept it with a probability that makes the chain converge to the target. The unknown constant cancels in the acceptance ratio, which is precisely what makes Bayesian inference computable, and the whole practical art is choosing the proposal.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
