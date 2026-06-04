@@ -1053,7 +1053,7 @@
         "BO",
         "sequential model-based optimization"
       ],
-      "def_snippet": "A sample-efficient global optimization method for expensive black-box functions that fits a probabilistic surrogate model of the objective and uses it to decide, through an acquisition function, the single most informative point to evaluate next.",
+      "def_snippet": "A sample-efficient optimizer for expensive black-box functions that fits a probabilistic surrogate of the objective, predicting both a value and a calibrated uncertainty everywhere, and uses an acquisition function to spend each costly evaluation on the single most informative point. It is the standard tool for hyperparameter tuning, where every query means a full training run.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -2044,7 +2044,7 @@
         "coordinate descent method",
         "block coordinate descent"
       ],
-      "def_snippet": "An optimization method that minimizes a function one coordinate at a time, repeatedly fixing all variables but one and optimizing along that single axis, which turns a hard high-dimensional problem into a sequence of trivial one-dimensional ones.",
+      "def_snippet": "An optimizer that never solves the full problem, minimizing one coordinate at a time with all others frozen, which turns a hard high-dimensional problem into a sequence of trivial one-dimensional ones. It is the fast standard for fitting Lasso, where each one-axis update is a closed-form soft-threshold, and its one failure mode, stalling in a corner, is exactly avoided by the separable structure Lasso has.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -3138,7 +3138,7 @@
         "CMA-ES",
         "evolution strategies"
       ],
-      "def_snippet": "A family of derivative-free, population-based optimization methods that improve a probability distribution over candidate solutions by sampling, evaluating, and re-weighting toward the best samples, requiring only the objective's value and never its gradient.",
+      "def_snippet": "A family of derivative-free, population-based optimizers in which selection plays the role the gradient plays elsewhere: sample candidates from a distribution, keep the best, and shift the distribution toward them. It needs only the objective's value, never its slope, and the leading variant, CMA-ES, turns out to be close to a natural gradient step on the sampling distribution.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -3649,7 +3649,7 @@
         "conditional gradient method",
         "Frank-Wolfe method"
       ],
-      "def_snippet": "A projection-free method for constrained convex optimization that, at each step, minimizes a linear approximation of the objective over the feasible set and moves toward that vertex, staying inside the constraints without ever projecting onto them.",
+      "def_snippet": "A projection-free optimizer for constrained convex problems that, instead of stepping out and projecting back, minimizes a linear approximation of the objective over the feasible set and moves toward the vertex it finds. Because every iterate is built from a few vertices, it produces sparse or low-rank solutions for free, and it wins exactly when projection is expensive but a linear oracle is cheap.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -7930,7 +7930,7 @@
         "secant method for optimization",
         "BFGS"
       ],
-      "def_snippet": "A family of optimization methods that capture the benefits of Newton's method without computing the Hessian, building an approximation to the curvature matrix incrementally from the sequence of gradients observed during the descent.",
+      "def_snippet": "A family of methods that get Newton's fast convergence without ever computing the Hessian, inferring the curvature from the only free second-order signal available: how the gradient changes as the parameters move. The BFGS update does this while keeping the curvature estimate positive definite, which guarantees the step always points downhill, something Newton's method cannot promise.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -8940,7 +8940,7 @@
         "SA",
         "annealing optimization"
       ],
-      "def_snippet": "A global optimization method that searches a landscape by random moves which are always accepted when they improve the objective and sometimes accepted when they worsen it, with the probability of accepting worse moves cooled gradually toward zero to settle into a good minimum.",
+      "def_snippet": "A global optimizer for rugged landscapes that wanders by random moves, always accepting improvements and sometimes accepting worse moves, with the chance of a worse move cooled toward zero over time. That willingness to climb uphill is exactly what lets it cross the barriers that trap a strictly downhill method, and a single temperature dials the search from wild exploration to greedy descent.",
       "durable": true,
       "category": "Advanced Optimization"
     },
