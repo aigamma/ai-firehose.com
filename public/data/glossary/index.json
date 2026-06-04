@@ -828,7 +828,7 @@
         "autograd",
         "algorithmic differentiation"
       ],
-      "def_snippet": "A family of techniques that compute exact derivatives of a function expressed as a program by applying the chain rule mechanically over its elementary operations, the engine that makes training large neural networks by gradient descent practical.",
+      "def_snippet": "The machinery that computes exact derivatives of any function written as a program, by applying the chain rule mechanically across its elementary operations. It is neither the formula-juggling of symbolic differentiation nor the error-prone approximation of numerical differentiation, and reverse-mode automatic differentiation applied to a network is exactly backpropagation, the quiet enabling technology of the whole field.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -2017,7 +2017,7 @@
         "convex function",
         "convex optimization"
       ],
-      "def_snippet": "A property of a function whose graph curves upward everywhere, so that any local minimum is also the global minimum, which makes optimization reliable and well understood.",
+      "def_snippet": "A property of a function whose graph curves upward everywhere, so that any local minimum is automatically the global one. That single fact makes optimization trustworthy and gives classical machine learning its clean guarantees, and the absence of it is exactly what makes training a neural network hard.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -2673,7 +2673,7 @@
       "aliases": [
         "directional derivatives"
       ],
-      "def_snippet": "The rate of change of a multivariable function along an arbitrary direction, equal to the dot product of the function's gradient with a unit vector pointing that way.",
+      "def_snippet": "The rate at which a multivariable function changes as you move in an arbitrary direction, equal to the dot product of the gradient with a unit vector pointing that way. It generalizes the partial derivative from coordinate axes to any direction, makes the gradient's \"steepest ascent\" meaning precise, and is exactly the quantity forward-mode automatic differentiation computes in one pass.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -4329,7 +4329,7 @@
         "hessian matrix",
         "hessians"
       ],
-      "def_snippet": "The square matrix of all second-order partial derivatives of a scalar function, describing the local curvature of the function and how its gradient changes from point to point.",
+      "def_snippet": "The matrix of all second-order partial derivatives of a scalar function, describing its local curvature, the shape of the valley the gradient is descending. The gradient says which way is downhill; the Hessian says whether the valley is a tight bowl or a long shallow trough, which is what second-order optimizers exploit and what the condition number warns about.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -4752,7 +4752,7 @@
         "integrals",
         "antiderivative"
       ],
-      "def_snippet": "The accumulation of a quantity over an interval or region, computing a total such as an area under a curve, and the inverse operation to the derivative.",
+      "def_snippet": "The accumulation of a continuously varying quantity into a total, such as the area under a curve, and the inverse of the derivative. In machine learning it matters because probability is built on it: every expectation, every normalizing constant, every continuous loss is an integral, and the fact that most of them cannot be solved exactly is why so much of the field is sampling.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -4846,7 +4846,7 @@
         "jacobian matrix",
         "jacobians"
       ],
-      "def_snippet": "The matrix of all first-order partial derivatives of a vector-valued function, with one row per output and one column per input, describing the function's best local linear approximation.",
+      "def_snippet": "The matrix of all first-order partial derivatives of a vector-valued function, one row per output, one column per input. It is the best linear approximation of the function near a point, and because backpropagation is the multiplication of one layer's Jacobian after another, the behavior of those products is exactly what makes training stable or unstable.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -4872,7 +4872,7 @@
       "aliases": [
         "Jensen inequality"
       ],
-      "def_snippet": "The inequality stating that for a convex function the function of an average is at most the average of the function, the single fact that justifies the evidence lower bound and connects convexity to expectations throughout probabilistic machine learning.",
+      "def_snippet": "The statement that for a convex function, the function of an average is at most the average of the function. It is the chord-above-curve picture generalized from two points to any distribution, and despite its simplicity it is the lever behind the evidence lower bound, the non-negativity of KL divergence, and much of probabilistic machine learning.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
@@ -9598,7 +9598,7 @@
         "taylor approximation",
         "taylor polynomial"
       ],
-      "def_snippet": "An approximation of a function near a point as a polynomial built from the function's derivatives there, with each added term capturing finer local detail such as slope, then curvature, then beyond.",
+      "def_snippet": "An approximation of a function near a point as a polynomial built from its derivatives there, each term adding finer detail, slope, then curvature, then beyond. It is the universal move of optimization and analysis: replace a complicated function with a simple local model, which is exactly what justifies gradient descent and Newton's method.",
       "durable": true,
       "category": "Calculus and Analysis"
     },
