@@ -1498,7 +1498,7 @@
         "multiclass classification",
         "multi-label classification"
       ],
-      "def_snippet": "The supervised learning task of predicting which discrete category an input belongs to. Classification covers any problem whose output is a label drawn from a fixed finite set, from spam detection to image recognition.",
+      "def_snippet": "The supervised task of sorting an input into one of a fixed set of categories, the default shape of a machine learning problem. Its deepest reach is hidden in plain sight: a language model predicting its next token is doing classification over the vocabulary, so the task that recognizes spam also writes prose.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -1580,7 +1580,7 @@
         "cluster analysis",
         "clustering algorithm"
       ],
-      "def_snippet": "The unsupervised learning task of grouping data points so that items within a group are more similar to each other than to items in other groups, discovering structure in data that carries no labels.",
+      "def_snippet": "The unsupervised task of grouping data so that items within a group are more alike than items across groups, with no labels to say what the groups should be. Its defining difficulty is that the task is ill-posed: with no ground truth, there is no single right answer, and the notion of \"similar\" you choose quietly determines what you find.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -1776,7 +1776,7 @@
         "error matrix",
         "contingency table"
       ],
-      "def_snippet": "A table that breaks a classifier's predictions down by predicted class against true class, exposing not just how often it is wrong but exactly which classes it confuses, the foundation from which precision, recall, and most classification metrics are computed.",
+      "def_snippet": "A table that breaks a classifier's predictions down by predicted class against true class, turning a single accuracy number into a full picture of which classes it confuses with which. Its real value is that it separates the two kinds of error a single number fuses together, false alarms and misses, which usually carry very different costs.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -4489,7 +4489,7 @@
         "grid search",
         "random search"
       ],
-      "def_snippet": "The search for the configuration settings that are fixed before training (learning rate, model size, regularization strength, and so on) rather than learned from data, automated by strategies from grid and random search to Bayesian optimization.",
+      "def_snippet": "The search for the configuration settings fixed before training, learning rate, model size, regularization strength, rather than learned from data. The strategies run from brute-force grid search to the smarter Bayesian optimization, and the subtle trap is overfitting the hyperparameters themselves by tuning too hard against one validation set.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -8115,7 +8115,7 @@
         "regressor",
         "regression task"
       ],
-      "def_snippet": "The supervised learning task of predicting a continuous numeric value from input features. Regression covers any problem whose answer is a quantity rather than a category, from forecasting prices to estimating age from a photograph.",
+      "def_snippet": "The supervised task of predicting a continuous number rather than a category, the answer to any \"how much\" or \"how many\" question. Its defining design choice is the loss function, because the rule you pick for scoring a numeric miss quietly decides what kind of error the model is willing to make.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -8804,7 +8804,7 @@
       "aliases": [
         "self-supervised learning"
       ],
-      "def_snippet": "A learning paradigm where the supervision signal is generated from the data itself, by hiding part of each example and training the model to predict it, which lets models learn rich representations from vast unlabeled data and is the engine behind modern pretraining.",
+      "def_snippet": "The trick that made foundation models possible: manufacture supervision for free by hiding part of each example and training the model to predict it. No human labels, yet a concrete prediction target, which is why it, not labeled datasets, is what scaled, and predicting the hidden part well turns out to require genuinely understanding the data.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -8848,7 +8848,7 @@
       "aliases": [
         "semi-supervised learning"
       ],
-      "def_snippet": "A paradigm that trains on a small amount of labeled data together with a large amount of unlabeled data, using structure in the unlabeled data to improve a model that the labels alone could not, bridging supervised and unsupervised learning.",
+      "def_snippet": "Training on a small amount of labeled data together with a large amount of unlabeled data, using the shape of the unlabeled data to place a decision boundary the labels alone could not. It works when points that cluster together share a label, and it bridges supervised and unsupervised learning.",
       "durable": true,
       "category": "Core Machine Learning"
     },
