@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import useData from "../lib/useData.js";
+import LoadError from "../components/LoadError.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import Sparkline from "../components/Sparkline.jsx";
 import RichText from "../components/RichText.jsx";
-import { getKind, QUADRANTS } from "../data/registry.js";
+import { getKind, quadrantOf } from "../data/registry.js";
 
 // A concept hub. Durable authored entries lead with a rich, wiki-linked body and a
 // curated Related mesh; corpus-derived signal (momentum, neighbors, recent items)
@@ -11,10 +12,23 @@ import { getKind, QUADRANTS } from "../data/registry.js";
 // with empty boxes. A concept can be both: authored knowledge plus live trending data.
 export default function TechniqueHub() {
   const { slug } = useParams();
-  const { data: c, loading } = useData(`/data/glossary/c/${slug}.json`);
+  const { data: c, loading, error } = useData(`/data/glossary/c/${slug}.json`);
   useDocumentTitle(c?.label || "Concept");
 
   if (loading) return <div className="stack" style={{ paddingTop: 40 }}><h1>Loading…</h1></div>;
+  // A transient network error on a valid slug must not claim the concept does not
+  // exist. Surface the failure distinctly, and reserve "Unknown concept" for the
+  // genuine resolved-but-not-found case (useData reports a missing hub as c === null
+  // with no error).
+  if (error) {
+    return (
+      <div className="stack" style={{ paddingTop: 40 }}>
+        <h1>Concept</h1>
+        <LoadError label="Concept" />
+        <p className="muted">Back to the <Link to="/glossary">glossary</Link>.</p>
+      </div>
+    );
+  }
   if (!c) {
     return (
       <div className="stack" style={{ paddingTop: 40 }}>
@@ -67,22 +81,25 @@ export default function TechniqueHub() {
         </div>
       )}
 
-      {c.rotation && (
+      {c.rotation && (() => {
+        const quad = quadrantOf(c.rotation.quadrant);
+        return (
         <section className="card">
           <div className="card-head">
             <h2>Momentum</h2>
             <span className="faint mono" style={{ marginLeft: "auto" }}>past {c.rotation.horizon}</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-            <span className="badge" title={QUADRANTS[c.rotation.quadrant]?.note}>
-              <span className="dot" style={{ background: `var(${QUADRANTS[c.rotation.quadrant]?.colorVar})` }} />
-              {QUADRANTS[c.rotation.quadrant]?.label}
+            <span className="badge" title={quad.note}>
+              <span className="dot" style={{ background: `var(${quad.colorVar})` }} />
+              {quad.label}
             </span>
-            <Sparkline values={c.rotation.sparkline} width={120} height={32} stroke={`var(${QUADRANTS[c.rotation.quadrant]?.colorVar})`} />
+            <Sparkline values={c.rotation.sparkline} width={120} height={32} stroke={`var(${quad.colorVar})`} />
             <span className="faint mono">ratio {c.rotation.ratio} · momentum {c.rotation.momentum}</span>
           </div>
         </section>
-      )}
+        );
+      })()}
 
       {hasSidecards ? (
         <div className="grid cols-2">

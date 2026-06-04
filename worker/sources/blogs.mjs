@@ -74,7 +74,7 @@ export async function fetchBlogs({ maxAgeDays = 100, perFeed = 5 } = {}) {
   const out = [];
   for (const feed of manifest.feeds || []) {
     try {
-      const r = await fetch(feed.url, { headers: { "User-Agent": "ai-firehose/0.1", Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" } });
+      const r = await fetch(feed.url, { headers: { "User-Agent": "ai-firehose/0.1", Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" }, signal: AbortSignal.timeout(15000) });
       if (!r.ok) {
         console.log(`   blog ${feed.name}: ${r.status}`);
         continue;

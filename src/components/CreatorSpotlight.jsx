@@ -17,7 +17,17 @@ export default function CreatorSpotlight({ creator, compact = false, limit }) {
   return (
     <div className="creator">
       <div className="creator-head">
-        <a href={creator.channelUrl} target="_blank" rel="noreferrer" className="creator-name">{creator.name}</a>
+        {/* In full mode (Watch) each creator is its own section, so its name is the
+            section's accessible heading (keeps screen-reader section nav and a correct
+            h1 to h2 order). In compact mode (the Home teaser) the surrounding card
+            already owns the "Watch" h2, so the name stays a plain link. */}
+        {compact ? (
+          <a href={creator.channelUrl} target="_blank" rel="noreferrer" className="creator-name">{creator.name}</a>
+        ) : (
+          <h2 className="creator-name" style={{ margin: 0 }}>
+            <a href={creator.channelUrl} target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "none" }}>{creator.name}</a>
+          </h2>
+        )}
         {creator.handle && <span className="faint mono">{creator.handle}</span>}
         {!compact && creator.blurb && <span className="muted creator-blurb">{creator.blurb}</span>}
       </div>

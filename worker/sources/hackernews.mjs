@@ -8,7 +8,7 @@ const AI_RE = /\b(a\.?i\.?|llm|llms|gpt|claude|gemini|mistral|llama|qwen|openai|
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getJson(u) {
-  const r = await fetch(u, { headers: { "User-Agent": "ai-firehose/0.1" } });
+  const r = await fetch(u, { headers: { "User-Agent": "ai-firehose/0.1" }, signal: AbortSignal.timeout(15000) });
   if (!r.ok) throw new Error(`hn ${r.status}`);
   return r.json();
 }

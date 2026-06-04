@@ -9,6 +9,9 @@ import useData from "../lib/useData.js";
 import useUnifiedAttention from "../lib/useUnifiedAttention.js";
 import useLens from "../hooks/useLens.js";
 import { filterByLens } from "../lib/lens.js";
+import useSeen from "../hooks/useSeen.js";
+import { itemKey, isNewSince, countNewSince, clearedCount, allCleared } from "../lib/seen.js";
+import useSrs from "../hooks/useSrs.js";
 import { SITE, HORIZONS, KINDS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
 
 // A distinct load-failure notice, visually separate from the dashed ".empty"
@@ -58,6 +61,22 @@ export default function Home() {
   const byKind = KINDS.map((k) => ({ kind: k, list: viewEntities.filter((e) => e.kind === k.key) }));
   const sortedByDelta = [...viewEntities].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0));
   const breakout = sortedByDelta.find((e) => e.outlier?.breakout) || sortedByDelta[0];
+
+  // The returning-visitor layer: what is new since the reader was last here, and how
+  // much of this window's wire they have cleared (the "conquer the firehose" loop).
+  // All client-side (localStorage); with the corpus frozen it simply reads as nothing
+  // new and degrades quietly until the daily worker refresh lands.
+  const { lastVisit, read, toggleRead, markRead, setBatch } = useSeen();
+  const newSince = countNewSince(viewItems, lastVisit);
+  const cleared = clearedCount(viewItems, read);
+  const wireDone = allCleared(viewItems, read);
+  const lensMatches = follows.length ? filterByLens(newItems, follows).length : 0;
+
+  // Spaced-repetition nudge: how many glossary cards are due in Review. Reads the
+  // same aifh:srs:v1 store the Review page writes, so a reader who studied yesterday
+  // is invited back today. Zero (and hidden) until they have reviewed anything.
+  const { dueCount } = useSrs();
+  const srsDue = dueCount();
 
   // Arrow keys cycle the horizon (Day to Quarter), but ONLY when focus is within
   // the switcher, so the global page is not robbed of arrow-key scrolling and
@@ -109,6 +128,19 @@ export default function Home() {
           </button>
         ) : (
           <Link to="/lens" className="chip" title="Follow concepts to personalize this page">Personalize</Link>
+        )}
+        {newSince > 0 && (
+          <span className="dateline-new" title="Items published since you were last here">
+            {newSince} new since your last visit
+          </span>
+        )}
+        {follows.length > 0 && lensMatches > 0 && !lensActive && (
+          <span className="faint mono">{lensMatches} in your lens</span>
+        )}
+        {srsDue > 0 && (
+          <Link to="/review" className="chip dateline-due" title="Spaced-repetition cards are due in Review">
+            {srsDue} {srsDue === 1 ? "card" : "cards"} due
+          </Link>
         )}
         {synthetic && (
           <span className="synthetic-ribbon" title="Placeholder data until the live worker runs">
@@ -176,13 +208,41 @@ export default function Home() {
           <h2>Fresh Off the Wire</h2>
           <span className="eyebrow" style={{ marginLeft: "auto" }}>past {h.label.toLowerCase()}</span>
         </div>
+        {viewItems.length > 0 && (
+          <div className="wire-status">
+            {wireDone ? (
+              <span className="wire-done">You have cleared this {h.label.toLowerCase()}'s wire.</span>
+            ) : (
+              <span className="faint">{cleared} of {viewItems.length} cleared</span>
+            )}
+            <button
+              type="button"
+              className="chip"
+              onClick={() => setBatch(viewItems.map(itemKey), !wireDone)}
+              title={wireDone ? "Mark all of these unread again" : "Mark every item here as read"}
+            >
+              {wireDone ? "Show all again" : "Mark all read"}
+            </button>
+          </div>
+        )}
         {digestError ? (
           <LoadError label={`New in the past ${h.label.toLowerCase()}`} />
         ) : viewItems.length ? (
           <div className="grid cols-2">
-            {viewItems.map((it, i) => (
-              <ItemCard key={it.id || i} item={it} linkConcepts />
-            ))}
+            {viewItems.map((it, i) => {
+              const k = itemKey(it);
+              return (
+                <ItemCard
+                  key={it.id || k || i}
+                  item={it}
+                  linkConcepts
+                  isNew={isNewSince(it, lastVisit)}
+                  read={read.has(k)}
+                  onToggleRead={toggleRead}
+                  onMarkRead={markRead}
+                />
+              );
+            })}
           </div>
         ) : lensActive ? (
           <div className="empty"><strong>Nothing new in your lens this {h.label.toLowerCase()}</strong>Turn off your lens above, or follow more concepts.</div>

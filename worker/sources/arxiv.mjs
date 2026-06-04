@@ -18,7 +18,7 @@ export async function fetchArxiv({ maxAgeDays = 100, limit = 30 } = {}) {
   let xml = "";
   for (let i = 1; i <= 4; i += 1) {
     try {
-      const r = await fetch(url, { headers: { "User-Agent": UA } });
+      const r = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(15000) });
       if (r.ok) {
         xml = await r.text();
         break;

@@ -2,6 +2,8 @@
 
 Every source is an adapter under `worker/sources/` behind a common interface that returns raw Items. The classifier (not the adapter) decides each item's `kind`. Each source has an authority weight that scales how strongly it moves the rotation.
 
+Every adapter HTTP `fetch` carries an `AbortSignal.timeout` (15s for sources and RSS feeds, 30s for the Voyage, Pinecone, Anthropic, and Whisper calls), so one hung host raises a retryable throw instead of stalling the daily run. The aggregator's `Promise.allSettled` rescues a rejected adapter but not a hung socket, which is exactly why the per-call timeout matters.
+
 ## YouTube (primary, coded from scratch)
 
 Eric's favorite high-signal teachers are the primary input and a leading indicator: when a trusted teacher covers a new topic, it should move the boards early.

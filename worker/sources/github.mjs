@@ -29,7 +29,7 @@ export async function fetchGitHub({ maxAgeDays = 100, limit = 25, perTopic = 12 
     const q = `topic:${topic} created:>=${since}`;
     const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(q)}&sort=stars&order=desc&per_page=${perTopic}`;
     try {
-      const r = await fetch(url, { headers: { Accept: "application/vnd.github+json", "User-Agent": "ai-firehose/0.1" } });
+      const r = await fetch(url, { headers: { Accept: "application/vnd.github+json", "User-Agent": "ai-firehose/0.1" }, signal: AbortSignal.timeout(15000) });
       if (r.ok) {
         const j = await r.json();
         for (const repo of j.items || []) if (!byId.has(repo.id)) byId.set(repo.id, repo);

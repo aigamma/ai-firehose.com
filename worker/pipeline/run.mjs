@@ -151,6 +151,13 @@ async function main() {
   const host = await ensureIndex();
   if (fresh.length) {
     const vecs = await embed(fresh.map((c) => `${c.title}\n\n${c.summary}`), "document");
+    // One vector per input, none undefined: an embed batch that returns a short or
+    // hole-punched array would otherwise upsert `values: undefined`, which Pinecone
+    // rejects mid-run. Fail loudly here instead. (Voyage already reorders by input
+    // index in orderEmbeddings; this guards length and completeness.)
+    if (vecs.length !== fresh.length || vecs.some((v) => v == null)) {
+      throw new Error(`embed returned ${vecs.length} vectors for ${fresh.length} inputs (or a null vector); aborting upsert`);
+    }
     await upsert(
       host,
       fresh.map((c, i) => ({

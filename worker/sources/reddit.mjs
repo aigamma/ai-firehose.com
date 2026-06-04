@@ -12,7 +12,7 @@ export async function fetchReddit({ maxAgeDays = 100, perSub = 12 } = {}) {
   const out = [];
   for (const sub of SUBS) {
     try {
-      const r = await fetch(`https://www.reddit.com/r/${sub}/top.json?t=month&limit=${perSub}`, { headers: { "User-Agent": UA } });
+      const r = await fetch(`https://www.reddit.com/r/${sub}/top.json?t=month&limit=${perSub}`, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(15000) });
       if (!r.ok) {
         console.log(`   reddit ${sub}: ${r.status}`);
         continue;

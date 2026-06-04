@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, renameSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -18,5 +18,11 @@ export function loadCache(name) {
 
 export function saveCache(name, obj) {
   mkdirSync(DIR, { recursive: true });
-  writeFileSync(resolve(DIR, `${name}.json`), JSON.stringify(obj));
+  // Atomic write: a hardware fault mid-write would corrupt the target, and loadCache
+  // silently discards a corrupt cache and forces a full re-classify. Write a temp file
+  // in the same directory (same filesystem, so rename is atomic), then rename it over.
+  const p = resolve(DIR, `${name}.json`);
+  const tmp = `${p}.tmp`;
+  writeFileSync(tmp, JSON.stringify(obj));
+  renameSync(tmp, p);
 }

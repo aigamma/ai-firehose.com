@@ -33,7 +33,7 @@ export async function fetchFeed(id, attempts = 5) {
   let last = "";
   for (let i = 1; i <= attempts; i += 1) {
     try {
-      const r = await fetch(FEED(id), { headers: { "User-Agent": UA, "Accept-Language": "en-US,en" } });
+      const r = await fetch(FEED(id), { headers: { "User-Agent": UA, "Accept-Language": "en-US,en" }, signal: AbortSignal.timeout(15000) });
       if (r.ok) return r.text();
       last = `HTTP ${r.status}`;
     } catch (e) {

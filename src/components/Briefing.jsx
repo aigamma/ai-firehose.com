@@ -36,7 +36,10 @@ function Briefing({ horizon }) {
       <div className="briefing-head">
         <span className="eyebrow">Briefing</span>
         {SEV_LABEL[sev] && <span className="briefing-sev">{SEV_LABEL[sev]}</span>}
-        {data.generated && <span className="faint mono" style={{ marginLeft: "auto" }}>{data.generated}</span>}
+        {/* The page dateline carries the single freshness stamp (the corpus
+            snapshot date). The briefing is cached on a window-state hash, so its
+            own generated date can drift a day from the digest; showing it here
+            put two different dates in one view. Freshness lives in the dateline. */}
       </div>
       <p className="briefing-headline">{data.headline}</p>
       {data.body && <RichText as="p" className="briefing-body" text={data.body} citeMap={citeMap} withCitations />}

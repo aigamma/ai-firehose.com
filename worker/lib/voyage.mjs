@@ -9,6 +9,7 @@ async function post(path, body) {
     method: "POST",
     headers: { Authorization: `Bearer ${ENV.voyageKey}`, "Content-Type": "application/json" },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(30000),
   });
   if (!r.ok) throw new Error(`Voyage ${path} ${r.status}: ${(await r.text()).slice(0, 300)}`);
   return r.json();

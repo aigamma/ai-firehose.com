@@ -2,6 +2,7 @@ import { useState } from "react";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import TrendBoard from "../components/TrendBoard.jsx";
 import useData from "../lib/useData.js";
+import LoadError from "../components/LoadError.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { getKind, DEFAULT_HORIZON, getHorizon } from "../data/registry.js";
 
@@ -12,7 +13,7 @@ export default function KindView({ kindKey }) {
   const kind = getKind(kindKey);
   const [horizon, setHorizon] = useState(DEFAULT_HORIZON);
   const h = getHorizon(horizon);
-  const { data } = useData(`/data/attention/${kindKey}_${horizon}.json`);
+  const { data, loading, error } = useData(`/data/attention/${kindKey}_${horizon}.json`);
   const entities = data?.entities || [];
   useDocumentTitle(kind?.label);
   if (!kind) return null;
@@ -35,7 +36,9 @@ export default function KindView({ kindKey }) {
         <span className="faint mono">growth vs the prior {h.label.toLowerCase()}</span>
       </div>
 
-      {entities.length ? (
+      {error ? (
+        <LoadError label={kind.label} />
+      ) : entities.length ? (
         <section className="card" style={{ "--tile-accent": `var(${kind.accentVar})` }}>
           <div className="card-head">
             <h2>What Is Trending</h2>
@@ -46,7 +49,7 @@ export default function KindView({ kindKey }) {
       ) : (
         <div className="empty">
           <strong>{kind.label}</strong>
-          Awaiting ingestion for the past {h.label.toLowerCase()}.
+          {loading ? "Loading…" : `Awaiting ingestion for the past ${h.label.toLowerCase()}.`}
         </div>
       )}
     </div>

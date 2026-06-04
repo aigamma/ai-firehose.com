@@ -21,7 +21,8 @@ export default function Methodology() {
             <span className="faint mono" style={{ marginLeft: "auto" }}>updated {stats.generated}</span>
           </div>
           <p className="muted" style={{ marginTop: 0 }}>
-            {stats.total_items} items and {stats.concepts} concepts, retained for {stats.retention_days} days.
+            {stats.total_items} items and {stats.concepts} concepts tracked in the live corpus, retained for {stats.retention_days} days. The durable
+            <Link to="/glossary"> Glossary</Link> adds a permanent, separately authored knowledge layer that does not expire.
           </p>
           <div className="chips">
             {Object.entries(stats.by_source || {})

@@ -14,6 +14,24 @@
 
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+// Markdown link hrefs come from MODEL-generated text (briefing body, item
+// summaries), so a [x](javascript:...) could otherwise reach the DOM. Allow only
+// http(s), mailto, and relative/internal targets; reject everything else so the
+// link degrades to plain text. A leading "/" or "#" is internal; a bare relative
+// path with no scheme (no "scheme:" prefix before any "/", "?", or "#") is also
+// allowed. Anything with a disallowed scheme (javascript:, data:, vbscript:, ...)
+// is rejected.
+const SAFE_SCHEME = /^(https?|mailto):$/i;
+export function isSafeHref(href) {
+  const s = String(href || "").trim();
+  if (!s) return false;
+  if (s[0] === "/" || s[0] === "#") return true; // internal/anchor
+  // A scheme is letters/digits/+/-/. then a colon, before any path delimiter.
+  const m = s.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/);
+  if (!m) return true; // no scheme: a relative path like "docs/x" is safe
+  return SAFE_SCHEME.test(`${m[1]}:`);
+}
+
 // Compile concepts (the glossary index rows: {id|slug, label, aliases[]}) into a
 // matcher. Terms are sorted longest-first so the alternation prefers "large language
 // models" over "language". Very short or non-alphabetic terms are dropped to avoid
@@ -82,7 +100,10 @@ export function parseInline(text, { matcher, currentSlug = null, linked = new Se
       if (withCitations) out.push({ t: "cite", n: m[1] });
       else pushPlain(m[0]);
     } else if (m[2] !== undefined) {
-      out.push({ t: "link", href: m[3], v: m[2] });
+      // Drop the href for any disallowed scheme (javascript:, data:, ...) so it
+      // never reaches the DOM; render the link text as plain prose instead.
+      if (isSafeHref(m[3])) out.push({ t: "link", href: m[3], v: m[2] });
+      else pushPlain(m[2]);
     } else if (m[4] !== undefined) {
       out.push({ t: "code", v: m[4] });
     } else if (m[5] !== undefined) {

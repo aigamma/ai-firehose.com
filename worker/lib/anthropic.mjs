@@ -20,6 +20,7 @@ async function call(body) {
     method: "POST",
     headers: { "x-api-key": ENV.anthropicKey, "anthropic-version": VERSION, "content-type": "application/json" },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(30000),
   });
   if (!r.ok) throw new Error(`Anthropic ${r.status}: ${(await r.text()).slice(0, 400)}`);
   return r.json();

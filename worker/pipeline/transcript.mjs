@@ -49,6 +49,7 @@ async function audioFallback(url, dir, maxChars) {
       method: "POST",
       headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
       body: form,
+      signal: AbortSignal.timeout(30000),
     });
     if (!r.ok) return null;
     const j = await r.json();

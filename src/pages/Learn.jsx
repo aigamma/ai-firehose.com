@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import useLearnProgress from "../hooks/useLearnProgress.js";
 import { getKind } from "../data/registry.js";
 
 // Learn: curated paths through the durable glossary, ordered sequences that scaffold an
@@ -20,6 +21,7 @@ export default function Learn() {
   }, [index]);
 
   const paths = pathsData?.paths || [];
+  const { isDone, toggleStep, pathProgress } = useLearnProgress();
 
   return (
     <div className="stack" style={{ paddingTop: 24, maxWidth: "82ch" }}>
@@ -44,53 +46,84 @@ export default function Learn() {
           {loading ? "One moment." : "Awaiting content."}
         </div>
       ) : (
-        paths.map((p) => (
-          <section className="card" key={p.slug}>
-            <div className="card-head">
-              <h2>{p.title}</h2>
-              <span className="faint mono" style={{ marginLeft: "auto" }}>{p.steps.length} steps</span>
-            </div>
-            {p.blurb && <p className="muted" style={{ margin: "0 0 14px", maxWidth: "74ch" }}>{p.blurb}</p>}
-            <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 0 }}>
-              {p.steps.map((slug, i) => {
-                const c = bySlug.get(slug);
-                const km = c ? getKind(c.kind) : null;
-                return (
-                  <li
-                    key={slug}
-                    style={{
-                      display: "flex",
-                      gap: 12,
-                      alignItems: "baseline",
-                      padding: "9px 0",
-                      borderTop: i === 0 ? "none" : "1px solid var(--border)",
-                    }}
-                  >
-                    <span className="faint mono" style={{ minWidth: "1.4rem", textAlign: "right" }}>{i + 1}</span>
-                    <div style={{ minWidth: 0 }}>
-                      <span style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <Link to={`/technique/${slug}`} style={{ color: "var(--text)", fontWeight: 600 }}>
-                          {c?.label || slug}
-                        </Link>
-                        {km && (
-                          <span className={`badge ${km.badgeClass}`}>
-                            <span className="dot" style={{ background: "currentColor" }} />
-                            {km.singular}
-                          </span>
+        paths.map((p) => {
+          const prog = pathProgress(p.slug, p.steps);
+          const pct = prog.total ? Math.round((prog.done / prog.total) * 100) : 0;
+          const complete = prog.total > 0 && prog.done === prog.total;
+          return (
+            <section className="card" key={p.slug}>
+              <div className="card-head">
+                <h2>{p.title}</h2>
+                <span className="faint mono" style={{ marginLeft: "auto" }}>
+                  {prog.done > 0 ? `${prog.done} of ${prog.total} done` : `${prog.total} steps`}
+                </span>
+              </div>
+              {prog.done > 0 && (
+                <div className="learn-bar" aria-hidden="true">
+                  <span className="learn-bar-fill" style={{ width: `${pct}%` }} />
+                </div>
+              )}
+              {p.blurb && <p className="muted" style={{ margin: "10px 0 12px", maxWidth: "74ch" }}>{p.blurb}</p>}
+              {complete ? (
+                <p className="learn-complete" style={{ margin: "0 0 12px" }}>You have finished this path.</p>
+              ) : prog.done > 0 && prog.firstUnfinished > 0 ? (
+                <p className="muted" style={{ margin: "0 0 12px" }}>
+                  <Link to={`/technique/${p.steps[prog.firstUnfinished]}`}>Resume at step {prog.firstUnfinished + 1}</Link>{" "}
+                  of {prog.total}.
+                </p>
+              ) : null}
+              <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 0 }}>
+                {p.steps.map((slug, i) => {
+                  const c = bySlug.get(slug);
+                  const km = c ? getKind(c.kind) : null;
+                  const stepDone = isDone(p.slug, slug);
+                  return (
+                    <li
+                      key={slug}
+                      className={stepDone ? "learn-step is-done" : "learn-step"}
+                      style={{
+                        display: "flex",
+                        gap: 12,
+                        alignItems: "flex-start",
+                        padding: "9px 0",
+                        borderTop: i === 0 ? "none" : "1px solid var(--border)",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className={stepDone ? "learn-check is-done" : "learn-check"}
+                        aria-pressed={stepDone}
+                        aria-label={stepDone ? `Mark step ${i + 1} not done` : `Mark step ${i + 1} done`}
+                        onClick={() => toggleStep(p.slug, slug)}
+                        title={stepDone ? "Done. Click to undo." : "Mark this step done"}
+                      >
+                        <span aria-hidden="true">{stepDone ? "✓" : i + 1}</span>
+                      </button>
+                      <div style={{ minWidth: 0 }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                          <Link to={`/technique/${slug}`} className="learn-step-link" style={{ fontWeight: 600 }}>
+                            {c?.label || slug}
+                          </Link>
+                          {km && (
+                            <span className={`badge ${km.badgeClass}`}>
+                              <span className="dot" style={{ background: "currentColor" }} />
+                              {km.singular}
+                            </span>
+                          )}
+                        </span>
+                        {c?.def_snippet && (
+                          <p className="muted" style={{ margin: "3px 0 0", fontSize: "0.88rem", lineHeight: 1.5 }}>
+                            {c.def_snippet}
+                          </p>
                         )}
-                      </span>
-                      {c?.def_snippet && (
-                        <p className="muted" style={{ margin: "3px 0 0", fontSize: "0.88rem", lineHeight: 1.5 }}>
-                          {c.def_snippet}
-                        </p>
-                      )}
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </section>
-        ))
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
+          );
+        })
       )}
     </div>
   );

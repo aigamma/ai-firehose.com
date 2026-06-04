@@ -10,9 +10,10 @@ export async function fetchHuggingFace({ maxAgeDays = 100, limit = 30 } = {}) {
   const cutoff = Date.now() - maxAgeDays * 86400000;
   const out = [];
   try {
-    const r = await fetch(`https://huggingface.co/api/daily_papers?limit=${limit}`, { headers: { "User-Agent": UA } });
+    const r = await fetch(`https://huggingface.co/api/daily_papers?limit=${limit}`, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(15000) });
     if (!r.ok) throw new Error(`hf ${r.status}`);
     const papers = await r.json();
+    if (!Array.isArray(papers)) return out;
     for (const it of papers) {
       const paper = it.paper || it;
       const pub = it.publishedAt || paper.publishedAt;

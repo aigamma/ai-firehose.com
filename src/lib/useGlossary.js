@@ -24,9 +24,24 @@ export default function useGlossary() {
     }
     if (!inflight) {
       inflight = fetch("/data/glossary/index.json")
-        .then((r) => r.json())
+        .then((r) => {
+          // A missing artifact can return 200 via the Netlify SPA fallback, serving
+          // index.html instead of JSON, which would throw on .json(). Guard like
+          // useData.js: require r.ok and a JSON content type, then fall back to the
+          // empty matcher (prose still renders, just without auto-links).
+          if (!r.ok) return null;
+          const ct = r.headers.get("content-type") || "";
+          if (!ct.includes("application/json")) return null;
+          return r.text().then((body) => {
+            try {
+              return JSON.parse(body);
+            } catch {
+              return null;
+            }
+          });
+        })
         .then((d) => {
-          cache = { concepts: d.concepts || [], matcher: buildMatcher(d.concepts || []) };
+          cache = d ? { concepts: d.concepts || [], matcher: buildMatcher(d.concepts || []) } : EMPTY;
           return cache;
         })
         .catch(() => {

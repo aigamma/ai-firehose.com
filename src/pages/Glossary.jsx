@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
+import LoadError from "../components/LoadError.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { getKind } from "../data/registry.js";
 
@@ -11,8 +12,8 @@ import { getKind } from "../data/registry.js";
 // by attention, Atlas maps the whole field as a category constellation. Search spans
 // the list views. Every row links to the concept hub.
 export default function Glossary() {
-  const { data } = useData("/data/glossary/index.json");
-  const { data: atlas } = useData("/data/glossary/atlas.json");
+  const { data, loading, error } = useData("/data/glossary/index.json");
+  const { data: atlas, error: atlasError } = useData("/data/glossary/atlas.json");
   const [q, setQ] = useState("");
   const [view, setView] = useState("knowledge");
   const [catFilter, setCatFilter] = useState(null);
@@ -78,6 +79,18 @@ export default function Glossary() {
     );
   };
 
+  // A genuine fetch error for the index (not a missing artifact, which useData
+  // reports as data === null) must not render as "0 authored concepts". Surface it
+  // honestly and stop, so the counts and "No matches" never masquerade as real.
+  if (error) {
+    return (
+      <div className="stack" style={{ paddingTop: 24 }}>
+        <h1>Glossary</h1>
+        <LoadError label="Glossary" />
+      </div>
+    );
+  }
+
   return (
     <div className="stack" style={{ paddingTop: 24 }}>
       <h1>Glossary</h1>
@@ -105,7 +118,7 @@ export default function Glossary() {
       </div>
 
       {view === "atlas" ? (
-        <Atlas atlas={atlas} onPick={pickCategory} />
+        <Atlas atlas={atlas} atlasError={atlasError} onPick={pickCategory} />
       ) : groups ? (
         groups.length ? (
           groups.map(([cat, items]) => (
@@ -120,13 +133,13 @@ export default function Glossary() {
             </section>
           ))
         ) : (
-          <div className="card"><p className="muted" style={{ margin: 0 }}>No matches.</p></div>
+          <div className="card"><p className="muted" style={{ margin: 0 }}>{loading ? "Loading…" : "No matches."}</p></div>
         )
       ) : (
         <div className="card">
           <ul className="feed">
             {flat.map((c) => <Row key={c.id} c={c} />)}
-            {!flat.length && <li className="muted">No matches.</li>}
+            {!flat.length && <li className="muted">{loading ? "Loading…" : "No matches."}</li>}
           </ul>
         </div>
       )}
@@ -140,9 +153,13 @@ export default function Glossary() {
 // cross-category `related` links, show how the field connects. The SVG is the visual;
 // the legend below is the readable, keyboard-accessible, clickable index, hovering or
 // clicking either side cross-highlights, and a click drops into that category's list.
-function Atlas({ atlas, onPick }) {
+function Atlas({ atlas, atlasError, onPick }) {
   const [hover, setHover] = useState(null);
 
+  // Degrade gracefully on an atlas-only error: the rest of the Glossary still
+  // works, so surface a small notice here instead of a perpetual "Mapping..." or
+  // a blanked page.
+  if (atlasError) return <LoadError label="Knowledge Atlas" />;
   if (!atlas) return <div className="card"><p className="muted" style={{ margin: 0 }}>Mapping the knowledge base...</p></div>;
 
   const W = 900;

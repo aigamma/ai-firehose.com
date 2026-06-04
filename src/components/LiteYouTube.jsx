@@ -9,12 +9,18 @@ export default function LiteYouTube({ videoId, title = "", thumbnail }) {
   const [active, setActive] = useState(false);
   if (!videoId) return null;
 
+  // The thumbnail alt is intentionally "" (decorative), so the interactive control
+  // must carry the accessible name. Fall back to the video title, and when that is
+  // empty name the specific video by id rather than a generic "Play video" shared by
+  // every control on the page.
+  const named = title || `Video ${videoId}`;
+
   if (active) {
     return (
       <div className="lite-yt lite-yt--on">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
-          title={title || "YouTube video"}
+          title={named}
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -30,7 +36,7 @@ export default function LiteYouTube({ videoId, title = "", thumbnail }) {
       className="lite-yt"
       role="button"
       tabIndex={0}
-      aria-label={title ? `Play: ${title}` : "Play video"}
+      aria-label={`Play: ${named}`}
       onClick={play}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {

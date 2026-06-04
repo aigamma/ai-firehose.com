@@ -270,6 +270,51 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .dateline-phrase { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.02rem; }
 .dateline-stamp { margin-left: auto; }
 
+/* Returning-visitor layer: the "new since your last visit" signal, the read/cleared
+   affordances that turn the firehose into a finite, conquerable task, the spaced-
+   repetition nudge, and learning-path progress. All client-side (localStorage). */
+.dateline-new {
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 650; letter-spacing: 0.04em;
+  padding: 2px 9px; border-radius: 999px; color: var(--accent); background: var(--accent-soft);
+  border: 1px solid color-mix(in oklab, var(--accent) 38%, transparent);
+}
+.dateline-due { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 45%, transparent); text-decoration: none; }
+.dateline-due:hover { border-color: var(--accent); }
+
+.item-new {
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 1px 7px; border-radius: 999px; color: var(--accent);
+  background: var(--accent-soft); border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+}
+.item-clear {
+  margin-left: auto; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 650;
+  text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 999px;
+  color: var(--faint); background: transparent; border: 1px solid var(--border); cursor: pointer;
+  white-space: nowrap; transition: color var(--motion-fast), border-color var(--motion-fast);
+}
+.item-clear:hover { color: var(--text); border-color: var(--border-strong); }
+.item-clear[aria-pressed="true"] { color: var(--q-leading); border-color: color-mix(in oklab, var(--q-leading) 45%, transparent); }
+/* A cleared card recedes (content muted), without parent opacity so the toggle stays legible. */
+.item-read { background: color-mix(in oklab, var(--surface) 55%, var(--bg)); }
+.item-read .lead-label a, .item-read .summary-clamp { color: var(--muted); }
+
+.wire-status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
+.wire-done { color: var(--q-leading); font-weight: 600; }
+
+.learn-bar { display: block; height: 4px; border-radius: 2px; background: var(--surface-3); overflow: hidden; margin-top: 2px; }
+.learn-bar-fill { display: block; height: 100%; border-radius: 2px; background: var(--accent); min-width: 2px; transition: width var(--motion-mid) var(--ease-out); }
+.learn-complete { color: var(--q-leading); font-weight: 600; }
+.learn-check {
+  flex: none; width: 1.55rem; height: 1.55rem; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+  font-size: 0.76rem; color: var(--faint); background: transparent; border: 1px solid var(--border);
+  transition: color var(--motion-fast), background var(--motion-fast), border-color var(--motion-fast);
+}
+.learn-check:hover { border-color: var(--border-strong); color: var(--text); }
+.learn-check.is-done { color: #0d130f; background: var(--q-leading); border-color: var(--q-leading); font-weight: 800; }
+.learn-step-link { color: var(--text); }
+.learn-step.is-done .learn-step-link { color: var(--muted); text-decoration: line-through; }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 24px 0; color: var(--muted); font-size: 0.86rem; }
 
@@ -295,6 +340,12 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .heat-row { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto auto; align-items: center; gap: 10px; padding: 6px 6px; border-top: 1px solid var(--border); }
 .heat-row:first-child { border-top: 0; }
 .heat-row:hover { background: color-mix(in oklab, var(--surface-2) 45%, transparent); border-radius: var(--radius-sm); }
+/* A breakout reads as a shaded, color-coded row (a green left rail and a faint
+   wash, with a stronger label), not a pill: the old pill crowded the title and
+   grew the row height. The meaning is carried by color plus an sr-only cue. */
+.heat-row.is-breakout { background: color-mix(in oklab, var(--q-leading) 8%, transparent); box-shadow: inset 3px 0 0 var(--q-leading); }
+.heat-row.is-breakout:hover { background: color-mix(in oklab, var(--q-leading) 15%, transparent); }
+.heat-row.is-breakout .heat-label a { color: var(--text-strong); font-weight: 650; }
 .heat-rank { color: var(--faint); font-size: 0.72rem; text-align: right; }
 .heat-main { min-width: 0; }
 .heat-label { display: flex; align-items: center; gap: 7px; min-width: 0; }
@@ -302,7 +353,6 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .heat-bar { display: block; height: 3px; margin-top: 5px; border-radius: 2px; background: var(--border); overflow: hidden; }
 .heat-bar-fill { display: block; height: 100%; border-radius: 2px; min-width: 2px; }
 .heat-tag { font-family: var(--font-mono); font-size: 0.56rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 1px 6px; border-radius: 999px; white-space: nowrap; }
-.heat-tag.breakout { color: #1a1206; background: var(--q-leading); }
 .heat-tag.new { color: var(--accent); border: 1px solid var(--border-strong); }
 .heat-trend { display: inline-flex; align-items: center; gap: 4px; justify-content: flex-end; min-width: 3.1rem; font-size: 0.78rem; font-weight: 650; }
 .heat-up { color: var(--q-leading); }
@@ -425,6 +475,9 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 50; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 var(--radius-sm) 0; }
 .skip-link:focus { left: 0; }
+/* Screen-reader-only: present to assistive tech, visually hidden. Carries the
+   "breaking out" meaning now that the breakout pill is a color-coded row. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* Breakout hero: the single biggest mover for the horizon. Carries one
    ambient breathing glow (worldthought's 4s signature) to draw the eye. */

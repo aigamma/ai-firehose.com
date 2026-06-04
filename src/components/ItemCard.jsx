@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getKind } from "../data/registry.js";
+import { itemKey } from "../lib/seen.js";
 import RichText from "./RichText.jsx";
 
 // Concepts arrive from Pinecone metadata as either a string array or a single
@@ -38,28 +39,46 @@ function formatScore(score) {
 // When `linkConcepts` is set (the Home "What Is New" feed, where concepts are
 // glossary slugs), each concept chip becomes a wiki-link into its hub, per the
 // citation contract; otherwise chips are plain text (the default, for search).
-export default function ItemCard({ item, linkConcepts = false }) {
+// The returning-visitor props are optional and additive, so the search results
+// (which pass none) are unchanged: `isNew` flags an item published since the
+// reader's last visit; `read` dims a cleared card; `onToggleRead`/`onMarkRead`
+// drive the read state. The read controls render only when onToggleRead is given.
+export default function ItemCard({ item, linkConcepts = false, isNew = false, read = false, onToggleRead, onMarkRead }) {
   const kind = getKind(item.kind);
   const concepts = conceptLabels(item.concepts);
   const date = formatDate(item.published_at);
   const pct = formatScore(item.score);
   const accent = kind ? `var(${kind.accentVar})` : "var(--accent)";
+  const key = itemKey(item);
+  const trackable = typeof onToggleRead === "function" && key;
 
   return (
-    <article className="card" style={{ "--tile-accent": accent, padding: 14 }}>
+    <article className={`card${read ? " item-read" : ""}`} style={{ "--tile-accent": accent, padding: 14 }}>
       <div className="feed-head" style={{ flexWrap: "wrap" }}>
         {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
+        {isNew && !read && <span className="item-new" title="Published since your last visit">New</span>}
         <span className="lead-label" style={{ flex: "1 1 auto", whiteSpace: "normal" }}>
           {item.url && item.url.startsWith("/") ? (
-            <Link to={item.url}>{item.title || item.url}</Link>
+            <Link to={item.url} onClick={() => onMarkRead?.(key)}>{item.title || item.url}</Link>
           ) : (
-            <a href={item.url} target="_blank" rel="noreferrer">{item.title || item.url}</a>
+            <a href={item.url} target="_blank" rel="noreferrer" onClick={() => onMarkRead?.(key)}>{item.title || item.url}</a>
           )}
         </span>
         {pct && (
           <span className="mono" style={{ fontVariantNumeric: "tabular-nums", color: "var(--faint)" }} title="Relevance">
             {pct}
           </span>
+        )}
+        {trackable && (
+          <button
+            type="button"
+            className="item-clear"
+            aria-pressed={read}
+            onClick={() => onToggleRead(key)}
+            title={read ? "Cleared. Click to mark unread." : "Mark as read"}
+          >
+            {read ? "Cleared" : "Mark read"}
+          </button>
         )}
       </div>
 

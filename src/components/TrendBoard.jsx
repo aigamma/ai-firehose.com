@@ -8,9 +8,10 @@ import Sparkline from "./Sparkline.jsx";
 // the rotation plane, whose Mansfield ratio pinned to its [55, 145] clamp on this
 // sparse, recency-heavy corpus and so could not rank what is actually trending.
 // Magnitude is the bar (current attention), the move is the signed delta and arrow,
-// the shape over time is the sparkline. Breakouts and freshly surfaced topics carry
-// a badge rather than living in a separate list. Navigation targets the shared
-// concept hub at /technique/:slug, exactly as the old plane did.
+// the shape over time is the sparkline. A breakout reads as a shaded, color-coded
+// row (a green left rail and a faint wash, with a stronger label) rather than a pill
+// that crowded the title and grew the row; a freshly surfaced topic still carries a
+// small "new" badge. Navigation targets the shared concept hub at /technique/:slug.
 
 const dir = (d) => (d > 0.5 ? "up" : d < -0.5 ? "down" : "flat");
 const STROKE = { up: "var(--q-leading)", down: "var(--q-lagging)", flat: "var(--muted)" };
@@ -39,13 +40,14 @@ function TrendBoard({ entities = [], kind, limit, showHead = true }) {
           const delta = e.delta ?? 0;
           const d = dir(delta);
           const sign = delta > 0 ? "+" : "";
+          const breakout = !!e.outlier?.breakout;
           return (
-            <li className="heat-row" key={`${e.kind || kind?.key || ""}:${e.id}`}>
+            <li className={breakout ? "heat-row is-breakout" : "heat-row"} key={`${e.kind || kind?.key || ""}:${e.id}`}>
               <span className="heat-rank mono">{i + 1}</span>
               <span className="heat-main">
                 <span className="heat-label">
-                  <Link to={`/technique/${e.id}`}>{e.label}</Link>
-                  {e.outlier?.breakout && <span className="heat-tag breakout">breakout</span>}
+                  <Link to={`/technique/${e.id}`} title={breakout ? `${e.label} (breaking out)` : e.label}>{e.label}</Link>
+                  {breakout && <span className="sr-only">breaking out</span>}
                   {e.outlier?.new_entrant && <span className="heat-tag new">new</span>}
                 </span>
                 <span className="heat-bar" aria-hidden="true">

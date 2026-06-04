@@ -12,7 +12,7 @@ function headers() {
 }
 
 export async function describeIndex(name = ENV.pineconeIndex) {
-  const r = await fetch(`${CONTROL}/indexes/${name}`, { headers: headers() });
+  const r = await fetch(`${CONTROL}/indexes/${name}`, { headers: headers(), signal: AbortSignal.timeout(30000) });
   if (r.status === 404) return null;
   if (!r.ok) throw new Error(`Pinecone describe ${r.status}: ${(await r.text()).slice(0, 300)}`);
   return r.json();
@@ -27,6 +27,7 @@ export async function ensureIndex({ name = ENV.pineconeIndex, dimension = 1024, 
       method: "POST",
       headers: headers(),
       body: JSON.stringify({ name, dimension, metric, spec: { serverless: { cloud, region } } }),
+      signal: AbortSignal.timeout(30000),
     });
     if (!r.ok) throw new Error(`Pinecone create ${r.status}: ${(await r.text()).slice(0, 300)}`);
     info = await r.json();
@@ -46,6 +47,7 @@ export async function upsert(host, vectors, namespace = "") {
       method: "POST",
       headers: headers(),
       body: JSON.stringify({ vectors: vectors.slice(i, i + 100), namespace }),
+      signal: AbortSignal.timeout(30000),
     });
     if (!r.ok) throw new Error(`Pinecone upsert ${r.status}: ${(await r.text()).slice(0, 300)}`);
   }
@@ -56,19 +58,10 @@ export async function query(host, vector, { topK = 20, filter, includeMetadata =
     method: "POST",
     headers: headers(),
     body: JSON.stringify({ vector, topK, filter, includeMetadata, includeValues, namespace }),
+    signal: AbortSignal.timeout(30000),
   });
   if (!r.ok) throw new Error(`Pinecone query ${r.status}: ${(await r.text()).slice(0, 300)}`);
   return (await r.json()).matches || [];
-}
-
-export async function fetchByIds(host, ids, namespace = "") {
-  if (!ids.length) return {};
-  const params = new URLSearchParams();
-  ids.forEach((id) => params.append("ids", id));
-  if (namespace) params.set("namespace", namespace);
-  const r = await fetch(`https://${host}/vectors/fetch?${params}`, { headers: headers() });
-  if (!r.ok) throw new Error(`Pinecone fetch ${r.status}`);
-  return (await r.json()).vectors || {};
 }
 
 export async function deleteByIds(host, ids, namespace = "") {
@@ -78,6 +71,7 @@ export async function deleteByIds(host, ids, namespace = "") {
       method: "POST",
       headers: headers(),
       body: JSON.stringify({ ids: ids.slice(i, i + 1000), namespace }),
+      signal: AbortSignal.timeout(30000),
     });
     if (!r.ok) throw new Error(`Pinecone delete ${r.status}: ${(await r.text()).slice(0, 300)}`);
   }
@@ -93,7 +87,7 @@ export async function listIds(host, { prefix = "", namespace = "" } = {}) {
     if (prefix) params.set("prefix", prefix);
     if (namespace) params.set("namespace", namespace);
     if (token) params.set("paginationToken", token);
-    const r = await fetch(`https://${host}/vectors/list?${params}`, { headers: headers() });
+    const r = await fetch(`https://${host}/vectors/list?${params}`, { headers: headers(), signal: AbortSignal.timeout(30000) });
     if (!r.ok) throw new Error(`Pinecone list ${r.status}`);
     const j = await r.json();
     (j.vectors || []).forEach((v) => ids.push(v.id));
