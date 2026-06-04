@@ -2158,7 +2158,7 @@
         "log loss",
         "negative log likelihood"
       ],
-      "def_snippet": "A measure of the average number of bits needed to encode outcomes from one distribution using a code optimized for another, and the standard loss function for training classifiers and language models.",
+      "def_snippet": "A measure of the average bits to encode outcomes from one distribution using a code built for another, and the standard loss for training classifiers and language models. It is entropy plus a penalty for being wrong, identical to maximum likelihood, and paired with softmax its gradient is just predicted-minus-true.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -3793,7 +3793,7 @@
         "bell curve",
         "normal"
       ],
-      "def_snippet": "The bell-shaped continuous distribution defined by a mean and a variance, which arises whenever many small independent effects add together and serves as the default model for noise and uncertainty.",
+      "def_snippet": "The bell-shaped distribution defined by a mean and a variance, the default model of noise and uncertainty. It is everywhere for three deep reasons: the central limit theorem makes it the inevitable shape of accumulated small effects, the maximum-entropy principle makes it the most honest choice given only a mean and variance, and its closure under the operations that matter makes it analytically tractable where other distributions force approximation.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -4985,7 +4985,7 @@
         "relative entropy",
         "KL distance"
       ],
-      "def_snippet": "A measure of how much one probability distribution differs from another, equal to the expected extra bits incurred by encoding data from the true distribution using a model distribution, always non-negative and zero only when the two distributions match.",
+      "def_snippet": "A measure of how much one probability distribution differs from another, the extra bits wasted by encoding the truth with the wrong model. The single most important thing about it is its asymmetry: the forward direction is mean-seeking and covers the whole truth, the reverse is mode-seeking and locks onto one peak, so choosing a direction is choosing what kind of error you will tolerate.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -5928,7 +5928,7 @@
         "maximum likelihood",
         "likelihood maximization"
       ],
-      "def_snippet": "A method for fitting a model's parameters by choosing the values that make the observed data most probable under the model, equivalent to minimizing cross-entropy and to minimizing the KL divergence from the model to the data.",
+      "def_snippet": "Fitting a model by choosing the parameters that make the observed data most probable. Its importance is that an enormous fraction of machine learning is maximum likelihood in disguise, least-squares regression, every softmax classifier, every language model, and that it is exactly equivalent to driving the model distribution as close as possible to the data distribution.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
@@ -6608,7 +6608,7 @@
         "mutual information",
         "information gain"
       ],
-      "def_snippet": "A measure of how much knowing one random variable reduces uncertainty about another, equal to the difference between a variable's entropy and its entropy conditioned on the other, and zero exactly when the two are independent.",
+      "def_snippet": "A measure of how much knowing one variable reduces uncertainty about another, the reduction in entropy that learning one buys you about the other. Unlike correlation it detects any kind of dependence, not just linear, which makes it the natural measure of statistical association and the target of self-supervised and information-bottleneck objectives.",
       "durable": true,
       "category": "Probability and Information Theory"
     },
