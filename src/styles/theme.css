@@ -544,16 +544,40 @@ a { text-underline-offset: 3px; }
 .prose strong, .briefing-body strong { color: var(--text-strong); font-weight: 680; }
 
 /* Concept hub chrome: a kind-colored accent rail on the title and an editorial serif
-   definition lede, both keyed off --tile-accent (the concept's kind color). */
+   definition lede, both keyed off --tile-accent (the concept's kind color). The hub is
+   a centered reading column (worldthought.com style) rather than prose pinned to the
+   left of a wide shell, so the eye has a comfortable, intentional measure. */
+.hub-page { max-width: 760px; margin-inline: auto; }
 .hub-title { margin: 0; padding-left: 14px; border-left: 4px solid var(--tile-accent, var(--accent)); }
 .hub-def { font-family: var(--font-serif); font-size: 1.18rem; line-height: 1.5; color: var(--text-strong);
   padding-left: 14px; border-left: 4px solid color-mix(in oklab, var(--tile-accent, var(--accent)) 45%, transparent); }
-/* Cited lead figure, a clean block under the definition. The image sits on a white
-   pad so transparent or black-on-clear Wikimedia diagrams stay visible on the dark
-   theme; the caption credits the source page (the citation). */
-.hub-figure { margin: 2px 0 6px; max-width: 440px; }
-.hub-figure img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; }
-.hub-figure figcaption { margin-top: 6px; font-size: 0.76rem; line-height: 1.45; }
+/* Cited, illustrative figure under the definition. A centered block, larger than the
+   old left-pinned thumbnail, chosen to teach the concept's defining insight. The image
+   sits on a white pad so transparent or dark-on-clear diagrams stay visible on the dark
+   theme; the caption teaches, and the credit line cites the author, license, and source
+   page (the citation). Click to enlarge in a lightbox. */
+.hub-figure { margin: 8px auto 10px; max-width: 720px; text-align: center; }
+.hub-figure-trigger { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; font: inherit; }
+.hub-figure img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; transition: border-color var(--motion-fast) var(--ease-out); }
+.hub-figure-trigger:hover img, .hub-figure-trigger:focus-visible img { border-color: var(--tile-accent, var(--accent)); }
+.hub-figure figcaption { margin: 9px auto 0; max-width: 62ch; line-height: 1.5; display: flex; flex-direction: column; gap: 3px; }
+.hub-figure .fig-caption { font-size: 0.9rem; color: var(--muted); }
+.hub-figure .fig-credit { font-size: 0.74rem; }
+.hub-figure .fig-credit a { color: inherit; border-bottom: 1px dotted color-mix(in oklab, currentColor 50%, transparent); }
+.hub-figure .fig-credit a:hover { color: var(--text); }
+
+/* Lightbox: enlarge a figure over a dimmed backdrop. Esc, the close button, or a
+   backdrop click dismisses it; focus moves to the close button and returns on close. */
+.hub-figure-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 4vmin; background: rgba(8, 10, 14, 0.86); backdrop-filter: blur(2px); animation: fadeIn var(--motion-fast) var(--ease-out) both; }
+.hub-figure-lightbox-figure { margin: 0; max-width: min(1100px, 94vw); max-height: 92vh; display: flex; flex-direction: column; gap: 10px; }
+.hub-figure-lightbox-figure img { width: auto; max-width: 100%; max-height: 80vh; object-fit: contain; background: #fff; border-radius: var(--radius-sm); padding: 16px; }
+.hub-figure-lightbox-figure figcaption { color: #d9dde5; text-align: center; display: flex; flex-direction: column; gap: 3px; }
+.hub-figure-lightbox-figure .fig-caption { font-size: 0.95rem; }
+.hub-figure-lightbox-figure .fig-credit { font-size: 0.78rem; opacity: 0.8; }
+.hub-figure-lightbox-figure .fig-credit a { color: inherit; }
+.hub-figure-lightbox-close { position: absolute; top: 14px; right: 18px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.hub-figure-lightbox-close:hover, .hub-figure-lightbox-close:focus-visible { background: rgba(255, 255, 255, 0.18); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* Related concept mesh on a hub: chips colored by their own kind. */
 .related-mesh { display: flex; flex-direction: column; gap: 8px; }

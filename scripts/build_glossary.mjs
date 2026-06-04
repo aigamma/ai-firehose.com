@@ -131,6 +131,25 @@ export function mdToBlocks(md) {
   return blocks;
 }
 
+// Resolve a cited-image sidecar row to the shape the hub renders: a served `src`
+// (self-hosted under /images/glossary/, with a legacy hotlink `url` as fallback) plus
+// the attribution fields the figcaption cites. Returns undefined for no image.
+export function resolveImage(row) {
+  if (!row) return undefined;
+  const src = row.file ? `/images/glossary/${row.file}` : row.url;
+  if (!src) return undefined;
+  return {
+    src,
+    alt: row.alt || "",
+    caption: row.caption || "",
+    credit: row.credit || "",
+    license: row.license || "",
+    license_url: row.license_url || "",
+    source: row.source || "",
+    provider: row.provider || "",
+  };
+}
+
 const readJson = (p, fallback) => {
   try {
     return JSON.parse(readFileSync(p, "utf8"));
@@ -187,7 +206,7 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
       definition: e.summary,
       body: e.body,
       related,
-      image: images[e.slug] || undefined,
+      image: resolveImage(images[e.slug]),
       attention: prior.attention || 0,
       first_seen: prior.first_seen || generated,
       rotation: prior.rotation || null,

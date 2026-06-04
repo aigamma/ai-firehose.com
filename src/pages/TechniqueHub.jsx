@@ -4,6 +4,7 @@ import LoadError from "../components/LoadError.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import Sparkline from "../components/Sparkline.jsx";
 import RichText from "../components/RichText.jsx";
+import GlossaryFigure from "../components/GlossaryFigure.jsx";
 import { getKind, quadrantOf } from "../data/registry.js";
 
 // A concept hub. Durable authored entries lead with a rich, wiki-linked body and a
@@ -41,7 +42,7 @@ export default function TechniqueHub() {
   const k = getKind(c.kind);
   const hasSidecards = c.axis_positions?.length || c.neighbors?.length;
   return (
-    <div className="stack" style={{ paddingTop: 24, "--tile-accent": k ? `var(${k.accentVar})` : "var(--accent)" }}>
+    <div className="stack hub-page" style={{ paddingTop: 24, "--tile-accent": k ? `var(${k.accentVar})` : "var(--accent)" }}>
       <h1 className="hub-title">{c.label}</h1>
       <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
         {k && (
@@ -58,15 +59,7 @@ export default function TechniqueHub() {
 
       {c.definition && <p className="hub-def">{c.definition}</p>}
 
-      {c.image?.url && (
-        <figure className="hub-figure">
-          <img src={c.image.url} alt={c.image.alt || c.label} loading="lazy" />
-          <figcaption className="faint">
-            {c.image.alt ? `${c.image.alt}. ` : ""}
-            <a href={c.image.source} target="_blank" rel="noreferrer">{c.image.credit || "Source"}</a>
-          </figcaption>
-        </figure>
-      )}
+      {c.image?.src && <GlossaryFigure image={c.image} />}
 
       {c.body?.length > 0 && <RichText blocks={c.body} currentSlug={slug} className="prose" />}
 

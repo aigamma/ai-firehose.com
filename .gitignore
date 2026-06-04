@@ -13,6 +13,11 @@ __pycache__/
 
 # Local-only scratch and downloaded media
 .tmp/
+.tmp_*
+# Glossary image curation staging: subagents write per-category candidate rows here,
+# and `glossary_images.mjs finalize` merges them into content/glossary/images.json (the
+# committed source of truth) then deletes this dir. The staging files are transient.
+content/glossary/_img_stage/
 # Vite's local cache, and a scratch dir used for headless-screenshot verification.
 .vite/
 # The .cache holds regenerable caches (classify, definitions, axis_vectors) AND the

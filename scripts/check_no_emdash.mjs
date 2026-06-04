@@ -41,6 +41,7 @@ const FILES = [
   "GEMINI.md",
   "opencode.md",
   "public/data/learning-paths.json",
+  "content/glossary/images.json", // authored teaching captions and alt for the cited figures
 ];
 
 // Pure: find every em dash in a blob of text, with 1-based line and column. Exported so
