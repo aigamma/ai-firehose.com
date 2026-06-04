@@ -1,0 +1,69 @@
+{
+  "id": "oversmoothing",
+  "label": "Oversmoothing",
+  "kind": "technique",
+  "category": "Graph and Geometric Learning",
+  "aliases": [
+    "over-smoothing",
+    "oversmoothing problem"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The failure mode in which stacking too many graph neural network layers drives every node's representation toward the same vector, washing out the distinctions between nodes and capping how deep such networks can usefully go.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Oversmoothing is the central reason most graph neural networks are shallow. Each layer of a graph-neural-network performs message-passing, mixing every node's representation with those of its neighbors. A single round is a smoothing operation: neighboring nodes are pulled toward one another. That is desirable in moderation, since it is how a node absorbs context from its surroundings. But repeated indefinitely, smoothing does not stop at a useful blend; it converges. After many layers, the representations of all nodes in a connected component drift toward a single common vector, the differences between them shrinking geometrically with depth, until the features are nearly indistinguishable. A classifier sitting on top of such collapsed representations cannot tell the nodes apart, so accuracy degrades sharply as layers are added. This is oversmoothing, and it means that naively deepening a GNN, the move that reliably helps convolutional and transformer networks, tends to hurt."
+    },
+    {
+      "type": "p",
+      "text": "The phenomenon has a clean explanation through spectral-graph-theory. Neighborhood aggregation by the (normalized) graph operator is closely related to a diffusion or random walk on the graph, and repeatedly applying it acts as a low-pass filter: it preserves the lowest-frequency component of the signal on the graph and suppresses everything else. As depth grows, the filter becomes ever more aggressively low-pass, and in the limit only the smoothest signal survives, which on a connected graph is essentially constant across nodes (proportional to the degree-weighted all-ones vector, the dominant eigenvector of the propagation matrix). Oversmoothing is therefore not a quirk of a particular implementation but a structural consequence of stacking smoothing operators, and the rate of collapse is governed by the spectral gap of the graph, which is itself a measure of how well-connected the graph is."
+    },
+    {
+      "type": "p",
+      "text": "Oversmoothing is distinct from, though often confused with, two neighboring difficulties. Ordinary overfitting and vanishing gradients are generic deep-network problems; oversmoothing is specific to the graph mixing operation and would occur even with perfect optimization. Over-squashing is its complement: where oversmoothing is information becoming too uniform across the graph, over-squashing is information from an exponentially growing receptive field being crushed through a fixed-width representation across a graph bottleneck, so distant signals fail to arrive at all. Together these two effects squeeze the useful depth of a GNN from both ends, one punishing too much mixing and the other punishing too little reach."
+    },
+    {
+      "type": "p",
+      "text": "A large body of techniques exists to push the depth ceiling higher. Residual and skip connections (a residual-connection lets a node retain its own earlier representation), initial-residual schemes that re-inject the input features at every layer, and dense connectivity all give nodes a way to resist being averaged into uniformity. Normalization methods designed for graphs (such as PairNorm and related schemes) explicitly keep node representations spread apart by controlling pairwise distances or total variance. Architectural choices help too: decoupling the propagation steps from the feature transformations, attention-based aggregation that learns to down-weight irrelevant neighbors, jumping-knowledge connections that let the readout select information from the most informative depth, and graph rewiring that adds shortcut edges to relieve bottlenecks. Understanding oversmoothing as a low-pass effect is what makes these remedies legible: each one is a way to retain high-frequency, node-specific signal that plain message passing would otherwise erase."
+    }
+  ],
+  "related": [
+    {
+      "slug": "graph-neural-network",
+      "label": "Graph Neural Network",
+      "kind": "technique"
+    },
+    {
+      "slug": "message-passing",
+      "label": "Message Passing",
+      "kind": "technique"
+    },
+    {
+      "slug": "graph-convolution",
+      "label": "Graph Convolution",
+      "kind": "technique"
+    },
+    {
+      "slug": "node-embedding",
+      "label": "Node Embedding",
+      "kind": "technique"
+    },
+    {
+      "slug": "spectral-graph-theory",
+      "label": "Spectral Graph Theory",
+      "kind": "technique"
+    },
+    {
+      "slug": "residual-connection",
+      "label": "Residual Connection",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

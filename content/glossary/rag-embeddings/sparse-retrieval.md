@@ -3,7 +3,7 @@ title: Sparse Retrieval
 slug: sparse-retrieval
 kind: technique
 category: RAG, Embeddings, and Retrieval
-aliases: lexical retrieval, keyword retrieval, BM25
+aliases: lexical retrieval, keyword retrieval
 related: dense-retrieval, hybrid-search, semantic-search, embedding-model, reranking
 summary: Retrieval that represents queries and documents as high-dimensional sparse vectors over the vocabulary and ranks by term overlap, the classic keyword approach typified by BM25, strong at exact and rare-term matching.
 ---

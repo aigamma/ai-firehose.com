@@ -1,0 +1,69 @@
+{
+  "id": "image-captioning",
+  "label": "Image Captioning",
+  "kind": "technique",
+  "category": "Computer Vision",
+  "aliases": [
+    "image captioning",
+    "image-to-text"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The task of generating a natural-language description of an image, joining a visual encoder that reads the picture to a language decoder that writes the sentence, and the inverse of text-to-image generation.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Image captioning is the task of looking at a picture and writing a sentence that describes it. Its input is an image and its output is fluent natural language, \"a brown dog catching a frisbee on a grassy lawn\", which makes it the mirror image of [text-to-image](text-to-image) generation: one turns pixels into words, the other turns words into pixels. It is a foundational test of joint visual and linguistic understanding, because producing a good caption requires recognizing the objects in the scene, inferring their attributes and relationships, and rendering all of that as grammatical, relevant prose rather than a bag of detected labels."
+    },
+    {
+      "type": "p",
+      "text": "The task matters both as a capability and as a probe. As a capability it powers alternative text for accessibility, letting screen readers describe images to blind users, and it drives image search, content moderation, and photo organization. As a probe it stresses the seam where vision meets language, so captioning quality has long served as a barometer of [multimodal learning](multimodal-learning) progress; a model that captions well has, in effect, demonstrated that its visual features carry enough structured meaning to be verbalized. Generating language is also strictly harder than classifying, because the space of valid descriptions is open-ended and the output must be coherent over many words, not chosen from a fixed menu."
+    },
+    {
+      "type": "p",
+      "text": "Architecturally, captioning follows an encoder-decoder, [sequence-to-sequence](sequence-to-sequence) shape adapted to a visual input. A visual encoder, historically a convolutional network and now usually a [vision transformer](vision-transformer), reads the image into a set of feature vectors; a language decoder then generates the caption one word at a time, each word conditioned on the words so far and on the image features, typically attending over those features through cross-attention so the model can ground each phrase in the relevant region of the picture. The decoder is trained to predict the next word of human-written reference captions, and at inference it generates autoregressively. Caption quality is scored against human references with overlap metrics, though these correlate only loosely with how good a human finds the description."
+    },
+    {
+      "type": "p",
+      "text": "Modern image captioning has largely folded into the broader [vision-language model](vision-language-model). Rather than a bespoke captioner, the dominant approach connects a powerful pretrained image encoder, often one aligned with language by a model like [clip](clip), to a large language model, so the same system can caption an image, answer questions about it, or hold a conversation grounded in it, with captioning becoming just one instruction among many. This convergence reflects a general trend: specialized vision tasks are increasingly expressed as natural-language requests to a single multimodal model rather than as separate networks, with captioning the oldest and most direct example of image-to-text generation."
+    }
+  ],
+  "related": [
+    {
+      "slug": "vision-language-model",
+      "label": "Vision-Language Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "clip",
+      "label": "CLIP",
+      "kind": "technique"
+    },
+    {
+      "slug": "multimodal-learning",
+      "label": "Multimodal Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "text-to-image",
+      "label": "Text-to-Image Generation",
+      "kind": "technique"
+    },
+    {
+      "slug": "sequence-to-sequence",
+      "label": "Sequence-to-Sequence",
+      "kind": "technique"
+    },
+    {
+      "slug": "vision-transformer",
+      "label": "Vision Transformer",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

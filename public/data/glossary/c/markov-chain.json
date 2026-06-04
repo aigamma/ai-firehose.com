@@ -1,0 +1,65 @@
+{
+  "id": "markov-chain",
+  "label": "Markov Chain",
+  "kind": "technique",
+  "category": "Probability and Information Theory",
+  "aliases": [
+    "Markov process",
+    "Markov property",
+    "transition matrix"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A sequence of random states in which the next state depends only on the current one and not on the full history, the memoryless model whose transition and stationary distributions underlie sampling algorithms, language models, and reinforcement learning.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A Markov chain is a model of a system that moves between states over time, with one defining simplification: the probability of the next state depends only on the present state, not on the entire path that led there. This is the Markov property, often phrased as memorylessness, and it is the assumption that makes an otherwise unmanageable sequence tractable. For a finite set of states the dynamics are captured by a transition matrix, whose entry in row i and column j gives the probability of moving from state i to state j; each row sums to one because the system must go somewhere."
+    },
+    {
+      "type": "p",
+      "text": "The transition matrix turns questions about the future into linear algebra. Multiplying a distribution over states by the transition matrix advances it one step, and raising the matrix to the n-th power gives the n-step transition probabilities. Under mild conditions, irreducibility, meaning every state is reachable from every other, and aperiodicity, the chain forgets its starting point and settles into a unique stationary distribution: a distribution that the transition matrix leaves unchanged, the long-run fraction of time spent in each state. The stationary distribution is a fixed point of the dynamics and, mathematically, the leading left eigenvector of the transition matrix with eigenvalue one. How fast the chain approaches it, the mixing time, is governed by the gap to the next eigenvalue."
+    },
+    {
+      "type": "p",
+      "text": "Markov chains are foundational across machine learning precisely because the memoryless assumption is both simple and surprisingly expressive. The entire family of [Markov chain Monte Carlo](markov-chain-monte-carlo) methods works by constructing a chain whose stationary distribution is a target distribution we want to sample from, then running it until it mixes; this is how intractable [Bayesian inference](bayesian-inference) posteriors are sampled in practice. A [hidden Markov model](hidden-markov-model) layers unobserved Markov dynamics under noisy observations and powers speech and sequence modeling. A [Markov decision process](markov-decision-process) adds actions and rewards to a Markov chain and is the formal substrate of reinforcement learning."
+    },
+    {
+      "type": "p",
+      "text": "The reach of the idea is wider still. Classical n-gram language models are Markov chains over words, predicting the next token from a short fixed window of recent ones, and even though modern transformers break the strict Markov assumption by attending to long context, the conceptual lineage runs straight through these chains. PageRank computes the stationary distribution of a random surfer's Markov chain over web pages. Wherever a process unfolds in steps and the recent state captures enough to predict the next, the Markov chain is the first model to reach for, and its stationary and transition structure is the language in which such processes are analyzed."
+    }
+  ],
+  "related": [
+    {
+      "slug": "markov-chain-monte-carlo",
+      "label": "Markov Chain Monte Carlo",
+      "kind": "technique"
+    },
+    {
+      "slug": "hidden-markov-model",
+      "label": "Hidden Markov Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "markov-decision-process",
+      "label": "Markov Decision Process",
+      "kind": "technique"
+    },
+    {
+      "slug": "bayesian-inference",
+      "label": "Bayesian Inference",
+      "kind": "technique"
+    },
+    {
+      "slug": "conditional-probability",
+      "label": "Conditional Probability",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

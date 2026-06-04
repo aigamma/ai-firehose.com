@@ -1,0 +1,69 @@
+{
+  "id": "instance-segmentation",
+  "label": "Instance Segmentation",
+  "kind": "technique",
+  "category": "Computer Vision",
+  "aliases": [
+    "instance segmentation",
+    "mask prediction"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The task of detecting each individual object in an image and producing a pixel-accurate mask for it, so that two objects of the same category are separated as distinct instances rather than merged into one region.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Instance segmentation combines the two halves of fine-grained scene understanding: it finds each separate object the way [object detection](object-detection) does, and it traces each object's exact silhouette the way [semantic segmentation](semantic-segmentation) does. The output is one mask per detected object, each tagged with a category and a confidence score. The defining difference from plain semantic segmentation is that instances are kept apart: where semantic segmentation paints every car with the same \"car\" label and cannot tell two overlapping cars from one, instance segmentation returns car one and car two as separate masks. It is therefore sometimes described as detection with a mask attached to every box instead of just a rectangle."
+    },
+    {
+      "type": "p",
+      "text": "The task matters because acting on a scene usually requires reasoning about discrete objects, not just regions. A robot grasping items from a bin needs to know where one item ends and the next begins; a cell-counting pipeline in microscopy needs each nucleus separated from its touching neighbors; a photo editor selecting a single person in a crowd needs that person's mask alone. A bounding box is too coarse for these jobs because it includes background and overlapping neighbors, and a semantic map is too coarse because it merges adjacent instances of the same class. Instance segmentation is the representation that is both per-object and per-pixel, which is exactly what manipulation and editing need."
+    },
+    {
+      "type": "p",
+      "text": "The dominant classical recipe extends a two-stage detector with a mask branch. Mask R-CNN, the canonical example, first proposes candidate object regions and classifies and refines each box, then adds a small parallel network that predicts a binary mask inside each box, so detection and segmentation share one backbone and one set of region features. A [feature pyramid](feature-pyramid) supplies features at several scales so that small and large objects are masked equally well, and a precise region-alignment operation crops the backbone features under each box without the rounding that would blur the mask. The quality of a result is scored by mask-level mean average precision, which rewards masks that overlap the true object tightly across a range of strictness thresholds."
+    },
+    {
+      "type": "p",
+      "text": "Like the rest of vision, the field has moved toward attention-based, query-driven designs that drop the hand-built proposal and anchor machinery. Architectures in the DETR and Mask2Former lineage treat each object as a learned query that attends over [vision transformer](vision-transformer) features and directly emits a mask, and a unified formulation called panoptic segmentation folds instance masks for countable \"things\" together with semantic regions for uncountable \"stuff\" like sky and road into a single coherent labeling. Instance segmentation thus sits at the center of the core vision tasks, inheriting backbone advances from classification and detection while pushing toward the per-object, per-pixel output that downstream systems consume. The encoder-decoder shape that produces sharp masks is most often built on the [u-net](u-net) template of downsampling then upsampling with skip connections."
+    }
+  ],
+  "related": [
+    {
+      "slug": "semantic-segmentation",
+      "label": "Semantic Segmentation",
+      "kind": "technique"
+    },
+    {
+      "slug": "object-detection",
+      "label": "Object Detection",
+      "kind": "technique"
+    },
+    {
+      "slug": "image-classification",
+      "label": "Image Classification",
+      "kind": "technique"
+    },
+    {
+      "slug": "feature-pyramid",
+      "label": "Feature Pyramid",
+      "kind": "technique"
+    },
+    {
+      "slug": "u-net",
+      "label": "U-Net",
+      "kind": "technique"
+    },
+    {
+      "slug": "vision-transformer",
+      "label": "Vision Transformer",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

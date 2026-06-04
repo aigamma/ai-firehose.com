@@ -1,0 +1,17 @@
+---
+title: Human in the Loop
+slug: human-in-the-loop
+kind: technique
+category: Agents and Tool Use
+aliases: human-in-the-loop, HITL, human oversight
+related: ai-agent, autonomous-agent, agentic-workflow, tool-use, reflection, guardrails
+summary: A design in which a person reviews, approves, or corrects an agent's actions at chosen points rather than letting it run fully unattended, trading some autonomy for safety, accuracy, and accountability on consequential or irreversible steps.
+---
+
+Human in the loop is the deliberate insertion of a person into an agent's decision cycle. Instead of an agent executing every step on its own, the system pauses at chosen points and waits for a human to review what it proposes, approve or reject it, edit it, or supply information the agent lacks. The pattern spans a spectrum: at one end the human merely watches and can intervene, at the other the agent cannot take certain actions at all without explicit sign-off. It is the practical middle ground between a fully manual workflow and a fully autonomous-agent.
+
+The reason it exists is that autonomy and risk rise together. Letting an agent act unattended is fine when actions are cheap and reversible, but many real tasks include steps that are expensive, irreversible, or consequential: sending an email to a customer, merging code, moving money, deleting records, deploying to production. On those steps a single confident mistake can do real damage, and current agents are reliable enough to be useful but not reliable enough to be trusted blindly. Putting a human at the decision point catches errors before they take effect and supplies the judgment, context, and accountability that the agent cannot guarantee on its own. It is the same impulse that motivates guardrails, applied at the level of approval rather than automated constraint.
+
+In practice the loop is placed surgically, not everywhere, because a checkpoint on every action would erase the agent's value. Designers gate the loop on the actions that matter: an agent may research, draft, and plan freely, then stop for confirmation only before an action that writes to the outside world through tool-use. Common forms include approval gates ("the agent has prepared this change; apply it?"), human-supplied corrections that the agent folds back into its work much as a reflection step would, and escalation, where the agent hands off to a person when its own confidence is low or it hits a case outside its competence. The interface ideally shows enough of the agent's reasoning and intended effect for the reviewer to judge quickly.
+
+Human in the loop is a defining choice in any production agentic-workflow, the dial that sets how much an ai-agent is permitted to do alone. It is most important precisely where automation is most tempting and most dangerous, on long-horizon autonomous tasks whose individual steps carry weight. The engineering tension is calibration: too many checkpoints and the human becomes a bottleneck who rubber-stamps without reading, too few and the agent's mistakes reach the world unchecked. Well-designed systems aim the scarce human attention at the decisions where it changes the outcome and let the agent handle the rest.

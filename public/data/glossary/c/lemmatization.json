@@ -1,0 +1,69 @@
+{
+  "id": "lemmatization",
+  "label": "Lemmatization",
+  "kind": "technique",
+  "category": "NLP Foundations",
+  "aliases": [
+    "lemmatisation",
+    "lemmatizer"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The process of reducing an inflected word to its canonical dictionary form, its lemma, using vocabulary and grammatical analysis, so that different surface forms of the same word are treated as one.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Lemmatization is the task of mapping an inflected word to its lemma, the base or dictionary form under which it would be listed. \"Running\", \"ran\", and \"runs\" all lemmatize to \"run\"; \"better\" lemmatizes to \"good\"; \"mice\" to \"mouse\". The purpose is normalization: in many natural language processing pipelines the different grammatical forms of a word carry the same core meaning, and collapsing them to a single canonical form reduces sparsity and lets the system recognize that two differently spelled tokens are really the same word. It is a standard preprocessing step for search, classification, and any method that counts words."
+    },
+    {
+      "type": "p",
+      "text": "What distinguishes lemmatization from its cruder cousin stemming is that lemmatization is linguistically informed. A lemmatizer consults a vocabulary, a dictionary of known words and their inflections, and it usually needs to know the word's part of speech, because the correct lemma depends on grammatical role. The word \"saw\" lemmatizes to \"see\" when it is a verb but to \"saw\" when it is a noun, so a good lemmatizer is paired with part-of-speech-tagging to disambiguate. Because it always returns a genuine word, lemmatization never produces the malformed fragments that aggressive stemmers do, at the cost of being slower and requiring language-specific linguistic resources."
+    },
+    {
+      "type": "p",
+      "text": "The practical contrast with stemming is the clearest way to understand lemmatization. A stemmer chops affixes off by rule, so \"studies\" might become \"studi\" and \"running\" might become \"run\", fast and language-agnostic but linguistically blind, sometimes mangling words and sometimes conflating unrelated ones. A lemmatizer, by contrast, returns \"study\" and \"run\", forms a human would recognize, because it is grounded in a lexicon and morphology. When downstream consumers are humans or other word-aware components, lemmatization is preferred; when raw speed on huge corpora matters more than tidiness, stemming may suffice."
+    },
+    {
+      "type": "p",
+      "text": "Lemmatization matters most for the classical, count-based and rule-based stack: it shrinks the vocabulary a bag-of-words or tf-idf model has to handle, improves recall in search by matching queries to differently inflected document words, and cleans the input to information-extraction tasks like named-entity-recognition. Its role has narrowed in the era of large neural models, which operate on subword tokens and learn that inflected forms are related directly from data, so heavy normalization is often unnecessary or even harmful there. Still, lemmatization remains a useful, interpretable tool wherever lightweight linguistic preprocessing helps, and it is a clean illustration of the difference between rule-driven and dictionary-driven text normalization."
+    }
+  ],
+  "related": [
+    {
+      "slug": "stemming",
+      "label": "Stemming",
+      "kind": "technique"
+    },
+    {
+      "slug": "part-of-speech-tagging",
+      "label": "Part-of-Speech Tagging",
+      "kind": "technique"
+    },
+    {
+      "slug": "tf-idf",
+      "label": "TF-IDF",
+      "kind": "technique"
+    },
+    {
+      "slug": "bag-of-words",
+      "label": "Bag of Words",
+      "kind": "technique"
+    },
+    {
+      "slug": "named-entity-recognition",
+      "label": "Named-Entity Recognition",
+      "kind": "technique"
+    },
+    {
+      "slug": "dependency-parsing",
+      "label": "Dependency Parsing",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

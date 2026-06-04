@@ -1,0 +1,73 @@
+{
+  "id": "confusion-matrix",
+  "label": "Confusion Matrix",
+  "kind": "technique",
+  "category": "Core Machine Learning",
+  "aliases": [
+    "error matrix",
+    "contingency table"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A table that breaks a classifier's predictions down by predicted class against true class, exposing not just how often it is wrong but exactly which classes it confuses, the foundation from which precision, recall, and most classification metrics are computed.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A confusion matrix is the basic accounting tool for evaluating a classifier. It is a square table with one row and one column per class, where each cell counts how many examples of a given true class were predicted as a given class. The diagonal holds the correct predictions, where predicted class equals true class, and every off-diagonal cell holds a specific kind of mistake. The name captures the point exactly: the table shows which classes the model confuses with which, turning a single accuracy number into a full picture of the model's error structure."
+    },
+    {
+      "type": "p",
+      "text": "The matrix matters because a lone accuracy figure hides the information a practitioner most needs. Two classifiers with identical accuracy can fail in completely different ways, one missing rare positives while another raises constant false alarms, and only the breakdown by predicted-versus-true class reveals the difference. This is acute under class imbalance, where the confusion matrix exposes the trap that a model can score high accuracy by ignoring a minority class entirely, since its handful of errors barely move the average. For any serious Classification problem, the matrix, not the accuracy, is the honest report card."
+    },
+    {
+      "type": "p",
+      "text": "In the binary case the four cells have standard names that anchor the whole vocabulary of evaluation: true positives and true negatives on the diagonal, and the two error types off it, false positives (a negative wrongly flagged as positive, a false alarm) and false negatives (a positive wrongly missed). Almost every classification metric is a ratio built from these four counts. Precision and Recall are the two that the confusion matrix makes immediate: precision is true positives over all predicted positives, recall is true positives over all actual positives, and the F1 score is their harmonic mean. Reading these straight off the cells is the skill the matrix exists to teach."
+    },
+    {
+      "type": "p",
+      "text": "The deeper value of the confusion matrix is that it separates the two failure modes a single number fuses together, and those two errors usually carry very different costs. In medical screening a false negative (a missed disease) may be far worse than a false positive (an unnecessary follow-up test); in a spam filter the reverse holds, since a real message lost to the spam folder is costlier than a stray advertisement let through. The matrix lays both error types out explicitly so the practitioner can choose an operating point that reflects those costs, typically by moving the decision threshold, which trades false positives against false negatives along the curve that the ROC AUC summarizes."
+    },
+    {
+      "type": "p",
+      "text": "The confusion matrix is the first thing to compute when a Classification model is evaluated, ideally on held-out data from Cross-Validation so the counts reflect genuine generalization rather than memorized training examples. It extends naturally to many classes, where the off-diagonal pattern reveals systematic confusions (a digit recognizer mixing up four and nine, say) that point directly at where the model, or the data, needs work. It is the substrate beneath nearly every classification metric, the diagnostic that turns a verdict of \"wrong\" into a precise account of how and a guide to what to fix."
+    }
+  ],
+  "related": [
+    {
+      "slug": "classification",
+      "label": "Classification",
+      "kind": "technique"
+    },
+    {
+      "slug": "precision-and-recall",
+      "label": "Precision and Recall",
+      "kind": "technique"
+    },
+    {
+      "slug": "cross-validation",
+      "label": "Cross-Validation",
+      "kind": "technique"
+    },
+    {
+      "slug": "supervised-learning",
+      "label": "Supervised Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "overfitting",
+      "label": "Overfitting",
+      "kind": "technique"
+    },
+    {
+      "slug": "roc-auc",
+      "label": "ROC AUC",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

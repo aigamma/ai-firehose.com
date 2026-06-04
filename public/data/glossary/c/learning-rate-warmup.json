@@ -1,0 +1,69 @@
+{
+  "id": "learning-rate-warmup",
+  "label": "Learning Rate Warmup",
+  "kind": "technique",
+  "category": "Optimization",
+  "aliases": [
+    "warmup",
+    "linear warmup"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A training technique that begins with a very small learning rate and ramps it up to the target value over the first hundreds or thousands of steps, stabilizing the early phase of training when gradients and adaptive statistics are still unreliable.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Learning rate warmup starts training gently. Rather than applying the full target learning rate from the first step, the rate is set near zero and increased, usually linearly, over an initial window of steps until it reaches the intended value, after which the main schedule takes over. The whole maneuver lasts only a small fraction of training, often a few hundred to a few thousand steps, but it governs the most fragile moment in the run, the very beginning, when the parameters are freshly initialized and the optimizer knows almost nothing about the loss landscape."
+    },
+    {
+      "type": "p",
+      "text": "The early instability warmup cures has two sources. First, a randomly initialized network can sit in a region of the loss landscape where gradients are large or erratic, so a full-size step can overshoot violently and push the model into a bad region from which it never recovers; a tiny initial rate keeps those first steps small while the parameters settle. Second, adaptive optimizers such as Adam estimate per-parameter gradient statistics from running averages that are nearly empty at the start, so their early step sizes are based on a handful of noisy samples and have large variance. Warmup gives those estimates time to accumulate enough history to be trustworthy before the optimizer is allowed to take full steps, which is why warmup is close to mandatory when training transformers with Adam."
+    },
+    {
+      "type": "p",
+      "text": "Warmup matters because it is one of the cheapest interventions that decides whether a large training run succeeds at all. Without it, training of deep transformers frequently diverges or lands in a worse final solution, especially at the large batch sizes and high peak learning rates modern recipes use. With it, the same configuration trains stably. It is paired almost universally with a decay phase: the canonical schedule for large language models warms up linearly and then decays, often along a cosine curve, so the rate rises to a peak and then falls toward the end of training. It also interacts with gradient clipping, another guard against destructive early steps, and the two are commonly used together."
+    },
+    {
+      "type": "p",
+      "text": "The main parameter is the length of the warmup window, the number of steps spent ramping up, which is usually set as a small percentage of total training. Too short a warmup leaves the early instability only partly tamed; too long wastes training time at sub-target rates. The peak rate that warmup climbs to is the learning rate that the rest of the schedule then manages, so warmup should be understood as the opening segment of the overall learning-rate schedule rather than a separate mechanism."
+    }
+  ],
+  "related": [
+    {
+      "slug": "learning-rate",
+      "label": "Learning Rate",
+      "kind": "technique"
+    },
+    {
+      "slug": "learning-rate-schedule",
+      "label": "Learning Rate Schedule",
+      "kind": "technique"
+    },
+    {
+      "slug": "adam",
+      "label": "Adam",
+      "kind": "technique"
+    },
+    {
+      "slug": "gradient-clipping",
+      "label": "Gradient Clipping",
+      "kind": "technique"
+    },
+    {
+      "slug": "weight-initialization",
+      "label": "Weight Initialization",
+      "kind": "technique"
+    },
+    {
+      "slug": "loss-landscape",
+      "label": "Loss Landscape",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

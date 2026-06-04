@@ -1,0 +1,17 @@
+---
+title: Nesterov Momentum
+slug: nesterov-momentum
+kind: technique
+category: Optimization
+aliases: Nesterov accelerated gradient, NAG, lookahead momentum
+related: momentum, gradient-descent, stochastic-gradient-descent, learning-rate, convexity, loss-landscape
+summary: A refinement of momentum that evaluates the gradient at a look-ahead point, the position momentum is about to carry the parameters to, rather than at the current position, giving a more responsive and theoretically faster-converging update.
+---
+
+Nesterov momentum is a small change to ordinary momentum with an outsized effect on its behavior and theory. Plain momentum builds a velocity, an exponential running average of past gradients, and steps the parameters along it, which carries inertia through consistent directions and damps oscillation across a ravine in the loss landscape. The flaw is that momentum computes the gradient at where the parameters are now, then adds the inherited velocity on top, so the velocity is steered by information from a point the optimizer is already leaving. Nesterov momentum fixes the timing: it first takes the momentum step to a look-ahead position, evaluates the gradient there, and only then forms the update. The gradient is sampled where the parameters are about to be, not where they are.
+
+This look-ahead gives the method a built-in correction. If the velocity is about to overshoot, carrying the parameters past a minimum or up the far wall of a valley, the gradient at the look-ahead point already points back, and so the update is tempered before the overshoot happens rather than after. Standard momentum only learns of the overshoot on the next step, once it has occurred. The practical result is that Nesterov momentum oscillates less and can tolerate a slightly more aggressive setting than plain momentum, because its responsiveness keeps the trajectory in check.
+
+The reason the method is famous lies in convex optimization theory. Yurii Nesterov showed that this accelerated gradient scheme attains a provably faster convergence rate for smooth convex functions than ordinary gradient descent, improving the error after a given number of steps from a rate that scales like one over the step count to one over its square. This was a landmark result: it reaches the best rate achievable by any method using only gradients, and the look-ahead is precisely the ingredient that buys the acceleration. The intuition that it anticipates rather than reacts is the informal shadow of that formal guarantee.
+
+In deep learning the convexity assumptions behind the theorem do not hold, but Nesterov momentum is still a useful, well-behaved option, available as a flag on most stochastic gradient descent implementations and folded into adaptive optimizers in variants such as Nadam, which is Adam with Nesterov-style look-ahead. In practice its advantage over heavy-ball momentum on non-convex neural loss landscapes is modest and problem-dependent, so it is a sensible default rather than a guaranteed win, but it costs essentially nothing extra to use and carries the strongest theoretical pedigree of the first-order momentum methods.

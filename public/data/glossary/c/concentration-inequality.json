@@ -1,0 +1,74 @@
+{
+  "id": "concentration-inequality",
+  "label": "Concentration Inequality",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "concentration of measure",
+    "Hoeffding inequality",
+    "tail bound"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A mathematical bound showing that the average of many independent random quantities is very unlikely to fall far from its expected value. Concentration inequalities are the engine beneath every generalization guarantee in learning theory.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A concentration inequality is a theorem stating that a random quantity built from many independent pieces stays close to its mean with high probability. The simplest example concerns an average: if you average a large number of independent measurements, each bounded in some range, the average is overwhelmingly likely to land within a small distance of its true expected value, and the probability of a large deviation falls off exponentially with the number of measurements. This phenomenon, that aggregates of many independent randomnesses are nearly deterministic, is called concentration of measure, and the inequalities that quantify it are the workhorses of probabilistic analysis in machine learning."
+    },
+    {
+      "type": "p",
+      "text": "Concentration inequalities matter to learning theory because the central question of the field is a deviation question in disguise. A model's training error is an average of its losses over a finite random sample, and its true error is the Expectation of that loss over the whole distribution. Asking whether training error reflects true error is exactly asking whether this particular average has concentrated near its mean. A concentration inequality answers it: with the sample size plugged in, it bounds the probability that the two differ by more than a chosen amount. This is why every generalization bound, at its core, is a concentration inequality applied to the right random variable."
+    },
+    {
+      "type": "p",
+      "text": "Hoeffding's inequality is the canonical instance and the one most often invoked. It says that the average of independent random variables, each confined to a bounded interval, deviates from its mean by more than epsilon with probability at most an exponentially small quantity that depends on epsilon squared and the sample size. Rearranged, it tells you how many samples are needed to make the deviation small with high confidence, which is precisely the Sample Complexity for a single fixed hypothesis. Related results, Markov's and Chebyshev's inequalities as cruder ancestors, Bernstein's and McDiarmid's inequalities as sharper or more general successors, extend the same idea to variance-aware bounds and to functions more complicated than a plain average."
+    },
+    {
+      "type": "p",
+      "text": "The subtlety that makes concentration the heart of learning theory, rather than a one-line application, is the move from one hypothesis to many. Hoeffding controls the deviation for a single predictor chosen in advance, but Empirical Risk Minimization searches over an entire hypothesis class and deliberately picks the one that looks best on the sample, which can exploit a lucky deviation anywhere in the class. The fix is a uniform concentration bound that holds simultaneously over all hypotheses at once, paid for by a complexity term, a union bound for finite classes, and the VC Dimension or Rademacher complexity for infinite ones, that accounts for how many effective ways the class had to overfit. The whole apparatus of capacity in learning theory exists to upgrade single-hypothesis concentration into uniform concentration."
+    },
+    {
+      "type": "p",
+      "text": "Concentration inequalities are the mathematical bedrock on which PAC Learning and statistical learning theory are built, the reason finite samples can certify anything about an infinite distribution at all. They explain quantitatively why more data helps, the deviation shrinks like one over the square root of the sample size, and why that help has diminishing returns. Beyond generalization bounds they recur throughout machine learning: in the analysis of stochastic gradient descent, in bandit and reinforcement learning regret bounds, and in randomized algorithms, anywhere a guarantee must be wrung from the law of large numbers made quantitative."
+    }
+  ],
+  "related": [
+    {
+      "slug": "generalization",
+      "label": "Generalization",
+      "kind": "technique"
+    },
+    {
+      "slug": "pac-learning",
+      "label": "PAC Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "sample-complexity",
+      "label": "Sample Complexity",
+      "kind": "technique"
+    },
+    {
+      "slug": "empirical-risk-minimization",
+      "label": "Empirical Risk Minimization",
+      "kind": "technique"
+    },
+    {
+      "slug": "vc-dimension",
+      "label": "VC Dimension",
+      "kind": "technique"
+    },
+    {
+      "slug": "expectation",
+      "label": "Expectation",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,70 @@
+{
+  "id": "rejection-sampling-fine-tuning",
+  "label": "Rejection Sampling Fine-Tuning",
+  "kind": "technique",
+  "category": "Training and Fine-Tuning",
+  "aliases": [
+    "best-of-N fine-tuning",
+    "expert iteration",
+    "RFT"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A post-training method that samples many candidate responses from a model, keeps only the best ones according to a reward model or verifier, and fine-tunes the model on that filtered set, then repeats, so the model learns from its own strongest outputs.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Rejection sampling fine-tuning is a simple and surprisingly effective alternative to reinforcement learning for improving a model after pretraining. The recipe has three moves repeated in a loop: sample, filter, fine-tune. For each prompt the current model generates many candidate responses, a scorer keeps only the good ones, and the model is then fine-tuned on that curated set with ordinary supervised learning. Because the surviving examples are the model's own best work, the model is in effect taught to imitate the top slice of its own output distribution, ratcheting its typical behavior upward toward its occasional best behavior."
+    },
+    {
+      "type": "p",
+      "text": "The filtering step is where the quality signal enters, and there are two common forms. When the task has a checkable answer, such as a math problem with a known solution or code that must pass tests, a verifier accepts only responses that are actually correct, so the fine-tuning set is guaranteed clean. When the task is open-ended, a reward model scores the candidates and the highest-scoring ones are kept, which is the best-of-N idea used as a data generator rather than only at inference time. Either way the model never trains on its mediocre samples; rejection refers exactly to discarding everything below the bar."
+    },
+    {
+      "type": "p",
+      "text": "This method matters because it captures much of the benefit of reinforcement learning from human feedback while staying inside the familiar, stable machinery of supervised fine-tuning. There is no policy gradient, no value function, and no delicate reinforcement learning loop to stabilize, so it is far easier to implement and debug, and it parallelizes cleanly since sampling and scoring are embarrassingly parallel. It was used as a stage in the post-training of several major model families, often as a warm start before a final reinforcement learning pass or as a standalone improvement loop. The data it produces is a form of synthetic data, and the procedure is closely related to expert iteration in reinforcement learning and to self-distillation, where a model is distilled from a filtered version of itself."
+    },
+    {
+      "type": "p",
+      "text": "The limitations follow from the same self-referential design. The model can only learn from behaviors it already produces at least occasionally, so rejection sampling fine-tuning sharpens and reliably surfaces latent skills but rarely invents genuinely new ones, and its ceiling is set by the quality of the scorer. A weak reward model will pass flawed responses and a biased one will entrench its bias, the same reward-hacking pressure that haunts RLHF, here expressed as a slow drift in the fine-tuning data. Diversity can also collapse over many rounds as the model concentrates on a narrow set of high-scoring patterns, so practitioners watch for this and refresh prompts or mix in fresh demonstrations."
+    }
+  ],
+  "related": [
+    {
+      "slug": "rejection-sampling",
+      "label": "Rejection Sampling",
+      "kind": "technique"
+    },
+    {
+      "slug": "supervised-fine-tuning",
+      "label": "Supervised Fine-Tuning",
+      "kind": "technique"
+    },
+    {
+      "slug": "reward-model",
+      "label": "Reward Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "rlhf",
+      "label": "RLHF",
+      "kind": "technique"
+    },
+    {
+      "slug": "synthetic-data",
+      "label": "Synthetic Data",
+      "kind": "technique"
+    },
+    {
+      "slug": "knowledge-distillation",
+      "label": "Knowledge Distillation",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

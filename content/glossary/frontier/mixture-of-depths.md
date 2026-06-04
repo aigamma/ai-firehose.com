@@ -1,0 +1,17 @@
+---
+title: Mixture of Depths
+slug: mixture-of-depths
+kind: technique
+category: Frontier Architectures
+aliases: MoD, mixture-of-depths transformer
+related: mixture-of-experts, transformer, self-attention, test-time-compute, flops, kv-cache
+summary: A transformer variant that lets each token choose whether to be processed by a given layer or to skip it through the residual path, so compute is allocated dynamically across positions and the model spends fewer operations on easy tokens.
+---
+
+Mixture of depths is a transformer design that makes the amount of computation spent on a token depend on the token, rather than being identical for every position. In a standard transformer every token passes through every layer, so the cost is the same whether a token is trivially predictable or genuinely demanding. A mixture-of-depths model instead equips each layer with a lightweight router that selects only a fixed-size subset of the tokens to actually process through that layer's attention and feedforward computation; the tokens that are not selected bypass the block entirely along the residual connection, arriving at the next layer unchanged. Introduced by Raposo and colleagues at DeepMind in 2024, it gives the network a learned way to route depth, spending more layers on some positions and fewer on others.
+
+The idea matters because it makes per-token compute a controllable resource rather than a fixed constant. The router enforces a capacity, a cap on how many tokens any layer will handle, set below the full sequence length. Because that cap is fixed and known in advance, the total compute budget stays static and predictable, unlike schemes that decide dynamically how long to keep computing and so have variable, hard-to-batch cost. Within that fixed budget the model learns which tokens most need the processing at each layer, so the same number of operations buys more where it matters. The result is a model that can match a baseline transformer's quality using fewer operations per forward pass, or reach higher quality at equal cost.
+
+The mechanism borrows its routing idea from the mixture-of-experts but applies it along a different axis. Where a mixture of experts routes each token to a subset of parallel expert sub-networks, keeping the depth fixed while varying which parameters act, a mixture of depths routes each token to a subset of the sequence positions a layer will touch, keeping the parameters fixed while varying the depth each token experiences. The two are complementary and can be combined. A subtlety is that the routing must remain usable during generation, where future tokens are not yet available to compare against; practical implementations train a small predictor so the choice to process or skip can be made causally, one token at a time, without breaking the kv-cache.
+
+Mixture of depths is part of a broader frontier push toward conditional, adaptive computation, the principle that a model should not spend the same effort on every input. It connects to the wider interest in test-time-compute, since both reflect the view that intelligence is partly about allocating limited operations well rather than applying a fixed amount everywhere. By turning depth into something the network decides per token, it reduces the wasted flops a uniform-depth transformer spends on easy positions, and it points toward architectures whose effort scales with the difficulty of what they are processing.

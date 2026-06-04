@@ -1,0 +1,71 @@
+{
+  "id": "subword-tokenization",
+  "label": "Subword Tokenization",
+  "kind": "technique",
+  "category": "Transformers and LLMs",
+  "aliases": [
+    "subword units",
+    "WordPiece",
+    "SentencePiece",
+    "unigram tokenization"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The family of tokenization methods that split text into pieces smaller than words but larger than characters, learned from a corpus so frequent words stay whole and rare words break into reusable fragments, giving a fixed vocabulary with no out-of-vocabulary words.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Subword tokenization is the dominant way modern language models turn raw text into the discrete units they actually process. It occupies a deliberate middle ground. Splitting text into whole words gives a clean, meaningful unit but produces an enormous vocabulary and is helpless against any word it never saw in training, the out-of-vocabulary problem. Splitting into individual characters never runs out of vocabulary but makes sequences very long and forces the model to relearn spelling from scratch. Subword methods keep the best of both: common words remain single tokens, while rare or novel words are decomposed into smaller fragments the model has seen before, so nothing is ever truly unknown."
+    },
+    {
+      "type": "p",
+      "text": "The vocabulary is learned from data rather than fixed in advance, and several algorithms exist to learn it. Byte-pair-encoding starts from characters and greedily merges the most frequent adjacent pair over and over until the vocabulary reaches a target size. WordPiece, used by bert, is similar but chooses each merge to maximize the likelihood of the training corpus rather than raw frequency. The unigram language model approach, common in the SentencePiece toolkit, instead starts from a large candidate vocabulary and prunes it down, keeping the subwords that best explain the corpus under a probabilistic model. All three produce a fixed set of subword units and a deterministic rule for segmenting any new string into them."
+    },
+    {
+      "type": "p",
+      "text": "A few engineering details make subword tokenization robust in practice. Tokenizers typically operate on bytes or include a byte-level fallback, so that even text never seen in training, unusual Unicode, emoji, code, can always be encoded as some sequence of known pieces, guaranteeing zero out-of-vocabulary failures. Leading spaces are usually folded into the token, so that the same word is tokenized consistently whether or not it begins a sentence. The result is that every input maps to a sequence of integer ids, each of which indexes a row of the model's token-embedding table."
+    },
+    {
+      "type": "p",
+      "text": "Subword tokenization matters because the choice of units shapes much of a model's behavior and cost. A good vocabulary keeps sequences short, which directly eases pressure on the context-window since length is measured in tokens, and it influences how well a model handles numbers, code, and languages with rich morphology or non-Latin scripts. It also explains a class of model quirks, such as uneven performance on character-level tasks like counting letters, since the model rarely sees individual characters. For any large language model, the tokenizer is the silent first layer that determines what the model can even perceive, which is why subword tokenization is a foundational rather than incidental design choice."
+    }
+  ],
+  "related": [
+    {
+      "slug": "tokenization",
+      "label": "Tokenization",
+      "kind": "technique"
+    },
+    {
+      "slug": "byte-pair-encoding",
+      "label": "Byte-Pair Encoding",
+      "kind": "technique"
+    },
+    {
+      "slug": "token-embedding",
+      "label": "Token Embedding",
+      "kind": "technique"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "context-window",
+      "label": "Context Window",
+      "kind": "technique"
+    },
+    {
+      "slug": "bert",
+      "label": "BERT",
+      "kind": "tool"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

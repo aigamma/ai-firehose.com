@@ -3,7 +3,7 @@ title: HumanEval
 slug: humaneval
 kind: technique
 category: Evaluation and Benchmarks
-aliases: HumanEval, human eval
+aliases: HumanEval
 related: pass-at-k, mmlu, benchmark-contamination, llm-as-judge
 summary: A benchmark of 164 hand-written Python programming problems that scores a model by whether the code it generates passes hidden unit tests, measuring functional correctness rather than text similarity, and reported as pass-at-k.
 ---

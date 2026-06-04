@@ -1,0 +1,69 @@
+{
+  "id": "bag-of-words",
+  "label": "Bag of Words",
+  "kind": "technique",
+  "category": "NLP Foundations",
+  "aliases": [
+    "BoW",
+    "bag-of-words model"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A foundational text representation that describes a document by which words it contains and how often, discarding word order entirely, turning text into a fixed-length vector of term counts over a vocabulary.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The bag of words is the simplest useful way to turn a document into a vector, and for decades it was the default representation in natural language processing. The idea is in the name: treat a piece of text as an unordered collection, a bag, of its words, recording how many times each vocabulary word appears and throwing away the order in which they occurred. A document becomes a long vector with one entry per word in the vocabulary, most entries zero, a few holding counts. Two documents are then comparable as vectors, which lets classical machine learning algorithms operate on text they could otherwise not consume."
+    },
+    {
+      "type": "p",
+      "text": "The defining and most criticized property of the bag of words is that it ignores word order. \"The dog bit the man\" and \"the man bit the dog\" produce identical representations, even though their meanings differ sharply. This is a real loss of information, but for many tasks it does not matter much: deciding whether an email is spam, or which topic a news article belongs to, often hinges on which words are present rather than their arrangement. The representation is also extremely sparse and high-dimensional, since the vocabulary can run to tens or hundreds of thousands of words while any one document uses only a small subset, which suits efficient sparse linear models."
+    },
+    {
+      "type": "p",
+      "text": "Raw counts are rarely used directly, because common words like \"the\" and \"is\" appear everywhere and carry little signal. The standard refinement is tf-idf, which reweights each count by how rare the word is across the whole corpus, so distinctive words count for more and ubiquitous ones for less. The vocabulary is also usually trimmed by removing very common stop words and sometimes by collapsing inflected forms to a root, and a partial recovery of order is possible by treating short word sequences as units, the n-gram-model extension, where pairs or triples of adjacent words become vocabulary entries of their own."
+    },
+    {
+      "type": "p",
+      "text": "The bag of words matters as the conceptual baseline against which everything later is measured. Paired with naive-bayes, logistic regression, or a support vector machine, it produced strong, fast, interpretable text classifiers and topic-modeling pipelines that remain competitive for many practical problems. Its central weakness, that it has no notion of similarity between different words and no sense of order, is precisely what the next era set out to fix: word2vec replaced sparse one-hot word identities with dense vectors that place related words near each other, and sequence models and transformers restored word order as first-class information. Understanding the bag of words makes clear what those advances were reacting against."
+    }
+  ],
+  "related": [
+    {
+      "slug": "tf-idf",
+      "label": "TF-IDF",
+      "kind": "technique"
+    },
+    {
+      "slug": "n-gram-model",
+      "label": "N-Gram Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "word-embedding",
+      "label": "Word Embedding",
+      "kind": "technique"
+    },
+    {
+      "slug": "topic-modeling",
+      "label": "Topic Modeling",
+      "kind": "technique"
+    },
+    {
+      "slug": "naive-bayes",
+      "label": "Naive Bayes",
+      "kind": "technique"
+    },
+    {
+      "slug": "word2vec",
+      "label": "word2vec",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

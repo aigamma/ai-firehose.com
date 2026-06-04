@@ -1,0 +1,17 @@
+---
+title: Attention Sink
+slug: attention-sink
+kind: technique
+category: Transformers and LLMs
+aliases: attention sinks, sink token
+related: self-attention, softmax, sliding-window-attention, kv-cache, long-context, causal-attention
+summary: The empirical tendency of transformers to dump a large share of attention weight onto a few early tokens, often the very first one, which act as a no-op drain that the softmax needs, with consequences for streaming and long-context inference.
+---
+
+An attention sink is a position, usually the first token of the sequence, that consistently receives a disproportionate share of attention weight across many heads and layers, regardless of whether its content is relevant. The phenomenon was named and analyzed in work on streaming inference, but it shows up in essentially every trained transformer. Visualizing the attention maps reveals a bright vertical stripe over the opening tokens: a great deal of probability mass flows there even when those tokens carry no information the model needs at that step.
+
+The cause lies in the softmax at the heart of self-attention. Softmax forces the attention weights over the available tokens to sum to one, so a head can never choose to attend to nothing. When a head has no informative target at a given step, it still has to send its weight somewhere, and the cheapest place to dump it is a fixed, always-present position. Early tokens are ideal sinks because, under causal-attention, they are visible from every later position, so the model learns to route this surplus attention to them as a kind of no-op. The first token in particular is attended to by every other token in the sequence, which makes it the natural universal drain.
+
+The practical importance of attention sinks surfaced in long-context and streaming settings. A natural way to run a model over an unbounded stream is to keep only a sliding window of recent tokens in the kv-cache and discard older ones, an approach related to sliding-window-attention. But naively evicting the earliest tokens destroys the sinks, the softmax can no longer offload its surplus weight, attention patterns become distorted, and generation quality collapses. The fix discovered in StreamingLLM is simple and revealing: always retain a handful of the initial tokens in the cache as permanent sinks while sliding the window over the rest. Preserving just a few sink tokens restores stable, fluent generation over arbitrarily long streams.
+
+Attention sinks also matter for interpretability and for inference engineering. They are a clear case where a structural property of the architecture, the normalization constraint of softmax, produces a robust behavioral pattern that has nothing to do with the input's meaning. Some recent models add a dedicated learnable sink token so the drain is explicit rather than improvised onto a content token, and quantization and cache-compression methods must treat sink positions carefully because corrupting them disproportionately harms output. The concept is a good reminder that a transformer's attention does not always mean "this is relevant", and that small architectural quirks can have outsized effects on how a model behaves at the long-context frontier.

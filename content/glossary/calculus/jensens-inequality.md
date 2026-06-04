@@ -1,0 +1,17 @@
+---
+title: Jensen's Inequality
+slug: jensens-inequality
+kind: technique
+category: Calculus and Analysis
+aliases: Jensen inequality
+related: convexity, expectation, kl-divergence, evidence-lower-bound, variance
+summary: The inequality stating that for a convex function the function of an average is at most the average of the function, the single fact that justifies the evidence lower bound and connects convexity to expectations throughout probabilistic machine learning.
+---
+
+Jensen's inequality is a statement about how a convex function interacts with averaging. For a [convex](convexity) function, the function evaluated at the mean of some inputs is less than or equal to the mean of the function evaluated at those inputs. Phrased with probability, the function of an [expectation](expectation) is at most the expectation of the function. For a concave function the inequality simply reverses. The geometric intuition is direct: a convex function curves upward, so the chord connecting two points on its graph lies above the curve, and averaging the endpoints' heights overshoots the height at the averaged input. Jensen's inequality is the generalization of this chord-above-curve picture from two points to any weighted average or distribution.
+
+Despite its simplicity, Jensen's inequality is one of the most useful tools in probabilistic machine learning, because so many quantities of interest are convex or concave functions applied to random variables. It immediately explains, for instance, why the logarithm of an average is at least the average of the logarithms (the log being concave), and why a squared mean is at most a mean of squares, which is just the non-negativity of [variance](variance) read through Jensen. Whenever you need to bound an expected nonlinear quantity by a nonlinear function of the expected value, Jensen's inequality is usually the lever, turning an intractable expectation into a tractable bound.
+
+Its most celebrated application in machine learning is the derivation of the [evidence lower bound](evidence-lower-bound). To do approximate [Bayesian inference](bayesian-inference) one needs the log of an intractable integral, the marginal likelihood. Writing that integral as an expectation under an auxiliary distribution and pushing the concave logarithm inside the expectation with Jensen's inequality yields a tractable lower bound on the log evidence, the ELBO. Maximizing this bound is the basis of variational inference and the training objective of variational autoencoders, and the gap in Jensen's inequality is exactly the [KL divergence](kl-divergence) between the approximate and true posteriors. The expectation-maximization algorithm rests on the same Jensen-derived bound.
+
+The inequality also clarifies basic facts about estimators and information measures. It shows that the KL divergence is always non-negative, since it is a convex function of a density ratio averaged under the true distribution, which is the cornerstone that makes KL a valid notion of discrepancy. It explains why certain plug-in estimators are biased, the bias being precisely the Jensen gap between a nonlinear function of an estimate and the estimate of that function. Across all of these, Jensen's inequality is the quiet bridge from the [convexity](convexity) of a function to a usable bound on an average, which is why it appears in the derivation of so many algorithms.

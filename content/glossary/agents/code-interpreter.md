@@ -1,0 +1,17 @@
+---
+title: Code Interpreter
+slug: code-interpreter
+kind: tool
+category: Agents and Tool Use
+aliases: code interpreter, code execution tool, sandboxed code execution
+related: tool-use, function-calling, ai-agent, react-prompting, agentic-workflow, computer-use
+summary: A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution.
+---
+
+A code interpreter is a tool that gives a language model the ability to write a program, execute it, and observe what it produced. The model emits code, typically Python, into a sandboxed runtime; the runtime runs it and returns whatever the program printed, computed, plotted, or errored on; and the model continues with that concrete result in hand. It is a specific and unusually powerful instance of tool-use, because the single tool it exposes, "run this code," is itself general-purpose: with code the model can do arithmetic, transform data, call libraries, read and write files, and produce charts, all without needing a separate bespoke tool for each.
+
+The reason it matters is that it converts a probabilistic next-token predictor into something that can get exact answers and check itself. Language models are unreliable at precise computation: multi-digit arithmetic, sorting, date math, parsing a messy file, and long deterministic procedures are exactly the operations they fumble when doing them "in their head." Delegating those to executed code replaces a plausible guess with a computed fact. Just as important, execution provides ground truth. The model can run a function against test cases and see whether they pass, observe a stack trace when something breaks, and use that feedback to fix the code, a tight generate-run-observe loop that closely fits the react-prompting pattern and underpins a great deal of reliable agentic-workflow behavior.
+
+In practice the runtime is sandboxed and constrained, which is essential rather than incidental. Running model-generated code is running arbitrary code, so it is isolated from the host, often denied network access, given limited CPU, memory, and time, and confined to a scratch filesystem, so that a buggy or adversarial program cannot escape, exhaust resources, or reach data it should not. The session is usually stateful, so variables, imported libraries, and uploaded files persist across calls and the model can build up a computation over several turns. This statefulness is what lets a code interpreter act as a working scratchpad for data analysis, where the model loads a dataset once and then explores it interactively.
+
+The code interpreter became one of the first widely deployed agent tools because it dramatically expands what a model can reliably do while needing only one well-defined capability. It complements the rest of the toolkit: a model can fetch data with a search or browsing tool, then crunch it with code, or it can pair code execution with broader computer-use to operate software beyond a single sandbox. Wherever a task needs exact calculation, data wrangling, or executable verification rather than fluent prose, the code interpreter is usually what makes an ai-agent dependable instead of merely articulate.

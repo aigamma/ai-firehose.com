@@ -1,0 +1,74 @@
+{
+  "id": "pac-bayes",
+  "label": "PAC-Bayes",
+  "kind": "technique",
+  "category": "Learning Theory",
+  "aliases": [
+    "PAC-Bayesian bound",
+    "PAC-Bayesian analysis",
+    "PAC-Bayes bound"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A framework that bounds the generalization error of a randomized predictor in terms of how far its learned distribution over hypotheses strays from a prior. It produces some of the only non-vacuous guarantees for deep networks and unifies Bayesian and frequentist learning theory.",
+  "body": [
+    {
+      "type": "p",
+      "text": "PAC-Bayes is a branch of learning theory that bounds generalization not for a single hypothesis but for a distribution over hypotheses. Instead of picking one model, the learner is thought of as choosing a posterior distribution Q over the whole hypothesis class, after starting from a prior distribution P fixed before seeing the data. A PAC-Bayes theorem then guarantees, with high probability, that the expected true error of a hypothesis drawn from Q exceeds its expected training error by no more than a term that grows with the KL divergence between Q and P, divided by the sample size. The framework marries the worst-case rigor of PAC Learning with the distributional language of Bayesian inference, which is the source of its name."
+    },
+    {
+      "type": "p",
+      "text": "The framework matters because that KL-divergence penalty is a remarkably tight and flexible measure of complexity. A posterior that barely moves from the prior pays almost nothing and is guaranteed to generalize; a posterior that contorts itself far from the prior to fit the data pays a large penalty and is warned that it may not transfer. This is a precise, quantitative statement of Occams Razor: the bound rewards explanations that required little information beyond what the prior already encoded. Unlike a bound based on the VC Dimension, which depends only on the hypothesis class, the PAC-Bayes bound depends on the specific solution the learner found and on the prior it started from, so it can be tight for the model actually in hand."
+    },
+    {
+      "type": "p",
+      "text": "PAC-Bayes has become prominent because it produces some of the only non-vacuous generalization bounds for deep neural networks, a regime where classical theory fails completely. VC and parameter-counting bounds for a network with billions of weights are astronomically larger than one, and so say nothing. By choosing the posterior cleverly, often a distribution over weights centered on the trained network with a noise scale that the network can tolerate, researchers have computed PAC-Bayes bounds that are genuinely below one and thus meaningful. The key insight is that a network whose predictions are robust to weight perturbation corresponds to a posterior with a small KL term, and flatness of the found minimum translates directly into a better bound."
+    },
+    {
+      "type": "p",
+      "text": "The framework also illuminates why the priors and biases of a learning procedure are decisive rather than incidental. The prior P is a free choice, and a prior aligned with the structure of real problems yields a small KL divergence and a strong guarantee, which is the formal echo of the lesson that all generalization rests on an Inductive Bias matched to the world. PAC-Bayes makes that bias explicit and chargeable: the cost of learning is literally the information distance traveled from prior belief to posterior, and a well-chosen prior makes good solutions cheap to reach. It thereby connects the Bayesian and frequentist accounts of learning into one inequality."
+    },
+    {
+      "type": "p",
+      "text": "PAC-Bayes stands as a third major pillar of statistical learning theory beside the VC and Rademacher Complexity approaches, distinguished by its focus on a distribution over hypotheses and a learned, posterior-specific bound. It refines the basic guarantee of PAC Learning to account for which solution was found and how far it lies from a prior, and it is the rare classical framework whose guarantees remain informative for the over-parameterized models that dominate practice. Its enduring message is that Generalization is governed less by the size of the hypothesis class than by how little the data forced the learner to depart from what it already believed."
+    }
+  ],
+  "related": [
+    {
+      "slug": "pac-learning",
+      "label": "PAC Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "generalization",
+      "label": "Generalization",
+      "kind": "technique"
+    },
+    {
+      "slug": "vc-dimension",
+      "label": "VC Dimension",
+      "kind": "technique"
+    },
+    {
+      "slug": "rademacher-complexity",
+      "label": "Rademacher Complexity",
+      "kind": "technique"
+    },
+    {
+      "slug": "inductive-bias",
+      "label": "Inductive Bias",
+      "kind": "technique"
+    },
+    {
+      "slug": "occams-razor",
+      "label": "Occam's Razor",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

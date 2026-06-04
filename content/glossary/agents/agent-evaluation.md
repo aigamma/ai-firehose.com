@@ -1,0 +1,17 @@
+---
+title: Agent Evaluation
+slug: agent-evaluation
+kind: technique
+category: Agents and Tool Use
+aliases: agent eval, agent benchmarking
+related: ai-agent, agentic-workflow, tool-use, planning, swe-bench, llm-as-judge
+summary: The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, which is much harder than scoring a single model output because success unfolds across a trajectory of actions.
+---
+
+Agent evaluation is the measurement of how well an agent actually accomplishes tasks, as opposed to how well a model answers a single prompt. An agent runs a loop: it reasons, calls tools, observes results, and acts again over many steps, so what must be judged is not one response but a whole trajectory and its outcome. The core question is usually outcome-based and binary in spirit: did the agent reach the goal, did the tests pass, was the ticket resolved, was the correct flight booked? Around that sits a second question about the path taken, since two agents can both succeed while one does so efficiently and the other flails.
+
+This is genuinely harder than scoring a static answer, for several reasons. There is often no single correct output, only a state of the world that is right or wrong, which means grading frequently depends on executing the result and checking its effect rather than matching a key. Errors compound across steps, so a small early mistake can doom a long run, and the same task can succeed or fail across repeated attempts because tool results and model sampling introduce nondeterminism. The action space is open, the agent can call tools in any order, and runs vary in length, all of which defeat the fixed-format scoring that ordinary benchmarks rely on. Measuring an agent therefore demands a real or simulated environment, not just a dataset of questions and answers.
+
+The methods reflect this. Outcome metrics check the final state with a programmatic verifier, the cleanest signal when it is available, as in swe-bench where a hidden test suite decides success. Trajectory analysis looks at the steps: how many tool calls were needed, whether the agent recovered from errors, the cost and latency incurred, and whether it followed a sensible plan. For tasks whose quality is subjective rather than checkable, an llm-as-judge can grade the transcript against a rubric, though it inherits that technique's biases. Robust agent evaluation reports success rate across many seeded runs rather than a single attempt, because variance between runs is large and one lucky trajectory says little.
+
+Agent evaluation has become a discipline of its own as agentic systems moved into real use, because traditional benchmarks measure knowledge and reasoning in isolation while agents are judged on getting things done. Good evaluation is also what keeps an agentic-workflow honest in production: it tells you whether a change to the prompt, the planning strategy, or the tool-use setup actually helped, and it surfaces the failure modes, looping, giving up, taking destructive actions, that only appear once a model is given autonomy. Without it, an agent's competence is anecdote; with it, the competence becomes a number that can be tracked and improved.

@@ -1,0 +1,69 @@
+{
+  "id": "frank-wolfe",
+  "label": "Frank-Wolfe Algorithm",
+  "kind": "technique",
+  "category": "Advanced Optimization",
+  "aliases": [
+    "conditional gradient method",
+    "Frank-Wolfe method"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A projection-free method for constrained convex optimization that, at each step, minimizes a linear approximation of the objective over the feasible set and moves toward that vertex, staying inside the constraints without ever projecting onto them.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The Frank-Wolfe algorithm, also called the conditional gradient method, solves the problem of minimizing a smooth convex function over a convex constraint set, and it does so without the projection step that most constrained optimizers depend on. Projected gradient descent handles constraints by taking an unconstrained step and then snapping the result back onto the feasible set, but that projection can itself be an expensive optimization problem for complicated sets. Frank-Wolfe avoids projection entirely. At each iteration it linearizes the objective at the current point, using the gradient, and minimizes that linear function over the feasible set, a linear program whose solution is always a vertex or extreme point of the set. The algorithm then moves a fraction of the way from the current point toward that extreme point."
+    },
+    {
+      "type": "p",
+      "text": "Because every iterate is a convex combination of extreme points it has visited, Frank-Wolfe keeps the solution feasible automatically and, crucially, structurally simple. Over many constraint sets of interest the linear subproblem is far cheaper than a projection: minimizing a linear function over the unit ball of a norm, over a probability simplex, or over the set of low-rank or low-trace-norm matrices often has a closed form or a cheap sparse solution. The step toward an extreme point also means the iterate is built from a small number of extreme points, so Frank-Wolfe naturally produces sparse or low-rank solutions, the extreme points being sparse vectors or rank-one matrices respectively. This implicit structure is a major reason it is used in machine learning for sparse and low-rank problems."
+    },
+    {
+      "type": "p",
+      "text": "The method matters as the natural counterpart to proximal and projected methods within constrained convex optimization. Where proximal gradient descent and mirror descent reckon with a constraint or a nonsmooth penalty through a proximal or projection operator, Frank-Wolfe reckons with it through a linear minimization oracle, and which is cheaper depends entirely on the geometry of the set. For the structured sets common in statistics and signal processing the linear oracle wins decisively. The step size is typically a simple decaying schedule or chosen by line search, and the algorithm comes with a clean convergence guarantee, an error that shrinks at a rate of one over the iteration count for smooth convex objectives, together with a computable duality gap that gives an honest stopping certificate at every step."
+    },
+    {
+      "type": "p",
+      "text": "Frank-Wolfe has limitations that delimit where it is the right tool. Its convergence rate is slower than the accelerated first-order methods, and on problems whose solution lies on the boundary it can zigzag, a behavior remedied by variants that add away-steps. But for large-scale constrained problems where projection is the bottleneck and a linear oracle is cheap, it is often the most practical choice, and its projection-free, sparsity-inducing character keeps it relevant in modern large-scale convex optimization."
+    }
+  ],
+  "related": [
+    {
+      "slug": "convex-optimization",
+      "label": "Convex Optimization",
+      "kind": "technique"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent",
+      "kind": "technique"
+    },
+    {
+      "slug": "proximal-gradient",
+      "label": "Proximal Gradient",
+      "kind": "technique"
+    },
+    {
+      "slug": "mirror-descent",
+      "label": "Mirror Descent",
+      "kind": "technique"
+    },
+    {
+      "slug": "lagrange-multiplier",
+      "label": "Lagrange Multiplier",
+      "kind": "technique"
+    },
+    {
+      "slug": "convexity",
+      "label": "Convexity",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,17 @@
+---
+title: Agent Orchestration
+slug: agent-orchestration
+kind: technique
+category: Agents and Tool Use
+aliases: agent orchestration, orchestrator-worker, agent coordination
+related: multi-agent-system, agentic-workflow, planning, task-decomposition, ai-agent, agent-memory
+summary: The coordination layer that directs how one or more agents and their tasks are sequenced, routed, and combined, controlling the flow of work between steps and sub-agents rather than the reasoning inside any single step.
+---
+
+Agent orchestration is the control layer that governs how work moves through an agentic system. Where a single agent decides its next action, orchestration decides the larger shape: which task runs when, which sub-agent or tool handles each piece, how results flow from one step into the next, and what happens on success, failure, or a low-confidence result. It is the difference between a pile of capable agents and a system that reliably turns a request into a finished outcome. Orchestration is about the flow between steps; the reasoning within a step is the agent's own job.
+
+It matters because reliability at the system level is a separate problem from intelligence at the step level. A long task built from many model calls and tool invocations has many places to go wrong, and leaving the entire control flow to a single model's improvisation tends to be brittle: the model loses the thread, repeats itself, or wanders. Pulling the coordination into an explicit orchestration layer makes the system more predictable, debuggable, and controllable. It also lets designers compose specialists, routing coding work to a coding agent and research to a retrieval agent, and it provides the natural seams for retries, timeouts, logging, and human approval gates.
+
+Orchestration patterns fall along a spectrum from rigid to autonomous. At the structured end, the flow is a predefined graph or pipeline the author lays out in advance, deterministic and easy to reason about, well suited to a known agentic-workflow. A common middle pattern is orchestrator-worker, where a lead agent does the high-level planning and task-decomposition, dispatches subtasks to worker agents, and synthesizes their results, a coordination style central to many a multi-agent-system. At the autonomous end, the model itself decides dynamically what to do next, maximizing flexibility at the cost of predictability. Real systems mix these, wrapping autonomous agents inside a structured skeleton that bounds their behavior, and they lean on shared agent-memory or message passing so coordinated agents can exchange state.
+
+Agent orchestration has grown into a distinct engineering concern, with dedicated frameworks, as applications moved from single-shot prompts to systems that chain many steps and several agents. The recurring tradeoff is autonomy against control: more orchestration structure buys reliability and observability but caps how adaptively the system can respond, while more agent autonomy buys flexibility at the price of predictability. Choosing where a given application should sit on that line, and which tasks deserve a fixed pipeline versus an open-ended agent loop, is much of the practical art of building production agentic systems.

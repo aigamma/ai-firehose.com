@@ -1,0 +1,69 @@
+{
+  "id": "loss-of-plasticity",
+  "label": "Loss of Plasticity",
+  "kind": "technique",
+  "category": "Deep Learning Theory",
+  "aliases": [
+    "plasticity loss",
+    "primacy bias"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The gradual erosion of a neural network's ability to learn new things during continued training, where a network that learns well at first becomes progressively unable to fit new data, even though its capacity is unchanged.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Loss of plasticity is a degradation that appears when a neural network is trained continually on a changing stream of tasks or data rather than once on a fixed dataset. Early on the network learns readily, but as training continues its ability to absorb new information fades, until late in a long run it can barely learn at all, performing as if it were far less capable than a freshly initialized network given the same new problem. The network has not run out of parameters or hit a hard capacity limit; it has lost the malleability that made the early learning possible. Dohare and colleagues documented the phenomenon sharply in a 2024 Nature paper, showing that standard deep learning methods lose plasticity under sustained continual training and that performance can collapse toward that of a shallow baseline."
+    },
+    {
+      "type": "p",
+      "text": "The phenomenon matters because it is a fundamental obstacle to systems that must keep learning, the setting of continual and online-learning and much of reinforcement-learning. A reinforcement learner faces a non-stationary target by nature: as its policy improves, the distribution of states it visits and the value it is chasing both shift, so it is effectively training on an ever-changing dataset and is exposed to plasticity loss throughout. This is why the problem surfaced prominently in deep reinforcement learning, where agents that train for a long time can stop improving not because the task is solved but because the network has become unable to keep adapting. It is the flip side of stability: where catastrophic-forgetting is losing old knowledge when learning new things, loss of plasticity is losing the ability to learn new things at all."
+    },
+    {
+      "type": "p",
+      "text": "The mechanisms are tied to what happens to the weights and units over a long run. Many hidden units saturate or die, going effectively constant and ceasing to contribute a useful gradient; the diversity of the representation shrinks, a drift related to representation-collapse; and the weights grow large and rigid, so the network settles into a configuration far from the well-conditioned state it started in. In each case the network's effective number of usable, adjustable degrees of freedom falls over time, even though its nominal parameter count is fixed, which is why it behaves as though its capacity has quietly drained away."
+    },
+    {
+      "type": "p",
+      "text": "The proposed remedies all work by restoring some of the freshness of initialization without discarding what has been learned. Continual backpropagation periodically reinitializes the least-used units, injecting new random features the way weight-initialization seeds a fresh network, so the supply of plastic, trainable units never runs out. Other approaches lean on regularization that pulls weights back toward smaller magnitudes, resets layers or optimizer state on a schedule, or otherwise keep the network well conditioned. The practical lesson is that maintaining the capacity to learn is a distinct objective from learning itself, one that does not take care of itself over long horizons and must be designed for deliberately."
+    }
+  ],
+  "related": [
+    {
+      "slug": "catastrophic-forgetting",
+      "label": "Catastrophic Forgetting",
+      "kind": "technique"
+    },
+    {
+      "slug": "online-learning",
+      "label": "Online Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "reinforcement-learning",
+      "label": "Reinforcement Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "representation-collapse",
+      "label": "Representation Collapse",
+      "kind": "technique"
+    },
+    {
+      "slug": "regularization",
+      "label": "Regularization",
+      "kind": "technique"
+    },
+    {
+      "slug": "weight-initialization",
+      "label": "Weight Initialization",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

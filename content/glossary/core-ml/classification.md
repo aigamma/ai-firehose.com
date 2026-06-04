@@ -1,0 +1,19 @@
+---
+title: Classification
+slug: classification
+kind: technique
+category: Core Machine Learning
+aliases: classifier, binary classification, multiclass classification, multi-label classification
+related: supervised-learning, logistic-regression, support-vector-machine, precision-and-recall, cross-entropy, regression
+summary: The supervised learning task of predicting which discrete category an input belongs to. Classification covers any problem whose output is a label drawn from a fixed finite set, from spam detection to image recognition.
+---
+
+Classification is the supervised learning task in which the output is a discrete label rather than a number. The model is shown inputs paired with their correct categories during training, and afterward it must assign one of those categories to inputs it has never seen. The set of possible labels is fixed and finite: spam or not spam, the digit zero through nine, the species of an iris. This is what separates classification from Regression, the sibling task whose output is a continuous quantity. Most of the headline successes of machine learning, face recognition, medical diagnosis, sentiment analysis, are classification problems at heart.
+
+The structure of the label set defines the sub-varieties. Binary classification has exactly two classes and is the simplest and most studied case. Multiclass classification has three or more mutually exclusive classes, where each input gets exactly one label. Multi-label classification relaxes that exclusivity, letting an input carry several labels at once, as a photo might be tagged both "beach" and "sunset." A great deal of practical machine learning reduces a complex problem to one of these three shapes, because the moment a task is framed as choosing from a fixed menu, the full toolbox of classifiers becomes available.
+
+Mechanically, most modern classifiers do not emit a hard label directly but a vector of scores, one per class, which are converted into probabilities, typically by a softmax, and the highest-probability class is chosen. Training adjusts the model so these predicted probabilities match the true labels, usually by minimizing Cross-Entropy loss, the standard objective for classification. Logistic Regression is the canonical linear classifier and the building block from which the output layer of a neural network is essentially copied; a Support Vector Machine is the canonical margin-based classifier. The probabilistic output is valuable in its own right, because a calibrated confidence lets a system abstain or escalate when it is unsure rather than guess.
+
+Evaluating a classifier is more subtle than counting correct answers, which is the part beginners most often get wrong. Raw accuracy is misleading whenever the classes are imbalanced: a detector for a disease present in one percent of patients can be ninety-nine percent accurate by always predicting "healthy" while catching no cases at all. This is why classification is judged with Precision and Recall, which separate the two ways a prediction can be wrong (false alarms versus missed positives), and with the confusion matrix that lays out every combination of predicted and true class. The right metric depends on which error is costlier in the application, a judgment the math cannot make on its own.
+
+Classification connects to nearly every corner of machine learning because it is the default shape of a supervised problem. It is the task that Supervised Learning algorithms were first built to solve, the setting in which capacity, Overfitting, and generalization were originally studied, and the output mode of most deep networks, whose final layer turns learned features into class scores. Even tasks that look different are often classification in disguise: next-token prediction in a language model is classification over the vocabulary, and object detection is classification applied to many image regions at once.

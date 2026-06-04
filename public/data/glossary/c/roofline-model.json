@@ -1,0 +1,70 @@
+{
+  "id": "roofline-model",
+  "label": "Roofline Model",
+  "kind": "technique",
+  "category": "Systems and Infrastructure",
+  "aliases": [
+    "roofline analysis",
+    "arithmetic intensity",
+    "operational intensity"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A visual performance model that predicts whether an operation is limited by compute or by memory bandwidth, by plotting attainable throughput against arithmetic intensity, the ratio of arithmetic operations performed to bytes moved from memory.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The roofline model is the standard way to reason about why a piece of code runs as fast as it does on a given accelerator, and what would have to change to speed it up. Its central insight is that any operation is bottlenecked by one of two hardware ceilings: the peak rate at which the chip can do arithmetic, measured in flops per second, or the peak rate at which it can move data, its memory-bandwidth in bytes per second. The model makes the choice between these ceilings explicit and quantitative rather than a matter of intuition."
+    },
+    {
+      "type": "p",
+      "text": "The deciding quantity is arithmetic intensity, the ratio of arithmetic operations an operation performs to the number of bytes it must read from and write to memory. An operation with low intensity does little math per byte, so it spends its time waiting on memory and is memory-bound; one with high intensity does enough math per byte to keep the arithmetic units busy and is compute-bound. The roofline plot puts arithmetic intensity on the horizontal axis and attainable throughput on the vertical. The result is a roof with two segments: a slanted line on the left, where throughput is capped by bandwidth and rises with intensity, and a flat line on the right, where throughput is capped by peak compute. Where the two meet is the ridge point, the intensity at which a kernel transitions from memory-bound to compute-bound."
+    },
+    {
+      "type": "p",
+      "text": "Placing an operation on the plot tells you immediately what is worth doing. A kernel sitting on the slanted memory roof will not go faster from more arithmetic capability; it needs its data movement reduced or its intensity raised. A kernel under the flat compute roof is already limited by raw math and needs algorithmic change or lower-precision arithmetic to improve. A point far below both roofs is leaving performance on the table to some other inefficiency, such as poor occupancy or unhidden latency, and has headroom to be tuned up toward the ceiling."
+    },
+    {
+      "type": "p",
+      "text": "This framing explains many deep learning optimizations directly. Most element-wise and attention operations are memory-bound, low on the intensity axis, which is exactly why kernel-fusion helps: fusing operations cuts the bytes moved without changing the math, sliding the point rightward along the roof toward higher throughput. Flash-attention is a roofline win for the same reason, raising attention's effective intensity by never writing the large score matrix to memory. Mixed-precision training shifts the picture too, since smaller values both halve the bytes moved and raise peak compute on hardware with dedicated low-precision units. The roofline is the mental model that ties these tricks together into one question: am I starved for compute or for bandwidth, and which ceiling am I trying to climb toward."
+    }
+  ],
+  "related": [
+    {
+      "slug": "memory-bandwidth",
+      "label": "Memory Bandwidth",
+      "kind": "tool"
+    },
+    {
+      "slug": "flops",
+      "label": "FLOPs",
+      "kind": "tool"
+    },
+    {
+      "slug": "gpu",
+      "label": "GPU",
+      "kind": "tool"
+    },
+    {
+      "slug": "kernel-fusion",
+      "label": "Kernel Fusion",
+      "kind": "technique"
+    },
+    {
+      "slug": "flash-attention",
+      "label": "Flash Attention",
+      "kind": "technique"
+    },
+    {
+      "slug": "mixed-precision-training",
+      "label": "Mixed Precision Training",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

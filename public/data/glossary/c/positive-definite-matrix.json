@@ -1,0 +1,65 @@
+{
+  "id": "positive-definite-matrix",
+  "label": "Positive Definite Matrix",
+  "kind": "technique",
+  "category": "Linear Algebra for ML",
+  "aliases": [
+    "positive definiteness",
+    "positive semidefinite",
+    "symmetric positive definite"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A symmetric matrix whose associated quadratic form is always positive, equivalent to having all positive eigenvalues, the property that distinguishes a genuine bowl-shaped minimum from a saddle and that every covariance matrix and valid kernel must satisfy.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A symmetric matrix is positive definite when the quadratic form it defines is strictly positive for every nonzero vector: take any vector, multiply it on both sides of the matrix, and the resulting scalar is always greater than zero. Geometrically this means the matrix carves out a bowl that curves upward in every direction, never flat and never downhill. The slightly weaker notion, positive semidefinite, allows the quadratic form to be zero in some directions but never negative, corresponding to a bowl that may have flat-bottomed valleys. These conditions are the matrix analog of a positive number, and they capture what it means for a matrix to represent an unambiguous sense of squared length or energy."
+    },
+    {
+      "type": "p",
+      "text": "There are several equivalent ways to test positive definiteness, and knowing they coincide is part of understanding the concept. A symmetric matrix is positive definite if and only if all of its [eigenvalues](eigenvalue) are strictly positive; positive semidefinite when they are all nonnegative. Equivalently, it admits a Cholesky factorization into a lower triangular matrix times its transpose, which is both a test and the standard efficient way to exploit the structure in computation. Because the eigenvalues are positive, the [determinant](determinant), their product, is positive too, and the matrix is guaranteed invertible. Each of these characterizations, the quadratic form, the spectrum, and the factorization, is a different lens on the same property."
+    },
+    {
+      "type": "p",
+      "text": "Positive definiteness is central to optimization because it is exactly the condition that distinguishes a true local minimum from other critical points. At a stationary point of a smooth loss, the [Hessian](hessian) of second derivatives tells you the local shape: if the Hessian is positive definite, the point is a genuine minimum, a bowl curving up in all directions; if it has mixed-sign eigenvalues, the point is a saddle. A function whose Hessian is positive definite everywhere is strictly convex, which is why [convexity](convexity) and positive definiteness are so often discussed together, and why second-order methods that step using the inverse Hessian assume or enforce positive definiteness to point reliably downhill."
+    },
+    {
+      "type": "p",
+      "text": "The property is equally indispensable in probabilistic and kernel methods, where it is not optional but definitional. Every covariance matrix is symmetric positive semidefinite, since variance in any direction cannot be negative, and a valid covariance for a non-degenerate [Gaussian distribution](gaussian-distribution) must be strictly positive definite so its inverse and log-determinant exist. The kernel matrix that defines a support vector machine or a Gaussian process must be positive semidefinite for the method to correspond to an inner product in some feature space, which is the content of Mercer's condition. Whenever a matrix is meant to encode a notion of similarity, energy, or squared distance, positive definiteness is the property that makes that meaning coherent."
+    }
+  ],
+  "related": [
+    {
+      "slug": "eigenvalue",
+      "label": "Eigenvalue",
+      "kind": "technique"
+    },
+    {
+      "slug": "hessian",
+      "label": "Hessian",
+      "kind": "technique"
+    },
+    {
+      "slug": "convexity",
+      "label": "Convexity",
+      "kind": "technique"
+    },
+    {
+      "slug": "matrix",
+      "label": "Matrix",
+      "kind": "technique"
+    },
+    {
+      "slug": "gaussian-distribution",
+      "label": "Gaussian Distribution",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

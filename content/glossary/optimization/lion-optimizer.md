@@ -1,0 +1,17 @@
+---
+title: Lion Optimizer
+slug: lion-optimizer
+kind: technique
+category: Optimization
+aliases: EvoLved Sign Momentum, Lion
+related: adam, momentum, weight-decay, learning-rate, gradient-descent, stochastic-gradient-descent
+summary: A memory-efficient optimizer, discovered by automated program search, that updates each parameter using only the sign of a momentum-smoothed gradient, tracking one running average instead of the two that Adam maintains.
+---
+
+Lion, short for EvoLved Sign Momentum, is an optimizer notable both for what it does and for how it was found. Its update rule is strikingly spare: it maintains a single momentum buffer, a running average of past gradients, and at each step it moves every parameter by a fixed amount in the direction given by the sign of that momentum, plus a decoupled weight-decay term. Because the step depends only on the sign, every parameter receives an update of the same magnitude regardless of how large or small its gradient is, with only the learning rate setting that magnitude. This is a sharp departure from Adam, which scales each parameter's step by an estimate of its gradient variance.
+
+The defining practical advantage is memory. Adam keeps two running averages per parameter, the first moment and the second moment, so its optimizer state is twice the size of the model's parameters. Lion keeps one, halving that state. For very large models, where optimizer memory is a serious constraint on what fits on an accelerator, this is a meaningful saving, and the sign-based update is also cheap to compute. Lion uses a slightly more intricate scheme than plain momentum: the direction is taken from an interpolation between the current gradient and the momentum, which adds a Nesterov-like look-ahead character, while the momentum buffer itself is updated with a different decay rate, so the buffer and the step see the gradient through different weightings.
+
+What makes Lion unusual is its provenance. Rather than being designed by hand from a principle, it was discovered by an automated search over a space of possible optimizer programs, an evolutionary procedure that proposed, ran, and selected candidate update rules by how well the models they trained performed. Out of that search came an algorithm simpler than the human-designed optimizers it was compared against, a rare case of program search producing something both effective and interpretable enough to write down in a few lines. This connects Lion to the broader theme of using learning and search to design the components of learning systems themselves.
+
+In reported experiments Lion matched or exceeded AdamW on a range of vision and language models while using less memory and sometimes fewer compute steps. The trade-offs are real and follow from the sign update. Because every step has unit magnitude, Lion is sensitive to its learning rate and typically needs a smaller one than Adam, paired with a correspondingly larger weight decay, and the uniform step size can be less forgiving on problems with widely varying gradient scales where Adam's per-parameter adaptation helps. Lion is best viewed as a lighter-weight alternative to AdamW that is worth trying when optimizer memory is tight, rather than a universal replacement.

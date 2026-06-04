@@ -1,0 +1,69 @@
+{
+  "id": "parallel-transport",
+  "label": "Parallel Transport",
+  "kind": "technique",
+  "category": "Geometry and Manifolds",
+  "aliases": [
+    "parallel transportation",
+    "parallel translation"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A rule for carrying a tangent vector along a curve on a manifold while keeping it as constant as the curved geometry allows, so that vectors at different points can be compared, and whose path-dependence is exactly what curvature measures.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Parallel transport solves a problem that does not arise in flat space: how to move a vector from one point of a curved manifold to another without rotating it more than the geometry forces. In Euclidean space the answer is trivial, because you can slide a vector anywhere and keep its components fixed, so vectors at different points live in the same space and are directly comparable. On a curved manifold this fails. Each point has its own tangent-space, the flat plane of velocities at that point, and there is no automatic way to identify a vector in one tangent space with a vector in another. Parallel transport supplies that identification along a chosen path: it carries a tangent vector from point to point while holding it as constant as possible, turning it only as much as staying tangent to the curving surface requires and not one bit more."
+    },
+    {
+      "type": "p",
+      "text": "What \"as constant as possible\" means is fixed by the connection, the piece of structure on a riemannian-manifold that says how to differentiate a vector field as you move. The connection defines a covariant derivative, and a vector is parallel-transported along a curve when its covariant derivative along that curve is zero. Intuitively, the vector has no rate of change in the directions the manifold actually permits; any apparent turning is the manifold bending underneath it, not the vector itself swinging. On a surface, you can picture this as walking along a path while holding an arrow and refusing to twist your wrist, letting only the tilt of the ground reorient the arrow. The metric tensor singles out one natural connection, the Levi-Civita connection, which transports vectors so that lengths and angles between them are preserved."
+    },
+    {
+      "type": "p",
+      "text": "The deep fact about parallel transport is that it is path-dependent, and that path-dependence is precisely curvature. Carry a vector around a small closed loop and bring it back to where it started: on a flat surface it returns unchanged, but on a curved one it comes back rotated by an angle proportional to the curvature enclosed by the loop. Transporting the same vector to the same destination along two different routes generally yields two different results. This holonomy, the mismatch after a round trip, is the coordinate-free signature of curvature, and it is the same phenomenon that bends a geodesic and that makes the angles of a triangle on a sphere exceed a straight angle. A geodesic itself can be defined through parallel transport: it is the curve that parallel-transports its own velocity vector, the manifold's notion of going straight ahead without turning."
+    },
+    {
+      "type": "p",
+      "text": "For machine learning, parallel transport is the operation that makes optimization and comparison on curved representation spaces coherent. In Riemannian optimization, where parameters live on a manifold such as the sphere, the space of rotation matrices, or the cone of positive-definite covariance matrices, momentum and other multi-step methods must combine gradient information accumulated at different points. Those gradients are vectors in different tangent spaces and cannot simply be added; parallel transport moves the accumulated velocity to the current point first, so that momentum on a manifold is well defined. The same need appears in hyperbolic-embeddings and other curved latent spaces, where transporting a feature or a gradient correctly is what keeps the geometry honest. Parallel transport is thus the practical bridge between the abstract picture of a connection in differential-geometry and the concrete arithmetic of doing calculus on a curved model."
+    }
+  ],
+  "related": [
+    {
+      "slug": "curvature",
+      "label": "Curvature",
+      "kind": "technique"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic",
+      "kind": "technique"
+    },
+    {
+      "slug": "tangent-space",
+      "label": "Tangent Space",
+      "kind": "technique"
+    },
+    {
+      "slug": "riemannian-manifold",
+      "label": "Riemannian Manifold",
+      "kind": "technique"
+    },
+    {
+      "slug": "metric-tensor",
+      "label": "Metric Tensor",
+      "kind": "technique"
+    },
+    {
+      "slug": "differential-geometry",
+      "label": "Differential Geometry",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

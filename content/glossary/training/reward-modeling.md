@@ -1,0 +1,17 @@
+---
+title: Reward Modeling
+slug: reward-modeling
+kind: technique
+category: Training and Fine-Tuning
+aliases: reward model training, preference reward model
+related: rlhf, reward-model, reward-hacking, dpo, constitutional-ai, cross-entropy
+summary: The stage of preference alignment that trains a separate model to predict a scalar reward from human comparison data, so that reinforcement learning can later optimize a policy against that learned score rather than against humans directly.
+---
+
+Reward modeling is the step that turns a pile of human preference judgments into a differentiable score a policy can be optimized against. In the standard RLHF pipeline, humans cannot sit in the training loop rating every sample, so their judgments are first distilled into a model. That model, the reward model, takes a prompt and a candidate response and returns a single number meant to track how much a human would approve of that response. Once it exists, the expensive and slow human is replaced by a cheap and fast function call, and reinforcement learning can score thousands of fresh on-policy samples per step.
+
+The training signal is comparison, not absolute rating, because humans are far more reliable at saying which of two responses is better than at assigning a calibrated score to one in isolation. Labelers see a prompt with two or more completions and rank them. The reward model is then trained so that the preferred response receives a higher scalar than the rejected one, using a pairwise loss derived from the Bradley-Terry model of comparisons, which is mathematically a logistic, cross-entropy style objective on the difference between the two predicted rewards. The model itself is usually the pretrained language model with its output layer replaced by a single regression head, so it inherits a strong representation of language before it ever sees a preference.
+
+Reward modeling matters because the quality of the entire alignment stage is bounded by it. A policy optimized with reinforcement learning will find and exploit every flaw in the reward model, so a reward model that rewards length, sycophancy, or confident formatting will produce a policy that is verbose, fawning, or overconfident. This is the mechanism behind reward hacking: the policy maximizes the proxy, not the human intent the proxy was meant to capture. As the policy drifts away from the data the reward model was trained on, the reward model's judgments grow less trustworthy, a failure called reward over-optimization, which is why RLHF keeps the policy anchored near a reference model and why fresh preference data is collected in iterative rounds.
+
+The reward model is exactly the component that direct preference methods set out to remove. DPO uses a mathematical identity to fold the reward model into the policy loss, so preferences are learned in one supervised stage with no separate score predictor and no reinforcement learning loop. The trade is real: a standalone reward model can score arbitrary new on-policy samples and supports online feedback collection, whereas DPO learns from a fixed comparison set. Reward models also serve beyond RLHF. A process reward model scores intermediate reasoning steps rather than only final answers, and reward models are used at inference time to rank candidates in best-of-N sampling. The preference labels themselves can come from humans or, in constitutional AI and RLAIF, from a model applying written principles.

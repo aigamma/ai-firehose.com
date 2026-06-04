@@ -1,0 +1,70 @@
+{
+  "id": "human-evaluation",
+  "label": "Human Evaluation",
+  "kind": "technique",
+  "category": "Evaluation and Benchmarks",
+  "aliases": [
+    "human evaluation",
+    "human eval",
+    "human rating"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The assessment of model outputs by people, the gold-standard signal for open-ended quality that automatic metrics only approximate; slow, costly, and subject to rater disagreement, but the ground truth against which cheaper proxies like model judges are validated.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Human evaluation is the practice of having people judge what a model produces. For open-ended generation, where there is no single correct answer and the qualities that matter, helpfulness, accuracy, coherence, safety, tone, resist mechanical scoring, human judgment remains the gold standard. People can rate a single response against a rubric, compare two responses and pick the better one, or rank several, and their verdicts are treated as the reference signal that every cheaper, automatic measure is ultimately trying to approximate. When an automatic metric is described as \"correlating with human preference,\" human evaluation is the thing it is being correlated against."
+    },
+    {
+      "type": "p",
+      "text": "It is the ground truth precisely because the alternatives are proxies with known blind spots. Overlap metrics like ROUGE and BLEU miss paraphrase and reward fluent falsehoods; a capable llm-as-judge is fast and reproducible but carries position, verbosity, and self-preference biases and has no independent access to truth. Humans, for all their own inconsistency, can catch a subtle factual error, weigh nuance and context, and apply values that a metric cannot encode. This is why human evaluation sits at the top of the evidence hierarchy for open-ended quality, and why it is used to validate whether a new automatic metric or judge model can be trusted as a stand-in."
+    },
+    {
+      "type": "p",
+      "text": "The methodology is its own discipline, because naive human evaluation is noisy and biased. Pairwise comparison is generally preferred over absolute scoring, since people judge \"which of these two is better\" far more consistently than \"rate this from one to ten,\" and the resulting win-loss records can be aggregated, often into an elo-rating, as the large-scale human voting in chatbot-arena does. Sound practice randomizes and anonymizes which system produced which output to prevent brand bias, collects multiple ratings per item and measures inter-annotator agreement to gauge reliability, writes clear rubrics so raters share a definition of quality, and accounts for the same length and confidence biases that affect model judges. Even so, individual raters disagree, expertise matters for technical content, and results depend on who was asked."
+    },
+    {
+      "type": "p",
+      "text": "Human evaluation also feeds back into how models are built, not just how they are scored. The human preference data gathered for alignment is exactly what trains a reward-model, the scorer that drives rlhf, so the same judgments that grade a finished model can also teach the next one. Its enduring drawbacks are cost, latency, and scale: gathering enough careful human ratings is slow and expensive, which throttles how fast teams can iterate and is the very bottleneck that model-based judges were created to relieve. The standard resolution is a division of labor, automatic metrics and judge models for fast everyday iteration, periodic human evaluation as the trusted anchor that confirms the proxies have not drifted, with attention to calibration so that confidence in either tracks reality."
+    }
+  ],
+  "related": [
+    {
+      "slug": "llm-as-judge",
+      "label": "LLM as Judge",
+      "kind": "technique"
+    },
+    {
+      "slug": "chatbot-arena",
+      "label": "Chatbot Arena",
+      "kind": "technique"
+    },
+    {
+      "slug": "elo-rating",
+      "label": "Elo Rating",
+      "kind": "technique"
+    },
+    {
+      "slug": "calibration",
+      "label": "Calibration",
+      "kind": "technique"
+    },
+    {
+      "slug": "rlhf",
+      "label": "RLHF",
+      "kind": "technique"
+    },
+    {
+      "slug": "reward-model",
+      "label": "Reward Model",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

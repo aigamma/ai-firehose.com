@@ -1,0 +1,70 @@
+{
+  "id": "inpainting",
+  "label": "Inpainting",
+  "kind": "technique",
+  "category": "Generative Models",
+  "aliases": [
+    "image inpainting",
+    "mask-based editing",
+    "outpainting"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The task of filling a masked-out region of an image with new content that blends seamlessly with the surrounding pixels, used both to remove unwanted objects and, with text conditioning, to edit images by replacing a chosen area with something described in a prompt.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Inpainting is the task of plausibly filling in a missing or selected region of an image. The user supplies an image and a mask marking the area to replace, and the model generates new pixels for that region that are coherent with everything around it. In its classical form it removes unwanted content, erasing a photobomber, a watermark, or a scratch, and reconstructs whatever should plausibly be behind it. In its modern generative form it becomes a precise editing tool: the masked area is regenerated to match a text prompt, so a user can paint over a person's shirt and ask for \"a red jacket\", changing one part of a scene while leaving the rest untouched. The closely related variant that extends an image beyond its original borders, generating new content outward, is called outpainting."
+    },
+    {
+      "type": "p",
+      "text": "It matters because it is the workhorse of controllable image editing, the bridge between full image generation and surgical local change. Generating an entire image from a prompt gives little control over which parts change; inpainting confines the edit to a region the user chooses and guarantees the rest of the image is preserved exactly, which is what most real editing tasks need. This makes it central to creative tooling, photo retouching, object removal, and iterative refinement, where a generation is improved by repeatedly masking and regenerating its weak spots rather than rolling the dice on a whole new image."
+    },
+    {
+      "type": "p",
+      "text": "The dominant method runs a [diffusion model](diffusion-model), almost always a [latent diffusion](latent-diffusion) model, with the mask steering the [denoising diffusion](denoising-diffusion) process. The simplest scheme denoises the masked region normally but, at every step, overwrites the unmasked region with the correctly-noised version of the original image, so the known pixels are continually pinned to their true values and only the hole is freshly generated; the surrounding context leaks into the masked area through the network's attention, which is what makes the fill blend. Stronger results come from training or fine-tuning the model specifically for inpainting, feeding the masked image and the mask as extra conditioning channels into the [u-net](u-net) so the network learns to attend to the boundary and complete it cleanly. When the fill is guided by a prompt, [classifier-free guidance](classifier-free-guidance) controls how strongly the new content adheres to that description."
+    },
+    {
+      "type": "p",
+      "text": "Inpainting is best understood as conditional generation where the condition is partly an existing image and partly, optionally, a text prompt. It composes naturally with the rest of the generative stack: it uses the same backbone and sampler as [text-to-image](text-to-image) synthesis, differing only in that part of the canvas is held fixed. The hard cases are the ones that demand global consistency, matching lighting, perspective, and texture across the seam, and respecting objects that continue into the masked region, since the model must infer the hidden structure from context alone rather than invent something that merely looks fine in isolation."
+    }
+  ],
+  "related": [
+    {
+      "slug": "diffusion-model",
+      "label": "Diffusion Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "latent-diffusion",
+      "label": "Latent Diffusion",
+      "kind": "technique"
+    },
+    {
+      "slug": "classifier-free-guidance",
+      "label": "Classifier-Free Guidance",
+      "kind": "technique"
+    },
+    {
+      "slug": "denoising-diffusion",
+      "label": "Denoising Diffusion",
+      "kind": "technique"
+    },
+    {
+      "slug": "text-to-image",
+      "label": "Text-to-Image Generation",
+      "kind": "technique"
+    },
+    {
+      "slug": "u-net",
+      "label": "U-Net",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

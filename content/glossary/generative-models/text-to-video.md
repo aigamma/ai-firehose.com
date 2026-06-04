@@ -1,0 +1,17 @@
+---
+title: Text-to-Video Generation
+slug: text-to-video
+kind: technique
+category: Generative Models
+aliases: text-to-video, video diffusion, T2V
+related: text-to-image, latent-diffusion, diffusion-transformer, diffusion-model, classifier-free-guidance, world-model
+summary: The task and model class that generate a short video clip from a natural-language description, extending diffusion-based image generation across time so the model must produce frames that are individually realistic and consistent and smoothly moving as a sequence.
+---
+
+Text-to-video generation turns a written prompt into a moving clip. It is the temporal extension of [text-to-image](text-to-image) synthesis, and the added dimension is what makes it hard: the model must produce not one coherent image but a sequence of frames that are each realistic, agree with one another so objects keep their identity and shape, and move plausibly so motion looks natural rather than flickering or teleporting. A good result has to get appearance, temporal consistency, and motion dynamics all right at once, which is a substantially taller order than a single still image.
+
+It matters because video is the richest and most demanded visual medium, and generating it from text promises to compress filmmaking, animation, and visual effects pipelines the way image generators reshaped illustration. The difficulty also makes it a meaningful research frontier: producing physically plausible motion forces a model to internalize something about how the world behaves over time, how objects persist, fall, collide, and deform, so strong video generators are increasingly discussed as implicit [world model](world-model) candidates, learning intuitive physics as a side effect of learning to predict frames.
+
+The dominant approach lifts the image-diffusion recipe into space and time. The model is a [latent diffusion](latent-diffusion) system whose autoencoder compresses video into a spacetime latent, often by treating the clip as a stack of frames and tokenizing it across both spatial patches and temporal segments, so the diffusion runs in a compact representation rather than on millions of raw pixels per frame. The denoising backbone adds temporal layers, attention or convolution that span frames, on top of the spatial ones, so each frame can attend to its neighbors in time and the generation stays coherent across the clip. Recent frontier systems replace the convolutional backbone with a [diffusion transformer](diffusion-transformer) operating on spacetime patches, which scales better and handles variable durations and resolutions, and a text prompt conditions the whole process with prompt adherence tuned by [classifier-free guidance](classifier-free-guidance).
+
+Text-to-video inherits every challenge of the [diffusion model](diffusion-model) and adds its own. Sampling cost is far higher than for images because a clip is many frames, which pushes the field hard toward faster samplers and distillation, and long clips strain temporal consistency as small per-frame errors accumulate into drift. Beyond raw quality, the open problems are controllability and coherence over time: maintaining a character's identity across a long shot, following camera and motion instructions, composing multiple moving subjects correctly, and respecting physical plausibility. Progress is measured less by per-frame sharpness than by these temporal and dynamical properties, which are what separate a convincing video from a sequence of pretty but disconnected pictures.

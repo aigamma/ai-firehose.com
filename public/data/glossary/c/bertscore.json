@@ -1,0 +1,68 @@
+{
+  "id": "bertscore",
+  "label": "BERTScore",
+  "kind": "technique",
+  "category": "Evaluation and Benchmarks",
+  "aliases": [
+    "BERTScore"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A text-generation metric that scores a candidate against a reference by matching their contextual word embeddings rather than exact words, so a correct paraphrase with different vocabulary is credited where surface-overlap metrics like BLEU and ROUGE penalize it.",
+  "body": [
+    {
+      "type": "p",
+      "text": "BERTScore is an automatic metric for comparing generated text to a reference using meaning rather than literal word overlap. It takes the candidate and the reference, runs each through a pretrained contextual encoder such as bert to get an embedding for every token, and then matches tokens between the two by the cosine similarity of those embeddings. Because the embeddings are contextual, the same word carries a different vector in different sentences, and semantically related words sit close together, so the metric rewards a candidate that conveys the reference's meaning even when it chooses different words."
+    },
+    {
+      "type": "p",
+      "text": "It exists to fix a well-known blind spot in surface-overlap metrics. The bleu-score and rouge families count matching n-grams, which means they punish a perfectly good paraphrase that uses synonyms or reorders a sentence, and they can reward a fluent-but-wrong output that happens to share vocabulary with the reference. By comparing in embedding space instead, BERTScore credits \"the film was excellent\" against a reference of \"the movie was great,\" a match those n-gram metrics largely miss. Empirically it correlates better with human judgments of quality than BLEU or ROUGE on tasks like machine translation and summarization, which is why it became a common semantic complement to them."
+    },
+    {
+      "type": "p",
+      "text": "Mechanically, BERTScore computes a soft alignment between the two token sets. For recall, each reference token is matched to its most similar candidate token and the similarities are averaged; for precision, the roles are reversed; and the two are combined into an F-measure, mirroring the precision-and-recall structure of older metrics but with similarity standing in for exact match. An optional importance weighting downweights common tokens so that contentful words count more, similar in spirit to how an embedding-model and semantic-search systems weight informative terms. The score depends on which encoder is used, so the model and layer should be pinned and reported for results to be comparable."
+    },
+    {
+      "type": "p",
+      "text": "BERTScore occupies a useful middle ground between the cheap rigidity of n-gram overlap and the cost and variance of an llm-as-judge. It is fast, deterministic, and needs no prompting, yet it captures meaning that string matching cannot. Its limits follow from its design: it still requires reference texts, so it cannot grade open-ended generation that has no single correct answer, and like any embedding-based measure it can be fooled by sentences that are lexically similar but differ in a small, meaning-flipping detail such as a negation. It is best understood as a reference-based semantic metric, stronger than BLEU and ROUGE at recognizing paraphrase, and weaker than a capable judge at assessing qualities no reference can encode."
+    }
+  ],
+  "related": [
+    {
+      "slug": "bleu-score",
+      "label": "BLEU Score",
+      "kind": "technique"
+    },
+    {
+      "slug": "rouge",
+      "label": "ROUGE",
+      "kind": "technique"
+    },
+    {
+      "slug": "embedding-model",
+      "label": "Embedding Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "Semantic Search",
+      "kind": "technique"
+    },
+    {
+      "slug": "bert",
+      "label": "BERT",
+      "kind": "tool"
+    },
+    {
+      "slug": "llm-as-judge",
+      "label": "LLM as Judge",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

@@ -1,0 +1,74 @@
+{
+  "id": "regression",
+  "label": "Regression",
+  "kind": "technique",
+  "category": "Core Machine Learning",
+  "aliases": [
+    "regression analysis",
+    "regressor",
+    "regression task"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The supervised learning task of predicting a continuous numeric value from input features. Regression covers any problem whose answer is a quantity rather than a category, from forecasting prices to estimating age from a photograph.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Regression is the supervised learning task whose output is a continuous number rather than a discrete label. Given inputs paired with their correct numeric answers during training, a regression model learns a function from features to a real-valued quantity and then predicts that quantity for new inputs. The answer can be a price, a temperature, a probability, a person's age, or a sensor reading: anything that lives on a continuous scale. This is the dividing line from Classification, which chooses from a fixed set of categories. Whenever the question is \"how much\" or \"how many\" rather than \"which one,\" the problem is regression."
+    },
+    {
+      "type": "p",
+      "text": "Regression matters because an enormous share of real-world prediction is fundamentally about magnitudes. Demand forecasting, risk pricing, dosage estimation, time-to-failure prediction, and the value functions inside reinforcement learning are all regression problems. The continuous output also makes regression the natural language for any model that must feed a downstream calculation, since a number can be added, compared, and optimized in ways a bare category cannot. Even classification leans on regression internally: a classifier that outputs class probabilities is regressing onto the unit interval before it thresholds."
+    },
+    {
+      "type": "p",
+      "text": "The defining design choice in regression is the loss function, the rule for scoring how wrong a numeric prediction is. Mean squared error, the average of the squared gaps between prediction and truth, is the default; it has clean mathematics and corresponds to assuming Gaussian noise, but its squaring makes it sensitive to outliers. Mean absolute error penalizes gaps linearly and is more robust to extreme values, while the Huber loss interpolates between the two. The choice is not cosmetic: it encodes what kind of mistake the practitioner is willing to tolerate, and it is the Loss Function the optimizer actually drives down during training. Linear Regression is the simplest and most interpretable regressor, fitting a straight-line relationship, and it remains the baseline every more elaborate method is measured against."
+    },
+    {
+      "type": "p",
+      "text": "Regression is evaluated on a continuous scale rather than by counting hits and misses. Root mean squared error reports the typical size of the error in the units of the target, and the coefficient of determination, R-squared, reports the fraction of the target's variance the model explains, with one being perfect and zero being no better than predicting the mean. Because there is no notion of a \"correct class,\" the failure modes are about systematic bias and the spread of residuals rather than confusion between categories, which is why diagnostic plots of the residuals are a staple of regression practice."
+    },
+    {
+      "type": "p",
+      "text": "Regression shares all the deep machinery of supervised learning with classification, and the two are best understood as the continuous and discrete faces of the same task. Both are fit by minimizing a loss on training data, both are threatened by Overfitting when the model is too flexible for the data, and both are governed by the Bias-Variance Tradeoff that sets how much capacity is safe. Almost every algorithm has both a classification and a regression form: a Decision Tree can predict a class or a number, and a neural network differs between the two only in its final layer and loss. Understanding regression as a task, separate from any one algorithm, is what lets a practitioner port the whole toolbox from one numeric problem to the next."
+    }
+  ],
+  "related": [
+    {
+      "slug": "supervised-learning",
+      "label": "Supervised Learning",
+      "kind": "technique"
+    },
+    {
+      "slug": "linear-regression",
+      "label": "Linear Regression",
+      "kind": "technique"
+    },
+    {
+      "slug": "classification",
+      "label": "Classification",
+      "kind": "technique"
+    },
+    {
+      "slug": "loss-function",
+      "label": "Loss Function",
+      "kind": "technique"
+    },
+    {
+      "slug": "overfitting",
+      "label": "Overfitting",
+      "kind": "technique"
+    },
+    {
+      "slug": "bias-variance-tradeoff",
+      "label": "Bias-Variance Tradeoff",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

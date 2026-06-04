@@ -1,0 +1,69 @@
+{
+  "id": "controlnet",
+  "label": "ControlNet",
+  "kind": "technique",
+  "category": "Generative Models",
+  "aliases": [
+    "control net",
+    "spatial conditioning"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "An add-on network that gives a pretrained diffusion model precise spatial control, conditioning generation on an input map such as an edge sketch, a human pose, a depth map, or a segmentation, so the output follows that structure while a text prompt sets the content.",
+  "body": [
+    {
+      "type": "p",
+      "text": "ControlNet is a way to steer a text-to-image diffusion model with spatial structure rather than words alone. A plain [text-to-image](text-to-image) system is conditioned only on a prompt, which describes what to draw but gives almost no control over exact layout, pose, or geometry. ControlNet adds a second conditioning channel in the form of an image-shaped control map, an edge drawing, a stick-figure human pose, a depth map, a surface-normal map, or a segmentation, and constrains the generation to follow that map's structure while the text prompt still determines appearance and style. The result is fine-grained, reproducible control: the same pose map can be rendered as a knight, an astronaut, or a dancer, each holding exactly the specified stance."
+    },
+    {
+      "type": "p",
+      "text": "It matters because it solved the controllability problem that prompts alone could not. Describing a precise composition in text is hopeless past a certain complexity, and small prompt changes can scramble the whole image. ControlNet lets a user hand the model the layout directly, which is what production creative work needs: matching a character to a reference pose, constraining a scene to an architectural sketch, or keeping geometry stable across a series of frames. Introduced in 2023, it became a standard extension of open diffusion models precisely because it grants this spatial precision without giving up the open-ended content control of the prompt."
+    },
+    {
+      "type": "p",
+      "text": "The design is an elegant piece of transfer engineering built on top of a frozen [latent diffusion](latent-diffusion) backbone. ControlNet clones the encoder half of the diffusion model's [u-net](u-net) into a trainable copy, leaves the original network's weights frozen, and connects the trainable copy back into the frozen network through layers initialized to zero. Because those connecting layers start at zero, the control branch initially contributes nothing and the model behaves exactly as before, so training begins from a known-good state and cannot corrupt the powerful pretrained weights; as training proceeds, the branch gradually learns to inject the control signal. This makes ControlNet cheap and stable to train on a modest dataset of (control map, image) pairs, a far lighter operation than full [fine-tuning](fine-tuning) of the base model, and it lets many independent control types be trained and swapped in as plug-in modules."
+    },
+    {
+      "type": "p",
+      "text": "ControlNet is one member of a broad family of conditioning and adaptation methods that bolt new control onto a frozen [diffusion model](diffusion-model) rather than retraining it, alongside techniques that adapt style or subject identity. It composes with the rest of the sampling pipeline: the control signal shapes each prediction inside the [u-net](u-net), while [classifier-free guidance](classifier-free-guidance) still governs how strongly the text prompt is followed, and multiple control maps can be combined to constrain several aspects of an image at once. Its core idea, freeze a large pretrained generator and learn a small zero-initialized side network to add a new conditioning input, has proven influential well beyond its original setting."
+    }
+  ],
+  "related": [
+    {
+      "slug": "latent-diffusion",
+      "label": "Latent Diffusion",
+      "kind": "technique"
+    },
+    {
+      "slug": "diffusion-model",
+      "label": "Diffusion Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "classifier-free-guidance",
+      "label": "Classifier-Free Guidance",
+      "kind": "technique"
+    },
+    {
+      "slug": "text-to-image",
+      "label": "Text-to-Image Generation",
+      "kind": "technique"
+    },
+    {
+      "slug": "u-net",
+      "label": "U-Net",
+      "kind": "technique"
+    },
+    {
+      "slug": "fine-tuning",
+      "label": "Fine-Tuning",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

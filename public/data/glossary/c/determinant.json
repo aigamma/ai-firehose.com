@@ -1,0 +1,64 @@
+{
+  "id": "determinant",
+  "label": "Determinant",
+  "kind": "technique",
+  "category": "Linear Algebra for ML",
+  "aliases": [
+    "determinants",
+    "det"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A single number computed from a square matrix that measures the signed volume scaling of the linear transformation it represents, zero exactly when the matrix is singular, and a recurring factor in change-of-variables formulas and probabilistic models.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The determinant is a single scalar distilled from a square matrix that captures, in one number, how the [linear transformation](linear-transformation) represented by that matrix changes volume. Apply the matrix to a unit cube and it maps to a parallelepiped; the determinant is the signed volume of that image. A determinant of three means the transformation triples volumes, a determinant of one half means it shrinks them by half, and a negative determinant means the transformation also flips orientation, turning a right-handed frame into a left-handed one. This geometric reading, volume scaling with a sign for orientation, is the single most useful way to understand what the determinant is."
+    },
+    {
+      "type": "p",
+      "text": "The most important fact about the determinant is when it equals zero. A determinant of zero means the transformation collapses space into a lower dimension, squashing volume to nothing, which happens exactly when the [matrix](matrix) is singular: its columns are linearly dependent, its rank is deficient, and it has no inverse. So the determinant is a direct test of invertibility, and a matrix is invertible if and only if its determinant is nonzero. A determinant close to zero signals that the matrix is nearly singular and that inverting it will be numerically unstable, amplifying small errors enormously."
+    },
+    {
+      "type": "p",
+      "text": "The determinant is tightly bound to the rest of linear algebra. It equals the product of the matrix's [eigenvalues](eigenvalue), which makes intuitive sense because eigenvalues are the stretch factors along the eigen-directions and volume scaling is their product. It is also the product of the squared singular values' relationship to volume, connecting it to the [singular value decomposition](singular-value-decomposition). It is multiplicative, the determinant of a product is the product of the determinants, and the determinant of an inverse is the reciprocal. These properties let it serve as a compact summary of how a transformation distorts space."
+    },
+    {
+      "type": "p",
+      "text": "In machine learning the determinant appears most prominently through the change-of-variables formula, which tells you how a probability density transforms when its variable is pushed through an invertible map: the new density is the old one divided by the absolute value of the determinant of the map's [Jacobian](jacobian). This is the mathematical core of normalizing flows, which build flexible distributions by composing invertible transformations and must compute log-determinants efficiently to evaluate likelihood. The log-determinant of a covariance matrix appears in the log-density of a multivariate [Gaussian distribution](gaussian-distribution) and in the objective of Gaussian processes. Because naive determinant computation is expensive and unstable, practitioners work with log-determinants and exploit structure such as triangular or low-rank forms to make these terms tractable."
+    }
+  ],
+  "related": [
+    {
+      "slug": "matrix",
+      "label": "Matrix",
+      "kind": "technique"
+    },
+    {
+      "slug": "eigenvalue",
+      "label": "Eigenvalue",
+      "kind": "technique"
+    },
+    {
+      "slug": "linear-transformation",
+      "label": "Linear Transformation",
+      "kind": "technique"
+    },
+    {
+      "slug": "singular-value-decomposition",
+      "label": "Singular Value Decomposition",
+      "kind": "technique"
+    },
+    {
+      "slug": "jacobian",
+      "label": "Jacobian",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

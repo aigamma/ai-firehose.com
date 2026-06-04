@@ -1,0 +1,70 @@
+{
+  "id": "bi-encoder",
+  "label": "Bi-Encoder",
+  "kind": "technique",
+  "category": "RAG, Embeddings, and Retrieval",
+  "aliases": [
+    "bi encoder",
+    "dual encoder",
+    "two-tower model"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "A retrieval architecture that encodes a query and a document independently into separate vectors and scores their relevance by a simple similarity between those vectors, which makes document embeddings precomputable and indexable, enabling fast search over a large corpus.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A bi-encoder is the architecture that makes dense retrieval scale. It uses an encoder, typically a transformer, to map a query into one vector and each document into its own vector entirely separately, with no interaction between the two texts during encoding. Relevance is then a cheap operation between the finished vectors, usually a dot product or cosine similarity. Because the two inputs travel down two parallel towers that never meet until the final comparison, the design is also called a dual encoder or two-tower model."
+    },
+    {
+      "type": "p",
+      "text": "That independence is the whole point. Since a document's vector does not depend on any query, every document in a corpus can be embedded once, ahead of time, and stored in a vector database. At query time only the query is encoded, and finding the best matches becomes a nearest-neighbor search over the precomputed vectors, made fast by approximate nearest neighbor indexes. This is what lets a bi-encoder shortlist relevant passages from millions of documents in milliseconds, the property that ordinary embedding-model retrieval depends on."
+    },
+    {
+      "type": "p",
+      "text": "The contrast is with the cross-encoder, which feeds the query and a document into the model together so attention can run across both. A cross-encoder is more accurate because the query and document interact directly, but it must run the full model for every query-document pair and can precompute nothing, so it cannot scan a large corpus. The bi-encoder makes the opposite trade: by encoding in isolation it gives up some accuracy, because the query never gets to shape how the document is read, in exchange for the indexability that makes corpus-scale search feasible."
+    },
+    {
+      "type": "p",
+      "text": "The two are complementary, which is why production retrieval usually stacks them: a fast bi-encoder retrieves a shortlist by vector similarity, then a cross-encoder reranks just that shortlist for precision. Bi-encoders are trained to make this work with contrastive learning, pulling a query and its relevant documents close in the vector space while pushing irrelevant ones away, often using hard negatives so the learned similarity actually separates near-misses from true matches."
+    }
+  ],
+  "related": [
+    {
+      "slug": "cross-encoder",
+      "label": "Cross-Encoder",
+      "kind": "technique"
+    },
+    {
+      "slug": "dense-retrieval",
+      "label": "Dense Retrieval",
+      "kind": "technique"
+    },
+    {
+      "slug": "embedding-model",
+      "label": "Embedding Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "Semantic Search",
+      "kind": "technique"
+    },
+    {
+      "slug": "approximate-nearest-neighbor",
+      "label": "Approximate Nearest Neighbor",
+      "kind": "technique"
+    },
+    {
+      "slug": "contrastive-learning",
+      "label": "Contrastive Learning",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

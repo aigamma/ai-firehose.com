@@ -1,0 +1,65 @@
+{
+  "id": "orthogonality",
+  "label": "Orthogonality",
+  "kind": "technique",
+  "category": "Linear Algebra for ML",
+  "aliases": [
+    "orthogonal",
+    "orthonormal",
+    "orthogonal matrix"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "The generalization of perpendicularity to vector spaces, holding when the dot product of two vectors is zero, the property that makes bases easy to work with and that orthogonal matrices exploit to rotate space without distorting lengths or angles.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Orthogonality is the linear-algebra generalization of being perpendicular. Two vectors are orthogonal when their [dot product](dot-product) is zero, which in ordinary two- and three-dimensional space means they meet at a right angle, but the definition extends cleanly to any number of dimensions and to abstract inner-product spaces where geometric intuition fails. Orthogonality captures the idea that two directions share no component along each other: moving along one does nothing to your position along the other. A set of vectors that are mutually orthogonal and each of unit length is called orthonormal, the cleanest possible kind of coordinate system."
+    },
+    {
+      "type": "p",
+      "text": "An orthonormal [basis](basis) is the reason orthogonality matters so much in practice. When the basis vectors are mutually orthogonal and normalized, expressing any vector in that basis is trivial: each coordinate is just the dot product of the vector with the corresponding basis vector, with no system of equations to solve. Lengths and angles are preserved, distances decompose by the Pythagorean theorem across the coordinates, and projecting a vector onto a subspace reduces to summing its projections onto the individual orthonormal directions. This is what makes orthonormal bases the preferred frame for nearly every computation, and it is why the Gram-Schmidt process, which turns any basis into an orthonormal one, is a fundamental tool."
+    },
+    {
+      "type": "p",
+      "text": "A square matrix whose columns form an orthonormal set is an orthogonal matrix, and these matrices represent the rigid motions of space: rotations and reflections. An orthogonal matrix preserves the [norm](norm) of every vector and the angle between every pair, so it moves points around without stretching, shearing, or distorting any structure. Its inverse is simply its transpose, which makes orthogonal matrices exceptionally cheap and numerically stable to work with, since transposing never amplifies error the way inverting a general matrix can. The rotation matrices in the singular value decomposition are orthogonal, which is exactly why that factorization is so well behaved."
+    },
+    {
+      "type": "p",
+      "text": "Orthogonality is woven throughout machine learning. Principal component analysis produces orthogonal directions of variance, so the components are uncorrelated and each captures a distinct slice of the data. Orthogonal weight initialization keeps signal magnitudes stable as they pass through deep networks, mitigating vanishing and exploding gradients by ensuring each layer neither inflates nor shrinks the norm of its input. Decorrelating or whitening features relies on orthogonal transforms, and the numerical stability of least-squares solvers comes from QR factorization into an orthogonal matrix and a triangular one. Wherever a method needs to change coordinates without distorting the geometry, or to keep distinct components from interfering, orthogonality is the property it depends on."
+    }
+  ],
+  "related": [
+    {
+      "slug": "dot-product",
+      "label": "Dot Product",
+      "kind": "technique"
+    },
+    {
+      "slug": "basis",
+      "label": "Basis",
+      "kind": "technique"
+    },
+    {
+      "slug": "norm",
+      "label": "Norm",
+      "kind": "technique"
+    },
+    {
+      "slug": "singular-value-decomposition",
+      "label": "Singular Value Decomposition",
+      "kind": "technique"
+    },
+    {
+      "slug": "vector-space",
+      "label": "Vector Space",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

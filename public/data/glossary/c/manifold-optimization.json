@@ -1,0 +1,69 @@
+{
+  "id": "manifold-optimization",
+  "label": "Manifold Optimization",
+  "kind": "technique",
+  "category": "Advanced Mathematics",
+  "aliases": [
+    "Riemannian optimization",
+    "optimization on manifolds"
+  ],
+  "durable": true,
+  "source": "authored",
+  "definition": "Optimization in which the variables are constrained to lie on a smooth manifold, performed by taking gradient steps along the manifold's own geometry so that every iterate satisfies the constraint exactly rather than by penalizing or projecting after the fact.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Manifold optimization, also called Riemannian optimization, is the discipline of minimizing a function whose variables are required to live on a smooth manifold rather than in unconstrained Euclidean space. Many of the most natural objects in machine learning are constrained in exactly this way. A direction is a unit-norm vector and so lives on a sphere. A rotation is an orthogonal matrix and lives on the orthogonal group. A subspace lives on a Grassmann manifold, a covariance matrix on the cone of symmetric positive-definite matrices, a low-rank matrix on a fixed-rank manifold. Treating these as ordinary unconstrained problems and bolting on penalties or repeatedly projecting back tends to be clumsy, slow, and numerically fragile. Manifold optimization instead builds the constraint into the search itself, so that the iterate never leaves the valid set at any point."
+    },
+    {
+      "type": "p",
+      "text": "The core idea is to replace each ingredient of ordinary gradient-descent with its geometric counterpart on a riemannian-manifold. The ordinary gradient is replaced by the Riemannian gradient, the projection of the Euclidean gradient onto the tangent-space at the current point, which is the steepest-ascent direction among the moves the manifold actually permits. A step is then taken not in a straight Euclidean line, which would leave the manifold, but along the manifold's surface. Ideally this means following a geodesic, the manifold's notion of a straight path, via the exponential map; in practice a cheaper retraction, any smooth map that moves along the tangent direction and lands back on the manifold to first order, is used because it is far less expensive to compute and works just as well. Multi-step methods that accumulate information across iterates, such as momentum or conjugate gradients, additionally need parallel transport to carry the accumulated direction from one tangent space to the next, since vectors at different points cannot simply be added."
+    },
+    {
+      "type": "p",
+      "text": "This machinery matters because it converts a hard constrained problem into something that looks and behaves like familiar unconstrained optimization, just performed in the right geometry. Convergence theory carries over: under suitable conditions Riemannian gradient methods enjoy the same kinds of guarantees as their flat counterparts, and a function that is convex along geodesics (geodesically convex) can be optimized with the strong guarantees of convex-optimization even though it is not convex in the ambient coordinates. The geometry frequently reveals hidden structure as well, exposing symmetries (a function invariant under rotations is naturally posed on a quotient manifold) and removing spurious degrees of freedom that would otherwise stall an unconstrained solver."
+    },
+    {
+      "type": "p",
+      "text": "In modern practice manifold optimization shows up wherever weights or representations carry a geometric constraint. Orthogonality constraints on recurrent and attention weight matrices, imposed on the orthogonal or Stiefel manifold, stabilize training by keeping the spectrum well-behaved and preventing gradients from vanishing or exploding. Training and adapting hyperbolic-embeddings requires Riemannian updates so that points stay inside the model of hyperbolic space and distances stay correct. Estimating covariance and kernel matrices respects the positive-definite cone, low-rank recovery respects the fixed-rank manifold, and principal-component-analysis and subspace tracking are naturally Grassmann or Stiefel problems. Mature libraries make these steps turnkey, so a practitioner specifies the manifold and the cost and the optimizer handles the projection, retraction, and transport. Manifold optimization is, in the end, the operational payoff of differential-geometry for machine learning: once you accept that your variables live on a curved set, it is how you do calculus and descent there correctly."
+    }
+  ],
+  "related": [
+    {
+      "slug": "riemannian-manifold",
+      "label": "Riemannian Manifold",
+      "kind": "technique"
+    },
+    {
+      "slug": "geodesic",
+      "label": "Geodesic",
+      "kind": "technique"
+    },
+    {
+      "slug": "tangent-space",
+      "label": "Tangent Space",
+      "kind": "technique"
+    },
+    {
+      "slug": "gradient-descent",
+      "label": "Gradient Descent",
+      "kind": "technique"
+    },
+    {
+      "slug": "convex-optimization",
+      "label": "Convex Optimization",
+      "kind": "technique"
+    },
+    {
+      "slug": "differential-geometry",
+      "label": "Differential Geometry",
+      "kind": "technique"
+    }
+  ],
+  "attention": 0,
+  "first_seen": "2026-06-02",
+  "rotation": null,
+  "neighbors": [],
+  "top_items": [],
+  "axis_positions": []
+}

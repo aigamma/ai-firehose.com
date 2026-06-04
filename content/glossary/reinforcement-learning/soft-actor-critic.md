@@ -1,0 +1,17 @@
+---
+title: Soft Actor-Critic
+slug: soft-actor-critic
+kind: technique
+category: Reinforcement Learning
+aliases: SAC
+related: actor-critic, proximal-policy-optimization, value-function, exploration-exploitation, deep-q-network, entropy
+summary: An off-policy actor-critic algorithm that maximizes reward plus policy entropy, encouraging the agent to act as randomly as possible while still succeeding; the entropy term yields strong exploration and stability, making it a leading method for continuous-control tasks like robotics.
+---
+
+Soft Actor-Critic, or SAC, is an off-policy reinforcement learning algorithm built around an unusual objective: maximize the expected reward and the entropy of the policy at the same time. Rather than seeking the single best action in each state, SAC seeks a policy that succeeds while remaining as random as it can afford to be. This is the maximum-entropy reinforcement learning framework, in which the agent is rewarded both for what it achieves and for keeping its options open. The result is one of the most sample-efficient and robust algorithms for continuous-action problems, and a frequent default in robotics and simulated control.
+
+The entropy term is what makes SAC distinctive, and it directly targets the exploration-exploitation tradeoff. By paying the agent to maintain randomness, the objective discourages premature collapse onto a narrow, possibly suboptimal behavior and keeps exploration alive throughout training rather than relying on hand-tuned noise that decays on a schedule. A temperature parameter sets how much the entropy bonus is worth relative to reward; modern SAC tunes this temperature automatically to hold the policy near a target entropy, removing one of the most finicky hyperparameters. Higher temperature buys broader exploration, lower temperature sharpens the policy toward exploitation.
+
+SAC is an actor-critic method, but its components carry the soft, entropy-aware twist. The critic learns a soft value-function and soft action values whose Bellman targets include the entropy bonus, so the values reflect the reward plus the long-run randomness the policy will enjoy. The actor is a stochastic policy, typically a Gaussian whose mean and spread the network outputs, trained to maximize those soft values, which keeps it appropriately broad rather than deterministic. To curb the overestimation bias that plagues value learning, SAC trains two critics and uses the smaller of their estimates, a technique inherited from the lineage that runs through the deep-q-network family.
+
+Crucially, SAC is off-policy: it stores past transitions in a replay buffer and reuses them many times, which makes it far more sample-efficient than on-policy methods like proximal-policy-optimization that must discard data after a few updates. That efficiency is exactly what real-robot training needs, where every environment interaction is slow and costly. The trade is that off-policy learning with function approximation is harder to stabilize, and the entropy regularization plus twin critics are much of what buys SAC its reliability. Where PPO dominates large-scale on-policy settings such as language-model fine-tuning, SAC is the reference choice when sample efficiency on continuous control is paramount.
