@@ -2719,7 +2719,7 @@
         "deep double descent",
         "model-wise double descent"
       ],
-      "def_snippet": "A phenomenon in which a model's test error, as a function of its capacity, first falls, then rises to a peak near the point where it just fits the training data, and then falls a second time as capacity grows further into the overparameterized regime.",
+      "def_snippet": "The curve that broke the textbook picture of overfitting: as model capacity grows, test error falls, then rises to a peak right where the model just fits the training data, then falls a second time deep in the overparameterized regime. It reconciles classical theory with the fact that the biggest networks generalize best, by shifting the question from how much capacity to which of the many interpolating solutions the optimizer selects.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -3833,7 +3833,7 @@
         "generalization gap",
         "out-of-sample performance"
       ],
-      "def_snippet": "The ability of a trained model to perform well on new, unseen data drawn from the same distribution as its training data, rather than merely fitting the examples it was trained on. It is the central goal of supervised learning.",
+      "def_snippet": "The ability of a trained model to perform well on new, unseen data from the same distribution, rather than merely fitting the examples it saw. It is the entire goal of supervised learning, and the central open puzzle of the field is why hugely overparameterized networks, which can memorize random labels, generalize anyway.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -4633,7 +4633,7 @@
         "learning bias",
         "model bias"
       ],
-      "def_snippet": "The set of assumptions a learning algorithm uses to generalize beyond its training data to unseen inputs. Every model that learns must encode some inductive bias, and choosing one well-matched to the problem is what makes generalization possible.",
+      "def_snippet": "The set of assumptions a learner uses to generalize beyond its training data, the preferences that pick one hypothesis when the data alone cannot. Any finite sample fits infinitely many functions, so a learner must lean on something, and that something, smoothness, simplicity, the symmetries baked into an architecture, is the currency that buys generalization.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -6861,7 +6861,7 @@
         "NFL theorem",
         "no free lunch theorems"
       ],
-      "def_snippet": "A set of results, associated with David Wolpert, showing that averaged over all possible problems no learning algorithm or optimizer outperforms any other. Superior performance on real tasks always comes from assumptions matched to those tasks, never from a universally best method.",
+      "def_snippet": "David Wolpert's result that, averaged over all possible problems, no learning algorithm or optimizer beats any other. Superior performance on real tasks never comes from a universally better method, only from assumptions matched to those tasks, which makes inductive bias not an optional nicety but the entire source of generalization.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -6977,7 +6977,7 @@
         "principle of parsimony",
         "parsimony"
       ],
-      "def_snippet": "The principle that, among competing explanations that fit the data equally well, the simplest should be preferred. In machine learning it appears as a bias toward low-complexity models and underlies regularization and model selection.",
+      "def_snippet": "The principle that among explanations fitting the data equally well, the simplest should win. In machine learning it is a concrete bias toward low-complexity models, behind regularization and model selection, but its sharp edge is that \"simple\" is representation-dependent: a giant network can still embody a simple function, so the razor is a useful bias, not a law.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -7199,7 +7199,7 @@
         "probably approximately correct",
         "probably approximately correct learning"
       ],
-      "def_snippet": "A formal framework, due to Leslie Valiant, that defines what it means to learn a concept from examples: with high probability, a learner should output a hypothesis whose error is small, using a number of samples that grows only polynomially in the relevant parameters.",
+      "def_snippet": "Leslie Valiant's framework defining what it means to learn from examples: with high probability, output a hypothesis whose error is small, using a sample that grows only polynomially in the relevant parameters. Both hedges, \"probably\" and \"approximately,\" are unavoidable for a learner that sees only a finite random sample, and a class is learnable exactly when its VC dimension is finite.",
       "durable": true,
       "category": "Learning Theory"
     },
@@ -10310,7 +10310,7 @@
         "Vapnik-Chervonenkis dimension",
         "VC"
       ],
-      "def_snippet": "A measure of the capacity or expressive power of a class of models, defined as the size of the largest set of points that the class can label in all possible ways. It controls how many samples are needed to learn and how tightly training error predicts true error.",
+      "def_snippet": "A measure of a model class's capacity, the size of the largest set of points it can label in every possible way. It governs how many samples you need and how tightly training error predicts true error, and its most instructive feature is its failure: the VC dimension of a modern network is enormous, yet such networks generalize, which is what pushed the field past it.",
       "durable": true,
       "category": "Learning Theory"
     },
