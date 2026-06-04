@@ -20,7 +20,7 @@ Do not use `/loop` for backlog work. For "burn through N known independent items
 
 Do not ask for confirmation between batches of independent work. Run to completion. External rate limits (OpenAI, Fly.io, GitHub, Netlify, YouTube) still apply; this rule is about Anthropic-side conservatism only.
 
-Commit liberally and verbosely. Push less often than you commit (pushes trigger Netlify builds), but always push at a milestone or a state of completion. Leaving finished work committed but unpushed is the failure that causes the deployed tree and local tree to silently diverge.
+Commit liberally and verbosely: the dev machine takes frequent hardware faults, so a commit is the floor you fall back to. Push on a genuine completion or stall, promptly, and do not leave finished work unpushed for long. With frequent faults and the occasional clean re-image, the GitHub remote is the only durable store, so a completed-but-unpushed increment is one fault away from gone. Avoid a push per tiny commit (each push triggers a Netlify build), but err toward pushing a completion soon rather than batching for hours. Leaving finished work committed but unpushed is the failure that causes the deployed tree and local tree to silently diverge.
 
 ## Documentation as Durable Source of Truth, and the Dialectical Absorption Protocol
 
