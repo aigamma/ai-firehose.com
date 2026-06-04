@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/fully-sharded-data-parallel.png",
+    "alt": "A diagram decomposing an all-reduce into a reduce-scatter followed by an all-gather across four GPUs. On the left, all-reduce leaves every GPU with the full summed result. In the middle, reduce-scatter leaves each GPU with only its own reduced slice. On the right, all-gather rebuilds the full set of slices on every GPU.",
+    "caption": "Fully sharded data parallel shards the parameters, gradients, and optimizer state so each GPU stores only a slice. As shown, the all-reduce of standard data parallelism is split into a reduce-scatter (each device keeps just its averaged slice) and an all-gather (the full weights are reassembled only when a layer is about to run, then discarded). Peak memory is set by the largest single layer, not the whole model.",
+    "credit": "PyTorch Contributors",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/pytorch/tutorials/blob/main/LICENSE",
+    "source": "https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html",
+    "provider": "PyTorch"
+  }
 }

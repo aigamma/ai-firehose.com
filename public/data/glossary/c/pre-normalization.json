@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/pre-normalization.png",
+    "alt": "Two transformer decoders side by side. On the left, norm-last, a normalization layer sits after each sublayer on the residual path. On the right, norm-first, the normalization layer is moved inside each block to the input of the sublayer, leaving the residual path from input to output free of any normalization.",
+    "caption": "Pre-normalization (norm-first, right) moves the layer normalization to the input of each sublayer instead of after it (norm-last, left). This leaves the residual highway running from input to output without a normalization step in the way, so gradients flow cleanly through very deep stacks, which is why pre-norm transformers are much more stable to train.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer_decoder,_with_norm-first_and_norm-last.png",
+    "provider": "Wikimedia Commons"
+  }
 }

@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/pipeline-parallelism.png",
+    "alt": "A diagram of 3D parallelism. Two data-parallel ranks each contain four pipeline stages laid left to right, and each stage is labeled with a contiguous block of network layers (layers 0 to 7, 8 to 15, 16 to 23, 24 to 31). Within each stage the work is further split across model-parallel slices.",
+    "caption": "Pipeline parallelism cuts a deep network between its layers: each stage holds a contiguous block of layers (here layers 0 to 7, then 8 to 15, and so on) and passes activations to the next stage like an assembly line. The figure also shows pipeline parallelism composed with data parallelism (the two ranks) and model parallelism (the slices within a stage), which is how the largest models are actually trained.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/microsoft/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/microsoft/DeepSpeed",
+    "provider": "DeepSpeed (Microsoft)"
+  }
 }

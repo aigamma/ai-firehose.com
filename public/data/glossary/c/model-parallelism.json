@@ -65,5 +65,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/model-parallelism.svg",
+    "alt": "Four schematics of a convolutional network distributed across GPUs. From left to right: the original undivided problem; network partitioning, where whole layers are assigned to different GPUs; layer-wise partitioning, where each layer is split across two GPUs with activations exchanged between them; and data parallelism, where each GPU holds the full network.",
+    "caption": "Model parallelism splits a single network across devices rather than replicating it. The two middle panels show its two flavors: network partitioning puts whole layers on different GPUs (the basis of pipeline parallelism), and layer-wise partitioning splits each individual layer across GPUs that exchange activations (the basis of tensor parallelism). Both differ from data parallelism on the right, where the whole network is copied to each device.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/multiple-gpus.html",
+    "provider": "Dive into Deep Learning"
+  }
 }

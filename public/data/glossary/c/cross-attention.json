@@ -190,5 +190,15 @@
       "label": "Positional Encoding",
       "kind": "technique"
     }
-  ]
+  ],
+  "image": {
+    "src": "/images/glossary/cross-attention.png",
+    "alt": "A decoder block. The target sequence enters masked multi-headed self-attention at the bottom, supplying its query, key, and value. Its output supplies the query to a multi-headed cross-attention block above, while the key and value for that block come from the encoder's states arriving from the left. A feed-forward network and the prediction sit on top.",
+    "caption": "Cross-attention is the middle block here, and the labels show its defining feature: the query (Q) comes from the decoder's own sequence below, while the key (K) and value (V) come from the encoder's states on the left. Drawing queries from one sequence and keys and values from another is what lets a model condition its output on a separate input, such as a source sentence to translate.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer,_one_decoder_block.png",
+    "provider": "Wikimedia Commons"
+  }
 }

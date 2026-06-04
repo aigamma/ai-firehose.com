@@ -67,5 +67,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/structured-decoding.png",
+    "alt": "A finite state machine for a floating-point number regular expression, with states 0 to 3 and digit and decimal-point transitions. Below it a vocabulary row labeled Logits shows most tokens masked out in black while only the tokens that keep the output valid (a decimal and a digit) are highlighted; sampling one of them moves the machine to the next state, updating which tokens are allowed.",
+    "caption": "Structured decoding guarantees the output matches a formal grammar by masking, not by hope. The grammar is compiled to a state machine; at each step only the tokens that keep the output valid are left unmasked in the logits (the highlighted cells), and every other token is set to zero probability. Sampling an allowed token advances the machine and recomputes the mask, so the full output is certain to parse.",
+    "credit": "Brandon T. Willard, Remi Louf",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2307.09702",
+    "provider": "arXiv"
+  }
 }

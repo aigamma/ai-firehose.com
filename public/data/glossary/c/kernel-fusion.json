@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/kernel-fusion.png",
+    "alt": "A transformer layer's operations drawn as a dataflow graph, with dashed boxes grouping consecutive operations into fused regions: a QKV box around the input normalization and the query, key, and value projections; an attention box; an MLP box around the feed-forward layers and activation; and a bias-add box. Each fused region is annotated with a speedup such as 1.5x, 2.9x, 3x.",
+    "caption": "Kernel fusion merges a chain of small operations into one GPU kernel. Here consecutive steps of a transformer layer (the QKV projections, the attention math, the feed-forward block) are each grouped into a single fused kernel instead of many separate ones. Because the intermediate results stay in fast on-chip memory rather than being written to and read back from main memory, each fused region runs several times faster even though the arithmetic is unchanged.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/microsoft/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/microsoft/DeepSpeed",
+    "provider": "DeepSpeed (Microsoft)"
+  }
 }

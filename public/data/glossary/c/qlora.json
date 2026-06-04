@@ -60,5 +60,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/qlora.png",
+    "alt": "Three columns comparing finetuning methods by where memory sits and how gradients flow. Full finetuning has a 32-bit optimizer state and gradients flowing into a 16-bit base model. LoRA freezes a 16-bit base model and trains small 16-bit adapters. QLoRA freezes a 4-bit base model, trains 16-bit adapters, and adds a paging arrow that offloads optimizer state to CPU memory.",
+    "caption": "QLoRA makes fine-tuning a large model fit on one GPU by stacking two ideas. The base model is quantized to 4 bits and frozen (so its weights never update and can stay compressed), small LoRA adapters carry all the learning, and paged optimizers spill optimizer state to CPU memory to absorb spikes. Weights are dequantized to higher precision on the fly for each operation, so the math stays accurate while storage is 4-bit.",
+    "credit": "Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, Luke Zettlemoyer",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2305.14314",
+    "provider": "arXiv"
+  }
 }

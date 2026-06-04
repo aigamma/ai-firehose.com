@@ -149,5 +149,15 @@
       "label": "Transfer Learning",
       "kind": "technique"
     }
-  ]
+  ],
+  "image": {
+    "src": "/images/glossary/mixture-of-experts.png",
+    "alt": "The upper block diagrams a mixture-of-experts layer from DeepSeek-V2: an input hidden state feeds a router that scores many parallel expert subnetworks and keeps only the top few (Top-K), shown as a small set of activated routed experts plus shared experts, whose weighted outputs are summed into the output hidden state. The lower block shows the separate multi-head latent attention module.",
+    "caption": "A mixture-of-experts layer (upper block) replaces one dense layer with many parallel expert subnetworks and a router. For each token the router scores the experts and activates only the top few, so total parameters can grow large while the compute spent per token stays small. A load-balancing pressure keeps the router from sending every token to the same few experts. The lower block is a separate attention module, not part of the mixture-of-experts idea.",
+    "credit": "DeepSeek",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://commons.wikimedia.org/wiki/File:DeepSeek_MoE_and_MLA_(DeepSeek-V2).svg",
+    "provider": "Wikimedia Commons"
+  }
 }

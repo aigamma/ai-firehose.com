@@ -61,5 +61,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/causal-attention.png",
+    "alt": "Block diagram of scaled dot-product attention flowing upward: queries and keys enter a matrix multiply, then a scale step, then a mask step, then softmax to produce attention scores, which a final matrix multiply combines with the values to give the context vector.",
+    "caption": "Causal attention is scaled dot-product attention with the mask step shown here doing the work. After the query-key scores are scaled, the mask sets every score that points to a future token to negative infinity, so the following softmax gives those positions zero weight. Each position can then attend only to itself and earlier tokens, which is what lets a model be trained on next-token prediction over a whole sequence at once.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer,_attention_block_diagram.png",
+    "provider": "Wikimedia Commons"
+  }
 }

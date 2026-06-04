@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/collective-communication.svg",
+    "alt": "Four panels showing ring synchronization across four GPUs arranged in a ring. In each successive panel a GPU sends a segment of its gradient vector to its left neighbor, which adds it in, so the accumulated segments march around the ring until every device holds the fully summed result.",
+    "caption": "Collective operations synchronize tensors across a whole group of devices at once. This is the ring algorithm for an all-reduce: each GPU is arranged in a ring and repeatedly passes one slice of its gradient to a neighbor, which accumulates it, until every device ends up with the complete sum. Casting the reduction as a ring keeps each link busy and makes the cost almost independent of the number of GPUs.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/parameterserver.html",
+    "provider": "Dive into Deep Learning"
+  }
 }

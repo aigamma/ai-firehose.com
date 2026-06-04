@@ -59,5 +59,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/top-k.png",
+    "alt": "A bar chart of next-token probabilities that decline only gradually, with a red cumulative-probability curve. A top-k cutoff at 6 keeps the six leftmost bars and shades off the rest, with the discarded bars annotated as many probable tokens dropped, causing a lack of word diversity.",
+    "caption": "Top-k keeps a fixed number of the most probable tokens, here the top 6, and discards the rest before sampling. Because the count is fixed regardless of the distribution's shape, it misbehaves when the model is genuinely uncertain: many roughly-equal, plausible tokens past the cutoff are thrown away, which can starve the output of variety.",
+    "credit": "Minh Nhat Nguyen and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2407.01082",
+    "provider": "arXiv"
+  }
 }

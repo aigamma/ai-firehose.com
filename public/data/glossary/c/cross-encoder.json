@@ -60,5 +60,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/cross-encoder.png",
+    "alt": "Two architectures side by side. On the left, the Bi-Encoder sends Sentence A and Sentence B through separate BERT and pooling towers into vectors u and v, joined by a Cosine-Similarity box. On the right, the Cross-Encoder feeds both sentences together into one BERT and a Classifier that outputs a single score from 0 to 1.",
+    "caption": "A cross-encoder (right) feeds the query and a candidate document into one model together, so attention runs across both texts before it outputs a single relevance score. That joint reading is more accurate than the bi-encoder (left), which encodes each text separately and compares finished vectors. The cost is that nothing can be precomputed, so the cross-encoder runs once per pair and is used to rerank a shortlist rather than scan a whole corpus.",
+    "credit": "Nils Reimers (sentence-transformers)",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/UKPLab/sentence-transformers",
+    "provider": "sentence-transformers"
+  }
 }

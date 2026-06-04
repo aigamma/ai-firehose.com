@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/bi-encoder.png",
+    "alt": "A symmetric two-tower diagram. Sentence A and Sentence B each pass up through their own BERT block, then a pooling step, producing vectors u and v. The two vectors feed a single cosine-sim(u, v) box at the top, whose output ranges from minus 1 to 1.",
+    "caption": "A bi-encoder runs each text down its own tower, encoding the query and the document independently into vectors u and v, then scores relevance by a cheap similarity such as cosine. Because a document's vector never depends on the query, every document can be embedded once and indexed ahead of time, so search becomes a fast nearest-neighbor lookup. That independence is what lets a bi-encoder scale to a large corpus.",
+    "credit": "Nils Reimers (sentence-transformers)",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/UKPLab/sentence-transformers",
+    "provider": "sentence-transformers"
+  }
 }

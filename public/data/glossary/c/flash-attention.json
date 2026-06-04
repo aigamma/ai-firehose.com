@@ -55,5 +55,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/flash-attention.jpg",
+    "alt": "Three panels. Left: a memory pyramid with fast small SRAM (19 TB/s, 20 MB) on top, larger slower HBM (1.5 TB/s, 40 GB) below, and large slow CPU DRAM at the base. Middle: blocks of the query, key, and value matrices copied into SRAM where the attention block is computed, with the output written back to HBM, never storing the full score matrix. Right: a bar chart showing the fused FlashAttention kernel is much faster than standard PyTorch attention.",
+    "caption": "FlashAttention exploits the GPU memory hierarchy: SRAM is tiny but fast, HBM is large but slow (left). Standard attention writes the full pairwise score matrix to slow HBM and reads it back; FlashAttention instead loads blocks of Q, K, and V into fast SRAM and computes each tile there, never materializing that matrix (middle). The result is exactly the same output, produced far faster as a fused kernel (right).",
+    "credit": "Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Re",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/Dao-AILab/flash-attention/blob/main/LICENSE",
+    "source": "https://github.com/Dao-AILab/flash-attention",
+    "provider": "Dao-AILab/flash-attention"
+  }
 }

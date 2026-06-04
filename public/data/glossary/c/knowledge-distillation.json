@@ -65,5 +65,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/knowledge-distillation.png",
+    "alt": "A flow diagram. An input x feeds both a teacher model and a smaller student model. The teacher's logits pass through a softmax with temperature to give soft labels. The student produces soft predictions at the same temperature and a hard prediction at temperature one; a distillation loss compares the student's soft predictions to the teacher's soft labels, and a student loss compares the hard prediction to the ground-truth label.",
+    "caption": "Knowledge distillation trains a small student model to imitate a large teacher rather than learning only from hard labels. The teacher's full probability distribution, softened with a temperature, becomes a soft target that carries which wrong answers are nearly right. The student minimizes a distillation loss against those soft labels, often blended with the ordinary loss on the true label, inheriting much of the teacher's competence in a smaller network.",
+    "credit": "arvindpdmn, Varsha2018",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Knowledge-distillation-example.png",
+    "provider": "Wikimedia Commons"
+  }
 }

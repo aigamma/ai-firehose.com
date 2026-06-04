@@ -64,5 +64,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/dpo.png",
+    "alt": "Two side-by-side pipelines starting from the same preference data. On the left, labeled RLHF, preference data trains a reward model by maximum likelihood, then sampled completions are labeled with rewards to optimize an LM policy by reinforcement learning. On the right, labeled DPO, preference data optimizes the final language model directly by maximum likelihood with no reward model and no reinforcement learning.",
+    "caption": "Direct preference optimization reaches the same goal as RLHF by a simpler route. RLHF (left) first trains a separate reward model, then runs reinforcement learning against it. DPO (right) skips both: a single classification-style loss raises the model's likelihood of the preferred response over the rejected one, learning directly from the same comparison data in one supervised stage.",
+    "credit": "Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, Chelsea Finn",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2305.18290",
+    "provider": "arXiv"
+  }
 }

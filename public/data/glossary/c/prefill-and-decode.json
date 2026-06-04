@@ -67,5 +67,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/prefill-and-decode.png",
+    "alt": "A serving diagram. Requests enter a controller that dispatches to prefill instances (each an LLM model on a parallel GPU runtime) on the left; the resulting key-value cache is transferred across to decoding instances on the right that generate the output tokens.",
+    "caption": "LLM inference splits into two phases with opposite characteristics. Prefill reads the whole prompt in one parallel pass and fills the key-value cache (compute-bound); decode then generates tokens one at a time, streaming the weights and the growing cache each step (memory-bound). The key-value cache passed between them, shown here as an explicit transfer, is the state that links the parallel prefill to the serial decode.",
+    "credit": "Yinmin Zhong, Shengyu Liu, Junda Chen, Jianbo Hu, Yibo Zhu, Xuanzhe Liu, Xin Jin, Hao Zhang",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://arxiv.org/abs/2401.09670",
+    "provider": "arXiv"
+  }
 }

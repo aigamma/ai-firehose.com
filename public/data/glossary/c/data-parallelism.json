@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/data-parallelism.svg",
+    "alt": "A diagram of data parallelism on two GPUs. A full copy of the model goes to GPU 0 and GPU 1, the stochastic mini-batch is split into two subsets (one per GPU), each GPU computes a local gradient from its subset, and the two local gradients are summed into the mini-batch stochastic gradient.",
+    "caption": "In data parallelism every GPU holds a complete copy of the model, and the mini-batch is split so each device processes a different subset. Each GPU computes a local gradient on its own data, and the local gradients are summed (an all-reduce) into one mini-batch gradient that updates every replica identically. The model is replicated, not divided, so this scales throughput but not model size.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/multiple-gpus.html",
+    "provider": "Dive into Deep Learning"
+  }
 }

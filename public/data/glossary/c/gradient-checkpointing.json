@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/gradient-checkpointing.png",
+    "alt": "A feed-forward network drawn as a computation graph: a top row of forward-pass nodes feeds a bottom row of backward-pass gradient nodes. One node in the forward row is drawn with a double circle and labeled checkpoint.",
+    "caption": "Gradient checkpointing saves only a few activations, the checkpoint nodes (double-circled here), during the forward pass and discards the rest. When the backward pass needs a discarded activation, it recomputes it from the nearest checkpoint rather than having stored it. This trades extra computation for much lower memory, turning activation memory that grew with depth into memory that grows with roughly its square root.",
+    "credit": "Tim Salimans and Yaroslav Bulatov",
+    "license": "MIT",
+    "license_url": "https://github.com/cybertronai/gradient-checkpointing/blob/master/LICENSE",
+    "source": "https://github.com/cybertronai/gradient-checkpointing",
+    "provider": "gradient-checkpointing (Salimans and Bulatov)"
+  }
 }

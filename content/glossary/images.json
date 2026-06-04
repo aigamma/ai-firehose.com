@@ -29,6 +29,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:IntelligentAgent-SimpleReflex.png",
     "provider": "Wikimedia Commons"
   },
+  "approximate-nearest-neighbor": {
+    "file": "approximate-nearest-neighbor.png",
+    "alt": "A green query point at the center surrounded by red triangles and blue squares. A solid inner circle encloses the three points closest to the query, and a dashed outer circle encloses a larger set of nearby points.",
+    "caption": "Nearest neighbor search asks which stored points lie closest to a query (green). The inner circle captures its few nearest neighbors and the outer circle a wider set. Approximate methods find these neighbors without comparing against every point, trading a small, tunable chance of missing a true neighbor for an enormous gain in speed, which is what makes vector search practical at scale.",
+    "credit": "Antti Ajanki AnAj",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:KnnClassification.svg",
+    "provider": "Wikimedia Commons"
+  },
   "artificial-intelligence": {
     "file": "artificial-intelligence.png",
     "alt": "Three nested circles: a large outer circle labeled Artificial Intelligence, a smaller circle inside it labeled Machine Learning, and a smallest circle inside that labeled Deep Learning, each with a short definition.",
@@ -69,6 +79,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:ReverseaccumulationAD.png",
     "provider": "Wikimedia Commons"
   },
+  "automatic-speech-recognition": {
+    "file": "automatic-speech-recognition.png",
+    "alt": "The architecture of OpenAI's Whisper speech model. On the left, examples of its multitask training data: English transcription, speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram, passes through convolution layers into a transformer encoder, and a transformer decoder with cross-attention emits text tokens.",
+    "caption": "Modern automatic speech recognition is end-to-end. The audio is turned into a log-mel spectrogram, a transformer encoder reads it, and a transformer decoder generates the text one token at a time, the same encoder-decoder setup used for translation. Whisper, shown here, is trained on a large and varied corpus of audio paired with transcripts, which is what makes it robust across languages, accents, and noise.",
+    "credit": "Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, Ilya Sutskever",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://commons.wikimedia.org/wiki/File:OpenAI_Whisper_architecture.png",
+    "provider": "Wikimedia Commons"
+  },
   "backpropagation": {
     "file": "backpropagation.svg",
     "alt": "Computational graph of a small one-hidden-layer network: the input x is multiplied by weights to give z, an activation gives h, a second weight multiply gives the output o, which with the labels yields the loss; weight-decay terms feed a regularization term s, and the loss plus s give the objective J.",
@@ -78,6 +98,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_multilayer-perceptrons/backprop.html",
     "provider": "Dive into Deep Learning"
+  },
+  "bag-of-words": {
+    "file": "bag-of-words.jpg",
+    "alt": "On the left, a Renaissance portrait of a woman. On the right, the same portrait cut into small fragments (an eye, the mouth, the necklace, a patch of hair) scattered loosely inside an open paper bag.",
+    "caption": "The bag-of-words model represents a text by which pieces it contains while discarding their order, like cutting a portrait into fragments and dropping them into a bag. The collection of parts is kept but the arrangement is lost, so 'the dog bit the man' and 'the man bit the dog' look identical. For many tasks the words present matter more than their order, which is why this crude representation works.",
+    "credit": "Meritxell.canela",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Bag_of_words.JPG",
+    "provider": "Wikimedia Commons"
+  },
+  "basis": {
+    "file": "basis.png",
+    "alt": "A 2D grid with two unit arrows from the origin: e1 pointing one unit along the horizontal axis and e2 pointing one unit along the vertical axis.",
+    "caption": "A basis is a minimal set of independent directions from which every vector in the space is built uniquely by scaling and adding. The standard basis e1 and e2 spans the plane, so any vector is just so much e1 plus so much e2, and those amounts are exactly its coordinates.",
+    "credit": "Jtmiii",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2D_basis_vectors.svg",
+    "provider": "Wikimedia Commons"
   },
   "batch-size": {
     "file": "batch-size.svg",
@@ -109,6 +149,46 @@
     "source": "https://commons.wikimedia.org/wiki/File:Prior,_Likelihood,_Posterior_schematic.svg",
     "provider": "Wikimedia Commons"
   },
+  "bayesian-optimization": {
+    "file": "bayesian-optimization.gif",
+    "alt": "Top panel: a black true-objective curve with several evaluated points, overlaid by a Gaussian process surrogate drawn as a mean curve inside a purple uncertainty band that is wide where there is no data. Three lower panels show acquisition functions, expected improvement, upper confidence bound, and probability of improvement, each marking a next point to sample with a gold diamond.",
+    "caption": "Bayesian optimization fits a probabilistic surrogate (the purple Gaussian process band) to the points evaluated so far, predicting both an expected value and a calibrated uncertainty that is wide where the space is unexplored. An acquisition function (lower panels) turns that belief into a score, balancing sampling where the value looks good against sampling where uncertainty is high, and its peak (gold diamond) chooses the single most informative point to evaluate next.",
+    "credit": "AnotherSamWilson",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:GpParBayesAnimationSmall.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "beam-search": {
+    "file": "beam-search.svg",
+    "alt": "A branching diagram across three time steps with beam width two. From the start, candidates A through E are expanded but only A and C are kept (highlighted); each is expanded again, keeping AB and CE; then again, reaching ABD and CED.",
+    "caption": "Beam search keeps the few best partial sequences at every step rather than just one. With a beam width of two, all next tokens are expanded but only the two highest-scoring sequences survive each step (A and C, then AB and CE, then ABD and CED). Carrying several hypotheses forward lets a locally weaker token prove it leads somewhere better, which greedy decoding (beam width one) cannot do.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/beam-search.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "bert": {
+    "file": "bert.png",
+    "alt": "A diagram of the BERT masked-language-modeling task. A row of input tokens for a sentence has one token replaced by [MASK]; all tokens pass up into a box labeled 'BERT = Transformer Encoder', and a feed-forward head over the masked position outputs logits predicting the hidden word.",
+    "caption": "BERT is a stack of transformer encoder layers pretrained by masked language modeling: a token in the input is replaced by [MASK], and the model must recover it using the words on both sides at once. Because every position can attend to every other, BERT produces deeply bidirectional, context-sensitive representations, so the same word gets different vectors in different sentences.",
+    "credit": "Daniel Voigt Godoy",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:BERT_masked_language_modelling_task.png",
+    "provider": "Wikimedia Commons"
+  },
+  "bi-encoder": {
+    "file": "bi-encoder.png",
+    "alt": "A symmetric two-tower diagram. Sentence A and Sentence B each pass up through their own BERT block, then a pooling step, producing vectors u and v. The two vectors feed a single cosine-sim(u, v) box at the top, whose output ranges from minus 1 to 1.",
+    "caption": "A bi-encoder runs each text down its own tower, encoding the query and the document independently into vectors u and v, then scores relevance by a cheap similarity such as cosine. Because a document's vector never depends on the query, every document can be embedded once and indexed ahead of time, so search becomes a fast nearest-neighbor lookup. That independence is what lets a bi-encoder scale to a large corpus.",
+    "credit": "Nils Reimers (sentence-transformers)",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/UKPLab/sentence-transformers",
+    "provider": "sentence-transformers"
+  },
   "bias-variance-tradeoff": {
     "file": "bias-variance-tradeoff.png",
     "alt": "Plot of error against model complexity showing bias squared falling as complexity rises, variance rising, and the total error forming a U-shaped curve with a marked optimum at the bottom.",
@@ -129,6 +209,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Calibration_plot.png",
     "provider": "Wikimedia Commons"
   },
+  "catastrophic-forgetting": {
+    "file": "catastrophic-forgetting.png",
+    "alt": "Three line plots tracking a model's score on many held-out benchmarks across successive stages of continual instruction tuning, labeled from Initial through later tuning stages. Almost every line falls from its initial value as more tuning stages are applied.",
+    "caption": "Catastrophic forgetting is visible here as a steady decline: as a model is fine-tuned on a sequence of new tasks (left to right), its measured ability on previously learned benchmarks drops, because the shared weights that stored the old skills are overwritten to fit the new data. Nothing in the loss on current data protects the earlier knowledge, so the degradation can be broad and severe.",
+    "credit": "Yun Luo, Zhen Yang, Fandong Meng, Yafu Li, Jie Zhou, Yue Zhang",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2308.08747",
+    "provider": "arXiv"
+  },
   "category-theory": {
     "file": "category-theory.png",
     "alt": "On the left, a vertical arrow f from object X to object Y. On the right, a square whose four corners are F(X), G(X), F(Y), G(Y); the vertical arrows are F(f) and G(f), and the horizontal arrows are the components eta-X and eta-Y.",
@@ -137,6 +227,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Natural_Transformation_between_two_functors.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "causal-attention": {
+    "file": "causal-attention.png",
+    "alt": "Block diagram of scaled dot-product attention flowing upward: queries and keys enter a matrix multiply, then a scale step, then a mask step, then softmax to produce attention scores, which a final matrix multiply combines with the values to give the context vector.",
+    "caption": "Causal attention is scaled dot-product attention with the mask step shown here doing the work. After the query-key scores are scaled, the mask sets every score that points to a future token to negative infinity, so the following softmax gives those positions zero weight. Each position can then attend only to itself and earlier tokens, which is what lets a model be trained on next-token prediction over a whole sequence at once.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer,_attention_block_diagram.png",
     "provider": "Wikimedia Commons"
   },
   "central-limit-theorem": {
@@ -149,6 +249,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Dice_sum_central_limit_theorem.svg",
     "provider": "Wikimedia Commons"
   },
+  "chain-of-thought": {
+    "file": "chain-of-thought.png",
+    "alt": "Two side-by-side prompt examples. Under Standard Prompting the model is given a worked example then answers a new question directly and gets it wrong (red). Under Chain-of-Thought Prompting the example includes step-by-step reasoning (highlighted), and the model writes out its own reasoning before giving the correct answer (green).",
+    "caption": "Chain-of-thought prompting has the model write out intermediate reasoning steps (highlighted) before its final answer, rather than jumping straight to it. On multi-step problems this raises accuracy: the direct answer on the left is wrong, while the worked reasoning on the right reaches the right one, because each generated step is extra computation the later steps can build on.",
+    "credit": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2201.11903",
+    "provider": "arXiv"
+  },
   "chain-rule": {
     "file": "chain-rule.png",
     "alt": "A computation graph for a function of two inputs, with square input nodes feeding circular operator nodes (sin, times, plus) up to the output; each edge is annotated with a derivative formula that multiplies and sums contributions along the paths.",
@@ -158,6 +268,26 @@
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:ForwardAccumulationAutomaticDifferentiation.png",
     "provider": "Wikimedia Commons"
+  },
+  "china-brain": {
+    "file": "china-brain.png",
+    "alt": "The outline of a human brain drawn entirely out of many small identical figures of people, each standing for one person in the population.",
+    "caption": "The China Brain asks us to imagine every person in a huge population acting as a single neuron, passing signals by radio so the whole nation reproduces the functional organization of a brain. If functionalism is true the network should have the brain's mental states, yet it seems incredible that a billion people exchanging messages add up to one conscious subject, which is the absent-qualia objection the image makes vivid.",
+    "credit": "Danko Georgiev at en.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:China_brain.png",
+    "provider": "Wikimedia Commons"
+  },
+  "circuit": {
+    "file": "circuit.png",
+    "alt": "Three feature detectors on the left, labeled Windows, Car Body, and Wheels, each shown as an optimized image next to a grid of its spatial weights colored red for positive (excitation) and blue for negative (inhibition); arrows feed them into a car detector on the right, captioned as assembled from these earlier units.",
+    "caption": "A circuit is a set of named feature detectors wired together by weights to compute a higher-level feature. Here window, car-body, and wheel detectors combine into a car detector: the weight maps show that windows excite the car detector at the top and inhibit it at the bottom, while wheels do the reverse, so the spatial arrangement of parts, not just their presence, is what the circuit checks.",
+    "credit": "Olah, Cammarata, Schubert, Goh, Petrov, Carter",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://distill.pub/2020/circuits/zoom-in/",
+    "provider": "Distill"
   },
   "classification": {
     "file": "classification.png",
@@ -179,6 +309,36 @@
     "source": "https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html",
     "provider": "scikit-learn"
   },
+  "collective-communication": {
+    "file": "collective-communication.svg",
+    "alt": "Four panels showing ring synchronization across four GPUs arranged in a ring. In each successive panel a GPU sends a segment of its gradient vector to its left neighbor, which adds it in, so the accumulated segments march around the ring until every device holds the fully summed result.",
+    "caption": "Collective operations synchronize tensors across a whole group of devices at once. This is the ring algorithm for an all-reduce: each GPU is arranged in a ring and repeatedly passes one slice of its gradient to a neighbor, which accumulates it, until every device ends up with the complete sum. Casting the reduction as a ring keeps each link busy and makes the cost almost independent of the number of GPUs.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/parameterserver.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "computational-theory-of-mind": {
+    "file": "computational-theory-of-mind.png",
+    "alt": "A diagram of a Turing machine: a tape divided into cells holding the symbols a, b, a and blanks, a read/write head pointing at one cell, and a Finite Control box below listing states q0, q1, q2, and h with an arrow indicating a transition.",
+    "caption": "The computational theory of mind holds that thinking just is computation of this kind. A Turing machine has a tape of symbols (the representations), a read/write head, and a finite control that rewrites symbols by formal rules (the program). The claim is that mental states are representations and thought is the rule-governed manipulation of them, so a mind could in principle run on any hardware that carries out the right computation.",
+    "credit": "Kevd1337",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Turing_machine.png",
+    "provider": "Wikimedia Commons"
+  },
+  "concentration-inequality": {
+    "file": "concentration-inequality.png",
+    "alt": "A plot of the probability that a sum of n random variables deviates from its mean by at least x times the square root of n. Two decreasing curves are shown: a red Hoeffding bound that drops off very fast, and a blue Chebyshev bound that drops off more slowly, with the red curve below the blue one for larger deviations.",
+    "caption": "A concentration inequality bounds the chance that an average strays far from its mean. Plotted against the size of the deviation, the Hoeffding bound (red) decays exponentially and is far tighter than the older Chebyshev bound (blue), which decays only polynomially. This exponential control of large deviations is the engine beneath every generalization guarantee in learning theory.",
+    "credit": "Chassain",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hoeffding-petit.png",
+    "provider": "Wikimedia Commons"
+  },
   "conditional-probability": {
     "file": "conditional-probability.png",
     "alt": "Venn diagram of the numbers 1 to 10 split into a prime set and an even set, with only the number 2 in the overlap of both.",
@@ -187,6 +347,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Conditional_probability_venn_1-10.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "conditional-random-field": {
+    "file": "conditional-random-field.png",
+    "alt": "A trellis grid with five columns for time steps t=1 to t=5 and five rows for possible states i=1 to i=5, every cell a circle. Most circles are gray, and one circle per column is ringed and joined by a bold line into a single path that zigzags across the columns.",
+    "caption": "Sequence labeling can be drawn as a trellis: at each position the token could take any of several labels (the rows), and the bold path is the one assignment chosen for the whole sequence. A conditional random field scores entire label paths rather than each position alone, using the transitions between neighboring labels, and selects the single best consistent path through the lattice.",
+    "credit": "Enrique Benimeli",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hmm-Viterbi-algorithm-normal.png",
     "provider": "Wikimedia Commons"
   },
   "confusion-matrix": {
@@ -199,6 +369,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Confusion_Matrix_Metrics.png",
     "provider": "Wikimedia Commons"
   },
+  "conjugate-gradient": {
+    "file": "conjugate-gradient.png",
+    "alt": "Contour plot of an elongated quadratic bowl with two paths from a start point x0 to the minimum x: a red steepest-descent path that zig-zags down the valley and a green conjugate-gradient path that reaches the minimum in two straight steps.",
+    "caption": "On a stretched quadratic bowl, steepest descent (red) steps perpendicular to the contours and slowly zig-zags down the valley, undoing part of its own progress each step. Conjugate gradient (green) instead picks directions that do not interfere with each other, so for a quadratic in two variables it reaches the exact minimum in just two steps.",
+    "credit": "Oleg Alexandrov",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Conjugate_gradient_illustration.svg",
+    "provider": "Wikimedia Commons"
+  },
   "connectionism": {
     "file": "connectionism.png",
     "alt": "A row of five units, some filled dark and some empty, each labeled with a feature (singular, masculine, first, second, third person), so that a single concept is encoded as the pattern across all five units.",
@@ -207,6 +387,36 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Distributed_representation.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "constitutional-ai": {
+    "file": "constitutional-ai.png",
+    "alt": "A two-phase flow. In the supervised phase, a helpful model generates responses to red-teaming prompts, then critiques and revises each response against a principle, and the revised responses fine-tune a supervised model. In the reinforcement phase, the model compares pairs of its own responses to produce AI preference labels, which train a preference model used to optimize the final model.",
+    "caption": "Constitutional AI aligns a model using AI feedback guided by a written set of principles. In the supervised phase the model critiques and revises its own answers against a principle, and the revisions become fine-tuning data. In the reinforcement phase the model ranks pairs of its own responses by how well they satisfy the constitution, and those AI-generated preferences train a preference model, shifting most of the labeling from humans to the model.",
+    "credit": "Yuntao Bai et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2212.08073",
+    "provider": "arXiv"
+  },
+  "contrastive-decoding": {
+    "file": "contrastive-decoding.jpg",
+    "alt": "An expert language model and a smaller amateur model each give next-token probabilities for a prompt about where Barack Obama was born. The contrastive score is the expert log-probability minus the amateur log-probability: 1961 scores highest at 4.13, Hawaii 2.34, Washington minus 0.73. Sample continuations show greedy repeating Hawaii, nucleus drifting to Washington, and contrastive decoding correctly continuing with 1961.",
+    "caption": "Contrastive decoding scores each token by the gap between a strong expert model and a weak amateur model's log-probabilities, preferring what the expert uniquely favors. Generic or repetitive tokens that even the amateur likes (Hawaii) are cancelled out, so the method avoids the greedy loop and the nucleus drift and continues with the distinctive correct token (1961).",
+    "credit": "Xiang Lisa Li and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2210.15097",
+    "provider": "arXiv"
+  },
+  "contrastive-learning": {
+    "file": "contrastive-learning.png",
+    "alt": "Two circles labeled before and after learning. In the left circle an anchor, a green positive, and a red negative sit at varied distances. An arrow labeled learning leads to the right circle, where the positive has moved close to the anchor and the negative has moved far away.",
+    "caption": "Contrastive learning shapes a vector space by comparison. For each anchor it pulls a matching example (the positive, green) closer and pushes a non-matching one (the negative, red) farther apart, as the before-and-after shows. Repeated over many such triples, this teaches the single rule that distance should mean dissimilarity, which is why the resulting embeddings power dense retrieval and semantic search.",
+    "credit": "Xiaokong Ma",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The-Triplet-loss-in-cosine-similarity.png",
     "provider": "Wikimedia Commons"
   },
   "convex-optimization": {
@@ -239,6 +449,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Typical_cnn.png",
     "provider": "Wikimedia Commons"
   },
+  "coordinate-descent": {
+    "file": "coordinate-descent.png",
+    "alt": "Contour plot of the quadratic function f(x,y) equals 5x squared minus 6xy plus 5y squared, with a red path that moves to the minimum in alternating axis-aligned segments: first a vertical move, then a horizontal move, then vertical again, each step shrinking toward the center.",
+    "caption": "Coordinate descent minimizes along one axis at a time. Each red segment holds every variable fixed but one and finds the best value along that single direction, so the path moves in alternating vertical and horizontal steps. This turns a hard multidimensional problem into a sequence of easy one-dimensional minimizations that spiral in toward the minimum.",
+    "credit": "Nicoguaro",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Coordinate_descent.svg",
+    "provider": "Wikimedia Commons"
+  },
   "covariance": {
     "file": "covariance.png",
     "alt": "Grid of scatter plots: a top row showing correlation coefficients from plus one through zero to minus one, and a bottom row of strongly patterned shapes that all have a correlation of zero.",
@@ -248,6 +468,26 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Correlation_examples2.svg",
     "provider": "Wikimedia Commons"
+  },
+  "cross-attention": {
+    "file": "cross-attention.png",
+    "alt": "A decoder block. The target sequence enters masked multi-headed self-attention at the bottom, supplying its query, key, and value. Its output supplies the query to a multi-headed cross-attention block above, while the key and value for that block come from the encoder's states arriving from the left. A feed-forward network and the prediction sit on top.",
+    "caption": "Cross-attention is the middle block here, and the labels show its defining feature: the query (Q) comes from the decoder's own sequence below, while the key (K) and value (V) come from the encoder's states on the left. Drawing queries from one sequence and keys and values from another is what lets a model condition its output on a separate input, such as a source sentence to translate.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer,_one_decoder_block.png",
+    "provider": "Wikimedia Commons"
+  },
+  "cross-encoder": {
+    "file": "cross-encoder.png",
+    "alt": "Two architectures side by side. On the left, the Bi-Encoder sends Sentence A and Sentence B through separate BERT and pooling towers into vectors u and v, joined by a Cosine-Similarity box. On the right, the Cross-Encoder feeds both sentences together into one BERT and a Classifier that outputs a single score from 0 to 1.",
+    "caption": "A cross-encoder (right) feeds the query and a candidate document into one model together, so attention runs across both texts before it outputs a single relevance score. That joint reading is more accurate than the bi-encoder (left), which encodes each text separately and compares finished vectors. The cost is that nothing can be precomputed, so the cross-encoder runs once per pair and is used to rerank a shortlist rather than scan a whole corpus.",
+    "credit": "Nils Reimers (sentence-transformers)",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/UKPLab/sentence-transformers",
+    "provider": "sentence-transformers"
   },
   "cross-entropy": {
     "file": "cross-entropy.png",
@@ -267,6 +507,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "cuda": {
+    "file": "cuda.jpg",
+    "alt": "Three rows mapping a CUDA software abstraction to hardware. A single Thread is executed by a Core; a Thread Block of many threads is executed by a Streaming Multiprocessor; a Kernel Grid of many blocks is executed by the complete GPU.",
+    "caption": "CUDA's programming model is a hierarchy that maps directly onto the hardware: a single thread runs on one core, a block of threads runs on one streaming multiprocessor, and the whole grid of blocks runs across the entire GPU. Writing a CUDA kernel means describing the work of one thread, which the hardware then replicates across thousands of threads in parallel.",
+    "credit": "Atshardul",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Software-Perspective_for_thread_block.jpg",
     "provider": "Wikimedia Commons"
   },
   "curvature": {
@@ -299,6 +549,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Data_Augmentation_of_rock_images_revised.jpg",
     "provider": "Wikimedia Commons"
   },
+  "data-parallelism": {
+    "file": "data-parallelism.svg",
+    "alt": "A diagram of data parallelism on two GPUs. A full copy of the model goes to GPU 0 and GPU 1, the stochastic mini-batch is split into two subsets (one per GPU), each GPU computes a local gradient from its subset, and the two local gradients are summed into the mini-batch stochastic gradient.",
+    "caption": "In data parallelism every GPU holds a complete copy of the model, and the mini-batch is split so each device processes a different subset. Each GPU computes a local gradient on its own data, and the local gradients are summed (an all-reduce) into one mini-batch gradient that updates every replica identically. The model is replicated, not divided, so this scales throughput but not model size.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/multiple-gpus.html",
+    "provider": "Dive into Deep Learning"
+  },
   "decision-tree": {
     "file": "decision-tree.png",
     "alt": "A decision tree predicting Titanic survival: the root asks if the passenger is male, then branches to questions about age and number of siblings or spouses aboard, ending in leaves labeled died or survived with a probability and the percentage of passengers reaching that leaf.",
@@ -308,6 +568,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:CART_tree_titanic_survivors.png",
     "provider": "Wikimedia Commons"
+  },
+  "decoder-only-model": {
+    "file": "decoder-only-model.svg",
+    "alt": "Left: a single Transformer decoder block reads the shifted input <bos> I like this book and outputs I like this book <eos>, one token per position. Right: the attention pattern as a lower-triangular grid, where each output row attends only to the input positions at or before it.",
+    "caption": "A decoder-only model (the GPT design) uses just the decoder stack with causal attention. Each position predicts the next token, so the target is the input shifted by one (left), and the triangular attention pattern (right) lets every position attend only to itself and earlier tokens, never the future. The prompt and the generated text are processed as one continuous sequence.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html",
+    "provider": "Dive into Deep Learning"
   },
   "deep-learning": {
     "file": "deep-learning.jpg",
@@ -329,6 +599,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_-_Rhino_X_Y_Plot_to_show_different_Steps.png",
     "provider": "Wikimedia Commons"
   },
+  "dense-retrieval": {
+    "file": "dense-retrieval.png",
+    "alt": "A scatter of concept words (car, fuel efficiency, cargo capacity, towing, truck, convertible, Chevrolet, Ford, off-road) placed as points. Two orange vectors are drawn from a labeled Origin out toward two of the points, with an 80 degree angle marked between them.",
+    "caption": "Dense retrieval places queries and documents as points in an embedding space and ranks by closeness, typically the cosine of the angle between their vectors. A smaller angle means more similar meaning, so the score depends on direction in the space rather than on shared words. This is what lets a dense retriever connect related ideas even when the exact vocabulary differs.",
+    "credit": "StandingFuture",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CosineSimilarity.png",
+    "provider": "Wikimedia Commons"
+  },
+  "dependency-parsing": {
+    "file": "dependency-parsing.png",
+    "alt": "Two parse diagrams of the sentence 'The girl is happy', side by side. The left is labeled Dependency: words link directly to other words, with 'is' as the top word and 'girl' and 'happy' hanging from it and 'The' under 'girl'. The right is labeled Constituency (BPS): the words are grouped into nested phrase brackets.",
+    "caption": "Dependency parsing (left) connects each word straight to the word it depends on, building a tree of head-and-dependent links with a single root, here the verb 'is'. This is the contrast with constituency parsing (right), which instead groups words into nested phrases. The dependency view exposes who relates to whom, which is closer to meaning.",
+    "credit": "Tjo3ya",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Thegirlishappy.png",
+    "provider": "Wikimedia Commons"
+  },
   "derivative": {
     "file": "derivative.gif",
     "alt": "Animation of a curve with a straight line touching it at a single moving point; as the point of contact slides along the curve, the line keeps matching the curve's slope there.",
@@ -337,6 +627,16 @@
     "license": "Public domain",
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:Graph_of_sliding_derivative_line.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "determinant": {
+    "file": "determinant.png",
+    "alt": "A parallelogram in the plane with one corner at the origin, spanned by the vectors (a, b) and (c, d). Its fourth corner is at (a plus c, b plus d), and its interior is labeled with the area ad minus bc.",
+    "caption": "The determinant of a two-by-two matrix is the signed area of the parallelogram its columns span, here ad minus bc. So it measures how much the transformation scales area (volume in higher dimensions): a determinant of zero means the parallelogram collapses to a line, which is exactly when the matrix is singular and has no inverse.",
+    "credit": "Jitse Niesen",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Area_parallellogram_as_determinant.svg",
     "provider": "Wikimedia Commons"
   },
   "differential-geometry": {
@@ -389,6 +689,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Geometrical_interpretation_of_a_directional_derivative.svg",
     "provider": "Wikimedia Commons"
   },
+  "dot-product": {
+    "file": "dot-product.png",
+    "alt": "Two vectors a and b drawn from a common origin with the angle phi between them. A dashed line drops b perpendicularly onto the line of a, marking the scalar projection of b onto a.",
+    "caption": "The dot product equals the lengths of the two vectors times the cosine of the angle phi between them, which is also the length of one vector times the projection of the other onto it. So it is large when the vectors point the same way, zero when they are perpendicular, and negative when they oppose, the measure of alignment behind cosine similarity and attention.",
+    "credit": "MartinThoma",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dot-product-2.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "double-descent": {
+    "file": "double-descent.png",
+    "alt": "A schematic plot of error against increasing model capacity. A dashed train-error curve falls steadily toward zero. A solid test-error curve falls, then rises to a sharp peak at a dashed vertical line marking the interpolation threshold, then falls a second time. The region left of the line is labeled the classical underparametrized regime and the region right of it the modern interpolating overparametrized regime.",
+    "caption": "Double descent breaks the classical U-shaped picture of overfitting. Test error first falls then rises to a peak at the interpolation threshold, where the model has just enough capacity to fit the training data exactly, and then falls a second time as capacity grows further into the overparametrized regime. The lowest test error can sit far to the right, past the point where training error reaches zero.",
+    "credit": "Dkarkada",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Double_descent.png",
+    "provider": "Wikimedia Commons"
+  },
+  "dpo": {
+    "file": "dpo.png",
+    "alt": "Two side-by-side pipelines starting from the same preference data. On the left, labeled RLHF, preference data trains a reward model by maximum likelihood, then sampled completions are labeled with rewards to optimize an LM policy by reinforcement learning. On the right, labeled DPO, preference data optimizes the final language model directly by maximum likelihood with no reward model and no reinforcement learning.",
+    "caption": "Direct preference optimization reaches the same goal as RLHF by a simpler route. RLHF (left) first trains a separate reward model, then runs reinforcement learning against it. DPO (right) skips both: a single classification-style loss raises the model's likelihood of the preferred response over the rejected one, learning directly from the same comparison data in one supervised stage.",
+    "credit": "Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, Chelsea Finn",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2305.18290",
+    "provider": "arXiv"
+  },
   "dropout": {
     "file": "dropout.svg",
     "alt": "The same multilayer perceptron shown before and after dropout: on the left all five hidden units and their connections are present, and on the right two hidden units have been removed along with every connection to and from them.",
@@ -409,6 +739,56 @@
     "source": "https://commons.wikimedia.org/wiki/File:Early-Stopping_Graph.png",
     "provider": "Wikimedia Commons"
   },
+  "eigenvalue": {
+    "file": "eigenvalue.png",
+    "alt": "The Mona Lisa on the left and a horizontally sheared copy on the right. A red arrow lies along the horizontal direction in both images and keeps its direction, while a blue arrow that was at an angle is tilted by the shear.",
+    "caption": "When this shear transformation acts on the painting, the red vector along the horizontal axis keeps pointing the same way and is only rescaled, while the blue vector is rotated. The red direction is an eigenvector, and the factor by which its length changes is the eigenvalue: the pure stretching the matrix applies along that special unchanging direction.",
+    "credit": "J. Finkelstein",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Mona_Lisa_with_eigenvector.png",
+    "provider": "Wikimedia Commons"
+  },
+  "eigenvector": {
+    "file": "eigenvector.gif",
+    "alt": "A grid of points in the plane with small arrows attached. As a shear transformation is applied, the red and blue arrows stay along their original lines while the other arrows rotate away from their starting directions.",
+    "caption": "Under a linear transformation most vectors get both turned and rescaled, but an eigenvector comes out pointing along the very same line it started on. The red and blue arrows here mark those special directions that the shear only stretches and never rotates, the natural axes along which the matrix acts most simply.",
+    "credit": "Lucas Vieira",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Eigenvectors.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "embedding-model": {
+    "file": "embedding-model.jpg",
+    "alt": "A two-dimensional plot with four labeled points: Man and King in blue on the left and upper area, Woman and Queen in red. A dashed arrow runs from Man to Woman and a parallel dashed arrow runs from King to Queen, the two arrows pointing in nearly the same direction.",
+    "caption": "An embedding model turns meaning into geometry: each word becomes a point, and related words land near each other. The relationship itself becomes a direction, so the offset from Man to Woman is nearly the same vector as the offset from King to Queen. Comparing meaning becomes comparing coordinates, which is the foundation under semantic search and retrieval.",
+    "credit": "Singerep",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Word_vector_illustration.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "embodied-cognition": {
+    "file": "embodied-cognition.png",
+    "alt": "A block diagram of a subsumption architecture: a Sensor Information box on the left feeds three parallel behavior layers, Explore World, Wander Around, and Avoid Objects, whose outputs combine into an Actuators box on the right, with a feedback arrow running from the actuators back to the sensors.",
+    "caption": "Rodney Brooks's subsumption architecture builds intelligent behavior from layered perception-to-action loops rather than a central world model. Sensor information drives several simple behaviors in parallel (avoid objects, wander, explore), and their outputs are combined to drive the actuators, whose effects feed back through the body and environment to the sensors. This is the embodied alternative to sense, build a model, then reason, plan, and act.",
+    "credit": "KodoKB",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Subsumption_Architecture_Abstract_Diagram.png",
+    "provider": "Wikimedia Commons"
+  },
+  "emergence": {
+    "file": "emergence.jpg",
+    "alt": "Thousands of starlings in flight against an orange dusk sky, their individual bodies forming one large, flowing, coordinated shape above a row of dark trees.",
+    "caption": "A starling murmuration is a textbook case of emergence: no bird leads and each follows only simple local rules about its nearest neighbors, yet the flock as a whole forms a single coherent, shifting shape that no individual bird possesses or controls. The pattern is a property of the organized interaction of the parts, not of any part alone.",
+    "credit": "Walter Baxter",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Starling_murmuration.jpg",
+    "provider": "Wikimedia Commons"
+  },
   "emergent-ability": {
     "file": "emergent-ability.png",
     "alt": "A scatter plot of MMLU benchmark performance in percent against scaled training compute on a logarithmic axis, with individual models such as GPT-3, PaLM, PaLM-2 and GPT-4 labeled and a fitted S-shaped curve rising from near 25 percent at low compute to near 90 percent at high compute.",
@@ -418,6 +798,26 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:MMLU_performance_vs_AI_scale.png",
     "provider": "Wikimedia Commons"
+  },
+  "empirical-risk-minimization": {
+    "file": "empirical-risk-minimization.png",
+    "alt": "Four small plots of fits to the same points, each annotated with two numbers: the empirical loss on the sample and the true loss. The top row shows a smooth curve with near-zero true loss. The bottom-left plot shows a wild curve with empirical loss zero but true loss about twenty-five, and the bottom-right shows a similar wild curve with both losses high.",
+    "caption": "Empirical risk minimization picks the model with the smallest loss on the training sample, used as a stand-in for the true loss over the whole distribution. The danger is the bottom-left case: a flexible model drives the empirical loss to zero by threading every point, yet its true loss stays high. Low training error guarantees low true error only when the model class is restricted enough.",
+    "credit": "Agkonings",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Overfitting_Example_with_Generalization.png",
+    "provider": "Wikimedia Commons"
+  },
+  "encoder-decoder": {
+    "file": "encoder-decoder.svg",
+    "alt": "The transformer architecture as two stacks. The encoder on the left takes source embeddings plus positional encoding through repeated blocks of multi-head attention and a positionwise feed-forward network, each with add-and-norm. The decoder on the right takes target embeddings through masked multi-head attention, then multi-head attention that reads the encoder output, then a feed-forward network, ending in a fully connected output layer.",
+    "caption": "The original transformer is an encoder-decoder. The encoder reads the whole input into a representation through stacked self-attention and feed-forward blocks, and the decoder generates the output while attending back to that representation through the middle cross-attention block. This two-stack design with an information bridge between them suits sequence-to-sequence tasks such as translation.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html",
+    "provider": "Dive into Deep Learning"
   },
   "energy-based-model": {
     "file": "energy-based-model.png",
@@ -449,6 +849,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Equivariant_commutative_diagram.png",
     "provider": "Wikimedia Commons"
   },
+  "evolutionary-strategy": {
+    "file": "evolutionary-strategy.png",
+    "alt": "Six panels labeled Generation 1 to 6, each a contour map of an objective landscape. In each panel a cloud of black sample points is drawn from a distribution shown as an orange ellipse. Across the generations the points concentrate toward the optimum and the orange ellipse shrinks and reorients to align with the landscape.",
+    "caption": "An evolution strategy keeps a distribution over candidate solutions, shown here as the orange ellipse, rather than a single point. Each generation it samples a population (black points), keeps the best, and updates the distribution toward them. The covariance matrix adaptation method (CMA-ES) reshapes that ellipse to stretch along productive directions and shrink across unproductive ones, learning the local geometry as the search converges.",
+    "credit": "Sentewolf",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Concept_of_directional_optimization_in_CMA-ES_algorithm.png",
+    "provider": "Wikimedia Commons"
+  },
   "expectation": {
     "file": "expectation.png",
     "alt": "Two right-skewed distributions with vertical lines marking the mode, median, and mean, where the mean sits farthest to the right toward the long tail.",
@@ -458,6 +868,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Comparison_mean_median_mode.svg",
     "provider": "Wikimedia Commons"
+  },
+  "expectation-maximization": {
+    "file": "expectation-maximization.png",
+    "alt": "Four scatter plots of the iris dataset (only the first two features) labeled spherical, diag, tied, and full. Points from three classes are colored navy, turquoise, and orange, with training points as dots and test points as crosses. Each plot overlays three shaded Gaussian ellipses, one per component, whose shapes differ across the four covariance settings, and each plot lists a train and test accuracy.",
+    "caption": "Expectation maximization fits a Gaussian mixture by recovering both the shape of each component and a soft assignment of points to components. Here the same data is fitted under four covariance assumptions, from a single shared variance (spherical) to unrestricted ellipses (full); the fitted component ellipses are what EM estimates, and the simpler settings often generalize better to the held-out test crosses.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/mixture/plot_gmm_covariances.html",
+    "provider": "scikit-learn"
   },
   "f1-score": {
     "file": "f1-score.png",
@@ -479,6 +899,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Image_pyramid.svg",
     "provider": "Wikimedia Commons"
   },
+  "feature-visualization": {
+    "file": "feature-visualization.png",
+    "alt": "On the left, a synthetic image produced by optimizing the input to maximally activate a neuron, showing an abstract dog-like motif; on the right, a grid of real photographs of dogs that activate the same neuron most strongly.",
+    "caption": "Feature visualization reveals what a unit detects in two complementary ways. On the left, the input is optimized from noise until it maximally activates the neuron, synthesizing the abstract pattern it most wants to see; on the right, the real images that excite it most are collected from a dataset. Both point to the same learned concept, here a dog, making an opaque neuron legible.",
+    "credit": "Olah, Cammarata, Schubert, Goh, Petrov, Carter",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://distill.pub/2020/circuits/zoom-in/",
+    "provider": "Distill"
+  },
   "federated-learning": {
     "file": "federated-learning.png",
     "alt": "A central server at the top labeled as coordinating the training of a global AI model, with double-headed arrows down to four phones at the bottom, each holding a local AI model.",
@@ -489,6 +919,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Centralized_federated_learning_protocol.png",
     "provider": "Wikimedia Commons"
   },
+  "feed-forward-network": {
+    "file": "feed-forward-network.png",
+    "alt": "The transformer feed-forward module. An input vector of size d-emb passes through a linear layer that expands it to a wider hidden size d-ffn, then an activation function, then a second linear layer that projects it back down to d-emb. A compact symbol on the right abbreviates the whole block as FFN.",
+    "caption": "The feed-forward network in a transformer block is a two-layer network applied to each position on its own. The first linear layer expands the token's representation from the model width d-emb to a wider hidden size d-ffn, an activation adds nonlinearity, and the second linear layer projects it back to d-emb. The same weights are reused at every position, so it mixes features within a token rather than across tokens.",
+    "credit": "Cosmia Nebula",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer_architecture_-_FFN_module.png",
+    "provider": "Wikimedia Commons"
+  },
+  "few-shot-learning": {
+    "file": "few-shot-learning.svg",
+    "alt": "Three prompting setups feeding a Transformer decoder marked no parameter update. The lower few-shot panel places several worked translation examples (go maps to va, i lost maps to j'ai perdu, he's calm maps to elle court) between the task description and the real prompt, contrasted with the zero-shot and one-shot panels above.",
+    "caption": "Few-shot learning puts a handful of worked examples in the prompt (the few-shot panel) so the model infers the pattern and applies it to the new input. No weights change (the box is marked no parameter update); the examples alone supply the task, which often matches fine-tuning without any training. Zero-shot and one-shot are the same idea with no example or just one.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "fine-tuning": {
+    "file": "fine-tuning.svg",
+    "alt": "Two stacks of layers side by side. The source model, trained on a source dataset, has layer 1 up to an output layer. Arrows labeled copy carry the lower layers across to a target model trained on a target dataset, whose output layer is instead randomly initialized and trained from scratch, with the copied layers marked as fine-tuned.",
+    "caption": "Fine-tuning reuses a model already pretrained on a large source dataset. Its learned feature layers are copied into a target model and adapted on the smaller target data, while only a fresh output layer is trained from scratch. The pretrained weights give a strong starting point, so the target task succeeds with far less data than learning from random initialization would need.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computer-vision/fine-tuning.html",
+    "provider": "Dive into Deep Learning"
+  },
   "fisher-information": {
     "file": "fisher-information.jpg",
     "alt": "Two nested ellipses around a central true parameter point: a large outer ellipse labeled an arbitrary unbiased estimator and a small inner ellipse labeled the estimator at the Cramer-Rao lower bound.",
@@ -498,6 +958,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Cramer-Rao_bound_illustration_variance.jpg",
     "provider": "Wikimedia Commons"
+  },
+  "flash-attention": {
+    "file": "flash-attention.jpg",
+    "alt": "Three panels. Left: a memory pyramid with fast small SRAM (19 TB/s, 20 MB) on top, larger slower HBM (1.5 TB/s, 40 GB) below, and large slow CPU DRAM at the base. Middle: blocks of the query, key, and value matrices copied into SRAM where the attention block is computed, with the output written back to HBM, never storing the full score matrix. Right: a bar chart showing the fused FlashAttention kernel is much faster than standard PyTorch attention.",
+    "caption": "FlashAttention exploits the GPU memory hierarchy: SRAM is tiny but fast, HBM is large but slow (left). Standard attention writes the full pairwise score matrix to slow HBM and reads it back; FlashAttention instead loads blocks of Q, K, and V into fast SRAM and computes each tile there, never materializing that matrix (middle). The result is exactly the same output, produced far faster as a fused kernel (right).",
+    "credit": "Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Re",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/Dao-AILab/flash-attention/blob/main/LICENSE",
+    "source": "https://github.com/Dao-AILab/flash-attention",
+    "provider": "Dao-AILab/flash-attention"
   },
   "flat-minima": {
     "file": "flat-minima.jpg",
@@ -519,6 +989,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Fourier_transform_time_and_frequency_domains.gif",
     "provider": "Wikimedia Commons"
   },
+  "frank-wolfe": {
+    "file": "frank-wolfe.png",
+    "alt": "A convex objective f drawn as a blue bowl sitting above a hexagonal feasible region D. A tilted plane touches the bowl at the current point f(x), representing the linear approximation of the objective, and a green arrow labeled x points across the feasible region toward an extreme point s of the hexagon.",
+    "caption": "The Frank-Wolfe algorithm avoids projection by linearizing. At the current point it replaces the convex objective f with its tangent linear approximation (the tilted plane), minimizes that linear function over the feasible region D, which always lands on a vertex s of the set, and then steps from the current point toward that vertex. Every iterate stays feasible automatically, with no projection needed.",
+    "credit": "Stephanie Stutz",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Frank-Wolfe_Algorithm.png",
+    "provider": "Wikimedia Commons"
+  },
   "free-energy-principle": {
     "file": "free-energy-principle.jpg",
     "alt": "A diagram applying the same scheme to a cell and a brain. States are split into hidden (external) states, sensory states, active states, and internal states. For the brain, internal states change to minimize free energy F with respect to sensations (perception), and active states change F with respect to the world (action).",
@@ -528,6 +1008,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:MarokovBlanketFreeEnergyFigure.jpg",
     "provider": "Wikimedia Commons"
+  },
+  "free-will": {
+    "file": "free-will.png",
+    "alt": "A decision tree of positions on free will. The first question, is determinism true, branches to a second question, is there free will. The answers lead to compatibilism, or into a shaded region labeled incompatibilism that contains hard determinism and libertarianism.",
+    "caption": "The free-will debate is organized by two questions. Compatibilists say free will and determinism can both hold. Incompatibilists deny this, splitting into hard determinists, who accept determinism and conclude free will is an illusion, and libertarians, who keep free will and reject determinism. The tree shows that one's stance is fixed by whether determinism is true and whether that rules out genuine freedom.",
+    "credit": "RobertG",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:FreeWillTaxonomy2.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "fully-sharded-data-parallel": {
+    "file": "fully-sharded-data-parallel.png",
+    "alt": "A diagram decomposing an all-reduce into a reduce-scatter followed by an all-gather across four GPUs. On the left, all-reduce leaves every GPU with the full summed result. In the middle, reduce-scatter leaves each GPU with only its own reduced slice. On the right, all-gather rebuilds the full set of slices on every GPU.",
+    "caption": "Fully sharded data parallel shards the parameters, gradients, and optimizer state so each GPU stores only a slice. As shown, the all-reduce of standard data parallelism is split into a reduce-scatter (each device keeps just its averaged slice) and an all-gather (the full weights are reassembled only when a layer is about to run, then discarded). Peak memory is set by the largest single layer, not the whole model.",
+    "credit": "PyTorch Contributors",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/pytorch/tutorials/blob/main/LICENSE",
+    "source": "https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html",
+    "provider": "PyTorch"
   },
   "gated-recurrent-unit": {
     "file": "gated-recurrent-unit.svg",
@@ -559,6 +1059,16 @@
     "source": "https://en.wikipedia.org/wiki/Normal_distribution",
     "provider": "Wikimedia Commons"
   },
+  "gaussian-process": {
+    "file": "gaussian-process.png",
+    "alt": "Three panels labeled Prior, Posterior, and Prediction with Uncertainty. The Prior shows several wiggly random functions filling the plot. The Posterior shows similar functions but all passing through a set of fixed data points. The Prediction panel shows a single mean curve with a grey shaded band around it that is narrow at the data points and wide in the gaps between them.",
+    "caption": "A Gaussian process is a distribution over functions. The prior is a spread of candidate functions (left); conditioning on observed points keeps only functions that pass through the data (center); and the prediction reports a mean function with an uncertainty band that is narrow near the data and widens far from it (right). The widening band is the model reporting what it does not know.",
+    "credit": "Cdipaolo96",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gaussian_Process_Regression.png",
+    "provider": "Wikimedia Commons"
+  },
   "gaussian-splatting": {
     "file": "gaussian-splatting.png",
     "alt": "The 3D Gaussian splatting pipeline: structure-from-motion points initialize a set of 3D Gaussians, which are projected with a camera pose and passed through a differentiable tile rasterizer to render an image, with adaptive density control and gradient flow refining the Gaussians.",
@@ -567,6 +1077,16 @@
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Methodology.png",
+    "provider": "Wikimedia Commons"
+  },
+  "generalization": {
+    "file": "generalization.png",
+    "alt": "Three scatter plots of the same points fitted by three curves. The left panel, labeled underfitting, fits a straight line that misses the curvature of the data. The middle panel fits a smooth curve that follows the overall trend. The right panel, labeled overfitting, fits a wiggly curve that passes through nearly every point.",
+    "caption": "Generalization is about fitting the signal without chasing the noise. A model that is too simple underfits and misses the real pattern (left); a model that is too flexible overfits, bending to hit every training point and swinging wildly between them (right). The middle fit captures the underlying trend and is the one most likely to do well on new data.",
+    "credit": "Leomaurodesenv",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Underfitting_e_overfitting.png",
     "provider": "Wikimedia Commons"
   },
   "generative-adversarial-network": {
@@ -589,6 +1109,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Small_and_great_circles_3d.png",
     "provider": "Wikimedia Commons"
   },
+  "gibbs-sampling": {
+    "file": "gibbs-sampling.jpg",
+    "alt": "Three density curves labeled Step 1, Step 2, and Step K, with curved arrows leading from one to the next and wrapping back around. Under each step is the full conditional it samples from, written as theta-k drawn from pi of theta-k given the other thetas and the data.",
+    "caption": "Gibbs sampling draws from a hard joint distribution by updating one variable at a time. In each step it samples a single variable from its full conditional given the current values of all the others, then sweeps to the next variable and repeats. The cycle of conditional draws (Step 1, Step 2, on to Step K and back) produces a chain whose stationary distribution is the target joint.",
+    "credit": "Stat math",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gibbs_sampler_picture.jpg",
+    "provider": "Wikimedia Commons"
+  },
   "goal-misgeneralization": {
     "file": "goal-misgeneralization.png",
     "alt": "Two side-by-side frames of the CoinRun platformer game: (a) goal position fixed, with the coin at the end of the level, and (b) goal position randomized, with the coin moved elsewhere while the agent still heads to the end of the level.",
@@ -598,6 +1128,16 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://arxiv.org/abs/2105.14111",
     "provider": "arXiv"
+  },
+  "gpu": {
+    "file": "gpu.png",
+    "alt": "Two side-by-side silicon floorplans. The CPU devotes most of its area to a large Control unit, a big Cache, and only four ALUs. The GPU spends almost all its area on a dense grid of many small ALUs, with little control logic or cache.",
+    "caption": "A CPU spends most of its transistors on control logic and cache to run a few threads fast, while a GPU spends almost all of its area on a large grid of arithmetic units (ALUs). This is why a GPU is so well matched to deep learning: the dense matrix math of a neural network is thousands of identical multiply-add operations that can run on those many cores at once.",
+    "credit": "NVIDIA Corporation",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cpu-gpu.svg",
+    "provider": "Wikimedia Commons"
   },
   "gradient": {
     "file": "gradient.png",
@@ -618,6 +1158,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:GradientBOOST.png",
     "provider": "Wikimedia Commons"
+  },
+  "gradient-checkpointing": {
+    "file": "gradient-checkpointing.png",
+    "alt": "A feed-forward network drawn as a computation graph: a top row of forward-pass nodes feeds a bottom row of backward-pass gradient nodes. One node in the forward row is drawn with a double circle and labeled checkpoint.",
+    "caption": "Gradient checkpointing saves only a few activations, the checkpoint nodes (double-circled here), during the forward pass and discards the rest. When the backward pass needs a discarded activation, it recomputes it from the nearest checkpoint rather than having stored it. This trades extra computation for much lower memory, turning activation memory that grew with depth into memory that grows with roughly its square root.",
+    "credit": "Tim Salimans and Yaroslav Bulatov",
+    "license": "MIT",
+    "license_url": "https://github.com/cybertronai/gradient-checkpointing/blob/master/LICENSE",
+    "source": "https://github.com/cybertronai/gradient-checkpointing",
+    "provider": "gradient-checkpointing (Salimans and Bulatov)"
   },
   "gradient-descent": {
     "file": "gradient-descent.jpg",
@@ -659,6 +1209,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:GNN_building_blocks.png",
     "provider": "Wikimedia Commons"
   },
+  "graphical-model": {
+    "file": "graphical-model.png",
+    "alt": "A directed graph of three nodes. RAIN points to both SPRINKLER and GRASS WET, and SPRINKLER also points to GRASS WET. Beside each node is a conditional probability table: RAIN's table is unconditional, SPRINKLER's is conditioned on RAIN, and GRASS WET's is conditioned on both SPRINKLER and RAIN.",
+    "caption": "A graphical model represents a joint distribution as a graph of variables, with each node carrying only its conditional probability given its parents. Here whether the grass is wet depends on the sprinkler and the rain, and the sprinkler depends on the rain. The missing arrow from rain directly bypassing the sprinkler encodes conditional independence, which lets the full joint be stored as a few small local tables instead of one huge one.",
+    "credit": "AnAj",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:SimpleBayesNet.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "greedy-decoding": {
+    "file": "greedy-decoding.svg",
+    "alt": "A grid with four columns labeled time steps 1 to 4 and rows for tokens A, B, C, and end-of-sequence. Each cell holds that token's probability at that step, and the single highest-probability cell in each column is shaded: 0.5, then 0.4, then 0.4, then 0.6.",
+    "caption": "Greedy decoding takes the single highest-probability token at every step, shown by the shaded cell in each column (A, then B, then C, then end-of-sequence). It never looks ahead or reconsiders, so it is fast and deterministic but can commit to a locally best token that leads to a worse overall sequence.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/beam-search.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "grokking": {
+    "file": "grokking.jpg",
+    "alt": "A plot of log loss against training epoch for a network learning modular addition: the training loss (blue) drops to near zero almost immediately, while the test loss (red) stays high for thousands of epochs and then falls sharply to near zero between roughly ten thousand and fifteen thousand epochs.",
+    "caption": "Grokking is delayed generalization. Training loss (blue) collapses almost at once as the network memorizes the data, yet test loss (red) stays high for thousands of further epochs and only then plunges to near zero, the moment the network replaces its memorized lookup with a true algorithmic circuit. Generalization arrives long after the training set is already fit.",
+    "credit": "Neel Nanda",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grokking_modular_addition.jpg",
+    "provider": "Wikimedia Commons"
+  },
   "group-theory": {
     "file": "group-theory.png",
     "alt": "Eight nodes arranged in two nested squares, each node showing the letter F in a different orientation; red arrows connect nodes by a rotation and blue edges connect them by a reflection, labeled with group elements e, a, a-squared, a-cubed, b, and their products.",
@@ -667,6 +1247,16 @@
     "license": "Public domain",
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:Dih_4_Cayley_Graph;_generators_a,_b;_prefix.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "grouped-query-attention": {
+    "file": "grouped-query-attention.png",
+    "alt": "Three attention layouts compared. Multi-head on the left gives every query column its own key and value. Grouped-query in the middle lets each group of query columns share one key and one value. Multi-query on the right has all query columns share a single key and value.",
+    "caption": "Grouped-query attention (middle) is the compromise between multi-head attention (left), where every query head has its own key and value, and multi-query attention (right), where all heads share one key and value. By giving each group of query heads a shared key and value, it shrinks the KV cache and memory bandwidth that dominate inference while keeping quality close to full multi-head attention.",
+    "credit": "Joshua Ainslie et al. (GQA paper, arXiv:2305.13245)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Overview_of_grouped-query_method.png",
     "provider": "Wikimedia Commons"
   },
   "hebbian-learning": {
@@ -679,6 +1269,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:STDP_standard.png",
     "provider": "Wikimedia Commons"
   },
+  "hegelian-dialectic": {
+    "file": "hegelian-dialectic.jpg",
+    "alt": "A diagram with three boxes: Thesis linked to Antithesis, both feeding a Synthesis box below, with a numbered arrow from the synthesis back up to the thesis position.",
+    "caption": "The dialectic moves in stages: a thesis (1) generates its opposing antithesis (2), and the tension between them is resolved in a synthesis (3) that preserves and lifts up both. The arrow back to the top shows the process repeating, the synthesis becoming a new thesis, so development proceeds through the productive resolution of contradiction rather than by simple accumulation.",
+    "credit": "Eden Aviv",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Thesis-Antithesis-Synthesis.jpg",
+    "provider": "Wikimedia Commons"
+  },
   "hessian": {
     "file": "hessian.png",
     "alt": "A curved three-dimensional surface over the x and y plane bearing several marked critical points, including a local maximum, a local minimum, and a saddle where the surface curves up one way and down the other.",
@@ -689,6 +1289,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Second_partial_derivative_test.png",
     "provider": "Wikimedia Commons"
   },
+  "hidden-markov-model": {
+    "file": "hidden-markov-model.png",
+    "alt": "A diagram unrolled in time. A top row of hidden state nodes x(t-1), x(t), x(t+1) is connected by left-to-right arrows forming a chain, and each hidden state has a downward arrow to its own observation node y(t-1), y(t), y(t+1) in a bottom row.",
+    "caption": "A hidden Markov model unrolled over time. The hidden state x evolves as a Markov chain, where each state depends only on the previous one (the top arrows), and at every step the current state emits a visible observation y (the downward arrows). You see only the bottom row and must infer the hidden top row that produced it.",
+    "credit": "Qef",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Hmm_temporal_bayesian_net.svg",
+    "provider": "Wikimedia Commons"
+  },
   "hilbert-space": {
     "file": "hilbert-space.png",
     "alt": "A point x above a plane E, with a vertical segment dropping to its foot P_E(x) on the plane; the segment meets the plane at a marked right angle, and dashed lines show x projected onto two lines within the plane.",
@@ -697,6 +1307,16 @@
     "license": "CC BY-SA 3.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Orthogonal_Projection_qtl2.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "hnsw": {
+    "file": "hnsw.png",
+    "alt": "Three panels of the same set of points. Layer 2 (Sparse) holds a few points with long-range links, an entry point, and a path toward the red query vector via its nearest neighbor. Layer 1 (Intermediate) has more points, and Layer 0 (Dense, All Points) holds every point. Arrows labeled descend connect the panels left to right.",
+    "caption": "HNSW stacks the vectors into layers and searches by hopping toward the query. The sparse top layer has a few long-range links that cover huge distances in a few steps, and a search descends through progressively denser layers, refining the result until it lands in the true local neighborhood of the query (red). This layered, greedy navigation is what gives the index its logarithmic-like scaling.",
+    "credit": "Rose electric",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hierarchical_Navigable_Small_World_(HNSW).png",
     "provider": "Wikimedia Commons"
   },
   "hyena": {
@@ -739,6 +1359,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Convolutional_Neural_Network.png",
     "provider": "Wikimedia Commons"
   },
+  "in-context-learning": {
+    "file": "in-context-learning.svg",
+    "alt": "Three prompting setups, each feeding a Transformer decoder marked no parameter update. Zero-shot gives only a task description and the prompt. One-shot adds a single worked example. Few-shot adds several worked examples. All three produce the same translated output.",
+    "caption": "In-context learning is the model learning a task from its prompt at inference time, with no parameter update (note the label on every box). Given a task description and zero, one, or several worked examples before the real prompt, the model infers the pattern and applies it. Adding examples in the context, not retraining, is what steers the output.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "inductive-bias": {
+    "file": "inductive-bias.png",
+    "alt": "A scatter of noisy data following a wavy periodic pattern, overlaid with a true curve and the fits of three different regression models. The fits agree closely where data is dense but diverge from one another in the region to the right where there are fewer points, each extrapolating in a different way.",
+    "caption": "Each model carries an inductive bias, a built-in assumption about what the unseen data looks like. Here several regression methods fit the same noisy points well where data is plentiful but extrapolate differently where it is sparse, because each one's prior (for example a periodic kernel) fills the gaps in its own way. The data alone cannot decide between them; the assumptions do.",
+    "credit": "Shiyu Ji",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Regressions_sine_demo.svg",
+    "provider": "Wikimedia Commons"
+  },
   "information-bottleneck": {
     "file": "information-bottleneck.png",
     "alt": "Two overlapping circles for the entropies H(X) and H(Y); the overlap is labeled the mutual information I(X;Y), the non-overlapping parts are the conditional entropies H(X|Y) and H(Y|X), and the union is the joint entropy H(X,Y).",
@@ -758,6 +1398,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Mask_R-CNN.webp",
     "provider": "Wikimedia Commons"
+  },
+  "instruction-tuning": {
+    "file": "instruction-tuning.png",
+    "alt": "A worked instruction-tuning task. A boxed Definition states the task in natural language, a Positive Examples box lists input-output pairs with explanations as demonstrations, and an Evaluation Instances box shows new inputs for which the model produces outputs, illustrating a single task expressed entirely as a written instruction plus examples.",
+    "caption": "Instruction tuning trains a model on many tasks each expressed as a natural-language instruction: a definition plus a few demonstration examples, paired with the desired responses. Trained across a broad mix of such tasks, the model learns to read a prompt as a command to carry out and generalizes to unseen instruction types it was never explicitly shown, the behavior that turns a base model into a usable assistant.",
+    "credit": "Yizhong Wang, Swaroop Mishra, Yeganeh Kordi, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2204.07705",
+    "provider": "arXiv"
   },
   "integral": {
     "file": "integral.gif",
@@ -829,6 +1479,16 @@
     "source": "https://en.wikipedia.org/wiki/Kalman_filter",
     "provider": "Wikimedia Commons"
   },
+  "kernel-fusion": {
+    "file": "kernel-fusion.png",
+    "alt": "A transformer layer's operations drawn as a dataflow graph, with dashed boxes grouping consecutive operations into fused regions: a QKV box around the input normalization and the query, key, and value projections; an attention box; an MLP box around the feed-forward layers and activation; and a bias-add box. Each fused region is annotated with a speedup such as 1.5x, 2.9x, 3x.",
+    "caption": "Kernel fusion merges a chain of small operations into one GPU kernel. Here consecutive steps of a transformer layer (the QKV projections, the attention math, the feed-forward block) are each grouped into a single fused kernel instead of many separate ones. Because the intermediate results stay in fast on-chip memory rather than being written to and read back from main memory, each fused region runs several times faster even though the arithmetic is unchanged.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/microsoft/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/microsoft/DeepSpeed",
+    "provider": "DeepSpeed (Microsoft)"
+  },
   "kernel-method": {
     "file": "kernel-method.png",
     "alt": "Two panels: on the left, red points clustered inside a ring of purple points in two dimensions, not separable by a straight line; on the right, the same points lifted into three dimensions where the red points sit lower and a flat plane can separate them.",
@@ -849,6 +1509,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Kullback%E2%80%93Leibler_distributions_example_1.svg",
     "provider": "Wikimedia Commons"
   },
+  "knowledge-argument": {
+    "file": "knowledge-argument.png",
+    "alt": "A cartoon of Mary, drawn entirely in grey, stepping out of a grey doorway into a vivid color world of green grass, a tree with a brown trunk, a blue sky, and red and yellow flowers, looking surprised.",
+    "caption": "Mary's Room dramatizes the knowledge argument. The grey scientist knew every physical fact about color while confined to a black-and-white room, yet on stepping out and seeing color for the first time she seems to learn something genuinely new, what red is actually like. If complete physical knowledge still leaves that out, the argument concludes, the felt quality of experience is not captured by the physical facts.",
+    "credit": "Alexander Wivel",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:What_Mary_didn%E2%80%99t_know4.png",
+    "provider": "Wikimedia Commons"
+  },
+  "knowledge-distillation": {
+    "file": "knowledge-distillation.png",
+    "alt": "A flow diagram. An input x feeds both a teacher model and a smaller student model. The teacher's logits pass through a softmax with temperature to give soft labels. The student produces soft predictions at the same temperature and a hard prediction at temperature one; a distillation loss compares the student's soft predictions to the teacher's soft labels, and a student loss compares the hard prediction to the ground-truth label.",
+    "caption": "Knowledge distillation trains a small student model to imitate a large teacher rather than learning only from hard labels. The teacher's full probability distribution, softened with a temperature, becomes a soft target that carries which wrong answers are nearly right. The student minimizes a distillation loss against those soft labels, often blended with the ordinary loss on the true label, inheriting much of the teacher's competence in a smaller network.",
+    "credit": "arvindpdmn, Varsha2018",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Knowledge-distillation-example.png",
+    "provider": "Wikimedia Commons"
+  },
+  "kto": {
+    "file": "kto.png",
+    "alt": "A value function plotted with loss on the left and gain on the right of a horizontal axis crossing a marked reference point. The Kahneman-Tversky curve is concave for gains and steeper for losses (loss aversion), with the DPO and PPO-Clip implied value functions drawn for comparison.",
+    "caption": "KTO borrows the prospect theory value function of Kahneman and Tversky: value is measured relative to a reference point, gains are concave, and losses loom larger than equal gains (loss aversion). KTO scores each response by how far its likelihood has moved from a frozen reference model, then applies this asymmetric value shape, so it can learn from individual responses labeled simply desirable or undesirable rather than from paired comparisons.",
+    "credit": "Kawin Ethayarajh, Winnie Xu, Niklas Muennighoff, Dan Jurafsky, Douwe Kiela",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://arxiv.org/abs/2402.01306",
+    "provider": "arXiv"
+  },
   "lagrange-multiplier": {
     "file": "lagrange-multiplier.png",
     "alt": "Concentric dashed level curves of an objective function f, each with small gradient arrows pointing inward, crossed by a red constraint curve g equals c; the red and dashed curves are tangent where the constrained optimum sits.",
@@ -858,6 +1548,16 @@
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:LagrangeMultipliers2D.svg",
     "provider": "Wikimedia Commons"
+  },
+  "late-interaction": {
+    "file": "late-interaction.png",
+    "alt": "A diagram of ColBERT. A Query Encoder produces a row of green per-token vectors and a Document Encoder produces a grid of blue per-token vectors (marked offline indexing). For each query token, a MaxSim operator selects its best-matching document token, and the MaxSim values are summed into a single score.",
+    "caption": "Late interaction keeps a vector for every token instead of pooling each text to one vector. The document tokens (blue) are encoded and indexed offline; at query time each query token (green) finds its best-matching document token via MaxSim, and those best matches are summed into the relevance score. Doing the interaction late, after encoding, preserves term-level detail while keeping the document side precomputable.",
+    "credit": "Omar Khattab, Matei Zaharia (ColBERT)",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://github.com/stanford-futuredata/ColBERT",
+    "provider": "ColBERT (Stanford)"
   },
   "latent-diffusion": {
     "file": "latent-diffusion.png",
@@ -869,6 +1569,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_architecture.png",
     "provider": "Wikimedia Commons"
   },
+  "latent-semantic-analysis": {
+    "file": "latent-semantic-analysis.gif",
+    "alt": "An animated term-document matrix with words such as air, aliens, arms, defense, nuclear, space and treaty on the rows and documents d0 to d19 on the columns, each cell shaded by how often the word appears in the document. The animation reorders rows and columns so darker cells gather into blocks.",
+    "caption": "Latent semantic analysis starts from a term-document matrix, where each cell records how often a word appears in a document. By factorizing this matrix with singular value decomposition and keeping only the largest components, it recovers a small set of latent topics: groups of words and documents that vary together, here emerging as blocks. Words and documents then live in one low-dimensional space where similarity can be measured even without shared words.",
+    "credit": "Christoph Carl Kling",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Topic_detection_in_a_document-word_matrix.gif",
+    "provider": "Wikimedia Commons"
+  },
   "latent-space": {
     "file": "latent-space.png",
     "alt": "A two-dimensional scatter plot of labeled topics where related items sit close together, such as a cluster of political candidates and a separate cluster of Super Bowl entries.",
@@ -877,6 +1587,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:2016_02_mini_embedding.png",
+    "provider": "Wikimedia Commons"
+  },
+  "latent-variable-model": {
+    "file": "latent-variable-model.png",
+    "alt": "A plate-notation graphical model. Hyperparameters alpha and beta sit outside two nested rectangles (plates). Inside, an arrow runs from an unshaded node theta to an unshaded node z to a single shaded node w, with beta also pointing into w. The inner plate around z and w is labeled N and the outer plate is labeled M.",
+    "caption": "A latent variable model explains observed data through hidden causes, drawn here in plate notation. Only the shaded node w (an observed word) is measured; the unshaded nodes theta and z are latent variables that generate it, and the nested rectangles (plates) mean the structure repeats over N words and M documents. Inference is the task of recovering the hidden nodes from the one shaded node.",
+    "credit": "Bkkbrad",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Latent_Dirichlet_allocation.svg",
     "provider": "Wikimedia Commons"
   },
   "learning-rate": {
@@ -929,6 +1649,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Linear_regression.svg",
     "provider": "Wikimedia Commons"
   },
+  "linear-transformation": {
+    "file": "linear-transformation.png",
+    "alt": "A unit square at the origin sheared into a slanted parallelogram. The base stays fixed along the x-axis while the top edge slides sideways, so the point P moves horizontally to P prime.",
+    "caption": "A linear transformation keeps the origin fixed and sends straight lines to straight lines, keeping parallel lines parallel and evenly spaced. This shear illustrates that: the square becomes a parallelogram, points slide along the horizontal but no line is ever bent. Every such map is represented by a matrix, which is why each layer of a network is a linear transformation followed by a nonlinearity.",
+    "credit": "Lyudmil Antonov",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shear.svg",
+    "provider": "Wikimedia Commons"
+  },
   "local-attractor-basin": {
     "file": "local-attractor-basin.png",
     "alt": "Diagram of a region A inside a larger space, with trajectories starting from several different points all flowing inward and converging into region A.",
@@ -957,6 +1687,26 @@
     "license": "Public domain",
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:Logistic-curve.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "logits": {
+    "file": "logits.png",
+    "alt": "A network takes an input image and emits three raw scores for the classes cat, dog, and horse: 35.4, 38.1, and minus 5.0. These pass through a softmax box and come out as probabilities 0.06, 0.94, and 0.00.",
+    "caption": "Logits are the raw, unnormalized scores a model assigns to each option, here 35.4, 38.1, and minus 5.0 for three classes. They carry no direct meaning as probabilities until a softmax exponentiates and normalizes them into a distribution that sums to one (0.06, 0.94, 0.00). Every sampling control, temperature, top-p, and a repetition penalty, edits these logits before the softmax runs.",
+    "credit": "Fschwarzentruber",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Softmax.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "lora": {
+    "file": "lora.png",
+    "alt": "An input vector x of dimension d feeds two parallel paths whose outputs are added to give h. The left path is a large frozen square weight matrix W of size d by d. The right path is a low-rank pair: a down-projection A initialized from a normal distribution narrowing to rank r, then an up-projection B initialized to zero.",
+    "caption": "LoRA freezes the large pretrained weight matrix W and learns only a small low-rank update beside it, formed as the product of two thin matrices A and B with inner rank r far smaller than the dimension d. Because B starts at zero, training begins exactly at the pretrained behavior, and only A and B receive gradients, so a huge model is adapted by training a tiny fraction of its parameters.",
+    "credit": "LauAI",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:LoRA.svg",
     "provider": "Wikimedia Commons"
   },
   "loss-function": {
@@ -1019,6 +1769,16 @@
     "source": "https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html",
     "provider": "scikit-learn"
   },
+  "machine-translation": {
+    "file": "machine-translation.png",
+    "alt": "A grid aligning an English sentence on the rows ('And the programme has been implemented') with a French sentence on the columns ('Le programme a été mis en application'). A filled dot in a cell marks that the row word and column word correspond; the English word 'implemented' has three dots, aligning to 'mis', 'en' and 'application'.",
+    "caption": "Translation is not word-for-word substitution, as this alignment between an English sentence and its French version shows. Each dot links words that correspond, and the single English word 'implemented' maps to three French words, 'mis en application'. Capturing such one-to-many and reordered alignments is exactly what the attention mechanism gave neural translation.",
+    "credit": "Redienss",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Word_alignment_matirx.svg",
+    "provider": "Wikimedia Commons"
+  },
   "mamba": {
     "file": "mamba.png",
     "alt": "Diagram of a selective state space model: a hidden state h flows from left (h at t minus 1) to right (h at t) through the state matrix A; the current input x at t is passed through a Project block (the selection mechanism) to produce the input-dependent matrices B, C, and the step size delta, which are discretized and combined to update the state and emit output y, with a side note showing fast GPU SRAM versus slower GPU HBM memory.",
@@ -1059,6 +1819,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Markovkate_01.svg",
     "provider": "Wikimedia Commons"
   },
+  "markov-chain-monte-carlo": {
+    "file": "markov-chain-monte-carlo.png",
+    "alt": "Six small plots arranged in a grid, labeled 100, 500, 1000, 5000, 10000, and 50000 samples. Each overlays a blue target density (a bimodal curve with a tall left peak and a smaller right bump) with an orange curve estimated from the samples. The orange curve is jagged and off at 100 samples and grows steadily closer to the blue curve until the two are nearly identical at 50000 samples.",
+    "caption": "Markov chain Monte Carlo builds a random walk whose long-run equilibrium is the target distribution. With few samples the estimate (orange) is rough and misses the target (blue), but as the chain runs longer the collected samples reproduce the target ever more closely. This convergence in the limit is what lets MCMC approximate posteriors that have no closed form.",
+    "credit": "Christian Drappi",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Convergence_of_metropolis_algorithm.png",
+    "provider": "Wikimedia Commons"
+  },
+  "markov-decision-process": {
+    "file": "markov-decision-process.png",
+    "alt": "A directed graph with three green state nodes (S0, S1, S2) and orange action nodes (a0, a1) branching from each state. Edges from action nodes carry transition probabilities such as 0.7 and 0.3, and two yellow squiggly arrows mark rewards of plus 5 and minus 1.",
+    "caption": "A Markov decision process is defined by states (green), the actions available in each state (orange), the probabilities of where each action leads (the numbers on the edges, such as 0.7 and 0.3), and the rewards it pays (the yellow plus 5 and minus 1 arrows). The next state depends only on the current state and action, which is the Markov property that makes the problem solvable.",
+    "credit": "MistWiz",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Markov_Decision_Process_example.svg",
+    "provider": "Wikimedia Commons"
+  },
   "masked-autoencoder": {
     "file": "masked-autoencoder.png",
     "alt": "Masked autoencoder pipeline: an input image with most patches hidden, a heavy encoder that processes only the visible patches, and a lightweight decoder that fills in placeholder tokens to reconstruct the full target image.",
@@ -1067,6 +1847,26 @@
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Masked_Autoencoder.png",
+    "provider": "Wikimedia Commons"
+  },
+  "matrix": {
+    "file": "matrix.png",
+    "alt": "An m-by-n matrix drawn in large brackets with entries a sub i,j. A blue arrow down the left marks the m rows where the index i changes, and a red arrow across the top marks the n columns where the index j changes.",
+    "caption": "A matrix is a rectangular grid of numbers with m rows and n columns, each entry addressed by its row index i and column index j. This two-index layout is what lets one matrix hold a whole table of data, and, read as a function, apply a linear transformation to every vector at once.",
+    "credit": "Lakeworks",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Matrix.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "matrix-multiplication": {
+    "file": "matrix-multiplication.png",
+    "alt": "Matrix A on the left and matrix B above feed into the product matrix at lower right. A highlighted row of A and a highlighted column of B both point with colored arrows to a single highlighted entry of the result.",
+    "caption": "Each entry of the product is the dot product of one row of the left matrix with one column of the right matrix, as the colored arrows show. The shared inner dimension must match for these row-by-column dot products to line up, which is the single rule that governs whether two matrices can be multiplied.",
+    "credit": "Lakeworks",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Matrix_multiplication_diagram_2.svg",
     "provider": "Wikimedia Commons"
   },
   "maximum-likelihood-estimation": {
@@ -1109,6 +1909,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Orthographic_projection_with_Tissot%27s_indicatrix_centering_0%C2%B0N_0%C2%B0E.svg",
     "provider": "Wikimedia Commons"
   },
+  "metropolis-hastings": {
+    "file": "metropolis-hastings.png",
+    "alt": "Two side-by-side plots, each showing a solid target density curve P*(x) and a dashed proposal density curve Q centered on a marked current point. On the left the proposal is centered at x superscript 1 in a high-density region; on the right it is centered at x superscript 2 out in a low-density tail.",
+    "caption": "Metropolis-Hastings samples a target density P*(x) (solid) that it can only evaluate up to a constant. From the current point it draws a candidate from a proposal distribution Q (dashed) centered there, then accepts or rejects using the ratio of target densities at the two points. Because that ratio cancels the unknown normalizing constant, only relative densities are ever needed.",
+    "credit": "Unknown",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Metropolis_hastings_algorithm.png",
+    "provider": "Wikimedia Commons"
+  },
+  "min-p-sampling": {
+    "file": "min-p-sampling.png",
+    "alt": "A bar chart of next-token probabilities with one tall dominant bar on the left and a long low tail. A horizontal line marks the min-p threshold at 0.1, set as a fraction of the tallest bar; tokens below the line are shaded out and annotated as low-probability tokens filtered from sampling, increasing coherence.",
+    "caption": "Min-p sets its cutoff relative to the most likely token: with min-p 0.1, any token at least one tenth as probable as the top one is kept, and the rest are dropped. The threshold therefore moves with the model's confidence. When one token dominates, as here, almost nothing else clears the relative bar, so generation stays focused even at high temperature.",
+    "credit": "Minh Nhat Nguyen and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2407.01082",
+    "provider": "arXiv"
+  },
+  "mind-body-problem": {
+    "file": "mind-body-problem.png",
+    "alt": "Four small diagrams contrasting positions on mind-body causation, each using orange mental nodes and blue physical nodes joined by arrows: interactionist dualism, epiphenomenalism, psychophysical parallelism, and non-reductive physicalism.",
+    "caption": "The mind-body problem is the question of how mental states (orange) relate to physical states (blue). The positions differ over which arrows are real: interactionist dualism has mind and body cause each other, epiphenomenalism lets the physical produce the mental but denies the mental any effect, parallelism has the two run in step without interacting, and non-reductive physicalism grounds the mental in the physical while granting it downward influence.",
+    "credit": "Davidl on de.wikipedia. Updated by richardbrucebaxter. Converted to SVG by Bea",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:DualismCausationViews3.svg",
+    "provider": "Wikimedia Commons"
+  },
   "mirror-neuron": {
     "file": "mirror-neuron.jpg",
     "alt": "A flowchart. Perception of an action leads to goal attribution, asking whether the action has a goal. If yes, one route is mirror neurons performing internal imitation (embodied simulation); if no, the action is handled by classical inference.",
@@ -1117,6 +1947,26 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Goal_attribution_and_mirror_neurons.JPG",
+    "provider": "Wikimedia Commons"
+  },
+  "mixed-precision-training": {
+    "file": "mixed-precision-training.png",
+    "alt": "The bit layout of the 16-bit half-precision floating-point format: 1 sign bit, then 5 exponent bits, then 10 fraction bits, labeled from bit 15 down to bit 0.",
+    "caption": "Mixed precision training does most of its arithmetic in a low-precision 16-bit float, whose layout is shown here: one sign bit, five exponent bits, and only ten fraction bits. With half the bits of a 32-bit number, each value takes half the memory and bandwidth and runs faster on matrix units, but its narrow range and coarse precision are why the technique keeps a full-precision master copy of the weights and applies loss scaling.",
+    "credit": "Habbit",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:IEEE_754r_Half_Floating_Point_Format.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "mixture-of-experts": {
+    "file": "mixture-of-experts.png",
+    "alt": "The upper block diagrams a mixture-of-experts layer from DeepSeek-V2: an input hidden state feeds a router that scores many parallel expert subnetworks and keeps only the top few (Top-K), shown as a small set of activated routed experts plus shared experts, whose weighted outputs are summed into the output hidden state. The lower block shows the separate multi-head latent attention module.",
+    "caption": "A mixture-of-experts layer (upper block) replaces one dense layer with many parallel expert subnetworks and a router. For each token the router scores the experts and activates only the top few, so total parameters can grow large while the compute spent per token stays small. A load-balancing pressure keeps the router from sending every token to the same few experts. The lower block is a separate attention module, not part of the mixture-of-experts idea.",
+    "credit": "DeepSeek",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "source": "https://commons.wikimedia.org/wiki/File:DeepSeek_MoE_and_MLA_(DeepSeek-V2).svg",
     "provider": "Wikimedia Commons"
   },
   "mode-connectivity": {
@@ -1139,6 +1989,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Enterprise-Service-Bus-NS.svg",
     "provider": "Wikimedia Commons"
   },
+  "model-parallelism": {
+    "file": "model-parallelism.svg",
+    "alt": "Four schematics of a convolutional network distributed across GPUs. From left to right: the original undivided problem; network partitioning, where whole layers are assigned to different GPUs; layer-wise partitioning, where each layer is split across two GPUs with activations exchanged between them; and data parallelism, where each GPU holds the full network.",
+    "caption": "Model parallelism splits a single network across devices rather than replicating it. The two middle panels show its two flavors: network partitioning puts whole layers on different GPUs (the basis of pipeline parallelism), and layer-wise partitioning splits each individual layer across GPUs that exchange activations (the basis of tensor parallelism). Both differ from data parallelism on the right, where the whole network is copied to each device.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_computational-performance/multiple-gpus.html",
+    "provider": "Dive into Deep Learning"
+  },
   "momentum": {
     "file": "momentum.svg",
     "alt": "Contour plot of an elongated, ill-conditioned valley with a momentum optimizer path that overshoots once then spirals inward, settling at the minimum.",
@@ -1148,6 +2008,36 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/momentum.html",
     "provider": "Dive into Deep Learning"
+  },
+  "monte-carlo-tree-search": {
+    "file": "monte-carlo-tree-search.png",
+    "alt": "Four copies of the same search tree labeled Selection, Expansion, Simulation, and Backpropagation. Each node shows a wins-over-visits ratio such as 11/21. Selection traces a path down to a leaf, Expansion adds a new child, Simulation plays out from it, and Backpropagation updates the ratios back up the path.",
+    "caption": "Monte Carlo tree search repeats four steps to decide a move. Selection walks down the tree by a rule that favors high-value, rarely-tried nodes; Expansion adds a new node at the frontier; Simulation plays out a result from there; and Backpropagation sends that result back up, updating each node's wins-over-visits count. Thousands of these passes concentrate effort on the most promising lines.",
+    "credit": "Mciura , Dicksonlaw583",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:MCTS_(English)_-_Updated_2017-11-19.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "multi-head-attention": {
+    "file": "multi-head-attention.svg",
+    "alt": "Diagram of multi-head attention: queries, keys, and values each pass through separate fully connected layers for each of several heads, each head runs its own attention, the head outputs are concatenated, and a final fully connected layer combines them.",
+    "caption": "Multi-head attention runs several attention operations in parallel. The queries, keys, and values are projected separately for each head by its own linear layer, each head performs scaled dot-product attention in its own subspace, and the head outputs are concatenated and mixed by a final linear layer. Splitting the model width across heads lets different heads capture different relationships at about the cost of one full-width attention.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/multihead-attention.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "multi-query-attention": {
+    "file": "multi-query-attention.png",
+    "alt": "Three attention layouts compared. Multi-head on the left gives every query column its own key and value. Grouped-query in the middle lets each group of query columns share one key and one value. Multi-query on the right has all query columns share a single key and value.",
+    "caption": "Multi-query attention (right) takes key and value sharing to its limit: all query heads read from a single key and value head, shrinking the KV cache to its minimum for fast inference. Compared with multi-head attention (left), this can cost quality, which grouped-query attention (middle) later softened by sharing within groups rather than across all heads.",
+    "credit": "Joshua Ainslie et al. (GQA paper, arXiv:2305.13245)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Overview_of_grouped-query_method.png",
+    "provider": "Wikimedia Commons"
   },
   "multilayer-perceptron": {
     "file": "multilayer-perceptron.svg",
@@ -1229,6 +2119,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Neuron-to-neuron_mesh_routing_model.png",
     "provider": "Wikimedia Commons"
   },
+  "newtons-method": {
+    "file": "newtons-method.png",
+    "alt": "Contour plot of an elongated bowl with two paths from a start point x0 to the minimum x: a red path that takes many short zig-zag steps and a green path that reaches the minimum in a few large curved steps.",
+    "caption": "Both methods start at x0 and aim for the minimum x, but they use different information. Gradient descent (red) sees only the slope and crawls down the stretched valley in many small zig-zag steps. Newton's method (green) also uses the curvature to build a local quadratic model and jumps almost straight to the bottom in a handful of steps.",
+    "credit": "Oleg Alexandrov",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Newton_optimization_vs_grad_descent.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "next-token-prediction": {
+    "file": "next-token-prediction.svg",
+    "alt": "A sequence model unrolled over six time steps. The input sequence reads m, a, c, h, i, n along the bottom, each feeding a hidden layer that passes state to the next step and an output layer above. The target sequence at the top is a, c, h, i, n, e, the input shifted left by one character.",
+    "caption": "Next-token prediction trains a model to predict the following symbol at every position, so the target sequence is the input shifted by one (here the input machin against the target achine). At each step the model outputs a probability distribution over the vocabulary for the next token given everything before it; generation then samples one token at a time. Transformers are trained on the same objective.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-neural-networks/rnn.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "no-free-lunch-theorem": {
+    "file": "no-free-lunch-theorem.png",
+    "alt": "A bar chart titled Maximization Speed of Algorithms A and B. For each of eight objective functions along the horizontal axis, two bars show the number of evaluations each algorithm needs. Algorithm A is faster on some functions and algorithm B on others, with neither dominating across all of them.",
+    "caption": "Across a set of objective functions, algorithm A needs fewer evaluations on some and algorithm B on others, and the advantages cancel when summed over all of them. This is the No Free Lunch theorem in miniature: averaged over every possible problem, no algorithm beats any other, so any real-world edge comes from assumptions matched to the task, not from a universally best method.",
+    "credit": "ThomHImself",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:No_free_lunch_theorems_figure.png",
+    "provider": "Wikimedia Commons"
+  },
   "node-embedding": {
     "file": "node-embedding.png",
     "alt": "Left, a graph with a biased random walk highlighted; right, the same nodes placed in a two-dimensional embedding space where they form two clusters, one red and one blue, with a single bridge node between them.",
@@ -1237,6 +2157,16 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Grover-leskovec-2016-node2vec.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "norm": {
+    "file": "norm.png",
+    "alt": "Nested closed curves in the plane, all passing through the points one unit along each axis: a diamond for p equal to 1, a circle for p equal to 2, rounded squares for p equal to 3 and 6, and a square for p infinity.",
+    "caption": "Each curve is the unit ball of a different norm: the set of vectors of length one. The L1 norm gives a diamond, the familiar Euclidean L2 norm a circle, and the L-infinity norm a square. The shape matters in practice, which is why an L1 penalty drives weights exactly to zero (sparsity) while an L2 penalty shrinks them smoothly.",
+    "credit": "Quartl",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vector-p-Norms_qtl1.svg",
     "provider": "Wikimedia Commons"
   },
   "normalizing-flow": {
@@ -1259,6 +2189,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Object_detector_1stage_vs_2_stage.png",
     "provider": "Wikimedia Commons"
   },
+  "occams-razor": {
+    "file": "occams-razor.png",
+    "alt": "A scatter of red and blue dots scattered around a smooth black curve. A green boundary wiggles back and forth to enclose each individual point of one class, separating the two colors perfectly but following a far more complicated path than the smooth black curve.",
+    "caption": "Two boundaries separate the same data. The smooth black curve captures the simple underlying trend, while the green curve contorts itself to classify every training point correctly, including the noise. Occam's Razor prefers the simpler explanation: the smooth boundary is more likely to generalize, and the complicated one is probably fitting accidents of this particular sample.",
+    "credit": "Chabacano",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Overfitting.svg",
+    "provider": "Wikimedia Commons"
+  },
   "optical-flow": {
     "file": "optical-flow.png",
     "alt": "A red blob shown at five successive positions numbered 1 to 5 across a black background, with a white arrow tracing its displacement from the first position to the last.",
@@ -1279,6 +2219,16 @@
     "source": "https://pythonot.github.io/auto_examples/plot_OT_2D_samples.html",
     "provider": "Python Optimal Transport"
   },
+  "orthogonality": {
+    "file": "orthogonality.jpg",
+    "alt": "Two unit vectors drawn from a point, one labeled e parallel lying along a line and one labeled e perpendicular, with a small square marking the right angle between them.",
+    "caption": "Two vectors are orthogonal when they meet at a right angle, equivalently when their dot product is zero, so moving along one changes nothing along the other. Unit vectors that are mutually orthogonal, like these, form an orthonormal frame, the cleanest coordinate system, and a matrix built from such columns rotates space without distorting any length or angle.",
+    "credit": "Sosiska555",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ortogonal_unit_vectors.jpg",
+    "provider": "Wikimedia Commons"
+  },
   "overfitting": {
     "file": "overfitting.png",
     "alt": "Three panels fitting polynomials of degree 1, 4, and 15 to the same noisy samples of a curved true function. Degree 1 is a straight line that misses the curve, degree 4 tracks the true function closely, and degree 15 wiggles through every point.",
@@ -1289,6 +2239,16 @@
     "source": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
     "provider": "scikit-learn"
   },
+  "paged-attention": {
+    "file": "paged-attention.png",
+    "alt": "A contiguous virtual address space (with text, data, and stack regions) on the left, connected by arrows to a physical address space on the right whose pages are scattered out of order, with a legend marking pages that belong to the process and pages that do not.",
+    "caption": "Paged attention borrows this idea from operating-system virtual memory. A program sees one contiguous address space (left), but the pages are mapped to scattered, non-contiguous frames of physical memory (right) through a table of pointers. Paged attention stores a request's growing key-value cache the same way, in small fixed-size blocks handed out on demand, so memory is not reserved for the worst case and almost none is wasted.",
+    "credit": "Traced by User:Stannered, original by en:User:Dysprosia",
+    "license": "BSD",
+    "license_url": "http://opensource.org/licenses/bsd-license.php",
+    "source": "https://commons.wikimedia.org/wiki/File:Virtual_address_space_and_physical_address_space_relationship.svg",
+    "provider": "Wikimedia Commons"
+  },
   "parallel-transport": {
     "file": "parallel-transport.png",
     "alt": "A sphere on which a vector is carried from point A along the equator to B, then up a meridian to the north pole N, then back down to A, returning rotated by an angle alpha.",
@@ -1297,6 +2257,26 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Parallel_Transport.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "parameter-efficient-fine-tuning": {
+    "file": "parameter-efficient-fine-tuning.jpg",
+    "alt": "A Venn diagram of overlapping colored circles labeled additive, adapters, soft prompts, selective, and reparametrization-based, with parameter-efficient fine-tuning methods placed in each region: BitFit and LN Tuning under selective, Prompt-tuning and Prefix-Tuning under soft prompts, LoRA and KronA under reparametrization-based, and Adapters and Compacter in the overlaps.",
+    "caption": "Parameter-efficient fine-tuning is a family of methods that freeze most of a pretrained model and train only a small set of parameters. They fall into groups: additive methods that insert new modules (adapters or soft prompts such as prefix-tuning), selective methods that tune a chosen sliver of existing weights (such as BitFit), and reparametrization-based methods that add a low-rank update (LoRA). The shared bet is that the change needed to specialize a model is small and low-dimensional.",
+    "credit": "Vladislav Lialin, Vijeta Deshpande, Anna Rumshisky",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2303.15647",
+    "provider": "arXiv"
+  },
+  "part-of-speech-tagging": {
+    "file": "part-of-speech-tagging.png",
+    "alt": "The sentence 'displaCy uses JavaScript, SVG and CSS.' with a grammatical tag printed in color under each word: NN, VBZ, NNP, NNP, CC, NNP. Curved labeled arcs above the words show the dependency relations nsubj, dobj, conj and cc.",
+    "caption": "Part-of-speech tagging labels every word with its grammatical category, here NN for a noun, VBZ for a verb, NNP for a proper noun, and CC for a coordinating conjunction. Because a word like 'uses' could be a noun or a verb, the tag is decided from the whole sentence, which makes it a sequence task. These tags are the scaffold later steps such as parsing build on, as the arcs above suggest.",
+    "credit": "Artichok3",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Displacy.png",
     "provider": "Wikimedia Commons"
   },
   "partial-derivative": {
@@ -1319,6 +2299,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png",
     "provider": "Wikimedia Commons"
   },
+  "pipeline-parallelism": {
+    "file": "pipeline-parallelism.png",
+    "alt": "A diagram of 3D parallelism. Two data-parallel ranks each contain four pipeline stages laid left to right, and each stage is labeled with a contiguous block of network layers (layers 0 to 7, 8 to 15, 16 to 23, 24 to 31). Within each stage the work is further split across model-parallel slices.",
+    "caption": "Pipeline parallelism cuts a deep network between its layers: each stage holds a contiguous block of layers (here layers 0 to 7, then 8 to 15, and so on) and passes activations to the next stage like an assembly line. The figure also shows pipeline parallelism composed with data parallelism (the two ranks) and model parallelism (the slices within a stage), which is how the largest models are actually trained.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/microsoft/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/microsoft/DeepSpeed",
+    "provider": "DeepSpeed (Microsoft)"
+  },
+  "polysemanticity": {
+    "file": "polysemanticity.png",
+    "alt": "Three optimized feature-visualization images for a single neuron, each blending several unrelated things at once: cat faces together with the fronts of cars, and cat legs together with car bodies.",
+    "caption": "A polysemantic neuron responds to several unrelated concepts at once. The optimized images that most excite this one neuron mix cat faces with car fronts and cat legs with car bodies, so the neuron does not stand for any single human concept. This is why neurons are poor units of interpretation: meaning is not cleanly aligned with individual neurons.",
+    "credit": "Olah, Cammarata, Schubert, Goh, Petrov, Carter",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://distill.pub/2020/circuits/zoom-in/",
+    "provider": "Distill"
+  },
   "pooling": {
     "file": "pooling.png",
     "alt": "A 4 by 4 grid of numbers divided into four colored 2 by 2 windows, with an arrow to a 2 by 2 output holding the maximum of each window: 6, 8, 3, 4.",
@@ -1327,6 +2327,36 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Max_pooling.png",
+    "provider": "Wikimedia Commons"
+  },
+  "positional-encoding": {
+    "file": "positional-encoding.svg",
+    "alt": "Heatmap of a sinusoidal positional encoding matrix, with sequence position on the vertical axis and encoding dimension on the horizontal axis. Low dimensions on the left oscillate rapidly down the rows while higher dimensions on the right oscillate ever more slowly, giving each position a distinct multi-frequency code.",
+    "caption": "A sinusoidal positional encoding assigns every position a vector built from sine and cosine functions at many frequencies, here one matrix row per position. The low dimensions on the left change quickly with position while the high dimensions on the right change slowly, so the combination gives the otherwise order-blind transformer both a fine and a coarse sense of where each token sits.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/self-attention-and-positional-encoding.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "positive-definite-matrix": {
+    "file": "positive-definite-matrix.png",
+    "alt": "A 3D surface plot of the function z equal to x squared over 4 plus y squared over 4, an upward-opening elliptic paraboloid that forms a single bowl with its lowest point at the origin.",
+    "caption": "A symmetric matrix is positive definite when its quadratic form is positive for every nonzero vector, which carves out a bowl that curves upward in every direction, like this surface with one lowest point. That all-directions-upward shape is what marks a genuine minimum (and a convex function), as opposed to the saddle of an indefinite matrix, and every covariance matrix has this property.",
+    "credit": "Snorri95",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Elliptic_Paraboloid_Colored.png",
+    "provider": "Wikimedia Commons"
+  },
+  "pre-normalization": {
+    "file": "pre-normalization.png",
+    "alt": "Two transformer decoders side by side. On the left, norm-last, a normalization layer sits after each sublayer on the residual path. On the right, norm-first, the normalization layer is moved inside each block to the input of the sublayer, leaving the residual path from input to output free of any normalization.",
+    "caption": "Pre-normalization (norm-first, right) moves the layer normalization to the input of each sublayer instead of after it (norm-last, left). This leaves the residual highway running from input to output without a normalization step in the way, so gradients flow cleanly through very deep stacks, which is why pre-norm transformers are much more stable to train.",
+    "credit": "Daniel Voigt Godoy (dvgodoy)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transformer_decoder,_with_norm-first_and_norm-last.png",
     "provider": "Wikimedia Commons"
   },
   "precision-and-recall": {
@@ -1348,6 +2378,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:PredictiveCodingX2.svg",
     "provider": "Wikimedia Commons"
+  },
+  "prefill-and-decode": {
+    "file": "prefill-and-decode.png",
+    "alt": "A serving diagram. Requests enter a controller that dispatches to prefill instances (each an LLM model on a parallel GPU runtime) on the left; the resulting key-value cache is transferred across to decoding instances on the right that generate the output tokens.",
+    "caption": "LLM inference splits into two phases with opposite characteristics. Prefill reads the whole prompt in one parallel pass and fills the key-value cache (compute-bound); decode then generates tokens one at a time, streaming the weights and the growing cache each step (memory-bound). The key-value cache passed between them, shown here as an explicit transfer, is the state that links the parallel prefill to the serial decode.",
+    "credit": "Yinmin Zhong, Shengyu Liu, Junda Chen, Jianbo Hu, Yibo Zhu, Xuanzhe Liu, Xin Jin, Hao Zhang",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://arxiv.org/abs/2401.09670",
+    "provider": "arXiv"
+  },
+  "pretraining": {
+    "file": "pretraining.svg",
+    "alt": "A line of text, the time machine by h g wells, shown twice: an input sequence row and a target sequence row, where the target row is the same text shifted one position to the left so each target token is the token that follows the corresponding input token.",
+    "caption": "Pretraining a language model uses a self-supervised objective that needs no human labels: the text supplies its own targets. The target sequence is just the input shifted by one position, so at every step the model predicts the next token and the true next token is the free label. Run over a vast corpus, this next-token prediction is where a base model acquires its knowledge.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-neural-networks/language-model.html",
+    "provider": "Dive into Deep Learning"
   },
   "principal-component-analysis": {
     "file": "principal-component-analysis.png",
@@ -1378,6 +2428,36 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://arxiv.org/abs/2406.06592",
     "provider": "arXiv"
+  },
+  "q-learning": {
+    "file": "q-learning.png",
+    "alt": "Two Q-tables for the Taxi task with states as rows and the six actions (South, North, East, West, Pickup, Dropoff) as columns. The top table, labeled Initialized, is all zeros; the bottom table, labeled after Training, holds learned numeric Q-values that differ across actions.",
+    "caption": "Q-learning learns a Q-table, one expected long-run value for every state-action pair. It starts at all zeros (top) and, after training, each cell holds the learned value of that action in that state (bottom). To act, the agent simply reads off the row for its current state and picks the action with the highest value.",
+    "credit": "LearnDataSci",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Q-Learning_Matrix_Initialized_and_After_Training.png",
+    "provider": "Wikimedia Commons"
+  },
+  "qlora": {
+    "file": "qlora.png",
+    "alt": "Three columns comparing finetuning methods by where memory sits and how gradients flow. Full finetuning has a 32-bit optimizer state and gradients flowing into a 16-bit base model. LoRA freezes a 16-bit base model and trains small 16-bit adapters. QLoRA freezes a 4-bit base model, trains 16-bit adapters, and adds a paging arrow that offloads optimizer state to CPU memory.",
+    "caption": "QLoRA makes fine-tuning a large model fit on one GPU by stacking two ideas. The base model is quantized to 4 bits and frozen (so its weights never update and can stay compressed), small LoRA adapters carry all the learning, and paged optimizers spill optimizer state to CPU memory to absorb spikes. Weights are dequantized to higher precision on the fly for each operation, so the math stays accurate while storage is 4-bit.",
+    "credit": "Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, Luke Zettlemoyer",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2305.14314",
+    "provider": "arXiv"
+  },
+  "quantization": {
+    "file": "quantization.png",
+    "alt": "A smooth grey curve overlaid with a red staircase that snaps to a small set of evenly spaced horizontal levels marked by dashed lines, so the continuous values are rounded to the nearest available level.",
+    "caption": "Quantization maps continuous values onto a small set of discrete levels by rounding each to the nearest one, shown here as the red staircase tracking the smooth grey signal. A model is quantized the same way: its weights are rounded from 16-bit floats to a few integer levels (8-bit or 4-bit), which shrinks memory and speeds inference at the cost of a small rounding error.",
+    "credit": "Rbj",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Quantized.signal.svg",
+    "provider": "Wikimedia Commons"
   },
   "random-forest": {
     "file": "random-forest.png",
@@ -1429,6 +2509,16 @@
     "source": "https://en.wikipedia.org/wiki/Reinforcement_learning",
     "provider": "Wikimedia Commons"
   },
+  "rejection-sampling": {
+    "file": "rejection-sampling.png",
+    "alt": "A target density curve f of X sits below a dashed envelope curve M times g of X. The region under f is labeled the acceptance zone and the gap between f and the envelope is labeled the rejection zone; a vertical draw at point X with a uniform value U decides whether the candidate is accepted or rejected.",
+    "caption": "Rejection sampling proposes candidates and keeps only those that pass a check, discarding the rest: a draw that falls in the acceptance zone (under the target) is kept, one in the rejection zone is thrown away. In language models the same generate-then-filter idea uses a verifier (a unit test, a grader) as the acceptance test, both to enforce a requirement at inference and to keep only verified-correct outputs for training.",
+    "credit": "Mantheflan",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Rejection-sampling.svg",
+    "provider": "Wikimedia Commons"
+  },
   "relu": {
     "file": "relu.png",
     "alt": "Plot over inputs from minus four to four: the rectifier in blue is flat at zero for negative inputs and a straight line equal to the input for positive inputs, with the smooth softplus curve in green approximating it.",
@@ -1459,6 +2549,16 @@
     "source": "https://d2l.ai/chapter_convolutional-modern/resnet.html",
     "provider": "Dive into Deep Learning"
   },
+  "retrieval-augmented-generation": {
+    "file": "retrieval-augmented-generation.png",
+    "alt": "Flow diagram of a RAG pipeline. Reference documents are passed through an LLM embedding step into a vector database. A user query is embedded into a query vector, compared against the database to find relevant documents, and the retrieved context chunks plus the original query form an augmented query, which an LLM generation step turns into the response.",
+    "caption": "Retrieval-augmented generation runs in two stages. Reference documents are embedded into a vector database ahead of time; at query time the user's question is embedded, the nearest passages are retrieved, and those context chunks are concatenated with the question into an augmented prompt that the model answers from. The knowledge lives in the editable corpus, while the model supplies the reasoning and prose.",
+    "credit": "Turtlecrown",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:RAG_diagram.svg",
+    "provider": "Wikimedia Commons"
+  },
   "reward-model": {
     "file": "reward-model.png",
     "alt": "Flow diagram of reinforcement learning from human feedback: human annotators rank sampled responses into ranking data that trains a reward model, which then guides training of the aligned model through PPO, with a supervised model initializing both.",
@@ -1477,6 +2577,26 @@
     "license": "CC0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Torus_closed_geodesic_n1a.png",
+    "provider": "Wikimedia Commons"
+  },
+  "rlaif": {
+    "file": "rlaif.png",
+    "alt": "Two parallel pipelines from one SFT model that samples responses. In the top path, an off-the-shelf large language model rates the response pairs, training a reward model from AI feedback that drives reinforcement learning to an RLAIF policy. In the bottom path, a human rates the pairs, training a reward model from human feedback that drives reinforcement learning to an RLHF policy.",
+    "caption": "Reinforcement learning from AI feedback keeps the RLHF machinery but swaps where the preference labels come from. Instead of a human comparing response pairs (bottom), a capable model is the judge (top), labeling preferences that train the reward model. AI feedback removes the human annotation bottleneck, applying the same criteria cheaply and at scale, and is the mechanism underneath constitutional AI.",
+    "credit": "Harrison Lee, Samrat Phatale, Hassan Mansoor, Thomas Mesnard, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2309.00267",
+    "provider": "arXiv"
+  },
+  "rlhf": {
+    "file": "rlhf.png",
+    "alt": "A flow diagram with four boxes. Prompt data trains a supervised model. Human annotators rank sampled responses to produce ranking data, which trains a reward model. The supervised model initializes both the reward model and an aligned model, and the reward model guides the aligned model through PPO reinforcement learning.",
+    "caption": "Reinforcement learning from human feedback aligns a model in three stages. A supervised model is trained on demonstrations; humans then rank pairs of its responses, and those comparisons train a reward model that predicts a scalar score. Finally the model is optimized by reinforcement learning (PPO) to maximize that reward, with a penalty keeping it close to the supervised starting point so it does not degenerate.",
+    "credit": "PopoDameron",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:RLHF_diagram.svg",
     "provider": "Wikimedia Commons"
   },
   "rmsprop": {
@@ -1499,6 +2619,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:ROC_curves.svg",
     "provider": "Wikimedia Commons"
   },
+  "roofline-model": {
+    "file": "roofline-model.png",
+    "alt": "A roofline plot with attainable performance in GFLOPS on the vertical axis and operational intensity in FLOPS per byte on the horizontal axis. A slanted line rising from the left is labeled bound based on bandwidth, a horizontal line is labeled bound based on peak performance, and the two meet at a ridge point. Three applications are marked below the roof.",
+    "caption": "The roofline model plots attainable performance against arithmetic intensity (operations performed per byte moved). The slanted segment is the memory-bandwidth ceiling and the flat segment is the peak-compute ceiling; where they meet is the ridge point. An operation to the left of the ridge is memory-bound and speeds up only by moving less data, while one to the right is compute-bound, which is how the plot tells you which limit you are fighting.",
+    "credit": "Giu.natale",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Roofline_model_example.png",
+    "provider": "Wikimedia Commons"
+  },
   "rwkv": {
     "file": "rwkv.png",
     "alt": "Architecture diagram of one RWKV block: an input embedding passes up through a Layer Norm into a Time Mix block and then another Layer Norm into a Channel Mix block, with token-shift operations feeding each, and a final Layer Norm and output embedding; the time-mix block maintains a running weighted sum gated by a receptance term, and the channel-mix block plays the role of the feed-forward layer.",
@@ -1517,6 +2647,66 @@
     "license": "CC BY 3.0",
     "license_url": "https://creativecommons.org/licenses/by/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Saddle_point.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "sample-complexity": {
+    "file": "sample-complexity.png",
+    "alt": "A learning curve plotting score against the number of training examples. A red training-score curve starts high and drifts down, while a green cross-validation-score curve starts low and rises, the two converging toward each other as the number of examples grows, with shaded confidence bands around each.",
+    "caption": "A learning curve shows how performance depends on the amount of data. With few examples the training score is high but the cross-validation score is low, a large generalization gap. As more examples are added the two curves converge and the validation score climbs. Sample complexity is the number of examples needed to close that gap and reach a target accuracy.",
+    "credit": "scikit-learn developers",
+    "license": "BSD",
+    "license_url": "http://opensource.org/licenses/bsd-license.php",
+    "source": "https://commons.wikimedia.org/wiki/File:Learning_Curves_(Naive_Bayes).png",
+    "provider": "Wikimedia Commons"
+  },
+  "scaling-laws": {
+    "file": "scaling-laws.png",
+    "alt": "Plot of the optimal ratio of training tokens per model parameter against training compute in FLOP on logarithmic axes. Two estimated optimal-policy curves are shown with uncertainty bands, along with a dashed horizontal line marking the D over N equals 20 rule of thumb and a point for the Chinchilla model.",
+    "caption": "Scaling laws let practitioners choose how to spend a fixed compute budget. The Chinchilla analysis found that parameters and training tokens should grow together, roughly twenty tokens per parameter (the dashed line), rather than making the model as large as possible. This compute-optimal allocation is why newer models are often not the largest but are trained on far more tokens.",
+    "credit": "Epoch AI",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Optimal_ratio_of_training_tokens_to_model_parameters_for_Chinchilla_scaling_law.png",
+    "provider": "Wikimedia Commons"
+  },
+  "self-attention": {
+    "file": "self-attention.jpg",
+    "alt": "Diagram of one self-attention head. Panel B shows each token vector T multiplied by weight matrices W-Q, W-K, W-V to make a query, key, and value. Panel A shows token 1's query compared against the keys of all four tokens, each score scaled, passed through softmax, and used to weight the value vectors into a new representation. Panel C writes the result as softmax of (Q times K-transpose over the square root of d-k) times V.",
+    "caption": "Self-attention turns each token into a query, a key, and a value (panel B). To re-represent a token, its query is compared by dot product against every token's key, the scores are scaled and softmaxed into weights, and the output is the weighted sum of the value vectors (panels A and C). A token whose key aligns with the query contributes strongly, so each position gathers information from the whole sequence.",
+    "credit": "Shuang Zhang, Rui Fan, Yuti Liu, Shuang Chen, Qiao Liu, Wanwen Zeng",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Process_of_a_Single_Attention_Head_in_a_Transformer_Model.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "self-consistency": {
+    "file": "self-consistency.png",
+    "alt": "Two rows. The top, greedy decoding, runs one chain of thought to one answer. The bottom, self-consistency, samples several different reasoning chains for the same question that reach various answers, then takes a majority vote to pick the most consistent final answer.",
+    "caption": "Self-consistency replaces a single greedy chain of thought (top) with many sampled chains (bottom), then returns the answer they agree on most by majority vote. The idea is that a correct answer can be reached by several distinct valid routes while errors scatter, so agreement concentrates on the truth. It buys accuracy with extra inference rather than a bigger model.",
+    "credit": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2203.11171",
+    "provider": "arXiv"
+  },
+  "self-refinement": {
+    "file": "self-refinement.png",
+    "alt": "A loop diagram. An input goes into a central Model. The model produces feedback on its own output (left arc, labeled use the model to get feedback on its output), then refines its previous output given that feedback (right arc, labeled use the model to refine its output), cycling back to the model.",
+    "caption": "Self-refinement turns one attempt into an improvement loop run by the same model: it drafts an answer, critiques its own draft, and rewrites it using that critique, repeating for a few rounds. It works because judging a finished draft is easier than writing it, and gains come purely from spending more inference, with no change to the model's weights.",
+    "credit": "Aman Madaan and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2303.17651",
+    "provider": "arXiv"
+  },
+  "semantic-search": {
+    "file": "semantic-search.jpg",
+    "alt": "A 2D plot with three vectors drawn from the origin: a green query vector q in the middle, a blue document vector d1 above it, and a red document vector d2 below it. The angle alpha is marked between q and d1, and the larger angle theta is marked between q and d2.",
+    "caption": "Semantic search embeds the query and every document as vectors in one space and ranks documents by closeness to the query, usually the cosine of the angle between them. Here document d1 sits at a small angle alpha from the query q, so it is more relevant than d2 at the wider angle theta. Because angle, not shared words, decides the ranking, synonyms and paraphrases still match.",
+    "credit": "Riclas",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vector_space_model.jpg",
     "provider": "Wikimedia Commons"
   },
   "semantic-segmentation": {
@@ -1539,6 +2729,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Semi-Supervised_Learning.gif",
     "provider": "Wikimedia Commons"
   },
+  "sequence-to-sequence": {
+    "file": "sequence-to-sequence.png",
+    "alt": "An encoder-decoder diagram. On the left, an Encoder box of recurrent cells reads inputs x0 and x1 and passes a final hidden state h-f across to the right. On the right, a Decoder box of recurrent cells produces outputs step by step, with two feedback options labeled Teacher Forcing (feeding the true previous token) and Using Prediction (feeding the model's own previous output).",
+    "caption": "A sequence-to-sequence model has two halves: an encoder reads the whole input sequence into a hidden state, and a decoder generates the output one token at a time, feeding each emitted token back in to inform the next. During training the true previous token is fed back (teacher forcing); at inference the model's own previous output is used. This is the encoder-decoder template behind translation and summarization.",
+    "credit": "Daniel Voigt Godoy",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Seq2seq_RNN_encoder-decoder_with_attention_mechanism,_training_and_inferring.png",
+    "provider": "Wikimedia Commons"
+  },
   "sharpness-aware-minimization": {
     "file": "sharpness-aware-minimization.png",
     "alt": "A three-dimensional loss surface for a ResNet trained with sharpness-aware minimization, showing a broad, gently sloping minimum at the center.",
@@ -1548,6 +2748,26 @@
     "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
     "source": "https://github.com/google-research/sam",
     "provider": "google-research/sam"
+  },
+  "simulated-annealing": {
+    "file": "simulated-annealing.gif",
+    "alt": "Animation of a marker searching a one-dimensional rugged landscape of many peaks and valleys, with a temperature value shown at the top that falls over time as the marker settles toward the lowest valley.",
+    "caption": "Simulated annealing treats the objective as a landscape to descend, but it is willing to move uphill: a worse move is accepted with a probability set by the temperature shown at the top. While the temperature is high the search roams freely and can cross barriers out of shallow valleys; as it cools the search grows pickier and settles into a deep minimum, shifting from exploration to exploitation.",
+    "credit": "Kingpin13",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Hill_Climbing_with_Simulated_Annealing.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "singular-value-decomposition": {
+    "file": "singular-value-decomposition.png",
+    "alt": "A commuting diagram. A unit disc with two perpendicular arrows is sent by M directly to a tilted ellipse. The same result is reached the long way: V star rotates the disc, Sigma stretches it along the axes into an ellipse with semi-axes sigma 1 and sigma 2, and U rotates that ellipse into place.",
+    "caption": "The singular value decomposition factors any matrix as M equal to U times Sigma times V star, splitting its action into a rotation, a pure stretch, and another rotation. The unit disc becomes an ellipse whose semi-axis lengths are the singular values sigma 1 and sigma 2, the amounts the matrix stretches along its principal axes. Keeping only the largest of these gives the best low-rank approximation, the basis of PCA and model compression.",
+    "credit": "Georg-Johann",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Singular-Value-Decomposition.svg",
+    "provider": "Wikimedia Commons"
   },
   "softmax": {
     "file": "softmax.png",
@@ -1579,6 +2799,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Spectral_clusterization_example.png",
     "provider": "Wikimedia Commons"
   },
+  "speculative-decoding": {
+    "file": "speculative-decoding.png",
+    "alt": "Several rows of a sentence being generated. In each row, green tokens are draft proposals the large model accepted, red struck-through tokens are draft proposals it rejected, and blue tokens are the large model's correction. Each row commits a run of several tokens at once.",
+    "caption": "Speculative decoding lets a small draft model propose several tokens that the large model then verifies in one parallel pass. Green tokens are accepted draft guesses, a red token is a rejected one, and the blue token is the large model's correction. Because one expensive pass ratifies a whole run of tokens, many tokens are produced per large-model step, and a careful acceptance rule keeps the output identical to the large model's own.",
+    "credit": "Yaniv Leviathan, Matan Kalman, Yossi Matias",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2211.17192",
+    "provider": "arXiv"
+  },
   "spiking-neural-network": {
     "file": "spiking-neural-network.jpg",
     "alt": "Schematic of a leaky integrate-and-fire neuron. Pulse inputs charge a capacitor representing the membrane; the membrane potential V rises with each input, and when it crosses a dashed threshold the neuron emits a spike and resets to baseline.",
@@ -1608,6 +2838,36 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/sgd.html",
     "provider": "Dive into Deep Learning"
+  },
+  "structured-decoding": {
+    "file": "structured-decoding.png",
+    "alt": "A finite state machine for a floating-point number regular expression, with states 0 to 3 and digit and decimal-point transitions. Below it a vocabulary row labeled Logits shows most tokens masked out in black while only the tokens that keep the output valid (a decimal and a digit) are highlighted; sampling one of them moves the machine to the next state, updating which tokens are allowed.",
+    "caption": "Structured decoding guarantees the output matches a formal grammar by masking, not by hope. The grammar is compiled to a state machine; at each step only the tokens that keep the output valid are left unmasked in the logits (the highlighted cells), and every other token is set to zero probability. Sampling an allowed token advances the machine and recomputes the mask, so the full output is certain to parse.",
+    "credit": "Brandon T. Willard, Remi Louf",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2307.09702",
+    "provider": "arXiv"
+  },
+  "superposition": {
+    "file": "superposition.png",
+    "alt": "On the left, three feature visualizations of car parts feeding a single car concept in the middle; arrows then fan out to the right into several different polysemantic neurons (each also encoding things like a tiger, a dog, and a lobster), with a note that the car feature is spread across many polysemantic neurons.",
+    "caption": "Superposition is a network storing more features than it has neurons by spreading each feature across many neurons as an overlapping direction rather than giving it a dedicated unit. Here a single car feature has no neuron of its own: it is distributed across several polysemantic neurons that also encode unrelated concepts, which is what makes individual neurons hard to read.",
+    "credit": "Olah, Cammarata, Schubert, Goh, Petrov, Carter",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://distill.pub/2020/circuits/zoom-in/",
+    "provider": "Distill"
+  },
+  "supervised-fine-tuning": {
+    "file": "supervised-fine-tuning.png",
+    "alt": "A three-stage vertical workflow. Stage 1, pretraining, turns web text into a pretrained base model via next-token prediction. Stage 2, supervised fine-tuning, trains the base model on prompt-and-demonstration pairs to produce an instruction-tuned model. Stage 3, reinforcement learning from human feedback, uses a reward model and PPO to produce an aligned assistant model.",
+    "caption": "Supervised fine-tuning is the second stage of the standard pipeline, sitting between pretraining and any reinforcement learning. It trains the pretrained base model on curated pairs of an instruction and an ideal response, using the same next-token loss as pretraining, so the model learns by imitation to follow instructions and answer directly. The later reward-model stage then refines behavior from comparisons rather than single gold answers.",
+    "credit": "Kjerish",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Three-stage_large_language_model_training_workflow.svg",
+    "provider": "Wikimedia Commons"
   },
   "supervised-learning": {
     "file": "supervised-learning.png",
@@ -1649,6 +2909,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Minimax.svg",
     "provider": "Wikimedia Commons"
   },
+  "synthetic-data": {
+    "file": "synthetic-data.png",
+    "alt": "A loop diagram of the Self-Instruct pipeline. A task pool seeds step one, instruction generation by a language model; step two identifies whether a task is classification; step three generates input-output instances; step four filters low-quality or too-similar generations, and the survivors are added back into the task pool to be reused.",
+    "caption": "Synthetic data is training data a model generates rather than data collected from people. This Self-Instruct loop shows the pattern: from a small seed pool, a language model writes new instructions and input-output instances, low-quality or near-duplicate items are filtered out, and the survivors are added back to the pool. The filtering step is decisive, since training a model on its own unfiltered output can amplify its errors.",
+    "credit": "Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Alisa Liu, Noah A. Smith, Daniel Khashabi, Hannaneh Hajishirzi",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2212.10560",
+    "provider": "arXiv"
+  },
   "tangent-space": {
     "file": "tangent-space.png",
     "alt": "A sphere labeled M with a flat plane labeled T_p M resting against it at a point p, holding two vectors u and v drawn in the plane.",
@@ -1679,6 +2949,66 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sintay_SVG.svg",
     "provider": "Wikimedia Commons"
   },
+  "technological-singularity": {
+    "file": "technological-singularity.jpg",
+    "alt": "A logarithmic plot of computing power, calculations per second per 1000 dollars, from 1900 projected to 2100, rising steeply past horizontal reference lines marked one insect brain, one mouse brain, one human brain, and all human brains.",
+    "caption": "The singularity thesis rests on exponential growth in computing: on this log plot the calculations a fixed budget buys climb steadily past the capacity of an insect brain, a mouse brain, and eventually one human brain and all human brains combined. Once machine computation crosses and then races beyond human capacity, the argument goes, AI that improves AI could accelerate change beyond human ability to follow or control.",
+    "credit": "Courtesy of Ray Kurzweil and Kurzweil Technologies, Inc.",
+    "license": "CC BY 1.0",
+    "license_url": "https://creativecommons.org/licenses/by/1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:PPTExponentialGrowthof_Computing.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "teleology": {
+    "file": "teleology.png",
+    "alt": "A table at the center with four labeled causes around it: material cause (wood), formal cause (design), efficient cause (carpentry), and final cause (dining).",
+    "caption": "Aristotle explained a thing by four causes, shown here for a table: its matter (wood), its form (the design), the agent that made it (carpentry), and its end or purpose (dining). Teleology is explanation by that last one, the final cause, the goal for the sake of which something exists or acts, as opposed to only the prior causes that pushed it from behind.",
+    "credit": "Ian Alexander",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Aristotle%27s_Four_Causes_of_a_Table.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "temporal-difference-learning": {
+    "file": "temporal-difference-learning.png",
+    "alt": "Two columns of firing-rate traces over time, aligned to a conditioned stimulus (CS) and a reward (R). Before learning, the response spikes at the reward. After learning, the spike moves to the CS. When an expected reward is removed, the trace dips below baseline at the time the reward was due.",
+    "caption": "The temporal-difference error is the gap between predicted and actual value, and dopamine neurons track it. Before learning the signal fires at the reward (R); after learning it shifts to the earliest predictor, the conditioned stimulus (CS); and when an expected reward is withheld it dips below baseline. This shifting prediction error is exactly the learning signal TD methods compute.",
+    "credit": "DeenMisic",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Reward_Prediction_Error.png",
+    "provider": "Wikimedia Commons"
+  },
+  "tensor": {
+    "file": "tensor.png",
+    "alt": "Four labeled objects in a row: a single number (Scalar, Tensor Rank 0), a column of numbers (Vector, Rank 1), a grid of numbers (Matrix, Rank 2), and a stack of grids forming a cube of numbers (Rank 3).",
+    "caption": "A tensor generalizes a number, a vector, and a matrix to any number of axes. The rank is how many indices you need to reach a single element: a scalar is rank 0, a vector rank 1, a matrix rank 2, and a cube of numbers rank 3, which is why a batch of color images naturally becomes a rank-4 tensor.",
+    "credit": "MikeRun",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tensor-rank_EN.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "test-time-compute": {
+    "file": "test-time-compute.png",
+    "alt": "A line chart with generation budget on a logarithmic x-axis and math test accuracy in percent on the y-axis. Several selection methods (majority vote, best-of-N weighted, and reward-model-based search) all rise steeply as the budget grows from a few to hundreds of samples, then flatten.",
+    "caption": "Test-time compute spends more computation per query to get better answers. As the generation budget grows from a handful of samples to hundreds (x-axis, log scale), accuracy climbs and then flattens, a smooth scaling curve that turns inference into a dial: spend more thinking for harder questions. The gain comes from sampling and selecting, not from a larger model.",
+    "credit": "Charlie Snell, Jaehoon Lee, Kelvin Xu, Aviral Kumar",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2408.03314",
+    "provider": "arXiv"
+  },
+  "text-to-speech": {
+    "file": "text-to-speech.png",
+    "alt": "A block-diagram pipeline reading left to right: Text enters a Text Analysis block, which produces an utterance composed of words, then a Linguistic Analysis block containing Phasing, Intonation, and Duration, which produces an utterance composed of phonemes, then a Wave Form Generation block, which outputs Speech.",
+    "caption": "A text-to-speech system converts writing into an audio waveform in stages. Text analysis works out the words, linguistic analysis adds the prosody (phrasing, intonation, and duration) that makes speech sound natural rather than robotic, and waveform generation synthesizes the final audio. The prosody stage is what carries rhythm and stress, so the same sentence can be spoken as a statement or a question.",
+    "credit": "Andy0101",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:TTS_System.svg",
+    "provider": "Wikimedia Commons"
+  },
   "the-bitter-lesson": {
     "file": "the-bitter-lesson.png",
     "alt": "Scatter plot with publication date on the horizontal axis and training computation in petaFLOP on a logarithmic vertical axis, with points for many AI systems rising by roughly twenty orders of magnitude from 1950 to the 2020s.",
@@ -1688,6 +3018,46 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
     "source": "https://ourworldindata.org/grapher/artificial-intelligence-training-computation",
     "provider": "Our World in Data"
+  },
+  "token-embedding": {
+    "file": "token-embedding.png",
+    "alt": "A two-dimensional plot with four labeled points. France points to Paris and Germany points to Berlin, and the two arrows are nearly parallel and of similar length.",
+    "caption": "A token embedding maps each token to a learned vector, placing tokens in a continuous space where meaning becomes geometry. Here the arrow from France to Paris runs nearly parallel to the one from Germany to Berlin, so a relationship like capital-of shows up as a consistent direction. Turning discrete symbols into such vectors is what gives the transformer something continuous to compute over.",
+    "credit": "Fschwarzentruber",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Word_embedding_illustration.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "top-k": {
+    "file": "top-k.png",
+    "alt": "A bar chart of next-token probabilities that decline only gradually, with a red cumulative-probability curve. A top-k cutoff at 6 keeps the six leftmost bars and shades off the rest, with the discarded bars annotated as many probable tokens dropped, causing a lack of word diversity.",
+    "caption": "Top-k keeps a fixed number of the most probable tokens, here the top 6, and discards the rest before sampling. Because the count is fixed regardless of the distribution's shape, it misbehaves when the model is genuinely uncertain: many roughly-equal, plausible tokens past the cutoff are thrown away, which can starve the output of variety.",
+    "credit": "Minh Nhat Nguyen and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2407.01082",
+    "provider": "arXiv"
+  },
+  "top-p": {
+    "file": "top-p.png",
+    "alt": "A bar chart of next-token probabilities, highest on the left and falling to a long flat tail, with a red cumulative-probability curve. A top-p cutoff at 0.9 shades off the right portion, but a long stretch of low-probability tokens is annotated as still leading to incoherence.",
+    "caption": "Top-p, or nucleus sampling, keeps the smallest set of tokens whose probabilities add up to p (here 0.9) and samples from that nucleus, so the candidate pool grows when the model is uncertain and shrinks when it is confident. Its weakness is visible here: when one token dominates, a fixed top-p can still admit a long tail of low-probability tokens.",
+    "credit": "Minh Nhat Nguyen and co-authors",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2407.01082",
+    "provider": "arXiv"
+  },
+  "topic-modeling": {
+    "file": "topic-modeling.png",
+    "alt": "The plate-notation graphical model of Latent Dirichlet Allocation: nodes alpha, theta, z, w and beta connected by arrows, with z and w enclosed in an inner plate labeled N (words) and theta and z enclosed in an outer plate labeled M (documents). Only the word node w is shaded, marking it as observed.",
+    "caption": "Latent Dirichlet Allocation models how documents are generated. Each document has a topic mixture (theta), each word's topic (z) is drawn from that mixture, and the observed word (w, the shaded node) is drawn from that topic's word distribution (beta). The inner plate repeats over the words in a document and the outer plate over documents, and fitting the model infers the hidden topics from the words alone.",
+    "credit": "Bkkbrad",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Latent_Dirichlet_allocation.svg",
+    "provider": "Wikimedia Commons"
   },
   "topological-data-analysis": {
     "file": "topological-data-analysis.png",
@@ -1709,6 +3079,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mug_and_Torus_morph.gif",
     "provider": "Wikimedia Commons"
   },
+  "tpu": {
+    "file": "tpu.png",
+    "alt": "A worked example of a 2 by 2 matrix multiply on a systolic array shown across cycles 0 to 6. The two input matrices are skewed in time and streamed into a grid of cells from the top and the left; each cell multiplies and accumulates, so the partial sums (for example B times 3 then plus A times 2) build up in place until each output cell holds its final dot product.",
+    "caption": "A TPU is built around a systolic array, the grid of multiply-accumulate cells shown here. The two matrices are skewed and streamed in from the top and the left, and each cell multiplies its incoming pair and adds it to a running total before passing the operands on to its neighbor. Because each value is reused across the grid instead of being re-fetched from memory, the array sustains a very high rate of matrix arithmetic for little memory traffic.",
+    "credit": "EMJzero",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Output_Stationary_Systolic_Array_Example.png",
+    "provider": "Wikimedia Commons"
+  },
+  "transfer-learning": {
+    "file": "transfer-learning.png",
+    "alt": "A decision tree that classifies transfer learning. It first asks whether the source and target tasks are identical, then whether the domains and the available labels match, branching to leaves labeled traditional machine learning, transductive transfer learning, inductive transfer learning, and unsupervised transfer learning, which further split into domain adaptation, multitask learning, and self-taught learning.",
+    "caption": "Transfer learning reuses knowledge from one problem to help another, and its varieties are organized by what the source and target share. When the tasks differ but labels exist for the target, the setting is inductive transfer learning (including multitask learning); when only the domain differs, it is transductive (domain adaptation); when no labels are available, it is unsupervised transfer learning. The tree maps how each case is named.",
+    "credit": "Softscore",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Transfer_learning_taxonomy_Pan_Yang_2010.png",
+    "provider": "Wikimedia Commons"
+  },
   "transformer": {
     "file": "transformer.png",
     "alt": "Schematic of the full Transformer architecture showing the encoder and decoder stacks with attention and feedforward blocks",
@@ -1718,6 +3108,16 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
     "provider": "Wikimedia Commons"
+  },
+  "tree-of-thoughts": {
+    "file": "tree-of-thoughts.png",
+    "alt": "Four reasoning topologies. Input-Output goes straight from input to output. Chain of Thought is a single line of boxes. Self-Consistency with CoT runs several parallel chains into a majority vote. Tree of Thoughts is a branching tree where some branches are kept and explored (green) and others are pruned (red).",
+    "caption": "Tree of thoughts (right) generalizes a single chain of thought into a search over a branching tree: at each step several candidate next thoughts are proposed, scored, and either expanded (green) or pruned (red), and a dead end can be abandoned to backtrack. This explicit exploration, contrasted here with the linear chain and the parallel vote of self-consistency, helps most on problems that need planning or trying several approaches.",
+    "credit": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://arxiv.org/abs/2305.10601",
+    "provider": "arXiv"
   },
   "turing-test": {
     "file": "turing-test.png",
@@ -1749,6 +3149,16 @@
     "source": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
     "provider": "scikit-learn"
   },
+  "value-function": {
+    "file": "value-function.png",
+    "alt": "Ten small 4-by-4 grids of the FrozenLake task, labeled Step 1 through Step 10. Each cell is shaded by its estimated value (lighter is higher) and carries a red arrow for the greedy action. Cells are marked S (start), F (frozen), H (hole), and G (goal). Over successive steps the shading spreads outward from the goal and the arrows line up into a path.",
+    "caption": "A value function assigns every state a number: the expected long-run reward from there. Here value iteration fills in those values over the FrozenLake grid (lighter cells are worth more), and the value spreads outward from the goal G across the steps. Acting greedily, always stepping toward the higher-valued neighbor (red arrows), turns the value function into a policy.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_reinforcement-learning/value-iter.html",
+    "provider": "Dive into Deep Learning"
+  },
   "vanishing-gradient": {
     "file": "vanishing-gradient.png",
     "alt": "Plot from minus ten to ten of the sigmoid function as a solid blue S-curve rising from zero to one, and its derivative as a red dashed curve that peaks at about 0.25 at the center and falls to near zero on both sides.",
@@ -1777,6 +3187,56 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://en.wikipedia.org/wiki/Variational_autoencoder",
+    "provider": "Wikimedia Commons"
+  },
+  "variational-inference": {
+    "file": "variational-inference.jpg",
+    "alt": "Three plots labeled Step 1, Step 2, and Step K, with curved arrows cycling between them. In each plot a solid blue curve is the true posterior over one variable and a dashed curve is the approximating factor being fitted to it, with the update formula for that factor written below.",
+    "caption": "Variational inference replaces intractable inference with optimization: it picks a simple, factorized family and fits it to the true posterior. Each plot shows the true posterior over one variable (solid blue) and the approximating factor (dashed) being tuned to match it, updated one coordinate at a time around the cycle. The fit tightens as the bound on the evidence is maximized.",
+    "credit": "Stat math",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CAVI_algorithm_explain.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "vc-dimension": {
+    "file": "vc-dimension.jpg",
+    "alt": "Four panels showing colored squares in a plane split by straight lines. The top three panels each show three squares that a single line separates into red and blue groups under a different labeling. The bottom panel shows a four-point arrangement that a single straight line cannot separate into the two colors.",
+    "caption": "The VC dimension of a classifier is the largest number of points it can label in every possible way. A straight line in the plane can separate any three points under all of their labelings (top three panels), but there exist four-point arrangements no single line can split (bottom panel). So the VC dimension of a line is three, a count of capacity rather than of parameters.",
+    "credit": "Naroz",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Vc_linear.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "vector": {
+    "file": "vector.png",
+    "alt": "A 3D Cartesian coordinate system with axes x, y, and z. A point in space is located by dropping to its x, y, and z coordinates, and the unit vectors i, j, and k mark the three coordinate directions at that point.",
+    "caption": "A vector is an ordered list of numbers that names a point, or an arrow from the origin to it. Its coordinates are the amounts along each independent direction (here the unit vectors i, j, and k), so the same rules extend from this 3D picture to the thousand-dimensional vectors that encode data in machine learning.",
+    "credit": "Math buff",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cartesian_xyz_ijk_coordinates.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "vector-database": {
+    "file": "vector-database.png",
+    "alt": "A plane divided into ten colored polygonal cells, each containing one black seed point. Every cell is the region of the plane closer to its own seed than to any other seed, and cell borders fall exactly midway between neighboring seeds.",
+    "caption": "A vector database answers one question fast: which stored vectors are nearest a query. One way to make that fast is to carve the space into regions, one per stored point, so that every location belongs to its closest point (a Voronoi partition). A query then only has to probe the cells near it rather than scan everything, which is the partition-and-probe idea behind index structures for similarity search.",
+    "credit": "Taejo",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Voronoi_diagram_(10_sites).svg",
+    "provider": "Wikimedia Commons"
+  },
+  "vector-space": {
+    "file": "vector-space.png",
+    "alt": "Two solid red arrows, v1 and v2, joined tip to tail, with a dashed red arrow v drawn from the start of v1 to the tip of v2 as their sum.",
+    "caption": "A vector space is any set whose elements can be added and scaled while staying inside the set. Addition is the tip-to-tail rule shown here, where v1 and v2 combine into v; together with scaling a vector by a number, these two operations, obeying a short list of axioms, are the entire defining structure that all of linear algebra is built on.",
+    "credit": "uranther",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vector-triangle-law.svg",
     "provider": "Wikimedia Commons"
   },
   "vision-language-model": {
@@ -1819,6 +3279,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:GNN_representational_limits.png",
     "provider": "Wikimedia Commons"
   },
+  "word-embedding": {
+    "file": "word-embedding.png",
+    "alt": "A two-dimensional plot with four labeled points: France with an arrow pointing to Paris, and Germany with a parallel arrow pointing to Berlin, the two arrows nearly equal in length and direction.",
+    "caption": "A word embedding places each word at a point in a continuous space, learned so that relationships become geometry. Here the arrow from a country to its capital is almost the same for France to Paris and Germany to Berlin, so the country-to-capital relation is a single shared direction. This is why simple vector arithmetic on embeddings can answer analogies.",
+    "credit": "Fschwarzentruber",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Word_embedding_illustration.svg",
+    "provider": "Wikimedia Commons"
+  },
+  "word2vec": {
+    "file": "word2vec.png",
+    "alt": "Two small network diagrams side by side. On the left, CBOW, four context word slots w(t-2), w(t-1), w(t+1), w(t+2) feed arrows into a central target word w(t). On the right, Skipgram, a central word w(t) sends arrows out to the same four context slots. Below each is its objective function.",
+    "caption": "word2vec learns word vectors from a prediction task in one of two directions. CBOW (left) predicts a target word from its surrounding context, while Skip-gram (right) predicts the surrounding context from the target word. The network is never the goal: the weights it learns become the word embeddings, so the proxy task forces useful structure into the vectors.",
+    "credit": "Aelu013",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CBOW_eta_Skipgram.png",
+    "provider": "Wikimedia Commons"
+  },
   "working-memory": {
     "file": "working-memory.png",
     "alt": "Diagram of the Baddeley and Hitch working memory model. A Central Executive at the top connects with two-way arrows to three subsystems: the Phonological Loop, the Visuo-spatial Sketchpad, and the Episodic Buffer.",
@@ -1838,5 +3318,15 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
     "source": "https://worldmodels.github.io/",
     "provider": "World Models (worldmodels.github.io)"
+  },
+  "zero-shot-learning": {
+    "file": "zero-shot-learning.svg",
+    "alt": "Three prompting setups feeding a Transformer decoder marked no parameter update. The zero-shot panel gives only a task description (translate English to French) and the prompt, with no worked examples, and still produces a translation, in contrast to the one-shot and few-shot panels that add examples.",
+    "caption": "Zero-shot learning asks the model to perform a task from an instruction alone (the zero-shot panel), with no worked examples in the prompt. It relies entirely on knowledge absorbed during pretraining and instruction tuning. The one-shot and few-shot panels show the contrast, where one or several examples are added to the same prompt.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html",
+    "provider": "Dive into Deep Learning"
   }
 }
