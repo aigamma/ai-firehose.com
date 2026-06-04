@@ -2804,7 +2804,7 @@
         "edge of stability",
         "progressive sharpening"
       ],
-      "def_snippet": "A regime observed in full-batch gradient descent where the sharpness of the loss surface rises until it sits just above the threshold for stability, after which the loss falls non-monotonically while training keeps making progress, defying classical optimization theory.",
+      "def_snippet": "A regime in which full-batch gradient descent drives the loss surface's sharpness up to just above the classical threshold for stability and then hovers there, with the loss falling non-monotonically while training keeps progressing. It is direct evidence that the textbook smooth-descent analysis does not describe deep learning at the learning rates people actually use.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -2934,7 +2934,7 @@
         "emergent capabilities",
         "emergence in large language models"
       ],
-      "def_snippet": "A capability that is absent or near chance in smaller models and appears, sometimes abruptly, only once a model passes a threshold of scale, so its presence is not predictable from smaller models alone.",
+      "def_snippet": "A capability absent in smaller models that appears, sometimes abruptly, only past a threshold of scale, so it cannot be predicted by extrapolating from smaller models. A sharp critique holds that much of the apparent abruptness is an artifact of all-or-nothing metrics: a smoothly improving model can look like a sudden jump when scored by exact match on a multi-step task.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -5628,7 +5628,7 @@
         "plasticity loss",
         "primacy bias"
       ],
-      "def_snippet": "The gradual erosion of a neural network's ability to learn new things during continued training, where a network that learns well at first becomes progressively unable to fit new data, even though its capacity is unchanged.",
+      "def_snippet": "The gradual erosion of a network's ability to learn new things under continued training: a network that learns well at first becomes progressively unable to fit new data, even with its capacity unchanged. It is the flip side of catastrophic forgetting (losing old knowledge versus losing the ability to acquire new), and it surfaces most sharply in reinforcement learning's non-stationary targets.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -6776,7 +6776,7 @@
       "aliases": [
         "neural scaling law"
       ],
-      "def_snippet": "Empirical power-law relationships showing that a model's loss falls predictably as model size, dataset size, and training compute increase, letting researchers forecast performance and allocate resources before training.",
+      "def_snippet": "Empirical power laws showing that test loss falls predictably as model size, dataset size, and compute increase, so you can fit the curve on small models and forecast a much larger one before building it. The decisive refinement, Chinchilla, showed early large models were badly undertrained: for a fixed compute budget, parameters and training tokens should grow in roughly equal proportion.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -8231,7 +8231,7 @@
         "mode collapse of representations",
         "neural collapse"
       ],
-      "def_snippet": "A failure mode in which a model's learned representations lose diversity and collapse toward a single point or a low-dimensional subspace, so different inputs map to nearly the same embedding and the representation stops being useful.",
+      "def_snippet": "A failure where learned representations lose diversity and collapse toward a point or a thin subspace, so different inputs map to nearly the same embedding and the representation stops carrying information. It is the built-in temptation of self-supervised learning, whose objectives must add an active repulsive force precisely to avoid the trivial solution of mapping everything to one vector.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
@@ -9133,7 +9133,7 @@
         "F-Principle",
         "spectral bias of neural networks"
       ],
-      "def_snippet": "The empirical tendency of neural networks trained by gradient descent to learn low-frequency, smooth components of a target function first and high-frequency detail much later, a learning-order bias that helps explain why overparameterized networks generalize.",
+      "def_snippet": "The tendency of networks trained by gradient descent to learn the smooth, low-frequency parts of a target first and the high-frequency detail much later. This learning-order bias is a precise, measurable form of the implicit regularization that makes overparameterized networks generalize, and it has a clean explanation in the eigenvalues of the neural tangent kernel.",
       "durable": true,
       "category": "Deep Learning Theory"
     },
