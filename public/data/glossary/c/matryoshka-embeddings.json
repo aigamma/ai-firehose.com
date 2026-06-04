@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/matryoshka-embeddings.jpg",
+    "alt": "A diagram of Matryoshka Representation Learning. A single embedding vector z in R^d is shown as nested colored prefixes, and a separate loss is computed on each prefix (the first d/16, d/8, d/4, d/2, and the full d dimensions), then summed into one combined loss. On the left, the resulting vector feeds adaptive retrieval (shortlisting then re-ranking) and adaptive classification.",
+    "caption": "Matryoshka representation learning trains one embedding so that nested prefixes of it are each usable on their own. The training objective applies a loss not just to the full vector but simultaneously to a series of shorter prefixes (here d/16, d/8, d/4, d/2, and d), which forces the most important information into the earliest coordinates. The vector can then be truncated to any trained length, enabling coarse-to-fine retrieval: a short prefix shortlists candidates cheaply, then the full vector re-ranks them.",
+    "credit": "Aditya Kusupati and the Matryoshka Representation Learning authors",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://github.com/RAIVNLab/MRL",
+    "provider": "GitHub: RAIVNLab/MRL"
+  }
 }

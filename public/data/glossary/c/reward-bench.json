@@ -55,5 +55,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/reward-bench.png",
+    "alt": "A schematic of the RewardBench scoring method. One prompt is paired with a chosen completion and a rejected completion. Each completion is passed through the reward model, producing a scalar score (here 0.2 for chosen and 0.4 for rejected). The pair counts as a win for the reward model when it assigns the chosen completion the higher score.",
+    "caption": "A reward model is the scorer that steers RLHF, and a flawed one silently corrupts everything trained against it. RewardBench tests a reward model on curated chosen-versus-rejected pairs: it runs each response through the model and checks whether the chosen response gets the higher score, and accuracy is the fraction of pairs it ranks correctly across categories like chat, safety, and reasoning.",
+    "credit": "Nathan Lambert, Valentina Pyatkin, Jacob Morrison, LJ Miranda, Bill Yuchen Lin, Khyathi Chandu, Nouha Dziri, Sachin Kumar, Tom Zick, Yejin Choi, Noah A. Smith, Hannaneh Hajishirzi",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2403.13787",
+    "provider": "arXiv: 2403.13787"
+  }
 }

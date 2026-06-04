@@ -68,12 +68,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/calibration.png",
-    "alt": "A reliability diagram plotting the observed fraction of positives against the mean predicted probability for several classifiers, with a dotted diagonal labeled perfectly calibrated, and a histogram below showing how the predictions are distributed.",
-    "caption": "A reliability diagram bins predictions by their stated probability and plots, for each bin, how often those predictions were actually correct. A perfectly calibrated model lies on the diagonal; curves below it (here support vector classification) are overconfident, and curves above it are underconfident.",
-    "credit": "Jan Hendrik Metzen",
-    "license": "BSD",
-    "license_url": "http://opensource.org/licenses/bsd-license.php",
-    "source": "https://commons.wikimedia.org/wiki/File:Calibration_plot.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A reliability diagram plotting mean predicted probability on the x-axis against the observed fraction of positives on the y-axis. A dotted diagonal marks perfect calibration, and four classifiers are shown: logistic regression hugs the diagonal, uncalibrated naive Bayes bows away from it, and isotonic and sigmoid recalibration pull naive Bayes back toward the line. A histogram below shows how predictions are distributed across probability bins.",
+    "caption": "A model is calibrated when its stated confidence matches its observed accuracy, so among cases it calls 80 percent likely, about 80 percent are positive. The reliability diagram plots predicted probability against the actual fraction of positives; a perfectly calibrated model lies on the dotted diagonal, and a curve that bows above or below it reveals over or under confidence that recalibration can correct.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration_curve.html",
+    "provider": "scikit-learn"
   }
 }

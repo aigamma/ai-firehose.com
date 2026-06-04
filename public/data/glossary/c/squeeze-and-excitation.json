@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/squeeze-and-excitation.jpg",
+    "alt": "Diagram of a squeeze-and-excitation building block. An input is transformed into a stack of feature maps U of shape height by width by C channels. A squeeze operation (global pooling) collapses each channel to a single value, giving a 1 by 1 by C descriptor. An excitation operation maps that descriptor to a 1 by 1 by C vector of per-channel weights, shown as colored bars. A scale operation multiplies each channel of the feature maps by its weight to produce the recalibrated output.",
+    "caption": "A squeeze-and-excitation block recalibrates feature channels by learned importance. The squeeze step uses global average pooling to summarize each channel into one number, the excitation step passes that summary through a tiny bottleneck network with a sigmoid to produce a weight per channel, and the scale step multiplies each channel by its weight. This is channel attention: the network learns which channels to emphasize for very little added cost.",
+    "credit": "Jie Hu, Li Shen, Gang Sun",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/hujie-frank/SENet",
+    "provider": "GitHub: hujie-frank/SENet"
+  }
 }

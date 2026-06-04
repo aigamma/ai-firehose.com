@@ -56,5 +56,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/data-leakage.png",
+    "alt": "A diagram of the data-splitting workflow. All data is first divided into a training portion and a held-out test portion. The training portion is then split into five folds, and across five rotations each fold takes a turn as the validation set while the others train the model. The test portion is set aside and used only once, at the bottom, for the final evaluation.",
+    "caption": "Data leakage is when information from the test set, or from the future, slips into training so a model scores better in evaluation than it will in reality. The defense is a strict separation like this: a test set is locked away and touched only once for final evaluation, while all model fitting and tuning happen on the training folds, so no test information can influence the model.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "provider": "scikit-learn"
+  }
 }

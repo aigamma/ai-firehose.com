@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/tensor-parallelism.png",
+    "alt": "A diagram of an MLP block split column-wise across two devices, D1 shaded red and D2 shaded green. The input X is fed to both devices. On each device a matrix multiply by a column slice of the first weight (A1 on D1, A2 on D2) is followed by an independent GeLU and a multiply by a slice of the second weight (B1, B2). The two partial outputs are combined into the final output Y.",
+    "caption": "Tensor parallelism splits the work inside one layer across devices. Here the first weight matrix is partitioned by columns, so each device computes a slice of the MLP on the full input independently through its own GeLU, and the partial results are combined at the end. A layer too large for a single accelerator is thus evaluated as several smaller matrix multiplications run in parallel.",
+    "credit": "Felix Brakel, Uraz Odyurt, Ana-Lucia Varbanescu",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2403.03699",
+    "provider": "arXiv"
+  }
 }

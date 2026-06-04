@@ -61,5 +61,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/continuous-batching.png",
+    "alt": "Three rows of colored blocks, one row per serving system (vLLM, Orca, and DeepSpeed), where each block is one forward pass and an upward arrow marks a pass that generated one or more tokens. The rows show how each system composes prompt and generation tokens into successive batches at every step rather than running fixed batches to completion.",
+    "caption": "Continuous batching schedules work at the granularity of a single decoding step, so the running batch is recomposed at every forward pass instead of waiting for a whole batch to finish. As sequences complete they are evicted and newly arrived requests are admitted, keeping the GPU saturated and sharply raising throughput under workloads where requests have very different lengths.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/deepspeedai/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/deepspeedai/DeepSpeed/tree/master/blogs/deepspeed-fastgen",
+    "provider": "DeepSpeed (Microsoft)"
+  }
 }

@@ -63,12 +63,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/denoising-diffusion.png",
-    "alt": "Six images of a rhinoceros generated with an increasing number of sampling steps, labeled Steps 5, 10, 20, 40, 80, and 150: the leftmost is noisy and malformed and each one to the right is sharper and more coherent.",
-    "caption": "Denoising diffusion generates by starting from pure noise and walking backward through the noise schedule, using the network's noise prediction to recover a slightly cleaner image at each step. Running more reverse steps (left to right, from 5 up to 150) lets the sampler follow that trajectory more finely, so the rhinoceros resolves from a noisy blur into a coherent picture.",
-    "credit": "Stable Diffusion WebUI Automatic1111",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_-_Rhino_X_Y_Plot_to_show_different_Steps.png",
-    "provider": "Wikimedia Commons"
+    "alt": "The directed graphical model of a denoising diffusion model: a chain of variables from x_T (pure noise) through x_t and x_{t-1} to x_0 (a clean face). The forward process q(x_t given x_{t-1}) runs left to right adding noise, and the learned reverse process p_theta(x_{t-1} given x_t) runs right to left removing it.",
+    "caption": "Denoising diffusion fixes a forward process q(x_t given x_{t-1}) that adds a little Gaussian noise at each step until the image x_0 becomes pure noise x_T. The network learns only the reverse process p_theta(x_{t-1} given x_t), predicting the noise at each step so that sampling can walk from noise back to a clean image.",
+    "credit": "Hugging Face (The Annotated Diffusion Model), after Ho, Jain and Abbeel",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/huggingface/blog/blob/main/LICENSE",
+    "source": "https://huggingface.co/blog/annotated-diffusion",
+    "provider": "Hugging Face"
   }
 }

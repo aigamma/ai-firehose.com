@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/gated-linear-unit.png",
+    "alt": "Three feedforward block variants side by side. (a) A standard FFN: an input projection W_i, a GELU activation, then an output projection W_o. (b) A SwiGLU FFN: the input feeds two parallel projections, a gate projection W_g passed through a Swish activation and a value projection W_v, which are combined by elementwise multiplication before the output projection W_o. (c) A single-mask variant that derives both projections from one shared weight and a learnable mask.",
+    "caption": "A gated linear unit (panel b) splits its input into two linear projections and multiplies them elementwise, with one projection passed through a nonlinearity first to act as a gate. Compared with a plain feedforward block (panel a), which applies a single fixed activation, the gate learns a continuous, input-dependent factor that controls how much of the paired signal passes. The Swish-gated form shown here is SwiGLU, now common in the feedforward sublayers of large transformers.",
+    "credit": "Yukito Tajima, Nakamasa Inoue, Yusuke Sekikawa, Ikuro Sato, Rio Yokota",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2506.23225",
+    "provider": "arXiv"
+  }
 }

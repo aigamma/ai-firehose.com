@@ -63,12 +63,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/latent-diffusion.png",
-    "alt": "Block diagram of the latent diffusion architecture with three regions: a pink Pixel Space where an encoder E maps an image x to a latent z and a decoder D reconstructs it, a green Latent Space where the diffusion and denoising U-Net operate on the latent with cross-attention, and a Conditioning column feeding text, images, and semantic maps in through an encoder.",
-    "caption": "Latent diffusion runs the whole diffusion process in the small latent space of an autoencoder instead of on raw pixels. An encoder (E) compresses the image into a compact latent, the denoising U-Net does the iterative generative work there while a conditioning signal such as text enters through cross-attention, and only at the end does the decoder (D) expand the finished latent back to a full-resolution image. Moving the expensive denoising off the pixel grid is what made high-resolution generation affordable.",
-    "credit": "Machine Vision and Learning Group, LMU Munich",
+    "alt": "Block diagram of latent diffusion with three regions: a pink Pixel Space where an encoder E maps an image x to a latent z and a decoder D reconstructs it, a green Latent Space where a denoising U-Net runs the diffusion and denoising steps on the latent with cross-attention, and a Conditioning column feeding text, semantic maps, and images in through an encoder tau.",
+    "caption": "Latent diffusion runs the diffusion process in the compact latent space of an autoencoder instead of on raw pixels. An encoder E compresses the image to a latent, the denoising U-Net does the iterative generation there while a condition such as text enters through cross-attention, and only at the end does the decoder D expand the latent back to a full-resolution image.",
+    "credit": "Rombach, Blattmann, Lorenz, Esser and Ommer (CompVis, High-Resolution Image Synthesis with Latent Diffusion Models)",
     "license": "MIT",
-    "license_url": "https://opensource.org/license/mit",
-    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_architecture.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://github.com/CompVis/latent-diffusion/blob/main/LICENSE",
+    "source": "https://github.com/CompVis/latent-diffusion",
+    "provider": "GitHub: CompVis/latent-diffusion"
   }
 }

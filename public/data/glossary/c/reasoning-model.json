@@ -61,5 +61,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/reasoning-model.png",
+    "alt": "A three-step flowchart for building a reasoning model. Step 1, distillation: a strong model (DeepSeek-R1) and an instruct model produce distilled reasoning data used to supervised-fine-tune (SFT) a smaller distilled model. Step 2, pure reinforcement learning: a base model plus reinforcement-learning reasoning data is trained with GRPO using verifiable rewards into an R1-Zero model. Step 3, multi-stage: a base model is first SFT-ed on reasoning data, then trained with GRPO and verifiable rewards into the final reasoning model.",
+    "caption": "A reasoning model is usually produced by reinforcement learning on problems with checkable answers. The diagram lays out three recipes: distilling reasoning traces from a stronger model, pure reinforcement learning with GRPO and verifiable rewards on a base model, and a multi-stage path that combines supervised fine-tuning with reinforcement learning, which is what teaches the model to think at length before answering.",
+    "credit": "Hugging Face (open-r1)",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/huggingface/open-r1/blob/main/LICENSE",
+    "source": "https://github.com/huggingface/open-r1",
+    "provider": "GitHub: huggingface/open-r1"
+  }
 }

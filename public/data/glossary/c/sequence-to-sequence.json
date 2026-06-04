@@ -71,13 +71,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/sequence-to-sequence.png",
-    "alt": "An encoder-decoder diagram. On the left, an Encoder box of recurrent cells reads inputs x0 and x1 and passes a final hidden state h-f across to the right. On the right, a Decoder box of recurrent cells produces outputs step by step, with two feedback options labeled Teacher Forcing (feeding the true previous token) and Using Prediction (feeding the model's own previous output).",
-    "caption": "A sequence-to-sequence model has two halves: an encoder reads the whole input sequence into a hidden state, and a decoder generates the output one token at a time, feeding each emitted token back in to inform the next. During training the true previous token is fed back (teacher forcing); at inference the model's own previous output is used. This is the encoder-decoder template behind translation and summarization.",
-    "credit": "Daniel Voigt Godoy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Seq2seq_RNN_encoder-decoder_with_attention_mechanism,_training_and_inferring.png",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/sequence-to-sequence.svg",
+    "alt": "An encoder-decoder diagram for machine translation. A recurrent encoder reads the English tokens They, are, watching, period, and an end-of-sequence marker into a final state. That state initializes a recurrent decoder, which is fed a beginning-of-sequence token and the previous target word at each step and emits the French translation Ils, regardent, period, and an end-of-sequence marker one token at a time.",
+    "caption": "A sequence-to-sequence model has two parts: an encoder that compresses the whole input sequence into a state, and a decoder that, starting from that state and a beginning-of-sequence token, generates the output one token at a time until it emits the end-of-sequence marker. This lets the input and output have different lengths.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/seq2seq.html",
+    "provider": "Dive into Deep Learning"
   }
 }

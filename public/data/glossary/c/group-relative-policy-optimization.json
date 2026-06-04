@@ -64,5 +64,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/group-relative-policy-optimization.png",
+    "alt": "A schematic of one GRPO step. For each prompt a group of completions is sampled; a reward model scores each completion, and the rewards are turned into advantages by subtracting the group mean and dividing by the group standard deviation. Below, the current policy and a frozen reference policy give a per-token KL divergence. The normalized advantages and the KL term are combined and averaged into the training objective.",
+    "caption": "Group relative policy optimization computes each completion's advantage by normalizing its reward against a group of completions sampled for the same prompt (reward minus the group mean, divided by the group standard deviation), so the group average serves as the baseline and no separate value network is needed. A KL penalty against a reference policy keeps the update from drifting too far.",
+    "credit": "Hugging Face TRL (Quentin Gallouedec)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/docs/trl/main/en/grpo_trainer",
+    "provider": "GitHub: huggingface/trl"
+  }
 }

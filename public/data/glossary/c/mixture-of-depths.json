@@ -65,5 +65,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/mixture-of-depths.png",
+    "alt": "On the left, two transformer blocks each fronted by a Route gate that assigns a weight to the incoming token; when the weight is high the token passes through Normalize, Self-attention, and MLP, and when it is low the token is greyed out and bypasses the block along the residual connection. On the right, a Routing Decisions heatmap over layers and sequence positions colors each token as either use block or route around block, contrasted with a vanilla transformer that processes every token at every layer and an early-exit scheme.",
+    "caption": "A mixture-of-depths transformer gives each layer a small router that selects only a capped subset of tokens to actually run through that block's attention and feedforward; the rest skip the block entirely along the residual path. Because the capacity is fixed in advance, the total compute stays predictable while the network learns to spend its layers on the tokens that need them, as the routing heatmap shows.",
+    "credit": "David Raposo, Sam Ritter, Blake Richards, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2404.02258",
+    "provider": "arXiv"
+  }
 }

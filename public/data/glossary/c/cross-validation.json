@@ -64,12 +64,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/cross-validation.png",
-    "alt": "Diagram of k-fold cross-validation: all data is shown as a row of points, and across iterations 1 to k a different contiguous block is boxed off as the test data while the remaining blocks serve as training data.",
-    "caption": "K-fold cross-validation rotates the test set instead of relying on one lucky split. The data is cut into k blocks, and in each iteration a different block is held out for testing (boxed) while the rest is used for training. Every example is tested exactly once, and averaging the scores gives a stable estimate of how the model generalizes.",
-    "credit": "Gufosowa",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Diagram of 5-fold cross-validation: the full data is first split into a held-out test set and a training set, then the training set is divided into five folds, and across five splits each fold takes a turn as the validation fold (highlighted) while the other four are used for training, before a final evaluation on the test set.",
+    "caption": "Cross-validation estimates how well a model generalizes by rotating which slice of the training data is held out. The training set is partitioned into k folds; each fold serves once as the validation set while the rest train the model, and averaging the k scores gives a more stable estimate than a single split, with the untouched test set kept for the final evaluation.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "provider": "scikit-learn"
   }
 }

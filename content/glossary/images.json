@@ -9,6 +9,36 @@
     "source": "https://commons.wikimedia.org/wiki/File:Artificial_neuron_structure.svg",
     "provider": "Wikimedia Commons"
   },
+  "activation-patching": {
+    "file": "activation-patching.png",
+    "alt": "A schematic of the activation patching setup on the Indirect Object Identification task. A green Clean Run box reads the prompt where John gave a drink and predicts Mary; a red Corrupted Run box reads the prompt where Mary gave a drink and predicts John. A blue arrow between them is labeled Replace activation at layer or head, and a metric box reads Logit Difference equals logit of Mary minus logit of John.",
+    "caption": "Activation patching localizes a behavior by copying one internal activation from a clean run into a corrupted run and measuring how the output moves. The two prompts differ in a single fact, so when transplanting one component's activation restores the clean prediction, that component is shown to be causally responsible. The logit difference quantifies the effect; the test is interventional, not merely correlational.",
+    "credit": "Ivan Arcuschin, Learn Mechanistic Interpretability",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://learnmechinterp.com/topics/activation-patching/",
+    "provider": "GitHub: FlyingPumba/learn-mech-interp"
+  },
+  "activation-steering": {
+    "file": "activation-steering.png",
+    "alt": "A schematic of the Activation Addition method. Two contrasting prompts (for example I love talking about weddings and I hate talking about weddings) are each embedded and run through the model; the recorded activations are differenced to form a steering vector. That steering vector is then injected during the forward pass on a user prompt to produce a steered output. Stage labels along the bottom read find contrasting prompts, embed, forward pass, record activations, diff activations, and prompt and inject.",
+    "caption": "Activation steering edits behavior at inference time by adding a direction vector into the hidden activations rather than changing any weights. The steering vector is built by differencing the activations of a contrasting pair of prompts, then added into the residual stream during a new forward pass, shifting the output toward or away from the target concept. The edit is runtime only and needs no retraining.",
+    "credit": "Turner et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2308.10248",
+    "provider": "arXiv"
+  },
+  "actor-critic": {
+    "file": "actor-critic.jpg",
+    "alt": "A block diagram of the actor-critic loop. A state s_t feeds into three boxes: Actor, Critic, and Environment. The Actor outputs an action A_t, which is passed to the Critic and the Environment; the Critic outputs an action-value estimate written q-hat_w(S_t, A_t).",
+    "caption": "Actor-critic splits the learner into two parts that share the same state. The actor is the policy: it chooses the action. The critic is a learned value estimator: it scores how good that action was, here as the action-value q-hat_w(S_t, A_t). The critic's estimate replaces the noisy episode return in the actor's update, which sharply lowers the variance of policy-gradient learning.",
+    "credit": "Hugging Face Deep RL Course (Thomas Simonini and contributors)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic",
+    "provider": "Hugging Face"
+  },
   "adagrad": {
     "file": "adagrad.svg",
     "alt": "Contour plot of an ill-conditioned objective with the AdaGrad optimizer path descending and turning to reach the minimum at the origin.",
@@ -18,6 +48,46 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_optimization/adagrad.html",
     "provider": "Dive into Deep Learning"
+  },
+  "agent-evaluation": {
+    "file": "agent-evaluation.png",
+    "alt": "The SWE-bench evaluation pipeline. A real GitHub issue and the corresponding codebase are given to a language model, which generates a pull request that edits several source files. A hidden unit-test suite is then run: tests that failed before the change (Pre PR) must pass after it (Post PR) for the task to count as resolved.",
+    "caption": "Agent evaluation judges whether an agent reached the goal, not just whether one answer looks right. SWE-bench illustrates the cleanest signal: give the agent a real issue and codebase, let it produce a patch, then run a hidden test suite that decides pass or fail by execution. An outcome verified against tests is evidence, where a graded transcript is opinion.",
+    "credit": "Carlos E. Jimenez et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2310.06770",
+    "provider": "arXiv"
+  },
+  "agent-memory": {
+    "file": "agent-memory.png",
+    "alt": "Diagram of a language agent's memory architecture. At the top sit long-term stores: procedural memory (the LLM and agent code), semantic memory, and episodic memory, each connected by retrieval and learning arrows to a central working memory where reasoning happens. A decision procedure issues actions to, and receives observations from, an external environment of dialogue, physical, and digital interfaces.",
+    "caption": "Agent memory compensates for a stateless model by storing history outside the context window and feeding back only what is relevant. This architecture splits it into a working (short-term) memory holding the current task and several long-term stores, episodic for past experience, semantic for knowledge, and procedural for reusable skills, that the agent writes to and retrieves from across steps.",
+    "credit": "Theodore R. Sumers et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2309.02427",
+    "provider": "arXiv"
+  },
+  "agent-orchestration": {
+    "file": "agent-orchestration.png",
+    "alt": "Six multi-agent application patterns built with AutoGen, including math problem solving with student, assistant, and expert agents; retrieval-augmented chat; multi-agent coding; conversational chess; and a dynamic group chat in which a manager agent broadcasts to and coordinates a set of worker agents.",
+    "caption": "Agent orchestration is the control layer that decides which agent or tool runs when and how results flow between steps. These patterns make the coordination concrete: the dynamic group chat puts a manager agent in charge of routing work to specialists, an orchestrator-worker shape central to coordinating a multi-agent system, distinct from the reasoning inside any single agent.",
+    "credit": "Qingyun Wu et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2308.08155",
+    "provider": "arXiv"
+  },
+  "agentic-rag": {
+    "file": "agentic-rag.png",
+    "alt": "Comparison of conventional retrieval-augmented generation with Self-RAG. The left side always retrieves a fixed set of documents and generates an answer in one pass. The right side adaptively decides whether to retrieve, retrieves on demand, evaluates each passage's relevance, and critiques whether its own output is supported, using special reflection tokens across several steps.",
+    "caption": "Agentic RAG puts the model in control of retrieval rather than running a fixed retrieve-then-generate pipeline. As Self-RAG shows on the right, the agent decides whether retrieval is needed, issues queries on demand, judges the passages, and critiques its own draft, iterating until satisfied, which is what lets it handle multi-hop and open-ended questions a single shot cannot.",
+    "credit": "Akari Asai et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2310.11511",
+    "provider": "arXiv"
   },
   "ai-agent": {
     "file": "ai-agent.png",
@@ -50,14 +120,24 @@
     "provider": "Wikimedia Commons"
   },
   "attention-mechanism": {
-    "file": "attention-mechanism.png",
-    "alt": "Overview diagram of an attention mechanism showing queries, keys, and values combined into weighted outputs",
-    "caption": "Attention scores every key against a query, then returns a weighted blend of the values, letting the model focus on the inputs that matter most.",
+    "file": "attention-mechanism.svg",
+    "alt": "Diagram of attention pooling. A single query and a column of keys feed an attention scoring function (labeled a) that produces one score per key. The scores pass through a softmax to become attention weights, each weight is multiplied by its corresponding value, and the products are summed into a single output vector.",
+    "caption": "Attention compares a query against every key with a scoring function, passes the scores through a softmax to get weights that sum to one, then returns the weighted sum of the values. The output is therefore a content-dependent blend of information drawn from across the whole input, which is what lets a model focus on the most relevant context regardless of distance.",
     "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://en.wikipedia.org/wiki/Attention_(machine_learning)",
-    "provider": "Wikimedia Commons"
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/attention-scoring-functions.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "attribution-graph": {
+    "file": "attribution-graph.png",
+    "alt": "A simplified attribution graph. On the left, two token-embedding nodes (The, cat) connect by weighted edges to two interpretable feature nodes (subject detection, animal category), which connect to a third feature node (verb agreement), which connects on the right to an output logit node (sat) and a reconstruction-error node. Edge labels give the linear effect of each connection. A note reads that real attribution graphs have hundreds to thousands of nodes.",
+    "caption": "An attribution graph traces how interpretable features causally influence one another to produce a model's output on a single input. Nodes are features active on the prompt and edges are the linear effects between them, so reading the graph from input embeddings to the output logit reveals the chain of intermediate steps the model ran. It is a circuit caught firing on one concrete example.",
+    "credit": "Ivan Arcuschin, Learn Mechanistic Interpretability",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://learnmechinterp.com/topics/circuit-tracing/",
+    "provider": "GitHub: FlyingPumba/learn-mech-interp"
   },
   "autoencoder": {
     "file": "autoencoder.png",
@@ -81,13 +161,33 @@
   },
   "automatic-speech-recognition": {
     "file": "automatic-speech-recognition.png",
-    "alt": "The architecture of OpenAI's Whisper speech model. On the left, examples of its multitask training data: English transcription, speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram, passes through convolution layers into a transformer encoder, and a transformer decoder with cross-attention emits text tokens.",
-    "caption": "Modern automatic speech recognition is end-to-end. The audio is turned into a log-mel spectrogram, a transformer encoder reads it, and a transformer decoder generates the text one token at a time, the same encoder-decoder setup used for translation. Whisper, shown here, is trained on a large and varied corpus of audio paired with transcripts, which is what makes it robust across languages, accents, and noise.",
-    "credit": "Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, Ilya Sutskever",
+    "alt": "Diagram of the Whisper speech model. On the left, examples of multitask training data: English transcription, any-to-English speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram that passes through transformer encoder blocks, and a transformer decoder with cross attention emits tokens. At the bottom, the multitask training format threads special tokens for language identification, transcription versus translation, and timestamps through one sequence.",
+    "caption": "Modern automatic speech recognition is a sequence-to-sequence transformer: the input waveform becomes a log-mel spectrogram that the encoder reads, and the decoder generates the transcript token by token. Whisper folds transcription, translation, language identification, and timestamps into one model by prefixing the target sequence with special task tokens.",
+    "credit": "Radford, Alec and Kim, Jong Wook and Xu, Tao and Brockman, Greg and McLeavey, Christine and Sutskever, Ilya (OpenAI)",
     "license": "MIT",
-    "license_url": "https://opensource.org/licenses/MIT",
-    "source": "https://commons.wikimedia.org/wiki/File:OpenAI_Whisper_architecture.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://github.com/openai/whisper/blob/main/LICENSE",
+    "source": "https://github.com/openai/whisper",
+    "provider": "GitHub: openai/whisper"
+  },
+  "autonomous-agent": {
+    "file": "autonomous-agent.png",
+    "alt": "Five levels of agent autonomy shown as columns, from L1 Operator through L2 Collaborator, L3 Consultant, and L4 Approver to L5 Observer. A horizontal axis beneath them runs from high User Involvement on the left to high Agent Autonomy on the right, with the human's role shrinking as the agent's independence grows.",
+    "caption": "Autonomy is a spectrum, not a switch. At low levels the human drives nearly every action and at high levels the agent operates independently while a person only observes. An autonomous agent sits at the right of this scale: given a high-level goal, it chooses its own steps and tools over a long horizon, which is more flexible but harder to keep reliable and safe.",
+    "credit": "K. J. Kevin Feng, David W. McDonald, Amy X. Zhang",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2506.12469",
+    "provider": "arXiv"
+  },
+  "autoregressive-model": {
+    "file": "autoregressive-model.svg",
+    "alt": "A grid of image pixels labeled in raster order from x_1 at the top left to x_n squared at the bottom right. The pixels above and to the left of the current pixel are shaded blue (already generated), the current pixel x_i is red, and the pixels after it are white (not yet generated).",
+    "caption": "An autoregressive model generates one element at a time in a fixed order, here pixels in raster scan. The current pixel x_i (red) is predicted from all the pixels generated before it (blue), and the joint probability of the whole image is the product of these per-element conditionals.",
+    "credit": "Phillip Lippe (UvA Deep Learning Notebooks)",
+    "license": "MIT",
+    "license_url": "https://github.com/phlippe/uvadlc_notebooks/blob/master/LICENSE.md",
+    "source": "https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial12/Autoregressive_Image_Modeling.html",
+    "provider": "GitHub: phlippe/uvadlc_notebooks"
   },
   "backpropagation": {
     "file": "backpropagation.svg",
@@ -169,15 +269,35 @@
     "source": "https://d2l.ai/chapter_recurrent-modern/beam-search.html",
     "provider": "Dive into Deep Learning"
   },
-  "bert": {
-    "file": "bert.png",
-    "alt": "A diagram of the BERT masked-language-modeling task. A row of input tokens for a sentence has one token replaced by [MASK]; all tokens pass up into a box labeled 'BERT = Transformer Encoder', and a feed-forward head over the masked position outputs logits predicting the hidden word.",
-    "caption": "BERT is a stack of transformer encoder layers pretrained by masked language modeling: a token in the input is replaced by [MASK], and the model must recover it using the words on both sides at once. Because every position can attend to every other, BERT produces deeply bidirectional, context-sensitive representations, so the same word gets different vectors in different sentences.",
-    "credit": "Daniel Voigt Godoy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:BERT_masked_language_modelling_task.png",
+  "bellman-equation": {
+    "file": "bellman-equation.png",
+    "alt": "A flow chart of a sequential decision process. States x_t, x_t+1, x_t+2 are linked by transition boxes T, with payoffs F at each step depending on the state and an action a. The full value function V(x_t) is written as a discounted sum of payoffs, and a red arrow marks the recursive Bellman equation V(x_t) equals the max over the action of F(x_t, a_t) plus beta times V(T(x_t, a_t)).",
+    "caption": "The Bellman equation rewrites the value of a state as a recursion. Instead of summing the entire infinite future, the value of the current state equals the immediate payoff plus the discounted value of the state the chosen action leads to (the red equation). This one self-consistent step, repeated, is the backbone of value iteration, Q-learning, and nearly every reinforcement learning algorithm.",
+    "credit": "Munasca",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bellman_flow_chart.png",
     "provider": "Wikimedia Commons"
+  },
+  "bert": {
+    "file": "bert.svg",
+    "alt": "Three side-by-side model diagrams labeled ELMo, GPT, and BERT. Each takes tokens at the bottom, produces per-token representations, and feeds a task layer that outputs labels. ELMo uses a bidirectional architecture but a task-specific head; GPT uses a unidirectional architecture with a head that needs only minimal changes; BERT combines a bidirectional architecture with the minimal-change head, and is reached by pretraining followed by fine-tuning.",
+    "caption": "BERT's defining choice is to combine deeply bidirectional encoding (each token attends to both left and right context, as in ELMo) with GPT's task-agnostic design, so one pretrained model is fine-tuned for many tasks with only minimal architectural changes.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "best-of-n-sampling": {
+    "file": "best-of-n-sampling.png",
+    "alt": "Three side-by-side panels comparing PRM search methods. The left panel, labeled Best-of-N, shows several independent answer chains generated in parallel from one question; each full solution is scored by a verifier and the highest-scoring chain is selected. The center panel shows beam search keeping the top candidates at each step, and the right panel shows lookahead search.",
+    "caption": "Best-of-N sampling generates N complete answers independently from the same prompt, scores each with a verifier, and returns the one the verifier ranks highest (the left panel). It spends parallel inference compute to lift quality on tasks where checking an answer is easier than producing one, and contrasts with step-level search methods like beam search and lookahead search.",
+    "credit": "Charlie Snell, Jaehoon Lee, Kelvin Xu, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2408.03314",
+    "provider": "arXiv"
   },
   "bi-encoder": {
     "file": "bi-encoder.png",
@@ -201,13 +321,13 @@
   },
   "calibration": {
     "file": "calibration.png",
-    "alt": "A reliability diagram plotting the observed fraction of positives against the mean predicted probability for several classifiers, with a dotted diagonal labeled perfectly calibrated, and a histogram below showing how the predictions are distributed.",
-    "caption": "A reliability diagram bins predictions by their stated probability and plots, for each bin, how often those predictions were actually correct. A perfectly calibrated model lies on the diagonal; curves below it (here support vector classification) are overconfident, and curves above it are underconfident.",
-    "credit": "Jan Hendrik Metzen",
-    "license": "BSD",
-    "license_url": "http://opensource.org/licenses/bsd-license.php",
-    "source": "https://commons.wikimedia.org/wiki/File:Calibration_plot.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A reliability diagram plotting mean predicted probability on the x-axis against the observed fraction of positives on the y-axis. A dotted diagonal marks perfect calibration, and four classifiers are shown: logistic regression hugs the diagonal, uncalibrated naive Bayes bows away from it, and isotonic and sigmoid recalibration pull naive Bayes back toward the line. A histogram below shows how predictions are distributed across probability bins.",
+    "caption": "A model is calibrated when its stated confidence matches its observed accuracy, so among cases it calls 80 percent likely, about 80 percent are positive. The reliability diagram plots predicted probability against the actual fraction of positives; a perfectly calibrated model lies on the dotted diagonal, and a curve that bows above or below it reveals over or under confidence that recalibration can correct.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration_curve.html",
+    "provider": "scikit-learn"
   },
   "catastrophic-forgetting": {
     "file": "catastrophic-forgetting.png",
@@ -269,6 +389,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:ForwardAccumulationAutomaticDifferentiation.png",
     "provider": "Wikimedia Commons"
   },
+  "chatbot-arena": {
+    "file": "chatbot-arena.png",
+    "alt": "A screenshot of the Chatbot Arena interface. The same prompt, a request to draft a professional email, is sent to two anonymous models labeled Model A and Model B, whose responses appear side by side. Below the responses are four voting buttons: A is better, B is better, Tie, and Both are bad. Posted rules explain that model identities are hidden and that votes where names are revealed do not count.",
+    "caption": "Chatbot Arena evaluates models by live human preference rather than a fixed answer key. A user sends one prompt, sees two anonymous models answer side by side, and votes for the better response; the hidden identities keep the vote about quality, not brand, and the aggregated head-to-head votes feed an Elo-style leaderboard.",
+    "credit": "Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, Ion Stoica",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2306.05685",
+    "provider": "arXiv: 2306.05685"
+  },
   "china-brain": {
     "file": "china-brain.png",
     "alt": "The outline of a human brain drawn entirely out of many small identical figures of people, each standing for one person in the population.",
@@ -299,6 +429,16 @@
     "source": "https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html",
     "provider": "scikit-learn"
   },
+  "clip": {
+    "file": "clip.png",
+    "alt": "CLIP diagram in three parts: (1) contrastive pre-training where a text encoder and an image encoder produce embeddings whose pairwise dot products form a similarity matrix, with the matching image-text pairs on the diagonal pulled together; (2) building a zero-shot classifier by encoding label texts like a photo of a dog; (3) zero-shot prediction matching an image embedding to the closest label embedding.",
+    "caption": "CLIP aligns images and text in one shared embedding space by contrastive learning over many image-caption pairs. During training the model pulls each true image-text pair together and pushes mismatched pairs apart (the matrix diagonal), which lets it classify a new image with no labeled examples by comparing it to encoded category names.",
+    "credit": "OpenAI (Radford et al., CLIP)",
+    "license": "MIT",
+    "license_url": "https://github.com/openai/CLIP/blob/main/LICENSE",
+    "source": "https://github.com/openai/CLIP",
+    "provider": "GitHub: openai/CLIP"
+  },
   "clustering": {
     "file": "clustering.png",
     "alt": "A grid of scatter plots: rows are different shaped datasets (two concentric circles, two interleaving moons, blobs, anisotropic and varied-variance blobs, and uniform noise) and columns are different clustering algorithms, each coloring the points by the cluster it assigned.",
@@ -328,6 +468,16 @@
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:Turing_machine.png",
     "provider": "Wikimedia Commons"
+  },
+  "computer-use": {
+    "file": "computer-use.png",
+    "alt": "Interaction loop between an agent and a computer. At the top, an Environment of Web, Android, and PC platforms holds a state. Observations (image, textual, bi-modal, indirect) flow down the left to an Agent, which holds a policy and memory; actions (mouse, direct input, tailored mechanisms, code) flow back up the right to change the environment, forming a closed perceive-and-act cycle.",
+    "caption": "Computer use lets an agent operate software the way a person does. The agent receives an observation of the screen (often a screenshot), decides what to do, and emits low-level actions such as mouse moves, keystrokes, or code; the environment changes and produces the next observation. This perceive-act loop generalizes to almost any application without a per-app API.",
+    "credit": "Pascal J. Sager et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2501.16150",
+    "provider": "arXiv"
   },
   "concentration-inequality": {
     "file": "concentration-inequality.png",
@@ -399,6 +549,16 @@
     "source": "https://arxiv.org/abs/2212.08073",
     "provider": "arXiv"
   },
+  "continuous-batching": {
+    "file": "continuous-batching.png",
+    "alt": "Three rows of colored blocks, one row per serving system (vLLM, Orca, and DeepSpeed), where each block is one forward pass and an upward arrow marks a pass that generated one or more tokens. The rows show how each system composes prompt and generation tokens into successive batches at every step rather than running fixed batches to completion.",
+    "caption": "Continuous batching schedules work at the granularity of a single decoding step, so the running batch is recomposed at every forward pass instead of waiting for a whole batch to finish. As sequences complete they are evicted and newly arrived requests are admitted, keeping the GPU saturated and sharply raising throughput under workloads where requests have very different lengths.",
+    "credit": "Microsoft DeepSpeed Team",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/deepspeedai/DeepSpeed/blob/master/LICENSE",
+    "source": "https://github.com/deepspeedai/DeepSpeed/tree/master/blogs/deepspeed-fastgen",
+    "provider": "DeepSpeed (Microsoft)"
+  },
   "contrastive-decoding": {
     "file": "contrastive-decoding.jpg",
     "alt": "An expert language model and a smaller amateur model each give next-token probabilities for a prompt about where Barack Obama was born. The contrastive score is the expert log-probability minus the amateur log-probability: 1961 scores highest at 4.13, Hawaii 2.34, Washington minus 0.73. Sample continuations show greedy repeating Hawaii, nucleus drifting to Washington, and contrastive decoding correctly continuing with 1961.",
@@ -411,13 +571,23 @@
   },
   "contrastive-learning": {
     "file": "contrastive-learning.png",
-    "alt": "Two circles labeled before and after learning. In the left circle an anchor, a green positive, and a red negative sit at varied distances. An arrow labeled learning leads to the right circle, where the positive has moved close to the anchor and the negative has moved far away.",
-    "caption": "Contrastive learning shapes a vector space by comparison. For each anchor it pulls a matching example (the positive, green) closer and pushes a non-matching one (the negative, red) farther apart, as the before-and-after shows. Repeated over many such triples, this teaches the single rule that distance should mean dissimilarity, which is why the resulting embeddings power dense retrieval and semantic search.",
-    "credit": "Xiaokong Ma",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:The-Triplet-loss-in-cosine-similarity.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A two-dimensional embedding space with an anchor point a1. A green arrow points from a1 to a single matching point b1 (a positive), and several red arrows point from a1 to other points b2 through b5 (negatives) scattered farther away.",
+    "caption": "Contrastive learning shapes an embedding space by comparison. For each anchor it pulls the matching example (the positive b1, green) closer and pushes the non-matching ones (the negatives b2 to b5, red) farther away. Trained with many in-batch negatives like this, the model learns the single rule that distance should mean dissimilarity, which is what makes the resulting embeddings effective for dense retrieval and semantic search.",
+    "credit": "Nils Reimers and the sentence-transformers contributors",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/UKPLab/sentence-transformers/blob/master/docs/img/MultipleNegativeRankingLoss.png",
+    "provider": "sentence-transformers"
+  },
+  "controlnet": {
+    "file": "controlnet.png",
+    "alt": "Two columns. On the left, a Stable Diffusion U-Net with all of its encoder, middle, and decoder blocks marked locked. On the right, a trainable copy of the encoder and middle blocks receives the conditioning input and connects back into the locked model through zero convolution layers, with prompt and time also fed in.",
+    "caption": "ControlNet adds spatial control to a frozen diffusion model. The pretrained Stable Diffusion weights stay locked, while a trainable copy of its encoder takes the control map (an edge, pose, or depth image) and feeds it back through zero convolution layers, so the output follows that structure while the prompt still sets the content.",
+    "credit": "Lvmin Zhang, Anyi Rao, Maneesh Agrawala (Adding Conditional Control to Text-to-Image Diffusion Models)",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/lllyasviel/ControlNet/blob/main/LICENSE",
+    "source": "https://github.com/lllyasviel/ControlNet",
+    "provider": "GitHub: lllyasviel/ControlNet"
   },
   "convex-optimization": {
     "file": "convex-optimization.jpg",
@@ -440,14 +610,14 @@
     "provider": "Wikimedia Commons"
   },
   "convolutional-neural-network": {
-    "file": "convolutional-neural-network.png",
-    "alt": "Pipeline of a typical convolutional neural network: an input image, then alternating convolution and subsampling stages that produce progressively smaller stacks of feature maps, ending in a fully connected layer and an output.",
-    "caption": "A convolutional neural network alternates convolution stages, which slide learnable filters over the input to build feature maps, with subsampling stages that shrink those maps. Early layers capture low-level patterns and deeper layers compose them into objects, before a fully connected layer maps the features to an output.",
-    "credit": "Aphex34",
+    "file": "convolutional-neural-network.svg",
+    "alt": "Data flow through the LeNet convolutional network: a 28 by 28 input image feeds a convolution to a 6-channel 28 by 28 feature map, a pooling step to a 6-channel 14 by 14 map, a second convolution to a 16-channel 10 by 10 map, a second pooling to a 16-channel 5 by 5 map, and then three fully connected (dense) layers ending in 10 outputs.",
+    "caption": "A convolutional network interleaves convolution layers, which slide shared filters over the grid to produce feature maps, with pooling layers that downsample. Early layers detect simple local patterns and deeper layers compose them; the stack ends in fully connected layers that map the learned features to class scores. This is LeNet, the architecture that established the pattern.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Typical_cnn.png",
-    "provider": "Wikimedia Commons"
+    "source": "https://d2l.ai/chapter_convolutional-neural-networks/lenet.html",
+    "provider": "Dive into Deep Learning"
   },
   "coordinate-descent": {
     "file": "coordinate-descent.png",
@@ -501,23 +671,23 @@
   },
   "cross-validation": {
     "file": "cross-validation.png",
-    "alt": "Diagram of k-fold cross-validation: all data is shown as a row of points, and across iterations 1 to k a different contiguous block is boxed off as the test data while the remaining blocks serve as training data.",
-    "caption": "K-fold cross-validation rotates the test set instead of relying on one lucky split. The data is cut into k blocks, and in each iteration a different block is held out for testing (boxed) while the rest is used for training. Every example is tested exactly once, and averaging the scores gives a stable estimate of how the model generalizes.",
-    "credit": "Gufosowa",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Diagram of 5-fold cross-validation: the full data is first split into a held-out test set and a training set, then the training set is divided into five folds, and across five splits each fold takes a turn as the validation fold (highlighted) while the other four are used for training, before a final evaluation on the test set.",
+    "caption": "Cross-validation estimates how well a model generalizes by rotating which slice of the training data is held out. The training set is partitioned into k folds; each fold serves once as the validation set while the rest train the model, and averaging the k scores gives a more stable estimate than a single split, with the untouched test set kept for the final evaluation.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "provider": "scikit-learn"
   },
   "cuda": {
-    "file": "cuda.jpg",
-    "alt": "Three rows mapping a CUDA software abstraction to hardware. A single Thread is executed by a Core; a Thread Block of many threads is executed by a Streaming Multiprocessor; a Kernel Grid of many blocks is executed by the complete GPU.",
-    "caption": "CUDA's programming model is a hierarchy that maps directly onto the hardware: a single thread runs on one core, a block of threads runs on one streaming multiprocessor, and the whole grid of blocks runs across the entire GPU. Writing a CUDA kernel means describing the work of one thread, which the hardware then replicates across thousands of threads in parallel.",
-    "credit": "Atshardul",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Software-Perspective_for_thread_block.jpg",
-    "provider": "Wikimedia Commons"
+    "file": "cuda.png",
+    "alt": "A diagram of the CUDA execution hierarchy. On the left a Host launches a Kernel onto the Device. The Device holds a Grid containing a two-dimensional array of thread blocks labeled Block (0,0) through Block (3,1). One block, Block (2,1), is expanded below into its own grid of individual threads labeled Thread (0,0) through Thread (4,2).",
+    "caption": "CUDA organizes parallel work as a hierarchy: a kernel launched from the host runs on the device as a grid of thread blocks, and each block is a group of threads. This grid-block-thread structure is how a CUDA program maps thousands of lightweight threads onto a GPU's many cores, and it is the abstraction deep learning frameworks build on to turn tensor operations into fast GPU code.",
+    "credit": "The Molecular Sciences Software Institute (MolSSI)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://education.molssi.org/gpu_programming_beginner/03-cuda-program-model.html",
+    "provider": "MolSSI"
   },
   "curvature": {
     "file": "curvature.jpg",
@@ -549,6 +719,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Data_Augmentation_of_rock_images_revised.jpg",
     "provider": "Wikimedia Commons"
   },
+  "data-leakage": {
+    "file": "data-leakage.png",
+    "alt": "A diagram of the data-splitting workflow. All data is first divided into a training portion and a held-out test portion. The training portion is then split into five folds, and across five rotations each fold takes a turn as the validation set while the others train the model. The test portion is set aside and used only once, at the bottom, for the final evaluation.",
+    "caption": "Data leakage is when information from the test set, or from the future, slips into training so a model scores better in evaluation than it will in reality. The defense is a strict separation like this: a test set is locked away and touched only once for final evaluation, while all model fitting and tuning happen on the training folds, so no test information can influence the model.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "provider": "scikit-learn"
+  },
   "data-parallelism": {
     "file": "data-parallelism.svg",
     "alt": "A diagram of data parallelism on two GPUs. A full copy of the model goes to GPU 0 and GPU 1, the stochastic mini-batch is split into two subsets (one per GPU), each GPU computes a local gradient from its subset, and the two local gradients are summed into the mini-batch stochastic gradient.",
@@ -561,13 +741,13 @@
   },
   "decision-tree": {
     "file": "decision-tree.png",
-    "alt": "A decision tree predicting Titanic survival: the root asks if the passenger is male, then branches to questions about age and number of siblings or spouses aboard, ending in leaves labeled died or survived with a probability and the percentage of passengers reaching that leaf.",
-    "caption": "A decision tree predicts by asking a sequence of simple yes-or-no questions about the features. Following the path from the root (is the passenger male, then how old, then how many siblings aboard) leads to a leaf holding the prediction, here survival or death, with the probability and the share of passengers that reach it.",
-    "credit": "Stephen Milborrow",
-    "license": "CC BY-SA 3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:CART_tree_titanic_survivors.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A rendered decision tree trained on the iris dataset: the root node tests a petal feature with a threshold, then each branch splits on further feature thresholds, and every node reports its Gini impurity, sample count, and class distribution, with the colored leaf nodes giving the final class assignment.",
+    "caption": "A decision tree classifies by asking a sequence of threshold questions about the features, one per node, following the branches down to a leaf that gives the answer. Each split is chosen to make the resulting groups purer (lower Gini impurity), and the colored leaves show where the data ends up cleanly separated by class.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html",
+    "provider": "scikit-learn"
   },
   "decoder-only-model": {
     "file": "decoder-only-model.svg",
@@ -589,15 +769,25 @@
     "source": "https://commons.wikimedia.org/wiki/File:Deep_Learning.jpg",
     "provider": "Wikimedia Commons"
   },
+  "deep-q-network": {
+    "file": "deep-q-network.jpg",
+    "alt": "A labeled pipeline for a Deep Q-Network. A stack of four grayscale Atari game frames feeds into a block of Convolutional Layers, then into Fully Connected Layers, which output one Q-value per action: Q-value LEFT, Q-value RIGHT, and Q-value SHOOT.",
+    "caption": "A Deep Q-Network replaces the lookup table of Q-learning with a neural network. A stack of raw game frames passes through convolutional layers that read the screen, then fully connected layers that output an estimated value (a Q-value) for every action at once. The agent then picks the action with the highest predicted value, learning to play directly from pixels.",
+    "credit": "Hugging Face Deep RL Course (Thomas Simonini and contributors)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/deep-rl-course/unit3/deep-q-network",
+    "provider": "Hugging Face"
+  },
   "denoising-diffusion": {
     "file": "denoising-diffusion.png",
-    "alt": "Six images of a rhinoceros generated with an increasing number of sampling steps, labeled Steps 5, 10, 20, 40, 80, and 150: the leftmost is noisy and malformed and each one to the right is sharper and more coherent.",
-    "caption": "Denoising diffusion generates by starting from pure noise and walking backward through the noise schedule, using the network's noise prediction to recover a slightly cleaner image at each step. Running more reverse steps (left to right, from 5 up to 150) lets the sampler follow that trajectory more finely, so the rhinoceros resolves from a noisy blur into a coherent picture.",
-    "credit": "Stable Diffusion WebUI Automatic1111",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_-_Rhino_X_Y_Plot_to_show_different_Steps.png",
-    "provider": "Wikimedia Commons"
+    "alt": "The directed graphical model of a denoising diffusion model: a chain of variables from x_T (pure noise) through x_t and x_{t-1} to x_0 (a clean face). The forward process q(x_t given x_{t-1}) runs left to right adding noise, and the learned reverse process p_theta(x_{t-1} given x_t) runs right to left removing it.",
+    "caption": "Denoising diffusion fixes a forward process q(x_t given x_{t-1}) that adds a little Gaussian noise at each step until the image x_0 becomes pure noise x_T. The network learns only the reverse process p_theta(x_{t-1} given x_t), predicting the noise at each step so that sampling can walk from noise back to a clean image.",
+    "credit": "Hugging Face (The Annotated Diffusion Model), after Ho, Jain and Abbeel",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/huggingface/blog/blob/main/LICENSE",
+    "source": "https://huggingface.co/blog/annotated-diffusion",
+    "provider": "Hugging Face"
   },
   "dense-retrieval": {
     "file": "dense-retrieval.png",
@@ -610,14 +800,14 @@
     "provider": "Wikimedia Commons"
   },
   "dependency-parsing": {
-    "file": "dependency-parsing.png",
-    "alt": "Two parse diagrams of the sentence 'The girl is happy', side by side. The left is labeled Dependency: words link directly to other words, with 'is' as the top word and 'girl' and 'happy' hanging from it and 'The' under 'girl'. The right is labeled Constituency (BPS): the words are grouped into nested phrase brackets.",
-    "caption": "Dependency parsing (left) connects each word straight to the word it depends on, building a tree of head-and-dependent links with a single root, here the verb 'is'. This is the contrast with constituency parsing (right), which instead groups words into nested phrases. The dependency view exposes who relates to whom, which is closer to meaning.",
-    "credit": "Tjo3ya",
-    "license": "CC BY-SA 3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Thegirlishappy.png",
-    "provider": "Wikimedia Commons"
+    "file": "dependency-parsing.svg",
+    "alt": "A dependency parse of the sentence This is a sentence. Each word carries its part-of-speech tag below it (DET, VERB, DET, NOUN), and labeled arcs above the words point from each head word to its dependents: nsubj from the verb to This, attr from the verb to sentence, and det from sentence to a.",
+    "caption": "Dependency parsing links each word to the word it depends on, labeling the grammatical relation on each arc (here nsubj, attr, and det). The result is a tree of head-and-dependent relations rather than a tree of nested phrases, which makes the sentence's grammatical structure explicit.",
+    "credit": "Explosion (spaCy)",
+    "license": "MIT",
+    "license_url": "https://github.com/explosion/spaCy/blob/master/LICENSE",
+    "source": "https://github.com/explosion/spaCy/blob/master/website/public/images/displacy.svg",
+    "provider": "GitHub: explosion/spaCy"
   },
   "derivative": {
     "file": "derivative.gif",
@@ -668,6 +858,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Example_of_Forward_Diffusion_Models.png",
     "provider": "Wikimedia Commons"
+  },
+  "diffusion-transformer": {
+    "file": "diffusion-transformer.png",
+    "alt": "The Diffusion Transformer (DiT) architecture. On the left, a noised latent is cut into patches, embedded with the timestep t and label y, processed by N stacked DiT blocks, then a layer norm and linear layer output the predicted noise and covariance. On the right, three DiT block variants are shown: adaLN-Zero, cross-attention, and in-context conditioning.",
+    "caption": "A diffusion transformer replaces the U-Net denoiser with a transformer. The noised latent is split into patches that become tokens, and stacked transformer blocks denoise them, conditioned on the timestep and class or text via adaptive layer norm (adaLN-Zero), cross-attention, or extra input tokens. This design scales cleanly with compute.",
+    "credit": "William Peebles, Saining Xie (Scalable Diffusion Models with Transformers)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2212.09748",
+    "provider": "arXiv"
   },
   "dimensionality-reduction": {
     "file": "dimensionality-reduction.png",
@@ -739,6 +939,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Early-Stopping_Graph.png",
     "provider": "Wikimedia Commons"
   },
+  "edge-of-stability": {
+    "file": "edge-of-stability.png",
+    "alt": "Three panels for full-batch gradient descent at step sizes from 2/500 to 2/100. Left, training loss falls (non-monotonically for the larger steps) over twenty thousand iterations. Center and right, the sharpness (largest Hessian eigenvalue) climbs and then levels off at the horizontal dashed line equal to 2 divided by the step size, color-matched to each run.",
+    "caption": "Full-batch gradient descent does not behave the way classical theory predicts. For each step size the sharpness rises (progressive sharpening) until it reaches the stability threshold 2 divided by the step size, the dashed line, and then hovers just above it while the training loss keeps falling overall even as it bounces from step to step. That hovering at the threshold is the edge of stability.",
+    "credit": "Jeremy Cohen, Simran Kaur, Yuanzhi Li, Zico Kolter, Ameet Talwalkar",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2103.00065",
+    "provider": "arXiv: 2103.00065"
+  },
   "eigenvalue": {
     "file": "eigenvalue.png",
     "alt": "The Mona Lisa on the left and a horizontally sheared copy on the right. A red arrow lies along the horizontal direction in both images and keeps its direction, while a blue arrow that was at an angle is tilted by the shear.",
@@ -757,6 +967,16 @@
     "license": "Public domain",
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:Eigenvectors.gif",
+    "provider": "Wikimedia Commons"
+  },
+  "elo-rating": {
+    "file": "elo-rating.png",
+    "alt": "A plot with initial rating difference from 0 to 1000 on the x-axis. A solid S-shaped curve gives the expected probability of winning: it passes through 0.5 at zero difference and rises toward 1 as the favored player's rating lead grows, reaching about 0.91 at a 400-point gap. Companion curves on a second axis show the resulting rating change for an expected versus an unexpected result at K-factors of 16 and 32.",
+    "caption": "Elo turns a rating difference into an expected score through a logistic curve: equal ratings predict a coin-flip, and a 400-point lead predicts about a 91 percent chance of winning. After each game the loser's points flow to the winner in proportion to how surprising the result was, scaled by the K-factor, which is how head-to-head outcomes, including human preference votes between language models, are distilled into a single number.",
+    "credit": "Cmglee",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Elo_rating_graph.svg",
     "provider": "Wikimedia Commons"
   },
   "embedding-model": {
@@ -829,6 +1049,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Energy_landscape.png",
     "provider": "Wikimedia Commons"
   },
+  "ensemble-learning": {
+    "file": "ensemble-learning.png",
+    "alt": "A two-by-two grid of decision-region plots on the same two-class dataset: three different individual classifiers each produce their own colored probability surface, and the fourth panel labeled Soft Voting shows the combined surface that averages their predictions.",
+    "caption": "Ensemble learning combines several models into one stronger predictor. Here three different classifiers each carve up the feature space their own way, and the soft-voting ensemble (bottom right) averages their predicted probabilities, smoothing out the idiosyncrasies of any single member to give a more reliable decision.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/ensemble/plot_voting_decision_regions.html",
+    "provider": "scikit-learn"
+  },
   "entropy": {
     "file": "entropy.png",
     "alt": "Plot of the entropy of a single binary variable against its probability of being one, forming a curve that peaks at one bit when the probability is one half and falls to zero at both ends.",
@@ -878,6 +1108,26 @@
     "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
     "source": "https://scikit-learn.org/stable/auto_examples/mixture/plot_gmm_covariances.html",
     "provider": "scikit-learn"
+  },
+  "expert-parallelism": {
+    "file": "expert-parallelism.png",
+    "alt": "A diagram of a Mixture-of-Experts layer running across two GPUs, GPU_0 and GPU_3. On each GPU, self attention feeds an Add and Norm step, then a Router, then an All-to-All exchange. Each GPU holds only some experts: GPU_0 holds FFN0 and FFN1 while GPU_3 holds FFN6 and FFN7. A second All-to-All gathers the expert outputs before a final Add and Norm.",
+    "caption": "Expert parallelism places the experts of a Mixture-of-Experts model on different devices, with each GPU storing only a subset of the feed-forward experts. A router on each device picks an expert for every token, and All-to-All communication sends each token to the device holding its chosen expert and returns the result. This lets the model hold far more parameters than any single device could fit.",
+    "credit": "Seokjin Go, Divya Mahajan",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2502.06643",
+    "provider": "arXiv"
+  },
+  "exploration-exploitation": {
+    "file": "exploration-exploitation.jpg",
+    "alt": "A two-panel grid-world comparison. On the left, labeled Exploration (trying random actions to find more information), a mouse takes a long path across the grid toward a large pile of cheese past two skulls. On the right, labeled Exploitation (using known information to maximize reward), the mouse stays near and collects the small nearby cheese.",
+    "caption": "The exploration and exploitation tradeoff. Exploitation (right) takes the best option found so far, the small cheese already known to be nearby. Exploration (left) tries uncertain actions to discover something better, the large cheese pile reachable only by venturing past the hazards. An agent that only exploits never finds the bigger reward; one that only explores never cashes in.",
+    "credit": "Hugging Face Deep RL Course (Thomas Simonini and contributors)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/deep-rl-course/unit1/exp-exp-tradeoff",
+    "provider": "Hugging Face"
   },
   "f1-score": {
     "file": "f1-score.png",
@@ -979,6 +1229,16 @@
     "source": "https://github.com/tomgoldstein/loss-landscape",
     "provider": "loss-landscape (Li et al.)"
   },
+  "flops": {
+    "file": "flops.png",
+    "alt": "A log-scale scatter plot titled Computation used to train notable artificial intelligence systems, by domain. The vertical axis is training computation in petaFLOP plotted logarithmically; the horizontal axis is the publication date from 1950 to the 2020s. Each point is an AI system colored by domain, and the cloud of points climbs steeply over time across many orders of magnitude.",
+    "caption": "FLOPs count the floating-point operations a computation performs, which makes total training compute a natural measure of a model's cost. Plotted on a logarithmic axis, the compute used to train notable AI systems has risen by many orders of magnitude over the decades, illustrating why FLOPs are the standard unit for comparing both training cost and hardware speed.",
+    "credit": "Our World in Data, data from Epoch AI",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://ourworldindata.org/grapher/artificial-intelligence-training-computation",
+    "provider": "Our World in Data"
+  },
   "fourier-transform": {
     "file": "fourier-transform.gif",
     "alt": "Animation building a red square wave in the time domain by adding sinusoids one at a time, with a second axis showing a frequency-domain spectrum that grows a sharp spike at each frequency as its sinusoid is added.",
@@ -1028,6 +1288,26 @@
     "license_url": "https://github.com/pytorch/tutorials/blob/main/LICENSE",
     "source": "https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html",
     "provider": "PyTorch"
+  },
+  "function-calling": {
+    "file": "function-calling.png",
+    "alt": "Two agent transcripts solving the same task. On the left the LLM agent uses Text/JSON as its action, emitting a structured JSON object naming a tool and its arguments at each step, which the environment executes and returns a result for; on the right the agent writes the equivalent actions as Python code.",
+    "caption": "Function calling is the structured-action mechanism shown on the left panel: rather than free-form text, the model emits a JSON object that names a function and fills in its arguments against a schema, which the host validates and executes before returning the result. Turning tool invocation into a parseable contract is what makes the call reliable enough to automate.",
+    "credit": "Hugging Face Agents Course",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/agents-course/en/unit1/actions",
+    "provider": "Hugging Face"
+  },
+  "gated-linear-unit": {
+    "file": "gated-linear-unit.png",
+    "alt": "Three feedforward block variants side by side. (a) A standard FFN: an input projection W_i, a GELU activation, then an output projection W_o. (b) A SwiGLU FFN: the input feeds two parallel projections, a gate projection W_g passed through a Swish activation and a value projection W_v, which are combined by elementwise multiplication before the output projection W_o. (c) A single-mask variant that derives both projections from one shared weight and a learnable mask.",
+    "caption": "A gated linear unit (panel b) splits its input into two linear projections and multiplies them elementwise, with one projection passed through a nonlinearity first to act as a gate. Compared with a plain feedforward block (panel a), which applies a single fixed activation, the gate learns a continuous, input-dependent factor that controls how much of the paired signal passes. The Swish-gated form shown here is SwiGLU, now common in the feedforward sublayers of large transformers.",
+    "credit": "Yukito Tajima, Nakamasa Inoue, Yusuke Sekikawa, Ikuro Sato, Rio Yokota",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2506.23225",
+    "provider": "arXiv"
   },
   "gated-recurrent-unit": {
     "file": "gated-recurrent-unit.svg",
@@ -1090,14 +1370,14 @@
     "provider": "Wikimedia Commons"
   },
   "generative-adversarial-network": {
-    "file": "generative-adversarial-network.png",
-    "alt": "Schematic of a generative adversarial network showing the generator and discriminator networks competing",
-    "caption": "A GAN pits a generator that fabricates samples against a discriminator that judges real from fake; their competition drives both to improve.",
-    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "file": "generative-adversarial-network.svg",
+    "alt": "A GAN data flow: a noise vector z feeds a Generator that outputs Fake G(z); the Discriminator receives either Fake G(z) or Real x and outputs a single decision, Is real or fake.",
+    "caption": "A generative adversarial network is a two-player game. The generator turns a noise vector z into a fake sample G(z), and the discriminator must decide whether a sample is real or generated. The two networks train against each other until the generator's samples are hard to distinguish from real data.",
+    "credit": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola (Dive into Deep Learning)",
     "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://en.wikipedia.org/wiki/Generative_adversarial_network",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://d2l.ai/chapter_generative-adversarial-networks/gan.html",
+    "provider": "Dive into Deep Learning"
   },
   "geodesic": {
     "file": "geodesic.png",
@@ -1129,6 +1409,16 @@
     "source": "https://arxiv.org/abs/2105.14111",
     "provider": "arXiv"
   },
+  "gpqa": {
+    "file": "gpqa.png",
+    "alt": "A flowchart of the GPQA data collection and validation process. A domain expert writes a multiple-choice question and answer; a first same-domain expert answers it and gives feedback; the writer revises it; a second expert answers and confirms; and finally three non-expert validators who have other expertise attempt it with at least fifteen minutes each and Google access allowed. A question enters the hardest DIAMOND set only if both experts agree and at most one of three non-experts answers correctly.",
+    "caption": "GPQA questions are graduate-level and deliberately Google-proof, meaning hard to answer even with web search. The figure shows how that property is enforced: each question is answered and revised by two domain experts, then attempted by non-experts with unrestricted web access and ample time; only questions experts agree on yet non-experts still miss are kept, which is what makes the benchmark resistant to shallow lookup.",
+    "credit": "David Rein, Betty Li Hou, Asa Cooper Stickland, Jackson Petty, Richard Yuanzhe Pang, Julien Dirani, Julian Michael, Samuel R. Bowman",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2311.12022",
+    "provider": "arXiv: 2311.12022"
+  },
   "gpu": {
     "file": "gpu.png",
     "alt": "Two side-by-side silicon floorplans. The CPU devotes most of its area to a large Control unit, a big Cache, and only four ALUs. The GPU spends almost all its area on a dense grid of many small ALUs, with little control logic or cache.",
@@ -1151,13 +1441,13 @@
   },
   "gradient-boosting": {
     "file": "gradient-boosting.png",
-    "alt": "Line plot of mean squared error against the number of boosting iterations, dropping steeply over the first hundred iterations from about thirteen thousand toward two thousand, then flattening for the remaining iterations.",
-    "caption": "Gradient boosting adds simple trees one at a time, each fit to the errors the ensemble has not yet corrected. The training error falls sharply at first as each new tree fixes what the others missed, then flattens as little error remains. Adding trees indefinitely risks overfitting, which the learning rate and early stopping hold in check.",
-    "credit": "Chamaemelum",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:GradientBOOST.png",
-    "provider": "Wikimedia Commons"
+    "alt": "Line plot of deviance against the number of boosting iterations: the training-set deviance (blue) falls steeply and keeps decreasing toward a low value, while the test-set deviance (red) falls early then flattens and stays above the training curve, the gap widening as iterations grow.",
+    "caption": "Gradient boosting builds an additive model one tree at a time, each new tree fitting the errors left by the trees so far, so the loss (deviance) drops as iterations accumulate. The training loss keeps falling while the test loss flattens, the classic signal that adding more stages eventually overfits.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html",
+    "provider": "scikit-learn"
   },
   "gradient-checkpointing": {
     "file": "gradient-checkpointing.png",
@@ -1209,6 +1499,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:GNN_building_blocks.png",
     "provider": "Wikimedia Commons"
   },
+  "graph-rag": {
+    "file": "graph-rag.jpg",
+    "alt": "A large knowledge graph rendered as thousands of dots. Each dot is an entity sized by how connected it is, and the dots are colored by community, forming distinct colored clusters of densely related entities spread across the plane.",
+    "caption": "GraphRAG first turns a corpus into a knowledge graph: a model extracts entities and the relationships between them, and a community-detection algorithm clusters that graph into groups of densely related entities (the colors here). Each community is summarized in advance, so the system can traverse relationships for multi-hop questions or aggregate community summaries for global questions that no single chunk contains. The figure shows an LLM-generated knowledge graph colored by community.",
+    "credit": "Microsoft Research (GraphRAG)",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://microsoft.github.io/graphrag/",
+    "provider": "GitHub: microsoft/graphrag"
+  },
   "graphical-model": {
     "file": "graphical-model.png",
     "alt": "A directed graph of three nodes. RAIN points to both SPRINKLER and GRASS WET, and SPRINKLER also points to GRASS WET. Beside each node is a conditional probability table: RAIN's table is unconditional, SPRINKLER's is conditioned on RAIN, and GRASS WET's is conditioned on both SPRINKLER and RAIN.",
@@ -1238,6 +1538,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Grokking_modular_addition.jpg",
     "provider": "Wikimedia Commons"
+  },
+  "group-relative-policy-optimization": {
+    "file": "group-relative-policy-optimization.png",
+    "alt": "A schematic of one GRPO step. For each prompt a group of completions is sampled; a reward model scores each completion, and the rewards are turned into advantages by subtracting the group mean and dividing by the group standard deviation. Below, the current policy and a frozen reference policy give a per-token KL divergence. The normalized advantages and the KL term are combined and averaged into the training objective.",
+    "caption": "Group relative policy optimization computes each completion's advantage by normalizing its reward against a group of completions sampled for the same prompt (reward minus the group mean, divided by the group standard deviation), so the group average serves as the baseline and no separate value network is needed. A KL penalty against a reference policy keeps the update from drifting too far.",
+    "credit": "Hugging Face TRL (Quentin Gallouedec)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/docs/trl/main/en/grpo_trainer",
+    "provider": "GitHub: huggingface/trl"
   },
   "group-theory": {
     "file": "group-theory.png",
@@ -1319,6 +1629,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Hierarchical_Navigable_Small_World_(HNSW).png",
     "provider": "Wikimedia Commons"
   },
+  "human-in-the-loop": {
+    "file": "human-in-the-loop.png",
+    "alt": "A decision point inside an agentic workflow timeline. In the left column, current human-agent collaboration, the agent proposes an action, the human sees that action and its context, and the human then decides to approve, modify, or override it before execution. The right column shows a richer variant where the agent also surfaces alternative paths with their simulated outcomes for comparison.",
+    "caption": "Human in the loop inserts a person at chosen points in an agent's decision cycle. As the left column shows, at a consequential step the agent proposes an action and pauses for a human to approve, modify, or override it before it takes effect. The gate is placed surgically, on actions that are costly or irreversible, so oversight catches mistakes without becoming a bottleneck.",
+    "credit": "Gaole He, Brian Y. Lim",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2603.11677",
+    "provider": "arXiv"
+  },
   "hyena": {
     "file": "hyena.png",
     "alt": "Diagram of the Hyena operator drawn as a recurrence: an input u is projected, then alternately passed through long-convolution matrices labeled S (shown as banded Toeplitz matrices) and data-controlled diagonal gating matrices labeled D, repeated several times to the output y; on the right, the long filters are generated by a small feed-forward network with a window and positional encoding.",
@@ -1349,15 +1669,35 @@
     "source": "https://commons.wikimedia.org/wiki/File:Hyperparameter_Optimization_using_Random_Search.svg",
     "provider": "Wikimedia Commons"
   },
-  "image-classification": {
-    "file": "image-classification.png",
-    "alt": "Diagram of a convolutional network classifying an image: an input picture passes through convolutional and pooling layers, is flattened, runs through fully connected layers, and outputs class probabilities Rabbit 0.7, Horse 0.3, Pig 0.2.",
-    "caption": "Image classification compresses a whole image down to one labeled decision. Convolutional and pooling layers learn features, the result is flattened and passed through connected layers, and a final layer scores each candidate category, here reading the picture as a rabbit with probability 0.7.",
-    "credit": "Irisbox",
+  "image-captioning": {
+    "file": "image-captioning.png",
+    "alt": "An image captioning model: an input photo of a surfer is read by a convolutional encoder into a grid of image features, which a transformer decoder attends to through cross-attention while generating the caption one word at a time, starting from a start token and producing a surfer riding on.",
+    "caption": "Image captioning joins a visual encoder that reads the picture to a language decoder that writes the sentence. The encoder turns the image into feature vectors, and the decoder attends to those features as it generates the caption word by word, the inverse of text-to-image generation.",
+    "credit": "TensorFlow Authors",
     "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Convolutional_Neural_Network.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://www.tensorflow.org/tutorials/text/image_captioning",
+    "provider": "TensorFlow"
+  },
+  "image-classification": {
+    "file": "image-classification.svg",
+    "alt": "LeNet data flow for image classification: a 28 by 28 input image passes through a convolution layer producing six feature maps, a pooling layer, a second convolution to sixteen feature maps, another pooling layer, then three fully connected (dense) layers narrowing to ten output units.",
+    "caption": "Image classification compresses a whole image down to one labeled decision. The convolution layers learn visual features, pooling shrinks the maps, and the final dense layers score each candidate category, here a probability over ten possible digits.",
+    "credit": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola (Dive into Deep Learning)",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://d2l.ai/chapter_convolutional-neural-networks/lenet.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "image-tokenization": {
+    "file": "image-tokenization.svg",
+    "alt": "Vision transformer pipeline: an image is cut into a 3 by 3 grid of patches, the patches plus a class token are turned into a sequence by a patch embedding with positional embeddings, the sequence passes through repeated transformer encoder blocks (normalization, multi-head attention, MLP), and a head reads a label from the class token output.",
+    "caption": "Image tokenization turns a continuous image into a sequence a transformer can read. The picture is cut into fixed-size patches, each patch is flattened and linearly projected into a token embedding, and a positional embedding records where each patch sat, so the patches become tokens just like words in a sentence.",
+    "credit": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola (Dive into Deep Learning)",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/vision-transformer.html",
+    "provider": "Dive into Deep Learning"
   },
   "in-context-learning": {
     "file": "in-context-learning.svg",
@@ -1368,6 +1708,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html",
     "provider": "Dive into Deep Learning"
+  },
+  "induction-head": {
+    "file": "induction-head.png",
+    "alt": "An attention-weight heatmap for an induction head (GPT-2 Small, layer 5, head 1) on the repeated sequence The cat sat on the mat. The cat sat on the. The axes are destination tokens (query) against source tokens (key). In the repeated second half, each token attends back along an off-diagonal stripe to the token that followed its first occurrence, for example the second cat attending to the first sat.",
+    "caption": "An induction head implements in-context copying: if the current token appeared earlier, it attends back to whatever followed that earlier occurrence and predicts it again. The off-diagonal stripe in the repeated half of this attention pattern is the signature, each repeated token reaching back to the token that came after its first appearance, which is the match-and-copy rule behind in-context learning.",
+    "credit": "Ivan Arcuschin, Learn Mechanistic Interpretability",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://learnmechinterp.com/topics/reading-attention-patterns/",
+    "provider": "GitHub: FlyingPumba/learn-mech-interp"
   },
   "inductive-bias": {
     "file": "inductive-bias.png",
@@ -1380,14 +1730,14 @@
     "provider": "Wikimedia Commons"
   },
   "information-bottleneck": {
-    "file": "information-bottleneck.png",
-    "alt": "Two overlapping circles for the entropies H(X) and H(Y); the overlap is labeled the mutual information I(X;Y), the non-overlapping parts are the conditional entropies H(X|Y) and H(Y|X), and the union is the joint entropy H(X,Y).",
-    "caption": "The information bottleneck is stated in the currency this diagram shows: a representation should keep high mutual information with the target (the central overlap I) while squeezing out the input information it does not need, trading compression of the input against prediction of the output.",
-    "credit": "KonradVoelkel",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Entropy-mutual-information-relative-entropy-relation-diagram.svg",
-    "provider": "Wikimedia Commons"
+    "file": "information-bottleneck.jpg",
+    "alt": "A schematic of the information plane. The horizontal axis is I(z;x), the mutual information between the representation and the input, and the vertical axis is I(z;y), the mutual information between the representation and the target. A trajectory of red dots first moves right and up (the fitting phase, I(z;x) increases) and then curves back left while staying high (the compression phase, I(z;x) decreases).",
+    "caption": "The information bottleneck is stated in exactly the two quantities this plane tracks: how much a representation tells you about the input, I(z;x), against how much it tells you about the target, I(z;y). A good representation pushes up I(z;y) while squeezing down I(z;x), the compression phase shown here, keeping what predicts the label and discarding the rest of the input.",
+    "credit": "Taro Tezuka, Shizuma Namekawa",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://www.mdpi.com/1099-4300/23/8/974",
+    "provider": "MDPI Entropy"
   },
   "instance-segmentation": {
     "file": "instance-segmentation.webp",
@@ -1461,13 +1811,13 @@
   },
   "k-nearest-neighbors": {
     "file": "k-nearest-neighbors.png",
-    "alt": "A green query point surrounded by red triangles and blue squares. A solid inner circle encloses two red triangles and one blue square; a dashed outer circle encloses three blue squares and two red triangles.",
-    "caption": "To classify the green point, k-nearest neighbors looks at its closest labeled examples and takes their majority vote. With k equal to 3 (solid circle) the two red triangles win; with k equal to 5 (dashed circle) the three blue squares win. The single choice of k can flip the verdict, which makes it the method's key knob.",
-    "credit": "Antti Ajanki",
-    "license": "CC BY-SA 3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:KnnClassification.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Two side-by-side scatter plots of the iris dataset (sepal length versus sepal width) showing k-nearest-neighbors classification with k equals 11; colored background regions mark the predicted class for every point in the plane, with uniform weighting on the left and distance weighting on the right, and the training points overlaid in three class colors.",
+    "caption": "k-nearest-neighbors classifies a new point by the majority vote of its k closest labeled neighbors, with no training step beyond storing the data. The colored regions show the resulting decision boundary over the feature space; weighting neighbors by distance (right) lets closer points count for more than far ones (left).",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html",
+    "provider": "scikit-learn"
   },
   "kalman-filter": {
     "file": "kalman-filter.png",
@@ -1529,6 +1879,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Knowledge-distillation-example.png",
     "provider": "Wikimedia Commons"
   },
+  "kolmogorov-arnold-network": {
+    "file": "kolmogorov-arnold-network.png",
+    "alt": "A two-column comparison. The left column, Multi-Layer Perceptron (MLP), shows a network with fixed nonlinear activation functions sitting on the nodes and learnable linear weights on the edges, annotated with the universal approximation theorem. The right column, Kolmogorov-Arnold Network (KAN), shows learnable univariate activation functions (drawn as small spline curves) sitting on the edges and simple summation on the nodes, annotated with the Kolmogorov-Arnold representation theorem.",
+    "caption": "A Kolmogorov-Arnold Network moves the nonlinearity off the nodes and onto the edges: where an MLP applies a fixed activation at each node and learns linear weights on the connections, a KAN learns the shape of a univariate function (a spline) on each connection and merely sums at the nodes. The design draws on the Kolmogorov-Arnold representation theorem that any continuous multivariate function can be built from sums of functions of one variable.",
+    "credit": "Ziming Liu, Yixuan Wang, Sachin Vaidya, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2404.19756",
+    "provider": "arXiv"
+  },
   "kto": {
     "file": "kto.png",
     "alt": "A value function plotted with loss on the left and gain on the right of a horizontal axis crossing a marked reference point. The Kahneman-Tversky curve is concave for gains and steeper for losses (loss aversion), with the DPO and PPO-Clip implied value functions drawn for comparison.",
@@ -1549,6 +1909,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:LagrangeMultipliers2D.svg",
     "provider": "Wikimedia Commons"
   },
+  "large-language-model": {
+    "file": "large-language-model.png",
+    "alt": "Three iterations of autoregressive generation by a language model. In iteration one, the tokens What is in are fed to the model and it outputs the. In iteration two, that word is concatenated to the input What is in the and the model outputs box. In iteration three, the input is What is in the box and the model outputs the next token. Each step appends the model's previous output to the running sequence.",
+    "caption": "A large language model generates text autoregressively: it predicts the next token from all the tokens so far, appends that token to the sequence, and repeats. This single next-token objective, scaled up over billions of parameters and trillions of training tokens, is what gives these models their broad command of language and reasoning.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/blog/kv-cache",
+    "provider": "Hugging Face"
+  },
   "late-interaction": {
     "file": "late-interaction.png",
     "alt": "A diagram of ColBERT. A Query Encoder produces a row of green per-token vectors and a Document Encoder produces a grid of blue per-token vectors (marked offline indexing). For each query token, a MaxSim operator selects its best-matching document token, and the MaxSim values are summed into a single score.",
@@ -1561,13 +1931,13 @@
   },
   "latent-diffusion": {
     "file": "latent-diffusion.png",
-    "alt": "Block diagram of the latent diffusion architecture with three regions: a pink Pixel Space where an encoder E maps an image x to a latent z and a decoder D reconstructs it, a green Latent Space where the diffusion and denoising U-Net operate on the latent with cross-attention, and a Conditioning column feeding text, images, and semantic maps in through an encoder.",
-    "caption": "Latent diffusion runs the whole diffusion process in the small latent space of an autoencoder instead of on raw pixels. An encoder (E) compresses the image into a compact latent, the denoising U-Net does the iterative generative work there while a conditioning signal such as text enters through cross-attention, and only at the end does the decoder (D) expand the finished latent back to a full-resolution image. Moving the expensive denoising off the pixel grid is what made high-resolution generation affordable.",
-    "credit": "Machine Vision and Learning Group, LMU Munich",
+    "alt": "Block diagram of latent diffusion with three regions: a pink Pixel Space where an encoder E maps an image x to a latent z and a decoder D reconstructs it, a green Latent Space where a denoising U-Net runs the diffusion and denoising steps on the latent with cross-attention, and a Conditioning column feeding text, semantic maps, and images in through an encoder tau.",
+    "caption": "Latent diffusion runs the diffusion process in the compact latent space of an autoencoder instead of on raw pixels. An encoder E compresses the image to a latent, the denoising U-Net does the iterative generation there while a condition such as text enters through cross-attention, and only at the end does the decoder D expand the latent back to a full-resolution image.",
+    "credit": "Rombach, Blattmann, Lorenz, Esser and Ommer (CompVis, High-Resolution Image Synthesis with Latent Diffusion Models)",
     "license": "MIT",
-    "license_url": "https://opensource.org/license/mit",
-    "source": "https://commons.wikimedia.org/wiki/File:Stable_Diffusion_architecture.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://github.com/CompVis/latent-diffusion/blob/main/LICENSE",
+    "source": "https://github.com/CompVis/latent-diffusion",
+    "provider": "GitHub: CompVis/latent-diffusion"
   },
   "latent-semantic-analysis": {
     "file": "latent-semantic-analysis.gif",
@@ -1659,6 +2029,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Shear.svg",
     "provider": "Wikimedia Commons"
   },
+  "llm-as-judge": {
+    "file": "llm-as-judge.png",
+    "alt": "A scatter plot with win rate difference between two models on the x-axis (0 to 1) and the agreement between a GPT-4 judge and human judges on the y-axis (about 0.65 to 1.0). The points rise from left to right: when two models are close in quality the judge and humans agree less often, and as the quality gap widens agreement climbs toward 1.0.",
+    "caption": "LLM-as-judge uses a strong model to grade other models' open-ended outputs as a scalable stand-in for human raters. The plot validates the idea: agreement between a GPT-4 judge and humans rises as the gap between the two compared models grows, reaching the same roughly 80 percent-plus agreement that humans reach with each other, so the judge is most reliable exactly when the quality difference is clear.",
+    "credit": "Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, Ion Stoica",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2306.05685",
+    "provider": "arXiv: 2306.05685"
+  },
   "local-attractor-basin": {
     "file": "local-attractor-basin.png",
     "alt": "Diagram of a region A inside a larger space, with trajectories starting from several different points all flowing inward and converging into region A.",
@@ -1681,13 +2061,23 @@
   },
   "logistic-regression": {
     "file": "logistic-regression.png",
-    "alt": "The logistic sigmoid curve, an S-shaped curve that rises smoothly from zero at the far left through one half at the center to one at the far right.",
-    "caption": "Logistic regression passes a weighted sum of the features through this S-shaped sigmoid, which squashes any real number into the range zero to one. The output is read as the probability of the positive class: large positive scores approach one, large negative scores approach zero, and a score of zero maps to one half.",
-    "credit": "Qef",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Logistic-curve.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Two panels with an arrow between them: on the left a straight line for the linear function z equals 2x plus 5, on the right the same input passed through the sigmoid y-prime equals 1 over (1 plus e to the minus z), bending the line into an S-shaped curve bounded between 0 and 1, with three matched points (a square, a dot, and a star) shown in both panels.",
+    "caption": "Logistic regression computes a linear score and then squashes it through the sigmoid into a probability between 0 and 1. The left panel is the raw linear output and the right is the same values after the sigmoid; the matched points show how a wide range of scores is mapped onto the bounded probability scale.",
+    "credit": "Google for Developers, Machine Learning Crash Course",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://developers.google.com/machine-learning/crash-course/logistic-regression/sigmoid-function",
+    "provider": "Google for Developers"
+  },
+  "logit-lens": {
+    "file": "logit-lens.png",
+    "alt": "A layer-by-layer table for GPT-2 Small on the prompt The Eiffel Tower is located in the city of blank. Each row is a layer (0 to 11) with its top-1 prediction and probability. Early layers predict generic words like the, of, and France, then from layer 6 onward the prediction settles on Paris with the probability rising from 12 percent to 93 percent, the rows shaded darker as confidence grows.",
+    "caption": "The logit lens decodes a transformer's hidden state at each layer through the model's own output head, reading off the next-token prediction as it forms. Here the answer crystallizes with depth: early layers emit generic tokens, then the correct city Paris emerges around the middle layers and sharpens toward the top, showing the prediction take shape as information flows upward.",
+    "credit": "Ivan Arcuschin, Learn Mechanistic Interpretability",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://learnmechinterp.com/topics/logit-lens-and-tuned-lens/",
+    "provider": "GitHub: FlyingPumba/learn-mech-interp"
   },
   "logits": {
     "file": "logits.png",
@@ -1701,13 +2091,13 @@
   },
   "lora": {
     "file": "lora.png",
-    "alt": "An input vector x of dimension d feeds two parallel paths whose outputs are added to give h. The left path is a large frozen square weight matrix W of size d by d. The right path is a low-rank pair: a down-projection A initialized from a normal distribution narrowing to rank r, then an up-projection B initialized to zero.",
-    "caption": "LoRA freezes the large pretrained weight matrix W and learns only a small low-rank update beside it, formed as the product of two thin matrices A and B with inner rank r far smaller than the dimension d. Because B starts at zero, training begins exactly at the pretrained behavior, and only A and B receive gradients, so a huge model is adapted by training a tiny fraction of its parameters.",
-    "credit": "LauAI",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:LoRA.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Three side-by-side adapter diagrams; the leftmost, labeled LoRA, is the relevant one. An input h enters a frozen pretrained weight matrix W0 (gray) and, in parallel, a trainable low-rank path of two green matrices, a down-projection A of shape r by q and an up-projection B of shape p by r, whose matrix product forms the weight update. The two outputs are summed to produce h prime. The right two panels show the LoHa and LoKr variants for comparison.",
+    "caption": "LoRA (leftmost panel) freezes the pretrained weight matrix W0 and learns the update as the product of two small low-rank matrices, a down-projection A and an up-projection B of inner rank r, added back alongside the frozen path. Only A and B are trained, a tiny fraction of the parameters, and at inference the product can be merged into W0 for no added latency.",
+    "credit": "Hugging Face PEFT",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/docs/peft/main/en/conceptual_guides/adapter",
+    "provider": "GitHub: huggingface/peft"
   },
   "loss-function": {
     "file": "loss-function.png",
@@ -1750,14 +2140,14 @@
     "provider": "LotteryTicketHypothesis-TensorFlow"
   },
   "lstm": {
-    "file": "lstm.png",
-    "alt": "Schematic of a long short-term memory cell showing the input, forget, and output gates and the cell state",
-    "caption": "An LSTM cell carries a protected cell state across time, with input, forget, and output gates deciding what to store, discard, and emit at each step.",
-    "credit": "Leouscin",
-    "license": "CC0",
-    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://en.wikipedia.org/wiki/Long_short-term_memory",
-    "provider": "Wikimedia Commons"
+    "file": "lstm.svg",
+    "alt": "Diagram of one LSTM cell. The memory cell internal state C runs straight across the top, modified only by an elementwise multiply with the forget gate and an elementwise add of new content. The input X_t and previous hidden state feed three sigmoid gates (forget, input, output) and a tanh input node. The output gate multiplies a tanh of the cell state to produce the hidden state H_t. A legend marks the sigmoid layers, the tanh layer, and the elementwise operators.",
+    "caption": "An LSTM augments the recurrent hidden state with a protected cell state that runs along the top with only minor linear interactions. Three sigmoid gates regulate it: the forget gate decides what to keep, the input gate decides what new candidate content to write, and the output gate decides what to expose. That nearly uninterrupted cell-state path is what lets gradients survive across many time steps.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/lstm.html",
+    "provider": "Dive into Deep Learning"
   },
   "machine-learning": {
     "file": "machine-learning.png",
@@ -1849,6 +2239,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Masked_Autoencoder.png",
     "provider": "Wikimedia Commons"
   },
+  "masked-language-modeling": {
+    "file": "masked-language-modeling.svg",
+    "alt": "The sentence My [MASK] is Sylvain with one token replaced by a [MASK] placeholder. An arrow points down from the masked position to the predicted word name, showing the model recovering the hidden token from the surrounding words on both sides.",
+    "caption": "Masked language modeling hides a fraction of the tokens in a text and trains the model to predict each hidden token from the words on both sides of it. Because the model sees context to the left and the right, it learns deeply bidirectional representations.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/nlp-course/chapter1/6",
+    "provider": "Hugging Face"
+  },
   "matrix": {
     "file": "matrix.png",
     "alt": "An m-by-n matrix drawn in large brackets with entries a sub i,j. A blue arrow down the left marks the m rows where the index i changes, and a red arrow across the top marks the n columns where the index j changes.",
@@ -1869,6 +2269,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Matrix_multiplication_diagram_2.svg",
     "provider": "Wikimedia Commons"
   },
+  "matryoshka-embeddings": {
+    "file": "matryoshka-embeddings.jpg",
+    "alt": "A diagram of Matryoshka Representation Learning. A single embedding vector z in R^d is shown as nested colored prefixes, and a separate loss is computed on each prefix (the first d/16, d/8, d/4, d/2, and the full d dimensions), then summed into one combined loss. On the left, the resulting vector feeds adaptive retrieval (shortlisting then re-ranking) and adaptive classification.",
+    "caption": "Matryoshka representation learning trains one embedding so that nested prefixes of it are each usable on their own. The training objective applies a loss not just to the full vector but simultaneously to a series of shorter prefixes (here d/16, d/8, d/4, d/2, and d), which forces the most important information into the earliest coordinates. The vector can then be truncated to any trained length, enabling coarse-to-fine retrieval: a short prefix shortlists candidates cheaply, then the full vector re-ranks them.",
+    "credit": "Aditya Kusupati and the Matryoshka Representation Learning authors",
+    "license": "MIT",
+    "license_url": "https://opensource.org/license/mit",
+    "source": "https://github.com/RAIVNLab/MRL",
+    "provider": "GitHub: RAIVNLab/MRL"
+  },
   "maximum-likelihood-estimation": {
     "file": "maximum-likelihood-estimation.png",
     "alt": "Curve of the likelihood of observed data as a function of a Poisson rate parameter, rising to a single peak at the value marked lambda-hat and falling away on either side.",
@@ -1888,6 +2298,26 @@
     "license_url": "https://en.wikipedia.org/wiki/Public_domain",
     "source": "https://commons.wikimedia.org/wiki/File:RandLintegrals.svg",
     "provider": "Wikimedia Commons"
+  },
+  "mechanistic-interpretability": {
+    "file": "mechanistic-interpretability.png",
+    "alt": "A taxonomy of mechanistic interpretability methods split into two groups. A green Observation group, marked with a microscope, contains Structured Probes, Logit Lens, and Sparse Autoencoder. An orange Intervention group, marked with a scalpel, contains Activation Patching, Attribution Patching, and Causal Scrubbing.",
+    "caption": "Mechanistic interpretability reverse-engineers a trained network into human-understandable algorithms, and its methods divide into two families. Observational methods (probes, the logit lens, sparse autoencoders) read out what a model represents, while interventional methods (activation patching, attribution patching, causal scrubbing) change activations to establish what the model actually relies on causally.",
+    "credit": "Bereska and Gavves",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://arxiv.org/abs/2404.14082",
+    "provider": "arXiv"
+  },
+  "memory-bandwidth": {
+    "file": "memory-bandwidth.png",
+    "alt": "A two-panel diagram of performance limits from memory. Panel A, training bottlenecks, shows activations, gradients, and optimizer state exceeding a single device's memory capacity and being sharded across several devices. Panel B, inference bottlenecks, shows a high-bandwidth memory system holding a growing KV cache feeding a compute core over a bandwidth-limited link, with the compute core marked as stalled while it waits on memory.",
+    "caption": "Memory bandwidth is the rate at which data moves between an accelerator's memory and its arithmetic units, and it is often the true bottleneck. As panel B shows, when the key-value cache and intermediate tensors must stream from high-bandwidth memory across a bandwidth-limited link, the compute core stalls waiting for data rather than for arithmetic, so throughput is capped by bandwidth, not by raw compute.",
+    "credit": "Bin Xu, Ayan Banerjee, Sandeep Gupta",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2512.23914",
+    "provider": "arXiv"
   },
   "message-passing": {
     "file": "message-passing.png",
@@ -1959,6 +2389,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:IEEE_754r_Half_Floating_Point_Format.svg",
     "provider": "Wikimedia Commons"
   },
+  "mixture-of-depths": {
+    "file": "mixture-of-depths.png",
+    "alt": "On the left, two transformer blocks each fronted by a Route gate that assigns a weight to the incoming token; when the weight is high the token passes through Normalize, Self-attention, and MLP, and when it is low the token is greyed out and bypasses the block along the residual connection. On the right, a Routing Decisions heatmap over layers and sequence positions colors each token as either use block or route around block, contrasted with a vanilla transformer that processes every token at every layer and an early-exit scheme.",
+    "caption": "A mixture-of-depths transformer gives each layer a small router that selects only a capped subset of tokens to actually run through that block's attention and feedforward; the rest skip the block entirely along the residual path. Because the capacity is fixed in advance, the total compute stays predictable while the network learns to spend its layers on the tokens that need them, as the routing heatmap shows.",
+    "credit": "David Raposo, Sam Ritter, Blake Richards, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2404.02258",
+    "provider": "arXiv"
+  },
   "mixture-of-experts": {
     "file": "mixture-of-experts.png",
     "alt": "The upper block diagrams a mixture-of-experts layer from DeepSeek-V2: an input hidden state feeds a router that scores many parallel expert subnetworks and keeps only the top few (Top-K), shown as a small set of activated routed experts plus shared experts, whose weighted outputs are summed into the output hidden state. The lower block shows the separate multi-head latent attention module.",
@@ -1979,15 +2419,35 @@
     "source": "https://github.com/timgaripov/dnn-mode-connectivity",
     "provider": "dnn-mode-connectivity (Garipov et al.)"
   },
+  "model-based-reinforcement-learning": {
+    "file": "model-based-reinforcement-learning.png",
+    "alt": "A tree diagram titled RL Algorithms branching first into Model-Free RL and Model-Based RL. Model-Free RL splits into Policy Optimization (with leaves Policy Gradient, A2C / A3C, PPO, TRPO) and Q-Learning (DQN, C51, QR-DQN, HER), with DDPG, TD3, and SAC bridging the two. Model-Based RL splits into Learn the Model (SVG, I2A, MBMF, MBVE) and Given the Model (AlphaZero).",
+    "caption": "A taxonomy of modern reinforcement learning algorithms. The first split is between model-free methods, which learn purely from trial and error, and model-based methods, which learn or are given a model of the environment's dynamics and then plan with it. Model-based methods divide further into learning the model (for example MBMF and world-model approaches) versus being given the model (for example AlphaZero).",
+    "credit": "Joshua Achiam, OpenAI Spinning Up",
+    "license": "MIT",
+    "license_url": "https://github.com/openai/spinningup/blob/master/LICENSE",
+    "source": "https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html",
+    "provider": "OpenAI Spinning Up"
+  },
+  "model-compression": {
+    "file": "model-compression.webp",
+    "alt": "A taxonomy tree of model compression. A root node, Model compression, branches into four groups: Pruning (weight pruning, neuron pruning) and Decomposition (low-rank decomposition, depthwise separable convolution) under number of parameters; Quantization (post-training quantization, quantization-aware training) under parameter type; and Distillation (white-box, black-box) under knowledge transfer.",
+    "caption": "Model compression is the family of techniques for shrinking a trained model so it runs faster and cheaper with little quality loss. This taxonomy groups the main approaches: pruning and low-rank decomposition reduce the number of parameters, quantization reduces the precision of each parameter, and knowledge distillation transfers behavior into a smaller student model.",
+    "credit": "Defu Liu, Yixiao Zhu, Zhe Liu, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://www.frontiersin.org/articles/10.3389/frobt.2025.1518965/full",
+    "provider": "Frontiers"
+  },
   "model-context-protocol": {
     "file": "model-context-protocol.png",
-    "alt": "Two node diagrams compared. On the left, eight nodes labeled A to H are each wired directly to every other node, forming a dense tangle of connections, labeled Impact equals N. On the right, the same eight nodes each connect only to a single central hub, labeled Impact equals 1.",
-    "caption": "MCP applies the standard-hub pattern shown here to the boundary between models and tools. Without a shared standard, connecting many applications to many tools means a separate custom connector for nearly every pair, a tangle that grows as M times N (left). Routing everything through one common protocol collapses that to M plus N (right): a tool implements the standard once and any compliant client can use it.",
-    "credit": "ESB_versus_POINT_2_POINT.gif : Original uploader was Arkramer at nl.wikipedia de",
-    "license": "CC BY-SA 3.0",
-    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Enterprise-Service-Bus-NS.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Architecture of the Model Context Protocol. A client application (such as Claude Desktop or Cursor) embeds an MCP client that initiates tools, requests resources, and builds prompts; it connects through a transport layer (local stdio or remote HTTP) to an MCP server that makes tools available, shares resources, and hosts prompt templates, which in turn fronts external services. The server's three primitives are labeled: tools (model controlled), resources (application controlled), and prompts (user controlled).",
+    "caption": "MCP is an open standard that lets any compliant client connect to any compliant server through one interface, collapsing bespoke M-times-N integrations into M-plus-N. A host runs an MCP client per server; the server exposes tools, resources, and prompts over a defined transport, so an agent gains new abilities by pointing at another server rather than writing new glue.",
+    "credit": "Abul Ehtesham, Aditi Singh, Gaurav Kumar Gupta, Saket Kumar",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2505.02279",
+    "provider": "arXiv"
   },
   "model-parallelism": {
     "file": "model-parallelism.svg",
@@ -2009,6 +2469,16 @@
     "source": "https://d2l.ai/chapter_optimization/momentum.html",
     "provider": "Dive into Deep Learning"
   },
+  "monosemanticity": {
+    "file": "monosemanticity.png",
+    "alt": "A contrast of two neurons by their activating images. The top row is a standard vision-language-model neuron whose most activating images are a mix of unrelated vehicles (a scooter, cars, trucks, planes), with a low Monosemanticity Score of 0.48. The bottom row is a sparse-autoencoder neuron whose most activating images are all red strawberries, with a high Monosemanticity Score of 0.81.",
+    "caption": "A monosemantic feature responds to exactly one human-interpretable concept. The standard neuron on top is polysemantic, firing across unrelated vehicles, whereas the sparse-autoencoder feature below activates only on red strawberries and scores far higher on monosemanticity. Recovering features that each mean one thing, so the representation can be read one concept at a time, is the goal interpretability methods are built to reach.",
+    "credit": "Pach et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2504.02821",
+    "provider": "arXiv"
+  },
   "monte-carlo-tree-search": {
     "file": "monte-carlo-tree-search.png",
     "alt": "Four copies of the same search tree labeled Selection, Expansion, Simulation, and Backpropagation. Each node shows a wins-over-visits ratio such as 11/21. Selection traces a path down to a leaf, Expansion adds a new child, Simulation plays out from it, and Backpropagation updates the ratios back up the path.",
@@ -2018,6 +2488,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:MCTS_(English)_-_Updated_2017-11-19.svg",
     "provider": "Wikimedia Commons"
+  },
+  "mt-bench": {
+    "file": "mt-bench.png",
+    "alt": "A radar chart with eight spokes labeled Writing, Roleplay, Reasoning, Math, Coding, Extraction, STEM, and Humanities, scored from 0 to 10. Six models, including GPT-4, GPT-3.5-turbo, Claude-v1, Vicuna-13B, Alpaca-13B, and LLaMA-13B, trace polygons; the stronger models reach far out on most spokes while the weaker ones stay near the center, especially on Reasoning, Math, and Coding.",
+    "caption": "MT-Bench grades chat models on challenging multi-turn questions across eight categories of open-ended skill, with a strong model acting as the judge. The radar chart shows each model's per-category scores out of ten: capable models push outward on most axes, and every model tends to dip on the harder reasoning, math, and coding spokes, which is the conversational quality MT-Bench is built to measure.",
+    "credit": "Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, Ion Stoica",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2306.05685",
+    "provider": "arXiv: 2306.05685"
+  },
+  "multi-agent-system": {
+    "file": "multi-agent-system.png",
+    "alt": "Overview of the AutoGen framework. On the left, agents are customized from a language model, tools, a human, or a combination. In the middle, several such agents hold a multi-agent conversation by passing messages to solve a task together. On the right, the framework supports flexible conversation patterns such as joint chats with optional human participation.",
+    "caption": "A multi-agent system splits a job across several agents, each given a focused role and its own tools, that communicate and coordinate to produce a combined result. As shown here, agents are customized from a model, tools, or a human, then collaborate through message-passing conversations, which keeps each agent's context tight and lets a dedicated critic check another's work.",
+    "credit": "Qingyun Wu et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2308.08155",
+    "provider": "arXiv"
   },
   "multi-head-attention": {
     "file": "multi-head-attention.svg",
@@ -2048,6 +2538,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://d2l.ai/chapter_multilayer-perceptrons/mlp.html",
     "provider": "Dive into Deep Learning"
+  },
+  "multimodal-learning": {
+    "file": "multimodal-learning.jpg",
+    "alt": "A multimodal model flow: three inputs (video and images, audio, text) each go through their own unimodal model, the encoded outputs are combined by fusion modules into a joint feature space, and a final stage produces a prediction.",
+    "caption": "Multimodal learning trains a model to relate information from more than one modality. Each modality is read by its own encoder, the encoded representations are fused into a single joint feature space where related content lines up, and downstream tasks read from that shared representation.",
+    "credit": "Hugging Face Community Computer Vision Course",
+    "license": "MIT",
+    "license_url": "https://github.com/huggingface/computer-vision-course/blob/main/LICENSE",
+    "source": "https://huggingface.co/learn/computer-vision-course/en/unit4/multimodal-models/a_multimodal_world",
+    "provider": "Hugging Face"
   },
   "mutual-information": {
     "file": "mutual-information.png",
@@ -2088,6 +2588,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)",
     "provider": "Wikimedia Commons"
+  },
+  "neural-radiance-field": {
+    "file": "neural-radiance-field.jpg",
+    "alt": "The NeRF pipeline in four panels: (a) 5D inputs of a 3D position and viewing direction sampled along camera rays, (b) a small MLP mapping each sample to color and density, (c) volume rendering that integrates color and density along each ray into a pixel, and (d) a rendering loss comparing the rendered pixels against the ground-truth photo.",
+    "caption": "A neural radiance field stores a 3D scene as a small network that maps a 3D point and viewing direction to color and density. To render a pixel, points are sampled along its camera ray, the network is queried at each, and the results are integrated by volume rendering; training minimizes the difference between rendered and real photos.",
+    "credit": "Ben Mildenhall et al. (NeRF)",
+    "license": "MIT",
+    "license_url": "https://github.com/bmild/nerf/blob/master/LICENSE",
+    "source": "https://github.com/bmild/nerf",
+    "provider": "GitHub: bmild/nerf"
   },
   "neural-scaling-laws": {
     "file": "neural-scaling-laws.png",
@@ -2241,13 +2751,13 @@
   },
   "paged-attention": {
     "file": "paged-attention.png",
-    "alt": "A contiguous virtual address space (with text, data, and stack regions) on the left, connected by arrows to a physical address space on the right whose pages are scattered out of order, with a legend marking pages that belong to the process and pages that do not.",
-    "caption": "Paged attention borrows this idea from operating-system virtual memory. A program sees one contiguous address space (left), but the pages are mapped to scattered, non-contiguous frames of physical memory (right) through a table of pointers. Paged attention stores a request's growing key-value cache the same way, in small fixed-size blocks handed out on demand, so memory is not reserved for the worst case and almost none is wasted.",
-    "credit": "Traced by User:Stannered, original by en:User:Dysprosia",
-    "license": "BSD",
-    "license_url": "http://opensource.org/licenses/bsd-license.php",
-    "source": "https://commons.wikimedia.org/wiki/File:Virtual_address_space_and_physical_address_space_relationship.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "A diagram of block table translation in vLLM for one request. On the left, the request's key-value cache is laid out as small logical KV blocks holding a few tokens each. A central block table maps each logical block to a physical block number and records how many slots are filled. On the right, the corresponding physical KV blocks sit at scattered, non-contiguous positions in GPU DRAM, with arrows tracing each logical block to its physical location.",
+    "caption": "Paged attention borrows virtual memory paging to manage the key-value cache. The cache for a request is split into small fixed-size logical blocks, and a per-request block table maps each logical block to a physical block that can sit anywhere in GPU memory. Because blocks need not be contiguous, the server allocates them on demand and packs many requests together, wasting far less memory than reserving one large contiguous region per request.",
+    "credit": "Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2309.06180",
+    "provider": "arXiv"
   },
   "parallel-transport": {
     "file": "parallel-transport.png",
@@ -2309,6 +2819,16 @@
     "source": "https://github.com/microsoft/DeepSpeed",
     "provider": "DeepSpeed (Microsoft)"
   },
+  "planning": {
+    "file": "planning.png",
+    "alt": "Four schematics of reasoning structures drawn as boxes (thoughts) between an Input and an Output. Input-Output maps directly to an answer, Chain of Thought is a single linear chain of steps, Self-Consistency samples several independent chains and takes a majority vote, and Tree of Thoughts branches into a tree where some paths are explored and others pruned.",
+    "caption": "Planning gives an agent foresight: instead of choosing each move reactively, it lays out and weighs steps toward the goal. Tree of Thoughts (right) makes this explicit by exploring multiple candidate paths with lookahead and backtracking, in contrast to the single linear chain in the middle, which is much of what lets an agent arrange a route no single step would reach.",
+    "credit": "Shunyu Yao et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2305.10601",
+    "provider": "arXiv"
+  },
   "polysemanticity": {
     "file": "polysemanticity.png",
     "alt": "Three optimized feature-visualization images for a single neuron, each blending several unrelated things at once: cat faces together with the fronts of cars, and cat legs together with car bodies.",
@@ -2320,14 +2840,14 @@
     "provider": "Distill"
   },
   "pooling": {
-    "file": "pooling.png",
-    "alt": "A 4 by 4 grid of numbers divided into four colored 2 by 2 windows, with an arrow to a 2 by 2 output holding the maximum of each window: 6, 8, 3, 4.",
-    "caption": "Max pooling downsamples a feature map by sliding a window and keeping only the largest value in each region. Each colored 2 by 2 block collapses to its maximum (6, 8, 3, 4), halving width and height and granting a small amount of translation invariance because only the strongest response is kept, not its exact position.",
-    "credit": "Aphex34",
+    "file": "pooling.svg",
+    "alt": "A 3 by 3 input grid of the numbers 0 to 8 with a blue 2 by 2 window over the top-left four cells (0, 1, 3, 4), a box labeled 2 by 2 Max-pooling, and a 2 by 2 output holding 4, 5, 7, 8.",
+    "caption": "Max pooling downsamples a feature map by sliding a window and keeping only the largest value in each region. The highlighted window over 0, 1, 3, 4 yields 4, and sliding it across the input produces the smaller output 4, 5, 7, 8, granting a little translation invariance because only the strongest response survives.",
+    "credit": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola (Dive into Deep Learning)",
     "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Max_pooling.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://d2l.ai/chapter_convolutional-neural-networks/pooling.html",
+    "provider": "Dive into Deep Learning"
   },
   "positional-encoding": {
     "file": "positional-encoding.svg",
@@ -2429,6 +2949,16 @@
     "source": "https://arxiv.org/abs/2406.06592",
     "provider": "arXiv"
   },
+  "proximal-policy-optimization": {
+    "file": "proximal-policy-optimization.jpg",
+    "alt": "A table of six cases for the PPO clipped objective, with columns for whether the probability ratio is inside, below, or above the range [1 minus epsilon, 1 plus epsilon], the sign of the advantage, the resulting return value of the min, whether the objective is clipped, and the gradient (a check or a zero). Below the table, two plots of the clipped objective L-CLIP against the ratio r show the flat clipped regions for a positive advantage and for a negative advantage.",
+    "caption": "Proximal Policy Optimization bounds how far each update can move the policy. It clips the probability ratio between the new and old policy to the range 1 plus or minus epsilon, so once an update pushes that ratio outside the band the objective flattens and its gradient becomes zero (the flat regions in the plots). That cap on each step is what makes PPO stable and reliable to train.",
+    "credit": "Hugging Face Deep RL Course (Thomas Simonini and contributors)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/deep-rl-course/unit8/clipped-surrogate-objective",
+    "provider": "Hugging Face"
+  },
   "q-learning": {
     "file": "q-learning.png",
     "alt": "Two Q-tables for the Taxi task with states as rows and the six actions (South, North, East, West, Pickup, Dropoff) as columns. The top table, labeled Initialized, is all zeros; the bottom table, labeled after Training, holds learned numeric Q-values that differ across actions.",
@@ -2451,13 +2981,13 @@
   },
   "quantization": {
     "file": "quantization.png",
-    "alt": "A smooth grey curve overlaid with a red staircase that snaps to a small set of evenly spaced horizontal levels marked by dashed lines, so the continuous values are rounded to the nearest available level.",
-    "caption": "Quantization maps continuous values onto a small set of discrete levels by rounding each to the nearest one, shown here as the red staircase tracking the smooth grey signal. A model is quantized the same way: its weights are rounded from 16-bit floats to a few integer levels (8-bit or 4-bit), which shrinks memory and speeds inference at the cost of a small rounding error.",
-    "credit": "Rbj",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Quantized.signal.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Three panels each showing a bell-shaped FP32 weight distribution above a row of INT4 integer levels. Panel (a) symmetric and uniform maps the range with evenly spaced levels centered on zero; panel (b) asymmetric and uniform shifts the range with a zero point offset; panel (c) asymmetric and non-uniform spaces the levels unevenly to match the distribution.",
+    "caption": "Quantization maps a model's continuous floating-point weights (the FP32 bell curve) onto a small set of discrete integer levels (INT4), shrinking memory and speeding inference. The scheme can be symmetric or asymmetric (whether the integer range is centered on zero) and uniform or non-uniform (whether the levels are evenly spaced), trading a small rounding error for large savings.",
+    "credit": "Kai Liu, Qian Zheng, Kaiwen Tao, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2505.05530",
+    "provider": "arXiv"
   },
   "random-forest": {
     "file": "random-forest.png",
@@ -2469,15 +2999,45 @@
     "source": "https://commons.wikimedia.org/wiki/File:Random_Forest_Bagging_Illustration.png",
     "provider": "Wikimedia Commons"
   },
+  "react-prompting": {
+    "file": "react-prompting.png",
+    "alt": "Four side-by-side prompting trajectories on a question-answering and a decision task. Standard and Chain-of-Thought reason without acting and reach wrong answers (marked with a red cross), Act-only takes actions without reasoning and also fails, while ReAct interleaves color-coded Thought, Action, and Observation steps and reaches the correct answer (marked with a green check).",
+    "caption": "ReAct prompting structures a turn as a repeating Thought, Action, Observation cycle. Reasoning alone (Chain-of-Thought) can follow a false premise and acting alone is opaque, but coupling the two lets each observation from a real action ground and correct the next round of reasoning, which is why the ReAct trajectory on the right succeeds where the others fail.",
+    "credit": "Shunyu Yao et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2210.03629",
+    "provider": "arXiv"
+  },
+  "reasoning-model": {
+    "file": "reasoning-model.png",
+    "alt": "A three-step flowchart for building a reasoning model. Step 1, distillation: a strong model (DeepSeek-R1) and an instruct model produce distilled reasoning data used to supervised-fine-tune (SFT) a smaller distilled model. Step 2, pure reinforcement learning: a base model plus reinforcement-learning reasoning data is trained with GRPO using verifiable rewards into an R1-Zero model. Step 3, multi-stage: a base model is first SFT-ed on reasoning data, then trained with GRPO and verifiable rewards into the final reasoning model.",
+    "caption": "A reasoning model is usually produced by reinforcement learning on problems with checkable answers. The diagram lays out three recipes: distilling reasoning traces from a stronger model, pure reinforcement learning with GRPO and verifiable rewards on a base model, and a multi-stage path that combines supervised fine-tuning with reinforcement learning, which is what teaches the model to think at length before answering.",
+    "credit": "Hugging Face (open-r1)",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/huggingface/open-r1/blob/main/LICENSE",
+    "source": "https://github.com/huggingface/open-r1",
+    "provider": "GitHub: huggingface/open-r1"
+  },
   "recurrent-neural-network": {
-    "file": "recurrent-neural-network.png",
-    "alt": "A recurrent neural network shown folded as a single cell with a self-loop, and unfolded to the right into a chain of cells across time steps t minus 1, t, and t plus 1, each taking an input x and producing an output o while passing the hidden state h forward.",
-    "caption": "A recurrent network applies the same cell at every step, feeding its hidden state h forward in time. Unfolding the self-loop (left) into a chain (right) shows how context carries across the sequence: the hidden state at each step depends on the current input and the previous state, with the weights U, V, and W shared at every step.",
-    "credit": "fdeloche",
+    "file": "recurrent-neural-network.svg",
+    "alt": "A recurrent network drawn across three adjacent time steps. At each step the input X_t and the previous hidden state both feed a fully connected layer with an activation function, which emits the new hidden state H_t and an output. The hidden state arrow passes from each step to the next, and a legend explains the copy and concatenate symbols.",
+    "caption": "A recurrent network processes a sequence one step at a time, combining the current input with the previous hidden state to produce the new hidden state and optionally an output. The same weights are reused at every step, so the hidden state carries context forward and the network can handle sequences of any length.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Recurrent_neural_network_unfold.svg",
-    "provider": "Wikimedia Commons"
+    "source": "https://d2l.ai/chapter_recurrent-neural-networks/rnn.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "reflection": {
+    "file": "reflection.png",
+    "alt": "Block diagram of the Reflexion agent. Inside an Agent box, an Actor language model produces a trajectory in the environment, an Evaluator language model scores it, and a Self-reflection language model turns that feedback into reflective text. The reflective text is stored in long-term memory and fed back to the Actor on the next attempt, alongside short-term trajectory memory.",
+    "caption": "Reflection adds a self-correcting loop on top of a single pass of generation. The agent produces an attempt, an evaluator judges it, and a self-reflection step converts that judgment into verbal feedback that is stored and prepended to the next try. Separating producing from judging surfaces flaws the model glosses over while generating, lifting quality without changing the underlying model.",
+    "credit": "Noah Shinn et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2303.11366",
+    "provider": "arXiv"
   },
   "regression": {
     "file": "regression.png",
@@ -2501,13 +3061,13 @@
   },
   "reinforcement-learning": {
     "file": "reinforcement-learning.png",
-    "alt": "Diagram of the reinforcement learning loop showing an agent taking actions and receiving state and reward from the environment",
-    "caption": "An agent acts on its environment and receives back the next state and a reward; learning means choosing actions that maximize cumulative reward.",
-    "credit": "Megajuice",
-    "license": "CC0",
-    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://en.wikipedia.org/wiki/Reinforcement_learning",
-    "provider": "Wikimedia Commons"
+    "alt": "The reinforcement learning loop drawn as a cycle: the Agent takes an action a_t that enters the Environment, and the Environment returns the next state and reward s_t, r_t back to the Agent, closing the loop.",
+    "caption": "Reinforcement learning is a closed feedback loop between an agent and its environment. The agent observes a state and chooses an action, the environment responds with a new state and a scalar reward, and the agent adjusts its behavior to maximize the cumulative reward over time.",
+    "credit": "OpenAI Spinning Up (Josh Achiam)",
+    "license": "MIT",
+    "license_url": "https://github.com/openai/spinningup/blob/master/LICENSE",
+    "source": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+    "provider": "OpenAI Spinning Up"
   },
   "rejection-sampling": {
     "file": "rejection-sampling.png",
@@ -2520,14 +3080,34 @@
     "provider": "Wikimedia Commons"
   },
   "relu": {
-    "file": "relu.png",
-    "alt": "Plot over inputs from minus four to four: the rectifier in blue is flat at zero for negative inputs and a straight line equal to the input for positive inputs, with the smooth softplus curve in green approximating it.",
-    "caption": "The rectified linear unit (blue) outputs zero for negative inputs and the input itself for positive ones, the maximum of zero and the input. Its derivative is exactly one on the positive side, so gradients pass through undiminished, unlike saturating activations; the green softplus is a smooth approximation. The sharp threshold also makes roughly half the units output zero, giving sparse, cheap activations.",
-    "credit": "Qwertyus",
-    "license": "CC0",
+    "file": "relu.svg",
+    "alt": "Plot of the ReLU function over inputs from minus eight to eight. The curve is flat at zero for every negative input and becomes a straight line equal to the input for positive values, with a sharp kink at the origin. The vertical axis is labeled relu(x) and the horizontal axis x.",
+    "caption": "The rectified linear unit returns zero for negative inputs and the input itself for positive ones, the maximum of zero and the input. Its derivative is exactly one on the positive side, so gradients pass through undiminished, unlike saturating activations; the hard zero on the negative side also makes roughly half the units inactive, giving sparse and cheap activations.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/mlp.html",
+    "provider": "Dive into Deep Learning"
+  },
+  "repetition-penalty": {
+    "file": "repetition-penalty.png",
+    "alt": "A grid of line charts, one row per model, with an accuracy plot on the left and a degenerate repetition percentage plot on the right, each swept over temperature from 0 to 1. With no penalty the repetition curve is high, while the repetition penalty, frequency penalty, and LZ penalty curves drop the repetition rate sharply, with little change to accuracy.",
+    "caption": "A repetition penalty lowers the probability of tokens the model has already produced, suppressing the degenerate loops language models fall into. The right-hand plots show the no-penalty baseline repeating heavily while the repetition and frequency penalties cut the degenerate-repetition rate by large factors; the left-hand plots show accuracy stays roughly flat, so the penalty curbs looping at little cost.",
+    "credit": "Antonio A. Ginart, Naveen Kodali, Jason Lee, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2504.20131",
+    "provider": "arXiv"
+  },
+  "representation-collapse": {
+    "file": "representation-collapse.png",
+    "alt": "A line plot of the log of the singular values of the covariance matrix of embedding vectors against the singular value rank index from 0 to about 128. The curve sits near a log value of minus four across the first ninety ranks, then falls off a cliff to about minus twenty-five, so a block of dimensions has near-zero variance.",
+    "caption": "Representation collapse shows up in the singular value spectrum of the embeddings. A healthy representation spreads variance across many dimensions, but here a whole block of singular values drops to near zero (the cliff past rank ninety), meaning those dimensions carry no information and the embeddings have collapsed onto a lower-dimensional subspace. This narrow form is called dimensional collapse.",
+    "credit": "Li Jing, Pascal Vincent, Yann LeCun, Yuandong Tian",
+    "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Rectifier_and_softplus_functions.png",
-    "provider": "Wikimedia Commons"
+    "source": "https://arxiv.org/abs/2110.09348",
+    "provider": "arXiv: 2110.09348"
   },
   "reproducing-kernel-hilbert-space": {
     "file": "reproducing-kernel-hilbert-space.png",
@@ -2538,6 +3118,16 @@
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Kernel_Machine.png",
     "provider": "Wikimedia Commons"
+  },
+  "reranking": {
+    "file": "reranking.png",
+    "alt": "A two-stage retrieval pipeline. A search query and a document collection feed a Retrieval Bi-Encoder, which returns candidate documents labeled retrieve candidates. Those candidates pass to a Re-Ranker Cross-Encoder, which outputs ranked hits.",
+    "caption": "Reranking is the second stage of a retrieve-then-rerank pipeline. A fast bi-encoder first sweeps the whole document collection and returns a shortlist of candidates tuned for recall, and a slower, more accurate cross-encoder reranker then re-scores only that shortlist to put the truly most relevant results on top. Retrieve broadly, then rerank narrowly.",
+    "credit": "Nils Reimers and the sentence-transformers contributors",
+    "license": "Apache 2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://www.sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+    "provider": "sentence-transformers"
   },
   "residual-connection": {
     "file": "residual-connection.svg",
@@ -2558,6 +3148,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:RAG_diagram.svg",
     "provider": "Wikimedia Commons"
+  },
+  "reward-bench": {
+    "file": "reward-bench.png",
+    "alt": "A schematic of the RewardBench scoring method. One prompt is paired with a chosen completion and a rejected completion. Each completion is passed through the reward model, producing a scalar score (here 0.2 for chosen and 0.4 for rejected). The pair counts as a win for the reward model when it assigns the chosen completion the higher score.",
+    "caption": "A reward model is the scorer that steers RLHF, and a flawed one silently corrupts everything trained against it. RewardBench tests a reward model on curated chosen-versus-rejected pairs: it runs each response through the model and checks whether the chosen response gets the higher score, and accuracy is the fraction of pairs it ranks correctly across categories like chat, safety, and reasoning.",
+    "credit": "Nathan Lambert, Valentina Pyatkin, Jacob Morrison, LJ Miranda, Bill Yuchen Lin, Khyathi Chandu, Nouha Dziri, Sachin Kumar, Tom Zick, Yejin Choi, Noah A. Smith, Hannaneh Hajishirzi",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2403.13787",
+    "provider": "arXiv: 2403.13787"
   },
   "reward-model": {
     "file": "reward-model.png",
@@ -2661,13 +3261,43 @@
   },
   "scaling-laws": {
     "file": "scaling-laws.png",
-    "alt": "Plot of the optimal ratio of training tokens per model parameter against training compute in FLOP on logarithmic axes. Two estimated optimal-policy curves are shown with uncertainty bands, along with a dashed horizontal line marking the D over N equals 20 rule of thumb and a point for the Chinchilla model.",
+    "alt": "Plot of the optimal ratio of training tokens per model parameter against training compute in FLOP on logarithmic axes. Two estimated optimal-policy curves are shown with uncertainty bands, one rising and one nearly flat, along with a dashed horizontal line marking the D over N equals twenty rule of thumb and a point for the Chinchilla model. A CC-BY and epoch.ai credit appear in the lower corners.",
     "caption": "Scaling laws let practitioners choose how to spend a fixed compute budget. The Chinchilla analysis found that parameters and training tokens should grow together, roughly twenty tokens per parameter (the dashed line), rather than making the model as large as possible. This compute-optimal allocation is why newer models are often not the largest but are trained on far more tokens.",
     "credit": "Epoch AI",
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Optimal_ratio_of_training_tokens_to_model_parameters_for_Chinchilla_scaling_law.png",
-    "provider": "Wikimedia Commons"
+    "source": "https://epoch.ai/blog/chinchilla-scaling-a-replication-attempt",
+    "provider": "Epoch AI"
+  },
+  "score-based-model": {
+    "file": "score-based-model.jpg",
+    "alt": "A schematic with two arrows over a strip of images of a dog that grows progressively noisier from left to right. The top arrow, Forward SDE (data to noise), carries the equation dx = f(x,t)dt + g(t)dw. The bottom arrow, Reverse SDE (noise to data), carries the same drift minus a term containing the score, the gradient of log p_t(x), which is boxed and labeled score function.",
+    "caption": "A score-based model views generation as a stochastic differential equation. A forward process slowly turns data into noise, and the matching reverse process turns noise back into data. The reverse process needs only the score, the gradient of the log probability density (boxed), which a network learns at every noise level.",
+    "credit": "Yang Song (Score-Based Generative Modeling through Stochastic Differential Equations)",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/yang-song/score_sde/blob/main/LICENSE",
+    "source": "https://github.com/yang-song/score_sde",
+    "provider": "GitHub: yang-song/score_sde"
+  },
+  "score-distillation": {
+    "file": "score-distillation.png",
+    "alt": "A score distillation pipeline for text-to-3D. A 3D Gaussian scene is rendered from several viewpoints into multiview images, noise is injected, and a pretrained 2D diffusion model conditioned on a text prompt (a beagle in a detective outfit) provides denoising directions that are turned into a gradient updating the 3D scene.",
+    "caption": "Score distillation sampling turns a 2D diffusion model into a critic for optimizing a separate representation, most often a 3D scene. Random views of the 3D scene are rendered, noised, and scored by the frozen text-to-image model, and the resulting gradient nudges the 3D parameters until every rendered viewpoint looks like a plausible sample from the diffusion model.",
+    "credit": "Li, Liu, Zhang, Su, Liu (Connecting Consistency Distillation to Score Distillation for Text-to-3D Generation)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2407.13584",
+    "provider": "arXiv"
+  },
+  "segment-anything": {
+    "file": "segment-anything.png",
+    "alt": "The Segment Anything Model architecture: an input image passes through a heavy image encoder into an image embedding, a lightweight prompt encoder turns a mask, points, a box, or text into prompt embeddings, and a fast mask decoder combines the two to output several valid object masks each with a confidence score.",
+    "caption": "Segment Anything is a promptable segmentation model. A heavy image encoder runs once to embed the picture, then a lightweight prompt encoder and mask decoder turn a click, box, or rough region into a valid object mask in real time, generalizing to objects it never saw in training.",
+    "credit": "Meta AI Research (Kirillov et al., Segment Anything)",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/facebookresearch/segment-anything/blob/main/LICENSE",
+    "source": "https://github.com/facebookresearch/segment-anything",
+    "provider": "GitHub: facebookresearch/segment-anything"
   },
   "self-attention": {
     "file": "self-attention.jpg",
@@ -2710,14 +3340,14 @@
     "provider": "Wikimedia Commons"
   },
   "semantic-segmentation": {
-    "file": "semantic-segmentation.png",
-    "alt": "A semantic segmentation map where each pixel is colored by its category: a person painted brown, foliage green, and a cup blue, all against a black background.",
-    "caption": "Semantic segmentation labels every pixel with the category it belongs to, producing a dense color map rather than a box. Here one region is painted as person (brown), another as plant (green), another as cup (blue); all pixels of the same class share one color.",
-    "credit": "MartinThoma",
-    "license": "CC0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:EmiMa-099-semantic-segmentation.png",
-    "provider": "Wikimedia Commons"
+    "file": "semantic-segmentation.svg",
+    "alt": "A photo of a dog and a cat beside its semantic segmentation map, where the dog pixels are one shade of blue, the cat pixels another shade, and the surrounding pixels are labeled background.",
+    "caption": "Semantic segmentation labels every pixel with the category it belongs to, producing a dense map rather than a box. Here the pixels of the dog, the cat, and the background each receive their own class, and all pixels of one class share a label.",
+    "credit": "Aston Zhang, Zachary C. Lipton, Mu Li, Alexander J. Smola (Dive into Deep Learning)",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html",
+    "provider": "Dive into Deep Learning"
   },
   "semi-supervised-learning": {
     "file": "semi-supervised-learning.gif",
@@ -2730,14 +3360,14 @@
     "provider": "Wikimedia Commons"
   },
   "sequence-to-sequence": {
-    "file": "sequence-to-sequence.png",
-    "alt": "An encoder-decoder diagram. On the left, an Encoder box of recurrent cells reads inputs x0 and x1 and passes a final hidden state h-f across to the right. On the right, a Decoder box of recurrent cells produces outputs step by step, with two feedback options labeled Teacher Forcing (feeding the true previous token) and Using Prediction (feeding the model's own previous output).",
-    "caption": "A sequence-to-sequence model has two halves: an encoder reads the whole input sequence into a hidden state, and a decoder generates the output one token at a time, feeding each emitted token back in to inform the next. During training the true previous token is fed back (teacher forcing); at inference the model's own previous output is used. This is the encoder-decoder template behind translation and summarization.",
-    "credit": "Daniel Voigt Godoy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Seq2seq_RNN_encoder-decoder_with_attention_mechanism,_training_and_inferring.png",
-    "provider": "Wikimedia Commons"
+    "file": "sequence-to-sequence.svg",
+    "alt": "An encoder-decoder diagram for machine translation. A recurrent encoder reads the English tokens They, are, watching, period, and an end-of-sequence marker into a final state. That state initializes a recurrent decoder, which is fed a beginning-of-sequence token and the previous target word at each step and emits the French translation Ils, regardent, period, and an end-of-sequence marker one token at a time.",
+    "caption": "A sequence-to-sequence model has two parts: an encoder that compresses the whole input sequence into a state, and a decoder that, starting from that state and a beginning-of-sequence token, generates the output one token at a time until it emits the end-of-sequence marker. This lets the input and output have different lengths.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_recurrent-modern/seq2seq.html",
+    "provider": "Dive into Deep Learning"
   },
   "sharpness-aware-minimization": {
     "file": "sharpness-aware-minimization.png",
@@ -2769,6 +3399,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Singular-Value-Decomposition.svg",
     "provider": "Wikimedia Commons"
   },
+  "sliding-window-attention": {
+    "file": "sliding-window-attention.png",
+    "alt": "A graph of the tokens I am going to sleep now arranged in a ring, labeled sliding connections. Each token is joined by an edge only to its two immediate neighbors in the sequence, so attention links stay local rather than connecting every token to every other token.",
+    "caption": "Sliding window attention limits each token to attend only to a fixed window of nearby tokens instead of the whole sequence. This local pattern makes the cost grow linearly with length rather than quadratically. Because the window is applied at every layer, information still propagates across long distances as it flows up the stack.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/blog/big-bird",
+    "provider": "Hugging Face"
+  },
   "softmax": {
     "file": "softmax.png",
     "alt": "Flow diagram where a network produces three real-valued scores 35.4, 38.1, and minus 5.0 for the classes cat, dog, and horse, and a softmax block converts them into the probabilities 0.06, 0.94, and 0.00.",
@@ -2778,6 +3418,26 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Softmax.svg",
     "provider": "Wikimedia Commons"
+  },
+  "sparse-autoencoder": {
+    "file": "sparse-autoencoder.png",
+    "alt": "A three-part overview of the sparse autoencoder method. Part a samples internal activations from a language model. Part b shows the sparse autoencoder itself: an activation vector is multiplied by an encoder matrix, a bias is added and ReLU applied to give a wide vector of sparse feature coefficients, which is multiplied by a decoder matrix (the dictionary) to give a reconstructed activation vector. Part c shows the resulting feature dictionary as a table of features with a plain-language meaning and an interpretability score.",
+    "caption": "A sparse autoencoder learns an overcomplete, sparsely activating dictionary from a model's activations. The encoder lifts each activation into a much wider hidden layer forced to stay mostly zero, and the decoder reconstructs the activation as a sparse sum of dictionary directions called features. Decomposing superposed, polysemantic activations this way recovers a large set of individually interpretable features.",
+    "credit": "Cunningham et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2309.08600",
+    "provider": "arXiv"
+  },
+  "spectral-bias": {
+    "file": "spectral-bias.jpg",
+    "alt": "Four panels at training updates N equal to 100, 300, 500, and 1000. In each, a blue target function (the sum of sin 5x, sin 7x, and sin 11x) is overlaid with the neural network prediction (dashed orange). Early on the prediction captures only the broad low-frequency shape and misses the rapid wiggles; by N equal to 1000 it matches the high-frequency detail too.",
+    "caption": "Spectral bias is visible in the order a network fits a function. Trained by gradient descent on a target made of several sine waves, the network locks onto the smooth low-frequency structure first (N equal to 100) and only fills in the fast high-frequency detail much later (N equal to 1000). Low frequencies converge first, high frequencies last.",
+    "credit": "Zihan Zeng, Pengfei Shi, Fan Ma, Peihao Qi",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://www.mdpi.com/1424-8220/22/19/7347",
+    "provider": "MDPI Sensors"
   },
   "spectral-decomposition": {
     "file": "spectral-decomposition.png",
@@ -2819,6 +3479,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Leaky_Integrate-and-Fire_model_neuron_(schematic).jpg",
     "provider": "Wikimedia Commons"
   },
+  "squeeze-and-excitation": {
+    "file": "squeeze-and-excitation.jpg",
+    "alt": "Diagram of a squeeze-and-excitation building block. An input is transformed into a stack of feature maps U of shape height by width by C channels. A squeeze operation (global pooling) collapses each channel to a single value, giving a 1 by 1 by C descriptor. An excitation operation maps that descriptor to a 1 by 1 by C vector of per-channel weights, shown as colored bars. A scale operation multiplies each channel of the feature maps by its weight to produce the recalibrated output.",
+    "caption": "A squeeze-and-excitation block recalibrates feature channels by learned importance. The squeeze step uses global average pooling to summarize each channel into one number, the excitation step passes that summary through a tiny bottleneck network with a sigmoid to produce a weight per channel, and the scale step multiplies each channel by its weight. This is channel attention: the network learns which channels to emphasize for very little added cost.",
+    "credit": "Jie Hu, Li Shen, Gang Sun",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://github.com/hujie-frank/SENet",
+    "provider": "GitHub: hujie-frank/SENet"
+  },
   "state-space-model": {
     "file": "state-space-model.png",
     "alt": "Signal-flow block diagram of a linear state space model: input u enters matrix B and feeds a summing junction whose output is the state derivative x-dot; an integrator produces the state x, which loops back through matrix A and is read out through matrix C, with a direct feedthrough D from u, summing to the output y.",
@@ -2848,6 +3518,16 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://arxiv.org/abs/2307.09702",
     "provider": "arXiv"
+  },
+  "subword-tokenization": {
+    "file": "subword-tokenization.svg",
+    "alt": "The phrase Let's do tokenization! shown as subword tokens. Common words stay whole as Let's and do, each ending with an end-of-word marker, while tokenization splits into the two reusable pieces token and ization, with the end-of-word marker on the final piece.",
+    "caption": "Subword tokenization is the middle ground between whole words and single characters. Frequent words such as do are kept as one token, while a longer or rarer word like tokenization is broken into smaller learned pieces (token and ization) that the model has seen before. End-of-word markers record where the splits fall, so nothing is ever truly out of vocabulary.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/nlp-course/chapter2/4",
+    "provider": "Hugging Face"
   },
   "superposition": {
     "file": "superposition.png",
@@ -2881,13 +3561,13 @@
   },
   "support-vector-machine": {
     "file": "support-vector-machine.png",
-    "alt": "Two classes of points separated by a solid line, with two parallel dashed lines marking the margin on either side. The points lying exactly on the dashed lines are circled, and the gap width is labeled two over the norm of w.",
-    "caption": "Among all lines that separate the two classes, a support vector machine picks the one with the widest margin, the gap to the nearest points on each side. Only those closest points, the circled support vectors, determine the boundary; the margin width equals two over the norm of the weight vector, so maximizing it is what gives the model its strong generalization.",
-    "credit": "Larhmam",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:SVM_margin.png",
-    "provider": "Wikimedia Commons"
+    "alt": "Scatter plot of two classes of points separated by a solid line, the maximum-margin separating hyperplane, with two parallel dashed lines marking the margin on either side; the three points lying on the dashed margins are circled as the support vectors.",
+    "caption": "A support vector machine separates two classes with the hyperplane that maximizes the margin, the empty band between the classes. Only the points on the margin boundaries, the circled support vectors, determine where the boundary sits; all other points could move without changing it.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/svm/plot_separating_hyperplane.html",
+    "provider": "scikit-learn"
   },
   "swe-bench": {
     "file": "swe-bench.png",
@@ -2989,6 +3669,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Tensor-rank_EN.svg",
     "provider": "Wikimedia Commons"
   },
+  "tensor-parallelism": {
+    "file": "tensor-parallelism.png",
+    "alt": "A diagram of an MLP block split column-wise across two devices, D1 shaded red and D2 shaded green. The input X is fed to both devices. On each device a matrix multiply by a column slice of the first weight (A1 on D1, A2 on D2) is followed by an independent GeLU and a multiply by a slice of the second weight (B1, B2). The two partial outputs are combined into the final output Y.",
+    "caption": "Tensor parallelism splits the work inside one layer across devices. Here the first weight matrix is partitioned by columns, so each device computes a slice of the MLP on the full input independently through its own GeLU, and the partial results are combined at the end. A layer too large for a single accelerator is thus evaluated as several smaller matrix multiplications run in parallel.",
+    "credit": "Felix Brakel, Uraz Odyurt, Ana-Lucia Varbanescu",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2403.03699",
+    "provider": "arXiv"
+  },
   "test-time-compute": {
     "file": "test-time-compute.png",
     "alt": "A line chart with generation budget on a logarithmic x-axis and math test accuracy in percent on the y-axis. Several selection methods (majority vote, best-of-N weighted, and reward-model-based search) all rise steeply as the budget grows from a few to hundreds of samples, then flatten.",
@@ -3009,6 +3699,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:TTS_System.svg",
     "provider": "Wikimedia Commons"
   },
+  "text-to-video": {
+    "file": "text-to-video.png",
+    "alt": "A text-to-video architecture. Images and video frames are encoded by a joint causal 3D encoder into latents, then a transformer backbone processes them with blocks containing a spatial self-attention layer, a spatiotemporal self-attention layer, and a spatial cross-attention layer that injects the text embedding.",
+    "caption": "Text-to-video generation extends diffusion across time. Frames are compressed into a shared latent space, and a transformer backbone alternates spatial self-attention (within a frame), spatiotemporal self-attention (across frames, for motion and consistency), and cross-attention to the text prompt, so the clip is realistic, temporally coherent, and moves plausibly.",
+    "credit": "Gupta, Yu, Sohn, Gu, Hahn, Fei-Fei, Essa, Jiang, Lezama (Photorealistic Video Generation with Diffusion Models, W.A.L.T)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2312.06662",
+    "provider": "arXiv"
+  },
   "the-bitter-lesson": {
     "file": "the-bitter-lesson.png",
     "alt": "Scatter plot with publication date on the horizontal axis and training computation in petaFLOP on a logarithmic vertical axis, with points for many AI systems rising by roughly twenty orders of magnitude from 1950 to the 2020s.",
@@ -3028,6 +3728,16 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Word_embedding_illustration.svg",
     "provider": "Wikimedia Commons"
+  },
+  "tokenization": {
+    "file": "tokenization.svg",
+    "alt": "The sentence Let's do tokenization! split two ways. The top row splits only on spaces, giving the three chunks Let's, do, and tokenization!. The bottom row also splits on punctuation, giving the five tokens Let, 's, do, tokenization, and the exclamation mark, each in its own box.",
+    "caption": "Tokenization cuts raw text into the discrete units a model reads. The rule chosen for where to split matters: splitting only on spaces keeps punctuation attached to a word, while also splitting on punctuation separates it into its own token. These boundaries decide what the model can see, since everything downstream is defined over tokens.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/nlp-course/chapter2/4",
+    "provider": "Hugging Face"
   },
   "top-k": {
     "file": "top-k.png",
@@ -3100,14 +3810,14 @@
     "provider": "Wikimedia Commons"
   },
   "transformer": {
-    "file": "transformer.png",
-    "alt": "Schematic of the full Transformer architecture showing the encoder and decoder stacks with attention and feedforward blocks",
-    "caption": "The Transformer replaces recurrence with attention: stacked encoder and decoder blocks of attention and feedforward layers process an entire sequence in parallel.",
-    "credit": "dvgodoy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
-    "provider": "Wikimedia Commons"
+    "file": "transformer.svg",
+    "alt": "The original Transformer architecture as two stacks. On the left, an encoder reads the input: an input embedding plus positional encoding feeds a block of multi-head attention and a feed-forward network, each wrapped by an add-and-norm step. On the right, a decoder takes the output embedding shifted right, with a masked multi-head attention block, a multi-head attention block that reads the encoder output, and a feed-forward network, again each wrapped by add-and-norm. A final linear layer and softmax produce output probabilities.",
+    "caption": "The Transformer replaces recurrence with attention. An encoder stack turns the input sequence into representations, and a decoder stack generates the output one token at a time, attending back to the encoder. Each block pairs a multi-head attention sublayer with a position-wise feed-forward network, both wrapped by residual add-and-norm, and a final linear and softmax give the next-token probabilities.",
+    "credit": "Hugging Face",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/nlp-course/chapter1/4",
+    "provider": "Hugging Face"
   },
   "tree-of-thoughts": {
     "file": "tree-of-thoughts.png",
@@ -3160,14 +3870,14 @@
     "provider": "Dive into Deep Learning"
   },
   "vanishing-gradient": {
-    "file": "vanishing-gradient.png",
-    "alt": "Plot from minus ten to ten of the sigmoid function as a solid blue S-curve rising from zero to one, and its derivative as a red dashed curve that peaks at about 0.25 at the center and falls to near zero on both sides.",
-    "caption": "The sigmoid (blue) saturates for large positive or negative inputs, where its derivative (red) is nearly zero, and even at its center the derivative tops out around 0.25. Backpropagation multiplies one such factor per layer, so a chain of these small numbers shrinks the gradient toward zero in early layers, the vanishing gradient that stalls deep training.",
-    "credit": "Unknown",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Sigmoid-derivative.png",
-    "provider": "Wikimedia Commons"
+    "file": "vanishing-gradient.svg",
+    "alt": "Plot showing the sigmoid function as a solid curve rising from zero to one, and its gradient as a dashed curve. The gradient is near zero for large negative and large positive inputs and peaks at only about 0.25 at the origin, illustrated with a legend labeling the two curves.",
+    "caption": "The sigmoid saturates for large positive or negative inputs, where its gradient (dashed) flattens toward zero, peaking at just 0.25 even at the center. Backpropagation multiplies one such small factor per layer, so across a deep stack the product decays toward zero and early layers stop learning. This is the vanishing gradient, and it is why saturating activations were largely replaced by ReLU.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html",
+    "provider": "Dive into Deep Learning"
   },
   "variance": {
     "file": "variance.png",

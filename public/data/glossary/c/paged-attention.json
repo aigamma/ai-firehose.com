@@ -68,12 +68,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/paged-attention.png",
-    "alt": "A contiguous virtual address space (with text, data, and stack regions) on the left, connected by arrows to a physical address space on the right whose pages are scattered out of order, with a legend marking pages that belong to the process and pages that do not.",
-    "caption": "Paged attention borrows this idea from operating-system virtual memory. A program sees one contiguous address space (left), but the pages are mapped to scattered, non-contiguous frames of physical memory (right) through a table of pointers. Paged attention stores a request's growing key-value cache the same way, in small fixed-size blocks handed out on demand, so memory is not reserved for the worst case and almost none is wasted.",
-    "credit": "Traced by User:Stannered, original by en:User:Dysprosia",
-    "license": "BSD",
-    "license_url": "http://opensource.org/licenses/bsd-license.php",
-    "source": "https://commons.wikimedia.org/wiki/File:Virtual_address_space_and_physical_address_space_relationship.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "A diagram of block table translation in vLLM for one request. On the left, the request's key-value cache is laid out as small logical KV blocks holding a few tokens each. A central block table maps each logical block to a physical block number and records how many slots are filled. On the right, the corresponding physical KV blocks sit at scattered, non-contiguous positions in GPU DRAM, with arrows tracing each logical block to its physical location.",
+    "caption": "Paged attention borrows virtual memory paging to manage the key-value cache. The cache for a request is split into small fixed-size logical blocks, and a per-request block table maps each logical block to a physical block that can sit anywhere in GPU memory. Because blocks need not be contiguous, the server allocates them on demand and packs many requests together, wasting far less memory than reserving one large contiguous region per request.",
+    "credit": "Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2309.06180",
+    "provider": "arXiv"
   }
 }

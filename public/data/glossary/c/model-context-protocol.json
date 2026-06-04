@@ -149,12 +149,12 @@
   ],
   "image": {
     "src": "/images/glossary/model-context-protocol.png",
-    "alt": "Two node diagrams compared. On the left, eight nodes labeled A to H are each wired directly to every other node, forming a dense tangle of connections, labeled Impact equals N. On the right, the same eight nodes each connect only to a single central hub, labeled Impact equals 1.",
-    "caption": "MCP applies the standard-hub pattern shown here to the boundary between models and tools. Without a shared standard, connecting many applications to many tools means a separate custom connector for nearly every pair, a tangle that grows as M times N (left). Routing everything through one common protocol collapses that to M plus N (right): a tool implements the standard once and any compliant client can use it.",
-    "credit": "ESB_versus_POINT_2_POINT.gif : Original uploader was Arkramer at nl.wikipedia de",
-    "license": "CC BY-SA 3.0",
-    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Enterprise-Service-Bus-NS.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Architecture of the Model Context Protocol. A client application (such as Claude Desktop or Cursor) embeds an MCP client that initiates tools, requests resources, and builds prompts; it connects through a transport layer (local stdio or remote HTTP) to an MCP server that makes tools available, shares resources, and hosts prompt templates, which in turn fronts external services. The server's three primitives are labeled: tools (model controlled), resources (application controlled), and prompts (user controlled).",
+    "caption": "MCP is an open standard that lets any compliant client connect to any compliant server through one interface, collapsing bespoke M-times-N integrations into M-plus-N. A host runs an MCP client per server; the server exposes tools, resources, and prompts over a defined transport, so an agent gains new abilities by pointing at another server rather than writing new glue.",
+    "credit": "Abul Ehtesham, Aditi Singh, Gaurav Kumar Gupta, Saket Kumar",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2505.02279",
+    "provider": "arXiv"
   }
 }

@@ -66,5 +66,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/memory-bandwidth.png",
+    "alt": "A two-panel diagram of performance limits from memory. Panel A, training bottlenecks, shows activations, gradients, and optimizer state exceeding a single device's memory capacity and being sharded across several devices. Panel B, inference bottlenecks, shows a high-bandwidth memory system holding a growing KV cache feeding a compute core over a bandwidth-limited link, with the compute core marked as stalled while it waits on memory.",
+    "caption": "Memory bandwidth is the rate at which data moves between an accelerator's memory and its arithmetic units, and it is often the true bottleneck. As panel B shows, when the key-value cache and intermediate tensors must stream from high-bandwidth memory across a bandwidth-limited link, the compute core stalls waiting for data rather than for arithmetic, so throughput is capped by bandwidth, not by raw compute.",
+    "credit": "Bin Xu, Ayan Banerjee, Sandeep Gupta",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2512.23914",
+    "provider": "arXiv"
+  }
 }

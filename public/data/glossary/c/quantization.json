@@ -133,12 +133,12 @@
   ],
   "image": {
     "src": "/images/glossary/quantization.png",
-    "alt": "A smooth grey curve overlaid with a red staircase that snaps to a small set of evenly spaced horizontal levels marked by dashed lines, so the continuous values are rounded to the nearest available level.",
-    "caption": "Quantization maps continuous values onto a small set of discrete levels by rounding each to the nearest one, shown here as the red staircase tracking the smooth grey signal. A model is quantized the same way: its weights are rounded from 16-bit floats to a few integer levels (8-bit or 4-bit), which shrinks memory and speeds inference at the cost of a small rounding error.",
-    "credit": "Rbj",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Quantized.signal.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "Three panels each showing a bell-shaped FP32 weight distribution above a row of INT4 integer levels. Panel (a) symmetric and uniform maps the range with evenly spaced levels centered on zero; panel (b) asymmetric and uniform shifts the range with a zero point offset; panel (c) asymmetric and non-uniform spaces the levels unevenly to match the distribution.",
+    "caption": "Quantization maps a model's continuous floating-point weights (the FP32 bell curve) onto a small set of discrete integer levels (INT4), shrinking memory and speeding inference. The scheme can be symmetric or asymmetric (whether the integer range is centered on zero) and uniform or non-uniform (whether the levels are evenly spaced), trading a small rounding error for large savings.",
+    "credit": "Kai Liu, Qian Zheng, Kaiwen Tao, et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2505.05530",
+    "provider": "arXiv"
   }
 }

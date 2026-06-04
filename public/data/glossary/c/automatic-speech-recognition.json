@@ -59,12 +59,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/automatic-speech-recognition.png",
-    "alt": "The architecture of OpenAI's Whisper speech model. On the left, examples of its multitask training data: English transcription, speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram, passes through convolution layers into a transformer encoder, and a transformer decoder with cross-attention emits text tokens.",
-    "caption": "Modern automatic speech recognition is end-to-end. The audio is turned into a log-mel spectrogram, a transformer encoder reads it, and a transformer decoder generates the text one token at a time, the same encoder-decoder setup used for translation. Whisper, shown here, is trained on a large and varied corpus of audio paired with transcripts, which is what makes it robust across languages, accents, and noise.",
-    "credit": "Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, Ilya Sutskever",
+    "alt": "Diagram of the Whisper speech model. On the left, examples of multitask training data: English transcription, any-to-English speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram that passes through transformer encoder blocks, and a transformer decoder with cross attention emits tokens. At the bottom, the multitask training format threads special tokens for language identification, transcription versus translation, and timestamps through one sequence.",
+    "caption": "Modern automatic speech recognition is a sequence-to-sequence transformer: the input waveform becomes a log-mel spectrogram that the encoder reads, and the decoder generates the transcript token by token. Whisper folds transcription, translation, language identification, and timestamps into one model by prefixing the target sequence with special task tokens.",
+    "credit": "Radford, Alec and Kim, Jong Wook and Xu, Tao and Brockman, Greg and McLeavey, Christine and Sutskever, Ilya (OpenAI)",
     "license": "MIT",
-    "license_url": "https://opensource.org/licenses/MIT",
-    "source": "https://commons.wikimedia.org/wiki/File:OpenAI_Whisper_architecture.png",
-    "provider": "Wikimedia Commons"
+    "license_url": "https://github.com/openai/whisper/blob/main/LICENSE",
+    "source": "https://github.com/openai/whisper",
+    "provider": "GitHub: openai/whisper"
   }
 }

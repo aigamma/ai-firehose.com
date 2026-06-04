@@ -67,13 +67,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/attention-mechanism.png",
-    "alt": "Overview diagram of an attention mechanism showing queries, keys, and values combined into weighted outputs",
-    "caption": "Attention scores every key against a query, then returns a weighted blend of the values, letting the model focus on the inputs that matter most.",
+    "src": "/images/glossary/attention-mechanism.svg",
+    "alt": "Diagram of attention pooling. A single query and a column of keys feed an attention scoring function (labeled a) that produces one score per key. The scores pass through a softmax to become attention weights, each weight is multiplied by its corresponding value, and the products are summed into a single output vector.",
+    "caption": "Attention compares a query against every key with a scoring function, passes the scores through a softmax to get weights that sum to one, then returns the weighted sum of the values. The output is therefore a content-dependent blend of information drawn from across the whole input, which is what lets a model focus on the most relevant context regardless of distance.",
     "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://en.wikipedia.org/wiki/Attention_(machine_learning)",
-    "provider": "Wikimedia Commons"
+    "source": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/attention-scoring-functions.html",
+    "provider": "Dive into Deep Learning"
   }
 }

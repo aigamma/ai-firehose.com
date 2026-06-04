@@ -143,5 +143,15 @@
       "label": "Value Function",
       "kind": "technique"
     }
-  ]
+  ],
+  "image": {
+    "src": "/images/glossary/proximal-policy-optimization.jpg",
+    "alt": "A table of six cases for the PPO clipped objective, with columns for whether the probability ratio is inside, below, or above the range [1 minus epsilon, 1 plus epsilon], the sign of the advantage, the resulting return value of the min, whether the objective is clipped, and the gradient (a check or a zero). Below the table, two plots of the clipped objective L-CLIP against the ratio r show the flat clipped regions for a positive advantage and for a negative advantage.",
+    "caption": "Proximal Policy Optimization bounds how far each update can move the policy. It clips the probability ratio between the new and old policy to the range 1 plus or minus epsilon, so once an update pushes that ratio outside the band the objective flattens and its gradient becomes zero (the flat regions in the plots). That cap on each step is what makes PPO stable and reliable to train.",
+    "credit": "Hugging Face Deep RL Course (Thomas Simonini and contributors)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/learn/deep-rl-course/unit8/clipped-surrogate-objective",
+    "provider": "Hugging Face"
+  }
 }

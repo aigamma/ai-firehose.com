@@ -60,5 +60,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/expert-parallelism.png",
+    "alt": "A diagram of a Mixture-of-Experts layer running across two GPUs, GPU_0 and GPU_3. On each GPU, self attention feeds an Add and Norm step, then a Router, then an All-to-All exchange. Each GPU holds only some experts: GPU_0 holds FFN0 and FFN1 while GPU_3 holds FFN6 and FFN7. A second All-to-All gathers the expert outputs before a final Add and Norm.",
+    "caption": "Expert parallelism places the experts of a Mixture-of-Experts model on different devices, with each GPU storing only a subset of the feed-forward experts. A router on each device picks an expert for every token, and All-to-All communication sends each token to the device holding its chosen expert and returns the result. This lets the model hold far more parameters than any single device could fit.",
+    "credit": "Seokjin Go, Divya Mahajan",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2502.06643",
+    "provider": "arXiv"
+  }
 }

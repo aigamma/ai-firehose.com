@@ -141,5 +141,15 @@
       "label": "Feature Visualization",
       "kind": "technique"
     }
-  ]
+  ],
+  "image": {
+    "src": "/images/glossary/activation-steering.png",
+    "alt": "A schematic of the Activation Addition method. Two contrasting prompts (for example I love talking about weddings and I hate talking about weddings) are each embedded and run through the model; the recorded activations are differenced to form a steering vector. That steering vector is then injected during the forward pass on a user prompt to produce a steered output. Stage labels along the bottom read find contrasting prompts, embed, forward pass, record activations, diff activations, and prompt and inject.",
+    "caption": "Activation steering edits behavior at inference time by adding a direction vector into the hidden activations rather than changing any weights. The steering vector is built by differencing the activations of a contrasting pair of prompts, then added into the residual stream during a new forward pass, shifting the output toward or away from the target concept. The edit is runtime only and needs no retraining.",
+    "credit": "Turner et al.",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2308.10248",
+    "provider": "arXiv"
+  }
 }

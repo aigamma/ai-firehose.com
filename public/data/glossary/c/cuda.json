@@ -67,13 +67,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/cuda.jpg",
-    "alt": "Three rows mapping a CUDA software abstraction to hardware. A single Thread is executed by a Core; a Thread Block of many threads is executed by a Streaming Multiprocessor; a Kernel Grid of many blocks is executed by the complete GPU.",
-    "caption": "CUDA's programming model is a hierarchy that maps directly onto the hardware: a single thread runs on one core, a block of threads runs on one streaming multiprocessor, and the whole grid of blocks runs across the entire GPU. Writing a CUDA kernel means describing the work of one thread, which the hardware then replicates across thousands of threads in parallel.",
-    "credit": "Atshardul",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Software-Perspective_for_thread_block.jpg",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/cuda.png",
+    "alt": "A diagram of the CUDA execution hierarchy. On the left a Host launches a Kernel onto the Device. The Device holds a Grid containing a two-dimensional array of thread blocks labeled Block (0,0) through Block (3,1). One block, Block (2,1), is expanded below into its own grid of individual threads labeled Thread (0,0) through Thread (4,2).",
+    "caption": "CUDA organizes parallel work as a hierarchy: a kernel launched from the host runs on the device as a grid of thread blocks, and each block is a group of threads. This grid-block-thread structure is how a CUDA program maps thousands of lightweight threads onto a GPU's many cores, and it is the abstraction deep learning frameworks build on to turn tensor operations into fast GPU code.",
+    "credit": "The Molecular Sciences Software Institute (MolSSI)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://education.molssi.org/gpu_programming_beginner/03-cuda-program-model.html",
+    "provider": "MolSSI"
   }
 }

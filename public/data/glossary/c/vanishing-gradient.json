@@ -67,13 +67,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/vanishing-gradient.png",
-    "alt": "Plot from minus ten to ten of the sigmoid function as a solid blue S-curve rising from zero to one, and its derivative as a red dashed curve that peaks at about 0.25 at the center and falls to near zero on both sides.",
-    "caption": "The sigmoid (blue) saturates for large positive or negative inputs, where its derivative (red) is nearly zero, and even at its center the derivative tops out around 0.25. Backpropagation multiplies one such factor per layer, so a chain of these small numbers shrinks the gradient toward zero in early layers, the vanishing gradient that stalls deep training.",
-    "credit": "Unknown",
-    "license": "Public domain",
-    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Sigmoid-derivative.png",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/vanishing-gradient.svg",
+    "alt": "Plot showing the sigmoid function as a solid curve rising from zero to one, and its gradient as a dashed curve. The gradient is near zero for large negative and large positive inputs and peaks at only about 0.25 at the origin, illustrated with a legend labeling the two curves.",
+    "caption": "The sigmoid saturates for large positive or negative inputs, where its gradient (dashed) flattens toward zero, peaking at just 0.25 even at the center. Backpropagation multiplies one such small factor per layer, so across a deep stack the product decays toward zero and early layers stop learning. This is the vanishing gradient, and it is why saturating activations were largely replaced by ReLU.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html",
+    "provider": "Dive into Deep Learning"
   }
 }

@@ -70,13 +70,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/bert.png",
-    "alt": "A diagram of the BERT masked-language-modeling task. A row of input tokens for a sentence has one token replaced by [MASK]; all tokens pass up into a box labeled 'BERT = Transformer Encoder', and a feed-forward head over the masked position outputs logits predicting the hidden word.",
-    "caption": "BERT is a stack of transformer encoder layers pretrained by masked language modeling: a token in the input is replaced by [MASK], and the model must recover it using the words on both sides at once. Because every position can attend to every other, BERT produces deeply bidirectional, context-sensitive representations, so the same word gets different vectors in different sentences.",
-    "credit": "Daniel Voigt Godoy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:BERT_masked_language_modelling_task.png",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/bert.svg",
+    "alt": "Three side-by-side model diagrams labeled ELMo, GPT, and BERT. Each takes tokens at the bottom, produces per-token representations, and feeds a task layer that outputs labels. ELMo uses a bidirectional architecture but a task-specific head; GPT uses a unidirectional architecture with a head that needs only minimal changes; BERT combines a bidirectional architecture with the minimal-change head, and is reached by pretraining followed by fine-tuning.",
+    "caption": "BERT's defining choice is to combine deeply bidirectional encoding (each token attends to both left and right context, as in ELMo) with GPT's task-agnostic design, so one pretrained model is fine-tuned for many tasks with only minimal architectural changes.",
+    "credit": "Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html",
+    "provider": "Dive into Deep Learning"
   }
 }

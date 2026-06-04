@@ -60,5 +60,15 @@
   "rotation": null,
   "neighbors": [],
   "top_items": [],
-  "axis_positions": []
+  "axis_positions": [],
+  "image": {
+    "src": "/images/glossary/diffusion-transformer.png",
+    "alt": "The Diffusion Transformer (DiT) architecture. On the left, a noised latent is cut into patches, embedded with the timestep t and label y, processed by N stacked DiT blocks, then a layer norm and linear layer output the predicted noise and covariance. On the right, three DiT block variants are shown: adaLN-Zero, cross-attention, and in-context conditioning.",
+    "caption": "A diffusion transformer replaces the U-Net denoiser with a transformer. The noised latent is split into patches that become tokens, and stacked transformer blocks denoise them, conditioned on the timestep and class or text via adaptive layer norm (adaLN-Zero), cross-attention, or extra input tokens. This design scales cleanly with compute.",
+    "credit": "William Peebles, Saining Xie (Scalable Diffusion Models with Transformers)",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://arxiv.org/abs/2212.09748",
+    "provider": "arXiv"
+  }
 }

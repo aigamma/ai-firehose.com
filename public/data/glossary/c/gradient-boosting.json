@@ -65,12 +65,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/gradient-boosting.png",
-    "alt": "Line plot of mean squared error against the number of boosting iterations, dropping steeply over the first hundred iterations from about thirteen thousand toward two thousand, then flattening for the remaining iterations.",
-    "caption": "Gradient boosting adds simple trees one at a time, each fit to the errors the ensemble has not yet corrected. The training error falls sharply at first as each new tree fixes what the others missed, then flattens as little error remains. Adding trees indefinitely risks overfitting, which the learning rate and early stopping hold in check.",
-    "credit": "Chamaemelum",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:GradientBOOST.png",
-    "provider": "Wikimedia Commons"
+    "alt": "Line plot of deviance against the number of boosting iterations: the training-set deviance (blue) falls steeply and keeps decreasing toward a low value, while the test-set deviance (red) falls early then flattens and stays above the training curve, the gap widening as iterations grow.",
+    "caption": "Gradient boosting builds an additive model one tree at a time, each new tree fitting the errors left by the trees so far, so the loss (deviance) drops as iterations accumulate. The training loss keeps falling while the test loss flattens, the classic signal that adding more stages eventually overfits.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html",
+    "provider": "scikit-learn"
   }
 }
