@@ -10,23 +10,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A resampling procedure that estimates how well a model will generalize by repeatedly training on part of the data and testing on the held-out remainder, then averaging the results.",
+  "definition": "A way to estimate how a model will do on data it has not seen by rotating the test set: split the data into folds, train on all but one, test on the held-out fold, and repeat until every fold has served as the test set once. It exists because a single train-test split is a coin flip, and trusting the wrong number is how models fail in deployment.",
   "body": [
     {
       "type": "p",
-      "text": "Cross-validation is the standard procedure for estimating a model's performance on data it has not seen. Rather than relying on a single train-test split, which can be lucky or unlucky depending on which examples happen to land in the test set, cross-validation rotates the split. The data is partitioned into several parts and the model is trained and evaluated multiple times, each time holding out a different part as the test set, so that every example is used for testing exactly once. Averaging the scores yields a more reliable estimate than any single split could."
+      "text": "A single train-test split is a coin flip. Depending on which examples happen to land in the test set, the same model can look excellent or mediocre, which makes one split a shaky basis for any decision. Cross-validation removes the luck by rotating the split. It cuts the data into several equal folds, then trains and evaluates the model several times, each time holding out a different fold as the test set, so every example is used for testing exactly once. Averaging the scores yields an estimate far steadier than any single split could give."
     },
     {
       "type": "p",
-      "text": "Cross-validation matters because the number that decides whether a model is good is its performance on unseen data, and that number must be estimated honestly. Reporting accuracy on the training data is meaningless, since a model that overfits scores well there while failing in deployment. Cross-validation exposes Overfitting directly by always scoring on held-out examples, and its averaging makes the estimate stable even when the dataset is small enough that a single test set would be noisy."
+      "text": "This matters because the number that decides whether a model is good, its performance on unseen data, has to be estimated honestly, and the training data cannot do it. A model that overfits scores beautifully on data it has already seen and then fails in deployment, so reporting training accuracy is worse than useless, it is actively misleading. Cross-validation exposes overfitting directly by always scoring on held-out folds, and its averaging keeps the estimate stable even when the dataset is small enough that a lone test set would be mostly noise."
     },
     {
       "type": "p",
-      "text": "The most common form is k-fold cross-validation, which splits the data into k equal folds (k is often 5 or 10), trains on k minus 1 of them, and tests on the remaining one, repeating until each fold has served as the test set. Stratified variants preserve the class balance in each fold, and leave-one-out is the extreme case where k equals the number of examples. A strict rule governs all of it: the test fold must never influence training in any way, including feature scaling or feature selection, or the estimate is contaminated and optimistic."
+      "text": "The standard form is k-fold cross-validation: split into k folds (k is usually 5 or 10), train on k minus 1 of them, test on the last, and repeat until each fold has had its turn. Stratified variants preserve the class balance within each fold, and leave-one-out is the extreme case where k equals the number of examples. One rule governs all of it, and breaking it is the cardinal sin of evaluation: the test fold must never influence training in any way, including feature scaling, feature selection, or hyperparameter choice, or the estimate is contaminated and optimistically wrong. Data leakage of this kind is the silent killer that makes a model look superb in the notebook and fall apart in production."
     },
     {
       "type": "p",
-      "text": "Cross-validation connects to the rest of core machine learning chiefly as the tool for tuning and model selection. The strength of Regularization, the depth of a Decision Tree, the kernel of a Support Vector Machine, and the choice between competing models are all settled by comparing cross-validated scores. Because it gives an empirical reading of generalization error, it is also how practitioners locate the balance point of the Bias-Variance Tradeoff in practice, choosing the model complexity whose held-out error is lowest."
+      "text": "Cross-validation is the tool behind almost every honest comparison in machine learning. The strength of regularization, the depth of a decision tree, the kernel of a support vector machine, and the choice among competing models are all settled by comparing cross-validated scores. Because it gives an empirical reading of generalization error, it is also how practitioners locate the balance point of the bias-variance tradeoff in practice, picking the complexity whose held-out error is lowest. It is less a technique than the discipline that separates a number you can act on from a number that is lying to you."
     }
   ],
   "related": [

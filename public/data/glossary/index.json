@@ -2172,7 +2172,7 @@
         "k-fold cross-validation",
         "CV"
       ],
-      "def_snippet": "A resampling procedure that estimates how well a model will generalize by repeatedly training on part of the data and testing on the held-out remainder, then averaging the results.",
+      "def_snippet": "A way to estimate how a model will do on data it has not seen by rotating the test set: split the data into folds, train on all but one, test on the held-out fold, and repeat until every fold has served as the test set once. It exists because a single train-test split is a coin flip, and trusting the wrong number is how models fail in deployment.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -2390,7 +2390,7 @@
         "classification tree",
         "regression tree"
       ],
-      "def_snippet": "A supervised learning model that makes predictions by asking a sequence of simple yes-or-no questions about the features, splitting the data at each step until it reaches a leaf that holds the answer.",
+      "def_snippet": "A model that predicts by asking a sequence of plain yes-or-no questions about the features, narrowing the data at each step until it reaches an answer. It is one of the very few models a non-specialist can read directly, and a single tree is unstable enough that its real importance is as the building block of the ensembles that dominate tabular data.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -4930,7 +4930,7 @@
         "k-NN",
         "nearest neighbor"
       ],
-      "def_snippet": "A simple non-parametric method that classifies or predicts a point by finding its k closest examples in feature space and taking their majority vote or average; it does no real training, storing the data and deferring all work to query time.",
+      "def_snippet": "About the most direct idea in machine learning: to label a new point, find the handful of most similar stored examples and let them vote. It does no real training, the dataset itself is the model, and that simple idea is exactly what powers modern embeddings and vector search, nearest-neighbor lookup in a learned space.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -4971,7 +4971,7 @@
         "kernel trick",
         "kernel function"
       ],
-      "def_snippet": "A class of techniques that handle nonlinear patterns by implicitly mapping data into a high-dimensional space and computing inner products there directly through a kernel function, without ever forming the coordinates.",
+      "def_snippet": "A way to give a linear algorithm nonlinear power without paying for it. Many models depend on the data only through similarities between pairs of points; a kernel computes the similarity those points would have in a vastly higher-dimensional space, sometimes infinite-dimensional, directly from the originals, so the method draws curved boundaries while its math stays linear.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -5312,7 +5312,7 @@
         "ordinary least squares",
         "OLS"
       ],
-      "def_snippet": "The foundational model that fits a linear relationship between input features and a continuous target by minimizing squared error, the simplest supervised learner and the conceptual seed of much of machine learning.",
+      "def_snippet": "The simplest supervised model, fitting a straight-line relationship between inputs and a continuous target by minimizing squared error. Its importance is not as a cutting-edge tool but as the skeleton inside almost everything more elaborate: understand its one idea and you understand the bones of logistic regression and the neural network alike.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -5483,7 +5483,7 @@
         "logistic regression",
         "logit model"
       ],
-      "def_snippet": "A linear model for classification that passes a weighted sum of features through a logistic (sigmoid) or softmax function to produce class probabilities, trained by minimizing cross-entropy; a workhorse baseline and the classification counterpart to linear regression.",
+      "def_snippet": "A linear model for classification that runs a weighted sum of features through a sigmoid or softmax to produce class probabilities, trained by minimizing cross-entropy. It is a workhorse baseline, and more than that, it is the final layer of almost every neural classifier, so understanding it is understanding what a deep network does in its last step.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -7956,7 +7956,7 @@
         "random forests",
         "random decision forest"
       ],
-      "def_snippet": "An ensemble method that trains many decorrelated decision trees on random subsets of the data and features, then averages or votes their predictions to produce a more accurate and stable model than any single tree.",
+      "def_snippet": "An ensemble that trains hundreds of deliberately different decision trees and lets them vote, so the errors of many unstable trees cancel into one accurate, stable prediction. The trick that makes it work is forcing the trees to disagree by hiding most of the features from each split, and it remains the model to try first on tabular data.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -9434,7 +9434,7 @@
         "support vector machines",
         "support vector classifier"
       ],
-      "def_snippet": "A supervised learning model that classifies data by finding the decision boundary that separates the classes with the widest possible margin, using only the hardest examples nearest the boundary.",
+      "def_snippet": "A classifier built on one geometric conviction: of all the boundaries that could separate two classes, the best is the one that leaves the widest empty margin between them. Only the few hardest examples touching that margin decide the boundary, and a trick for measuring similarity lets the same linear method draw wildly nonlinear lines.",
       "durable": true,
       "category": "Core Machine Learning"
     },
