@@ -1789,7 +1789,7 @@
         "CG",
         "conjugate gradient method"
       ],
-      "def_snippet": "An iterative optimization method that minimizes a quadratic function by stepping along a sequence of mutually conjugate directions, achieving fast convergence using only gradients and no explicit curvature matrix.",
+      "def_snippet": "An iterative method that minimizes a quadratic by stepping along directions chosen never to undo each other's progress, reaching the exact minimum in at most n steps using only gradients and no curvature matrix. It is near-Newton speed at gradient-descent memory cost, which is why it solves the giant linear systems of scientific computing.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -5064,7 +5064,7 @@
         "limited-memory BFGS",
         "quasi-Newton method"
       ],
-      "def_snippet": "A limited-memory quasi-Newton optimizer that approximates the inverse Hessian from a short history of recent gradients, gaining much of Newton's method's fast convergence at a memory cost only a few times that of gradient descent.",
+      "def_snippet": "A quasi-Newton optimizer that approximates the inverse Hessian from just the last few gradient differences, capturing most of Newton's fast convergence at a memory cost only a few times that of gradient descent. Its Achilles heel is noise: it needs consistent gradients, which is exactly why deep learning, with its noisy mini-batches, trains with Adam instead.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -6105,7 +6105,7 @@
         "mirror descent algorithm",
         "Bregman gradient descent"
       ],
-      "def_snippet": "A generalization of gradient descent that performs the update step in a transformed dual space chosen to match the geometry of the problem, replacing Euclidean distance with a Bregman divergence.",
+      "def_snippet": "Gradient descent re-derived for problems whose natural geometry is not Euclidean, replacing the squared-distance penalty in each step with a Bregman divergence chosen to fit the domain. On a probability simplex the entropic version scales logarithmically with dimension where ordinary gradient descent scales with its square root, an exponential improvement from picking the right notion of distance.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -6671,7 +6671,7 @@
         "natural gradient descent",
         "Fisher information optimization"
       ],
-      "def_snippet": "An optimization method that rescales the gradient by the inverse Fisher information matrix, following the direction of steepest descent in the geometry of the model's probability distributions rather than in raw parameter coordinates.",
+      "def_snippet": "An optimization method that rescales the gradient by the inverse Fisher information, so it follows steepest descent in the geometry of the model's distributions rather than in raw parameter coordinates. The payoff is invariance: rename or rescale the parameters and the natural gradient still points the same way through distribution space.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -6823,7 +6823,7 @@
         "Newton-Raphson",
         "second-order optimization"
       ],
-      "def_snippet": "A second-order optimization method that uses both the gradient and the curvature (the Hessian matrix) of a function to jump toward a minimum, converging far faster than gradient descent near a well-behaved optimum.",
+      "def_snippet": "A second-order method that uses both the slope and the curvature of a function to jump toward the minimum, landing on the exact optimum of a quadratic in a single step. It is too expensive to run directly on a large network, which is precisely why it is the conceptual root of a whole family of cheaper successors.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -7835,7 +7835,7 @@
         "ISTA",
         "forward-backward splitting"
       ],
-      "def_snippet": "An optimization method for objectives that split into a smooth part and a simple nonsmooth part, alternating a gradient step on the smooth term with a proximal step that handles the nonsmooth term exactly.",
+      "def_snippet": "An optimizer for objectives that split into a smooth part and a simple nonsmooth part, taking a gradient step on the smooth term and a proximal step that handles the nonsmooth term exactly. It is how L1 regularization actually produces exact zeros, because the L1 proximal operator is soft-thresholding, which snaps small coordinates to zero.",
       "durable": true,
       "category": "Advanced Optimization"
     },
@@ -10121,7 +10121,7 @@
         "trust region method",
         "trust-region optimization"
       ],
-      "def_snippet": "An optimization strategy that builds a local model of the objective and minimizes it only within a bounded region where the model is trusted to be accurate, expanding or shrinking that region based on how well the model predicted the actual improvement.",
+      "def_snippet": "An optimizer that builds a local model of the objective but only trusts it within a bounded radius, finding the best step inside that ball and then growing or shrinking the radius based on how well the model just predicted reality. It controls the step by the model's reliability rather than by a fixed learning rate, which is what tames Newton's instability on the saddle-ridden terrain of neural losses.",
       "durable": true,
       "category": "Advanced Optimization"
     },
