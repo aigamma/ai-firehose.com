@@ -3116,7 +3116,7 @@
         "ELBO",
         "variational lower bound"
       ],
-      "def_snippet": "A tractable lower bound on the log evidence of a probabilistic model that, when maximized, simultaneously fits the model and tightens an approximate posterior, serving as the core training objective for variational methods.",
+      "def_snippet": "A tractable lower bound on the log evidence of a probabilistic model. Its elegance is that one objective does double duty: raising it both fits the model to the data and drives an approximate posterior toward the true one, because the gap between the bound and the evidence is exactly the posterior's KL error. It is the training objective behind variational autoencoders and, in spirit, diffusion models.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -3165,7 +3165,7 @@
         "EM",
         "EM algorithm"
       ],
-      "def_snippet": "An iterative algorithm for fitting models with hidden variables, alternating between inferring a distribution over the latent variables and updating the parameters to maximize the expected likelihood.",
+      "def_snippet": "An iterative algorithm for fitting models with hidden variables, escaping a chicken-and-egg trap, you need the parameters to infer the latents and the latents to estimate the parameters, by alternating the two. Each round provably never lowers the likelihood, so it climbs steadily, though only to a local optimum.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -4137,7 +4137,7 @@
         "PGM",
         "Bayesian network"
       ],
-      "def_snippet": "A framework that represents a joint probability distribution as a graph, where nodes are random variables and the absence of edges encodes conditional independence, making large distributions compact and inference tractable.",
+      "def_snippet": "A framework that draws a joint distribution as a graph, nodes for random variables, edges for dependence, where the real content is the missing edges: their absence asserts conditional independence, which factorizes an astronomically large joint distribution into a product of small, computable local pieces.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -4943,7 +4943,7 @@
         "Kalman filtering",
         "linear quadratic estimation"
       ],
-      "def_snippet": "A recursive algorithm that estimates the hidden state of a linear dynamical system from noisy measurements, maintaining a Gaussian belief that it updates optimally as each new observation arrives.",
+      "def_snippet": "A recursive algorithm that tracks the hidden state of a linear system from noisy measurements, keeping a Gaussian belief it updates optimally as each observation arrives. It is the provably best estimator for linear-Gaussian systems, runs in constant time per step, and its predict-then-update cycle is Bayes' theorem in closed form, with a \"Kalman gain\" that blends prediction and measurement by their relative confidence.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -5186,7 +5186,7 @@
         "latent variable models",
         "LVM"
       ],
-      "def_snippet": "A probabilistic model that explains observed data through hidden, unobserved variables, positing a compact underlying cause that generates the visible data and must be inferred rather than measured.",
+      "def_snippet": "A model that explains observed data through hidden variables it cannot measure, positing a compact underlying cause, pose and lighting behind a face, topics behind a document, that generates the visible data and must be inferred. Its signature is that learning and inference are inseparable: you cannot fit the parameters without reasoning about the hidden variables, or vice versa.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
@@ -10296,7 +10296,7 @@
         "VI",
         "variational Bayes"
       ],
-      "def_snippet": "An approximate Bayesian method that turns intractable posterior inference into optimization by fitting a simple tractable distribution to the true posterior, minimizing the KL divergence between them.",
+      "def_snippet": "An approximate Bayesian method that turns intractable posterior inference into optimization: instead of computing a hopeless integral, fit a simple tractable distribution to the true posterior by minimizing the KL divergence. Trading exactness for speed is what let probabilistic models ride the same gradient hardware as everything else and made deep generative models practical.",
       "durable": true,
       "category": "Probabilistic Machine Learning"
     },
