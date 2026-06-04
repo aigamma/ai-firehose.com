@@ -92,7 +92,7 @@
         "active learning",
         "query learning"
       ],
-      "def_snippet": "A paradigm in which the model chooses which examples it most wants labeled, querying an oracle (often a human) for the most informative points, so a strong model can be trained with far fewer labels than random labeling would require.",
+      "def_snippet": "A setup where the model chooses which examples it most wants labeled, querying a human for the most informative points instead of a random sample, so a strong model can be trained with far fewer labels. Its hidden danger is that the model picks its own training data using its current, imperfect beliefs, and so can systematically avoid what it does not know it is missing.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -3015,7 +3015,7 @@
         "boosting",
         "stacking"
       ],
-      "def_snippet": "Combining the predictions of many models into one, on the principle that a diverse committee outperforms any single member; the umbrella over bagging, boosting, and stacking.",
+      "def_snippet": "Combining many models into one prediction, on the principle that a diverse committee beats any single member, because if the members make different mistakes those mistakes cancel while their shared signal reinforces. It is the umbrella over bagging, boosting, and stacking, and it wins competitions almost by default.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -3310,7 +3310,7 @@
         "feature engineering",
         "feature extraction"
       ],
-      "def_snippet": "The craft of transforming raw data into informative input features (scaling, encoding, combining, extracting) so a model can learn effectively; historically the highest-leverage step in classical machine learning, now partly automated by representation learning.",
+      "def_snippet": "The craft of turning raw data into informative inputs, scaling, encoding, combining, extracting, so a model can learn from it. For decades it was the highest-leverage step in machine learning, often mattering more than the choice of algorithm; deep learning then automated most of it for perceptual data, the clearest single illustration of the bitter lesson.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -4029,7 +4029,7 @@
         "XGBoost",
         "LightGBM"
       ],
-      "def_snippet": "An ensemble method that builds a strong predictor by adding simple models (usually shallow decision trees) one at a time, each trained to correct the running sum's errors, the approach behind the libraries that dominate tabular data.",
+      "def_snippet": "A method that builds a strong predictor by adding many small models in sequence, each trained to fix the mistakes the others left behind. Where a random forest builds independent trees in parallel to cancel variance, boosting builds dependent trees in series to cut bias, and the result, libraries like XGBoost, is what usually wins on tabular data.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -6530,7 +6530,7 @@
         "MTL",
         "joint training"
       ],
-      "def_snippet": "Training one model to perform several tasks at once, sharing representations across them, so that what is learned for one task helps the others and the shared model generalizes better than separate single-task models.",
+      "def_snippet": "Training one model on several tasks at once, sharing most of its parameters across them, on the bet that related tasks have shared structure, so learning them together teaches a better representation than learning each alone. It is the principle behind instruction tuning and the foundation model, and its hazard is negative transfer, when unrelated tasks pull the shared weights in incompatible directions.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -6644,7 +6644,7 @@
         "naive Bayes",
         "Bayesian classifier"
       ],
-      "def_snippet": "A probabilistic classifier that applies Bayes' theorem under the simplifying assumption that features are conditionally independent given the class, which makes it fast, simple, and surprisingly effective, especially for text.",
+      "def_snippet": "A classifier that applies Bayes' theorem under an assumption it knows to be false, that the features are independent given the class, and works anyway. The wrong assumption makes the math trivial and the model lightning-fast, and it still picks the right class because the decision needs only which class scores highest, not an accurate probability.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -7015,7 +7015,7 @@
         "incremental learning",
         "streaming learning"
       ],
-      "def_snippet": "A paradigm where the model learns from data arriving in a stream, updating incrementally on each new example or small batch rather than training once over a fixed dataset, suited to data that never stops or that changes over time.",
+      "def_snippet": "Learning from data that arrives in a never-ending stream, updating the model on each new example rather than training once over a fixed dataset. It suits any setting where data keeps coming and the world keeps changing, and its deep hazard is that absorbing the new tends to overwrite the old, the stability-plasticity dilemma.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -10188,7 +10188,7 @@
         "underfit",
         "underfitted"
       ],
-      "def_snippet": "The failure mode in which a model is too simple to capture the underlying pattern in its data, so it performs poorly on both training and new data.",
+      "def_snippet": "The opposite failure to overfitting: a model too simple to capture the real pattern, so it does poorly on the training data and on new data alike. It is the easy failure to diagnose, high error everywhere, and the floor you have to clear before overfitting is even worth worrying about.",
       "durable": true,
       "category": "Core Machine Learning"
     },
