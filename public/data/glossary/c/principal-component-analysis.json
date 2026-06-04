@@ -9,23 +9,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An unsupervised technique that reduces the dimensionality of data by finding the orthogonal directions of greatest variance and projecting the data onto a few of them, preserving as much structure as possible.",
+  "definition": "A method that compresses high-dimensional data by finding the few orthogonal directions along which it varies most and projecting onto them. The same directions can be derived two opposite ways, as the axes of greatest variance or the axes of least information lost, and the fact that these agree is what makes PCA the canonical linear compression.",
   "body": [
     {
       "type": "p",
-      "text": "Principal component analysis is the most common method for dimensionality reduction and a cornerstone of Unsupervised Learning. High-dimensional data, with hundreds or thousands of features, is hard to visualize, expensive to model, and often redundant because many features are correlated. PCA finds a new set of axes, the principal components, ordered so that the first captures the largest possible variance in the data, the second captures the most of what remains while being perpendicular to the first, and so on. Keeping only the leading few components compresses the data while retaining most of its variation."
+      "text": "Most high-dimensional data is not really high-dimensional. A dataset with a thousand features usually has far fewer than a thousand independent things going on, because the features are correlated, height with weight, one pixel with its neighbor, so the data actually lies near a low-dimensional surface inside the big space. principal component analysis finds that surface. It identifies a new set of axes, the principal components, ordered so the first captures the most variance in the data, the second the most of what remains while staying perpendicular to the first, and so on; keep the leading few and you have compressed the data while discarding almost nothing that mattered."
     },
     {
       "type": "p",
-      "text": "PCA matters because it makes high-dimensional data tractable. It enables two- or three-dimensional visualization of complex datasets, speeds up and stabilizes downstream models by stripping out redundant and noisy dimensions, and decorrelates features so that each carries independent information. It is also a denoising tool, since low-variance directions often hold mostly noise, and a compression tool, since a few components can stand in for many original features with little loss."
+      "text": "The elegant part is that two opposite-sounding goals land on exactly the same axes. You can ask for the directions along which the data varies the most, or you can ask for the directions that lose the least when you project the data down and try to rebuild it. Maximizing variance and minimizing reconstruction error sound like different objectives, but they are one optimization seen from two sides, and both are solved by the top eigenvectors of the data's covariance matrix. PCA is therefore at once the most faithful low-dimensional summary and the most informative one, and that is not a coincidence, it is a theorem."
     },
     {
       "type": "p",
-      "text": "Mechanically, PCA centers the data and computes the directions along which it varies most, which are the eigenvectors of the covariance matrix, equivalently obtained from a singular value decomposition. Each eigenvector is a principal component and its eigenvalue measures how much variance lies along it. Projecting the data onto the top components yields the reduced representation, and the cumulative share of variance explained guides how many components to keep. Because variance depends on scale, the features are usually standardized first, or one large-scale feature will dominate the result spuriously."
+      "text": "Mechanically, you center the data and find the directions of greatest spread, which are the eigenvectors of the covariance matrix, equivalently read off from a singular value decomposition. Each eigenvector is a principal component and its eigenvalue measures how much variance lies along it, so the eigenvalues tell you how many components are worth keeping through the cumulative share of variance they explain. One caution does most of the damage in practice: variance depends on units, so the features must be standardized first, or a single large-scale feature will pose as the most important direction simply because it is measured in bigger numbers."
     },
     {
       "type": "p",
-      "text": "PCA is fundamentally a linear method, which both defines its strengths and bounds it, and connects it to neighboring techniques. When the important structure lies on a curved surface rather than a flat subspace, a linear projection misses it, and a Kernel Method extends PCA to kernel PCA to capture nonlinear structure, while manifold methods unfold curved data more faithfully. PCA pairs naturally with K-Means, applied beforehand to reduce dimensionality so that distances between points are more meaningful and clustering is faster and cleaner. As an unsupervised method it uses no labels, distinguishing it from supervised dimensionality reduction techniques that project data to best separate known classes."
+      "text": "PCA is fundamentally linear, and that both grants its power and bounds it. When the structure that matters lies on a curved surface rather than a flat subspace, a straight projection flattens it and loses the very thing you cared about, which is why kernel PCA bends the method into a higher-dimensional space to catch nonlinear structure, and why manifold methods exist to unroll curved data that PCA would crush. Used within its limits it is unreasonably useful, as a denoiser, a visualizer, a decorrelator, and a fast preprocessing step that makes distances meaningful before a method like k-means goes to work. It remains the linear baseline against which every fancier dimensionality reduction is measured."
     }
   ],
   "related": [
@@ -37,6 +37,16 @@
     {
       "slug": "k-means",
       "label": "K-Means",
+      "kind": "technique"
+    },
+    {
+      "slug": "eigenvector",
+      "label": "Eigenvector",
+      "kind": "technique"
+    },
+    {
+      "slug": "dimensionality-reduction",
+      "label": "Dimensionality Reduction",
       "kind": "technique"
     },
     {

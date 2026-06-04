@@ -8,23 +8,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A machine learning paradigm in which a model finds structure, patterns, or groupings in data that carries no labels, learning from the inputs alone.",
+  "definition": "Learning from data that carries no labels, where the goal is to uncover the structure already latent in the inputs: the groups, the directions of variation, the distribution that generated them. Its defining difficulty is the flip side of its freedom: with no answer key, there is often no way to say a result is right.",
   "body": [
     {
       "type": "p",
-      "text": "Unsupervised learning is the discovery of structure in unlabeled data. Unlike Supervised Learning, there is no correct answer attached to each example; the algorithm sees only the inputs and must infer how they are organized. The two classic goals are clustering, which partitions examples into groups of similar items, and dimensionality reduction, which compresses many features into a few that capture most of the variation. Density estimation, which models how the data is distributed, is a third."
+      "text": "Strip the labels off a dataset and something strange happens to the problem: there is no longer a right answer to aim at. supervised learning always knows what it is trying to predict; unsupervised learning is handed a pile of inputs and asked to find the structure already sitting in them, with nothing to check itself against. The two classic shapes that structure takes are clustering, grouping points that belong together, and dimensionality reduction, compressing many correlated features into the few that carry the real variation. A third, density estimation, models the distribution the data was drawn from directly."
     },
     {
       "type": "p",
-      "text": "Unsupervised learning matters because labels are scarce and the world is mostly unlabeled. Raw text, images, sensor logs, and user behavior arrive in vast quantities with no annotation, and labeling them by hand is expensive or impossible. Unsupervised methods extract value from that raw material directly: segmenting customers into behavioral groups, compressing high-dimensional data for visualization, detecting anomalies as points that fit no cluster, and learning representations that later make supervised tasks easier."
+      "text": "This matters because the world is overwhelmingly unlabeled. Text, images, sensor streams, and clickstreams pour in without annotation, and paying humans to label them is slow, costly, or impossible at scale. Unsupervised methods mine that raw material as it is: segmenting users into behavioral groups, compressing high-dimensional data down to something you can plot, flagging anomalies as the points that fit no group, and learning representations that make a later supervised task cheaper. The value is extracted without anyone ever writing down a target."
     },
     {
       "type": "p",
-      "text": "How it works depends on the goal. K-Means clusters by alternately assigning points to the nearest center and recomputing those centers from the points assigned to them. Principal Component Analysis reduces dimensionality by finding the orthogonal directions of greatest variance and projecting the data onto them. Other approaches model the data as a mixture of probability distributions, or build embeddings in which geometric distance reflects semantic similarity. The recurring theme is an objective defined purely on the inputs, since no labels exist to compare against."
+      "text": "How it works depends on what structure you are after. k-means clusters by repeatedly assigning each point to its nearest center and moving each center to the mean of its members. principal component analysis reduces dimensions by finding the orthogonal directions of greatest variance and projecting onto them. Other methods model the data as a mixture of distributions, or learn an embedding in which geometric distance stands in for semantic similarity. The common thread is an objective defined entirely on the inputs, since there are no labels to compare against."
     },
     {
       "type": "p",
-      "text": "Unsupervised learning connects to the rest of the field as the counterpart to Supervised Learning and Reinforcement Learning, distinguished by the absence of a supervision signal. The boundary is not absolute: self-supervised learning, which manufactures labels from the data itself (predicting a masked word from its context), powers the pretraining of modern large language models and blurs the line. Evaluation is the chief difficulty, because without ground-truth labels there is often no single correct answer to measure a clustering or an embedding against."
+      "text": "The absence of a ground truth is the catch that defines the field. Because nothing declares what the correct clustering or the right embedding is, you cannot simply grade the output, and two reasonable methods can carve the same data into different, equally defensible structures. This is why the boundary with the other paradigms has quietly blurred. self-supervised learning manufactures a target out of the unlabeled data itself, by hiding part of each example and predicting it, which recovers the precision of a supervised loss with no human labels: unsupervised in spirit, supervised in mechanics. That hybrid is what actually scaled, leaving pure unsupervised learning to exploration and to the cases where you genuinely do not yet know what you are looking for."
     }
   ],
   "related": [
@@ -39,6 +39,11 @@
       "kind": "technique"
     },
     {
+      "slug": "self-supervised-learning",
+      "label": "Self-Supervised Learning",
+      "kind": "technique"
+    },
+    {
       "slug": "k-means",
       "label": "K-Means",
       "kind": "technique"
@@ -49,8 +54,8 @@
       "kind": "technique"
     },
     {
-      "slug": "kernel-method",
-      "label": "Kernel Method",
+      "slug": "clustering",
+      "label": "Clustering",
       "kind": "technique"
     }
   ],

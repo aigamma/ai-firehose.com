@@ -9,23 +9,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The failure mode in which a model learns the noise and idiosyncrasies of its training data instead of the underlying pattern, so it performs well on training data but poorly on new data.",
+  "definition": "The failure where a model learns the noise and accidents of its training data instead of the pattern beneath, scoring beautifully on what it has seen and poorly on what it has not. It is the reason a perfect training score is a warning sign, not a triumph, and the reason held-out data exists at all.",
   "body": [
     {
       "type": "p",
-      "text": "Overfitting is the central failure mode of Supervised Learning. A model overfits when it fits its training data too closely, capturing not just the genuine signal but also the random noise, sampling quirks, and outliers specific to that particular sample. The symptom is a wide gap between training and test performance: the model scores almost perfectly on the data it was trained on yet generalizes poorly to data it has not seen. It has memorized rather than learned."
+      "text": "A model that gets every training example right is usually a worse model, not a better one. That is the unintuitive heart of overfitting: given enough flexibility, a learner fits not just the genuine signal in its training data but also the noise, the sampling quirks, and the outliers peculiar to that one sample, and the closer it hugs those accidents the worse it does on anything new. The tell is a widening gap between training and test performance, near-perfect on the data it studied, mediocre on the data it will actually face. It has memorized the answer key instead of learning the subject."
     },
     {
       "type": "p",
-      "text": "Overfitting matters because the entire point of a model is to generalize to new inputs, and a model that has memorized its training set is worthless on anything else. It is the constant adversary of every practitioner, and recognizing it is the first skill of applied machine learning. The risk grows with model complexity (more parameters, deeper trees, higher-degree polynomials) and shrinks with the amount of training data: a flexible model fed too few examples will almost always find spurious patterns to exploit."
+      "text": "What makes overfitting the central problem of the field is that generalizing, performing on inputs never seen, is the entire point of a model, and one that has memorized its training set is worthless everywhere else. The humbling part is that overfitting is invisible from the inside. Nothing in the training numbers reveals it; a model busily overfitting reports glowing scores right up until it meets new data. The only way to see it at all is to refuse to look at the training score and to hold back data the model is never allowed to touch, which is why honest evaluation is not bureaucracy but the one defense against fooling yourself."
     },
     {
       "type": "p",
-      "text": "Overfitting is one pole of the Bias-Variance Tradeoff. An overfit model has high variance, meaning its learned function swings wildly with small changes in the training data, even though it has low bias on that data. Its opposite is Underfitting, where the model is too simple to capture the real pattern at all. The art is to sit between them, complex enough to model the truth but constrained enough to ignore the noise."
+      "text": "The risk rises with model capacity, more parameters, deeper trees, higher-degree polynomials, and falls with the amount of training data: a flexible model fed too few examples will always find spurious patterns to exploit. In the language of the bias-variance tradeoff, an overfit model is the high-variance pole, its learned function swinging wildly when the training sample changes even slightly. Its opposite is underfitting, a model too rigid to capture the real pattern at all, and good modeling is the search for the seat between them."
     },
     {
       "type": "p",
-      "text": "The standard defenses all aim to constrain the model or to detect the gap before deployment. Regularization penalizes complexity directly, pulling the fit toward simpler solutions. Cross-Validation exposes overfitting by measuring performance on held-out data. Gathering more data, stopping training early, and ensemble methods like a Random Forest, which average many decorrelated models, all reduce variance and curb the tendency to memorize."
+      "text": "Every standard defense is some way of either constraining the model or catching the gap before it ships. regularization penalizes complexity directly, pulling the fit toward simpler explanations. cross-validation drags the gap into the light by always scoring on held-out folds. More data, early stopping, and ensemble methods like a random forest, which averages many decorrelated models, all damp the variance that drives memorization. None of them removes the underlying tension, because the same flexibility that lets a model learn something subtle is what lets it memorize, so the work is never to eliminate overfitting, only to stop it just short of where it begins to hurt."
     }
   ],
   "related": [

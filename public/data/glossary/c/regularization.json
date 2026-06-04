@@ -90,23 +90,23 @@
   "category": "Core Machine Learning",
   "durable": true,
   "source": "authored",
-  "definition": "A family of techniques that constrain or penalize a model's complexity during training in order to reduce overfitting and improve how well it generalizes to new data.",
+  "definition": "A family of techniques that constrain a model's complexity so it generalizes instead of memorizing, usually by penalizing the size of its parameters. Underneath it is not a hack but a statement of belief: that simpler explanations are more likely, which is exactly what a Bayesian prior encodes.",
   "body": [
     {
       "type": "p",
-      "text": "Regularization is the deliberate practice of constraining a model so it does not fit its training data too closely. The most common form adds a penalty term to the loss function that grows with the size of the model's parameters, so the optimizer must balance fitting the data against keeping the parameters small. Simpler, smaller-weight solutions are favored, and the model is discouraged from contorting itself to chase every fluctuation in the training set. Regularization is the most direct lever against Overfitting."
+      "text": "Give a model enough freedom and it will use all of it, contorting itself to pass through every point in the training data, noise included. regularization is the deliberate act of taking some of that freedom back. The most common form adds a penalty to the loss that grows with the size of the model's weights, so the optimizer can no longer chase the data without limit; it must trade a tighter fit against keeping the weights small, and smoother, smaller solutions win unless the data genuinely insists otherwise. It is the most direct lever there is against overfitting."
     },
     {
       "type": "p",
-      "text": "Regularization matters because unconstrained flexible models almost always overfit, and adding more data is not always possible. By penalizing complexity, regularization lets a practitioner use an expressive model class while keeping its effective capacity in check, capturing the genuine signal without memorizing the noise. In the vocabulary of the Bias-Variance Tradeoff, it trades a small increase in bias for a large reduction in variance, which usually lowers total error on unseen data."
+      "text": "The two classic penalties pull in the same direction but leave different fingerprints. L2 regularization, also called weight decay, penalizes the sum of squared weights and shrinks them all smoothly toward zero without quite eliminating any. L1 regularization penalizes the sum of absolute weights and drives many of them exactly to zero, so it performs feature selection for free, handing back a sparse model that names the features it actually used. A single strength parameter sets how hard the penalty pushes, tuned by cross-validation: too hard and the model underfits, too soft and the penalty never bites."
     },
     {
       "type": "p",
-      "text": "The two classic penalties behave differently. L2 regularization, also called weight decay, penalizes the sum of squared weights and shrinks them all smoothly toward zero without eliminating any. L1 regularization penalizes the sum of absolute weights and drives many of them exactly to zero, performing feature selection by producing a sparse model. A strength parameter controls how hard the penalty pushes, and it is typically chosen by Cross-Validation: set it too high and the model underfits, too low and the regularization fails to bite. Beyond these penalties, dropout, early stopping, and data augmentation are all regularizers in spirit, since each constrains what the model can learn."
+      "text": "Why any of this is principled rather than a fudge becomes clear from a Bayesian angle. Training a model amounts to asking which parameters best explain the data; regularization adds a second voice to that question, a prior belief about which parameters are plausible before any data arrives. Penalizing squared weights is exactly equivalent to assuming the weights were drawn from a Gaussian centered at zero, and penalizing absolute weights corresponds to a sharper Laplace prior that expects most weights to be precisely zero. From this view regularization is not a patch bolted onto learning, it is the formal way to state a belief that simpler explanations are more probable, a mathematical Occam's razor."
     },
     {
       "type": "p",
-      "text": "Regularization connects to nearly every other core technique. A Support Vector Machine builds it directly into its objective by maximizing the margin, which is a form of L2 control. Ensemble averaging in a Random Forest is an implicit regularizer that reduces variance. The unifying idea is the recognition that the goal of training is not to fit the training data perfectly but to generalize, and that the path to generalization runs through controlled simplicity rather than unconstrained fit."
+      "text": "Seen that way, regularization runs through the whole field rather than sitting in one corner of it. A support vector machine builds it into its objective by maximizing the margin, a form of L2 control; the averaging in a random forest is an implicit regularizer that cancels variance; dropout, early stopping, and data augmentation each constrain what a network can learn without touching the loss directly. What unites them is the recognition that separates a practitioner from a novice: the goal of training was never to fit the training data, it was to generalize, and the road to generalization runs through disciplined simplicity rather than unconstrained fit."
     }
   ],
   "related": [

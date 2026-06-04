@@ -1198,7 +1198,7 @@
         "bias variance tradeoff",
         "bias-variance decomposition"
       ],
-      "def_snippet": "The fundamental tension in supervised learning between bias, the error from a model being too simple, and variance, the error from a model being too sensitive to its training data, which a model cannot minimize both of at once.",
+      "def_snippet": "The classical decomposition of a model's error into bias, the error from being too simple, and variance, the error from being too sensitive to the training sample, which pull against each other so neither reaches zero alone. It is the organizing principle of classical machine learning, and the place modern deep learning most visibly broke the rules.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -4916,7 +4916,7 @@
         "kmeans",
         "k means"
       ],
-      "def_snippet": "An unsupervised clustering algorithm that partitions data into k groups by alternately assigning each point to its nearest cluster center and recomputing each center as the mean of the points assigned to it.",
+      "def_snippet": "A clustering algorithm that splits data into k groups by alternating two steps: assign each point to its nearest center, then move each center to the mean of its members. It is fast and ubiquitous, and the simplicity hides a strong assumption, that clusters are round, separate blobs of similar size.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -7172,7 +7172,7 @@
         "overfit",
         "overfitted"
       ],
-      "def_snippet": "The failure mode in which a model learns the noise and idiosyncrasies of its training data instead of the underlying pattern, so it performs well on training data but poorly on new data.",
+      "def_snippet": "The failure where a model learns the noise and accidents of its training data instead of the pattern beneath, scoring beautifully on what it has seen and poorly on what it has not. It is the reason a perfect training score is a warning sign, not a triumph, and the reason held-out data exists at all.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -7691,7 +7691,7 @@
         "PCA",
         "principal components"
       ],
-      "def_snippet": "An unsupervised technique that reduces the dimensionality of data by finding the orthogonal directions of greatest variance and projecting the data onto a few of them, preserving as much structure as possible.",
+      "def_snippet": "A method that compresses high-dimensional data by finding the few orthogonal directions along which it varies most and projecting onto them. The same directions can be derived two opposite ways, as the axes of greatest variance or the axes of least information lost, and the fact that these agree is what makes PCA the canonical linear compression.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -8128,7 +8128,7 @@
         "regularize",
         "L1 regularization"
       ],
-      "def_snippet": "A family of techniques that constrain or penalize a model's complexity during training in order to reduce overfitting and improve how well it generalizes to new data.",
+      "def_snippet": "A family of techniques that constrain a model's complexity so it generalizes instead of memorizing, usually by penalizing the size of its parameters. Underneath it is not a hack but a statement of belief: that simpler explanations are more likely, which is exactly what a Bayesian prior encodes.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -8148,7 +8148,7 @@
       "aliases": [
         "RL"
       ],
-      "def_snippet": "A machine learning paradigm in which an agent learns to act by interacting with an environment and adjusting its behavior to maximize a cumulative reward signal.",
+      "def_snippet": "A paradigm where an agent learns to act by trial and error in an environment, choosing actions to maximize a cumulative reward rather than copying labeled answers. Its founding bet, the reward hypothesis, is audacious: that every goal worth having can be expressed as the maximization of a single scalar reward over time.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -9412,7 +9412,7 @@
       "aliases": [
         "supervised machine learning"
       ],
-      "def_snippet": "A machine learning paradigm in which a model learns a mapping from inputs to outputs by training on examples that are already labeled with the correct answer.",
+      "def_snippet": "The paradigm that learns a mapping from inputs to outputs by training on examples already paired with the right answer. It dominates applied machine learning not because it is the most sophisticated idea but because a known label turns learning into a measurable target, and that single property is what makes progress trackable.",
       "durable": true,
       "category": "Core Machine Learning"
     },
@@ -10214,7 +10214,7 @@
       "aliases": [
         "unsupervised machine learning"
       ],
-      "def_snippet": "A machine learning paradigm in which a model finds structure, patterns, or groupings in data that carries no labels, learning from the inputs alone.",
+      "def_snippet": "Learning from data that carries no labels, where the goal is to uncover the structure already latent in the inputs: the groups, the directions of variation, the distribution that generated them. Its defining difficulty is the flip side of its freedom: with no answer key, there is often no way to say a result is right.",
       "durable": true,
       "category": "Core Machine Learning"
     },
