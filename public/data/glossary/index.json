@@ -50,7 +50,7 @@
         "nonlinearity",
         "transfer function"
       ],
-      "def_snippet": "The nonlinear function applied to a neuron's weighted sum, which gives a neural network the ability to model nonlinear relationships; without it, stacked layers would collapse into a single linear map.",
+      "def_snippet": "The nonlinear function applied to a neuron's weighted sum, and the single ingredient that separates deep learning from linear regression stacked on itself. Without it, any number of layers would collapse into one linear map; with it, the shape of the function decides how gradients flow and whether a deep stack trains at all.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -924,7 +924,7 @@
         "error backpropagation",
         "reverse-mode autodiff"
       ],
-      "def_snippet": "The algorithm that computes the gradient of a neural network's loss with respect to every weight by applying the chain rule backward through the network, making gradient-based training of deep models efficient and practical.",
+      "def_snippet": "The algorithm that computes the gradient of a network's loss with respect to every weight in a single backward pass, by applying the chain rule in reverse. Its decisive property is efficiency, the whole gradient for the price of roughly one extra forward pass, which is the fact that makes training billion-parameter models possible at all.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -964,7 +964,7 @@
         "batchnorm",
         "BN"
       ],
-      "def_snippet": "A training technique that normalizes each layer's pre-activations across the current mini-batch to zero mean and unit variance, then rescales them with learned parameters, which stabilizes and accelerates the training of deep networks.",
+      "def_snippet": "A layer that normalizes each feature's pre-activations across the current mini-batch to zero mean and unit variance, then rescales with learned parameters, which lets deep networks train faster and tolerate higher learning rates. Its defining quirk and weakness is a train/inference asymmetry: it uses live batch statistics while training and running averages at inference, so it falters when batches are tiny.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -6560,7 +6560,7 @@
         "feedforward neural network",
         "fully connected network"
       ],
-      "def_snippet": "A feedforward neural network of one or more hidden layers of fully connected neurons, where each neuron applies a weighted sum followed by a nonlinear activation, making it a universal function approximator.",
+      "def_snippet": "The canonical feedforward neural network, layers of fully connected neurons each applying a weighted sum then a nonlinear activation. It is the architectural baseline the whole field descends from, and far from a relic: the position-wise feedforward block inside every transformer layer is an MLP.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -8042,7 +8042,7 @@
         "rectified linear unit",
         "rectifier"
       ],
-      "def_snippet": "An activation function that outputs the input unchanged when positive and zero otherwise, whose simplicity and non-saturating positive region made deep networks far easier and faster to train.",
+      "def_snippet": "An activation that passes positive inputs through unchanged and zeroes out negatives, the simplest useful nonlinearity in deep learning. Its derivative is exactly one for positive inputs, so gradients pass backward undiminished, which is the unglamorous fact that helped make very deep networks suddenly trainable around 2010.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -8273,7 +8273,7 @@
         "shortcut connection",
         "ResNet"
       ],
-      "def_snippet": "A shortcut that adds a layer's input directly to its output, so the layer need only learn a residual correction, which lets gradients flow unobstructed and makes very deep networks trainable.",
+      "def_snippet": "A shortcut that adds a layer's input directly to its output, so the layer only has to learn a residual correction rather than the full mapping. The addition gives the gradient an unobstructed identity path backward, which is what made networks of hundreds of layers trainable for the first time, one of the quietly load-bearing ideas in deep learning.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },
@@ -10256,7 +10256,7 @@
         "vanishing gradient problem",
         "vanishing gradients"
       ],
-      "def_snippet": "A training pathology in deep networks where gradients shrink exponentially as they propagate backward through many layers, so early layers receive almost no learning signal and effectively stop training.",
+      "def_snippet": "A training pathology where the gradient shrinks exponentially as it propagates backward through many layers, so early layers receive almost no learning signal and stop training. It was for years the central obstacle to depth, and understanding it is, in effect, understanding why so much of modern architecture, ReLU, residual connections, LSTMs, attention, normalization, exists at all.",
       "durable": true,
       "category": "Deep Learning Architectures"
     },

@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The nonlinear function applied to a neuron's weighted sum, which gives a neural network the ability to model nonlinear relationships; without it, stacked layers would collapse into a single linear map.",
+  "definition": "The nonlinear function applied to a neuron's weighted sum, and the single ingredient that separates deep learning from linear regression stacked on itself. Without it, any number of layers would collapse into one linear map; with it, the shape of the function decides how gradients flow and whether a deep stack trains at all.",
   "body": [
     {
       "type": "p",
@@ -18,11 +18,11 @@
     },
     {
       "type": "p",
-      "text": "The activation function matters because it is what makes depth meaningful. A composition of purely linear layers is itself just one linear layer, so a network without nonlinear activations, no matter how many layers it has, could only ever fit a linear function. Inserting a nonlinearity between layers breaks that collapse and is what allows a multilayer perceptron to satisfy the universal approximation theorem and a deep network to build complex features from simple ones. The activation is the single ingredient that separates deep learning from linear regression stacked on itself."
+      "text": "It is the one ingredient that makes depth meaningful, and the argument is short. A composition of purely linear layers is itself just one linear layer, so a network without nonlinear activations, no matter how many layers it has, could only ever fit a linear function. Inserting a nonlinearity between layers breaks that collapse, and it is what lets a multilayer perceptron satisfy the universal approximation theorem and a deep network build complex features from simple ones. The activation is the single thing separating deep learning from linear regression stacked on itself."
     },
     {
       "type": "p",
-      "text": "The mechanism interacts tightly with training, because backpropagation must pass gradients through the activation, multiplying by its derivative at each layer. This makes the shape of the function consequential. The classic sigmoid and tanh saturate for large positive or negative inputs, where their derivative approaches zero, and multiplying many such small derivatives across a deep network is a primary cause of the vanishing gradient. The bounded, smooth tanh and the gating sigmoid are still valuable in specific roles, such as the gates of an LSTM, where their range between zero and one is exactly what is wanted."
+      "text": "The function interacts tightly with training, because backpropagation must pass gradients through it, multiplying by its derivative at each layer, which makes the shape consequential. The classic sigmoid and tanh saturate for large positive or negative inputs, where their derivative approaches zero, and multiplying many such small derivatives across a deep network is a primary cause of the vanishing gradient. The bounded, smooth tanh and the gating sigmoid are still valuable in specific roles, such as the gates of an LSTM, where their range between zero and one is exactly what is wanted."
     },
     {
       "type": "p",
