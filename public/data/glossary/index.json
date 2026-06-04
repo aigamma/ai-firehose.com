@@ -977,7 +977,7 @@
         "batch size",
         "mini-batch size"
       ],
-      "def_snippet": "The number of training examples used to compute each gradient update; it trades off the stability of the gradient estimate, memory use, and training speed, and interacts closely with the learning rate.",
+      "def_snippet": "How many examples go into each gradient update, the dial between a full-batch gradient (accurate, slow, memory-hungry) and single-example SGD (noisy, fast). The non-obvious cost of large batches is worse generalization, because the very noise of small batches acts as a mild regularizer, and the dial is coupled to the learning rate.",
       "durable": true,
       "category": "Optimization"
     },
@@ -3056,7 +3056,7 @@
       "aliases": [
         "training epoch"
       ],
-      "def_snippet": "One complete pass of the training algorithm over the entire training dataset; training usually runs for many epochs, and how many is a key hyperparameter balancing underfitting against overfitting.",
+      "def_snippet": "One complete pass of training over the entire dataset, normally many parameter updates since models train on mini-batches. How many epochs to run trades underfitting against overfitting, though for large-language-model pretraining the corpus is so vast the model often sees it barely once.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5236,7 +5236,7 @@
         "LR schedule",
         "annealing schedule"
       ],
-      "def_snippet": "A rule that changes the learning rate over the course of training rather than holding it fixed, typically starting larger for fast early progress and shrinking toward the end so the optimizer can settle precisely into a minimum.",
+      "def_snippet": "A rule that varies the learning rate over training rather than holding it fixed, usually large early for fast exploration and shrinking toward the end so the optimizer can settle precisely. With stochastic gradient descent it does double duty, because shrinking the rate also cools the gradient noise exactly when the model needs to converge.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5430,7 +5430,7 @@
         "basin of attraction",
         "attractor basin"
       ],
-      "def_snippet": "The region of the loss landscape surrounding a local minimum from which a descent-based optimizer flows into that minimum. Its size and flatness determine which solution training reaches and how well that solution generalizes.",
+      "def_snippet": "The catchment area around a local minimum, the set of starting points that flow downhill into it. Which basin a model lands in is effectively decided early, by initialization and the high-learning-rate opening of training, and the basin's width is tied to generalization: wide and flat tends to generalize, sharp and narrow tends not to.",
       "durable": true,
       "category": "Optimization"
     },
@@ -5454,7 +5454,7 @@
         "local minima",
         "local optimum"
       ],
-      "def_snippet": "A point in the loss landscape that is lower than every point in its immediate neighborhood but not necessarily the lowest point overall, where the gradient vanishes and a descent-based optimizer can come to rest.",
+      "def_snippet": "A point in the loss landscape lower than its whole neighborhood but not necessarily the lowest overall, where the gradient vanishes and a downhill optimizer comes to rest. Classical theory feared getting trapped in a bad one; the surprise of deep learning is that in high dimensions true local minima are rare and the ones you reach are nearly as good as the best.",
       "durable": true,
       "category": "Optimization"
     },
@@ -8579,7 +8579,7 @@
       "aliases": [
         "saddle points"
       ],
-      "def_snippet": "A point in the loss landscape where the gradient vanishes but which is neither a peak nor a valley: it curves up in some directions and down in others. Saddle points stall plain gradient descent and dominate the critical points of high-dimensional networks.",
+      "def_snippet": "A point where the gradient vanishes but which is neither peak nor valley, curving up in some directions and down in others, like a horse saddle. A simple counting argument explains why such points, not bad local minima, dominate the critical points of a high-dimensional network and are the real thing that stalls training.",
       "durable": true,
       "category": "Optimization"
     },
@@ -10582,7 +10582,7 @@
         "L2 regularization",
         "ridge penalty"
       ],
-      "def_snippet": "A regularization technique that pulls the model's weights toward zero at every step, either by adding a penalty on their squared magnitude to the loss function or by shrinking them directly, which discourages overfitting and favors simpler solutions.",
+      "def_snippet": "A regularizer that continually pulls the weights toward zero, either by adding a squared-magnitude penalty to the loss or by shrinking the weights directly, which favors simpler, better-generalizing solutions. Its non-obvious twist is that those two views, identical for plain SGD, come apart for Adam, which is why AdamW exists and now trains most large models.",
       "durable": true,
       "category": "Optimization"
     },
