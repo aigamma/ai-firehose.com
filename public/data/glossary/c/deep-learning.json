@@ -121,26 +121,26 @@
       "kind": "technique"
     }
   ],
-  "definition": "A branch of machine learning that uses neural networks with many layers to learn hierarchical representations directly from raw data. It is the approach behind most of the AI advances of the 2010s and beyond.",
+  "definition": "The branch of machine learning that stacks many layers of neural units to learn its own features straight from raw data, rather than being handed features a human designed. Depth is what builds those features in a hierarchy, edges to shapes to objects, and it is the approach behind most AI breakthroughs since the 2010s.",
   "category": "Foundations and History",
   "durable": true,
   "source": "authored",
   "body": [
     {
       "type": "p",
-      "text": "Deep learning is the subfield of machine learning built on neural networks with many layers, where \"deep\" refers to the depth of that layer stack. Its defining idea is representation learning: rather than feeding a model hand-engineered features, you feed it raw data, pixels, audio samples, characters, and let the network discover its own features layer by layer. Early layers capture simple patterns such as edges or phonemes, later layers compose them into parts and then into whole objects or concepts. This hierarchy of learned representations is what distinguishes deep learning from earlier machine learning that depended on human-designed features."
+      "text": "For decades, the hardest and most valuable work in machine learning was feature engineering: a human expert deciding by hand which measurable properties of an image, a sound, or a sentence a model should be allowed to look at. Deep learning made most of that labor obsolete. Its central idea, representation learning, is to feed the network raw data, pixels, audio samples, characters, and let it discover the useful features itself, layer by layer, with early layers catching simple patterns like edges and later layers composing them into parts, objects, and concepts. The machine turned out to be better at designing its own inputs than we were."
     },
     {
       "type": "p",
-      "text": "The approach is the modern, scaled-up form of connectionism, and its core machinery is not new. The units are descendants of the perceptron, training relies on backpropagation to compute gradients and gradient descent to apply them, and the layered architecture goes back decades. What changed in the 2010s was scale: large labeled datasets, fast parallel hardware in the form of GPUs, and refinements that let very deep networks train stably. The 2012 result in which a deep convolutional network sharply cut the error rate on the ImageNet image-classification benchmark is widely treated as the moment deep learning's practical dominance became undeniable."
+      "text": "None of the core machinery was new. The units descend from the perceptron, training still runs on backpropagation and gradient descent, and stacking layers is a decades-old idea. What arrived in the 2010s was scale: large labeled datasets, fast parallel hardware in the form of GPUs, and a handful of tricks that let very deep stacks train without the signal dissolving on the way through. The tipping point even has a date. In 2012 a deep convolutional network roughly halved the error rate on the ImageNet image-classification benchmark, and the margin was decisive enough that the field reorganized around the approach within a few years."
     },
     {
       "type": "p",
-      "text": "Deep learning matters because it delivered the capabilities that had eluded AI for a generation, and it did so on exactly the problems Moravec's paradox flagged as hardest. Machine vision, speech recognition, machine translation, and ultimately large language models all became practical through deep networks, after decades in which hand-built rules had failed at them. Different architectures specialize the basic idea: convolutional networks for images, recurrent networks and then transformers for sequences and language. The common thread is depth and learned representation rather than hand-coded knowledge."
+      "text": "What deep learning delivered was precisely the set of problems that had embarrassed AI for a generation, the perceptual tasks Moravec's paradox flags as hardest to program: vision, speech, translation, and eventually language itself. Different architectures specialize the same idea, convolutional networks for images, recurrent networks and then the transformer for sequences, but the common thread is always depth and learned representation in place of hand-coded knowledge. The features nobody could write down by hand, the tacit sense of what a cat looks like, are exactly what the layers learned to represent on their own."
     },
     {
       "type": "p",
-      "text": "The rise of deep learning is the clearest vindication of the bitter lesson. It replaced the carefully engineered features and symbolic rules of earlier AI with general networks that learn from data and improve as compute and data grow, the scaling behavior the lesson predicts will win. The tradeoffs are the familiar ones of connectionism, amplified by scale: deep models are data-hungry, computationally expensive to train, and hard to interpret, since their knowledge lives in billions of weights rather than readable rules. Even so, deep learning is the dominant paradigm of contemporary artificial intelligence, and most of the systems this site tracks are built on it."
+      "text": "Deep learning is the clearest vindication of the bitter lesson: it swapped engineered features and symbolic rules for general networks that improve as data and compute grow, and that scaling is what carried it past everything before it. The bill arrives in the same currency as the power. Deep models are data-hungry, expensive to train, and opaque, since their knowledge lives in billions of weights rather than legible rules, so the better they work the less we can say about why. Nearly every system this site tracks is built on them, which makes deep learning less one technique among many than the default substrate the rest of the field now assumes."
     }
   ],
   "related": [
