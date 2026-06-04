@@ -2212,7 +2212,7 @@
         "Gaussian curvature",
         "Ricci curvature"
       ],
-      "def_snippet": "A measure of how much a space bends away from being flat, detectable from within the space by how nearby geodesics spread apart or converge and by whether the angles of a triangle sum to more or less than 180 degrees.",
+      "def_snippet": "A measure of how much a space bends away from flat, detectable from within the space itself by whether the angles of a triangle sum to more or less than 180 degrees and whether nearby straight paths converge or spread. In machine learning the sign of curvature is a design choice: flat space, positively curved spheres, and negatively curved hyperbolic space each suit different data.",
       "durable": true,
       "category": "Geometry and Manifolds"
     },
@@ -3891,7 +3891,7 @@
         "geodesics",
         "shortest path on a manifold"
       ],
-      "def_snippet": "The straightest possible path between two points on a curved surface or manifold, generalizing the idea of a straight line to spaces where ordinary straight lines do not exist.",
+      "def_snippet": "The straightest possible path between two points on a curved surface, the curved-space stand-in for a straight line. It matters in machine learning because data is believed to lie on a curved manifold, so the meaningful distance between two points is the geodesic along that surface, not the straight line through the space it sits in.",
       "durable": true,
       "category": "Geometry and Manifolds"
     },
@@ -5173,7 +5173,7 @@
         "embedding space",
         "representation space"
       ],
-      "def_snippet": "The compressed, lower-dimensional space of learned representations into which a model maps its inputs, where proximity encodes similarity and directions often correspond to interpretable features.",
+      "def_snippet": "The compressed, lower-dimensional space of learned representations a model maps its inputs into, where the word \"latent\" means the coordinates are inferred, not given. Its defining virtue is that geometry encodes meaning: nearby points are similar inputs, directions often align with interpretable attributes, and it is the concrete embodiment of the manifold hypothesis, the substrate this very site is built on.",
       "durable": true,
       "category": "Geometry and Manifolds"
     },
@@ -5718,7 +5718,7 @@
         "smooth manifold",
         "data manifold"
       ],
-      "def_snippet": "A space that looks flat and ordinary when you zoom in on any small piece of it, even though its global shape may be curved or twisted, generalizing curves and surfaces to any number of dimensions.",
+      "def_snippet": "A space that looks flat and ordinary up close, even when its global shape is curved or twisted. The idea matters because real high-dimensional data is believed to fill not its whole space but a low-dimensional manifold inside it, so learning a good representation is, in effect, the act of discovering that surface and finding coordinates for it.",
       "durable": true,
       "category": "Geometry and Manifolds"
     },
@@ -5730,7 +5730,7 @@
       "aliases": [
         "manifold assumption"
       ],
-      "def_snippet": "The widely held conjecture that real high-dimensional data such as images, audio, and text concentrates on or near a low-dimensional manifold inside its ambient space, rather than filling that space uniformly.",
+      "def_snippet": "The conjecture that real high-dimensional data does not fill its space but concentrates on a low-dimensional manifold inside it, governed by a handful of genuine degrees of freedom. It is the load-bearing assumption under representation learning: if it holds, the right thing to learn is coordinates for that surface, which is exactly what an autoencoder does.",
       "durable": true,
       "category": "Geometry and Manifolds"
     },
