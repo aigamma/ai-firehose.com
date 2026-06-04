@@ -52,13 +52,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/bayesian-optimization.gif",
-    "alt": "Top panel: a black true-objective curve with several evaluated points, overlaid by a Gaussian process surrogate drawn as a mean curve inside a purple uncertainty band that is wide where there is no data. Three lower panels show acquisition functions, expected improvement, upper confidence bound, and probability of improvement, each marking a next point to sample with a gold diamond.",
-    "caption": "Bayesian optimization fits a probabilistic surrogate (the purple Gaussian process band) to the points evaluated so far, predicting both an expected value and a calibrated uncertainty that is wide where the space is unexplored. An acquisition function (lower panels) turns that belief into a score, balancing sampling where the value looks good against sampling where uncertainty is high, and its peak (gold diamond) chooses the single most informative point to evaluate next.",
-    "credit": "AnotherSamWilson",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:GpParBayesAnimationSmall.gif",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/bayesian-optimization.png",
+    "alt": "Five stacked rows, each one iteration of Bayesian optimization. The left column plots the true objective as a red dashed curve with the Gaussian process mean as a green dashed curve inside a shaded uncertainty band and red dots for the points evaluated so far. The right column plots the acquisition function in blue with the next point to sample marked at its peak. Across the rows the band narrows as more points are added.",
+    "caption": "Bayesian optimization in five iterations. The left column fits a Gaussian process surrogate (green mean, shaded uncertainty band) to the points evaluated so far, with the band wide where the space is unexplored. The right column turns that belief into an acquisition function whose peak picks the single most informative next point, balancing sampling where the value looks good against sampling where uncertainty is high. As points accumulate the band tightens around the true objective.",
+    "credit": "scikit-optimize developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-optimize/scikit-optimize/blob/master/LICENSE",
+    "source": "https://scikit-optimize.github.io/stable/auto_examples/bayesian-optimization.html",
+    "provider": "scikit-optimize"
   }
 }

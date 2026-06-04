@@ -73,12 +73,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/generalization.png",
-    "alt": "Three scatter plots of the same points fitted by three curves. The left panel, labeled underfitting, fits a straight line that misses the curvature of the data. The middle panel fits a smooth curve that follows the overall trend. The right panel, labeled overfitting, fits a wiggly curve that passes through nearly every point.",
-    "caption": "Generalization is about fitting the signal without chasing the noise. A model that is too simple underfits and misses the real pattern (left); a model that is too flexible overfits, bending to hit every training point and swinging wildly between them (right). The middle fit captures the underlying trend and is the one most likely to do well on new data.",
-    "credit": "Leomaurodesenv",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Underfitting_e_overfitting.png",
-    "provider": "Wikimedia Commons"
+    "alt": "Three side-by-side plots fitting polynomial models of degree 1, 4, and 15 to the same noisy points sampled from a cosine curve. Each panel overlays the model (blue), the true function (orange), and the samples, and is titled with its cross-validated mean squared error. Degree 1 is a straight line that misses the curvature; degree 4 tracks the true curve closely; degree 15 wiggles to chase individual points.",
+    "caption": "Generalization is fitting the signal without chasing the noise. A degree-1 model underfits and misses the true cosine shape (left), a degree-15 model overfits and bends to hit individual samples (right), and the degree-4 model in the middle matches the true function and has the lowest cross-validated error. The mean squared error printed on each panel makes the bias-variance tradeoff concrete: error is high at both extremes and lowest for the right amount of capacity.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://opensource.org/license/bsd-3-clause",
+    "source": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
+    "provider": "scikit-learn"
   }
 }

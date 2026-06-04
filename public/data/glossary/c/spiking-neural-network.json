@@ -68,13 +68,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/spiking-neural-network.jpg",
-    "alt": "Schematic of a leaky integrate-and-fire neuron. Pulse inputs charge a capacitor representing the membrane; the membrane potential V rises with each input, and when it crosses a dashed threshold the neuron emits a spike and resets to baseline.",
-    "caption": "A spiking neuron does not output a value every step; it integrates incoming pulses, raising its membrane potential V, and fires a single spike only when V crosses a threshold, then resets. Because nothing happens between spikes and the timing of each spike carries information, computation is event-driven and time is a real dimension, unlike a standard continuous-valued unit.",
-    "credit": "Spiking16",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Leaky_Integrate-and-Fire_model_neuron_(schematic).jpg",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/spiking-neural-network.png",
+    "alt": "Spike generation in a leaky integrate-and-fire neuron. The top shows an RC circuit with input current I_in, resistor R, capacitor C, a threshold element theta, and an output voltage V_out. The bottom shows time traces: input current pulses I_in, the membrane potential U_mem charging and decaying toward a dashed threshold theta and resetting, and a V_out spike emitted when the threshold is crossed.",
+    "caption": "A spiking neuron integrates incoming current onto its membrane potential, which leaks away over time, and emits a discrete spike only when the potential crosses a threshold, after which it resets. Here input pulses I_in drive U_mem upward; when U_mem exceeds the threshold theta the neuron fires V_out and resets. Because each spike is time-stamped, timing itself carries information, unlike the continuous activations of standard networks.",
+    "credit": "Jason K. Eshraghian (snnTorch)",
+    "license": "MIT",
+    "license_url": "https://github.com/jeshraghian/snntorch/blob/master/LICENSE",
+    "source": "https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_2.html",
+    "provider": "GitHub: jeshraghian/snntorch"
   }
 }

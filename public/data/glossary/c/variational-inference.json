@@ -72,13 +72,13 @@
   "top_items": [],
   "axis_positions": [],
   "image": {
-    "src": "/images/glossary/variational-inference.jpg",
-    "alt": "Three plots labeled Step 1, Step 2, and Step K, with curved arrows cycling between them. In each plot a solid blue curve is the true posterior over one variable and a dashed curve is the approximating factor being fitted to it, with the update formula for that factor written below.",
-    "caption": "Variational inference replaces intractable inference with optimization: it picks a simple, factorized family and fits it to the true posterior. Each plot shows the true posterior over one variable (solid blue) and the approximating factor (dashed) being tuned to match it, updated one coordinate at a time around the cycle. The fit tightens as the bound on the evidence is maximized.",
-    "credit": "Stat math",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:CAVI_algorithm_explain.jpg",
-    "provider": "Wikimedia Commons"
+    "src": "/images/glossary/variational-inference.svg",
+    "alt": "A schematic with two coordinate axes. A grey ellipse labeled Q sits over the origin, representing the family of tractable approximating distributions. A point labeled p(z given x), the true posterior, lies outside the ellipse. A point labeled q-star sits on the boundary of Q, connected to the true posterior by a dashed line labeled KL(q-star given p), with a tangent line touching Q at q-star.",
+    "caption": "Variational inference recasts inference as optimization. The true posterior p(z given x) lies outside the family Q of tractable distributions the model can actually compute, so the method searches Q for the member q-star that is closest to it, where closeness is measured by the KL divergence (the dashed line). Finding that nearest approximation, rather than computing the intractable posterior directly, is what makes Bayesian reasoning scale.",
+    "credit": "Jeffrey Regier",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scverse/scvi-tools/blob/main/LICENSE",
+    "source": "https://docs.scvi-tools.org/en/stable/user_guide/background/variational_inference.html",
+    "provider": "scvi-tools"
   }
 }

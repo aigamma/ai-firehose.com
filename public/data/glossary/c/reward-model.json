@@ -73,12 +73,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/reward-model.png",
-    "alt": "Flow diagram of reinforcement learning from human feedback: human annotators rank sampled responses into ranking data that trains a reward model, which then guides training of the aligned model through PPO, with a supervised model initializing both.",
-    "caption": "A reward model is a learned stand-in for human judgment. Human annotators rank model responses, those comparisons train the reward model to score any output, and the policy is then optimized to produce outputs the reward model rates highly. This is how the slow, expensive signal of human preference is compiled into a fast automatic reward for reinforcement learning from human feedback.",
-    "credit": "PopoDameron",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:RLHF_diagram.svg",
-    "provider": "Wikimedia Commons"
+    "alt": "A schematic of reward model training. A prompts dataset feeds an initial language model that samples many prompts and produces generated text; the generated outputs are scored and ranked by a human (relative, Elo style); the resulting (sample, reward) pairs train a separate reward (preference) model that outputs a scalar score r-theta.",
+    "caption": "A reward model is trained to predict human preference as a single scalar score. Many prompts are run through the language model, a human ranks the resulting outputs, and those ranked (sample, reward) pairs train the reward model to imitate that judgment. Once trained it stands in for a hand-written objective, letting a system be optimized against human judgment at scale.",
+    "credit": "Nathan Lambert, Louis Castricato, Leandro von Werra, Alex Havrilla (Hugging Face)",
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+    "source": "https://huggingface.co/blog/rlhf",
+    "provider": "Hugging Face"
   }
 }

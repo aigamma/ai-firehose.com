@@ -72,12 +72,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/gaussian-process.png",
-    "alt": "Three panels labeled Prior, Posterior, and Prediction with Uncertainty. The Prior shows several wiggly random functions filling the plot. The Posterior shows similar functions but all passing through a set of fixed data points. The Prediction panel shows a single mean curve with a grey shaded band around it that is narrow at the data points and wide in the gaps between them.",
-    "caption": "A Gaussian process is a distribution over functions. The prior is a spread of candidate functions (left); conditioning on observed points keeps only functions that pass through the data (center); and the prediction reports a mean function with an uncertainty band that is narrow near the data and widens far from it (right). The widening band is the model reporting what it does not know.",
-    "credit": "Cdipaolo96",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Gaussian_Process_Regression.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A plot of Gaussian process regression on a noise-free dataset. A dotted line shows the true function f(x) equals x sin(x), six blue dots mark the observations, an orange line is the mean prediction, and an orange shaded band is the 95 percent confidence interval. The band pinches to almost nothing at each observation and flares wide in the gaps between points, especially on the far left where there is no data.",
+    "caption": "A Gaussian process returns not a single guess but a full predictive distribution at every input. The mean prediction (orange line) passes through the observations, and the shaded 95 percent confidence interval collapses to near zero at the data points and widens in the gaps, dramatically so on the left where no points constrain it. That widening band is the model reporting how much it does not know, which is the property that makes Gaussian processes a default for Bayesian optimization and active learning.",
+    "credit": "scikit-learn developers",
+    "license": "BSD-3-Clause",
+    "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
+    "source": "https://scikit-learn.org/stable/auto_examples/gaussian_process/plot_gpr_noisy_targets.html",
+    "provider": "scikit-learn"
   }
 }

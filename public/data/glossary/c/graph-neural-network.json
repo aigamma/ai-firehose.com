@@ -71,12 +71,12 @@
   "axis_positions": [],
   "image": {
     "src": "/images/glossary/graph-neural-network.png",
-    "alt": "Three graph neural network building blocks left to right: a permutation-equivariant layer that updates each node from its neighbors and colors the nodes, a local pooling layer that coarsens the graph to fewer nodes, and a global readout that collapses the whole graph to a single node.",
-    "caption": "A graph neural network is built from three kinds of layer. A permutation-equivariant layer updates every node by aggregating its neighbors (the coloring), optional local pooling coarsens the graph, and a global readout pools all nodes into one fixed-size vector for graph-level prediction. Node, edge, and whole-graph tasks all read off these same learned node representations.",
-    "credit": "NickDiCicco",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:GNN_building_blocks.png",
-    "provider": "Wikimedia Commons"
+    "alt": "A left-to-right pipeline: an Input Graph, then a stack of GNN blocks, then a Transformed Graph with updated node and edge colors, then a small Classification layer network, then a Prediction labeled node, edge, or global.",
+    "caption": "A graph neural network takes a graph in, passes it through a stack of GNN blocks that update every node and edge from its neighbors, and reads the transformed graph out into a prediction. The same learned representations support node-level, edge-level, and whole-graph predictions, which is why one architecture handles all three task types.",
+    "credit": "Sanchez-Lengeling, Reif, Pearce, Wiltschko",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://distill.pub/2021/gnn-intro/",
+    "provider": "Distill"
   }
 }
