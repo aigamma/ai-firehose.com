@@ -7,8 +7,6 @@ import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
 import ItemCard from "../components/ItemCard.jsx";
 import useData from "../lib/useData.js";
 import useUnifiedAttention from "../lib/useUnifiedAttention.js";
-import useLens from "../hooks/useLens.js";
-import { filterByLens } from "../lib/lens.js";
 import useSeen from "../hooks/useSeen.js";
 import { itemKey, isNewSince, countNewSince, clearedCount, allCleared } from "../lib/seen.js";
 import useSrs from "../hooks/useSrs.js";
@@ -48,18 +46,10 @@ export default function Home() {
   // hero: the strongest breakout by growth, else the single biggest mover. Both read
   // the live boards (which carry `delta`), not the digest, so the lede always matches
   // what the boards show.
-  // The personalization lens (opt-in, default off): when on and the reader follows
-  // anything, narrow the boards and the new-items to their followed concepts. The
-  // briefing stays global (it is the analyst's overview); the lens narrows the lists.
-  const [lensOn, setLensOn] = useState(false);
-  const { follows } = useLens();
-  const lensActive = lensOn && follows.length > 0;
-  const viewEntities = lensActive ? filterByLens(entities, follows) : entities;
   const newItems = digest?.new_items || [];
-  const viewItems = lensActive ? filterByLens(newItems, follows) : newItems;
 
-  const byKind = KINDS.map((k) => ({ kind: k, list: viewEntities.filter((e) => e.kind === k.key) }));
-  const sortedByDelta = [...viewEntities].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0));
+  const byKind = KINDS.map((k) => ({ kind: k, list: entities.filter((e) => e.kind === k.key) }));
+  const sortedByDelta = [...entities].sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0));
   const breakout = sortedByDelta.find((e) => e.outlier?.breakout) || sortedByDelta[0];
 
   // The returning-visitor layer: what is new since the reader was last here, and how
@@ -67,10 +57,9 @@ export default function Home() {
   // All client-side (localStorage); with the corpus frozen it simply reads as nothing
   // new and degrades quietly until the daily worker refresh lands.
   const { lastVisit, read, toggleRead, markRead, setBatch } = useSeen();
-  const newSince = countNewSince(viewItems, lastVisit);
-  const cleared = clearedCount(viewItems, read);
-  const wireDone = allCleared(viewItems, read);
-  const lensMatches = follows.length ? filterByLens(newItems, follows).length : 0;
+  const newSince = countNewSince(newItems, lastVisit);
+  const cleared = clearedCount(newItems, read);
+  const wireDone = allCleared(newItems, read);
 
   // Spaced-repetition nudge: how many glossary cards are due in Review. Reads the
   // same aifh:srs:v1 store the Review page writes, so a reader who studied yesterday
@@ -115,27 +104,10 @@ export default function Home() {
           <HorizonSwitch value={horizon} onChange={setHorizon} />
         </span>
         <span className="dateline-phrase">The past {h.label.toLowerCase()} on the frontier</span>
-        {follows.length > 0 ? (
-          <button
-            type="button"
-            className="chip"
-            aria-pressed={lensActive}
-            onClick={() => setLensOn((v) => !v)}
-            title={lensActive ? "Showing only the concepts you follow. Click to show everything." : "Filter this page to the concepts you follow."}
-            style={lensActive ? { borderColor: "var(--accent)", color: "var(--accent)" } : undefined}
-          >
-            {lensActive ? `Your lens (${follows.length})` : `Show your lens (${follows.length})`}
-          </button>
-        ) : (
-          <Link to="/lens" className="chip" title="Follow concepts to personalize this page">Personalize</Link>
-        )}
         {newSince > 0 && (
           <span className="dateline-new" title="Items published since you were last here">
             {newSince} new since your last visit
           </span>
-        )}
-        {follows.length > 0 && lensMatches > 0 && !lensActive && (
-          <span className="faint mono">{lensMatches} in your lens</span>
         )}
         {srsDue > 0 && (
           <Link to="/review" className="chip dateline-due" title="Spaced-repetition cards are due in Review">
@@ -174,11 +146,6 @@ export default function Home() {
         </p>
         {attnError ? (
           <LoadError label="Trend boards" />
-        ) : lensActive && !viewEntities.length ? (
-          <div className="empty">
-            <strong>Nothing in your lens moved this {h.label.toLowerCase()}</strong>
-            Turn off your lens above to show everything, or follow more concepts.
-          </div>
         ) : anyAttn ? (
           <div className="heat-grid">
             {byKind.map(({ kind, list }) => (
@@ -208,17 +175,17 @@ export default function Home() {
           <h2>Fresh Off the Wire</h2>
           <span className="eyebrow" style={{ marginLeft: "auto" }}>past {h.label.toLowerCase()}</span>
         </div>
-        {viewItems.length > 0 && (
+        {newItems.length > 0 && (
           <div className="wire-status">
             {wireDone ? (
               <span className="wire-done">You have cleared this {h.label.toLowerCase()}'s wire.</span>
             ) : (
-              <span className="faint">{cleared} of {viewItems.length} cleared</span>
+              <span className="faint">{cleared} of {newItems.length} cleared</span>
             )}
             <button
               type="button"
               className="chip"
-              onClick={() => setBatch(viewItems.map(itemKey), !wireDone)}
+              onClick={() => setBatch(newItems.map(itemKey), !wireDone)}
               title={wireDone ? "Mark all of these unread again" : "Mark every item here as read"}
             >
               {wireDone ? "Show all again" : "Mark all read"}
@@ -227,9 +194,9 @@ export default function Home() {
         )}
         {digestError ? (
           <LoadError label={`New in the past ${h.label.toLowerCase()}`} />
-        ) : viewItems.length ? (
+        ) : newItems.length ? (
           <div className="grid cols-2">
-            {viewItems.map((it, i) => {
+            {newItems.map((it, i) => {
               const k = itemKey(it);
               return (
                 <ItemCard
@@ -244,8 +211,6 @@ export default function Home() {
               );
             })}
           </div>
-        ) : lensActive ? (
-          <div className="empty"><strong>Nothing new in your lens this {h.label.toLowerCase()}</strong>Turn off your lens above, or follow more concepts.</div>
         ) : (
           <div className="empty"><strong>New in the past {h.label.toLowerCase()}</strong>{digestLoading ? "Loading…" : "Awaiting ingestion."}</div>
         )}

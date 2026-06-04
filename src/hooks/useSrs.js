@@ -3,7 +3,7 @@ import { gradeCard, newCard, dueCount as countDue, pruneStates } from "../lib/sr
 
 // A localStorage-backed spaced-repetition store: the per-concept scheduler state that
 // turns the durable glossary into a daily-return loop. No account, no backend. This
-// hook is the one impure boundary, mirroring useLens.js: it owns persistence (lazy init
+// hook is the one impure boundary, mirroring useSeen.js: it owns persistence (lazy init
 // from storage, write-through on every change, cross-tab sync via the storage event,
 // SSR-safe typeof guards) and it is where Date.now() is captured. The interval math
 // itself stays pure in src/lib/srs.js, so every scheduling decision is unit-testable.

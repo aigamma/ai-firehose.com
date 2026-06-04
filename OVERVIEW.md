@@ -30,8 +30,6 @@ The site is built as an editorial intelligence service, not a dashboard of chart
 
 - **Learn, the guided paths.** Curated, ordered walks through the Glossary (19 of them), from "Transformers, From Attention to LLMs" and "How a Modern LLM Is Trained" through "Mechanistic Interpretability" and "The Philosophy of Mind and AI." A reader who wants a subject, not a single term, follows a path.
 
-- **For You, the personal lens.** A reader follows the concepts they care about, and the site narrows the trend boards and the new-items grid to that personal slice. This is the "bottled just for you" promise made literal. It is opt-in and off by default; the briefing always stays global.
-
 - **Watch.** A surface that spotlights favorite YouTube teachers, joining each video to the corpus for a cited summary and links into the relevant concept hubs, with a click-to-play facade so the page stays fast. (Currently seeded with a first featured teacher, designed to expand.)
 
 - **Explore.** Live semantic search over the whole corpus and knowledge base, powered by the same embedding substrate, plus themed views, spectrums, and connections.

@@ -3,7 +3,7 @@
 // function takes the current time as `nowMs` so it is fully deterministic and
 // unit-testable. The useSrs hook owns persistence and is the one impure boundary that
 // captures Date.now; these functions own the interval math, the due math, and the
-// defensive pruning. This mirrors the lens split (src/lib/lens.js plus useLens.js):
+// defensive pruning. This mirrors the seen split (src/lib/seen.js plus useSeen.js):
 // the durable glossary is the enduring asset, and this scheduler is its daily-return
 // loop, so the logic that decides what a reader sees next lives here, checkable.
 
@@ -119,7 +119,7 @@ export function dueCount(states, nowMs) {
 
 // Drop any tracked state whose id is not a live concept (the glossary slugs churn as the
 // taxonomy is rebuilt). Returns a new object, leaving the input untouched. Defensive in
-// the same spirit as the lens pruning its follow set.
+// the same spirit as the seen layer capping its key set.
 export function pruneStates(states, validIdSet) {
   const map = states && typeof states === "object" ? states : {};
   const valid =

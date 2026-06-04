@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 //                     "now" only when the reader leaves (tab hidden or unmount), so
 //                     this whole session's items keep reading as new.
 //   aifh:read:v1    - the set of cleared item keys (capped so it cannot grow without
-//                     bound), cross-tab synced like useLens.
+//                     bound), cross-tab synced like useSrs.
 // This hook is the impure boundary that owns Date.now(); the pure date and set math
 // lives in src/lib/seen.js.
 

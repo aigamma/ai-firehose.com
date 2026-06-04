@@ -16,7 +16,6 @@ const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const Harness = lazy(() => import("./pages/Harness.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Review = lazy(() => import("./pages/Review.jsx"));
-const Lens = lazy(() => import("./pages/Lens.jsx"));
 const Learn = lazy(() => import("./pages/Learn.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 export default function App() {
@@ -29,7 +28,6 @@ export default function App() {
         ))}
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/review" element={<Review />} />
-        <Route path="/lens" element={<Lens />} />
         <Route path="/learn" element={<Learn />} />
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />

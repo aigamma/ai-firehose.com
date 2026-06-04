@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 // Per-path progress through the curated learning paths, persisted to localStorage so a
 // path (an inherently multi-session commitment) remembers where the reader left off and
 // gives them a concrete reason to return. Stored as a flat set of "<pathSlug>::<stepSlug>"
-// keys, cross-tab synced like useLens. The path and step slugs are validated by the
+// keys, cross-tab synced like useSeen. The path and step slugs are validated by the
 // check_glossary gate, so the keys are stable.
 
 const KEY = "aifh:learn:v1";

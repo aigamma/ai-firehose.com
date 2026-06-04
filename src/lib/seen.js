@@ -1,8 +1,8 @@
 // Pure logic for the returning-visitor layer: "new since your last visit" and the
 // read/cleared state that lets a reader conquer the firehose (mark items handled and
 // see a finite, beatable task instead of an endless feed). Kept free of React and
-// localStorage so it is unit-testable and reusable, exactly as src/lib/lens.js is to
-// useLens. The hook (src/hooks/useSeen.js) owns persistence and the wall clock; these
+// localStorage so it is unit-testable and reusable, exactly as src/lib/srs.js is to
+// useSrs. The hook (src/hooks/useSeen.js) owns persistence and the wall clock; these
 // functions own the set math and the date comparison.
 
 // The stable per-item key. Digest new_items carry a url but no id, so url wins; a

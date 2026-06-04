@@ -91,7 +91,6 @@ export const NAV = [
   { label: "Watch", route: "/watch" },
   { label: "Glossary", route: "/glossary" },
   { label: "Review", route: "/review" },
-  { label: "For You", route: "/lens" },
   { label: "Learn", route: "/learn" },
   { label: "Explore", route: "/explore" },
   { label: "Methodology", route: "/methodology" },
