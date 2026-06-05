@@ -251,7 +251,7 @@
         "agent memory",
         "long-term memory"
       ],
-      "def_snippet": "The mechanisms an agent uses to retain and recall information across the steps of a task and across separate sessions, compensating for the fact that the underlying language model is stateless between calls and limited by its context window.",
+      "def_snippet": "The mechanisms an agent uses to retain and recall information across the steps of a task and across sessions, compensating for a language model that is stateless between calls and bounded by its context window. Its job is to give a forgetful model a usable, selective past: store the full history elsewhere and feed back only the fragments relevant now.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -277,7 +277,7 @@
         "orchestrator-worker",
         "agent coordination"
       ],
-      "def_snippet": "The coordination layer that directs how one or more agents and their tasks are sequenced, routed, and combined, controlling the flow of work between steps and sub-agents rather than the reasoning inside any single step.",
+      "def_snippet": "The coordination layer that directs how one or more agents and their tasks are sequenced, routed, and combined, controlling the flow of work between steps and sub-agents rather than the reasoning inside any single step. It exists because reliability at the system level is a separate problem from intelligence at the step level, and its recurring tradeoff is autonomy against control.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -6242,7 +6242,7 @@
       "aliases": [
         "MCP"
       ],
-      "def_snippet": "An open protocol that standardizes how applications expose tools, data, and prompts to language models, so any compliant model or agent can connect to any compliant data source or tool through one common interface.",
+      "def_snippet": "An open protocol that standardizes how applications expose tools, data, and prompts to language models, so any compliant model or agent can connect to any compliant data source or tool through one common interface. Its leverage is collapsing M times N bespoke integrations into M plus N, the same standardization win a USB port brought to hardware, which turns tool integration into a shared, growing ecosystem.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -6420,10 +6420,9 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [
-        "multi-agent systems",
-        "agent orchestration"
+        "multi-agent systems"
       ],
-      "def_snippet": "An arrangement in which several agents, often with specialized roles, work together on a task by communicating and coordinating, dividing labor instead of relying on one agent to do everything.",
+      "def_snippet": "An arrangement in which several agents, often with specialized roles, work together by communicating and coordinating, dividing labor instead of relying on one agent to do everything. The appeal is specialization and separation of concerns, the same reason humans form teams, and the cost is coordination: more agents can talk past each other, loop, or compound mistakes, and they multiply model calls and latency.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -8091,7 +8090,7 @@
         "self-reflection",
         "self-critique"
       ],
-      "def_snippet": "A pattern in which an agent examines its own output or reasoning, critiques it, and uses that critique to revise and improve, rather than accepting its first attempt as final.",
+      "def_snippet": "A pattern in which an agent examines its own output or reasoning, critiques it, and uses that critique to revise, rather than accepting its first attempt as final. It works because a model can readily spot, when asked to evaluate afterward, the skipped requirement or logical gap it could not avoid while generating, and the critique is far stronger when grounded in real evidence than in the model's unaided opinion.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -9569,7 +9568,7 @@
         "task decomposition",
         "subtask decomposition"
       ],
-      "def_snippet": "The technique of breaking a large or complex goal into smaller, more tractable subtasks that an agent can solve one at a time and then combine, rather than attempting the whole goal in a single step.",
+      "def_snippet": "Breaking a large or complex goal into smaller, tractable subtasks an agent can solve one at a time and then combine, rather than attempting the whole goal in one step. The reason it works is that both difficulty and reliability scale badly with size: smaller subtasks fit in the model's attention and fail in isolation, and decomposition exposes the dependency structure that planning needs.",
       "durable": true,
       "category": "Agents and Tool Use"
     },

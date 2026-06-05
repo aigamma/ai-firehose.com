@@ -9,15 +9,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A pattern in which an agent examines its own output or reasoning, critiques it, and uses that critique to revise and improve, rather than accepting its first attempt as final.",
+  "definition": "A pattern in which an agent examines its own output or reasoning, critiques it, and uses that critique to revise, rather than accepting its first attempt as final. It works because a model can readily spot, when asked to evaluate afterward, the skipped requirement or logical gap it could not avoid while generating, and the critique is far stronger when grounded in real evidence than in the model's unaided opinion.",
   "body": [
     {
       "type": "p",
-      "text": "Reflection is the practice of having an agent inspect and judge its own work before treating it as done. Instead of accepting a model's first response, a reflection step prompts the model (or a second model) to review that response against the goal and any constraints, identify flaws, and produce a critique. The critique then feeds a revision: the agent tries again, informed by what it found wrong the first time. The cycle of generate, critique, revise can repeat until the work passes review or a limit is reached. In effect, reflection adds a self-correcting loop on top of a single pass of generation."
+      "text": "Reflection is the practice of having an agent inspect and judge its own work before treating it as done. Instead of accepting a model's first response, a reflection step prompts the model (or a second model) to review that response against the goal and any constraints, identify flaws, and produce a critique. The critique then feeds a revision: the agent tries again, informed by what it found wrong the first time, and the cycle of generate, critique, revise can repeat until the work passes review or a limit is reached. In effect, reflection adds a self-correcting loop on top of a single pass of generation."
     },
     {
       "type": "p",
-      "text": "Reflection matters because a model's first attempt is often not its best. Many mistakes that a model cannot avoid while generating, a skipped requirement, a logical gap, a bug, an unsupported claim, it can readily spot when asked afterward to evaluate the result critically. Separating the act of producing from the act of judging tends to surface problems that inline generation glosses over, much as a writer catches errors on a second read that they missed while drafting. This is one of the most dependable ways to lift the quality and reliability of agent output without changing the underlying model."
+      "text": "Reflection matters because a model's first attempt is often not its best, and the keeper is why that gap is recoverable. Many mistakes a model cannot avoid while generating, a skipped requirement, a logical gap, a bug, an unsupported claim, it can readily spot when asked afterward to evaluate the result critically. Separating the act of producing from the act of judging tends to surface problems that inline generation glosses over, much as a writer catches errors on a second read that they missed while drafting. This is one of the most dependable ways to lift the quality and reliability of agent output without changing the underlying model."
     },
     {
       "type": "p",
