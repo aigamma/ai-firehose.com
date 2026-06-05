@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A decoding adjustment that lowers the probability of tokens the model has already produced, discouraging the loops and verbatim repetition that language models fall into, especially under low-randomness decoding.",
+  "definition": "A decoding adjustment that lowers the probability of tokens the model has already produced, breaking the loops and verbatim repetition language models fall into, especially under low-randomness decoding. Its frequency and presence variants differ in whether the penalty grows with each repeat or applies once, and its danger is overcorrection: push too hard and the model is starved of words it legitimately needs.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "It matters because repetition is one of the most visible failure modes of generated text, and it is worst exactly where determinism is otherwise desirable. Greedy decoding and low-temperature sampling tend to reinforce whatever the model is most confident about, which can lock it into a self-perpetuating rut. A repetition penalty counteracts that pull, keeping output varied without having to raise the temperature so high that coherence suffers."
+      "text": "It matters because repetition is one of the most visible failure modes of generated text, and it is worst exactly where determinism is otherwise desirable. Greedy decoding and low-temperature sampling tend to reinforce whatever the model is most confident about, which can lock it into a self-perpetuating rut; a repetition penalty counteracts that pull, keeping output varied without having to raise the temperature so high that coherence suffers."
     },
     {
       "type": "p",
@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "The risk is overcorrection. Push the penalty too hard and the model is forced away from words it legitimately needs, common function words, a subject's name, required code tokens, which degrades fluency and can make the text feel strained. Tuning is therefore a balance, set in concert with temperature and the truncation controls top-p and top-k rather than in isolation, enough discouragement to break loops without starving the output of the vocabulary it actually requires."
+      "text": "The risk is overcorrection, the keeper. Push the penalty too hard and the model is forced away from words it legitimately needs, common function words, a subject's name, required code tokens, which degrades fluency and can make the text feel strained. Tuning is therefore a balance, set in concert with temperature and the truncation controls top-p and top-k rather than in isolation, enough discouragement to break loops without starving the output of the vocabulary it actually requires."
     }
   ],
   "related": [

@@ -9,15 +9,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A sampling method that keeps only tokens whose probability is at least a set fraction of the most likely token's probability, so the cutoff adapts to the model's confidence: focused when it is sure, diverse when it is not.",
+  "definition": "A sampling method that keeps only tokens whose probability is at least a set fraction of the most likely token's probability, so the cutoff is relative, not absolute, and adapts to the model's confidence: focused when it is sure, diverse when it is not. Because the bar reads the distribution's shape, min-p holds up at high temperatures where top-p and top-k start admitting incoherent tokens.",
   "body": [
     {
       "type": "p",
-      "text": "Min-p sampling chooses which tokens are eligible to sample by a threshold that scales with the model's own confidence. It sets the cutoff at a fraction of the top token's probability: with a min-p of 0.1, any token at least one tenth as likely as the most probable one stays in the running, and the rest are discarded before sampling. The key is that the bar moves with the distribution rather than being fixed in advance."
+      "text": "Min-p sampling chooses which tokens are eligible by a threshold that scales with the model's own confidence. It sets the cutoff at a fraction of the top token's probability: with a min-p of 0.1, any token at least one tenth as likely as the most probable one stays in the running, and the rest are discarded before sampling. The key is that the bar moves with the distribution rather than being fixed in advance."
     },
     {
       "type": "p",
-      "text": "This is what distinguishes it from the common alternatives. Top-k keeps a fixed number of tokens and top-p keeps a fixed amount of cumulative probability mass, both regardless of the distribution's shape. That can misbehave at the extremes: when the model is very confident, a fixed top-p can still admit a long tail of bad tokens, and when the model is genuinely uncertain, a fixed top-k can cut off good options. Min-p instead reads the shape. When one token dominates, almost nothing else clears the relative bar, so generation stays focused and coherent. When the distribution is flat, many tokens clear it, so generation stays diverse."
+      "text": "This is what distinguishes it from the common alternatives. Top-k keeps a fixed number of tokens and top-p keeps a fixed amount of cumulative probability mass, both regardless of the distribution's shape, which can misbehave at the extremes: when the model is very confident, a fixed top-p can still admit a long tail of bad tokens, and when the model is genuinely uncertain, a fixed top-k can cut off good options. Min-p instead reads the shape, the keeper: when one token dominates, almost nothing else clears the relative bar, so generation stays focused and coherent, and when the distribution is flat, many tokens clear it, so generation stays diverse."
     },
     {
       "type": "p",

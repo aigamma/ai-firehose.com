@@ -4162,7 +4162,7 @@
         "argmax decoding",
         "greedy search"
       ],
-      "def_snippet": "A decoding strategy that always picks the single highest-probability token at each step. It is fast and deterministic but locally greedy, so it can miss sequences that are more probable overall.",
+      "def_snippet": "A decoding strategy that always picks the single highest-probability token at each step, fast and deterministic but with no lookahead. Its defining flaw is that the best token now does not guarantee the best sequence overall, the shortsightedness that motivates beam search, and it is exactly the limit of temperature-based sampling as temperature falls to zero.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -5519,7 +5519,7 @@
       "aliases": [
         "logit"
       ],
-      "def_snippet": "The raw, unnormalized scores a model emits for every token in its vocabulary at each step, before a softmax converts them into a probability distribution. Every decoding and sampling control operates on logits.",
+      "def_snippet": "The raw, unnormalized scores a model emits for every token at each step, before a softmax converts them into a probability distribution. They are the single surface every decoding and sampling control acts on, temperature divides them, truncation reads the probabilities they produce, a penalty subtracts from them, so understanding sampling means seeing it as a sequence of edits to this one vector before it is normalized.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -6077,7 +6077,7 @@
         "min-p",
         "min p sampling"
       ],
-      "def_snippet": "A sampling method that keeps only tokens whose probability is at least a set fraction of the most likely token's probability, so the cutoff adapts to the model's confidence: focused when it is sure, diverse when it is not.",
+      "def_snippet": "A sampling method that keeps only tokens whose probability is at least a set fraction of the most likely token's probability, so the cutoff is relative, not absolute, and adapts to the model's confidence: focused when it is sure, diverse when it is not. Because the bar reads the distribution's shape, min-p holds up at high temperatures where top-p and top-k start admitting incoherent tokens.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -8207,7 +8207,7 @@
         "frequency penalty",
         "presence penalty"
       ],
-      "def_snippet": "A decoding adjustment that lowers the probability of tokens the model has already produced, discouraging the loops and verbatim repetition that language models fall into, especially under low-randomness decoding.",
+      "def_snippet": "A decoding adjustment that lowers the probability of tokens the model has already produced, breaking the loops and verbatim repetition language models fall into, especially under low-randomness decoding. Its frequency and presence variants differ in whether the penalty grows with each repeat or applies once, and its danger is overcorrection: push too hard and the model is starved of words it legitimately needs.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9631,7 +9631,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "A scalar that rescales a model's output logits before they are turned into probabilities, controlling how random or deterministic the next-token choice is. Low temperature sharpens the distribution toward the most likely token; high temperature flattens it toward uniform.",
+      "def_snippet": "A scalar that rescales a model's output logits before the softmax, controlling how random or deterministic the next-token choice is, low temperature sharpens toward the top token, high temperature flattens toward uniform. It is almost never used alone: truncate the garbage tail first with top-p or top-k, then let temperature reshape the survivors, because the order of those two operations decides whether high creativity stays coherent.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9929,7 +9929,7 @@
       "aliases": [
         "top-k sampling"
       ],
-      "def_snippet": "A sampling method that keeps only the k most probable next tokens, discards the rest, renormalizes over the survivors, and samples from them. It caps how far into the tail the model is allowed to reach.",
+      "def_snippet": "A sampling method that keeps only the k most probable next tokens, discards the rest, renormalizes, and samples, capping how far into the tail the model can reach. Its weakness is the keeper: k is a fixed count while the ideal count is not, too many when the model is sure and too few when it is torn, the precise gap top-p was designed to close.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9941,7 +9941,7 @@
       "aliases": [
         "nucleus sampling"
       ],
-      "def_snippet": "A sampling method that restricts the next-token choice to the smallest set of tokens whose probabilities sum to a threshold p, then samples from that set. The candidate pool grows and shrinks with the model's confidence.",
+      "def_snippet": "A sampling method that restricts the next-token choice to the smallest set of tokens whose probabilities sum to a threshold p, then samples from that set, so the candidate pool grows and shrinks with the model's confidence. That adaptiveness, a fixed probability budget with a floating count, is exactly what a fixed-size method like top-k cannot do, and it is why nucleus sampling became the default for open-ended generation.",
       "durable": true,
       "category": "Inference and Sampling"
     },
