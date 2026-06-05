@@ -3,8 +3,23 @@
 > **Resuming in a fresh session? Start here.** Read this whole file, then `docs/GLOSSARY.md`
 > and the Session 17 entry in `LESSONS_LEARNED.md`, then continue from **Status** at the bottom.
 > The work is **linear, main-thread, full Opus strength, NO subagents** (they are weaker for this
-> prose and burn the weekly budget fast). **Commit per batch; do NOT push** (the author reviews
-> before any deploy). This file is the source of truth for what is done and what is next.
+> prose and burn the weekly budget fast). **Commit per batch.** This session's work is already pushed
+> to `origin/main` and deployed (GitHub is the durable store across a machine rebuild, so a fresh
+> machine just re-clones); push completed, gated-green batches the same way. This file is the source of
+> truth for what is done and what is next.
+
+## What to call this work (terminology for instructing a fresh agent)
+
+- **The onboarding backlog** is the whole job: the corpus-discovered concepts that still lack a durable
+  authored entry (the "genuinely-new" concepts). The campaign as a whole is **glossary onboarding**.
+- **Board-visible concepts** (the "visible head") are the high-attention concepts that surface on the
+  trend boards (Techniques, Tools, Opinions at Day, Week, Month, Quarter) and the Home statistics. These
+  are what a reader actually sees and clicks, so they are the PRIORITY, and are mostly done.
+- **The long tail** (the "low-attention gaps") are the low-attention concepts, roughly `attention` 5 and
+  below, that do not surface on any board. Lower priority; fine to defer to a future week.
+
+The one instruction that suffices to restart this work: **"Resume the glossary onboarding backlog from
+`docs/GLOSSARY_ONBOARDING.md`: finish the board-visible head, then the long tail."**
 
 ## The goal
 
@@ -89,12 +104,22 @@ strength; the author will do later quality passes, but do not cut corners.
   candidate list against the index before authoring to avoid gate churn.
 - The fold keystone is idempotent and `build_glossary` preserves the folded state, so re-running the
   build is always safe.
+- **Count-claim gate (`scripts/check_doc_accuracy.mjs`), added 2026-06-05.** When the durable, total, or
+  category count changes, this gate fails `npm test` until the exact numbers in `README.md`, `OVERVIEW.md`,
+  `docs/GLOSSARY.md`, and `CLAUDE.md` are synced to the live artifacts (`durable_count` and `count` in
+  `index.json`, `categoryCount` in `atlas.json`, and the number of committed gate scripts). Authoring a new
+  entry does NOT change the total (the corpus concept just flips to durable), so usually only the durable
+  count and, if a new category was added, the category count need updating. Run
+  `node scripts/check_doc_accuracy.mjs` to see exactly which doc lines are stale.
 
 ## Status (UPDATE PER BATCH)
 
-As of **2026-06-05**: **582 durable entries**, ~**330 genuinely-new remaining**.
+As of **2026-06-05**: **582 durable entries**, ~**322 genuinely-new remaining**. Everything below is
+**pushed to `origin/main` and deployed to Netlify**.
 
 Done so far this campaign:
+- `4e8c96d` header/nav redesign (primary pills + a right-anchored Menu, broken search removed, interior
+  pages centered) and the new `agentic-harness` concept.
 - `b4a9fee` keystone fold: 30 duplicates collapsed onto durable hubs, 12 boards de-fragmented.
 - `678176d` batch 1 (AI Engineering): code-generation, automation, workflow-orchestration,
   context-management, claude-code, video-generation.
@@ -105,14 +130,16 @@ Done so far this campaign:
   generative-ai, ai-operating-systems (seeded the Industry and Markets category).
 - `1a4bb2c` batch 4: market-dynamics, autoresearch, task-parallelization, ai-regulation,
   local-inference, compute-efficiency.
-- batch 5: cybersecurity, evaluation, personalization, model-agnostic, ai-agency-strategy,
+- `580e77b` batch 5: cybersecurity, evaluation, personalization, model-agnostic, ai-agency-strategy,
   yaml-workflows.
+- `039b8e2` dedup pass: folded 8 more duplicates (agent-wrapper, orchestration, memory-systems,
+  context-stacking, plus 4 plural variants) and added the `check_doc_accuracy` count gate.
 
-Next up (highest-attention remaining; re-run the backlog query, since attention shifts and these
-move as they are authored): scheduling (9, tool), then re-run the query for the next tier
-(attention 8 and below). Likely DEDUP-not-author (alias into the durable entry, then run the fold):
-agent-wrapper -> agentic-harness, orchestration -> workflow-orchestration, memory-systems ->
-agent-memory, context-stacking -> context-management.
+Net so far: **31 authored entries** (agentic-harness plus 30 across five batches) and **38 folded
+duplicates**, all in the board-visible head. What remains is mostly the **long tail** (attention 9 and
+below): re-run the backlog query for the current top, for example scheduling, multi-model-workflow,
+prompt-chaining, async-agents, adversarial-ai, agent-optimization, software-engineering, and downward.
+Author highest attention first; the very-low-attention tail (attention 1 to 3) is the lowest priority.
 
-Nothing is pushed. The header/nav redesign (`4e8c96d`) is also committed local-only awaiting review.
-The weekly budget resets ~Sunday 2026-06-07 morning; if paused, resume from this file after the reset.
+The weekly budget resets ~Sunday 2026-06-07 morning. Paused near the weekly limit for a planned Windows
+rebuild; resume from this file after the reset.
