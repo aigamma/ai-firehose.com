@@ -3819,7 +3819,7 @@
         "3D Gaussian Splatting",
         "3DGS"
       ],
-      "def_snippet": "A 3D scene representation that models a scene as millions of tiny colored 3D Gaussians (blobs) which are rasterized to render novel views, achieving real-time, high-quality rendering and largely succeeding NeRF for many uses.",
+      "def_snippet": "A 3D representation that models a scene as millions of tiny colored 3D Gaussians, soft blobs that are rasterized to render novel views in real time. Its whole advantage is explicitness: rasterizing splats uses the same machinery GPUs were built for, so it trains and renders far faster than a NeRF's per-ray network queries, which is why it largely succeeded NeRF for interactive uses.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -4515,7 +4515,7 @@
         "image captioning",
         "image-to-text"
       ],
-      "def_snippet": "The task of generating a natural-language description of an image, joining a visual encoder that reads the picture to a language decoder that writes the sentence, and the inverse of text-to-image generation.",
+      "def_snippet": "The task of writing a natural-language description of an image, joining a visual encoder that reads the picture to a language decoder that writes the sentence. It is the mirror image of text-to-image generation and a long-standing probe of multimodal understanding, since captioning well proves the visual features carry enough structured meaning to be verbalized, and it has now largely folded into the vision-language model.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -6582,7 +6582,7 @@
         "multimodal AI",
         "cross-modal learning"
       ],
-      "def_snippet": "Training models to jointly represent and relate information from more than one modality (text, images, audio, video), so content in one can be aligned with, retrieved by, or generated from another.",
+      "def_snippet": "Training models to jointly represent and relate information across modalities, text, images, audio, video, so the same meaning arriving through different channels lands in one shared space. Contrastive alignment (CLIP) is the most influential recipe, and the recurring difficulties, paired-data scarcity and modality imbalance, increasingly define what general AI can perceive.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -6754,7 +6754,7 @@
         "NeRF",
         "neural radiance fields"
       ],
-      "def_snippet": "A method that represents a 3D scene as a continuous function, a small neural network mapping a 3D point and viewing direction to color and density, trained from a set of 2D photos so it can render the scene from any new viewpoint.",
+      "def_snippet": "A method that represents a whole 3D scene as a function, a small neural network mapping a 3D point and viewing direction to color and density, trained from a few dozen photos so it can render the scene from any new viewpoint. The radical idea is the scene as a function rather than a mesh or point cloud, and it set off the modern wave of implicit 3D representation.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -8719,7 +8719,7 @@
       "aliases": [
         "Segment Anything Model"
       ],
-      "def_snippet": "A promptable foundation model for image segmentation that, given a click, box, or rough region as a prompt, produces a valid object mask for almost any object, generalizing to categories and images it never saw in training without any fine-tuning.",
+      "def_snippet": "A promptable foundation model for image segmentation that, given a click, box, or rough region, returns a clean mask for almost any object, in any image, with no fine-tuning. It brought zero-shot generality to segmentation by learning the class-agnostic notion of what counts as an object, trained on a billion masks built by a model-and-annotator data engine.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -10462,7 +10462,7 @@
         "multimodal LLM",
         "vision language model"
       ],
-      "def_snippet": "A model that jointly processes images and text, typically by projecting visual features into a language model's token space so it can describe, answer questions about, and reason over images alongside text.",
+      "def_snippet": "A model that gives a language model eyes, projecting visual features into the LM's token space so it can describe, answer questions about, and reason over images alongside text. Because the language model carries most of the reasoning, a strong base model tends to make a strong VLM, and the architecture extends the same way to video and audio.",
       "durable": true,
       "category": "Computer Vision"
     },
