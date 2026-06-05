@@ -9,11 +9,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one.",
+  "definition": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one and no loss term pushes back. It is the natural antagonist of transfer learning, the reason you cannot just keep fine-tuning a model on task after task, and why frozen-backbone methods like LoRA resist it.",
   "body": [
     {
       "type": "p",
-      "text": "Catastrophic forgetting is a failure mode in which a neural network, trained on a new task or dataset, abruptly loses competence it had previously acquired. The cause is structural: a network stores everything it knows in the same shared set of weights, and gradient descent adjusts those weights to fit whatever data it currently sees, with no regard for the older skills they also encode. Fitting the new data overwrites the parameter values that represented the old knowledge. Because the loss is computed only on current data, nothing pushes back against this erasure, and the degradation can be sudden and severe rather than gradual, hence catastrophic."
+      "text": "Catastrophic forgetting is a failure mode in which a neural network, trained on a new task or dataset, abruptly loses competence it had previously acquired. The cause is structural: a network stores everything it knows in the same shared set of weights, and gradient descent adjusts those weights to fit whatever data it currently sees, with no regard for the older skills they also encode. Fitting the new data overwrites the parameter values that represented the old knowledge, and because the loss is computed only on current data, nothing pushes back against this erasure, so the degradation can be sudden and severe rather than gradual, hence catastrophic."
     },
     {
       "type": "p",
@@ -21,15 +21,15 @@
     },
     {
       "type": "p",
-      "text": "The phenomenon arises from the distributed, overlapping way knowledge is represented. The same neurons and connections participate in many learned behaviors, so an update that improves one can damage others that depend on the same parameters, an effect also called interference. Training on a narrow new distribution, with a learning rate that is too high or for too many steps, moves the weights far from where the old knowledge lived. The risk is highest when the new data is small and unrepresentative of everything the model previously handled."
+      "text": "The phenomenon arises from the distributed, overlapping way knowledge is represented. The same neurons and connections participate in many learned behaviors, so an update that improves one can damage others that depend on the same parameters, an effect also called interference. Training on a narrow new distribution, with a learning rate that is too high or for too many steps, moves the weights far from where the old knowledge lived, and the risk is highest when the new data is small and unrepresentative of everything the model previously handled."
     },
     {
       "type": "p",
-      "text": "Many techniques exist to mitigate it, and they share a common goal of protecting old knowledge while admitting new. Lowering the learning rate and limiting training steps keeps weights near their starting point. Parameter-efficient fine-tuning methods like LoRA freeze the original weights entirely and train only a small added component, so the base knowledge cannot be overwritten, only supplemented, which is one reason these methods resist forgetting so well. Other approaches replay or mix in samples of the old data, or add a regularization penalty that discourages changing the parameters most important to prior tasks."
+      "text": "Many techniques exist to mitigate it, and they share a common goal of protecting old knowledge while admitting new. Lowering the learning rate and limiting training steps keeps weights near their starting point; parameter-efficient fine-tuning methods like LoRA freeze the original weights entirely and train only a small added component, so the base knowledge cannot be overwritten, only supplemented, which is one reason these methods resist forgetting so well; and other approaches replay or mix in samples of the old data, or add a regularization penalty that discourages changing the parameters most important to prior tasks."
     },
     {
       "type": "p",
-      "text": "Catastrophic forgetting is the natural antagonist of transfer learning: where transfer learning is about successfully carrying knowledge forward, catastrophic forgetting is what happens when adaptation destroys that knowledge instead. It shapes the design of fine-tuning, motivates parameter-efficient methods, and underlies why pretraining is treated as a precious asset to be adapted carefully rather than retrained casually."
+      "text": "Catastrophic forgetting is the natural antagonist of transfer learning, the keeper: where transfer learning is about successfully carrying knowledge forward, catastrophic forgetting is what happens when adaptation destroys that knowledge instead. It shapes the design of fine-tuning, motivates parameter-efficient methods, and underlies why pretraining is treated as a precious asset to be adapted carefully rather than retrained casually."
     }
   ],
   "related": [

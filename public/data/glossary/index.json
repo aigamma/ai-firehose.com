@@ -1305,7 +1305,7 @@
         "catastrophic interference",
         "catastrophic forgetting"
       ],
-      "def_snippet": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one.",
+      "def_snippet": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one and no loss term pushes back. It is the natural antagonist of transfer learning, the reason you cannot just keep fine-tuning a model on task after task, and why frozen-backbone methods like LoRA resist it.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -2198,7 +2198,7 @@
         "curriculum learning",
         "easy-to-hard training"
       ],
-      "def_snippet": "A training strategy that orders examples from easy to hard rather than presenting them randomly, so a model builds competence gradually, which can speed convergence and improve final performance on difficult tasks.",
+      "def_snippet": "A training strategy that orders examples from easy to hard rather than presenting them randomly, so a model builds competence gradually. Its payoff is clearest on hard optimization, rugged loss landscapes, reasoning, sparse-reward RL, where a random start rarely stumbles onto success and a curriculum supplies the intermediate footholds, though defining \"difficulty\" well is itself the hard part.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -5010,7 +5010,7 @@
         "teacher-student training",
         "model distillation"
       ],
-      "def_snippet": "A technique for compressing knowledge from a large teacher model into a smaller student model by training the student to imitate the teacher's outputs rather than learning only from hard labels.",
+      "def_snippet": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -5037,7 +5037,7 @@
         "Kahneman-Tversky Optimization",
         "KTO alignment"
       ],
-      "def_snippet": "A preference-alignment method that tunes a model from individual responses each labeled simply as desirable or undesirable, using a loss inspired by prospect theory, so it needs no paired comparisons and tolerates imbalanced thumbs-up and thumbs-down feedback.",
+      "def_snippet": "A preference-alignment method that tunes a model from individual responses each labeled simply desirable or undesirable, using a loss inspired by prospect theory, so it needs no paired comparisons and tolerates imbalanced thumbs-up and thumbs-down feedback. It makes the abundant, messy signal of a deployed product, a single click on one response, directly usable for alignment without first manufacturing pairs.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -6168,7 +6168,7 @@
         "sparse mixture of experts",
         "sparsely-gated mixture of experts"
       ],
-      "def_snippet": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token.",
+      "def_snippet": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -7135,7 +7135,7 @@
         "Odds Ratio Preference Optimization",
         "monolithic preference optimization"
       ],
-      "def_snippet": "A preference-alignment method that folds supervised fine-tuning and preference optimization into a single training stage by adding an odds-ratio penalty to the standard language-modeling loss, dispensing with both a reference model and a separate alignment phase.",
+      "def_snippet": "A preference-alignment method that folds supervised fine-tuning and preference optimization into a single training stage by adding an odds-ratio penalty to the standard language-modeling loss, dispensing with both a reference model and a separate alignment phase. It is the most aggressive compression of the post-training recipe, aligning the model in the very same pass that teaches it format and behavior.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -7879,7 +7879,7 @@
         "quantized low-rank adaptation",
         "quantized LoRA"
       ],
-      "def_snippet": "A memory-efficient fine-tuning method that freezes a large model quantized to 4-bit and trains small low-rank LoRA adapters on top, letting a single consumer GPU fine-tune models that would otherwise need a cluster.",
+      "def_snippet": "A memory-efficient method that freezes a large model quantized to 4-bit and trains small low-rank LoRA adapters on top, letting a single consumer GPU fine-tune models that would otherwise need a cluster. It works because the frozen base never updates (so it can stay compressed) and is dequantized to higher precision on the fly for each operation, so storage is 4-bit but the math is not.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -9505,7 +9505,7 @@
         "synthetic data",
         "model-generated data"
       ],
-      "def_snippet": "Training data generated by a model rather than gathered from humans, used to teach capabilities at scale (instructions, reasoning traces, preference labels) when human data is scarce, costly, or unsafe to collect.",
+      "def_snippet": "Training data generated by a model rather than gathered from humans, used to teach capabilities at scale, instructions, reasoning traces, preference labels, when human data is scarce, costly, or unsafe to collect. Its decisive issue is quality control: a model trained on a model's mistakes amplifies them, so the art is in the verification, not the generation.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
