@@ -10,11 +10,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Prompting a model to perform a task by including a handful of worked examples in the prompt so it infers the pattern and applies it, a use of in-context learning that often needs no fine-tuning at all.",
+  "definition": "Teaching a task by example, in the prompt: show a model a handful of input-output demonstrations, then a new input, and it infers the pattern and continues it, all at inference with no weight updates. A direct use of in-context learning, it decoupled doing a task from training for it, though results are oddly sensitive to which examples you pick and their order.",
   "body": [
     {
       "type": "p",
-      "text": "Few-shot learning, in the language-model sense, means teaching a task by example, in the prompt. Instead of training on thousands of labeled cases, you show the model a few demonstrations, each an input paired with the desired output, and then give it a new input. The model infers the pattern from those examples and continues it. The \"few\" is the small number of shots, often a handful, and the whole thing happens at inference with no weight updates, which is why it is a direct application of in-context learning."
+      "text": "Few-shot learning, in the language-model sense, means teaching a task by example, in the prompt. Instead of training on thousands of labeled cases, you show the model a few demonstrations, each an input paired with the desired output, and then give it a new input; the model infers the pattern from those examples and continues it. The \"few\" is the small number of shots, often a handful, and the whole thing happens at inference with no weight updates, which is why it is a direct application of in-context learning."
     },
     {
       "type": "p",
@@ -22,11 +22,11 @@
     },
     {
       "type": "p",
-      "text": "In practice few-shot prompting earns its keep when the task is unusual, when the desired output format is specific, or when zero-shot instructions alone leave the model unsure. The examples pin down both what to do and how to present the answer."
+      "text": "In practice few-shot prompting earns its keep when the task is unusual, when the desired output format is specific, or when zero-shot instructions alone leave the model unsure. The examples pin down both what to do and how to present the answer, which a bare instruction often cannot."
     },
     {
       "type": "p",
-      "text": "It has costs and quirks. Examples consume context-window space, which bounds how many you can include, and results can be surprisingly sensitive to which examples you pick and the order you put them in. When plenty of training data exists, fine-tuning usually wins, so few-shot prompting is best seen as a fast, flexible first resort rather than the end state."
+      "text": "It has costs and quirks, and the sharpest is the keeper. Examples consume context-window space, which bounds how many you can include, and results can be surprisingly sensitive to which examples you pick and the order you put them in, the same task swinging in accuracy with a reshuffle. When plenty of training data exists, fine-tuning usually wins, so few-shot prompting is best seen as a fast, flexible first resort rather than the end state."
     }
   ],
   "related": [

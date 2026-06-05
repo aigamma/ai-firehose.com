@@ -2404,7 +2404,7 @@
         "decoder-only transformer",
         "GPT-style"
       ],
-      "def_snippet": "A transformer that uses only the decoder stack with causal, left-to-right attention, processing the prompt and the generated text as one continuous sequence; the architecture of essentially every modern large language model.",
+      "def_snippet": "A transformer stripped to a single causal stack, where the prompt and the model's own output live in one continuous left-to-right sequence and the model does exactly one thing, predict the next token. It is the architecture of nearly every modern LLM, having won not by being more powerful but by being the simplest and best-scaling, and in-context learning falls out of it for free.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -2961,7 +2961,7 @@
         "encoder-decoder",
         "seq2seq transformer"
       ],
-      "def_snippet": "A transformer architecture with two stacks, an encoder that reads the entire input into a representation and a decoder that generates the output while attending to it through cross-attention; the original transformer design, suited to sequence-to-sequence tasks like translation.",
+      "def_snippet": "The original transformer in two stacks: an encoder that reads the whole input bidirectionally into a representation, and a decoder that generates the output token by token while reaching into that representation through cross-attention. The clean split, fully understand the source before committing to any output, suits sequence-to-sequence tasks like translation, where most large language models instead went decoder-only.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -3380,7 +3380,7 @@
         "position-wise feed-forward",
         "MLP block"
       ],
-      "def_snippet": "The position-wise two-layer network that sits in every transformer block after attention, expanding each token's representation to a wider hidden dimension, applying a nonlinearity, and projecting it back, applied identically and independently to every position.",
+      "def_snippet": "The position-wise two-layer network in every transformer block after attention: it expands each token's vector to a wider hidden dimension, applies a nonlinearity, and projects back, identically and independently at every position. If attention mixes information between tokens, the FFN is where each token thinks about what it gathered, and interpretability reads it as a key-value memory where a model's facts live.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -3394,7 +3394,7 @@
         "few shot",
         "k-shot"
       ],
-      "def_snippet": "Prompting a model to perform a task by including a handful of worked examples in the prompt so it infers the pattern and applies it, a use of in-context learning that often needs no fine-tuning at all.",
+      "def_snippet": "Teaching a task by example, in the prompt: show a model a handful of input-output demonstrations, then a new input, and it infers the pattern and continues it, all at inference with no weight updates. A direct use of in-context learning, it decoupled doing a task from training for it, though results are oddly sensitive to which examples you pick and their order.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -3689,7 +3689,7 @@
         "frontier model",
         "frontier AI"
       ],
-      "def_snippet": "A term for the most capable general-purpose AI models at the cutting edge of the field, the handful of large foundation models whose abilities define the current state of the art and draw both excitement and safety-policy scrutiny.",
+      "def_snippet": "The handful of most capable general-purpose models at any given moment, the ones pushing the boundary of what AI can do. It is a deliberately moving target rather than a fixed system, and the phrase carries real weight beyond marketing: \"frontier AI\" has become the policy label for models whose novel, not-yet-understood capabilities warrant special safety scrutiny.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -5533,7 +5533,7 @@
         "long-context window",
         "extended context"
       ],
-      "def_snippet": "A model's ability to process and use very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning, while straining the quadratic cost of attention, the size of the KV cache, and the model's ability to actually attend across the full window.",
+      "def_snippet": "A model's ability to process very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning. It is hard for three converging reasons, quadratic attention, a ballooning KV cache, and scarce long-reasoning training data, and the honest catch is that the advertised window often exceeds the effective one, with recall sagging in the middle.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -7596,7 +7596,7 @@
         "pre-layer-norm",
         "pre-norm"
       ],
-      "def_snippet": "A transformer design choice that applies layer normalization to the input of each sublayer rather than to its output, which keeps the residual pathway clean and makes deep models far more stable to train.",
+      "def_snippet": "A transformer design choice that applies layer normalization to the input of each sublayer rather than to its output, leaving the residual pathway clean and untouched. That single placement is what makes very deep models train stably, the difference between a hundred-layer stack that converges smoothly and one that needs delicate tuning or fails outright.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -10750,7 +10750,7 @@
         "zero-shot prompting",
         "zero shot"
       ],
-      "def_snippet": "Asking a model to perform a task from an instruction alone, with no examples, relying on the knowledge and skills it absorbed during pretraining and instruction tuning; the default mode for modern instruction-following models.",
+      "def_snippet": "Doing a task from an instruction alone, with no examples, relying on what a model absorbed in pretraining and instruction tuning. It is the default way to use a modern instruction-following model, which is why chatting with an assistant feels like just asking, and the term carries a second, older sense: recognizing classes never seen in training from their descriptions.",
       "durable": true,
       "category": "Transformers and LLMs"
     }
