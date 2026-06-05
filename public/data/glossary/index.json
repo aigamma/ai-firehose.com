@@ -4096,7 +4096,7 @@
       "aliases": [
         "GAT"
       ],
-      "def_snippet": "A graph neural network that weights each neighbor's contribution with a learned attention score, so a node listens more to the neighbors most relevant to it rather than treating all neighbors equally.",
+      "def_snippet": "A graph neural network whose aggregation is attention: it learns, for each edge, how much one node should attend to another, so a node listens more to its most relevant neighbors instead of weighting them all by fixed structural coefficients. It makes vivid that a transformer and a GAT are two points on one spectrum, separated only by which edges exist, complete versus sparse.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
@@ -4110,7 +4110,7 @@
         "GCN",
         "spectral convolution"
       ],
-      "def_snippet": "The generalization of the convolution operation from regular grids to arbitrary graphs, in which each node mixes its features with those of its neighbors, forming the most common building block of graph neural networks.",
+      "def_snippet": "The generalization of convolution from regular grids to arbitrary graphs, where each node mixes its features with its neighbors', normalized by degree, the default workhorse layer of graph learning. It has two derivations that meet at the same operation: a spectral one through the graph Laplacian's eigenvectors, and a spatial one that is simply neighborhood aggregation.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
@@ -4122,7 +4122,7 @@
       "aliases": [
         "GNN"
       ],
-      "def_snippet": "A neural network that operates directly on graph-structured data, learning representations of nodes, edges, and whole graphs by repeatedly aggregating information from each node's neighbors.",
+      "def_snippet": "A neural network that operates directly on graph-structured data, learning representations of nodes, edges, and whole graphs by repeatedly aggregating information from each node's neighbors. It is the canonical model for data with permutation symmetry, no canonical node ordering, and the view reaches surprisingly far: a transformer is a graph neural network on the complete graph, with self-attention as message passing over attention-weighted edges.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
@@ -6036,7 +6036,7 @@
         "MPNN",
         "neighborhood aggregation"
       ],
-      "def_snippet": "The core computation of a graph neural network, in which each node computes its new representation by gathering and aggregating messages from its neighbors, then updating itself, repeated layer by layer.",
+      "def_snippet": "The core computation of a graph neural network: each node gathers messages from its neighbors, aggregates them with a permutation-invariant operator, and updates itself, repeated layer by layer. Three choices, message, aggregate, update, generate almost the whole zoo of GNNs, and the abstraction reaches all the way to the transformer: self-attention is message passing on the complete graph.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
@@ -6880,7 +6880,7 @@
         "node embeddings",
         "graph embedding"
       ],
-      "def_snippet": "A learned vector representation of a node in a graph, placing each node at a coordinate in a continuous space so that graph-proximate or functionally similar nodes lie close together.",
+      "def_snippet": "A learned vector representation of a node, placing each node at a coordinate in a continuous space so that graph-proximate or functionally similar nodes lie close together, the graph counterpart of a word embedding. The decisive split is shallow (one fixed vector per node) versus GNN-based, which is inductive: it computes embeddings from features and local structure, so it can embed nodes never seen in training.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
@@ -7183,7 +7183,7 @@
         "over-smoothing",
         "oversmoothing problem"
       ],
-      "def_snippet": "The failure mode in which stacking too many graph neural network layers drives every node's representation toward the same vector, washing out the distinctions between nodes and capping how deep such networks can usefully go.",
+      "def_snippet": "The failure mode where stacking too many graph neural network layers drives every node's representation toward the same vector, washing out the distinctions between nodes and capping how deep such networks can usefully go. It has a clean spectral explanation, repeated neighborhood mixing is a low-pass filter that in the limit keeps only the smoothest, near-constant signal, and its complement, over-squashing, squeezes useful depth from the other end.",
       "durable": true,
       "category": "Graph and Geometric Learning"
     },
