@@ -1065,7 +1065,7 @@
       "aliases": [
         "beam decoding"
       ],
-      "def_snippet": "A decoding strategy that keeps the several most probable partial sequences at every step, expanding all of them and pruning back to a fixed beam width, so it searches for a high-probability whole sequence rather than the best token at each step.",
+      "def_snippet": "A decoding strategy that keeps the several most probable partial sequences at every step, expanding all and pruning back to a fixed beam width, so it searches for a high-probability whole sequence rather than the best token at each step. It exists because the most probable individual tokens do not compose into the most probable sentence, and it shines on answer-shaped tasks but produces bland, generic text on open-ended ones.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -3480,7 +3480,7 @@
         "flashattention",
         "fused attention"
       ],
-      "def_snippet": "A memory-efficient, exact algorithm for computing attention that avoids writing the large intermediate attention matrix to GPU memory, instead computing it in tiles on fast on-chip memory, which speeds up both training and inference without changing the result.",
+      "def_snippet": "A memory-efficient, exact algorithm for computing attention that never writes the large intermediate score matrix to GPU memory, instead computing it in tiles on fast on-chip memory, speeding up training and inference without changing the result. It rests on the insight that attention's cost is overwhelmingly about moving data, not arithmetic, and stays exact through an online softmax that updates the normalization incrementally.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -7647,7 +7647,7 @@
         "prompt processing",
         "prefill-decode"
       ],
-      "def_snippet": "The two distinct phases of autoregressive language model inference: a compute-bound prefill that processes the whole prompt in parallel to fill the key-value cache, followed by a memory-bound decode that generates output one token at a time.",
+      "def_snippet": "The two distinct phases of autoregressive inference: a compute-bound prefill that processes the whole prompt in parallel to fill the key-value cache, then a memory-bound decode that generates output one token at a time. They have opposite performance characteristics, and almost every inference optimization, the KV cache, paged attention, continuous batching, speculative decoding, exists to exploit that split.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -7769,7 +7769,7 @@
         "prefix caching",
         "context caching"
       ],
-      "def_snippet": "A serving optimization that stores the model's computed key-value state for a fixed prompt prefix so later requests sharing that prefix skip recomputing it, cutting both latency and cost for long, reused system prompts and documents.",
+      "def_snippet": "A serving optimization that stores the model's computed key-value state for a fixed prompt prefix so later requests sharing it skip recomputing, cutting both latency and cost for long, reused system prompts and documents. Because attention is causal, only an exact prefix match is reusable, which makes one discipline decisive: put the stable content at the very front and the variable query at the end.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -7914,7 +7914,7 @@
         "model quantization",
         "post-training quantization"
       ],
-      "def_snippet": "The technique of storing and computing a model's weights and activations at lower numerical precision, for example 8-bit or 4-bit integers instead of 16-bit floats, to shrink memory use and speed up inference with minimal loss of accuracy.",
+      "def_snippet": "Storing and computing a model's weights and activations at lower numerical precision, 8-bit or 4-bit integers instead of 16-bit floats, to shrink memory and speed inference with minimal accuracy loss. It works because memory bandwidth, not raw compute, is the dominant cost of serving large models, so fewer bits to move per token directly cuts latency, and the trade is precision against footprint.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9178,7 +9178,7 @@
         "speculative sampling",
         "assisted generation"
       ],
-      "def_snippet": "An inference acceleration method in which a small fast draft model proposes several tokens ahead and the large target model verifies them in a single parallel pass, accepting the run of tokens that match its own distribution. It speeds up generation without changing the output distribution.",
+      "def_snippet": "An inference acceleration in which a small fast draft model proposes several tokens ahead and the large target model verifies them in one parallel pass, accepting the run that matches its own distribution. Its crucial property is that it is exact, not approximate: a rejection-sampling acceptance rule guarantees the surviving tokens are distributed identically to the target's, so it is a pure latency win with no quality trade-off.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9301,7 +9301,7 @@
         "grammar-constrained decoding",
         "JSON mode"
       ],
-      "def_snippet": "Constraining a model's token choices at each step so the output is guaranteed to match a formal schema or grammar, such as valid JSON or a regular expression, by masking the logits of any token that would break the structure.",
+      "def_snippet": "Constraining a model's token choices at each step so the output is guaranteed to match a formal schema or grammar, valid JSON, a regex, by masking the logits of any token that would break the structure. It makes conformance a property of construction rather than of hope, the engine behind JSON mode and robust tool calling, with the caution that constraints shape behavior, not just format.",
       "durable": true,
       "category": "Inference and Sampling"
     },

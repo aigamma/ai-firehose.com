@@ -9,19 +9,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A memory-efficient, exact algorithm for computing attention that avoids writing the large intermediate attention matrix to GPU memory, instead computing it in tiles on fast on-chip memory, which speeds up both training and inference without changing the result.",
+  "definition": "A memory-efficient, exact algorithm for computing attention that never writes the large intermediate score matrix to GPU memory, instead computing it in tiles on fast on-chip memory, speeding up training and inference without changing the result. It rests on the insight that attention's cost is overwhelmingly about moving data, not arithmetic, and stays exact through an online softmax that updates the normalization incrementally.",
   "body": [
     {
       "type": "p",
-      "text": "Flash attention is a way of computing the attention operation that is far more efficient on modern accelerators while producing exactly the same output. Standard attention forms a matrix of scores between every pair of positions in a sequence, applies a softmax to it, and uses the result to mix the values. That score matrix grows with the square of the sequence length, and naively it is written out to the GPU's main memory and read back, which for long sequences dominates both the memory footprint and the time spent."
+      "text": "Flash attention computes the attention operation far more efficiently on modern accelerators while producing exactly the same output. Standard attention forms a matrix of scores between every pair of positions in a sequence, applies a softmax to it, and uses the result to mix the values; that score matrix grows with the square of the sequence length, and naively it is written out to the GPU's main memory and read back, which for long sequences dominates both the memory footprint and the time spent."
     },
     {
       "type": "p",
-      "text": "It matters because attention's cost is overwhelmingly about moving data, not arithmetic. GPUs have a large but slow main memory and a small but very fast on-chip memory, and the standard approach pays repeatedly to shuttle the giant attention matrix between them. By restructuring the computation so that matrix never has to be stored in full, flash attention removes the largest memory bottleneck in transformers, which is what makes long context windows practical and cuts both training and inference time."
+      "text": "It matters because of the keeper: attention's cost is overwhelmingly about moving data, not arithmetic. GPUs have a large but slow main memory and a small but very fast on-chip memory, and the standard approach pays repeatedly to shuttle the giant attention matrix between them; by restructuring the computation so that matrix never has to be stored in full, flash attention removes the largest memory bottleneck in transformers, which is what makes long context windows practical and cuts both training and inference time."
     },
     {
       "type": "p",
-      "text": "The technique works by tiling. It loads small blocks of the query, key, and value matrices into fast on-chip memory and computes the attention for those blocks there, never materializing the full score matrix in slow memory. The challenge is the softmax, which normally needs the whole row of scores at once; flash attention solves this with an online, running formulation that updates the normalization incrementally as each block is processed, so the final result is mathematically identical to standard attention. Because it is exact rather than an approximation, it changes nothing about the model's logits or outputs, only how fast and how cheaply they are produced."
+      "text": "The technique works by tiling. It loads small blocks of the query, key, and value matrices into fast on-chip memory and computes the attention for those blocks there, never materializing the full score matrix in slow memory. The challenge is the softmax, which normally needs the whole row of scores at once; flash attention solves this with an online, running formulation that updates the normalization incrementally as each block is processed, so the final result is mathematically identical to standard attention. Because it is exact rather than an approximation, it changes nothing about the model's logits or outputs, only how fast and cheaply they are produced."
     },
     {
       "type": "p",
