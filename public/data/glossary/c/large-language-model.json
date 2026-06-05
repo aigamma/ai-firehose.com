@@ -5,12 +5,11 @@
   "category": "Transformers and LLMs",
   "aliases": [
     "LLM",
-    "large language models",
-    "foundation model"
+    "large language models"
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A transformer with billions of parameters trained on vast text corpora by next-token prediction, which acquires broad language and reasoning ability that can be steered to many tasks without task-specific training.",
+  "definition": "A transformer with billions of parameters trained on vast text by next-token prediction, which from that one simple objective acquires broad language and reasoning ability steerable to many tasks with no task-specific training. It is best understood not as a database or a reasoning engine but as an extremely capable next-token predictor, a framing that explains both its generality and its tendency to hallucinate.",
   "body": [
     {
       "type": "p",
@@ -18,15 +17,15 @@
     },
     {
       "type": "p",
-      "text": "The defining surprise of large language models is generality. A model is trained only to continue text, yet the same weights can translate, summarize, write code, answer questions, and follow instructions, often with no examples or just a few provided in the prompt. This is in-context learning: the model adapts its behavior from what it reads in its context window rather than from any change to its parameters. Generality of this kind is why these models are also called foundation models, since one base model can be adapted to a wide range of downstream applications."
+      "text": "The defining surprise is generality. A model trained only to continue text can, with the same weights, translate, summarize, write code, answer questions, and follow instructions, often with no examples or just a few provided in the prompt. This is in-context learning: the model adapts its behavior from what it reads in its context window rather than from any change to its parameters. Generality of this kind is why these models are also called foundation models, since one base model can be adapted to a wide range of downstream applications."
     },
     {
       "type": "p",
-      "text": "A large language model is typically built in stages. Pretraining does the heavy lifting, running next-token prediction over the giant corpus to absorb knowledge and capability; this is the expensive phase that the scaling laws describe and forecast. Pretraining is then usually followed by alignment, where techniques such as instruction tuning and reinforcement learning from human feedback shape the raw model into one that follows instructions, stays helpful, and refuses unsafe requests. The base model knows a great deal but is unwieldy; alignment makes it usable."
+      "text": "A large language model is typically built in stages. Pretraining does the heavy lifting, running next-token prediction over the giant corpus to absorb knowledge and capability, the expensive phase that the scaling laws describe and forecast. Pretraining is then usually followed by alignment, where techniques like instruction tuning and reinforcement learning from human feedback shape the raw model into one that follows instructions, stays helpful, and refuses unsafe requests. The base model knows a great deal but is unwieldy; alignment makes it usable."
     },
     {
       "type": "p",
-      "text": "Understanding a large language model means holding both its power and its limits in view. It generates token by token, so its working memory is bounded by the context window, and its knowledge is frozen at training time unless it is given fresh information through retrieval or tools. Because it is optimized to produce plausible continuations rather than verified truth, it can state false claims fluently and confidently, a failure called hallucination. These models are best understood not as databases or reasoning engines but as extremely capable next-token predictors whose strengths and weaknesses both flow from that one objective scaled up enormously."
+      "text": "Understanding a large language model means holding both its power and its limits in view, and the unifying frame is the keeper. It generates token by token, so its working memory is bounded by the context window, and its knowledge is frozen at training time unless given fresh information through retrieval or tools. Because it is optimized to produce plausible continuations rather than verified truth, it can state false claims fluently and confidently, a failure called hallucination. These models are best understood not as databases or reasoning engines but as extremely capable next-token predictors whose strengths and weaknesses both flow from that one objective scaled up enormously."
     }
   ],
   "related": [

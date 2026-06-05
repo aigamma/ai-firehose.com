@@ -3582,7 +3582,7 @@
         "foundation model",
         "base model"
       ],
-      "def_snippet": "A large model trained on broad data at scale, usually by self-supervision, that serves as a general-purpose base adaptable to many downstream tasks by fine-tuning or prompting, rather than being built for one task; the term names the pretrain-once, adapt-many paradigm.",
+      "def_snippet": "A single large model pretrained on broad data at scale, usually by self-supervision, that serves as a general-purpose base adapted to many tasks by fine-tuning or prompting, rather than being built for one task. The name captures the shift to \"pretrain once, adapt many\", which concentrated capability in a few expensive bases, powerful but homogenizing, since their biases and blind spots propagate to everything built on them.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -4595,7 +4595,7 @@
         "ICL",
         "in context learning"
       ],
-      "def_snippet": "The ability of a large language model to learn a task from examples or instructions placed in its prompt, at inference time, with no change to its weights, the emergent capability that turned models from fixed tools into general few-shot learners.",
+      "def_snippet": "The ability of a large language model to learn a task from examples or instructions in its prompt, at inference time, with no change to its weights, all of the \"learning\" happening in the forward pass. It is the emergent capability that decoupled teaching a model a task from training it, so one frozen model can serve countless tasks defined on the fly in natural language.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -5089,10 +5089,9 @@
       "attention": 0,
       "aliases": [
         "LLM",
-        "large language models",
-        "foundation model"
+        "large language models"
       ],
-      "def_snippet": "A transformer with billions of parameters trained on vast text corpora by next-token prediction, which acquires broad language and reasoning ability that can be steered to many tasks without task-specific training.",
+      "def_snippet": "A transformer with billions of parameters trained on vast text by next-token prediction, which from that one simple objective acquires broad language and reasoning ability steerable to many tasks with no task-specific training. It is best understood not as a database or a reasoning engine but as an extremely capable next-token predictor, a framing that explains both its generality and its tendency to hallucinate.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -6460,7 +6459,7 @@
         "MHA",
         "attention heads"
       ],
-      "def_snippet": "A transformer component that runs several attention computations in parallel, each in its own learned subspace, so different heads can capture different kinds of relationships before their outputs are combined.",
+      "def_snippet": "The form of self-attention transformers actually use: run several attention operations in parallel, each in its own learned subspace, then combine them, so the model can attend to several kinds of relationship at once. Because the per-head width is the model width divided by the number of heads, it costs about the same as one full-width attention while buying far more expressiveness, and the division of labor among heads emerges from training.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -6836,7 +6835,7 @@
         "autoregressive generation",
         "causal language modeling"
       ],
-      "def_snippet": "The training and generation objective of most language models, in which the model predicts the probability of the next token given all preceding tokens and produces text by sampling one token at a time.",
+      "def_snippet": "The objective almost every modern language model is built on: given a sequence of tokens, predict the next one. Its power is its generality, framing translation, summarization, and question answering all as \"predict the next token given this context\", which is what lets one trained model do so many tasks, and its honesty about probability rather than truth is the root of hallucination.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -7561,7 +7560,7 @@
         "position encoding",
         "sinusoidal encoding"
       ],
-      "def_snippet": "A method for injecting word-order information into a transformer, which is otherwise blind to sequence position because self-attention treats its inputs as an unordered set.",
+      "def_snippet": "A method for injecting word-order information into a transformer, which is otherwise blind to position because self-attention treats its inputs as an unordered set. The field moved from absolute schemes (sinusoidal, learned) to relative and rotary ones that encode how far apart two tokens are, which extrapolate better, and the whole topic is tightly bound to why extending the context window is not free.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -8739,7 +8738,7 @@
         "scaled dot-product attention",
         "self attention"
       ],
-      "def_snippet": "The mechanism that lets every token in a sequence weigh and gather information from every other token, computing a context-dependent representation as a weighted sum over the whole sequence.",
+      "def_snippet": "The mechanism that lets every token in a sequence look at every other and gather information weighted by learned relevance, computing each token's representation as a content-determined weighted sum over the whole sequence. It is permutation-invariant, so order must be added back separately, and fully parallel, the property that let transformers scale.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
