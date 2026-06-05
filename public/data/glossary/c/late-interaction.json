@@ -10,15 +10,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens, keeping fine-grained term interactions that a single pooled vector discards.",
+  "definition": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens (MaxSim), keeping the fine-grained term interactions a single pooled vector discards. It is the middle path, cross-encoder-like precision while staying indexable, bought with the cost of storing a vector per token rather than per document.",
   "body": [
     {
       "type": "p",
-      "text": "Late interaction is a middle path between the two classic ways to retrieve text. Ordinary dense retrieval encodes a whole query and a whole document each into one pooled vector and scores them by a single dot product. That is fast and lets a vector database do the search, but compressing a passage into one vector loses detail: a document that matches the query on one crucial term can be outranked because its average meaning drifts. A cross-encoder fixes the detail problem by feeding query and document together through a model, but it must rerun the model for every query-document pair, so it cannot scale to a large corpus on its own."
+      "text": "Late interaction is a middle path between the two classic ways to retrieve text. Ordinary dense retrieval encodes a whole query and a whole document each into one pooled vector and scores them by a single dot product; that is fast and lets a vector database do the search, but compressing a passage into one vector loses detail, so a document that matches the query on one crucial term can be outranked because its average meaning drifts. A cross-encoder fixes the detail problem by feeding query and document together through a model, but it must rerun the model for every query-document pair, so it cannot scale to a large corpus on its own."
     },
     {
       "type": "p",
-      "text": "Late interaction, introduced by ColBERT, keeps per-token detail without paying the cross-encoder's price at query time. It encodes the query into a vector per query token and each document into a vector per document token, independently. Relevance is then scored with a late step, after encoding, often called MaxSim: for each query token, find its best-matching document token by similarity, and sum those best matches over the query. Because the document vectors are computed and stored ahead of time, only the query is encoded live, and the scoring is cheap arithmetic over precomputed vectors."
+      "text": "Late interaction, introduced by ColBERT, keeps per-token detail without paying the cross-encoder's price at query time, the keeper. It encodes the query into a vector per query token and each document into a vector per document token, independently, and relevance is then scored with a late step, after encoding, often called MaxSim: for each query token, find its best-matching document token by similarity, and sum those best matches over the query. Because the document vectors are computed and stored ahead of time, only the query is encoded live, and the scoring is cheap arithmetic over precomputed vectors."
     },
     {
       "type": "p",

@@ -9,15 +9,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Retrieval that combines dense (semantic) and sparse (keyword) methods and fuses their results, so the system captures both meaning-based matches and exact-term matches that either method alone would miss.",
+  "definition": "Retrieval that combines dense (semantic) and sparse (keyword) methods and fuses their results, so the system captures both meaning-based and exact-term matches that either alone would miss. Its rationale is that the two fail in opposite ways, and its engineering crux is fusion: because a cosine score and a BM25 score are not comparable, the standard answer (Reciprocal Rank Fusion) combines by rank position rather than raw score.",
   "body": [
     {
       "type": "p",
-      "text": "Hybrid search runs dense retrieval and sparse retrieval together and merges their rankings into one result list. The motivation is that the two methods fail in opposite ways. Dense retrieval matches meaning and bridges vocabulary mismatch but can miss a rare proper noun, an exact code, or a precise identifier. Sparse retrieval nails those exact terms but is blind to synonyms and paraphrases. Each covers the other's blind spot, so combining them yields retrieval that is both semantically aware and lexically precise, which is why hybrid search is a common default in production retrieval systems."
+      "text": "Hybrid search runs dense retrieval and sparse retrieval together and merges their rankings into one result list. The motivation is that the two methods fail in opposite ways. Dense retrieval matches meaning and bridges vocabulary mismatch but can miss a rare proper noun, an exact code, or a precise identifier; sparse retrieval nails those exact terms but is blind to synonyms and paraphrases. Each covers the other's blind spot, so combining them yields retrieval that is both semantically aware and lexically precise, which is why hybrid search is a common default in production retrieval systems."
     },
     {
       "type": "p",
-      "text": "The engineering problem is fusion: how to combine two ranked lists whose scores are not on the same scale. A cosine similarity from an embedding model and a BM25 score are not directly comparable, so they cannot simply be added. The standard rank-based answer is Reciprocal Rank Fusion, which ignores the raw scores and combines results by their positions in each list, rewarding documents that rank highly in either. Score-based alternatives normalize each method's scores into a common range first, then take a weighted sum, with the weight set by how much the use case favors semantic recall versus exact matching. Either way, the fused shortlist is frequently handed to a reranking stage that re-scores the merged candidates for a final, sharper order."
+      "text": "The engineering problem is fusion, the keeper: how to combine two ranked lists whose scores are not on the same scale. A cosine similarity from an embedding model and a BM25 score are not directly comparable, so they cannot simply be added. The standard rank-based answer is Reciprocal Rank Fusion, which ignores the raw scores and combines results by their positions in each list, rewarding documents that rank highly in either. Score-based alternatives normalize each method's scores into a common range first, then take a weighted sum, with the weight set by how much the use case favors semantic recall versus exact matching. Either way, the fused shortlist is frequently handed to a reranking stage that re-scores the merged candidates for a final, sharper order."
     },
     {
       "type": "p",

@@ -1185,7 +1185,7 @@
         "dual encoder",
         "two-tower model"
       ],
-      "def_snippet": "A retrieval architecture that encodes a query and a document independently into separate vectors and scores their relevance by a simple similarity between those vectors, which makes document embeddings precomputable and indexable, enabling fast search over a large corpus.",
+      "def_snippet": "A retrieval architecture that encodes a query and a document independently into separate vectors and scores relevance by a simple similarity between them, which is what makes document embeddings precomputable and indexable, enabling fast search over a large corpus. That independence is the whole point and the whole trade: it gives up the direct query-document interaction a cross-encoder keeps, in exchange for corpus-scale speed.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -1224,7 +1224,7 @@
         "Okapi BM25",
         "best matching 25"
       ],
-      "def_snippet": "A classic lexical ranking function that scores how well a document matches a query from the overlapping terms, weighting each term by its rarity and saturating the contribution of repeated occurrences while correcting for document length, and remaining a strong baseline and the standard sparse component in hybrid search.",
+      "def_snippet": "A classic lexical ranking function that scores a document from its overlapping query terms, weighting each by rarity, saturating the contribution of repeated occurrences, and correcting for document length. Those two corrections over tf-idf, saturation and length-normalization, are what make it the hard-to-beat baseline every new retrieval method is measured against, and its blind spot is vocabulary mismatch.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -2143,7 +2143,7 @@
         "cross encoder",
         "joint encoder"
       ],
-      "def_snippet": "A relevance model that takes a query and a candidate document together as a single input and outputs one relevance score, far more accurate than comparing separate embeddings but too slow to scan a whole corpus, so it is used to rerank a shortlist.",
+      "def_snippet": "A relevance model that takes a query and a candidate document together as a single input and outputs one relevance score, the most accurate way to judge relevance because full attention runs across both texts, but too slow to scan a corpus since it can precompute nothing. It makes the exact opposite trade from a bi-encoder, which is why the two are paired as retrieve-then-rerank.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -4446,7 +4446,7 @@
         "hybrid retrieval",
         "fusion retrieval"
       ],
-      "def_snippet": "Retrieval that combines dense (semantic) and sparse (keyword) methods and fuses their results, so the system captures both meaning-based matches and exact-term matches that either method alone would miss.",
+      "def_snippet": "Retrieval that combines dense (semantic) and sparse (keyword) methods and fuses their results, so the system captures both meaning-based and exact-term matches that either alone would miss. Its rationale is that the two fail in opposite ways, and its engineering crux is fusion: because a cosine score and a BM25 score are not comparable, the standard answer (Reciprocal Rank Fusion) combines by rank position rather than raw score.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -5120,7 +5120,7 @@
         "late-interaction retrieval",
         "token-level retrieval"
       ],
-      "def_snippet": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens, keeping fine-grained term interactions that a single pooled vector discards.",
+      "def_snippet": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens (MaxSim), keeping the fine-grained term interactions a single pooled vector discards. It is the middle path, cross-encoder-like precision while staying indexable, bought with the cost of storing a vector per token rather than per document.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -8255,7 +8255,7 @@
         "cross-encoder reranking",
         "neural reranking"
       ],
-      "def_snippet": "A second-stage retrieval step that takes a shortlist of candidates from a fast first-stage search and reorders them with a more accurate but more expensive model, putting the truly most relevant results on top.",
+      "def_snippet": "A second-stage retrieval step that takes a shortlist from a fast first-stage search and reorders it with a more accurate but more expensive model, putting the truly most relevant results on top. Its rationale is that first-stage recall and final ranking want different things, so a cross-encoder that reads the query and document jointly (and therefore cannot be precomputed) is applied only to the shortlist.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -9084,7 +9084,7 @@
         "lexical retrieval",
         "keyword retrieval"
       ],
-      "def_snippet": "Retrieval that represents queries and documents as high-dimensional sparse vectors over the vocabulary and ranks by term overlap, the classic keyword approach typified by BM25, strong at exact and rare-term matching.",
+      "def_snippet": "Retrieval that represents queries and documents as high-dimensional sparse vectors over the vocabulary and ranks by term overlap, the classic keyword approach typified by BM25 and built on the inverted index. Exact lexical matching is genuinely the right tool for product codes, rare names, and error strings, the very queries dense retrieval handles worst, and its mirror weakness is blindness to synonyms.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },

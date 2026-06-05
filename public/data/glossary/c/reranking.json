@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A second-stage retrieval step that takes a shortlist of candidates from a fast first-stage search and reorders them with a more accurate but more expensive model, putting the truly most relevant results on top.",
+  "definition": "A second-stage retrieval step that takes a shortlist from a fast first-stage search and reorders it with a more accurate but more expensive model, putting the truly most relevant results on top. Its rationale is that first-stage recall and final ranking want different things, so a cross-encoder that reads the query and document jointly (and therefore cannot be precomputed) is applied only to the shortlist.",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "The accuracy gain comes from how a reranker reads the pair. A bi-encoder embedding model encodes the query and each document separately and compares the two finished vectors, which is fast and indexable but never lets the query and document interact directly. A reranker is usually a cross-encoder: it feeds the query and a candidate into the model together, so every query token can attend to every document token, capturing fine relevance signals a fixed vector cannot. That joint attention is what makes it more accurate, and also why it cannot be precomputed: it runs at query time, once per candidate, which is exactly why it is applied only to a shortlist rather than the whole corpus."
+      "text": "The accuracy gain comes from how a reranker reads the pair, and it is the keeper. A bi-encoder embedding model encodes the query and each document separately and compares the two finished vectors, which is fast and indexable but never lets the query and document interact directly; a reranker is usually a cross-encoder, feeding the query and a candidate into the model together so every query token can attend to every document token, capturing fine relevance signals a fixed vector cannot. That joint attention is what makes it more accurate, and also why it cannot be precomputed: it runs at query time, once per candidate, which is exactly why it is applied only to a shortlist rather than the whole corpus."
     },
     {
       "type": "p",

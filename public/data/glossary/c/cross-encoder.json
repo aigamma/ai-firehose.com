@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A relevance model that takes a query and a candidate document together as a single input and outputs one relevance score, far more accurate than comparing separate embeddings but too slow to scan a whole corpus, so it is used to rerank a shortlist.",
+  "definition": "A relevance model that takes a query and a candidate document together as a single input and outputs one relevance score, the most accurate way to judge relevance because full attention runs across both texts, but too slow to scan a corpus since it can precompute nothing. It makes the exact opposite trade from a bi-encoder, which is why the two are paired as retrieve-then-rerank.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "The contrast is with the bi-encoder, the design behind dense retrieval. A bi-encoder embeds the query and each document separately into single vectors and scores by their similarity. That separation is what makes it fast and scalable: document vectors can be computed once, indexed, and searched with approximate nearest neighbor over millions of items. But encoding each text in isolation, with no chance for the query and document to interact, sacrifices accuracy. The cross-encoder makes the opposite trade: it never encodes anything in isolation, so it is precise, but it must run the full model for every query-document pair and cannot precompute or index anything, which makes scanning a large corpus with it hopeless."
+      "text": "The contrast is with the bi-encoder, the design behind dense retrieval, and the opposite trade is the keeper. A bi-encoder embeds the query and each document separately into single vectors and scores by their similarity, and that separation is what makes it fast and scalable: document vectors can be computed once, indexed, and searched with approximate nearest neighbor over millions of items. But encoding each text in isolation, with no chance for the query and document to interact, sacrifices accuracy. The cross-encoder makes the opposite trade: it never encodes anything in isolation, so it is precise, but it must run the full model for every query-document pair and cannot precompute or index anything, which makes scanning a large corpus with it hopeless."
     },
     {
       "type": "p",
