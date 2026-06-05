@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A datastore built to index and query high-dimensional vectors by similarity, returning the stored vectors nearest a query vector quickly, usually via approximate nearest neighbor search plus metadata filtering.",
+  "definition": "A datastore built to index and query high-dimensional vectors by similarity, returning the stored vectors nearest a query vector quickly, usually via approximate nearest neighbor search plus metadata filtering. It is the storage layer beneath semantic search, and its one silent trap is the distance metric: it must match the metric the embedding model was trained for, or every result quietly degrades.",
   "body": [
     {
       "type": "p",
@@ -22,7 +22,7 @@
     },
     {
       "type": "p",
-      "text": "Vector databases matter because they make embeddings usable at production scale and latency. They handle the operational concerns that a raw index does not: upserts and deletes as the corpus changes, persistence, sharding, and the bookkeeping that keeps the index consistent. Most also enforce a chosen distance metric (cosine, dot product, or Euclidean) that must match the one the embedding model was trained for, since a mismatch silently degrades every result. Idempotent writes keyed on a deterministic id are what let a pipeline re-run safely, skipping unchanged content and pruning what no longer belongs."
+      "text": "Vector databases matter because they make embeddings usable at production scale and latency. They handle the operational concerns a raw index does not: upserts and deletes as the corpus changes, persistence, sharding, and the bookkeeping that keeps the index consistent. The keeper is one of those details that silently breaks results: most enforce a chosen distance metric (cosine, dot product, or Euclidean) that must match the one the embedding model was trained for, since a mismatch degrades every result without raising any error. Idempotent writes keyed on a deterministic id are what let a pipeline re-run safely, skipping unchanged content and pruning what no longer belongs."
     },
     {
       "type": "p",

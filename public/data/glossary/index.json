@@ -1469,7 +1469,7 @@
         "text splitting",
         "passage segmentation"
       ],
-      "def_snippet": "The step in a retrieval pipeline that splits long documents into smaller passages before embedding, so each stored vector represents a focused unit of text that can be retrieved and cited on its own.",
+      "def_snippet": "The step in a retrieval pipeline that splits long documents into smaller passages before embedding, so each stored vector represents a focused unit that can be retrieved and cited on its own. It quietly sets a ceiling on everything downstream: a fact split across two chunks may never surface as a strong match, and an over-broad chunk poisons the context with noise, so bad boundaries are unrecoverable later.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -1963,7 +1963,7 @@
         "contrastive training",
         "contrastive loss"
       ],
-      "def_snippet": "A training method that shapes a representation by pulling matching pairs of examples together and pushing non-matching pairs apart in the vector space, which is how most modern embedding models learn that distance should mean similarity.",
+      "def_snippet": "A training method that shapes a representation by pulling matching pairs together and pushing non-matching pairs apart in the vector space, the dominant recipe for training an embedding model and the reason distance comes to mean similarity. The quality of the negatives is decisive: hard negatives, items that look similar but are not the right match, are what force the model to learn fine distinctions.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -2472,7 +2472,7 @@
         "embedding-based retrieval",
         "bi-encoder retrieval"
       ],
-      "def_snippet": "Retrieval that represents queries and documents as dense embedding vectors and ranks by similarity in that vector space, matching on meaning rather than on shared words.",
+      "def_snippet": "Retrieval that represents queries and documents as dense embedding vectors and ranks by similarity in that space, matching on meaning rather than shared words. Its split from sparse retrieval is the representation: dense vectors match concepts where sparse matches exact terms, and a bi-encoder precomputes every document vector, which is what keeps it fast at query time over millions of passages.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -2884,7 +2884,7 @@
         "text embedding model",
         "sentence embedding"
       ],
-      "def_snippet": "A model that maps a piece of text (or an image, or audio) to a fixed-length vector of numbers so that semantically similar inputs land close together in the vector space, turning meaning into geometry.",
+      "def_snippet": "A model that maps a piece of text (or an image, or audio) to a fixed-length vector so that semantically similar inputs land close together, turning meaning into geometry. It is the single component every retrieval and organization feature depends on, and a long-lived commitment: swapping it invalidates every vector already stored, since vectors from two different models are not comparable.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -8303,7 +8303,7 @@
       "aliases": [
         "RAG"
       ],
-      "def_snippet": "A technique that grounds a language model's output in external documents by retrieving relevant passages at query time and supplying them to the model as context, rather than relying only on the knowledge baked into its weights.",
+      "def_snippet": "A technique that grounds a language model's output in external documents by retrieving relevant passages at query time and supplying them as context, rather than relying only on the knowledge baked into its weights. Its core move is separating the knowledge from the model, facts live in an editable corpus while the model supplies the reasoning, which is what curbs hallucination, keeps answers current, and makes every claim auditable.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -8822,7 +8822,7 @@
         "neural search",
         "similarity search"
       ],
-      "def_snippet": "Search that ranks results by meaning rather than literal word overlap, by embedding the query and the documents into the same vector space and returning the documents whose vectors sit nearest the query.",
+      "def_snippet": "Search that ranks results by meaning rather than literal word overlap, by embedding the query and the documents into the same vector space and returning the nearest. It excels exactly where keyword search fails, synonyms and intent-shaped questions, and fails exactly where keyword search excels, precise identifiers and rare proper nouns, the mirror-image weakness that motivates hybrid search.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -10332,7 +10332,7 @@
         "vector index",
         "vector search engine"
       ],
-      "def_snippet": "A datastore built to index and query high-dimensional vectors by similarity, returning the stored vectors nearest a query vector quickly, usually via approximate nearest neighbor search plus metadata filtering.",
+      "def_snippet": "A datastore built to index and query high-dimensional vectors by similarity, returning the stored vectors nearest a query vector quickly, usually via approximate nearest neighbor search plus metadata filtering. It is the storage layer beneath semantic search, and its one silent trap is the distance metric: it must match the metric the embedding model was trained for, or every result quietly degrades.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },

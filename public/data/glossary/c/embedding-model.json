@@ -10,11 +10,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A model that maps a piece of text (or an image, or audio) to a fixed-length vector of numbers so that semantically similar inputs land close together in the vector space, turning meaning into geometry.",
+  "definition": "A model that maps a piece of text (or an image, or audio) to a fixed-length vector so that semantically similar inputs land close together, turning meaning into geometry. It is the single component every retrieval and organization feature depends on, and a long-lived commitment: swapping it invalidates every vector already stored, since vectors from two different models are not comparable.",
   "body": [
     {
       "type": "p",
-      "text": "An embedding model converts an input into a dense vector, a list of a few hundred to a few thousand real numbers, chosen so that the geometry of the vector space mirrors meaning. Two sentences that say nearly the same thing map to nearby points; two that are unrelated map far apart. This is the bridge that lets a computer compare meaning by comparing coordinates, and it is the foundation under semantic search, clustering, recommendation, and retrieval-augmented generation."
+      "text": "An embedding model converts an input into a dense vector, a list of a few hundred to a few thousand real numbers, chosen so the geometry of the vector space mirrors meaning. Two sentences that say nearly the same thing map to nearby points; two that are unrelated map far apart. This turning of meaning into geometry is the bridge that lets a computer compare meaning by comparing coordinates, and it is the foundation under semantic search, clustering, recommendation, and retrieval-augmented generation."
     },
     {
       "type": "p",
@@ -22,7 +22,7 @@
     },
     {
       "type": "p",
-      "text": "Embedding models matter because they are the workhorses that make a corpus searchable by meaning instead of by keyword. The choice of model fixes several downstream properties at once: the dimensionality of every stored vector, the distance metric the vector database must use, the maximum input length, and how well the space generalizes to domains the model did not see in training. Swapping the embedding model invalidates every vector already stored, because vectors from two different models are not comparable, so the model is a long-lived commitment for any production index."
+      "text": "Embedding models matter because they are the workhorses that make a corpus searchable by meaning instead of by keyword, and one consequence is the keeper. The choice of model fixes several downstream properties at once: the dimensionality of every stored vector, the distance metric the vector database must use, the maximum input length, and how well the space generalizes to domains the model did not see in training. Swapping the embedding model invalidates every vector already stored, because vectors from two different models are not comparable, so the model is a long-lived commitment for any production index."
     },
     {
       "type": "p",
