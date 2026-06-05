@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An inference-time strategy in which a model improves its own output across iterations by generating an answer, critiquing it, and rewriting it based on that critique, spending extra generation to raise quality without any additional training.",
+  "definition": "An inference-time loop where a model improves its own output by generating an answer, critiquing it, and rewriting based on that critique, with no training. It is sequential and stateful, carrying information from each round into the next, unlike the parallel sample-and-select of best-of-n, and its reliability hinges on grounded feedback: ungrounded self-critique can stall or even turn a right answer wrong.",
   "body": [
     {
       "type": "p",
@@ -18,11 +18,11 @@
     },
     {
       "type": "p",
-      "text": "The method works because generating a critique and generating an answer are different tasks, and a model is often a better judge of a finished draft than it was a planner at the blank page. Reviewing concrete text lets it catch a missed requirement, an arithmetic slip, or an unhandled edge case that it did not foresee while writing, and feeding that observation back gives the next attempt something specific to fix. This is the same intuition behind chain-of-thought, that giving the model more to condition on improves what it produces, applied across iterations instead of within a single pass."
+      "text": "The method works because generating a critique and generating an answer are different tasks, and a model is often a better judge of a finished draft than it was a planner at the blank page. Reviewing concrete text lets it catch a missed requirement, an arithmetic slip, or an unhandled edge case it did not foresee while writing, and feeding that observation back gives the next attempt something specific to fix. This is the same intuition behind chain-of-thought, that giving the model more to condition on improves what it produces, applied across iterations instead of within a single pass."
     },
     {
       "type": "p",
-      "text": "Self-refinement is most reliable when the feedback can be grounded in something outside the model's own opinion. Code can be run and its errors or failing tests handed back; a math solution can be checked; a claim can be compared against retrieved evidence. Grounded feedback like this is far more trustworthy than ungrounded self-critique, which can stall or even degrade output, because a model that cannot see its mistake will also fail to critique it, and may \"correct\" a right answer into a wrong one or loop on superficial edits. An external verifier or executor is therefore the strongest signal a refinement loop can use."
+      "text": "Self-refinement is most reliable when the feedback can be grounded in something outside the model's own opinion, the keeper. Code can be run and its errors or failing tests handed back, a math solution can be checked, a claim can be compared against retrieved evidence, and grounded feedback like this is far more trustworthy than ungrounded self-critique, which can stall or even degrade output, because a model that cannot see its mistake will also fail to critique it, and may \"correct\" a right answer into a wrong one or loop on superficial edits. An external verifier or executor is therefore the strongest signal a refinement loop can use."
     },
     {
       "type": "p",

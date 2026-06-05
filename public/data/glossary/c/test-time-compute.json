@@ -137,14 +137,14 @@
       "kind": "opinion"
     }
   ],
-  "definition": "The strategy of spending more computation at inference time, rather than only at training time, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query.",
+  "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
   "category": "Inference and Sampling",
   "durable": true,
   "source": "authored",
   "body": [
     {
       "type": "p",
-      "text": "Test-time compute refers to the deliberate use of extra computation when a model answers a question, as opposed to the computation spent once during training. The traditional picture of a language model is that all the cost is paid up front in training, after which each inference is a cheap single pass. Test-time compute breaks that assumption: it treats the amount of work done per query as a dial that can be turned up to buy better answers, trading latency and money at inference for accuracy."
+      "text": "Test-time compute is the deliberate use of extra computation when a model answers a question, as opposed to the computation spent once during training. The traditional picture of a language model is that all the cost is paid up front in training, after which each inference is a cheap single pass; test-time compute breaks that assumption, treating the amount of work done per query as a dial that can be turned up to buy better answers, trading latency and money at inference for accuracy."
     },
     {
       "type": "p",
@@ -156,7 +156,7 @@
     },
     {
       "type": "p",
-      "text": "The defining property of test-time compute is a smooth scaling curve: accuracy tends to rise predictably as the compute budget per query grows, giving a knob that can be set per request according to how much the answer is worth. That makes inference efficiency directly valuable, since cheaper tokens mean more thinking for the same cost, which is why test-time scaling is usually deployed alongside serving optimizations like speculative-decoding and quantization. The cost is real, more latency and more spend on every hard query, so the budget is matched to the difficulty of the task rather than applied uniformly."
+      "text": "The defining property is the keeper: a smooth scaling curve. Accuracy tends to rise predictably as the compute budget per query grows, giving a knob that can be set per request according to how much the answer is worth, which makes inference efficiency directly valuable, since cheaper tokens mean more thinking for the same cost, and is why test-time scaling is usually deployed alongside serving optimizations like speculative-decoding and quantization. The cost is real, more latency and more spend on every hard query, so the budget is matched to the difficulty of the task rather than applied uniformly."
     }
   ],
   "related": [

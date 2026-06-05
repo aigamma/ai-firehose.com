@@ -1171,7 +1171,7 @@
         "BoN",
         "rejection ranking"
       ],
-      "def_snippet": "An inference strategy that generates N candidate responses and selects the best according to a scorer (a reward model, a verifier, or a heuristic), spending parallel compute to lift quality on tasks where judging an answer is easier than producing one.",
+      "def_snippet": "An inference strategy that generates N candidate responses and selects the best by a scorer, a reward model, a verifier, or a heuristic, spending parallel compute to lift quality. Unlike self-consistency's majority vote, an external scorer lets it handle open-ended outputs that cannot be tallied, and its ceiling is set by how good and how gameable that scorer is.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -1383,7 +1383,7 @@
         "CoT",
         "chain-of-thought prompting"
       ],
-      "def_snippet": "A prompting and generation technique in which a model is induced to produce intermediate reasoning steps before its final answer, which improves accuracy on multi-step problems by letting the model work through them in its output.",
+      "def_snippet": "Inducing a model to produce intermediate reasoning steps before its final answer, which improves accuracy on multi-step problems. The reason it works is mechanical: a transformer does a fixed amount of computation per token, so each intermediate token is another step of computation, an external scratchpad that decomposes a hard problem into easier ones, though the written steps are not guaranteed to be a faithful account of the real computation.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -8751,7 +8751,7 @@
         "majority voting",
         "sample and vote"
       ],
-      "def_snippet": "A decoding strategy that samples several independent chain-of-thought solutions at nonzero temperature and returns the answer they agree on most often, spending extra inference compute to raise accuracy on reasoning tasks.",
+      "def_snippet": "A decoding strategy that samples several independent chain-of-thought solutions at nonzero temperature and returns the answer they agree on most often. Its premise is that a correct answer can be reached by many distinct valid routes while errors are idiosyncratic and scatter, so agreement concentrates on the truth, and it needs only a crisp comparable final answer, no training.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -8789,7 +8789,7 @@
         "iterative refinement",
         "self-correction"
       ],
-      "def_snippet": "An inference-time strategy in which a model improves its own output across iterations by generating an answer, critiquing it, and rewriting it based on that critique, spending extra generation to raise quality without any additional training.",
+      "def_snippet": "An inference-time loop where a model improves its own output by generating an answer, critiquing it, and rewriting based on that critique, with no training. It is sequential and stateful, carrying information from each round into the next, unlike the parallel sample-and-select of best-of-n, and its reliability hinges on grounded feedback: ungrounded self-critique can stall or even turn a right answer wrong.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -9693,7 +9693,7 @@
         "inference-time compute",
         "test-time scaling"
       ],
-      "def_snippet": "The strategy of spending more computation at inference time, rather than only at training time, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query.",
+      "def_snippet": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -10085,7 +10085,7 @@
         "ToT",
         "tree search reasoning"
       ],
-      "def_snippet": "A reasoning method that explores multiple candidate reasoning steps as a branching tree, evaluating and expanding promising branches and backtracking from dead ends, so a model searches over solution paths instead of committing to one linear chain.",
+      "def_snippet": "A reasoning method that explores candidate steps as a branching tree, evaluating and expanding promising branches and backtracking from dead ends, so a model searches over solution paths instead of committing to one linear chain. It is the step from reasoning-as-a-path to reasoning-as-search: where chain-of-thought has no lookahead and self-consistency never revisits a chain, tree of thoughts adds explicit exploration and backtracking.",
       "durable": true,
       "category": "Inference and Sampling"
     },
@@ -10398,7 +10398,7 @@
         "solution verifier",
         "checker"
       ],
-      "def_snippet": "A model or procedure that judges whether a candidate output is correct, used to select among samples, filter training data, and supply the reward in reinforcement learning on verifiable tasks; verifying is often easier and more reliable than generating.",
+      "def_snippet": "A model or procedure that judges whether a candidate output is correct, used to select among samples, filter training data, and supply the reward in RL on verifiable tasks. It rests on the generation-verification gap, that checking a solution is often far easier and more reliable than producing one, and the integrity of the verifier sets the ceiling on every method that leans on it.",
       "durable": true,
       "category": "Inference and Sampling"
     },

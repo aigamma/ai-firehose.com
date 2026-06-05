@@ -5,13 +5,13 @@ kind: technique
 category: Inference and Sampling
 aliases: verifier, solution verifier, checker
 related: best-of-n-sampling, reasoning-model, group-relative-policy-optimization, llm-as-judge, reward-model
-summary: A model or procedure that judges whether a candidate output is correct, used to select among samples, filter training data, and supply the reward in reinforcement learning on verifiable tasks; verifying is often easier and more reliable than generating.
+summary: A model or procedure that judges whether a candidate output is correct, used to select among samples, filter training data, and supply the reward in RL on verifiable tasks. It rests on the generation-verification gap, that checking a solution is often far easier and more reliable than producing one, and the integrity of the verifier sets the ceiling on every method that leans on it.
 ---
 
 A verifier is whatever decides if an answer is right. It might be a hard, exact check, a unit-test suite for code, a symbolic grader for math, a parser for a required format, or a soft, learned one, a trained correctness classifier or a strong model acting as a judge. Either way, its role is to turn "is this output good" into a signal the system can act on.
 
-The reason verifiers matter so much in modern AI is the generation-verification gap: for many tasks it is far easier, and far more reliable, to check a candidate solution than to produce one. That asymmetry is the foundation of a whole family of methods. Best-of-N sampling uses a verifier to pick the best of several samples. Rejection sampling uses it to filter which outputs to keep or train on. And reinforcement learning with verifiable rewards, the regime behind recent reasoning models trained with methods like GRPO, uses a verifier as the reward signal, rewarding the model for outputs that pass the check.
+The reason verifiers matter so much in modern AI is the keeper, the generation-verification gap: for many tasks it is far easier, and far more reliable, to check a candidate solution than to produce one. That asymmetry is the foundation of a whole family of methods: best-of-N sampling uses a verifier to pick the best of several samples, rejection sampling uses it to filter which outputs to keep or train on, and reinforcement learning with verifiable rewards, the regime behind recent reasoning models trained with methods like GRPO, uses a verifier as the reward signal, rewarding the model for outputs that pass the check.
 
-Verifiers split roughly into hard and soft. Hard verifiers (tests, graders) are exact and ungameable but exist only for problems with checkable answers. Soft verifiers (reward models, LLM judges) apply anywhere but are approximate.
+Verifiers split roughly into hard and soft. Hard verifiers (tests, graders) are exact and ungameable but exist only for problems with checkable answers; soft verifiers (reward models, LLM judges) apply anywhere but are approximate.
 
 That approximation is the danger. A weak or exploitable verifier invites reward hacking, where the model learns to produce outputs the verifier scores highly but that are not actually correct, so the strength and integrity of the verifier sets the ceiling on every method that relies on it.
