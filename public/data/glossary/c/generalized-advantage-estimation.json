@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A method for estimating the advantage in policy-gradient learning that blends temporal-difference errors across many horizons with an exponentially weighted average, exposing a single parameter that trades bias against variance and producing the smooth advantage signal that PPO optimizes.",
+  "definition": "A method for estimating the advantage that blends temporal-difference errors across many horizons with an exponentially weighted average, exposing a single parameter that trades bias against variance and producing the smooth advantage signal PPO optimizes. One lambda knob slides between the biased one-step estimate and the high-variance Monte Carlo return, and the whole sum computes in one backward pass.",
   "body": [
     {
       "type": "p",
@@ -16,7 +16,7 @@
     },
     {
       "type": "p",
-      "text": "GAE interpolates between these extremes instead of choosing one. It computes the temporal-difference error at every step of a trajectory and then forms an exponentially weighted sum of those errors stretching into the future. A single parameter, lambda between zero and one, sets the decay of that weighting. When lambda is zero, the sum collapses to the biased one-step temporal-difference estimate; when lambda is one, it recovers the unbiased high-variance Monte Carlo return. Intermediate values, often around 0.95, keep most of the variance reduction of short horizons while letting a controlled amount of longer-horizon information through, which in practice gives the best learning."
+      "text": "GAE interpolates between these extremes instead of choosing one, the keeper. It computes the temporal-difference error at every step of a trajectory and then forms an exponentially weighted sum of those errors stretching into the future, with a single parameter, lambda between zero and one, setting the decay of that weighting. When lambda is zero, the sum collapses to the biased one-step temporal-difference estimate; when lambda is one, it recovers the unbiased high-variance Monte Carlo return; intermediate values, often around 0.95, keep most of the variance reduction of short horizons while letting a controlled amount of longer-horizon information through, which in practice gives the best learning."
     },
     {
       "type": "p",

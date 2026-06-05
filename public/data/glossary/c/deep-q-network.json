@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A landmark deep-RL algorithm that uses a neural network to approximate the Q-function, the value of each action in a state, enabling reinforcement learning directly from high-dimensional input like pixels, famously learning to play Atari games from the raw screen.",
+  "definition": "A landmark deep-RL algorithm that uses a neural network to approximate the Q-function, enabling reinforcement learning directly from high-dimensional input like pixels, famously learning to play Atari from the raw screen. Its real contribution was two stabilizing tricks, experience replay and a separate target network, that made deep networks and Q-learning work together at all.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "Making deep networks and reinforcement learning work together was not obvious, because naive combination is unstable: the targets the network chases are computed from the same rapidly-changing network, and consecutive frames are highly correlated. DQN introduced two stabilizing tricks that became standard. Experience replay stores past transitions in a buffer and trains on random samples of them, breaking the correlation between consecutive updates and reusing data efficiently. A separate target network, a slowly-updated copy used to compute the learning targets, keeps the objective from shifting under the network's feet."
+      "text": "Making deep networks and reinforcement learning work together was not obvious, because naive combination is unstable, and fixing that is the keeper: the targets the network chases are computed from the same rapidly-changing network, and consecutive frames are highly correlated. DQN introduced two stabilizing tricks that became standard. Experience replay stores past transitions in a buffer and trains on random samples of them, breaking the correlation between consecutive updates and reusing data efficiently; a separate target network, a slowly-updated copy used to compute the learning targets, keeps the objective from shifting under the network's feet."
     },
     {
       "type": "p",

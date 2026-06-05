@@ -105,7 +105,7 @@
         "actor-critic methods",
         "advantage actor-critic"
       ],
-      "def_snippet": "A reinforcement learning architecture that combines a policy (the actor) with a learned value estimator (the critic), using the critic's estimates to reduce the variance of the policy's gradient updates.",
+      "def_snippet": "A reinforcement learning architecture that combines a policy (the actor) with a learned value estimator (the critic), using the critic's estimates to reduce the variance of the policy's gradient updates. It fuses the two main RL families so each does what it is best at, and one quantity, the temporal-difference error, does double duty: it trains the critic toward accuracy and serves as the advantage that scales the actor's update.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -176,7 +176,7 @@
         "advantage",
         "advantage estimate"
       ],
-      "def_snippet": "The quantity that measures how much better taking a particular action in a state is than the state's average value, computed as the action value minus the state value; it is the low-variance learning signal at the heart of modern policy optimization.",
+      "def_snippet": "The quantity that measures how much better taking a particular action is than the state's average value, the action value minus the state value, the low-variance learning signal at the heart of modern policy optimization. Its power is isolation: it strips away how good the situation already was and leaves a signal centered on the action's own contribution.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -2429,7 +2429,7 @@
         "DQN",
         "deep Q-learning"
       ],
-      "def_snippet": "A landmark deep-RL algorithm that uses a neural network to approximate the Q-function, the value of each action in a state, enabling reinforcement learning directly from high-dimensional input like pixels, famously learning to play Atari games from the raw screen.",
+      "def_snippet": "A landmark deep-RL algorithm that uses a neural network to approximate the Q-function, enabling reinforcement learning directly from high-dimensional input like pixels, famously learning to play Atari from the raw screen. Its real contribution was two stabilizing tricks, experience replay and a separate target network, that made deep networks and Q-learning work together at all.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -3844,7 +3844,7 @@
       "aliases": [
         "GAE"
       ],
-      "def_snippet": "A method for estimating the advantage in policy-gradient learning that blends temporal-difference errors across many horizons with an exponentially weighted average, exposing a single parameter that trades bias against variance and producing the smooth advantage signal that PPO optimizes.",
+      "def_snippet": "A method for estimating the advantage that blends temporal-difference errors across many horizons with an exponentially weighted average, exposing a single parameter that trades bias against variance and producing the smooth advantage signal PPO optimizes. One lambda knob slides between the biased one-step estimate and the high-variance Monte Carlo return, and the whole sum computes in one backward pass.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -7844,7 +7844,7 @@
       "aliases": [
         "PPO"
       ],
-      "def_snippet": "A policy gradient algorithm that improves a policy in small, bounded steps by clipping how far each update can move the action probabilities, giving stable and reliable training; it is the default optimizer for reinforcement learning from human feedback.",
+      "def_snippet": "A policy gradient algorithm that improves a policy in small, bounded steps by clipping how far each update can move the action probabilities, giving stable, reliable training, the default optimizer for reinforcement learning from human feedback. The clip is the whole idea: once an update has moved the policy far enough, the objective flattens, so no single step can stray far from the policy that generated the data.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -9027,7 +9027,7 @@
       "aliases": [
         "SAC"
       ],
-      "def_snippet": "An off-policy actor-critic algorithm that maximizes reward plus policy entropy, encouraging the agent to act as randomly as possible while still succeeding; the entropy term yields strong exploration and stability, making it a leading method for continuous-control tasks like robotics.",
+      "def_snippet": "An off-policy actor-critic algorithm that maximizes reward plus policy entropy, encouraging the agent to act as randomly as possible while still succeeding, which yields strong exploration and stability and makes it a leading method for continuous control like robotics. The entropy term keeps exploration alive throughout training, and being off-policy (a replay buffer) makes it far more sample-efficient than on-policy PPO.",
       "durable": true,
       "category": "Reinforcement Learning"
     },

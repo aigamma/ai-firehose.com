@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The quantity that measures how much better taking a particular action in a state is than the state's average value, computed as the action value minus the state value; it is the low-variance learning signal at the heart of modern policy optimization.",
+  "definition": "The quantity that measures how much better taking a particular action is than the state's average value, the action value minus the state value, the low-variance learning signal at the heart of modern policy optimization. Its power is isolation: it strips away how good the situation already was and leaves a signal centered on the action's own contribution.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "This framing matters because it isolates the part of the return that a decision actually controls. The raw return from a trajectory mixes together two things: how good the situation already was, and how good the chosen action was given that situation. Only the second part is information about the action; the first part is noise as far as choosing actions goes. Subtracting the state value, which serves as a baseline, strips away that situational component and leaves a signal centered on the action's own contribution. The result is an estimator with the same expected direction but far lower variance, which is why advantages, rather than raw returns, drive almost every competitive policy-gradient method."
+      "text": "This framing matters because it isolates the part of the return that a decision actually controls, the keeper. The raw return from a trajectory mixes together two things: how good the situation already was, and how good the chosen action was given that situation, and only the second part is information about the action; the first is noise as far as choosing actions goes. Subtracting the state value, which serves as a baseline, strips away that situational component and leaves a signal centered on the action's own contribution, an estimator with the same expected direction but far lower variance, which is why advantages, rather than raw returns, drive almost every competitive policy-gradient method."
     },
     {
       "type": "p",

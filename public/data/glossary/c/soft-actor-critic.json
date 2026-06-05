@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An off-policy actor-critic algorithm that maximizes reward plus policy entropy, encouraging the agent to act as randomly as possible while still succeeding; the entropy term yields strong exploration and stability, making it a leading method for continuous-control tasks like robotics.",
+  "definition": "An off-policy actor-critic algorithm that maximizes reward plus policy entropy, encouraging the agent to act as randomly as possible while still succeeding, which yields strong exploration and stability and makes it a leading method for continuous control like robotics. The entropy term keeps exploration alive throughout training, and being off-policy (a replay buffer) makes it far more sample-efficient than on-policy PPO.",
   "body": [
     {
       "type": "p",
@@ -16,7 +16,7 @@
     },
     {
       "type": "p",
-      "text": "The entropy term is what makes SAC distinctive, and it directly targets the exploration-exploitation tradeoff. By paying the agent to maintain randomness, the objective discourages premature collapse onto a narrow, possibly suboptimal behavior and keeps exploration alive throughout training rather than relying on hand-tuned noise that decays on a schedule. A temperature parameter sets how much the entropy bonus is worth relative to reward; modern SAC tunes this temperature automatically to hold the policy near a target entropy, removing one of the most finicky hyperparameters. Higher temperature buys broader exploration, lower temperature sharpens the policy toward exploitation."
+      "text": "The entropy term is what makes SAC distinctive, the keeper, and it directly targets the exploration-exploitation tradeoff. By paying the agent to maintain randomness, the objective discourages premature collapse onto a narrow, possibly suboptimal behavior and keeps exploration alive throughout training rather than relying on hand-tuned noise that decays on a schedule. A temperature parameter sets how much the entropy bonus is worth relative to reward; modern SAC tunes this temperature automatically to hold the policy near a target entropy, removing one of the most finicky hyperparameters. Higher temperature buys broader exploration, lower temperature sharpens the policy toward exploitation."
     },
     {
       "type": "p",
