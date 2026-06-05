@@ -9,14 +9,14 @@ Read `CLAUDE.md` Core Contracts first. This document details the stages, the con
 Run order (each checks "already done" and skips, the civil onboard pattern):
 
 1. **fetch.** Each adapter under `worker/sources/` returns raw Items. YouTube is primary (see `docs/SOURCES.md`). Output goes to a staging area keyed by deterministic ID.
-2. **dedupe.** Content hash `sha256(text).slice(0,16)`. Stable IDs `<kind>::<source>::<slug>::<hash16>`. Skip anything already in Pinecone with the same hash. The accumulating store keeps exactly one entry per source item: when a source is re-titled or edited its content hash (and id) changes, so the new version replaces the stale one rather than accumulating beside it (`collapseStore` in `worker/pipeline/store.mjs`); within-run dedup keys on `source:source_id` and does not catch cross-run re-edits. Prune orphaned vectors whose source item is gone.
+2. **dedupe.** Content hash `sha256(text).slice(0,16)`. Stable IDs `<kind>::<source>::<slug>::<hash16>`. The accumulating store keeps exactly one entry per source item: when a source is re-titled or edited its content hash (and id) changes, so the new version replaces the stale one rather than accumulating beside it (`collapseStore` in `worker/pipeline/store.mjs`); within-run dedup keys on `source:source_id` and does not catch cross-run re-edits. Pinecone is not listed during routine runs. The committed vector manifest records what has already been written and what can be skipped.
 3. **transcript.** For YouTube: captions via yt-dlp when present, else download audio and run Whisper. For text sources this stage is a passthrough.
 4. **classify and extract.** Claude with a strict JSON schema returns `kind` (with a one-line justification), a factual `summary` (no em dashes, sanitized via `worker/lib/text.mjs`), candidate `concepts[]`, `entities[]`, and `stance` for opinions. `kind` is decided by the classifier, not the source. (An optional OpenAI dual-check that would send disagreements to staging is intended but not yet implemented; classification today is a single Claude pass.)
 5. **concept resolution (the AI-grown taxonomy).** See the algorithm below. Binds candidates to existing concepts, or coins new ones (which currently enter the taxonomy directly).
-6. **embed and upsert.** Voyage `voyage-3` (1024-dim, `input_type=document`) in batches; upsert to Pinecone with full metadata. Unchanged chunks are skipped.
+6. **embed and upsert.** Voyage `voyage-3` (1024-dim, `input_type=document`) in batches; upsert to Pinecone with full metadata. `worker/pipeline/vector_manifest.mjs` compares each retained corpus record against `worker/.cache/vector_manifest.json`: new or changed text hashes embed and upsert, metadata-only changes call Pinecone `/vectors/update`, and unchanged vectors are skipped without a Voyage call. Corpus and durable glossary vectors both store `metadata.text` for rerank and `content_hash` for audit.
 7. **attention, trend, and rotation.** Recompute attention per entity per kind, then the heat signal each board ranks by: `delta` (growth in weighted attention this horizon window versus the prior equal window) and its [-1, 1] normalization `trend` (`windowTrend` in `worker/pipeline/attention.mjs`). The Mansfield rotation triple (RS, ratio, momentum) and quadrant are still computed per horizon, now feeding the concept hub Momentum card rather than a plane. Board construction is the shared pure `computeBoards` in `worker/pipeline/boards.mjs`, so the board-building logic is single-sourced and cannot drift. The one anchoring nuance: `run.mjs` anchors the time windows to wall-clock now (`Date.now()`), while the offline `worker/pipeline/recompute_boards.mjs` (a no-network replay of the committed store) anchors them to the newest item timestamp for a deterministic, reproducible replay; the two reproduce the same boards when rebuilt against the same day's data. Unifying the anchor is a tracked follow-up in `docs/ROADMAP.md`. See `docs/RAG.md`.
 8. **network rebuild.** One deterministic command rebuilds every derived artifact in dependency order (centroids, clusters then names, spectrums, neighbors, influence, glossary hubs, attention, digests). Pinned seeds, stable sort.
-9. **prune (retention).** Delete vectors and artifact rows older than `RETENTION_DAYS` by `published_at`. See below.
+9. **prune (retention).** Delete artifact rows older than `RETENTION_DAYS` by `published_at`; delete Pinecone vectors by diffing the prior vector manifest against the retained corpus and durable glossary. See below.
 10. **publish.** Write artifacts to `public/data/`, commit verbosely, push, and append a run entry to `docs/INGESTION_LOG.md`.
 
 ## Concept Resolution (AI-Discovered, AI-Created, Fitted Loosely)
@@ -37,9 +37,9 @@ New concepts currently enter the canonical taxonomy directly. The intended human
 
 The corpus self-expires at one quarter. The prune stage is keyed on each item's real-world `published_at`, not its fetch date:
 
-- Delete Pinecone vectors and artifact rows where `now - published_at > RETENTION_DAYS` (default 100, in the registry).
+- Delete artifact rows where `now - published_at > RETENTION_DAYS` (default 100, in the registry), then delete only Pinecone ids that were in the previous manifest but are no longer retained.
 - A glossary concept with no items inside the window is marked `dormant` and drops off the live trend boards, but its definition hub persists as lightweight reference. A concept dormant for two full windows may be garbage-collected (decide and document before enabling).
-- The prune is idempotent: re-running deletes nothing new if nothing has aged out.
+- The prune is idempotent: re-running deletes nothing new if nothing has aged out. Full Pinecone id listing is a manual drift-audit tool, not part of the scheduled prune, because serverless listing spends read units.
 
 ## Human-Authored Stops
 

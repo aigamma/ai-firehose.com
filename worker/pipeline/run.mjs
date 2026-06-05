@@ -13,7 +13,7 @@ import { requireKeys } from "../lib/env.mjs";
 import { fetchAll } from "../sources/index.mjs";
 import { classifyItem } from "./classify.mjs";
 import { embed } from "../lib/voyage.mjs";
-import { ensureIndex, upsert, listIds, deleteByIds } from "../lib/pinecone.mjs";
+import { ensureIndex, upsert, updateMetadata, deleteByIds } from "../lib/pinecone.mjs";
 import { hash16, itemId, slugify } from "../lib/hash.mjs";
 import { buildSeries, windowSum, decayedLevel } from "./attention.mjs";
 import { collapseStore } from "./store.mjs";
@@ -30,6 +30,7 @@ import { embedGlossary } from "./embed_glossary.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
 import { AXES_ANCHORS } from "./prompts/axes.mjs";
 import { loadCache, saveCache } from "../lib/cache.mjs";
+import { loadVectorManifest, saveVectorManifest, planVectorSync, markVectorSynced, removeVectorIds } from "./vector_manifest.mjs";
 import { HORIZONS, KINDS, RETENTION_DAYS, SITE, NAV, DEFAULT_HORIZON, TAXONOMY } from "../../src/data/registry.js";
 
 requireKeys();
@@ -47,6 +48,29 @@ function writeJson(rel, obj) {
 
 const xmlEsc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+
+function corpusVectorRecord(c) {
+  const text = `${c.title || ""}\n\n${c.summary || c.summary_text || ""}`.trim();
+  const contentHash = hash16(text);
+  return {
+    id: c.id,
+    text,
+    metadata: {
+      kind: c.kind,
+      source: c.source,
+      title: c.title,
+      url: c.url,
+      author_or_channel: c.author_or_channel || "",
+      published_at: c.published_at || "",
+      concepts: c.concepts || [],
+      entities: c.entities || [],
+      source_authority_weight: c.source_authority_weight ?? 0.8,
+      summary: c.summary || "",
+      text: text.slice(0, 2000),
+      content_hash: contentHash,
+    },
+  };
+}
 
 async function classifyAll(items) {
   const cache = loadCache("classify");
@@ -145,34 +169,42 @@ async function main() {
   });
   console.log(`   ${canon.length} canonical concepts (merged from raw labels)`);
 
-  console.log("3. embed + upsert this run's items to Pinecone...");
-  const runIds = new Set(classified.map((c) => c.id));
-  const fresh = working.filter((c) => runIds.has(c.id));
+  console.log("3. manifest-gated embed/upsert for retained corpus...");
   const host = await ensureIndex();
-  if (fresh.length) {
-    const vecs = await embed(fresh.map((c) => `${c.title}\n\n${c.summary}`), "document");
+  let vectorManifest = loadVectorManifest();
+  const corpusRecords = working.map(corpusVectorRecord);
+  const corpusPlan = planVectorSync(vectorManifest, corpusRecords, "corpus");
+  if (corpusPlan.toEmbed.length) {
+    const vecs = await embed(corpusPlan.toEmbed.map((r) => r.text), "document");
     // One vector per input, none undefined: an embed batch that returns a short or
     // hole-punched array would otherwise upsert `values: undefined`, which Pinecone
     // rejects mid-run. Fail loudly here instead. (Voyage already reorders by input
     // index in orderEmbeddings; this guards length and completeness.)
-    if (vecs.length !== fresh.length || vecs.some((v) => v == null)) {
-      throw new Error(`embed returned ${vecs.length} vectors for ${fresh.length} inputs (or a null vector); aborting upsert`);
+    if (vecs.length !== corpusPlan.toEmbed.length || vecs.some((v) => v == null)) {
+      throw new Error(`embed returned ${vecs.length} vectors for ${corpusPlan.toEmbed.length} inputs (or a null vector); aborting upsert`);
     }
     await upsert(
       host,
-      fresh.map((c, i) => ({
-        id: c.id,
+      corpusPlan.toEmbed.map((r, i) => ({
+        id: r.id,
         values: vecs[i],
-        metadata: {
-          kind: c.kind, source: c.source, title: c.title, url: c.url,
-          author_or_channel: c.author_or_channel || "", published_at: c.published_at || "",
-          concepts: c.concepts || [], entities: c.entities || [],
-          source_authority_weight: c.source_authority_weight ?? 0.8, summary: c.summary || "",
-        },
+        metadata: r.metadata,
       }))
     );
+    vectorManifest = markVectorSynced(vectorManifest, corpusPlan.toEmbed, "corpus");
   }
-  console.log(`   upserted ${fresh.length} (corpus ${working.length})`);
+  if (corpusPlan.toUpdate.length) {
+    await updateMetadata(host, corpusPlan.toUpdate.map((r) => ({ id: r.id, metadata: r.metadata })));
+    vectorManifest = markVectorSynced(vectorManifest, corpusPlan.toUpdate, "corpus");
+  }
+  if (corpusPlan.staleIds.length) {
+    await deleteByIds(host, corpusPlan.staleIds);
+    vectorManifest = removeVectorIds(vectorManifest, corpusPlan.staleIds);
+  }
+  saveVectorManifest(vectorManifest);
+  console.log(
+    `   corpus vectors: ${corpusPlan.toEmbed.length} embedded, ${corpusPlan.toUpdate.length} metadata-only, ${corpusPlan.unchanged} unchanged, ${corpusPlan.staleIds.length} deleted (corpus ${working.length})`
+  );
 
   console.log("4. attention series + rotation per kind and horizon...");
   const { byKind, labels, primaryKind } = buildSeries(working, { days: RETENTION_DAYS, todayMs: TODAY });
@@ -277,22 +309,10 @@ async function main() {
     console.log(`   glossary embed skipped: ${e.message}`);
   }
 
-  console.log("5d. reconcile Pinecone with the retained store + write sitemap...");
-  try {
-    const liveIds = await listIds(host);
-    // Reconcile against the deduped + retention-pruned object that produced the
-    // artifacts, not the raw pre-collapse store, so collapsed duplicates and
-    // aged-out vectors are deleted from Pinecone and vector cost stays flat.
-    const keep = new Set(Object.keys(deduped));
-    // Preserve the durable glossary vectors (glossary:: prefix): they are the
-    // permanent knowledge layer, not corpus items, so they are absent from `deduped`
-    // and must never be reconciled away.
-    const stale = liveIds.filter((id) => !keep.has(id) && !id.startsWith("glossary::"));
-    await deleteByIds(host, stale);
-    console.log(`   pinecone ${liveIds.length} vectors, removed ${stale.length} aged-out`);
-  } catch (e) {
-    console.log(`   reconcile skipped: ${e.message}`);
-  }
+  console.log("5d. write sitemap...");
+  // Pinecone stale-id deletion is manifest-driven in step 3 and in
+  // embed_glossary.mjs. The routine worker no longer lists every vector id, because
+  // serverless read-unit limits can make a full `/vectors/list` unavailable.
   // Emit every published concept hub (one /technique/<id> per glossary/c/<id>.json),
   // not a truncated slice, so the sitemap covers the whole live glossary. A concept
   // marked dormant (no items inside the retention window) is dropped if the flag exists.

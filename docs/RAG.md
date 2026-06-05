@@ -6,15 +6,15 @@ The non-chat embedding layer, reimplemented natively in the worker from the appr
 
 - **Pinecone.** Index `ai-firehose`, serverless, cosine, 1024-dim. Single namespace plus metadata filters (cross-kind similarity matters for clusters and neighbors, so no namespace-per-kind).
 - **Voyage.** `voyage-3` for embeddings (`input_type=document` on ingest, `query` on retrieval). `rerank-2` for the live search second stage.
-- **Modules.** Shared helpers in `worker/lib/`: `worker/lib/voyage.mjs` (Voyage embeddings and rerank), `worker/lib/pinecone.mjs` (vector upsert and query), and `worker/lib/retrieve.mjs` (two-stage retrieval), over `worker/lib/env.mjs`, `worker/lib/cache.mjs`, and `worker/lib/hash.mjs`. Idempotent embed-and-upsert is orchestrated by `worker/pipeline/run.mjs`; the network precompute (centroids, clusters, spectrums, neighbors, influence) is `worker/pipeline/network.mjs`. All JavaScript; no Python.
+- **Modules.** Shared helpers in `worker/lib/`: `worker/lib/voyage.mjs` (Voyage embeddings and rerank), `worker/lib/pinecone.mjs` (vector upsert, metadata update, query, and manual listing), and `worker/lib/retrieve.mjs` (two-stage retrieval), over `worker/lib/env.mjs`, `worker/lib/cache.mjs`, and `worker/lib/hash.mjs`. Idempotent embed-and-upsert is orchestrated by `worker/pipeline/run.mjs` with `worker/pipeline/vector_manifest.mjs`; the network precompute (centroids, clusters, spectrums, neighbors, influence) is `worker/pipeline/network.mjs`. All JavaScript; no Python.
 
 ## Item Vector Metadata
 
-Each vector carries: `id`, `kind` (technique|tool|opinion), `source`, `source_authority_weight`, `title`, `url`, `author_or_channel`, `published_at`, `concepts` (glossary slugs), `entities`, `stance` (opinions), `engagement`, `content_hash`. Retrieval can filter by any field (for example kind, or `published_at` within a horizon).
+Each corpus vector carries: `id`, `kind` (technique|tool|opinion), `source`, `source_authority_weight`, `title`, `url`, `author_or_channel`, `published_at`, `concepts` (glossary slugs), `entities`, `stance` (opinions), `engagement`, `summary`, `text`, and `content_hash`. `summary` is the display payload; `text` is the trimmed retrieval payload used by rerank. Durable glossary vectors use `glossary::<slug>` ids and the same `title`, `url`, `kind`, `summary`, `text`, `concepts`, `durable`, `source`, and `content_hash` shape. Retrieval can filter by any field (for example kind, or `published_at` within a horizon).
 
 ## Live Semantic Search
 
-`netlify/functions/retrieve.mjs`: embed the query (voyage-3, `input_type=query`), Pinecone dense query for top-K, Voyage `rerank-2` to top-N, apply a similarity floor, return the citation payload. Fail-open: if Voyage rerank errors, fall back to dense order. No generation, no chat.
+`netlify/functions/retrieve.mjs`: embed the query (voyage-3, `input_type=query`), Pinecone dense query for top-K, Voyage `rerank-2` over `metadata.text` to top-N, apply a similarity floor, return the citation payload. Fail-open: if Voyage rerank errors, fall back to dense order. No generation, no chat.
 
 ## Citation Contract
 
@@ -104,4 +104,4 @@ Seven AI-discourse axes (slugs in `registry.js` `AXES`): open vs closed, scaling
 
 ## Determinism and Cost
 
-A pinned PCA start vector, deterministic k-means init (seed-spread, no RNG), stable sort, and content-hash gating make the network rebuild reproducible: unchanged data is a no-op, one new item recomputes only what changed. With the rolling-quarter corpus, expect costs near the civil reference (about 25 dollars per month) plus Whisper per caption-less video. See `docs/OPERATIONS.md`.
+A pinned PCA start vector, deterministic k-means init (seed-spread, no RNG), stable sort, and content-hash gating make the network rebuild reproducible: unchanged data is a no-op, one new item recomputes only what changed. The committed `worker/.cache/vector_manifest.json` records every vector id the worker owns with its text hash and metadata hash. Daily runs embed only records whose text hash is new or changed, call Pinecone metadata update for metadata-only drift, and delete stale ids by diffing the old manifest against the retained corpus and durable glossary. Full Pinecone `/vectors/list` is reserved for manual reconciliation and bounded audits, because it spends read units. With the rolling-quarter corpus, expect costs near the civil reference (about 25 dollars per month) plus Whisper per caption-less video. See `docs/OPERATIONS.md`.

@@ -53,6 +53,18 @@ export async function upsert(host, vectors, namespace = "") {
   }
 }
 
+export async function updateMetadata(host, updates, namespace = "") {
+  for (const u of updates) {
+    const r = await fetch(`https://${host}/vectors/update`, {
+      method: "POST",
+      headers: headers(),
+      body: JSON.stringify({ id: u.id, setMetadata: u.metadata || {}, namespace }),
+      signal: AbortSignal.timeout(30000),
+    });
+    if (!r.ok) throw new Error(`Pinecone update ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  }
+}
+
 export async function query(host, vector, { topK = 20, filter, includeMetadata = true, includeValues = false, namespace = "" } = {}) {
   const r = await fetch(`https://${host}/query`, {
     method: "POST",
@@ -77,8 +89,9 @@ export async function deleteByIds(host, ids, namespace = "") {
   }
 }
 
-// Enumerate vector ids (serverless list endpoint, paginated). Used for
-// idempotent dedupe and the retention prune.
+// Enumerate vector ids (serverless list endpoint, paginated). Keep this for
+// one-time audits and reconciliation only. Routine retention prune is driven by
+// worker/.cache/vector_manifest.json so scheduled runs do not spend read units.
 export async function listIds(host, { prefix = "", namespace = "" } = {}) {
   const ids = [];
   let token;

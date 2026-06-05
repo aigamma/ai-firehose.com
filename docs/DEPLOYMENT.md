@@ -40,19 +40,24 @@ The image bakes node, python3, ffmpeg, git, and yt-dlp. `ENABLE_TRANSCRIPTS=1`
 turns on YouTube transcript enrichment: captions via yt-dlp first, then an audio
 plus OpenAI Whisper (`whisper-1`) fallback for caption-less videos (needs
 `OPENAI_API_KEY`). `worker/publish.sh` is the entrypoint: clone, run, commit the
-artifacts (`public/data`, `public/sitemap.xml`, `public/feed.xml`) and the
-accumulating corpus (`worker/.cache/items.json`), then push to `main`.
+artifacts (`public/data`, `public/sitemap.xml`, `public/feed.xml`), the
+accumulating corpus (`worker/.cache/items.json`), and the vector manifest
+(`worker/.cache/vector_manifest.json`), then push to `main`.
 
-Cost: the rolling-quarter corpus keeps it near the civil reference (Pinecone plus
-a few dollars of Voyage) plus Claude classification (Haiku) on new items only
-(the classify cache makes re-runs cheap). Record runs in `docs/INGESTION_LOG.md`.
+Cost: the rolling-quarter corpus and vector manifest keep it near the civil
+reference (Pinecone plus a few dollars of Voyage) plus Claude classification
+(Haiku) on new items only. The classify cache makes re-runs cheap, and the
+manifest means unchanged corpus and durable glossary text skip Voyage. Record
+runs in `docs/INGESTION_LOG.md`.
 
 ## 2. Netlify site (live)
 
 The site `ai-firehose` is deployed with continuous deploy from GitHub `main`:
 every push to `main` (including the worker's daily artifact push) triggers a
-production build. The env vars `VOYAGE_API_KEY`, `PINECONE_API_KEY`, and
-`PINECONE_INDEX` (`ai-firehose`) are set, and `/api/retrieve` is verified working.
+production build. CI runs `npm run check:generated`, `npm test`, and
+`npm run build` before the build path is trusted. The env vars `VOYAGE_API_KEY`,
+`PINECONE_API_KEY`, and `PINECONE_INDEX` (`ai-firehose`) are set, and
+`/api/retrieve` is verified working.
 
 To reproduce from scratch (connect the GitHub repo in the Netlify UI, or):
 

@@ -33,6 +33,7 @@ function makeDeps({ matches = [], rerankImpl, rec = {} } = {}) {
       rerankImpl ||
       (async (_q, docs, topK) => {
         rec.rerankCalled = true;
+        rec.docs = docs;
         // Reverse the dense order so a passing rerank is observably different.
         return docs.map((_d, i) => ({ index: docs.length - 1 - i, relevance_score: 0.5 + i * 0.01 })).slice(0, topK);
       }),
@@ -102,6 +103,16 @@ test("a successful rerank reorders results and uses the rerank score", async () 
     out.every((r) => typeof r.score === "number"),
     "scores are numeric"
   );
+});
+
+test("rerank uses stored text before summary so durable entries rank on full content", async () => {
+  const rec = {};
+  const deps = makeDeps({
+    matches: [match(0, { metadata: { ...match(0).metadata, text: "Full entry text", summary: "Short summary" } })],
+    rec,
+  });
+  await semanticSearch("agents", { topN: 1 }, deps);
+  assert.deepEqual(rec.docs, ["Full entry text"]);
 });
 
 test("shaped results expose the metadata fields the read surface needs", async () => {

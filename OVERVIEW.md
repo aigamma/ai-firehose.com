@@ -62,9 +62,9 @@ In plain terms, here is the machine behind the surfaces.
 
 - **An AI-grown taxonomy.** Concepts are not a fixed vocabulary. The classifier discovers candidate concepts, the model names and defines genuinely new ones, and every candidate is fitted to the existing taxonomy by embedding similarity so near-duplicates collapse onto one concept with aliases instead of fragmenting.
 
-- **The embedding and retrieval substrate.** Everything is embedded with Voyage (voyage-3, 1024 dimensions) into a Pinecone vector store, which powers the semantic search, the concept neighbors, the clusters and spectrums, and the influence maps. Live search reranks results for quality.
+- **The embedding and retrieval substrate.** Everything is embedded with Voyage (voyage-3, 1024 dimensions) into a Pinecone vector store, which powers the semantic search, the concept neighbors, the clusters and spectrums, and the influence maps. A committed vector manifest records text and metadata hashes so daily runs embed only new or changed information. Live search reranks results for quality against the stored text.
 
-- **A self-expiring corpus.** Nothing older than about one quarter (100 days) is kept. A prune stage deletes aged items and their vectors, so the maps always depict the current frontier and the running cost stays flat no matter how long the site runs. The durable knowledge base is the deliberate exception.
+- **A self-expiring corpus.** Nothing older than about one quarter (100 days) is kept. A manifest-driven prune stage deletes aged items and their vectors, so the maps always depict the current frontier and the running cost stays flat without routine full Pinecone pulls. The durable knowledge base is the deliberate exception.
 
 - **The right model for the stakes.** Three tiers of Claude are used by cost and permanence: Haiku for high-volume per-item classification, Sonnet for the middle tier, and Opus 4.8 for the low-volume, high-stakes, enduring prose a smart reader keeps, the daily briefing and the glossary definitions. Cheap work gets the cheap model; permanent work gets the strongest one.
 
@@ -76,12 +76,13 @@ A lot of care went into making sure the system cannot quietly lie to itself, whi
 
 - **Cited claims.** Every AI-written summary and definition traces to the item or concept it describes. Source titles are kept verbatim as quotes.
 
-- **An anti-staleness harness.** The project's own documentation and knowledge graph are protected by code, not goodwill. Four CI gates, run by the test suite on every change, fail the build rather than letting things drift:
+- **An anti-staleness harness.** The project's own documentation, knowledge graph, and generated artifacts are protected by code, not goodwill. Five CI gates fail the build rather than letting things drift:
   1. Documentation freshness: every file path and command named in the docs must actually exist.
   2. Knowledge-graph integrity: every cross-link and every learning-path step must resolve to a real concept, and no alias is ambiguous enough to mislink.
   3. Writing rules: the project's house style (for one, no em dashes in generative text) is enforced automatically.
   4. Doc accuracy: public count claims and model-tier descriptions must match the generated artifacts and configured model registry.
-- **The automated test suite passes**, and continuous integration runs the suite and a production build on every change.
+  5. Generated artifact freshness: glossary, harness, and creators JSON must be regenerated and committed together.
+- **The automated test suite passes**, and continuous integration runs generated-artifact freshness, the suite, and a production build on every change.
 
 The discipline behind it is simple: a claim is not a result. "It works" is a story; the test that passes, the build that exits clean, the byte on disk, those are evidence. The system is built to prefer evidence.
 
@@ -92,15 +93,15 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 | Authored, durable knowledge-base concepts | 600 |
 | Knowledge categories | 33 |
 | Total concepts (durable plus live trending) | 904 |
-| Cross-category edges in the Atlas | 155 |
+| Cross-category edges in the Atlas | 161 |
 | Curated learning paths | 19 |
 | Cited concept images | 424 |
 | Items in the current rolling-quarter corpus | ~258 |
 | Source families behind the aggregator | 7 |
 | Time depths (Day, Week, Month, Quarter) | 4 |
 | Claude model tiers by stakes | 3 |
-| Anti-staleness CI gates | 4 |
-| Automated test files | 25 |
+| Anti-staleness CI gates | 5 |
+| Automated test files | 26 |
 
 ## Status and Roadmap
 

@@ -27,5 +27,6 @@ jobs:
       # non-hermetic mcp smoke is named mcp/smoke.mjs (not test-*.mjs) so the test
       # runner's auto-discovery skips it. Run it manually with `node mcp/smoke.mjs`.
       - run: npm ci
+      - run: npm run check:generated
       - run: npm test
       - run: npm run build

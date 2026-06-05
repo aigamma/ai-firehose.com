@@ -84,7 +84,7 @@ export default function Glossary() {
   // honestly and stop, so the counts and "No matches" never masquerade as real.
   if (error) {
     return (
-      <div className="stack" style={{ paddingTop: 24 }}>
+      <div className="stack glossary-page" style={{ paddingTop: 24 }}>
         <h1>Glossary</h1>
         <LoadError label="Glossary" />
       </div>
@@ -92,7 +92,7 @@ export default function Glossary() {
   }
 
   return (
-    <div className="stack" style={{ paddingTop: 24 }}>
+    <div className="stack glossary-page" style={{ paddingTop: 24 }}>
       <h1>Glossary</h1>
       <p className="lede muted">
         A durable knowledge base of {durableCount} authored concepts, from foundations and history to advanced

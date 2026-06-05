@@ -3,7 +3,15 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { requireKeys } from "../lib/env.mjs";
 import { embed } from "../lib/voyage.mjs";
-import { ensureIndex, upsert } from "../lib/pinecone.mjs";
+import { ensureIndex, upsert, updateMetadata, deleteByIds } from "../lib/pinecone.mjs";
+import { hash16 } from "../lib/hash.mjs";
+import {
+  loadVectorManifest,
+  markVectorSynced,
+  planVectorSync,
+  removeVectorIds,
+  saveVectorManifest,
+} from "./vector_manifest.mjs";
 
 /*
   Embed the DURABLE glossary into Pinecone so the live semantic search (RAG) is aware
@@ -12,10 +20,11 @@ import { ensureIndex, upsert } from "../lib/pinecone.mjs";
   targets, not just static pages.
 
   Vectors get `glossary::<slug>` ids and live in the same voyage-3 (1024-dim) space as
-  the corpus, so one query ranks both. The corpus retention reconcile in run.mjs skips
-  the `glossary::` prefix, so these persist with the durable layer instead of being
-  pruned as "not in the retained store". Idempotent: stable ids, re-running overwrites
-  in place.
+  the corpus, so one query ranks both. Manifest-driven deletion is scoped by vector
+  type, so these persist with the durable layer instead of being pruned as "not in
+  the retained store". Idempotent and cost-gated: stable ids, text hashes, and
+  metadata hashes in worker/.cache/vector_manifest.json mean daily runs embed only
+  changed glossary text, not the whole durable glossary.
 
   Run standalone: node --env-file=worker/.env.local worker/pipeline/embed_glossary.mjs
   It also runs as a step in run.mjs, right after the durable-glossary merge.
@@ -27,11 +36,10 @@ const GDIR = resolve(HERE, "../../public/data/glossary");
 const blockText = (b) => (b?.type === "ul" ? (b.items || []).join(". ") : b?.text || "");
 const bodyText = (body) => (Array.isArray(body) ? body.map(blockText).join(" ") : "");
 
-export async function embedGlossary() {
-  requireKeys(["PINECONE_API_KEY", "VOYAGE_API_KEY"]);
+export function glossaryVectorRecords() {
   const index = JSON.parse(readFileSync(resolve(GDIR, "index.json"), "utf8"));
   const durable = (index.concepts || []).filter((c) => c.durable);
-  const records = durable.map((c) => {
+  return durable.map((c) => {
     let hub = {};
     try {
       hub = JSON.parse(readFileSync(resolve(GDIR, "c", `${c.id}.json`), "utf8"));
@@ -50,26 +58,54 @@ export async function embedGlossary() {
         url: `/technique/${c.id}`,
         kind: c.kind || "technique",
         summary: def,
+        text,
         concepts: [c.id],
         author_or_channel: "Glossary",
         category: c.category || "",
         durable: true,
         source: "glossary",
+        content_hash: hash16(text),
       },
     };
   });
+}
+
+export async function embedGlossary() {
+  requireKeys(["PINECONE_API_KEY", "VOYAGE_API_KEY"]);
+  const records = glossaryVectorRecords();
 
   if (!records.length) {
     console.log("embed_glossary: no durable entries, nothing to do.");
     return 0;
   }
-  console.log(`embed_glossary: embedding ${records.length} durable glossary entries (voyage-3)...`);
-  const embeddings = await embed(records.map((r) => r.text), "document");
-  const vectors = records.map((r, i) => ({ id: r.id, values: embeddings[i], metadata: r.metadata }));
+
   const host = await ensureIndex();
-  await upsert(host, vectors);
-  console.log(`embed_glossary: upserted ${vectors.length} glossary vectors (glossary:: prefix) into ${process.env.PINECONE_INDEX || "ai-firehose"}.`);
-  return vectors.length;
+  let manifest = loadVectorManifest();
+  const plan = planVectorSync(manifest, records, "glossary");
+
+  if (plan.toEmbed.length) {
+    console.log(`embed_glossary: embedding ${plan.toEmbed.length} changed durable glossary entries (voyage-3)...`);
+    const embeddings = await embed(plan.toEmbed.map((r) => r.text), "document");
+    const vectors = plan.toEmbed.map((r, i) => ({ id: r.id, values: embeddings[i], metadata: r.metadata }));
+    await upsert(host, vectors);
+    manifest = markVectorSynced(manifest, plan.toEmbed, "glossary");
+  }
+
+  if (plan.toUpdate.length) {
+    await updateMetadata(host, plan.toUpdate);
+    manifest = markVectorSynced(manifest, plan.toUpdate, "glossary");
+  }
+
+  if (plan.staleIds.length) {
+    await deleteByIds(host, plan.staleIds);
+    manifest = removeVectorIds(manifest, plan.staleIds);
+  }
+
+  saveVectorManifest(manifest);
+  console.log(
+    `embed_glossary: total=${plan.total} embedded=${plan.toEmbed.length} metadata_updated=${plan.toUpdate.length} unchanged=${plan.unchanged} deleted=${plan.staleIds.length}.`
+  );
+  return plan.toEmbed.length;
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {

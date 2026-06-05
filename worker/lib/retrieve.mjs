@@ -26,7 +26,7 @@ export async function semanticSearch(q, { kind, topK = 30, topN = 8 } = {}, deps
 
   let ordered = matches.slice(0, topN);
   try {
-    const docs = matches.map((m) => (m.metadata?.summary || m.metadata?.title || "").slice(0, 1000));
+    const docs = matches.map((m) => (m.metadata?.text || m.metadata?.summary || m.metadata?.title || "").slice(0, 1000));
     const rr = await deps.rerank(q, docs, Math.min(topN, docs.length));
     ordered = rr.map((r) => ({ ...matches[r.index], _rr: r.relevance_score }));
   } catch {

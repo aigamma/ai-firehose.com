@@ -21,9 +21,9 @@ node worker/pipeline/run.mjs
 
 git config user.email "worker@ai-firehose.com"
 git config user.name "ai-firehose worker"
-# Commit the rebuilt artifacts (public/data, sitemap, feed) AND the accumulating
-# corpus (items.json) so the rolling quarter survives the next clone-fresh run.
-git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json
+# Commit the rebuilt artifacts, the accumulating corpus, and the vector manifest
+# so rolling-quarter retention and hash-gated embeddings survive clone-fresh runs.
+git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json worker/.cache/vector_manifest.json
 if git diff --cached --quiet; then
   echo "no artifact changes"
 else

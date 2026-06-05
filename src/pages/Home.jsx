@@ -180,7 +180,7 @@ export default function Home() {
               const k = itemKey(it);
               return (
                 <ItemCard
-                  key={it.id || k || i}
+                  key={`${it.id || k || "item"}-${i}`}
                   item={it}
                   linkConcepts
                   isNew={isNewSince(it, lastVisit)}
