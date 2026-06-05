@@ -100,7 +100,7 @@
   "body": [
     {
       "type": "p",
-      "text": "The Model Context Protocol (MCP) is an open standard, introduced by Anthropic in late 2024, for connecting language-model applications to external tools and data. It defines a common wire format and set of conventions so that a model host (the client) and a provider of capabilities (the server) can talk to each other without bespoke glue. An MCP server exposes some set of resources: tools the model can call, data sources it can read, and prompt templates it can use. Any MCP-compliant client (a chat application, an IDE, an agent runtime) can connect to any MCP server and immediately use what it offers, the same way a USB port lets any compliant device plug into any compliant host."
+      "text": "An open standard that Anthropic introduced in late 2024, the Model Context Protocol (MCP) lets language-model applications connect to external tools and data through one common interface. It defines a common wire format and set of conventions so that a model host (the client) and a provider of capabilities (the server) can talk to each other without bespoke glue. An MCP server exposes some set of resources: tools the model can call, data sources it can read, and prompt templates it can use. Any MCP-compliant client (a chat application, an IDE, an agent runtime) can connect to any MCP server and immediately use what it offers, the same way a USB port lets any compliant device plug into any compliant host."
     },
     {
       "type": "p",
@@ -112,7 +112,7 @@
     },
     {
       "type": "p",
-      "text": "MCP matters because it turns tool integration from a private, repeated engineering effort into a shared ecosystem that any ai-agent can draw on. An agent runtime that speaks MCP can be granted new abilities simply by pointing it at additional servers, no code change required, which makes the agent's tool-use and even its agent-memory pluggable. It composes with everything else in the agent stack: the same agentic-workflow logic and react-prompting loops run unchanged, but the catalog of actions they can take is now an open, growing set of interoperable servers rather than a fixed, hand-wired list."
+      "text": "MCP matters because it turns tool integration from a private, repeated engineering effort into a shared ecosystem that any ai-agent can draw on. An agent runtime that speaks MCP can be granted new abilities simply by pointing it at additional servers, no code change required, which makes the agent's tool-use and even its agent-memory pluggable. It composes with everything else in the agent stack: the same agentic-workflow logic and react-prompting loops run unchanged, but the catalog of actions they can take is now an open, growing set of interoperable servers rather than a fixed, hand-wired list. That openness is also the standing risk, since every server a client admits is code and data the model will act on, so the protocol's safety rests on humans curating which servers to trust and what each may touch, a governance burden the standard enables but does not resolve."
     }
   ],
   "related": [
