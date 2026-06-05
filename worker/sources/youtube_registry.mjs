@@ -44,7 +44,7 @@ function normalizeUrl(input) {
 
 export async function resolveChannel(input) {
   const url = normalizeUrl(input);
-  const r = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en" } });
+  const r = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en" }, signal: AbortSignal.timeout(15000) });
   if (!r.ok) throw new Error(`fetch ${r.status}`);
   const html = await r.text();
   // Prefer the authoritative RSS-alternate / canonical link; the first

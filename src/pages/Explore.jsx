@@ -1,30 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
+import LoadError from "../components/LoadError.jsx";
 import SemanticSearch from "../components/SemanticSearch.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { KINDS } from "../data/registry.js";
-
-// A distinct load-failure notice, visually separate from the dashed ".empty"
-// awaiting-ingestion box, so a real error is never read as "no data yet".
-function LoadError({ label }) {
-  return (
-    <div
-      role="alert"
-      style={{
-        border: "1px solid var(--q-lagging)",
-        borderLeftWidth: 3,
-        borderRadius: "var(--radius)",
-        padding: 16,
-        color: "var(--muted)",
-        background: "color-mix(in oklab, var(--q-lagging) 8%, transparent)",
-      }}
-    >
-      <strong style={{ display: "block", marginBottom: 4, color: "var(--text)" }}>{label}</strong>
-      Unable to load. Retry shortly.
-    </div>
-  );
-}
 
 function SpectrumView({ axis }) {
   const pts = axis.positions || [];

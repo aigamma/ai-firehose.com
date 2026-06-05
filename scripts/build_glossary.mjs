@@ -180,9 +180,9 @@ export function buildGlossary({ content = CONTENT, data = DATA } = {}) {
 
   const index = readJson(resolve(data, "index.json"), { concepts: [] });
   const generated = index.generated || new Date().toISOString().slice(0, 10);
-  // Optional cited-image sidecar: slug -> { url, alt, credit, source }. One file is
-  // far easier to curate than one frontmatter per entry. Images are hotlinked from Wikimedia
-  // (allowlisted in the CSP) and credited to their source page (the citation).
+  // Optional cited-image sidecar: slug -> { file, alt, credit, source }. One file
+  // is far easier to curate than one frontmatter per entry. Images are self-hosted
+  // under public/images/glossary and credited to their source page.
   const images = readJson(resolve(content, "images.json"), {});
   const byId = new Map((index.concepts || []).map((c) => [c.id, c]));
   const authoredById = new Map(entries.map((e) => [e.slug, e]));

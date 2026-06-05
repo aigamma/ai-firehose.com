@@ -3,13 +3,19 @@
   "label": "Context Management",
   "aliases": [
     "context engineering",
-    "context window management"
+    "context window management",
+    "context stacking"
   ],
   "kind": "technique",
-  "attention": 27,
+  "attention": 36,
   "first_seen": "2026-03-18T08:34:13+00:00",
   "rotation": null,
   "neighbors": [
+    {
+      "id": "context-compression",
+      "label": "context compression",
+      "score": 0.798
+    },
     {
       "id": "context-memory",
       "label": "context memory",
@@ -21,24 +27,29 @@
       "score": 0.783
     },
     {
+      "id": "context-management",
+      "label": "context management",
+      "score": 0.783
+    },
+    {
+      "id": "segmentation",
+      "label": "segmentation",
+      "score": 0.754
+    },
+    {
       "id": "in-context-scoring",
       "label": "in-context scoring",
-      "score": 0.714
+      "score": 0.749
     },
     {
-      "id": "personalization",
-      "label": "personalization",
-      "score": 0.706
+      "id": "observation-masking",
+      "label": "observation masking",
+      "score": 0.74
     },
     {
-      "id": "workflow-orchestration",
-      "label": "workflow orchestration",
-      "score": 0.701
-    },
-    {
-      "id": "context-compression",
-      "label": "context compression",
-      "score": 0.7
+      "id": "quantization",
+      "label": "quantization",
+      "score": 0.739
     }
   ],
   "axis_positions": [
@@ -120,6 +131,20 @@
       "author_or_channel": "Nate Herk | AI Automation",
       "published_at": "2026-05-19T21:36:51+00:00",
       "kind": "opinion"
+    },
+    {
+      "title": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "author_or_channel": "tirth8205",
+      "published_at": "2026-02-26T17:25:13Z",
+      "kind": "tool"
+    },
+    {
+      "title": "The Easiest Software Business to Start in 2026",
+      "url": "https://www.youtube.com/watch?v=KAufsCas_F4",
+      "author_or_channel": "Liam Ottley",
+      "published_at": "2026-02-23T09:19:45+00:00",
+      "kind": "tool"
     }
   ],
   "definition": "Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.",
@@ -180,5 +205,8 @@
       "label": "Agentic Workflow",
       "kind": "technique"
     }
+  ],
+  "folded_from": [
+    "context-stacking"
   ]
 }

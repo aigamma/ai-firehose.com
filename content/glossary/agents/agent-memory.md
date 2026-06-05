@@ -3,7 +3,7 @@ title: Agent Memory
 slug: agent-memory
 kind: technique
 category: Agents and Tool Use
-aliases: agent memory, long-term memory
+aliases: agent memory, long-term memory, memory systems
 related: ai-agent, planning, react-prompting, reflection, autonomous-agent, multi-agent-system, tool-use
 summary: The mechanisms an agent uses to retain and recall information across the steps of a task and across sessions, compensating for a language model that is stateless between calls and bounded by its context window. Its job is to give a forgetful model a usable, selective past: store the full history elsewhere and feed back only the fragments relevant now.
 ---

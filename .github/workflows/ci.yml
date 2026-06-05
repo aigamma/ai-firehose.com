@@ -22,10 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      # No committed lockfile, so install (not ci). The build and tests are
-      # hermetic: no secrets, no network. `npm test` is a bare `node --test`; the
+      # The root lockfile is committed, so install reproducibly. The build and
+      # tests are hermetic: no secrets, no network. `npm test` is a bare `node --test`; the
       # non-hermetic mcp smoke is named mcp/smoke.mjs (not test-*.mjs) so the test
       # runner's auto-discovery skips it. Run it manually with `node mcp/smoke.mjs`.
-      - run: npm install
+      - run: npm ci
       - run: npm test
       - run: npm run build

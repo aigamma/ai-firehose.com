@@ -1,6 +1,6 @@
 {
   "generated": "2026-06-02",
-  "count": 912,
+  "count": 904,
   "durable_count": 582,
   "concepts": [
     {
@@ -236,10 +236,11 @@
       "id": "agent-memory",
       "label": "Agent Memory",
       "kind": "technique",
-      "attention": 2,
+      "attention": 11,
       "aliases": [
         "agent memory",
-        "long-term memory"
+        "long-term memory",
+        "memory systems"
       ],
       "def_snippet": "The mechanisms an agent uses to retain and recall information across the steps of a task and across sessions, compensating for a language model that is stateless between calls and bounded by its context window. Its job is to give a forgetful model a usable, selective past: store the full history elsewhere and feed back only the fragments relevant now.",
       "durable": true,
@@ -296,16 +297,6 @@
       "def_snippet": ""
     },
     {
-      "id": "agent-wrapper",
-      "label": "agent wrapper",
-      "kind": "tool",
-      "attention": 10,
-      "aliases": [
-        "agent harness"
-      ],
-      "def_snippet": "An agent wrapper is a software framework that manages the interface between an AI agent and external tools or systems, handling input/output formatting and execution logic."
-    },
-    {
       "id": "agentic-ai",
       "label": "Agentic AI",
       "kind": "technique",
@@ -329,10 +320,11 @@
       "id": "agentic-harness",
       "label": "Agentic Harness",
       "kind": "technique",
-      "attention": 6,
+      "attention": 16,
       "aliases": [
         "agent harness",
-        "agentic scaffolding"
+        "agentic scaffolding",
+        "agent wrapper"
       ],
       "def_snippet": "The scaffolding arranged around a model, or a fleet of them, that lets agents work reliably without a human at every step: the conventions they auto-load, the tools they can call, a persistent memory, verification gates, and deterministic contracts that let many agents fan out without colliding. The harness is not the model; it is everything that turns a capable model into a dependable worker.",
       "durable": true,
@@ -533,14 +525,6 @@
       "def_snippet": "The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems. Its defining premise is that capability and safety do not advance automatically together, a more capable system is not thereby a safer one, and in several respects is harder to make safe.",
       "durable": true,
       "category": "Alignment and Safety"
-    },
-    {
-      "id": "ai-security",
-      "label": "AI security",
-      "kind": "opinion",
-      "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
     },
     {
       "id": "ai-winter",
@@ -831,14 +815,6 @@
       "category": "Agents and Tool Use"
     },
     {
-      "id": "autonomous-research",
-      "label": "autonomous research",
-      "kind": "tool",
-      "attention": 3,
-      "aliases": [],
-      "def_snippet": ""
-    },
-    {
       "id": "autoregressive-model",
       "label": "Autoregressive Model",
       "kind": "technique",
@@ -863,7 +839,7 @@
       "id": "autoresearch",
       "label": "Autoresearch",
       "kind": "technique",
-      "attention": 12,
+      "attention": 15,
       "aliases": [
         "autonomous research",
         "automated research",
@@ -1825,10 +1801,11 @@
       "id": "context-management",
       "label": "Context Management",
       "kind": "technique",
-      "attention": 27,
+      "attention": 36,
       "aliases": [
         "context engineering",
-        "context window management"
+        "context window management",
+        "context stacking"
       ],
       "def_snippet": "Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.",
       "durable": true,
@@ -1851,16 +1828,6 @@
       "attention": 5,
       "aliases": [],
       "def_snippet": ""
-    },
-    {
-      "id": "context-stacking",
-      "label": "context stacking",
-      "kind": "tool",
-      "attention": 9,
-      "aliases": [
-        "context reduction"
-      ],
-      "def_snippet": "Context stacking is a technique that organizes and layers multiple pieces of information or documents to help language models process complex tasks by maintaining relevant informat…"
     },
     {
       "id": "context-window",
@@ -2208,7 +2175,7 @@
       "id": "cybersecurity",
       "label": "Cybersecurity",
       "kind": "opinion",
-      "attention": 8,
+      "attention": 9,
       "aliases": [
         "AI cybersecurity",
         "AI security"
@@ -3018,18 +2985,10 @@
       "def_snippet": ""
     },
     {
-      "id": "evals",
-      "label": "evals",
-      "kind": "technique",
-      "attention": 6,
-      "aliases": [],
-      "def_snippet": ""
-    },
-    {
       "id": "evaluation",
       "label": "Evaluation",
       "kind": "technique",
-      "attention": 8,
+      "attention": 14,
       "aliases": [
         "model evaluation",
         "LLM evaluation",
@@ -5857,17 +5816,6 @@
       "category": "Systems and Infrastructure"
     },
     {
-      "id": "memory-systems",
-      "label": "memory systems",
-      "kind": "tool",
-      "attention": 9,
-      "aliases": [
-        "structured memory",
-        "memory management"
-      ],
-      "def_snippet": "Memory systems store and retrieve information from past interactions or computations to enable AI models to maintain context, learn patterns, or simulate ongoing states across mult…"
-    },
-    {
       "id": "mesa-optimization",
       "label": "Mesa-Optimization",
       "kind": "technique",
@@ -6953,16 +6901,6 @@
       "def_snippet": ""
     },
     {
-      "id": "orchestration",
-      "label": "orchestration",
-      "kind": "tool",
-      "attention": 9,
-      "aliases": [
-        "multi-step orchestration"
-      ],
-      "def_snippet": "Orchestration is a system or framework that coordinates multiple AI agents, models, or processes to work together sequentially or in parallel toward a shared goal."
-    },
-    {
       "id": "organizational-ai-implementation",
       "label": "organizational AI implementation",
       "kind": "opinion",
@@ -7900,7 +7838,7 @@
       "id": "recursive-self-improvement",
       "label": "Recursive Self-Improvement",
       "kind": "opinion",
-      "attention": 11,
+      "attention": 15,
       "aliases": [
         "self-improving AI",
         "seed AI"
@@ -8598,14 +8536,6 @@
     {
       "id": "self-improvement",
       "label": "self-improvement",
-      "kind": "opinion",
-      "attention": 4,
-      "aliases": [],
-      "def_snippet": ""
-    },
-    {
-      "id": "self-improving-ai",
-      "label": "self-improving AI",
       "kind": "opinion",
       "attention": 4,
       "aliases": [],
@@ -10434,11 +10364,12 @@
       "id": "workflow-orchestration",
       "label": "Workflow Orchestration",
       "kind": "technique",
-      "attention": 36,
+      "attention": 45,
       "aliases": [
         "LLM orchestration",
         "pipeline orchestration",
-        "agentic orchestration"
+        "agentic orchestration",
+        "orchestration"
       ],
       "def_snippet": "Coordinating multiple model calls, tools, and agents into a reliable multi-step pipeline: deciding what runs in sequence, what runs in parallel, where state passes between steps, and what happens when a step fails. It is the control plane that turns a collection of capable model calls into a system.",
       "durable": true,

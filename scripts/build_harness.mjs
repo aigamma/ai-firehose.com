@@ -60,7 +60,7 @@ const gates = listDir("scripts").filter((f) => /^check_.*\.mjs$/.test(f) && !f.e
 // Tier-2 subsystem docs (the append-only run log is excluded by design).
 const tier2 = listDir("docs").filter((f) => f.endsWith(".md") && f !== "INGESTION_LOG.md");
 // Automated checks: every node:test file the suite runs.
-const testFiles = [...walk("worker"), ...walk("scripts")].filter((f) => f.endsWith(".test.mjs"));
+const testFiles = [...walk("worker"), ...walk("scripts"), ...walk("src")].filter((f) => f.endsWith(".test.mjs"));
 // Cross-vendor pointer files that delegate to CLAUDE.md.
 const vendorPointers = [
   "AGENTS.md", "GEMINI.md", "opencode.md",

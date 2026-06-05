@@ -5,33 +5,13 @@ import TrendBoard from "../components/TrendBoard.jsx";
 import Briefing from "../components/Briefing.jsx";
 import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
 import ItemCard from "../components/ItemCard.jsx";
+import LoadError from "../components/LoadError.jsx";
 import useData from "../lib/useData.js";
 import useUnifiedAttention from "../lib/useUnifiedAttention.js";
 import useSeen from "../hooks/useSeen.js";
 import { itemKey, isNewSince, countNewSince, clearedCount, allCleared } from "../lib/seen.js";
 import useSrs from "../hooks/useSrs.js";
 import { SITE, HORIZONS, KINDS, DEFAULT_HORIZON, getHorizon, getKind } from "../data/registry.js";
-
-// A distinct load-failure notice, visually separate from the dashed ".empty"
-// awaiting-ingestion box, so a real error is never read as "no data yet".
-function LoadError({ label }) {
-  return (
-    <div
-      role="alert"
-      style={{
-        border: "1px solid var(--q-lagging)",
-        borderLeftWidth: 3,
-        borderRadius: "var(--radius)",
-        padding: 16,
-        color: "var(--muted)",
-        background: "color-mix(in oklab, var(--q-lagging) 8%, transparent)",
-      }}
-    >
-      <strong style={{ display: "block", marginBottom: 4, color: "var(--text)" }}>{label}</strong>
-      Unable to load. Retry shortly.
-    </div>
-  );
-}
 
 export default function Home() {
   const [horizon, setHorizon] = useState(DEFAULT_HORIZON);

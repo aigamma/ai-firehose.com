@@ -3,7 +3,7 @@ title: Context Management
 slug: context-management
 kind: technique
 category: AI Engineering
-aliases: context engineering, context window management
+aliases: context engineering, context window management, context stacking
 related: context-window, kv-cache, agent-memory, retrieval-augmented-generation, large-language-model, prompt-engineering, agentic-workflow
 summary: Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.
 ---

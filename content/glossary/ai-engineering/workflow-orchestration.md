@@ -3,7 +3,7 @@ title: Workflow Orchestration
 slug: workflow-orchestration
 kind: technique
 category: AI Engineering
-aliases: LLM orchestration, pipeline orchestration, agentic orchestration
+aliases: LLM orchestration, pipeline orchestration, agentic orchestration, orchestration
 related: agent-orchestration, agentic-workflow, multi-agent-system, task-decomposition, planning, ai-agent, agentic-harness
 summary: Coordinating multiple model calls, tools, and agents into a reliable multi-step pipeline: deciding what runs in sequence, what runs in parallel, where state passes between steps, and what happens when a step fails. It is the control plane that turns a collection of capable model calls into a system.
 ---

@@ -22,7 +22,7 @@ The site is built as an editorial intelligence service, not a dashboard of chart
 
 - **The Glossary, the crown jewel.** A durable, Opus-authored knowledge base of foundational, advanced, and exotic AI concepts (more below). This is the part built to last for years, not a day.
 
-- **The Atlas.** A view of the Glossary as a navigable constellation: the 31 knowledge categories drawn as linked nodes, sized by how many concepts they hold and connected by how densely they cross-reference each other. It makes the shape of the whole field legible at a glance, and clicking a category drops you into its concepts.
+- **The Atlas.** A view of the Glossary as a navigable constellation: the 33 knowledge categories drawn as linked nodes, sized by how many concepts they hold and connected by how densely they cross-reference each other. It makes the shape of the whole field legible at a glance, and clicking a category drops you into its concepts.
 
 - **Concept hubs.** Every concept, foundational or trending, has its own page: the authored explanation with wiki-style links to related ideas, a mesh of related concepts, and, where the live corpus is discussing it, its current momentum and the recent items that mention it.
 
@@ -42,11 +42,11 @@ Every concept name in any prose on the site is a link into its hub, so dense wri
 
 This is the layer built to endure, and it is the most substantial single thing in the project.
 
-- **453 authored concepts across 31 categories**, from foundations and history through advanced mathematics (linear algebra, calculus, probability, geometry and manifolds), deep learning, reinforcement learning, generative models, retrieval and embeddings, agents, systems and infrastructure, evaluation, alignment and safety, mechanistic interpretability, and into cognitive science and the philosophy of mind. Each entry is written at full strength by Claude Opus: a clear definition and a few paragraphs of genuine explanation, not a dictionary stub.
+- **582 authored concepts across 33 categories**, from foundations and history through advanced mathematics (linear algebra, calculus, probability, geometry and manifolds), deep learning, reinforcement learning, generative models, retrieval and embeddings, agents, systems and infrastructure, evaluation, alignment and safety, mechanistic interpretability, and into cognitive science and the philosophy of mind. Each entry is written at full strength by Claude Opus: a clear definition and a few paragraphs of genuine explanation, not a dictionary stub.
 
 - **It is a graph, not a list.** Every concept cross-links to related ones, and that mesh is dense (no concept is an island). The Atlas visualizes it; the wiki-style auto-linker uses it to turn every mention into a link.
 
-- **Cited images** are attached to concept hubs from a curated, credited sidecar of Wikimedia diagrams (15 so far, growing). Every image links to its source as the citation.
+- **Cited images** are attached to concept hubs from a curated, credited sidecar of self-hosted open images (424 so far, from many providers). Every image links to its source as the citation.
 
 - **Learning paths and flashcards** sit on top, so the knowledge base is not just a reference but a place to study.
 
@@ -76,11 +76,12 @@ A lot of care went into making sure the system cannot quietly lie to itself, whi
 
 - **Cited claims.** Every AI-written summary and definition traces to the item or concept it describes. Source titles are kept verbatim as quotes.
 
-- **An anti-staleness harness.** The project's own documentation and knowledge graph are protected by code, not goodwill. Three CI gates, run by the test suite on every change, fail the build rather than letting things drift:
+- **An anti-staleness harness.** The project's own documentation and knowledge graph are protected by code, not goodwill. Four CI gates, run by the test suite on every change, fail the build rather than letting things drift:
   1. Documentation freshness: every file path and command named in the docs must actually exist.
   2. Knowledge-graph integrity: every cross-link and every learning-path step must resolve to a real concept, and no alias is ambiguous enough to mislink.
   3. Writing rules: the project's house style (for one, no em dashes in generative text) is enforced automatically.
-- **76 automated tests pass**, and continuous integration runs the suite and a production build on every change.
+  4. Doc accuracy: public count claims and model-tier descriptions must match the generated artifacts and configured model registry.
+- **The automated test suite passes**, and continuous integration runs the suite and a production build on every change.
 
 The discipline behind it is simple: a claim is not a result. "It works" is a story; the test that passes, the build that exits clean, the byte on disk, those are evidence. The system is built to prefer evidence.
 
@@ -88,18 +89,18 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 
 | Thing | Count |
 |---|---|
-| Authored, durable knowledge-base concepts | 453 |
-| Knowledge categories | 31 |
-| Total concepts (durable plus live trending) | 845 |
-| Cross-category links in the Atlas | 475 |
+| Authored, durable knowledge-base concepts | 582 |
+| Knowledge categories | 33 |
+| Total concepts (durable plus live trending) | 904 |
+| Cross-category edges in the Atlas | 155 |
 | Curated learning paths | 19 |
-| Cited concept images (growing) | 15 |
+| Cited concept images | 424 |
 | Items in the current rolling-quarter corpus | ~258 |
 | Source families behind the aggregator | 7 |
 | Time depths (Day, Week, Month, Quarter) | 4 |
 | Claude model tiers by stakes | 3 |
-| Anti-staleness CI gates | 3 |
-| Automated tests passing | 76 |
+| Anti-staleness CI gates | 4 |
+| Automated test files | 25 |
 
 ## Status and Roadmap
 

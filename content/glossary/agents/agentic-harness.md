@@ -3,7 +3,7 @@ title: Agentic Harness
 slug: agentic-harness
 kind: technique
 category: Agents and Tool Use
-aliases: agent harness, agentic scaffolding
+aliases: agent harness, agentic scaffolding, agent wrapper
 related: agent-orchestration, multi-agent-system, agentic-workflow, human-in-the-loop, agent-memory, agent-evaluation, autonomous-agent, tool-use
 summary: The scaffolding arranged around a model, or a fleet of them, that lets agents work reliably without a human at every step: the conventions they auto-load, the tools they can call, a persistent memory, verification gates, and deterministic contracts that let many agents fan out without colliding. The harness is not the model; it is everything that turns a capable model into a dependable worker.
 ---
