@@ -1419,7 +1419,7 @@
         "LMSYS Arena",
         "LMArena"
       ],
-      "def_snippet": "A live evaluation platform where anonymous users compare two models' responses to the same prompt side by side and vote for the better one, aggregating the head-to-head votes into an Elo-style leaderboard that reflects real human preference rather than a fixed benchmark.",
+      "def_snippet": "A live evaluation platform where anonymous users compare two models' responses to the same prompt side by side and vote for the better one, aggregating the head-to-head votes into an Elo-style leaderboard that reflects real human preference rather than a fixed benchmark. Its value is that a live stream of fresh blind comparisons resists the saturation, leakage, and direct optimization that erode static benchmarks, though voters reward style and confidence.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -2854,7 +2854,7 @@
         "Elo score",
         "Bradley-Terry rating"
       ],
-      "def_snippet": "A method for ranking competitors from pairwise win-loss outcomes, originally for chess, now widely used to rank language models from head-to-head human preference votes such as those collected by Chatbot Arena.",
+      "def_snippet": "A method for ranking competitors from pairwise win-loss outcomes, originally for chess, now widely used to rank language models from head-to-head preference votes. The absolute numbers are arbitrary, only the difference between two ratings carries meaning (mapping through a logistic curve to a win probability), and the method's load-bearing assumptions, a single skill axis and transitivity, are exactly what intransitive model preferences can violate.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -4399,7 +4399,7 @@
         "human eval",
         "human rating"
       ],
-      "def_snippet": "The assessment of model outputs by people, the gold-standard signal for open-ended quality that automatic metrics only approximate; slow, costly, and subject to rater disagreement, but the ground truth against which cheaper proxies like model judges are validated.",
+      "def_snippet": "The assessment of model outputs by people, the gold-standard signal for open-ended quality that automatic metrics only approximate; slow, costly, and subject to rater disagreement, but the ground truth against which cheaper proxies are validated. When a metric is said to \"correlate with human preference,\" this is the thing it is correlated against, and its cost is the very bottleneck model judges were built to relieve.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -5384,7 +5384,7 @@
         "model-graded evaluation",
         "AI judge"
       ],
-      "def_snippet": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two. A scalable proxy for human judgment on open-ended tasks that have no fixed answer key.",
+      "def_snippet": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two, a scalable proxy for human judgment on open-ended tasks with no answer key. It carries a catalog of biases (position, verbosity, self-preference, sycophancy) and is strongest where the answer is a matter of quality, weakest exactly where verification is possible.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -5414,7 +5414,7 @@
         "lm-eval",
         "evaluation harness"
       ],
-      "def_snippet": "A widely used open-source framework that standardizes how language models are evaluated across hundreds of benchmarks, fixing prompt formats, few-shot setups, and scoring so results are reproducible and comparable across models.",
+      "def_snippet": "A widely used open-source framework that standardizes how language models are evaluated across hundreds of benchmarks, fixing prompt formats, few-shot setups, and scoring so results are reproducible and comparable. Its lesson is that a benchmark name alone is not a measurement: the harness and its exact settings are part of the measurement, which is why two reported numbers for the same benchmark can disagree.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -6409,7 +6409,7 @@
         "MT-Bench",
         "multi-turn benchmark"
       ],
-      "def_snippet": "A benchmark of challenging multi-turn questions that grades chat models on open-ended quality, with a strong model acting as the judge; it measures conversational helpfulness and instruction following rather than the multiple-choice knowledge that benchmarks like MMLU test.",
+      "def_snippet": "A benchmark of challenging multi-turn questions that grades chat models on open-ended quality with a strong model as the judge; it measures conversational helpfulness and instruction following rather than multiple-choice knowledge. It is the single-model, judge-scored complement to a head-to-head arena: a fixed battery of hard prompts produces an absolute score without waiting for a crowd of human comparisons to accumulate.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -7327,7 +7327,7 @@
         "pass-at-1",
         "pass@1"
       ],
-      "def_snippet": "The standard metric for code generation: the probability that at least one of k sampled solutions to a problem passes its tests. Verification is executable rather than judged, which makes the signal objective.",
+      "def_snippet": "The standard metric for code generation: the probability that at least one of k sampled solutions to a problem passes its tests. Correctness is decided by running the code, an objective executable check rather than a judged or reference-matched one, which makes it far less gameable, and the k captures a property unique to generative models, their usefulness under sampling (coverage versus single-shot reliability).",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -8376,7 +8376,7 @@
         "RewardBench",
         "reward model benchmark"
       ],
-      "def_snippet": "A benchmark for evaluating reward models, the scorers that steer RLHF, by testing whether they prefer the better of a chosen-versus-rejected response pair across categories like chat, safety, and reasoning, since a flawed reward model silently corrupts everything trained against it.",
+      "def_snippet": "A benchmark for evaluating reward models, the scorers that steer RLHF, by testing whether they prefer the better of a chosen-versus-rejected response pair across categories like chat, safety, and reasoning. It measures the part of the pipeline that usually goes untested, because a flawed reward model silently corrupts everything trained against it, so catching the error at its source is the whole point.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },

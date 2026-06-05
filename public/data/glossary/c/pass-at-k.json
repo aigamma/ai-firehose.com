@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The standard metric for code generation: the probability that at least one of k sampled solutions to a problem passes its tests. Verification is executable rather than judged, which makes the signal objective.",
+  "definition": "The standard metric for code generation: the probability that at least one of k sampled solutions to a problem passes its tests. Correctness is decided by running the code, an objective executable check rather than a judged or reference-matched one, which makes it far less gameable, and the k captures a property unique to generative models, their usefulness under sampling (coverage versus single-shot reliability).",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "It matters because executable verification sidesteps the deepest weakness of most other metrics. There is no partial credit and no ambiguity: the tests pass or they do not, so the signal is far less gameable than overlap scores or even llm-as-judge verdicts. The k in pass@k also captures a property unique and central to generative models: their usefulness under sampling. A model that solves a problem one time in ten is genuinely valuable in a workflow where a developer or an agent can run several attempts and keep the one that works, and pass@k makes that practical value measurable in a way that a single greedy attempt cannot."
+      "text": "It matters because executable verification sidesteps the deepest weakness of most other metrics, the keeper. There is no partial credit and no ambiguity: the tests pass or they do not, so the signal is far less gameable than overlap scores or even llm-as-judge verdicts. The k in pass@k also captures a property unique and central to generative models: their usefulness under sampling. A model that solves a problem one time in ten is genuinely valuable in a workflow where a developer or an agent can run several attempts and keep the one that works, and pass@k makes that practical value measurable in a way that a single greedy attempt cannot."
     },
     {
       "type": "p",

@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two. A scalable proxy for human judgment on open-ended tasks that have no fixed answer key.",
+  "definition": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two, a scalable proxy for human judgment on open-ended tasks with no answer key. It carries a catalog of biases (position, verbosity, self-preference, sycophancy) and is strongest where the answer is a matter of quality, weakest exactly where verification is possible.",
   "body": [
     {
       "type": "p",
@@ -26,7 +26,7 @@
     },
     {
       "type": "p",
-      "text": "The limitations are serious and well studied. Judge models carry biases: a position bias toward whichever answer is shown first, a verbosity bias toward longer answers, a self-preference bias toward outputs that resemble their own style, and a sycophancy bias toward confident, agreeable phrasing, all of which can reward the wrong thing. A judge can be fooled by fluent, authoritative prose that is factually wrong, since it has no independent ground truth, and it inherits the knowledge gaps and miscalibration (see calibration) of the underlying model. Using the same model family as both contestant and judge invites circularity, and because judge prompts are public, they are themselves exposed to the same gaming and benchmark-contamination pressures as any other benchmark."
+      "text": "The limitations are serious and well studied, and the bias catalog is the keeper. Judge models carry biases: a position bias toward whichever answer is shown first, a verbosity bias toward longer answers, a self-preference bias toward outputs that resemble their own style, and a sycophancy bias toward confident, agreeable phrasing, all of which can reward the wrong thing. A judge can be fooled by fluent, authoritative prose that is factually wrong, since it has no independent ground truth, and it inherits the knowledge gaps and miscalibration (see calibration) of the underlying model. Using the same model family as both contestant and judge invites circularity, and because judge prompts are public, they are themselves exposed to the same gaming and benchmark-contamination pressures as any other benchmark."
     },
     {
       "type": "p",

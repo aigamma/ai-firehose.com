@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A benchmark for evaluating reward models, the scorers that steer RLHF, by testing whether they prefer the better of a chosen-versus-rejected response pair across categories like chat, safety, and reasoning, since a flawed reward model silently corrupts everything trained against it.",
+  "definition": "A benchmark for evaluating reward models, the scorers that steer RLHF, by testing whether they prefer the better of a chosen-versus-rejected response pair across categories like chat, safety, and reasoning. It measures the part of the pipeline that usually goes untested, because a flawed reward model silently corrupts everything trained against it, so catching the error at its source is the whole point.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "This matters because errors in the reward model propagate silently and amplify. If the scorer systematically prefers longer answers, sycophantic agreement, or confident-sounding but wrong reasoning, the policy trained against it will learn exactly those traits, a form of reward hacking that is hard to notice from the policy's behavior alone. Evaluating the reward model directly catches the problem at its source."
+      "text": "This matters because errors in the reward model propagate silently and amplify, the keeper. If the scorer systematically prefers longer answers, sycophantic agreement, or confident-sounding but wrong reasoning, the policy trained against it will learn exactly those traits, a form of reward hacking that is hard to notice from the policy's behavior alone. Evaluating the reward model directly catches the problem at its source."
     },
     {
       "type": "p",
