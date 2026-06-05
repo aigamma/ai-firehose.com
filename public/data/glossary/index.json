@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
   "count": 904,
-  "durable_count": 582,
+  "durable_count": 588,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -182,13 +182,17 @@
     },
     {
       "id": "adversarial-ai",
-      "label": "adversarial AI",
+      "label": "Adversarial AI",
       "kind": "opinion",
       "attention": 7,
       "aliases": [
-        "adversarial evaluation"
+        "adversarial attacks",
+        "adversarial machine learning",
+        "AI red teaming"
       ],
-      "def_snippet": "Adversarial AI refers to AI systems designed or manipulated to deceive, attack, or circumvent other AI systems or human oversight through intentionally deceptive behavior."
+      "def_snippet": "The study of how AI systems fail under inputs crafted to fool them, and the techniques on both sides: attacks that exploit a model's blind spots, and defenses that try to close them. It exists because models are confidently wrong in ways their ordinary evaluation never reveals, and only an adversary thinks to find.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "affordance-understanding",
@@ -248,15 +252,16 @@
     },
     {
       "id": "agent-optimization",
-      "label": "agent optimization",
-      "kind": "opinion",
+      "label": "Agent Optimization",
+      "kind": "technique",
       "attention": 7,
       "aliases": [
-        "policy optimization",
-        "algorithm optimization",
-        "trajectory optimization"
+        "optimizing agents",
+        "agent tuning"
       ],
-      "def_snippet": "Agent optimization refers to the process of tailoring AI agent capabilities and behaviors to match specific model architectures, tasks, or temporal constraints rather than using un…"
+      "def_snippet": "Systematically improving an agent's reliability, cost, and speed after it works at all, by tuning its prompts, tools, memory, and control flow against measured outcomes. It is the move from an agent that works in a demo to one that works in production, and it is impossible without good evaluation.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "agent-orchestration",
@@ -644,13 +649,16 @@
     },
     {
       "id": "async-agents",
-      "label": "async agents",
+      "label": "Async Agents",
       "kind": "tool",
       "attention": 7,
       "aliases": [
-        "managed agents"
+        "asynchronous agents",
+        "background agents"
       ],
-      "def_snippet": "Async agents are AI systems that execute tasks independently over time without requiring continuous user interaction, useful for automating multi-step workflows that don't need rea…"
+      "def_snippet": "Agents that run in the background on long tasks and report back when done, rather than holding a live, turn-by-turn conversation. The shift from a chat you wait on to a delegated job you check on later, which is what lets agents take on work that takes minutes or hours.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "attack-taxonomy",
@@ -6265,13 +6273,16 @@
     },
     {
       "id": "multi-model-workflow",
-      "label": "multi-model workflow",
+      "label": "Multi-Model Workflow",
       "kind": "technique",
       "attention": 8,
       "aliases": [
-        "multi-model orchestration"
+        "multi-model pipeline",
+        "model ensemble workflow"
       ],
-      "def_snippet": "Multi-model workflow is a technique that routes tasks to different AI models based on their strengths, combining complementary capabilities to improve overall performance on comple…"
+      "def_snippet": "Using more than one model within a single task, routing each step to the model best suited to it, one to plan, another to write, a cheaper one for bulk, so the system exploits each model's strengths instead of forcing one model to do everything. A bet that the right division of labor beats any single model.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "multi-platform-integration",
@@ -7552,11 +7563,16 @@
     },
     {
       "id": "prompt-chaining",
-      "label": "prompt chaining",
-      "kind": "tool",
+      "label": "Prompt Chaining",
+      "kind": "technique",
       "attention": 8,
-      "aliases": [],
-      "def_snippet": "Prompt chaining is a technique that breaks complex tasks into sequential prompts where each output feeds into the next prompt, enabling AI systems to handle multistep workflows."
+      "aliases": [
+        "prompt pipelines",
+        "chained prompts"
+      ],
+      "def_snippet": "Breaking a complex task into a sequence of separate model calls, each handling one step and feeding its output into the next, rather than asking a single prompt to do everything at once. It trades more calls and latency for reliability, because each focused step is easier for the model to get right.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "prompt-engineering",
@@ -8423,14 +8439,17 @@
     },
     {
       "id": "scheduling",
-      "label": "scheduling",
+      "label": "Scheduling",
       "kind": "tool",
       "attention": 9,
       "aliases": [
-        "job scheduling",
-        "temporal scheduling"
+        "agent scheduling",
+        "task scheduling",
+        "scheduled agents"
       ],
-      "def_snippet": "A system that determines when and in what order computational tasks, AI model inference requests, or routine executions are processed to optimize resource utilization and performan…"
+      "def_snippet": "Running an agent or automation on a trigger, a fixed time, an interval, or an event, rather than only on demand, so work happens without a person initiating it. The shift from a tool you invoke to a worker that acts on its own schedule, which is what turns an assistant into something that runs your routines.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "score-distillation",

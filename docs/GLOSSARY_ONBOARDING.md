@@ -114,7 +114,7 @@ strength; the author will do later quality passes, but do not cut corners.
 
 ## Status (UPDATE PER BATCH)
 
-As of **2026-06-05**: **582 durable entries**, ~**322 genuinely-new remaining**. Everything below is
+As of **2026-06-05**: **588 durable entries**, ~**316 genuinely-new remaining**. Everything below is
 **pushed to `origin/main` and deployed to Netlify**.
 
 Done so far this campaign:
@@ -134,8 +134,10 @@ Done so far this campaign:
   yaml-workflows.
 - `039b8e2` dedup pass: folded 8 more duplicates (agent-wrapper, orchestration, memory-systems,
   context-stacking, plus 4 plural variants) and added the `check_doc_accuracy` count gate.
+- batch 6: scheduling, multi-model-workflow, prompt-chaining, async-agents, adversarial-ai,
+  agent-optimization.
 
-Net so far: **31 authored entries** (agentic-harness plus 30 across five batches) and **38 folded
+Net so far: **37 authored entries** (agentic-harness plus 36 across six batches) and **38 folded
 duplicates**, all in the board-visible head. What remains is mostly the **long tail** (attention 9 and
 below): re-run the backlog query for the current top, for example scheduling, multi-model-workflow,
 prompt-chaining, async-agents, adversarial-ai, agent-optimization, software-engineering, and downward.
