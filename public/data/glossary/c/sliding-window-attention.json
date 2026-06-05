@@ -10,15 +10,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An attention pattern where each token attends only to a fixed-size window of recent tokens rather than the entire sequence, making attention cost grow linearly with length and bounding the KV cache for long context.",
+  "definition": "An attention pattern where each token attends only to a fixed window of recent tokens, not the whole sequence, making attention cost linear in length and bounding the KV cache. The clever part is that depth rescues range: because the window applies at every layer, the effective reach grows many windows wide up the stack, exactly as a CNN builds a large receptive field from small filters.",
   "body": [
     {
       "type": "p",
-      "text": "Sliding window attention attacks the quadratic cost of full self-attention by limiting how far each token can look. Instead of letting every token attend to all previous tokens, each one attends only to a fixed window of the most recent W tokens. The work per token becomes constant rather than growing with sequence length, so total attention cost is linear in the sequence, and the kv-cache needed during generation is bounded by the window instead of the full history."
+      "text": "Sliding window attention attacks the quadratic cost of full self-attention by limiting how far each token can look. Instead of letting every token attend to all previous tokens, each one attends only to a fixed window of the most recent W tokens, so the work per token becomes constant rather than growing with sequence length, the total attention cost is linear in the sequence, and the kv-cache needed during generation is bounded by the window instead of the full history."
     },
     {
       "type": "p",
-      "text": "The obvious worry is that a token can no longer see anything older than its window, but depth rescues range. Because the window applies at every layer, information propagates outward as it flows up the stack, much as a convolutional neural network builds a large receptive field from small local filters. A token at layer two can be influenced by a neighbor that, at layer one, already absorbed a token further back, so after several layers the effective reach is many windows wide even though each layer is strictly local."
+      "text": "The obvious worry is that a token can no longer see anything older than its window, but depth rescues range, and that is the keeper. Because the window applies at every layer, information propagates outward as it flows up the stack, much as a convolutional neural network builds a large receptive field from small local filters: a token at layer two can be influenced by a neighbor that, at layer one, already absorbed a token further back, so after several layers the effective reach is many windows wide even though each layer is strictly local."
     },
     {
       "type": "p",

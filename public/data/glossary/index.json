@@ -754,7 +754,7 @@
         "attention sinks",
         "sink token"
       ],
-      "def_snippet": "The empirical tendency of transformers to dump a large share of attention weight onto a few early tokens, often the very first one, which act as a no-op drain that the softmax needs, with consequences for streaming and long-context inference.",
+      "def_snippet": "The empirical tendency of transformers to dump a large share of attention onto a few early tokens, often the very first, which act as a no-op drain the softmax demands. It is a clear case of an architectural constraint producing behavior unrelated to meaning, and its discovery fixed long-context streaming: keep a few \"sink\" tokens permanently in the cache or generation collapses.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -1334,7 +1334,7 @@
         "masked self-attention",
         "causal masking"
       ],
-      "def_snippet": "Self-attention with a mask that stops each position from attending to future tokens, enforcing the left-to-right constraint that lets a model train on next-token prediction over a whole sequence at once; the mechanism that makes decoder-only LLMs autoregressive.",
+      "def_snippet": "Self-attention with a mask that forbids each position from attending to future tokens, enforcing the left-to-right constraint of generation. Its quiet payoff is efficiency: because no position can peek at the answer, you can train next-token prediction on every position of a whole sequence in one parallel pass, and it is the line dividing a decoder-only LLM from a bidirectional encoder like BERT.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -2130,7 +2130,7 @@
         "cross attention",
         "encoder-decoder attention"
       ],
-      "def_snippet": "Attention in which the queries come from one sequence while the keys and values come from another, letting a model condition its output on a separate input such as a source sentence, an image, or retrieved text.",
+      "def_snippet": "Attention in which the queries come from one sequence while the keys and values come from another, so a model can condition its output on a separate input. That one change, where the three vectors come from, turns attention into a general bridge between sources and modalities: a decoder attending to a source sentence, generated text attending to image features, a model folding in retrieved documents.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -4229,7 +4229,7 @@
         "GQA",
         "grouped query attention"
       ],
-      "def_snippet": "An attention variant that lets several query heads share a single key and value projection instead of each head owning its own, shrinking the KV cache and the memory bandwidth that dominate inference, with little loss in quality.",
+      "def_snippet": "An attention variant that lets several query heads share one key and value projection instead of each head owning its own, shrinking the KV cache and the memory bandwidth that actually bottleneck inference, with little quality loss. It is the middle of the spectrum between full multi-head attention and the extreme multi-query attention, and it is now a default in modern open-weight models.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -6506,7 +6506,7 @@
         "MQA",
         "multi query attention"
       ],
-      "def_snippet": "An attention variant in which all query heads share a single key and value head, shrinking the KV cache to its minimum for fast inference, at a cost to quality that grouped-query attention later softened.",
+      "def_snippet": "The aggressive end of the attention-efficiency spectrum: all query heads share a single key and value head, shrinking the KV cache to its minimum for fast inference, at a real cost to quality and training stability that grouped-query attention later softened. It is mostly worth knowing as the extreme the modern compromise is measured against.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -8514,7 +8514,7 @@
         "rotary embeddings",
         "rotary positional encoding"
       ],
-      "def_snippet": "A positional encoding scheme that rotates the query and key vectors by an angle proportional to each token's position, so that attention scores depend naturally on the relative distance between tokens.",
+      "def_snippet": "The positional encoding in most current LLMs: rotate each query and key vector by an angle proportional to its position, so the dot product between them, and therefore the attention score, depends only on their relative distance. It uses no learned parameters and, because position enters as a rescalable rotation angle, extends to longer contexts gracefully.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -9010,7 +9010,7 @@
         "windowed attention",
         "sliding-window attention"
       ],
-      "def_snippet": "An attention pattern where each token attends only to a fixed-size window of recent tokens rather than the entire sequence, making attention cost grow linearly with length and bounding the KV cache for long context.",
+      "def_snippet": "An attention pattern where each token attends only to a fixed window of recent tokens, not the whole sequence, making attention cost linear in length and bounding the KV cache. The clever part is that depth rescues range: because the window applies at every layer, the effective reach grows many windows wide up the stack, exactly as a CNN builds a large receptive field from small filters.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
