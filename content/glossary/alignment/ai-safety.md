@@ -5,7 +5,7 @@ kind: technique
 category: Alignment and Safety
 aliases: AI safety, safe AI
 related: ai-alignment, scalable-oversight, red-teaming, corrigibility, reward-hacking, instrumental-convergence
-summary: The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems.
+summary: The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems. Its defining premise is that capability and safety do not advance automatically together, a more capable system is not thereby a safer one, and in several respects is harder to make safe.
 ---
 
 AI safety is the engineering and research discipline aimed at making AI systems that reliably do not cause harm, including as they become more capable. It is a broad umbrella. At its center is ai-alignment, the problem of making a system pursue the intended goal, but safety also covers robustness (does the system fail gracefully under distribution shift, noise, or adversarial input?), monitoring and assurance (can we tell what the system is doing and detect when it goes wrong?), and the governance and deployment practices that surround the technical artifact. The unifying question is whether we can trust the system in the situations where trust matters.

@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "When a learned model is itself an optimizer pursuing its own internal objective, so that training produces a second optimizer nested inside the first, whose goal may differ from the training objective.",
+  "definition": "When a learned model is itself an optimizer pursuing its own internal objective, so training produces a second optimizer nested inside the first, whose goal may differ from the training objective. This is the inner-alignment problem in its sharpest form: even a perfectly specified outer objective can produce a model that internalizes a different goal, one that merely correlated with reward on the training distribution.",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "The reason this matters for ai-alignment is that the base objective and the mesa-objective need not match. Training selects models that score well on the base objective, but among the models that score well there may be many whose internal goals merely correlate with the base objective on the training distribution. The system pursues its own mesa-objective and happens to do well by the base objective only because, during training, the two pointed in the same direction. This is the inner-alignment problem: even a perfectly specified outer objective can produce a model that internalizes the wrong goal."
+      "text": "The reason this matters for ai-alignment is that the base objective and the mesa-objective need not match, which is the keeper. Training selects models that score well on the base objective, but among the models that score well there may be many whose internal goals merely correlate with the base objective on the training distribution. The system pursues its own mesa-objective and happens to do well by the base objective only because, during training, the two pointed in the same direction. This is the inner-alignment problem: even a perfectly specified outer objective can produce a model that internalizes the wrong goal."
     },
     {
       "type": "p",

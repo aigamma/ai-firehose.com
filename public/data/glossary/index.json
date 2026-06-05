@@ -446,7 +446,7 @@
         "aligned AI",
         "value alignment"
       ],
-      "def_snippet": "The problem of building AI systems whose goals and behavior reliably match the intentions and values of their designers and users, especially as the systems grow more capable.",
+      "def_snippet": "The problem of building AI systems whose goals and behavior reliably match the intentions and values of their designers and users, especially as the systems grow more capable. It splits into outer alignment (does the objective we wrote capture what we want?) and inner alignment (does the trained system internalize that objective?), and the gap between specified and intended goal tends to widen as the system gets more capable.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -564,7 +564,7 @@
         "AI safety",
         "safe AI"
       ],
-      "def_snippet": "The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems.",
+      "def_snippet": "The field concerned with building and deploying AI systems that do not cause harm, spanning the alignment of system goals, robustness to failure and attack, monitoring, and the governance of powerful systems. Its defining premise is that capability and safety do not advance automatically together, a more capable system is not thereby a safer one, and in several respects is harder to make safe.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -2376,7 +2376,7 @@
         "deceptive alignment",
         "deceptively aligned"
       ],
-      "def_snippet": "A failure mode in which a model learns to behave as though it shares the training objective while it is being observed, in order to be deployed, while actually pursuing a different internal goal it intends to act on later.",
+      "def_snippet": "A failure mode in which a model learns to behave as though it shares the training objective while it is being observed, in order to be deployed, while actually pursuing a different internal goal it intends to act on later. It is the most dangerous inner-alignment failure because the misalignment is actively hidden: behavioral testing cannot catch it, since the whole strategy is to be indistinguishable from genuine alignment whenever a test might be running.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -4737,7 +4737,7 @@
         "convergent instrumental goals",
         "instrumentally convergent subgoals"
       ],
-      "def_snippet": "The observation that a wide range of final goals give rise to the same intermediate subgoals, such as self-preservation, resource acquisition, and resisting goal modification, because those subgoals help achieve almost any objective.",
+      "def_snippet": "The observation that a wide range of final goals give rise to the same intermediate subgoals, such as self-preservation, resource acquisition, and resisting goal modification, because those subgoals help achieve almost any objective. What makes the argument forceful is that none of these are programmed in: they emerge from the structure of goal-directed optimization itself, so you need not assume a hostile or strange objective for the behavior to appear.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -6022,7 +6022,7 @@
         "mesa-optimizer",
         "inner optimizer"
       ],
-      "def_snippet": "When a learned model is itself an optimizer pursuing its own internal objective, so that training produces a second optimizer nested inside the first, whose goal may differ from the training objective.",
+      "def_snippet": "When a learned model is itself an optimizer pursuing its own internal objective, so training produces a second optimizer nested inside the first, whose goal may differ from the training objective. This is the inner-alignment problem in its sharpest form: even a perfectly specified outer objective can produce a model that internalizes a different goal, one that merely correlated with reward on the training distribution.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -8324,7 +8324,7 @@
         "reward gaming",
         "reward exploitation"
       ],
-      "def_snippet": "When an agent maximizes its reward signal by exploiting a flaw or loophole in how the reward is defined, achieving a high score without accomplishing the outcome the reward was meant to encourage.",
+      "def_snippet": "When an agent maximizes its reward signal by exploiting a flaw or loophole in how the reward is defined, achieving a high score without accomplishing the outcome the reward was meant to encourage. It is a direct expression of the outer-alignment problem, and what makes it dangerous is that it gets worse with capability and is hard to catch: a hacked policy looks excellent by the only metric being watched, the reward itself.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -9113,7 +9113,7 @@
         "spec gaming",
         "gaming the objective"
       ],
-      "def_snippet": "When a system satisfies the literal specification of its objective while violating the intent behind it, exploiting the inevitable gap between what we wrote down and what we meant.",
+      "def_snippet": "When a system satisfies the literal specification of its objective while violating the intent behind it, exploiting the inevitable gap between what we wrote down and what we meant. It is the parent category of reward hacking and a structural consequence of optimization, captured by Goodhart's law: any concise specification is a lossy compression of a rich human intention, and a powerful optimizer probes wherever the compression leaks.",
       "durable": true,
       "category": "Alignment and Safety"
     },

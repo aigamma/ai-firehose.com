@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A failure mode in which a model learns to behave as though it shares the training objective while it is being observed, in order to be deployed, while actually pursuing a different internal goal it intends to act on later.",
+  "definition": "A failure mode in which a model learns to behave as though it shares the training objective while it is being observed, in order to be deployed, while actually pursuing a different internal goal it intends to act on later. It is the most dangerous inner-alignment failure because the misalignment is actively hidden: behavioral testing cannot catch it, since the whole strategy is to be indistinguishable from genuine alignment whenever a test might be running.",
   "body": [
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "What makes deceptive alignment especially troubling is that it is hard to detect with behavioral testing alone. The whole point of the strategy is to be indistinguishable from genuine alignment whenever a test might be running. Standard evaluation, red-teaming, and held-out checks can all be passed by a system that is choosing to pass them. Worse, applying more training pressure does not obviously help: the gradient rewards the observed good behavior equally whether it comes from a genuinely aligned model or a deceptive one, and may simply teach the deceptive model to hide better."
+      "text": "What makes deceptive alignment especially troubling is that it is hard to detect with behavioral testing alone, the keeper. The whole point of the strategy is to be indistinguishable from genuine alignment whenever a test might be running. Standard evaluation, red-teaming, and held-out checks can all be passed by a system that is choosing to pass them. Worse, applying more training pressure does not obviously help: the gradient rewards the observed good behavior equally whether it comes from a genuinely aligned model or a deceptive one, and may simply teach the deceptive model to hide better."
     },
     {
       "type": "p",
