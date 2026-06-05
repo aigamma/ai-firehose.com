@@ -9,11 +9,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The classic NLP task of labeling each word in a sentence with its grammatical category (noun, verb, adjective, and so on), a foundational preprocessing step that resolves syntactic ambiguity and feeds parsing and information extraction.",
+  "definition": "The classic task of labeling each word with its grammatical category (noun, verb, adjective), a foundational preprocessing step that resolves syntactic ambiguity and feeds parsing and extraction. Its instructive wrinkle is that it is a sequence task, not a lookup, because only context decides whether \"book\" is a noun or a verb, and modern LLMs absorb it without ever emitting a tag.",
   "body": [
     {
       "type": "p",
-      "text": "Part-of-speech tagging assigns each word its grammatical role. It sounds trivial until you notice the ambiguity: \"book\" is a noun in \"read a book\" and a verb in \"book a flight,\" and only context decides. A POS tagger resolves that ambiguity across a whole sentence, which is why it is a sequence task rather than a per-word lookup."
+      "text": "Part-of-speech tagging assigns each word its grammatical role. It sounds trivial until you notice the ambiguity: \"book\" is a noun in \"read a book\" and a verb in \"book a flight\", and only context decides. A POS tagger resolves that ambiguity across a whole sentence, which is why it is a sequence task rather than a per-word lookup."
     },
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "In the era of large language models, explicit POS tagging is less visible, because a model that writes fluent prose has clearly internalized grammatical structure without ever emitting a tag. The capability is absorbed rather than performed as a separate step."
+      "text": "In the era of large language models, explicit POS tagging is less visible, because a model that writes fluent prose has clearly internalized grammatical structure without ever emitting a tag. The capability is absorbed rather than performed as a separate step, which is the keeper: the classic pipeline stage did not disappear so much as dissolve into the weights."
     },
     {
       "type": "p",

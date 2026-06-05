@@ -937,7 +937,7 @@
         "BoW",
         "bag-of-words model"
       ],
-      "def_snippet": "A foundational text representation that describes a document by which words it contains and how often, discarding word order entirely, turning text into a fixed-length vector of term counts over a vocabulary.",
+      "def_snippet": "A text representation that describes a document by which words it contains and how often, discarding word order entirely, turning text into a fixed-length vector of counts over a vocabulary. Its defining flaw is exactly that lost order, \"dog bit man\" and \"man bit dog\" are identical, yet for tasks driven by which words are present it is a fast, strong baseline, the one everything later reacted against.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -1755,7 +1755,7 @@
         "CRF",
         "linear-chain CRF"
       ],
-      "def_snippet": "A probabilistic model for sequence labeling that predicts an entire label sequence jointly, modeling the dependencies between adjacent labels, which made it the dominant pre-neural method for tasks like named-entity recognition and part-of-speech tagging.",
+      "def_snippet": "A probabilistic model for sequence labeling that predicts an entire label sequence jointly, modeling how adjacent labels constrain each other, which made it the dominant pre-neural method for named-entity recognition and part-of-speech tagging. Its enduring lesson: when outputs are structured and interdependent, model the structure of the output, do not classify each piece alone.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -5157,7 +5157,7 @@
         "latent semantic indexing",
         "LSI"
       ],
-      "def_snippet": "An early method that uncovers latent topics in a collection of documents by applying singular value decomposition to a term-document matrix, mapping words and documents into a shared low-dimensional semantic space.",
+      "def_snippet": "An early method that uncovers latent topics by applying singular value decomposition to a term-document matrix, mapping words and documents into one shared low-dimensional semantic space. Its payoff is attacking synonymy, two documents that share no words can still land close if they use linked synonyms, and it is the linear, count-based ancestor of the word embedding.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -6621,7 +6621,7 @@
         "bigram model",
         "trigram model"
       ],
-      "def_snippet": "A classic statistical language model that estimates the probability of the next word from the previous n minus one words, using counts of short word sequences gathered from a corpus.",
+      "def_snippet": "A statistical language model that estimates the next word from only the previous few, counting short word sequences in a corpus under a Markov approximation. Its defining flaw is a short, fixed memory, raising n to see further makes the counts explode and go sparse, and it is the direct conceptual ancestor of the modern LLM, a vastly more capable answer to the same question: what word comes next.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -7302,7 +7302,7 @@
         "POS tagging",
         "part of speech tagging"
       ],
-      "def_snippet": "The classic NLP task of labeling each word in a sentence with its grammatical category (noun, verb, adjective, and so on), a foundational preprocessing step that resolves syntactic ambiguity and feeds parsing and information extraction.",
+      "def_snippet": "The classic task of labeling each word with its grammatical category (noun, verb, adjective), a foundational preprocessing step that resolves syntactic ambiguity and feeds parsing and extraction. Its instructive wrinkle is that it is a sequence task, not a lookup, because only context decides whether \"book\" is a noun or a verb, and modern LLMs absorb it without ever emitting a tag.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -9787,7 +9787,7 @@
         "term frequency-inverse document frequency",
         "tfidf"
       ],
-      "def_snippet": "A classic weighting scheme that scores how important a term is to a document by multiplying how often the term appears in that document by how rare the term is across the whole collection.",
+      "def_snippet": "A weighting scheme that scores how characteristic a term is of a document by multiplying how often it appears there by how rare it is across the whole collection, so words frequent here but rare elsewhere score high and ubiquitous words like \"the\" score near zero. Cheap, interpretable, and still a strong retrieval baseline, its blind spot is meaning: it treats synonyms as unrelated.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -9955,7 +9955,7 @@
         "LDA",
         "latent Dirichlet allocation"
       ],
-      "def_snippet": "An unsupervised technique for discovering the latent themes running through a collection of documents, representing each document as a mixture of topics and each topic as a distribution over words; Latent Dirichlet Allocation is the classic method.",
+      "def_snippet": "An unsupervised technique that discovers the latent themes running through a collection of documents, representing each document as a mixture of topics and each topic as a distribution over words, with Latent Dirichlet Allocation the classic method. Its modern descendant clusters embeddings instead of counts, and it is a direct cousin of this project's AI-grown taxonomy.",
       "durable": true,
       "category": "NLP Foundations"
     },
