@@ -8,15 +8,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The mathematical framework that formalizes sequential decision making under uncertainty, defined by states, actions, transition probabilities, and rewards, and serving as the standard model on which reinforcement learning is built.",
+  "definition": "The mathematical framework that formalizes sequential decision making under uncertainty, defined by states, actions, transition probabilities, and rewards, the standard model on which reinforcement learning is built. Its load-bearing assumption is the Markov property, that the present state is a sufficient summary of the past, which is exactly the condition that lets the Bellman equation decompose a long trajectory into a one-step recursion.",
   "body": [
     {
       "type": "p",
-      "text": "A Markov decision process, or MDP, is the formal model that almost all of reinforcement learning assumes underneath. It describes an agent interacting with an environment over time: at each step the agent observes a state, chooses an action, receives a reward, and transitions to a new state. An MDP is specified by four pieces, often summarized as a tuple: the set of states, the set of actions, the transition probabilities that say how likely each next state is given the current state and action, and the reward function. A discount factor is usually added to weigh near-term reward against the distant future."
+      "text": "A Markov decision process, or MDP, is the formal model almost all of reinforcement learning assumes underneath. It describes an agent interacting with an environment over time: at each step the agent observes a state, chooses an action, receives a reward, and transitions to a new state. An MDP is specified by four pieces, often summarized as a tuple: the set of states, the set of actions, the transition probabilities that say how likely each next state is given the current state and action, and the reward function. A discount factor is usually added to weigh near-term reward against the distant future."
     },
     {
       "type": "p",
-      "text": "The defining assumption is the Markov property, which gives the framework its name: the next state and reward depend only on the current state and action, not on the full history of how the agent arrived there. In other words, the present state is a sufficient summary of the past for the purpose of deciding what to do next. This property is what makes the problem tractable; it is exactly the condition that lets the bellman-equation decompose a long trajectory into a one-step recursion."
+      "text": "The defining assumption is the Markov property, which gives the framework its name and is the keeper: the next state and reward depend only on the current state and action, not on the full history of how the agent arrived there. In other words, the present state is a sufficient summary of the past for the purpose of deciding what to do next, and this property is what makes the problem tractable, exactly the condition that lets the bellman-equation decompose a long trajectory into a one-step recursion."
     },
     {
       "type": "p",

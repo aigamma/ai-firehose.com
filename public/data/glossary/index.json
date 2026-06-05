@@ -1099,7 +1099,7 @@
         "Bellman equation",
         "Bellman optimality equation"
       ],
-      "def_snippet": "A recursive consistency condition stating that the value of a state equals the immediate reward plus the discounted value of the states that follow, providing the mathematical foundation for nearly every reinforcement learning algorithm.",
+      "def_snippet": "A recursive consistency condition stating that the value of a state equals the immediate reward plus the discounted value of the states that follow, the mathematical foundation of nearly every reinforcement learning algorithm. It turns an impossible question, the total reward stretching off into the infinite future, into a one-step relationship, which is why almost every RL method is at bottom a different strategy for solving or approximating it.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -3228,7 +3228,7 @@
         "exploration-exploitation tradeoff",
         "explore-exploit dilemma"
       ],
-      "def_snippet": "The fundamental tradeoff in reinforcement learning between exploiting the best option found so far and exploring uncertain options that might prove better, since an agent can only learn about actions by trying them.",
+      "def_snippet": "The fundamental tradeoff between exploiting the best option found so far and exploring uncertain options that might prove better, since an agent can only learn about actions by trying them. It is unavoidable because, unlike supervised learning, the agent's own choices determine which data it sees, an action tried too rarely keeps a pessimistic estimate the agent then avoids, and the cleanest principled escape is optimism in the face of uncertainty.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -5799,7 +5799,7 @@
       "aliases": [
         "MDP"
       ],
-      "def_snippet": "The mathematical framework that formalizes sequential decision making under uncertainty, defined by states, actions, transition probabilities, and rewards, and serving as the standard model on which reinforcement learning is built.",
+      "def_snippet": "The mathematical framework that formalizes sequential decision making under uncertainty, defined by states, actions, transition probabilities, and rewards, the standard model on which reinforcement learning is built. Its load-bearing assumption is the Markov property, that the present state is a sufficient summary of the past, which is exactly the condition that lets the Bellman equation decompose a long trajectory into a one-step recursion.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -7503,7 +7503,7 @@
         "policy gradient methods",
         "REINFORCE"
       ],
-      "def_snippet": "A family of reinforcement learning methods that directly optimize a parameterized policy by following the gradient of expected reward, adjusting the policy's parameters to make high-reward actions more likely.",
+      "def_snippet": "A family of methods that directly optimize a parameterized policy by following the gradient of expected reward, making high-reward actions more likely, rather than learning values and acting greedily. This direct route handles continuous and stochastic policies value-based methods struggle with, and its central problem is high variance, fixed by subtracting a value-function baseline, which leads straight to the advantage and actor-critic.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -7857,7 +7857,7 @@
         "Q-function",
         "action-value learning"
       ],
-      "def_snippet": "A reinforcement learning algorithm that learns the long-run value of taking each action in each state, then acts greedily with respect to those learned values, without ever needing a model of the environment.",
+      "def_snippet": "A reinforcement learning algorithm that learns the long-run value of taking each action in each state, then acts greedily with respect to those values, with no model of the environment. Its defining property is that it is off-policy: it can learn the value of the optimal policy while actually behaving more exploratorily, which is exactly what lets modern systems train on stored, logged experience rather than only fresh interaction.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -9642,7 +9642,7 @@
         "TD learning",
         "TD error"
       ],
-      "def_snippet": "A class of reinforcement learning methods that learn value estimates from experience by bootstrapping, updating each prediction toward a target built from the next reward plus the current estimate of the following state's value.",
+      "def_snippet": "A class of reinforcement learning methods that learn value estimates from experience by bootstrapping, updating each prediction toward a target built from the next reward plus the current estimate of the following state's value. Its distinctive move is learning a guess from a guess, which puts it between Monte Carlo and planning, and it has a striking tie to neuroscience: dopamine firing tracks a reward prediction error, the biological analogue of the TD error.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -10236,7 +10236,7 @@
         "state-value function",
         "action-value function"
       ],
-      "def_snippet": "A function that estimates the expected long-run reward an agent will accumulate from a given state, or from a given state-action pair, under a particular policy; it is the core predictive object that most reinforcement learning algorithms learn.",
+      "def_snippet": "A function that estimates the expected long-run reward an agent will accumulate from a given state, or state-action pair, under a policy, the core predictive object most reinforcement learning algorithms learn. It converts the daunting goal of maximizing cumulative reward into something local and learnable, and it plays a dual role: a target for greedy action selection and a low-variance baseline for policy learning.",
       "durable": true,
       "category": "Reinforcement Learning"
     },

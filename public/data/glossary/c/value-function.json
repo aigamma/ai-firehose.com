@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A function that estimates the expected long-run reward an agent will accumulate from a given state, or from a given state-action pair, under a particular policy; it is the core predictive object that most reinforcement learning algorithms learn.",
+  "definition": "A function that estimates the expected long-run reward an agent will accumulate from a given state, or state-action pair, under a policy, the core predictive object most reinforcement learning algorithms learn. It converts the daunting goal of maximizing cumulative reward into something local and learnable, and it plays a dual role: a target for greedy action selection and a low-variance baseline for policy learning.",
   "body": [
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "Value functions matter because they convert the daunting goal of maximizing cumulative reward into something local and learnable. Every value function obeys the bellman-equation, the recursion stating that the value of a state equals the immediate reward plus the discounted value of the next state. That self-consistency is what makes learning possible: an agent can improve its estimates by enforcing the Bellman relation on sampled experience, which is exactly what temporal-difference-learning does, nudging each estimate toward a target built from the next reward plus its own current estimate."
+      "text": "Value functions matter because they convert the daunting goal of maximizing cumulative reward into something local and learnable, the keeper. Every value function obeys the bellman-equation, the recursion stating that the value of a state equals the immediate reward plus the discounted value of the next state, and that self-consistency is what makes learning possible: an agent can improve its estimates by enforcing the Bellman relation on sampled experience, which is exactly what temporal-difference-learning does, nudging each estimate toward a target built from the next reward plus its own current estimate."
     },
     {
       "type": "p",

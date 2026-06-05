@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A family of reinforcement learning methods that directly optimize a parameterized policy by following the gradient of expected reward, adjusting the policy's parameters to make high-reward actions more likely.",
+  "definition": "A family of methods that directly optimize a parameterized policy by following the gradient of expected reward, making high-reward actions more likely, rather than learning values and acting greedily. This direct route handles continuous and stochastic policies value-based methods struggle with, and its central problem is high variance, fixed by subtracting a value-function baseline, which leads straight to the advantage and actor-critic.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "This direct approach matters because it handles cases value-based methods struggle with. It works naturally in continuous action spaces, where taking a max over actions is intractable. It can represent stochastic policies, which are sometimes optimal and which keep a useful amount of randomness for exploration. And because it optimizes the objective directly, it tends to behave smoothly as parameters change. These strengths are why policy gradients underpin much of modern reinforcement learning from human feedback; the policy-optimization step of rlhf is a policy gradient update on a language model."
+      "text": "This direct approach matters because it handles cases value-based methods struggle with. It works naturally in continuous action spaces, where taking a max over actions is intractable; it can represent stochastic policies, which are sometimes optimal and which keep a useful amount of randomness for exploration; and because it optimizes the objective directly, it tends to behave smoothly as parameters change. These strengths are why policy gradients underpin much of modern reinforcement learning from human feedback, the policy-optimization step of rlhf being a policy gradient update on a language model."
     },
     {
       "type": "p",
@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "The naive estimator is unbiased but notoriously high in variance, because a single scalar return is a noisy signal shared across many actions. The standard fix is to subtract a baseline, typically a learned value-function estimate of the state's worth, which leaves the gradient unbiased but greatly reduces its variance. Weighting the update by how much better an action did than the baseline, rather than by the raw return, yields the advantage and leads directly to actor-critic architectures."
+      "text": "The naive estimator is unbiased but notoriously high in variance, because a single scalar return is a noisy signal shared across many actions, and fixing that is the keeper. The standard fix is to subtract a baseline, typically a learned value-function estimate of the state's worth, which leaves the gradient unbiased but greatly reduces its variance. Weighting the update by how much better an action did than the baseline, rather than by the raw return, yields the advantage and leads directly to actor-critic architectures."
     },
     {
       "type": "p",
