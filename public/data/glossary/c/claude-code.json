@@ -2,7 +2,7 @@
   "id": "claude-code",
   "label": "Claude Code",
   "aliases": [
-    "Claude Opus"
+    "Claude Code CLI"
   ],
   "kind": "tool",
   "attention": 69,
@@ -136,5 +136,58 @@
       "kind": "opinion"
     }
   ],
-  "definition": "Claude Code is a feature within Claude that lets users write, execute, and iterate on code directly in conversations for tasks like data analysis, automation, and application development."
+  "definition": "Anthropic's command-line coding agent, which runs in a terminal with direct access to a developer's files, shell, and tools so it can read a codebase, make multi-file changes, run tests, and iterate, rather than only suggesting snippets in a chat window. It is a reference example of an agentic coding harness.",
+  "category": "AI Engineering",
+  "durable": true,
+  "source": "authored",
+  "body": [
+    {
+      "type": "p",
+      "text": "Most AI coding help lives inside an editor as autocomplete or beside it as a chat box, and in both the model only suggests while a human does the acting. Claude Code, Anthropic's terminal-based coding agent, removes that gap by giving the model the same tools the developer has: it reads and edits files directly, runs shell commands, executes tests, and uses the results to decide what to do next."
+    },
+    {
+      "type": "p",
+      "text": "What makes it an agent rather than a chat is the loop. It plans a change, edits the relevant files, runs the build or the tests, reads the output, and corrects course, repeating until the task is done or it decides to ask. It loads project conventions from a file the team commits, so the house rules are context it never has to be re-told, and it calls external tools over the same protocol other agents use, so its reach is not fixed. Each of these is a deliberate piece of the scaffolding that lets a model work on a real repository instead of a toy snippet."
+    },
+    {
+      "type": "p",
+      "text": "Claude Code is most usefully read not as a product but as a worked example of an agentic harness: the model is the engine, and the value is in everything around it, the tools it can call, the conventions it auto-loads, the verification that a test must pass, the memory that does not reset between sessions. The same shape generalizes far beyond coding, which is why harness engineering became a discipline of its own; coding was simply the first domain where the feedback loop was tight and cheap enough to make it work."
+    },
+    {
+      "type": "p",
+      "text": "The deeper lesson it demonstrates is that frontier capability is necessary but not sufficient for useful autonomy. A strong model dropped into a terminal with no tools, no conventions, and no checks is a brilliant assistant that cannot be trusted to act; the same model inside a disciplined harness becomes a worker you can hand a task and walk away from. The progress that matters is increasingly in that harness, not only in the weights."
+    }
+  ],
+  "related": [
+    {
+      "slug": "ai-agent",
+      "label": "AI Agent",
+      "kind": "technique"
+    },
+    {
+      "slug": "agentic-workflow",
+      "label": "Agentic Workflow",
+      "kind": "technique"
+    },
+    {
+      "slug": "code-generation",
+      "label": "Code Generation",
+      "kind": "technique"
+    },
+    {
+      "slug": "tool-use",
+      "label": "Tool Use",
+      "kind": "technique"
+    },
+    {
+      "slug": "agentic-harness",
+      "label": "Agentic Harness",
+      "kind": "technique"
+    },
+    {
+      "slug": "code-interpreter",
+      "label": "Code Interpreter",
+      "kind": "tool"
+    }
+  ]
 }

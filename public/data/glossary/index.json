@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-02",
   "count": 912,
-  "durable_count": 552,
+  "durable_count": 558,
   "concepts": [
     {
       "id": "3d-understanding",
@@ -802,19 +802,17 @@
     },
     {
       "id": "automation",
-      "label": "automation",
-      "kind": "tool",
+      "label": "Automation",
+      "kind": "technique",
       "attention": 88,
       "aliases": [
-        "no-code automation",
+        "AI automation",
         "agentic automation",
-        "browser automation",
-        "web automation",
-        "business automation",
-        "automation resistance",
-        "automation deployment"
+        "workflow automation"
       ],
-      "def_snippet": "Automation uses software or AI systems to perform repetitive tasks or workflows without human intervention, increasing efficiency and reducing manual effort."
+      "def_snippet": "Handing a recurring, multi-step task to a system that carries it out without a human driving each step, increasingly by wrapping a language model in tools, triggers, and checks. The hard part is rarely the model's competence on any single step; it is reliability across the whole chain when no one is watching.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "autonomous-agent",
@@ -1499,9 +1497,11 @@
       "kind": "tool",
       "attention": 69,
       "aliases": [
-        "Claude Opus"
+        "Claude Code CLI"
       ],
-      "def_snippet": "Claude Code is a feature within Claude that lets users write, execute, and iterate on code directly in conversations for tasks like data analysis, automation, and application devel…"
+      "def_snippet": "Anthropic's command-line coding agent, which runs in a terminal with direct access to a developer's files, shell, and tools so it can read a codebase, make multi-file changes, run tests, and iterate, rather than only suggesting snippets in a chat window. It is a reference example of an agentic coding harness.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "clinical-ai",
@@ -1548,16 +1548,17 @@
     },
     {
       "id": "code-generation",
-      "label": "code generation",
-      "kind": "tool",
+      "label": "Code Generation",
+      "kind": "technique",
       "attention": 47,
       "aliases": [
-        "executable code generation",
-        "code analysis",
-        "CLI generation",
-        "artifact generation"
+        "AI code generation",
+        "code synthesis",
+        "code completion"
       ],
-      "def_snippet": "Code generation is a tool that automatically writes or completes computer code based on natural language descriptions, code context, or examples provided by users."
+      "def_snippet": "The use of language models to write, complete, or transform source code from a natural-language description, surrounding context, or a partial snippet. It reframes programming as predicting the next token of a program, which is powerful for boilerplate and idiom but indifferent, on its own, to whether the result compiles or is correct.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "code-intelligence-graph",
@@ -1811,15 +1812,16 @@
     },
     {
       "id": "context-management",
-      "label": "context management",
-      "kind": "tool",
+      "label": "Context Management",
+      "kind": "technique",
       "attention": 27,
       "aliases": [
-        "session management",
         "context engineering",
-        "multimodal context management"
+        "context window management"
       ],
-      "def_snippet": "Context management in AI systems refers to techniques for selecting, organizing, and updating the information provided to models to maintain relevance and prevent degradation from…"
+      "def_snippet": "Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "context-memory",
@@ -10151,20 +10153,16 @@
     },
     {
       "id": "video-generation",
-      "label": "video generation",
-      "kind": "tool",
+      "label": "Video Generation",
+      "kind": "technique",
       "attention": 30,
       "aliases": [
-        "image generation",
-        "image-to-video",
-        "video synthesis",
-        "video diffusion",
-        "image synthesis",
-        "voice generation",
-        "video compression",
-        "video understanding"
+        "AI video generation",
+        "generative video"
       ],
-      "def_snippet": "A video generation tool synthesizes realistic video sequences from text prompts, images, or other inputs by learning temporal and spatial patterns from training data."
+      "def_snippet": "Synthesizing coherent video from a text prompt, an image, or another clip, extending image generation with the hard constraint that successive frames must agree across time. Temporal consistency, not single-frame quality, is what makes it difficult.",
+      "durable": true,
+      "category": "Generative Models"
     },
     {
       "id": "video-mllms",
@@ -10392,15 +10390,17 @@
     },
     {
       "id": "workflow-orchestration",
-      "label": "workflow orchestration",
-      "kind": "tool",
+      "label": "Workflow Orchestration",
+      "kind": "technique",
       "attention": 36,
       "aliases": [
-        "workflow automation",
-        "agent orchestration",
-        "multi-session orchestration"
+        "LLM orchestration",
+        "pipeline orchestration",
+        "agentic orchestration"
       ],
-      "def_snippet": "Workflow orchestration is a tool that automates the coordination and sequencing of multiple tasks or AI agents to complete complex processes end-to-end."
+      "def_snippet": "Coordinating multiple model calls, tools, and agents into a reliable multi-step pipeline: deciding what runs in sequence, what runs in parallel, where state passes between steps, and what happens when a step fails. It is the control plane that turns a collection of capable model calls into a system.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "working-memory",
