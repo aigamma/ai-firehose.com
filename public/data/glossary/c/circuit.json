@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A subgraph of features and the weighted connections between them that together implement a specific, human-understandable computation inside a neural network, and the basic unit of explanation in mechanistic interpretability.",
+  "definition": "A subgraph of features and the weighted connections between them that together implement a specific, human-understandable computation inside a neural network, the basic unit of explanation in mechanistic interpretability. It is what converts interpretability from a pile of observations into a causal theory, and its discipline is intervention: a circuit story is a hypothesis until cutting the proposed wire actually severs the behavior.",
   "body": [
     {
       "type": "p",
@@ -22,11 +22,11 @@
     },
     {
       "type": "p",
-      "text": "In a transformer, circuits are traced through the residual stream, the shared channel that every layer reads from and writes to. Attention heads move information between token positions while the feed-forward layers transform it in place, and a circuit is the specific route a signal takes through these components. Researchers identify circuits with a combination of techniques: ablating a component and watching the behavior break, patching activations from one input into another to localize where a computation lives, and reading intermediate states with the logit lens. The discipline insists on intervention, because a circuit story that only fits the activations is a hypothesis until cutting the proposed wire actually severs the behavior."
+      "text": "In a transformer, circuits are traced through the residual stream, the shared channel that every layer reads from and writes to. Attention heads move information between token positions while the feed-forward layers transform it in place, and a circuit is the specific route a signal takes through these components. Researchers identify circuits with a combination of techniques: ablating a component and watching the behavior break, patching activations from one input into another to localize where a computation lives, and reading intermediate states with the logit lens. The discipline insists on intervention, the keeper, because a circuit story that only fits the activations is a hypothesis until cutting the proposed wire actually severs the behavior."
     },
     {
       "type": "p",
-      "text": "The canonical example is the induction head, a two-head circuit that implements in-context copying and turns out to underwrite much of a model's few-shot learning. Other documented circuits handle tasks like indirect object identification and basic modular arithmetic, the last of which connects circuits to grokking, where a network is seen to abandon a memorized table in favor of a clean computational circuit. Finding circuits at scale is hard, largely because superposition spreads features across overlapping directions rather than tidy neurons, which is why the sparse autoderiving of monosemantic features has become a prerequisite for circuit analysis: you cannot wire together components you cannot first name."
+      "text": "The canonical example is the induction head, a two-head circuit that implements in-context copying and turns out to underwrite much of a model's few-shot learning. Other documented circuits handle tasks like indirect object identification and basic modular arithmetic, the last of which connects circuits to grokking, where a network is seen to abandon a memorized table in favor of a clean computational circuit. Finding circuits at scale is hard, largely because superposition spreads features across overlapping directions rather than tidy neurons, which is why the sparse-autoencoder recovery of monosemantic features has become a prerequisite for circuit analysis: you cannot wire together components you cannot first name."
     }
   ],
   "related": [

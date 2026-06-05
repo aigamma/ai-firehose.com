@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An interpretability tool that learns an overcomplete, sparsely activating dictionary of directions from a network's activations, decomposing superposed and polysemantic representations into a large set of individually monosemantic features.",
+  "definition": "An interpretability tool that learns an overcomplete, sparsely activating dictionary of directions from a network's activations, decomposing superposed and polysemantic representations into a large set of individually monosemantic features. It is the most effective known answer to superposition, and its discipline lies in a tension: reconstruction loss demands the sparse code keep everything the network computes, while a sparsity penalty forces each feature to specialize.",
   "body": [
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "The method is a form of dictionary learning, and its discipline lies in the tension between two terms. The reconstruction loss demands that the sparse code preserve the original activation faithfully, so that nothing the network actually computes is thrown away. The sparsity penalty, classically an L1 term on the hidden activations, demands that as few features as possible be used at once, which is what forces each feature to specialize. Tuning this trade-off is the core engineering problem, and variants such as the top-k SAE, which fixes the number of active features directly, and the gated and JumpReLU designs, which sharpen the on-off decision, were introduced to reduce the bias that a naive L1 penalty introduces."
+      "text": "The method is a form of dictionary learning, and its discipline lies in the tension between two terms, the keeper. The reconstruction loss demands that the sparse code preserve the original activation faithfully, so that nothing the network actually computes is thrown away. The sparsity penalty, classically an L1 term on the hidden activations, demands that as few features as possible be used at once, which is what forces each feature to specialize. Tuning this trade-off is the core engineering problem, and variants such as the top-k SAE, which fixes the number of active features directly, and the gated and JumpReLU designs, which sharpen the on-off decision, were introduced to reduce the bias that a naive L1 penalty introduces."
     },
     {
       "type": "p",

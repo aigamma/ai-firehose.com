@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A two-attention-head circuit in transformers that performs in-context copying by finding an earlier occurrence of the current token and predicting whatever followed it, and the leading mechanistic explanation for in-context and few-shot learning.",
+  "definition": "A two-attention-head circuit in transformers that performs in-context copying by finding an earlier occurrence of the current token and predicting whatever followed it, the leading mechanistic explanation for in-context and few-shot learning. It works by cross-layer composition, a previous-token head feeding a copy head, which is why a single head cannot do it, and it appears abruptly during training as a measurable phase change.",
   "body": [
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "The mechanism is a composition of two attention heads working across consecutive layers, which is why a single head cannot do it. A head in the earlier layer is a previous-token head: at each position it attends one step back and copies information about the preceding token forward, so that every position now carries a trace of what came before it. The head in the later layer uses that trace to do the real work. It attends from the current token to earlier positions whose stored previous-token matches the current token, locates where this token occurred before, and reads off the token that followed, writing it toward the output. This cross-layer cooperation, communicated through the residual stream, is the canonical example of attention-head composition and the textbook illustration of what a circuit is."
+      "text": "The mechanism is a composition of two attention heads working across consecutive layers, which is why a single head cannot do it, the keeper. A head in the earlier layer is a previous-token head: at each position it attends one step back and copies information about the preceding token forward, so that every position now carries a trace of what came before it. The head in the later layer uses that trace to do the real work: it attends from the current token to earlier positions whose stored previous-token matches the current token, locates where this token occurred before, and reads off the token that followed, writing it toward the output. This cross-layer cooperation, communicated through the residual stream, is the canonical example of attention-head composition and the textbook illustration of what a circuit is."
     },
     {
       "type": "p",
