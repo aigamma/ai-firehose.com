@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import useData from "../lib/useData.js";
 import LoadError from "../components/LoadError.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
@@ -38,6 +38,10 @@ export default function TechniqueHub() {
       </div>
     );
   }
+
+  // A folded duplicate (a corpus tag collapsed onto its durable concept) is a thin
+  // redirect stub; send the reader to the rich authored hub instead of a dead end.
+  if (c.redirect) return <Navigate to={`/technique/${c.redirect}`} replace />;
 
   const k = getKind(c.kind);
   const hasSidecards = c.axis_positions?.length || c.neighbors?.length;

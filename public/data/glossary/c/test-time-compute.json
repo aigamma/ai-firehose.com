@@ -6,7 +6,7 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 79,
+  "attention": 82,
   "first_seen": "2026-03-28T18:59:16+00:00",
   "rotation": {
     "horizon": "week",
@@ -26,9 +26,19 @@
   },
   "neighbors": [
     {
+      "id": "compute-scaling",
+      "label": "compute scaling",
+      "score": 0.781
+    },
+    {
       "id": "test-time-optimization",
       "label": "test-time optimization",
       "score": 0.757
+    },
+    {
+      "id": "adapter-scaling",
+      "label": "Adapter scaling",
+      "score": 0.719
     },
     {
       "id": "test-time-scaling",
@@ -36,24 +46,24 @@
       "score": 0.71
     },
     {
+      "id": "test-time-compute",
+      "label": "test-time compute",
+      "score": 0.71
+    },
+    {
+      "id": "scaling-laws",
+      "label": "scaling laws",
+      "score": 0.678
+    },
+    {
       "id": "code-coverage",
       "label": "code coverage",
       "score": 0.664
     },
     {
-      "id": "compute-efficiency",
-      "label": "compute efficiency",
-      "score": 0.633
-    },
-    {
       "id": "benchmark",
       "label": "benchmark",
-      "score": 0.63
-    },
-    {
-      "id": "robustness-evaluation",
-      "label": "robustness evaluation",
-      "score": 0.614
+      "score": 0.643
     }
   ],
   "axis_positions": [
@@ -135,6 +145,20 @@
       "author_or_channel": "Simon Willison",
       "published_at": "2026-05-31T16:31:32.000Z",
       "kind": "opinion"
+    },
+    {
+      "title": "Multi-Agent Computer Use",
+      "url": "https://huggingface.co/papers/2606.01533",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-31T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "3DCodeBench: Benchmarking Agentic Procedural 3D Modeling Via Code",
+      "url": "https://huggingface.co/papers/2606.01057",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-30T20:00:00.000Z",
+      "kind": "tool"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
@@ -195,5 +219,8 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://arxiv.org/abs/2408.03314",
     "provider": "arXiv"
-  }
+  },
+  "folded_from": [
+    "test-time-scaling"
+  ]
 }

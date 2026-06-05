@@ -68,6 +68,9 @@ test("hub rotation, where present, is well-formed and is absent from the slim in
   let withRotation = 0;
   for (const f of readdirSync(resolve(DATA, "glossary/c"))) {
     const h = JSON.parse(readFileSync(resolve(DATA, "glossary/c", f), "utf8"));
+    // A folded-duplicate redirect stub (scripts/fold_corpus_concepts.mjs) is a minimal
+    // pointer to its durable hub, not a content hub, so it is exempt from the shape contract.
+    if (h.redirect) continue;
     assert.ok("rotation" in h, `${h.id} hub must carry a rotation field (object or null)`);
     assert.ok("first_seen" in h, `${h.id} hub must carry a first_seen field`);
     if (h.rotation) {
