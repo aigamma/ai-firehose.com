@@ -1827,7 +1827,7 @@
       "aliases": [
         "CAI"
       ],
-      "def_snippet": "An alignment method that trains a model to be helpful and harmless using AI-generated feedback guided by a written set of principles (a constitution), reducing reliance on human-labeled comparisons.",
+      "def_snippet": "An alignment method that trains a model to be helpful and harmless using AI-generated feedback guided by a written set of principles (a constitution), reducing reliance on human-labeled comparisons. Its distinctive contribution is making a model's values explicit and auditable in a document that can be reviewed and revised, rather than leaving them implicit in thousands of individual human labels.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -2732,7 +2732,7 @@
         "direct preference optimization",
         "DPO"
       ],
-      "def_snippet": "A preference-tuning method that aligns a model directly from pairs of preferred and rejected responses using a simple classification-style loss, avoiding the separate reward model and reinforcement learning of RLHF.",
+      "def_snippet": "A preference-tuning method that aligns a model directly from pairs of preferred and rejected responses with a simple classification-style loss, avoiding RLHF's separate reward model and reinforcement-learning loop. Its trick is a mathematical identity that folds the reward model into the policy loss, collapsing the whole fiddly pipeline into one stable stage that behaves like ordinary fine-tuning.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -4187,7 +4187,7 @@
       "aliases": [
         "GRPO"
       ],
-      "def_snippet": "A reinforcement-learning algorithm for language models that estimates each response's advantage by comparing it to a group of responses to the same prompt, removing the separate value network that proximal policy optimization needs and making reasoning-style training cheaper and simpler.",
+      "def_snippet": "A reinforcement-learning algorithm for language models that estimates each response's advantage by comparing it to a group of responses to the same prompt, deleting the separate value network proximal policy optimization needs. That single change makes reasoning-style training cheaper and simpler, and the group baseline is naturally matched to verifiable rewards like math and code correctness.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -8159,7 +8159,7 @@
         "RLAIF",
         "AI feedback"
       ],
-      "def_snippet": "A variant of RLHF in which the preference labels used to train the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply, and the mechanism behind constitutional AI.",
+      "def_snippet": "A variant of RLHF in which the preference labels training the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply and uniformly, and the mechanism behind constitutional AI. Its appeal is scale and consistency; its obvious risk is that the judge's blind spots and biases propagate straight into the trained model.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -8186,7 +8186,7 @@
         "expert iteration",
         "RFT"
       ],
-      "def_snippet": "A post-training method that samples many candidate responses from a model, keeps only the best ones according to a reward model or verifier, and fine-tunes the model on that filtered set, then repeats, so the model learns from its own strongest outputs.",
+      "def_snippet": "A post-training method that samples many candidate responses, keeps only the best by a reward model or verifier, and fine-tunes on that filtered set, then repeats, so a model learns from its own strongest outputs. It ratchets typical behavior upward toward occasional-best behavior while staying inside the stable machinery of supervised fine-tuning, no policy gradient or RL loop, and its ceiling is set by the scorer.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -8353,7 +8353,7 @@
         "reward model training",
         "preference reward model"
       ],
-      "def_snippet": "The stage of preference alignment that trains a separate model to predict a scalar reward from human comparison data, so that reinforcement learning can later optimize a policy against that learned score rather than against humans directly.",
+      "def_snippet": "The stage that distills human comparison judgments into a separate model predicting a scalar reward, so reinforcement learning can score thousands of fresh samples per step instead of querying humans. The whole alignment stage is bounded by its quality: a policy will find and exploit every flaw in the reward model, which is the mechanism behind reward hacking, and it is exactly the component direct preference methods remove.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -8404,7 +8404,7 @@
         "reinforcement learning from human feedback",
         "RLHF"
       ],
-      "def_snippet": "A training method that aligns a model with human preferences by learning a reward model from human comparisons of outputs, then optimizing the model against that reward with reinforcement learning.",
+      "def_snippet": "A training method that aligns a model with human preferences by learning a reward model from human comparisons, then optimizing the model against it with reinforcement learning. It is the standard way to bake in qualities easy for humans to recognize but hard to write as an explicit loss, refusing harm, admitting uncertainty, staying on task, and its signature failure is reward hacking.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },

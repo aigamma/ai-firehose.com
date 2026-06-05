@@ -9,23 +9,23 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A variant of RLHF in which the preference labels used to train the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply, and the mechanism behind constitutional AI.",
+  "definition": "A variant of RLHF in which the preference labels training the reward model come from an AI judge rather than human annotators, scaling alignment feedback cheaply and uniformly, and the mechanism behind constitutional AI. Its appeal is scale and consistency; its obvious risk is that the judge's blind spots and biases propagate straight into the trained model.",
   "body": [
     {
       "type": "p",
-      "text": "Reinforcement learning from AI feedback keeps the machinery of RLHF but changes where the preference signal comes from. In RLHF, humans compare pairs of model responses and pick the better one, and those judgments train a reward model that then guides reinforcement learning. The human comparisons are the expensive, slow, hard-to-scale ingredient. RLAIF replaces them with judgments from a capable model, which can label preferences at a tiny fraction of the cost and far greater volume."
+      "text": "Reinforcement learning from AI feedback keeps the machinery of RLHF but changes where the preference signal comes from. In RLHF, humans compare pairs of model responses and pick the better one, and those judgments train a reward model that then guides reinforcement learning, but the human comparisons are the expensive, slow, hard-to-scale ingredient. RLAIF replaces them with judgments from a capable model, which can label preferences at a tiny fraction of the cost and far greater volume."
     },
     {
       "type": "p",
-      "text": "The AI judge is usually steered by an explicit written standard rather than left to its own taste. This is the heart of constitutional AI, the canonical instance of the approach: a model critiques and ranks responses against a set of stated principles, a constitution, and those rankings become the preference data. The result is that the values being optimized for are written down and inspectable, instead of living implicitly in a pile of human labels."
+      "text": "The AI judge is usually steered by an explicit written standard rather than left to its own taste. This is the heart of constitutional AI, the canonical instance of the approach: a model critiques and ranks responses against a set of stated principles, a constitution, and those rankings become the preference data, so the values being optimized for are written down and inspectable instead of living implicitly in a pile of human labels."
     },
     {
       "type": "p",
-      "text": "The appeal is scale and consistency. AI feedback removes the annotation bottleneck, can be regenerated cheaply when the standard changes, and applies the same criteria uniformly. Studies have found AI feedback can match human feedback on alignment quality for many tasks, which is why it now underpins much of how large models are aligned, often blended with some human data rather than fully replacing it."
+      "text": "The appeal is scale and consistency. AI feedback removes the annotation bottleneck, can be regenerated cheaply when the standard changes, and applies the same criteria uniformly, and studies have found AI feedback can match human feedback on alignment quality for many tasks, which is why it now underpins much of how large models are aligned, often blended with some human data rather than fully replacing it."
     },
     {
       "type": "p",
-      "text": "The obvious risk is that the judge's blind spots and biases propagate into the trained model, and a weak or miscalibrated judge produces a weak reward signal that invites reward hacking. The method therefore depends on a judge strong enough to evaluate the behavior in question, and on principles written carefully enough to mean what their authors intend."
+      "text": "The obvious risk is the keeper: the judge's blind spots and biases propagate into the trained model, and a weak or miscalibrated judge produces a weak reward signal that invites reward hacking. The method therefore depends on a judge strong enough to evaluate the behavior in question, and on principles written carefully enough to mean what their authors intend."
     }
   ],
   "related": [
