@@ -4459,7 +4459,7 @@
         "Hyena operator",
         "Hyena hierarchy"
       ],
-      "def_snippet": "A sub-quadratic sequence operator that replaces self-attention with a recurrence of long, implicitly parameterized convolutions interleaved with input-dependent gating, scaling near-linearly with sequence length while keeping a global receptive field.",
+      "def_snippet": "A sub-quadratic sequence operator that replaces self-attention with a recurrence of very long, implicitly parameterized convolutions interleaved with input-dependent gating, scaling near-linearly while keeping a global receptive field. The decisive finding: long convolutions alone fell short, and it was the multiplicative gating that recovered the expressivity needed to match attention.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -5288,7 +5288,7 @@
         "linear transformer",
         "linearized attention"
       ],
-      "def_snippet": "A reformulation of self-attention that removes the softmax so the computation can be reordered into a running summary, reducing the cost from quadratic to linear in sequence length and turning the attention layer into a recurrence.",
+      "def_snippet": "A reformulation of self-attention that removes the softmax so the computation reassociates: multiply keys by values first into a small running summary, then each query into that summary, cutting the cost from quadratic to linear and turning attention into a recurrence. Its honest difficulty is quality, a fixed-size state must compress an unbounded history, so it can miss the sharp recall softmax attention keeps.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -5702,7 +5702,7 @@
         "selective state space model",
         "S6"
       ],
-      "def_snippet": "A selective state space model that makes the recurrence input-dependent, letting the model choose what to remember and what to ignore at each step, and that runs in linear time with a hardware-aware parallel scan instead of quadratic self-attention.",
+      "def_snippet": "A selective state space model that makes the recurrence input-dependent, so the model decides token by token what to remember and what to ignore, and runs in linear time via a hardware-aware parallel scan instead of quadratic attention. Selectivity is the whole point: it recovers attention's content-based routing that fixed state space models lacked.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -8292,7 +8292,7 @@
         "RetNet",
         "retention mechanism"
       ],
-      "def_snippet": "A sequence architecture whose retention mechanism replaces self-attention with a decayed linear recurrence, supporting three equivalent compute modes so it can train in parallel like a transformer yet generate in constant memory like a recurrent network.",
+      "def_snippet": "A transformer-style architecture whose retention mechanism replaces self-attention with a decayed linear recurrence, distinctive for supporting three mathematically equivalent compute modes, parallel, recurrent, and chunkwise, so it trains like a transformer yet generates in constant memory. Its fixed decay is both strength and limit: clean and parallelizable, but content-blind where mamba adapts.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -8565,7 +8565,7 @@
         "Receptance Weighted Key Value",
         "RWKV architecture"
       ],
-      "def_snippet": "An attention-free architecture that can be written both as a transformer-like parallel computation for training and as a recurrent network for inference, combining the trainability of attention with the constant-memory, linear-time generation of an RNN.",
+      "def_snippet": "An attention-free architecture that can be written both as a parallel computation for training and as a recurrent network for inference, combining the trainability of attention with the constant-memory, linear-time generation of an RNN. It is notable for proving transformer-class quality is reachable without attention through a sustained open community effort rather than a single lab.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -9236,7 +9236,7 @@
         "state space models",
         "deep state space model"
       ],
-      "def_snippet": "A sequence model that carries information forward through a continuously evolving hidden state, computing each output from that state rather than from explicit pairwise comparisons across the sequence, which lets it scale linearly with sequence length.",
+      "def_snippet": "A sequence model that carries everything it knows about the past in a single continuously evolving hidden state, computing each output from that state rather than from explicit pairwise comparisons across the sequence, which lets it scale linearly with length. Its defining trick is a duality: the same recurrence runs as a parallel convolution for training and a step-by-step recurrence for constant-memory generation.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -9315,7 +9315,7 @@
         "structured state space sequence model",
         "HiPPO"
       ],
-      "def_snippet": "The structured state space sequence model (S4), the breakthrough parameterization that made deep state space models work on long sequences by initializing the state matrix to provably remember the past and computing the recurrence efficiently as a convolution.",
+      "def_snippet": "The structured state space sequence model (S4), the parameterization that turned deep state space models from a promising idea into a competitive architecture. Its breakthrough is the HiPPO initialization, a state matrix derived to optimally compress a continuous history, which lets the recurrence remember tens of thousands of steps where a random matrix would forget or blow up.",
       "durable": true,
       "category": "Frontier Architectures"
     },
