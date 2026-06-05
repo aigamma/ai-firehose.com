@@ -10,11 +10,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A graph that traces how interpretable features causally influence one another to produce a model's output on a specific input, used to reverse-engineer the multi-step reasoning behind a single response and turn it into a readable circuit.",
+  "definition": "A graph that traces how interpretable features causally influence one another to produce a model's output on a specific input, used to reverse-engineer the multi-step reasoning behind a single response and turn it into a readable circuit. Where a circuit is the reusable mechanism a model uses across many inputs, an attribution graph is the trace of that mechanism firing on one concrete example, made scalable by a gradient-based linear approximation called attribution patching.",
   "body": [
     {
       "type": "p",
-      "text": "An attribution graph is a map of how a model arrived at one particular answer, drawn in terms of interpretable features rather than raw neurons. The nodes are features active on the input, typically the monosemantic features recovered by a sparse-autoencoder, and the edges are the causal influences between them: which active features pushed which later features on, and how those in turn pushed the output token. Read end to end, the graph shows the chain of intermediate computations the model ran for this prompt, the steps it took on the way from the words it read to the word it produced. Where a circuit is the reusable mechanism a model uses across many inputs, an attribution graph is the trace of that mechanism firing on a single concrete example, which makes it a way to see a model's reasoning in action."
+      "text": "An attribution graph is a map of how a model arrived at one particular answer, drawn in terms of interpretable features rather than raw neurons. The nodes are features active on the input, typically the monosemantic features recovered by a sparse-autoencoder, and the edges are the causal influences between them: which active features pushed which later features on, and how those in turn pushed the output token. Read end to end, the graph shows the chain of intermediate computations the model ran for this prompt, the steps it took on the way from the words it read to the word it produced. Where a circuit is the reusable mechanism a model uses across many inputs, an attribution graph is the trace of that mechanism firing on a single concrete example, the keeper, which makes it a way to see a model's reasoning in action."
     },
     {
       "type": "p",
@@ -26,7 +26,7 @@
     },
     {
       "type": "p",
-      "text": "Attribution graphs are the basis of recent large-scale efforts to trace the internal reasoning of production language models, which have produced concrete case studies: features arranged into multi-hop chains for factual recall, evidence of forward planning in tasks like writing rhyming poetry, and graphs showing a model computing an answer by one route while reporting another. The approach inherits both the strengths and the caveats of the feature decomposition it rests on. It is only as faithful as the underlying sparse-autoderived features and the linear attribution approximation, both of which can miss or distort genuine computation, and validating a graph still requires confirming its claims with direct intervention. Even with those limits, the attribution graph represents the current frontier of turning a model's behavior on a real input into a circuit a human can follow."
+      "text": "Attribution graphs are the basis of recent large-scale efforts to trace the internal reasoning of production language models, which have produced concrete case studies: features arranged into multi-hop chains for factual recall, evidence of forward planning in tasks like writing rhyming poetry, and graphs showing a model computing an answer by one route while reporting another. The approach inherits both the strengths and the caveats of the feature decomposition it rests on. It is only as faithful as the underlying sparse-autoencoder features and the linear attribution approximation, both of which can miss or distort genuine computation, and validating a graph still requires confirming its claims with direct intervention. Even with those limits, the attribution graph represents the current frontier of turning a model's behavior on a real input into a circuit a human can follow."
     }
   ],
   "related": [

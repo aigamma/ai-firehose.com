@@ -65,7 +65,7 @@
         "interchange intervention",
         "resampling ablation"
       ],
-      "def_snippet": "A causal localization technique that copies an internal activation from one forward pass into another and measures how the output changes, isolating which components actually carry a given piece of information rather than merely correlating with it.",
+      "def_snippet": "A causal localization technique that copies an internal activation from one forward pass into another and measures how the output changes, isolating which components actually carry a given piece of information rather than merely correlating with it. It is to internal components what a knockout experiment is to a gene, and its two directions answer different questions: noising finds what is necessary, denoising finds what is sufficient.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -79,7 +79,7 @@
         "steering vectors",
         "representation engineering"
       ],
-      "def_snippet": "A control technique that edits a model's behavior at inference time by adding a direction vector into its hidden activations, shifting the representation toward or away from a target concept without changing any weights.",
+      "def_snippet": "A control technique that edits a model's behavior at inference time by adding a direction vector into its hidden activations, shifting the representation toward or away from a target concept without changing any weights. It is both a cheap behavioral lever and a causal probe, and it is the practical payoff of the linear representation hypothesis: if concepts really are directions, then editing behavior is, to first order, arithmetic on those directions.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -768,7 +768,7 @@
         "circuit tracing",
         "attribution patching"
       ],
-      "def_snippet": "A graph that traces how interpretable features causally influence one another to produce a model's output on a specific input, used to reverse-engineer the multi-step reasoning behind a single response and turn it into a readable circuit.",
+      "def_snippet": "A graph that traces how interpretable features causally influence one another to produce a model's output on a specific input, used to reverse-engineer the multi-step reasoning behind a single response and turn it into a readable circuit. Where a circuit is the reusable mechanism a model uses across many inputs, an attribution graph is the trace of that mechanism firing on one concrete example, made scalable by a gradient-based linear approximation called attribution patching.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -4175,7 +4175,7 @@
         "grokking",
         "delayed generalization"
       ],
-      "def_snippet": "A training phenomenon in which a network first memorizes its data and only much later, after long continued training at near-perfect training accuracy, abruptly generalizes, having replaced a memorized solution with a true algorithmic circuit.",
+      "def_snippet": "A training phenomenon in which a network first memorizes its data and only much later, after long continued training at near-perfect training accuracy, abruptly generalizes, having replaced a memorized solution with a true algorithmic circuit. The mechanistic account explains the delay as a competition between a fast-to-find memorizing solution and a slower, simpler generalizing circuit that weight decay ultimately favors, and grokking is the visible moment the second solution wins.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -5323,7 +5323,7 @@
         "linearity hypothesis",
         "linear features"
       ],
-      "def_snippet": "The hypothesis that neural networks encode high-level concepts as linear directions in activation space, so that features can be read with linear probes, added and removed by vector arithmetic, and combined to form the representations the model computes with.",
+      "def_snippet": "The hypothesis that neural networks encode high-level concepts as linear directions in activation space, so features can be read with linear probes, added and removed by vector arithmetic, and combined into the representations the model computes with. It is load-bearing: almost every practical interpretability method assumes some version of it, which means their successes are evidence for it and their failures mark its boundaries.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -5506,7 +5506,7 @@
         "logit lens",
         "tuned lens"
       ],
-      "def_snippet": "An interpretability technique that reads a transformer's intermediate predictions by projecting hidden states from each layer through the model's output head, revealing how its guess about the next token forms and changes across depth.",
+      "def_snippet": "An interpretability technique that reads a transformer's intermediate predictions by projecting hidden states from each layer through the model's output head, revealing how its guess about the next token forms and changes across depth. It is near-free, borrowing the model's own vocabulary projection so it speaks in tokens the model knows, and it rests on a basis-consistency assumption the tuned lens exists to repair.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },
@@ -7715,7 +7715,7 @@
         "diagnostic classifier",
         "linear probe"
       ],
-      "def_snippet": "A simple supervised classifier trained on a model's frozen internal activations to test whether a given piece of information is linearly decodable from them, used to map what a network represents at each layer.",
+      "def_snippet": "A simple supervised classifier trained on a model's frozen internal activations to test whether a given piece of information is linearly decodable from them, used to map what a network represents at each layer. The linear probe is preferred precisely because it is weak: if a mere linear map can extract the property, the model did the representational work, but a probe shows only that information is decodable, not that the model uses it.",
       "durable": true,
       "category": "Mechanistic Interpretability"
     },

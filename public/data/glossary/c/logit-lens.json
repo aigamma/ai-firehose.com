@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An interpretability technique that reads a transformer's intermediate predictions by projecting hidden states from each layer through the model's output head, revealing how its guess about the next token forms and changes across depth.",
+  "definition": "An interpretability technique that reads a transformer's intermediate predictions by projecting hidden states from each layer through the model's output head, revealing how its guess about the next token forms and changes across depth. It is near-free, borrowing the model's own vocabulary projection so it speaks in tokens the model knows, and it rests on a basis-consistency assumption the tuned lens exists to repair.",
   "body": [
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "The technique rests on a structural assumption about transformers: the residual stream is a shared space that every layer reads from and writes to, and the final unembedding is a linear readout of that space. If the meaning of the residual stream is reasonably consistent across depth, then applying the output head early is a sensible approximation of \"what does the model currently believe.\" That assumption is imperfect, because earlier layers do not write in exactly the same basis the final layer expects, which can make the raw logit lens noisy or misleading in some models. The tuned lens addresses this by fitting a small learned transform per layer so that each hidden state is mapped into the output basis before decoding, yielding a more faithful and reliable trace at the cost of the simplicity that made the original so appealing."
+      "text": "The technique rests on a structural assumption about transformers, the keeper: the residual stream is a shared space that every layer reads from and writes to, and the final unembedding is a linear readout of that space. If the meaning of the residual stream is reasonably consistent across depth, then applying the output head early is a sensible approximation of \"what does the model currently believe.\" That assumption is imperfect, because earlier layers do not write in exactly the same basis the final layer expects, which can make the raw logit lens noisy or misleading in some models. The tuned lens addresses this by fitting a small learned transform per layer so that each hidden state is mapped into the output basis before decoding, yielding a more faithful and reliable trace at the cost of the simplicity that made the original so appealing."
     },
     {
       "type": "p",
