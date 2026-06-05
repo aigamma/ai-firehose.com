@@ -1567,7 +1567,7 @@
       "aliases": [
         "Contrastive Language-Image Pretraining"
       ],
-      "def_snippet": "A model trained to align images and text in a shared embedding space by contrastive learning over large numbers of image-caption pairs, enabling zero-shot classification and image-text retrieval.",
+      "def_snippet": "A model trained to put images and text in one shared embedding space by contrastive learning over hundreds of millions of image-caption pairs. By turning recognition into a matching problem against natural language, it unlocks zero-shot classification with no fixed label set, and the same shared space became the conditioning signal behind text-to-image generators.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -4525,7 +4525,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "The task of assigning a whole image to one category from a fixed set of labels, the canonical benchmark problem of computer vision and the training objective from which most visual representations are first learned.",
+      "def_snippet": "The task of assigning a whole image to one label from a fixed set, the simplest framing of visual recognition and the proving ground on which deep learning first beat hand-engineered methods. Its outsized importance is that the features a network learns while classifying transfer to every other vision task, which is why classification pretraining is where most visual backbones begin.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -4712,7 +4712,7 @@
         "instance segmentation",
         "mask prediction"
       ],
-      "def_snippet": "The task of detecting each individual object in an image and producing a pixel-accurate mask for it, so that two objects of the same category are separated as distinct instances rather than merged into one region.",
+      "def_snippet": "The task of detecting each individual object and producing a pixel-accurate mask for it, so two cars are returned as two separate masks rather than one merged \"car\" region. It is the representation that is both per-object and per-pixel, which is exactly what manipulation, editing, and counting need.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -6946,7 +6946,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "The task of finding every object of interest in an image and reporting both its category and a bounding box around its location, combining recognition with localization.",
+      "def_snippet": "The task of finding every object in an image and reporting both its category and a bounding box, recognition combined with localization. It is the bridge between pure recognition and acting on a scene, because a system cannot plan around \"a pedestrian somewhere in this image\", it needs the pedestrian's location and extent.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -7548,7 +7548,7 @@
         "max pooling",
         "average pooling"
       ],
-      "def_snippet": "A downsampling operation in convolutional networks that summarizes each small neighborhood of a feature map into a single value, shrinking spatial resolution while retaining the strongest or average response.",
+      "def_snippet": "A downsampling operation that summarizes each small neighborhood of a feature map into one value, shrinking resolution while keeping the strongest or average response. It buys cheaper computation and a degree of translation invariance, but the very invariance that helps classification (presence matters, not position) hurts tasks like segmentation that need precise location.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -8836,7 +8836,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "The task of assigning a category label to every pixel in an image, producing a dense map that partitions the scene into regions by what each pixel belongs to.",
+      "def_snippet": "The task of labeling every pixel with the category it belongs to, producing a dense map that traces objects' exact silhouettes rather than boxing them. It is the dense-prediction extreme of vision, and its architectural signature is the encoder-decoder with skip connections, which recovers the sharp boundaries an aggressively downsampled encoder would otherwise lose.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -10448,7 +10448,7 @@
       "aliases": [
         "ViT"
       ],
-      "def_snippet": "An architecture that applies the transformer directly to images by cutting each image into a grid of patches, embedding the patches as tokens, and processing them with self-attention, dispensing with convolution.",
+      "def_snippet": "An architecture that applies the transformer directly to images, cutting each into a grid of patches, embedding the patches as tokens, and processing them with self-attention, with no convolution. It broke the decade-long assumption that vision required convolution, and its tradeoff is instructive: fewer built-in priors mean it needs more data, but it keeps improving past where convolutional models plateau.",
       "durable": true,
       "category": "Computer Vision"
     },
