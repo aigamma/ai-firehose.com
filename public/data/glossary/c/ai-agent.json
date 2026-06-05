@@ -9,15 +9,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A system that wraps a language model in a loop where the model decides actions, calls tools, observes the results, and repeats until a goal is met, rather than producing a single answer in one pass.",
+  "definition": "A system that wraps a language model in a loop where the model decides actions, calls tools, observes the results, and repeats until a goal is met, rather than producing a single answer in one pass. The shift from one-shot text to an iterative perceive-decide-act cycle is the whole difference: the model supplies the judgment, the surrounding harness supplies the hands.",
   "body": [
     {
       "type": "p",
-      "text": "An AI agent is a language model embedded in a control loop that lets it act, not just answer. A plain model maps a prompt to a single completion. An agent instead gives the model a goal, a set of tools it can invoke, and a loop: the model proposes an action, the surrounding program executes it, the result is fed back as a new observation, and the model decides what to do next. The loop runs until the model judges the goal reached or a stopping condition fires. This shift, from one-shot text generation to an iterative perceive-decide-act cycle, is what separates an agent from a bare model call."
+      "text": "An AI agent embeds a language model in a control loop that lets it act, not just answer. A plain model maps a prompt to a single completion; an agent instead gives the model a goal, a set of tools it can invoke, and a loop: the model proposes an action, the surrounding program executes it, the result is fed back as a new observation, and the model decides what to do next. The loop runs until the model judges the goal reached or a stopping condition fires. This shift, from one-shot text generation to an iterative perceive-decide-act cycle, is what separates an agent from a bare model call."
     },
     {
       "type": "p",
-      "text": "The reason agents matter is that many real tasks cannot be solved in a single forward pass. Booking travel, debugging a failing test, or researching a question all require gathering information that is not in the prompt, taking actions whose outcomes are uncertain, and adjusting course based on what comes back. By interleaving reasoning with tool use, an agent can fetch a web page, run code, query a database, or call an API, then incorporate the result before committing to a final answer. The model supplies the judgment and the surrounding harness supplies the hands."
+      "text": "The reason agents matter is that many real tasks cannot be solved in a single forward pass. Booking travel, debugging a failing test, or researching a question all require gathering information that is not in the prompt, taking actions whose outcomes are uncertain, and adjusting course based on what comes back. By interleaving reasoning with tool use, an agent can fetch a web page, run code, query a database, or call an API, then incorporate the result before committing to a final answer. The keeper is the division of labor: the model supplies the judgment and the surrounding harness supplies the hands."
     },
     {
       "type": "p",

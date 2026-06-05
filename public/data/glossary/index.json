@@ -360,7 +360,7 @@
         "agentic workflows",
         "agentic pipeline"
       ],
-      "def_snippet": "A task structured so that one or more language models drive it through multiple steps of reasoning, tool use, and self-correction, sitting between a single fixed prompt and a fully autonomous agent in how much latitude the model is given.",
+      "def_snippet": "A task structured so one or more language models drive it through multiple steps of reasoning, tool use, and self-correction, sitting between a single fixed prompt and a fully autonomous agent in how much latitude the model is given. It is the controlled middle where most working agent applications live, and its guiding principle is to use the least agency that works.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -414,7 +414,7 @@
         "agent",
         "LLM agent"
       ],
-      "def_snippet": "A system that wraps a language model in a loop where the model decides actions, calls tools, observes the results, and repeats until a goal is met, rather than producing a single answer in one pass.",
+      "def_snippet": "A system that wraps a language model in a loop where the model decides actions, calls tools, observes the results, and repeats until a goal is met, rather than producing a single answer in one pass. The shift from one-shot text to an iterative perceive-decide-act cycle is the whole difference: the model supplies the judgment, the surrounding harness supplies the hands.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -871,7 +871,7 @@
         "autonomous agents",
         "fully autonomous agent"
       ],
-      "def_snippet": "An agent given a high-level goal and broad freedom to decide its own steps, choosing what to do and which tools to use over a long horizon with little or no human intervention along the way.",
+      "def_snippet": "An agent given a high-level goal and broad freedom to decide its own steps, choosing what to do and which tools to use over a long horizon with little human intervention. The human specifies the destination and the agent chooses the route, and the very freedom that lets it generalize to unanticipated tasks is what makes it hard: errors compound over a long horizon with few guardrails to catch them.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -3724,7 +3724,7 @@
         "function calls",
         "structured tool invocation"
       ],
-      "def_snippet": "A capability where a language model, given machine-readable descriptions of available functions, emits a structured request naming a function and its arguments, which the host program then executes on the model's behalf.",
+      "def_snippet": "A capability where a language model, given machine-readable descriptions of available functions, emits a structured request naming a function and its arguments, which the host then validates and executes. Its real contribution is reliability: it turns the brittle text-parsing of early agents into a typed, schema-validated contract, and a well-written schema does double duty by steering the model toward valid calls.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -7465,7 +7465,7 @@
         "agent planning",
         "plan generation"
       ],
-      "def_snippet": "The capability of an agent to form a sequence of steps toward a goal before or while acting, deciding what to do in what order rather than reacting one move at a time.",
+      "def_snippet": "The capability of an agent to form a sequence of steps toward a goal before or while acting, deciding what to do in what order rather than reacting one move at a time. It gives an agent foresight, the backbone to reach an outcome no single step would, and it is most consequential and most fragile in an autonomous agent, where small planning errors compound across a long horizon.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -7991,7 +7991,7 @@
         "ReAct",
         "reason and act"
       ],
-      "def_snippet": "A prompting pattern that interleaves explicit reasoning steps with tool-calling actions, so a language model thinks, acts, observes the result, and thinks again in a repeating loop.",
+      "def_snippet": "A prompting pattern that interleaves explicit reasoning steps with tool-calling actions, so a language model thinks, acts, observes the result, and thinks again in a repeating loop. The point is that reasoning and acting reinforce each other, the reasoning picks the action and the observation grounds the next round, which curbs the hallucination of pure reasoning while keeping the trace auditable.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -9916,7 +9916,7 @@
         "tool calling",
         "tools"
       ],
-      "def_snippet": "The general capability of a language model to extend itself by invoking external tools (search, code execution, APIs, databases) and folding their results back into its reasoning, rather than relying only on what it learned in training.",
+      "def_snippet": "The general capability of a language model to extend itself by invoking external tools (search, code execution, APIs, databases) and folding their results back into its reasoning, rather than relying only on what it learned in training. It is the bridge from a model that knows to an agent that acts, closing the three gaps a static model has: stale knowledge, unreliable computation, and the inability to change anything outside its own text.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
