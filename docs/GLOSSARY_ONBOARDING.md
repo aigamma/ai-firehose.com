@@ -28,7 +28,8 @@ trend boards) must open onto a real, educational glossary entry, not a statistic
 **360** of them had `attention` but no authored body or image, so clicking a trending tag gave
 momentum and cosine neighbors instead of an explanation, which fails the site's whole purpose: it
 is first and foremost an educational site where people learn by exploring. Onboard them **all** as
-durable, authored entries, to the same bar as the existing 552.
+durable, authored entries, to the same bar as the existing durable layer (see the live count in the
+Status block below, and in `public/data/glossary/index.json`).
 
 ## Why this exists (the diagnosis)
 
