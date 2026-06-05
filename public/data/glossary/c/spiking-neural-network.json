@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A class of neural network whose units communicate with discrete, time-stamped spikes rather than continuous values, modeling neurons that accumulate input and fire only when a threshold is crossed. They are the most biologically faithful artificial networks and the native software of neuromorphic hardware.",
+  "definition": "A class of neural network whose units communicate with discrete, time-stamped spikes rather than continuous values, modeling neurons that accumulate input and fire only when a threshold is crossed, making time a first-class dimension of computation. The central difficulty is training: the spike is a discontinuous, non-differentiable event, so it blocks the backpropagation that trains ordinary deep networks, and the workarounds reflect a bet about whether to import deep learning or honor the brain's locality.",
   "body": [
     {
       "type": "p",
@@ -22,7 +22,7 @@
     },
     {
       "type": "p",
-      "text": "Training spiking networks is the central difficulty. The spike is a discontinuous, all-or-nothing event, so its output is not differentiable, which blocks the direct use of backpropagation that trains ordinary deep networks. Researchers work around this in several ways: surrogate-gradient methods smooth the spike with a differentiable approximation during the backward pass, conversion methods train a standard network and then map it onto a spiking one, and biologically grounded approaches lean on local rules such as hebbian-learning and spike-timing-dependent plasticity that need no global error signal at all. Each route reflects a different bet about whether to import deep learning's machinery or to honor the brain's locality constraints."
+      "text": "Training spiking networks is the central difficulty, the keeper. The spike is a discontinuous, all-or-nothing event, so its output is not differentiable, which blocks the direct use of backpropagation that trains ordinary deep networks. Researchers work around this in several ways: surrogate-gradient methods smooth the spike with a differentiable approximation during the backward pass, conversion methods train a standard network and then map it onto a spiking one, and biologically grounded approaches lean on local rules such as hebbian-learning and spike-timing-dependent plasticity that need no global error signal at all. Each route reflects a different bet about whether to import deep learning's machinery or to honor the brain's locality constraints."
     },
     {
       "type": "p",
