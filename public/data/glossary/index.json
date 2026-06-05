@@ -2341,7 +2341,7 @@
         "distributed data parallel",
         "DDP"
       ],
-      "def_snippet": "Data parallelism is the most common way to train a model across many accelerators: each device holds a full copy of the model, processes a different slice of the batch, and the devices average their gradients every step so all copies stay identical.",
+      "def_snippet": "The most common way to train across many accelerators: each device holds a full copy of the model, processes a different slice of the batch, and the devices average their gradients every step via an all-reduce so all copies stay identical. Its virtue is that it changes nothing about the math, only replicates and averages; its hard limit is that it scales throughput, not model size, since every device must hold the whole model.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -3178,7 +3178,7 @@
         "expert parallelism",
         "MoE parallelism"
       ],
-      "def_snippet": "A parallelism strategy for mixture-of-experts models that places different experts on different devices, so each token is routed across the network to the device holding its chosen expert, letting a model hold far more parameters than any single device could.",
+      "def_snippet": "A parallelism strategy for mixture-of-experts models that places different experts on different devices, so each token is routed across the network to the device holding its chosen expert, letting a model hold far more parameters than any one device could. Its signature is an all-to-all communication that shuffles tokens between devices, and its hazard is load imbalance, a few popular experts becoming bottlenecks.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -3711,7 +3711,7 @@
         "ZeRO",
         "sharded data parallelism"
       ],
-      "def_snippet": "A distributed training strategy that shards a model's parameters, gradients, and optimizer states across data-parallel workers and gathers each layer's weights only when needed, so models far larger than one device's memory can be trained without slicing the model itself.",
+      "def_snippet": "A distributed strategy that shards a model's parameters, gradients, and optimizer states across data-parallel workers and gathers each layer's weights only when needed, so models far larger than one device's memory train without slicing the model itself. The just-in-time gather is the trick: peak memory is set by the largest single layer that must be materialized, not the whole model, which is the same idea introduced as ZeRO.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -6255,7 +6255,7 @@
         "model parallel",
         "sharded model training"
       ],
-      "def_snippet": "Model parallelism is the family of techniques that splits a single model's parameters across multiple accelerators so a network too large to fit in one device's memory can still be trained and run, with the pieces exchanging activations as data flows through them.",
+      "def_snippet": "The family of techniques that splits a single model's parameters across accelerators so a network too large for one device's memory can still be trained, with the pieces exchanging activations as data flows through them. It is the umbrella over two complementary cuts, tensor parallelism within a layer and pipeline parallelism between layers, and its defining cost is communication, since activations must cross devices both ways.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -7444,7 +7444,7 @@
         "inter-layer parallelism",
         "pipeline model parallelism"
       ],
-      "def_snippet": "Pipeline parallelism splits a model's layers into consecutive stages placed on different accelerators and streams micro-batches of data through them like an assembly line, so a deep model too large for one device fits across several while keeping the devices busy.",
+      "def_snippet": "A form of model parallelism that splits a model's layers into consecutive stages on different accelerators and streams micro-batches through them like an assembly line, so a deep model too large for one device fits across several. Many micro-batches keep every stage busy at once (the idle \"bubble\" shrinks with more of them), and because stages only exchange activations at their boundaries, it tolerates slow links and is the natural way to split across servers.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -9679,7 +9679,7 @@
         "intra-layer parallelism",
         "tensor model parallelism"
       ],
-      "def_snippet": "Tensor parallelism splits the work inside a single layer across multiple accelerators, dividing each large matrix multiplication into slices computed on different devices and then combining the partial results, so one layer is too big for one device can still be evaluated.",
+      "def_snippet": "A form of model parallelism that splits the work inside a single layer, dividing each large matrix multiplication into slices computed on different devices, then combining the partial results, so a layer too big for one device can still be evaluated. Because it synchronizes many times per pass, it is extremely sensitive to interconnect speed and is therefore the innermost split, confined to devices joined by the fastest links.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },

@@ -10,15 +10,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A distributed training strategy that shards a model's parameters, gradients, and optimizer states across data-parallel workers and gathers each layer's weights only when needed, so models far larger than one device's memory can be trained without slicing the model itself.",
+  "definition": "A distributed strategy that shards a model's parameters, gradients, and optimizer states across data-parallel workers and gathers each layer's weights only when needed, so models far larger than one device's memory train without slicing the model itself. The just-in-time gather is the trick: peak memory is set by the largest single layer that must be materialized, not the whole model, which is the same idea introduced as ZeRO.",
   "body": [
     {
       "type": "p",
-      "text": "Fully sharded data parallel is a way to train models that do not fit on a single accelerator while keeping the simplicity of data parallelism. Plain data parallelism replicates the entire model on every worker and has each process a different slice of the batch. That is easy but wasteful: the parameters, the gradients, and the optimizer states (which for an optimizer like Adam are larger than the parameters themselves) are duplicated on every device, so the largest trainable model is capped by one device's memory."
+      "text": "Fully sharded data parallel trains models that do not fit on a single accelerator while keeping the simplicity of data parallelism. Plain data parallelism replicates the entire model on every worker and has each process a different slice of the batch, which is easy but wasteful: the parameters, the gradients, and the optimizer states (which for an optimizer like Adam are larger than the parameters themselves) are duplicated on every device, so the largest trainable model is capped by one device's memory."
     },
     {
       "type": "p",
-      "text": "Fully sharded data parallel removes the duplication by sharding all three of those tensors across the workers, so each holds only its slice. The key move is doing this just in time: right before a layer runs, the workers all-gather its full parameters from their shards, compute the forward or backward pass, and then immediately discard the gathered copy, keeping only their shard. Gradients are reduce-scattered so each worker ends up with the averaged gradient for its slice. Peak memory is therefore set by the largest single layer that must be materialized, not by the whole model, which is what lets a cluster train models orders of magnitude larger than any one device could hold. This is the same idea introduced as ZeRO, whose stages progressively shard optimizer states, then gradients, then parameters."
+      "text": "Fully sharded data parallel removes the duplication by sharding all three of those tensors across the workers, so each holds only its slice, and the key move, the keeper, is doing this just in time: right before a layer runs, the workers all-gather its full parameters from their shards, compute the forward or backward pass, and then immediately discard the gathered copy, keeping only their shard. Gradients are reduce-scattered so each worker ends up with the averaged gradient for its slice, and peak memory is therefore set by the largest single layer that must be materialized, not by the whole model, which is what lets a cluster train models orders of magnitude larger than any one device could hold. This is the same idea introduced as ZeRO, whose stages progressively shard optimizer states, then gradients, then parameters."
     },
     {
       "type": "p",

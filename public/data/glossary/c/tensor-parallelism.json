@@ -10,19 +10,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Tensor parallelism splits the work inside a single layer across multiple accelerators, dividing each large matrix multiplication into slices computed on different devices and then combining the partial results, so one layer is too big for one device can still be evaluated.",
+  "definition": "A form of model parallelism that splits the work inside a single layer, dividing each large matrix multiplication into slices computed on different devices, then combining the partial results, so a layer too big for one device can still be evaluated. Because it synchronizes many times per pass, it is extremely sensitive to interconnect speed and is therefore the innermost split, confined to devices joined by the fastest links.",
   "body": [
     {
       "type": "p",
-      "text": "Tensor parallelism is a form of model-parallelism that splits computation within a layer rather than between layers. Its target is the large matrix-multiplication that dominates each layer of a transformer, the weight matrices that can individually be too large to hold or multiply on one device. Tensor parallelism partitions such a matrix into slices, places each slice on a different accelerator, has every device multiply its own slice against the shared input, and then combines the partial outputs into the result the full matrix would have produced."
+      "text": "Tensor parallelism splits computation within a layer rather than between layers. Its target is the large matrix-multiplication that dominates each layer of a transformer, the weight matrices that can individually be too large to hold or multiply on one device, and it partitions such a matrix into slices, places each slice on a different accelerator, has every device multiply its own slice against the shared input, and then combines the partial outputs into the result the full matrix would have produced."
     },
     {
       "type": "p",
-      "text": "Concretely, a weight matrix can be cut along its columns so that each device produces a different chunk of the output activations, after which the chunks are concatenated, or cut along its rows so that each device produces a partial sum that must then be added together. A transformer layer is arranged so that one matrix is split column-wise and the next row-wise, which means the devices only need to synchronize once per pair of matrices through an all-reduce that sums the partial results. Still, that synchronization happens many times per forward and backward pass, far more often than in data-parallelism, so tensor parallelism is extremely demanding on interconnect speed and memory-bandwidth."
+      "text": "Concretely, a weight matrix can be cut along its columns so each device produces a different chunk of the output activations, after which the chunks are concatenated, or cut along its rows so each device produces a partial sum that must then be added together. A transformer layer is arranged so one matrix is split column-wise and the next row-wise, which means the devices only need to synchronize once per pair of matrices through an all-reduce that sums the partial results; still, that synchronization happens many times per forward and backward pass, far more often than in data-parallelism, so tensor parallelism is extremely demanding on interconnect speed and memory-bandwidth."
     },
     {
       "type": "p",
-      "text": "Because the communication is so frequent and so latency-sensitive, tensor parallelism is normally confined to accelerators that are physically close and joined by the fastest available links, typically the GPUs inside a single server connected by a high-speed bus. Pushing it across slower network links between servers usually costs more in communication than it saves in compute. This locality constraint is what defines its role in a larger parallel layout: tensor parallelism is the innermost split, used to make a single layer fit and run across a tight group of devices."
+      "text": "Because the communication is so frequent and latency-sensitive, tensor parallelism is the keeper's constraint: it is normally confined to accelerators that are physically close and joined by the fastest available links, typically the GPUs inside a single server connected by a high-speed bus. Pushing it across slower network links between servers usually costs more in communication than it saves in compute, and this locality is what defines its role in a larger parallel layout: tensor parallelism is the innermost split, used to make a single layer fit and run across a tight group of devices."
     },
     {
       "type": "p",
