@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import PageHero from "../components/PageHero.jsx";
 import { RETENTION_DAYS, AXES, KINDS } from "../data/registry.js";
 
 export default function Methodology() {
   const { data: stats } = useData("/data/stats.json");
   useDocumentTitle("Methodology");
   return (
-    <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
-      <h1>Methodology</h1>
-      <p className="muted">
-        How AI Firehose turns a daily flood into something navigable. Everything here is computed from real
-        sources. The only hand-curation is which YouTube teachers to trust.
-      </p>
+    <div className="stack article" style={{ paddingTop: 24 }}>
+      <PageHero
+        eyebrow="How It Works"
+        title="Methodology"
+        lede="How AI Firehose turns a daily flood into something navigable. Everything here is computed from real sources; the only hand-curation is which YouTube teachers to trust."
+      />
 
       {stats && (
         <section className="card">

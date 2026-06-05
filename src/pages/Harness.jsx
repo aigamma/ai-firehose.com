@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import PageHero from "../components/PageHero.jsx";
 
 // A living demonstration of what an agentic harness is, using this project as the
 // example. The numbers come from public/data/harness.json, which is regenerated
@@ -12,12 +13,15 @@ export default function Harness() {
   const m = h?.metrics || {};
 
   return (
-    <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
-      <h1>The Harness</h1>
+    <div className="stack article" style={{ paddingTop: 24 }}>
+      <PageHero
+        eyebrow="Living Demonstration"
+        title="The Harness"
+        lede="What an agentic harness is, shown by example. This page is generated from the repository's own state at build time, so it changes whenever the harness does its job."
+      />
       <p className="muted">
-        What an agentic harness is, shown by example. This page is generated from the
-        repository's own state at build time, so it changes whenever the harness does
-        its job.
+        Read the concept in the durable Glossary: <Link to="/technique/agentic-harness">Agentic Harness</Link>.
+        This page is the living example it describes.
       </p>
 
       <h2>What an Agentic Harness Is</h2>

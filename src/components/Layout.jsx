@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { SITE, NAV } from "../data/registry.js";
+import { SITE, NAV_PRIMARY } from "../data/registry.js";
 import useTheme from "../hooks/useTheme.js";
 import ScrollToTop from "./ScrollToTop.jsx";
-import CommandPalette from "./CommandPalette.jsx";
+import NavMenu from "./NavMenu.jsx";
 
 // Inline lucide Sun and Moon (the same icons robotlogic.org uses) so the pill
 // needs no icon dependency. 24x24 viewBox, stroked with currentColor.
@@ -45,8 +45,8 @@ export default function Layout() {
               <span className="spark">⌁</span> {SITE.name}
             </span>
           </NavLink>
-          <nav className="nav">
-            {NAV.map((n) => (
+          <nav className="nav" aria-label="Primary">
+            {NAV_PRIMARY.map((n) => (
               <NavLink
                 key={n.route}
                 to={n.route}
@@ -58,7 +58,6 @@ export default function Layout() {
             ))}
           </nav>
           <div className="header-tools">
-            <CommandPalette />
             <button
               className="theme-pill"
               onClick={toggle}
@@ -68,6 +67,7 @@ export default function Layout() {
               {isDark ? <SunIcon /> : <MoonIcon />}
               {isDark ? "Light" : "Dark"}
             </button>
+            <NavMenu />
           </div>
         </div>
       </header>

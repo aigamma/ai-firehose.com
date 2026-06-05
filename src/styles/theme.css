@@ -149,18 +149,57 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 }
 .site-header .bar {
   display: flex; align-items: center; gap: 18px;
-  height: 58px;
+  height: 64px;
 }
-.brand { display: flex; align-items: baseline; gap: 9px; font-weight: 750; color: var(--text-strong); }
+.brand { display: flex; align-items: baseline; gap: 9px; font-weight: 750; font-size: 1.12rem; color: var(--text-strong); }
 .brand .spark { color: var(--accent); }
 .brand .tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
-.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+/* Primary nav pills. Larger, bolder, and higher-contrast than the old cramped
+   muted text links, with real height so they sit centered in the bar instead of
+   scraping its top edge. Only a few promoted destinations live here; the rest are
+   in the right-anchored Menu (.app-menu). */
+.nav { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .nav a {
-  color: var(--muted); padding: 6px 11px; border-radius: var(--radius-sm);
-  font-weight: 550; transition: color var(--motion-mid) var(--ease-out), background var(--motion-mid) var(--ease-out);
+  display: inline-flex; align-items: center; height: 38px; padding: 0 14px;
+  color: var(--text); border-radius: var(--radius-sm); border: 1px solid transparent;
+  font-weight: 600; font-size: 0.95rem; letter-spacing: 0.005em;
+  transition: color var(--motion-mid) var(--ease-out), background var(--motion-mid) var(--ease-out), border-color var(--motion-mid) var(--ease-out);
 }
-.nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
-.nav a.active { color: var(--text-strong); background: var(--accent-soft); }
+.nav a:hover { color: var(--text-strong); background: var(--surface-2); border-color: var(--border); text-decoration: none; }
+.nav a.active { color: var(--text-strong); background: var(--accent-soft); border-color: color-mix(in oklab, var(--accent) 35%, transparent); }
+
+/* Header right cluster (theme toggle + the overflow Menu), pinned to the far edge. */
+.header-tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+
+/* The overflow Menu. The trigger is styled like a pill but clearly a control; the
+   panel is OPAQUE (a solid --surface, never a translucent glass) so it cannot bleed
+   the page content behind it into an unreadable collision (the bug that retired the
+   command palette), and is right-anchored so it cascades leftward and stays on-screen. */
+.app-menu { position: relative; }
+.app-menu-trigger {
+  display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); font-family: inherit; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  transition: background var(--motion-mid) var(--ease-out), border-color var(--motion-mid) var(--ease-out), color var(--motion-mid) var(--ease-out);
+}
+.app-menu-trigger:hover { background: var(--surface-3); border-color: var(--border-strong); color: var(--text-strong); }
+.app-menu-trigger[aria-expanded="true"] { background: var(--accent-soft); border-color: color-mix(in oklab, var(--accent) 40%, transparent); color: var(--text-strong); }
+.app-menu-caret { font-size: 0.66em; line-height: 1; transition: transform var(--motion-fast) var(--ease-out); }
+.app-menu-caret.is-open { transform: rotate(180deg); }
+.app-menu-panel {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+  min-width: 240px; padding: 6px;
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  display: flex; flex-direction: column; gap: 2px;
+  animation: menuRise var(--motion-fast) var(--ease-out);
+}
+.app-menu-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 11px; border-radius: var(--radius-sm); color: var(--text); }
+.app-menu-item:hover, .app-menu-item:focus-visible { background: var(--surface-2); color: var(--text-strong); text-decoration: none; outline: none; }
+.app-menu-item.is-active { background: var(--accent-soft); color: var(--text-strong); }
+.app-menu-item-label { font-weight: 600; }
+.app-menu-item-desc { font-size: 0.78rem; color: var(--faint); line-height: 1.4; }
+@keyframes menuRise { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 
 .icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -269,6 +308,27 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 }
 .dateline-phrase { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.02rem; }
 .dateline-stamp { margin-left: auto; }
+
+/* Interior reading pages (Methodology, About, the Harness demo): a centered
+   editorial column with a masthead, modeled on worldthought.com's room pages.
+   The old interior pages capped their max-width but never centered, so the column
+   pinned to the LEFT of the wide shell; margin-inline:auto gives the eye an
+   intentional, comfortable measure. PageHero.jsx renders the .article-hero. */
+.article { max-width: 760px; margin-inline: auto; }
+.article-hero { padding: 6px 0 18px; margin-bottom: 6px; border-bottom: 1px solid var(--border-strong); }
+.article-eyebrow {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin: 0 0 12px;
+}
+.article-hero h1 { font-size: 2.1rem; letter-spacing: -0.015em; margin: 0; }
+.article-lede {
+  font-family: var(--font-serif); font-style: italic; font-size: 1.16rem; line-height: 1.55;
+  color: var(--text); margin: 12px 0 0;
+}
+.article h2 { margin-top: 26px; }
+/* Narrow interior pages that bring their own header (Review, Learn): just center
+   the column so it stops hugging the left edge. */
+.page-centered { margin-inline: auto; }
 
 /* Returning-visitor layer: the "new since your last visit" signal, the read/cleared
    affordances that turn the firehose into a finite, conquerable task, the spaced-
@@ -621,8 +681,9 @@ a { text-underline-offset: 3px; }
 /* Mobile: let the header wrap instead of overflowing the fixed bar height */
 @media (max-width: 640px) {
   .site-header .bar { height: auto; padding: 8px 0; flex-wrap: wrap; }
-  .nav { gap: 2px; }
-  .nav a { padding: 5px 8px; font-size: 0.9rem; }
+  .nav { gap: 4px; }
+  .nav a { height: 34px; padding: 0 10px; font-size: 0.9rem; }
+  .app-menu-panel { min-width: 200px; }
 }
 
 /* Choreographed front-page entrance: each top-level block rises in, staggered

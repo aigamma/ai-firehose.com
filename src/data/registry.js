@@ -84,18 +84,30 @@ export const TAXONOMY = {
   // approval gate is intended but not yet implemented. Thresholds tuned as data accrues.
 };
 
-// Top navigation, derived where possible. Adding a kind above adds its nav item.
-export const NAV = [
+// Top navigation, split into the primary pills shown directly in the header bar
+// and the secondary destinations tucked into the right-aligned dropdown Menu
+// (src/components/NavMenu.jsx). Promoting or demoting a page is moving it between
+// these two arrays; adding a kind above adds its board to the primary row. The
+// combined NAV is kept as the full route set for any consumer that wants it.
+// Harness was removed from navigation entirely: the concept now lives in the
+// durable Glossary (content/glossary/agents/agentic-harness.md) and the living
+// /harness demo is reached from that concept hub.
+export const NAV_PRIMARY = [
   { label: "Home", route: "/" },
   ...KINDS.map((k) => ({ label: k.label, route: k.route })),
-  { label: "Watch", route: "/watch" },
   { label: "Glossary", route: "/glossary" },
-  { label: "Review", route: "/review" },
-  { label: "Learn", route: "/learn" },
-  { label: "Explore", route: "/explore" },
-  { label: "Methodology", route: "/methodology" },
-  { label: "Harness", route: "/harness" },
 ];
+
+export const NAV_MORE = [
+  { label: "Watch", route: "/watch", desc: "Favorite AI teachers, joined to the corpus" },
+  { label: "Explore", route: "/explore", desc: "Semantic search, themes, and spectrums" },
+  { label: "Review", route: "/review", desc: "Spaced-repetition flashcards" },
+  { label: "Learn", route: "/learn", desc: "Curated paths through the glossary" },
+  { label: "Methodology", route: "/methodology", desc: "How the firehose is built" },
+  { label: "About", route: "/about", desc: "The trilogy and the north star" },
+];
+
+export const NAV = [...NAV_PRIMARY, ...NAV_MORE];
 
 export const getHorizon = (key) => HORIZONS.find((h) => h.key === key) || HORIZONS.find((h) => h.key === DEFAULT_HORIZON);
 export const getKind = (key) => KINDS.find((k) => k.key === key);

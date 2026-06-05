@@ -161,7 +161,7 @@ export default function Review() {
   const kindMeta = card ? getKind(card.kind) : null;
 
   return (
-    <div className="stack" style={{ paddingTop: 24, maxWidth: "60ch" }}>
+    <div className="stack page-centered" style={{ paddingTop: 24, maxWidth: "60ch" }}>
       <header>
         <p className="eyebrow">Study</p>
         <h1>Flashcard Review</h1>

@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import PageHero from "../components/PageHero.jsx";
 
 export default function About() {
   useDocumentTitle("About");
   return (
-    <div className="stack" style={{ paddingTop: 24, maxWidth: "72ch" }}>
-      <h1>About</h1>
+    <div className="stack article" style={{ paddingTop: 24 }}>
+      <PageHero
+        eyebrow="The Project"
+        title="About"
+        lede="A personal instrument for facing the daily flood of AI, and the third in a trilogy of sites built to learn in public."
+      />
       <p>
         AI Firehose is a personal instrument for staying organized and courageous on the AI frontier, and a way
         to absorb the newest and most salient developments each day as an aspiring AI engineer.

@@ -24,7 +24,7 @@ export default function Learn() {
   const { isDone, toggleStep, pathProgress } = useLearnProgress();
 
   return (
-    <div className="stack" style={{ paddingTop: 24, maxWidth: "82ch" }}>
+    <div className="stack page-centered" style={{ paddingTop: 24, maxWidth: "82ch" }}>
       <header>
         <p className="eyebrow">Learn</p>
         <h1>Learning Paths</h1>

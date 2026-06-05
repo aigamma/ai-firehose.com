@@ -1,0 +1,17 @@
+---
+title: Agentic Harness
+slug: agentic-harness
+kind: technique
+category: Agents and Tool Use
+aliases: agent harness, agentic scaffolding
+related: agent-orchestration, multi-agent-system, agentic-workflow, human-in-the-loop, agent-memory, agent-evaluation, autonomous-agent, tool-use
+summary: The scaffolding arranged around a model, or a fleet of them, that lets agents work reliably without a human at every step: the conventions they auto-load, the tools they can call, a persistent memory, verification gates, and deterministic contracts that let many agents fan out without colliding. The harness is not the model; it is everything that turns a capable model into a dependable worker.
+---
+
+A frontier model is brilliant for the length of one reply and amnesiac by the next. Point it at a task that spans a month, a whole codebase, or a fleet of machines, and what decides success is rarely raw intelligence; it is everything arranged around the intelligence. Where does the model learn the local rules? What is it actually allowed to touch? How does it remember what happened yesterday, and who checks that its confident answer is true before that answer ships? The agentic harness is the apparatus that answers those questions, the scaffolding that turns a capable model into a dependable worker.
+
+The harness is not the model, and naming its parts shows why. There are conventions the agent auto-loads on every run, so the house rules are never forgotten (a project guide, a runbook). There are tools it can call, which is the whole difference between describing an action and taking it (a shell, an API, retrieval over a corpus). There is a memory that does not decay, kept in files or a vector store rather than a context window that resets to empty. There are verification gates that fail loudly, so work cannot silently rot: a build that must exit clean, a test, a type check, a schema the output is forced to satisfy. And there are deterministic, idempotent contracts, so a fleet can fan out against shared state without colliding or corrupting it. Each piece is a deliberate hedge against a specific way an unsupervised agent goes wrong.
+
+The clearest way to feel the distinction is that the model is the engine and the harness is the rest of the car: the steering, the brakes, the instruments, the seatbelt. A testing harness is the same shape aimed at a system under test instead of at a model. This very site is a worked example: AI Firehose is built and kept current by exactly such a harness, and its [live Harness page](/harness) reads the repository's own state to show the scaffolding doing its job. Point the same shape at infrastructure and you get the idea of an "agentic harness for data centers": a fleet with runbooks as memory, infrastructure APIs as tools, and verification gates standing between an agent and production.
+
+The limit is worth stating plainly. A harness can make a mediocre model reliable, but it cannot make it correct; it constrains, remembers, and verifies, but it does not add understanding the model lacks. What it changes is where the leverage lives. As the models themselves commoditize, the durable engineering moves off the weights and onto the harness around them, the part that decides whether a brilliant one-shot becomes a system you can trust to keep working while you sleep.
