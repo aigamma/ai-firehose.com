@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The principle of reusing knowledge a model learned on one task or dataset to improve learning on a different but related task, rather than training every new model from scratch.",
+  "definition": "The principle of reusing knowledge a model learned on one task to improve learning on a different but related task, rather than training every new model from scratch. It is the organizing idea behind most of modern ML, and its central tension, preserve the transferred knowledge while absorbing the new task, is what nearly every fine-tuning design choice is quietly managing.",
   "body": [
     {
       "type": "p",
@@ -16,7 +16,7 @@
     },
     {
       "type": "p",
-      "text": "Transfer learning matters because learning from scratch is data-hungry and expensive, while many of the features a model needs are not task-specific. The low-level structure of language, the edges and textures of images, broad world knowledge: these are shared across countless downstream tasks. By learning them once on a large dataset and reusing them, transfer learning lets a new task succeed with far less labeled data and compute than it would otherwise require, and often reaches higher accuracy than any from-scratch model the limited target data could support."
+      "text": "It matters because learning from scratch is data-hungry and expensive, while many of the features a model needs are not task-specific. The low-level structure of language, the edges and textures of images, broad world knowledge: these are shared across countless downstream tasks, so by learning them once on a large dataset and reusing them, transfer learning lets a new task succeed with far less labeled data and compute than it would otherwise require, often reaching higher accuracy than any from-scratch model the limited target data could support."
     },
     {
       "type": "p",
@@ -24,7 +24,7 @@
     },
     {
       "type": "p",
-      "text": "The central challenge of transfer learning is preserving what was transferred while absorbing the new task. Adapt too gently and the model never specializes; adapt too aggressively and it overwrites its general knowledge, the failure known as catastrophic forgetting. Much of the design of fine-tuning methods, smaller learning rates, frozen backbones, low-rank adapters, is really about managing this balance so the transferred knowledge survives."
+      "text": "The central challenge is the keeper: preserving what was transferred while absorbing the new task. Adapt too gently and the model never specializes; adapt too aggressively and it overwrites its general knowledge, the failure known as catastrophic forgetting. Much of the design of fine-tuning methods, smaller learning rates, frozen backbones, low-rank adapters, is really about managing this balance so the transferred knowledge survives."
     },
     {
       "type": "p",

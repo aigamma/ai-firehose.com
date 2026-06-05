@@ -3446,7 +3446,7 @@
       "aliases": [
         "finetuning"
       ],
-      "def_snippet": "The process of continuing to train an already pretrained model on a smaller, task-specific or domain-specific dataset, so its general knowledge is specialized toward a particular use.",
+      "def_snippet": "Continuing to train an already pretrained model on a smaller, task- or domain-specific dataset, so its general knowledge is specialized toward a particular use. It is the engine of the dominant \"pretrain once, fine-tune many\" workflow, and its two costs, a full model copy per task and the risk of overwriting general competence, are exactly what the parameter-efficient methods were invented to dodge.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -4723,7 +4723,7 @@
       "aliases": [
         "instruction tuning"
       ],
-      "def_snippet": "A form of supervised fine-tuning on datasets of instructions paired with desired responses, which teaches a base model to follow natural-language commands rather than merely continue text.",
+      "def_snippet": "A form of supervised fine-tuning on instructions paired with desired responses, which teaches a base model to follow natural-language commands rather than merely continue text. Its headline result is generalization: trained on a broad mix of instruction types, models follow new kinds of instruction they were never shown, the zero-shot leap that made modern assistants possible.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -5585,7 +5585,7 @@
         "low-rank adaptation",
         "LoRA adapters"
       ],
-      "def_snippet": "A parameter-efficient fine-tuning method that freezes a pretrained model and injects small, trainable low-rank weight matrices, so a large model is adapted by training a tiny fraction of its parameters.",
+      "def_snippet": "A parameter-efficient method that freezes a pretrained model and injects small, trainable low-rank weight matrices, so a large model is adapted by training a tiny fraction of its parameters. It rests on the observation that the weight change needed to specialize a model has low intrinsic rank, and once trained the low-rank product can be merged back into the frozen weights for zero added inference latency.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -7289,7 +7289,7 @@
         "PEFT",
         "parameter efficient fine-tuning"
       ],
-      "def_snippet": "A family of fine-tuning methods that adapt a large pretrained model by training only a small number of new or selected parameters while freezing the rest, capturing most of the benefit of full fine-tuning at a fraction of the cost.",
+      "def_snippet": "A family of fine-tuning methods that adapt a large pretrained model by training only a small number of new or selected parameters while freezing the rest, reaching near-full-fine-tuning quality at a fraction of the cost. The shared bet is that the adjustment needed to specialize a model is small and low-dimensional, which is what lets one frozen base serve many swappable megabyte-sized adapters.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -7676,7 +7676,7 @@
         "pre-training",
         "foundation training"
       ],
-      "def_snippet": "The first and most expensive training phase, in which a model learns broad, general-purpose representations from a very large unlabeled corpus before any task-specific adaptation.",
+      "def_snippet": "The first and most expensive training phase, where a model learns broad, general-purpose representations from a giant unlabeled corpus by a self-supervised objective before any task-specific adaptation. Almost all of a model's capability is forged here, not in the later alignment stages, which is why a pretrained base model is treated as a reusable, million-dollar asset.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -9396,7 +9396,7 @@
         "SFT",
         "supervised finetuning"
       ],
-      "def_snippet": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning.",
+      "def_snippet": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning. It works by imitation, which is exactly its limit: the model can only be as good as its demonstrations and gets no signal about what is wrong, the gap preference optimization fills.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },
@@ -10042,7 +10042,7 @@
       "aliases": [
         "transfer-learning"
       ],
-      "def_snippet": "The principle of reusing knowledge a model learned on one task or dataset to improve learning on a different but related task, rather than training every new model from scratch.",
+      "def_snippet": "The principle of reusing knowledge a model learned on one task to improve learning on a different but related task, rather than training every new model from scratch. It is the organizing idea behind most of modern ML, and its central tension, preserve the transferred knowledge while absorbing the new task, is what nearly every fine-tuning design choice is quietly managing.",
       "durable": true,
       "category": "Training and Fine-Tuning"
     },

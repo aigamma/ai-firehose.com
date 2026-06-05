@@ -9,19 +9,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The first and most expensive training phase, in which a model learns broad, general-purpose representations from a very large unlabeled corpus before any task-specific adaptation.",
+  "definition": "The first and most expensive training phase, where a model learns broad, general-purpose representations from a giant unlabeled corpus by a self-supervised objective before any task-specific adaptation. Almost all of a model's capability is forged here, not in the later alignment stages, which is why a pretrained base model is treated as a reusable, million-dollar asset.",
   "body": [
     {
       "type": "p",
-      "text": "Pretraining is the stage where a model acquires its general knowledge of the world from raw data, typically a very large corpus of text, code, or images. The defining feature is that it uses a self-supervised objective, one that needs no human labels: the data supplies its own targets. For a language model the canonical objective is next-token prediction, where the model repeatedly predicts the following token from the preceding context, and the true next token serves as the label for free. Because no annotation is required, pretraining can consume trillions of tokens scraped from the open web, books, and code repositories."
+      "text": "Pretraining is the stage where a model acquires its general knowledge of the world from raw data, typically a very large corpus of text, code, or images. The defining feature is a self-supervised objective, one that needs no human labels: the data supplies its own targets. For a language model the canonical objective is next-token prediction, where the model repeatedly predicts the following token from the preceding context, and the true next token serves as the label for free. Because no annotation is required, pretraining can consume trillions of tokens scraped from the open web, books, and code repositories."
     },
     {
       "type": "p",
-      "text": "Pretraining matters because it is where almost all of a large model's capability is created. The later stages that adapt a model to follow instructions or behave safely adjust a relatively small fraction of what the network knows; the bulk of its factual recall, grammar, reasoning patterns, and latent skills are laid down here. It is also the single most expensive step in the entire lifecycle, often costing millions of dollars in compute, which is why a pretrained model is treated as a reusable asset rather than something rebuilt per task."
+      "text": "Pretraining matters because it is where almost all of a large model's capability is created, which is the keeper. The later stages that adapt a model to follow instructions or behave safely adjust a relatively small fraction of what the network knows; the bulk of its factual recall, grammar, reasoning patterns, and latent skills are laid down here. It is also the single most expensive step in the entire lifecycle, often costing millions of dollars in compute, which is why a pretrained model is treated as a reusable asset rather than something rebuilt per task."
     },
     {
       "type": "p",
-      "text": "Mechanically, pretraining runs ordinary supervised learning under the hood: a loss (cross-entropy over the vocabulary for language models) is minimized by gradient descent and backpropagation across many passes over the data. What makes it self-supervised rather than supervised is only that the labels are extracted from the input itself. Scale is the central lever. Empirical scaling laws show that loss falls predictably as model parameters, dataset size, and compute grow together, which is why each generation of foundation model is larger and trained on more data than the last. Architectures like mixture-of-experts let parameter count grow without a proportional rise in per-token compute."
+      "text": "Mechanically, pretraining runs ordinary supervised learning under the hood: a loss (cross-entropy over the vocabulary for language models) is minimized by gradient descent and backpropagation across many passes over the data, and what makes it self-supervised rather than supervised is only that the labels are extracted from the input itself. Scale is the central lever: empirical scaling laws show that loss falls predictably as model parameters, dataset size, and compute grow together, which is why each generation of foundation model is larger and trained on more data than the last, and architectures like mixture-of-experts let parameter count grow without a proportional rise in per-token compute."
     },
     {
       "type": "p",

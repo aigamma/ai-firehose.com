@@ -9,11 +9,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning.",
+  "definition": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning. It works by imitation, which is exactly its limit: the model can only be as good as its demonstrations and gets no signal about what is wrong, the gap preference optimization fills.",
   "body": [
     {
       "type": "p",
-      "text": "Supervised fine-tuning is the step that turns a raw pretrained language model into something that behaves like an assistant. A base model has read enormous amounts of text and can continue it fluently, but it has no particular inclination to follow an instruction, answer a question directly, or adopt a helpful tone. Supervised fine-tuning fixes that by continuing training on a curated dataset of demonstrations, pairs of an input (a prompt or instruction) and an ideal output, using the same next-token prediction loss as pretraining, just on this targeted data."
+      "text": "Supervised fine-tuning turns a raw pretrained language model into something that behaves like an assistant. A base model has read enormous amounts of text and can continue it fluently, but it has no particular inclination to follow an instruction, answer a question directly, or adopt a helpful tone. Supervised fine-tuning fixes that by continuing training on a curated dataset of demonstrations, pairs of an input (a prompt or instruction) and an ideal output, using the same next-token prediction loss as pretraining, just on this targeted data."
     },
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "Its defining limitation is also its definition: the model learns to imitate the demonstrations, so it can only be as good as they are and cannot easily exceed them. It also has no signal about what is wrong, only examples of what is right. That is precisely the gap the later preference-optimization stage fills, by teaching the model from comparisons between better and worse responses rather than from single gold answers."
+      "text": "Its defining limitation is also its definition, and that is the keeper: the model learns to imitate the demonstrations, so it can only be as good as they are and cannot easily exceed them. It also has no signal about what is wrong, only examples of what is right, which is precisely the gap the later preference-optimization stage fills, by teaching the model from comparisons between better and worse responses rather than from single gold answers."
     },
     {
       "type": "p",

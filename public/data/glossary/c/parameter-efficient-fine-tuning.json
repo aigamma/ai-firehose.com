@@ -9,19 +9,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A family of fine-tuning methods that adapt a large pretrained model by training only a small number of new or selected parameters while freezing the rest, capturing most of the benefit of full fine-tuning at a fraction of the cost.",
+  "definition": "A family of fine-tuning methods that adapt a large pretrained model by training only a small number of new or selected parameters while freezing the rest, reaching near-full-fine-tuning quality at a fraction of the cost. The shared bet is that the adjustment needed to specialize a model is small and low-dimensional, which is what lets one frozen base serve many swappable megabyte-sized adapters.",
   "body": [
     {
       "type": "p",
-      "text": "Parameter-efficient fine-tuning (PEFT) is a family of techniques for adapting a large pretrained model without updating all of its weights. Full fine-tuning trains every parameter, which for a multi-billion-parameter model is expensive in memory, slow, and produces a full-size copy of the model per task. PEFT instead freezes the vast majority of the pretrained weights and trains only a small set, either a handful of newly inserted parameters or a carefully chosen subset of existing ones. The aim is to reach task performance close to full fine-tuning while touching a tiny fraction of the parameters."
+      "text": "Parameter-efficient fine-tuning (PEFT) adapts a large pretrained model without updating all of its weights. Full fine-tuning trains every parameter, which for a multi-billion-parameter model is expensive in memory, slow, and produces a full-size copy of the model per task; PEFT instead freezes the vast majority of the pretrained weights and trains only a small set, either a handful of newly inserted parameters or a carefully chosen subset of existing ones. The aim is to reach task performance close to full fine-tuning while touching a tiny fraction of the parameters."
     },
     {
       "type": "p",
-      "text": "PEFT matters because it makes specializing foundation models practical at scale. By training so few parameters, it slashes the memory needed for gradients and optimizer state, often enough to fine-tune a model that would otherwise not fit on available hardware. It shrinks each adapted result from gigabytes to megabytes, so one frozen base model can serve many lightweight task-specific add-ons that are swapped in and out on demand. This turns fine-tuning from a heavyweight operation into something routine, and it is now the default way most practitioners customize large models."
+      "text": "PEFT matters because it makes specializing foundation models practical at scale. By training so few parameters, it slashes the memory needed for gradients and optimizer state, often enough to fine-tune a model that would otherwise not fit on available hardware, and it shrinks each adapted result from gigabytes to megabytes, so one frozen base model can serve many lightweight task-specific add-ons swapped in and out on demand. This turns fine-tuning from a heavyweight operation into something routine, and it is now the default way most practitioners customize large models."
     },
     {
       "type": "p",
-      "text": "The family contains several mechanisms. The best known is LoRA, which adds trainable low-rank matrices alongside frozen weights. Adapter methods insert small bottleneck layers between existing layers and train only those. Prefix-tuning and prompt-tuning prepend a small set of trainable vectors to the input or to each layer, steering the frozen model without altering it. Selective methods, such as training only the bias terms, update a chosen sliver of the original parameters. What unites them is the same bet: the adjustment needed to specialize a model is small and low-dimensional, so most of the weights can stay fixed."
+      "text": "The family contains several mechanisms. The best known is LoRA, which adds trainable low-rank matrices alongside frozen weights; adapter methods insert small bottleneck layers between existing layers and train only those; prefix-tuning and prompt-tuning prepend a small set of trainable vectors to the input or to each layer, steering the frozen model without altering it; and selective methods, such as training only the bias terms, update a chosen sliver of the original parameters. What unites them is the keeper: the same bet that the adjustment needed to specialize a model is small and low-dimensional, so most of the weights can stay fixed."
     },
     {
       "type": "p",

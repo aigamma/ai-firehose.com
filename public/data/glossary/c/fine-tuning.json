@@ -122,7 +122,7 @@
       "kind": "technique"
     }
   ],
-  "definition": "The process of continuing to train an already pretrained model on a smaller, task-specific or domain-specific dataset, so its general knowledge is specialized toward a particular use.",
+  "definition": "Continuing to train an already pretrained model on a smaller, task- or domain-specific dataset, so its general knowledge is specialized toward a particular use. It is the engine of the dominant \"pretrain once, fine-tune many\" workflow, and its two costs, a full model copy per task and the risk of overwriting general competence, are exactly what the parameter-efficient methods were invented to dodge.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
@@ -141,7 +141,7 @@
     },
     {
       "type": "p",
-      "text": "Full fine-tuning has two costs that motivate alternatives. First, updating and storing a complete copy of a multi-billion-parameter model for every task is expensive in memory and disk. Second, training too aggressively on a narrow dataset can overwrite general competence, a failure mode called catastrophic forgetting. Both pressures gave rise to parameter-efficient fine-tuning, a family of methods, most prominently LoRA, that freeze the original weights and train only a small set of new ones, capturing most of the benefit at a fraction of the cost."
+      "text": "Full fine-tuning has two costs that motivate alternatives, and naming them is the keeper. First, updating and storing a complete copy of a multi-billion-parameter model for every task is expensive in memory and disk; second, training too aggressively on a narrow dataset can overwrite general competence, a failure mode called catastrophic forgetting. Both pressures gave rise to parameter-efficient fine-tuning, a family of methods, most prominently LoRA, that freeze the original weights and train only a small set of new ones, capturing most of the benefit at a fraction of the cost."
     },
     {
       "type": "p",
