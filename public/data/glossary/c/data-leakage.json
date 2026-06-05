@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A methodological flaw in which information from outside the training set, especially from the test set or the future, slips into training, so a model scores far better in evaluation than it will in reality; the most common reason a model looks great and then fails in deployment.",
+  "definition": "A methodological flaw in which information from outside the training set, especially from the test set or the future, slips into training, so a model scores far better in evaluation than it will in reality; the most common reason a model looks great and then fails in deployment. It hides in mundane places, preprocessing before the split, a feature that encodes the target, duplicate rows across splits, and rarely requires any intent.",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "It hides in mundane places. Preprocessing the whole dataset, computing a normalization or imputing missing values, before splitting into train and test lets statistics of the test set bleed into training. A feature can quietly encode the target, or encode the future in a time-series problem, so the model \"predicts\" what it was effectively told. Duplicate or near-duplicate rows landing in both train and test let the model memorize answers it will be tested on. None of this requires intent; it is usually an honest pipeline mistake."
+      "text": "It hides in mundane places, the keeper. Preprocessing the whole dataset, computing a normalization or imputing missing values, before splitting into train and test lets statistics of the test set bleed into training. A feature can quietly encode the target, or encode the future in a time-series problem, so the model \"predicts\" what it was effectively told. Duplicate or near-duplicate rows landing in both train and test let the model memorize answers it will be tested on. None of this requires intent; it is usually an honest pipeline mistake."
     },
     {
       "type": "p",

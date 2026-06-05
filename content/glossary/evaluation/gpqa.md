@@ -5,10 +5,10 @@ kind: technique
 category: Evaluation and Benchmarks
 aliases: GPQA, Graduate-Level Google-Proof Q&A
 related: mmlu, benchmark-contamination, reasoning-model, pass-at-k
-summary: A benchmark of graduate-level, deliberately "Google-proof" multiple-choice questions in biology, physics, and chemistry, written and validated by domain experts to be extremely hard and resistant to shallow lookup, used to probe deep reasoning in frontier models.
+summary: A benchmark of graduate-level, deliberately "Google-proof" multiple-choice questions in biology, physics, and chemistry, written and validated by domain experts to be extremely hard and resistant to shallow lookup. Its defining design is a gap: PhD experts answer well while skilled non-experts with unrestricted web access and ample time still score poorly, which certifies the questions need genuine reasoning, not lookup.
 ---
 
-GPQA was built to be hard in a specific way: hard even for capable people with the internet open. Its questions are graduate-level problems in biology, physics, and chemistry, written by domain experts and validated so that PhD-level experts in the field answer them well while highly skilled non-experts, given unrestricted web access and ample time, still score poorly. That gap is the point. It certifies that the questions cannot be solved by quick lookup or shallow pattern-matching, only by genuine domain reasoning.
+GPQA was built to be hard in a specific way: hard even for capable people with the internet open. Its questions are graduate-level problems in biology, physics, and chemistry, written by domain experts and validated so that PhD-level experts in the field answer them well while highly skilled non-experts, given unrestricted web access and ample time, still score poorly. That gap is the point, the keeper: it certifies that the questions cannot be solved by quick lookup or shallow pattern-matching, only by genuine domain reasoning.
 
 The benchmark exists because older knowledge tests like MMLU have saturated, with frontier models scoring near the ceiling, so they no longer discriminate between strong systems and are increasingly exposed to training-data contamination. GPQA offers a high ceiling and, by design, demands reasoning rather than recall, which makes it a useful probe of the deliberate, multi-step thinking that reasoning models aim to provide. A smaller expert-validated subset, often called GPQA Diamond, is the most-cited slice.
 

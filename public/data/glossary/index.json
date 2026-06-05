@@ -1125,7 +1125,7 @@
         "test set leakage",
         "train-test contamination"
       ],
-      "def_snippet": "The leakage of benchmark test data into a model's training corpus, so that high scores reflect memorization of the answers rather than genuine capability. It silently inflates reported results and undermines comparison.",
+      "def_snippet": "The leakage of benchmark test data into a model's training corpus, so high scores reflect memorization of the answers rather than genuine capability. Because models are pretrained on the same web that hosts almost every public benchmark, leakage is the default rather than the exception, which silently inflates reported results and gives every static evaluation a limited shelf life.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -2327,7 +2327,7 @@
         "train-test leakage",
         "target leakage"
       ],
-      "def_snippet": "A methodological flaw in which information from outside the training set, especially from the test set or the future, slips into training, so a model scores far better in evaluation than it will in reality; the most common reason a model looks great and then fails in deployment.",
+      "def_snippet": "A methodological flaw in which information from outside the training set, especially from the test set or the future, slips into training, so a model scores far better in evaluation than it will in reality; the most common reason a model looks great and then fails in deployment. It hides in mundane places, preprocessing before the split, a feature that encodes the target, duplicate rows across splits, and rarely requires any intent.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -3975,7 +3975,7 @@
         "GPQA",
         "Graduate-Level Google-Proof Q&A"
       ],
-      "def_snippet": "A benchmark of graduate-level, deliberately \"Google-proof\" multiple-choice questions in biology, physics, and chemistry, written and validated by domain experts to be extremely hard and resistant to shallow lookup, used to probe deep reasoning in frontier models.",
+      "def_snippet": "A benchmark of graduate-level, deliberately \"Google-proof\" multiple-choice questions in biology, physics, and chemistry, written and validated by domain experts to be extremely hard and resistant to shallow lookup. Its defining design is a gap: PhD experts answer well while skilled non-experts with unrestricted web access and ample time still score poorly, which certifies the questions need genuine reasoning, not lookup.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -4265,7 +4265,7 @@
         "confabulation",
         "faithfulness"
       ],
-      "def_snippet": "A fluent, confident model output that is factually wrong or unsupported by its source, arising because language models are trained to produce likely text rather than to track truth.",
+      "def_snippet": "A fluent, confident model output that is factually wrong or unsupported by its source, arising because language models are trained to produce likely text rather than to track truth. It is not a bug bolted on but falls out of the objective: a fluent, well-formed falsehood is often more probable than an awkward admission of ignorance, and the model has no separate ledger of what it actually knows.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -4425,7 +4425,7 @@
       "aliases": [
         "HumanEval"
       ],
-      "def_snippet": "A benchmark of 164 hand-written Python programming problems that scores a model by whether the code it generates passes hidden unit tests, measuring functional correctness rather than text similarity, and reported as pass-at-k.",
+      "def_snippet": "A benchmark of 164 hand-written Python programming problems that scores a model by whether the code it generates passes hidden unit tests, measuring functional correctness rather than text similarity, and reported as pass-at-k. Its departure from similarity metrics like BLEU is the whole point: BLEU rewards looking like a reference answer, HumanEval rewards being right.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -6195,7 +6195,7 @@
       "aliases": [
         "Massive Multitask Language Understanding"
       ],
-      "def_snippet": "A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number.",
+      "def_snippet": "A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number. It captured breadth so a high score is hard to fake by overfitting one task, but because the questions are public and old, it is the motivating example of benchmark contamination: high scores can reflect having seen the answers.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -6681,7 +6681,7 @@
         "NIAH",
         "long-context retrieval test"
       ],
-      "def_snippet": "A long-context stress test that hides a specific fact (the needle) at a chosen depth inside a long filler document (the haystack) and asks the model to retrieve it, mapping how reliably a model actually uses information across its full context window.",
+      "def_snippet": "A long-context stress test that hides a specific fact (the needle) at a chosen depth inside a long filler document (the haystack) and asks the model to retrieve it, mapping how reliably a model actually uses information across its full context window. What it reveals is that claimed and effective context lengths diverge, the \"lost in the middle\" pattern where a model retrieves a fact near the ends but falters when it is buried in the middle.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -9448,7 +9448,7 @@
         "SWE-bench",
         "software engineering benchmark"
       ],
-      "def_snippet": "A benchmark that tests a model on real software-engineering tasks, resolving actual GitHub issues in real repositories, graded by whether the generated patch makes the project's hidden test suite pass, a far harder and more realistic bar than self-contained function problems.",
+      "def_snippet": "A benchmark that tests a model on real software-engineering tasks, resolving actual GitHub issues in real repositories, graded by whether the generated patch makes the project's hidden test suite pass, a far harder and more realistic bar than self-contained function problems. Solving one means localizing code across many files, respecting existing conventions, and not breaking anything, which is why it became the reference benchmark for coding agents.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },

@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number.",
+  "definition": "A multiple-choice benchmark of about 16,000 questions spanning 57 subjects, from elementary mathematics to professional law and medicine, used to measure the broad knowledge and reasoning of a language model with a single accuracy number. It captured breadth so a high score is hard to fake by overfitting one task, but because the questions are public and old, it is the motivating example of benchmark contamination: high scores can reflect having seen the answers.",
   "body": [
     {
       "type": "p",
@@ -24,7 +24,7 @@
     },
     {
       "type": "p",
-      "text": "MMLU's limitations are by now well documented. Because the questions are public and old, they leak into pretraining corpora, so high scores can reflect benchmark-contamination, the model having effectively seen the answers during training, rather than genuine understanding. The dataset also contains a non-trivial number of mislabeled or ambiguous items, which caps the achievable accuracy below 100 percent and adds noise to fine comparisons near the top of the leaderboard. And because every question is multiple choice, the format rewards recognition over generation and tells you nothing about whether a model can produce a correct answer unprompted, reason through a novel problem, or avoid confident errors (see calibration)."
+      "text": "MMLU's limitations are by now well documented, and the keeper is the deepest: because the questions are public and old, they leak into pretraining corpora, so high scores can reflect benchmark-contamination, the model having effectively seen the answers during training, rather than genuine understanding. The dataset also contains a non-trivial number of mislabeled or ambiguous items, which caps the achievable accuracy below 100 percent and adds noise to fine comparisons near the top of the leaderboard. And because every question is multiple choice, the format rewards recognition over generation and tells you nothing about whether a model can produce a correct answer unprompted, reason through a novel problem, or avoid confident errors (see calibration)."
     },
     {
       "type": "p",
