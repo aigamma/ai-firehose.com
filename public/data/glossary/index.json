@@ -842,7 +842,7 @@
         "speech recognition",
         "speech-to-text"
       ],
-      "def_snippet": "The task of transcribing spoken audio into text, a core modality bridge for AI; modern systems are large neural models, often encoder-decoder transformers like Whisper, trained on vast audio-text pairs and robust across accents, noise, and languages.",
+      "def_snippet": "The task of transcribing spoken audio into text, the input side of every voice interface and a bridge from the messy analog world into the text language models work in. Modern systems are end-to-end encoder-decoder transformers like Whisper, trained on vast, diverse audio-text pairs, which is what makes them multilingual and robust to accents and noise out of the box.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -2066,7 +2066,7 @@
         "anaphora resolution",
         "pronoun resolution"
       ],
-      "def_snippet": "The task of determining which expressions in a text refer to the same real-world entity, linking pronouns and noun phrases back to their antecedents so that scattered mentions are grouped into coherent chains.",
+      "def_snippet": "The task of finding which expressions in a text refer to the same entity and grouping them into chains, linking \"she\" and \"it\" back to the right antecedents. It is a sensitive probe of genuine understanding because the hardest cases, the Winograd sentences where \"it was too big\" must bind to the trophy not the suitcase, turn on commonsense reasoning rather than grammar.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -2494,7 +2494,7 @@
         "syntactic parsing",
         "dependency tree"
       ],
-      "def_snippet": "A syntactic analysis that determines the grammatical structure of a sentence by linking each word to the word it depends on, producing a tree of labeled head-and-dependent relations.",
+      "def_snippet": "A syntactic analysis that links each word to the word it depends on, producing a tree of labeled head-and-dependent relations, \"cat\" attaches to \"chased\" as its subject. The relations it exposes sit close to meaning, and there is a striking echo in transformers: some attention heads recover dependency-like structure on their own, never having been told to.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -5260,7 +5260,7 @@
         "lemmatisation",
         "lemmatizer"
       ],
-      "def_snippet": "The process of reducing an inflected word to its canonical dictionary form, its lemma, using vocabulary and grammatical analysis, so that different surface forms of the same word are treated as one.",
+      "def_snippet": "The process of reducing an inflected word to its canonical dictionary form, its lemma, using vocabulary and grammatical analysis, so \"ran\" and \"running\" both become \"run\" and \"better\" becomes \"good\". Unlike stemming, it is linguistically informed: it always returns a real word and needs the part of speech to disambiguate (\"saw\" as verb to \"see\", as noun to \"saw\").",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -6656,7 +6656,7 @@
         "entity extraction",
         "named entity recognition"
       ],
-      "def_snippet": "An information-extraction task that locates spans of text referring to real-world entities such as people, organizations, locations, dates, and amounts, and labels each span with its type.",
+      "def_snippet": "An information-extraction task that locates spans naming real-world entities, people, organizations, locations, dates, amounts, and labels each by type. It is the step that turns unstructured prose into structured, typed facts that search, question answering, and knowledge graphs build on, and its central difficulty is that the same surface form (\"Washington\") can be a person, place, or organization depending on context.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -9249,7 +9249,7 @@
         "stemmer",
         "Porter stemmer"
       ],
-      "def_snippet": "A fast, rule-based text normalization that strips suffixes from words to reduce them to a common stem, conflating related forms without consulting a dictionary, so the stem need not be a real word.",
+      "def_snippet": "A fast, rule-based normalization that strips suffixes to reduce words to a common stem, conflating related forms without consulting a dictionary, so the stem need not be a real word (\"studies\" to \"studi\"). Its crudeness produces two signature errors, overstemming (merging \"universe\" and \"university\") and understemming, and it sits at the lightweight end of a spectrum running to lemmatization.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -9760,7 +9760,7 @@
         "TTS",
         "speech synthesis"
       ],
-      "def_snippet": "The task of synthesizing natural-sounding speech from text, the output side of voice interfaces; modern neural systems capture prosody, timbre, and emotion, and can clone a voice from seconds of sample audio.",
+      "def_snippet": "The task of synthesizing natural-sounding speech from text, the output side of voice interfaces. The hard part is not pronouncing words but prosody, the rhythm, stress, and intonation that make speech sound human, and modern neural systems now clone a voice from seconds of audio, which is exactly why synthetic-voice detection and watermarking became a safety concern.",
       "durable": true,
       "category": "NLP Foundations"
     },
