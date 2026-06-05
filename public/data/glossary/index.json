@@ -1157,7 +1157,7 @@
       "aliases": [
         "BERTScore"
       ],
-      "def_snippet": "A text-generation metric that scores a candidate against a reference by matching their contextual word embeddings rather than exact words, so a correct paraphrase with different vocabulary is credited where surface-overlap metrics like BLEU and ROUGE penalize it.",
+      "def_snippet": "A text-generation metric that scores a candidate against a reference by matching their contextual word embeddings rather than exact words, so a correct paraphrase with different vocabulary is credited where BLEU and ROUGE penalize it. It occupies a useful middle ground, fast and deterministic like n-gram overlap but meaning-aware, while still needing a reference and still foolable by a small meaning-flipping detail like a negation.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -1211,7 +1211,7 @@
         "BLEU",
         "Bilingual Evaluation Understudy"
       ],
-      "def_snippet": "An n-gram overlap metric for machine translation that scores a candidate against one or more reference translations by modified n-gram precision, multiplied by a brevity penalty. Higher is better, on a 0 to 1 scale.",
+      "def_snippet": "An n-gram overlap metric for machine translation that scores a candidate against reference translations by modified n-gram precision, multiplied by a brevity penalty; higher is better, on a 0 to 1 scale. Its defining weakness is that it rewards surface form, not meaning: a correct paraphrase in different words scores poorly, which is exactly the gap semantic and judge-based metrics were built to close.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -1292,7 +1292,7 @@
         "confidence calibration",
         "expected calibration error"
       ],
-      "def_snippet": "The property that a model's stated confidence matches its actual accuracy. A well-calibrated model that says it is 80 percent sure is right about 80 percent of the time. Measured by expected calibration error and visualized with reliability diagrams.",
+      "def_snippet": "The property that a model's stated confidence matches its actual accuracy: one that says it is 80 percent sure is right about 80 percent of the time. It is orthogonal to accuracy, a model can be highly accurate yet overconfident, and it matters wherever a probability feeds a decision, which is why confidently-stated hallucinations and the overconfidence of modern deep networks make it a first-class evaluation concern.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -3289,7 +3289,7 @@
         "F-measure",
         "F-beta"
       ],
-      "def_snippet": "The harmonic mean of precision and recall, a single score between 0 and 1 that balances a classifier's false positives against its false negatives. It is high only when both precision and recall are high.",
+      "def_snippet": "The harmonic mean of precision and recall, a single score between 0 and 1 that balances a classifier's false positives against its false negatives. The harmonic mean is the whole point: dominated by the smaller of its inputs, it stays low whenever either precision or recall is low, so it is high only when both are, which is what makes it the default headline metric on imbalanced data where raw accuracy lies.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -7383,7 +7383,7 @@
       "aliases": [
         "PPL"
       ],
-      "def_snippet": "An intrinsic measure of how well a language model predicts a text, defined as the exponential of the average per-token cross-entropy. Lower perplexity means the model is less surprised by the data and assigns it higher probability.",
+      "def_snippet": "An intrinsic measure of how well a language model predicts a text, defined as the exponential of the average per-token cross-entropy; lower means the model is less surprised and assigns the data higher probability. It measures the pretraining objective directly and cheaply, but low perplexity does not guarantee usefulness: it rewards calibrated next-token probability, not correctness, helpfulness, or truth.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -7609,7 +7609,7 @@
         "sensitivity",
         "positive predictive value"
       ],
-      "def_snippet": "The two foundational metrics for classification and retrieval. Precision is the fraction of predicted positives that are correct; recall is the fraction of actual positives that were found. They trade off against each other.",
+      "def_snippet": "The two foundational metrics for classification and retrieval: precision is the fraction of predicted positives that are correct, recall the fraction of actual positives that were found. They emphasize different failures, precision punishes false positives and recall punishes false negatives, and because the two kinds of mistake rarely cost the same, reporting both forces an honest account of the trade-off a system has chosen.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -8467,7 +8467,7 @@
         "AUROC",
         "area under the ROC curve"
       ],
-      "def_snippet": "The area under the receiver operating characteristic curve, a threshold-independent measure of how well a binary classifier ranks positives above negatives. It equals the probability that a random positive is scored higher than a random negative; 0.5 is chance, 1.0 is perfect.",
+      "def_snippet": "The area under the receiver operating characteristic curve, a threshold-independent measure of how well a binary classifier ranks positives above negatives; it equals the probability that a random positive is scored higher than a random negative, 0.5 chance, 1.0 perfect. It measures discrimination, whether the model ranks correctly, which is distinct from calibration, whether the attached probabilities are right: a model can have perfect AUC and wildly wrong probabilities.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },
@@ -8525,7 +8525,7 @@
         "ROUGE-L",
         "ROUGE-N"
       ],
-      "def_snippet": "A family of recall-oriented overlap metrics for automatic summarization that scores a generated summary against reference summaries by shared n-grams or longest common subsequence. Higher is better.",
+      "def_snippet": "A family of recall-oriented overlap metrics for automatic summarization that scores a generated summary against references by shared n-grams or longest common subsequence; higher is better. It flips BLEU's emphasis from precision to recall because summarization's core risk is omission, but it shares the surface-overlap blind spot: it cannot credit a faithful paraphrase or penalize a fluent factual error.",
       "durable": true,
       "category": "Evaluation and Benchmarks"
     },

@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A text-generation metric that scores a candidate against a reference by matching their contextual word embeddings rather than exact words, so a correct paraphrase with different vocabulary is credited where surface-overlap metrics like BLEU and ROUGE penalize it.",
+  "definition": "A text-generation metric that scores a candidate against a reference by matching their contextual word embeddings rather than exact words, so a correct paraphrase with different vocabulary is credited where BLEU and ROUGE penalize it. It occupies a useful middle ground, fast and deterministic like n-gram overlap but meaning-aware, while still needing a reference and still foolable by a small meaning-flipping detail like a negation.",
   "body": [
     {
       "type": "p",
@@ -24,7 +24,7 @@
     },
     {
       "type": "p",
-      "text": "BERTScore occupies a useful middle ground between the cheap rigidity of n-gram overlap and the cost and variance of an llm-as-judge. It is fast, deterministic, and needs no prompting, yet it captures meaning that string matching cannot. Its limits follow from its design: it still requires reference texts, so it cannot grade open-ended generation that has no single correct answer, and like any embedding-based measure it can be fooled by sentences that are lexically similar but differ in a small, meaning-flipping detail such as a negation. It is best understood as a reference-based semantic metric, stronger than BLEU and ROUGE at recognizing paraphrase, and weaker than a capable judge at assessing qualities no reference can encode."
+      "text": "BERTScore occupies a useful middle ground between the cheap rigidity of n-gram overlap and the cost and variance of an llm-as-judge, the keeper. It is fast, deterministic, and needs no prompting, yet it captures meaning that string matching cannot. Its limits follow from its design: it still requires reference texts, so it cannot grade open-ended generation that has no single correct answer, and like any embedding-based measure it can be fooled by sentences that are lexically similar but differ in a small, meaning-flipping detail such as a negation. It is best understood as a reference-based semantic metric, stronger than BLEU and ROUGE at recognizing paraphrase, and weaker than a capable judge at assessing qualities no reference can encode."
     }
   ],
   "related": [

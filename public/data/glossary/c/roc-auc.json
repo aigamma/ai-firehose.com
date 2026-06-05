@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The area under the receiver operating characteristic curve, a threshold-independent measure of how well a binary classifier ranks positives above negatives. It equals the probability that a random positive is scored higher than a random negative; 0.5 is chance, 1.0 is perfect.",
+  "definition": "The area under the receiver operating characteristic curve, a threshold-independent measure of how well a binary classifier ranks positives above negatives; it equals the probability that a random positive is scored higher than a random negative, 0.5 chance, 1.0 perfect. It measures discrimination, whether the model ranks correctly, which is distinct from calibration, whether the attached probabilities are right: a model can have perfect AUC and wildly wrong probabilities.",
   "body": [
     {
       "type": "p",
@@ -26,7 +26,7 @@
     },
     {
       "type": "p",
-      "text": "ROC AUC has well-known limitations. On heavily imbalanced data it can be optimistic and misleading, because the false positive rate has a large negative denominator that masks a flood of false positives among a rare positive class; in that regime the area under the precision-recall curve is the more honest summary. AUC is also purely a measure of ranking and ordering, so it is invariant to any monotonic rescaling of the scores and therefore says nothing about calibration: a model with perfect AUC can still attach wildly wrong probabilities to its predictions. And a single AUC averages over operating points a practitioner may never use, so two models with equal AUC can behave very differently at the threshold that actually matters."
+      "text": "ROC AUC has well-known limitations. On heavily imbalanced data it can be optimistic and misleading, because the false positive rate has a large negative denominator that masks a flood of false positives among a rare positive class; in that regime the area under the precision-recall curve is the more honest summary. The keeper is what AUC does not see: it is purely a measure of ranking and ordering, invariant to any monotonic rescaling of the scores, so it says nothing about calibration, and a model with perfect AUC can still attach wildly wrong probabilities to its predictions. And a single AUC averages over operating points a practitioner may never use, so two models with equal AUC can behave very differently at the threshold that actually matters."
     },
     {
       "type": "p",
