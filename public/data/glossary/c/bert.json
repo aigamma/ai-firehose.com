@@ -8,15 +8,15 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A transformer-based language model from Google, released in 2018, that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, and is fine-tuned for a wide range of NLP tasks.",
+  "definition": "A transformer-based model from Google (2018) that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, then fine-tuning for many NLP tasks. It reset the state of the art across the field and made pretrain-then-fine-tune the default workflow, and it is the encoder, understanding-first counterpart to the generative LLM lineage.",
   "body": [
     {
       "type": "p",
-      "text": "BERT, Bidirectional Encoder Representations from Transformers, is a language model released by Google in 2018 that reset the state of the art across natural language processing. It is built from the encoder half of the transformer and is pretrained on large amounts of unlabeled text, after which it is fine-tuned with a small task-specific head for problems like question answering, sentiment classification, and named-entity-recognition. Its arrival marked the moment the field shifted decisively from static word embeddings to deep contextual representations."
+      "text": "BERT, Bidirectional Encoder Representations from Transformers, reset the state of the art across natural language processing when Google released it in 2018. Built from the encoder half of the transformer, it is pretrained on large amounts of unlabeled text, then fine-tuned with a small task-specific head for problems like question answering, sentiment classification, and named-entity recognition. Its arrival marked the moment the field shifted decisively from static word embeddings to deep contextual representations."
     },
     {
       "type": "p",
-      "text": "BERT's signature idea is deep bidirectionality. Earlier language models read text left to right, predicting each word from the words before it, so a word's representation could only draw on one side of its context. BERT instead conditions on both directions at once. It achieves this with masked-language-modeling: during pretraining a fraction of the input tokens are hidden, and the model must predict them using the entire surrounding sentence, left and right together. A second pretraining task, next-sentence prediction, trains the model to judge whether one passage plausibly follows another, encouraging it to represent relationships between sentences."
+      "text": "BERT's signature idea is deep bidirectionality. Earlier language models read text left to right, predicting each word from the words before it, so a word's representation could only draw on one side of its context; BERT instead conditions on both directions at once. It achieves this with masked-language-modeling: during pretraining a fraction of the input tokens are hidden, and the model must predict them using the entire surrounding sentence, left and right together. A second pretraining task, next-sentence prediction, trains it to judge whether one passage plausibly follows another, encouraging it to represent relationships between sentences."
     },
     {
       "type": "p",
@@ -24,7 +24,7 @@
     },
     {
       "type": "p",
-      "text": "BERT matters because it made transfer learning the default workflow in NLP. One expensive pretraining run on generic text yields a model that practitioners fine-tune cheaply on their own labeled data, often setting new records with comparatively little task-specific engineering. This pretrain-then-fine-tune recipe spread rapidly and spawned a large family of variants, including smaller distilled versions for efficiency and versions tuned for specific languages and domains."
+      "text": "BERT matters because it made transfer learning the default workflow in NLP, the keeper. One expensive pretraining run on generic text yields a model practitioners fine-tune cheaply on their own labeled data, often setting new records with comparatively little task-specific engineering. This pretrain-then-fine-tune recipe spread rapidly and spawned a large family of variants, including smaller distilled versions for efficiency and versions tuned for specific languages and domains."
     },
     {
       "type": "p",

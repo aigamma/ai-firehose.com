@@ -1145,7 +1145,7 @@
       "aliases": [
         "Bidirectional Encoder Representations from Transformers"
       ],
-      "def_snippet": "A transformer-based language model from Google, released in 2018, that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, and is fine-tuned for a wide range of NLP tasks.",
+      "def_snippet": "A transformer-based model from Google (2018) that learns deeply bidirectional contextual word representations by pretraining on masked-language-modeling, then fine-tuning for many NLP tasks. It reset the state of the art across the field and made pretrain-then-fine-tune the default workflow, and it is the encoder, understanding-first counterpart to the generative LLM lineage.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -3949,7 +3949,7 @@
         "Global Vectors",
         "global vectors for word representation"
       ],
-      "def_snippet": "A word embedding method from Stanford that learns word vectors by factorizing a global word-word co-occurrence matrix, combining the corpus-wide statistics of count-based methods with the geometry of prediction-based ones.",
+      "def_snippet": "A word embedding method from Stanford (2014) that learns word vectors by factorizing a global word-word co-occurrence matrix, the count-based counterpart to word2vec's local prediction. Its guiding insight is that ratios of co-occurrence probabilities, not raw counts, encode meaning: how often \"ice\" versus \"steam\" co-occurs with \"solid\" cleanly separates the two.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -5689,7 +5689,7 @@
         "neural machine translation",
         "automatic translation"
       ],
-      "def_snippet": "The automatic translation of text from one natural language to another, the task whose pursuit drove the encoder-decoder architecture, the attention mechanism, and ultimately the transformer.",
+      "def_snippet": "The automatic translation of text between natural languages, the task whose pursuit kept forcing the inventions, the encoder-decoder, the attention mechanism, the transformer itself, that then reshaped all of NLP. Its measurable quality (BLEU against human references) made it a demanding testbed that drove rapid progress.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -5844,7 +5844,7 @@
         "masked LM",
         "cloze pretraining"
       ],
-      "def_snippet": "A self-supervised pretraining objective that hides a fraction of the tokens in a text and trains a model to predict them from the surrounding context on both sides, producing deeply bidirectional representations.",
+      "def_snippet": "A self-supervised pretraining objective that hides a fraction of a text's tokens and trains a model to predict them from both sides of the surrounding context, producing deeply bidirectional representations. A modern cloze task whose labels come free from the text, it unlocked context that left-to-right models cannot see, at the cost of not being a natural generator.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -8865,10 +8865,9 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [
-        "seq2seq",
-        "encoder-decoder"
+        "seq2seq"
       ],
-      "def_snippet": "A neural architecture that maps an input sequence to an output sequence of possibly different length using an encoder that reads the input into a representation and a decoder that generates the output one step at a time.",
+      "def_snippet": "A framework for mapping an input sequence to an output sequence of possibly different length, with an encoder that reads the input into a representation and a decoder that generates the output one step at a time. Its early fixed-vector bottleneck is what attention was invented to fix, and that fix, not the recurrent backbone, turned out to be the idea that mattered.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -10629,7 +10628,7 @@
         "distributed word representation",
         "embedding vector"
       ],
-      "def_snippet": "A representation of a word as a dense vector of real numbers, learned so that words used in similar contexts land near each other in the vector space, replacing sparse symbolic word identities with continuous geometry.",
+      "def_snippet": "A representation of a word as a dense vector of real numbers, learned so words used in similar contexts land near each other, replacing sparse symbolic identities with continuous geometry. Its power is turning meaning into distance, where one-hot symbols make \"cat\" no closer to \"dog\" than to \"thermodynamics\", and its classic limit is being static: one vector per word, blending every sense into one compromise point.",
       "durable": true,
       "category": "NLP Foundations"
     },
@@ -10651,7 +10650,7 @@
         "continuous bag of words",
         "CBOW"
       ],
-      "def_snippet": "A family of shallow neural models, introduced at Google in 2013, that learns dense word embeddings by training a network to predict a word from its neighbors or its neighbors from a word.",
+      "def_snippet": "A family of shallow neural models from Google (2013) that learns dense word embeddings by training a network to predict a word from its neighbors, or its neighbors from a word. The twist is that the prediction is a throwaway: the real product is the weight matrix the proxy task forces the model to learn, and its analogy arithmetic became the vivid proof that learned word geometry carries meaning.",
       "durable": true,
       "category": "NLP Foundations"
     },
