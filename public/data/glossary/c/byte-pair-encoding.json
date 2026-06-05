@@ -10,19 +10,19 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A subword tokenization algorithm that builds a vocabulary by repeatedly merging the most frequent adjacent pair of symbols in a corpus, balancing a compact vocabulary against the ability to represent any input.",
+  "definition": "The subword algorithm most LLMs use to build their tokenizer, born as a data-compression scheme and adapted to language: it grows a vocabulary by repeatedly merging the most frequent adjacent pair of symbols. Its byte-level variant runs over raw bytes, which guarantees any possible input encodes and removes the need for an unknown token entirely.",
   "body": [
     {
       "type": "p",
-      "text": "Byte-pair encoding, usually shortened to BPE, is the algorithm most large language models use to build their tokenizer. It originated as a simple data compression scheme and was adapted to natural language processing as a way to learn a subword vocabulary from data rather than fixing one by hand. Its appeal is that it finds a practical compromise: frequent words become single tokens, while rare words and never-before-seen strings still decompose cleanly into smaller known pieces."
+      "text": "Byte-pair encoding, usually shortened to BPE, is the algorithm most large language models use to build their tokenizer. It originated as a simple data-compression scheme and was adapted to natural language processing as a way to learn a subword vocabulary from data rather than fixing one by hand, and its appeal is the practical compromise it strikes: frequent words become single tokens, while rare words and never-before-seen strings still decompose cleanly into smaller known pieces."
     },
     {
       "type": "p",
-      "text": "Training a BPE vocabulary is an iterative merge procedure. You start by treating each text as a sequence of base symbols, originally individual characters and in the byte-level variant the raw bytes, so that nothing is ever out of vocabulary. You then count every adjacent pair of symbols across the corpus, find the single most frequent pair, and merge it into a new combined symbol that is added to the vocabulary. Repeating this thousands of times grows the vocabulary from base symbols up through common letter groups, then morphemes, then whole frequent words, stopping when the vocabulary reaches a target size. The ordered list of merges learned during training is exactly what is replayed at inference time to tokenize new text."
+      "text": "Training a BPE vocabulary is an iterative merge procedure. You start by treating each text as a sequence of base symbols, originally individual characters and in the byte-level variant the raw bytes, so nothing is ever out of vocabulary; you then count every adjacent pair of symbols across the corpus, find the single most frequent pair, and merge it into a new combined symbol added to the vocabulary. Repeating this thousands of times grows the vocabulary from base symbols up through common letter groups, then morphemes, then whole frequent words, stopping when it reaches a target size, and the ordered list of merges learned during training is exactly what is replayed at inference time to tokenize new text."
     },
     {
       "type": "p",
-      "text": "The byte-level form, used by the GPT family among others, runs BPE over UTF-8 bytes instead of Unicode characters. This guarantees that any possible input, in any language or script, with any emoji or control character, can always be encoded, because every byte value is a valid starting symbol. It removes the need for a special unknown token entirely, at the cost of occasionally spending several tokens on a single unusual character."
+      "text": "The byte-level form, used by the GPT family among others, runs BPE over UTF-8 bytes instead of Unicode characters, which guarantees that any possible input, in any language or script, with any emoji or control character, can always be encoded, because every byte value is a valid starting symbol. It removes the need for a special unknown token entirely, at the cost of occasionally spending several tokens on a single unusual character."
     },
     {
       "type": "p",

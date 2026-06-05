@@ -1270,7 +1270,7 @@
         "byte pair encoding",
         "byte-level BPE"
       ],
-      "def_snippet": "A subword tokenization algorithm that builds a vocabulary by repeatedly merging the most frequent adjacent pair of symbols in a corpus, balancing a compact vocabulary against the ability to represent any input.",
+      "def_snippet": "The subword algorithm most LLMs use to build their tokenizer, born as a data-compression scheme and adapted to language: it grows a vocabulary by repeatedly merging the most frequent adjacent pair of symbols. Its byte-level variant runs over raw bytes, which guarantees any possible input encodes and removes the need for an unknown token entirely.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -1905,7 +1905,7 @@
         "context size",
         "sequence length"
       ],
-      "def_snippet": "The maximum number of tokens a language model can attend to at once, bounding how much text it can read and generate in a single pass and acting as its working memory.",
+      "def_snippet": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -5050,7 +5050,7 @@
         "key-value cache",
         "KV caching"
       ],
-      "def_snippet": "An inference optimization that stores the key and value vectors of already-processed tokens so a transformer generating text does not recompute them for every new token, trading memory for a large speedup.",
+      "def_snippet": "An inference optimization that stores the key and value vectors of already-processed tokens so a generating transformer never recomputes them, turning each step from growing-with-length down to roughly constant. The price is memory: the cache grows linearly with the sequence and can exceed the model weights, which is the pressure behind multi-query and grouped-query attention.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -8636,11 +8636,10 @@
       "kind": "technique",
       "attention": 1,
       "aliases": [
-        "neural scaling laws",
         "scaling law",
         "Chinchilla scaling"
       ],
-      "def_snippet": "Empirical relationships showing that a language model's loss falls in a smooth, predictable power law as model size, training data, and compute increase, which lets practitioners forecast performance and budget training in advance.",
+      "def_snippet": "The empirical regularity that a transformer's loss falls as a smooth power law in model size, data, and compute, predictable enough to forecast a giant model from small pilot runs. It turned model-building from guesswork into planning, and its key caveat is that smooth aggregate loss can mask abilities that emerge abruptly at scale.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -9356,7 +9355,7 @@
         "SentencePiece",
         "unigram tokenization"
       ],
-      "def_snippet": "The family of tokenization methods that split text into pieces smaller than words but larger than characters, learned from a corpus so frequent words stay whole and rare words break into reusable fragments, giving a fixed vocabulary with no out-of-vocabulary words.",
+      "def_snippet": "The family of tokenization methods, BPE, WordPiece, Unigram, that split text into pieces smaller than words but larger than characters, learned from a corpus so frequent words stay whole and rare ones break into reusable fragments. Its defining win is eliminating the out-of-vocabulary problem entirely: nothing is ever truly unknown, since any string decomposes into pieces the model has seen.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -9843,7 +9842,7 @@
         "embedding layer",
         "input embedding"
       ],
-      "def_snippet": "The lookup layer that maps each discrete token id to a dense, learned vector, turning a sequence of symbols into the continuous representations a transformer can actually compute over.",
+      "def_snippet": "The lookup layer that maps each discrete token id to a dense, learned vector, the bridge from symbols to the continuous math a transformer computes over. The vectors are learned so similar tokens sit near one another, and a common trick, weight tying, reuses this table at the output so it bookends the whole model.",
       "durable": true,
       "category": "Transformers and LLMs"
     },
@@ -9888,10 +9887,9 @@
       "attention": 0,
       "aliases": [
         "tokenizer",
-        "tokenizing",
-        "subword tokenization"
+        "tokenizing"
       ],
-      "def_snippet": "The step that breaks raw text into discrete units called tokens, the atomic symbols a language model actually reads and predicts, before they are mapped to vectors.",
+      "def_snippet": "The step that breaks raw text into discrete units called tokens, the atomic symbols a language model actually reads and predicts. The choice of tokenizer is a genuine architectural decision, not mere preprocessing: it quietly fixes what the model can see and say, and it is why character-level tasks like counting letters are hard, since the model perceives clumps, not characters.",
       "durable": true,
       "category": "Transformers and LLMs"
     },

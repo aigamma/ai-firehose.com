@@ -10,11 +10,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The lookup layer that maps each discrete token id to a dense, learned vector, turning a sequence of symbols into the continuous representations a transformer can actually compute over.",
+  "definition": "The lookup layer that maps each discrete token id to a dense, learned vector, the bridge from symbols to the continuous math a transformer computes over. The vectors are learned so similar tokens sit near one another, and a common trick, weight tying, reuses this table at the output so it bookends the whole model.",
   "body": [
     {
       "type": "p",
-      "text": "A token embedding is the bridge between discrete text and the continuous math of a neural network. After tokenization turns a string into a sequence of integer token ids, those ids are just arbitrary labels with no inherent meaning; a transformer cannot add or multiply them sensibly. The token embedding layer replaces each id with a dense vector of real numbers, drawn from a learned table with one row per vocabulary entry. This is the first computational step inside the model, and from here on every operation, attention included, works on vectors rather than symbols."
+      "text": "A token embedding is the bridge between discrete text and the continuous math of a neural network. After tokenization turns a string into a sequence of integer token ids, those ids are just arbitrary labels with no inherent meaning, and a transformer cannot add or multiply them sensibly. The token embedding layer replaces each id with a dense vector of real numbers, drawn from a learned table with one row per vocabulary entry, and this is the first computational step inside the model: from here on every operation, attention included, works on vectors rather than symbols."
     },
     {
       "type": "p",
@@ -22,7 +22,7 @@
     },
     {
       "type": "p",
-      "text": "The token embedding handles meaning but not order, since the same token gets the same vector no matter where it appears. That is why a positional encoding is added to the token embedding before the first attention layer, combining what a token is with where it sits. The dimensionality of the embedding, the model dimension, is one of the architecture's basic hyperparameters and sets the width of nearly every vector that flows through the network thereafter."
+      "text": "The token embedding handles meaning but not order, since the same token gets the same vector no matter where it appears, which is why a positional encoding is added to the token embedding before the first attention layer, combining what a token is with where it sits. The dimensionality of the embedding, the model dimension, is one of the architecture's basic hyperparameters and sets the width of nearly every vector that flows through the network thereafter."
     },
     {
       "type": "p",
