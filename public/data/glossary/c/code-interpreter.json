@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution.",
+  "definition": "A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution. The single tool it exposes, \"run this code,\" is itself general-purpose, and execution provides ground truth, which is what makes it both exact and self-checking.",
   "body": [
     {
       "type": "p",
@@ -18,11 +18,11 @@
     },
     {
       "type": "p",
-      "text": "The reason it matters is that it converts a probabilistic next-token predictor into something that can get exact answers and check itself. Language models are unreliable at precise computation: multi-digit arithmetic, sorting, date math, parsing a messy file, and long deterministic procedures are exactly the operations they fumble when doing them \"in their head.\" Delegating those to executed code replaces a plausible guess with a computed fact. Just as important, execution provides ground truth. The model can run a function against test cases and see whether they pass, observe a stack trace when something breaks, and use that feedback to fix the code, a tight generate-run-observe loop that closely fits the react-prompting pattern and underpins a great deal of reliable agentic-workflow behavior."
+      "text": "The reason it matters is the keeper: it converts a probabilistic next-token predictor into something that can get exact answers and check itself. Language models are unreliable at precise computation, multi-digit arithmetic, sorting, date math, parsing a messy file, and long deterministic procedures are exactly the operations they fumble when doing them \"in their head,\" and delegating those to executed code replaces a plausible guess with a computed fact. Just as important, execution provides ground truth: the model can run a function against test cases and see whether they pass, observe a stack trace when something breaks, and use that feedback to fix the code, a tight generate-run-observe loop that closely fits the react-prompting pattern and underpins a great deal of reliable agentic-workflow behavior."
     },
     {
       "type": "p",
-      "text": "In practice the runtime is sandboxed and constrained, which is essential rather than incidental. Running model-generated code is running arbitrary code, so it is isolated from the host, often denied network access, given limited CPU, memory, and time, and confined to a scratch filesystem, so that a buggy or adversarial program cannot escape, exhaust resources, or reach data it should not. The session is usually stateful, so variables, imported libraries, and uploaded files persist across calls and the model can build up a computation over several turns. This statefulness is what lets a code interpreter act as a working scratchpad for data analysis, where the model loads a dataset once and then explores it interactively."
+      "text": "In practice the runtime is sandboxed and constrained, which is essential rather than incidental. Running model-generated code is running arbitrary code, so it is isolated from the host, often denied network access, given limited CPU, memory, and time, and confined to a scratch filesystem, so a buggy or adversarial program cannot escape, exhaust resources, or reach data it should not. The session is usually stateful, so variables, imported libraries, and uploaded files persist across calls and the model can build up a computation over several turns. This statefulness is what lets a code interpreter act as a working scratchpad for data analysis, where the model loads a dataset once and then explores it interactively."
     },
     {
       "type": "p",

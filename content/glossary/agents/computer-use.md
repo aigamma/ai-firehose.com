@@ -5,12 +5,12 @@ kind: technique
 category: Agents and Tool Use
 aliases: computer use, computer-using agent, GUI agent
 related: ai-agent, tool-use, function-calling, autonomous-agent, vision-language-model
-summary: An agent capability in which a model operates a computer the way a person does, by viewing the screen and issuing mouse and keyboard actions, letting it use arbitrary software through its graphical interface rather than a bespoke API.
+summary: An agent capability in which a model operates a computer the way a person does, by viewing the screen and issuing mouse and keyboard actions, letting it use arbitrary software through its graphical interface rather than a bespoke API. Its appeal is generality, nearly all software has a screen even when it has no API, and it is where agent safety stops being abstract: a model with a live mouse can take irreversible actions and is exposed to prompt injection from whatever is on screen.
 ---
 
 Computer use lets an agent drive software the way a human does, through the graphical interface. Instead of calling a structured tool or API, the model is given a screenshot, decides what to do, and emits low-level actions: move the cursor to a coordinate, click, type, scroll, press a key. The system executes the action, captures a new screenshot, and the loop repeats. The agent is, in effect, a user.
 
-The appeal is generality. Most software, internal tools, legacy applications, and websites without an API has no programmatic interface a model can call, but nearly all of it has a screen and accepts a mouse and keyboard. An agent that can see and operate a GUI therefore generalizes to almost any application without per-app integration work. This is built on a vision-language model: the model must read the screen, ground its intent in specific pixel locations, plan a sequence of actions, and recover when a click does not do what it expected.
+The appeal is generality, the keeper. Most software, internal tools, legacy applications, and websites without an API, has no programmatic interface a model can call, but nearly all of it has a screen and accepts a mouse and keyboard, so an agent that can see and operate a GUI generalizes to almost any application without per-app integration work. This is built on a vision-language model: the model must read the screen, ground its intent in specific pixel locations, plan a sequence of actions, and recover when a click does not do what it expected.
 
 The capability turns chat assistants into agents that can carry out real multi-step tasks: filling out forms, navigating an unfamiliar app, gathering information across several windows, or completing a workflow end to end.
 

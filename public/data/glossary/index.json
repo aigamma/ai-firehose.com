@@ -230,7 +230,7 @@
         "agent eval",
         "agent benchmarking"
       ],
-      "def_snippet": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, which is much harder than scoring a single model output because success unfolds across a trajectory of actions.",
+      "def_snippet": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, much harder than scoring a single output because success unfolds across a trajectory. It needs a real or simulated environment rather than a dataset, often a programmatic verifier for the final state, and a success rate reported across many seeded runs because variance between runs is large.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -347,7 +347,7 @@
         "agentic RAG",
         "agentic retrieval"
       ],
-      "def_snippet": "Retrieval-augmented generation driven by an agent that decides when and what to retrieve, issues multiple queries, evaluates the results, and iterates, rather than a single fixed retrieve-then-generate step, so RAG can handle multi-hop and open-ended questions.",
+      "def_snippet": "Retrieval-augmented generation driven by an agent that decides when and what to retrieve, issues multiple queries, evaluates the results, and iterates, rather than a single fixed retrieve-then-generate step. By treating retrieval as a tool to be used deliberately, not a mandatory first step, it handles multi-hop reasoning (\"find X, then use X to find Y\") and exploratory questions a single shot cannot.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -1623,7 +1623,7 @@
         "code execution tool",
         "sandboxed code execution"
       ],
-      "def_snippet": "A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution.",
+      "def_snippet": "A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution. The single tool it exposes, \"run this code,\" is itself general-purpose, and execution provides ground truth, which is what makes it both exact and self-checking.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -1707,7 +1707,7 @@
         "computer-using agent",
         "GUI agent"
       ],
-      "def_snippet": "An agent capability in which a model operates a computer the way a person does, by viewing the screen and issuing mouse and keyboard actions, letting it use arbitrary software through its graphical interface rather than a bespoke API.",
+      "def_snippet": "An agent capability in which a model operates a computer the way a person does, by viewing the screen and issuing mouse and keyboard actions, letting it use arbitrary software through its graphical interface rather than a bespoke API. Its appeal is generality, nearly all software has a screen even when it has no API, and it is where agent safety stops being abstract: a model with a live mouse can take irreversible actions and is exposed to prompt injection from whatever is on screen.",
       "durable": true,
       "category": "Agents and Tool Use"
     },
@@ -4413,7 +4413,7 @@
         "HITL",
         "human oversight"
       ],
-      "def_snippet": "A design in which a person reviews, approves, or corrects an agent's actions at chosen points rather than letting it run fully unattended, trading some autonomy for safety, accuracy, and accountability on consequential or irreversible steps.",
+      "def_snippet": "A design in which a person reviews, approves, or corrects an agent's actions at chosen points rather than letting it run fully unattended, trading some autonomy for safety and accountability on consequential or irreversible steps. It exists because autonomy and risk rise together, and its engineering tension is calibration: too many checkpoints and the human rubber-stamps without reading, too few and mistakes reach the world unchecked.",
       "durable": true,
       "category": "Agents and Tool Use"
     },

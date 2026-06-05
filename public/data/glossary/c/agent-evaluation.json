@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, which is much harder than scoring a single model output because success unfolds across a trajectory of actions.",
+  "definition": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, much harder than scoring a single output because success unfolds across a trajectory. It needs a real or simulated environment rather than a dataset, often a programmatic verifier for the final state, and a success rate reported across many seeded runs because variance between runs is large.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "This is genuinely harder than scoring a static answer, for several reasons. There is often no single correct output, only a state of the world that is right or wrong, which means grading frequently depends on executing the result and checking its effect rather than matching a key. Errors compound across steps, so a small early mistake can doom a long run, and the same task can succeed or fail across repeated attempts because tool results and model sampling introduce nondeterminism. The action space is open, the agent can call tools in any order, and runs vary in length, all of which defeat the fixed-format scoring that ordinary benchmarks rely on. Measuring an agent therefore demands a real or simulated environment, not just a dataset of questions and answers."
+      "text": "This is genuinely harder than scoring a static answer, for several reasons that together are the keeper. There is often no single correct output, only a state of the world that is right or wrong, which means grading frequently depends on executing the result and checking its effect rather than matching a key; errors compound across steps, so a small early mistake can doom a long run; and the same task can succeed or fail across repeated attempts because tool results and model sampling introduce nondeterminism. The action space is open, the agent can call tools in any order, and runs vary in length, all of which defeat the fixed-format scoring ordinary benchmarks rely on. Measuring an agent therefore demands a real or simulated environment, not just a dataset of questions and answers."
     },
     {
       "type": "p",
