@@ -1519,7 +1519,7 @@
         "CFG",
         "guidance scale"
       ],
-      "def_snippet": "A sampling technique for conditional diffusion models that strengthens adherence to a condition, such as a text prompt, by extrapolating away from the model's unconditional prediction, with no separate classifier required.",
+      "def_snippet": "A sampling trick that makes a conditional diffusion model follow its condition more closely by extrapolating away from the model's own unconditional prediction, with no separate classifier needed. It is the near-universal dial for trading prompt fidelity against diversity in modern generators, and it costs a doubling of sampling compute since the network runs twice per step.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -1815,7 +1815,7 @@
         "consistency models",
         "consistency distillation"
       ],
-      "def_snippet": "A generative model trained so that every point along a diffusion trajectory maps to the same clean origin, letting it produce a high-quality sample in one or a few steps instead of the dozens or hundreds a diffusion model needs.",
+      "def_snippet": "A generative model trained so that every point along a diffusion trajectory maps directly back to the same clean origin, which lets it jump from noise to a finished sample in one evaluation instead of the dozens or hundreds a diffusion model needs. It attacks diffusion's central weakness, speed, by changing what the network predicts rather than by taking smaller steps.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -2632,7 +2632,7 @@
         "DiT",
         "diffusion transformer"
       ],
-      "def_snippet": "A diffusion model whose denoising network is a transformer operating on sequences of image or video patches, replacing the U-Net backbone, which scales cleanly with compute and underlies recent high-end image and video generators.",
+      "def_snippet": "A diffusion model whose denoising network is a transformer over image or video patches instead of a U-Net. The motivation is scaling: a transformer inherits the clean, predictable compute-quality scaling laws that drove the language-model era, where a convolutional U-Net does not, which is why it backs a wave of recent high-end image and video generators.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -3527,10 +3527,9 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [
-        "conditional flow matching",
-        "rectified flow"
+        "conditional flow matching"
       ],
-      "def_snippet": "A generative modeling framework that trains a network to predict a velocity field carrying samples from a simple noise distribution to the data distribution along continuous paths, often straighter and faster to simulate than a diffusion model's.",
+      "def_snippet": "A generative framework that trains a network to predict a velocity field carrying samples from noise to data along continuous paths, the deterministic transport view of generation. By choosing simple, often straight paths, the learned trajectories integrate in far fewer steps than a diffusion model's, and a clever per-sample regression target makes the otherwise intractable field learnable.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -5135,7 +5134,7 @@
         "latent diffusion model",
         "LDM"
       ],
-      "def_snippet": "A diffusion model that runs in the compressed latent space of an autoencoder rather than on raw pixels, drastically cutting compute while preserving quality, the design behind most large text-to-image systems.",
+      "def_snippet": "A diffusion model that runs in the compressed latent space of an autoencoder instead of on raw pixels, cutting compute by a large factor while preserving quality, the design behind most large text-to-image systems. Its clean division of labor, the autoencoder handles perceptual compression and the diffusion model the semantic generation, is what made high-resolution generation practical and widespread.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -8028,7 +8027,7 @@
         "rectified flow",
         "reflow"
       ],
-      "def_snippet": "A generative approach that trains a model to follow straight-line paths between noise and data, so the learned trajectory is nearly straight and can be integrated in very few steps, the basis of several recent fast, high-quality image generators.",
+      "def_snippet": "A flow-matching variant that trains a model to follow straight-line paths from noise to data, then iteratively straightens them further with a \"reflow\" step, so the trajectory becomes nearly straight and can be integrated in very few steps, sometimes one. It is the basis of several recent fast, high-quality image generators, achieving few-step sampling without a separate distillation stage.",
       "durable": true,
       "category": "Generative Models"
     },
