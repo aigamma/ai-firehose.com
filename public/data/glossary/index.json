@@ -1078,7 +1078,7 @@
         "behavioral cloning",
         "behavior cloning"
       ],
-      "def_snippet": "The simplest form of imitation learning, treating each expert state-action pair as a supervised example and training a policy to predict the expert's action, learning to act with no reward but suffering from compounding errors off the demonstrated path.",
+      "def_snippet": "The simplest form of imitation learning, treating each expert state-action pair as a supervised example and training a policy to predict the expert's action, with no reward and no environment interaction. Its simplicity comes at a named cost, compounding errors from distribution shift: the moment the model strays from the demonstrated states, its mistakes snowball because nothing in the data shows how to recover.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -4557,7 +4557,7 @@
         "imitation learning",
         "learning from demonstration"
       ],
-      "def_snippet": "Learning a policy by mimicking expert demonstrations rather than from a reward signal, used when a reward is hard to specify but examples of good behavior are available; behavior cloning and inverse reinforcement learning are its two main approaches.",
+      "def_snippet": "Learning a policy by mimicking expert demonstrations rather than from a reward signal, used when a reward is hard to specify but examples of good behavior are easy to provide, with behavior cloning and inverse reinforcement learning its two main approaches. It sidesteps reward design entirely, and its classic weakness is distribution shift: an agent that only saw expert trajectories does not know how to recover once its own mistakes carry it off the path.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -4824,7 +4824,7 @@
         "inverse RL",
         "inverse optimal control"
       ],
-      "def_snippet": "Learning the reward function that explains an expert's behavior, rather than copying the behavior directly, on the premise that the reward is the most compact and transferable description of a task; the inverse of standard RL, which derives behavior from a reward.",
+      "def_snippet": "Learning the reward function that explains an expert's behavior, rather than copying the behavior directly, on the premise that the reward is the most compact and transferable description of a task. It learns the why, not the what, so a recovered reward generalizes where a cloned policy is lost, and its central difficulty is that the problem is ill-posed: many rewards explain the same behavior.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -6297,7 +6297,7 @@
       "aliases": [
         "model-based RL"
       ],
-      "def_snippet": "A family of reinforcement learning methods in which the agent learns or is given a model of the environment's dynamics and rewards, then uses that model to plan or to generate simulated experience, typically improving sample efficiency.",
+      "def_snippet": "A family of reinforcement learning methods in which the agent learns or is given a model of the environment's dynamics and rewards, then uses it to plan or generate simulated experience, typically improving sample efficiency. Its draw is doing more with less real interaction, and its catch is model error: a planner will happily exploit the model's mistakes, optimizing imagined rewards that do not exist.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -6355,7 +6355,7 @@
         "MCTS",
         "UCT"
       ],
-      "def_snippet": "A planning algorithm that searches a decision tree by selectively simulating many possible futures, concentrating its effort on the most promising lines of play, and famously the search method behind AlphaGo.",
+      "def_snippet": "A planning algorithm that searches a decision tree by selectively simulating many possible futures, concentrating its effort on the most promising lines of play, famously the search method behind AlphaGo. It grows the tree asymmetrically, deepening good branches and barely touching bad ones, and its deepest idea is the loop between search and learning: the search produces better moves than the raw network, which is then trained to imitate the search.",
       "durable": true,
       "category": "Reinforcement Learning"
     },
@@ -8364,7 +8364,7 @@
         "shaping rewards",
         "potential-based shaping"
       ],
-      "def_snippet": "The practice of adding supplementary reward signals to guide a reinforcement learning agent toward desired behavior, most safely done with potential-based functions that speed learning without changing which policy is optimal.",
+      "def_snippet": "The practice of adding supplementary reward signals to guide an agent toward desired behavior, mostly to relieve sparse or delayed reward, most safely done with potential-based functions that speed learning without changing which policy is optimal. The guiding rule, shape the path without moving the destination, is exactly what the potential-based result guarantees and what reward hacking violates.",
       "durable": true,
       "category": "Reinforcement Learning"
     },

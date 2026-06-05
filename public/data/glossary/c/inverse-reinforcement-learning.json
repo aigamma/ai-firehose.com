@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Learning the reward function that explains an expert's behavior, rather than copying the behavior directly, on the premise that the reward is the most compact and transferable description of a task; the inverse of standard RL, which derives behavior from a reward.",
+  "definition": "Learning the reward function that explains an expert's behavior, rather than copying the behavior directly, on the premise that the reward is the most compact and transferable description of a task. It learns the why, not the what, so a recovered reward generalizes where a cloned policy is lost, and its central difficulty is that the problem is ill-posed: many rewards explain the same behavior.",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "This is what distinguishes it from behavior cloning, the other branch of imitation learning. Behavior cloning memorizes what the expert did, so it falters in states the expert never visited. Inverse RL learns why the expert did it, and a recovered reward generalizes: an agent can then optimize that reward even in new situations, behaving sensibly where a cloned policy would be lost."
+      "text": "This is what distinguishes it from behavior cloning, the other branch of imitation learning, and the distinction is the keeper. Behavior cloning memorizes what the expert did, so it falters in states the expert never visited; inverse RL learns why the expert did it, and a recovered reward generalizes: an agent can then optimize that reward even in new situations, behaving sensibly where a cloned policy would be lost."
     },
     {
       "type": "p",

@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A family of reinforcement learning methods in which the agent learns or is given a model of the environment's dynamics and rewards, then uses that model to plan or to generate simulated experience, typically improving sample efficiency.",
+  "definition": "A family of reinforcement learning methods in which the agent learns or is given a model of the environment's dynamics and rewards, then uses it to plan or generate simulated experience, typically improving sample efficiency. Its draw is doing more with less real interaction, and its catch is model error: a planner will happily exploit the model's mistakes, optimizing imagined rewards that do not exist.",
   "body": [
     {
       "type": "p",
@@ -24,7 +24,7 @@
     },
     {
       "type": "p",
-      "text": "The catch is model error. A learned model is never perfect, and a planner will happily exploit the model's mistakes, optimizing for imagined rewards that do not exist in reality, a failure sometimes called model exploitation. Errors also compound over long rollouts, so a small per-step inaccuracy can make a hundred-step prediction useless. Much of the research in the area is about being robust to this: keeping rollouts short, planning with ensembles of models to quantify uncertainty, or learning models in a latent space tuned for prediction rather than pixel-perfect reconstruction."
+      "text": "The catch is model error, the keeper. A learned model is never perfect, and a planner will happily exploit the model's mistakes, optimizing for imagined rewards that do not exist in reality, a failure sometimes called model exploitation. Errors also compound over long rollouts, so a small per-step inaccuracy can make a hundred-step prediction useless. Much of the research in the area is about being robust to this: keeping rollouts short, planning with ensembles of models to quantify uncertainty, or learning models in a latent space tuned for prediction rather than pixel-perfect reconstruction."
     },
     {
       "type": "p",

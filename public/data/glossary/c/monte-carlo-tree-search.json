@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A planning algorithm that searches a decision tree by selectively simulating many possible futures, concentrating its effort on the most promising lines of play, and famously the search method behind AlphaGo.",
+  "definition": "A planning algorithm that searches a decision tree by selectively simulating many possible futures, concentrating its effort on the most promising lines of play, famously the search method behind AlphaGo. It grows the tree asymmetrically, deepening good branches and barely touching bad ones, and its deepest idea is the loop between search and learning: the search produces better moves than the raw network, which is then trained to imitate the search.",
   "body": [
     {
       "type": "p",
@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "The leap to superhuman play came from replacing the weakest parts of this loop with learned functions. AlphaGo used a policy network to bias selection toward good moves and a value-function network to evaluate positions, so the rollouts no longer had to be random or even run to the end. AlphaZero went further, learning both networks purely from self-play with no human games, using MCTS itself as a policy-improvement operator: the search produces better move probabilities than the raw network, and the network is trained to imitate the search. This tight loop between search and learning is the algorithm's deepest idea."
+      "text": "The leap to superhuman play came from replacing the weakest parts of this loop with learned functions, and the loop itself is the keeper. AlphaGo used a policy network to bias selection toward good moves and a value-function network to evaluate positions, so the rollouts no longer had to be random or even run to the end. AlphaZero went further, learning both networks purely from self-play with no human games, using MCTS itself as a policy-improvement operator: the search produces better move probabilities than the raw network, and the network is trained to imitate the search. This tight loop between search and learning is the algorithm's deepest idea."
     },
     {
       "type": "p",

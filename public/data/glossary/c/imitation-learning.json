@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Learning a policy by mimicking expert demonstrations rather than from a reward signal, used when a reward is hard to specify but examples of good behavior are available; behavior cloning and inverse reinforcement learning are its two main approaches.",
+  "definition": "Learning a policy by mimicking expert demonstrations rather than from a reward signal, used when a reward is hard to specify but examples of good behavior are easy to provide, with behavior cloning and inverse reinforcement learning its two main approaches. It sidesteps reward design entirely, and its classic weakness is distribution shift: an agent that only saw expert trajectories does not know how to recover once its own mistakes carry it off the path.",
   "body": [
     {
       "type": "p",
@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "The classic weakness of pure imitation is distribution shift: an agent that only ever saw expert trajectories has no idea what to do once its own small mistakes carry it into unfamiliar states, where errors then compound. Handling that drift, through interactive data collection or by recovering a reward that generalizes, is much of what distinguishes the approaches."
+      "text": "The classic weakness of pure imitation is the keeper: distribution shift. An agent that only ever saw expert trajectories has no idea what to do once its own small mistakes carry it into unfamiliar states, where errors then compound, and handling that drift, through interactive data collection or by recovering a reward that generalizes, is much of what distinguishes the approaches."
     }
   ],
   "related": [
