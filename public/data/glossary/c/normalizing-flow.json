@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A generative model that transforms a simple distribution into a complex one through a chain of exactly invertible functions, so that data likelihoods can be computed exactly and new samples drawn directly.",
+  "definition": "A generative model that warps a simple distribution into a complex one through a chain of exactly invertible functions, so it can both compute a data point's exact likelihood and sample directly in one pass. It is the family that delivers exact density and direct sampling together, bought at the cost of an invertibility constraint, the very constraint flow matching relaxes.",
   "body": [
     {
       "type": "p",
@@ -17,11 +17,11 @@
     },
     {
       "type": "p",
-      "text": "Normalizing flows matter because they are the generative family that delivers exact likelihoods together with direct, single-pass sampling. A variational autoencoder only bounds the likelihood, and a generative adversarial network provides no likelihood at all, but a flow computes the precise probability it assigns to any data point. That makes flows attractive wherever an exact density is the goal, such as anomaly detection, density estimation, modeling complex priors and posteriors inside other models, and scientific applications where a calibrated likelihood matters as much as a realistic sample."
+      "text": "Normalizing flows matter because they are the generative family that delivers exact likelihoods together with direct, single-pass sampling. A variational autoencoder only bounds the likelihood, and a generative adversarial network provides no likelihood at all, but a flow computes the precise probability it assigns to any data point, which makes flows attractive wherever an exact density is the goal: anomaly detection, density estimation, modeling complex priors and posteriors inside other models, and scientific applications where a calibrated likelihood matters as much as a realistic sample."
     },
     {
       "type": "p",
-      "text": "The exactness comes from the change-of-variables formula, which says that when you transform a random variable through an invertible function, its density is rescaled by the Jacobian determinant of that function. Evaluating a likelihood therefore requires computing this determinant at every layer, and a general determinant is far too expensive in high dimensions. The art of flow design is constructing transformations that are expressive yet have a cheaply computable Jacobian determinant, for example coupling layers that update one half of the variables as a function of the other half, which makes the Jacobian triangular and its determinant a simple product. Stacking many such layers builds up the expressive power needed to match real data while keeping every step tractable and invertible."
+      "text": "The exactness comes from the change-of-variables formula, which says that when you transform a random variable through an invertible function, its density is rescaled by the Jacobian determinant of that function. Evaluating a likelihood therefore requires computing this determinant at every layer, and a general determinant is far too expensive in high dimensions, so the art of flow design is constructing transformations that are expressive yet have a cheaply computable Jacobian determinant, for example coupling layers that update one half of the variables as a function of the other half, which makes the Jacobian triangular and its determinant a simple product. Stacking many such layers builds the expressive power needed to match real data while keeping every step tractable and invertible."
     },
     {
       "type": "p",

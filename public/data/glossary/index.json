@@ -892,7 +892,7 @@
         "autoregressive models",
         "AR model"
       ],
-      "def_snippet": "A generative model that factorizes a joint distribution into a product of conditionals and generates data one element at a time, each new element conditioned on those already produced.",
+      "def_snippet": "A generative model that factorizes a joint distribution into a product of conditionals and generates one element at a time, each conditioned on those already produced. Its exact likelihood and stable next-element objective made it the foundation of large language models, and its one defining trade-off is that generation is inherently sequential, one serial step per element.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -2458,7 +2458,7 @@
         "DDPM",
         "denoising diffusion probabilistic model"
       ],
-      "def_snippet": "The concrete training and sampling recipe behind most diffusion models, in which a network learns to predict the noise added to a sample at a given noise level, then generates by removing predicted noise step by step.",
+      "def_snippet": "The concrete recipe (DDPM) behind most diffusion models: a network is trained on a plain regression, given a noisy sample and its noise level, predict the noise that was added, and generation walks that prediction backward from pure noise. Its power is that it reframed a hard generative problem as ordinary supervised learning, and a closed-form forward process makes training cheap.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -2608,7 +2608,7 @@
         "diffusion models",
         "diffusion probabilistic model"
       ],
-      "def_snippet": "A generative model that learns to reverse a gradual noising process, starting from pure noise and denoising step by step until a clean sample emerges.",
+      "def_snippet": "A generative model that learns to reverse a gradual noising process, starting from pure noise and denoising step by step until a clean sample emerges. By turning generation into a single stable denoising regression, it became the dominant approach to high-fidelity image, audio, and video, with its one real drawback being that each sample needs many sequential steps.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -6920,7 +6920,7 @@
         "normalizing flows",
         "flow-based model"
       ],
-      "def_snippet": "A generative model that transforms a simple distribution into a complex one through a chain of exactly invertible functions, so that data likelihoods can be computed exactly and new samples drawn directly.",
+      "def_snippet": "A generative model that warps a simple distribution into a complex one through a chain of exactly invertible functions, so it can both compute a data point's exact likelihood and sample directly in one pass. It is the family that delivers exact density and direct sampling together, bought at the cost of an invertibility constraint, the very constraint flow matching relaxes.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -8689,7 +8689,7 @@
         "score matching",
         "NCSN"
       ],
-      "def_snippet": "A generative model that learns the score, the gradient of the log probability density, of data corrupted at many noise levels, then generates by following that gradient from noise toward high-density regions.",
+      "def_snippet": "A generative model that learns the score, the gradient of the log probability density, of data corrupted at many noise levels, then generates by following that gradient from noise toward where the data is dense. It is the theoretical backbone of diffusion: arriving from a different starting point, it turns out to learn the same object, and its continuous-time SDE view is the language much of modern diffusion theory is written in.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -10283,7 +10283,7 @@
         "VAE",
         "VAEs"
       ],
-      "def_snippet": "A generative model that learns a probabilistic mapping between data and a continuous latent space, training an encoder and decoder jointly so that sampling from the latent prior and decoding produces new data.",
+      "def_snippet": "An autoencoder given a probabilistic foundation so it can generate, not just compress: the encoder outputs a distribution over latent codes and is trained to keep that distribution close to a simple prior, so a code drawn from the prior decodes to something plausible. The defining tension between reconstruction and regularization is its weakness (blurry samples) and its strength (a smooth, organized latent space).",
       "durable": true,
       "category": "Generative Models"
     },
