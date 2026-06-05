@@ -92,7 +92,7 @@ strength; the author will do later quality passes, but do not cut corners.
 
 ## Status (UPDATE PER BATCH)
 
-As of **2026-06-05**: **570 durable entries**, ~**342 genuinely-new remaining**.
+As of **2026-06-05**: **576 durable entries**, ~**336 genuinely-new remaining**.
 
 Done so far this campaign:
 - `b4a9fee` keystone fold: 30 duplicates collapsed onto durable hubs, 12 boards de-fragmented.
@@ -101,14 +101,17 @@ Done so far this campaign:
 - `6f63dfd` batch 2: agentic-ai, ai-assisted-coding, benchmark, skills, mathematical-reasoning,
   token-optimization.
 - `91739cb` this handoff doc and the CLAUDE.md resume pointer.
-- batch 3: recursive-self-improvement, agent-design, data-integration, knowledge-bases,
+- `ca4e478` batch 3: recursive-self-improvement, agent-design, data-integration, knowledge-bases,
   generative-ai, ai-operating-systems (seeded the Industry and Markets category).
+- batch 4: market-dynamics, autoresearch, task-parallelization, ai-regulation, local-inference,
+  compute-efficiency.
 
 Next up (highest-attention remaining; re-run the backlog query, since attention shifts and these
-move as they are authored): market-dynamics (15, opinion), autoresearch (12, tool),
-task-parallelization (11, tool), agent-wrapper (10, tool), ai-agency-strategy (9, opinion), and onward
-down the list. Likely DEDUP-not-author (alias into the durable entry, then run the fold):
-orchestration -> workflow-orchestration, memory-systems -> agent-memory, context-stacking -> context-management.
+move as they are authored): ai-agency-strategy (9, opinion), personalization (9, tool),
+scheduling (9, tool), yaml-workflows (9, tool), cybersecurity (8, opinion), evaluation (8),
+model-agnostic (8, tool), and onward down the list. Likely DEDUP-not-author (alias into the durable
+entry, then run the fold): agent-wrapper -> agentic-harness, orchestration -> workflow-orchestration,
+memory-systems -> agent-memory, context-stacking -> context-management.
 
 Nothing is pushed. The header/nav redesign (`4e8c96d`) is also committed local-only awaiting review.
 The weekly budget resets ~Sunday 2026-06-07 morning; if paused, resume from this file after the reset.

@@ -1,11 +1,12 @@
 {
   "id": "local-inference",
-  "label": "local inference",
+  "label": "Local Inference",
   "aliases": [
-    "inference",
-    "inference scaling"
+    "on-device inference",
+    "local LLM",
+    "self-hosted inference"
   ],
-  "kind": "tool",
+  "kind": "technique",
   "attention": 8,
   "first_seen": "2026-05-27T00:00:00.000Z",
   "rotation": {
@@ -123,5 +124,63 @@
       "kind": "technique"
     }
   ],
-  "definition": "Local inference is running AI models on a user's own device or server rather than sending data to remote cloud services."
+  "definition": "Running a model on your own hardware, a laptop, phone, or private server, rather than calling a provider's API. It trades the raw capability of the largest cloud models for privacy, control, offline use, and freedom from per-token fees, and is what quantization and small-model research exist to enable.",
+  "category": "Systems and Infrastructure",
+  "durable": true,
+  "source": "authored",
+  "body": [
+    {
+      "type": "p",
+      "text": "Calling a frontier model over an API is easy, but it means every prompt leaves your machine, every response costs money, and the capability vanishes when the connection or the provider does. Local inference runs the model on hardware you control instead. The appeal is concrete: data that never leaves the device, no per-token bill, no rate limit, no dependency on a company's uptime or terms, and the ability to work offline. The cost is that the models you can run locally are smaller and weaker than the ones in the cloud."
+    },
+    {
+      "type": "p",
+      "text": "Fitting a useful model onto modest hardware is an exercise in compression. Quantization stores the weights at lower precision, four bits instead of sixteen, shrinking memory and speeding compute at a small accuracy cost. Distillation trains a small model to imitate a large one. Sparse architectures activate only part of the network per token. And the key-value cache is managed carefully, because memory, not raw compute, is usually the binding constraint on a personal device. Each technique trades a little quality for the ability to run at all."
+    },
+    {
+      "type": "p",
+      "text": "The honest tension is the capability gap. A model small enough to run on a laptop is, today, meaningfully less capable than the frontier system behind an API, and no amount of clever quantization closes that gap entirely, because some abilities simply require scale. So the real question for local inference is not whether the small model matches the big one, it does not, but whether it is good enough for the specific task, since a private, free, offline model that handles your job is often worth more than a stronger one you must send your data to."
+    },
+    {
+      "type": "p",
+      "text": "Local inference is where the commoditization of AI becomes tangible. Every few months, capability that needed a data center last year fits on smaller hardware, pulled down by quantization, better small models, and cheaper memory, which steadily widens the set of tasks that do not need the cloud at all. The frontier will always live in data centers, but the floor keeps rising, and a growing share of everyday AI is quietly moving onto the device in your hand."
+    }
+  ],
+  "related": [
+    {
+      "slug": "quantization",
+      "label": "Quantization",
+      "kind": "technique"
+    },
+    {
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts",
+      "kind": "technique"
+    },
+    {
+      "slug": "kv-cache",
+      "label": "KV Cache",
+      "kind": "technique"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "frontier-model",
+      "label": "Frontier Model",
+      "kind": "opinion"
+    },
+    {
+      "slug": "knowledge-distillation",
+      "label": "Knowledge Distillation",
+      "kind": "technique"
+    },
+    {
+      "slug": "lora",
+      "label": "LoRA",
+      "kind": "technique"
+    }
+  ]
 }
