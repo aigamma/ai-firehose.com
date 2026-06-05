@@ -2293,7 +2293,7 @@
       "kind": "technique",
       "attention": 1,
       "aliases": [],
-      "def_snippet": "A regularization technique that enlarges a training set by applying label-preserving random transformations to existing examples, teaching a model the invariances it should respect and reducing overfitting.",
+      "def_snippet": "A cheap, reliable way to enlarge a training set by applying label-preserving random transformations, a crop, a flip, a color shift, so a model sees far more data than was collected. Its deeper role is to inject prior knowledge: choosing which augmentations to apply is choosing which transformations the task should ignore, and the same trick manufactures the supervision signal for contrastive learning.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -3331,7 +3331,7 @@
         "FPN",
         "feature pyramid network"
       ],
-      "def_snippet": "A multi-scale representation that combines feature maps from several depths of a convolutional network so that objects of very different sizes can be recognized using features at an appropriate resolution.",
+      "def_snippet": "A multi-scale set of feature maps from several depths of a network, so objects of very different sizes are each recognized at an appropriate resolution. It gives a network a sense of scale a single flat feature map lacks, and the Feature Pyramid Network made this nearly free by reusing maps the backbone already computes, fused top-down with lateral connections.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -4545,7 +4545,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "The process of converting a continuous image into a sequence of discrete or vector tokens, so that transformer architectures built for sequences can process pixels the way they process words.",
+      "def_snippet": "The step that turns a continuous image into a sequence of tokens, so transformer architectures built for sequences can process pixels the way they process words. The pivotal design choice is continuous patch embeddings versus discrete codebook tokens, which decides whether the model treats vision as regression or, like language, as classification over a vocabulary, and discrete tokens are what make images first-class citizens of generative sequence models.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -5832,7 +5832,7 @@
         "MAE",
         "masked image modeling"
       ],
-      "def_snippet": "A self-supervised pretraining method for vision that masks out most of an image's patches and trains a model to reconstruct the missing content, learning rich visual representations from unlabeled images without any human annotation.",
+      "def_snippet": "A self-supervised method that hides most of an image's patches and trains a model to reconstruct the missing content, learning rich visual features from unlabeled images. Two choices make it work: a very high masking ratio (around 75%, far above language's, because images are so spatially redundant) and an asymmetric design where the heavy encoder sees only the visible quarter, making pretraining several times cheaper.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -7083,7 +7083,7 @@
       "kind": "technique",
       "attention": 0,
       "aliases": [],
-      "def_snippet": "A dense field of per-pixel motion vectors describing how each point in an image moves from one video frame to the next, the standard low-level representation of apparent motion in a scene.",
+      "def_snippet": "A dense field of per-pixel motion vectors describing how each point moves from one video frame to the next, the standard low-level representation of apparent motion. It supplies the temporal dimension that single-frame tasks lack, and its core difficulty, the aperture problem, is that motion is ambiguous in flat or repetitive regions where many displacements look equally good.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -10167,7 +10167,7 @@
         "UNet",
         "U Net"
       ],
-      "def_snippet": "An encoder-decoder convolutional architecture with skip connections that copy fine spatial detail from the contracting path across to the expanding path, producing pixel-accurate dense predictions and now also serving as the standard denoising backbone in diffusion models.",
+      "def_snippet": "An encoder-decoder convolutional architecture shaped like a U, whose skip connections copy fine spatial detail from the contracting path across to the expanding path. Those skips fuse the \"what\" from deep layers with the \"where\" from shallow ones to produce pixel-sharp boundaries, and the same image-to-image shape gave it a second life as the standard denoising backbone of diffusion models.",
       "durable": true,
       "category": "Computer Vision"
     },
