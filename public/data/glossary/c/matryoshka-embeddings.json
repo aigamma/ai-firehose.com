@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An embedding training method that packs information into a vector in order of importance, so a single high-dimensional embedding can be truncated to a shorter prefix and still work, letting one model serve many embedding sizes and enabling cheap coarse-to-fine retrieval.",
+  "definition": "An embedding training method that packs information into a vector in order of importance, so a single high-dimensional embedding can be truncated to a shorter prefix and still work, letting one model serve many sizes and enabling cheap coarse-to-fine retrieval. The trick is the training objective: applying the loss to nested prefixes at once forces the most important information into the earliest coordinates.",
   "body": [
     {
       "type": "p",
@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "The trick is in the training objective. A standard contrastive or similarity loss is applied not only to the full vector but simultaneously to a series of nested prefixes of it, for example the first 64, 128, 256, and full dimensions. Optimizing all of these at once forces the model to load the most important, coarsest-grained information into the earliest coordinates and push finer detail into the later ones. The result is a single embedding that can be truncated to any of the trained lengths and still function as a coherent representation, with accuracy trading off smoothly against size."
+      "text": "The trick is in the training objective, the keeper. A standard contrastive or similarity loss is applied not only to the full vector but simultaneously to a series of nested prefixes of it, for example the first 64, 128, 256, and full dimensions. Optimizing all of these at once forces the model to load the most important, coarsest-grained information into the earliest coordinates and push finer detail into the later ones. The result is a single embedding that can be truncated to any of the trained lengths and still function as a coherent representation, with accuracy trading off smoothly against size."
     },
     {
       "type": "p",

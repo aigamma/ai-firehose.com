@@ -670,7 +670,7 @@
         "approximate nearest neighbor search",
         "ANN search"
       ],
-      "def_snippet": "A family of algorithms that find vectors close to a query vector without checking every candidate, trading a small, tunable loss in accuracy for an enormous gain in speed, which is what makes vector search practical at scale.",
+      "def_snippet": "A family of algorithms that find vectors close to a query without checking every candidate, trading a small, tunable loss in accuracy for an enormous gain in speed, which is what makes vector search practical at scale. The exact version is hopeless because of the curse of dimensionality, and the central design choice is the operating point on the recall-versus-latency curve, a measurable, tunable quantity rather than a given.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -4149,7 +4149,7 @@
         "graph rag",
         "graph-based retrieval"
       ],
-      "def_snippet": "A retrieval-augmented generation approach that builds a knowledge graph of entities and relationships from a corpus, then retrieves and summarizes connected subgraphs, so a model can answer global, multi-hop questions that flat chunk retrieval misses.",
+      "def_snippet": "A retrieval-augmented generation approach that builds a knowledge graph of entities and relationships from a corpus, then retrieves and summarizes connected subgraphs, so a model can answer global, multi-hop questions that flat chunk retrieval misses. The connective structure is what a bag of independent chunks lacks, and the cost is paid up front in graph construction, so it suits corpora queried repeatedly where sensemaking matters.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -4377,7 +4377,7 @@
         "Hierarchical Navigable Small World",
         "HNSW graph"
       ],
-      "def_snippet": "Hierarchical Navigable Small World, a graph-based index for approximate nearest neighbor search that connects vectors into a layered proximity graph and finds neighbors by greedily hopping toward the query, giving fast, high-recall search at scale.",
+      "def_snippet": "Hierarchical Navigable Small World, a graph-based index for approximate nearest neighbor search that connects vectors into a layered proximity graph and finds neighbors by greedily hopping toward the query. It turns search into navigation across a network rather than a scan of a list, and the small-world edges plus hierarchical layers give it the logarithmic-like scaling that makes it most vector databases' default.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -4501,7 +4501,7 @@
         "HyDE",
         "hypothetical document embeddings"
       ],
-      "def_snippet": "A retrieval technique that asks a language model to draft a hypothetical answer to the query, then embeds that draft instead of the query, so the search vector sits in the same space as real documents and matches them more closely.",
+      "def_snippet": "A retrieval technique that asks a language model to draft a hypothetical answer to the query, then embeds that draft instead of the query, so the search vector sits in the same register as real documents and matches them more closely. The fabricated specifics do not matter, because the draft is only a search probe never shown to the user; its job is to point the retriever at the right neighborhood.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -5898,7 +5898,7 @@
         "MRL",
         "nested embeddings"
       ],
-      "def_snippet": "An embedding training method that packs information into a vector in order of importance, so a single high-dimensional embedding can be truncated to a shorter prefix and still work, letting one model serve many embedding sizes and enabling cheap coarse-to-fine retrieval.",
+      "def_snippet": "An embedding training method that packs information into a vector in order of importance, so a single high-dimensional embedding can be truncated to a shorter prefix and still work, letting one model serve many sizes and enabling cheap coarse-to-fine retrieval. The trick is the training objective: applying the loss to nested prefixes at once forces the most important information into the earliest coordinates.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },
@@ -5912,7 +5912,7 @@
         "maximal-marginal-relevance reranking",
         "diversity reranking"
       ],
-      "def_snippet": "A selection method that builds a result set one item at a time, each step choosing the candidate that is most relevant to the query while least redundant with the items already chosen, so the returned set is both on-topic and diverse instead of a cluster of near-duplicates.",
+      "def_snippet": "A selection method that builds a result set one item at a time, each step choosing the candidate most relevant to the query while least redundant with what is already chosen, so the set is on-topic and diverse instead of a cluster of near-duplicates. A single relevance-vs-diversity knob tunes the balance, and in a RAG pipeline it stops the context window being wasted on three slices of the same source.",
       "durable": true,
       "category": "RAG, Embeddings, and Retrieval"
     },

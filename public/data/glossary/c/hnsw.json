@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Hierarchical Navigable Small World, a graph-based index for approximate nearest neighbor search that connects vectors into a layered proximity graph and finds neighbors by greedily hopping toward the query, giving fast, high-recall search at scale.",
+  "definition": "Hierarchical Navigable Small World, a graph-based index for approximate nearest neighbor search that connects vectors into a layered proximity graph and finds neighbors by greedily hopping toward the query. It turns search into navigation across a network rather than a scan of a list, and the small-world edges plus hierarchical layers give it the logarithmic-like scaling that makes it most vector databases' default.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "Two ideas combine in the name. A \"small world\" graph mixes mostly-local edges with a few long-range ones, so any two nodes are reachable in a small number of hops, the same property that makes social networks navigable. The \"hierarchical\" part stacks several such graphs in layers: sparse upper layers with long-range links let a search cover huge distances in a few steps, and progressively denser lower layers refine the result down to the true local neighborhood. A query enters at the top, descends layer by layer, and lands precisely, giving the structure its characteristic logarithmic-like scaling with corpus size."
+      "text": "Two ideas combine in the name, and together they are the keeper. A \"small world\" graph mixes mostly-local edges with a few long-range ones, so any two nodes are reachable in a small number of hops, the same property that makes social networks navigable; the \"hierarchical\" part stacks several such graphs in layers, sparse upper layers with long-range links letting a search cover huge distances in a few steps, and progressively denser lower layers refining the result down to the true local neighborhood. A query enters at the top, descends layer by layer, and lands precisely, giving the structure its characteristic logarithmic-like scaling with corpus size."
     },
     {
       "type": "p",
