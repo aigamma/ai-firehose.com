@@ -114,8 +114,11 @@ strength; the author will do later quality passes, but do not cut corners.
 
 ## Status (UPDATE PER BATCH)
 
-As of **2026-06-05**: **588 durable entries**, ~**316 genuinely-new remaining**. Everything below is
-**pushed to `origin/main` and deployed to Netlify**.
+As of **2026-06-05**: **594 durable entries**, ~**310 genuinely-new remaining**. Everything below is
+**pushed to `origin/main` and deployed to Netlify**. The substantive board-visible head is largely
+covered; the remaining backlog is increasingly specific products/vendors (Claude, DeepSeek, Ollama,
+OpenRouter, Expo) and generic non-AI dev terms (form-submission, react-native), which are a judgment
+call on whether they belong in a durable educational glossary, plus genuine low-attention concepts.
 
 Done so far this campaign:
 - `4e8c96d` header/nav redesign (primary pills + a right-anchored Menu, broken search removed, interior
@@ -136,8 +139,9 @@ Done so far this campaign:
   context-stacking, plus 4 plural variants) and added the `check_doc_accuracy` count gate.
 - batch 6: scheduling, multi-model-workflow, prompt-chaining, async-agents, adversarial-ai,
   agent-optimization.
+- batch 7: ai-risk, open-models, software-engineering, rpa, qa-testing, ai-driven-development.
 
-Net so far: **37 authored entries** (agentic-harness plus 36 across six batches) and **38 folded
+Net so far: **43 authored entries** (agentic-harness plus 42 across seven batches) and **38 folded
 duplicates**, all in the board-visible head. What remains is mostly the **long tail** (attention 9 and
 below): re-run the backlog query for the current top, for example scheduling, multi-model-workflow,
 prompt-chaining, async-agents, adversarial-ai, agent-optimization, software-engineering, and downward.
