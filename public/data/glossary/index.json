@@ -1989,7 +1989,7 @@
         "control net",
         "spatial conditioning"
       ],
-      "def_snippet": "An add-on network that gives a pretrained diffusion model precise spatial control, conditioning generation on an input map such as an edge sketch, a human pose, a depth map, or a segmentation, so the output follows that structure while a text prompt sets the content.",
+      "def_snippet": "An add-on that gives a pretrained diffusion model precise spatial control, conditioning generation on an image-shaped map, an edge sketch, a pose, a depth map, a segmentation, so the output follows that structure while a text prompt sets the content. Its elegant trick is a zero-initialized side network on a frozen backbone, which starts as a no-op so training cannot corrupt the pretrained weights, an idea that spread well beyond its original setting.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -4690,7 +4690,7 @@
         "mask-based editing",
         "outpainting"
       ],
-      "def_snippet": "The task of filling a masked-out region of an image with new content that blends seamlessly with the surrounding pixels, used both to remove unwanted objects and, with text conditioning, to edit images by replacing a chosen area with something described in a prompt.",
+      "def_snippet": "The task of filling a masked region of an image with new content that blends with its surroundings, used to remove objects and, with text conditioning, to edit by replacing a chosen area with something described in a prompt. It is the workhorse of controllable editing, confining change to a region the user picks while guaranteeing the rest is preserved, which is what most real editing needs.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -8674,7 +8674,7 @@
         "score distillation",
         "score distillation sampling"
       ],
-      "def_snippet": "A method that uses a pretrained 2D image diffusion model as a critic to optimize a separate representation, most famously a 3D scene, by pushing its rendered views to look like plausible samples from the diffusion model, enabling text-to-3D generation without any 3D training data.",
+      "def_snippet": "A method that uses a pretrained 2D image diffusion model as a frozen critic to optimize a separate representation, most famously a 3D scene, by pushing its rendered views to look like plausible diffusion samples. It enables text-to-3D with no 3D training data at all, and its enduring recipe is to distill a 2D generative prior into any differentiable representation, turning an image model into a general synthesis engine.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -9750,7 +9750,7 @@
         "text to image",
         "T2I"
       ],
-      "def_snippet": "The task and model class that generate an image from a natural-language description, today dominated by diffusion models conditioned on a text embedding, with prompt adherence controlled by classifier-free guidance.",
+      "def_snippet": "The task and model class that generate an image from a natural-language prompt, today a fairly settled stack: a text encoder, a latent diffusion model conditioned through cross-attention, and classifier-free guidance to set prompt adherence. The frontier has moved from raw photorealism to control, composing multiple objects correctly, rendering legible text, following long prompts faithfully.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -9777,7 +9777,7 @@
         "video diffusion",
         "T2V"
       ],
-      "def_snippet": "The task and model class that generate a short video clip from a natural-language description, extending diffusion-based image generation across time so the model must produce frames that are individually realistic and consistent and smoothly moving as a sequence.",
+      "def_snippet": "The task and model class that generate a short clip from a prompt, the temporal extension of text-to-image: the model must produce frames that are each realistic, consistent with each other, and smoothly moving, all at once. The motion requirement forces a model to internalize how the world behaves over time, which is why strong video generators are increasingly discussed as implicit world models.",
       "durable": true,
       "category": "Generative Models"
     },
@@ -10380,7 +10380,7 @@
         "vector quantized VAE",
         "VQ-GAN"
       ],
-      "def_snippet": "An autoencoder that compresses an image into a grid of discrete codes drawn from a learned codebook rather than continuous vectors, turning images into sequences of tokens that an autoregressive model or a diffusion model can then generate.",
+      "def_snippet": "An autoencoder whose latent is discrete: it snaps each cell of an encoded image to the nearest entry in a learned codebook, so an image becomes a grid of integer tokens, a short sentence in a learned visual vocabulary. That discreteness is what lets the next-token machinery of language generate images, the discrete-token route to image synthesis that parallels continuous-latent diffusion.",
       "durable": true,
       "category": "Generative Models"
     },

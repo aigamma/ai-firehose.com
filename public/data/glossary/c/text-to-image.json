@@ -10,11 +10,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "The task and model class that generate an image from a natural-language description, today dominated by diffusion models conditioned on a text embedding, with prompt adherence controlled by classifier-free guidance.",
+  "definition": "The task and model class that generate an image from a natural-language prompt, today a fairly settled stack: a text encoder, a latent diffusion model conditioned through cross-attention, and classifier-free guidance to set prompt adherence. The frontier has moved from raw photorealism to control, composing multiple objects correctly, rendering legible text, following long prompts faithfully.",
   "body": [
     {
       "type": "p",
-      "text": "Text-to-image generation turns a written prompt into a matching picture. It is the most visible form of generative AI for images, and the modern approach is a fairly settled stack. A text encoder, often derived from a contrastive model like CLIP or a language model, turns the prompt into an embedding. A generative model, almost always a latent diffusion model with a U-Net or diffusion-transformer backbone, then produces an image conditioned on that embedding, usually injecting the text through cross-attention so each region of the image can attend to the relevant words."
+      "text": "Text-to-image generation turns a written prompt into a matching picture, the most visible form of generative AI for images, and the modern approach is a fairly settled stack. A text encoder, often derived from a contrastive model like CLIP or a language model, turns the prompt into an embedding; a generative model, almost always a latent diffusion model with a U-Net or diffusion-transformer backbone, then produces an image conditioned on that embedding, usually injecting the text through cross-attention so each region of the image can attend to the relevant words."
     },
     {
       "type": "p",
@@ -22,11 +22,11 @@
     },
     {
       "type": "p",
-      "text": "The field moved through distinct architectures: generative adversarial networks gave the first convincing results, diffusion models then took over for their stability and quality, and diffusion transformers and rectified-flow training now push the frontier for fidelity and speed."
+      "text": "The field moved through distinct architectures, and the sequence is a tidy history of generative modeling: generative adversarial networks gave the first convincing results, diffusion models then took over for their stability and quality, and diffusion transformers and rectified-flow training now push the frontier for fidelity and speed. Each handoff traded a hard-to-train predecessor for a more scalable successor."
     },
     {
       "type": "p",
-      "text": "The hard problems are less about raw image quality than about control and reliability: composing multiple objects with correct attributes and relationships, rendering legible text within the image, and following long or precise prompts faithfully. Progress on text-to-image is increasingly measured by these compositional and controllability challenges rather than by photorealism alone."
+      "text": "The hard problems are less about raw image quality than about control and reliability: composing multiple objects with correct attributes and relationships, rendering legible text within the image, and following long or precise prompts faithfully. Progress on text-to-image is increasingly measured by these compositional and controllability challenges rather than by photorealism alone, which the largest models have mostly mastered."
     }
   ],
   "related": [
