@@ -9,11 +9,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An inference control that adds a fixed offset to the logits of specified tokens before sampling, nudging the model toward or away from particular words or symbols without retraining, used to ban tokens, steer vocabulary, or shape outputs.",
+  "definition": "An inference control that adds a fixed offset to the logits of specified tokens before sampling, nudging the model toward or away from particular words or symbols with no retraining, used to ban tokens, steer vocabulary, or shape outputs. Its bluntness is its limit: the bias applies to a token in every context, and it works on tokens, not words or meanings.",
   "body": [
     {
       "type": "p",
-      "text": "Logit bias is a direct, lightweight way to steer generation by editing the model's scores before it samples. For chosen tokens, a fixed value is added to their logits, the raw scores that feed the softmax. A large positive bias makes a token much more likely; a large negative bias makes it effectively impossible, a ban. Because it operates on the scores at sampling time, it needs no retraining and no change to the model, only a list of token ids and offsets."
+      "text": "Logit bias is a direct, lightweight way to steer generation by editing the model's scores before it samples. For chosen tokens, a fixed value is added to their logits, the raw scores that feed the softmax: a large positive bias makes a token much more likely, a large negative bias makes it effectively impossible, a ban. Because it operates on the scores at sampling time, it needs no retraining and no change to the model, only a list of token ids and offsets."
     },
     {
       "type": "p",
@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "The bluntness is also its limitation. A bias applies to a token in every context, so suppressing a token to fix one situation can hurt fluency elsewhere, and biasing works at the level of tokens rather than words or meanings, so it can behave unexpectedly when a word spans several tokens. It is best reserved for targeted, well-understood adjustments rather than broad behavior change."
+      "text": "The bluntness is also its limitation, the keeper. A bias applies to a token in every context, so suppressing a token to fix one situation can hurt fluency elsewhere, and biasing works at the level of tokens rather than words or meanings, so it can behave unexpectedly when a word spans several tokens. It is best reserved for targeted, well-understood adjustments rather than broad behavior change."
     }
   ],
   "related": [
