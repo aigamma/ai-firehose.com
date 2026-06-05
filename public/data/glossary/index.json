@@ -2079,7 +2079,7 @@
         "corrigible",
         "corrigible AI"
       ],
-      "def_snippet": "The property of an AI system that cooperates with human attempts to correct, modify, or shut it down, rather than resisting or manipulating that intervention, even when doing so conflicts with its current objective.",
+      "def_snippet": "The property of an AI system that cooperates with human attempts to correct, modify, or shut it down, rather than resisting or manipulating that intervention, even when doing so conflicts with its current objective. The counterintuitive part is that the cooperation must hold against the agent's own incentive to resist, and its value is that it degrades gracefully: it makes a mistake in the objective recoverable, a hedge against every other method failing.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -2355,7 +2355,7 @@
         "training-data poisoning",
         "backdoor attack"
       ],
-      "def_snippet": "An attack that corrupts a model by injecting malicious examples into its training data, so the model learns attacker-chosen behavior (such as a hidden backdoor trigger or degraded performance) that is hard to detect after training.",
+      "def_snippet": "An attack that corrupts a model by injecting malicious examples into its training data, so the model learns attacker-chosen behavior (such as a hidden backdoor trigger or degraded performance) that is hard to detect after training. The most insidious variant is the backdoor: the model behaves normally until a secret trigger appears, so it passes every test that does not contain the trigger, and research shows poisoning even a tiny fraction of a corpus suffices.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -4856,10 +4856,9 @@
       "attention": 0,
       "aliases": [
         "jailbreaking",
-        "jailbreak prompt",
-        "prompt injection"
+        "jailbreak prompt"
       ],
-      "def_snippet": "An input crafted to bypass a model's safety training and make it produce content or take actions it was trained to refuse, exploiting the gap between the model's safety policy and its underlying capabilities.",
+      "def_snippet": "An input crafted to bypass a model's safety training and make it produce content or take actions it was trained to refuse, exploiting the gap between the model's safety policy and its underlying capabilities. The refusal behavior is a shallow learned layer over a far more general capability, and a jailbreak is any input that slips past the layer to reach the capability underneath, which is sobering evidence about how shallowly current methods install intended behavior.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -7730,7 +7729,7 @@
         "process reward model",
         "step-level reward"
       ],
-      "def_snippet": "A reward model that scores each step of a model's reasoning rather than only the final answer, giving dense feedback that better guides training and search for multi-step problems; contrasted with an outcome reward model that judges only the result.",
+      "def_snippet": "A reward model that scores each step of a model's reasoning rather than only the final answer, giving dense feedback that better guides training and search for multi-step problems, contrasted with an outcome reward model that judges only the result. Dense step-level feedback fixes the credit-assignment problem, but the catch is the labels: per-step judgments are far more expensive than a single right-or-wrong outcome.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -7802,7 +7801,7 @@
         "prompt injection",
         "indirect prompt injection"
       ],
-      "def_snippet": "An attack on language-model applications in which adversarial instructions hidden in the model's input (a web page, document, email, or tool result) hijack its behavior, because the model cannot reliably separate trusted instructions from untrusted data in the same context.",
+      "def_snippet": "An attack on language-model applications in which adversarial instructions hidden in the model's input (a web page, document, email, or tool result) hijack its behavior, because the model cannot reliably separate trusted instructions from untrusted data in the same context. That instruction-versus-data ambiguity is fundamental to how models consume text, so unlike SQL injection there is no clean fix, and the dangerous form is indirect: the malicious instruction rides in on content the application ingests.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -8077,7 +8076,7 @@
         "red team",
         "adversarial testing"
       ],
-      "def_snippet": "The practice of deliberately attacking a system to find its failures before adversaries or accidents do, adapted from security to probe AI models for harmful, unsafe, or policy-violating behavior.",
+      "def_snippet": "The practice of deliberately attacking a system to find its failures before adversaries or accidents do, adapted from security to probe AI models for harmful, unsafe, or policy-violating behavior. Its honest limit is asymmetric: it can demonstrate that failures exist but never prove their absence, and it is weak against an adversary that behaves well precisely when it knows it is being probed.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -8338,7 +8337,7 @@
         "preference model",
         "RLHF reward model"
       ],
-      "def_snippet": "A model trained to predict how good an output is according to human preferences, used as a learned stand-in for a hand-written objective so that a system can be optimized against human judgment at scale.",
+      "def_snippet": "A model trained to predict how good an output is according to human preferences, used as a learned stand-in for a hand-written objective so a system can be optimized against human judgment at scale, the heart of RLHF. Its central danger is that it is only an approximation of true preference, so optimizing hard against it invites reward hacking, with the learned reward model playing the role of the gameable specification.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -8624,7 +8623,7 @@
         "scalable oversight",
         "scalable supervision"
       ],
-      "def_snippet": "The problem of supervising and evaluating an AI system on tasks where it may be as capable as or more capable than its human supervisors, so that human judgment stays meaningful as the system surpasses human ability.",
+      "def_snippet": "The problem of supervising and evaluating an AI system on tasks where it may be as capable as or more capable than its human supervisors, so human judgment stays meaningful as the system surpasses human ability. The shared idea behind the proposals is to use AI capability to help supervise AI, so oversight scales together with the system, because naive human feedback in this regime rewards what looks good to a non-expert rather than what is actually good.",
       "durable": true,
       "category": "Alignment and Safety"
     },

@@ -5,12 +5,12 @@ kind: technique
 category: Alignment and Safety
 aliases: PRM, process reward model, step-level reward
 related: reward-model, reward-bench, reasoning-model, chain-of-thought, rlhf
-summary: A reward model that scores each step of a model's reasoning rather than only the final answer, giving dense feedback that better guides training and search for multi-step problems; contrasted with an outcome reward model that judges only the result.
+summary: A reward model that scores each step of a model's reasoning rather than only the final answer, giving dense feedback that better guides training and search for multi-step problems, contrasted with an outcome reward model that judges only the result. Dense step-level feedback fixes the credit-assignment problem, but the catch is the labels: per-step judgments are far more expensive than a single right-or-wrong outcome.
 ---
 
 A process reward model judges the journey, not just the destination. Where an outcome reward model looks only at a final answer and says good or bad, a process reward model, or PRM, scores each intermediate step of a chain of thought, marking where the reasoning is sound and where it goes wrong. The reward signal becomes dense rather than sparse, attached to every step instead of only the end.
 
-This matters because outcome-only rewards have a known failure: a model can reach the right answer through faulty or lucky reasoning and be rewarded for it, or get a hard problem almost entirely right and be punished for a single final slip. Dense, step-level feedback fixes the credit-assignment problem, telling the model which specific steps helped, which is especially valuable for the long multi-step reasoning that math and code demand. PRMs are used both to guide search at inference, scoring partial solutions so a search can prune bad branches, and to train and select reasoning models.
+This matters because outcome-only rewards have a known failure, and fixing it is the keeper. A model can reach the right answer through faulty or lucky reasoning and be rewarded for it, or get a hard problem almost entirely right and be punished for a single final slip; dense, step-level feedback fixes this credit-assignment problem, telling the model which specific steps helped, which is especially valuable for the long multi-step reasoning that math and code demand. PRMs are used both to guide search at inference, scoring partial solutions so a search can prune bad branches, and to train and select reasoning models.
 
 The catch is the labels. Training a PRM requires judgments at the level of individual steps, which are far more expensive to collect than a single right-or-wrong outcome label, so a practical line of work bootstraps step labels automatically, for instance by checking how often continuing from a given step leads to a correct final answer.
 

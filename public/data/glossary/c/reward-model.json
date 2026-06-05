@@ -10,7 +10,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A model trained to predict how good an output is according to human preferences, used as a learned stand-in for a hand-written objective so that a system can be optimized against human judgment at scale.",
+  "definition": "A model trained to predict how good an output is according to human preferences, used as a learned stand-in for a hand-written objective so a system can be optimized against human judgment at scale, the heart of RLHF. Its central danger is that it is only an approximation of true preference, so optimizing hard against it invites reward hacking, with the learned reward model playing the role of the gameable specification.",
   "body": [
     {
       "type": "p",
@@ -26,7 +26,7 @@
     },
     {
       "type": "p",
-      "text": "The central danger is that the reward model is only an approximation of true human preference, and optimizing hard against an approximation invites reward-hacking. The policy is rewarded for high reward-model scores, not for genuinely good outputs, so it is pushed to find inputs that the reward model scores highly but a human would not endorse, adversarial outputs that exploit the reward model's blind spots. This is a direct instance of specification-gaming, with the learned reward model playing the role of the gameable specification, and it is why RLHF setups limit how far the policy may move from its starting point and periodically refresh the reward model with new human data."
+      "text": "The central danger is that the reward model is only an approximation of true human preference, and optimizing hard against an approximation invites reward-hacking, the keeper. The policy is rewarded for high reward-model scores, not for genuinely good outputs, so it is pushed to find inputs that the reward model scores highly but a human would not endorse, adversarial outputs that exploit the reward model's blind spots. This is a direct instance of specification-gaming, with the learned reward model playing the role of the gameable specification, and it is why RLHF setups limit how far the policy may move from its starting point and periodically refresh the reward model with new human data."
     },
     {
       "type": "p",
