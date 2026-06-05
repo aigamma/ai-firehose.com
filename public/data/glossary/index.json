@@ -2185,7 +2185,7 @@
         "compute unified device architecture",
         "CUDA kernels"
       ],
-      "def_snippet": "CUDA is the parallel programming platform and software stack that lets developers run general-purpose computation on a particular vendor's GPUs, and it is the foundation almost every deep learning framework builds on to turn neural network operations into fast GPU code.",
+      "def_snippet": "The parallel programming platform and software stack that lets developers run general-purpose computation on one vendor's GPUs, the foundation almost every deep learning framework builds on. Its maturity is much of why that vendor's hardware became the default, a software lock-in called the CUDA moat, and the field's biggest efficiency wins are essentially clever CUDA kernels that keep data in fast memory.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -3517,7 +3517,7 @@
         "FLOPS",
         "floating-point operations per second"
       ],
-      "def_snippet": "FLOPs counts the floating-point arithmetic operations a computation performs, and the per-second rate of the same name measures how fast hardware can do that arithmetic, making it the standard unit for both the cost of training a model and the speed of an accelerator.",
+      "def_snippet": "The unit counting the floating-point arithmetic in a computation, and at a per-second rate the speed of hardware, making it the common currency for both sides of the scaling equation, the cost of training a model and the throughput of a chip. A handy rule, about six operations per parameter per training token, turns a model's size into the sextillions-scale total that scaling laws price in.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -3989,7 +3989,7 @@
         "GPUs",
         "accelerator"
       ],
-      "def_snippet": "A graphics processing unit is a massively parallel processor, originally built for rendering images, that has become the dominant hardware for training and running neural networks because deep learning is overwhelmingly dense linear algebra it can execute thousands of operations at once.",
+      "def_snippet": "A massively parallel processor, originally built for rendering images, that became the dominant hardware for neural networks because deep learning is overwhelmingly dense linear algebra it can execute thousands of operations at once. Its wide, data-parallel design, built to color millions of pixels, turned out to be exactly what matrix multiplication needs, and its fixed memory and compute ceiling is the starting point for every parallelism technique.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -4956,7 +4956,7 @@
         "fused kernel",
         "operator fusion"
       ],
-      "def_snippet": "A performance optimization that merges several elementary tensor operations into a single GPU kernel so intermediate results stay in fast on-chip memory instead of being written to and read back from main memory, cutting memory traffic that dominates the runtime of memory-bound operations.",
+      "def_snippet": "A performance optimization that merges several elementary tensor operations into a single GPU kernel so intermediate results stay in fast on-chip memory instead of round-tripping through main memory, cutting the data movement that dominates memory-bound work. The math is unchanged, but the bytes moved collapse, which is why fusing a chain of element-wise ops can give a multiple-fold speedup, and why flash-attention is essentially one aggressive fusion.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -5997,7 +5997,7 @@
         "memory-bound",
         "HBM bandwidth"
       ],
-      "def_snippet": "Memory bandwidth is the rate at which data can be moved between an accelerator's memory and its arithmetic units, and it is frequently the true bottleneck in deep learning, since many workloads stall waiting for data rather than for compute.",
+      "def_snippet": "The rate at which data moves between an accelerator's memory and its arithmetic units, frequently the true bottleneck in deep learning since many workloads stall waiting for data rather than compute. Whether a workload is bound by compute or bandwidth turns on its arithmetic intensity, and generating text one token at a time is strongly memory-bound: each step must read the entire model's weights from memory to produce one token.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -8491,7 +8491,7 @@
         "arithmetic intensity",
         "operational intensity"
       ],
-      "def_snippet": "A visual performance model that predicts whether an operation is limited by compute or by memory bandwidth, by plotting attainable throughput against arithmetic intensity, the ratio of arithmetic operations performed to bytes moved from memory.",
+      "def_snippet": "A visual performance model that predicts whether an operation is limited by compute or by memory bandwidth, plotting attainable throughput against arithmetic intensity, the ratio of operations performed to bytes moved. Its power is making the bottleneck quantitative rather than intuitive: the ridge point where the bandwidth roof meets the compute roof tells you which ceiling you are under and therefore what optimization will help.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -9995,7 +9995,7 @@
         "tensor processing unit",
         "TPUs"
       ],
-      "def_snippet": "A tensor processing unit is a custom chip built specifically to accelerate neural network workloads, organizing its arithmetic around a large hardware array that streams data through a grid of multiply-accumulate units to perform matrix multiplication with very high efficiency.",
+      "def_snippet": "A custom chip built specifically to accelerate neural network workloads, organizing its arithmetic around a large systolic array that streams data through a grid of multiply-accumulate units to do matrix multiplication with very high efficiency. Its defining trick is loading weights once and streaming activations across the grid, which slashes the memory accesses per operation that usually bottleneck the work.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },

@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "CUDA is the parallel programming platform and software stack that lets developers run general-purpose computation on a particular vendor's GPUs, and it is the foundation almost every deep learning framework builds on to turn neural network operations into fast GPU code.",
+  "definition": "The parallel programming platform and software stack that lets developers run general-purpose computation on one vendor's GPUs, the foundation almost every deep learning framework builds on. Its maturity is much of why that vendor's hardware became the default, a software lock-in called the CUDA moat, and the field's biggest efficiency wins are essentially clever CUDA kernels that keep data in fast memory.",
   "body": [
     {
       "type": "p",
@@ -17,11 +17,11 @@
     },
     {
       "type": "p",
-      "text": "CUDA matters because deep learning frameworks do not talk to the GPU directly; they call into CUDA and its companion libraries. When a framework executes a matrix-multiplication, a convolution, or an attention operation, it is dispatching a tuned CUDA kernel underneath, often from vendor libraries that have been hand-optimized to extract close to the chip's peak flops. This means the practical performance of training and inference depends heavily on the quality of these kernels, and that a hardware platform without a comparable software stack is hard to adopt no matter how good its raw silicon is. This software lock-in is often called the CUDA moat."
+      "text": "CUDA matters because deep learning frameworks do not talk to the GPU directly; they call into CUDA and its companion libraries. When a framework executes a matrix-multiplication, a convolution, or an attention operation, it is dispatching a tuned CUDA kernel underneath, often from vendor libraries hand-optimized to extract close to the chip's peak flops, which means the practical performance of training and inference depends heavily on the quality of these kernels, and a hardware platform without a comparable software stack is hard to adopt no matter how good its raw silicon is. This software lock-in is the keeper, often called the CUDA moat."
     },
     {
       "type": "p",
-      "text": "The programming model exposes the GPU's structure so that performance-minded code can exploit it. Threads are grouped into blocks that share a small, fast on-chip memory and can cooperate, while the large but slower main memory holds the bulk of the data. Writing fast CUDA is largely about respecting this hierarchy: keeping the arithmetic units busy, moving data in large contiguous transfers, and reusing values in fast memory to avoid being limited by memory-bandwidth. The most important efficiency wins in deep learning, such as flash-attention, are essentially clever CUDA kernels that restructure a computation to keep data in fast memory instead of repeatedly reading and writing slow memory."
+      "text": "The programming model exposes the GPU's structure so that performance-minded code can exploit it. Threads are grouped into blocks that share a small, fast on-chip memory and can cooperate, while the large but slower main memory holds the bulk of the data, and writing fast CUDA is largely about respecting this hierarchy: keeping the arithmetic units busy, moving data in large contiguous transfers, and reusing values in fast memory to avoid being limited by memory-bandwidth. The most important efficiency wins in deep learning, such as flash-attention, are essentially clever CUDA kernels that restructure a computation to keep data in fast memory instead of repeatedly reading and writing slow memory."
     },
     {
       "type": "p",
