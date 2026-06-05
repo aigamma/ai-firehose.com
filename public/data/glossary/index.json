@@ -2595,7 +2595,7 @@
         "text diffusion",
         "masked diffusion model"
       ],
-      "def_snippet": "A language model that generates text by iteratively denoising an entire sequence in parallel, the diffusion paradigm borrowed from image generation, rather than predicting one token at a time left to right.",
+      "def_snippet": "A language model that generates text by iteratively denoising an entire sequence in parallel, the diffusion paradigm borrowed from image generation, rather than predicting one token at a time left to right. Its draw is the parallelism, refining many positions at once for large latency wins, but discrete text is harder to diffuse than continuous pixels, so autoregressive models still lead on quality.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -2999,7 +2999,7 @@
         "energy-based models",
         "energy model"
       ],
-      "def_snippet": "A model that learns a scalar energy function assigning low values to plausible configurations and high values to implausible ones, defining a probability distribution implicitly through that energy rather than predicting outputs directly.",
+      "def_snippet": "A model that learns a scalar energy function assigning low values to plausible configurations and high values to implausible ones, defining a probability distribution implicitly rather than predicting outputs directly. Answering a question becomes a search for the lowest-energy configuration, and the framework's central obstacle, the intractable partition function, forces training by contrast rather than exact likelihood.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -4901,7 +4901,7 @@
         "I-JEPA",
         "V-JEPA"
       ],
-      "def_snippet": "A self-supervised design that learns by predicting the representation of a masked or future part of an input from a visible part, working in an abstract embedding space rather than reconstructing raw pixels, so it captures structure without modeling unpredictable detail.",
+      "def_snippet": "A self-supervised design that learns by predicting the representation of a masked or future part of an input from a visible part, working in an abstract embedding space rather than reconstructing raw pixels, so it captures structure without modeling unpredictable detail. Predicting in feature space invites representation collapse, which it prevents not with negatives but with architectural asymmetry, LeCun's bet for learning world-model-like structure.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -5024,7 +5024,7 @@
         "KANs",
         "Kolmogorov-Arnold networks"
       ],
-      "def_snippet": "A neural network that places learnable nonlinear functions on the connections between nodes instead of fixed activation functions on the nodes, drawing on the Kolmogorov-Arnold representation theorem, which can yield more interpretable and parameter-efficient models on structured problems.",
+      "def_snippet": "A network that places learnable nonlinear functions on the connections between nodes instead of fixed activations on the nodes, drawing on the Kolmogorov-Arnold representation theorem. Because each edge is an explicit one-dimensional curve, a trained KAN can be inspected directly, plotted, pruned, sometimes read off as a symbolic formula, which makes it interpretable and parameter-efficient on smooth, scientific problems.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -6154,7 +6154,7 @@
         "MoD",
         "mixture-of-depths transformer"
       ],
-      "def_snippet": "A transformer variant that lets each token choose whether to be processed by a given layer or to skip it through the residual path, so compute is allocated dynamically across positions and the model spends fewer operations on easy tokens.",
+      "def_snippet": "A transformer variant that lets each token choose whether a given layer processes it or it skips through the residual path, so compute is allocated dynamically across positions and easy tokens cost fewer operations. A capacity cap keeps the total budget fixed and predictable, and it routes along depth where a mixture of experts routes along width, two complementary forms of conditional computation.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -6739,7 +6739,7 @@
         "ODE network",
         "continuous-depth network"
       ],
-      "def_snippet": "A model that replaces the discrete stacked layers of a network with a continuous transformation defined by a learned differential equation, so the hidden state evolves smoothly over a notional depth and is computed by a numerical ODE solver.",
+      "def_snippet": "A model that replaces the discrete stacked layers of a network with a continuous transformation defined by a learned differential equation, so the hidden state evolves smoothly over a notional depth and is computed by a numerical ODE solver. Taking the limit of infinitely many infinitely small residual steps, it trains with constant memory via the adjoint method and lets the solver trade compute for accuracy at inference.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -8013,7 +8013,7 @@
         "large reasoning model",
         "inference-time reasoning"
       ],
-      "def_snippet": "A language model trained to spend variable inference-time compute on an extended internal chain of thought before answering, usually via reinforcement learning on verifiable rewards, trading latency for sharply better performance on math, code, and logic.",
+      "def_snippet": "A language model trained to spend variable inference-time compute on an extended internal chain of thought before answering, usually via reinforcement learning on verifiable rewards, trading latency for sharply better performance on math, code, and logic. It made test-time compute a first-class axis of capability, a lever separate from model size, and its hidden chain can be unfaithful to the real computation.",
       "durable": true,
       "category": "Frontier Architectures"
     },
@@ -10707,7 +10707,7 @@
         "learned world model",
         "predictive world model"
       ],
-      "def_snippet": "A learned internal model of how an environment evolves, which an agent uses to predict the consequences of actions and to plan or train inside its own imagination rather than only by acting in the real world.",
+      "def_snippet": "A learned internal model of how an environment evolves, which an agent uses to predict the consequences of actions and to plan or train inside its own imagination rather than only by acting in the real world. Its deep payoff is data efficiency and foresight, an agent that models what happens next holds, in effect, a differentiable simulator of its world.",
       "durable": true,
       "category": "Frontier Architectures"
     },
