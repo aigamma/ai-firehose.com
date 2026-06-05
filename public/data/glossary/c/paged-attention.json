@@ -9,11 +9,11 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "Paged attention is a memory management technique for serving language models that stores the key-value cache in small non-contiguous blocks, borrowing the idea of virtual memory paging so many requests can share GPU memory efficiently and waste far less of it.",
+  "definition": "A memory-management technique for serving language models that stores the key-value cache in small non-contiguous blocks, borrowing virtual-memory paging so many requests share GPU memory efficiently and waste far less of it. By allocating pages on demand it kills the fragmentation and worst-case over-reservation of contiguous allocation, and the same indirection unlocks prefix sharing across requests.",
   "body": [
     {
       "type": "p",
-      "text": "Paged attention is a method for managing the memory of the kv-cache during language model inference, so that a server can handle many simultaneous requests without wasting accelerator memory. Generating text requires keeping a cache of key and value vectors for every token seen so far, and that cache grows as each response gets longer. The naive approach reserves one large contiguous block of memory per request, sized for the longest output the request might produce. Paged attention replaces that scheme with one inspired directly by how operating systems manage virtual memory."
+      "text": "Paged attention manages the memory of the kv-cache during language model inference, so a server can handle many simultaneous requests without wasting accelerator memory. Generating text requires keeping a cache of key and value vectors for every token seen so far, and that cache grows as each response gets longer; the naive approach reserves one large contiguous block of memory per request, sized for the longest output the request might produce, but paged attention replaces that with a scheme inspired directly by how operating systems manage virtual memory."
     },
     {
       "type": "p",
@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "Paged attention works by cutting the kv-cache into many small fixed-size blocks, called pages, that do not have to sit next to each other in memory. Each request is given a table mapping the logical positions in its sequence to whichever physical pages currently hold them, and new pages are handed out only as the response actually grows. The attention computation is adapted to gather the key and value vectors by walking this table rather than reading one contiguous span. Because allocation is now in small uniform units assigned on demand, almost no memory is reserved before it is needed and almost none is stranded, so far more concurrent requests fit in the same memory."
+      "text": "Paged attention works by cutting the kv-cache into many small fixed-size blocks, called pages, that do not have to sit next to each other in memory, the keeper. Each request is given a table mapping the logical positions in its sequence to whichever physical pages currently hold them, and new pages are handed out only as the response actually grows, with the attention computation adapted to gather the key and value vectors by walking this table rather than reading one contiguous span. Because allocation is now in small uniform units assigned on demand, almost no memory is reserved before it is needed and almost none is stranded, so far more concurrent requests fit in the same memory."
     },
     {
       "type": "p",

@@ -1661,7 +1661,7 @@
         "all-reduce",
         "NCCL collectives"
       ],
-      "def_snippet": "The set of group communication primitives, such as all-reduce, all-gather, and reduce-scatter, that synchronize data across many accelerators in distributed training, and whose efficiency over the device interconnect determines how well training scales to large clusters.",
+      "def_snippet": "The group communication primitives, all-reduce, all-gather, reduce-scatter, all-to-all, that synchronize data across many accelerators in distributed training, and whose efficiency over the interconnect determines how well training scales. The unifying view is that each parallelism strategy is, in effect, a particular pattern of these collectives, and as clusters grow it is communication, not computation, that most often caps the scaling.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -1929,7 +1929,7 @@
         "in-flight batching",
         "iteration-level scheduling"
       ],
-      "def_snippet": "An LLM serving technique that adds and evicts requests from the running batch at every decoding step rather than waiting for a whole batch to finish, keeping the GPU saturated and sharply raising throughput under mixed-length workloads.",
+      "def_snippet": "An LLM serving technique that adds and evicts requests from the running batch at every decoding step rather than waiting for a whole batch to finish, keeping the GPU saturated and sharply raising throughput under mixed-length workloads. By scheduling at the granularity of a single step it stops a short request from being held hostage to the slowest member of a static batch, and it pairs naturally with paged attention.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -4042,7 +4042,7 @@
         "gradient checkpoint",
         "rematerialization"
       ],
-      "def_snippet": "Gradient checkpointing is a memory-saving technique that trades extra computation for lower memory use during training, storing only a few activations on the forward pass and recomputing the rest on the fly during backpropagation.",
+      "def_snippet": "A memory-saving technique that trades extra computation for lower memory during training, storing only a few activations on the forward pass and recomputing the rest on the fly during backpropagation. It is a direct trade of flops for memory, typically about a third more compute to drop peak activation memory from growing with the number of layers to growing with its square root, worth it whenever memory, not compute, is the binding constraint.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -6141,7 +6141,7 @@
         "AMP",
         "FP16 training"
       ],
-      "def_snippet": "Mixed precision training speeds up and shrinks the memory of training by doing most arithmetic in a low-precision floating-point format while keeping a high-precision copy of the weights and a few sensitive operations in full precision to preserve accuracy.",
+      "def_snippet": "Running most of a model's arithmetic in a low-precision floating-point format while keeping a high-precision master copy of the weights and a few sensitive operations in full precision, so training is faster and lighter without losing accuracy. The safeguards, a full-precision master copy and loss scaling to keep tiny gradients representable, are what let it match full precision, and it is distinct from quantization, which compresses a finished model for inference.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -6230,7 +6230,7 @@
         "model compression",
         "model optimization"
       ],
-      "def_snippet": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods.",
+      "def_snippet": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods. Because inference, not training, is where a deployed model's lifetime cost accumulates, compression is often where the real economics of shipping AI are decided.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
@@ -7232,7 +7232,7 @@
         "paged attention",
         "PagedAttention"
       ],
-      "def_snippet": "Paged attention is a memory management technique for serving language models that stores the key-value cache in small non-contiguous blocks, borrowing the idea of virtual memory paging so many requests can share GPU memory efficiently and waste far less of it.",
+      "def_snippet": "A memory-management technique for serving language models that stores the key-value cache in small non-contiguous blocks, borrowing virtual-memory paging so many requests share GPU memory efficiently and waste far less of it. By allocating pages on demand it kills the fragmentation and worst-case over-reservation of contiguous allocation, and the same indirection unlocks prefix sharing across requests.",
       "durable": true,
       "category": "Systems and Infrastructure"
     },
