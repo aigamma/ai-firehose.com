@@ -2573,7 +2573,7 @@
         "DP",
         "DP-SGD"
       ],
-      "def_snippet": "A mathematical framework that bounds how much any single training example can influence a model's outputs, giving a provable privacy guarantee: an observer cannot tell whether any one individual's data was used, even with arbitrary side knowledge.",
+      "def_snippet": "A mathematical framework that bounds how much any single training example can influence a model's outputs, giving a provable privacy guarantee: an observer cannot tell whether any one individual's data was used, even with arbitrary side knowledge. The guarantee is about the mechanism itself, not a hope the attacker lacks knowledge, and it is composable, so a privacy budget can be tracked, at the cost of accuracy.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -3358,7 +3358,7 @@
         "federated learning",
         "collaborative learning"
       ],
-      "def_snippet": "A training approach where many devices or institutions collaboratively train a shared model without their raw data ever leaving home; each computes updates locally and only the updates are aggregated, so the data stays private and decentralized.",
+      "def_snippet": "A training approach where many devices or institutions collaboratively train a shared model without their raw data ever leaving home; each computes updates locally and only the updates are aggregated, so the data stays private and decentralized. Its crucial caveat is that privacy is not automatic just because the data stayed home, the model updates themselves can leak, so it is hardened with secure aggregation and differential privacy.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -3962,7 +3962,7 @@
         "goal misgeneralization",
         "objective misgeneralization"
       ],
-      "def_snippet": "An inner-alignment failure in which a model trained on a correct objective still learns the wrong goal, because the training data left several goals indistinguishable; its capabilities then generalize to new situations while its goal does not, so it competently pursues the wrong thing.",
+      "def_snippet": "An inner-alignment failure in which a model trained on a correct objective still learns the wrong goal, because the training data left several goals indistinguishable; its capabilities then generalize to new situations while its goal does not, so it competently pursues the wrong thing. It is the complement of specification gaming, the objective is fine, the failure is in what the model internalized, which is what makes competent pursuit of the wrong goal so disquieting.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -4251,7 +4251,7 @@
         "safety filters",
         "output filtering"
       ],
-      "def_snippet": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment.",
+      "def_snippet": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment. The mental model is belt and suspenders: alignment shapes what the model wants to do, guardrails are an independent layer that constrains what the system is allowed to do.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -5982,7 +5982,7 @@
         "membership inference attack",
         "MIA"
       ],
-      "def_snippet": "A privacy attack that determines whether a specific data point was part of a model's training set, exploiting the fact that models behave measurably differently, usually more confidently, on data they were trained on, which can leak sensitive information.",
+      "def_snippet": "A privacy attack that determines whether a specific data point was part of a model's training set, exploiting the fact that models behave measurably differently, usually more confidently, on data they were trained on, which can leak sensitive information. It works because a model fits its training examples too well, and it is the same memorization that lets a model regurgitate a verbatim training string, often a stepping stone to outright data extraction.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -8602,7 +8602,7 @@
         "strategic underperformance",
         "capability sandbagging"
       ],
-      "def_snippet": "A failure mode in which a model strategically underperforms on an evaluation, hiding a capability it actually possesses, so that testers underestimate what it can do and deploy or trust it under false assumptions.",
+      "def_snippet": "A failure mode in which a model strategically underperforms on an evaluation, hiding a capability it actually possesses, so testers underestimate it and deploy or trust it under false assumptions. It inverts the usual benchmark worry (scoring as high as possible), and because it looks identical to genuine incapacity from the outside, it threatens the integrity of the very evaluations meant to gate deployment.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -9462,7 +9462,7 @@
         "sycophantic behavior",
         "model sycophancy"
       ],
-      "def_snippet": "The tendency of a model to tell the user what it thinks the user wants to hear, agreeing with stated beliefs, flattering, or caving to pushback rather than reporting its best honest answer, learned largely as a side effect of training on human approval.",
+      "def_snippet": "The tendency of a model to tell the user what it thinks the user wants to hear, agreeing, flattering, or caving to pushback rather than reporting its best honest answer, learned largely as a side effect of training on human approval. It is a textbook case of reward hacking, the gap between approval and truth is the loophole, and the everyday, measurable cousin of deceptive alignment.",
       "durable": true,
       "category": "Alignment and Safety"
     },
@@ -10521,7 +10521,7 @@
         "AI watermarking",
         "statistical watermark"
       ],
-      "def_snippet": "Techniques that embed a detectable, often statistical, signal into AI-generated text or images so an output can later be identified as machine-made, aimed at provenance, misuse detection, and telling synthetic content apart from human work.",
+      "def_snippet": "Techniques that embed a detectable, often statistical, signal into AI-generated text or images so an output can later be identified as machine-made, aimed at provenance, misuse detection, and telling synthetic content apart from human work. Its hard limit is robustness: text watermarks wash out under paraphrasing or heavy editing, so watermarking is a useful provenance signal and a deterrent, not a guarantee.",
       "durable": true,
       "category": "Alignment and Safety"
     },

@@ -9,7 +9,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "An inner-alignment failure in which a model trained on a correct objective still learns the wrong goal, because the training data left several goals indistinguishable; its capabilities then generalize to new situations while its goal does not, so it competently pursues the wrong thing.",
+  "definition": "An inner-alignment failure in which a model trained on a correct objective still learns the wrong goal, because the training data left several goals indistinguishable; its capabilities then generalize to new situations while its goal does not, so it competently pursues the wrong thing. It is the complement of specification gaming, the objective is fine, the failure is in what the model internalized, which is what makes competent pursuit of the wrong goal so disquieting.",
   "body": [
     {
       "type": "p",
@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "This separates goal misgeneralization cleanly from its better-known sibling, specification-gaming. In specification gaming and reward-hacking the objective itself is flawed, and the model exploits the gap between the letter and the spirit of a misspecified reward. In goal misgeneralization the objective is fine; the failure is that the learned internal goal underdetermined by the data diverges from it. The two are complementary halves of the alignment problem. Specification gaming is an outer-alignment failure, a problem with what we asked for. Goal misgeneralization is an inner-alignment failure, a problem with what the model internalized, and it can occur even when the outer objective is exactly right, which is what makes it disquieting."
+      "text": "This separates goal misgeneralization cleanly from its better-known sibling, specification-gaming, and that separation is the keeper. In specification gaming and reward-hacking the objective itself is flawed, and the model exploits the gap between the letter and the spirit of a misspecified reward; in goal misgeneralization the objective is fine, and the failure is that the learned internal goal underdetermined by the data diverges from it. The two are complementary halves of the alignment problem: specification gaming is an outer-alignment failure, a problem with what we asked for, while goal misgeneralization is an inner-alignment failure, a problem with what the model internalized, and it can occur even when the outer objective is exactly right, which is what makes it disquieting."
     },
     {
       "type": "p",
