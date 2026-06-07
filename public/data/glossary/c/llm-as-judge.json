@@ -1,13 +1,116 @@
 {
   "id": "llm-as-judge",
   "label": "LLM as Judge",
-  "kind": "technique",
-  "category": "Evaluation and Benchmarks",
   "aliases": [
     "LLM-as-a-judge",
     "model-graded evaluation",
     "AI judge"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-01T17:59:46Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 142.8,
+    "momentum": 69.4,
+    "sparkline": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "llm-reliability",
+      "label": "LLM reliability",
+      "score": 0.803
+    },
+    {
+      "id": "llms",
+      "label": "LLMs",
+      "score": 0.795
+    },
+    {
+      "id": "ai-evaluation",
+      "label": "AI evaluation",
+      "score": 0.775
+    },
+    {
+      "id": "honesty-in-llms",
+      "label": "honesty in LLMs",
+      "score": 0.771
+    },
+    {
+      "id": "llm-driven-automation",
+      "label": "LLM-driven automation",
+      "score": 0.762
+    },
+    {
+      "id": "llm",
+      "label": "LLM",
+      "score": 0.752
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.64
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.196
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.592
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.288
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.025
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.416
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.645
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Scaffold, Not Vocabulary? A Controlled, Two-Tier, Pre-Registered Study of a Popperian Code-Generation Skill",
+      "url": "http://arxiv.org/abs/2606.06454v1",
+      "author_or_channel": "Mehmet Iscan",
+      "published_at": "2026-06-04T17:49:00Z",
+      "kind": "opinion"
+    },
+    {
+      "title": "Mitigating Perceptual Judgment Bias in Multimodal LLM-as-a-Judge via Perceptual Perturbation and Reward Modeling",
+      "url": "http://arxiv.org/abs/2606.02578v1",
+      "author_or_channel": "Seojeong Park, Jiho Choi, Junyong Kang",
+      "published_at": "2026-06-01T17:59:46Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Evaluation and Benchmarks",
   "durable": true,
   "source": "authored",
   "definition": "Using a strong language model to grade the outputs of other models, either by scoring a single response against a rubric or by choosing the better of two, a scalable proxy for human judgment on open-ended tasks with no answer key. It carries a catalog of biases (position, verbosity, self-preference, sycophancy) and is strongest where the answer is a matter of quality, weakest exactly where verification is possible.",
@@ -60,12 +163,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/llm-as-judge.png",
     "alt": "A scatter plot with win rate difference between two models on the x-axis (0 to 1) and the agreement between a GPT-4 judge and human judges on the y-axis (about 0.65 to 1.0). The points rise from left to right: when two models are close in quality the judge and humans agree less often, and as the quality gap widens agreement climbs toward 1.0.",

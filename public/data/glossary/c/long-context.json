@@ -1,13 +1,94 @@
 {
   "id": "long-context",
   "label": "Long Context",
-  "kind": "technique",
-  "category": "Transformers and LLMs",
   "aliases": [
     "long context",
     "long-context window",
     "extended context"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-05-19T00:00:00.000Z",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "repository-context",
+      "label": "repository context",
+      "score": 0.686
+    },
+    {
+      "id": "in-context-scoring",
+      "label": "in-context scoring",
+      "score": 0.685
+    },
+    {
+      "id": "context-management",
+      "label": "context management",
+      "score": 0.668
+    },
+    {
+      "id": "benchmark",
+      "label": "benchmark",
+      "score": 0.64
+    },
+    {
+      "id": "context-windows",
+      "label": "context windows",
+      "score": 0.635
+    },
+    {
+      "id": "inference",
+      "label": "inference",
+      "score": 0.62
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.094
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.273
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.25
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.119
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.004
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.017
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.07
+    }
+  ],
+  "top_items": [
+    {
+      "title": "EpiCache: Episodic KV Cache Management for Long-Term Conversation on Resource-Constrained Environments",
+      "url": "https://machinelearning.apple.com/research/epicache",
+      "author_or_channel": "Apple ML Research",
+      "published_at": "2026-05-19T00:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
   "definition": "A model's ability to process very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning. It is hard for three converging reasons, quadratic attention, a ballooning KV cache, and scarce long-reasoning training data, and the honest catch is that the advertised window often exceeds the effective one, with recall sagging in the middle.",
@@ -55,11 +136,5 @@
       "label": "Flash Attention",
       "kind": "technique"
     }
-  ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": []
+  ]
 }

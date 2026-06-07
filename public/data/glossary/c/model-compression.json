@@ -6,39 +6,39 @@
     "model optimization"
   ],
   "kind": "technique",
-  "attention": 11,
-  "first_seen": "2026-06-01T10:00:00.000Z",
+  "attention": 13,
+  "first_seen": "2026-04-04T10:03:00Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "weakening",
+    "quadrant": "leading",
     "ratio": 145,
-    "momentum": 75.6,
+    "momentum": 113.5,
     "sparkline": [
       0,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
+      6,
       5,
-      6,
-      6,
-      6
+      5
     ]
   },
   "neighbors": [
     {
+      "id": "foundation-model",
+      "label": "foundation model",
+      "score": 0.79
+    },
+    {
+      "id": "regularization",
+      "label": "regularization",
+      "score": 0.782
+    },
+    {
       "id": "sparsity",
       "label": "sparsity",
       "score": 0.781
-    },
-    {
-      "id": "shuffle-model",
-      "label": "Shuffle Model",
-      "score": 0.776
-    },
-    {
-      "id": "predictive-coding",
-      "label": "predictive coding",
-      "score": 0.771
     },
     {
       "id": "weight-normalization",
@@ -46,51 +46,51 @@
       "score": 0.771
     },
     {
-      "id": "variance-regularization",
-      "label": "variance regularization",
-      "score": 0.763
+      "id": "model-capability",
+      "label": "model capability",
+      "score": 0.768
     },
     {
-      "id": "noise-optimization",
-      "label": "noise optimization",
-      "score": 0.761
+      "id": "multi-head-compression",
+      "label": "multi-Head Compression",
+      "score": 0.762
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.32
+      "position": 0.288
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.278
+      "position": -0.39
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.548
+      "position": 0.658
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.529
+      "position": 0.488
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.337
+      "position": 0.033
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.758
+      "position": 0.771
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.116
+      "position": -0.035
     }
   ],
   "top_items": [
@@ -99,7 +99,7 @@
       "url": "https://openreview.net/pdf?id=Yxz92UuPLQ",
       "author_or_channel": "brandonb",
       "published_at": "2026-06-05T18:50:26.000Z",
-      "kind": "technique"
+      "kind": "opinion"
     },
     {
       "title": "Launch HN: General Instinct (YC P26) – Frontier models on edge devices",
@@ -116,11 +116,11 @@
       "kind": "tool"
     },
     {
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "url": "https://www.youtube.com/watch?v=iICZTWcryac",
-      "author_or_channel": "Cole Medin",
-      "published_at": "2026-06-04T00:00:04+00:00",
-      "kind": "technique"
+      "title": "Show HN: Lowfat – pluggable CLI filter that saved 91.8% of my LLM tokens",
+      "url": "https://github.com/zdk/lowfat",
+      "author_or_channel": "zdkaster",
+      "published_at": "2026-06-05T09:10:42.000Z",
+      "kind": "tool"
     },
     {
       "title": "From Layers to Submodules: Rethinking Granularity in Replacement-Based LLM Compression",
@@ -130,11 +130,11 @@
       "kind": "technique"
     },
     {
-      "title": "OpenAI frontier models and Codex are now available on AWS",
-      "url": "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws",
-      "author_or_channel": "OpenAI",
-      "published_at": "2026-06-01T10:00:00.000Z",
-      "kind": "tool"
+      "title": "LongAttnComp: Cross-Family Context Compression for Long-Context Reasoning",
+      "url": "https://huggingface.co/papers/2606.01336",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-30T20:00:00.000Z",
+      "kind": "technique"
     }
   ],
   "definition": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods. Because inference, not training, is where a deployed model's lifetime cost accumulates, compression is often where the real economics of shipping AI are decided.",
