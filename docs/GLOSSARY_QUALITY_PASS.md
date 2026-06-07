@@ -50,6 +50,14 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
   holds its keeper and cannot be honestly improved, leave it byte-identical rather than churn it.
 - **Capture sources** consulted into `content/glossary/sources.json` as you go, and verify any quotation
   against a primary source (the apocryphal Arthur Samuel quote was caught this way last time).
+- **Remove the leaked "the keeper" meta-label (the single most common concrete fix).** About 293 of the 600
+  entries (the Session-15-enhanced ones; the onboarding-era `content/glossary/ai-engineering` and
+  `content/glossary/industry` have none) wrote the authoring flag "the keeper" straight into the published
+  prose ("That gap is the point, the keeper: ...", "The keeper is the division of labor: ..."). Find them by
+  searching `content/glossary` for the phrase. Rephrase per entry with varied wording (the crux, the point,
+  what matters, the key insight) or restructure the sentence. Do NOT blanket-replace to a single word (it
+  flattens 293 entries into monotony) and do NOT script the predicate cases ("X is the keeper"); this is
+  main-thread craft, one entry at a time.
 
 ## The Procedure (repeat per category sub-batch)
 
@@ -116,9 +124,14 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 
 ## Status (UPDATE PER CATEGORY)
 
-As of **2026-06-07**: **2 of 33 categories re-passed** (ai-engineering, industry). Nothing pushed yet. Resume
-from the first unticked Wave 1 category (evaluation). After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md`
-for Phase B (the ~304 genuinely-new concepts).
+As of **2026-06-07**: **2 of 33 categories re-passed** (ai-engineering, industry), pushed to `origin/main`.
+**Major finding this session: the "the keeper" meta-label leak in about 293 entries (see the Method bullet
+above); removing it with craft is now a primary per-entry task of the pass.** Resume from evaluation (next
+Wave 1 category). Evaluation-specific findings already scouted: the two onboarding-era entries (benchmark,
+evaluation) share a "you cannot improve what you cannot measure" opening, so de-collide them (let evaluation
+own the broad-practice framing and re-open benchmark on the shared-scoreboard idea); about 22 evaluation
+entries carry the keeper leak; and four are thin (gpqa, reward-bench, chatbot-arena, lm-evaluation-harness).
+After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md` for Phase B (the ~304 genuinely-new concepts).
 
 Per-category notes:
 - **ai-engineering** (2026-06-07): found already at the bar (authored recently at Opus strength), so the pass
