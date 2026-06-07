@@ -1,12 +1,93 @@
 {
   "id": "attention-mechanism",
   "label": "Attention Mechanism",
-  "kind": "technique",
-  "category": "Deep Learning Architectures",
   "aliases": [
     "attention",
     "self-attention"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-05-30T20:00:00.000Z",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "context-conditioned-gating",
+      "label": "context-conditioned gating",
+      "score": 0.822
+    },
+    {
+      "id": "novelty-signals",
+      "label": "novelty signals",
+      "score": 0.81
+    },
+    {
+      "id": "sparse-attention",
+      "label": "sparse attention",
+      "score": 0.801
+    },
+    {
+      "id": "latent-memory",
+      "label": "latent memory",
+      "score": 0.797
+    },
+    {
+      "id": "attention",
+      "label": "attention",
+      "score": 0.785
+    },
+    {
+      "id": "long-tailed-recognition",
+      "label": "long-tailed recognition",
+      "score": 0.785
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.072
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.358
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.124
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.716
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.102
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.39
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.161
+    }
+  ],
+  "top_items": [
+    {
+      "title": "LongAttnComp: Cross-Family Context Compression for Long-Context Reasoning",
+      "url": "https://huggingface.co/papers/2606.01336",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-30T20:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Deep Learning Architectures",
   "durable": true,
   "source": "authored",
   "definition": "A mechanism that lets a model compute each output as a content-weighted sum over all input positions, focusing on whatever is most relevant regardless of distance. It removed the fundamental bottleneck of recurrence by giving every position direct, parallel access to every other in a single operation, the shift that produced the transformer.",
@@ -60,12 +141,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/attention-mechanism.svg",
     "alt": "Diagram of attention pooling. A single query and a column of keys feed an attention scoring function (labeled a) that produces one score per key. The scores pass through a softmax to become attention weights, each weight is multiplied by its corresponding value, and the products are summed into a single output vector.",

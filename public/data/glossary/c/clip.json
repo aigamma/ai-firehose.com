@@ -1,11 +1,107 @@
 {
   "id": "clip",
   "label": "CLIP",
-  "kind": "technique",
-  "category": "Computer Vision",
   "aliases": [
     "Contrastive Language-Image Pretraining"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-02T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 69.3,
+    "sparkline": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "cli",
+      "label": "CLI",
+      "score": 0.726
+    },
+    {
+      "id": "llm",
+      "label": "LLM",
+      "score": 0.683
+    },
+    {
+      "id": "grpo",
+      "label": "GRPO",
+      "score": 0.682
+    },
+    {
+      "id": "agi",
+      "label": "AGI",
+      "score": 0.646
+    },
+    {
+      "id": "rlvr",
+      "label": "RLVR",
+      "score": 0.646
+    },
+    {
+      "id": "lora",
+      "label": "LoRA",
+      "score": 0.642
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.187
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.149
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.39
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.082
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.254
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.146
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.017
+    }
+  ],
+  "top_items": [
+    {
+      "title": "BRepCLIP: Contrastive Multimodal Pretraining on BRep Primitives for CAD Understanding",
+      "url": "https://huggingface.co/papers/2606.05515",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-02T20:00:00.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Computer Vision",
   "durable": true,
   "source": "authored",
   "definition": "A model trained to put images and text in one shared embedding space by contrastive learning over hundreds of millions of image-caption pairs. By turning recognition into a matching problem against natural language, it unlocks zero-shot classification with no fixed label set, and the same shared space became the conditioning signal behind text-to-image generators.",
@@ -59,12 +155,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/clip.png",
     "alt": "CLIP diagram in three parts: (1) contrastive pre-training where a text encoder and an image encoder produce embeddings whose pairwise dot products form a similarity matrix, with the matching image-text pairs on the diagonal pulled together; (2) building a zero-shot classifier by encoding label texts like a photo of a dog; (3) zero-shot prediction matching an image embedding to the closest label embedding.",
