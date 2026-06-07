@@ -95,11 +95,15 @@
     },
     {
       "type": "p",
-      "text": "Ollama's role is plumbing, and that is the point. It bundles the model file, a sensible quantization, and a local server with an API that mimics the cloud providers', so code written against a hosted model can point at a local one with little change. That compatibility is quietly strategic: it lowers the cost of being model-agnostic and makes the local option a drop-in rather than a rewrite, which is part of why the local-model ecosystem grew up around it."
+      "text": "Underneath, Ollama is a wrapper around mature machinery. It pulls quantized model files in the GGUF format, runs them on the llama.cpp inference engine that made CPU and consumer-GPU inference practical, and exposes a local HTTP server whose API deliberately mimics the cloud providers'. A short Modelfile pins a model, its quantization level, a system prompt, and parameters into a named, reproducible bundle, the same impulse a Dockerfile applies to a container. None of these pieces is novel on its own; the contribution is packaging them so the friction drops to one command."
     },
     {
       "type": "p",
-      "text": "What Ollama really represents is the commoditization of inference reaching the desktop. The hard, capital-intensive work is training the models; once they are open, the marginal cost of running them locally falls to whatever tooling makes it easy, and Ollama is much of that tooling. Its existence is a small but telling sign of where value is and is not: not in the act of running a model, which is becoming a free, local commodity, but in the models themselves and in what you build on top of them."
+      "text": "That packaging is quietly strategic. Because the local API mirrors the hosted ones, code written against a cloud model can point at a local one with little change, which lowers the cost of model-agnostic design and makes the local option a drop-in rather than a rewrite. Much of the open-model ecosystem grew up around that compatibility, because it let people experiment locally and deploy to the cloud, or the reverse, without rebuilding the integration."
+    },
+    {
+      "type": "p",
+      "text": "What Ollama really marks is the commoditization of inference reaching the desktop. The hard, capital-intensive work is training the models; once they are open, the marginal cost of running them falls to whatever tooling makes it easy, and Ollama is much of that tooling. Its existence is a small but telling sign of where value is and is not: not in the act of running a model, which is becoming a free local commodity, but in the models themselves and in what you build on top of them."
     }
   ],
   "related": [

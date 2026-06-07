@@ -78,7 +78,7 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 ## Category Checklist (33 categories, 600 entries; tick when fully re-passed)
 
 **Wave 1, highest headroom (onboarding-era and thin-heavy):**
-- [ ] ai-engineering (25; 24 never audited, 2 thin)
+- [x] ai-engineering (25; 24 never audited, 2 thin) done 2026-06-07
 - [ ] industry (5; wholly onboarding-era)
 - [ ] evaluation (26; 2 new, 4 thin)
 - [ ] nlp (22; 1 new, 5 thin)
@@ -116,6 +116,16 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 
 ## Status (UPDATE PER CATEGORY)
 
-As of **2026-06-07** (campaign start): **0 of 33 categories re-passed.** Nothing pushed yet. Resume from
-the first unticked Wave 1 category. After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md` for
-Phase B (the ~304 genuinely-new concepts).
+As of **2026-06-07**: **1 of 33 categories re-passed** (ai-engineering). Nothing pushed yet. Resume from
+the first unticked Wave 1 category (industry). After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md`
+for Phase B (the ~304 genuinely-new concepts).
+
+Per-category notes:
+- **ai-engineering** (2026-06-07): found already at the bar (authored recently at Opus strength), so the pass
+  was sharpening, not wholesale rewrite. Rewrote the six coding-cluster entries (code-generation,
+  ai-assisted-coding, ai-driven-development, claude-code, software-engineering, qa-testing) to give each a
+  distinct keeper and remove cross-entry collisions: the review-bottleneck line and the harness-versus-weights
+  thesis had each been landed by two entries. De-collided the context-management and token-optimization closes
+  (both had ended on "a million-token window does not mean fill it"). Deepened the two thin vendor entries
+  (ollama, openrouter) with a concrete-mechanism paragraph. Reviewed and left the other sixteen byte-identical
+  as already at-bar.
