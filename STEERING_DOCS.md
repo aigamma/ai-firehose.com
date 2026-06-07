@@ -27,6 +27,7 @@ Public-facing overview for someone landing on the GitHub repo or curious about t
 - `docs/INGESTION.md`: the pipeline stages, the concept-resolution algorithm (AI-discovered, AI-created, then fitted loosely by embedding similarity), and the rolling-quarter prune. Read before touching `worker/`.
 - `docs/RAG.md`: the embedding substrate, Pinecone and Voyage setup, the precompute artifacts and their JSON schemas, the relative-rotation math. Read before touching `worker/lib/` (the embedding substrate) or the artifacts.
 - `docs/SOURCES.md`: every source adapter, with YouTube primary (RSS plus yt-dlp plus Whisper, Apify only as paid fallback), and the source authority weighting. Read before adding or changing a source.
+- `docs/ONBOARD_YOUTUBE_CHANNEL.md`: the step-by-step runbook for adding a YouTube author to the ingestion registry (resolve, choose weight and kind, verify against oracles, commit and push so the worker sees it). The companion runbook to `docs/SOURCES.md`; read it whenever Eric submits a channel.
 - `docs/OPERATIONS.md`: keys and where they come from, the daily schedule, cost ceilings, monitoring, and recovery recipes.
 - `docs/DEPLOYMENT.md`: the Fly worker and the Netlify site, DNS, and the deploy chain.
 - `docs/GLOSSARY.md`: the durable knowledge layer. The two-layer model (authored durable knowledge versus the trending corpus), authoring entries, the build into served artifacts, the durability contract, and wiki-style auto-linking. Read before touching the glossary or `content/glossary`.
@@ -64,6 +65,7 @@ Append-only per-run log: what ran, when, by which agent or model, with what coun
 | Contribute for the first time | `CLAUDE.md`, then `LESSONS_LEARNED.md` |
 | Onboard a new feature | `docs/FEATURE_PLAYBOOK.md`, then the tier-2 doc for the subsystem it touches |
 | Touch the ingestion pipeline or a source | `docs/INGESTION.md`, `docs/SOURCES.md` |
+| Add a YouTube author Eric submitted | `docs/ONBOARD_YOUTUBE_CHANNEL.md` |
 | Touch the embedding substrate or artifacts | `docs/RAG.md` |
 | Change the rotation math or thresholds | `docs/RAG.md`, `docs/INGESTION_LOG.md` |
 | Deploy or change infrastructure | `docs/DEPLOYMENT.md`, `docs/OPERATIONS.md` |

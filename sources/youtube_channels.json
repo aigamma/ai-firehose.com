@@ -1,6 +1,6 @@
 {
   "_about": "Curated registry of high-signal YouTube teachers, the primary source for ai-firehose.com. Eric edits this file. Each channel is polled via its free RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=<channel_id> (no API key).",
-  "_instructions": "Find a channel_id from the channel page HTML (search the page source for \"channelId\") or with yt-dlp (yt-dlp --print channel_id <channel_url>). authority_weight in [0,1] scales how strongly the channel moves the rotation: favorite, highest-signal teachers near 1.0. kind_bias is only a hint; the classifier decides each video's kind. Set active true to include a channel.",
+  "_instructions": "Prefer the CLI: node worker/sources/youtube_registry.mjs add @handle --weight=0.9 --kind=mixed (it resolves the channel_id and writes here idempotently). Full runbook: docs/ONBOARD_YOUTUBE_CHANNEL.md. To resolve a channel_id by hand, search the channel page source for \"channelId\" or run yt-dlp --print channel_id <channel_url>. authority_weight in [0,1] scales how strongly the channel moves the rotation: favorite, highest-signal teachers near 1.0. kind_bias is only a hint; the classifier decides each video's kind. Set active true to include a channel.",
   "_schema": {
     "channel_id": "UCxxxxxxxxxxxxxxxxxxxxxx",
     "name": "string",

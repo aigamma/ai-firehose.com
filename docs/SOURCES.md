@@ -24,6 +24,8 @@ node worker/sources/youtube_registry.mjs list
 
 It resolves a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
 
+**Onboarding a new author (full runbook):** `docs/ONBOARD_YOUTUBE_CHANNEL.md`. The complete step-by-step a fresh agent follows whenever Eric submits a channel: resolve the id, choose `authority_weight` and `kind_bias`, verify against oracles (the `list` and a dry adapter fetch), then commit and push so the worker sees it on its next run.
+
 ## Other Sources
 
 - **arXiv.** Public Atom API across cs.AI, cs.LG, cs.CL, cs.CV. Technique and research signal.
