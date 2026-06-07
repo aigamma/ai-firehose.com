@@ -1,11 +1,92 @@
 {
   "id": "constitutional-ai",
   "label": "Constitutional AI",
-  "kind": "technique",
-  "category": "Training and Fine-Tuning",
   "aliases": [
     "CAI"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-05-28T20:52:09+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "embodied-ai",
+      "label": "Embodied AI",
+      "score": 0.789
+    },
+    {
+      "id": "trustworthy-ai",
+      "label": "trustworthy AI",
+      "score": 0.783
+    },
+    {
+      "id": "edge-ai",
+      "label": "edge AI",
+      "score": 0.771
+    },
+    {
+      "id": "ai-winters",
+      "label": "AI winters",
+      "score": 0.759
+    },
+    {
+      "id": "clinical-ai",
+      "label": "clinical AI",
+      "score": 0.749
+    },
+    {
+      "id": "ai-operating-system",
+      "label": "AI Operating System",
+      "score": 0.74
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.038
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.043
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.333
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.686
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.457
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.086
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.677
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Claude Opus 4.8 Is Too Smart… and TOO HONEST",
+      "url": "https://www.youtube.com/watch?v=F_6go08nHv4",
+      "author_or_channel": "Wes Roth",
+      "published_at": "2026-05-28T20:52:09+00:00",
+      "kind": "opinion"
+    }
+  ],
+  "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
   "definition": "An alignment method that trains a model to be helpful and harmless using AI-generated feedback guided by a written set of principles (a constitution), reducing reliance on human-labeled comparisons. Its distinctive contribution is making a model's values explicit and auditable in a document that can be reviewed and revised, rather than leaving them implicit in thousands of individual human labels.",
@@ -58,12 +139,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/constitutional-ai.png",
     "alt": "A two-phase flow. In the supervised phase, a helpful model generates responses to red-teaming prompts, then critiques and revises each response against a principle, and the revised responses fine-tune a supervised model. In the reinforcement phase, the model compares pairs of its own responses to produce AI preference labels, which train a preference model used to optimize the final model.",

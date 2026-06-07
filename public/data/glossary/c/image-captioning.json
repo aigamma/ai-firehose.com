@@ -1,12 +1,115 @@
 {
   "id": "image-captioning",
   "label": "Image Captioning",
-  "kind": "technique",
-  "category": "Computer Vision",
   "aliases": [
     "image captioning",
     "image-to-text"
   ],
+  "kind": "technique",
+  "attention": 3,
+  "first_seen": "2026-05-11T00:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 91.1,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "computer-vision",
+      "label": "computer vision",
+      "score": 0.812
+    },
+    {
+      "id": "text-to-image-generation",
+      "label": "text-to-image generation",
+      "score": 0.797
+    },
+    {
+      "id": "deep-learning",
+      "label": "deep learning",
+      "score": 0.788
+    },
+    {
+      "id": "visual-tokenization",
+      "label": "visual tokenization",
+      "score": 0.775
+    },
+    {
+      "id": "image-restoration",
+      "label": "image restoration",
+      "score": 0.769
+    },
+    {
+      "id": "action-prediction",
+      "label": "action prediction",
+      "score": 0.765
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.333
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.01
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.133
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.297
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.714
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.412
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.45
+    }
+  ],
+  "top_items": [
+    {
+      "title": "South Korean forums will need to scan every images with AI censorship tools",
+      "url": "https://discuss.privacyguides.net/t/south-korean-online-communities-will-need-to-scan-every-images-with-ai-censorship-tools/38341",
+      "author_or_channel": "Cider9986",
+      "published_at": "2026-06-04T23:45:56.000Z",
+      "kind": "opinion"
+    },
+    {
+      "title": "BalCapRL: A Balanced Framework for RL-Based MLLM Image Captioning",
+      "url": "https://machinelearning.apple.com/research/balcaprl-mllm-image-captioning",
+      "author_or_channel": "Apple ML Research",
+      "published_at": "2026-05-11T00:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Computer Vision",
   "durable": true,
   "source": "authored",
   "definition": "The task of writing a natural-language description of an image, joining a visual encoder that reads the picture to a language decoder that writes the sentence. It is the mirror image of text-to-image generation and a long-standing probe of multimodal understanding, since captioning well proves the visual features carry enough structured meaning to be verbalized, and it has now largely folded into the vision-language model.",
@@ -60,12 +163,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/image-captioning.png",
     "alt": "An image captioning model: an input photo of a surfer is read by a convolutional encoder into a grid of image features, which a transformer decoder attends to through cross-attention while generating the caption one word at a time, starting from a start token and producing a surfer riding on.",

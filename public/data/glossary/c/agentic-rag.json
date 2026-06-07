@@ -1,12 +1,108 @@
 {
   "id": "agentic-rag",
   "label": "Agentic RAG",
-  "kind": "technique",
-  "category": "Agents and Tool Use",
   "aliases": [
     "agentic RAG",
     "agentic retrieval"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-05T11:26:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 94.5,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "agentic-benchmarks",
+      "label": "agentic benchmarks",
+      "score": 0.758
+    },
+    {
+      "id": "agi",
+      "label": "AGI",
+      "score": 0.755
+    },
+    {
+      "id": "subagents",
+      "label": "subagents",
+      "score": 0.743
+    },
+    {
+      "id": "agent",
+      "label": "agent",
+      "score": 0.733
+    },
+    {
+      "id": "agentic-workflows",
+      "label": "agentic workflows",
+      "score": 0.721
+    },
+    {
+      "id": "ai-agents",
+      "label": "AI agents",
+      "score": 0.711
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.491
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.585
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.21
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.413
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.074
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": -0.027
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.353
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Unlocking dependable responses with Gemini Enterprise Agent Platform’s Agentic RAG",
+      "url": "https://research.google/blog/unlocking-dependable-responses-with-gemini-enterprise-agent-platforms-agentic-rag/",
+      "author_or_channel": "Google Research",
+      "published_at": "2026-06-05T11:26:00.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Agents and Tool Use",
   "durable": true,
   "source": "authored",
   "definition": "Retrieval-augmented generation driven by an agent that decides when and what to retrieve, issues multiple queries, evaluates the results, and iterates, rather than a single fixed retrieve-then-generate step. By treating retrieval as a tool to be used deliberately, not a mandatory first step, it handles multi-hop reasoning (\"find X, then use X to find Y\") and exploratory questions a single shot cannot.",
@@ -55,12 +151,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/agentic-rag.png",
     "alt": "Comparison of conventional retrieval-augmented generation with Self-RAG. The left side always retrieves a fixed set of documents and generates an answer in one pass. The right side adaptively decides whether to retrieve, retrieves on demand, evaluates each passage's relevance, and critiques whether its own output is supported, using special reflection tokens across several steps.",

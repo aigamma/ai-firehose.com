@@ -7,89 +7,108 @@
     "context stacking"
   ],
   "kind": "technique",
-  "attention": 36,
-  "first_seen": "2026-03-18T08:34:13+00:00",
-  "rotation": null,
+  "attention": 31,
+  "first_seen": "2026-03-02T14:44:46+00:00",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 129.5,
+    "momentum": 93,
+    "sparkline": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1
+    ]
+  },
   "neighbors": [
     {
-      "id": "context-compression",
-      "label": "context compression",
-      "score": 0.798
+      "id": "context-windows",
+      "label": "context windows",
+      "score": 0.748
     },
     {
-      "id": "context-memory",
-      "label": "context memory",
-      "score": 0.787
-    },
-    {
-      "id": "context-stacking",
-      "label": "context stacking",
-      "score": 0.783
-    },
-    {
-      "id": "context-management",
-      "label": "context management",
-      "score": 0.783
-    },
-    {
-      "id": "segmentation",
-      "label": "segmentation",
-      "score": 0.754
+      "id": "secure-execution",
+      "label": "secure execution",
+      "score": 0.714
     },
     {
       "id": "in-context-scoring",
       "label": "in-context scoring",
-      "score": 0.749
+      "score": 0.714
     },
     {
-      "id": "observation-masking",
-      "label": "observation masking",
-      "score": 0.74
+      "id": "sandboxing",
+      "label": "sandboxing",
+      "score": 0.713
     },
     {
-      "id": "quantization",
-      "label": "quantization",
-      "score": 0.739
+      "id": "concurrent-execution",
+      "label": "concurrent execution",
+      "score": 0.711
+    },
+    {
+      "id": "access-control",
+      "label": "access control",
+      "score": 0.706
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.115
+      "position": -0.058
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.624
+      "position": -0.398
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.092
+      "position": 0.2
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.151
+      "position": -0.186
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.025
+      "position": -0.263
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.635
+      "position": -0.556
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.115
+      "position": -0.127
     }
   ],
   "top_items": [
+    {
+      "title": "Revising Context, Shifting Simulated Stance: Auditing LLM-Based Stance Simulation in Online Discussions",
+      "url": "http://arxiv.org/abs/2606.06443v1",
+      "author_or_channel": "Xinnong Zhang, Wanting Shan, Hanjia Lyu",
+      "published_at": "2026-06-04T17:41:54Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Dreaming: Better memory for a more helpful ChatGPT",
+      "url": "https://openai.com/index/chatgpt-memory-dreaming",
+      "author_or_channel": "OpenAI",
+      "published_at": "2026-06-04T09:00:00.000Z",
+      "kind": "tool"
+    },
     {
       "title": "OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents",
       "url": "https://huggingface.co/papers/2606.02031",
@@ -112,39 +131,11 @@
       "kind": "technique"
     },
     {
-      "title": "Give Me 10 Mins and I'll Save You Millions of Claude Tokens",
-      "url": "https://www.youtube.com/watch?v=6cEQEba0i2A",
-      "author_or_channel": "Nate Herk | AI Automation",
-      "published_at": "2026-05-21T12:58:00+00:00",
-      "kind": "technique"
-    },
-    {
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "url": "https://www.youtube.com/watch?v=efRIrLXoOVA",
       "author_or_channel": "Cole Medin",
       "published_at": "2026-05-21T00:00:30+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "What Karpathy Joining Anthropic Actually Means For Claude",
-      "url": "https://www.youtube.com/watch?v=brB-hSiV2iU",
-      "author_or_channel": "Nate Herk | AI Automation",
-      "published_at": "2026-05-19T21:36:51+00:00",
-      "kind": "opinion"
-    },
-    {
-      "title": "tirth8205/code-review-graph",
-      "url": "https://github.com/tirth8205/code-review-graph",
-      "author_or_channel": "tirth8205",
-      "published_at": "2026-02-26T17:25:13Z",
-      "kind": "tool"
-    },
-    {
-      "title": "The Easiest Software Business to Start in 2026",
-      "url": "https://www.youtube.com/watch?v=KAufsCas_F4",
-      "author_or_channel": "Liam Ottley",
-      "published_at": "2026-02-23T09:19:45+00:00",
-      "kind": "tool"
+      "kind": "technique"
     }
   ],
   "definition": "Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.",
@@ -205,8 +196,5 @@
       "label": "Agentic Workflow",
       "kind": "technique"
     }
-  ],
-  "folded_from": [
-    "context-stacking"
   ]
 }

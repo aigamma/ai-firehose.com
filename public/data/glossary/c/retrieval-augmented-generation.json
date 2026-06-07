@@ -5,22 +5,22 @@
     "RAG"
   ],
   "kind": "technique",
-  "attention": 5,
-  "first_seen": "2026-05-31T20:00:00.000Z",
+  "attention": 11,
+  "first_seen": "2026-05-14T00:00:24+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "leading",
-    "ratio": 145,
-    "momentum": 130.8,
+    "quadrant": "improving",
+    "ratio": 73.3,
+    "momentum": 101.9,
     "sparkline": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       2,
-      3
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
     ]
   },
   "neighbors": [
@@ -37,62 +37,76 @@
     {
       "id": "video-generation",
       "label": "video generation",
-      "score": 0.78
+      "score": 0.781
     },
     {
-      "id": "world-generation",
-      "label": "world generation",
-      "score": 0.775
+      "id": "deep-learning",
+      "label": "deep learning",
+      "score": 0.763
     },
     {
-      "id": "data-augmentation",
-      "label": "data augmentation",
-      "score": 0.773
+      "id": "data-synthesis",
+      "label": "data synthesis",
+      "score": 0.755
     },
     {
-      "id": "adversarial-ai",
-      "label": "adversarial AI",
-      "score": 0.768
+      "id": "self-improving-ai",
+      "label": "self-improving AI",
+      "score": 0.75
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.058
+      "position": 0.1
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.248
+      "position": 0.385
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.12
+      "position": 0.229
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.359
+      "position": 0.378
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.013
+      "position": -0.297
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.089
+      "position": -0.002
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.131
+      "position": -0.143
     }
   ],
   "top_items": [
+    {
+      "title": "Unlocking dependable responses with Gemini Enterprise Agent Platform’s Agentic RAG",
+      "url": "https://research.google/blog/unlocking-dependable-responses-with-gemini-enterprise-agent-platforms-agentic-rag/",
+      "author_or_channel": "Google Research",
+      "published_at": "2026-06-05T11:26:00.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Self-Augmenting Retrieval for Diffusion Language Models",
+      "url": "http://arxiv.org/abs/2606.06474v1",
+      "author_or_channel": "Paul Jünger, Justin Lovelace, Linxi Zhao",
+      "published_at": "2026-06-04T17:56:27Z",
+      "kind": "technique"
+    },
     {
       "title": "RoboDream: Compositional World Models for Scalable Robot Data Synthesis",
       "url": "http://arxiv.org/abs/2606.02577v1",
@@ -120,19 +134,12 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-05-31T20:00:00.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "3DCodeBench: Benchmarking Agentic Procedural 3D Modeling Via Code",
-      "url": "https://huggingface.co/papers/2606.01057",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-05-30T20:00:00.000Z",
-      "kind": "tool"
     }
   ],
+  "definition": "A technique that grounds a language model's output in external documents by retrieving relevant passages at query time and supplying them as context, rather than relying only on the knowledge baked into its weights. Its core move is separating the knowledge from the model, facts live in an editable corpus while the model supplies the reasoning, which is what curbs hallucination, keeps answers current, and makes every claim auditable.",
   "category": "RAG, Embeddings, and Retrieval",
   "durable": true,
   "source": "authored",
-  "definition": "A technique that grounds a language model's output in external documents by retrieving relevant passages at query time and supplying them as context, rather than relying only on the knowledge baked into its weights. Its core move is separating the knowledge from the model, facts live in an editable corpus while the model supplies the reasoning, which is what curbs hallucination, keeps answers current, and makes every claim auditable.",
   "body": [
     {
       "type": "p",

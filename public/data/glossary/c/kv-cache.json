@@ -6,14 +6,34 @@
     "KV caching"
   ],
   "kind": "technique",
-  "attention": 2,
-  "first_seen": "2026-05-27T20:00:00.000Z",
-  "rotation": null,
+  "attention": 10,
+  "first_seen": "2026-05-16T11:33:51.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "lagging",
+    "ratio": 60.1,
+    "momentum": 96.1,
+    "sparkline": [
+      4,
+      5,
+      4,
+      4,
+      5,
+      5,
+      5,
+      4
+    ]
+  },
   "neighbors": [
     {
-      "id": "cache-hit-rate",
-      "label": "cache hit rate",
-      "score": 0.735
+      "id": "cache-compression",
+      "label": "cache compression",
+      "score": 0.77
+    },
+    {
+      "id": "kv-sharing",
+      "label": "KV sharing",
+      "score": 0.757
     },
     {
       "id": "data-center",
@@ -26,59 +46,68 @@
       "score": 0.676
     },
     {
-      "id": "profiling",
-      "label": "profiling",
-      "score": 0.649
+      "id": "memory",
+      "label": "memory",
+      "score": 0.666
     },
     {
-      "id": "compute-efficiency",
-      "label": "compute efficiency",
-      "score": 0.64
-    },
-    {
-      "id": "optimizer",
-      "label": "optimizer",
-      "score": 0.637
+      "id": "content-addressing",
+      "label": "Content addressing",
+      "score": 0.657
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.216
+      "position": -0.162
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.256
+      "position": -0.064
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.467
+      "position": 0.533
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.24
+      "position": 0.244
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.384
+      "position": -0.634
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.286
+      "position": -0.2
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.339
+      "position": 0.332
     }
   ],
   "top_items": [
+    {
+      "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+      "url": "http://arxiv.org/abs/2606.06467v1",
+      "author_or_channel": "Yutao Sun, Yanqi Zhang, Li Dong",
+      "published_at": "2026-06-04T17:54:04Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Latent Reasoning with Normalizing Flows",
+      "url": "http://arxiv.org/abs/2606.06447v1",
+      "author_or_channel": "Guancheng Tu, Xiangjun Fu, Suhao Yu",
+      "published_at": "2026-06-04T17:44:17Z",
+      "kind": "technique"
+    },
     {
       "title": "SimSD: Simple Speculative Decoding in Diffusion Language Models",
       "url": "http://arxiv.org/abs/2606.02544v1",
@@ -92,12 +121,26 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-05-27T20:00:00.000Z",
       "kind": "technique"
+    },
+    {
+      "title": "Give Me 10 Mins and I'll Save You Millions of Claude Tokens",
+      "url": "https://www.youtube.com/watch?v=6cEQEba0i2A",
+      "author_or_channel": "Nate Herk | AI Automation",
+      "published_at": "2026-05-21T12:58:00+00:00",
+      "kind": "technique"
+    },
+    {
+      "title": "EpiCache: Episodic KV Cache Management for Long-Term Conversation on Resource-Constrained Environments",
+      "url": "https://machinelearning.apple.com/research/epicache",
+      "author_or_channel": "Apple ML Research",
+      "published_at": "2026-05-19T00:00:00.000Z",
+      "kind": "technique"
     }
   ],
+  "definition": "An inference optimization that stores the key and value vectors of already-processed tokens so a generating transformer never recomputes them, turning each step from growing-with-length down to roughly constant. The price is memory: the cache grows linearly with the sequence and can exceed the model weights, which is the pressure behind multi-query and grouped-query attention.",
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
-  "definition": "An inference optimization that stores the key and value vectors of already-processed tokens so a generating transformer never recomputes them, turning each step from growing-with-length down to roughly constant. The price is memory: the cache grows linearly with the sequence and can exceed the model weights, which is the pressure behind multi-query and grouped-query attention.",
   "body": [
     {
       "type": "p",
