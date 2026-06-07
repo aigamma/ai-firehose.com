@@ -92,7 +92,7 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 |---|---|
 | Authored, durable knowledge-base concepts | 600 |
 | Knowledge categories | 33 |
-| Total concepts (durable plus live trending) | 904 |
+| Total concepts (durable plus live trending) | 1058 |
 | Cross-category edges in the Atlas | 161 |
 | Curated learning paths | 19 |
 | Cited concept images | 424 |
