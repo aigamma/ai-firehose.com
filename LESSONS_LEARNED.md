@@ -4,6 +4,18 @@ Append-only cumulative wisdom for AI Firehose. The lesson from one session is ab
 
 ---
 
+## Session 19, 2026-06-07: The mystery weekly-usage burn was a self-scheduling agent on a cron, and the Fly worker needed robustness fixes to run safely unattended
+
+- **A creative agentic task on a cron is the expensive thing, not the cron.** A Claude routine ("AI Firehose autonomous build") was self-rescheduling every 3 hours to pick and implement one repo improvement, a full Opus agent per run, which drained roughly 30 percent of a Max 20x week with nobody at the keyboard (it was a troubleshooting workaround that outlived its purpose). The Fly ingestion worker is the opposite: deterministic stages with a thin bounded LLM layer (Haiku per item, one Opus brief) on the metered API, a few dollars a month. How to apply: put deterministic pipelines on a schedule; never leave an open-ended "go find something valuable and build it" agent on a timer unless you are deliberately spending and watching the meter.
+
+- **`fly machine run` ignores `[[vm]]` memory and defaults to 256 MB.** The first scheduled test machine came up at 256 MB and stalled (cloned, started fetching, then went silent for 14 minutes); recreating with `--vm-memory 1024` ran clean in about 6 minutes. How to apply: always pass `--vm-memory` to `fly machine run`; the `fly.toml` size applies only to `fly deploy`.
+
+- **A Machine captures secrets at create time, so rotating a secret needs a recreate.** After `fly secrets set GH_TOKEN=...`, the existing scheduled machine kept the old token (a scheduled restart reuses the stored config) and would have failed silently at the old token's expiry. How to apply: after any `fly secrets set`, destroy and recreate the scheduled machine so it captures the new value.
+
+- **`Promise.allSettled` rescues a rejected adapter but not a hung one.** Per-HTTP-call timeouts bound a single request, but an adapter that loops over many calls (YouTube feed retries, the per-video transcript loop) had no overall budget and could run for many minutes. `worker/sources/index.mjs` now wraps each adapter in a per-adapter wall-clock budget (`withTimeout`), and the transcript loop in `worker/sources/youtube.mjs` is bounded by `TRANSCRIPT_MAX` and `TRANSCRIPT_BUDGET_MS` and always returns the feed items. How to apply: a fan-in over many fetchers needs a watchdog per fetcher, not just per call, or one slow source stalls the whole run.
+
+- **Datacenter IPs are blocked by YouTube (yt-dlp) and Reddit even with a correct User-Agent.** Production runs with `ENABLE_TRANSCRIPTS=0` (videos still ingest via RSS title and description), and Reddit returns 403 from Fly. How to apply: the durable fix is server-friendly auth (Reddit OAuth app-only token) or a residential proxy, not a User-Agent tweak; until then keep the source fail-soft and document the gap rather than letting it silently look healthy.
+
 ## Session 18, 2026-06-05: Cost-flat RAG needs a committed vector manifest before the worker is scheduled
 
 - **Deterministic vector IDs are not the same as a cost gate.** `run.mjs` already computed stable content-hash ids, but the old embed step still sent every item fetched in the current run to Voyage, and `embed_glossary.mjs` sent every durable glossary entry on every run. Pinecone storage stayed bounded because upserts overwrote stable ids, but Voyage spend was not "new hashes only." How to apply: keep a committed vector manifest keyed by vector id and text hash, embed only new or changed hashes, and use metadata-only updates where the vector text is unchanged.

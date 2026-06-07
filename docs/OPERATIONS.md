@@ -24,6 +24,27 @@ The vector sync state lives in `worker/.cache/vector_manifest.json`, also commit
 
 The Fly worker runs the full pipeline daily by default (tunable). Because YouTube is the leading indicator, its RSS poll can run more often than the full rebuild. The Day horizon benefits from at least one refresh per day; Week, Month, and Quarter tolerate daily. Scheduled runs should commit both `worker/.cache/items.json` and `worker/.cache/vector_manifest.json` with the rebuilt artifacts.
 
+The live worker is the Fly app `ai-firehose-worker`, scheduled machine `firehose-daily`. Build and push the image, then create the scheduled machine:
+
+```
+fly deploy . -c worker/fly.toml --build-only --push
+fly machine run registry.fly.io/ai-firehose-worker:<deployment-tag> -c worker/fly.toml \
+  --schedule daily --vm-memory 1024 --env ENABLE_TRANSCRIPTS=0 --name firehose-daily
+```
+
+Two gotchas, both learned the hard way (see `LESSONS_LEARNED.md`):
+
+- **Memory.** `fly machine run` does NOT apply the `[[vm]]` memory in `fly.toml`; it defaults to 256 MB, which OOM-stalls the pipeline (a run clones, starts fetching, then goes silent for many minutes). Always pass `--vm-memory 1024`.
+- **Secret rotation.** A Machine captures secrets at create time, and a scheduled restart reuses that stored config. After `fly secrets set` (for example rotating `GH_TOKEN`), destroy and recreate `firehose-daily` so it picks up the new value; setting the secret alone is not enough, and the worker keeps using the old one until it expires.
+
+## Known Datacenter-IP Limitations
+
+Fly's egress is a datacenter IP, which some sources block regardless of a correct User-Agent:
+
+- **YouTube transcripts.** `yt-dlp` is rate-limited or blocked from datacenter IPs and can stall on long retry, so production runs with `ENABLE_TRANSCRIPTS=0`. Videos still ingest fully via RSS (title and description); deep transcript enrichment needs a residential proxy or cookies (a deferred enhancement). When re-enabled, the enrichment is bounded by `TRANSCRIPT_MAX` and `TRANSCRIPT_BUDGET_MS` so it can never stall the run or drop already-fetched videos.
+- **Reddit.** The public JSON endpoint returns 403 from datacenter IPs even with a descriptive User-Agent. The adapter is fail-soft (logs and yields nothing), so Reddit currently contributes zero items from the cloud. The real fix is Reddit's OAuth app-only token flow (a `REDDIT_CLIENT_ID` and `REDDIT_CLIENT_SECRET` script app, which works from servers); a tracked follow-up.
+- **General defense.** Every adapter runs under a per-adapter wall-clock budget in `worker/sources/index.mjs` (`withTimeout`), so a blocked or hung source becomes a clean, logged rejection and the rest of the run proceeds.
+
 ## Costs
 
 The rolling-quarter corpus keeps storage and retrieval costs flat regardless of runtime. The vector manifest keeps daily embedding costs tied to new or changed hashes, not the full retained corpus or all 600 durable glossary entries. Expect a figure near the civil reference (about 25 dollars per month: Pinecone plus a few dollars of Voyage) plus Claude classification (bulk on Sonnet or Haiku) and Whisper per caption-less video. Record actual run costs and counts in `docs/INGESTION_LOG.md` so the budget stays honest, including embedded, metadata-updated, unchanged, and deleted vector counts.
