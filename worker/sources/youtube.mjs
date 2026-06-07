@@ -86,13 +86,23 @@ export async function fetchYouTube({ maxAgeDays = 100, perChannel = 15 } = {}) {
     }
     await sleep(400); // small spacing to ease the feed endpoint's rate mitigation
   }
-  // Optional transcript enrichment (Fly worker only; gated so it never runs
-  // where yt-dlp is absent). Replaces title+description with the full transcript.
+  // Optional transcript enrichment (Fly worker only; gated so it never runs where
+  // yt-dlp is absent). Best-effort and BOUNDED: yt-dlp is slow and is blocked or
+  // rate-limited from datacenter IPs, so cap both the count (TRANSCRIPT_MAX) and
+  // the total wall-clock (TRANSCRIPT_BUDGET_MS, default 3 min) and always return
+  // the feed items regardless. Enrichment must never stall the run or drop the
+  // videos already fetched from RSS; a video without a transcript keeps its
+  // title-plus-description summary.
   if (process.env.ENABLE_TRANSCRIPTS === "1" && items.length) {
     const { transcribeYouTube } = await import("../pipeline/transcript.mjs");
+    const maxVideos = Number(process.env.TRANSCRIPT_MAX) || items.length;
+    const deadline = Date.now() + (Number(process.env.TRANSCRIPT_BUDGET_MS) || 180000);
+    let enriched = 0;
     for (const it of items) {
+      if (enriched >= maxVideos || Date.now() >= deadline) break;
       const t = await transcribeYouTube(it.url).catch(() => null);
       if (t) it.summary_text = `${it.title}\n\n${t}`.slice(0, 6000);
+      enriched += 1;
     }
   }
   return items;

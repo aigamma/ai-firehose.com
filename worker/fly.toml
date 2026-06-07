@@ -1,14 +1,19 @@
 # Fly.io ingestion worker (batch, no public HTTP).
-# Deploy from the repo root so the build context includes worker/publish.sh:
-#   fly deploy -c worker/fly.toml --dockerfile worker/Dockerfile
-# Then run it daily as a scheduled Machine:
-#   fly machine run . -c worker/fly.toml --schedule daily
+# Deploy from the repo root so the build context includes worker/publish.sh.
+# The dockerfile path in [build] is resolved relative to THIS file's dir (worker/),
+# so it is "Dockerfile", not "worker/Dockerfile"; do not also pass --dockerfile:
+#   fly deploy . -c worker/fly.toml
+# Then run it daily as a scheduled Machine. NOTE: `fly machine run` does NOT apply
+# the [[vm]] memory below, it defaults to 256MB, which OOM-stalls this pipeline, so
+# pass --vm-memory explicitly. Transcripts are off in production because YouTube
+# blocks yt-dlp from datacenter IPs (see docs/OPERATIONS.md):
+#   fly machine run . -c worker/fly.toml --schedule daily --vm-memory 1024 --env ENABLE_TRANSCRIPTS=0
 # Secrets: fly secrets set PINECONE_API_KEY=... VOYAGE_API_KEY=... ANTHROPIC_API_KEY=... OPENAI_API_KEY=... GH_TOKEN=... REPO_URL=https://github.com/<owner>/ai-firehose.com.git
 app = "ai-firehose-worker"   # change to your unique Fly app name
 primary_region = "iad"
 
 [build]
-  dockerfile = "worker/Dockerfile"
+  dockerfile = "Dockerfile"
 
 [env]
   PINECONE_INDEX = "ai-firehose"
