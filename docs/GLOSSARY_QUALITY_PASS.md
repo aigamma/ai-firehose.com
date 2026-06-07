@@ -79,7 +79,7 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 
 **Wave 1, highest headroom (onboarding-era and thin-heavy):**
 - [x] ai-engineering (25; 24 never audited, 2 thin) done 2026-06-07
-- [ ] industry (5; wholly onboarding-era)
+- [x] industry (5; wholly onboarding-era) done 2026-06-07
 - [ ] evaluation (26; 2 new, 4 thin)
 - [ ] nlp (22; 1 new, 5 thin)
 - [ ] agents (22; 4 new, 1 thin)
@@ -116,8 +116,8 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 
 ## Status (UPDATE PER CATEGORY)
 
-As of **2026-06-07**: **1 of 33 categories re-passed** (ai-engineering). Nothing pushed yet. Resume from
-the first unticked Wave 1 category (industry). After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md`
+As of **2026-06-07**: **2 of 33 categories re-passed** (ai-engineering, industry). Nothing pushed yet. Resume
+from the first unticked Wave 1 category (evaluation). After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md`
 for Phase B (the ~304 genuinely-new concepts).
 
 Per-category notes:
@@ -129,3 +129,8 @@ Per-category notes:
   (both had ended on "a million-token window does not mean fill it"). Deepened the two thin vendor entries
   (ollama, openrouter) with a concrete-mechanism paragraph. Reviewed and left the other sixteen byte-identical
   as already at-bar.
+- **industry** (2026-06-07): re-passed all five. De-collided ai-agency-strategy from market-dynamics (both had
+  closed on the same value-migrates-to-what-stays-scarce thesis; market-dynamics keeps it, ai-agency-strategy
+  now owns the it-is-an-ordinary-services-business keeper). Deepened the thin deepseek entry with concrete
+  substance (sparse mixture-of-experts, multi-head latent attention, the RL-trained R1, the market reaction).
+  Left ai-operating-systems, market-dynamics, and open-models byte-identical as already at-bar.
