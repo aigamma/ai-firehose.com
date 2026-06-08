@@ -3,7 +3,7 @@ title: Agentic Workflow
 slug: agentic-workflow
 kind: technique
 category: Agents and Tool Use
-aliases: agentic workflows, agentic pipeline
+aliases: agentic workflows, agentic pipeline, dynamic workflows
 related: ai-agent, autonomous-agent, react-prompting, planning, task-decomposition, reflection, tool-use, multi-agent-system
 summary: A task structured so one or more language models drive it through multiple steps of reasoning, tool use, and self-correction, sitting between a single fixed prompt and a fully autonomous agent in how much latitude the model is given. It is the controlled middle where most working agent applications live, and its guiding principle is to use the least agency that works.
 ---

@@ -3,7 +3,7 @@ title: Local Inference
 slug: local-inference
 kind: technique
 category: Systems and Infrastructure
-aliases: on-device inference, local LLM, self-hosted inference
+aliases: on-device inference, local LLM, self-hosted inference, local models
 related: quantization, mixture-of-experts, kv-cache, large-language-model, frontier-model, knowledge-distillation, lora
 summary: Running a model on your own hardware, a laptop, phone, or private server, rather than calling a provider's API. It trades the raw capability of the largest cloud models for privacy, control, offline use, and freedom from per-token fees, and is what quantization and small-model research exist to enable.
 ---

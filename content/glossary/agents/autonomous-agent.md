@@ -3,7 +3,7 @@ title: Autonomous Agent
 slug: autonomous-agent
 kind: technique
 category: Agents and Tool Use
-aliases: autonomous agents, fully autonomous agent
+aliases: autonomous agents, fully autonomous agent, autonomous loops
 related: ai-agent, agentic-workflow, planning, task-decomposition, reflection, agent-memory, tool-use, multi-agent-system
 summary: An agent given a high-level goal and broad freedom to decide its own steps, choosing what to do and which tools to use over a long horizon with little human intervention. The human specifies the destination and the agent chooses the route, and the very freedom that lets it generalize to unanticipated tasks is what makes it hard: errors compound over a long horizon with few guardrails to catch them.
 ---

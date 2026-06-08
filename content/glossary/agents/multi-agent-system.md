@@ -3,7 +3,7 @@ title: Multi-Agent System
 slug: multi-agent-system
 kind: technique
 category: Agents and Tool Use
-aliases: multi-agent systems
+aliases: multi-agent systems, multi-agent scaling
 related: ai-agent, autonomous-agent, agentic-workflow, planning, task-decomposition, agent-memory, reflection
 summary: An arrangement in which several agents, often with specialized roles, work together by communicating and coordinating, dividing labor instead of relying on one agent to do everything. The appeal is specialization and separation of concerns, the same reason humans form teams, and the cost is coordination: more agents can talk past each other, loop, or compound mistakes, and they multiply model calls and latency.
 ---
