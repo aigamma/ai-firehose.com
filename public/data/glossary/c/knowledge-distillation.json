@@ -7,7 +7,7 @@
     "model distillation"
   ],
   "kind": "technique",
-  "attention": 13,
+  "attention": 17,
   "first_seen": "2026-05-24T20:00:00.000Z",
   "rotation": {
     "horizon": "week",
@@ -55,6 +55,16 @@
       "id": "classifier-retraining",
       "label": "classifier retraining",
       "score": 0.755
+    },
+    {
+      "id": "on-policy-distillation",
+      "label": "on-policy distillation",
+      "score": 0.726
+    },
+    {
+      "id": "medicinal-chemistry",
+      "label": "medicinal chemistry",
+      "score": 0.714
     }
   ],
   "axis_positions": [
@@ -136,6 +146,20 @@
       "author_or_channel": "Hao Li, Jingkun An, Zijun Song",
       "published_at": "2026-06-01T17:38:12Z",
       "kind": "technique"
+    },
+    {
+      "title": "Draft-OPD: On-Policy Distillation for Speculative Draft Models",
+      "url": "https://huggingface.co/papers/2605.29343",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-27T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "StreamChar: Long-Horizon Streaming Character Audio-Video Generation with Decoupled Orchestration",
+      "url": "https://huggingface.co/papers/2605.25659",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-24T20:00:00.000Z",
+      "kind": "technique"
     }
   ],
   "definition": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
@@ -200,5 +224,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Knowledge-distillation-example.png",
     "provider": "Wikimedia Commons"
-  }
+  },
+  "folded_from": [
+    "distillation"
+  ]
 }

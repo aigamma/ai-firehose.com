@@ -6,7 +6,7 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 96,
+  "attention": 101,
   "first_seen": "2026-04-13T07:00:25+00:00",
   "rotation": {
     "horizon": "week",
@@ -26,8 +26,23 @@
   },
   "neighbors": [
     {
+      "id": "scaling",
+      "label": "scaling",
+      "score": 0.739
+    },
+    {
+      "id": "adapter-scaling",
+      "label": "Adapter scaling",
+      "score": 0.719
+    },
+    {
       "id": "test-time-scaling",
       "label": "test-time scaling",
+      "score": 0.71
+    },
+    {
+      "id": "test-time-compute",
+      "label": "test-time compute",
       "score": 0.71
     },
     {
@@ -41,19 +56,14 @@
       "score": 0.664
     },
     {
-      "id": "compute-efficiency",
-      "label": "compute efficiency",
-      "score": 0.633
-    },
-    {
-      "id": "compute-concentration",
-      "label": "compute concentration",
-      "score": 0.632
-    },
-    {
       "id": "benchmark",
       "label": "benchmark",
-      "score": 0.628
+      "score": 0.642
+    },
+    {
+      "id": "multi-agent-scaling",
+      "label": "multi-agent scaling",
+      "score": 0.641
     }
   ],
   "axis_positions": [
@@ -135,6 +145,20 @@
       "author_or_channel": "Chenming Zhu, Jingli Lin, Yilin Long",
       "published_at": "2026-06-04T17:56:36Z",
       "kind": "technique"
+    },
+    {
+      "title": "Multi-Agent Computer Use",
+      "url": "https://huggingface.co/papers/2606.01533",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-31T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "3DCodeBench: Benchmarking Agentic Procedural 3D Modeling Via Code",
+      "url": "https://huggingface.co/papers/2606.01057",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-30T20:00:00.000Z",
+      "kind": "tool"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
@@ -195,5 +219,8 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://arxiv.org/abs/2408.03314",
     "provider": "arXiv"
-  }
+  },
+  "folded_from": [
+    "test-time-scaling"
+  ]
 }
