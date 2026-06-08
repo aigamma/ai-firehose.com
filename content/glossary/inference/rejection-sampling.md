@@ -12,6 +12,6 @@ Rejection sampling is the simple, powerful idea of generate-then-filter: produce
 
 It shows up in two important places. At inference, it enforces a requirement the model cannot be trusted to meet on the first try: sample until an output passes the verifier, which is how you reliably get, say, code that compiles or output that satisfies a constraint. In training, it is a major engine of modern model improvement: have the model generate many solutions to problems with known answers, keep only the verified-correct ones, and fine-tune the model on its own successful outputs. This rejection-sampling fine-tuning, in the spirit of self-taught reasoner methods, is a primary way reasoning models and high-quality synthetic data are produced, letting a model bootstrap from the fraction of attempts it gets right.
 
-It is closely related to best-of-N sampling, and the keeper is the difference: the selection rule. Best-of-N keeps the single highest-scoring candidate, while rejection sampling keeps all candidates that clear a bar, or the first that does.
+It is closely related to best-of-N sampling, and the difference is the selection rule. Best-of-N keeps the single highest-scoring candidate, while rejection sampling keeps all candidates that clear a bar, or the first that does.
 
 Its efficiency hinges on the acceptance rate and the checker. If correct outputs are rare, you waste many samples to find a few, and if the verifier is wrong, you keep bad outputs or discard good ones, so a trustworthy, ideally hard, verifier is what makes it work.

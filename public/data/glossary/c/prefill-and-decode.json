@@ -19,7 +19,7 @@
     },
     {
       "type": "p",
-      "text": "The two phases stress the hardware differently, and that is the keeper. Prefill is compute-bound: it does a large matrix multiply over many tokens, so it keeps the accelerator's arithmetic units busy and its cost scales with prompt length. Decode is memory-bound: each step generates a single token but must still stream the full model weights and the entire kv-cache out of memory to do it, so throughput is limited by memory-bandwidth rather than raw compute, and the expensive arithmetic units sit mostly idle. This asymmetry is why a long prompt that produces a short answer behaves nothing like a short prompt that produces a long one."
+      "text": "The two phases stress the hardware differently, and that is the point. Prefill is compute-bound: it does a large matrix multiply over many tokens, so it keeps the accelerator's arithmetic units busy and its cost scales with prompt length. Decode is memory-bound: each step generates a single token but must still stream the full model weights and the entire kv-cache out of memory to do it, so throughput is limited by memory-bandwidth rather than raw compute, and the expensive arithmetic units sit mostly idle. This asymmetry is why a long prompt that produces a short answer behaves nothing like a short prompt that produces a long one."
     },
     {
       "type": "p",

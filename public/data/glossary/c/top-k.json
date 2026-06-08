@@ -8,7 +8,7 @@
   ],
   "durable": true,
   "source": "authored",
-  "definition": "A sampling method that keeps only the k most probable next tokens, discards the rest, renormalizes, and samples, capping how far into the tail the model can reach. Its weakness is the keeper: k is a fixed count while the ideal count is not, too many when the model is sure and too few when it is torn, the precise gap top-p was designed to close.",
+  "definition": "A sampling method that keeps only the k most probable next tokens, discards the rest, renormalizes, and samples, capping how far into the tail the model can reach. Its weakness is that k is a fixed count while the ideal count is not, too many when the model is sure and too few when it is torn, the precise gap top-p was designed to close.",
   "body": [
     {
       "type": "p",
@@ -20,7 +20,7 @@
     },
     {
       "type": "p",
-      "text": "Its weakness is the keeper: k is a fixed count and the ideal count is not. When the model is confident and one token deserves almost all the mass, keeping the next 39 invites needless randomness; when the model is legitimately torn among many continuations, capping at 40 may chop off perfectly good candidates. This is the precise gap that top-p (nucleus sampling) was designed to close, by sizing the candidate pool from probability mass instead of from a fixed rank."
+      "text": "Its weakness is that k is a fixed count and the ideal count is not. When the model is confident and one token deserves almost all the mass, keeping the next 39 invites needless randomness; when the model is legitimately torn among many continuations, capping at 40 may chop off perfectly good candidates. This is the precise gap that top-p (nucleus sampling) was designed to close, by sizing the candidate pool from probability mass instead of from a fixed rank."
     },
     {
       "type": "p",
