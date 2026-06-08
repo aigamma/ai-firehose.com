@@ -213,8 +213,8 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] foundations (14; 0; 4): all 14 read, all at-bar (some of the best entries in the glossary: AI-effect, "we know more than we can tell", submarine/swim); 4 gaps historical concepts
 - [x] calculus (12; 0; 0): all 12 read, all at-bar (clean math exposition, derivative through autodiff); 0 gaps (fully imaged)
 - [x] advanced-math (14; 0; 0): all 14 read, all at-bar (sophisticated, deep math: measure-theory through RKHS); 0 gaps (fully imaged)
-- [ ] geometry (14; 0; 1)
-- [ ] graph-geometric (12; 0; 1)
+- [x] geometry (14; 0; 1): all 14 read, all at-bar (deep geometry, Theorema Egregium/flat-map framing superb); 1 gap (information-geometry)
+- [x] graph-geometric (12; 0; 1): all 12 read, all at-bar (the "a transformer is a GNN on the complete graph" framing recurs beautifully); 1 gap (geometric-deep-learning)
 - [ ] optimization (21; 0; 3)
 - [ ] optimization-advanced (13; 0; 3)
 - [ ] learning-theory (14; 0; 4)
