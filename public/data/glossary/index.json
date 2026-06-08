@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-07",
   "count": 1012,
-  "durable_count": 634,
+  "durable_count": 644,
   "concepts": [
     {
       "id": "3d-printing",
@@ -4063,13 +4063,17 @@
     },
     {
       "id": "game-theory-equilibrium",
-      "label": "game theory equilibrium",
+      "label": "Game-Theoretic Equilibrium",
       "kind": "technique",
       "attention": 1,
       "aliases": [
-        "Subgame perfect equilibrium"
+        "game theory equilibrium",
+        "Nash equilibrium",
+        "equilibrium"
       ],
-      "def_snippet": ""
+      "def_snippet": "A stable point in a game where no player can do better by unilaterally changing strategy, given what everyone else is doing, the Nash equilibrium being the central example. It is the solution concept that turns \"what should a rational agent do when others are also choosing\" into a well-defined target, and it underlies adversarial training, multi-agent learning, and self-play.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "gated-linear-unit",
@@ -4176,11 +4180,16 @@
     },
     {
       "id": "generalization-error",
-      "label": "generalization error",
+      "label": "Generalization Error",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "generalization error",
+        "test error"
+      ],
+      "def_snippet": "The gap between how well a model performs on its training data and how well it performs on unseen data drawn from the same distribution, the quantity that actually matters since a model is deployed on data it has never seen. The entire point of learning is to minimize it, not the training error, which any flexible model can drive to zero.",
+      "durable": true,
+      "category": "Learning Theory"
     },
     {
       "id": "generalized-advantage-estimation",
@@ -4909,11 +4918,17 @@
     },
     {
       "id": "hypothesis-testing",
-      "label": "hypothesis testing",
+      "label": "Hypothesis Testing",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "hypothesis testing",
+        "statistical significance",
+        "significance testing"
+      ],
+      "def_snippet": "A formal procedure for deciding whether an observed effect is real or could plausibly be chance: assume a null hypothesis of no effect, compute how surprising the data would be under it, and reject the null only if that surprise crosses a threshold. It is how a field decides whether a new model, drug, or change actually did something.",
+      "durable": true,
+      "category": "Probability and Information Theory"
     },
     {
       "id": "hyde",
@@ -6335,8 +6350,13 @@
       "label": "Mask R-CNN",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "Mask R-CNN",
+        "mask RCNN"
+      ],
+      "def_snippet": "A landmark computer-vision architecture that detects each object in an image, draws a box around it, and predicts a pixel-level mask of its exact shape, all in one network. It unified object detection and instance segmentation, and its key technical fix, aligning features to exact pixel coordinates, made the masks sharp enough to become a standard tool.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "masked-autoencoder",
@@ -6458,11 +6478,17 @@
     },
     {
       "id": "maximum-entropy-inference",
-      "label": "maximum-entropy inference",
+      "label": "Maximum-Entropy Inference",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "maximum-entropy inference",
+        "maximum entropy principle",
+        "MaxEnt"
+      ],
+      "def_snippet": "The principle that when choosing a probability distribution consistent with what you know, you should pick the one with the highest entropy, the most uncertain, least committal distribution that still fits the constraints. It is a formal rule against assuming more than your evidence justifies, and it derives many standard distributions and underlies maximum-entropy reinforcement learning.",
+      "durable": true,
+      "category": "Probability and Information Theory"
     },
     {
       "id": "mcgs",
@@ -6900,13 +6926,17 @@
     },
     {
       "id": "monocular-depth",
-      "label": "monocular depth",
+      "label": "Monocular Depth Estimation",
       "kind": "technique",
       "attention": 1,
       "aliases": [
-        "depth estimation"
+        "monocular depth",
+        "monocular depth estimation",
+        "single-image depth"
       ],
-      "def_snippet": ""
+      "def_snippet": "Recovering how far away each pixel is from a single ordinary photo, with no second camera or depth sensor to triangulate from. It is a fundamentally ill-posed problem, infinitely many 3D scenes project to the same flat image, that becomes solvable only because a model learns strong priors about how the world is usually shaped.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "monosemanticity",
@@ -7914,8 +7944,13 @@
       "label": "Perceiver",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "Perceiver",
+        "Perceiver IO"
+      ],
+      "def_snippet": "A transformer-style architecture built to consume any kind of input, images, audio, point clouds, raw bytes, without modality-specific design, by funneling the huge input through a small fixed-size set of latent vectors. That funnel breaks attention's quadratic dependence on input size, letting one general architecture scale to very large or mixed inputs.",
+      "durable": true,
+      "category": "Frontier Architectures"
     },
     {
       "id": "perceptron",
@@ -9434,11 +9469,16 @@
     },
     {
       "id": "secure-aggregation",
-      "label": "secure aggregation",
+      "label": "Secure Aggregation",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "secure aggregation",
+        "secure sum"
+      ],
+      "def_snippet": "A cryptographic protocol that lets a server compute the sum of many parties' values, the averaged model update in federated learning, without seeing any individual contribution. It closes the privacy hole that decentralization alone leaves open, since a raw model update can itself leak the private data it was computed from.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "security",
@@ -10127,11 +10167,17 @@
     },
     {
       "id": "structural-equation-models",
-      "label": "structural equation models",
+      "label": "Structural Equation Models",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "structural equation models",
+        "SEM",
+        "structural causal model"
+      ],
+      "def_snippet": "A way of writing a system as a set of equations, one per variable, that say how each variable is generated from its direct causes plus noise, making the causal structure explicit and machine-readable. They are the formal backbone of modern causal inference, turning a causal diagram into something you can compute interventions and counterfactuals on.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "structured-decoding",
@@ -11390,11 +11436,17 @@
     },
     {
       "id": "visual-tokenization",
-      "label": "visual tokenization",
+      "label": "Visual Tokenization",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "visual tokenization",
+        "image tokenization",
+        "visual tokenizer"
+      ],
+      "def_snippet": "Turning an image into a sequence of discrete or vector tokens so it can be fed to a transformer the way text is, the move that let the architecture built for language take over vision and multimodal generation. How the pixels are chopped and encoded sets a hard ceiling on what the downstream model can see and produce.",
+      "durable": true,
+      "category": "Computer Vision"
     },
     {
       "id": "voice-intelligence",
