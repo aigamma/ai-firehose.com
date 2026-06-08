@@ -152,3 +152,80 @@ Per-category notes:
   from all 22 affected entries with varied per-entry phrasing; deepened the four thin benchmarks (gpqa,
   reward-bench, chatbot-arena, lm-evaluation-harness) past the threshold with concrete substance. Left the
   already-strong metrics and the two clean entries (calibration, roc-auc) byte-identical apart from the de-leak.
+
+## Phase C: The Enrichment Pass (ACTIVE, started 2026-06-08)
+
+Phase A de-leaked and held the prose bar; Phase B cleared onboarding. Phase C is the deeper enrichment
+Eric asked for: **re-read every durable entry and make every honest improvement**, leaving at-bar entries
+byte-identical (churn is forbidden). The full rubric and procedure live in the approved plan; the four levers:
+
+1. **Opening move** (no copular/dictionary lead). The 19 triage-flagged openers are the priority worklist:
+   `agentic-workflow, workflow-orchestration, spiking-neural-network, kernel-method, elo-rating, hyena,
+   greedy-decoding, logit-lens, activation-steering, linear-transformation, dot-product, hidden-markov-model,
+   central-limit-theorem, maximum-likelihood-estimation, markov-chain, temporal-difference-learning, q-learning,
+   frontier-model, feature-pyramid`. Triage is ~90% false-positive on this flag, so read to decide.
+2. **Keeper + close** (end on a structural insight worth remembering, not a "see also" or a self-plug).
+3. **Inline link integration** (name a neighbor in prose where the logic warrants, so the wiki-linker auto-links
+   it; do NOT pad tight prose to manufacture links; frontmatter `related:` density is already high, median 6).
+4. **Figure**: embed where a clean openly-licensed one is found; otherwise it stays on the flag-list.
+
+**Image work (parallel hunt, Eric opted in):** 220 entries lack a figure. Read-only Explore subagents run the
+repo's sanctioned, license-filtering search (`node scripts/glossary_images.mjs search|wiki`) and propose
+candidates; the main thread adjudicates, writes the teaching `alt`/`caption`, stages a row in
+`content/glossary/_img_stage/<batch>.json`, and runs `finalize` (the non-LLM oracle that downloads,
+sniffs bytes, size-checks, and license-validates). Concrete concepts (algorithms, architectures, plots) are
+huntable; abstract ones (most of `alignment`, `philosophy`, `ai-engineering`) stay on the wishlist as
+AI-generation candidates. Regenerate `docs/glossary_image_wishlist.md` from `glossary_images.mjs gaps` at
+each wave boundary so the recognized flag-list reflects the shrinking gap.
+
+This ledger is a **failsafe, not a stop signal**: when categories remain, keep going in the same turn. Commit
+per category; push at wave boundaries; confirm `HEAD == origin` after each push.
+
+### Phase C Category Ledger ([x] = re-read, improved where improvable, images embedded or flagged)
+
+Annotation: `(entries; dict-lead flags; image gaps)`.
+
+**Wave 1, highest headroom (onboarding-era prose + heavy image gaps):**
+- [x] agents (27; 1; 12): agentic-workflow opener de-copulared; other 26 read, all at-bar; image gaps abstract (AI-gen candidates)
+- [ ] ai-engineering (26; 1; 26)
+- [ ] industry (7; 0; 7)
+- [ ] alignment (32; 0; 20)
+- [ ] evaluation (26; 1; 13)
+
+**Wave 2, scattered flags + moderate gaps:**
+- [ ] nlp (23; 0; 9)
+- [ ] generative-models (21; 0; 9)
+- [ ] rag-embeddings (22; 0; 8)
+- [ ] reinforcement-learning (23; 2; 12)
+- [ ] transformers (31; 1; 9)
+- [ ] inference (27; 1; 7)
+- [ ] interpretability (16; 2; 3)
+- [ ] frontier (16; 1; 7)
+- [ ] vision (25; 1; 6)
+- [ ] core-ml (33; 1; 9)
+- [ ] deep-learning (22; 0; 7)
+- [ ] probability (19; 3; 3)
+- [ ] linear-algebra (16; 2; 1)
+- [ ] probabilistic-ml (16; 1; 6)
+- [ ] cognitive-science (13; 1; 2)
+
+**Wave 3, strongly enhanced already (mostly read-and-leave + image flag):**
+- [ ] foundations (14; 0; 4)
+- [ ] calculus (12; 0; 0)
+- [ ] advanced-math (14; 0; 0)
+- [ ] geometry (14; 0; 1)
+- [ ] graph-geometric (12; 0; 1)
+- [ ] optimization (21; 0; 3)
+- [ ] optimization-advanced (13; 0; 3)
+- [ ] learning-theory (14; 0; 4)
+- [ ] dl-theory (14; 0; 2)
+- [ ] training (24; 0; 6)
+- [ ] systems (22; 0; 3)
+- [ ] philosophy (14; 0; 10)
+- [ ] philosophy-advanced (15; 0; 7)
+
+### Phase C Status
+
+As of **2026-06-08**: launched. Ground truth re-confirmed by direct command (644 entries, 424 figures, 220
+gaps, 19 dict-lead flags, 0 thin). Parallel image hunt under way on the concrete-concept gaps. Prose spine
+starting at Wave 1.
