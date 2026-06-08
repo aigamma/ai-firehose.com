@@ -270,3 +270,15 @@ openers, and resolved all 19 triage dict-lead flags (7 real, 12 false positive).
 work the pass surfaced is the image gap: ~218 figure-less entries, the bulk of them abstract or backed only by
 non-redistributable arXiv figures, now fully enumerated in `docs/glossary_image_wishlist.md` as the recognized
 flag-list for a future AI-generation or open-figure-hunt campaign. Phase C is complete.
+
+**Follow-on open-figure hunt (2026-06-08).** A targeted sweep of the concrete gaps against Wikimedia Commons
+landed **6 more cited figures**, taking the durable layer from 426 to **432 illustrated** and the gap list from
+218 to **212**: `low-rank-approximation` (SVD image compression at increasing ranks), `tf-idf` (the IDF weighting
+curve), `tree-search` (a tic-tac-toe game tree), `structural-equation-models` (a latent-variable path diagram),
+`causal-inference` (a confounder-versus-mediator diagram), and `monte-carlo-methods` (error shrinking with sample
+count). Each candidate was viewed before embedding (the oracle validates license and bytes, not pedagogy), and
+several plausible hits were rejected on sight as off-concept: a synthetic depth-of-field cube for `monocular-depth`,
+medical-CT and aurora k-means images for `mask-r-cnn`, ROC curves for `naive-bayes`. The honest finding holds: the
+remaining 212 are genuinely hard, mostly abstract (alignment, philosophy, AI-engineering) or backed only by
+non-redistributable arXiv figures, and remain the AI-generation candidates enumerated in
+`docs/glossary_image_wishlist.md`.
