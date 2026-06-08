@@ -54,7 +54,7 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
   entries (the Session-15-enhanced ones; the onboarding-era `content/glossary/ai-engineering` and
   `content/glossary/industry` have none) wrote the authoring flag "the keeper" straight into the published
   prose ("That gap is the point, the keeper: ...", "The keeper is the division of labor: ..."). Find them by
-  searching `content/glossary` for the phrase. Rephrase per entry with varied wording (the crux, the point,
+  searching `content/glossary` case-insensitively (rg -i), since sentence-initial "The keeper" is easy to miss. Rephrase per entry with varied wording (the crux, the point,
   what matters, the key insight) or restructure the sentence. Do NOT blanket-replace to a single word (it
   flattens 293 entries into monotony) and do NOT script the predicate cases ("X is the keeper"); this is
   main-thread craft, one entry at a time.
