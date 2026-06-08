@@ -14,4 +14,4 @@ There are two main approaches. Behavior cloning treats the problem as plain supe
 
 This framing is more central to modern AI than it first appears. The supervised fine-tuning stage that turns a base language model into an assistant is imitation learning, the model is cloning human demonstrations of good responses, and RLHF then layers a learned reward on top, blending imitation with reinforcement.
 
-The classic weakness of pure imitation is the keeper: distribution shift. An agent that only ever saw expert trajectories has no idea what to do once its own small mistakes carry it into unfamiliar states, where errors then compound, and handling that drift, through interactive data collection or by recovering a reward that generalizes, is much of what distinguishes the approaches.
+The classic weakness of pure imitation is distribution shift. An agent that only ever saw expert trajectories has no idea what to do once its own small mistakes carry it into unfamiliar states, where errors then compound, and handling that drift, through interactive data collection or by recovering a reward that generalizes, is much of what distinguishes the approaches.
