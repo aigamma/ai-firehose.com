@@ -198,7 +198,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [ ] rag-embeddings (22; 0; 8)
 - [x] reinforcement-learning (23; 2; 12): temporal-difference-learning (provenance lead) and q-learning (significance lead) openers fixed to lead on mechanism; other 21 at-bar (superb cluster); 12 gaps abstract algorithm concepts (AI-gen)
 - [x] transformers (31; 1; 9): frontier-model opener de-copulared and the weak site-plug close replaced with a structural insight (also lifts it past the thin threshold); other 30 at-bar; 9 concrete gaps (RoPE, kv-cache, attention-sink) but only non-redistributable arXiv figures exist (flagged)
-- [ ] inference (27; 1; 7)
+- [x] inference (27; 1; 7): all 27 read, all at-bar (greedy-decoding flag is a false positive, mechanism stated in sentence 1); 7 gaps abstract sampling/serving concepts
 - [x] interpretability (16; 2; 3): all 16 read, all at-bar (outstanding mech-interp cluster); both flags (logit-lens, activation-steering) false positives (vivid/contrastive openers); 3 gaps (data-attribution, linear-representation-hypothesis, probing-classifier)
 - [ ] frontier (16; 1; 7)
 - [ ] vision (25; 1; 6)
@@ -207,7 +207,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] probability (19; 3; 3): central-limit-theorem opener reworked to lead with the bell-curve mystery (dropped ranking filler); other 18 at-bar, the other 2 flags (maximum-likelihood-estimation, markov-chain) false positives (keeper surfaces in sentence 1); 3 gaps abstract
 - [x] linear-algebra (16; 2; 1): all 16 read, all at-bar; both flags (dot-product, linear-transformation) are false positives (thesis/hook openers, not taxonomic leads), left byte-identical; 1 gap (low-rank-approximation)
 - [ ] probabilistic-ml (16; 1; 6)
-- [ ] cognitive-science (13; 1; 2)
+- [x] cognitive-science (13; 1; 2): spiking-neural-network opener reworked to lead on the continuous-vs-spike contrast (its category peers all use active framings); other 12 at-bar; 2 gaps (cell-assembly, dual-process-theory)
 
 **Wave 3, strongly enhanced already (mostly read-and-leave + image flag):**
 - [ ] foundations (14; 0; 4)
