@@ -197,7 +197,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [ ] generative-models (21; 0; 9)
 - [ ] rag-embeddings (22; 0; 8)
 - [x] reinforcement-learning (23; 2; 12): temporal-difference-learning (provenance lead) and q-learning (significance lead) openers fixed to lead on mechanism; other 21 at-bar (superb cluster); 12 gaps abstract algorithm concepts (AI-gen)
-- [ ] transformers (31; 1; 9)
+- [x] transformers (31; 1; 9): frontier-model opener de-copulared and the weak site-plug close replaced with a structural insight (also lifts it past the thin threshold); other 30 at-bar; 9 concrete gaps (RoPE, kv-cache, attention-sink) but only non-redistributable arXiv figures exist (flagged)
 - [ ] inference (27; 1; 7)
 - [x] interpretability (16; 2; 3): all 16 read, all at-bar (outstanding mech-interp cluster); both flags (logit-lens, activation-steering) false positives (vivid/contrastive openers); 3 gaps (data-attribution, linear-representation-hypothesis, probing-classifier)
 - [ ] frontier (16; 1; 7)
