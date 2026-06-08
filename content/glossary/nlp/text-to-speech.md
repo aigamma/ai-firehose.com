@@ -14,4 +14,4 @@ Classical systems concatenated recorded speech fragments or used parametric voco
 
 The applications are broad and genuinely useful: accessibility for the visually impaired, voice assistants, audiobooks, and dubbing.
 
-That same realism is the keeper's edge, a safety concern. Convincing synthetic voices enable fraud and impersonation, which is why provenance and watermarking, and detection of synthetic audio, are part of responsible deployment, the audio counterpart of the issues that synthetic text and images raise.
+That same realism has a darker edge, a safety concern. Convincing synthetic voices enable fraud and impersonation, which is why provenance and watermarking, and detection of synthetic audio, are part of responsible deployment, the audio counterpart of the issues that synthetic text and images raise.

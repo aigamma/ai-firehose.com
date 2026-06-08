@@ -14,4 +14,4 @@ The classic method is Latent Dirichlet Allocation, a generative Bayesian model t
 
 The modern descendant uses embeddings instead of word counts: cluster documents or sentences in a semantic embedding space and label the clusters, the approach behind tools like BERTopic, which captures meaning that bag-of-words LDA misses because it understands that synonyms belong together.
 
-This project's AI-grown taxonomy is a cousin of topic modeling, which is the keeper: it clusters concepts by embedding similarity to discover the themes of the corpus rather than imposing a fixed vocabulary, the same instinct that everything interesting in a collection of text is a latent structure waiting to be found.
+This project's AI-grown taxonomy is a cousin of topic modeling, and that kinship is the point: it clusters concepts by embedding similarity to discover the themes of the corpus rather than imposing a fixed vocabulary, the same instinct that everything interesting in a collection of text is a latent structure waiting to be found.
