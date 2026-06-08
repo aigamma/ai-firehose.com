@@ -26,6 +26,7 @@ import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
 import { buildDirectory } from "../../scripts/build_directory.mjs";
+import { pruneFeaturedPins } from "../../scripts/prune_pins.mjs";
 import { buildGlossary } from "../../scripts/build_glossary.mjs";
 import { embedGlossary } from "./embed_glossary.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
@@ -438,6 +439,16 @@ async function main() {
   // the curated registry plus this run's fresh corpus (the RAG join). The same
   // resolver runs at build time as a prebuild step, so the artifact stays current
   // even between worker runs; here the worker keeps the committed fallback fresh.
+  // Self-expiring pins: stamp any new pin and remove any past PIN_RETENTION_DAYS days on the
+  // site, so a hand-pinned video does not exist in the record after 90 days. publish.sh
+  // commits sources/featured.json, so this cleanup persists clone-fresh runs.
+  try {
+    const { dropped, stamped } = pruneFeaturedPins({});
+    if (dropped.length || stamped) console.log(`   pins: ${dropped.length} expired removed, ${stamped} stamped`);
+  } catch (e) {
+    console.error(`pins prune: ${e.message}`);
+  }
+
   console.log("5g. featured creators (Watch surface)...");
   try {
     await buildCreators({ source: "worker" });

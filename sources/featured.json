@@ -1,12 +1,12 @@
 {
   "_about": "Presentation registry for the Watch surface on ai-firehose.com: which favorite creators get a spotlight of their latest videos, plus a hand-pinned playlist of specific videos. Eric edits this, often by asking Claude Code. The resolver scripts/build_creators.mjs turns it into public/data/creators.json by polling each creator's free RSS feed (no API key) and joining each video to its classified record in the corpus for a cited summary and concept links. Curating here changes the dashboard, not the ingestion rotation math (that is sources/youtube_channels.json).",
-  "_instructions": "creators[]: array order is the display order. channel_id is a UC... id; reuse the one from sources/youtube_channels.json if the creator is already an ingestion source, otherwise resolve it with `node worker/sources/youtube_registry.mjs resolve @handle`. blurb is one short human sentence, no em dashes. latest_count overrides defaults.latest_count for that creator. Set active false to hide a creator without deleting it. pinned[]: specific videos to feature regardless of recency; videoId is the v= id from a watch URL; note is one short editorial line.",
+  "_instructions": "creators[]: array order is the display order. channel_id is a UC... id; reuse the one from sources/youtube_channels.json if the creator is already an ingestion source, otherwise resolve it with `node worker/sources/youtube_registry.mjs resolve @handle`. blurb is one short human sentence, no em dashes. latest_count overrides defaults.latest_count for that creator. Set active false to hide a creator without deleting it. pinned[]: specific videos to feature; videoId is the v= id from a watch URL; note is one short editorial line; pinned_at is the YYYY-MM-DD it was pinned, so stamp it when you add a pin. Pins self-expire: a pin is removed from this record 90 days after pinned_at (PIN_RETENTION_DAYS in src/data/registry.js), so nothing lingers. The worker stamps any pin missing pinned_at and prunes expired ones each run; `npm run prune:pins` does it locally.",
   "_schema": {
     "creators": [
       { "channel_id": "UCxxxxxxxxxxxxxxxxxxxxxx", "name": "string", "handle": "@handle", "blurb": "one short sentence", "latest_count": 4, "active": true }
     ],
     "pinned": [
-      { "videoId": "11-char-id", "note": "why this is worth watching" }
+      { "videoId": "11-char-id", "note": "why this is worth watching", "pinned_at": "YYYY-MM-DD" }
     ]
   },
   "defaults": { "latest_count": 4 },

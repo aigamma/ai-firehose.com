@@ -133,8 +133,10 @@ rolling quarter (`RETENTION_DAYS`, default 100, in `src/data/registry.js`), keye
 `published_at`. A creator who has not posted within the window drops out of the **Latest**
 funnel until they post again. The directory's activity and "covers" are derived from the
 already-pruned corpus, so they respect the window automatically. Hand-pinned videos
-(`pinned[]`) are the one deliberate exception, the same way the durable glossary layer is
-exempt from corpus pruning.
+(`pinned[]`) self-expire too, on a tighter explicit clock: a pin is removed from the record
+90 days after `pinned_at` (when it was pinned, `PIN_RETENTION_DAYS` in `src/data/registry.js`),
+via `scripts/prune_pins.mjs` (run by the worker, or `npm run prune:pins` locally). The durable
+glossary layer is the only thing exempt from retention.
 
 ## Gotchas
 

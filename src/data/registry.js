@@ -21,6 +21,12 @@ export const SITE = {
 // populated right up to its edge. Tune here, document in docs/INGESTION.md.
 export const RETENTION_DAYS = 100;
 
+// Hand-pinned Watch videos self-expire on a tighter, explicit clock than the corpus: a pin
+// is removed from the record 90 days after it went ON THE SITE (keyed on `pinned_at`, when
+// it was pinned, not the video's publish date). The pin counterpart to the corpus prune;
+// see `scripts/lib/pins.mjs` and `docs/SOURCES.md`.
+export const PIN_RETENTION_DAYS = 90;
+
 // The three kinds. Each has its own ranked trend board; the entity that rotates
 // differs per kind (techniques by concept, tools by product, opinions by theme).
 // All three share one attention computation.

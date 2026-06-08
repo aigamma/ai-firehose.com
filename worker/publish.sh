@@ -23,7 +23,7 @@ git config user.email "worker@ai-firehose.com"
 git config user.name "ai-firehose worker"
 # Commit the rebuilt artifacts, the accumulating corpus, and the vector manifest
 # so rolling-quarter retention and hash-gated embeddings survive clone-fresh runs.
-git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json worker/.cache/vector_manifest.json
+git add public/data public/sitemap.xml public/feed.xml worker/.cache/items.json worker/.cache/vector_manifest.json sources/featured.json
 if git diff --cached --quiet; then
   echo "no artifact changes"
 else

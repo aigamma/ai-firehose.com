@@ -22,6 +22,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { fetchFeed, parseEntries } from "../worker/sources/youtube.mjs";
 import { slugify } from "../worker/lib/hash.mjs";
 import { RETENTION_DAYS } from "../src/data/registry.js";
+import { prunePins } from "./lib/pins.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FEATURED = resolve(HERE, "../sources/featured.json");
@@ -157,7 +158,10 @@ export async function buildCreators({ source = "build" } = {}) {
     await sleep(300); // ease the feed endpoint's rate mitigation, as the adapter does
   }
 
-  const pinned = (featured.pinned || [])
+  // Never render a pin that has been on the site past its window, even if the record has
+  // not been pruned yet (the worker prune commits the cleanup; this is the live guarantee).
+  const { kept: livePins } = prunePins(featured.pinned || [], Date.now());
+  const pinned = livePins
     .filter((p) => VID_RE.test(p.videoId || ""))
     .map((p) => {
       const v = toVideo(p.videoId, {}, corpus);
