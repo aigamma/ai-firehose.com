@@ -189,7 +189,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] agents (27; 1; 12): agentic-workflow opener de-copulared; other 26 read, all at-bar; image gaps abstract (AI-gen candidates)
 - [x] ai-engineering (26; 1; 26): all 26 read, all at-bar (workflow-orchestration's "is a function" opener is a triage false-positive, genuinely a concrete-contrast lead); image gaps are abstract concepts, AI-gen candidates
 - [x] industry (7; 0; 7): all 7 read, all at-bar (deepseek deepened in Phase A holds); image gaps abstract, but ai-adoption (adoption curve) and market-dynamics (compute-growth) are real-data-chart candidates (OWID/Epoch)
-- [ ] alignment (32; 0; 20)
+- [x] alignment (32; 0; 20): all 32 read, all at-bar (a tightly cross-linked safety mesh, Session-15 quality holds); 20 image gaps all abstract safety concepts, AI-gen candidates
 - [x] evaluation (26; 1; 13): elo-rating opener de-provenanced (now problem-first); other 25 at-bar (Phase A fresh-pass holds); image gaps are metrics/benchmarks, no clean open figure on Wikimedia for bleu/rouge/perplexity/mmlu (AI-gen candidates)
 
 **Wave 2, scattered flags + moderate gaps:**
@@ -226,6 +226,16 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 
 ### Phase C Status
 
-As of **2026-06-08**: launched. Ground truth re-confirmed by direct command (644 entries, 424 figures, 220
-gaps, 19 dict-lead flags, 0 thin). Parallel image hunt under way on the concrete-concept gaps. Prose spine
-starting at Wave 1.
+As of **2026-06-08**: **Wave 1 complete** (agents, ai-engineering, industry, evaluation, alignment: 118
+entries read in full). Findings: the durable layer is overwhelmingly already at-bar. Of 118 entries only 2
+needed a prose fix (the `agentic-workflow` and `elo-rating` openers, a copular lead and a provenance lead);
+the other 116 were left byte-identical. The triage dict-lead flag confirmed its ~90% false-positive rate
+(`workflow-orchestration`, several others flagged but genuinely problem-first on a read). Images: parallel
+Wikimedia + D2L hunts over ~32 concrete concepts yielded only 2 embeddable figures (`glove`, `rectified-flow`);
+the rest were wrong-concept, tangential, or simply absent, which confirms the residual gaps are genuinely hard
+and mostly need AI generation. Every image was viewed before embedding (the oracle validates bytes and license,
+not pedagogy): that caught a neuroimaging-GUI screenshot mislabeled as batch-norm and a value-distribution
+scatter for tf-idf, both rejected. The flag-list is regenerated to the true **218** gaps via the new
+`scripts/build_image_wishlist.mjs`. Next: Wave 2 (nlp, generative-models, rag-embeddings, reinforcement-learning,
+transformers, inference, interpretability, frontier, vision, core-ml, deep-learning, probability, linear-algebra,
+probabilistic-ml, cognitive-science), where the remaining dict-lead flags and the more concrete image gaps cluster.

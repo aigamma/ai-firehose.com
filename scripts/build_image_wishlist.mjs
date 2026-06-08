@@ -1,0 +1,99 @@
+import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
+import { resolve, dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+/*
+  Regenerate docs/glossary_image_wishlist.md, the canonical "concepts awaiting a
+  figure" flag-list that image-hunting agents and humans work from.
+
+  A durable concept is on the list when it has no row in content/glossary/images.json.
+  This is the same gap set that `glossary_images.mjs gaps` reports, but rendered in the
+  rich, grouped-by-display-category format with each concept's authored summary as the
+  seed for an image-generation prompt. Run this after images land or after onboarding so
+  the flag-list never goes stale:  node scripts/build_image_wishlist.mjs
+*/
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(HERE, "..");
+const CONTENT = resolve(ROOT, "content/glossary");
+const IMAGES_JSON = resolve(CONTENT, "images.json");
+const OUT = resolve(ROOT, "docs/glossary_image_wishlist.md");
+
+function frontmatter(raw) {
+  const text = String(raw).replace(/^﻿/, "");
+  if (!text.startsWith("---")) return null;
+  const end = text.indexOf("\n---", 3);
+  if (end < 0) return null;
+  const meta = {};
+  for (const line of text.slice(3, end).split("\n")) {
+    const i = line.indexOf(":");
+    if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+  }
+  return meta;
+}
+
+const have = new Set(Object.keys(JSON.parse(readFileSync(IMAGES_JSON, "utf8"))));
+
+// Collect gaps grouped by the display category in each entry's frontmatter.
+const byCategory = new Map();
+for (const folder of readdirSync(CONTENT)) {
+  const dir = join(CONTENT, folder);
+  let st;
+  try { st = statSync(dir); } catch { continue; }
+  if (!st.isDirectory()) continue;
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith(".md") || f.toLowerCase() === "readme.md") continue;
+    const meta = frontmatter(readFileSync(join(dir, f), "utf8"));
+    if (!meta?.slug || have.has(meta.slug)) continue;
+    const cat = meta.category || folder;
+    if (!byCategory.has(cat)) byCategory.set(cat, []);
+    byCategory.get(cat).push({ slug: meta.slug, title: meta.title || meta.slug, summary: meta.summary || "" });
+  }
+}
+
+const total = [...byCategory.values()].reduce((n, rows) => n + rows.length, 0);
+const categories = [...byCategory.keys()].sort();
+
+const lines = [];
+lines.push("# Glossary Image Wishlist (concepts awaiting a figure)");
+lines.push("");
+lines.push(
+  `These ${total} durable glossary concepts do not yet have a cited figure. The image-curation ` +
+  `passes (Wikimedia Commons, Dive into Deep Learning, scikit-learn, CC-BY arXiv, and other open ` +
+  `providers) found no genuinely illustrative, openly-licensed image for them: they are mostly abstract ` +
+  `ideas (alignment, philosophy, AI-engineering concepts), or recent topics whose only figures sit under ` +
+  `non-redistributable licenses (the arXiv non-exclusive license, CC BY-NC, or CC BY-ND). They are the ` +
+  `primary candidates for AI image generation.`
+);
+lines.push("");
+lines.push("## How to use this list");
+lines.push("");
+lines.push(
+  "Each concept lists its `slug`, title, and authored summary, which is the seed for an image-generation prompt. A workable template:"
+);
+lines.push("");
+lines.push(
+  "> Create a clean, modern educational diagram on a white background that teaches this concept to an AI engineer. Minimal, legible labels; no decorative clutter; no watermark; no signature. Concept: **<title>**. <summary>"
+);
+lines.push("");
+lines.push(
+  "After generating an image, save it to `public/images/glossary/<slug>.<ext>` and add a row to `content/glossary/images.json` with `file`, `alt`, `caption`, `credit` (for example \"Generated with <model>\"), `license` (the generator's usage terms), `source`, and `provider`. Then run `node scripts/glossary_images.mjs finalize --prune` and `node scripts/build_glossary.mjs`."
+);
+lines.push("");
+lines.push(
+  "**Accuracy caveat.** AI image generators frequently get technical diagrams subtly wrong (mislabeled axes, garbled equations, wrong arrows). For precise figures (architectures, specific plots, math) generate then check carefully, or prefer a metaphorical or conceptual illustration where exactness is not load-bearing. This is a teaching resource, so a wrong diagram is worse than none."
+);
+lines.push("");
+lines.push("To regenerate this list after more images land: `node scripts/build_image_wishlist.mjs`.");
+lines.push("");
+
+for (const cat of categories) {
+  const rows = byCategory.get(cat).sort((a, b) => a.slug.localeCompare(b.slug));
+  lines.push(`## ${cat} (${rows.length})`);
+  lines.push("");
+  for (const r of rows) lines.push(`- \`${r.slug}\` ${r.title}: ${r.summary}`);
+  lines.push("");
+}
+
+writeFileSync(OUT, `${lines.join("\n")}`.replace(/\n+$/, "\n"));
+console.log(`build_image_wishlist: ${total} gaps across ${categories.length} categories -> docs/glossary_image_wishlist.md`);
