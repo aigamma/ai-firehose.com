@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-07",
   "count": 1012,
-  "durable_count": 622,
+  "durable_count": 628,
   "concepts": [
     {
       "id": "3d-printing",
@@ -669,11 +669,16 @@
     },
     {
       "id": "alignment-tax",
-      "label": "alignment tax",
+      "label": "Alignment Tax",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "alignment tax",
+        "safety tax"
+      ],
+      "def_snippet": "The cost in raw capability a model pays to be made safe and aligned, when the training that makes it helpful, honest, and harmless also makes it a little worse at some tasks. The size of that tax, and whether it can be driven to zero, is a central practical and strategic question for alignment.",
+      "durable": true,
+      "category": "Alignment and Safety"
     },
     {
       "id": "api",
@@ -977,11 +982,16 @@
     },
     {
       "id": "backpropagation-through-time",
-      "label": "backpropagation through time",
+      "label": "Backpropagation Through Time",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "BPTT",
+        "backpropagation through time"
+      ],
+      "def_snippet": "How a recurrent network is trained: unroll the loop across the time steps into one long feed-forward graph, then run ordinary backpropagation over it, so a gradient at the final step flows back through every earlier step. It is also where the vanishing and exploding gradient problems are born, because the same weights are multiplied through over and over.",
+      "durable": true,
+      "category": "Deep Learning Architectures"
     },
     {
       "id": "bag-of-words",
@@ -1195,11 +1205,16 @@
     },
     {
       "id": "benign-overfitting",
-      "label": "benign overfitting",
+      "label": "Benign Overfitting",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "benign overfitting",
+        "harmless interpolation"
+      ],
+      "def_snippet": "The surprising phenomenon where a model fits its training data perfectly, even memorizing noisy labels, and yet still generalizes well to new data, in flat contradiction of the classical warning that interpolating the training set must mean overfitting. It is one of the central puzzles that classical learning theory failed to predict about deep networks.",
+      "durable": true,
+      "category": "Deep Learning Theory"
     },
     {
       "id": "bert",
@@ -2333,14 +2348,17 @@
     },
     {
       "id": "counterfactual-learning",
-      "label": "counterfactual learning",
+      "label": "Counterfactual Learning",
       "kind": "technique",
       "attention": 2,
       "aliases": [
-        "Game-theoretic learning",
-        "counterfactual evaluation"
+        "counterfactual learning",
+        "off-policy evaluation",
+        "counterfactual reasoning"
       ],
-      "def_snippet": ""
+      "def_snippet": "Learning what would have happened under a different choice from data about the choices that were actually made, so a system can evaluate or improve a policy without deploying it. It is how you answer \"would this new recommender have done better\" from logged history alone, and it lives or dies on correcting the bias of only ever seeing the actions that were taken.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "covariance",
@@ -2559,13 +2577,17 @@
     },
     {
       "id": "data-attribution",
-      "label": "data attribution",
+      "label": "Data Attribution",
       "kind": "technique",
       "attention": 1,
       "aliases": [
-        "feature attribution"
+        "data attribution",
+        "training data attribution",
+        "influence functions"
       ],
-      "def_snippet": ""
+      "def_snippet": "Tracing a model's behavior back to the specific training examples most responsible for it: which data points, if removed, would most change this prediction. It answers \"why did the model do that\" in terms of its data rather than its weights, which is the lever for debugging datasets, assigning credit or blame, and auditing what a model actually learned from.",
+      "durable": true,
+      "category": "Mechanistic Interpretability"
     },
     {
       "id": "data-augmentation",
@@ -6144,13 +6166,16 @@
     },
     {
       "id": "low-rank-approximation",
-      "label": "low-rank approximation",
+      "label": "Low-Rank Approximation",
       "kind": "technique",
       "attention": 2,
       "aliases": [
-        "function approximation"
+        "low-rank approximation",
+        "low-rank factorization"
       ],
-      "def_snippet": ""
+      "def_snippet": "Replacing a large matrix with the product of two much smaller ones that captures most of its content, on the bet that the matrix's real information lives in far fewer dimensions than its size suggests. It is the mathematical engine behind PCA, recommender systems, model compression, and the LoRA method for cheap fine-tuning.",
+      "durable": true,
+      "category": "Linear Algebra for ML"
     },
     {
       "id": "low-rank-update",
