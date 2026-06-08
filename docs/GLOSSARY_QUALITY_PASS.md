@@ -219,8 +219,8 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] optimization-advanced (13; 0; 3): all 13 read, all at-bar (Newton's-method-as-ancestor framing and the derivative-free family well drawn); 3 gaps (mirror-descent, natural-gradient, trust-region)
 - [x] learning-theory (14; 0; 4): all 14 read, all at-bar (rigorous, the PAC/VC/Rademacher/PAC-Bayes pillars and double-descent all crisp); 4 gaps (generalization-error, pac-bayes, pac-learning, rademacher-complexity)
 - [x] dl-theory (14; 0; 2): all 14 read, all at-bar (current, deep: NTK, scaling laws, edge-of-stability, loss-of-plasticity all excellent); 2 gaps
-- [ ] training (24; 0; 6)
-- [ ] systems (22; 0; 3)
+- [x] training (24; 0; 6): all 24 read, all at-bar (current and complete: RLHF/DPO/KTO/ORPO/GRPO/RLVR all accurate and well-drawn); 6 gaps
+- [x] systems (22; 0; 3): all 22 read, all at-bar (excellent infra cluster, each tied to the compute/bandwidth roofline and the parallelism stack); 3 gaps (cuda, roofline-model, paged-attention)
 - [ ] philosophy (14; 0; 10)
 - [ ] philosophy-advanced (15; 0; 7)
 
