@@ -14,4 +14,4 @@ The field moved through distinct eras. Classical systems combined hidden Markov 
 
 This is directly relevant to this project: the ingestion worker uses Whisper to transcribe videos that lack captions, turning spoken content into text the corpus and classifier can work with.
 
-The remaining hard cases are background noise, overlapping speakers, heavy accents, rare proper nouns, code-switching between languages, and the latency demands of real-time transcription, which is why streaming ASR and speaker diarization are active areas alongside raw accuracy.
+The remaining hard cases are background noise, overlapping speakers, heavy accents, rare proper nouns, code-switching between languages, and the latency demands of real-time transcription, which is why streaming ASR and speaker diarization are active areas alongside raw accuracy. Accuracy itself is measured by word error rate, the fraction of words inserted, deleted, or substituted relative to a reference transcript, and the gap between a clean-benchmark WER and real-world performance on noisy, accented speech is where most of the remaining engineering lives.

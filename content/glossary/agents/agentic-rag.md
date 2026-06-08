@@ -12,6 +12,6 @@ Agentic RAG puts an agent in charge of retrieval. Ordinary retrieval-augmented g
 
 In that loop the agent can decide whether retrieval is even needed, reformulate or decompose the question into sub-queries, issue multiple searches, judge whether the results are sufficient, retrieve again with refined queries, and only then synthesize an answer. The reframing is the point: it treats retrieval as a tool to be used deliberately rather than a mandatory first step, which is what lets it handle multi-hop reasoning ("find X, then use X to find Y") and exploratory questions that a single shot cannot.
 
-The cost is more model calls and higher latency, since each retrieval-reason-retrieve cycle is another round trip, so agentic RAG is reserved for questions whose difficulty justifies the extra work rather than simple lookups.
+The cost is more model calls and higher latency, since each retrieval-reason-retrieve cycle is another round trip, so agentic RAG is reserved for questions whose difficulty justifies the extra work rather than simple lookups. It also needs a stopping rule, a cap on retrieval rounds or an explicit sufficiency check, because an agent free to keep searching can spiral into needless queries when a single retrieval would have sufficed.
 
 It composes with the rest of the retrieval toolkit: the agent's individual searches still benefit from good embeddings, reranking, and query-rewriting tricks like hypothetical document embeddings, and it blends naturally with other tools, letting the same agent search, browse, and compute as one workflow.
