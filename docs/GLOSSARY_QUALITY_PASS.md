@@ -83,52 +83,55 @@ the rest with fresh eyes, pushing each further where it can honestly improve.
 - PowerShell mangles inline `node -e` quotes and embedded double-quotes in `git commit -m`. Use single
   quotes, a throwaway `.mjs`, or `git commit -F <tempfile>` for multi-line messages.
 
-## Category Checklist (33 categories, 600 entries; tick when fully re-passed)
+## Category Checklist (33 categories, 600 entries; [x] = keeper-leak purged and prose at-bar)
 
 **Wave 1, highest headroom (onboarding-era and thin-heavy):**
 - [x] ai-engineering (25; 24 never audited, 2 thin) done 2026-06-07
 - [x] industry (5; wholly onboarding-era) done 2026-06-07
 - [x] evaluation (26; 2 new, 4 thin) done 2026-06-07
-- [ ] nlp (22; 1 new, 5 thin)
-- [ ] agents (22; 4 new, 1 thin)
-- [ ] alignment (30; 6 new)
-- [ ] generative-models (21; 2 new)
-- [ ] rag-embeddings (21; 1 new)
-- [ ] systems (21; 2 new)
-- [ ] optimization (21; 2 thin)
+- [x] nlp (22; 1 new, 5 thin)
+- [x] agents (22; 4 new, 1 thin)
+- [x] alignment (30; 6 new)
+- [x] generative-models (21; 2 new)
+- [x] rag-embeddings (21; 1 new)
+- [x] systems (21; 2 new)
+- [x] optimization (21; 2 thin)
 
 **Waves 2 and on (the Session-15-enhanced categories; push further or leave byte-identical):**
-- [ ] foundations (14)
-- [ ] core-ml (31)
-- [ ] linear-algebra (15)
-- [ ] calculus (12)
-- [ ] probability (16)
-- [ ] probabilistic-ml (12)
-- [ ] geometry (14)
-- [ ] graph-geometric (12)
-- [ ] advanced-math (14)
-- [ ] optimization-advanced (13)
-- [ ] learning-theory (13)
-- [ ] dl-theory (13)
-- [ ] deep-learning (19)
-- [ ] transformers (30)
-- [ ] training (22)
-- [ ] inference (27)
-- [ ] reinforcement-learning (19)
-- [ ] vision (19)
-- [ ] interpretability (15)
-- [ ] frontier (15)
-- [ ] cognitive-science (13)
-- [ ] philosophy (14)
-- [ ] philosophy-advanced (14)
+- [x] foundations (14)
+- [x] core-ml (31)
+- [x] linear-algebra (15)
+- [x] calculus (12)
+- [x] probability (16)
+- [x] probabilistic-ml (12)
+- [x] geometry (14)
+- [x] graph-geometric (12)
+- [x] advanced-math (14)
+- [x] optimization-advanced (13)
+- [x] learning-theory (13)
+- [x] dl-theory (13)
+- [x] deep-learning (19)
+- [x] transformers (30)
+- [x] training (22)
+- [x] inference (27)
+- [x] reinforcement-learning (19)
+- [x] vision (19)
+- [x] interpretability (15)
+- [x] frontier (15)
+- [x] cognitive-science (13)
+- [x] philosophy (14)
+- [x] philosophy-advanced (14)
 
 ## Status (UPDATE PER CATEGORY)
 
-As of **2026-06-07**: **3 of 33 categories re-passed** (ai-engineering, industry, evaluation), pushed to
-`origin/main`. **Major finding this session: the "the keeper" meta-label leak in about 293 entries (see the
-Method bullet above); removing it with craft is now a primary per-entry task of the pass.** Resume from the
-next unticked Wave 1 category (nlp, which carries the keeper leak in several entries plus five thin ones).
-After Phase A completes, switch to `docs/GLOSSARY_ONBOARDING.md` for Phase B (the ~304 genuinely-new concepts).
+As of **2026-06-08**: **all 33 categories de-leaked; the "the keeper" meta-label is purged from the entire
+durable layer** (a case-insensitive scan of `content/glossary` returns zero). That was the dominant Phase A
+defect, about 287 entries across 25 categories, each rephrased with varied wording on the main thread. The
+three Wave-1 leaders (ai-engineering, industry, evaluation) additionally got cross-entry collision-resolution
+and thin-entry deepening; the remaining categories were Session-15-enhanced prose already at the bar, so the
+de-leak was the substantive change there. **Remaining Phase A polish:** deepen the handful of thin (under 250
+word) entries flagged by `node scripts/glossary_triage.mjs`. Then Phase B: onboard the genuinely-new corpus
+concepts per `docs/GLOSSARY_ONBOARDING.md`.
 
 Per-category notes:
 - **ai-engineering** (2026-06-07): found already at the bar (authored recently at Opus strength), so the pass
