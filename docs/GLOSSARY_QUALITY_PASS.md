@@ -272,11 +272,12 @@ non-redistributable arXiv figures, now fully enumerated in `docs/glossary_image_
 flag-list for a future AI-generation or open-figure-hunt campaign. Phase C is complete.
 
 **Follow-on open-figure hunt (2026-06-08).** A targeted sweep of the concrete gaps against Wikimedia Commons
-landed **6 more cited figures**, taking the durable layer from 426 to **432 illustrated** and the gap list from
-218 to **212**: `low-rank-approximation` (SVD image compression at increasing ranks), `tf-idf` (the IDF weighting
+landed **8 more cited figures**, taking the durable layer from 426 to **434 illustrated** and the gap list from
+218 to **210**: `low-rank-approximation` (SVD image compression at increasing ranks), `tf-idf` (the IDF weighting
 curve), `tree-search` (a tic-tac-toe game tree), `structural-equation-models` (a latent-variable path diagram),
-`causal-inference` (a confounder-versus-mediator diagram), and `monte-carlo-methods` (error shrinking with sample
-count). Each candidate was viewed before embedding (the oracle validates license and bytes, not pedagogy), and
+`causal-inference` (a confounder-versus-mediator diagram), `monte-carlo-methods` (error shrinking with sample
+count), `game-theory-equilibrium` (a prisoner's dilemma payoff matrix), and `knowledge-graph` (an
+entities-and-typed-edges diagram). Each candidate was viewed before embedding (the oracle validates license and bytes, not pedagogy), and
 several plausible hits were rejected on sight as off-concept: a synthetic depth-of-field cube for `monocular-depth`,
 medical-CT and aurora k-means images for `mask-r-cnn`, ROC curves for `naive-bayes`. The honest finding holds: the
 remaining 212 are genuinely hard, mostly abstract (alignment, philosophy, AI-engineering) or backed only by
