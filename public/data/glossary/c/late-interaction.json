@@ -1,13 +1,101 @@
 {
   "id": "late-interaction",
   "label": "Late Interaction",
-  "kind": "technique",
-  "category": "RAG, Embeddings, and Retrieval",
   "aliases": [
     "ColBERT",
     "late-interaction retrieval",
     "token-level retrieval"
   ],
+  "kind": "technique",
+  "attention": 6,
+  "first_seen": "2026-03-24T15:31:44+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "sensor-attention",
+      "label": "sensor attention",
+      "score": 0.72
+    },
+    {
+      "id": "multi-turn-conversation",
+      "label": "multi-turn conversation",
+      "score": 0.717
+    },
+    {
+      "id": "emergent-behavior",
+      "label": "emergent behavior",
+      "score": 0.713
+    },
+    {
+      "id": "conversational-context",
+      "label": "conversational context",
+      "score": 0.713
+    },
+    {
+      "id": "weight-perturbation",
+      "label": "weight perturbation",
+      "score": 0.711
+    },
+    {
+      "id": "model-integration",
+      "label": "model integration",
+      "score": 0.71
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.186
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.527
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.087
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.487
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.261
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.256
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.08
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
+      "url": "https://www.youtube.com/watch?v=8HrvD5o2w8M",
+      "author_or_channel": "Qdrant Vector Search",
+      "published_at": "2026-03-24T15:32:04+00:00",
+      "kind": "technique"
+    },
+    {
+      "title": "How ColPali Models Work | Qdrant Multi-Vector Search",
+      "url": "https://www.youtube.com/watch?v=Fai9aY1PMCA",
+      "author_or_channel": "Qdrant Vector Search",
+      "published_at": "2026-03-24T15:31:44+00:00",
+      "kind": "technique"
+    }
+  ],
+  "category": "RAG, Embeddings, and Retrieval",
   "durable": true,
   "source": "authored",
   "definition": "A retrieval method that encodes a query and a document into per-token embeddings and scores relevance by summing each query token's best match against the document tokens (MaxSim), keeping the fine-grained term interactions a single pooled vector discards. It is the middle path, cross-encoder-like precision while staying indexable, bought with the cost of storing a vector per token rather than per document.",
@@ -61,12 +149,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/late-interaction.png",
     "alt": "A diagram of ColBERT. A Query Encoder produces a row of green per-token vectors and a Document Encoder produces a grid of blue per-token vectors (marked offline indexing). For each query token, a MaxSim operator selects its best-matching document token, and the MaxSim values are summed into a single score.",

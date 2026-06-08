@@ -1,13 +1,144 @@
 {
   "id": "few-shot-learning",
   "label": "Few-Shot Learning",
-  "kind": "technique",
-  "category": "Transformers and LLMs",
   "aliases": [
     "few-shot prompting",
     "few shot",
     "k-shot"
   ],
+  "kind": "technique",
+  "attention": 11,
+  "first_seen": "2026-05-23T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 110.3,
+    "sparkline": [
+      2,
+      2,
+      2,
+      3,
+      7,
+      7,
+      8,
+      7
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "deep-learning",
+      "label": "deep learning",
+      "score": 0.841
+    },
+    {
+      "id": "adversarial-prompting",
+      "label": "adversarial prompting",
+      "score": 0.828
+    },
+    {
+      "id": "training-free-methods",
+      "label": "training-free methods",
+      "score": 0.815
+    },
+    {
+      "id": "long-tailed-recognition",
+      "label": "long-tailed recognition",
+      "score": 0.812
+    },
+    {
+      "id": "maximum-entropy-inference",
+      "label": "maximum-entropy inference",
+      "score": 0.811
+    },
+    {
+      "id": "large-language-models",
+      "label": "large language models",
+      "score": 0.806
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.502
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.047
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.087
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.451
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.166
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.767
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.333
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Efficient and Training-Free Single-Image Diffusion Models",
+      "url": "https://arxiv.org/abs/2606.04299",
+      "author_or_channel": "yorwba",
+      "published_at": "2026-06-07T09:43:45.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Implicit Data Synthesis for Contrastive Unsupervised Data Augmentation",
+      "url": "http://arxiv.org/abs/2606.07498v1",
+      "author_or_channel": "Patrick Kage, Trevor Hedges, N. Siddharth",
+      "published_at": "2026-06-05T17:52:09Z",
+      "kind": "technique"
+    },
+    {
+      "title": "CoMetaPNS: Continually Meta-learning Personalized Neural Surrogates for Cardiac Electrophysiology Simulations",
+      "url": "http://arxiv.org/abs/2606.07488v1",
+      "author_or_channel": "Ryan Missel, Xiajun Jiang, Linwei Wang",
+      "published_at": "2026-06-05T17:44:42Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Supervision versus Demonstration-Based In-Context Learning for Multiword Expression Classification",
+      "url": "http://arxiv.org/abs/2606.07479v1",
+      "author_or_channel": "Sercan Karakaş, Yusuf Şimşek",
+      "published_at": "2026-06-05T17:34:07Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Unsupervised Continual Clustering via Forward-Backward Knowledge Distillation",
+      "url": "http://arxiv.org/abs/2606.07474v1",
+      "author_or_channel": "Mohammadreza Sadeghi, Sareh Soleimani, Zihan Wang",
+      "published_at": "2026-06-05T17:28:19Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Time series Foundation Models based on Physics-Informed Synthetic Histories for Cold-Start Photovoltaic Forecasting",
+      "url": "http://arxiv.org/abs/2606.07457v1",
+      "author_or_channel": "Lorenzo Longarini, Alessandro Rongoni, Simone Silenzi",
+      "published_at": "2026-06-05T17:05:19Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
   "definition": "Teaching a task by example, in the prompt: show a model a handful of input-output demonstrations, then a new input, and it infers the pattern and continues it, all at inference with no weight updates. A direct use of in-context learning, it decoupled doing a task from training for it, though results are oddly sensitive to which examples you pick and their order.",
@@ -56,12 +187,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/few-shot-learning.svg",
     "alt": "Three prompting setups feeding a Transformer decoder marked no parameter update. The lower few-shot panel places several worked translation examples (go maps to va, i lost maps to j'ai perdu, he's calm maps to elle court) between the task description and the real prompt, contrasted with the zero-shot and one-shot panels above.",

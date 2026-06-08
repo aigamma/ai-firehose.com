@@ -1,12 +1,122 @@
 {
   "id": "catastrophic-forgetting",
   "label": "Catastrophic Forgetting",
-  "kind": "technique",
-  "category": "Training and Fine-Tuning",
   "aliases": [
     "catastrophic interference",
     "catastrophic forgetting"
   ],
+  "kind": "technique",
+  "attention": 2,
+  "first_seen": "2026-06-05T17:28:19Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 80.6,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "memory-retention",
+      "label": "memory retention",
+      "score": 0.805
+    },
+    {
+      "id": "perceptual-perturbation",
+      "label": "perceptual perturbation",
+      "score": 0.771
+    },
+    {
+      "id": "latent-memory",
+      "label": "latent memory",
+      "score": 0.768
+    },
+    {
+      "id": "long-tailed-recognition",
+      "label": "long-tailed recognition",
+      "score": 0.754
+    },
+    {
+      "id": "long-horizon-reasoning",
+      "label": "long-horizon reasoning",
+      "score": 0.75
+    },
+    {
+      "id": "sensor-attention",
+      "label": "sensor attention",
+      "score": 0.748
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.162
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.73
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.168
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.477
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.335
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.489
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.08
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Sparse Subspace-to-Expert Sharing for Task-Agnostic Continual Learning",
+      "url": "http://arxiv.org/abs/2606.07500v1",
+      "author_or_channel": "Fatema Siddika, Md Anwar Hossen, Tanwi Mallick",
+      "published_at": "2026-06-05T17:53:52Z",
+      "kind": "technique"
+    },
+    {
+      "title": "CoMetaPNS: Continually Meta-learning Personalized Neural Surrogates for Cardiac Electrophysiology Simulations",
+      "url": "http://arxiv.org/abs/2606.07488v1",
+      "author_or_channel": "Ryan Missel, Xiajun Jiang, Linwei Wang",
+      "published_at": "2026-06-05T17:44:42Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Unsupervised Continual Clustering via Forward-Backward Knowledge Distillation",
+      "url": "http://arxiv.org/abs/2606.07474v1",
+      "author_or_channel": "Mohammadreza Sadeghi, Sareh Soleimani, Zihan Wang",
+      "published_at": "2026-06-05T17:28:19Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
   "definition": "The tendency of a neural network to lose previously learned knowledge when trained on new data, because the same weights that stored the old skill are overwritten while learning the new one and no loss term pushes back. It is the natural antagonist of transfer learning, the reason you cannot just keep fine-tuning a model on task after task, and why frozen-backbone methods like LoRA resist it.",
@@ -64,12 +174,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/catastrophic-forgetting.png",
     "alt": "Three line plots tracking a model's score on many held-out benchmarks across successive stages of continual instruction tuning, labeled from Initial through later tuning stages. Almost every line falls from its initial value as more tuning stages are applied.",

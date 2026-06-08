@@ -1,12 +1,108 @@
 {
   "id": "cuda",
   "label": "CUDA",
-  "kind": "tool",
-  "category": "Systems and Infrastructure",
   "aliases": [
     "compute unified device architecture",
     "CUDA kernels"
   ],
+  "kind": "tool",
+  "attention": 2,
+  "first_seen": "2026-06-05T17:41:58.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 77.5,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "nvidia-nim",
+      "label": "NVIDIA-NIM",
+      "score": 0.793
+    },
+    {
+      "id": "gpu-utilization",
+      "label": "GPU utilization",
+      "score": 0.75
+    },
+    {
+      "id": "gru",
+      "label": "GRU",
+      "score": 0.694
+    },
+    {
+      "id": "benchmarking",
+      "label": "benchmarking",
+      "score": 0.691
+    },
+    {
+      "id": "hpc",
+      "label": "HPC",
+      "score": 0.691
+    },
+    {
+      "id": "llvm",
+      "label": "LLVM",
+      "score": 0.691
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.676
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.257
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.658
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.154
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.52
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.226
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.5
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Tiny hackable CUDA language model implementation",
+      "url": "https://github.com/markusheimerl/gpt",
+      "author_or_channel": "markusheimerl",
+      "published_at": "2026-06-05T17:41:58.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Systems and Infrastructure",
   "durable": true,
   "source": "authored",
   "definition": "The parallel programming platform and software stack that lets developers run general-purpose computation on one vendor's GPUs, the foundation almost every deep learning framework builds on. Its maturity is much of why that vendor's hardware became the default, a software lock-in called the CUDA moat, and the field's biggest efficiency wins are essentially clever CUDA kernels that keep data in fast memory.",
@@ -60,12 +156,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/cuda.png",
     "alt": "A diagram of the CUDA execution hierarchy. On the left a Host launches a Kernel onto the Device. The Device holds a Grid containing a two-dimensional array of thread blocks labeled Block (0,0) through Block (3,1). One block, Block (2,1), is expanded below into its own grid of individual threads labeled Thread (0,0) through Thread (4,2).",
