@@ -1,7 +1,10 @@
 {
   "id": "conformal-prediction",
-  "label": "conformal prediction",
-  "aliases": [],
+  "label": "Conformal Prediction",
+  "aliases": [
+    "conformal prediction",
+    "conformal inference"
+  ],
   "kind": "technique",
   "attention": 1,
   "first_seen": "2026-06-01T17:54:00Z",
@@ -96,6 +99,50 @@
       "url": "http://arxiv.org/abs/2606.02562v1",
       "author_or_channel": "Haimin Hu",
       "published_at": "2026-06-01T17:54:00Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Probabilistic Machine Learning",
+  "durable": true,
+  "source": "authored",
+  "definition": "A way to turn any model's raw output into a prediction set that is guaranteed, with a chosen probability, to contain the true answer, without assuming anything about the model or the data distribution beyond exchangeability. Instead of a single best guess, it returns a set whose size grows when the model is unsure, and that coverage guarantee is distribution-free and provable.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Most uncertainty methods give you a confidence number you then have to trust. Conformal prediction gives you something stronger and stranger: a prediction set that is mathematically guaranteed to contain the true answer at least, say, 90 percent of the time, and it does this for any underlying model, with no assumption about the data distribution beyond a mild one. You wrap your existing classifier or regressor, and out comes not a point prediction but a set, with a coverage promise attached."
+    },
+    {
+      "type": "p",
+      "text": "The mechanism is disarmingly simple. Hold out a calibration set the model did not train on, and score how wrong the model is on each of those known examples, building up a distribution of its typical error. For a new input, include in the prediction set every candidate answer whose error score falls within that typical range, cutting off at the quantile that corresponds to the coverage you want. Because the calibration examples and the new one are exchangeable, draws from the same pool, the coverage guarantee follows from a counting argument, not from any belief about how the data was generated."
+    },
+    {
+      "type": "p",
+      "text": "The keeper property is that the set size becomes the honest signal. On an easy, familiar input the prediction set collapses to a single confident answer; on a hard or unusual one it widens to include several, visibly flagging the model's uncertainty rather than hiding it behind a smooth probability. A wide set is the method admitting, in a principled way, that it does not know, which is exactly the behavior a downstream decision wants."
+    },
+    {
+      "type": "p",
+      "text": "Conformal prediction matters because it is model-agnostic, cheap, and comes with a real guarantee, a rare combination in uncertainty estimation, where most methods trade rigor for tractability. Its honest limits are that the guarantee is marginal (it holds on average, not for every individual input or subgroup unless you work harder) and that it assumes exchangeability, which distribution shift breaks. Even so, as a way to attach a trustworthy, distribution-free hedge to a black-box model, it has become one of the most practical tools for deploying predictions you can actually act on."
+    }
+  ],
+  "related": [
+    {
+      "slug": "uncertainty-estimation",
+      "label": "Uncertainty Estimation",
+      "kind": "technique"
+    },
+    {
+      "slug": "calibration",
+      "label": "Calibration",
+      "kind": "technique"
+    },
+    {
+      "slug": "bayesian-inference",
+      "label": "Bayesian Inference",
+      "kind": "technique"
+    },
+    {
+      "slug": "classification",
+      "label": "Classification",
       "kind": "technique"
     }
   ]

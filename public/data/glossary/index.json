@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-07",
   "count": 1012,
-  "durable_count": 616,
+  "durable_count": 622,
   "concepts": [
     {
       "id": "3d-printing",
@@ -1474,13 +1474,17 @@
     },
     {
       "id": "causal-inference",
-      "label": "causal inference",
+      "label": "Causal Inference",
       "kind": "technique",
       "attention": 1,
       "aliases": [
+        "causal inference",
+        "causality",
         "causal reasoning"
       ],
-      "def_snippet": ""
+      "def_snippet": "Reasoning about what causes what, and what would happen under an intervention, rather than merely what correlates with what. It is the discipline that separates \"people who use sunscreen get more skin cancer\" (a confound) from \"sunscreen causes skin cancer\" (false), a distinction standard machine learning, built to find correlations, does not draw on its own.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "causal-video-diffusion",
@@ -1971,11 +1975,16 @@
     },
     {
       "id": "conformal-prediction",
-      "label": "conformal prediction",
+      "label": "Conformal Prediction",
       "kind": "technique",
       "attention": 1,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "conformal prediction",
+        "conformal inference"
+      ],
+      "def_snippet": "A way to turn any model's raw output into a prediction set that is guaranteed, with a chosen probability, to contain the true answer, without assuming anything about the model or the data distribution beyond exchangeability. Instead of a single best guess, it returns a set whose size grows when the model is unsure, and that coverage guarantee is distribution-free and provable.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "confusion-matrix",
@@ -3203,8 +3212,14 @@
       "label": "Embodied AI",
       "kind": "technique",
       "attention": 2,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "embodied AI",
+        "embodied intelligence",
+        "embodied agents"
+      ],
+      "def_snippet": "AI that perceives and acts through a body in a physical or simulated environment, a robot, a drone, a simulated character, rather than only processing text or images handed to it. The hard part is the closed loop with a messy world: perception, action, and consequence feed back on each other in real time, with no clean dataset in between.",
+      "durable": true,
+      "category": "Agents and Tool Use"
     },
     {
       "id": "embodied-cognition",
@@ -6988,14 +7003,6 @@
       "category": "Transformers and LLMs"
     },
     {
-      "id": "multi-modal-reasoning",
-      "label": "multi-modal reasoning",
-      "kind": "tool",
-      "attention": 2,
-      "aliases": [],
-      "def_snippet": ""
-    },
-    {
       "id": "multi-model-integration",
       "label": "multi-model integration",
       "kind": "tool",
@@ -7122,6 +7129,20 @@
         "cross-modal learning"
       ],
       "def_snippet": "Training models to jointly represent and relate information across modalities, text, images, audio, video, so the same meaning arriving through different channels lands in one shared space. Contrastive alignment (CLIP) is the most influential recipe, and the recurring difficulties, paired-data scarcity and modality imbalance, increasingly define what general AI can perceive.",
+      "durable": true,
+      "category": "Computer Vision"
+    },
+    {
+      "id": "multi-modal-reasoning",
+      "label": "Multimodal Reasoning",
+      "kind": "technique",
+      "attention": 2,
+      "aliases": [
+        "multimodal reasoning",
+        "multi-modal reasoning",
+        "cross-modal reasoning"
+      ],
+      "def_snippet": "Reasoning that draws on more than one kind of input at once, text, images, audio, video, combining them into a single chain of inference rather than handling each in isolation. It is what lets a model read a chart and answer a question about it, or watch a clip and explain what went wrong, and it demands that the modalities share a representation the reasoning can range over.",
       "durable": true,
       "category": "Computer Vision"
     },
@@ -10904,11 +10925,16 @@
     },
     {
       "id": "tree-search",
-      "label": "tree search",
+      "label": "Tree Search",
       "kind": "technique",
       "attention": 2,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "tree search",
+        "search tree"
+      ],
+      "def_snippet": "Exploring possible futures by branching: from the current state, consider the available actions, then the actions available after each of those, building a tree of what-ifs and searching it for a good path. It is the classical backbone of planning and game-playing, and it has returned as a way to let language models deliberate rather than answer in one pass.",
+      "durable": true,
+      "category": "Reinforcement Learning"
     },
     {
       "id": "trend-spotting",
@@ -10987,11 +11013,17 @@
     },
     {
       "id": "uncertainty-estimation",
-      "label": "uncertainty estimation",
-      "kind": "tool",
+      "label": "Uncertainty Estimation",
+      "kind": "technique",
       "attention": 2,
-      "aliases": [],
-      "def_snippet": ""
+      "aliases": [
+        "uncertainty estimation",
+        "uncertainty quantification",
+        "predictive uncertainty"
+      ],
+      "def_snippet": "Getting a model to report not just an answer but how sure it is, and making that confidence trustworthy, so a system can defer, ask for help, or abstain when it does not know. It separates two distinct unknowns: irreducible noise in the data, and the model's own ignorance, which behave differently and call for different responses.",
+      "durable": true,
+      "category": "Probabilistic Machine Learning"
     },
     {
       "id": "underfitting",
