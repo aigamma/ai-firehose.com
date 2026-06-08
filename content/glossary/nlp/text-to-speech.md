@@ -3,7 +3,7 @@ title: Text-to-Speech
 slug: text-to-speech
 kind: technique
 category: NLP Foundations
-aliases: TTS, speech synthesis
+aliases: TTS, speech synthesis, voice synthesis
 related: automatic-speech-recognition, diffusion-model, autoregressive-model, transformer
 summary: The task of synthesizing natural-sounding speech from text, the output side of voice interfaces. The hard part is not pronouncing words but prosody, the rhythm, stress, and intonation that make speech sound human, and modern neural systems now clone a voice from seconds of audio, which is exactly why synthetic-voice detection and watermarking became a safety concern.
 ---

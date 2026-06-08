@@ -3,7 +3,7 @@ title: AI-Assisted Coding
 slug: ai-assisted-coding
 kind: technique
 category: AI Engineering
-aliases: AI pair programming, AI coding assistant, vibe coding
+aliases: AI pair programming, AI coding assistant, vibe coding, AI-assisted development
 related: code-generation, claude-code, code-interpreter, large-language-model, ai-agent, agentic-workflow, prompt-engineering
 summary: The everyday practice of building software with a language model in the loop, from inline autocomplete through chat-based help to an agent that edits and runs the code. It changes the programmer's job from typing every line to specifying intent and reviewing what the model produces.
 ---

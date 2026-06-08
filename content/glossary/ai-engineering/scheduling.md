@@ -3,7 +3,7 @@ title: Scheduling
 slug: scheduling
 kind: tool
 category: AI Engineering
-aliases: agent scheduling, task scheduling, scheduled agents
+aliases: agent scheduling, task scheduling, scheduled agents, job scheduling
 related: automation, agentic-workflow, workflow-orchestration, task-parallelization, agent-orchestration, agentic-harness
 summary: Running an agent or automation on a trigger, a fixed time, an interval, or an event, rather than only on demand, so work happens without a person initiating it. The shift from a tool you invoke to a worker that acts on its own schedule, which is what turns an assistant into something that runs your routines.
 ---

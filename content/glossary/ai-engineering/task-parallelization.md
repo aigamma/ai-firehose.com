@@ -3,7 +3,7 @@ title: Task Parallelization
 slug: task-parallelization
 kind: technique
 category: AI Engineering
-aliases: parallel agents, agent fan-out, parallel task execution
+aliases: parallel agents, agent fan-out, parallel task execution, parallelization
 related: agentic-workflow, multi-agent-system, agent-orchestration, workflow-orchestration, agentic-harness, planning
 summary: Splitting a job into independent pieces that run at the same time across multiple model calls or agents, so the wall-clock time is the slowest single piece rather than the sum of all of them. The cheapest speedup available to an agent system, when the pieces are truly independent.
 ---

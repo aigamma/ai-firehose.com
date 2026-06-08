@@ -3,7 +3,7 @@ title: Agentic AI
 slug: agentic-ai
 kind: technique
 category: Agents and Tool Use
-aliases: agentic artificial intelligence
+aliases: agentic artificial intelligence, agentic systems, agentic system
 related: ai-agent, agentic-workflow, autonomous-agent, multi-agent-system, planning, tool-use, agentic-harness, reinforcement-learning
 summary: The shift from models that respond to a single prompt toward systems that pursue a goal over many steps, choosing actions, calling tools, and reacting to results without a human directing each move. It names a paradigm and a market category more than one precise technique, which is both its usefulness and its vagueness.
 ---

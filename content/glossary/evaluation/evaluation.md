@@ -3,7 +3,7 @@ title: Evaluation
 slug: evaluation
 kind: technique
 category: Evaluation and Benchmarks
-aliases: model evaluation, LLM evaluation, evals
+aliases: model evaluation, LLM evaluation, evals, AI evaluation
 related: benchmark, mmlu, swe-bench, llm-as-judge, agent-evaluation, perplexity, hallucination
 summary: The practice of measuring what a model can actually do, how well, and where it fails, through benchmarks, human judgment, model-graded scoring, and task-specific tests. It is the feedback signal the whole field steers by, and far harder than it looks because the thing being measured is open-ended.
 ---
