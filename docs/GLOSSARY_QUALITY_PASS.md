@@ -217,7 +217,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] graph-geometric (12; 0; 1): all 12 read, all at-bar (the "a transformer is a GNN on the complete graph" framing recurs beautifully); 1 gap (geometric-deep-learning)
 - [x] optimization (21; 0; 3): all 21 read, all at-bar (the SGD-noise-is-a-feature and saddle-point counting arguments are crisp); 3 gaps (adam, gradient-clipping, lion-optimizer)
 - [x] optimization-advanced (13; 0; 3): all 13 read, all at-bar (Newton's-method-as-ancestor framing and the derivative-free family well drawn); 3 gaps (mirror-descent, natural-gradient, trust-region)
-- [ ] learning-theory (14; 0; 4)
+- [x] learning-theory (14; 0; 4): all 14 read, all at-bar (rigorous, the PAC/VC/Rademacher/PAC-Bayes pillars and double-descent all crisp); 4 gaps (generalization-error, pac-bayes, pac-learning, rademacher-complexity)
 - [ ] dl-theory (14; 0; 2)
 - [ ] training (24; 0; 6)
 - [ ] systems (22; 0; 3)
