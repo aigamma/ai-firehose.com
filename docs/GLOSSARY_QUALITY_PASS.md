@@ -204,7 +204,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [ ] vision (25; 1; 6)
 - [ ] core-ml (33; 1; 9)
 - [ ] deep-learning (22; 0; 7)
-- [ ] probability (19; 3; 3)
+- [x] probability (19; 3; 3): central-limit-theorem opener reworked to lead with the bell-curve mystery (dropped ranking filler); other 18 at-bar, the other 2 flags (maximum-likelihood-estimation, markov-chain) false positives (keeper surfaces in sentence 1); 3 gaps abstract
 - [x] linear-algebra (16; 2; 1): all 16 read, all at-bar; both flags (dot-product, linear-transformation) are false positives (thesis/hook openers, not taxonomic leads), left byte-identical; 1 gap (low-rank-approximation)
 - [ ] probabilistic-ml (16; 1; 6)
 - [ ] cognitive-science (13; 1; 2)
