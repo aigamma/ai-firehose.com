@@ -95,7 +95,7 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 | Total concepts (durable plus live trending) | 1192 |
 | Cross-category edges in the Atlas | 181 |
 | Curated learning paths | 19 |
-| Cited concept images | 434 |
+| Cited concept images | 435 |
 | Items in the current rolling-quarter corpus | ~566 |
 | Source families behind the aggregator | 7 |
 | Time depths (Day, Week, Month, Quarter) | 4 |
