@@ -200,13 +200,13 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] transformers (31; 1; 9): frontier-model opener de-copulared and the weak site-plug close replaced with a structural insight (also lifts it past the thin threshold); other 30 at-bar; 9 concrete gaps (RoPE, kv-cache, attention-sink) but only non-redistributable arXiv figures exist (flagged)
 - [x] inference (27; 1; 7): all 27 read, all at-bar (greedy-decoding flag is a false positive, mechanism stated in sentence 1); 7 gaps abstract sampling/serving concepts
 - [x] interpretability (16; 2; 3): all 16 read, all at-bar (outstanding mech-interp cluster); both flags (logit-lens, activation-steering) false positives (vivid/contrastive openers); 3 gaps (data-attribution, linear-representation-hypothesis, probing-classifier)
-- [ ] frontier (16; 1; 7)
-- [ ] vision (25; 1; 6)
+- [x] frontier (16; 1; 7): all 16 read, all at-bar (hyena flag false positive, clean functional opener); 7 gaps concrete architectures but only non-redistributable arXiv figures (flagged)
+- [x] vision (25; 1; 6): all 25 read, all at-bar (feature-pyramid flag false positive); noted image-tokenization and visual-tokenization are near-duplicates (future de-dup candidate, both at-bar individually so left); 6 concrete gaps (arXiv-license figures)
 - [ ] core-ml (33; 1; 9)
 - [ ] deep-learning (22; 0; 7)
 - [x] probability (19; 3; 3): central-limit-theorem opener reworked to lead with the bell-curve mystery (dropped ranking filler); other 18 at-bar, the other 2 flags (maximum-likelihood-estimation, markov-chain) false positives (keeper surfaces in sentence 1); 3 gaps abstract
 - [x] linear-algebra (16; 2; 1): all 16 read, all at-bar; both flags (dot-product, linear-transformation) are false positives (thesis/hook openers, not taxonomic leads), left byte-identical; 1 gap (low-rank-approximation)
-- [ ] probabilistic-ml (16; 1; 6)
+- [x] probabilistic-ml (16; 1; 6): all 16 read, all at-bar (hidden-markov-model flag false positive, "infer the hidden from its observable shadow" surfaces in sentence 1); 6 gaps abstract
 - [x] cognitive-science (13; 1; 2): spiking-neural-network opener reworked to lead on the continuous-vs-spike contrast (its category peers all use active framings); other 12 at-bar; 2 gaps (cell-assembly, dual-process-theory)
 
 **Wave 3, strongly enhanced already (mostly read-and-leave + image flag):**
