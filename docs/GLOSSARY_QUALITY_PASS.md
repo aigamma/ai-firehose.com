@@ -221,8 +221,8 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] dl-theory (14; 0; 2): all 14 read, all at-bar (current, deep: NTK, scaling laws, edge-of-stability, loss-of-plasticity all excellent); 2 gaps
 - [x] training (24; 0; 6): all 24 read, all at-bar (current and complete: RLHF/DPO/KTO/ORPO/GRPO/RLVR all accurate and well-drawn); 6 gaps
 - [x] systems (22; 0; 3): all 22 read, all at-bar (excellent infra cluster, each tied to the compute/bandwidth roofline and the parallelism stack); 3 gaps (cuda, roofline-model, paged-attention)
-- [ ] philosophy (14; 0; 10)
-- [ ] philosophy-advanced (15; 0; 7)
+- [x] philosophy (14; 0; 10): all 14 read, all at-bar (outstanding, scholarly philosophy-of-mind: Chinese Room, Mary's Room, p-zombies, qualia, all properly cited and scenario-led); 10 gaps (abstract, AI-gen candidates)
+- [x] philosophy-advanced (15; 0; 7): all 15 read, all at-bar (exceptional: mind-body problem, IIT, panpsychism, control problem, moral patienthood, all cited and problem-led); 7 gaps (abstract, AI-gen candidates)
 
 ### Phase C Status
 
@@ -252,3 +252,21 @@ mostly abstract or arXiv-non-redistributable, and belong on the wishlist as AI-g
 **Wave 3** (foundations, calculus, advanced-math, geometry, graph-geometric, optimization, optimization-advanced,
 learning-theory, dl-theory, training, systems, philosophy, philosophy-advanced; 203 entries), the most strongly
 Session-15-enhanced categories, expected to be almost entirely read-and-leave.
+
+As of **2026-06-08**: **Wave 3 complete, and with it the entire Phase C enrichment pass.** All 13 Wave 3
+categories (203 entries: foundations, calculus, advanced-math, geometry, graph-geometric, optimization,
+optimization-advanced, learning-theory, dl-theory, training, systems, philosophy, philosophy-advanced) were read
+in full and every single one was at-bar, left byte-identical, exactly the read-and-leave the plan predicted for the
+most strongly Session-15-enhanced material. The philosophy and philosophy-of-mind clusters in particular are among
+the finest writing in the glossary (properly cited, scenario-led, never copular).
+
+**Final pass totals: all 33 categories and all 644 durable entries read end-to-end.** Content changes across the
+whole pass: **7 opener reworks** (agentic-workflow, elo-rating, temporal-difference-learning, q-learning,
+frontier-model [also re-closed and lifted past the thin threshold], central-limit-theorem, spiking-neural-network)
+and **2 embedded figures** (glove, rectified-flow). Every other entry was already at the Opus 4.8 bar and left
+untouched. The honest finding is that the Session-15 durable layer was approximately 99% already at-bar: this pass
+**confirmed** its quality end-to-end rather than transforming it, fixed the handful of genuine flat/provenance
+openers, and resolved all 19 triage dict-lead flags (7 real, 12 false positive). The one piece of durable forward
+work the pass surfaced is the image gap: ~218 figure-less entries, the bulk of them abstract or backed only by
+non-redistributable arXiv figures, now fully enumerated in `docs/glossary_image_wishlist.md` as the recognized
+flag-list for a future AI-generation or open-figure-hunt campaign. Phase C is complete.
