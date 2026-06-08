@@ -187,10 +187,10 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 
 **Wave 1, highest headroom (onboarding-era prose + heavy image gaps):**
 - [x] agents (27; 1; 12): agentic-workflow opener de-copulared; other 26 read, all at-bar; image gaps abstract (AI-gen candidates)
-- [ ] ai-engineering (26; 1; 26)
-- [ ] industry (7; 0; 7)
+- [x] ai-engineering (26; 1; 26): all 26 read, all at-bar (workflow-orchestration's "is a function" opener is a triage false-positive, genuinely a concrete-contrast lead); image gaps are abstract concepts, AI-gen candidates
+- [x] industry (7; 0; 7): all 7 read, all at-bar (deepseek deepened in Phase A holds); image gaps abstract, but ai-adoption (adoption curve) and market-dynamics (compute-growth) are real-data-chart candidates (OWID/Epoch)
 - [ ] alignment (32; 0; 20)
-- [ ] evaluation (26; 1; 13)
+- [x] evaluation (26; 1; 13): elo-rating opener de-provenanced (now problem-first); other 25 at-bar (Phase A fresh-pass holds); image gaps are metrics/benchmarks, no clean open figure on Wikimedia for bleu/rouge/perplexity/mmlu (AI-gen candidates)
 
 **Wave 2, scattered flags + moderate gaps:**
 - [ ] nlp (23; 0; 9)
