@@ -12,6 +12,6 @@ Guardrails are the external safety system around a deployed model, as opposed to
 
 In practice guardrails take several forms. On the way in, they can screen for disallowed requests or strip sensitive data. On the way out, they can filter toxic content, redact personal information, block disallowed topics, or check that a response stays on policy. For tool-using and computer-use agents they extend to action constraints: validating tool calls against a schema, restricting which tools or resources are reachable, and requiring human confirmation before anything consequential or irreversible. They are often themselves models or classifiers, sometimes a separate, smaller safety model judging the main model's output.
 
-The mental model is belt and suspenders, the keeper. Alignment shapes what the model wants to do; guardrails are an independent layer that constrains what the system is allowed to do, so a single failure of either does not become a failure of the whole.
+The mental model is belt and suspenders. Alignment shapes what the model wants to do; guardrails are an independent layer that constrains what the system is allowed to do, so a single failure of either does not become a failure of the whole.
 
 They are necessary but not sufficient. Guardrails add latency, can be circumvented by a determined attacker, and risk over-blocking legitimate use if tuned too aggressively. They reduce risk rather than eliminate it, which is why they are paired with least-privilege design, monitoring, and human oversight rather than trusted alone.

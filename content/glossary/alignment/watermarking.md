@@ -14,4 +14,4 @@ For text, the leading approach works at the sampling step. The model secretly pa
 
 A good watermark should be low-distortion, detectable without the generating model, and robust to light editing, and these goals trade against one another.
 
-The hard limitation is robustness, the keeper. Text watermarks weaken or wash out under paraphrasing, translation, or heavy editing, and a motivated adversary can often remove them, while images face cropping and re-encoding. Watermarking is therefore a useful provenance signal and a deterrent, not a guarantee, and it works best as one layer alongside provenance metadata and detection rather than as a standalone solution.
+The hard limitation is robustness. Text watermarks weaken or wash out under paraphrasing, translation, or heavy editing, and a motivated adversary can often remove them, while images face cropping and re-encoding. Watermarking is therefore a useful provenance signal and a deterrent, not a guarantee, and it works best as one layer alongside provenance metadata and detection rather than as a standalone solution.
