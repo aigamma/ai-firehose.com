@@ -210,9 +210,9 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] cognitive-science (13; 1; 2): spiking-neural-network opener reworked to lead on the continuous-vs-spike contrast (its category peers all use active framings); other 12 at-bar; 2 gaps (cell-assembly, dual-process-theory)
 
 **Wave 3, strongly enhanced already (mostly read-and-leave + image flag):**
-- [ ] foundations (14; 0; 4)
-- [ ] calculus (12; 0; 0)
-- [ ] advanced-math (14; 0; 0)
+- [x] foundations (14; 0; 4): all 14 read, all at-bar (some of the best entries in the glossary: AI-effect, "we know more than we can tell", submarine/swim); 4 gaps historical concepts
+- [x] calculus (12; 0; 0): all 12 read, all at-bar (clean math exposition, derivative through autodiff); 0 gaps (fully imaged)
+- [x] advanced-math (14; 0; 0): all 14 read, all at-bar (sophisticated, deep math: measure-theory through RKHS); 0 gaps (fully imaged)
 - [ ] geometry (14; 0; 1)
 - [ ] graph-geometric (12; 0; 1)
 - [ ] optimization (21; 0; 3)
