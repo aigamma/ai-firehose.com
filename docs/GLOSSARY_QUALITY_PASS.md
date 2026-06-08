@@ -193,17 +193,17 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [x] evaluation (26; 1; 13): elo-rating opener de-provenanced (now problem-first); other 25 at-bar (Phase A fresh-pass holds); image gaps are metrics/benchmarks, no clean open figure on Wikimedia for bleu/rouge/perplexity/mmlu (AI-gen candidates)
 
 **Wave 2, scattered flags + moderate gaps:**
-- [ ] nlp (23; 0; 9)
-- [ ] generative-models (21; 0; 9)
-- [ ] rag-embeddings (22; 0; 8)
+- [x] nlp (23; 0; 9): all 23 read, all at-bar (strong NLP-foundations cluster); glove image (king-queen analogy) confirmed apt for the entry; 9 gaps (tf-idf/n-gram image candidates rejected on review as off-emphasis)
+- [x] generative-models (21; 0; 9): all 21 read, all at-bar (excellent diffusion/flow cluster); rectified-flow image (straight-vs-curved transport paths) confirmed apt; 9 gaps
+- [x] rag-embeddings (22; 0; 8): all 22 read, all at-bar (excellent, each tied to the site's own voyage-3/Pinecone/rerank-2 architecture); 8 gaps
 - [x] reinforcement-learning (23; 2; 12): temporal-difference-learning (provenance lead) and q-learning (significance lead) openers fixed to lead on mechanism; other 21 at-bar (superb cluster); 12 gaps abstract algorithm concepts (AI-gen)
 - [x] transformers (31; 1; 9): frontier-model opener de-copulared and the weak site-plug close replaced with a structural insight (also lifts it past the thin threshold); other 30 at-bar; 9 concrete gaps (RoPE, kv-cache, attention-sink) but only non-redistributable arXiv figures exist (flagged)
 - [x] inference (27; 1; 7): all 27 read, all at-bar (greedy-decoding flag is a false positive, mechanism stated in sentence 1); 7 gaps abstract sampling/serving concepts
 - [x] interpretability (16; 2; 3): all 16 read, all at-bar (outstanding mech-interp cluster); both flags (logit-lens, activation-steering) false positives (vivid/contrastive openers); 3 gaps (data-attribution, linear-representation-hypothesis, probing-classifier)
 - [x] frontier (16; 1; 7): all 16 read, all at-bar (hyena flag false positive, clean functional opener); 7 gaps concrete architectures but only non-redistributable arXiv figures (flagged)
 - [x] vision (25; 1; 6): all 25 read, all at-bar (feature-pyramid flag false positive); noted image-tokenization and visual-tokenization are near-duplicates (future de-dup candidate, both at-bar individually so left); 6 concrete gaps (arXiv-license figures)
-- [ ] core-ml (33; 1; 9)
-- [ ] deep-learning (22; 0; 7)
+- [x] core-ml (33; 1; 9): all 33 read, all at-bar (kernel-method flag false positive, "elegant sleight of hand... nonlinear power without the nonlinear work"); 9 gaps
+- [x] deep-learning (22; 0; 7): all 22 read, all at-bar (foundational DL cluster, lstm "constant error carousel" framing superb); 7 gaps (batch-norm, layer-norm, etc.; D2L candidates were tangential, rejected)
 - [x] probability (19; 3; 3): central-limit-theorem opener reworked to lead with the bell-curve mystery (dropped ranking filler); other 18 at-bar, the other 2 flags (maximum-likelihood-estimation, markov-chain) false positives (keeper surfaces in sentence 1); 3 gaps abstract
 - [x] linear-algebra (16; 2; 1): all 16 read, all at-bar; both flags (dot-product, linear-transformation) are false positives (thesis/hook openers, not taxonomic leads), left byte-identical; 1 gap (low-rank-approximation)
 - [x] probabilistic-ml (16; 1; 6): all 16 read, all at-bar (hidden-markov-model flag false positive, "infer the hidden from its observable shadow" surfaces in sentence 1); 6 gaps abstract
@@ -239,3 +239,16 @@ scatter for tf-idf, both rejected. The flag-list is regenerated to the true **21
 `scripts/build_image_wishlist.mjs`. Next: Wave 2 (nlp, generative-models, rag-embeddings, reinforcement-learning,
 transformers, inference, interpretability, frontier, vision, core-ml, deep-learning, probability, linear-algebra,
 probabilistic-ml, cognitive-science), where the remaining dict-lead flags and the more concrete image gaps cluster.
+
+As of **2026-06-08**: **Wave 2 complete** (all 15 categories, 323 entries read). All 19 triage dict-lead flags are
+now resolved across Waves 1 and 2: **7 were genuine and fixed** (agentic-workflow, elo-rating,
+temporal-difference-learning, q-learning, frontier-model, central-limit-theorem, spiking-neural-network), and
+**12 were confirmed false positives** (the opener already carried a thesis, contrast, or keeper in sentence 1, so
+the "is/are" only tripped the regex). Every other entry was at-bar and left byte-identical. Running totals across
+Waves 1+2: **441 of 644 entries read; 7 opener reworks** (frontier-model also re-closed and deepened past the thin
+threshold) **and 2 embedded figures** (glove, rectified-flow), the honest measure of how at-bar the Session-15
+durable layer already was. The image hunt's low yield is itself a finding: the residual gaps are genuinely hard,
+mostly abstract or arXiv-non-redistributable, and belong on the wishlist as AI-generation candidates. Next:
+**Wave 3** (foundations, calculus, advanced-math, geometry, graph-geometric, optimization, optimization-advanced,
+learning-theory, dl-theory, training, systems, philosophy, philosophy-advanced; 203 entries), the most strongly
+Session-15-enhanced categories, expected to be almost entirely read-and-leave.
