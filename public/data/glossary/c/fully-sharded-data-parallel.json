@@ -18,7 +18,7 @@
     },
     {
       "type": "p",
-      "text": "Fully sharded data parallel removes the duplication by sharding all three of those tensors across the workers, so each holds only its slice, and the key move, the keeper, is doing this just in time: right before a layer runs, the workers all-gather its full parameters from their shards, compute the forward or backward pass, and then immediately discard the gathered copy, keeping only their shard. Gradients are reduce-scattered so each worker ends up with the averaged gradient for its slice, and peak memory is therefore set by the largest single layer that must be materialized, not by the whole model, which is what lets a cluster train models orders of magnitude larger than any one device could hold. This is the same idea introduced as ZeRO, whose stages progressively shard optimizer states, then gradients, then parameters."
+      "text": "Fully sharded data parallel removes the duplication by sharding all three of those tensors across the workers, so each holds only its slice, and the key move is doing this just in time: right before a layer runs, the workers all-gather its full parameters from their shards, compute the forward or backward pass, and then immediately discard the gathered copy, keeping only their shard. Gradients are reduce-scattered so each worker ends up with the averaged gradient for its slice, and peak memory is therefore set by the largest single layer that must be materialized, not by the whole model, which is what lets a cluster train models orders of magnitude larger than any one device could hold. This is the same idea introduced as ZeRO, whose stages progressively shard optimizer states, then gradients, then parameters."
     },
     {
       "type": "p",

@@ -21,7 +21,7 @@
     },
     {
       "type": "p",
-      "text": "Paged attention works by cutting the kv-cache into many small fixed-size blocks, called pages, that do not have to sit next to each other in memory, the keeper. Each request is given a table mapping the logical positions in its sequence to whichever physical pages currently hold them, and new pages are handed out only as the response actually grows, with the attention computation adapted to gather the key and value vectors by walking this table rather than reading one contiguous span. Because allocation is now in small uniform units assigned on demand, almost no memory is reserved before it is needed and almost none is stranded, so far more concurrent requests fit in the same memory."
+      "text": "Paged attention works by cutting the kv-cache into many small fixed-size blocks, called pages, that do not have to sit next to each other in memory. Each request is given a table mapping the logical positions in its sequence to whichever physical pages currently hold them, and new pages are handed out only as the response actually grows, with the attention computation adapted to gather the key and value vectors by walking this table rather than reading one contiguous span. Because allocation is now in small uniform units assigned on demand, almost no memory is reserved before it is needed and almost none is stranded, so far more concurrent requests fit in the same memory."
     },
     {
       "type": "p",

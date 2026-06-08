@@ -17,7 +17,7 @@
     },
     {
       "type": "p",
-      "text": "The cost of splitting the model is communication, and that is the keeper. In data parallelism the devices only need to talk once per step to average gradients; in model parallelism the devices hold different pieces of the same forward pass, so activations have to be passed from the device holding one part to the device holding the next, both going forward and coming back during backpropagation. This makes model parallelism far more sensitive to interconnect speed and memory-bandwidth, and the way the split is arranged is chosen specifically to keep this cross-device traffic manageable."
+      "text": "The cost of splitting the model is communication. In data parallelism the devices only need to talk once per step to average gradients; in model parallelism the devices hold different pieces of the same forward pass, so activations have to be passed from the device holding one part to the device holding the next, both going forward and coming back during backpropagation. This makes model parallelism far more sensitive to interconnect speed and memory-bandwidth, and the way the split is arranged is chosen specifically to keep this cross-device traffic manageable."
     },
     {
       "type": "p",

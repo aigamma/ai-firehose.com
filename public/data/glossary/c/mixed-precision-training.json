@@ -23,7 +23,7 @@
     },
     {
       "type": "p",
-      "text": "The difficulty is that low-precision floating-point has a much smaller range and coarser resolution, so naive use causes numbers to underflow to zero or lose the small differences learning depends on, and the safeguards that handle it are the keeper. It keeps a master copy of the weights in full precision that the optimizer updates, so tiny parameter changes are not lost step after step; it keeps accumulations, such as the sums inside a reduction or the statistics in normalization, in full precision; and it applies loss scaling, multiplying the loss by a large constant before backpropagation so small gradient values land inside the representable range, then dividing it back out before the update. These measures let the result match full-precision training closely while capturing most of the speed."
+      "text": "The difficulty is that low-precision floating-point has a much smaller range and coarser resolution, so naive use causes numbers to underflow to zero or lose the small differences learning depends on, and the safeguards that handle it are the crux. It keeps a master copy of the weights in full precision that the optimizer updates, so tiny parameter changes are not lost step after step; it keeps accumulations, such as the sums inside a reduction or the statistics in normalization, in full precision; and it applies loss scaling, multiplying the loss by a large constant before backpropagation so small gradient values land inside the representable range, then dividing it back out before the update. These measures let the result match full-precision training closely while capturing most of the speed."
     },
     {
       "type": "p",

@@ -14,4 +14,4 @@ It is really a family of complementary techniques. Quantization stores weights a
 
 These are frequently stacked: a model might be distilled, then pruned, then quantized, each step shaving cost.
 
-The governing tension is compression versus quality, but the keeper is where it bites. Every technique can be pushed until accuracy degrades, and the art is finding how far a given model and task tolerate before the loss matters. Because inference, not training, is where the lifetime cost of a deployed model accumulates, compression is often where the real economics of shipping AI are decided.
+The governing tension is compression versus quality, but the real question is where it bites. Every technique can be pushed until accuracy degrades, and the art is finding how far a given model and task tolerate before the loss matters. Because inference, not training, is where the lifetime cost of a deployed model accumulates, compression is often where the real economics of shipping AI are decided.

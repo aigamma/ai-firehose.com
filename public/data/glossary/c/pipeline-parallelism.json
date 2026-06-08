@@ -22,7 +22,7 @@
     },
     {
       "type": "p",
-      "text": "Compared with tensor-parallelism, pipeline parallelism communicates far less and far less often, the keeper: stages only exchange the activations at their boundaries, once per micro-batch in each direction, rather than synchronizing in the middle of every layer. That makes it tolerant of slower links and therefore the natural choice for splitting a model across separate servers, where the interconnect and memory-bandwidth between machines are weaker than inside a single box. Its cost is scheduling complexity and the memory needed to keep activations from in-flight micro-batches around until their backward pass, a pressure often relieved with gradient-checkpointing."
+      "text": "Compared with tensor-parallelism, pipeline parallelism communicates far less and far less often: stages only exchange the activations at their boundaries, once per micro-batch in each direction, rather than synchronizing in the middle of every layer. That makes it tolerant of slower links and therefore the natural choice for splitting a model across separate servers, where the interconnect and memory-bandwidth between machines are weaker than inside a single box. Its cost is scheduling complexity and the memory needed to keep activations from in-flight micro-batches around until their backward pass, a pressure often relieved with gradient-checkpointing."
     },
     {
       "type": "p",
