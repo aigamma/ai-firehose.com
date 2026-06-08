@@ -31,12 +31,13 @@ function diffText(paths) {
   throw new Error(`git diff failed for ${paths.join(", ")}`);
 }
 
-const paths = ["public/data/glossary", "public/data/harness.json", "public/data/creators.json"];
+const paths = ["public/data/glossary", "public/data/harness.json", "public/data/creators.json", "public/data/directory.json"];
 const before = diffText(paths);
 
 run("glossary", ["scripts/build_glossary.mjs"]);
 run("harness", ["scripts/build_harness.mjs"]);
 run("creators", ["scripts/build_creators.mjs"]);
+run("directory", ["scripts/build_directory.mjs"]);
 
 const after = diffText(paths);
 if (after !== before) {

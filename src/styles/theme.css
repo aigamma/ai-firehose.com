@@ -482,6 +482,23 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
    so no YouTube script or cookie loads until the reader opts in (and no layout
    shift on the swap). Each tile carries the corpus-joined cited summary and concept
    hub chips (the RAG join). */
+/* Creators directory: the browse-and-subscribe roster on the Watch page. A grid of
+   educator cards (scripts/build_directory.mjs -> directory.json), each a card with a
+   one-click Subscribe, the concepts it covers as glossary-hub chips, and its corpus
+   activity. Reuses .card, .badge, .chips, and the .btn fill. */
+.creator-directory { align-items: stretch; }
+.creator-card { display: flex; flex-direction: column; gap: 10px; }
+.creator-card-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.creator-card-name { margin: 0; font-size: 1.02rem; font-weight: 700; line-height: 1.25; }
+.creator-card-name a { color: var(--text-strong); text-decoration: none; }
+.creator-card-name a:hover { color: var(--accent); }
+.creator-card-handle { margin-top: -6px; }
+.subscribe-btn { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; text-decoration: none; }
+.subscribe-btn:hover { text-decoration: none; }
+.creator-card-covers { display: flex; flex-direction: column; gap: 6px; }
+.creator-card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.creator-card-activity { font-size: 0.8rem; margin-top: auto; padding-top: 2px; }
+
 .creator-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 .creator-name { font-weight: 700; color: var(--text-strong); font-size: 1.05rem; }
 .creator-blurb { font-size: 0.9rem; flex-basis: 100%; }

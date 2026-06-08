@@ -48,5 +48,10 @@ test("every /technique/:id link target across served artifacts has a hub file", 
   for (const id of hubs) neighbors.push(...(J(`glossary/c/${id}.json`).neighbors || []).map((n) => n.id));
   check("hub.neighbors", neighbors);
 
+  // The creators directory chips each link to a concept hub; every slug must resolve.
+  if (has("directory.json")) {
+    check("directory.concepts", (J("directory.json").roster || []).flatMap((c) => (c.concepts || []).map((x) => x.slug)));
+  }
+
   assert.deepEqual(dangling, {}, `dangling /technique links found:\n${JSON.stringify(dangling, null, 2)}`);
 });

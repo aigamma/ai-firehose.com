@@ -14,7 +14,14 @@ Eric's favorite high-signal teachers are the primary input and a leading indicat
 - **Transcription fallback.** When captions are absent, download audio with `yt-dlp` and transcribe with Whisper. This is the exact transcript pattern civil uses. The Whisper host (whisper.cpp on the worker vs the OpenAI Whisper API) is decided in Phase 1 by cost and quality.
 - **Apify.** Documented only as a paid fallback if RSS or yt-dlp is blocked at scale. The default path is from scratch.
 
-**Managing channels.** Curate with the registry CLI (no API key):
+**Managing channels.** Drop a list of handles through the batch onboarding tool (no API key):
+
+```
+node scripts/onboard_youtube.mjs --dry @a @b @c            # resolve and preview, write nothing
+node scripts/onboard_youtube.mjs @a @b @c [--weight=0.9] [--kind=mixed]
+```
+
+It wraps the registry CLI, which remains available for single edits:
 
 ```
 node worker/sources/youtube_registry.mjs add @handle --weight=0.9 --kind=mixed
@@ -22,9 +29,9 @@ node worker/sources/youtube_registry.mjs remove @handle
 node worker/sources/youtube_registry.mjs list
 ```
 
-It resolves a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
+Both resolve a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. Every active channel also appears in the Watch browse-and-subscribe directory; set `hide_from_directory: true` on an entry to ingest a channel for signal without publicly listing it. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
 
-**Onboarding a new author (full runbook):** `docs/ONBOARD_YOUTUBE_CHANNEL.md`. The complete step-by-step a fresh agent follows whenever Eric submits a channel: resolve the id, choose `authority_weight` and `kind_bias`, verify against oracles (the `list` and a dry adapter fetch), then commit and push so the worker sees it on its next run.
+**Onboarding educators (full runbook):** `docs/ONBOARD_YOUTUBE_CHANNEL.md`. The one-command flow a fresh agent follows whenever Eric drops a list of handles: `node scripts/onboard_youtube.mjs @list` resolves and adds them and rebuilds the directory, then choose `authority_weight` and `kind_bias`, verify against oracles (the `list` and a dry adapter fetch), then commit and push so the worker sees them on its next run.
 
 ## Other Sources
 
@@ -38,11 +45,17 @@ It resolves a handle, URL, or UC id to the channel id from the authoritative RSS
 
 `source_authority_weight` (and per-channel `authority_weight` for YouTube) feeds `w_source` in the attention math (`docs/RAG.md`). Favorite teachers and primary labs are weighted high; noisy community sources lower. This is what makes a trusted teacher's coverage a leading indicator rather than just one more mention.
 
-## Featured Creators and the Watch Surface
+## The Watch Surface: Directory and Spotlight
 
-`sources/featured.json` is a separate, presentation-only registry that drives the Watch page and the Home watch teaser. It is deliberately distinct from `youtube_channels.json`: that one is an ingestion and rotation-weighting source of truth, so featuring a creator on the dashboard never perturbs the rotation math. `featured.json` has `creators[]` (`channel_id`, `name`, `handle`, `blurb`, `active`, optional `latest_count`) and a `pinned[]` playlist (`videoId`, `note`).
+The Watch page (`/watch`) consolidates two surfaces over the same favorite educators: a **browse-and-subscribe directory** on top, then the **Latest** spotlight funnel below.
+
+**The directory** is the browseable view of the ingestion roster `sources/youtube_channels.json`: every active channel, rendered as a card with a one-click Subscribe, the concepts it covers (links into the glossary hubs), its kind lean, and how active it is. `scripts/build_directory.mjs` (pure core in `scripts/lib/directory.mjs`) turns the registry plus the corpus into the served artifact `public/data/directory.json`, corpus-only and deterministic (no live RSS), so it is a hard prebuild and generated-fresh gate. Concept chips are filtered to slugs that resolve to a real glossary hub, so every chip is a live link (the integrity test guards this). A freshly onboarded channel shows immediately with registry-only fields, marked newly added, and fills in its corpus enrichment after the worker ingests it. Set `hide_from_directory: true` on a registry entry to ingest a channel without listing it.
+
+**The spotlight** `sources/featured.json` is a separate, presentation-only registry that drives the Watch Latest funnel and the Home watch teaser. It is deliberately distinct from `youtube_channels.json`: that one is an ingestion and rotation-weighting source of truth, so featuring a creator on the dashboard never perturbs the rotation math. `featured.json` has `creators[]` (`channel_id`, `name`, `handle`, `blurb`, `active`, optional `latest_count`) and a `pinned[]` playlist (`videoId`, `note`).
 
 The resolver `scripts/build_creators.mjs` turns it into the served artifact `public/data/creators.json` (schema in `docs/RAG.md`). It uses no API key: it polls each creator's free RSS feed for the latest videos (reusing `fetchFeed` and `parseEntries` exported from `worker/sources/youtube.mjs`), then joins each video to its classified record in the corpus (`worker/.cache/items.json`) so every video carries the model-written `summary` and its `concepts` as links into the glossary hubs (the RAG join, the Citation Contract). The corpus is also the fallback: when RSS is blocked (Netlify build IPs are datacenter IPs, and the feed is flaky from those), a creator resolves from the corpus, which already holds the recent uploads, and a fully blocked build keeps the previously committed `creators.json` rather than emptying. The resolver runs as a `prebuild` npm step (so every Netlify deploy refreshes it) and again in the worker `run.mjs` (so the committed fallback stays fresh). Per-video semantic neighbors (related videos by vector similarity) are a documented future enhancement; the concept hubs already provide the related-concepts surface.
+
+**Retention (no video featured past three months).** In parity with the corpus auto-prune, the resolver drops any featured video whose `published_at` is older than `RETENTION_DAYS` (the rolling quarter, in `src/data/registry.js`), so nothing flows in the Watch stream longer than three months after it loaded. A creator with no uploads inside the window falls out of the Latest funnel until they post again. The directory's activity and "covers" are derived from the already-pruned corpus, so they respect the window automatically. Hand-pinned videos (`pinned[]`) are the one deliberate exception, the same way the durable glossary layer is exempt from corpus pruning.
 
 ### The Curation Workflow (the agentic terminal)
 

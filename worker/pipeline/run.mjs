@@ -25,6 +25,7 @@ import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence }
 import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
+import { buildDirectory } from "../../scripts/build_directory.mjs";
 import { buildGlossary } from "../../scripts/build_glossary.mjs";
 import { embedGlossary } from "./embed_glossary.mjs";
 import { slimGlossaryConcept, slimSpectrumAxis, axisVectors } from "./artifacts.mjs";
@@ -442,6 +443,16 @@ async function main() {
     await buildCreators({ source: "worker" });
   } catch (e) {
     console.error(`creators: ${e.message}`);
+  }
+
+  // Creators directory (the browse-and-subscribe roster on the Watch page). Corpus-only
+  // and deterministic, derived from the ingestion registry plus this run's fresh corpus,
+  // so each educator's "covers" and activity refresh as new uploads are classified.
+  console.log("5h. creators directory (browse and subscribe)...");
+  try {
+    await buildDirectory({ source: "worker" });
+  } catch (e) {
+    console.error(`directory: ${e.message}`);
   }
 
   console.log("DONE. Real artifacts written to public/data.");

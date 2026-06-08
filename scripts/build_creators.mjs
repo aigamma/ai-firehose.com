@@ -21,6 +21,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { fetchFeed, parseEntries } from "../worker/sources/youtube.mjs";
 import { slugify } from "../worker/lib/hash.mjs";
+import { RETENTION_DAYS } from "../src/data/registry.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FEATURED = resolve(HERE, "../sources/featured.json");
@@ -41,6 +42,18 @@ const thumb = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const channelUrl = (c) =>
   c.handle ? `https://www.youtube.com/${c.handle.startsWith("@") ? c.handle : `@${c.handle}`}` : `https://www.youtube.com/channel/${c.channel_id}`;
 const stamp = () => new Date().toISOString().slice(0, 10);
+
+// Parity with the corpus retention: no video flows in the Watch stream past the rolling
+// quarter. A creator's latest video drops from the stream once its publish date passes
+// RETENTION_DAYS, exactly as the RAG prunes corpus content (docs/INGESTION.md), keyed on
+// published_at like the prune. Hand-pinned videos (pinned[]) are a deliberate curatorial
+// exception, the same way the durable glossary layer is exempt from corpus pruning.
+const retentionCutoff = () => Date.now() - RETENTION_DAYS * 86400000;
+export const withinRetention = (publishedISO, cutoff) => {
+  if (!publishedISO) return false;
+  const t = new Date(publishedISO).getTime();
+  return Number.isFinite(t) && t >= cutoff;
+};
 
 function writeOut(obj) {
   mkdirSync(dirname(OUT), { recursive: true });
@@ -90,11 +103,12 @@ function toVideo(videoId, { title, published } = {}, corpus) {
 
 async function resolveCreator(c, defaults, corpus, prior) {
   const count = c.latest_count || defaults.latest_count || 4;
+  const cutoff = retentionCutoff();
   let videos = [];
   let ok = false;
   try {
     const xml = await fetchFeed(c.channel_id);
-    const entries = parseEntries(xml, { name: c.name }).filter((e) => e.source_id);
+    const entries = parseEntries(xml, { name: c.name }).filter((e) => e.source_id && withinRetention(e.published_at, cutoff));
     videos = entries.slice(0, count).map((e) => toVideo(e.source_id, { title: e.title, published: e.published_at }, corpus));
     ok = videos.length > 0;
   } catch (e) {
@@ -103,7 +117,7 @@ async function resolveCreator(c, defaults, corpus, prior) {
   // Fallback to the corpus, which already holds the creator's recent uploads. Match
   // on the exact channel name, then on the normalized name (case and whitespace).
   if (!ok) {
-    const list = corpus.byChannel.get(c.name) || corpus.byChannelNorm.get((c.name || "").trim().toLowerCase()) || [];
+    const list = (corpus.byChannel.get(c.name) || corpus.byChannelNorm.get((c.name || "").trim().toLowerCase()) || []).filter((it) => withinRetention(it.published_at, cutoff));
     const fromCorpus = list.slice(0, count).map((it) => toVideo(it.source_id, {}, corpus));
     if (fromCorpus.length) {
       videos = fromCorpus;
@@ -111,7 +125,7 @@ async function resolveCreator(c, defaults, corpus, prior) {
     }
   }
   // Last resort: carry the previously published block so the section never empties.
-  if (!ok && prior?.videos?.length) videos = prior.videos;
+  if (!ok && prior?.videos?.length) videos = prior.videos.filter((v) => withinRetention(v.published, cutoff));
 
   return {
     channel_id: c.channel_id,

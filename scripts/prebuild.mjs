@@ -3,7 +3,8 @@
 
   npm runs scripts through different shells on different platforms. Keeping the
   sequence in Node avoids POSIX-only separators in package.json and lets the
-  creators refresh soft-fail while glossary and harness generation stay hard gates.
+  creators refresh soft-fail while glossary, harness, and directory generation stay
+  hard gates.
 */
 import { spawnSync } from "node:child_process";
 
@@ -22,3 +23,5 @@ function run(label, args, { soft = false } = {}) {
 run("glossary", ["scripts/build_glossary.mjs"]);
 run("harness", ["scripts/build_harness.mjs"]);
 run("creators", ["scripts/build_creators.mjs"], { soft: true });
+// Corpus-only and deterministic (no live RSS), so unlike creators it is a hard gate.
+run("directory", ["scripts/build_directory.mjs"]);
