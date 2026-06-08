@@ -1,9 +1,9 @@
 {
   "id": "edge-deployment",
-  "label": "edge deployment",
+  "label": "Edge Deployment",
   "aliases": [
-    "model deployment",
-    "forward deployment"
+    "edge deployment",
+    "edge AI"
   ],
   "kind": "tool",
   "attention": 7,
@@ -134,6 +134,55 @@
       "url": "https://huggingface.co/blog/local-reachy-mini-conversation",
       "author_or_channel": "Hugging Face",
       "published_at": "2026-05-27T00:00:00.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Systems and Infrastructure",
+  "durable": true,
+  "source": "authored",
+  "definition": "Running a model on the device where the data is, a phone, a car, a camera, a sensor, instead of sending the data to a server. It trades the cloud's abundant compute for privacy, low latency, offline operation, and zero per-query cost, at the price of squeezing the model into a tight hardware budget.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The default for AI is the cloud: send the input to a data center, run a big model, return the answer. That breaks down when the network is slow or absent, when the data is too private to send, or when a round trip is too slow, a car deciding whether to brake cannot wait on a server. Edge deployment runs the model where the data is born, on the device itself, accepting a hard compute budget in exchange for independence from the cloud."
+    },
+    {
+      "type": "p",
+      "text": "The device is the constraint. A phone or an embedded chip has a fraction of a server's memory, compute, and power, so the model must be shrunk to fit: quantization to cut the bits per weight, model compression and pruning to drop parameters, and knowledge distillation to train a small model to mimic a large one. Each technique trades a little accuracy for a large reduction in footprint, and the craft is finding how far the specific device and task tolerate before quality breaks."
+    },
+    {
+      "type": "p",
+      "text": "The deeper shift is where the cost goes. Cloud inference is cheap to ship and expensive forever, paid on every single request; edge inference is expensive to fit but then runs at zero marginal cost, on hardware the user already owns. That inversion is why edge is compelling both at scale and for privacy: the data never leaves the device, and the provider never pays for the compute, so the economics and the privacy story improve together."
+    },
+    {
+      "type": "p",
+      "text": "Edge and cloud are less rivals than a spectrum, and the interesting designs split the work: a small fast model on the device handles the common case and decides when to escalate a hard query to a large model in the cloud, the same routing logic that governs model selection, applied across the network boundary. As open models shrink and devices gain dedicated accelerators, more of the everyday inference quietly moves to the edge."
+    }
+  ],
+  "related": [
+    {
+      "slug": "local-inference",
+      "label": "Local Inference",
+      "kind": "technique"
+    },
+    {
+      "slug": "quantization",
+      "label": "Quantization",
+      "kind": "technique"
+    },
+    {
+      "slug": "model-compression",
+      "label": "Model Compression",
+      "kind": "technique"
+    },
+    {
+      "slug": "knowledge-distillation",
+      "label": "Knowledge Distillation",
+      "kind": "technique"
+    },
+    {
+      "slug": "gpu",
+      "label": "GPU",
       "kind": "tool"
     }
   ]

@@ -1,9 +1,11 @@
 {
   "id": "isolated-execution",
-  "label": "isolated execution",
+  "label": "Isolated Execution",
   "aliases": [
+    "isolated execution",
+    "sandboxing",
     "sandboxed execution",
-    "code execution isolation"
+    "code sandbox"
   ],
   "kind": "tool",
   "attention": 8,
@@ -114,6 +116,60 @@
       "author_or_channel": "nexu-io",
       "published_at": "2026-04-28T04:25:20Z",
       "kind": "tool"
+    }
+  ],
+  "category": "Agents and Tool Use",
+  "durable": true,
+  "source": "authored",
+  "definition": "Running an agent's code, commands, or tool calls inside a confined environment, a sandbox, that limits what they can touch, so a mistake or an attack cannot damage the host system or reach data it should not. It is the containment layer that makes it safe to let a probabilistic agent actually execute things.",
+  "body": [
+    {
+      "type": "p",
+      "text": "The moment an agent can run code or shell commands, it can do real damage: delete files, leak secrets, spend money, or be talked by a prompt injection into doing any of those on an attacker's behalf. Isolated execution is the containment that makes giving an agent real hands tolerable. Run its actions inside a sandbox, a confined environment where what it can read, write, reach, and spend is bounded by construction rather than by trusting it to behave."
+    },
+    {
+      "type": "p",
+      "text": "The sandbox is built from limits. A container or virtual machine isolates the filesystem and processes from the host; network access is cut or allowlisted so the agent cannot reach arbitrary services; resource caps bound CPU, memory, and runtime so a runaway cannot exhaust the machine; and the environment is ephemeral, discarded after the task so nothing persists between runs. The design choice is how tight to make it: too loose and the containment is theater, too tight and the agent cannot do the legitimate work."
+    },
+    {
+      "type": "p",
+      "text": "What isolation really does is replace trust with structure. You cannot make a probabilistic agent provably well-behaved, so instead of relying on its judgment you bound the blast radius of its worst possible action, the only assumption that holds against both honest mistakes and adversarial inputs at once. It is the same logic as guardrails and a human in the loop, pushed down to the level of execution: assume the agent will eventually do the wrong thing, and arrange in advance for that to be survivable."
+    },
+    {
+      "type": "p",
+      "text": "Isolated execution is what lets the code-interpreter and computer-use patterns be deployed at all, because their power, running real code against real systems, is precisely their danger. As agents take on more consequential and less-supervised actions, the sandbox stops being an optional safety nicety and becomes the precondition for autonomy: you can only safely walk away from an agent whose mistakes are contained."
+    }
+  ],
+  "related": [
+    {
+      "slug": "code-interpreter",
+      "label": "Code Interpreter",
+      "kind": "tool"
+    },
+    {
+      "slug": "computer-use",
+      "label": "Computer Use",
+      "kind": "technique"
+    },
+    {
+      "slug": "tool-use",
+      "label": "Tool Use",
+      "kind": "technique"
+    },
+    {
+      "slug": "human-in-the-loop",
+      "label": "Human in the Loop",
+      "kind": "technique"
+    },
+    {
+      "slug": "guardrails",
+      "label": "Guardrails",
+      "kind": "technique"
+    },
+    {
+      "slug": "ai-agent",
+      "label": "AI Agent",
+      "kind": "technique"
     }
   ]
 }

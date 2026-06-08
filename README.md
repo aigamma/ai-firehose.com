@@ -8,7 +8,7 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 
 - **A daily briefing.** A cited, model-written summary of what is new and what is breaking out, the lede of the dashboard, written at full strength by Claude Opus. Every claim links to the item or the concept it came from.
 - **Trend boards, What Moved.** The topics that gained or lost the most attention this window versus the equal window before it, ranked per kind (Techniques, Tools, Opinions), with a magnitude bar and breakout and just-surfaced flags. The whole page switches between Day, Week, Month, and Quarter.
-- **A durable knowledge base.** 606 Opus-authored concepts across 33 categories, explorable as an Atlas constellation, woven into the live trending taxonomy by wiki-style auto-linking, and studyable through curated learning paths and flashcards.
+- **A durable knowledge base.** 610 Opus-authored concepts across 33 categories, explorable as an Atlas constellation, woven into the live trending taxonomy by wiki-style auto-linking, and studyable through curated learning paths and flashcards.
 - **Watch.** Embedded videos from favorite AI teachers, each joined to the corpus so it carries a cited summary and links into the concepts it covers. Curated in-repo.
 - **Live semantic search.** Non-chat retrieval across the corpus and knowledge base, on the Explore page alongside themes, spectrums, and connections, plus a subscribable RSS feed (`/feed.xml`).
 
