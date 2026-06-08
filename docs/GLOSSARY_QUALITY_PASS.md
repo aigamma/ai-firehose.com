@@ -196,7 +196,7 @@ Annotation: `(entries; dict-lead flags; image gaps)`.
 - [ ] nlp (23; 0; 9)
 - [ ] generative-models (21; 0; 9)
 - [ ] rag-embeddings (22; 0; 8)
-- [ ] reinforcement-learning (23; 2; 12)
+- [x] reinforcement-learning (23; 2; 12): temporal-difference-learning (provenance lead) and q-learning (significance lead) openers fixed to lead on mechanism; other 21 at-bar (superb cluster); 12 gaps abstract algorithm concepts (AI-gen)
 - [ ] transformers (31; 1; 9)
 - [ ] inference (27; 1; 7)
 - [ ] interpretability (16; 2; 3)
