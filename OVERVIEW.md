@@ -42,7 +42,7 @@ Every concept name in any prose on the site is a link into its hub, so dense wri
 
 This is the layer built to endure, and it is the most substantial single thing in the project.
 
-- **600 authored concepts across 33 categories**, from foundations and history through advanced mathematics (linear algebra, calculus, probability, geometry and manifolds), deep learning, reinforcement learning, generative models, retrieval and embeddings, agents, systems and infrastructure, evaluation, alignment and safety, mechanistic interpretability, and into cognitive science and the philosophy of mind. Each entry is written at full strength by Claude Opus: a clear definition and a few paragraphs of genuine explanation, not a dictionary stub.
+- **606 authored concepts across 33 categories**, from foundations and history through advanced mathematics (linear algebra, calculus, probability, geometry and manifolds), deep learning, reinforcement learning, generative models, retrieval and embeddings, agents, systems and infrastructure, evaluation, alignment and safety, mechanistic interpretability, and into cognitive science and the philosophy of mind. Each entry is written at full strength by Claude Opus: a clear definition and a few paragraphs of genuine explanation, not a dictionary stub.
 
 - **It is a graph, not a list.** Every concept cross-links to related ones, and that mesh is dense (no concept is an island). The Atlas visualizes it; the wiki-style auto-linker uses it to turn every mention into a link.
 
@@ -90,7 +90,7 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 
 | Thing | Count |
 |---|---|
-| Authored, durable knowledge-base concepts | 600 |
+| Authored, durable knowledge-base concepts | 606 |
 | Knowledge categories | 33 |
 | Total concepts (durable plus live trending) | 1023 |
 | Cross-category edges in the Atlas | 161 |

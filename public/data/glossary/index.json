@@ -1,7 +1,7 @@
 {
   "generated": "2026-06-07",
   "count": 1023,
-  "durable_count": 600,
+  "durable_count": 606,
   "concepts": [
     {
       "id": "3d-printing",
@@ -437,16 +437,16 @@
     },
     {
       "id": "ai-adoption",
-      "label": "AI adoption",
+      "label": "AI Adoption",
       "kind": "opinion",
       "attention": 18,
       "aliases": [
-        "AI literacy",
-        "AI leadership",
-        "AI adoption gap",
-        "AI impact measurement"
+        "AI adoption",
+        "adoption curve"
       ],
-      "def_snippet": "AI adoption refers to the uptake of AI tools by individuals, organizations, or sectors, raising the contested question of whether its measured benefits justify its costs to skills,…"
+      "def_snippet": "The diffusion of AI capability into actual use across people, companies, and economies, which consistently lags the capability frontier. The binding constraint is rarely what the technology can do and almost always organizational: trust, workflow change, skills, and integration, so the gap between what is possible and what is deployed is the real story.",
+      "durable": true,
+      "category": "Industry and Markets"
     },
     {
       "id": "ai-agency-strategy",
@@ -3371,18 +3371,16 @@
     },
     {
       "id": "enterprise-ai",
-      "label": "enterprise AI",
+      "label": "Enterprise AI",
       "kind": "opinion",
       "attention": 17,
       "aliases": [
-        "open-source AI",
-        "no-code AI",
-        "trustworthy AI",
-        "AI infrastructure",
-        "AI product integration",
-        "enterprise AI implementation"
+        "enterprise AI",
+        "AI in the enterprise"
       ],
-      "def_snippet": "Enterprise AI refers to artificial intelligence systems built or deployed for use within large organizations, typically emphasizing integration, security, scalability, and governan…"
+      "def_snippet": "The deployment of AI inside large organizations, where the hard part is rarely the model and almost always the surrounding context: messy proprietary data, security and compliance, integration with legacy systems, and the trust to put a probabilistic system into a business process. It is where the gap between an impressive demo and a dependable product is widest.",
+      "durable": true,
+      "category": "Industry and Markets"
     },
     {
       "id": "entropy",
@@ -5479,14 +5477,16 @@
     },
     {
       "id": "knowledge-graph",
-      "label": "knowledge graph",
+      "label": "Knowledge Graph",
       "kind": "tool",
       "attention": 12,
       "aliases": [
-        "knowledge retrieval",
-        "vector store knowledge bases"
+        "knowledge graphs",
+        "KG"
       ],
-      "def_snippet": "A knowledge graph is a data structure that stores information as entities and the relationships between them, enabling systems to query connected facts and reason over structured c…"
+      "def_snippet": "A structured representation of knowledge as entities and the labeled relationships between them, a network of facts rather than a pile of documents. In AI it grounds retrieval with explicit connections, letting a system traverse from one fact to a related one, which is what multi-hop questions need and a flat vector store cannot do.",
+      "durable": true,
+      "category": "RAG, Embeddings, and Retrieval"
     },
     {
       "id": "kolmogorov-arnold-network",
@@ -6849,13 +6849,17 @@
     },
     {
       "id": "model-routing",
-      "label": "model routing",
-      "kind": "opinion",
+      "label": "Model Routing",
+      "kind": "technique",
       "attention": 16,
       "aliases": [
-        "multi-model routing"
+        "model router",
+        "LLM routing",
+        "request routing"
       ],
-      "def_snippet": "Model routing is the practice of directing different parts of a task to different AI models based on their strengths, raising the question of whether mixing providers yields better…"
+      "def_snippet": "Sending each request to the model best suited to it, a small fast model for easy queries and a large expensive one for hard ones, instead of paying frontier prices for every call. It treats the model not as a fixed choice but as a dispatch decision made per request, one of the most direct levers on the cost and latency of an LLM product.",
+      "durable": true,
+      "category": "AI Engineering"
     },
     {
       "id": "model-understanding",
@@ -9875,20 +9879,16 @@
     },
     {
       "id": "sparse-attention",
-      "label": "sparse attention",
+      "label": "Sparse Attention",
       "kind": "technique",
       "attention": 8,
       "aliases": [
-        "cross-attention",
-        "sliding-window attention",
-        "hybrid attention",
-        "sparse autoencoders",
-        "multi-head attention",
-        "grouped query attention",
-        "Multi-Head Latent Attention",
-        "multi-head latent attention"
+        "sparse attention",
+        "sparse transformer"
       ],
-      "def_snippet": "Sparse attention is a technique that limits each token to attending to a subset of other tokens rather than all of them, reducing the computational cost of attention in long sequen…"
+      "def_snippet": "Attention computed over a chosen subset of token pairs instead of all of them, trading the transformer's full all-pairs interaction for a pattern that scales far better with sequence length. It rests on the observation that most of the attention in a trained model is local or structured, so the full quadratic computation is largely wasted.",
+      "durable": true,
+      "category": "Transformers and LLMs"
     },
     {
       "id": "sparse-autoencoder",
@@ -10182,11 +10182,17 @@
     },
     {
       "id": "subagents",
-      "label": "subagents",
-      "kind": "tool",
+      "label": "Subagents",
+      "kind": "technique",
       "attention": 11,
-      "aliases": [],
-      "def_snippet": "Subagents are separate AI instances spawned by a primary agent to handle specific tasks with their own context windows, allowing work to be delegated and run in parallel without cl…"
+      "aliases": [
+        "sub-agents",
+        "agent spawning",
+        "child agents"
+      ],
+      "def_snippet": "Specialized helper agents that a main agent spawns to handle a piece of a task, each with its own fresh context, tools, and instructions, reporting a result back. The point is less parallelism than context isolation: each subagent works in a clean window and returns only its conclusion, which keeps the main agent's context focused.",
+      "durable": true,
+      "category": "Agents and Tool Use"
     },
     {
       "id": "submodule-selection",

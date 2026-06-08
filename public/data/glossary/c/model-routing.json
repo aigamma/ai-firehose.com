@@ -1,10 +1,12 @@
 {
   "id": "model-routing",
-  "label": "model routing",
+  "label": "Model Routing",
   "aliases": [
-    "multi-model routing"
+    "model router",
+    "LLM routing",
+    "request routing"
   ],
-  "kind": "opinion",
+  "kind": "technique",
   "attention": 16,
   "first_seen": "2026-05-19T03:35:08+00:00",
   "rotation": null,
@@ -107,5 +109,58 @@
       "kind": "technique"
     }
   ],
-  "definition": "Model routing is the practice of directing different parts of a task to different AI models based on their strengths, raising the question of whether mixing providers yields better results than relying on a single model."
+  "definition": "Sending each request to the model best suited to it, a small fast model for easy queries and a large expensive one for hard ones, instead of paying frontier prices for every call. It treats the model not as a fixed choice but as a dispatch decision made per request, one of the most direct levers on the cost and latency of an LLM product.",
+  "category": "AI Engineering",
+  "durable": true,
+  "source": "authored",
+  "body": [
+    {
+      "type": "p",
+      "text": "Most LLM products send every request to one model, usually the strongest, because that is the safe default. But the strongest model is also the slowest and dearest, and the great bulk of real traffic, classification, extraction, short rewrites, simple answers, does not need it. Model routing is the decision to stop paying frontier prices for trivial work: look at each request and dispatch it to the cheapest model that will still get it right."
+    },
+    {
+      "type": "p",
+      "text": "A router is a classifier sitting in front of the models, and the design choices are what it routes on and how it decides. It can route on the task, sending a known cheap operation to a small model; on an estimate of difficulty, where a quick model or a learned scorer judges whether the query is hard; or on a budget the caller sets explicitly. The hard part is the cost of being wrong: route a hard query to a weak model and you get a confident bad answer, so routers are tuned to escalate to the strong model whenever the difficulty signal is uncertain."
+    },
+    {
+      "type": "p",
+      "text": "The reason routing pays is an asymmetry in the traffic. Cost is dominated by the few hard queries that genuinely need the big model, while volume is dominated by the many easy ones that do not, so moving even a large share of requests onto a small model barely dents quality while cutting the bill sharply. Routing converts a flat per-call price into a distribution matched to the actual difficulty of the work, which is precisely why the savings grow with scale."
+    },
+    {
+      "type": "p",
+      "text": "Routing is where model-agnostic design pays off concretely, since a router can only dispatch among models it can swap freely. It also blurs the line between a model and a system: a well-routed product behaves like one capable assistant while being, underneath, a portfolio of models each handling the slice it is best at. As the frontier fans out into many models at many price points, the routing layer, not any single model, increasingly decides whether a product is both good and affordable."
+    }
+  ],
+  "related": [
+    {
+      "slug": "multi-model-workflow",
+      "label": "Multi-Model Workflow",
+      "kind": "technique"
+    },
+    {
+      "slug": "model-agnostic",
+      "label": "Model-Agnostic",
+      "kind": "technique"
+    },
+    {
+      "slug": "openrouter",
+      "label": "OpenRouter",
+      "kind": "tool"
+    },
+    {
+      "slug": "large-language-model",
+      "label": "Large Language Model",
+      "kind": "technique"
+    },
+    {
+      "slug": "frontier-model",
+      "label": "Frontier Model",
+      "kind": "opinion"
+    },
+    {
+      "slug": "token-optimization",
+      "label": "Token Optimization",
+      "kind": "technique"
+    }
+  ]
 }
