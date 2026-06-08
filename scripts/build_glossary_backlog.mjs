@@ -15,10 +15,14 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const idx = JSON.parse(readFileSync(resolve(ROOT, "public/data/glossary/index.json"), "utf8"));
+// Slugs deliberately excluded as non-durable (pure dev terms, business words, noise, transient products).
+let skip = {};
+try { skip = JSON.parse(readFileSync(resolve(ROOT, "content/glossary/skiplist.json"), "utf8")).skip || {}; } catch {}
+const skipped = new Set(Object.keys(skip));
 // Sanitize: strip any em dash from a corpus-derived label so this generated doc cannot
 // trip the no-em-dash gate (the labels are AI-discovered, not authored prose).
 const clean = (s) => String(s || "").replace(/—/g, ", ").replace(/\s+/g, " ").trim();
-const todo = (idx.concepts || []).filter((c) => !c.durable).sort(
+const todo = (idx.concepts || []).filter((c) => !c.durable && !skipped.has(c.id)).sort(
   (a, b) => (b.attention || 0) - (a.attention || 0) || String(a.id).localeCompare(String(b.id)),
 );
 
@@ -29,12 +33,13 @@ const out = [
   "> NOT yet have a durable authored entry, sorted by attention (descending, so the board-visible",
   "> head is at the top). It is the work queue for the campaign in docs/GLOSSARY_ONBOARDING.md.",
   "> Vendor and product tools (Ollama, OpenRouter, DeepSeek, and so on) ARE in scope, written as",
-  "> short educational entries; only pure non-AI dev terms (for example form-submission) are skipped.",
+  "> short educational entries; pure non-AI dev terms, generic business words, and noise are skipped via",
+  "> content/glossary/skiplist.json and excluded from the list below.",
   ">",
   "> Auto-generated. Regenerate after authoring with: node scripts/build_glossary_backlog.mjs",
   "> Live source of truth: public/data/glossary/index.json (every non-durable concept).",
   "",
-  `Total prospects remaining: ${todo.length}.`,
+  `Total prospects remaining: ${todo.length} (after excluding ${skipped.size} skiplisted as non-durable).`,
   "",
   "| # | attention | kind | slug | label |",
   "|---|---|---|---|---|",
