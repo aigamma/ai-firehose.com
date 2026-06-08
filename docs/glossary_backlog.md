@@ -10,7 +10,7 @@
 > Auto-generated. Regenerate after authoring with: node scripts/build_glossary_backlog.mjs
 > Live source of truth: public/data/glossary/index.json (every non-durable concept).
 
-Total prospects remaining: 344 (after excluding 41 skiplisted as non-durable).
+Total prospects remaining: 338 (after excluding 41 skiplisted as non-durable).
 
 | # | attention | kind | slug | label |
 |---|---|---|---|---|
@@ -233,128 +233,122 @@ Total prospects remaining: 344 (after excluding 41 skiplisted as non-durable).
 | 217 | 1 | tool | health-monitoring | health monitoring |
 | 218 | 1 | technique | hill-climbing | hill climbing |
 | 219 | 1 | tool | hydrology-modeling | hydrology modeling |
-| 220 | 1 | technique | hypernetwork | hypernetwork |
-| 221 | 1 | opinion | hyperscaler-capex | hyperscaler capex |
-| 222 | 1 | technique | hypothesis-testing | hypothesis testing |
-| 223 | 1 | tool | image-restoration | image restoration |
-| 224 | 1 | tool | imagegen | imagegen |
-| 225 | 1 | technique | in-band-signaling | in-band signaling |
-| 226 | 1 | technique | in-context-scoring | in-context scoring |
-| 227 | 1 | tool | install-script-disabling | install script disabling |
-| 228 | 1 | technique | interpolation | interpolation |
-| 229 | 1 | technique | kv-cache-decoding | KV-cache decoding |
-| 230 | 1 | technique | large-deviation-principle | large deviation principle |
-| 231 | 1 | tool | layout-control | layout control |
-| 232 | 1 | tool | lethal-trifecta | lethal trifecta |
-| 233 | 1 | technique | long-tailed-recognition | long-tailed recognition |
-| 234 | 1 | technique | lookahead | lookahead |
-| 235 | 1 | technique | low-rank-update | low-rank update |
-| 236 | 1 | tool | mask-conditioning | mask conditioning |
-| 237 | 1 | technique | mask-r-cnn | Mask R-CNN |
-| 238 | 1 | technique | materials-characterization | materials characterization |
-| 239 | 1 | technique | maximum-entropy-inference | maximum-entropy inference |
-| 240 | 1 | tool | mcgs | MCGS |
-| 241 | 1 | tool | medicinal-chemistry | medicinal chemistry |
-| 242 | 1 | technique | mixture-density-representation | mixture-density representation |
-| 243 | 1 | technique | mllm-as-a-judge | MLLM-as-a-Judge |
-| 244 | 1 | opinion | model-competition | model competition |
-| 245 | 1 | tool | momentary-visual-events | momentary visual events |
-| 246 | 1 | technique | monocular-depth | monocular depth |
-| 247 | 1 | technique | monte-carlo-methods | Monte Carlo methods |
-| 248 | 1 | technique | motion-conditioning | motion conditioning |
-| 249 | 1 | tool | mqtt | MQTT |
-| 250 | 1 | tool | multi-granularity-detection | multi-granularity detection |
-| 251 | 1 | technique | multi-objective-alignment | multi-objective alignment |
-| 252 | 1 | technique | multilingual-asr-evaluation | multilingual ASR evaluation |
-| 253 | 1 | technique | neural-safety-filters | neural safety filters |
-| 254 | 1 | tool | neurochemistry-simulation | neurochemistry simulation |
-| 255 | 1 | technique | novelty-signals | novelty signals |
-| 256 | 1 | technique | observation-masking | observation masking |
-| 257 | 1 | tool | omni-model | omni-model |
-| 258 | 1 | opinion | open-first-strategy | open-first strategy |
-| 259 | 1 | tool | open-world-generalization | open-world generalization |
-| 260 | 1 | tool | package-manager-configuration | package manager configuration |
-| 261 | 1 | tool | page-centric-tensors | page-centric tensors |
-| 262 | 1 | technique | parallel-decoding | parallel decoding |
-| 263 | 1 | tool | parallel-lemma-proving | parallel lemma proving |
-| 264 | 1 | tool | part-aware-representation | part-aware representation |
-| 265 | 1 | tool | pathfinding | pathfinding |
-| 266 | 1 | technique | perceiver | Perceiver |
-| 267 | 1 | technique | perceptual-perturbation | perceptual perturbation |
-| 268 | 1 | tool | performance-analysis | performance analysis |
-| 269 | 1 | technique | poisoning-attacks | poisoning attacks |
-| 270 | 1 | technique | polynomial-preconditioner | polynomial preconditioner |
-| 271 | 1 | technique | pool-adjacent-violators-algorithm | Pool Adjacent Violators Algorithm |
-| 272 | 1 | opinion | practical-ai-deployment | practical AI deployment |
-| 273 | 1 | opinion | precision-timekeeping | precision timekeeping |
-| 274 | 1 | technique | predictive-state-objective | predictive state objective |
-| 275 | 1 | technique | prefill-optimization | prefill optimization |
-| 276 | 1 | opinion | pricing-trends | pricing trends |
-| 277 | 1 | tool | proactiveness | proactiveness |
-| 278 | 1 | tool | process-outcome-evaluation | process-outcome evaluation |
-| 279 | 1 | opinion | professional-expertise | professional expertise |
-| 280 | 1 | tool | profiling | profiling |
-| 281 | 1 | tool | quality-control | quality control |
-| 282 | 1 | opinion | radical-optionality | radical optionality |
-| 283 | 1 | tool | rare-disease-diagnosis | rare disease diagnosis |
-| 284 | 1 | opinion | real-time-interaction | real-time interaction |
-| 285 | 1 | tool | reasoning-and-action | reasoning and action |
-| 286 | 1 | technique | region-level-guidance | region-level guidance |
-| 287 | 1 | technique | regret-minimization | Regret minimization |
-| 288 | 1 | opinion | regulation | regulation |
-| 289 | 1 | technique | repeated-games | Repeated games |
-| 290 | 1 | technique | replanning | replanning |
-| 291 | 1 | opinion | repository-context | repository context |
-| 292 | 1 | opinion | return-on-investment | return on investment |
-| 293 | 1 | technique | risk-sensitive-optimization | risk-sensitive optimization |
-| 294 | 1 | technique | rlvr | RLVR |
-| 295 | 1 | tool | robustness-evaluation | robustness evaluation |
-| 296 | 1 | tool | rule-induction | rule induction |
-| 297 | 1 | tool | safety-planning | safety planning |
-| 298 | 1 | opinion | scaffold-structure | scaffold structure |
-| 299 | 1 | technique | script-normalization | script normalization |
-| 300 | 1 | technique | secure-aggregation | secure aggregation |
-| 301 | 1 | tool | segmentation | segmentation |
-| 302 | 1 | tool | semantic-grounding | semantic grounding |
-| 303 | 1 | tool | sensitive-data-protection | sensitive data protection |
-| 304 | 1 | tool | service-workers | Service Workers |
-| 305 | 1 | technique | shuffle-model | Shuffle Model |
-| 306 | 1 | tool | signal-processing | signal processing |
-| 307 | 1 | technique | simultaneous-bidding | simultaneous bidding |
-| 308 | 1 | opinion | singularity | singularity |
-| 309 | 1 | technique | sliced-wasserstein-distance | Sliced-Wasserstein distance |
-| 310 | 1 | tool | small-models | small models |
-| 311 | 1 | technique | solver-in-the-loop | solver-in-the-loop |
-| 312 | 1 | technique | sparsity | sparsity |
-| 313 | 1 | opinion | spec-to-pr | spec-to-PR |
-| 314 | 1 | tool | sql-write-queries | SQL write queries |
-| 315 | 1 | tool | stargate | Stargate |
-| 316 | 1 | opinion | strategic-positioning | strategic positioning |
-| 317 | 1 | technique | streaming-generation | streaming generation |
-| 318 | 1 | tool | streaming-vision-language-models | streaming vision-language models |
-| 319 | 1 | technique | structural-equation-models | structural equation models |
-| 320 | 1 | technique | submodule-selection | submodule selection |
-| 321 | 1 | opinion | superintelligence | superintelligence |
-| 322 | 1 | tool | supply-chain-security | supply chain security |
-| 323 | 1 | technique | surrogate-regret | surrogate regret |
-| 324 | 1 | opinion | surveillance | surveillance |
-| 325 | 1 | technique | tarflow | TARFlow |
-| 326 | 1 | opinion | technology-neutrality | technology neutrality |
-| 327 | 1 | technique | temporal-capacity-allocation | temporal capacity allocation |
-| 328 | 1 | tool | temporal-fidelity | temporal fidelity |
-| 329 | 1 | technique | text-embeddings | text embeddings |
-| 330 | 1 | technique | token-level-advantage-reweighting | token-level advantage reweighting |
-| 331 | 1 | technique | token-level-chunking | token-level chunking |
-| 332 | 1 | technique | token-sparse-methods | token sparse methods |
-| 333 | 1 | technique | transformer-pruning | transformer pruning |
-| 334 | 1 | technique | transliteration | transliteration |
-| 335 | 1 | tool | triplane | triplane |
-| 336 | 1 | tool | usage-based-pricing | usage-based pricing |
-| 337 | 1 | tool | user-preferences | user preferences |
-| 338 | 1 | tool | video-mllms | video MLLMs |
-| 339 | 1 | tool | visual-stress | visual stress |
-| 340 | 1 | technique | visual-tokenization | visual tokenization |
-| 341 | 1 | opinion | voice-intelligence | voice intelligence |
-| 342 | 1 | technique | weight-normalization | weight normalization |
-| 343 | 1 | technique | whole-body-control | whole-body control |
-| 344 | 1 | technique | word-error-rate | Word Error Rate |
+| 220 | 1 | opinion | hyperscaler-capex | hyperscaler capex |
+| 221 | 1 | technique | hypothesis-testing | hypothesis testing |
+| 222 | 1 | tool | image-restoration | image restoration |
+| 223 | 1 | tool | imagegen | imagegen |
+| 224 | 1 | technique | in-band-signaling | in-band signaling |
+| 225 | 1 | technique | in-context-scoring | in-context scoring |
+| 226 | 1 | tool | install-script-disabling | install script disabling |
+| 227 | 1 | technique | interpolation | interpolation |
+| 228 | 1 | technique | kv-cache-decoding | KV-cache decoding |
+| 229 | 1 | technique | large-deviation-principle | large deviation principle |
+| 230 | 1 | tool | layout-control | layout control |
+| 231 | 1 | tool | lethal-trifecta | lethal trifecta |
+| 232 | 1 | technique | long-tailed-recognition | long-tailed recognition |
+| 233 | 1 | technique | lookahead | lookahead |
+| 234 | 1 | technique | low-rank-update | low-rank update |
+| 235 | 1 | tool | mask-conditioning | mask conditioning |
+| 236 | 1 | technique | mask-r-cnn | Mask R-CNN |
+| 237 | 1 | technique | materials-characterization | materials characterization |
+| 238 | 1 | technique | maximum-entropy-inference | maximum-entropy inference |
+| 239 | 1 | tool | mcgs | MCGS |
+| 240 | 1 | tool | medicinal-chemistry | medicinal chemistry |
+| 241 | 1 | technique | mixture-density-representation | mixture-density representation |
+| 242 | 1 | technique | mllm-as-a-judge | MLLM-as-a-Judge |
+| 243 | 1 | opinion | model-competition | model competition |
+| 244 | 1 | tool | momentary-visual-events | momentary visual events |
+| 245 | 1 | technique | monocular-depth | monocular depth |
+| 246 | 1 | technique | motion-conditioning | motion conditioning |
+| 247 | 1 | tool | mqtt | MQTT |
+| 248 | 1 | tool | multi-granularity-detection | multi-granularity detection |
+| 249 | 1 | technique | multi-objective-alignment | multi-objective alignment |
+| 250 | 1 | technique | multilingual-asr-evaluation | multilingual ASR evaluation |
+| 251 | 1 | technique | neural-safety-filters | neural safety filters |
+| 252 | 1 | tool | neurochemistry-simulation | neurochemistry simulation |
+| 253 | 1 | technique | novelty-signals | novelty signals |
+| 254 | 1 | technique | observation-masking | observation masking |
+| 255 | 1 | tool | omni-model | omni-model |
+| 256 | 1 | opinion | open-first-strategy | open-first strategy |
+| 257 | 1 | tool | open-world-generalization | open-world generalization |
+| 258 | 1 | tool | package-manager-configuration | package manager configuration |
+| 259 | 1 | tool | page-centric-tensors | page-centric tensors |
+| 260 | 1 | technique | parallel-decoding | parallel decoding |
+| 261 | 1 | tool | parallel-lemma-proving | parallel lemma proving |
+| 262 | 1 | tool | part-aware-representation | part-aware representation |
+| 263 | 1 | tool | pathfinding | pathfinding |
+| 264 | 1 | technique | perceiver | Perceiver |
+| 265 | 1 | technique | perceptual-perturbation | perceptual perturbation |
+| 266 | 1 | tool | performance-analysis | performance analysis |
+| 267 | 1 | technique | poisoning-attacks | poisoning attacks |
+| 268 | 1 | technique | polynomial-preconditioner | polynomial preconditioner |
+| 269 | 1 | technique | pool-adjacent-violators-algorithm | Pool Adjacent Violators Algorithm |
+| 270 | 1 | opinion | practical-ai-deployment | practical AI deployment |
+| 271 | 1 | opinion | precision-timekeeping | precision timekeeping |
+| 272 | 1 | technique | predictive-state-objective | predictive state objective |
+| 273 | 1 | technique | prefill-optimization | prefill optimization |
+| 274 | 1 | opinion | pricing-trends | pricing trends |
+| 275 | 1 | tool | proactiveness | proactiveness |
+| 276 | 1 | tool | process-outcome-evaluation | process-outcome evaluation |
+| 277 | 1 | opinion | professional-expertise | professional expertise |
+| 278 | 1 | tool | profiling | profiling |
+| 279 | 1 | tool | quality-control | quality control |
+| 280 | 1 | opinion | radical-optionality | radical optionality |
+| 281 | 1 | tool | rare-disease-diagnosis | rare disease diagnosis |
+| 282 | 1 | opinion | real-time-interaction | real-time interaction |
+| 283 | 1 | tool | reasoning-and-action | reasoning and action |
+| 284 | 1 | technique | region-level-guidance | region-level guidance |
+| 285 | 1 | opinion | regulation | regulation |
+| 286 | 1 | technique | repeated-games | Repeated games |
+| 287 | 1 | technique | replanning | replanning |
+| 288 | 1 | opinion | repository-context | repository context |
+| 289 | 1 | opinion | return-on-investment | return on investment |
+| 290 | 1 | technique | risk-sensitive-optimization | risk-sensitive optimization |
+| 291 | 1 | tool | robustness-evaluation | robustness evaluation |
+| 292 | 1 | tool | rule-induction | rule induction |
+| 293 | 1 | tool | safety-planning | safety planning |
+| 294 | 1 | opinion | scaffold-structure | scaffold structure |
+| 295 | 1 | technique | script-normalization | script normalization |
+| 296 | 1 | technique | secure-aggregation | secure aggregation |
+| 297 | 1 | tool | segmentation | segmentation |
+| 298 | 1 | tool | semantic-grounding | semantic grounding |
+| 299 | 1 | tool | sensitive-data-protection | sensitive data protection |
+| 300 | 1 | tool | service-workers | Service Workers |
+| 301 | 1 | technique | shuffle-model | Shuffle Model |
+| 302 | 1 | tool | signal-processing | signal processing |
+| 303 | 1 | technique | simultaneous-bidding | simultaneous bidding |
+| 304 | 1 | opinion | singularity | singularity |
+| 305 | 1 | technique | sliced-wasserstein-distance | Sliced-Wasserstein distance |
+| 306 | 1 | tool | small-models | small models |
+| 307 | 1 | technique | solver-in-the-loop | solver-in-the-loop |
+| 308 | 1 | technique | sparsity | sparsity |
+| 309 | 1 | opinion | spec-to-pr | spec-to-PR |
+| 310 | 1 | tool | sql-write-queries | SQL write queries |
+| 311 | 1 | tool | stargate | Stargate |
+| 312 | 1 | opinion | strategic-positioning | strategic positioning |
+| 313 | 1 | technique | streaming-generation | streaming generation |
+| 314 | 1 | tool | streaming-vision-language-models | streaming vision-language models |
+| 315 | 1 | technique | structural-equation-models | structural equation models |
+| 316 | 1 | technique | submodule-selection | submodule selection |
+| 317 | 1 | tool | supply-chain-security | supply chain security |
+| 318 | 1 | technique | surrogate-regret | surrogate regret |
+| 319 | 1 | opinion | surveillance | surveillance |
+| 320 | 1 | technique | tarflow | TARFlow |
+| 321 | 1 | opinion | technology-neutrality | technology neutrality |
+| 322 | 1 | technique | temporal-capacity-allocation | temporal capacity allocation |
+| 323 | 1 | tool | temporal-fidelity | temporal fidelity |
+| 324 | 1 | technique | text-embeddings | text embeddings |
+| 325 | 1 | technique | token-level-advantage-reweighting | token-level advantage reweighting |
+| 326 | 1 | technique | token-level-chunking | token-level chunking |
+| 327 | 1 | technique | token-sparse-methods | token sparse methods |
+| 328 | 1 | technique | transformer-pruning | transformer pruning |
+| 329 | 1 | technique | transliteration | transliteration |
+| 330 | 1 | tool | triplane | triplane |
+| 331 | 1 | tool | usage-based-pricing | usage-based pricing |
+| 332 | 1 | tool | user-preferences | user preferences |
+| 333 | 1 | tool | video-mllms | video MLLMs |
+| 334 | 1 | tool | visual-stress | visual stress |
+| 335 | 1 | technique | visual-tokenization | visual tokenization |
+| 336 | 1 | opinion | voice-intelligence | voice intelligence |
+| 337 | 1 | technique | whole-body-control | whole-body control |
+| 338 | 1 | technique | word-error-rate | Word Error Rate |
