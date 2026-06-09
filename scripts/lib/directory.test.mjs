@@ -38,8 +38,7 @@ test("sorts by authority weight desc, then name", () => {
   assert.deepEqual(roster.map((r) => r.channel_id), ["UCaaa", "UCccc", "UCbbb"]);
 });
 
-test("derives the subscribe URL from the handle", () => {
-  assert.equal(by.UCaaa.subscribeUrl, "https://www.youtube.com/@anchor?sub_confirmation=1");
+test("derives the channel URL from the handle", () => {
   assert.equal(by.UCaaa.channelUrl, "https://www.youtube.com/@anchor");
 });
 

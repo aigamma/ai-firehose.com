@@ -2,10 +2,10 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { getKind } from "../data/registry.js";
 
-// The browse-and-subscribe roster on the Watch page. Every active educator the worker
-// ingests into the three-month RAG, rendered as a grid of cards with a one-click
-// Subscribe, the concepts they cover (links into the glossary hubs), their kind lean,
-// and how active they are. Reads public/data/directory.json, built deterministically by
+// The browse roster on the Watch page. Every active educator the worker ingests into
+// the three-month RAG, rendered as a grid of cards whose name links straight to the
+// channel, with the concepts they cover (links into the glossary hubs), their kind
+// lean, and how active they are. Reads public/data/directory.json, built deterministically by
 // scripts/build_directory.mjs from the ingestion registry (sources/youtube_channels.json)
 // joined to the corpus. A freshly added channel with no corpus items yet still shows,
 // marked as newly added, so the directory is useful the moment a handle is dropped.
@@ -28,10 +28,6 @@ function CreatorDirectory({ roster = [] }) {
               {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
             </div>
             {c.handle && <div className="faint mono creator-card-handle">{c.handle}</div>}
-
-            <a className="btn subscribe-btn" href={c.subscribeUrl} target="_blank" rel="noreferrer">
-              Subscribe on YouTube
-            </a>
 
             {c.concepts?.length > 0 && (
               <div className="creator-card-covers">

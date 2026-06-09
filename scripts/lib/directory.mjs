@@ -19,8 +19,7 @@ import { slugify } from "../../worker/lib/hash.mjs";
 const REAL_KINDS = new Set(["technique", "tool", "opinion"]);
 const norm = (s) => String(s || "").trim().toLowerCase();
 
-// The public channel URL, then the one-click subscribe URL (the sub_confirmation
-// parameter opens YouTube's subscribe prompt). Mirrors build_creators.mjs:channelUrl.
+// The public channel URL (the card's name links here). Mirrors build_creators.mjs:channelUrl.
 const channelUrl = (c) =>
   c.handle
     ? `https://www.youtube.com/${c.handle.startsWith("@") ? c.handle : `@${c.handle}`}`
@@ -102,7 +101,6 @@ export function buildRoster({ channels = [], items = [], glossarySlugs = new Set
         name: c.name || "",
         handle: c.handle || "",
         channelUrl: url,
-        subscribeUrl: `${url}?sub_confirmation=1`,
         authority_weight: typeof c.authority_weight === "number" ? c.authority_weight : 0.8,
         kind_bias: c.kind_bias || "mixed",
         kindLean: dominantKind(list, c.kind_bias),

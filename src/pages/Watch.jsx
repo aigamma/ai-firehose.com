@@ -7,7 +7,7 @@ import LiteYouTube from "../components/LiteYouTube.jsx";
 
 // The Watch page consolidates two surfaces over the same favorite AI educators:
 //  1. Browse and Subscribe: the full roster the worker ingests into the three-month RAG
-//     (public/data/directory.json), each card with a one-click subscribe and the concepts
+//     (public/data/directory.json), each card linking to the channel and the concepts
 //     it covers. Drop a handle into sources/youtube_channels.json and it appears here.
 //  2. Latest: the curated spotlight of newest videos (public/data/creators.json), each
 //     joined to the corpus for a cited summary and concept-hub links, plus a pinned list.
