@@ -1,13 +1,115 @@
 {
   "id": "gpu",
   "label": "GPU",
-  "kind": "tool",
-  "category": "Systems and Infrastructure",
   "aliases": [
     "graphics processing unit",
     "GPUs",
     "accelerator"
   ],
+  "kind": "tool",
+  "attention": 16,
+  "first_seen": "2026-05-05T22:22:47+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "cuda",
+      "label": "CUDA",
+      "score": 0.847
+    },
+    {
+      "id": "gpu-utilization",
+      "label": "GPU utilization",
+      "score": 0.774
+    },
+    {
+      "id": "cpu",
+      "label": "CPU",
+      "score": 0.77
+    },
+    {
+      "id": "nvidia-nim",
+      "label": "NVIDIA-NIM",
+      "score": 0.728
+    },
+    {
+      "id": "gru",
+      "label": "GRU",
+      "score": 0.715
+    },
+    {
+      "id": "tpu",
+      "label": "TPU",
+      "score": 0.71
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.3
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.091
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.847
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.092
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.549
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.261
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.211
+    }
+  ],
+  "top_items": [
+    {
+      "title": "GPU Cloud Deployment Without Leaving Your IDE — Audry Hsu, RunPod",
+      "url": "https://www.youtube.com/watch?v=zDGHt0LB-dA",
+      "author_or_channel": "AI Engineer",
+      "published_at": "2026-06-09T18:15:10+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Chip design from the bottom up – Reiner Pope",
+      "url": "https://www.youtube.com/watch?v=oIk3R-sMX5o",
+      "author_or_channel": "Dwarkesh Patel",
+      "published_at": "2026-05-22T16:11:28+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "Anthropic rents SpaceX?",
+      "url": "https://www.youtube.com/watch?v=17JKoimQ2_Q",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-05-09T05:19:46+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "AI on Kubernetes? EKS Auto Mode Handles the Burst",
+      "url": "https://www.youtube.com/watch?v=H2JpzZo3y7w",
+      "author_or_channel": "AWS Developers",
+      "published_at": "2026-05-05T22:22:47+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Systems and Infrastructure",
   "durable": true,
   "source": "authored",
   "definition": "A massively parallel processor, originally built for rendering images, that became the dominant hardware for neural networks because deep learning is overwhelmingly dense linear algebra it can execute thousands of operations at once. Its wide, data-parallel design, built to color millions of pixels, turned out to be exactly what matrix multiplication needs, and its fixed memory and compute ceiling is the starting point for every parallelism technique.",
@@ -70,12 +172,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/gpu.png",
     "alt": "Two side-by-side silicon floorplans. The CPU devotes most of its area to a large Control unit, a big Cache, and only four ALUs. The GPU spends almost all its area on a dense grid of many small ALUs, with little control logic or cache.",

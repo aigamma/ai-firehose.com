@@ -6,34 +6,29 @@
     "model optimization"
   ],
   "kind": "technique",
-  "attention": 36,
+  "attention": 24,
   "first_seen": "2026-05-21T19:49:20+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "leading",
-    "ratio": 104,
-    "momentum": 117.1,
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 80.1,
     "sparkline": [
-      4,
-      4,
-      4,
-      4,
-      4,
-      3,
+      0,
+      0,
+      0,
+      6,
+      5,
+      5,
       9,
-      8
+      9
     ]
   },
   "neighbors": [
     {
-      "id": "context-compression",
-      "label": "context compression",
-      "score": 0.793
-    },
-    {
-      "id": "model-calibration",
-      "label": "model calibration",
-      "score": 0.789
+      "id": "compression",
+      "label": "compression",
+      "score": 0.813
     },
     {
       "id": "inference-optimization",
@@ -44,6 +39,11 @@
       "id": "sparsity",
       "label": "sparsity",
       "score": 0.781
+    },
+    {
+      "id": "model-evaluation",
+      "label": "model evaluation",
+      "score": 0.78
     },
     {
       "id": "shuffle-model",
@@ -65,22 +65,22 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.333
+      "position": -0.312
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.646
+      "position": 0.551
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.478
+      "position": 0.494
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.193
+      "position": -0.122
     },
     {
       "slug": "neural-symbolic",
@@ -95,31 +95,17 @@
   ],
   "top_items": [
     {
-      "title": "Under 5 minutes to a deployed LLM endpoint — Audry Hsu, RunPod",
-      "url": "https://www.youtube.com/watch?v=ILdE7FaAjVA",
-      "author_or_channel": "AI Engineer",
-      "published_at": "2026-06-07T16:00:32+00:00",
+      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
+      "url": "https://www.youtube.com/watch?v=KqdRWE1en8k",
+      "author_or_channel": "Better Stack",
+      "published_at": "2026-06-08T12:53:05+00:00",
       "kind": "tool"
-    },
-    {
-      "title": "Reinventing Entropy | Compression & Intelligence Part 1",
-      "url": "https://www.youtube.com/watch?v=l6DKRf-fAAM",
-      "author_or_channel": "3Blue1Brown",
-      "published_at": "2026-06-07T11:49:51+00:00",
-      "kind": "opinion"
     },
     {
       "title": "Transformers are inherently succinct",
       "url": "https://openreview.net/pdf?id=Yxz92UuPLQ",
       "author_or_channel": "brandonb",
       "published_at": "2026-06-05T18:50:26.000Z",
-      "kind": "technique"
-    },
-    {
-      "title": "Differences in Detection: Explainability Where it Matters",
-      "url": "http://arxiv.org/abs/2606.07503v1",
-      "author_or_channel": "Johannes Theodoridis, Johannes Maucher, Andreas Schilling",
-      "published_at": "2026-06-05T17:54:58Z",
       "kind": "technique"
     },
     {
@@ -135,6 +121,20 @@
       "author_or_channel": "theanonymousone",
       "published_at": "2026-06-05T16:18:48.000Z",
       "kind": "tool"
+    },
+    {
+      "title": "Show HN: Lowfat – pluggable CLI filter that saved 91.8% of my LLM tokens",
+      "url": "https://github.com/zdk/lowfat",
+      "author_or_channel": "zdkaster",
+      "published_at": "2026-06-05T09:10:42.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "url": "https://www.youtube.com/watch?v=iICZTWcryac",
+      "author_or_channel": "Cole Medin",
+      "published_at": "2026-06-04T00:00:04+00:00",
+      "kind": "technique"
     }
   ],
   "definition": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods. Because inference, not training, is where a deployed model's lifetime cost accumulates, compression is often where the real economics of shipping AI are decided.",
