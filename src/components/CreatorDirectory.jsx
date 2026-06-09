@@ -9,6 +9,8 @@ import { getKind } from "../data/registry.js";
 // scripts/build_directory.mjs from the ingestion registry (sources/youtube_channels.json)
 // joined to the corpus. A freshly added channel with no corpus items yet still shows,
 // marked as newly added, so the directory is useful the moment a handle is dropped.
+// Recommended channels (the inner circle: a carefully vetted vote of confidence) carry a
+// star badge and a gold-edged card, and the builder sorts them to the front of the roster.
 function CreatorDirectory({ roster = [] }) {
   if (!roster.length) return null;
   return (
@@ -18,13 +20,16 @@ function CreatorDirectory({ roster = [] }) {
         return (
           <article
             key={c.channel_id}
-            className="card creator-card"
+            className={`card creator-card${c.recommended ? " creator-card-recommended" : ""}`}
             style={kind ? { "--tile-accent": `var(${kind.accentVar})` } : undefined}
           >
             <div className="creator-card-head">
               <h3 className="creator-card-name">
                 <a href={c.channelUrl} target="_blank" rel="noreferrer">{c.name}</a>
               </h3>
+              {c.recommended && (
+                <span className="badge badge-recommended" title="Recommended: the carefully vetted inner circle">★ Recommended</span>
+              )}
               {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
             </div>
             {c.handle && <div className="faint mono creator-card-handle">{c.handle}</div>}

@@ -25,6 +25,7 @@ node scripts/onboard_youtube.mjs --dry @a @b @c            # resolve and preview
 node scripts/onboard_youtube.mjs @a @b @c                  # add them at the safe default 0.85 mixed
 node scripts/onboard_youtube.mjs @anchor --weight=0.95     # an anchor-tier favorite
 node scripts/onboard_youtube.mjs --track-only @a @b @c     # ingest and track, do not endorse (hidden from the directory)
+node scripts/onboard_youtube.mjs --recommend @a @b @c      # add and anoint as an inner-circle pick (star badge, leads the directory)
 ```
 
 `onboard_youtube.mjs` resolves each handle to a channel id, adds it to
@@ -77,6 +78,20 @@ the file afterward.
   news or reaction channel is `opinion`; a build-along tutorial channel leans `technique`).
 
 When unsure, the default `--weight=0.85 --kind=mixed` is the safe add.
+
+## The Inner Circle (Recommended Channels)
+
+A `recommended` channel is the inner circle: a carefully vetted vote of confidence, a tier above plain endorsement. On the Watch page a recommended channel gets a gold star badge and sorts to the front of the browse directory, and if it is also a featured spotlight creator it carries the badge there too. It is purely editorial: it changes surfacing and ordering only, never the rotation math (`authority_weight` stays your independent dial). Because a recommendation is the strongest endorsement, flagging one also clears any `hide_from_directory` (you cannot have a hidden recommendation).
+
+Mark or unmark them with no network call (operates on channels already in the registry):
+
+```
+node worker/sources/youtube_registry.mjs recommend @a @b @c     # anoint the inner circle
+node worker/sources/youtube_registry.mjs unrecommend @a         # demote back to a plain listing
+node scripts/onboard_youtube.mjs --recommend @new1 @new2        # onboard AND recommend in one step
+```
+
+The `recommend` subcommand edits the registry only, so afterward rebuild the served artifacts and commit them: `npm run directory` (and `npm run creators` if any recommended channel is also a featured spotlight creator), or just `npm run check:generated`, which regenerates and verifies all four. Then commit `sources/youtube_channels.json` plus the changed artifacts under `public/data/`.
 
 ## Verify Against Oracles (Before You Commit)
 

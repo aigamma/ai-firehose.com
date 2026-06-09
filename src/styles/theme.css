@@ -37,6 +37,7 @@
   --kind-technique: #7b8cf2; /* indigo */
   --kind-tool: #29c2a3;      /* teal */
   --kind-opinion: #e85aa0;   /* pink */
+  --recommended: #e3b341;    /* warm gold: the inner-circle vote of confidence */
 
   /* Rotation quadrants (the aigamma palette) */
   --q-leading: #2ecc71;   /* outperforming and gaining */
@@ -91,6 +92,7 @@
   --kind-technique: #5466d8;
   --kind-tool: #128c74;
   --kind-opinion: #c63f86;
+  --recommended: #a8740a;    /* darker gold for contrast on the light surface */
 
   --q-leading: #1aa85a;
   --q-improving: #1f6fe5;
@@ -279,6 +281,17 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .q-improving { color: var(--q-improving); }
 .q-weakening { color: var(--q-weakening); }
 .q-lagging { color: var(--q-lagging); }
+
+/* Recommended (the inner circle): a filled gold star badge, and a gold-edged card so the
+   carefully vetted channels read as a distinct tier without a separate section. */
+.badge-recommended {
+  color: var(--recommended);
+  border-color: color-mix(in oklab, var(--recommended) 55%, var(--border-strong));
+  background: color-mix(in oklab, var(--recommended) 16%, transparent);
+}
+.creator-card.creator-card-recommended {
+  border-color: color-mix(in oklab, var(--recommended) 45%, var(--border-strong));
+}
 
 /* Empty states (the scaffold before the worker has run) */
 .empty {

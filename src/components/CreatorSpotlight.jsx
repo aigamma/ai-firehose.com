@@ -28,6 +28,9 @@ export default function CreatorSpotlight({ creator, compact = false, limit }) {
             <a href={creator.channelUrl} target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "none" }}>{creator.name}</a>
           </h2>
         )}
+        {creator.recommended && (
+          <span className="badge badge-recommended" title="Recommended: the carefully vetted inner circle">★ Recommended</span>
+        )}
         {creator.handle && <span className="faint mono">{creator.handle}</span>}
         {!compact && creator.blurb && <span className="muted creator-blurb">{creator.blurb}</span>}
       </div>

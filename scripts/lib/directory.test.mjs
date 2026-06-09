@@ -93,3 +93,26 @@ test("corpusDate is the newest publish date, derived from data not the clock", (
   assert.equal(corpusDate(items), "2026-06-01"); // the arxiv item is newest by date
   assert.equal(corpusDate([]), "");
 });
+
+test("recommended channels (the inner circle) lead the roster and carry the flag", () => {
+  const ch = [
+    // A regular channel: highest authority and has a video, but NOT recommended.
+    { channel_id: "UCreg", name: "Regular Anchor", handle: "@reg", authority_weight: 0.95, kind_bias: "mixed", active: true },
+    // Recommended with a video.
+    { channel_id: "UCrecA", name: "Recommended A", handle: "@reca", authority_weight: 0.8, kind_bias: "mixed", active: true, recommended: true },
+    // Recommended but not yet ingested (no videos).
+    { channel_id: "UCrecB", name: "Recommended B", handle: "@recb", authority_weight: 0.85, kind_bias: "mixed", active: true, recommended: true },
+  ];
+  const its = [
+    { source: "youtube", source_id: "g1", author_or_channel: "Regular Anchor", kind: "technique", published_at: "2026-05-01T00:00:00Z", concepts: [] },
+    { source: "youtube", source_id: "g2", author_or_channel: "Recommended A", kind: "technique", published_at: "2026-05-02T00:00:00Z", concepts: [] },
+  ];
+  const r = buildRoster({ channels: ch, items: its, glossarySlugs: new Set() });
+  // Both recommended lead the higher-authority regular channel; within the recommended tier,
+  // the one with a video leads the not-yet-ingested one.
+  assert.deepEqual(r.map((x) => x.channel_id), ["UCrecA", "UCrecB", "UCreg"]);
+  // The flag is carried only on recommended entries, so the badge shows on exactly those.
+  assert.equal(r.find((x) => x.channel_id === "UCrecA").recommended, true);
+  assert.equal(r.find((x) => x.channel_id === "UCrecB").recommended, true);
+  assert.ok(!("recommended" in r.find((x) => x.channel_id === "UCreg")), "non-recommended omits the field");
+});

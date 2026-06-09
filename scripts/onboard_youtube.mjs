@@ -50,7 +50,13 @@ async function main() {
   // --track-only (alias --hide): ingest and rotation-weight, but keep out of the public
   // directory (logged and tracked, not endorsed). --endorse (alias --list) clears it.
   const hide = flags["track-only"] || flags.hide ? true : flags.endorse || flags.list ? false : undefined;
-  const mode = hide === true ? "  [track-only: ingested, hidden from the directory]" : hide === false ? "  [endorsed: listed in the directory]" : "";
+  // --recommend (alias --inner-circle): flag the channel a recommended inner-circle pick
+  // (star badge + front billing on Watch). It is the strongest endorsement, so it also
+  // clears any track-only flag. --unrecommend clears it.
+  const recommend = flags.recommend || flags["inner-circle"] ? true : flags.unrecommend ? false : undefined;
+  const mode =
+    (recommend === true ? "  [recommended: inner circle, endorsed]" : "") +
+    (hide === true ? "  [track-only: ingested, hidden from the directory]" : hide === false ? "  [endorsed: listed in the directory]" : "");
 
   console.log(`Onboarding ${handles.length} channel(s) at weight=${weight} kind=${kind}${mode}${dry ? "   (DRY RUN, no writes)" : ""}\n`);
 
@@ -58,7 +64,7 @@ async function main() {
   const skipped = [];
   for (const h of handles) {
     try {
-      const info = dry ? await resolveChannel(h) : await addChannel(h, { weight, kind, hide });
+      const info = dry ? await resolveChannel(h) : await addChannel(h, { weight, kind, hide, recommend });
       added.push({ name: info.name, handle: info.handle || h, channel_id: info.channel_id });
       console.log(`  ${dry ? "resolved" : "added   "}  ${info.name}  ${info.handle || ""}  ${info.channel_id}`);
     } catch (e) {
@@ -85,14 +91,15 @@ async function main() {
     console.log(`\n  ${"name".padEnd(28)} ${"handle".padEnd(20)} ${"wt".padEnd(5)} ${"kind".padEnd(10)} status`);
     for (const r of added) {
       const e = byId.get(r.channel_id);
-      const status =
-        hide === true
+      const base =
+        hide === true && recommend !== true
           ? "tracked, hidden from directory"
           : e
             ? e.videoCount > 0
               ? `${e.videoCount} videos, listed`
               : "listed, not yet ingested"
             : "listed";
+      const status = `${recommend === true ? "recommended, " : ""}${base}`;
       console.log(`  ${String(r.name).padEnd(28)} ${String(r.handle).padEnd(20)} ${String(weight).padEnd(5)} ${String(kind).padEnd(10)} ${status}`);
     }
   }

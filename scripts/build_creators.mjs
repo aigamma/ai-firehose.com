@@ -38,6 +38,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const FEATURED = resolve(HERE, "../sources/featured.json");
 const OUT = resolve(HERE, "../public/data/creators.json");
 const ITEMS = resolve(HERE, "../worker/.cache/items.json");
+const REGISTRY = resolve(HERE, "../sources/youtube_channels.json");
 
 const readJson = (p, fb) => {
   try {
@@ -121,7 +122,7 @@ function toVideo(videoId, { title, published } = {}, corpus) {
   };
 }
 
-async function resolveCreator(c, { count, cutoff, live }, corpus, prior) {
+async function resolveCreator(c, { count, cutoff, live, recommended }, corpus, prior) {
   let videos = [];
   let ok = false;
   // Opt-in only: surface a brand-new upload before the worker classifies it, at the cost of
@@ -156,6 +157,9 @@ async function resolveCreator(c, { count, cutoff, live }, corpus, prior) {
     name: c.name,
     handle: c.handle || "",
     channelUrl: channelUrl(c),
+    // Editorial inner-circle flag, read from the ingestion registry by channel_id; only
+    // emitted when true. Surfacing and ordering only, never the rotation math.
+    ...(recommended ? { recommended: true } : {}),
     blurb: c.blurb || "",
     videos,
     _ok: ok,
@@ -172,12 +176,17 @@ export async function buildCreators({ live = false } = {}) {
   const generated = corpusDate(corpus.items);
   const cutoff = retentionCutoff(corpus.items);
   const defaults = featured.defaults || { latest_count: 4 };
+  // The inner circle: featured creators flagged `recommended` in the ingestion registry
+  // (sources/youtube_channels.json) carry the badge into the spotlight too. Read by
+  // channel_id from a committed file, so it stays deterministic.
+  const registry = readJson(REGISTRY, { channels: [] });
+  const recommendedIds = new Set((registry.channels || []).filter((c) => c.recommended === true).map((c) => c.channel_id));
 
   const creators = [];
   let anyResolved = false;
   for (const c of (featured.creators || []).filter((c) => c.active !== false)) {
     const count = c.latest_count || defaults.latest_count || 4;
-    const resolved = await resolveCreator(c, { count, cutoff, live }, corpus, priorByChannel.get(c.channel_id));
+    const resolved = await resolveCreator(c, { count, cutoff, live, recommended: recommendedIds.has(c.channel_id) }, corpus, priorByChannel.get(c.channel_id));
     if (resolved._ok) anyResolved = true;
     delete resolved._ok;
     creators.push(resolved);

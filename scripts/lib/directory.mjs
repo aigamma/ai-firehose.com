@@ -82,10 +82,13 @@ function dominantKind(items, kindBias) {
 }
 
 // Build the roster from the registry channels, the corpus items, and the set of
-// resolvable glossary slugs. Active, non-hidden channels only; channels with ingested
-// videos lead, then by authority then name. A channel with no corpus items yet (just
-// added, not ingested) still renders with registry-only fields, so the directory is
-// useful the moment a handle is dropped, but it sinks below the cards that have content.
+// resolvable glossary slugs. Active, non-hidden channels only. Recommended channels (the
+// inner circle: an editorial vote of confidence, `recommended: true` in the registry) lead
+// the roster; within each tier, channels with ingested videos lead, then by authority then
+// name. A channel with no corpus items yet (just added, not ingested) still renders with
+// registry-only fields, so the directory is useful the moment a handle is dropped, but it
+// sinks below the cards that have content. `recommended` is purely editorial: it changes
+// ordering and surfacing only, never the rotation math (authority_weight is its own dial).
 export function buildRoster({ channels = [], items = [], glossarySlugs = new Set(), durableSlugs = new Set() } = {}) {
   const slugs = glossarySlugs instanceof Set ? glossarySlugs : new Set(glossarySlugs);
   const durable = durableSlugs instanceof Set ? durableSlugs : new Set(durableSlugs);
@@ -102,6 +105,8 @@ export function buildRoster({ channels = [], items = [], glossarySlugs = new Set
         name: c.name || "",
         handle: c.handle || "",
         channelUrl: url,
+        // Only emitted when true, so the artifact diff stays small (most channels omit it).
+        ...(c.recommended === true ? { recommended: true } : {}),
         authority_weight: typeof c.authority_weight === "number" ? c.authority_weight : 0.8,
         kind_bias: c.kind_bias || "mixed",
         kindLean: dominantKind(list, c.kind_bias),
@@ -118,11 +123,12 @@ export function buildRoster({ channels = [], items = [], glossarySlugs = new Set
       };
     });
 
-  // Cards with ingested videos lead so the useful ones are on top; freshly added,
-  // not-yet-ingested channels sink to the bottom. Within each group, higher authority
-  // first, then name.
+  // Recommended channels (the inner circle) lead the whole roster. Within each tier, cards
+  // with ingested videos lead so the useful ones are on top; freshly added, not-yet-ingested
+  // channels sink. Within that, higher authority first, then name.
   roster.sort(
     (a, b) =>
+      Number(b.recommended === true) - Number(a.recommended === true) ||
       (b.videoCount > 0) - (a.videoCount > 0) ||
       b.authority_weight - a.authority_weight ||
       a.name.localeCompare(b.name)

@@ -64,7 +64,7 @@ export async function resolveChannel(input) {
   };
 }
 
-export async function addChannel(input, { weight = 0.85, kind = "mixed", hide } = {}) {
+export async function addChannel(input, { weight = 0.85, kind = "mixed", hide, recommend } = {}) {
   const data = load();
   const info = await resolveChannel(input);
   data.channels = data.channels || [];
@@ -77,17 +77,53 @@ export async function addChannel(input, { weight = 0.85, kind = "mixed", hide } 
     if (hide === true) entry.hide_from_directory = true;
     else if (hide === false) delete entry.hide_from_directory;
   };
+  // recommend === true marks the channel an inner-circle pick (a vote of confidence): it
+  // gets a star badge and front billing on the Watch surfaces. A recommendation is the
+  // strongest endorsement, so it also clears hide_from_directory (you cannot have a hidden
+  // recommendation). recommend === false clears the flag; undefined leaves it untouched.
+  const setRecommend = (entry) => {
+    if (recommend === true) {
+      entry.recommended = true;
+      delete entry.hide_from_directory;
+    } else if (recommend === false) {
+      delete entry.recommended;
+    }
+  };
   if (existing) {
     Object.assign(existing, { name: info.name, authority_weight: weight, kind_bias: kind, active: true });
     if (info.handle) existing.handle = info.handle;
     setHide(existing);
+    setRecommend(existing);
   } else {
     const entry = { channel_id: info.channel_id, name: info.name, handle: info.handle, authority_weight: weight, kind_bias: kind, active: true };
     if (hide === true) entry.hide_from_directory = true;
+    if (recommend === true) entry.recommended = true;
     data.channels.push(entry);
   }
   save(data);
   return info;
+}
+
+// Flag or unflag an already-registered channel as a recommended inner-circle pick, by
+// handle or UC id, with no network call. recommend (true) also endorses it (clears
+// hide_from_directory), since a hidden recommendation would never surface. Returns the
+// number of entries changed.
+export function setRecommended(key, value) {
+  const data = load();
+  const k = String(key).replace(/^@/, "");
+  let n = 0;
+  for (const c of data.channels || []) {
+    if (c.channel_id !== key && c.handle !== key && (c.handle || "").replace(/^@/, "") !== k) continue;
+    if (value) {
+      c.recommended = true;
+      delete c.hide_from_directory;
+    } else {
+      delete c.recommended;
+    }
+    n += 1;
+  }
+  save(data);
+  return n;
 }
 
 export function removeChannel(key) {
@@ -117,22 +153,28 @@ if (isMain) {
     })
   );
   const hide = flags.hide || flags["track-only"] ? true : flags.endorse || flags.list ? false : undefined;
-  const opts = { weight: flags.weight ? Number(flags.weight) : 0.85, kind: flags.kind || "mixed", hide };
+  const recommend = flags.recommend || flags["inner-circle"] ? true : flags.unrecommend ? false : undefined;
+  const opts = { weight: flags.weight ? Number(flags.weight) : 0.85, kind: flags.kind || "mixed", hide, recommend };
   (async () => {
     if (cmd === "add") {
       for (const a of args) {
         try {
           const info = await addChannel(a, opts);
-          console.log(`added ${info.name}  ${info.handle || ""}  ${info.channel_id}  w=${opts.weight} ${opts.kind}`);
+          console.log(`added ${info.name}  ${info.handle || ""}  ${info.channel_id}  w=${opts.weight} ${opts.kind}${recommend === true ? " [recommended]" : ""}`);
         } catch (e) {
           console.log(`skip ${a}: ${e.message}`);
         }
       }
     } else if (cmd === "remove") {
       for (const a of args) console.log(`removed ${removeChannel(a)} for ${a}`);
+    } else if (cmd === "recommend" || cmd === "unrecommend") {
+      const value = cmd === "recommend";
+      for (const a of args) console.log(`${value ? "recommended" : "unrecommended"} ${setRecommended(a, value)} for ${a}`);
     } else if (cmd === "list") {
       for (const c of load().channels || []) {
-        console.log(`${c.active ? "*" : " "} ${c.name}  ${c.handle || ""}  ${c.channel_id}  w=${c.authority_weight} ${c.kind_bias}`);
+        const marks = `${c.active ? "*" : " "}${c.recommended ? "★" : " "}`;
+        const tags = `${c.recommended ? "  [recommended]" : ""}${c.hide_from_directory ? "  [hidden]" : ""}`;
+        console.log(`${marks} ${c.name}  ${c.handle || ""}  ${c.channel_id}  w=${c.authority_weight} ${c.kind_bias}${tags}`);
       }
     } else if (cmd === "resolve") {
       for (const a of args) {
@@ -143,7 +185,7 @@ if (isMain) {
         }
       }
     } else {
-      console.log("usage: node worker/sources/youtube_registry.mjs <add|remove|list|resolve> <@handle|url|UCid> [--weight=0.9] [--kind=mixed]");
+      console.log("usage: node worker/sources/youtube_registry.mjs <add|remove|recommend|unrecommend|list|resolve> <@handle|url|UCid> [--weight=0.9] [--kind=mixed] [--recommend]");
     }
   })();
 }
