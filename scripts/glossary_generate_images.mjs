@@ -131,14 +131,17 @@ function loadGaps() {
   return gaps;
 }
 
-export function buildPrompt(title, summary) {
+export function buildPrompt(title, summary, hint) {
   return [
     `Create one educational figure that teaches the concept "${title}" to a technically literate reader.`,
     summary,
     "Depict the core idea as a clear visual metaphor or simple schematic, favoring an honest conceptual",
     "illustration over a precise technical diagram (do not invent equations, axis numbers, or fake data).",
+    // A per-concept steer, used on regeneration to fix a specific weakness in the first roll
+    // (a muddled composition or garbled labels). Read from .tmp_imggen/_hints.json by slug.
+    hint ? `Important for this figure: ${hint}` : "",
     STYLE,
-  ].join(" ");
+  ].filter(Boolean).join(" ");
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -207,6 +210,8 @@ async function gen({ category, slugs, limit, quality, size, force, pool }) {
   if (limit) targets = targets.slice(0, limit);
 
   const manifest = readJson(MANIFEST, {});
+  // Optional per-slug prompt steers for regeneration, keyed by slug.
+  const hints = readJson(join(PREVIEW, "_hints.json"), {});
   const done = [];
   const failed = [];
   const skipped = [];
@@ -225,7 +230,7 @@ async function gen({ category, slugs, limit, quality, size, force, pool }) {
         continue;
       }
       try {
-        const prompt = buildPrompt(t.title, t.summary);
+        const prompt = buildPrompt(t.title, t.summary, hints[t.slug]);
         const buf = await generateOne(prompt, { size, quality });
         writeFileSync(file, buf);
         manifest[t.slug] = { title: t.title, summary: t.summary, folder: t.folder, size, quality, ext: EXT, kb: Math.round(buf.length / 1024) };
