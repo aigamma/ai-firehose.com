@@ -2,7 +2,7 @@
 
 Every source is an adapter under `worker/sources/` behind a common interface that returns raw Items. The classifier (not the adapter) decides each item's `kind`. Each source has an authority weight that scales how strongly it moves the rotation.
 
-Every adapter HTTP `fetch` carries an `AbortSignal.timeout` (15s for sources and RSS feeds, 30s for the Voyage, Pinecone, Anthropic, and Whisper calls), so one hung host raises a retryable throw instead of stalling the daily run. The aggregator's `Promise.allSettled` rescues a rejected adapter but not a hung socket, which is exactly why the per-call timeout matters.
+Every adapter HTTP `fetch` carries an `AbortSignal.timeout` (15s for sources and RSS feeds, 30s for the Voyage, Pinecone, Anthropic, and Whisper calls), so one hung host raises a retryable throw instead of stalling the scheduled run. The aggregator's `Promise.allSettled` rescues a rejected adapter but not a hung socket, which is exactly why the per-call timeout matters.
 
 ## YouTube (primary, coded from scratch)
 
@@ -48,9 +48,9 @@ Both resolve a handle, URL, or UC id to the channel id from the authoritative RS
 
 ## The Watch Surface: Directory and Spotlight
 
-The Watch page (`/watch`) consolidates two surfaces over the same favorite educators: a **browse-and-subscribe directory** on top, then the **Latest** spotlight funnel below.
+The Watch page (`/watch`) consolidates two surfaces over the same favorite educators: a **browse directory** on top, then the **Latest** spotlight funnel below.
 
-**The directory** is the browseable view of the ingestion roster `sources/youtube_channels.json`: every active channel, rendered as a card with a one-click Subscribe, the concepts it covers (links into the glossary hubs), its kind lean, and how active it is. `scripts/build_directory.mjs` (pure core in `scripts/lib/directory.mjs`) turns the registry plus the corpus into the served artifact `public/data/directory.json`, corpus-only and deterministic (no live RSS), so it is a hard prebuild and generated-fresh gate. Concept chips are filtered to slugs that resolve to a real glossary hub, so every chip is a live link (the integrity test guards this). A freshly onboarded channel shows immediately with registry-only fields, marked newly added, and fills in its corpus enrichment after the worker ingests it. Set `hide_from_directory: true` on a registry entry to ingest a channel without listing it.
+**The directory** is the browseable view of the ingestion roster `sources/youtube_channels.json`: every active channel, rendered as a card whose name links to the channel, the concepts it covers (links into the glossary hubs), its kind lean, and how active it is. `scripts/build_directory.mjs` (pure core in `scripts/lib/directory.mjs`) turns the registry plus the corpus into the served artifact `public/data/directory.json`, corpus-only and deterministic (no live RSS), so it is a hard prebuild and generated-fresh gate. Concept chips are filtered to slugs that resolve to a real glossary hub, so every chip is a live link (the integrity test guards this). A freshly onboarded channel shows immediately with registry-only fields, marked newly added, and fills in its corpus enrichment after the worker ingests it. Set `hide_from_directory: true` on a registry entry to ingest a channel without listing it.
 
 **The spotlight** `sources/featured.json` is a separate, presentation-only registry that drives the Watch Latest funnel and the Home watch teaser. It is deliberately distinct from `youtube_channels.json`: that one is an ingestion and rotation-weighting source of truth, so featuring a creator on the dashboard never perturbs the rotation math. `featured.json` has `creators[]` (`channel_id`, `name`, `handle`, `blurb`, `active`, optional `latest_count`) and a `pinned[]` playlist (`videoId`, `note`).
 
