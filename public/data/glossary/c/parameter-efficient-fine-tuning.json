@@ -1,12 +1,143 @@
 {
   "id": "parameter-efficient-fine-tuning",
   "label": "Parameter-Efficient Fine-Tuning",
-  "kind": "technique",
-  "category": "Training and Fine-Tuning",
   "aliases": [
     "PEFT",
     "parameter efficient fine-tuning"
   ],
+  "kind": "technique",
+  "attention": 6,
+  "first_seen": "2026-05-26T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 106.1,
+    "momentum": 84.9,
+    "sparkline": [
+      2,
+      2,
+      2,
+      4,
+      4,
+      4,
+      3,
+      4
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "fine-tuning",
+      "label": "fine-tuning",
+      "score": 0.77
+    },
+    {
+      "id": "training-free-methods",
+      "label": "training-free methods",
+      "score": 0.742
+    },
+    {
+      "id": "variance-regularization",
+      "label": "variance regularization",
+      "score": 0.703
+    },
+    {
+      "id": "inference-optimization",
+      "label": "inference optimization",
+      "score": 0.701
+    },
+    {
+      "id": "model-calibration",
+      "label": "model calibration",
+      "score": 0.693
+    },
+    {
+      "id": "set-conditioned-models",
+      "label": "set-conditioned models",
+      "score": 0.692
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.692
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.244
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.018
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.417
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.145
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.578
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.301
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Data Synthesis and Parameter-Efficient Fine-Tuning for Low-Resource NMT: A Case Study on Q'eqchi' Mayan",
+      "url": "http://arxiv.org/abs/2606.09767v1",
+      "author_or_channel": "Alexander Chulzhanov, Soeren Eberhardt, Arjun Mukherjee",
+      "published_at": "2026-06-08T17:29:08Z",
+      "kind": "technique"
+    },
+    {
+      "title": "How Far Can Chord-Symbol Time-Series Adaptation Carry Genre Identity? Capabilities and Boundaries in Multi-Genre Chord-Symbol Modeling",
+      "url": "https://huggingface.co/papers/2606.07334",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-04T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning",
+      "url": "http://arxiv.org/abs/2606.06494v1",
+      "author_or_channel": "Marius Dragoi, Ioana Pintilie, Alexandra Dragomir",
+      "published_at": "2026-06-04T17:59:55Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
+      "url": "http://arxiv.org/abs/2606.06492v1",
+      "author_or_channel": "Liliana Hotsko, Yinxi Li, Yuntian Deng",
+      "published_at": "2026-06-04T17:59:46Z",
+      "kind": "technique"
+    },
+    {
+      "title": "On the Scaling of PEFT: Towards Million Personal Models of Trillion Parameters",
+      "url": "https://huggingface.co/papers/2606.02437",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-31T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Compositional Text-to-Image Generation Via Region-aware Bimodal Direct Preference Optimization",
+      "url": "https://huggingface.co/papers/2605.28615",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-26T20:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
   "definition": "A family of fine-tuning methods that adapt a large pretrained model by training only a small number of new or selected parameters while freezing the rest, reaching near-full-fine-tuning quality at a fraction of the cost. The shared bet is that the adjustment needed to specialize a model is small and low-dimensional, which is what lets one frozen base serve many swappable megabyte-sized adapters.",
@@ -64,12 +195,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/parameter-efficient-fine-tuning.jpg",
     "alt": "A Venn diagram of overlapping colored circles labeled additive, adapters, soft prompts, selective, and reparametrization-based, with parameter-efficient fine-tuning methods placed in each region: BitFit and LN Tuning under selective, Prompt-tuning and Prefix-Tuning under soft prompts, LoRA and KronA under reparametrization-based, and Adapters and Compacter in the overlaps.",

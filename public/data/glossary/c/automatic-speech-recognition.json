@@ -1,13 +1,108 @@
 {
   "id": "automatic-speech-recognition",
   "label": "Automatic Speech Recognition",
-  "kind": "technique",
-  "category": "NLP Foundations",
   "aliases": [
     "ASR",
     "speech recognition",
     "speech-to-text"
   ],
+  "kind": "technique",
+  "attention": 8,
+  "first_seen": "2026-04-14T04:04:38+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "voice-assistants",
+      "label": "voice assistants",
+      "score": 0.844
+    },
+    {
+      "id": "image-captioning",
+      "label": "image captioning",
+      "score": 0.792
+    },
+    {
+      "id": "conversational-ai",
+      "label": "conversational AI",
+      "score": 0.778
+    },
+    {
+      "id": "neural-networks",
+      "label": "neural networks",
+      "score": 0.777
+    },
+    {
+      "id": "signal-processing",
+      "label": "signal processing",
+      "score": 0.777
+    },
+    {
+      "id": "computer-vision",
+      "label": "computer vision",
+      "score": 0.771
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.085
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.359
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.094
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.238
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.599
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.211
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.264
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "url": "https://www.youtube.com/watch?v=mFLlVpnGpds",
+      "author_or_channel": "AI Engineer",
+      "published_at": "2026-06-05T14:00:23+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "Towards Human-Like Interactive Speech Recognition With Agentic Correction and Semantic Evaluation",
+      "url": "https://huggingface.co/papers/2605.29430",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-27T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "99% of Claude Users Have No Idea They Can Build This #claude #aitools #freetools",
+      "url": "https://www.youtube.com/watch?v=1mze_dcMh9c",
+      "author_or_channel": "Tristen O'Brien",
+      "published_at": "2026-04-14T04:04:38+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "NLP Foundations",
   "durable": true,
   "source": "authored",
   "definition": "The task of transcribing spoken audio into text, the input side of every voice interface and a bridge from the messy analog world into the text language models work in. Modern systems are end-to-end encoder-decoder transformers like Whisper, trained on vast, diverse audio-text pairs, which is what makes them multilingual and robust to accents and noise out of the box.",
@@ -51,12 +146,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/automatic-speech-recognition.png",
     "alt": "Diagram of the Whisper speech model. On the left, examples of multitask training data: English transcription, any-to-English speech translation, non-English transcription, and no-speech audio. In the center, audio becomes a log-mel spectrogram that passes through transformer encoder blocks, and a transformer decoder with cross attention emits tokens. At the bottom, the multitask training format threads special tokens for language identification, transcription versus translation, and timestamps through one sequence.",

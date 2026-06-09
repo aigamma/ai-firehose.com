@@ -1,15 +1,146 @@
 {
   "id": "agent-evaluation",
   "label": "Agent Evaluation",
-  "kind": "technique",
-  "category": "Agents and Tool Use",
   "aliases": [
     "agent eval",
     "agent benchmarking"
   ],
+  "kind": "technique",
+  "attention": 14,
+  "first_seen": "2026-05-15T18:06:57.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 67.8,
+    "sparkline": [
+      0,
+      2,
+      2,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "ai-agents",
+      "label": "AI agents",
+      "score": 0.807
+    },
+    {
+      "id": "agent-roles",
+      "label": "agent roles",
+      "score": 0.792
+    },
+    {
+      "id": "long-running-agents",
+      "label": "long-running agents",
+      "score": 0.781
+    },
+    {
+      "id": "agent-orchestration",
+      "label": "agent orchestration",
+      "score": 0.78
+    },
+    {
+      "id": "test-time-evaluation",
+      "label": "test-time evaluation",
+      "score": 0.777
+    },
+    {
+      "id": "reinforcement-learning",
+      "label": "reinforcement learning",
+      "score": 0.766
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.246
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.423
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.342
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.217
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.493
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": -0.156
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.253
+    }
+  ],
+  "top_items": [
+    {
+      "title": "iOSWorld: A Benchmark for Personally Intelligent Phone Agents",
+      "url": "http://arxiv.org/abs/2606.09764v1",
+      "author_or_channel": "Lawrence Keunho Jang, Mareks Woodside, Geronimo Carom",
+      "published_at": "2026-06-08T17:27:13Z",
+      "kind": "tool"
+    },
+    {
+      "title": "SWE-Explore: Benchmarking How Coding Agents Explore Repositories",
+      "url": "https://huggingface.co/papers/2606.07297",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-04T20:00:00.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Agent Memory: Characterization and System Implications of Stateful Long-Horizon Workloads",
+      "url": "http://arxiv.org/abs/2606.06448v1",
+      "author_or_channel": "Yasmine Omri, Ziyu Gan, Zachary Broveak",
+      "published_at": "2026-06-04T17:44:18Z",
+      "kind": "technique"
+    },
+    {
+      "title": "The Art & Science of Benchmarking Agents — Vincent Chen, Snorkel AI",
+      "url": "https://www.youtube.com/watch?v=iNkFlCiij0U",
+      "author_or_channel": "AI Engineer",
+      "published_at": "2026-06-04T16:00:06+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios",
+      "url": "https://huggingface.co/blog/ServiceNow-AI/eva-bench-data",
+      "author_or_channel": "Hugging Face",
+      "published_at": "2026-06-04T12:24:58.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "GENEB: Why Genomic Models Are Hard to Compare",
+      "url": "https://huggingface.co/papers/2606.04525",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-02T20:00:00.000Z",
+      "kind": "tool"
+    }
+  ],
+  "definition": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, much harder than scoring a single output because success unfolds across a trajectory. It needs a real or simulated environment rather than a dataset, often a programmatic verifier for the final state, and a success rate reported across many seeded runs because variance between runs is large.",
+  "category": "Agents and Tool Use",
   "durable": true,
   "source": "authored",
-  "definition": "The practice of measuring how well an agent performs multi-step, tool-using tasks, judged on whether it reached the goal and how it got there, much harder than scoring a single output because success unfolds across a trajectory. It needs a real or simulated environment rather than a dataset, often a programmatic verifier for the final state, and a success rate reported across many seeded runs because variance between runs is large.",
   "body": [
     {
       "type": "p",
@@ -60,12 +191,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/agent-evaluation.png",
     "alt": "The SWE-bench evaluation pipeline. A real GitHub issue and the corresponding codebase are given to a language model, which generates a pull request that edits several source files. A hidden unit-test suite is then run: tests that failed before the change (Pre PR) must pass after it (Post PR) for the task to count as resolved.",

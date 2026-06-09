@@ -15,6 +15,14 @@ Entry template:
 
 ---
 
+## 2026-06-09, Claude Opus 4.8 (local ingest after onboarding 10 educators)
+- fetched: 214 new items from the non-YouTube sources (Hacker News, arXiv, GitHub, blogs, Hugging Face). ALL YouTube `feeds/videos.xml` requests returned HTTP 404 from this machine's IP, so no new YouTube videos were ingested this run.
+- classified: 214 new (30 cache hits) via Claude Haiku. new concepts merged into 784 canonical concepts.
+- embedded: 244   metadata-only: 185   unchanged: 241   pruned: 8. Corpus 670 vectors; glossary index total 1313 (durable 644).
+- anomalies: YouTube's RSS feed endpoint hard-404s for every channel from this IP right now, including known-good Nick Saraev (confirmed by a direct fetch with a browser UA). A datacenter-IP rate-limit, total rather than intermittent. Consequence: the 10 newly-onboarded educators did not ingest, and the Watch spotlight populates only the 4 creators that already had corpus videos (Nick Saraev, AI Engineer, Cole Medin, AI Jason). The other 7 stay as empty featured/directory entries until a feed pull succeeds (a retry when the IP unblocks, or the deployed Fly worker on its own network). Re-ingest is additive, so they fill in with no rework.
+- wall-clock: ~3m   approx cost: low (214 Haiku classifications + 244 Voyage embeds)
+- notes: Run to integrate the 10 endorsed channels (`sources/youtube_channels.json`) and feature them in the Watch spotlight (`sources/featured.json`, now 11 creators). Reconciled OVERVIEW.md total-concepts 1192 -> 1313 (the Session 22 gotcha: a corpus refresh shifts the gated count). `check_generated_fresh` buffer-overflows its internal `git diff` on the 818-file uncommitted change, so I canonicalized the four generators directly (`build_glossary`, `build_harness`, `build_creators`, `build_directory`) and verified the gate green on the committed tree.
+
 ## 2026-06-02, Claude (Opus 4.8)
 - Partial run for the dashboard overhaul: generated the agentic daily briefing (4 Sonnet syntheses, one per horizon, cached on the window state hash) from the committed digests and attention boards, and resolved the featured-creators artifact (`creators.json`) for Nick Saraev (RSS succeeded from this IP, 4 videos, each joined to the corpus for a cited summary and concepts). No fetch, classify, embed, or prune.
 - briefings written: 4 (day, week, month, quarter)   creators: 1   videos: 4   pinned: 0
