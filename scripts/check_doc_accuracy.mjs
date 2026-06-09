@@ -35,7 +35,10 @@ export function findBadCountClaims() {
     { file: "OVERVIEW.md", pattern: /authored concepts across/i, expected: [c.durable, c.categories] },
     { file: "OVERVIEW.md", pattern: /Authored, durable knowledge-base concepts/i, expected: [c.durable] },
     { file: "OVERVIEW.md", pattern: /Knowledge categories/i, expected: [c.categories] },
-    { file: "OVERVIEW.md", pattern: /Total concepts \(durable plus live trending\)/i, expected: [c.total] },
+    // The durable count (644) is authored and stable, so it is gated. The combined
+    // durable-plus-live-trending total is NOT gated: it changes with the corpus on every
+    // scheduled ingestion, so pinning an exact number here would red CI on every worker
+    // push (the Session 22/25 drift). The OVERVIEW row states it qualitatively instead.
     { file: "OVERVIEW.md", pattern: /Anti-staleness CI gates/i, expected: [c.gates] },
     { file: "docs/GLOSSARY.md", pattern: /node hairball/i, expected: [c.durable] },
     { file: "CLAUDE.md", pattern: /concepts carry such a figure/i, expected: [c.durable] },

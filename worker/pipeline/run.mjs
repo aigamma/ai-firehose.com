@@ -7,6 +7,7 @@
   Run: node --env-file=worker/.env.local worker/pipeline/run.mjs [maxItems]
 */
 import { writeFileSync, mkdirSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requireKeys } from "../lib/env.mjs";
@@ -464,6 +465,20 @@ async function main() {
     await buildDirectory({ source: "worker" });
   } catch (e) {
     console.error(`directory: ${e.message}`);
+  }
+
+  // Regenerate the live harness snapshot so its corpus counts stay consistent with this
+  // run's corpus. The worker would otherwise commit a stale harness.json (it does not
+  // regenerate it), which reds CI's generated-fresh gate on every scheduled push (the
+  // Session 22/25 drift). build_harness has no exported entry point, so run it as the
+  // standalone generator; it resolves its own paths.
+  console.log("5i. harness snapshot...");
+  try {
+    const harnessScript = resolve(dirname(fileURLToPath(import.meta.url)), "../../scripts/build_harness.mjs");
+    const r = spawnSync(process.execPath, [harnessScript], { stdio: "inherit" });
+    if (r.status !== 0) console.error(`harness: exited ${r.status ?? "without status"}`);
+  } catch (e) {
+    console.error(`harness: ${e.message}`);
   }
 
   console.log("DONE. Real artifacts written to public/data.");
