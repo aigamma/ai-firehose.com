@@ -101,7 +101,7 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 | Time depths (Day, Week, Month, Quarter) | 4 |
 | Claude model tiers by stakes | 3 |
 | Anti-staleness CI gates | 5 |
-| Automated test files | 38 |
+| Automated test files | 40 |
 
 ## Status and Roadmap
 
