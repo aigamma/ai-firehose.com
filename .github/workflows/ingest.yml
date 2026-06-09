@@ -1,0 +1,64 @@
+# Scheduled ingestion: run the Fly worker every 6 hours.
+#
+# Why a GitHub Actions cron and not a Fly scheduled Machine: Fly's `--schedule` only
+# accepts the presets hourly | daily | weekly | monthly, so it cannot express "every 6
+# hours". This workflow is the cron trigger; each tick launches a one-off worker Machine
+# from the deployed image and removes it when the batch exits (--rm).
+#
+# Activation: this is dormant until the worker is deployed and the FLY_API_TOKEN secret
+# is set (see docs/OPERATIONS.md and docs/DEPLOYMENT.md). The guard step short-circuits
+# to a clean no-op until then, so the schedule never fails or runs prematurely. Set the
+# token with: gh secret set FLY_API_TOKEN  (a Fly deploy token, `fly tokens create deploy`).
+#
+# Each run clones main, ingests, commits the refreshed artifacts, and pushes; that push
+# triggers CI and a Netlify deploy. Four runs a day means four deploys a day.
+name: Ingest (every 6 hours)
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # 00:00, 06:00, 12:00, 18:00 UTC
+  workflow_dispatch: {} # manual trigger from the Actions tab
+
+# Never let two ingests overlap; a run is short (a few minutes) but the corpus commit
+# must be serialized so two runs do not race the same items.json.
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Guard on FLY_API_TOKEN (no-op until the worker is deployed)
+        id: guard
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          if [ -z "$FLY_API_TOKEN" ]; then
+            echo "FLY_API_TOKEN is not set; the worker is not deployed yet. Skipping."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install flyctl
+        if: steps.guard.outputs.ready == 'true'
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Run a one-off ingestion Machine
+        if: steps.guard.outputs.ready == 'true'
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        # The image tag is the rolling latest from `fly deploy`. If your deploy pins a
+        # different tag, update WORKER_IMAGE here (or have the deploy push :latest).
+        run: |
+          flyctl machine run "registry.fly.io/ai-firehose-worker:latest" \
+            --app ai-firehose-worker \
+            --region iad \
+            --vm-memory 1024 \
+            --env ENABLE_TRANSCRIPTS=0 \
+            --rm

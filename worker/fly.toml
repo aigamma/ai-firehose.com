@@ -3,7 +3,10 @@
 # The dockerfile path in [build] is resolved relative to THIS file's dir (worker/),
 # so it is "Dockerfile", not "worker/Dockerfile"; do not also pass --dockerfile:
 #   fly deploy . -c worker/fly.toml
-# Then run it daily as a scheduled Machine. NOTE: `fly machine run` does NOT apply
+# Then schedule it: every 6 hours via .github/workflows/ingest.yml (the cron trigger,
+# since Fly's --schedule has no 6-hour preset), or once a day via a Fly scheduled Machine
+# (the --schedule daily example below). See docs/OPERATIONS.md.
+# NOTE: `fly machine run` does NOT apply
 # the [[vm]] memory below, it defaults to 256MB, which OOM-stalls this pipeline, so
 # pass --vm-memory explicitly. Transcripts are off in production because YouTube
 # blocks yt-dlp from datacenter IPs (see docs/OPERATIONS.md):

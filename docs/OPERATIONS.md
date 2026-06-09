@@ -22,12 +22,18 @@ The vector sync state lives in `worker/.cache/vector_manifest.json`, also commit
 
 ## Schedule
 
-The Fly worker runs the full pipeline daily by default (tunable). Because YouTube is the leading indicator, its RSS poll can run more often than the full rebuild. The Day horizon benefits from at least one refresh per day; Week, Month, and Quarter tolerate daily. Scheduled runs should commit both `worker/.cache/items.json` and `worker/.cache/vector_manifest.json` with the rebuilt artifacts.
+The target cadence is **every 6 hours** (four refreshes a day): the AI firehose moves fast enough that a single daily rebuild reads as stale, and the Day horizon benefits most from intraday refreshes. Each run commits both `worker/.cache/items.json` and `worker/.cache/vector_manifest.json` with the rebuilt artifacts, and that push triggers CI plus a Netlify deploy, so four runs a day is four deploys a day. Cost stays modest because the pipeline is idempotent (content-hash gated): a run only classifies and embeds items new since the last one, so an intraday run is mostly fetch-and-skip.
 
-The live worker is the Fly app `ai-firehose-worker`, scheduled machine `firehose-daily`. Build and push the image, then create the scheduled machine:
+Fly's scheduled-Machine `--schedule` only accepts the presets `hourly | daily | weekly | monthly`, so it cannot express a 6-hour cadence. The cron trigger therefore lives in GitHub Actions (`.github/workflows/ingest.yml`, `cron: 0 */6 * * *`): each tick launches a one-off worker Machine from the deployed image and removes it when the batch exits (`--rm`). That workflow is dormant until the image is deployed and `FLY_API_TOKEN` is set; its guard step no-ops cleanly until then. Build and push the image once, then arm the trigger:
 
 ```
 fly deploy . -c worker/fly.toml --build-only --push
+gh secret set FLY_API_TOKEN   # paste a `fly tokens create deploy` token
+```
+
+Then the GitHub Actions cron drives the 6-hourly runs; fire one immediately from the Actions tab (`workflow_dispatch`) to verify end to end. If you would rather keep scheduling on Fly itself at the coarser once-a-day cadence, leave the workflow dormant and create a daily scheduled Machine instead:
+
+```
 fly machine run registry.fly.io/ai-firehose-worker:<deployment-tag> -c worker/fly.toml \
   --schedule daily --vm-memory 1024 --env ENABLE_TRANSCRIPTS=0 --name firehose-daily
 ```

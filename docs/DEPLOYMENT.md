@@ -20,7 +20,7 @@ deployed, so the data does not refresh on a schedule yet (section 1).
 ## 1. Fly.io worker (not yet deployed: the remaining piece)
 
 This is the one piece still to do. Until it runs, the site serves whatever
-artifacts are committed to `main`; deploying it turns on the daily data refresh.
+artifacts are committed to `main`; deploying it turns on the scheduled data refresh (every 6 hours; see `docs/OPERATIONS.md`).
 The worker clones the repo, runs the pipeline, and pushes the rebuilt artifacts
 back, which triggers a Netlify build. It needs a GitHub token to push.
 
@@ -32,8 +32,10 @@ fly secrets set -c worker/fly.toml \
   REPO_URL=https://github.com/aigamma/ai-firehose.com.git \
   GH_TOKEN=<fine-grained PAT with contents:write>
 fly deploy -c worker/fly.toml --dockerfile worker/Dockerfile
-# run it daily as a scheduled Machine:
-fly machine run . -c worker/fly.toml --schedule daily
+# schedule it: every 6 hours via .github/workflows/ingest.yml (the cron trigger; Fly's
+# --schedule has no 6-hour preset), or once a day via a Fly scheduled Machine. See
+# docs/OPERATIONS.md.
+fly machine run . -c worker/fly.toml --schedule daily   # the once-a-day fallback
 ```
 
 The image bakes node, python3, ffmpeg, git, and yt-dlp. `ENABLE_TRANSCRIPTS=1`
@@ -83,11 +85,11 @@ apex and `www` resolve through Netlify automatically.
 
 ## 4. The chain
 
-1. The Fly worker ingests on its daily schedule and pushes new artifacts to `main`
-   (steps 2 and 3 already run on every push; step 1 starts once the worker deploys).
+1. The Fly worker ingests on its 6-hourly schedule (the GitHub Actions cron) and pushes
+   new artifacts to `main` (steps 2 and 3 already run on every push; step 1 starts once the worker deploys).
 2. The push triggers a Netlify production build of the static site.
 3. The site reads the fresh artifacts from `/data`; `/api/retrieve` serves live
    semantic search.
 
-Push at milestones; the worker's daily push is the production cadence. During
+Push at milestones; the worker's 6-hourly push is the production cadence. During
 development, commit locally and push sparingly to conserve build minutes.
