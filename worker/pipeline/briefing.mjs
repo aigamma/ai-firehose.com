@@ -50,7 +50,7 @@ export function buildBriefingState({ horizon, horizonLabel, movers = [], outlier
   return { horizon, horizonLabel, movers: m, outliers: o, newItems: n, concepts };
 }
 
-function stateHash(state) {
+export function stateHash(state) {
   const sig = JSON.stringify({
     m: state.movers.map((e) => [e.id, e.quadrant, Math.round(e.momentum || 0)]),
     o: state.outliers.map((e) => e.id),
