@@ -19,6 +19,11 @@ function Watch() {
   const { data, loading } = useData("/data/creators.json");
   const roster = dir?.roster || [];
   const creators = data?.creators || [];
+  // Only creators with at least one video in the retention window render a card; the rest
+  // (featured but quiet, or featured-then-not-yet-ingested) are filtered out so the Latest
+  // section never shows empty card shells. CreatorSpotlight also self-guards, but the card
+  // wrapper lives here, so the filter has to be here too.
+  const featured = creators.filter((c) => c.videos?.length);
   const pinned = data?.pinned || [];
 
   return (
@@ -50,8 +55,13 @@ function Watch() {
             <strong>Featured creators</strong>
             {loading ? "Loading…" : "Awaiting the first build."}
           </div>
+        ) : featured.length === 0 ? (
+          <div className="empty">
+            <strong>Featured creators</strong>
+            No new videos from the featured creators in the current window.
+          </div>
         ) : (
-          creators.map((c) => (
+          featured.map((c) => (
             <section key={c.channel_id} className="card">
               <CreatorSpotlight creator={c} />
             </section>
