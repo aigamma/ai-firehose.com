@@ -30,7 +30,7 @@ The site is built as an editorial intelligence service, not a dashboard of chart
 
 - **Learn, the guided paths.** Curated, ordered walks through the Glossary (19 of them), from "Transformers, From Attention to LLMs" and "How a Modern LLM Is Trained" through "Mechanistic Interpretability" and "The Philosophy of Mind and AI." A reader who wants a subject, not a single term, follows a path.
 
-- **Watch.** A surface that spotlights favorite YouTube teachers, joining each video to the corpus for a cited summary and links into the relevant concept hubs, with a click-to-play facade so the page stays fast. (Currently seeded with a first featured teacher, designed to expand.)
+- **Watch.** A surface over favorite YouTube teachers in two parts: a browse directory of every ingested educator (each card links to the channel and lists the concepts they cover), and a Latest spotlight that joins each featured creator's newest videos to the corpus for a cited summary and links into the relevant concept hubs, with a click-to-play facade so the page stays fast. A track-only flag lets a channel feed the signal without appearing in the directory.
 
 - **Explore.** Live semantic search over the whole corpus and knowledge base, powered by the same embedding substrate, plus themed views, spectrums, and connections.
 
@@ -106,8 +106,8 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 ## Status and Roadmap
 
 - **Live and deployed.** The site is feature-complete and deployed on Netlify with continuous deploy, a working semantic-search function, and DNS switched over with its certificate issued. The repository is public and MIT-licensed.
-- **The one pending piece.** The Fly.io ingestion worker is not yet deployed, so the daily data refresh is the last thing to turn on. Until then the site runs on a real, committed snapshot of a pipeline run.
-- **Natural next steps.** Deploy the worker (turns on the daily firehose), deepen and illustrate more of the knowledge base, expand the featured-creators surface, and a few stretch ideas like an X (Twitter) adapter.
+- **The one pending piece.** The Fly.io ingestion worker is not yet deployed, so the scheduled data refresh (every 6 hours, via a GitHub Actions cron) is the last thing to turn on. Until then the site runs on a real, committed snapshot of a pipeline run.
+- **Natural next steps.** Deploy the worker (turns on the 6-hourly firehose), keep deepening the knowledge base, and a few stretch ideas like an X (Twitter) adapter.
 
 ## How It Was Built
 
