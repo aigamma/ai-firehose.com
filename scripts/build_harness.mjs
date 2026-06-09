@@ -49,6 +49,10 @@ function walk(rel) {
 const index = readJson("public/data/glossary/index.json", { count: 0, durable_count: 0 });
 const atlas = readJson("public/data/glossary/atlas.json", { categoryCount: 0, edges: [] });
 const stats = readJson("public/data/stats.json", { total_items: 0, concepts: 0, by_source: {} });
+// Reuse the committed stamp so a regeneration is byte-identical and the generated-fresh gate
+// cannot drift by date (mirrors build_glossary.mjs and directory.mjs:corpusDate). Every other
+// field here is file-derived and deterministic; only the date would otherwise be wall-clock.
+const priorHarness = readJson("public/data/harness.json", {});
 
 // Source adapters: every worker/sources/*.mjs except the aggregator, the channel
 // registry, and any test file.
@@ -87,7 +91,7 @@ const metrics = {
 };
 
 const harness = {
-  generated: new Date().toISOString().slice(0, 10),
+  generated: priorHarness.generated || new Date().toISOString().slice(0, 10),
   latest_lesson: sessionHeads[0] || null,
   metrics,
   pillars: [

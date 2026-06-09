@@ -2,9 +2,9 @@
   Cross-platform prebuild orchestrator.
 
   npm runs scripts through different shells on different platforms. Keeping the
-  sequence in Node avoids POSIX-only separators in package.json and lets the
-  creators refresh soft-fail while glossary, harness, and directory generation stay
-  hard gates.
+  sequence in Node avoids POSIX-only separators in package.json. All four generators
+  are corpus-only and deterministic (no network, no wall clock), so each is a hard
+  gate: a nonzero exit fails the build rather than silently shipping a stale artifact.
 */
 import { spawnSync } from "node:child_process";
 
@@ -22,6 +22,5 @@ function run(label, args, { soft = false } = {}) {
 
 run("glossary", ["scripts/build_glossary.mjs"]);
 run("harness", ["scripts/build_harness.mjs"]);
-run("creators", ["scripts/build_creators.mjs"], { soft: true });
-// Corpus-only and deterministic (no live RSS), so unlike creators it is a hard gate.
+run("creators", ["scripts/build_creators.mjs"]);
 run("directory", ["scripts/build_directory.mjs"]);

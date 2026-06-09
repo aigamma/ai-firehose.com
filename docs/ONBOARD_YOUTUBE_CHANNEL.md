@@ -90,8 +90,9 @@ When unsure, the default `--weight=0.85 --kind=mixed` is the safe add.
    residential connection; a transient error clears on retry and is not a failure of the entry.
 3. **Gates stay green.** `npm run check:generated && npm test`. A registry edit rebuilds
    `directory.json`; the generated-fresh gate proves it is committed-fresh, and the integrity
-   test proves every directory concept chip resolves to a glossary hub. Locally the gate may
-   instead fail on `public/data/creators.json` (live-RSS churn, not your change); see Gotchas.
+   test proves every directory concept chip resolves to a glossary hub. The gate is fully
+   deterministic (every generated artifact is corpus-only, no network, no wall clock), so it
+   behaves identically on your machine and in CI; see Gotchas if it goes red.
 
 ## When It Goes Live
 
@@ -154,19 +155,15 @@ glossary layer is the only thing exempt from retention.
 - **Resolution can fail transiently.** If `onboard_youtube.mjs` prints `skip <handle>: ...`, the
   channel page may be region-gated or rate-limiting. Retry once; if it keeps failing, resolve
   the id manually with `yt-dlp --print channel_id <channel_url>` and pass the `UC...` id instead.
-- **`check:generated` can fail locally on `creators.json`, and it is not your onboarding.** Your
-  change only touches the registry and, through the deterministic `build_directory.mjs`,
-  `public/data/directory.json`. The same gate also reruns `build_creators.mjs`, which pulls each
-  featured creator's LIVE RSS feed, so on a residential connection it picks up videos posted since
-  the last `creators.json` commit and reports them as drift. CI is hermetic (no network): there
-  every fetch fails, `build_creators` falls back to the committed corpus, and `creators.json`
-  regenerates byte-identically, so the gate is green in CI. Stage only
-  `sources/youtube_channels.json` and `public/data/directory.json`, leave the `creators.json`
-  churn unstaged, and run `git checkout -- public/data/creators.json` to clean it up. One more
-  trap: the gate's error message lists all four watched paths (`glossary`, `harness.json`,
-  `creators.json`, `directory.json`) regardless of which actually changed, so trust `git status`,
-  not the message. Note `npm run build` reruns the same live `build_creators` in its prebuild, so
-  it re-dirties `creators.json` too; restore it again after building.
+- **A red `check:generated` is a real drift now, not RSS noise.** Onboarding touches the registry
+  and, through the deterministic `build_directory.mjs`, `public/data/directory.json` (the only
+  generated artifact it changes); stage those two. As of Session 25 both Watch resolvers
+  (`build_directory.mjs` and `build_creators.mjs`) are corpus-only with no live network and no
+  wall clock, so the gate is byte-identical on any machine and any day. (It used to flake locally
+  because `build_creators` polled live RSS; that is gone, live RSS is now an explicit `--live`
+  opt-in.) One residual trap: the gate's error message lists all four watched paths (`glossary`,
+  `harness.json`, `creators.json`, `directory.json`) regardless of which actually changed, so
+  trust `git status`, which names only the truly-changed file.
 
 - **A backlog already exists.** `sources/youtube_channels.json` carries a
   `_suggested_to_verify_and_add` list of high-signal channels worth adding. Pull from it when

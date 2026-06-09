@@ -2,19 +2,28 @@
   Featured-creators resolver for the Watch surface. Turns the curated presentation
   registry (sources/featured.json) into the served artifact public/data/creators.json.
 
-  Fully RAG-integrated: each video is joined to its classified record in the corpus
-  (worker/.cache/items.json), so it carries the model-written summary ("why it
-  matters") and its concepts as links into the embedding-backed glossary hubs (the
-  Citation Contract, docs/RAG.md). Freshness comes from each creator's free RSS feed
-  (no API key, the parser reused from worker/sources/youtube.mjs); the corpus is both
-  the enrichment source and a robust fallback, because it already holds each creator's
-  recent uploads. So even when RSS is blocked (Netlify build IPs are datacenter IPs,
-  and the feed is flaky from those), the section still resolves from the corpus, and a
-  fully blocked build keeps the previously committed artifact rather than emptying.
+  Corpus-only and deterministic by default, exactly like its sibling build_directory.mjs:
+  the same committed corpus (worker/.cache/items.json) plus the same featured.json always
+  yield byte-identical output, with no network and no wall clock. Each video is joined to
+  its classified record in the corpus, so it carries the model-written summary ("why it
+  matters") and its concepts as links into the glossary hubs (the Citation Contract,
+  docs/RAG.md). The "generated" stamp and the retention window are both anchored to the
+  newest corpus item (never Date.now()), mirroring directory.mjs:corpusDate and the way
+  recompute_boards.mjs anchors its windows, so the served artifact and a regeneration match
+  and the generated-fresh gate cannot drift by date. Featured creators are also ingestion
+  sources (sources/youtube_channels.json), so the worker keeps their recent, classified
+  uploads in the corpus; corpus-only therefore loses no freshness and gains the enrichment.
 
-  Reused by two callers: the build (a prebuild npm step) and the worker (run.mjs),
-  writing the identical artifact so the two cannot drift. Runs without API keys.
-  See docs/SOURCES.md (the curation workflow) and docs/FEATURE_PLAYBOOK.md.
+  Live RSS is an explicit opt-in (buildCreators({ live: true }), or `--live` on the CLI):
+  it polls each creator's free feed to surface a brand-new upload before the worker
+  classifies it, at the cost of determinism (the video is unenriched and the output varies
+  with the feed). It is OFF by default and unused by the build, the gate, and the worker,
+  because the corpus is the better source in every deployed context (Netlify build IPs are
+  datacenter IPs the feed blocks anyway). Use it only for a deliberately live preview.
+
+  Reused by two callers: the build (a prebuild npm step) and the worker (run.mjs), writing
+  the identical artifact so the two cannot drift. Runs without API keys. See docs/SOURCES.md
+  (the curation workflow) and docs/FEATURE_PLAYBOOK.md.
 */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -22,6 +31,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { fetchFeed, parseEntries } from "../worker/sources/youtube.mjs";
 import { slugify } from "../worker/lib/hash.mjs";
 import { RETENTION_DAYS } from "../src/data/registry.js";
+import { corpusDate } from "./lib/directory.mjs";
 import { prunePins } from "./lib/pins.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -37,37 +47,46 @@ const readJson = (p, fb) => {
   }
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const norm = (s) => String(s || "").trim().toLowerCase();
 const VID_RE = /^[\w-]{11}$/;
 const watchUrl = (id) => `https://www.youtube.com/watch?v=${id}`;
 const thumb = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const channelUrl = (c) =>
   c.handle ? `https://www.youtube.com/${c.handle.startsWith("@") ? c.handle : `@${c.handle}`}` : `https://www.youtube.com/channel/${c.channel_id}`;
-const stamp = () => new Date().toISOString().slice(0, 10);
 
 // Parity with the corpus retention: no video flows in the Watch stream past the rolling
-// quarter. A creator's latest video drops from the stream once its publish date passes
-// RETENTION_DAYS, exactly as the RAG prunes corpus content (docs/INGESTION.md), keyed on
-// published_at like the prune. Hand-pinned videos (pinned[]) are a deliberate curatorial
-// exception, the same way the durable glossary layer is exempt from corpus pruning.
-const retentionCutoff = () => Date.now() - RETENTION_DAYS * 86400000;
+// quarter (docs/INGESTION.md), keyed on published_at. The committed corpus is itself already
+// pruned to this window, and the cutoff is anchored to the NEWEST corpus item (not the wall
+// clock), so the served artifact and any regeneration are byte-identical and the hard gate
+// cannot drift by date. withinRetention is exported for its unit test (build_creators.test.mjs).
 export const withinRetention = (publishedISO, cutoff) => {
   if (!publishedISO) return false;
   const t = new Date(publishedISO).getTime();
   return Number.isFinite(t) && t >= cutoff;
 };
+function retentionCutoff(items) {
+  let max = 0;
+  for (const it of items) {
+    const t = new Date(it?.published_at || 0).getTime();
+    if (Number.isFinite(t) && t > max) max = t;
+  }
+  return max - RETENTION_DAYS * 86400000;
+}
 
 function writeOut(obj) {
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, `${JSON.stringify(obj, null, 2)}\n`);
 }
 
-// Lookup maps from the committed corpus: videoId -> classified item, and channel
-// name -> its videos newest first (the RSS fallback and enrichment source).
+// Lookup maps from the committed corpus: videoId -> classified item, channel name -> its
+// videos newest first (the enrichment source and the default video source), plus the raw
+// item list (for the deterministic stamp and the retention anchor).
 function corpusMaps() {
   const store = readJson(ITEMS, {});
+  const items = Object.values(store);
   const byVideo = new Map();
   const byChannel = new Map();
-  for (const it of Object.values(store)) {
+  for (const it of items) {
     if (it.source !== "youtube" || !it.source_id) continue;
     byVideo.set(it.source_id, it);
     const name = it.author_or_channel || "";
@@ -77,11 +96,11 @@ function corpusMaps() {
   for (const list of byChannel.values()) {
     list.sort((a, b) => new Date(b.published_at || 0) - new Date(a.published_at || 0));
   }
-  // Normalized index (trimmed, lowercased) so a featured.json name that differs from
-  // the corpus channel name only in case or whitespace still matches.
+  // Normalized index (trimmed, lowercased) so a featured.json name that differs from the
+  // corpus channel name only in case or whitespace still matches.
   const byChannelNorm = new Map();
-  for (const [name, list] of byChannel) byChannelNorm.set(name.trim().toLowerCase(), list);
-  return { byVideo, byChannel, byChannelNorm };
+  for (const [name, list] of byChannel) byChannelNorm.set(norm(name), list);
+  return { byVideo, byChannel, byChannelNorm, items };
 }
 
 // One resolved video, enriched from the corpus when the video is in it.
@@ -102,23 +121,27 @@ function toVideo(videoId, { title, published } = {}, corpus) {
   };
 }
 
-async function resolveCreator(c, defaults, corpus, prior) {
-  const count = c.latest_count || defaults.latest_count || 4;
-  const cutoff = retentionCutoff();
+async function resolveCreator(c, { count, cutoff, live }, corpus, prior) {
   let videos = [];
   let ok = false;
-  try {
-    const xml = await fetchFeed(c.channel_id);
-    const entries = parseEntries(xml, { name: c.name }).filter((e) => e.source_id && withinRetention(e.published_at, cutoff));
-    videos = entries.slice(0, count).map((e) => toVideo(e.source_id, { title: e.title, published: e.published_at }, corpus));
-    ok = videos.length > 0;
-  } catch (e) {
-    console.error(`creators ${c.name}: RSS ${e.message}`);
+  // Opt-in only: surface a brand-new upload before the worker classifies it, at the cost of
+  // determinism. Off by default; the corpus path below is the deterministic default source.
+  if (live) {
+    try {
+      const xml = await fetchFeed(c.channel_id);
+      const entries = parseEntries(xml, { name: c.name }).filter((e) => e.source_id && withinRetention(e.published_at, cutoff));
+      videos = entries.slice(0, count).map((e) => toVideo(e.source_id, { title: e.title, published: e.published_at }, corpus));
+      ok = videos.length > 0;
+    } catch (e) {
+      console.error(`creators ${c.name}: RSS ${e.message}`);
+    }
   }
-  // Fallback to the corpus, which already holds the creator's recent uploads. Match
-  // on the exact channel name, then on the normalized name (case and whitespace).
+  // The corpus is the default source (and the fallback when live RSS is on but fails). It
+  // already holds each featured creator's recent, classified uploads (featured channels are
+  // ingestion sources too), pruned to the window, so this is fully deterministic: the same
+  // corpus yields the same videos, with no network and no clock.
   if (!ok) {
-    const list = (corpus.byChannel.get(c.name) || corpus.byChannelNorm.get((c.name || "").trim().toLowerCase()) || []).filter((it) => withinRetention(it.published_at, cutoff));
+    const list = (corpus.byChannel.get(c.name) || corpus.byChannelNorm.get(norm(c.name)) || []).filter((it) => withinRetention(it.published_at, cutoff));
     const fromCorpus = list.slice(0, count).map((it) => toVideo(it.source_id, {}, corpus));
     if (fromCorpus.length) {
       videos = fromCorpus;
@@ -139,27 +162,32 @@ async function resolveCreator(c, defaults, corpus, prior) {
   };
 }
 
-export async function buildCreators({ source = "build" } = {}) {
+export async function buildCreators({ live = false } = {}) {
   const featured = readJson(FEATURED, null);
   if (!featured) throw new Error(`cannot read ${FEATURED}`);
   const prior = readJson(OUT, { creators: [], pinned: [] });
   const priorByChannel = new Map((prior.creators || []).map((c) => [c.channel_id, c]));
   const priorPins = new Map((prior.pinned || []).map((p) => [p.videoId, p]));
   const corpus = corpusMaps();
+  const generated = corpusDate(corpus.items);
+  const cutoff = retentionCutoff(corpus.items);
   const defaults = featured.defaults || { latest_count: 4 };
 
   const creators = [];
-  let anyLive = false;
+  let anyResolved = false;
   for (const c of (featured.creators || []).filter((c) => c.active !== false)) {
-    const resolved = await resolveCreator(c, defaults, corpus, priorByChannel.get(c.channel_id));
-    if (resolved._ok) anyLive = true;
+    const count = c.latest_count || defaults.latest_count || 4;
+    const resolved = await resolveCreator(c, { count, cutoff, live }, corpus, priorByChannel.get(c.channel_id));
+    if (resolved._ok) anyResolved = true;
     delete resolved._ok;
     creators.push(resolved);
-    await sleep(300); // ease the feed endpoint's rate mitigation, as the adapter does
+    if (live) await sleep(300); // only space requests when actually polling RSS
   }
 
-  // Never render a pin that has been on the site past its window, even if the record has
-  // not been pruned yet (the worker prune commits the cleanup; this is the live guarantee).
+  // Never render a pin that has been on the site past its window, even if the record has not
+  // been pruned yet (the worker prune commits the cleanup; this is the live guarantee). Pin
+  // self-expiry (PIN_RETENTION_DAYS after pinned_at) is a deliberate wall-clock schedule, the
+  // one intended time dependence here, and pinned[] is empty by default.
   const { kept: livePins } = prunePins(featured.pinned || [], Date.now());
   const pinned = livePins
     .filter((p) => VID_RE.test(p.videoId || ""))
@@ -168,24 +196,24 @@ export async function buildCreators({ source = "build" } = {}) {
       return { ...v, title: v.title || priorPins.get(p.videoId)?.title || "", note: p.note || "" };
     });
 
-  // If every creator fell back and a usable prior exists, keep it (stamped fallback)
-  // rather than risk emptying the section on a fully blocked build.
-  if (!anyLive && (prior.creators || []).length) {
-    const out = { ...prior, source: "fallback" };
-    writeOut(out);
-    return out;
+  // If nothing resolved (for example an empty corpus on a fresh clone) and a usable prior
+  // exists, keep it rather than risk emptying the section on a degenerate build.
+  if (!anyResolved && (prior.creators || []).length) {
+    writeOut(prior);
+    return prior;
   }
 
-  const out = { generated: stamp(), source, creators, pinned };
+  const out = { generated, creators, pinned };
   writeOut(out);
   return out;
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
-  buildCreators()
+  const live = process.argv.includes("--live");
+  buildCreators({ live })
     .then((o) => {
       const n = o.creators.reduce((a, c) => a + (c.videos?.length || 0), 0);
-      console.log(`creators.json: ${o.creators.length} creators, ${n} videos, ${o.pinned.length} pinned, source=${o.source}`);
+      console.log(`creators.json: ${o.creators.length} creators, ${n} videos, ${o.pinned.length} pinned, generated=${o.generated}${live ? " (live RSS)" : ""}`);
     })
     .catch((e) => {
       console.error(e);

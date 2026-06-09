@@ -451,7 +451,7 @@ async function main() {
 
   console.log("5g. featured creators (Watch surface)...");
   try {
-    await buildCreators({ source: "worker" });
+    await buildCreators();
   } catch (e) {
     console.error(`creators: ${e.message}`);
   }
