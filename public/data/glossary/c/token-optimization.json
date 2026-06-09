@@ -6,7 +6,7 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 27,
+  "attention": 59,
   "first_seen": "2026-03-11T16:25:43Z",
   "rotation": {
     "horizon": "week",
@@ -26,9 +26,29 @@
   },
   "neighbors": [
     {
+      "id": "operational-efficiency",
+      "label": "operational efficiency",
+      "score": 0.77
+    },
+    {
+      "id": "token-for-turn-trade-off",
+      "label": "token-for-turn trade-off",
+      "score": 0.77
+    },
+    {
+      "id": "token-conditioning",
+      "label": "token conditioning",
+      "score": 0.764
+    },
+    {
       "id": "prefill-optimization",
       "label": "prefill optimization",
       "score": 0.759
+    },
+    {
+      "id": "token-level-advantage-reweighting",
+      "label": "token-level advantage reweighting",
+      "score": 0.756
     },
     {
       "id": "tokens",
@@ -36,24 +56,14 @@
       "score": 0.755
     },
     {
+      "id": "cache-hit-rate",
+      "label": "cache hit rate",
+      "score": 0.754
+    },
+    {
       "id": "next-token-prediction",
       "label": "next-token prediction",
       "score": 0.745
-    },
-    {
-      "id": "compute-efficiency",
-      "label": "compute efficiency",
-      "score": 0.743
-    },
-    {
-      "id": "token-level-advantage-reweighting",
-      "label": "token-level advantage reweighting",
-      "score": 0.734
-    },
-    {
-      "id": "parallelization",
-      "label": "parallelization",
-      "score": 0.731
     }
   ],
   "axis_positions": [
@@ -135,6 +145,20 @@
       "author_or_channel": "Apple ML Research",
       "published_at": "2026-05-19T00:00:00.000Z",
       "kind": "technique"
+    },
+    {
+      "title": "The Most Powerful Claude Code Feature In Months Dropped & Nobody is Talking About It",
+      "url": "https://www.youtube.com/watch?v=6cmi7qyFwEE",
+      "author_or_channel": "Chase AI",
+      "published_at": "2026-06-08T03:53:40+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Transformers are inherently succinct",
+      "url": "https://openreview.net/pdf?id=Yxz92UuPLQ",
+      "author_or_channel": "brandonb",
+      "published_at": "2026-06-05T18:50:26.000Z",
+      "kind": "technique"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",
@@ -205,5 +229,8 @@
     "license_url": "https://openai.com/policies/usage-policies/",
     "source": "",
     "provider": "OpenAI"
-  }
+  },
+  "folded_from": [
+    "token-efficiency"
+  ]
 }

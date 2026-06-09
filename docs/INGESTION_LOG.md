@@ -15,6 +15,14 @@ Entry template:
 
 ---
 
+## 2026-06-09 12:43, Claude Opus 4.8 (concept fold migration, with Eric in the loop)
+- Applied `scripts/fold_corpus_concepts.mjs` to the committed snapshot: folded 57 corpus-discovered duplicate concepts onto their durable authored hubs (the snapshot patch for the resolver gap tracked in `docs/ROADMAP.md`). No fetch, classify, embed, or prune.
+- folded: 57 duplicates across 12 boards   index total: 1313 -> 1256 (durable 644 unchanged, corpus 669 -> 612)   redirect stubs on disk: 75
+- audit: previewed with `--dry` and hand-checked the full 57-row map for a false merge before applying. Every fold is an exact normalized-surface match to a durable title or authored alias, not an embedding guess (for example `ai-economics -> market-dynamics` is the authored "AI economics" alias of Market Dynamics; `vibe-coding -> ai-assisted-coding`, `colbert -> late-interaction`, and `evals -> evaluation` likewise). Ambiguous surfaces are dropped by the matcher and already barred by `check_glossary`.
+- verification: `npm test` 218/0, `npm run build` clean. `build_glossary` reproduces the folded state idempotently (reads the deduped index, rewrites the 644 durable hubs, and the 75 redirect stubs survive regeneration), so `check:generated` is clean except the spurious `creators.json` YouTube-RSS flake (restored). `TechniqueHub` already routes the redirect stubs via `<Navigate>`. Reconciled OVERVIEW.md total-concepts 1313 -> 1256 (the gated count the fold shifts).
+- anomalies: none. The worker resolver still does not dedupe against the durable layer, so a future live worker run will re-fragment until the `run.mjs` fix lands (ROADMAP); the fold is idempotent, so re-running it is a no-op.
+- notes: clicking a trending tag like "AI agents", "LLMs", or "vector search" now lands on the rich authored hub instead of a thin stub, and each trend board shows one row per concept.
+
 ## 2026-06-09, Claude Opus 4.8 (local ingest after onboarding 10 educators)
 - fetched: 214 new items from the non-YouTube sources (Hacker News, arXiv, GitHub, blogs, Hugging Face). ALL YouTube `feeds/videos.xml` requests returned HTTP 404 from this machine's IP, so no new YouTube videos were ingested this run.
 - classified: 214 new (30 cache hits) via Claude Haiku. new concepts merged into 784 canonical concepts.
