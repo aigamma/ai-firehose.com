@@ -284,3 +284,27 @@ medical-CT and aurora k-means images for `mask-r-cnn`, ROC curves for `naive-bay
 remaining 212 are genuinely hard, mostly abstract (alignment, philosophy, AI-engineering) or backed only by
 non-redistributable arXiv figures, and remain the AI-generation candidates enumerated in
 `docs/glossary_image_wishlist.md`.
+
+## The AI-Generation Pass: Figures Complete (2026-06-09)
+
+**The last 209 gaps are filled; the durable layer is now 100% illustrated (644 of 644).** Eric opted in to
+filling the abstract and arXiv-locked tail with AI-generated figures, sanctioned by the plain-labeling policy
+(commit `541987f`). The new generator `scripts/glossary_generate_images.mjs` drives OpenAI `gpt-image-1`: `gen`
+builds a house-style prompt from each concept's authored title and summary and writes a small WebP preview;
+`promote` copies reviewed previews into place and stages fully-attributed rows; the committed
+`glossary_images.mjs finalize` oracle still validates bytes, license (`AI-generated`), and `alt`.
+
+Method (matching the prose passes' discipline): generation is bulk and decoupled, but **every figure was viewed
+on the main thread before shipping**, because an AI generator gets diagrams subtly wrong and a wrong teaching
+figure is worse than none. Of 209 first-roll images, **195 shipped as-is** and **14 were rejected** on review,
+all for one of two defects: a muddled composition (a padlock standing in for "agent design"; a balance scale for
+"Dartmouth workshop") or garbled label text (`referenc`, `countercicual`, `CONSCUUS`), plus one factual error
+(`lemmatization` mapping "better" to "run"). The 14 were re-rolled once with a per-concept `--hint` steer (a
+specific compositional fix plus a stress on correctly-spelled labels); **all 14 then passed**, confirming the
+defects were stochastic text/layout rolls, not concept failures. Captions and alt are authored teaching prose,
+written on the main thread per the writing-craft rule, sanitized of em dashes by the gate.
+
+Provider mix afterward: **209 AI-generated (32%)**, 435 open-license (68%, of which ~30% Wikimedia Commons),
+across 74 distinct providers, so the layer reads as a curated mix rather than a single-source scrape.
+`docs/glossary_image_wishlist.md` regenerates to **0 gaps**. With this, every glossary campaign (onboarding,
+Phase A de-leak, Phase B, Phase C enrichment, and figures) is closed.

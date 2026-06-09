@@ -46,7 +46,7 @@ This is the layer built to endure, and it is the most substantial single thing i
 
 - **It is a graph, not a list.** Every concept cross-links to related ones, and that mesh is dense (no concept is an island). The Atlas visualizes it; the wiki-style auto-linker uses it to turn every mention into a link.
 
-- **Cited images** are attached to concept hubs from a curated, credited sidecar of self-hosted open images (424 so far, from many providers). Every image links to its source as the citation.
+- **Cited images** are attached to concept hubs from a curated, credited sidecar of self-hosted images: all 644 concepts now carry one, roughly two thirds open-licensed from over 70 providers and the rest AI-generated under a plain-labeling policy. Every image links to its source as the citation.
 
 - **Learning paths and flashcards** sit on top, so the knowledge base is not just a reference but a place to study.
 
@@ -95,7 +95,7 @@ The discipline behind it is simple: a claim is not a result. "It works" is a sto
 | Total concepts (durable plus live trending) | 1192 |
 | Cross-category edges in the Atlas | 181 |
 | Curated learning paths | 19 |
-| Cited concept images | 435 |
+| Cited concept images | 644 |
 | Items in the current rolling-quarter corpus | ~566 |
 | Source families behind the aggregator | 7 |
 | Time depths (Day, Week, Month, Quarter) | 4 |
