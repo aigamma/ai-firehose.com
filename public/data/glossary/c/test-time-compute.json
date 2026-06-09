@@ -6,39 +6,44 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 265,
+  "attention": 239,
   "first_seen": "2026-03-02T14:44:46+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 96.4,
-    "momentum": 91.5,
+    "ratio": 97.6,
+    "momentum": 98.9,
     "sparkline": [
       39,
-      36,
-      47,
-      58,
-      62,
-      57,
+      37,
+      37,
       54,
-      54
+      52,
+      57,
+      58,
+      57
     ]
   },
   "neighbors": [
     {
-      "id": "test-time-comparison",
-      "label": "test-time comparison",
-      "score": 0.782
+      "id": "test-time-behavior",
+      "label": "test-time behavior",
+      "score": 0.749
     },
     {
       "id": "cached-compute",
       "label": "cached compute",
-      "score": 0.731
+      "score": 0.733
     },
     {
       "id": "test-time-scaling",
       "label": "test-time scaling",
       "score": 0.71
+    },
+    {
+      "id": "test-time-efficiency",
+      "label": "test-time efficiency",
+      "score": 0.699
     },
     {
       "id": "compute-allocation",
@@ -49,11 +54,6 @@
       "id": "benchmarking",
       "label": "benchmarking",
       "score": 0.666
-    },
-    {
-      "id": "testing",
-      "label": "testing",
-      "score": 0.66
     }
   ],
   "axis_positions": [
@@ -70,27 +70,27 @@
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.317
+      "position": 0.219
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.395
+      "position": 0.415
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.06
+      "position": -0.105
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.176
+      "position": -0.147
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.285
+      "position": 0.316
     }
   ],
   "top_items": [
@@ -100,6 +100,13 @@
       "author_or_channel": "AI Engineer",
       "published_at": "2026-06-09T17:00:27+00:00",
       "kind": "opinion"
+    },
+    {
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "url": "https://www.youtube.com/watch?v=TUnPNY4E2fw",
+      "author_or_channel": "AI Engineer",
+      "published_at": "2026-06-08T17:00:21+00:00",
+      "kind": "technique"
     },
     {
       "title": "Two Leaps to 1000 Tokens/s on a 1T-Parameter Model",
@@ -113,21 +120,7 @@
       "url": "https://www.youtube.com/watch?v=EcqMYoIV57A",
       "author_or_channel": "AI Engineer",
       "published_at": "2026-06-08T15:00:17+00:00",
-      "kind": "technique"
-    },
-    {
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carrie, Cloudflare",
-      "url": "https://www.youtube.com/watch?v=SKDJo2CopRs",
-      "author_or_channel": "AI Engineer",
-      "published_at": "2026-06-08T13:00:13+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "MiniMax M3 explained in 8min..",
-      "url": "https://www.youtube.com/watch?v=-zIF318p7J8",
-      "author_or_channel": "Caleb Writes Code",
-      "published_at": "2026-06-08T11:10:24+00:00",
-      "kind": "tool"
+      "kind": "opinion"
     },
     {
       "title": "Start a 1-Person AI Creative Agency with Higgsfield + Claude",
@@ -135,6 +128,13 @@
       "author_or_channel": "Liam Ottley",
       "published_at": "2026-06-08T06:24:52+00:00",
       "kind": "tool"
+    },
+    {
+      "title": "Echo-Memory: A Controlled Study of Memory in Action World Models",
+      "url": "https://huggingface.co/papers/2606.09803",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-07T20:00:00.000Z",
+      "kind": "technique"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",

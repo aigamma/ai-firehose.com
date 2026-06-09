@@ -5,22 +5,22 @@
     "RAG"
   ],
   "kind": "technique",
-  "attention": 20,
+  "attention": 40,
   "first_seen": "2026-04-23T14:59:54+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 99.1,
-    "momentum": 79,
+    "ratio": 83.7,
+    "momentum": 77.4,
     "sparkline": [
-      9,
-      8,
-      8,
-      7,
-      8,
-      8,
-      7,
-      7
+      13,
+      16,
+      15,
+      16,
+      15,
+      14,
+      13,
+      13
     ]
   },
   "neighbors": [
@@ -30,69 +30,90 @@
       "score": 0.835
     },
     {
+      "id": "procedural-3d-generation",
+      "label": "procedural 3D generation",
+      "score": 0.82
+    },
+    {
       "id": "adversarial-prompting",
       "label": "adversarial prompting",
       "score": 0.796
     },
     {
+      "id": "neural-rendering",
+      "label": "neural rendering",
+      "score": 0.791
+    },
+    {
+      "id": "text-to-image-generation",
+      "label": "text-to-image generation",
+      "score": 0.79
+    },
+    {
       "id": "ai-synthesis",
       "label": "AI synthesis",
-      "score": 0.788
-    },
-    {
-      "id": "video-generation",
-      "label": "video generation",
-      "score": 0.78
-    },
-    {
-      "id": "adaptive-retrieval",
-      "label": "adaptive retrieval",
-      "score": 0.779
-    },
-    {
-      "id": "data-augmentation",
-      "label": "data augmentation",
-      "score": 0.773
+      "score": 0.787
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.162
+      "position": 0.123
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.358
+      "position": 0.312
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.316
+      "position": 0.143
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.349
+      "position": 0.381
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.156
+      "position": -0.137
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.002
+      "position": 0.027
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.218
+      "position": -0.085
     }
   ],
   "top_items": [
+    {
+      "title": "Echo-Memory: A Controlled Study of Memory in Action World Models",
+      "url": "http://arxiv.org/abs/2606.09803v1",
+      "author_or_channel": "Wayne King, Zeyue Xue, Yuxuan Bian",
+      "published_at": "2026-06-08T17:54:10Z",
+      "kind": "technique"
+    },
+    {
+      "title": "SIGA: Self-Evolving Coding-Agent Adapters for Scientific Simulation",
+      "url": "http://arxiv.org/abs/2606.09774v1",
+      "author_or_channel": "Matthew Ho, Brian Liu, Jixuan Chen",
+      "published_at": "2026-06-08T17:35:17Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Echo-Memory: A Controlled Study of Memory in Action World Models",
+      "url": "https://huggingface.co/papers/2606.09803",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-07T20:00:00.000Z",
+      "kind": "technique"
+    },
     {
       "title": "Streaming Video Generation with Streaming Force Control",
       "url": "http://arxiv.org/abs/2606.07508v1",
@@ -113,27 +134,6 @@
       "author_or_channel": "Google Research",
       "published_at": "2026-06-05T11:26:00.000Z",
       "kind": "tool"
-    },
-    {
-      "title": "TempoVLA: Learning Speed-Controllable Vision-Language-Action Policies",
-      "url": "http://arxiv.org/abs/2606.06491v1",
-      "author_or_channel": "Dong Jing, Jingchen Nie, Tianqi Zhang",
-      "published_at": "2026-06-04T17:59:40Z",
-      "kind": "technique"
-    },
-    {
-      "title": "Self-Augmenting Retrieval for Diffusion Language Models",
-      "url": "http://arxiv.org/abs/2606.06474v1",
-      "author_or_channel": "Paul Jünger, Justin Lovelace, Linxi Zhao",
-      "published_at": "2026-06-04T17:56:27Z",
-      "kind": "technique"
-    },
-    {
-      "title": "RoboDream: Compositional World Models for Scalable Robot Data Synthesis",
-      "url": "http://arxiv.org/abs/2606.02577v1",
-      "author_or_channel": "Junjie Ye, Rong Xue, Basile Van Hoorick",
-      "published_at": "2026-06-01T17:59:38Z",
-      "kind": "technique"
     }
   ],
   "definition": "A technique that grounds a language model's output in external documents by retrieving relevant passages at query time and supplying them as context, rather than relying only on the knowledge baked into its weights. Its core move is separating the knowledge from the model, facts live in an editable corpus while the model supplies the reasoning, which is what curbs hallucination, keeps answers current, and makes every claim auditable.",
