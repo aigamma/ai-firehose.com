@@ -20,7 +20,9 @@ import { buildDurableSurfaceMap, buildFoldMap } from "./lib/fold.mjs";
   Idempotent: once a duplicate is removed from the index it is never reprocessed, so a
   re-run no-ops. build_glossary (prebuild) preserves the folded state because it reads
   the deduped index and rewrites each durable hub from its prior (already-summed) data.
-  Run with: node scripts/fold_corpus_concepts.mjs
+  Preview with `node scripts/fold_corpus_concepts.mjs --dry` (prints the full fold plan and
+  writes nothing, so the mapping can be audited for a false merge before applying); apply
+  with `node scripts/fold_corpus_concepts.mjs`.
 */
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -55,7 +57,7 @@ function dedupBy(arr, keyFn, cap) {
   return out;
 }
 
-export function foldCorpus({ gdata = GDATA, adata = ADATA, content = CONTENT } = {}) {
+export function foldCorpus({ gdata = GDATA, adata = ADATA, content = CONTENT, dry = false } = {}) {
   const entries = [];
   for (const f of existsSync(content) ? walk(content) : []) {
     const e = parseEntry(readFileSync(f, "utf8"));
@@ -92,10 +94,12 @@ export function foldCorpus({ gdata = GDATA, adata = ADATA, content = CONTENT } =
       );
     }
     toHub.folded_from = [...new Set([...(toHub.folded_from || []), from])];
-    writeJson(resolve(gdata, "c", `${to}.json`), toHub);
-    writeJson(resolve(gdata, "c", `${from}.json`), {
-      id: from, redirect: to, label: fromHub?.label || from, attention: a, folded_into: to,
-    });
+    if (!dry) {
+      writeJson(resolve(gdata, "c", `${to}.json`), toHub);
+      writeJson(resolve(gdata, "c", `${from}.json`), {
+        id: from, redirect: to, label: fromHub?.label || from, attention: a, folded_into: to,
+      });
+    }
   }
 
   // 2) Rebuild the index: drop the folded duplicates, and set each durable target's
@@ -110,7 +114,7 @@ export function foldCorpus({ gdata = GDATA, adata = ADATA, content = CONTENT } =
       concepts.push(c);
     }
   }
-  writeJson(resolve(gdata, "index.json"), { ...index, count: concepts.length, concepts });
+  if (!dry) writeJson(resolve(gdata, "index.json"), { ...index, count: concepts.length, concepts });
 
   // 3) De-fragment the trend boards: relabel each folded entity to its durable slug,
   //    merge rows that collapse together (sum attention, delta, and sparkline), and
@@ -141,15 +145,17 @@ export function foldCorpus({ gdata = GDATA, adata = ADATA, content = CONTENT } =
     }
     if (changed) {
       const entities = [...byId.values()].sort((a, b) => (b.delta || 0) - (a.delta || 0));
-      writeJson(p, { ...board, entities });
+      if (!dry) writeJson(p, { ...board, entities });
       boardsTouched += 1;
     }
   }
 
-  console.log(`fold_corpus: folded ${foldKeys.size} duplicate concepts onto durable hubs, de-fragmented ${boardsTouched} boards.`);
+  console.log(`fold_corpus:${dry ? " [DRY RUN, no writes]" : ""} ${foldKeys.size} duplicate concepts ${dry ? "would fold" : "folded"} onto durable hubs across ${boardsTouched} boards.`);
   console.log("fold_corpus: top folds (attention, from -> to):");
   for (const r of report.slice(0, 30)) console.log(`  ${String(r.attention).padStart(4)}  ${r.from}  ->  ${r.to}`);
   return { folded: foldKeys.size, foldMap, report };
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1] || "").href) foldCorpus();
+if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
+  foldCorpus({ dry: process.argv.includes("--dry") });
+}

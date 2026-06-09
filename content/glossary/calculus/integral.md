@@ -3,7 +3,7 @@ title: Integral
 slug: integral
 kind: technique
 category: Calculus and Analysis
-aliases: integration, integrals, antiderivative
+aliases: integrals, antiderivative
 related: derivative, taylor-expansion, gradient, partial-derivative, convexity, chain-rule
 summary: The accumulation of a continuously varying quantity into a total, such as the area under a curve, and the inverse of the derivative. In machine learning it matters because probability is built on it: every expectation, every normalizing constant, every continuous loss is an integral, and the fact that most of them cannot be solved exactly is why so much of the field is sampling.
 ---
