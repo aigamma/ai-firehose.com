@@ -299,10 +299,16 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
    the fold on a repeated site name. Horizon control on the left, the window phrase
    set in italic serif, the freshness stamp on the right edge. The header already
    carries a border-bottom, so the dateline takes none of its own (a second hairline
-   a few px below the first read as a stray double rule). */
+   a few px below the first read as a stray double rule).
+
+   Spacing: the dateline rides the stack's normal 1rem rhythm, so the gap above it
+   (the header rule down to the horizon pills) equals the gap below it (the dateline
+   down to the briefing). .home-stack uses display:flow-root so the dateline's top
+   margin renders inside the stack rather than collapsing out through the page, which
+   was what inflated the gap above the pills into the lopsided block of dead space. */
+.home-stack { display: flow-root; }
 .dateline {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  padding-top: 22px;
 }
 .dateline-phrase { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.02rem; }
 .dateline-stamp { margin-left: auto; }
