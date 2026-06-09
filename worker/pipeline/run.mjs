@@ -6,7 +6,7 @@
 
   Run: node --env-file=worker/.env.local worker/pipeline/run.mjs [maxItems]
 */
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -25,6 +25,7 @@ import { canonicalizeConcepts } from "./concepts.mjs";
 import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence } from "./network.mjs";
 import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
+import { recentVideos, buildWatchDigestState, generateWatchDigest } from "./watch_digest.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
 import { buildDirectory } from "../../scripts/build_directory.mjs";
 import { pruneFeaturedPins } from "../../scripts/prune_pins.mjs";
@@ -467,12 +468,26 @@ async function main() {
     console.error(`directory: ${e.message}`);
   }
 
+  // Agentic Watch-cycle digest: a cited, sanitized paraphrase of the most salient
+  // developments across the latest educator videos this cycle, weighting the recommended
+  // inner circle. Cached on the latest-video set, so a cycle with no new videos costs
+  // nothing (mirrors the daily briefing). A model hiccup never sinks the run.
+  console.log("5i. watch digest (latest videos)...");
+  try {
+    const ytRegistry = JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), "../../sources/youtube_channels.json"), "utf8"));
+    const wdState = buildWatchDigestState({ videos: recentVideos(working, ytRegistry) });
+    const wd = await generateWatchDigest(wdState);
+    if (wd) writeJson("digests/watch.json", { generated: GENERATED, ...wd });
+  } catch (e) {
+    console.error(`watch digest: ${e.message}`);
+  }
+
   // Regenerate the live harness snapshot so its corpus counts stay consistent with this
   // run's corpus. The worker would otherwise commit a stale harness.json (it does not
   // regenerate it), which reds CI's generated-fresh gate on every scheduled push (the
   // Session 22/25 drift). build_harness has no exported entry point, so run it as the
   // standalone generator; it resolves its own paths.
-  console.log("5i. harness snapshot...");
+  console.log("5j. harness snapshot...");
   try {
     const harnessScript = resolve(dirname(fileURLToPath(import.meta.url)), "../../scripts/build_harness.mjs");
     const r = spawnSync(process.execPath, [harnessScript], { stdio: "inherit" });

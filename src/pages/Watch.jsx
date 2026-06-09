@@ -3,6 +3,7 @@ import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import CreatorDirectory from "../components/CreatorDirectory.jsx";
 import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
+import WatchDigest from "../components/WatchDigest.jsx";
 import LiteYouTube from "../components/LiteYouTube.jsx";
 
 // The Watch page consolidates two surfaces over the same favorite AI educators:
@@ -34,6 +35,8 @@ function Watch() {
           Favorite AI teachers, two ways: browse the roster and subscribe, then catch their latest, each video joined to the corpus for a cited summary and links into the concepts it covers.
         </p>
       </section>
+
+      <WatchDigest />
 
       <section>
         <div className="card-head"><h2>Browse and Subscribe</h2></div>
