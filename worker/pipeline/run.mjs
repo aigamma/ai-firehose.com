@@ -26,6 +26,7 @@ import { computeNeighbors, computeClusters, computeSpectrums, computeInfluence }
 import { defineConcepts } from "./define.mjs";
 import { buildBriefingState, generateBriefing } from "./briefing.mjs";
 import { recentVideos, buildWatchDigestState, generateWatchDigest } from "./watch_digest.mjs";
+import { writeVideos } from "./videos.mjs";
 import { buildCreators } from "../../scripts/build_creators.mjs";
 import { buildDirectory } from "../../scripts/build_directory.mjs";
 import { pruneFeaturedPins } from "../../scripts/prune_pins.mjs";
@@ -482,12 +483,23 @@ async function main() {
     console.error(`watch digest: ${e.message}`);
   }
 
+  // Per-video pages (the video-first Watch surface): a slim grid index plus a per-video
+  // payload carrying the agentic write-up and the nearest videos by cosine similarity.
+  // Worker-only and keyed; write-ups are reused from the committed artifacts and backfilled
+  // in bounded batches (VIDEO_WRITEUP_MAX). A failure never sinks the run.
+  console.log("5j. video pages (write-ups + cosine similar)...");
+  try {
+    await writeVideos({ generated: GENERATED, items: working });
+  } catch (e) {
+    console.error(`videos: ${e.message}`);
+  }
+
   // Regenerate the live harness snapshot so its corpus counts stay consistent with this
   // run's corpus. The worker would otherwise commit a stale harness.json (it does not
   // regenerate it), which reds CI's generated-fresh gate on every scheduled push (the
   // Session 22/25 drift). build_harness has no exported entry point, so run it as the
   // standalone generator; it resolves its own paths.
-  console.log("5j. harness snapshot...");
+  console.log("5k. harness snapshot...");
   try {
     const harnessScript = resolve(dirname(fileURLToPath(import.meta.url)), "../../scripts/build_harness.mjs");
     const r = spawnSync(process.execPath, [harnessScript], { stdio: "inherit" });
