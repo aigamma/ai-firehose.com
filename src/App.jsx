@@ -12,6 +12,7 @@ const Glossary = lazy(() => import("./pages/Glossary.jsx"));
 const TechniqueHub = lazy(() => import("./pages/TechniqueHub.jsx"));
 const Explore = lazy(() => import("./pages/Explore.jsx"));
 const Watch = lazy(() => import("./pages/Watch.jsx"));
+const VideoPage = lazy(() => import("./pages/VideoPage.jsx"));
 const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const Harness = lazy(() => import("./pages/Harness.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/technique/:slug" element={<TechniqueHub />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/watch" element={<Watch />} />
+        <Route path="/watch/:videoId" element={<VideoPage />} />
         <Route path="/methodology" element={<Methodology />} />
         <Route path="/harness" element={<Harness />} />
         <Route path="/about" element={<About />} />

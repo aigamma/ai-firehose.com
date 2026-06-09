@@ -2,73 +2,49 @@ import { memo } from "react";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import CreatorDirectory from "../components/CreatorDirectory.jsx";
-import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
 import WatchDigest from "../components/WatchDigest.jsx";
+import VideoCard from "../components/VideoCard.jsx";
 import LiteYouTube from "../components/LiteYouTube.jsx";
 
-// The Watch page consolidates two surfaces over the same favorite AI educators:
-//  1. Browse and Subscribe: the full roster the worker ingests into the three-month RAG
-//     (public/data/directory.json), each card linking to the channel and the concepts
-//     it covers. Drop a handle into sources/youtube_channels.json and it appears here.
-//  2. Latest: the curated spotlight of newest videos (public/data/creators.json), each
-//     joined to the corpus for a cited summary and concept-hub links, plus a pinned list.
-//     Nothing is featured past the three-month retention window (built by build_creators).
-// See docs/SOURCES.md (the two registries) and docs/ONBOARD_YOUTUBE_CHANNEL.md.
+// The Watch page is video-first. A video is the unit: the Latest grid shows recent videos as
+// tiles (thumbnail + a one-line "why it matters") that open a dedicated on-site page
+// (/watch/<id>) with the embedded talk, an agentic write-up, and a Similar rail by cosine
+// similarity (public/data/videos/*). The channel roster (directory.json) demotes to a
+// secondary "Browse by educator" strip. See docs/SOURCES.md and docs/FEATURE_PLAYBOOK.md.
+const LATEST_LIMIT = 24;
+
 function Watch() {
   useDocumentTitle("Watch");
+  const { data: vids, loading } = useData("/data/videos/index.json");
   const { data: dir } = useData("/data/directory.json");
-  const { data, loading } = useData("/data/creators.json");
+  const { data: creators } = useData("/data/creators.json");
+  const videos = (vids?.videos || []).slice(0, LATEST_LIMIT);
   const roster = dir?.roster || [];
-  const creators = data?.creators || [];
-  // Only creators with at least one video in the retention window render a card; the rest
-  // (featured but quiet, or featured-then-not-yet-ingested) are filtered out so the Latest
-  // section never shows empty card shells. CreatorSpotlight also self-guards, but the card
-  // wrapper lives here, so the filter has to be here too.
-  const featured = creators.filter((c) => c.videos?.length);
-  const pinned = data?.pinned || [];
+  const pinned = creators?.pinned || [];
 
   return (
     <div className="stack">
       <section className="hero">
         <h1>Watch</h1>
         <p className="lede">
-          Favorite AI teachers, two ways: browse the roster and subscribe, then catch their latest, each video joined to the corpus for a cited summary and links into the concepts it covers.
+          The latest from favorite AI teachers. Each video opens its own page with the embedded talk, a short write-up of what it covers and why it matters, and the most similar videos by meaning.
         </p>
       </section>
 
       <WatchDigest />
 
       <section>
-        <div className="card-head"><h2>Browse and Subscribe</h2></div>
-        {dir?.generated && <div className="faint mono">current as of {dir.generated}</div>}
-        {roster.length > 0 ? (
-          <CreatorDirectory roster={roster} />
-        ) : (
-          <div className="empty">
-            <strong>Educator directory</strong>
-            Awaiting the first build.
-          </div>
-        )}
-      </section>
-
-      <section>
-        <div className="card-head"><h2>Latest</h2></div>
-        {!data ? (
-          <div className="empty">
-            <strong>Featured creators</strong>
-            {loading ? "Loading…" : "Awaiting the first build."}
-          </div>
-        ) : featured.length === 0 ? (
-          <div className="empty">
-            <strong>Featured creators</strong>
-            No new videos from the featured creators in the current window.
+        <div className="card-head"><h2>Latest Videos</h2></div>
+        {vids?.generated && <div className="faint mono">current as of {vids.generated}</div>}
+        {videos.length > 0 ? (
+          <div className="grid cols-3 video-cards">
+            {videos.map((v) => <VideoCard key={v.id} video={v} />)}
           </div>
         ) : (
-          featured.map((c) => (
-            <section key={c.channel_id} className="card">
-              <CreatorSpotlight creator={c} />
-            </section>
-          ))
+          <div className="empty">
+            <strong>Latest videos</strong>
+            {loading ? "Loading…" : "Awaiting the first ingest."}
+          </div>
         )}
       </section>
 
@@ -88,6 +64,19 @@ function Watch() {
           </div>
         </section>
       )}
+
+      <section>
+        <div className="card-head"><h2>Browse by Educator</h2></div>
+        <p className="faint">The {roster.length || ""} channels in the three-month rotation. Subscribe to follow them at the source.</p>
+        {roster.length > 0 ? (
+          <CreatorDirectory roster={roster} />
+        ) : (
+          <div className="empty">
+            <strong>Educator directory</strong>
+            Awaiting the first build.
+          </div>
+        )}
+      </section>
     </div>
   );
 }

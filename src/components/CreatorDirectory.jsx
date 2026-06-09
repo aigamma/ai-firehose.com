@@ -38,8 +38,8 @@ function CreatorDirectory({ roster = [] }) {
               <div className="creator-card-covers">
                 <span className="faint creator-card-label">Covers</span>
                 <div className="chips">
-                  {c.concepts.map((x) => (
-                    <Link key={x.slug} to={`/technique/${x.slug}`} className="chip">{x.label}</Link>
+                  {c.concepts.slice(0, 3).map((x) => (
+                    <Link key={x.slug} to={`/technique/${x.slug}`} className="chip chip-sm">{x.label}</Link>
                   ))}
                 </div>
               </div>
