@@ -33,9 +33,10 @@ test("excludes hidden, paused, and id-less channels", () => {
   assert.deepEqual(ids.sort(), ["UCaaa", "UCbbb", "UCccc"]);
 });
 
-test("sorts by authority weight desc, then name", () => {
-  // 0.95 anchor first; then the two 0.85s tie-broken by name ("Fresh Add" < "Tool Channel").
-  assert.deepEqual(roster.map((r) => r.channel_id), ["UCaaa", "UCccc", "UCbbb"]);
+test("sorts videos-first, then authority weight desc, then name", () => {
+  // Channels with ingested videos lead: UCaaa (3 videos, 0.95) then UCbbb (1 video, 0.85);
+  // the empty UCccc (Fresh Add, 0 videos) sinks to the bottom despite tying UCbbb on authority.
+  assert.deepEqual(roster.map((r) => r.channel_id), ["UCaaa", "UCbbb", "UCccc"]);
 });
 
 test("derives the channel URL from the handle", () => {

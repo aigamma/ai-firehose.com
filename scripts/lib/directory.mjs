@@ -82,9 +82,10 @@ function dominantKind(items, kindBias) {
 }
 
 // Build the roster from the registry channels, the corpus items, and the set of
-// resolvable glossary slugs. Active, non-hidden channels only; sorted by authority then
-// name. A channel with no corpus items yet (just added, not ingested) still renders with
-// registry-only fields, so the directory is useful the moment a handle is dropped.
+// resolvable glossary slugs. Active, non-hidden channels only; channels with ingested
+// videos lead, then by authority then name. A channel with no corpus items yet (just
+// added, not ingested) still renders with registry-only fields, so the directory is
+// useful the moment a handle is dropped, but it sinks below the cards that have content.
 export function buildRoster({ channels = [], items = [], glossarySlugs = new Set(), durableSlugs = new Set() } = {}) {
   const slugs = glossarySlugs instanceof Set ? glossarySlugs : new Set(glossarySlugs);
   const durable = durableSlugs instanceof Set ? durableSlugs : new Set(durableSlugs);
@@ -117,7 +118,15 @@ export function buildRoster({ channels = [], items = [], glossarySlugs = new Set
       };
     });
 
-  roster.sort((a, b) => b.authority_weight - a.authority_weight || a.name.localeCompare(b.name));
+  // Cards with ingested videos lead so the useful ones are on top; freshly added,
+  // not-yet-ingested channels sink to the bottom. Within each group, higher authority
+  // first, then name.
+  roster.sort(
+    (a, b) =>
+      (b.videoCount > 0) - (a.videoCount > 0) ||
+      b.authority_weight - a.authority_weight ||
+      a.name.localeCompare(b.name)
+  );
   return roster;
 }
 
