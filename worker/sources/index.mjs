@@ -5,6 +5,7 @@ import { fetchGitHub } from "./github.mjs";
 import { fetchBlogs } from "./blogs.mjs";
 import { fetchReddit } from "./reddit.mjs";
 import { fetchHuggingFace } from "./huggingface.mjs";
+import { decodeEntities } from "../lib/text.mjs";
 
 /*
   Source aggregator. Runs every adapter, tolerant of any one failing (a flaky
@@ -49,5 +50,14 @@ export async function fetchAll({ maxAgeDays = 100 } = {}) {
       console.log(`   ${name} failed: ${r.reason?.message}`);
     }
   });
-  return items;
+  // Decode HTML/XML entities in the verbatim text fields once, here, so every adapter is
+  // covered uniformly. The per-adapter decoders missed numeric (&#8217;) and hex (&#x2F;)
+  // refs, leaking curly quotes and escaped slashes into the titles shown on the site. The
+  // model summary is generated downstream from this decoded text. See worker/lib/text.mjs.
+  return items.map((it) => ({
+    ...it,
+    title: decodeEntities(it.title),
+    summary_text: decodeEntities(it.summary_text),
+    author_or_channel: decodeEntities(it.author_or_channel),
+  }));
 }
