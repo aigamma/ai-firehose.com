@@ -75,9 +75,12 @@ export default function Home() {
 
   return (
     <div className="stack home-stack">
-      <header className="masthead">
-        <h1 className="masthead-kicker">{SITE.name}</h1>
-      </header>
+      {/* The brand nameplate already lives in the global header, so the old visible
+          masthead just repeated it and pushed the real content down. The page now
+          leads straight into the dateline and the briefing. The page h1 is kept but
+          visually hidden, so Home keeps a valid heading outline (h1 then the section
+          h2s) without spending real estate above the fold on a redundant nameplate. */}
+      <h1 className="sr-only">{SITE.name}</h1>
 
       <div className="dateline">
         <span ref={switcherRef} style={{ display: "inline-flex" }}>

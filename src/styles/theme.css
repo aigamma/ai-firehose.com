@@ -292,19 +292,17 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .hero { padding: 40px 0 18px; }
 .hero .lede { font-size: 1.05rem; color: var(--muted); max-width: 60ch; }
 
-/* Masthead: the editorial front page header on Home. A compact mono nameplate
-   (the page h1) over a hairline dateline, so the page leads straight into the
-   actionable content. This is the analyst's page, not a control panel. */
-.masthead { padding: 46px 0 8px; max-width: 62ch; }
-.masthead-kicker {
-  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.24em; color: var(--accent); margin: 0 0 16px;
-}
-/* Dateline: the hairline rule under the masthead. Horizon control on the left,
-   the window phrase set in italic serif, the freshness stamp on the right edge. */
+/* Dateline: the editorial front page opens here, just under the sticky header. The
+   old visible masthead nameplate was removed as redundant with the brand in the
+   global header (Home's h1 is kept but visually hidden via .sr-only), so the page
+   leads straight into the actionable content instead of spending real estate above
+   the fold on a repeated site name. Horizon control on the left, the window phrase
+   set in italic serif, the freshness stamp on the right edge. The header already
+   carries a border-bottom, so the dateline takes none of its own (a second hairline
+   a few px below the first read as a stray double rule). */
 .dateline {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  padding-top: 16px; border-top: 1px solid var(--border-strong);
+  padding-top: 22px;
 }
 .dateline-phrase { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.02rem; }
 .dateline-stamp { margin-left: auto; }
@@ -483,9 +481,9 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
    shift on the swap). Each tile carries the corpus-joined cited summary and concept
    hub chips (the RAG join). */
 /* Creators directory: the browse-and-subscribe roster on the Watch page. A grid of
-   educator cards (scripts/build_directory.mjs -> directory.json), each a card with a
-   one-click Subscribe, the concepts it covers as glossary-hub chips, and its corpus
-   activity. Reuses .card, .badge, .chips, and the .btn fill. */
+   educator cards (scripts/build_directory.mjs -> directory.json), each a card whose
+   name links to the channel, the concepts it covers as glossary-hub chips, and its
+   corpus activity. Reuses .card, .badge, and .chips. */
 .creator-directory { align-items: stretch; }
 .creator-card { display: flex; flex-direction: column; gap: 10px; }
 .creator-card-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
@@ -493,8 +491,6 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .creator-card-name a { color: var(--text-strong); text-decoration: none; }
 .creator-card-name a:hover { color: var(--accent); }
 .creator-card-handle { margin-top: -6px; }
-.subscribe-btn { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; text-decoration: none; }
-.subscribe-btn:hover { text-decoration: none; }
 .creator-card-covers { display: flex; flex-direction: column; gap: 6px; }
 .creator-card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .creator-card-activity { font-size: 0.8rem; margin-top: auto; padding-top: 2px; }
