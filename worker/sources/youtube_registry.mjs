@@ -64,16 +64,27 @@ export async function resolveChannel(input) {
   };
 }
 
-export async function addChannel(input, { weight = 0.85, kind = "mixed" } = {}) {
+export async function addChannel(input, { weight = 0.85, kind = "mixed", hide } = {}) {
   const data = load();
   const info = await resolveChannel(input);
   data.channels = data.channels || [];
   const existing = data.channels.find((c) => c.channel_id === info.channel_id);
+  // hide === true marks the channel track-only: ingested and rotation-weighted, but not
+  // listed in the public Watch directory (logged and tracked, not endorsed). hide === false
+  // clears the flag (endorse it); undefined leaves any existing flag untouched, so a plain
+  // re-add never silently un-hides a track-only channel.
+  const setHide = (entry) => {
+    if (hide === true) entry.hide_from_directory = true;
+    else if (hide === false) delete entry.hide_from_directory;
+  };
   if (existing) {
     Object.assign(existing, { name: info.name, authority_weight: weight, kind_bias: kind, active: true });
     if (info.handle) existing.handle = info.handle;
+    setHide(existing);
   } else {
-    data.channels.push({ channel_id: info.channel_id, name: info.name, handle: info.handle, authority_weight: weight, kind_bias: kind, active: true });
+    const entry = { channel_id: info.channel_id, name: info.name, handle: info.handle, authority_weight: weight, kind_bias: kind, active: true };
+    if (hide === true) entry.hide_from_directory = true;
+    data.channels.push(entry);
   }
   save(data);
   return info;
@@ -105,7 +116,8 @@ if (isMain) {
       return [k, v ?? true];
     })
   );
-  const opts = { weight: flags.weight ? Number(flags.weight) : 0.85, kind: flags.kind || "mixed" };
+  const hide = flags.hide || flags["track-only"] ? true : flags.endorse || flags.list ? false : undefined;
+  const opts = { weight: flags.weight ? Number(flags.weight) : 0.85, kind: flags.kind || "mixed", hide };
   (async () => {
     if (cmd === "add") {
       for (const a of args) {

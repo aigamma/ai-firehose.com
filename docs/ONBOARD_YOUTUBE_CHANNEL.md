@@ -24,6 +24,7 @@ it is committed and pushed.
 node scripts/onboard_youtube.mjs --dry @a @b @c            # resolve and preview, write nothing
 node scripts/onboard_youtube.mjs @a @b @c                  # add them at the safe default 0.85 mixed
 node scripts/onboard_youtube.mjs @anchor --weight=0.95     # an anchor-tier favorite
+node scripts/onboard_youtube.mjs --track-only @a @b @c     # ingest and track, do not endorse (hidden from the directory)
 ```
 
 `onboard_youtube.mjs` resolves each handle to a channel id, adds it to
@@ -110,9 +111,11 @@ When unsure, the default `--weight=0.85 --kind=mixed` is the safe add.
 - **Pause without deleting:** set `"active": false` on the entry (hand-edit is fine for this
   one field), then rebuild, commit, and push. A paused channel keeps its config but is not
   polled and drops out of the directory.
-- **Keep ingesting but hide from the public directory:** set `"hide_from_directory": true`.
-  Use this for a channel you ingest for signal but would not publicly recommend subscribing to.
-  It still feeds the RAG and the rotation; it just does not appear on `/watch`.
+- **Keep ingesting but hide from the public directory (track-only):** onboard with
+  `--track-only` (or set `"hide_from_directory": true` by hand). Use this for a channel you
+  ingest for signal but are not ready to publicly endorse: it still feeds the RAG and the
+  rotation, it just does not appear on `/watch`. Re-onboard with `--endorse` (or remove the
+  flag) to promote it into the directory once you vouch for it.
 
 ## Ingesting Is Not Featuring (Two Registries)
 
@@ -123,8 +126,11 @@ When unsure, the default `--weight=0.85 --kind=mixed` is the safe add.
   cited summary and concept links, plus a hand-pinned playlist. To spotlight a creator there,
   see "Featured Creators and the Watch Surface" in `docs/SOURCES.md`.
 
-The two are deliberately separate so featuring never perturbs the rotation math, and so the
-public directory can list everyone you track without committing each to a full spotlight.
+The two are deliberately separate so featuring never perturbs the rotation math. And the
+directory is an **endorsement** surface, so it lists only channels you vouch for: onboard with
+`--track-only` to ingest and rotation-weight a channel for signal without listing it (it sets
+`hide_from_directory`), and re-onboard with `--endorse` to promote it into the directory later.
+Tracking is not endorsing; both still feed the three-month RAG.
 
 ## Retention: Nothing Featured Past Three Months
 

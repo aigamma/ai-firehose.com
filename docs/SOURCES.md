@@ -19,6 +19,7 @@ Eric's favorite high-signal teachers are the primary input and a leading indicat
 ```
 node scripts/onboard_youtube.mjs --dry @a @b @c            # resolve and preview, write nothing
 node scripts/onboard_youtube.mjs @a @b @c [--weight=0.9] [--kind=mixed]
+node scripts/onboard_youtube.mjs --track-only @a @b @c     # ingest and track, but keep out of the directory
 ```
 
 It wraps the registry CLI, which remains available for single edits:
@@ -29,7 +30,7 @@ node worker/sources/youtube_registry.mjs remove @handle
 node worker/sources/youtube_registry.mjs list
 ```
 
-Both resolve a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. Every active channel also appears in the Watch browse-and-subscribe directory; set `hide_from_directory: true` on an entry to ingest a channel for signal without publicly listing it. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
+Both resolve a handle, URL, or UC id to the channel id from the authoritative RSS-alternate or canonical link on the page (not the first `channelId` in the blob, which is not always the owner's). The RSS feed endpoint is flaky from datacenter IPs (intermittent 404 and 5xx for valid channels), so the adapter retries with backoff; this is expected and clears on retry. The directory is an endorsement surface: every endorsed channel appears there, but onboard with `--track-only` (which sets `hide_from_directory: true`) to ingest a channel for signal without publicly listing it, and `--endorse` to promote it later. Tracking is not endorsing; both still feed the RAG and the rotation. v1 channels: Nick Saraev (anchor, 0.95), plus Liam Ottley, David Ondrej, Cole Medin, Nate Herk, Matthew Berman, Wes Roth.
 
 **Onboarding educators (full runbook):** `docs/ONBOARD_YOUTUBE_CHANNEL.md`. The one-command flow a fresh agent follows whenever Eric drops a list of handles: `node scripts/onboard_youtube.mjs @list` resolves and adds them and rebuilds the directory, then choose `authority_weight` and `kind_bias`, verify against oracles (the `list` and a dry adapter fetch), then commit and push so the worker sees them on its next run.
 

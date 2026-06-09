@@ -16,6 +16,7 @@
     node scripts/onboard_youtube.mjs @a @b @c            # add at the safe default 0.85 mixed
     node scripts/onboard_youtube.mjs @anchor --weight=0.95
     node scripts/onboard_youtube.mjs https://youtube.com/@x UCyyyy --kind=opinion
+    node scripts/onboard_youtube.mjs --track-only @a @b  # ingest and track, but do not list in the directory
     node scripts/onboard_youtube.mjs --dry @a @b         # resolve and preview, write nothing
 
   Full runbook, and how to choose weight and kind: docs/ONBOARD_YOUTUBE_CHANNEL.md.
@@ -40,20 +41,24 @@ function parseArgs(argv) {
 async function main() {
   const { handles, flags } = parseArgs(process.argv.slice(2));
   if (!handles.length) {
-    console.log("usage: node scripts/onboard_youtube.mjs <@handle|url|UCid> [more...] [--weight=0.85] [--kind=mixed] [--dry]");
+    console.log("usage: node scripts/onboard_youtube.mjs <@handle|url|UCid> [more...] [--weight=0.85] [--kind=mixed] [--track-only] [--dry]");
     process.exit(1);
   }
   const weight = flags.weight ? Number(flags.weight) : 0.85;
   const kind = flags.kind || "mixed";
   const dry = Boolean(flags.dry);
+  // --track-only (alias --hide): ingest and rotation-weight, but keep out of the public
+  // directory (logged and tracked, not endorsed). --endorse (alias --list) clears it.
+  const hide = flags["track-only"] || flags.hide ? true : flags.endorse || flags.list ? false : undefined;
+  const mode = hide === true ? "  [track-only: ingested, hidden from the directory]" : hide === false ? "  [endorsed: listed in the directory]" : "";
 
-  console.log(`Onboarding ${handles.length} channel(s) at weight=${weight} kind=${kind}${dry ? "   (DRY RUN, no writes)" : ""}\n`);
+  console.log(`Onboarding ${handles.length} channel(s) at weight=${weight} kind=${kind}${mode}${dry ? "   (DRY RUN, no writes)" : ""}\n`);
 
   const added = [];
   const skipped = [];
   for (const h of handles) {
     try {
-      const info = dry ? await resolveChannel(h) : await addChannel(h, { weight, kind });
+      const info = dry ? await resolveChannel(h) : await addChannel(h, { weight, kind, hide });
       added.push({ name: info.name, handle: info.handle || h, channel_id: info.channel_id });
       console.log(`  ${dry ? "resolved" : "added   "}  ${info.name}  ${info.handle || ""}  ${info.channel_id}`);
     } catch (e) {
@@ -77,11 +82,18 @@ async function main() {
 
   const byId = new Map((dir?.roster || []).map((r) => [r.channel_id, r]));
   if (added.length) {
-    console.log(`\n  ${"name".padEnd(28)} ${"handle".padEnd(20)} ${"wt".padEnd(5)} ${"kind".padEnd(10)} corpus`);
+    console.log(`\n  ${"name".padEnd(28)} ${"handle".padEnd(20)} ${"wt".padEnd(5)} ${"kind".padEnd(10)} status`);
     for (const r of added) {
       const e = byId.get(r.channel_id);
-      const corpus = e ? (e.videoCount > 0 ? `${e.videoCount} videos` : "not yet ingested") : "?";
-      console.log(`  ${String(r.name).padEnd(28)} ${String(r.handle).padEnd(20)} ${String(weight).padEnd(5)} ${String(kind).padEnd(10)} ${corpus}`);
+      const status =
+        hide === true
+          ? "tracked, hidden from directory"
+          : e
+            ? e.videoCount > 0
+              ? `${e.videoCount} videos, listed`
+              : "listed, not yet ingested"
+            : "listed";
+      console.log(`  ${String(r.name).padEnd(28)} ${String(r.handle).padEnd(20)} ${String(weight).padEnd(5)} ${String(kind).padEnd(10)} ${status}`);
     }
   }
   if (skipped.length) {

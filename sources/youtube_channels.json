@@ -1,6 +1,6 @@
 {
   "_about": "Curated registry of high-signal YouTube teachers, the primary source for ai-firehose.com. Eric edits this file. Each channel is polled via its free RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=<channel_id> (no API key).",
-  "_instructions": "Drop a list of handles: node scripts/onboard_youtube.mjs @a @b @c (resolves each, adds it here idempotently, and rebuilds the directory). --dry previews without writing; --weight and --kind set the batch defaults. It wraps node worker/sources/youtube_registry.mjs add @handle for single edits. Full runbook: docs/ONBOARD_YOUTUBE_CHANNEL.md. To resolve a channel_id by hand, search the channel page source for \"channelId\" or run yt-dlp --print channel_id <channel_url>. authority_weight in [0,1] scales how strongly the channel moves the rotation: favorite, highest-signal teachers near 1.0. kind_bias is only a hint; the classifier decides each video's kind. Set active true to include a channel. Every active channel also appears in the Watch browse-and-subscribe directory (public/data/directory.json); set hide_from_directory true to ingest for signal without listing it publicly.",
+  "_instructions": "Drop a list of handles: node scripts/onboard_youtube.mjs @a @b @c (resolves each, adds it here idempotently, and rebuilds the directory). --dry previews without writing; --weight and --kind set the batch defaults. It wraps node worker/sources/youtube_registry.mjs add @handle for single edits. Full runbook: docs/ONBOARD_YOUTUBE_CHANNEL.md. To resolve a channel_id by hand, search the channel page source for \"channelId\" or run yt-dlp --print channel_id <channel_url>. authority_weight in [0,1] scales how strongly the channel moves the rotation: favorite, highest-signal teachers near 1.0. kind_bias is only a hint; the classifier decides each video's kind. Set active true to include a channel. The directory is an endorsement surface: endorsed channels appear in the Watch browse-and-subscribe directory (public/data/directory.json), and onboarding with --track-only (which sets hide_from_directory true) ingests and tracks a channel for signal without listing it, while --endorse promotes it later.",
   "_schema": {
     "channel_id": "UCxxxxxxxxxxxxxxxxxxxxxx",
     "name": "string",
@@ -19,10 +19,54 @@
     "Sam Witteveen",
     "1littlecoder",
     "Sentdex",
-    "3Blue1Brown",
     "Computerphile"
   ],
   "channels": [
+    {
+      "channel_id": "UCYO_jab_esuFRV4b17AJtAw",
+      "name": "3Blue1Brown",
+      "handle": "@3blue1brown",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UC0yHbz4OxdQFwmVX2BBQqLg",
+      "name": "AI Master",
+      "handle": "@iamAImaster",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UC5l7RouTQ60oUjLjt1Nh-UQ",
+      "name": "AI Revolution",
+      "handle": "@airevolutionx",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UCIgnGlGkVRhd4qNFcEwLL4A",
+      "name": "AI Search",
+      "handle": "@theAIsearch",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UCye1YedIypHffYb8k6Gp9wg",
+      "name": "Alex Kantrowitz",
+      "handle": "@Alex.kantrowitz",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
     {
       "channel_id": "UCoy6cTJ7Tg0dqS-DI-_REsA",
       "name": "Chase AI",
@@ -30,6 +74,15 @@
       "authority_weight": 0.85,
       "kind_bias": "mixed",
       "active": true
+    },
+    {
+      "channel_id": "UCV03SRZXJEz-hchIAogeJOg",
+      "name": "Claude",
+      "handle": "@claude",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
     },
     {
       "channel_id": "UCMwVTLZIRRUyyVrkjDpn4pA",
@@ -54,6 +107,33 @@
       "authority_weight": 0.85,
       "kind_bias": "mixed",
       "active": true
+    },
+    {
+      "channel_id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+      "name": "Google for Developers",
+      "handle": "@GoogleDevelopers",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UCmXmlB4-HJytD7wek0Uo97A",
+      "name": "JavaScript Mastery",
+      "handle": "@javascriptmastery",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UCwAnu01qlnVg1Ai2AbtTMaA",
+      "name": "Jeff Su",
+      "handle": "@JeffSu",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
     },
     {
       "channel_id": "UCui4jxDaMb53Gdh-AZUTPAg",
@@ -96,12 +176,48 @@
       "active": true
     },
     {
+      "channel_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "name": "OpenAI",
+      "handle": "@OpenAI",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
       "channel_id": "UC6ftm8PwH1RU_LM1jwG0LQA",
       "name": "Qdrant Vector Search",
       "handle": "@qdrant",
       "authority_weight": 0.85,
       "kind_bias": "mixed",
       "active": true
+    },
+    {
+      "channel_id": "UCMcoud_ZW7cfxeIugBflSBw",
+      "name": "Riley Brown",
+      "handle": "@rileybrownai",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UC4ZVkG3RQPzvZk7alIVjcCg",
+      "name": "Sandeep Swadia | theMITmonk",
+      "handle": "@theMITmonk",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
+    },
+    {
+      "channel_id": "UCwSozl89jl2zUDzQ4jGJD3g",
+      "name": "Skill Leap AI",
+      "handle": "@SkillLeapAI",
+      "authority_weight": 0.85,
+      "kind_bias": "mixed",
+      "active": true,
+      "hide_from_directory": true
     },
     {
       "channel_id": "UCruPFdKtGG8Oz5dvha6WWgA",
