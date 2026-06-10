@@ -7,20 +7,20 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Max Ryabinin presents a multi-technique approach to training LLMs with very long context windows, combining fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel Untied Ulysses variant further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior Ulysses at scale.",
-  "writeup": "Max Ryabinin of Together AI walks through how to train LLMs with context windows reaching 5 million tokens under constrained GPU memory. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, and CPU offloading to keep memory in budget. The central contribution is Untied Ulysses, a method that further cuts activation memory by chunking attention head groups and reusing buffers across iterations. The takeaway is that long-context training at this scale is a memory-management problem solved by layering existing parallelism techniques with the new chunking approach.",
-  "wh": "f8c938bd500e3bf5",
+  "writeup": "Max Ryabinin of Together AI walks through the systems techniques for training LLMs with very long context windows, targeting sequences up to 5 million tokens. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training, with each method addressing a different memory or scaling bottleneck. The central contribution is Untied Ulysses, a context parallelism variant that chunks attention heads and reuses buffers across iterations. At scale it fits sequences 25% longer than prior Ulysses.",
+  "wh": "479136d5f5dbfaf9",
   "concepts": [
     {
-      "slug": "long-context-reasoning",
-      "label": "long-context reasoning"
+      "slug": "long-context-training",
+      "label": "long context training"
     },
     {
-      "slug": "data-parallelism",
-      "label": "data parallelism"
+      "slug": "context-parallelism",
+      "label": "context parallelism"
     },
     {
-      "slug": "checkpointing",
-      "label": "checkpointing"
+      "slug": "activation-checkpointing",
+      "label": "activation checkpointing"
     },
     {
       "slug": "deepspeed-ulysses",
@@ -31,12 +31,16 @@
       "label": "Untied Ulysses"
     },
     {
+      "slug": "fully-sharded-data-parallelism",
+      "label": "fully sharded data parallelism"
+    },
+    {
       "slug": "cpu-offloading",
       "label": "CPU offloading"
     },
     {
-      "slug": "rnn-training",
-      "label": "RNN training"
+      "slug": "chunked-sequence-training",
+      "label": "chunked sequence training"
     },
     {
       "slug": "test-time-compute",
@@ -48,7 +52,7 @@
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.593
+      "score": 0.594
     },
     {
       "id": "SS-A8sE7hkw",

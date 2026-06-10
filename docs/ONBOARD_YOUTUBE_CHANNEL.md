@@ -183,3 +183,8 @@ glossary layer is the only thing exempt from retention.
 - **A backlog already exists.** `sources/youtube_channels.json` carries a
   `_suggested_to_verify_and_add` list of high-signal channels worth adding. Pull from it when
   curating, then trim each name as it is added.
+
+- **Shorts are auto-excluded, so onboard freely.** A channel that posts YouTube Shorts will not
+  pollute the corpus or the Watch surface: the adapter drops Shorts at ingest via the cached
+  `/shorts/` redirect probe, and `run.mjs` guards the store as a backstop (see "Shorts are
+  excluded" in `docs/SOURCES.md`). You do not need to vet a channel for Shorts before adding it.

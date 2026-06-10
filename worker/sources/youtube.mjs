@@ -8,6 +8,7 @@
 */
 import { pathToFileURL } from "node:url";
 import { activeChannels } from "./youtube_registry.mjs";
+import { classifyShorts, loadShortVerdicts, saveShortVerdicts, shortIdSet } from "./youtube_shorts.mjs";
 
 const FEED = (id) => `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`;
 
@@ -73,7 +74,7 @@ export function parseEntries(xml, channel) {
 
 export async function fetchYouTube({ maxAgeDays = 100, perChannel = 15 } = {}) {
   const cutoff = Date.now() - maxAgeDays * 86400000;
-  const items = [];
+  let items = [];
   for (const ch of activeChannels()) {
     try {
       const xml = await fetchFeed(ch.channel_id);
@@ -85,6 +86,24 @@ export async function fetchYouTube({ maxAgeDays = 100, perChannel = 15 } = {}) {
       console.error(`youtube ${ch.name}: ${e.message}`);
     }
     await sleep(400); // small spacing to ease the feed endpoint's rate mitigation
+  }
+  // Keep YouTube Shorts out of the corpus at the source. Shorts read as a trick here
+  // (longer to open than to watch), so they never enter the store, the boards, search,
+  // the Watch surface, or the vector store. Detection is the cached /shorts/ redirect
+  // probe (youtube_shorts.mjs); only CONFIRMED shorts are dropped, so a probe failure
+  // never loses a real video (fail open). Bounded per run (SHORTS_PROBE_MAX, default
+  // 150) so a warm corpus probes only the few genuinely-new ids, and disabled entirely
+  // by FILTER_SHORTS=0. The verdict cache is committed, so verdicts accumulate.
+  if (process.env.FILTER_SHORTS !== "0" && items.length) {
+    const verdicts = loadShortVerdicts();
+    const max = Number(process.env.SHORTS_PROBE_MAX) || 150;
+    const { probed, shorts, errors } = await classifyShorts(items.map((it) => it.source_id), { verdicts, max });
+    if (probed) saveShortVerdicts(verdicts);
+    const shortIds = shortIdSet(verdicts);
+    const before = items.length;
+    items = items.filter((it) => !shortIds.has(it.source_id));
+    const dropped = before - items.length;
+    if (dropped || probed) console.log(`   youtube shorts: ${dropped} dropped (${probed} probed, ${shorts} new shorts, ${errors} undetermined)`);
   }
   // Optional transcript enrichment (Fly worker only; gated so it never runs where
   // yt-dlp is absent). Best-effort and BOUNDED: yt-dlp is slow and is blocked or

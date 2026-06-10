@@ -12,6 +12,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requireKeys } from "../lib/env.mjs";
 import { fetchAll } from "../sources/index.mjs";
+import { loadShortIds } from "../sources/youtube_shorts.mjs";
 import { classifyItem } from "./classify.mjs";
 import { embed } from "../lib/voyage.mjs";
 import { ensureIndex, upsert, updateMetadata, deleteByIds } from "../lib/pinecone.mjs";
@@ -155,6 +156,22 @@ async function main() {
   // undateable item thus expires one quarter after first ingest rather than living
   // forever, honoring the rolling-quarter contract. (Pure core in retention.mjs.)
   pruneByRetention(deduped, { nowMs: TODAY, retentionDays: RETENTION_DAYS });
+  // Guard: drop any stored item that is a confirmed YouTube Short (worker/.cache/shorts.json,
+  // filled by the ingest probe). The adapter already keeps new shorts out; this backstops
+  // any that entered before a verdict landed, so every downstream artifact built from the
+  // corpus (boards, glossary, digests, Watch, RSS, vectors) is short-free from one chokepoint,
+  // and the persisted store stays clean for the keyless prebuild resolvers.
+  const shortIds = loadShortIds();
+  if (shortIds.size) {
+    let removedShorts = 0;
+    for (const [id, it] of Object.entries(deduped)) {
+      if (it?.source === "youtube" && shortIds.has(it.source_id)) {
+        delete deduped[id];
+        removedShorts += 1;
+      }
+    }
+    if (removedShorts) console.log(`   dropped ${removedShorts} stored short(s) flagged in shorts.json`);
+  }
   const corpus = Object.values(deduped);
   saveCache("items", deduped);
   console.log(`   store holds ${corpus.length} items within ${RETENTION_DAYS}d (this run added/updated ${classified.length}${collapsed ? `, collapsed ${collapsed} duplicate` : ""})`);

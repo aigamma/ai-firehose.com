@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Cloudflare's Eval++ is a compute primitive that uses Dynamic Workers to execute LLM-generated code in sandboxed isolates with explicit capability grants. The system builds on Durable Objects to provide addressable, persistent, stateful compute with low latency, alongside features like resumable streaming and multi-tab sync for AI agents.",
-  "writeup": "Sunil Pai and Matt Carrie present Cloudflare's case for \"Eval++\" as a compute primitive for AI agents: running LLM-generated code in sandboxed isolates through Dynamic Workers, with explicit capability grants controlling what that code can access. Durable Objects supply the addressable, persistent, stateful compute units agents need, with latency low enough (15ms) to fit animation frame budgets. The framing matters because agent execution and code generation increasingly require running untrusted, model-produced code safely while preserving state across calls. Concrete points include the pairing of stateful compute with sandboxed execution, plus streaming and MCP as part of the workflow.",
-  "wh": "7015a58be65c6bb6",
+  "writeup": "Sunil Pai and Matt Carrie present Cloudflare's Eval++, a compute primitive that runs LLM-generated code inside sandboxed isolates using Dynamic Workers, with explicit capability grants governing what that code can access. The design builds on Durable Objects to deliver addressable, persistent, stateful compute at low latency. For AI agents, the system adds resumable streaming and multi-tab sync, addressing how generated code executes safely and how agent state persists across sessions.",
+  "wh": "19b5a5c40cb62155",
   "concepts": [
     {
       "slug": "durable-objects",
@@ -27,8 +27,8 @@
       "label": "test-time compute"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "llm-agents",
+      "label": "LLM agents"
     }
   ],
   "similar": [
@@ -48,7 +48,7 @@
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.556
+      "score": 0.555
     },
     {
       "id": "RGhunHLnVIg",
@@ -63,10 +63,10 @@
       "score": 0.551
     },
     {
-      "id": "ztLYODplhrw",
-      "title": "Google Bans Coding With Its Biggest Attack On Devs Ever: AntiGravity 2.0",
-      "channel": "AI Revolution",
-      "score": 0.549
+      "id": "1rF_SZZ3yWs",
+      "title": "How marketers are using Google Antigravity",
+      "channel": "Google Antigravity",
+      "score": 0.55
     }
   ]
 }

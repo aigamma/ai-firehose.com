@@ -25,6 +25,7 @@ import { structured, MODELS } from "../lib/anthropic.mjs";
 import { stripEmDashes } from "../lib/text.mjs";
 import { hash16, slugify } from "../lib/hash.mjs";
 import { computeNeighbors } from "./network.mjs";
+import { loadShortIds } from "../sources/youtube_shorts.mjs";
 import { VIDEO_WRITEUP_SYSTEM, VIDEO_WRITEUP_TOOL, buildVideoWriteupPrompt } from "./prompts/video_writeup.mjs";
 
 export const VIDEO_WRITEUP_PROMPT_VERSION = "v1-2026-06-09";
@@ -38,11 +39,13 @@ const writeupHash = (v) => hash16(JSON.stringify([v.title, v.summary, v.concepts
 
 // Retained youtube videos from the corpus, newest first, with concepts and the inner-circle
 // flag joined from the registry (by normalized channel name, as directory.mjs joins).
-export function selectVideos(items = [], registry = { channels: [] }) {
+export function selectVideos(items = [], registry = { channels: [] }, shortIds = new Set()) {
   const recByName = new Set((registry.channels || []).filter((c) => c.recommended === true).map((c) => norm(c.name)));
   const handleByName = new Map((registry.channels || []).map((c) => [norm(c.name), c.handle]));
   return (items || [])
-    .filter((it) => it && it.source === "youtube" && it.source_id && it.title)
+    // Explicit Watch-layer guard: never surface a confirmed Short, even if one slipped
+    // into the corpus (the store guard in run.mjs should already have dropped it).
+    .filter((it) => it && it.source === "youtube" && it.source_id && it.title && !shortIds.has(it.source_id))
     .sort((a, b) => new Date(b.published_at || 0) - new Date(a.published_at || 0))
     .map((it) => ({
       id: it.source_id,
@@ -111,9 +114,9 @@ async function writeups(videos, priorById, { model = MODELS.enduring } = {}) {
   return out;
 }
 
-export async function buildVideos({ generated, items, registry, priorById = new Map(), live = true } = {}) {
+export async function buildVideos({ generated, items, registry, priorById = new Map(), live = true, shortIds = new Set() } = {}) {
   const stamp = generated || new Date().toISOString().slice(0, 10);
-  const videos = selectVideos(items, registry);
+  const videos = selectVideos(items, registry, shortIds);
   const sim = live ? await similar(videos) : {};
   const writeupById = live ? await writeups(videos, priorById) : {};
 
@@ -166,7 +169,8 @@ export async function writeVideos(opts = {}) {
   const items = opts.items || Object.values(readJson(ITEMS, {}));
   const registry = opts.registry || readJson(REGISTRY, { channels: [] });
   const priorById = loadPriors();
-  const { index, pages } = await buildVideos({ generated: opts.generated, items, registry, priorById, live: opts.live !== false });
+  const shortIds = opts.shortIds || loadShortIds();
+  const { index, pages } = await buildVideos({ generated: opts.generated, items, registry, priorById, live: opts.live !== false, shortIds });
 
   mkdirSync(VIDEO_DIR, { recursive: true });
   writeFileSync(resolve(VIDEO_DIR, "index.json"), `${JSON.stringify(index, null, 2)}\n`);
