@@ -6,10 +6,14 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents techniques for training LLMs with million-token contexts on single GPU nodes. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers to reduce activation memory.",
+  "summary": "Max Ryabinin presents a multi-technique approach to training LLMs with very long context windows, combining fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel Untied Ulysses variant further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior Ulysses at scale.",
   "writeup": "Max Ryabinin of Together AI walks through how to train LLMs with context windows reaching 5 million tokens under constrained GPU memory. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, and CPU offloading to keep memory in budget. The central contribution is Untied Ulysses, a method that further cuts activation memory by chunking attention head groups and reusing buffers across iterations. The takeaway is that long-context training at this scale is a memory-management problem solved by layering existing parallelism techniques with the new chunking approach.",
-  "wh": "0207c434a733bf3e",
+  "wh": "f8c938bd500e3bf5",
   "concepts": [
+    {
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
+    },
     {
       "slug": "data-parallelism",
       "label": "data parallelism"
@@ -17,6 +21,14 @@
     {
       "slug": "checkpointing",
       "label": "checkpointing"
+    },
+    {
+      "slug": "deepspeed-ulysses",
+      "label": "DeepSpeed Ulysses"
+    },
+    {
+      "slug": "untied-ulysses",
+      "label": "Untied Ulysses"
     },
     {
       "slug": "cpu-offloading",
@@ -27,50 +39,46 @@
       "label": "RNN training"
     },
     {
-      "slug": "untied-ulysses",
-      "label": "Untied Ulysses"
-    },
-    {
-      "slug": "long-context-reasoning",
-      "label": "long-context reasoning"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
     {
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.593
+    },
+    {
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.58
+    },
+    {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.59
-    },
-    {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.57
-    },
-    {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.568
+      "score": 0.574
     },
     {
       "id": "mFLlVpnGpds",
       "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.542
+      "score": 0.573
     },
     {
-      "id": "b_KxiTPBIb0",
-      "title": "Google TPU 8t and 8i is here..",
-      "channel": "Caleb Writes Code",
-      "score": 0.533
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.568
     },
     {
-      "id": "zexcKJYQooU",
-      "title": "Elon Musk Just Shocked OpenAI With Grok 5",
-      "channel": "AI Revolution",
-      "score": 0.532
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.545
     }
   ]
 }
