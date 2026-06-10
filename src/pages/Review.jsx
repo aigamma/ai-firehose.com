@@ -8,8 +8,6 @@ import { selectDue } from "../lib/srs.js";
 import { levelFor, masteryStats, ACHIEVEMENTS, newlyUnlocked } from "../lib/game.js";
 import { KINDS, getKind } from "../data/registry.js";
 
-const DAILY_GOAL = 10;
-
 const aliasText = (a) => (Array.isArray(a) ? a.join(", ") : typeof a === "string" ? a : "");
 
 // How many never-seen concepts to introduce per session, so a first-time reader always
@@ -35,7 +33,7 @@ export default function Review() {
   useDocumentTitle("Review");
   const { data, loading, error } = useData("/data/glossary/index.json");
   const { states, grade, prune, seeLess, challenging, toggleFav, remove } = useSrs();
-  const { game, todayCount, recordReview, unlock } = useGame();
+  const { game, recordReview, unlock } = useGame();
 
   const pool = useMemo(() => (data?.concepts || []).filter((c) => c && c.def_snippet), [data]);
   const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
@@ -127,7 +125,7 @@ export default function Review() {
   const onGrade = useCallback(
     (g) => {
       if (!card) return;
-      recordReview(g, !(card.id in states)); // XP, streak, daily tally (read newness before grading mutates states)
+      recordReview(g, !(card.id in states)); // XP and review count (read newness before grading mutates states)
       grade(card.id, g);
       setReviewed((n) => n + 1);
       setRevealed(false);
@@ -140,11 +138,11 @@ export default function Review() {
   // unlocked are written, so this settles after one pass and never loops.
   useEffect(() => {
     const fresh = newlyUnlocked(
-      { totalReviews: game.totalReviews, streak: game.streak?.current || 0, level: level.level, mastered: mastery.mastered, categoryDone },
+      { totalReviews: game.totalReviews, level: level.level, mastered: mastery.mastered, categoryDone },
       game.achievements
     );
     if (fresh.length) unlock(fresh);
-  }, [game.totalReviews, game.streak, level.level, mastery.mastered, categoryDone, game.achievements, unlock]);
+  }, [game.totalReviews, level.level, mastery.mastered, categoryDone, game.achievements, unlock]);
 
   // Manage the front card: see it less often, mark it challenging, or remove it. Each moves
   // the card out of the live queue, so advance like a grade (hide the answer, re-snapshot).
@@ -212,23 +210,19 @@ export default function Review() {
 
       <section className="card game-panel" aria-label="Your progress">
         <div className="game-stat">
-          <span className="game-stat-num">{game.streak?.current || 0}</span>
-          <span className="game-stat-label">day streak</span>
-        </div>
-        <div className="game-stat">
           <span className="game-stat-num">Lv {level.level}</span>
           <span className="game-stat-label">{game.xp} XP</span>
           <div className="game-bar" aria-hidden="true"><span style={{ width: `${level.span ? Math.round((level.into / level.span) * 100) : 0}%` }} /></div>
         </div>
         <div className="game-stat">
-          <span className="game-stat-num">{todayCount}<span className="faint">/{DAILY_GOAL}</span></span>
-          <span className="game-stat-label">today</span>
-          <div className="game-bar" aria-hidden="true"><span style={{ width: `${Math.min(100, Math.round((todayCount / DAILY_GOAL) * 100))}%` }} /></div>
-        </div>
-        <div className="game-stat">
           <span className="game-stat-num">{mastery.mastered}<span className="faint">/{mastery.total}</span></span>
           <span className="game-stat-label">mastered</span>
           <div className="game-bar" aria-hidden="true"><span style={{ width: `${mastery.total ? Math.round((mastery.mastered / mastery.total) * 100) : 0}%` }} /></div>
+        </div>
+        <div className="game-stat">
+          <span className="game-stat-num">{Object.keys(game.achievements).length}<span className="faint">/{ACHIEVEMENTS.length}</span></span>
+          <span className="game-stat-label">achievements</span>
+          <div className="game-bar" aria-hidden="true"><span style={{ width: `${ACHIEVEMENTS.length ? Math.round((Object.keys(game.achievements).length / ACHIEVEMENTS.length) * 100) : 0}%` }} /></div>
         </div>
       </section>
 

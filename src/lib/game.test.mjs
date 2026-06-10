@@ -3,7 +3,7 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
-import { xpFor, levelFor, updateStreak, masteryStats, newlyUnlocked } from "./game.js";
+import { xpFor, levelFor, masteryStats, newlyUnlocked } from "./game.js";
 
 test("xpFor rewards correct recall over lapses, with a first-seen bonus", () => {
   assert.equal(xpFor("again"), 2);
@@ -22,13 +22,6 @@ test("levelFor follows the quadratic curve and reports progress to the next leve
   assert.equal(l.into, 50);
   assert.equal(l.span, 150);
   assert.equal(l.toNext, 100);
-});
-
-test("updateStreak: same day holds, the next day increments, a gap resets to 1", () => {
-  assert.deepEqual(updateStreak({ current: 3, longest: 5, lastDay: "2026-06-09" }, "2026-06-09"), { current: 3, longest: 5, lastDay: "2026-06-09" });
-  assert.deepEqual(updateStreak({ current: 3, longest: 5, lastDay: "2026-06-09" }, "2026-06-10"), { current: 4, longest: 5, lastDay: "2026-06-10" });
-  assert.deepEqual(updateStreak({ current: 3, longest: 5, lastDay: "2026-06-09" }, "2026-06-12"), { current: 1, longest: 5, lastDay: "2026-06-12" });
-  assert.deepEqual(updateStreak({}, "2026-06-09"), { current: 1, longest: 1, lastDay: "2026-06-09" }); // a fresh streak
 });
 
 test("masteryStats counts mature cards (interval >= 21), excludes removed, groups by category", () => {
@@ -50,9 +43,9 @@ test("masteryStats counts mature cards (interval >= 21), excludes removed, group
 });
 
 test("newlyUnlocked returns satisfied achievements not already unlocked", () => {
-  const ctx = { totalReviews: 100, streak: 7, level: 5, mastered: 50, categoryDone: false };
+  const ctx = { totalReviews: 100, level: 5, mastered: 50, categoryDone: false };
   const fresh = newlyUnlocked(ctx, { first: 1, hundred: 1 }); // first + hundred already unlocked
-  assert.ok(fresh.includes("streak7") && fresh.includes("level5") && fresh.includes("mastered50"));
+  assert.ok(fresh.includes("level5") && fresh.includes("mastered50"));
   assert.ok(!fresh.includes("hundred"), "already-unlocked ids are excluded");
   assert.ok(!fresh.includes("thousand"), "unmet achievements are excluded");
   assert.deepEqual(newlyUnlocked({ totalReviews: 0 }, {}), []); // nothing met yet
