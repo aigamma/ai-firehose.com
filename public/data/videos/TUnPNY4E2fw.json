@@ -6,9 +6,9 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin from Together AI presents techniques for training LLMs with very long context windows up to 5 million tokens on limited GPU memory. The work combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and a novel method called Untied Ulysses that further reduces activation memory by chunking attention head groups and reusing buffers across iterations.",
+  "summary": "Max Ryabinin presents techniques for training LLMs with million-token contexts on single GPU nodes. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers to reduce activation memory.",
   "writeup": "Max Ryabinin of Together AI walks through how to train LLMs with context windows reaching 5 million tokens under constrained GPU memory. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, and CPU offloading to keep memory in budget. The central contribution is Untied Ulysses, a method that further cuts activation memory by chunking attention head groups and reusing buffers across iterations. The takeaway is that long-context training at this scale is a memory-management problem solved by layering existing parallelism techniques with the new chunking approach.",
-  "wh": "d34f4836d9b86c3e",
+  "wh": "0207c434a733bf3e",
   "concepts": [
     {
       "slug": "data-parallelism",
@@ -23,54 +23,54 @@
       "label": "CPU offloading"
     },
     {
+      "slug": "rnn-training",
+      "label": "RNN training"
+    },
+    {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "rnn-training",
-      "label": "RNN training"
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
     }
   ],
   "similar": [
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.65
-    },
-    {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.589
-    },
-    {
-      "id": "uTgqYeVxy2c",
-      "title": "Training Composer 2",
-      "channel": "Cursor",
-      "score": 0.562
-    },
-    {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.562
+      "score": 0.59
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.557
+      "score": 0.57
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.568
+    },
+    {
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "channel": "AI Engineer",
+      "score": 0.542
+    },
+    {
+      "id": "b_KxiTPBIb0",
+      "title": "Google TPU 8t and 8i is here..",
+      "channel": "Caleb Writes Code",
+      "score": 0.533
     },
     {
       "id": "zexcKJYQooU",
       "title": "Elon Musk Just Shocked OpenAI With Grok 5",
       "channel": "AI Revolution",
-      "score": 0.533
+      "score": 0.532
     }
   ]
 }

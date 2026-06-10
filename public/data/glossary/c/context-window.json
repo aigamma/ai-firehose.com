@@ -7,10 +7,30 @@
     "sequence length"
   ],
   "kind": "technique",
-  "attention": 23,
+  "attention": 7,
   "first_seen": "2026-04-04T11:45:37.000Z",
-  "rotation": null,
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "improving",
+    "ratio": 55,
+    "momentum": 102.8,
+    "sparkline": [
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  },
   "neighbors": [
+    {
+      "id": "context-window-management",
+      "label": "context window management",
+      "score": 0.736
+    },
     {
       "id": "text-editor-tool",
       "label": "text editor tool",
@@ -22,24 +42,19 @@
       "score": 0.727
     },
     {
-      "id": "vs-code-integration",
-      "label": "VS Code integration",
-      "score": 0.704
+      "id": "context-extension",
+      "label": "context extension",
+      "score": 0.727
+    },
+    {
+      "id": "agentic-workbench",
+      "label": "Agentic workbench",
+      "score": 0.681
     },
     {
       "id": "web-interface",
       "label": "web interface",
       "score": 0.669
-    },
-    {
-      "id": "ide",
-      "label": "IDE",
-      "score": 0.662
-    },
-    {
-      "id": "workspace",
-      "label": "workspace",
-      "score": 0.657
     }
   ],
   "axis_positions": [
@@ -51,7 +66,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.006
+      "position": -0.009
     },
     {
       "slug": "capability-safety",
@@ -66,17 +81,17 @@
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.397
+      "position": -0.267
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.343
+      "position": -0.38
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.09
+      "position": 0.087
     }
   ],
   "top_items": [
@@ -88,24 +103,10 @@
       "kind": "opinion"
     },
     {
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "url": "https://www.youtube.com/watch?v=EcqMYoIV57A",
-      "author_or_channel": "AI Engineer",
-      "published_at": "2026-06-08T15:00:17+00:00",
-      "kind": "opinion"
-    },
-    {
       "title": "Run Local AI Agents with Faster Models and Multi-Node Clustering on NVIDIA DGX Spark",
       "url": "https://developer.nvidia.com/blog/run-local-ai-agents-with-faster-models-and-multi-node-clustering-on-nvidia-dgx-spark/",
       "author_or_channel": "NVIDIA Developer",
       "published_at": "2026-06-01T22:00:00.000Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Training Composer 2",
-      "url": "https://www.youtube.com/watch?v=uTgqYeVxy2c",
-      "author_or_channel": "Cursor",
-      "published_at": "2026-05-21T20:32:39+00:00",
       "kind": "tool"
     },
     {
@@ -116,17 +117,17 @@
       "kind": "opinion"
     },
     {
-      "title": "Build AI Apps with Claude Code  | Full Tutorial for Beginners (Desktop + Terminal + VS Code)",
-      "url": "https://www.youtube.com/watch?v=2YKMZFgGdbQ",
-      "author_or_channel": "Code With Aarohi",
-      "published_at": "2026-05-07T04:29:18+00:00",
-      "kind": "tool"
+      "title": "Components of A Coding Agent",
+      "url": "https://magazine.sebastianraschka.com/p/components-of-a-coding-agent",
+      "author_or_channel": "Ahead of AI",
+      "published_at": "2026-04-04T11:45:37.000Z",
+      "kind": "technique"
     }
   ],
-  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
+  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "body": [
     {
       "type": "p",
