@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import useData from "../lib/useData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import useSrs from "../hooks/useSrs.js";
+import useGame from "../hooks/useGame.js";
 import { selectDue } from "../lib/srs.js";
+import { levelFor, masteryStats, ACHIEVEMENTS, newlyUnlocked } from "../lib/game.js";
 import { KINDS, getKind } from "../data/registry.js";
+
+const DAILY_GOAL = 10;
 
 const aliasText = (a) => (Array.isArray(a) ? a.join(", ") : typeof a === "string" ? a : "");
 
@@ -31,9 +35,19 @@ export default function Review() {
   useDocumentTitle("Review");
   const { data, loading, error } = useData("/data/glossary/index.json");
   const { states, grade, prune, seeLess, challenging, toggleFav, remove } = useSrs();
+  const { game, todayCount, recordReview, unlock } = useGame();
 
   const pool = useMemo(() => (data?.concepts || []).filter((c) => c && c.def_snippet), [data]);
   const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
+
+  // Gamification stats derived from the deck and the durable concept pool: mastery (mature
+  // cards), level from XP, and whether any category is fully mastered (for the achievement).
+  const mastery = useMemo(() => masteryStats(states, pool), [states, pool]);
+  const level = useMemo(() => levelFor(game.xp), [game.xp]);
+  const categoryDone = useMemo(
+    () => Object.values(mastery.byCategory).some((b) => b.total > 0 && b.mastered === b.total),
+    [mastery]
+  );
 
   const [kind, setKind] = useState("all");
   const [revealed, setRevealed] = useState(false);
@@ -113,13 +127,24 @@ export default function Review() {
   const onGrade = useCallback(
     (g) => {
       if (!card) return;
+      recordReview(g, !(card.id in states)); // XP, streak, daily tally (read newness before grading mutates states)
       grade(card.id, g);
       setReviewed((n) => n + 1);
       setRevealed(false);
       setTick((t) => t + 1);
     },
-    [card, grade]
+    [card, grade, recordReview, states]
   );
+
+  // Unlock any achievement the current progress satisfies. Idempotent: only ids not already
+  // unlocked are written, so this settles after one pass and never loops.
+  useEffect(() => {
+    const fresh = newlyUnlocked(
+      { totalReviews: game.totalReviews, streak: game.streak?.current || 0, level: level.level, mastered: mastery.mastered, categoryDone },
+      game.achievements
+    );
+    if (fresh.length) unlock(fresh);
+  }, [game.totalReviews, game.streak, level.level, mastery.mastered, categoryDone, game.achievements, unlock]);
 
   // Manage the front card: see it less often, mark it challenging, or remove it. Each moves
   // the card out of the live queue, so advance like a grade (hide the answer, re-snapshot).
@@ -184,6 +209,28 @@ export default function Review() {
           term, reveal the definition, then grade yourself. Press Space to flip, then 1 to 4 to grade.
         </p>
       </header>
+
+      <section className="card game-panel" aria-label="Your progress">
+        <div className="game-stat">
+          <span className="game-stat-num">{game.streak?.current || 0}</span>
+          <span className="game-stat-label">day streak</span>
+        </div>
+        <div className="game-stat">
+          <span className="game-stat-num">Lv {level.level}</span>
+          <span className="game-stat-label">{game.xp} XP</span>
+          <div className="game-bar" aria-hidden="true"><span style={{ width: `${level.span ? Math.round((level.into / level.span) * 100) : 0}%` }} /></div>
+        </div>
+        <div className="game-stat">
+          <span className="game-stat-num">{todayCount}<span className="faint">/{DAILY_GOAL}</span></span>
+          <span className="game-stat-label">today</span>
+          <div className="game-bar" aria-hidden="true"><span style={{ width: `${Math.min(100, Math.round((todayCount / DAILY_GOAL) * 100))}%` }} /></div>
+        </div>
+        <div className="game-stat">
+          <span className="game-stat-num">{mastery.mastered}<span className="faint">/{mastery.total}</span></span>
+          <span className="game-stat-label">mastered</span>
+          <div className="game-bar" aria-hidden="true"><span style={{ width: `${mastery.total ? Math.round((mastery.mastered / mastery.total) * 100) : 0}%` }} /></div>
+        </div>
+      </section>
 
       <div className="chips" role="group" aria-label="Filter the deck by kind">
         <button
@@ -346,6 +393,52 @@ export default function Review() {
             </span>
           </div>
         </>
+      )}
+
+      <section className="card" aria-label="Achievements">
+        <div className="card-head">
+          <h2>Achievements</h2>
+          <span className="faint mono" style={{ marginLeft: "auto" }}>
+            {Object.keys(game.achievements).length}/{ACHIEVEMENTS.length}
+          </span>
+        </div>
+        <div className="ach-wall">
+          {ACHIEVEMENTS.map((a) => {
+            const got = !!game.achievements[a.id];
+            return (
+              <div key={a.id} className={`ach${got ? " ach-got" : ""}`} title={a.desc}>
+                <span className="ach-icon" aria-hidden="true">{got ? "★" : "☆"}</span>
+                <span className="ach-label">{a.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {mastery.total > 0 && (
+        <details className="card cat-mastery-card">
+          <summary>
+            <span className="cat-mastery-title">Mastery by Category</span>
+            <span className="faint mono">{mastery.mastered}/{mastery.total} mastered</span>
+          </summary>
+          <div className="cat-mastery">
+            {Object.entries(mastery.byCategory)
+              .sort(
+                (a, b) =>
+                  (b[1].total ? b[1].mastered / b[1].total : 0) - (a[1].total ? a[1].mastered / a[1].total : 0) ||
+                  a[0].localeCompare(b[0])
+              )
+              .map(([cat, b]) => (
+                <div key={cat} className="cat-row">
+                  <span className="cat-name">{cat}</span>
+                  <div className="game-bar" aria-hidden="true">
+                    <span style={{ width: `${b.total ? Math.round((b.mastered / b.total) * 100) : 0}%` }} />
+                  </div>
+                  <span className="faint mono cat-frac">{b.mastered}/{b.total}</span>
+                </div>
+              ))}
+          </div>
+        </details>
       )}
     </div>
   );

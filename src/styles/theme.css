@@ -543,6 +543,30 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
   border-color: color-mix(in oklab, var(--recommended) 50%, var(--border-strong)); }
 .srs-manage-btn.srs-remove:hover { color: var(--q-lagging); border-color: var(--q-lagging); }
 
+/* Gamification: the progress panel, achievements wall, and per-category mastery on Review. */
+.game-panel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.game-stat { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.game-stat-num { font-size: 1.35rem; font-weight: 700; color: var(--text-strong); line-height: 1.1; }
+.game-stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.game-bar { height: 5px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-top: 4px; }
+.game-bar > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.4s ease; }
+.ach-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 10px; }
+.ach { display: flex; align-items: center; gap: 8px; padding: 8px 11px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface-2); opacity: 0.5; }
+.ach-got { opacity: 1; border-color: color-mix(in oklab, var(--recommended) 45%, var(--border-strong)); }
+.ach-got .ach-icon { color: var(--recommended); }
+.ach-icon { font-size: 1.1rem; }
+.ach-label { font-size: 0.82rem; font-weight: 600; }
+.cat-mastery-card > summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; }
+.cat-mastery-card > summary::-webkit-details-marker { display: none; }
+.cat-mastery-title { font-size: 1.05rem; font-weight: 700; color: var(--text-strong); }
+.cat-mastery-card > summary .faint { margin-left: auto; }
+.cat-mastery { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.cat-row { display: grid; grid-template-columns: 1fr 90px auto; align-items: center; gap: 10px; }
+.cat-name { font-size: 0.85rem; }
+.cat-frac { font-size: 0.74rem; }
+@media (max-width: 560px) { .game-panel { grid-template-columns: repeat(2, 1fr); } }
+
 .creator-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 .creator-name { font-weight: 700; color: var(--text-strong); font-size: 1.05rem; }
 .creator-blurb { font-size: 0.9rem; flex-basis: 100%; }
