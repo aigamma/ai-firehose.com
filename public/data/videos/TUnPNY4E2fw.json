@@ -6,83 +6,67 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a multi-technique approach to training LLMs with very long context windows, combining fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel Untied Ulysses variant further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior Ulysses at scale.",
+  "summary": "Max Ryabinin describes a full stack of techniques for training LLMs with very long context windows, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, enabling 5 million token context training at 8B and 32B scale.",
   "writeup": "Max Ryabinin of Together AI walks through the systems techniques for training LLMs with very long context windows, targeting sequences up to 5 million tokens. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training, with each method addressing a different memory or scaling bottleneck. The central contribution is Untied Ulysses, a context parallelism variant that chunks attention heads and reuses buffers across iterations. At scale it fits sequences 25% longer than prior Ulysses.",
-  "wh": "479136d5f5dbfaf9",
+  "wh": "4b83aded0e09ff4f",
   "concepts": [
     {
-      "slug": "long-context-training",
-      "label": "long context training"
+      "slug": "parallel-execution",
+      "label": "parallel execution"
     },
     {
-      "slug": "context-parallelism",
-      "label": "context parallelism"
+      "slug": "checkpointing",
+      "label": "checkpointing"
     },
     {
-      "slug": "activation-checkpointing",
-      "label": "activation checkpointing"
+      "slug": "gpu-acceleration",
+      "label": "GPU acceleration"
     },
     {
-      "slug": "deepspeed-ulysses",
-      "label": "DeepSpeed Ulysses"
+      "slug": "rnn-training",
+      "label": "RNN training"
     },
     {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
-    },
-    {
-      "slug": "fully-sharded-data-parallelism",
-      "label": "fully sharded data parallelism"
-    },
-    {
-      "slug": "cpu-offloading",
-      "label": "CPU offloading"
-    },
-    {
-      "slug": "chunked-sequence-training",
-      "label": "chunked sequence training"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
     }
   ],
   "similar": [
     {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.621
+    },
+    {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.594
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.58
+      "score": 0.617
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.574
+      "score": 0.563
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.573
+      "score": 0.561
     },
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.568
+      "id": "fCHe_fOqlYA",
+      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
+      "channel": "IBM Technology",
+      "score": 0.559
     },
     {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.545
+      "id": "BSzhrZOp2x8",
+      "title": "How is hardware reshaping LLM design?",
+      "channel": "Julia Turc",
+      "score": 0.557
     }
   ]
 }

@@ -6,63 +6,63 @@
   "published": "2026-06-08T08:30:17+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "JuiceFS is a POSIX-compliant virtual file system that combines cloud object storage like AWS S3 with local NVMe performance through multi-tiered caching. The demonstration shows how to configure JuiceFS with Redis metadata, mount it as a local drive, and monitor cache performance via Prometheus integration with Better Stack observability.",
+  "summary": "JuiceFS is a POSIX-compliant virtual file system that combines AWS S3 and other cloud object storage with local NVMe caching. The system separates data from metadata and uses multi-tiered caching to deliver local-disk performance while maintaining cloud scalability. The demonstration shows practical setup with Redis, monitoring via Prometheus, and real-world inference workloads.",
   "writeup": "The video demonstrates JuiceFS, a POSIX-compliant virtual file system that layers object storage such as AWS S3 behind local NVMe caching to present what behaves like a single large local drive. The walkthrough covers configuring JuiceFS with Redis for metadata, mounting the file system locally, and tracking cache performance through Prometheus metrics fed into Better Stack observability. The point is that multi-tiered caching can pair cheap, scalable cloud storage with local-disk speed while keeping standard file system semantics. Key takeaways: metadata lives in Redis, the data sits in object storage, and the cache hit behavior is observable rather than assumed.",
-  "wh": "c2477bfe815e1b61",
+  "wh": "dd5bc8c99a42c27a",
   "concepts": [
     {
-      "slug": "multi-tiered-caching",
-      "label": "multi-tiered caching"
-    },
-    {
-      "slug": "cloud-object-storage",
-      "label": "cloud object storage"
+      "slug": "kv-cache",
+      "label": "KV cache"
     },
     {
       "slug": "posix-file-system",
       "label": "POSIX file system"
     },
     {
-      "slug": "metadata-management",
-      "label": "metadata management"
+      "slug": "data-storage",
+      "label": "data storage"
+    },
+    {
+      "slug": "metadata-separation",
+      "label": "metadata separation"
     }
   ],
   "similar": [
     {
+      "id": "ARyp6R-pDKY",
+      "title": "Local AI Is Free—But There’s a Catch (Hybrid Setup Fix)",
+      "channel": "Keith AI",
+      "score": 0.566
+    },
+    {
+      "id": "yaMcm3sQswc",
+      "title": "Hermes Agent + Ollama = 100% Private OS",
+      "channel": "Jack Roberts",
+      "score": 0.527
+    },
+    {
+      "id": "SBA5Qxkj7-o",
+      "title": "Stop Paying for AI APIs: Go Local with Beelink",
+      "channel": "Keith AI",
+      "score": 0.523
+    },
+    {
+      "id": "0_dSWLOHKng",
+      "title": "My Simple Claude Cowork System (for normal people)",
+      "channel": "Jeff Su",
+      "score": 0.499
+    },
+    {
+      "id": "C20PFYd2dOM",
+      "title": "Privacy Is the Real AI Bottleneck",
+      "channel": "Keith AI",
+      "score": 0.491
+    },
+    {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.453
-    },
-    {
-      "id": "SKDJo2CopRs",
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carrie, Cloudflare",
-      "channel": "AI Engineer",
-      "score": 0.451
-    },
-    {
-      "id": "KqdRWE1en8k",
-      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
-      "channel": "Better Stack",
-      "score": 0.45
-    },
-    {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.45
-    },
-    {
-      "id": "zDGHt0LB-dA",
-      "title": "GPU Cloud Deployment Without Leaving Your IDE — Audry Hsu, RunPod",
-      "channel": "AI Engineer",
-      "score": 0.444
-    },
-    {
-      "id": "KawnBQWmtcU",
-      "title": "Explained: TurboQuant in Qdrant | Improving Vector Compression without the Recall Tax",
-      "channel": "Qdrant Vector Search",
-      "score": 0.442
+      "score": 0.476
     }
   ]
 }

@@ -4,69 +4,73 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-10T13:00:17+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is building an automated pipeline that converts product signals like errors and user session events into pull request fixes using background agents. The approach embeds LLM-generated queries rather than raw signals for semantic clustering, prioritizes actionable signal types, and uses agent iteration to optimize expensive steps into one-shot calls.",
-  "writeup": "Joshua Snyder of PostHog details an automated pipeline that turns product signals like errors and user session events into pull request fixes using background agents. The system embeds LLM-generated queries rather than raw signals for semantic clustering, prioritizes signal types that are actionable, and uses agent iteration to collapse expensive steps into one-shot calls. The talk matters because it shows a concrete path from observed product behavior to code changes without manual triage at each stage.",
-  "wh": "021d2d3af1998165",
+  "summary": "PostHog is building an automated pipeline that detects product signals like rage clicks and error spikes, groups them via an LLM agent, retrieves relevant session replays and codebase context, and automatically generates pull requests with fixes. The system collapses the traditional triage and development workflow into an autonomous agent that produces ready-to-merge PRs.",
+  "writeup": "Joshua Snyder of PostHog details an automated pipeline that turns product signals into pull requests. The system detects signals like rage clicks and error spikes, groups them with an LLM agent, retrieves relevant session replays and codebase context, and generates fixes as ready-to-merge PRs. It collapses the traditional triage and development workflow into a single autonomous agent. The talk covers the supporting pieces: clustering to group signals, LLM evaluation, error recovery, and test-time compute.",
+  "wh": "e67508b45cb13aae",
   "concepts": [
     {
-      "slug": "agents",
-      "label": "agents"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "embedding-models",
-      "label": "embedding models"
+      "slug": "large-language-models",
+      "label": "large language models"
     },
     {
-      "slug": "semantic-search",
-      "label": "semantic search"
+      "slug": "llm-evaluation",
+      "label": "LLM evaluation"
     },
     {
-      "slug": "llm-query-generation",
-      "label": "LLM query generation"
+      "slug": "error-recovery",
+      "label": "error recovery"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "clustering",
+      "label": "clustering"
     }
   ],
   "similar": [
     {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.598
-    },
-    {
       "id": "luBkbzjo-TA",
       "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
       "channel": "Cole Medin",
-      "score": 0.591
+      "score": 0.567
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.555
     },
     {
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.57
+      "score": 0.553
     },
     {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.549
+      "id": "qKU-e0x2EmE",
+      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
+      "channel": "Nick Saraev",
+      "score": 0.528
     },
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.54
+      "id": "ikH1--DSzMs",
+      "title": "How to build proactive agents & self-improving company (Fully explained)",
+      "channel": "AI Jason",
+      "score": 0.522
     },
     {
       "id": "C8El0OzQRrc",
       "title": "This is the most useful n8n workflow I have ever built...",
       "channel": "NeuralNine",
-      "score": 0.537
+      "score": 0.521
     }
   ]
 }

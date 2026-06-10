@@ -2,102 +2,98 @@
   "id": "routing",
   "label": "routing",
   "aliases": [
-    "model routing",
     "task routing",
+    "model routing",
+    "LLM routing",
+    "prompt routing",
     "intent routing",
     "dynamic routing",
     "context routing",
-    "conditional routing"
+    "conditional routing",
+    "anticipatory routing",
+    "dynamic model routing"
   ],
-  "kind": "technique",
-  "attention": 24,
-  "first_seen": "2026-05-19T03:35:08+00:00",
-  "rotation": {
-    "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 81.3,
-    "momentum": 93.6,
-    "sparkline": [
-      6,
-      6,
-      10,
-      9,
-      8,
-      8,
-      8,
-      7
-    ]
-  },
+  "kind": "tool",
+  "attention": 43,
+  "first_seen": "2026-03-17T07:22:54+00:00",
+  "rotation": null,
   "neighbors": [
     {
-      "id": "anticipatory-routing",
-      "label": "Anticipatory routing",
-      "score": 0.787
+      "id": "provider-routing",
+      "label": "provider routing",
+      "score": 0.756
+    },
+    {
+      "id": "flow-matching",
+      "label": "flow matching",
+      "score": 0.744
     },
     {
       "id": "pathfinding",
       "label": "pathfinding",
-      "score": 0.742
+      "score": 0.744
     },
     {
       "id": "scheduling",
       "label": "scheduling",
-      "score": 0.73
-    },
-    {
-      "id": "content-addressing",
-      "label": "content addressing",
-      "score": 0.73
+      "score": 0.731
     },
     {
       "id": "positioning",
       "label": "positioning",
-      "score": 0.729
+      "score": 0.731
     },
     {
-      "id": "workflow",
-      "label": "workflow",
-      "score": 0.719
+      "id": "content-addressing",
+      "label": "content addressing",
+      "score": 0.731
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.208
+      "position": -0.223
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.11
+      "position": -0.201
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.274
+      "position": 0.267
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.256
+      "position": 0.291
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.041
+      "position": 0.066
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.057
+      "position": -0.062
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.232
+      "position": 0.224
     }
   ],
   "top_items": [
+    {
+      "title": "EEVEE: Towards Test-time Prompt Learning in the Real World for Self-Improving Agents",
+      "url": "https://huggingface.co/papers/2606.11182",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T13:57:16.000Z",
+      "kind": "technique"
+    },
     {
       "title": "Why LLM Inference Needs a New Kind of Router",
       "url": "https://www.modular.com/blog/why-llm-inference-needs-a-new-kind-of-router-part-1",
@@ -132,14 +128,7 @@
       "author_or_channel": "Yu-Cheng Shi, Zhen-Hao Xie, Jun-Tao Tang",
       "published_at": "2026-06-01T17:59:13Z",
       "kind": "technique"
-    },
-    {
-      "title": "LangGraph Crash Course - Agent Workflows in Python",
-      "url": "https://www.youtube.com/watch?v=uWLJAtMOVT0",
-      "author_or_channel": "NeuralNine",
-      "published_at": "2026-05-29T15:32:01+00:00",
-      "kind": "tool"
     }
   ],
-  "definition": "Routing is the technique of directing each input or request to one of several models, experts, or processing paths, addressing the need to match tasks with the most suitable or cost-effective resource."
+  "definition": "Routing is a technique that directs each input or request to one of several models, experts, or processing paths based on its content or difficulty, in order to balance cost, latency, and accuracy."
 }

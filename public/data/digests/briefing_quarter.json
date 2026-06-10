@@ -2,63 +2,75 @@
   "horizon": "quarter",
   "generated": "2026-06-10",
   "severity": 2,
-  "headline": "Agentic systems and test-time compute led the quarter as agents moved from chat into production pipelines.",
-  "body": "Agentic systems, AI agents, and test-time compute dominated rotation this quarter, anchored by tooling that gives agents persistent state and autonomous workflows: PAI builds a Life OS on Claude Code with persistent memory and a seven-phase observe-to-learn loop [0], and PostHog is converting product signals like errors and session events into pull requests via background agents that embed LLM-generated queries for semantic clustering [3]. On the model side, Gemma 4's 31B places fourth on the LM Arena open leaderboard while running on a single GPU and on-device, underscoring continued pressure on token efficiency and foundation-model size [1]. A distinct cluster of infrastructure techniques broke out, including DeepSpeed Ulysses, Untied Ulysses, CPU offloading, and auto-scaling, alongside new entrants like percolation. Hallucination risk also surfaced concretely as lawyers were sanctioned for AI-generated citations to nonexistent cases [4].",
+  "headline": "Behavioral training and tool discipline displaced raw scale as the quarter's defining efficiency theme, while model compression and recursive self-improvement cooled.",
+  "body": "The quarter's clearest rotation is toward small models trained to behave: Snorkel showed a 4B model finetuned with reinforcement learning and tool discipline outperforming Qwen 3 235B on structured query tasks, self-correcting where the larger model hallucinated [2], and Gemma 4's 31B variant ranked fourth among open models at 2-20x smaller size, running on single GPUs and phones under Apache 2.0 [5]. Against that, model compression, AI system architecture, and recursive self-improvement all registered as weakening despite high ratios, and skills, MCP, LSP, subagents, and token optimization lagged. Breakouts clustered around agent plumbing: workflow automation, memory systems, and attribution, reflected in PAI's persistent-memory Life OS on Claude Code [4] and PostHog's signal-to-pull-request pipeline [7]. New entrants percolation, database scaling, GPU acceleration, and Untied Ulysses surfaced without anchoring items, alongside security and verification failures in AI worms, prompt injection, and fabricated legal citations [9][10].",
   "cited_concepts": [
     {
-      "slug": "agentic-systems",
-      "label": "agentic systems"
+      "slug": "behavioral-training",
+      "label": "behavioral training"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "tool-use",
+      "label": "tool use"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "reinforcement-learning",
+      "label": "reinforcement learning"
     },
     {
-      "slug": "memory",
-      "label": "memory"
+      "slug": "fine-tuning",
+      "label": "fine tuning"
     },
     {
-      "slug": "claude-integration",
-      "label": "claude integration"
+      "slug": "model-compression",
+      "label": "model compression"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "recursive-self-improvement",
+      "label": "recursive self-improvement"
     },
     {
-      "slug": "foundation-models",
-      "label": "foundation models"
+      "slug": "ai-system-architecture",
+      "label": "AI system architecture"
     },
     {
-      "slug": "on-device-ai",
-      "label": "on device ai"
+      "slug": "skills",
+      "label": "skills"
     }
   ],
   "cited_items": [
     {
-      "n": 0,
-      "title": "PAI: The Life OS for AI-Powered Development",
-      "url": "https://www.youtube.com/watch?v=JukZ7WWtOSg",
-      "author_or_channel": "Better Stack"
+      "n": 2,
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawdord, Snorkel",
+      "url": "https://www.youtube.com/watch?v=TNwJ1LMiENk",
+      "author_or_channel": "AI Engineer"
     },
     {
-      "n": 1,
+      "n": 5,
       "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "url": "https://www.youtube.com/watch?v=SS-A8sE7hkw",
       "author_or_channel": "AI Engineer"
     },
     {
-      "n": 3,
+      "n": 4,
+      "title": "PAI: The Life OS for AI-Powered Development",
+      "url": "https://www.youtube.com/watch?v=JukZ7WWtOSg",
+      "author_or_channel": "Better Stack"
+    },
+    {
+      "n": 7,
       "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
       "url": "https://www.youtube.com/watch?v=zMiSRliEzv4",
       "author_or_channel": "AI Engineer"
     },
     {
-      "n": 4,
+      "n": 9,
+      "title": "Can you social engineer an AI? Plus: AI worms and the nonhuman identity problem",
+      "url": "https://www.youtube.com/watch?v=JHDsM8ER7tk",
+      "author_or_channel": "IBM Technology"
+    },
+    {
+      "n": 10,
       "title": "Lawyers Barred for A.I.-Generated Citations to Fake Cases - The New York Times",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQMTNuQVo3aGo1WDN3ZGptTEFNSWdlX3QxYTlWVlpzZXZJZHVwYWhrVGFlZThUUjVueVZpZTB1YUg1cHZRN1hFaVpGcFFxTzdnTEFsajhCOXI2Nl9MS1B6TWI1QUhwOUVNN19XaDV5SlY0cmp6RGFxVGRLeXNoT1FkTi1B?oc=5",
       "author_or_channel": "Google News AI"
