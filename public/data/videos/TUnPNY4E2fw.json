@@ -6,41 +6,33 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a full stack of techniques for training LLMs with extremely long contexts up to 5 million tokens, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel contribution Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving memory reductions with negligible throughput loss.",
-  "writeup": "",
-  "wh": "566eb4d866349ced",
+  "summary": "Max Ryabinin from Together AI presents techniques for training LLMs with very long context windows up to 5 million tokens on limited GPU memory. The work combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and a novel method called Untied Ulysses that further reduces activation memory by chunking attention head groups and reusing buffers across iterations.",
+  "writeup": "Max Ryabinin of Together AI walks through how to train LLMs with context windows reaching 5 million tokens under constrained GPU memory. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, and CPU offloading to keep memory in budget. The central contribution is Untied Ulysses, a method that further cuts activation memory by chunking attention head groups and reusing buffers across iterations. The takeaway is that long-context training at this scale is a memory-management problem solved by layering existing parallelism techniques with the new chunking approach.",
+  "wh": "d34f4836d9b86c3e",
   "concepts": [
     {
-      "slug": "fully-sharded-data-parallelism",
-      "label": "fully sharded data parallelism"
+      "slug": "data-parallelism",
+      "label": "data parallelism"
     },
     {
-      "slug": "context-parallelism",
-      "label": "context parallelism"
-    },
-    {
-      "slug": "activation-checkpointing",
-      "label": "activation checkpointing"
+      "slug": "checkpointing",
+      "label": "checkpointing"
     },
     {
       "slug": "cpu-offloading",
       "label": "CPU offloading"
     },
     {
-      "slug": "chunked-sequence-training",
-      "label": "chunked sequence training"
-    },
-    {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
     },
     {
-      "slug": "long-context-training",
-      "label": "long context training"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
-      "slug": "memory-optimization",
-      "label": "memory optimization"
+      "slug": "rnn-training",
+      "label": "RNN training"
     }
   ],
   "similar": [
@@ -48,37 +40,37 @@
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.624
-    },
-    {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.589
-    },
-    {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.583
+      "score": 0.65
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.577
+      "score": 0.589
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
-      "channel": "AI Engineer",
-      "score": 0.549
+      "id": "uTgqYeVxy2c",
+      "title": "Training Composer 2",
+      "channel": "Cursor",
+      "score": 0.562
     },
     {
-      "id": "zTZ0qunQXnM",
-      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.562
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.543
+      "score": 0.557
+    },
+    {
+      "id": "zexcKJYQooU",
+      "title": "Elon Musk Just Shocked OpenAI With Grok 5",
+      "channel": "AI Revolution",
+      "score": 0.533
     }
   ]
 }

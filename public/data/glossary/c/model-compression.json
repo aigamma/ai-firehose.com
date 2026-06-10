@@ -6,13 +6,13 @@
     "model optimization"
   ],
   "kind": "technique",
-  "attention": 32,
+  "attention": 43,
   "first_seen": "2026-04-20T19:26:26+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
     "ratio": 145,
-    "momentum": 91.2,
+    "momentum": 90.7,
     "sparkline": [
       0,
       0,
@@ -31,6 +31,11 @@
       "score": 0.813
     },
     {
+      "id": "model-calibration",
+      "label": "model calibration",
+      "score": 0.789
+    },
+    {
       "id": "inference-optimization",
       "label": "inference optimization",
       "score": 0.786
@@ -41,41 +46,36 @@
       "score": 0.781
     },
     {
-      "id": "model-evaluation",
-      "label": "model evaluation",
-      "score": 0.779
+      "id": "model-reliability",
+      "label": "model reliability",
+      "score": 0.781
     },
     {
       "id": "shuffle-model",
       "label": "Shuffle Model",
       "score": 0.776
-    },
-    {
-      "id": "dimensionality-reduction",
-      "label": "dimensionality reduction",
-      "score": 0.772
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.377
+      "position": 0.393
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.312
+      "position": -0.374
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.435
+      "position": 0.537
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.511
+      "position": 0.518
     },
     {
       "slug": "agents-assistive",
@@ -85,7 +85,7 @@
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.769
+      "position": 0.773
     },
     {
       "slug": "central-local",
@@ -94,6 +94,13 @@
     }
   ],
   "top_items": [
+    {
+      "title": "Model Quantization: Turn FP8 Checkpoints into High-Performance Inference Engines with NVIDIA TensorRT",
+      "url": "https://developer.nvidia.com/blog/model-quantization-turn-fp8-checkpoints-into-high-performance-inference-engines-with-nvidia-tensorrt/",
+      "author_or_channel": "NVIDIA Developer",
+      "published_at": "2026-06-09T18:27:52.000Z",
+      "kind": "technique"
+    },
     {
       "title": "Claude Mythos 5 + Fable 5 Are Here And The Numbers Are INSANE",
       "url": "https://www.youtube.com/watch?v=o3UbD4DYhv4",
@@ -109,6 +116,13 @@
       "kind": "tool"
     },
     {
+      "title": "Did Apple (Finally) Get AI Right At WWDC?, Anthropic’s Worry, Microsoft vs. OpenAI",
+      "url": "https://www.youtube.com/watch?v=ain0OoBx74A",
+      "author_or_channel": "Alex Kantrowitz",
+      "published_at": "2026-06-08T16:00:06+00:00",
+      "kind": "opinion"
+    },
+    {
       "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
       "url": "https://www.youtube.com/watch?v=KqdRWE1en8k",
       "author_or_channel": "Better Stack",
@@ -121,20 +135,6 @@
       "author_or_channel": "brandonb",
       "published_at": "2026-06-05T18:50:26.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "Launch HN: General Instinct (YC P26) – Frontier models on edge devices",
-      "url": "https://news.ycombinator.com/item?id=48414869",
-      "author_or_channel": "guanming0717",
-      "published_at": "2026-06-05T16:33:00.000Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Gemma 4 QAT models: Optimizing compression for mobile and laptop efficiency",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/quantization-aware-training-gemma-4/",
-      "author_or_channel": "theanonymousone",
-      "published_at": "2026-06-05T16:18:48.000Z",
-      "kind": "tool"
     }
   ],
   "definition": "The set of techniques for shrinking a trained model so it runs faster and cheaper with minimal quality loss, the bridge between the large model you trained and a deployable one, spanning quantization, pruning, distillation, and low-rank methods. Because inference, not training, is where a deployed model's lifetime cost accumulates, compression is often where the real economics of shipping AI are decided.",

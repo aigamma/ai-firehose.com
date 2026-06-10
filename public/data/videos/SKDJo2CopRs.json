@@ -6,9 +6,9 @@
   "published": "2026-06-08T13:00:13+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Cloudflare's Eval++ is a compute primitive that executes LLM-generated code in sandboxed isolates with explicit capability grants. Durable Objects provide the addressable, persistent, stateful compute unit for AI agents with resumable streaming and multi-tab sync. Dynamic Workers enable safe execution of untrusted code through capability-based security rather than ambient access.",
-  "writeup": "",
-  "wh": "359d07b6ce47fe21",
+  "summary": "Cloudflare's Durable Objects provide addressable, persistent, stateful compute units suitable for AI agents, with latency low enough (15ms) to meet animation frame budgets. Dynamic Workers enable running LLM-generated code in sandboxed isolates with explicit capability grants, positioning Eval++ as a compute primitive for agent execution and code generation workflows.",
+  "writeup": "Sunil Pai and Matt Carrie present Cloudflare's case for \"Eval++\" as a compute primitive for AI agents: running LLM-generated code in sandboxed isolates through Dynamic Workers, with explicit capability grants controlling what that code can access. Durable Objects supply the addressable, persistent, stateful compute units agents need, with latency low enough (15ms) to fit animation frame budgets. The framing matters because agent execution and code generation increasingly require running untrusted, model-produced code safely while preserving state across calls. Concrete points include the pairing of stateful compute with sandboxed execution, plus streaming and MCP as part of the workflow.",
+  "wh": "53229ae2dd85da2f",
   "concepts": [
     {
       "slug": "durable-objects",
@@ -19,20 +19,24 @@
       "label": "Dynamic Workers"
     },
     {
-      "slug": "sandboxing",
-      "label": "sandboxing"
+      "slug": "eval",
+      "label": "Eval++"
     },
     {
-      "slug": "capability-based-security",
-      "label": "capability-based security"
+      "slug": "sandboxed-execution",
+      "label": "sandboxed execution"
     },
     {
-      "slug": "resumable-streaming",
-      "label": "resumable streaming"
+      "slug": "stateful-compute",
+      "label": "stateful compute"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "streaming",
+      "label": "streaming"
+    },
+    {
+      "slug": "mcp",
+      "label": "MCP"
     }
   ],
   "similar": [
@@ -40,37 +44,37 @@
       "id": "efRIrLXoOVA",
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.579
-    },
-    {
-      "id": "ZkzkdhmcIVQ",
-      "title": "Become an AI Native Cloud Engineer",
-      "channel": "AWS Developers",
-      "score": 0.556
-    },
-    {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.549
+      "score": 0.591
     },
     {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.547
+      "score": 0.583
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.545
+      "score": 0.575
     },
     {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
+      "id": "vhbaZJtW2Hg",
+      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.54
+      "score": 0.566
+    },
+    {
+      "id": "BH5_FEJNOGY",
+      "title": "Google Just Dropped The Singularity Bomb",
+      "channel": "AI Revolution",
+      "score": 0.563
+    },
+    {
+      "id": "uH2wiWjSDy8",
+      "title": "AI Data Control: EU Builders' Secret Weapon Against US Cloud! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.561
     }
   ]
 }
