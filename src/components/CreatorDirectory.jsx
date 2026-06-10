@@ -28,7 +28,7 @@ function CreatorDirectory({ roster = [] }) {
                 <a href={c.channelUrl} target="_blank" rel="noreferrer">{c.name}</a>
               </h3>
               {c.recommended && (
-                <span className="badge badge-recommended" title="Recommended: the carefully vetted inner circle">★ Recommended</span>
+                <span className="badge badge-recommended" title="Most Focused: the carefully vetted inner circle">★ Most Focused</span>
               )}
               {kind && <span className={`badge ${kind.badgeClass}`}>{kind.singular}</span>}
             </div>

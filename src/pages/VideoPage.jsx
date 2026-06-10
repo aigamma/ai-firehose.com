@@ -45,7 +45,7 @@ export default function VideoPage() {
         ) : (
           <span className="faint">{v.channel}</span>
         )}
-        {v.recommended && <span className="badge badge-recommended" title="A recommended inner-circle channel">★ Recommended</span>}
+        {v.recommended && <span className="badge badge-recommended" title="Most Focused: a carefully vetted inner-circle channel">★ Most Focused</span>}
         {k && <span className={`badge ${k.badgeClass}`}>{k.singular}</span>}
         {v.published && <span className="faint mono">{v.published.slice(0, 10)}</span>}
       </div>

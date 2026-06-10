@@ -29,7 +29,7 @@ export default function CreatorSpotlight({ creator, compact = false, limit }) {
           </h2>
         )}
         {creator.recommended && (
-          <span className="badge badge-recommended" title="Recommended: the carefully vetted inner circle">★ Recommended</span>
+          <span className="badge badge-recommended" title="Most Focused: the carefully vetted inner circle">★ Most Focused</span>
         )}
         {creator.handle && <span className="faint mono">{creator.handle}</span>}
         {!compact && creator.blurb && <span className="muted creator-blurb">{creator.blurb}</span>}

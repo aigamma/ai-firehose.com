@@ -20,7 +20,7 @@ function VideoCard({ video }) {
             }
           }}
         />
-        {video.recommended && <span className="badge badge-recommended video-card-rec" title="Recommended inner circle">★</span>}
+        {video.recommended && <span className="badge badge-recommended video-card-rec" title="Most Focused inner circle">★</span>}
       </div>
       <div className="video-card-body">
         <h3 className="video-card-title">{video.title}</h3>
