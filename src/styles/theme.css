@@ -533,6 +533,22 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .chip-sm { font-size: 0.7rem; padding: 2px 8px; }
 .video-page .lite-yt { border-radius: var(--radius); overflow: hidden; }
 
+/* Video rail: a horizontal, scroll-snapping strip of recent videos to surf the firehose
+   without leaving the page. Native scroll on touch/trackpad; floating arrows on the desktop. */
+.video-rail-wrap { position: relative; }
+.video-rail { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity;
+  padding: 2px 2px 10px; scroll-behavior: smooth; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.video-rail > .video-card { flex: 0 0 clamp(220px, 74vw, 264px); scroll-snap-align: start; }
+.rail-arrow { position: absolute; top: 31%; transform: translateY(-50%); z-index: 3;
+  width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--border-strong);
+  background: var(--surface); color: var(--text-strong); font-size: 1.5rem; line-height: 1;
+  display: none; align-items: center; justify-content: center; cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); transition: border-color 0.15s ease, color 0.15s ease; }
+.rail-arrow:hover { border-color: var(--accent); color: var(--accent); }
+.rail-arrow-prev { left: -8px; }
+.rail-arrow-next { right: -8px; }
+@media (hover: hover) and (min-width: 720px) { .rail-arrow { display: inline-flex; } }
+
 /* Flashcard management: see-less / challenging / favorite / remove, on the review card. */
 .srs-manage { display: flex; gap: 8px; flex-wrap: wrap; }
 .srs-manage-btn { font-size: 0.78rem; padding: 5px 11px; border-radius: 999px;
