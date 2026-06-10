@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import HorizonSwitch from "../components/HorizonSwitch.jsx";
 import TrendBoard from "../components/TrendBoard.jsx";
 import Briefing from "../components/Briefing.jsx";
-import CreatorSpotlight from "../components/CreatorSpotlight.jsx";
+import VideoCard from "../components/VideoCard.jsx";
 import ItemCard from "../components/ItemCard.jsx";
 import LoadError from "../components/LoadError.jsx";
 import useData from "../lib/useData.js";
@@ -18,8 +18,8 @@ export default function Home() {
   const h = getHorizon(horizon);
   const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
   const { entities, loading: attnLoading, error: attnError, anyData: anyAttn } = useUnifiedAttention(horizon);
-  const { data: creators } = useData("/data/creators.json");
-  const featuredCreator = creators?.creators?.find((c) => c.videos?.length);
+  const { data: vids } = useData("/data/videos/index.json");
+  const recentVideos = (vids?.videos || []).slice(0, 3);
   const synthetic = digest?.synthetic;
 
   // Group the merged boards by kind for the three trend heat boards, and pick the
@@ -143,13 +143,15 @@ export default function Home() {
         )}
       </section>
 
-      {featuredCreator && (
+      {recentVideos.length > 0 && (
         <section className="card">
           <div className="card-head">
             <h2>Watch</h2>
             <Link to="/watch" className="eyebrow" style={{ marginLeft: "auto" }}>See all in Watch</Link>
           </div>
-          <CreatorSpotlight creator={featuredCreator} compact />
+          <div className="grid cols-3 video-cards">
+            {recentVideos.map((v) => <VideoCard key={v.id} video={v} />)}
+          </div>
         </section>
       )}
 
