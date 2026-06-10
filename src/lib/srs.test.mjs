@@ -4,7 +4,7 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
-import { newCard, gradeCard, selectDue, dueCount, pruneStates } from "./srs.js";
+import { newCard, gradeCard, selectDue, dueCount, pruneStates, seeLess, seeMore, setFlags } from "./srs.js";
 
 const NOW = 1_700_000_000_000; // a fixed epoch ms for every test
 const DAY = 86400000;
@@ -123,4 +123,39 @@ test("garbage or missing stored state is treated as a fresh card, never throws",
   assert.equal(g.due, NOW + DAY);
   // selectDue normalizes a corrupt due to due-now, so it surfaces rather than hiding.
   assert.deepEqual(selectDue({ x: { id: "x", due: "broken" } }, NOW), ["x"]);
+});
+
+test("seeLess pushes the interval out and eases up, so the card returns much later", () => {
+  const good = gradeCard(newCard("a", NOW), "good", NOW); // interval 1, ease 2.5
+  const less = seeLess(good, NOW);
+  assert.equal(less.interval, 3, "interval triples (1 * 3)");
+  assert.ok(Math.abs(less.ease - 2.65) < 1e-9, "ease rises by 0.15");
+  assert.equal(less.due, NOW + 3 * DAY);
+});
+
+test("seeMore (challenging) brings the card back soon, lowers ease, and flags it", () => {
+  const grown = gradeCard(gradeCard(newCard("b", NOW), "good", NOW), "good", NOW); // interval 2.5
+  const more = seeMore(grown, NOW);
+  assert.equal(more.interval, 1, "challenging keeps a short 1-day interval");
+  assert.equal(more.challenging, true, "the challenging flag is set");
+  assert.ok(more.ease < grown.ease, "ease drops so it stays frequent");
+  assert.equal(more.due, NOW + DAY);
+});
+
+test("setFlags sets and clears flags without rescheduling, and the flag survives grading", () => {
+  const good = gradeCard(newCard("c", NOW), "good", NOW);
+  const fav = setFlags(good, { fav: true }, NOW);
+  assert.equal(fav.fav, true);
+  assert.equal(fav.due, good.due, "favoriting does not reschedule");
+  assert.equal(gradeCard(fav, "good", NOW).fav, true, "favorite carries across grading");
+  assert.ok(!("fav" in setFlags(fav, { fav: false }, NOW)), "a flag can be cleared");
+});
+
+test("a removed card never resurfaces in selectDue or dueCount, even when overdue", () => {
+  const states = {
+    live: { id: "live", due: NOW - DAY, interval: 1, ease: 2.5, reps: 1, lapses: 0 },
+    gone: { id: "gone", due: NOW - 10 * DAY, interval: 1, ease: 2.5, reps: 1, lapses: 0, removed: true },
+  };
+  assert.deepEqual(selectDue(states, NOW), ["live"]);
+  assert.equal(dueCount(states, NOW), 1);
 });

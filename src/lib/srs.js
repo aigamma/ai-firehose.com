@@ -35,7 +35,7 @@ function normalize(state, id, nowMs) {
   const base = newCard(state && state.id != null ? state.id : id, nowMs);
   if (!state || typeof state !== "object") return base;
   const num = (v, d) => (typeof v === "number" && Number.isFinite(v) ? v : d);
-  return {
+  const out = {
     id: state.id != null ? state.id : base.id,
     due: num(state.due, base.due),
     interval: num(state.interval, base.interval),
@@ -43,6 +43,13 @@ function normalize(state, id, nowMs) {
     reps: num(state.reps, base.reps),
     lapses: num(state.lapses, base.lapses),
   };
+  // Preserve the reader's management flags across scheduling, so grading a card never
+  // wipes its favorite, challenging, or removed status. Only truthy flags are carried, so
+  // an ordinary card stays the small shape it always was.
+  if (state.fav) out.fav = true;
+  if (state.challenging) out.challenging = true;
+  if (state.removed) out.removed = true;
+  return out;
 }
 
 // Grade a card and return its next state. `grade` is one of
@@ -96,6 +103,38 @@ export function gradeCard(state, grade, nowMs) {
   };
 }
 
+const SEE_LESS_FACTOR = 3; // "see less often" multiplies the interval and eases up.
+const SEE_MORE_DAYS = 1; // "challenging" brings the card back this soon and keeps it short.
+
+// "See less often": this concept is well-known or low-priority. Push the next interval out
+// and nudge ease up so it keeps spacing further with every future success. Persistent, not
+// a one-time snooze: the card returns much later, then less and less often.
+export function seeLess(state, nowMs) {
+  const t = typeof nowMs === "number" && Number.isFinite(nowMs) ? nowMs : 0;
+  const cur = normalize(state, state && state.id, t);
+  const interval = Math.max(cur.interval || 1, 1) * SEE_LESS_FACTOR;
+  return { ...cur, interval, ease: clampEase(cur.ease + 0.15), due: t + interval * DAY_MS };
+}
+
+// "Challenging" (see it more often): bring the card back soon and keep the interval short,
+// lowering ease so future successes grow it slowly. Flags it so the reader sees the mark.
+export function seeMore(state, nowMs) {
+  const t = typeof nowMs === "number" && Number.isFinite(nowMs) ? nowMs : 0;
+  const cur = normalize(state, state && state.id, t);
+  return { ...cur, interval: SEE_MORE_DAYS, ease: clampEase(cur.ease - 0.2), challenging: true, due: t + SEE_MORE_DAYS * DAY_MS };
+}
+
+// Set or clear management flags (favorite, challenging, removed) without touching the
+// schedule. A removed card is excluded from due selection and never re-introduced.
+export function setFlags(state, flags, nowMs) {
+  const out = { ...normalize(state, state && state.id, nowMs) };
+  for (const [k, v] of Object.entries(flags || {})) {
+    if (v) out[k] = true;
+    else delete out[k];
+  }
+  return out;
+}
+
 // The ids of cards that are due at nowMs (due <= nowMs), soonest-due first. A tracked
 // state with a malformed `due` is normalized to due-now, so a corrupt entry surfaces
 // for review rather than hiding forever.
@@ -104,8 +143,9 @@ export function selectDue(states, nowMs) {
   const map = states && typeof states === "object" ? states : {};
   const out = [];
   for (const id of Object.keys(map)) {
-    const due = normalize(map[id], id, t).due;
-    if (due <= t) out.push({ id, due });
+    const c = normalize(map[id], id, t);
+    if (c.removed) continue; // a removed card never resurfaces
+    if (c.due <= t) out.push({ id, due: c.due });
   }
   out.sort((a, b) => a.due - b.due);
   return out.map((x) => x.id);

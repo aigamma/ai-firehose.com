@@ -533,6 +533,16 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .chip-sm { font-size: 0.7rem; padding: 2px 8px; }
 .video-page .lite-yt { border-radius: var(--radius); overflow: hidden; }
 
+/* Flashcard management: see-less / challenging / favorite / remove, on the review card. */
+.srs-manage { display: flex; gap: 8px; flex-wrap: wrap; }
+.srs-manage-btn { font-size: 0.78rem; padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--border-strong); background: transparent; color: var(--muted);
+  cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease; }
+.srs-manage-btn:hover { color: var(--text); border-color: var(--accent); }
+.srs-manage-btn.is-fav { color: var(--recommended);
+  border-color: color-mix(in oklab, var(--recommended) 50%, var(--border-strong)); }
+.srs-manage-btn.srs-remove:hover { color: var(--q-lagging); border-color: var(--q-lagging); }
+
 .creator-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 .creator-name { font-weight: 700; color: var(--text-strong); font-size: 1.05rem; }
 .creator-blurb { font-size: 0.9rem; flex-basis: 100%; }

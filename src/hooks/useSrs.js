@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { gradeCard, newCard, dueCount as countDue, pruneStates } from "../lib/srs.js";
+import { gradeCard, newCard, dueCount as countDue, pruneStates, seeLess as seeLessFn, seeMore as seeMoreFn, setFlags } from "../lib/srs.js";
 
 // A localStorage-backed spaced-repetition store: the per-concept scheduler state that
 // turns the durable glossary into a daily-return loop. No account, no backend. This
@@ -70,6 +70,22 @@ export default function useSrs() {
     [store.cards]
   );
 
+  // Apply a pure card transform by id, capturing the wall clock here (the impure boundary).
+  // An untracked id starts from a fresh card, so a management action works even on a brand-
+  // new concept the reader has not graded yet.
+  const apply = useCallback((id, fn) => {
+    if (!id) return;
+    const now = Date.now();
+    setStore((s) => ({ ...s, cards: { ...s.cards, [id]: fn(s.cards[id] || newCard(id, now), now) } }));
+  }, []);
+
+  // Reader-facing management: see a card less often, mark it challenging (see it more),
+  // toggle favorite, or remove it (it never resurfaces and is never re-introduced).
+  const seeLess = useCallback((id) => apply(id, seeLessFn), [apply]);
+  const challenging = useCallback((id) => apply(id, seeMoreFn), [apply]);
+  const toggleFav = useCallback((id) => apply(id, (c, now) => setFlags(c, { fav: !c?.fav }, now)), [apply]);
+  const remove = useCallback((id) => apply(id, (c, now) => setFlags(c, { removed: true }, now)), [apply]);
+
   // Drop scheduler state for ids that are no longer live concepts (glossary slug churn).
   // A no-op write is avoided so this can run on load without thrashing storage.
   const prune = useCallback((validIdSet) => {
@@ -80,5 +96,5 @@ export default function useSrs() {
     });
   }, []);
 
-  return { states: store.cards, grade, dueCount, prune };
+  return { states: store.cards, grade, dueCount, prune, seeLess, challenging, toggleFav, remove };
 }

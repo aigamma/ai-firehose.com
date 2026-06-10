@@ -30,7 +30,7 @@ const GRADES = [
 export default function Review() {
   useDocumentTitle("Review");
   const { data, loading, error } = useData("/data/glossary/index.json");
-  const { states, grade, prune } = useSrs();
+  const { states, grade, prune, seeLess, challenging, toggleFav, remove } = useSrs();
 
   const pool = useMemo(() => (data?.concepts || []).filter((c) => c && c.def_snippet), [data]);
   const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
@@ -119,6 +119,19 @@ export default function Review() {
       setTick((t) => t + 1);
     },
     [card, grade]
+  );
+
+  // Manage the front card: see it less often, mark it challenging, or remove it. Each moves
+  // the card out of the live queue, so advance like a grade (hide the answer, re-snapshot).
+  // Favorite is handled separately (a flag toggle that leaves the card in place).
+  const manage = useCallback(
+    (fn) => {
+      if (!card) return;
+      fn(card.id);
+      setRevealed(false);
+      setTick((t) => t + 1);
+    },
+    [card]
   );
 
   // Pull a few not-yet-due cards forward when the natural queue is clear.
@@ -311,6 +324,21 @@ export default function Review() {
               <span className="faint mono">Space to flip, 1 to 4 to grade</span>
             </div>
           )}
+
+          <div className="srs-manage" role="group" aria-label="Manage this card">
+            <button type="button" className="srs-manage-btn" onClick={() => manage(seeLess)} title="Push it further out and keep spacing it: you will see it less often">
+              See less often
+            </button>
+            <button type="button" className="srs-manage-btn" onClick={() => manage(challenging)} title="Bring it back soon and keep it frequent">
+              Challenging
+            </button>
+            <button type="button" className={`srs-manage-btn${states[card.id]?.fav ? " is-fav" : ""}`} onClick={() => toggleFav(card.id)} title="Favorite this card">
+              {states[card.id]?.fav ? "★ Favorited" : "☆ Favorite"}
+            </button>
+            <button type="button" className="srs-manage-btn srs-remove" onClick={() => manage(remove)} title="Remove from your deck: it will not return">
+              Remove
+            </button>
+          </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <span className="faint mono" style={{ marginLeft: "auto" }}>
