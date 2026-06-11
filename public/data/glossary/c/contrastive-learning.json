@@ -1,15 +1,146 @@
 {
   "id": "contrastive-learning",
   "label": "Contrastive Learning",
-  "kind": "technique",
-  "category": "RAG, Embeddings, and Retrieval",
   "aliases": [
     "contrastive training",
     "contrastive loss"
   ],
+  "kind": "technique",
+  "attention": 34,
+  "first_seen": "2026-05-23T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 103.3,
+    "momentum": 92.1,
+    "sparkline": [
+      9,
+      11,
+      11,
+      12,
+      14,
+      15,
+      14,
+      14
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "neural-networks",
+      "label": "neural networks",
+      "score": 0.84
+    },
+    {
+      "id": "machine-unlearning",
+      "label": "machine unlearning",
+      "score": 0.828
+    },
+    {
+      "id": "training-free-methods",
+      "label": "training-free methods",
+      "score": 0.827
+    },
+    {
+      "id": "k-nearest-neighbors",
+      "label": "k-nearest neighbors",
+      "score": 0.825
+    },
+    {
+      "id": "reinforcement-learning",
+      "label": "reinforcement learning",
+      "score": 0.822
+    },
+    {
+      "id": "data-augmentation",
+      "label": "data augmentation",
+      "score": 0.821
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.094
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.111
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.128
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.723
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.287
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.861
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.011
+    }
+  ],
+  "top_items": [
+    {
+      "title": "TAHOE: Text-to-SQL with Automated Hint Optimization from Experience",
+      "url": "http://arxiv.org/abs/2606.12387v1",
+      "author_or_channel": "Zhiyi Chen, Jie Song, Peng Li",
+      "published_at": "2026-06-10T17:52:15Z",
+      "kind": "tool"
+    },
+    {
+      "title": "ATLAS: Active Theory Learning for Automated Science",
+      "url": "http://arxiv.org/abs/2606.12386v1",
+      "author_or_channel": "Noémi Éltető, Nathaniel D. Daw, Kimberly L. Stachenfeld",
+      "published_at": "2026-06-10T17:52:03Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Anatomy of Post-Training: Using Interpretability to Characterize Data and Shape the Learning Signal",
+      "url": "http://arxiv.org/abs/2606.12360v1",
+      "author_or_channel": "Leon Bergen, Usha Bhalla, Sidharth Baskaran",
+      "published_at": "2026-06-10T17:31:16Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Efficiently Learning Drifting Halfspaces with Massart Noise",
+      "url": "http://arxiv.org/abs/2606.11149v1",
+      "author_or_channel": "Mingchen Ma, Guyang Cao, Jelena Diakonikolas",
+      "published_at": "2026-06-09T17:35:18Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Robust Regression of General ReLUs with Queries",
+      "url": "http://arxiv.org/abs/2606.11130v1",
+      "author_or_channel": "Ilias Diakonikolas, Daniel M. Kane, Mingchen Ma",
+      "published_at": "2026-06-09T17:24:47Z",
+      "kind": "technique"
+    },
+    {
+      "title": "DMT: Demographic Conditioning, Morphology-Enhanced Transformer for Cuffless Blood Pressure Estimation from PPG Signals",
+      "url": "http://arxiv.org/abs/2606.11125v1",
+      "author_or_channel": "Yidan Shen, Neville Mathew, Maham Rahimi",
+      "published_at": "2026-06-09T17:23:07Z",
+      "kind": "technique"
+    }
+  ],
+  "definition": "A training method that shapes a representation by pulling matching pairs together and pushing non-matching pairs apart in the vector space, the dominant recipe for training an embedding model and the reason distance comes to mean similarity. The quality of the negatives is decisive: hard negatives, items that look similar but are not the right match, are what force the model to learn fine distinctions.",
+  "category": "RAG, Embeddings, and Retrieval",
   "durable": true,
   "source": "authored",
-  "definition": "A training method that shapes a representation by pulling matching pairs together and pushing non-matching pairs apart in the vector space, the dominant recipe for training an embedding model and the reason distance comes to mean similarity. The quality of the negatives is decisive: hard negatives, items that look similar but are not the right match, are what force the model to learn fine distinctions.",
   "body": [
     {
       "type": "p",
@@ -55,12 +186,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/contrastive-learning.png",
     "alt": "A two-dimensional embedding space with an anchor point a1. A green arrow points from a1 to a single matching point b1 (a positive), and several red arrows point from a1 to other points b2 through b5 (negatives) scattered farther away.",
