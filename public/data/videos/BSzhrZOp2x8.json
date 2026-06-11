@@ -6,21 +6,21 @@
   "published": "2026-03-03T13:00:17+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Julia Turc analyzes why NVIDIA H100 GPUs achieve far lower token throughput in practice than theoretical capacity, attributing this to memory bandwidth bottlenecks in autoregressive LLM inference. The video covers the roofline model, prefill vs decode tradeoffs, and argues that diffusion-based LLMs shift workloads from memory-bound to compute-bound, offering better GPU utilization.",
+  "summary": "Julia Turc explains why NVIDIA H100 GPUs theoretically reach 62,000 tokens per second but practically achieve only 200 tokens per second due to memory bandwidth limitations. The video analyzes how the roofline model reveals that auto-regressive LLMs are memory-bound during decode while compute-bound during prefill, and how diffusion-based LLMs shift the constraint to compute-bound inference.",
   "writeup": "",
-  "wh": "6fa660f391b86bb4",
+  "wh": "c8ea86d30a9ff4a3",
   "concepts": [
-    {
-      "slug": "memory-wall",
-      "label": "memory wall"
-    },
     {
       "slug": "roofline-model",
       "label": "roofline model"
     },
     {
-      "slug": "autoregressive-modeling",
-      "label": "autoregressive modeling"
+      "slug": "memory-wall",
+      "label": "memory wall"
+    },
+    {
+      "slug": "arithmetic-intensity",
+      "label": "arithmetic intensity"
     },
     {
       "slug": "kv-cache",
@@ -31,6 +31,10 @@
       "label": "speculative decoding"
     },
     {
+      "slug": "llms",
+      "label": "LLMs"
+    },
+    {
       "slug": "prefill",
       "label": "prefill"
     },
@@ -39,16 +43,12 @@
       "label": "decode"
     },
     {
-      "slug": "arithmetic-intensity",
-      "label": "arithmetic intensity"
+      "slug": "batching",
+      "label": "batching"
     },
     {
-      "slug": "llms",
-      "label": "LLMs"
-    },
-    {
-      "slug": "cost-optimization",
-      "label": "cost optimization"
+      "slug": "hbm",
+      "label": "HBM"
     }
   ],
   "similar": [
@@ -56,37 +56,37 @@
       "id": "B18zBnjZKmc",
       "title": "Why Inference is hard..",
       "channel": "Caleb Writes Code",
-      "score": 0.693
+      "score": 0.663
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.636
+      "score": 0.63
     },
     {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
+      "id": "b_KxiTPBIb0",
+      "title": "Google TPU 8t and 8i is here..",
       "channel": "Caleb Writes Code",
-      "score": 0.615
+      "score": 0.627
     },
     {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.607
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.601
+    },
+    {
+      "id": "AVh5i51oxIA",
+      "title": "Minimax Uses Fewer Tokens—Here’s Why #minimax #llm #hermes #openclaw",
+      "channel": "Keith AI",
+      "score": 0.6
     },
     {
       "id": "I3YR5xVpcS4",
       "title": "AGI is FAKE: The Biggest AI Lie Exposed",
       "channel": "AI Master",
-      "score": 0.593
-    },
-    {
-      "id": "WLtCHXdHTF0",
-      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
-      "channel": "Better Stack",
-      "score": 0.565
+      "score": 0.599
     }
   ]
 }

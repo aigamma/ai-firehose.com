@@ -6,29 +6,34 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 301,
+  "attention": 348,
   "first_seen": "2026-03-05T04:10:12+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 83.1,
-    "momentum": 92.8,
+    "ratio": 80.1,
+    "momentum": 93.7,
     "sparkline": [
+      46,
+      53,
+      57,
+      54,
       50,
       51,
-      59,
-      55,
-      52,
-      57,
-      59,
-      55
+      53,
+      52
     ]
   },
   "neighbors": [
     {
-      "id": "test-time-optimization",
-      "label": "test-time optimization",
-      "score": 0.757
+      "id": "test-time-behavior",
+      "label": "test-time behavior",
+      "score": 0.749
+    },
+    {
+      "id": "test-time-latency",
+      "label": "test-time latency",
+      "score": 0.712
     },
     {
       "id": "test-time-scaling",
@@ -43,44 +48,39 @@
     {
       "id": "test-time-control",
       "label": "test-time control",
-      "score": 0.659
+      "score": 0.657
     },
     {
       "id": "benchmark",
       "label": "benchmark",
       "score": 0.628
-    },
-    {
-      "id": "onboard-compute",
-      "label": "onboard compute",
-      "score": 0.625
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.547
+      "position": 0.48
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.168
+      "position": 0.065
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.314
+      "position": 0.317
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.427
+      "position": 0.376
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.059
+      "position": -0.053
     },
     {
       "slug": "neural-symbolic",
@@ -90,10 +90,17 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.273
+      "position": 0.32
     }
   ],
   "top_items": [
+    {
+      "title": "I One-Shotted An Entire App With Claude Fable 5 (Full Breakdown)",
+      "url": "https://www.youtube.com/watch?v=jJZcc8ZNvtI",
+      "author_or_channel": "Jordan Urbs",
+      "published_at": "2026-06-10T23:28:37+00:00",
+      "kind": "opinion"
+    },
     {
       "title": "DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?",
       "url": "http://arxiv.org/abs/2606.12402v1",
@@ -128,13 +135,6 @@
       "author_or_channel": "Chirag Chawla, Pratinav Seth, Vinay Kumar Sankarapu",
       "published_at": "2026-06-10T17:15:28Z",
       "kind": "technique"
-    },
-    {
-      "title": "DiffusionGemma: 4x faster text generation",
-      "url": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
-      "author_or_channel": "Google DeepMind",
-      "published_at": "2026-06-10T16:24:11.000Z",
-      "kind": "tool"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",

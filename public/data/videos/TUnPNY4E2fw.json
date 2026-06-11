@@ -6,9 +6,9 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin describes a full stack of techniques for training LLMs with very long context windows, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, enabling 5 million token context training at 8B and 32B scale.",
+  "summary": "Max Ryabinin from Together AI presents techniques for training LLMs with extremely long context windows (3-5 million tokens) on limited hardware. The approach stacks fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel contribution, Untied Ulysses, further optimizes context parallelism by chunking attention head groups and reusing buffers across iterations to reduce activation memory while maintaining throughput.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "a248bf56ff8c29cd",
+  "wh": "ec8c0f6bbcfbe2cf",
   "concepts": [
     {
       "slug": "data-parallelism",
@@ -27,22 +27,32 @@
       "label": "RNN training"
     },
     {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
     }
   ],
   "similar": [
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.621
-    },
-    {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.617
+      "score": 0.645
+    },
+    {
+      "id": "BSzhrZOp2x8",
+      "title": "How is hardware reshaping LLM design?",
+      "channel": "Julia Turc",
+      "score": 0.601
+    },
+    {
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.568
     },
     {
       "id": "r305-aQTaU0",
@@ -51,22 +61,16 @@
       "score": 0.563
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.561
+      "id": "msFxQ7OYPj8",
+      "title": "How I'd Learn AI From Scratch in 2026 (skip the useless 80%)",
+      "channel": "Jeff Su",
+      "score": 0.558
     },
     {
-      "id": "fCHe_fOqlYA",
-      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
-      "channel": "IBM Technology",
-      "score": 0.559
-    },
-    {
-      "id": "BSzhrZOp2x8",
-      "title": "How is hardware reshaping LLM design?",
-      "channel": "Julia Turc",
-      "score": 0.557
+      "id": "k7HrSreatII",
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "channel": "Google Cloud Tech",
+      "score": 0.555
     }
   ]
 }

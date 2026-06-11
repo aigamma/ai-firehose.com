@@ -1,12 +1,115 @@
 {
   "id": "normalizing-flow",
   "label": "Normalizing Flow",
-  "kind": "technique",
-  "category": "Generative Models",
   "aliases": [
     "normalizing flows",
     "flow-based model"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-04-12T12:00:07+00:00",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "lagging",
+    "ratio": 55,
+    "momentum": 97.5,
+    "sparkline": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "flow-matching",
+      "label": "flow matching",
+      "score": 0.768
+    },
+    {
+      "id": "rectified-flow",
+      "label": "Rectified Flow",
+      "score": 0.721
+    },
+    {
+      "id": "tarflow",
+      "label": "TARFlow",
+      "score": 0.7
+    },
+    {
+      "id": "equilibrium-propagation",
+      "label": "Equilibrium Propagation",
+      "score": 0.681
+    },
+    {
+      "id": "gradient-stability",
+      "label": "gradient stability",
+      "score": 0.68
+    },
+    {
+      "id": "quantization",
+      "label": "quantization",
+      "score": 0.676
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.206
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.082
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.146
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.182
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.092
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.504
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.136
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Latent Reasoning with Normalizing Flows",
+      "url": "http://arxiv.org/abs/2606.06447v1",
+      "author_or_channel": "Guancheng Tu, Xiangjun Fu, Suhao Yu",
+      "published_at": "2026-06-04T17:44:17Z",
+      "kind": "technique"
+    },
+    {
+      "title": "The physics behind Flow Matching models",
+      "url": "https://www.youtube.com/watch?v=3mFNpeJQjmw",
+      "author_or_channel": "Julia Turc",
+      "published_at": "2026-04-12T12:00:07+00:00",
+      "kind": "technique"
+    }
+  ],
+  "category": "Generative Models",
   "durable": true,
   "source": "authored",
   "definition": "A generative model that warps a simple distribution into a complex one through a chain of exactly invertible functions, so it can both compute a data point's exact likelihood and sample directly in one pass. It is the family that delivers exact density and direct sampling together, bought at the cost of an invertibility constraint, the very constraint flow matching relaxes.",
@@ -55,61 +158,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 2,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "weight-normalization",
-      "label": "weight normalization",
-      "score": 0.722
-    },
-    {
-      "id": "boundary-reconstruction",
-      "label": "boundary reconstruction",
-      "score": 0.703
-    },
-    {
-      "id": "bandwidth-optimization",
-      "label": "bandwidth optimization",
-      "score": 0.697
-    },
-    {
-      "id": "model-calibration",
-      "label": "model calibration",
-      "score": 0.697
-    },
-    {
-      "id": "hydrology-modeling",
-      "label": "hydrology modeling",
-      "score": 0.695
-    },
-    {
-      "id": "throughput-scaling",
-      "label": "throughput scaling",
-      "score": 0.694
-    },
-    {
-      "id": "gradient-stability",
-      "label": "gradient stability",
-      "score": 0.691
-    },
-    {
-      "id": "flood-prediction",
-      "label": "flood prediction",
-      "score": 0.69
-    }
-  ],
-  "top_items": [
-    {
-      "title": "Latent Reasoning with Normalizing Flows",
-      "url": "http://arxiv.org/abs/2606.06447v1",
-      "author_or_channel": "Guancheng Tu, Xiangjun Fu, Suhao Yu",
-      "published_at": "2026-06-04T17:44:17Z",
-      "kind": "technique"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/normalizing-flow.png",
     "alt": "A chain of nodes z0 through zk linked by invertible functions f1 to fk, with a probability density drawn beneath each node: under z0 a single smooth Gaussian bump, growing through the chain into a complex multi-peaked distribution under zk, which equals the data x.",
@@ -119,8 +167,5 @@
     "license_url": "https://opensource.org/license/mit",
     "source": "https://commons.wikimedia.org/wiki/File:Normalizing-flow.svg",
     "provider": "Wikimedia Commons"
-  },
-  "folded_from": [
-    "normalizing-flows"
-  ]
+  }
 }

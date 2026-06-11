@@ -7,22 +7,22 @@
     "output filtering"
   ],
   "kind": "technique",
-  "attention": 14,
+  "attention": 35,
   "first_seen": "2026-05-06T19:32:23+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 99.8,
-    "momentum": 95.1,
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 97.7,
     "sparkline": [
-      1,
-      1,
-      1,
       4,
-      4,
-      4,
-      3,
-      3
+      8,
+      7,
+      10,
+      10,
+      9,
+      18,
+      17
     ]
   },
   "neighbors": [
@@ -30,11 +30,6 @@
       "id": "safety",
       "label": "safety",
       "score": 0.723
-    },
-    {
-      "id": "tools",
-      "label": "tools",
-      "score": 0.716
     },
     {
       "id": "security",
@@ -47,41 +42,46 @@
       "score": 0.69
     },
     {
-      "id": "collision-detection",
-      "label": "collision detection",
-      "score": 0.685
-    },
-    {
       "id": "surveillance",
       "label": "surveillance",
       "score": 0.685
+    },
+    {
+      "id": "collision-detection",
+      "label": "collision detection",
+      "score": 0.684
+    },
+    {
+      "id": "connectors",
+      "label": "connectors",
+      "score": 0.684
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.223
+      "position": -0.256
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.258
+      "position": 0.147
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": -0.062
+      "position": -0.06
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.127
+      "position": 0.049
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.414
+      "position": -0.478
     },
     {
       "slug": "neural-symbolic",
@@ -91,7 +91,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.279
+      "position": -0.197
     }
   ],
   "top_items": [
@@ -103,11 +103,25 @@
       "kind": "opinion"
     },
     {
+      "title": "Anthropic Just Dropped Fable 5 And It’s Terrifying",
+      "url": "https://www.youtube.com/watch?v=8TjCwdnZSp8",
+      "author_or_channel": "AI Revolution",
+      "published_at": "2026-06-10T01:40:54+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "Initial impressions of Claude Fable 5",
       "url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/#atom-everything",
       "author_or_channel": "Simon Willison",
       "published_at": "2026-06-09T23:59:54.000Z",
       "kind": "opinion"
+    },
+    {
+      "title": "Claude Mythos 5 + Fable 5 Are Here And The Numbers Are INSANE",
+      "url": "https://www.youtube.com/watch?v=o3UbD4DYhv4",
+      "author_or_channel": "Chase AI",
+      "published_at": "2026-06-09T18:08:10+00:00",
+      "kind": "tool"
     },
     {
       "title": "Building safe Payment Infrastructure for the autonomous economy — Steve Kaliski, Stripe",
@@ -117,24 +131,17 @@
       "kind": "tool"
     },
     {
-      "title": "5 Tips for Deploying AI Agents to Production",
-      "url": "https://www.youtube.com/watch?v=j1wfE0SOBbE",
-      "author_or_channel": "AWS Developers",
-      "published_at": "2026-06-02T18:22:23+00:00",
-      "kind": "technique"
-    },
-    {
-      "title": "Introducing Agent Toolkit for AWS",
-      "url": "https://www.youtube.com/watch?v=d1GHVtEFy2A",
-      "author_or_channel": "AWS Developers",
-      "published_at": "2026-05-06T19:32:23+00:00",
+      "title": "5 tips for using Antigravity 2.0 on enterprise codebases, planning phase",
+      "url": "https://www.youtube.com/watch?v=HyGm01UKfaE",
+      "author_or_channel": "Google Cloud Tech",
+      "published_at": "2026-06-04T16:00:08+00:00",
       "kind": "tool"
     }
   ],
+  "definition": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment. The mental model is belt and suspenders: alignment shapes what the model wants to do, guardrails are an independent layer that constrains what the system is allowed to do.",
   "category": "Alignment and Safety",
   "durable": true,
   "source": "authored",
-  "definition": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment. The mental model is belt and suspenders: alignment shapes what the model wants to do, guardrails are an independent layer that constrains what the system is allowed to do.",
   "body": [
     {
       "type": "p",
