@@ -1,13 +1,123 @@
 {
   "id": "machine-translation",
   "label": "Machine Translation",
-  "kind": "technique",
-  "category": "NLP Foundations",
   "aliases": [
     "MT",
     "neural machine translation",
     "automatic translation"
   ],
+  "kind": "technique",
+  "attention": 2,
+  "first_seen": "2026-06-08T17:29:08Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 105.8,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "multilingual-speech",
+      "label": "multilingual speech",
+      "score": 0.739
+    },
+    {
+      "id": "ai-synthesis",
+      "label": "AI synthesis",
+      "score": 0.738
+    },
+    {
+      "id": "automated-review",
+      "label": "automated review",
+      "score": 0.726
+    },
+    {
+      "id": "ai-text-detection",
+      "label": "AI-text detection",
+      "score": 0.726
+    },
+    {
+      "id": "large-language-models",
+      "label": "Large Language Models",
+      "score": 0.718
+    },
+    {
+      "id": "cross-modal-alignment",
+      "label": "cross-modal alignment",
+      "score": 0.715
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.17
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.161
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.014
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.272
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.538
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.186
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.481
+    }
+  ],
+  "top_items": [
+    {
+      "title": "ALIGNBEAM : Inference-Time Alignment Transfer via Cross-Vocabulary Logit Mixing",
+      "url": "http://arxiv.org/abs/2606.12342v1",
+      "author_or_channel": "Chirag Chawla, Pratinav Seth, Vinay Kumar Sankarapu",
+      "published_at": "2026-06-10T17:15:28Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Lius: Translation Model Based Instructional Lingustic Using Continual Instruction Tuning In Kupang Malay",
+      "url": "https://huggingface.co/papers/2606.11786",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Data Synthesis and Parameter-Efficient Fine-Tuning for Low-Resource NMT: A Case Study on Q'eqchi' Mayan",
+      "url": "http://arxiv.org/abs/2606.09767v1",
+      "author_or_channel": "Alexander Chulzhanov, Soeren Eberhardt, Arjun Mukherjee",
+      "published_at": "2026-06-08T17:29:08Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "NLP Foundations",
   "durable": true,
   "source": "authored",
   "definition": "The automatic translation of text between natural languages, the task whose pursuit kept forcing the inventions, the encoder-decoder, the attention mechanism, the transformer itself, that then reshaped all of NLP. Its measurable quality (BLEU against human references) made it a demanding testbed that drove rapid progress.",
@@ -61,51 +171,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 1,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "large-language-models",
-      "label": "large language models",
-      "score": 0.833
-    },
-    {
-      "id": "neural-networks",
-      "label": "neural networks",
-      "score": 0.799
-    },
-    {
-      "id": "llms",
-      "label": "LLMs",
-      "score": 0.772
-    },
-    {
-      "id": "generative-ai",
-      "label": "generative AI",
-      "score": 0.761
-    },
-    {
-      "id": "conversational-ai",
-      "label": "conversational AI",
-      "score": 0.76
-    },
-    {
-      "id": "text-embeddings",
-      "label": "text embeddings",
-      "score": 0.755
-    }
-  ],
-  "top_items": [
-    {
-      "title": "Data Synthesis and Parameter-Efficient Fine-Tuning for Low-Resource NMT: A Case Study on Q'eqchi' Mayan",
-      "url": "http://arxiv.org/abs/2606.09767v1",
-      "author_or_channel": "Alexander Chulzhanov, Soeren Eberhardt, Arjun Mukherjee",
-      "published_at": "2026-06-08T17:29:08Z",
-      "kind": "technique"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/machine-translation.png",
     "alt": "A grid aligning an English sentence on the rows ('And the programme has been implemented') with a French sentence on the columns ('Le programme a été mis en application'). A filled dot in a cell marks that the row word and column word correspond; the English word 'implemented' has three dots, aligning to 'mis', 'en' and 'application'.",
@@ -115,8 +180,5 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Word_alignment_matirx.svg",
     "provider": "Wikimedia Commons"
-  },
-  "folded_from": [
-    "neural-machine-translation"
-  ]
+  }
 }

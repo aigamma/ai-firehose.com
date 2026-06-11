@@ -7,39 +7,29 @@
     "model distillation"
   ],
   "kind": "technique",
-  "attention": 27,
+  "attention": 35,
   "first_seen": "2026-03-17T13:01:14+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
-    "ratio": 105.9,
-    "momentum": 87.4,
+    "ratio": 112.3,
+    "momentum": 88.9,
     "sparkline": [
       5,
       12,
       13,
       12,
-      11,
-      11,
-      12,
-      11
+      13,
+      13,
+      15,
+      15
     ]
   },
   "neighbors": [
     {
-      "id": "machine-learning-inference",
-      "label": "machine learning inference",
-      "score": 0.794
-    },
-    {
       "id": "knowledge-work",
       "label": "knowledge work",
       "score": 0.777
-    },
-    {
-      "id": "recommendation-systems",
-      "label": "recommendation systems",
-      "score": 0.77
     },
     {
       "id": "grounded-question-answering",
@@ -52,9 +42,19 @@
       "score": 0.766
     },
     {
-      "id": "clinical-ai",
-      "label": "clinical AI",
-      "score": 0.761
+      "id": "recommender-systems",
+      "label": "recommender systems",
+      "score": 0.764
+    },
+    {
+      "id": "neural-networks",
+      "label": "neural networks",
+      "score": 0.76
+    },
+    {
+      "id": "knowledge-cutoff",
+      "label": "knowledge cutoff",
+      "score": 0.757
     }
   ],
   "axis_positions": [
@@ -66,7 +66,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.516
+      "position": -0.465
     },
     {
       "slug": "capability-safety",
@@ -76,12 +76,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.021
+      "position": -0.014
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.066
+      "position": 0.172
     },
     {
       "slug": "neural-symbolic",
@@ -95,6 +95,20 @@
     }
   ],
   "top_items": [
+    {
+      "title": "Doc-to-Atom: Learning to Compile and Compose Memory Atoms",
+      "url": "http://arxiv.org/abs/2606.12400v1",
+      "author_or_channel": "Xingjian Diao, Wenbo Li, Yashas Malur Saidutta",
+      "published_at": "2026-06-10T17:58:20Z",
+      "kind": "technique"
+    },
+    {
+      "title": "World Model Self-Distillation: Training World Models to Solve General Tasks",
+      "url": "https://huggingface.co/papers/2606.12072",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "technique"
+    },
     {
       "title": "Lip Forcing: Few-Step Autoregressive Diffusion for Real-time Lip Synchronization",
       "url": "http://arxiv.org/abs/2606.11180v1",
@@ -117,31 +131,17 @@
       "kind": "technique"
     },
     {
-      "title": "Streaming Video Generation with Streaming Force Control",
-      "url": "http://arxiv.org/abs/2606.07508v1",
-      "author_or_channel": "Hanhui Wang, Yiming Xie, Haiwen Feng",
-      "published_at": "2026-06-05T17:57:32Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Unsupervised Continual Clustering via Forward-Backward Knowledge Distillation",
-      "url": "http://arxiv.org/abs/2606.07474v1",
-      "author_or_channel": "Mohammadreza Sadeghi, Sareh Soleimani, Zihan Wang",
-      "published_at": "2026-06-05T17:28:19Z",
-      "kind": "technique"
-    },
-    {
-      "title": "Skill-3D: Evolving Scene-Aware Skills for Agentic 3D Spatial Reasoning",
-      "url": "http://arxiv.org/abs/2606.07436v1",
-      "author_or_channel": "Haoyuan Li, Zhengdong Hu, Jun Wang",
-      "published_at": "2026-06-05T16:33:44Z",
+      "title": "The Role of Feedback Alignment in Self-Distillation",
+      "url": "https://huggingface.co/papers/2606.11173",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-08T20:00:00.000Z",
       "kind": "technique"
     }
   ],
+  "definition": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
-  "definition": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
   "body": [
     {
       "type": "p",

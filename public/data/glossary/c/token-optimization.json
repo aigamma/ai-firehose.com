@@ -6,22 +6,22 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 67,
-  "first_seen": "2026-04-04T10:03:00Z",
+  "attention": 93,
+  "first_seen": "2026-04-02T02:45:42+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "leading",
     "ratio": 145,
-    "momentum": 102.6,
+    "momentum": 100.8,
     "sparkline": [
       1,
       3,
-      4,
+      10,
       9,
-      9,
-      25,
-      24,
-      23
+      13,
+      29,
+      29,
+      29
     ]
   },
   "neighbors": [
@@ -31,19 +31,14 @@
       "score": 0.769
     },
     {
-      "id": "discrete-tokenization",
-      "label": "discrete tokenization",
-      "score": 0.761
-    },
-    {
       "id": "prefill-optimization",
       "label": "prefill optimization",
       "score": 0.758
     },
     {
-      "id": "next-token-prediction",
-      "label": "next-token prediction",
-      "score": 0.745
+      "id": "test-time-optimization",
+      "label": "test-time optimization",
+      "score": 0.757
     },
     {
       "id": "i-o-optimization",
@@ -54,6 +49,11 @@
       "id": "token-level-advantage-reweighting",
       "label": "token-level advantage reweighting",
       "score": 0.734
+    },
+    {
+      "id": "logic-folding",
+      "label": "logic folding",
+      "score": 0.733
     }
   ],
   "axis_positions": [
@@ -65,7 +65,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.563
+      "position": -0.516
     },
     {
       "slug": "capability-safety",
@@ -75,12 +75,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.045
+      "position": -0.038
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.169
+      "position": -0.086
     },
     {
       "slug": "neural-symbolic",
@@ -95,6 +95,34 @@
   ],
   "top_items": [
     {
+      "title": "How Seemingly Inconsequential Design Choices Dictate Performance of LLMs in Pathology",
+      "url": "http://arxiv.org/abs/2606.12407v1",
+      "author_or_channel": "Kian R. Weihrauch, Thomas A. Buckley, William Lotter",
+      "published_at": "2026-06-10T17:59:39Z",
+      "kind": "technique"
+    },
+    {
+      "title": "TAHOE: Text-to-SQL with Automated Hint Optimization from Experience",
+      "url": "http://arxiv.org/abs/2606.12387v1",
+      "author_or_channel": "Zhiyi Chen, Jie Song, Peng Li",
+      "published_at": "2026-06-10T17:52:15Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Run DiffusionGemma on NVIDIA for Developer-Ready, High-Throughput Text Generation",
+      "url": "https://developer.nvidia.com/blog/run-diffusiongemma-on-nvidia-for-developer-ready-high-throughput-text-generation/",
+      "author_or_channel": "NVIDIA Developer",
+      "published_at": "2026-06-10T16:16:30.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Model Quantization: Turn FP8 Checkpoints into High-Performance Inference Engines with NVIDIA TensorRT",
+      "url": "https://developer.nvidia.com/blog/model-quantization-turn-fp8-checkpoints-into-high-performance-inference-engines-with-nvidia-tensorrt/",
+      "author_or_channel": "NVIDIA Developer",
+      "published_at": "2026-06-09T18:27:52.000Z",
+      "kind": "tool"
+    },
+    {
       "title": "Piper: A Programmable Distributed Training System",
       "url": "http://arxiv.org/abs/2606.11169v1",
       "author_or_channel": "Megan Frisella, Shubham Tiwari, Andy Ruan",
@@ -107,34 +135,6 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-09T04:36:08.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "Claude Code + Graphify = Insane Agentic OS",
-      "url": "https://www.youtube.com/watch?v=Owv503rTqYY",
-      "author_or_channel": "Jack Roberts",
-      "published_at": "2026-06-08T18:40:21+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics",
-      "url": "http://arxiv.org/abs/2606.09826v1",
-      "author_or_channel": "Mingxian Lin, Shengju Qian, Yuqi Liu",
-      "published_at": "2026-06-08T17:59:43Z",
-      "kind": "tool"
-    },
-    {
-      "title": "MiMo-v2.5-Pro-UltraSpeed: 1T model with 1000 tokens per second",
-      "url": "https://mimo.xiaomi.com/blog/mimo-tilert-1000tps",
-      "author_or_channel": "gainsurier",
-      "published_at": "2026-06-08T15:27:33.000Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
-      "url": "https://www.youtube.com/watch?v=KqdRWE1en8k",
-      "author_or_channel": "Better Stack",
-      "published_at": "2026-06-08T12:53:05+00:00",
-      "kind": "tool"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",

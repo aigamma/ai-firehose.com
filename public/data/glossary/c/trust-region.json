@@ -1,12 +1,115 @@
 {
   "id": "trust-region",
   "label": "Trust Region",
-  "kind": "technique",
-  "category": "Advanced Optimization",
   "aliases": [
     "trust region method",
     "trust-region optimization"
   ],
+  "kind": "technique",
+  "attention": 3,
+  "first_seen": "2026-06-08T17:58:23Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 92.2,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "trust",
+      "label": "trust",
+      "score": 0.776
+    },
+    {
+      "id": "region-level-guidance",
+      "label": "region-level guidance",
+      "score": 0.744
+    },
+    {
+      "id": "local-inference",
+      "label": "local inference",
+      "score": 0.694
+    },
+    {
+      "id": "security",
+      "label": "security",
+      "score": 0.691
+    },
+    {
+      "id": "ai-agents",
+      "label": "AI agents",
+      "score": 0.69
+    },
+    {
+      "id": "autonomy",
+      "label": "autonomy",
+      "score": 0.69
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.298
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.142
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.062
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.249
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.113
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.29
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.055
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Beyond Uniform Token-Level Trust Region in LLM Reinforcement Learning",
+      "url": "https://huggingface.co/papers/2606.10968",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-08T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Rethinking the Divergence Regularization in LLM RL",
+      "url": "http://arxiv.org/abs/2606.09821v1",
+      "author_or_channel": "Jiarui Yao, Xiangxin Zhou, Penghui Qi",
+      "published_at": "2026-06-08T17:58:23Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Advanced Optimization",
   "durable": true,
   "source": "authored",
   "definition": "An optimizer that builds a local model of the objective but only trusts it within a bounded radius, finding the best step inside that ball and then growing or shrinking the radius based on how well the model just predicted reality. It controls the step by the model's reliability rather than by a fixed learning rate, which is what tames Newton's instability on the saddle-ridden terrain of neural losses.",
@@ -55,12 +158,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/trust-region.webp",
     "alt": "A local model of the objective is trusted only within a bounded region, and the optimization step is taken inside that ball; labeled model, objective, step, and trust region.",

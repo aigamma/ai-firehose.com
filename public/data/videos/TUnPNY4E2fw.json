@@ -7,12 +7,12 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Max Ryabinin describes a full stack of techniques for training LLMs with very long context windows, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, enabling 5 million token context training at 8B and 32B scale.",
-  "writeup": "Max Ryabinin of Together AI walks through the systems techniques for training LLMs with very long context windows, targeting sequences up to 5 million tokens. The stack combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training, with each method addressing a different memory or scaling bottleneck. The central contribution is Untied Ulysses, a context parallelism variant that chunks attention heads and reuses buffers across iterations. At scale it fits sequences 25% longer than prior Ulysses.",
-  "wh": "4b83aded0e09ff4f",
+  "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
+  "wh": "a248bf56ff8c29cd",
   "concepts": [
     {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "data-parallelism",
+      "label": "data parallelism"
     },
     {
       "slug": "checkpointing",

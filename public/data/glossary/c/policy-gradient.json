@@ -1,12 +1,143 @@
 {
   "id": "policy-gradient",
   "label": "Policy Gradient",
-  "kind": "technique",
-  "category": "Reinforcement Learning",
   "aliases": [
     "policy gradient methods",
     "REINFORCE"
   ],
+  "kind": "technique",
+  "attention": 11,
+  "first_seen": "2026-05-27T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 96.5,
+    "sparkline": [
+      1,
+      2,
+      3,
+      3,
+      5,
+      6,
+      6,
+      7
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "kernel-bandits",
+      "label": "kernel bandits",
+      "score": 0.823
+    },
+    {
+      "id": "reinforcement-learning",
+      "label": "reinforcement learning",
+      "score": 0.815
+    },
+    {
+      "id": "reward-modeling",
+      "label": "reward modeling",
+      "score": 0.815
+    },
+    {
+      "id": "variance-regularization",
+      "label": "variance regularization",
+      "score": 0.803
+    },
+    {
+      "id": "rnn-training",
+      "label": "RNN training",
+      "score": 0.798
+    },
+    {
+      "id": "gradient-stability",
+      "label": "gradient stability",
+      "score": 0.795
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.019
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.194
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.029
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.183
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.312
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.876
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.432
+    }
+  ],
+  "top_items": [
+    {
+      "title": "UniIntervene: Agentic Intervention for Efficient Real-World Reinforcement Learning",
+      "url": "http://arxiv.org/abs/2606.12372v1",
+      "author_or_channel": "Haoyuan Deng, Yitong Gao, Yudong Lin",
+      "published_at": "2026-06-10T17:38:24Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Ambient Diffusion Policy: Imitation Learning from Suboptimal Data in Robotics",
+      "url": "http://arxiv.org/abs/2606.12365v1",
+      "author_or_channel": "Adam Wei, Nicholas Pfaff, Thomas Cohn",
+      "published_at": "2026-06-10T17:34:12Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Test-Time Gradient Guidance of Flow Policies in Reinforcement Learning",
+      "url": "https://huggingface.co/papers/2606.11087",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-08T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Kwai Keye-VL-2.0 Technical Report",
+      "url": "https://huggingface.co/papers/2606.10651",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-08T20:00:00.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Rethinking the Divergence Regularization in LLM RL",
+      "url": "http://arxiv.org/abs/2606.09821v1",
+      "author_or_channel": "Jiarui Yao, Xiangxin Zhou, Penghui Qi",
+      "published_at": "2026-06-08T17:58:23Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Beyond Scalar Rewards by Internalizing Reasoning into Score Distributions",
+      "url": "https://huggingface.co/papers/2606.09076",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-07T20:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Reinforcement Learning",
   "durable": true,
   "source": "authored",
   "definition": "A family of methods that directly optimize a parameterized policy by following the gradient of expected reward, making high-reward actions more likely, rather than learning values and acting greedily. This direct route handles continuous and stochastic policies value-based methods struggle with, and its central problem is high variance, fixed by subtracting a value-function baseline, which leads straight to the advantage and actor-critic.",
@@ -64,12 +195,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/policy-gradient.webp",
     "alt": "A policy improves as its parameters are pushed up the reward, with a baseline subtracted to steady the estimate; labeled policy, gradient, reward, and baseline.",

@@ -1,13 +1,144 @@
 {
   "id": "singular-value-decomposition",
   "label": "Singular Value Decomposition",
-  "kind": "technique",
-  "category": "Linear Algebra for ML",
   "aliases": [
     "SVD",
     "singular values",
     "singular vectors"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-06-04T17:55:11Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 77.1,
+    "sparkline": [
+      0,
+      1,
+      3,
+      3,
+      3,
+      2,
+      4,
+      4
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "gaussian-splatting",
+      "label": "Gaussian splatting",
+      "score": 0.815
+    },
+    {
+      "id": "matrix-factorization",
+      "label": "Matrix Factorization",
+      "score": 0.786
+    },
+    {
+      "id": "spectral-norm",
+      "label": "spectral norm",
+      "score": 0.777
+    },
+    {
+      "id": "mixture-density-representation",
+      "label": "mixture-density representation",
+      "score": 0.773
+    },
+    {
+      "id": "spatial-smoothness",
+      "label": "spatial smoothness",
+      "score": 0.763
+    },
+    {
+      "id": "sparsity",
+      "label": "sparsity",
+      "score": 0.755
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.321
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.058
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.338
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.469
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.091
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.504
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.093
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Redesign Mixture-of-Experts Routers with Manifold Power Iteration",
+      "url": "http://arxiv.org/abs/2606.12397v1",
+      "author_or_channel": "Songhao Wu, Ang Lv, Ruobing Xie",
+      "published_at": "2026-06-10T17:57:36Z",
+      "kind": "technique"
+    },
+    {
+      "title": "ICA Lens: Interpreting Language Models Without Training Another Dictionary",
+      "url": "https://huggingface.co/papers/2606.11722",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Sparse Subspace-to-Expert Sharing for Task-Agnostic Continual Learning",
+      "url": "http://arxiv.org/abs/2606.07500v1",
+      "author_or_channel": "Fatema Siddika, Md Anwar Hossen, Tanwi Mallick",
+      "published_at": "2026-06-05T17:53:52Z",
+      "kind": "technique"
+    },
+    {
+      "title": "SigmaScale: LLM Compression with SVD-based Low-Rank Decomposition and Learned Scaling Matrices",
+      "url": "https://huggingface.co/papers/2606.07098",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-05T05:48:58.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning",
+      "url": "http://arxiv.org/abs/2606.06494v1",
+      "author_or_channel": "Marius Dragoi, Ioana Pintilie, Alexandra Dragomir",
+      "published_at": "2026-06-04T17:59:55Z",
+      "kind": "technique"
+    },
+    {
+      "title": "PC Layer: Polynomial Weight Preconditioning for Improving LLM Pre-Training",
+      "url": "http://arxiv.org/abs/2606.06470v1",
+      "author_or_channel": "Senmiao Wang, Tiantian Fang, Haoran Zhang",
+      "published_at": "2026-06-04T17:55:11Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Linear Algebra for ML",
   "durable": true,
   "source": "authored",
   "definition": "The factorization that breaks any matrix into a rotation, a set of axis stretches, and another rotation, revealing that every linear transformation, however complicated it looks, is really just those three steps. Keeping only the largest stretches gives the best low-rank approximation, the single fact behind PCA, recommender systems, and parameter-efficient fine-tuning.",
@@ -61,12 +192,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/singular-value-decomposition.png",
     "alt": "A commuting diagram. A unit disc with two perpendicular arrows is sent by M directly to a tilted ellipse. The same result is reached the long way: V star rotates the disc, Sigma stretches it along the axes into an ellipse with semi-axes sigma 1 and sigma 2, and U rotates that ellipse into place.",

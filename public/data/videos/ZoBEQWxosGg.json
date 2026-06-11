@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "JuiceFS is a POSIX-compliant virtual file system that combines AWS S3 and other cloud object storage with local NVMe caching. The system separates data from metadata and uses multi-tiered caching to deliver local-disk performance while maintaining cloud scalability. The demonstration shows practical setup with Redis, monitoring via Prometheus, and real-world inference workloads.",
-  "writeup": "The video demonstrates JuiceFS, a POSIX-compliant virtual file system that layers object storage such as AWS S3 behind local NVMe caching to present what behaves like a single large local drive. The walkthrough covers configuring JuiceFS with Redis for metadata, mounting the file system locally, and tracking cache performance through Prometheus metrics fed into Better Stack observability. The point is that multi-tiered caching can pair cheap, scalable cloud storage with local-disk speed while keeping standard file system semantics. Key takeaways: metadata lives in Redis, the data sits in object storage, and the cache hit behavior is observable rather than assumed.",
-  "wh": "dd5bc8c99a42c27a",
+  "writeup": "The video demonstrates JuiceFS, a POSIX-compliant virtual file system that mounts cloud object storage such as AWS S3 as a local drive while using local NVMe as a cache tier. The core design separates data (stored in object storage) from metadata (managed by a store like Redis), and a multi-tiered cache aims to deliver local-disk performance alongside cloud scalability. The walkthrough covers practical setup with Redis for metadata, monitoring through Prometheus, and testing against real inference workloads. It matters because it shows a concrete path to large, scalable storage with familiar file semantics without provisioning a multi-petabyte local array.",
+  "wh": "ed21d6de952642b8",
   "concepts": [
     {
       "slug": "kv-cache",
@@ -19,8 +19,8 @@
       "label": "POSIX file system"
     },
     {
-      "slug": "data-storage",
-      "label": "data storage"
+      "slug": "object-storage",
+      "label": "object storage"
     },
     {
       "slug": "metadata-separation",

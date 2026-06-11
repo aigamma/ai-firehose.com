@@ -5,6 +5,7 @@
     "task routing",
     "model routing",
     "LLM routing",
+    "token routing",
     "prompt routing",
     "intent routing",
     "dynamic routing",
@@ -14,14 +15,24 @@
     "dynamic model routing"
   ],
   "kind": "tool",
-  "attention": 43,
+  "attention": 46,
   "first_seen": "2026-03-17T07:22:54+00:00",
   "rotation": null,
   "neighbors": [
     {
+      "id": "router-design",
+      "label": "router design",
+      "score": 0.804
+    },
+    {
+      "id": "query-routing",
+      "label": "query routing",
+      "score": 0.77
+    },
+    {
       "id": "provider-routing",
       "label": "provider routing",
-      "score": 0.756
+      "score": 0.755
     },
     {
       "id": "flow-matching",
@@ -37,16 +48,6 @@
       "id": "scheduling",
       "label": "scheduling",
       "score": 0.731
-    },
-    {
-      "id": "positioning",
-      "label": "positioning",
-      "score": 0.731
-    },
-    {
-      "id": "content-addressing",
-      "label": "content addressing",
-      "score": 0.731
     }
   ],
   "axis_positions": [
@@ -58,7 +59,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.201
+      "position": -0.116
     },
     {
       "slug": "capability-safety",
@@ -68,12 +69,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.291
+      "position": 0.296
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.066
+      "position": 0.172
     },
     {
       "slug": "neural-symbolic",
@@ -87,6 +88,20 @@
     }
   ],
   "top_items": [
+    {
+      "title": "Reroute, Don't Remove: Recoverable Visual Token Routing for Vision-Language Models",
+      "url": "http://arxiv.org/abs/2606.12412v1",
+      "author_or_channel": "Cheng-Yu Yang, Shao-Yuan Lo, Yu-Lun Liu",
+      "published_at": "2026-06-10T17:59:57Z",
+      "kind": "technique"
+    },
+    {
+      "title": "DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?",
+      "url": "http://arxiv.org/abs/2606.12402v1",
+      "author_or_channel": "Jadelynn Dao, Milan Ganai, Yasmina Abukhadra",
+      "published_at": "2026-06-10T17:58:49Z",
+      "kind": "technique"
+    },
     {
       "title": "EEVEE: Towards Test-time Prompt Learning in the Real World for Self-Improving Agents",
       "url": "https://huggingface.co/papers/2606.11182",
@@ -109,26 +124,12 @@
       "kind": "technique"
     },
     {
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "url": "https://www.youtube.com/watch?v=iICZTWcryac",
-      "author_or_channel": "Cole Medin",
-      "published_at": "2026-06-04T00:00:04+00:00",
-      "kind": "technique"
-    },
-    {
-      "title": "5 Tips for Deploying AI Agents to Production",
-      "url": "https://www.youtube.com/watch?v=j1wfE0SOBbE",
-      "author_or_channel": "AWS Developers",
-      "published_at": "2026-06-02T18:22:23+00:00",
-      "kind": "technique"
-    },
-    {
-      "title": "ProtoAda: Prototype-Guided Adaptive Adapter Expansion and Geometric Consolidation for Multimodal Continual Instruction Tuning",
-      "url": "http://arxiv.org/abs/2606.02576v1",
-      "author_or_channel": "Yu-Cheng Shi, Zhen-Hao Xie, Jun-Tao Tang",
-      "published_at": "2026-06-01T17:59:13Z",
+      "title": "IR3DE: A Linear Router for Large Language Models",
+      "url": "https://huggingface.co/papers/2606.06098",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-04T08:36:28.000Z",
       "kind": "technique"
     }
   ],
-  "definition": "Routing is a technique that directs each input or request to one of several models, experts, or processing paths based on its content or difficulty, in order to balance cost, latency, and accuracy."
+  "definition": "Routing is a technique that directs inputs, tokens, or queries to different processing paths or model components based on their characteristics, addressing the need to allocate computation efficiently rather than treating all inputs uniformly."
 }

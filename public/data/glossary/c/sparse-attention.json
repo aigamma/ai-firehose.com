@@ -6,29 +6,39 @@
     "sparse transformer"
   ],
   "kind": "technique",
-  "attention": 34,
+  "attention": 41,
   "first_seen": "2026-03-22T11:55:40.000Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 82.2,
-    "momentum": 99.2,
+    "quadrant": "improving",
+    "ratio": 90.7,
+    "momentum": 102.2,
     "sparkline": [
       5,
       9,
       10,
       9,
       9,
-      9,
-      10,
-      9
+      11,
+      13,
+      12
     ]
   },
   "neighbors": [
     {
+      "id": "spatial-temporal-transformers",
+      "label": "spatial-temporal transformers",
+      "score": 0.83
+    },
+    {
       "id": "sparsity",
       "label": "sparsity",
       "score": 0.829
+    },
+    {
+      "id": "dense-spatial-supervision",
+      "label": "dense spatial supervision",
+      "score": 0.814
     },
     {
       "id": "dense-retrieval",
@@ -44,16 +54,6 @@
       "id": "neural-networks",
       "label": "neural networks",
       "score": 0.8
-    },
-    {
-      "id": "few-shot-learning",
-      "label": "few-shot learning",
-      "score": 0.794
-    },
-    {
-      "id": "long-tailed-recognition",
-      "label": "long-tailed recognition",
-      "score": 0.793
     }
   ],
   "axis_positions": [
@@ -65,7 +65,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.131
+      "position": -0.039
     },
     {
       "slug": "capability-safety",
@@ -75,12 +75,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.664
+      "position": 0.667
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.002
+      "position": 0.102
     },
     {
       "slug": "neural-symbolic",
@@ -94,6 +94,27 @@
     }
   ],
   "top_items": [
+    {
+      "title": "On Subquadratic Architectures: From Applications to Principles",
+      "url": "http://arxiv.org/abs/2606.12364v1",
+      "author_or_channel": "Anamaria-Roberta Hartl, Levente Zólyomi, David Stap",
+      "published_at": "2026-06-10T17:33:55Z",
+      "kind": "technique"
+    },
+    {
+      "title": "InternVideo3: Agentify Foundation Models with Multimodal Contextual Reasoning",
+      "url": "https://huggingface.co/papers/2606.12195",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "ICA Lens: Interpreting Language Models Without Training Another Dictionary",
+      "url": "https://huggingface.co/papers/2606.11722",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "technique"
+    },
     {
       "title": "MOFA-VTON: More Fashion Possibilities with Fine-Grained Adaptations in Virtual Try-On",
       "url": "http://arxiv.org/abs/2606.11148v1",
@@ -114,27 +135,6 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-08T20:00:00.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "SemDINO: A DINOv3-Driven Network for Cross-Temporal Semantic Alignment in Change Detection",
-      "url": "http://arxiv.org/abs/2606.09772v1",
-      "author_or_channel": "Xinyu Tong, Meihua Zhou, Jinxiao Sun",
-      "published_at": "2026-06-08T17:32:31Z",
-      "kind": "tool"
-    },
-    {
-      "title": "MiniMax M3 explained in 8min..",
-      "url": "https://www.youtube.com/watch?v=-zIF318p7J8",
-      "author_or_channel": "Caleb Writes Code",
-      "published_at": "2026-06-08T11:10:24+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "Set-Based Transformer for Atmospheric Compensation in Standoff LWIR Hyperspectral Imaging",
-      "url": "https://huggingface.co/papers/2606.08324",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-05T20:00:00.000Z",
-      "kind": "tool"
     }
   ],
   "definition": "Attention computed over a chosen subset of token pairs instead of all of them, trading the transformer's full all-pairs interaction for a pattern that scales far better with sequence length. It rests on the observation that most of the attention in a trained model is local or structured, so the full quadratic computation is largely wasted.",
