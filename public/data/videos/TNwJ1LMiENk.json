@@ -6,17 +6,13 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Kobie Crawford argues that smaller models trained with reinforcement learning to use tools correctly and self-correct outperform much larger models that hallucinate. A 4B Snorkel-finetuned model trained with under $500 solved a SQL task that Qwen 3 235B failed, and single-table training transferred to multi-table tasks with significant benchmark gains.",
-  "writeup": "Kobie Crawford of Snorkel makes the case that model behavior, not parameter count, drives task performance: smaller models trained with reinforcement learning to use tools correctly and self-correct can beat much larger models that hallucinate. The concrete result is a 4B Snorkel-finetuned model, trained for under $500, solving a SQL task that Qwen 3 235B failed. Training on single-table data transferred to multi-table tasks with significant benchmark gains, pointing to behavioral training as a cost-efficient alternative to scaling.",
-  "wh": "0719194cd0575f9d",
+  "summary": "Kobie Crawford from Snorkel demonstrates that a 4B model fine-tuned with reinforcement learning to use tools like `get_table_name` outperformed Qwen 3 235B on database query tasks, achieving correct answers through tool discipline and self-correction. The approach achieved 26.6% on FinQA with single-table transfer learning and cost under 500 dollars to train.",
+  "writeup": "Kobie Crawford of Snorkel argues that behavior, not parameter count, drives performance on database query tasks. The central result: a 4B model fine-tuned with reinforcement learning to call tools like get_table_name outperformed Qwen 3 235B, reaching correct answers through tool discipline and self-correction. The approach scored 26.6% on FinQA using single-table transfer learning and cost under 500 dollars to train, showing that a small model with structured tool use can beat a far larger one at a fraction of the spend.",
+  "wh": "c7cc7734bff82335",
   "concepts": [
     {
       "slug": "reinforcement-learning",
       "label": "reinforcement learning"
-    },
-    {
-      "slug": "fine-tuning",
-      "label": "fine-tuning"
     },
     {
       "slug": "tool-use",
@@ -27,46 +23,50 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "behavioral-training",
-      "label": "behavioral training"
+      "slug": "few-shot-learning",
+      "label": "few-shot learning"
+    },
+    {
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
     }
   ],
   "similar": [
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.544
-    },
-    {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.54
+      "score": 0.617
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.607
     },
     {
       "id": "mFLlVpnGpds",
       "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.539
+      "score": 0.6
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "id": "qKU-e0x2EmE",
+      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
+      "channel": "Nick Saraev",
+      "score": 0.582
+    },
+    {
+      "id": "zTZ0qunQXnM",
+      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.521
+      "score": 0.561
     },
     {
-      "id": "iNkFlCiij0U",
-      "title": "The Art & Science of Benchmarking Agents — Vincent Chen, Snorkel AI",
-      "channel": "AI Engineer",
-      "score": 0.521
-    },
-    {
-      "id": "msFxQ7OYPj8",
-      "title": "How I'd Learn AI From Scratch in 2026 (skip the useless 80%)",
-      "channel": "Jeff Su",
-      "score": 0.52
+      "id": "Fzd0BWMH65s",
+      "title": "How to design a multi-agent system that skips the LLM",
+      "channel": "Google Cloud Tech",
+      "score": 0.561
     }
   ]
 }
