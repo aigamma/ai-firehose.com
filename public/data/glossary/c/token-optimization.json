@@ -6,29 +6,39 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 72,
+  "attention": 102,
   "first_seen": "2026-03-17T07:22:54+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "weakening",
-    "ratio": 145,
-    "momentum": 85.6,
+    "quadrant": "leading",
+    "ratio": 144.4,
+    "momentum": 101.2,
     "sparkline": [
-      2,
-      4,
-      9,
       8,
-      25,
-      24,
-      24,
-      22
+      7,
+      11,
+      15,
+      36,
+      39,
+      37,
+      34
     ]
   },
   "neighbors": [
     {
+      "id": "token-generation",
+      "label": "token generation",
+      "score": 0.799
+    },
+    {
       "id": "token-counting",
       "label": "token counting",
       "score": 0.769
+    },
+    {
+      "id": "discrete-tokenization",
+      "label": "discrete tokenization",
+      "score": 0.761
     },
     {
       "id": "prefill-optimization",
@@ -36,51 +46,41 @@
       "score": 0.759
     },
     {
-      "id": "test-time-optimization",
-      "label": "test-time optimization",
-      "score": 0.759
+      "id": "tokens",
+      "label": "tokens",
+      "score": 0.754
     },
     {
       "id": "i-o-optimization",
       "label": "I/O optimization",
       "score": 0.741
-    },
-    {
-      "id": "logic-folding",
-      "label": "logic folding",
-      "score": 0.736
-    },
-    {
-      "id": "token-level-advantage-reweighting",
-      "label": "token-level advantage reweighting",
-      "score": 0.734
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.043
+      "position": 0.029
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.573
+      "position": -0.529
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.167
+      "position": 0.262
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.112
+      "position": -0.13
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.207
+      "position": -0.05
     },
     {
       "slug": "neural-symbolic",
@@ -90,7 +90,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.109
+      "position": -0.115
     }
   ],
   "top_items": [
@@ -102,10 +102,10 @@
       "kind": "tool"
     },
     {
-      "title": "Run DiffusionGemma on NVIDIA for Developer-Ready, High-Throughput Text Generation",
-      "url": "https://developer.nvidia.com/blog/run-diffusiongemma-on-nvidia-for-developer-ready-high-throughput-text-generation/",
+      "title": "Model Quantization: Turn FP8 Checkpoints into High-Performance Inference Engines with NVIDIA TensorRT",
+      "url": "https://developer.nvidia.com/blog/model-quantization-turn-fp8-checkpoints-into-high-performance-inference-engines-with-nvidia-tensorrt/",
       "author_or_channel": "NVIDIA Developer",
-      "published_at": "2026-06-10T16:16:30.000Z",
+      "published_at": "2026-06-09T18:27:52.000Z",
       "kind": "tool"
     },
     {
@@ -116,6 +116,13 @@
       "kind": "tool"
     },
     {
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "url": "https://www.youtube.com/watch?v=k7HrSreatII",
+      "author_or_channel": "Google Cloud Tech",
+      "published_at": "2026-06-09T16:57:57+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "One Token per Multimodal Evidence: Latent Memory for Resource-Constrained QA",
       "url": "https://huggingface.co/papers/2606.10572",
       "author_or_channel": "HF Papers",
@@ -123,18 +130,11 @@
       "kind": "technique"
     },
     {
-      "title": "Claude Code + Graphify = Insane Agentic OS",
-      "url": "https://www.youtube.com/watch?v=Owv503rTqYY",
-      "author_or_channel": "Jack Roberts",
-      "published_at": "2026-06-08T18:40:21+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "OmniGameArena: A Unified UE5 Benchmark for VLM Game Agents with Improvement Dynamics",
-      "url": "http://arxiv.org/abs/2606.09826v1",
-      "author_or_channel": "Mingxian Lin, Shengju Qian, Yuqi Liu",
-      "published_at": "2026-06-08T17:59:43Z",
-      "kind": "tool"
+      "title": "Why LLM Inference Needs a New Kind of Router",
+      "url": "https://www.modular.com/blog/why-llm-inference-needs-a-new-kind-of-router-part-1",
+      "author_or_channel": "aviziva",
+      "published_at": "2026-06-08T20:37:04.000Z",
+      "kind": "opinion"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",
