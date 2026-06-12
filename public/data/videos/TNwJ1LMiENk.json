@@ -6,9 +6,9 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Kobie Crawford demonstrates that a 4B model trained via RL with Snorkel achieved better SQL reasoning than Qwen 3 235B by learning tool discipline, including schema inspection and self-correction. Single-table training transferred to multi-table tasks, improving FinQA from 13.9% to 26.6%, with training cost under $500.",
-  "writeup": "Kobie Crawford of Snorkel argues that behavior, not parameter count, drives capability, showing a 4B model trained via reinforcement learning to outperform Qwen 3 235B on SQL reasoning. The gains come from learned tool discipline: schema inspection and self-correction rather than raw scale. Single-table training transferred to multi-table tasks, raising FinQA accuracy from 13.9% to 26.6%, with training cost under $500.",
-  "wh": "688a5e41fa80bda9",
+  "summary": "Kobie Crawford presents an approach to training smaller models with reinforcement learning to improve tool use and self-correction capabilities. A 4B model fine-tuned with RL to use the get_table_name function outperformed the much larger Qwen 3 235B on a database query task, achieving self-correction and accurate results at under $500 training cost.",
+  "writeup": "Kobie Crawford of Snorkel argues for improving small model behavior through reinforcement learning rather than scaling parameter counts. The talk centers on fine-tuning a 4B model with RL to use a get_table_name function on a database query task, where it learned self-correction and outperformed the much larger Qwen 3 235B. The case for the approach rests on cost: the training ran at under $500 while still producing accurate results.",
+  "wh": "2b4bc57623da76af",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -25,6 +25,10 @@
     {
       "slug": "recursive-self-improvement",
       "label": "recursive self-improvement"
+    },
+    {
+      "slug": "model-compression",
+      "label": "model compression"
     }
   ],
   "similar": [
@@ -32,37 +36,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.593
+      "score": 0.59
     },
     {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.58
+      "score": 0.562
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
-      "channel": "AI Engineer",
-      "score": 0.578
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
+      "id": "qKU-e0x2EmE",
+      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
+      "channel": "Nick Saraev",
       "score": 0.547
-    },
-    {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.542
     },
     {
       "id": "zexcKJYQooU",
       "title": "Elon Musk Just Shocked OpenAI With Grok 5",
       "channel": "AI Revolution",
-      "score": 0.536
+      "score": 0.54
+    },
+    {
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.528
+    },
+    {
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "channel": "AI Engineer",
+      "score": 0.526
     }
   ]
 }

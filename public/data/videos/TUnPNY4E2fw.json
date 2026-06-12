@@ -6,13 +6,13 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin from Together AI presents techniques for training LLaMA models with 3–5 million token contexts on limited GPU resources. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses improves context parallelism by chunking attention heads and reusing buffers, achieving 25% longer sequences than prior Ulysses implementations.",
+  "summary": "Max Ryabinin from Together AI presents a full stack of techniques for training LLMs with extremely long contexts, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel method called Untied Ulysses further reduces activation memory by chunking attention head buffers and reusing them across iterations, achieving 25% longer sequences than prior Ulysses implementations at 8B and 32B scales.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "e23ef7a85f89701b",
+  "wh": "b0e33829b223b968",
   "concepts": [
     {
-      "slug": "data-parallelism",
-      "label": "data parallelism"
+      "slug": "parallel-execution",
+      "label": "parallel execution"
     },
     {
       "slug": "checkpointing",
@@ -29,48 +29,44 @@
     {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
     }
   ],
   "similar": [
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.589
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.584
-    },
-    {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.559
+      "score": 0.573
     },
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.561
+    },
+    {
+      "id": "fCHe_fOqlYA",
+      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
+      "channel": "IBM Technology",
+      "score": 0.551
+    },
+    {
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.558
+      "score": 0.545
     },
     {
       "id": "fk0pl6b7PKQ",
       "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
       "channel": "Jordan Urbs",
-      "score": 0.543
+      "score": 0.545
     },
     {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.531
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.536
     }
   ]
 }

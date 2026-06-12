@@ -6,41 +6,37 @@
   "published": "2026-06-11T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Zack Proser describes a workflow system that dispatches agents via voice briefs to isolated git worktrees while the user is offline, using signal agents to monitor Slack and Linear, verification gates for code quality and behavior, weekly analysis of conversation history for skill refinement, and biometric feedback integration via MCP. The design prioritizes asynchronous execution and human attention preservation rather than raw tool speed.",
-  "writeup": "Zack Proser of WorkOS walks through a workflow system that keeps agents shipping while the operator is away from the desk. Voice briefs dispatch agents into isolated git worktrees, signal agents monitor Slack and Linear, and verification gates check code quality and behavior before work lands. The system also runs weekly analysis of conversation history to refine agent skills and integrates biometric feedback through MCP. The stated priority is asynchronous execution and preserving human attention rather than maximizing raw tool speed.",
-  "wh": "e0835b8fa5ad86c1",
+  "summary": "Zack Proser demonstrates a workflow architecture that dispatches AI agents to perform development tasks in isolated environments while the human is away, using signal agents to monitor Slack and Linear, verification gates spanning lint through critic passes, weekly JSONL analysis for inefficiency detection, and physiological monitoring via Oura ring over MCP. The core insight is that human attention, not tool speed, is the constraint.",
+  "writeup": "Zack Proser of WorkOS walks through a workflow architecture that dispatches AI agents to handle development tasks in isolated environments while the developer is away from the desk. The system pairs signal agents that monitor Slack and Linear with verification gates running from lint through critic passes, weekly JSONL analysis to surface inefficiencies, and physiological monitoring from an Oura ring exposed over Model Context Protocol. The argument is that the binding constraint is human attention rather than tool speed, so the design centers on asynchronous dispatch and automated checks that let work continue unattended. Takeaways include the use of layered verification gates before changes land, log analysis to detect recurring waste, and voice-to-code as an input path.",
+  "wh": "631736bb071d58bc",
   "concepts": [
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "slug": "voice-input",
-      "label": "voice input"
-    },
-    {
-      "slug": "git-worktree-isolation",
-      "label": "git worktree isolation"
-    },
-    {
-      "slug": "signal-agents",
-      "label": "signal agents"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "logic-gates",
       "label": "logic gates"
     },
     {
-      "slug": "mcp",
-      "label": "MCP"
+      "slug": "voice-to-code",
+      "label": "voice-to-code"
     },
     {
-      "slug": "local-execution",
-      "label": "local execution"
+      "slug": "model-context-protocol",
+      "label": "Model Context Protocol"
     },
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "asynchronous-dispatch",
+      "label": "asynchronous dispatch"
+    },
+    {
+      "slug": "critic-passes",
+      "label": "critic passes"
     }
   ],
   "similar": [
@@ -48,37 +44,37 @@
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.645
+      "score": 0.689
     },
     {
-      "id": "fk0pl6b7PKQ",
-      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
-      "channel": "Jordan Urbs",
-      "score": 0.624
-    },
-    {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
-      "channel": "Cole Medin",
-      "score": 0.615
-    },
-    {
-      "id": "_GljcHROPX8",
-      "title": "What happens when agents get their own computers",
-      "channel": "Cursor",
-      "score": 0.611
-    },
-    {
-      "id": "iUWwcG-C8OU",
-      "title": "Why Can't Anyone Answer Questions About the Business? — Garrett Galow, WorkOS",
+      "id": "zMiSRliEzv4",
+      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
       "channel": "AI Engineer",
-      "score": 0.61
+      "score": 0.631
     },
     {
       "id": "pmoDeA3RBZY",
       "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
       "channel": "AI Engineer",
-      "score": 0.603
+      "score": 0.631
+    },
+    {
+      "id": "4azVjKhqDzw",
+      "title": "Building the App Store for Agentic Engineering",
+      "channel": "Cole Medin",
+      "score": 0.623
+    },
+    {
+      "id": "_B4Pv9ttFgY",
+      "title": "Building Agent Interfaces: Lessons from Chrome DevTools (MCP) for Agents — Michael Hablich, Google",
+      "channel": "AI Engineer",
+      "score": 0.622
+    },
+    {
+      "id": "zqUdtL5l9yM",
+      "title": "Hermes Agentic OS is Insane... just watch",
+      "channel": "Jack Roberts",
+      "score": 0.621
     }
   ]
 }
