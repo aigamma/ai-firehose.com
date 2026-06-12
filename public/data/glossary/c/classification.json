@@ -1,14 +1,109 @@
 {
   "id": "classification",
   "label": "Classification",
-  "kind": "technique",
-  "category": "Core Machine Learning",
   "aliases": [
     "classifier",
     "binary classification",
     "multiclass classification",
     "multi-label classification"
   ],
+  "kind": "technique",
+  "attention": 6,
+  "first_seen": "2026-04-24T13:01:34+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "clustering",
+      "label": "clustering",
+      "score": 0.829
+    },
+    {
+      "id": "segmentation",
+      "label": "segmentation",
+      "score": 0.829
+    },
+    {
+      "id": "classifier-retraining",
+      "label": "classifier retraining",
+      "score": 0.823
+    },
+    {
+      "id": "linear-classifiers",
+      "label": "linear classifiers",
+      "score": 0.82
+    },
+    {
+      "id": "dataset-taxonomy",
+      "label": "dataset taxonomy",
+      "score": 0.791
+    },
+    {
+      "id": "cancer-classification",
+      "label": "cancer classification",
+      "score": 0.777
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.116
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.076
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.024
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.494
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.126
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.211
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.214
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Supervision versus Demonstration-Based In-Context Learning for Multiword Expression Classification",
+      "url": "http://arxiv.org/abs/2606.07479v1",
+      "author_or_channel": "Sercan Karakaş, Yusuf Şimşek",
+      "published_at": "2026-06-05T17:34:07Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Graph Neural Network leveraging Higher-order Class Label Connectivity for Heterophilous Graphs",
+      "url": "http://arxiv.org/abs/2606.07475v1",
+      "author_or_channel": "Takuto Takahashi, Itsuki Nakayama, Takahiro Mitani",
+      "published_at": "2026-06-05T17:28:19Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Most AI agents are fake (here's a 10-second test)",
+      "url": "https://www.youtube.com/watch?v=p1ak5NfWuEA",
+      "author_or_channel": "Jeff Su",
+      "published_at": "2026-04-24T13:01:34+00:00",
+      "kind": "opinion"
+    }
+  ],
+  "category": "Core Machine Learning",
   "durable": true,
   "source": "authored",
   "definition": "The supervised task of sorting an input into one of a fixed set of categories, the default shape of a machine learning problem. Its deepest reach is hidden in plain sight: a language model predicting its next token is doing classification over the vocabulary, so the task that recognizes spam also writes prose.",
@@ -66,51 +161,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 1,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "classifier-retraining",
-      "label": "classifier retraining",
-      "score": 0.829
-    },
-    {
-      "id": "segmentation",
-      "label": "segmentation",
-      "score": 0.824
-    },
-    {
-      "id": "clustering",
-      "label": "clustering",
-      "score": 0.8
-    },
-    {
-      "id": "node-classification",
-      "label": "Node Classification",
-      "score": 0.799
-    },
-    {
-      "id": "k-nearest-neighbors",
-      "label": "k-nearest neighbors",
-      "score": 0.784
-    },
-    {
-      "id": "neural-networks",
-      "label": "neural networks",
-      "score": 0.782
-    }
-  ],
-  "top_items": [
-    {
-      "title": "Supervision versus Demonstration-Based In-Context Learning for Multiword Expression Classification",
-      "url": "http://arxiv.org/abs/2606.07479v1",
-      "author_or_channel": "Sercan Karakaş, Yusuf Şimşek",
-      "published_at": "2026-06-05T17:34:07Z",
-      "kind": "technique"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/classification.png",
     "alt": "A grid comparing the decision boundaries of many classifiers across three two-dimensional datasets. Each cell shades the plane into red and blue regions for the two classes, with the training and test points overlaid, and the boundaries differ in shape from one classifier to the next.",
@@ -120,8 +170,5 @@
     "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
     "source": "https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html",
     "provider": "scikit-learn"
-  },
-  "folded_from": [
-    "binary-classification"
-  ]
+  }
 }

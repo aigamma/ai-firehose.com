@@ -7,34 +7,34 @@
     "model distillation"
   ],
   "kind": "technique",
-  "attention": 34,
-  "first_seen": "2026-03-26T06:43:05+00:00",
+  "attention": 16,
+  "first_seen": "2026-05-24T20:00:00.000Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "weakening",
-    "ratio": 105.1,
-    "momentum": 92.2,
+    "quadrant": "lagging",
+    "ratio": 92.9,
+    "momentum": 88.8,
     "sparkline": [
-      12,
-      12,
-      11,
-      12,
-      13,
-      15,
-      14,
-      13
+      10,
+      10,
+      9,
+      9,
+      8,
+      9,
+      9,
+      8
     ]
   },
   "neighbors": [
     {
+      "id": "on-policy-distillation",
+      "label": "on-policy distillation",
+      "score": 0.79
+    },
+    {
       "id": "knowledge-work",
       "label": "knowledge work",
       "score": 0.777
-    },
-    {
-      "id": "variational-score-distillation",
-      "label": "variational score distillation",
-      "score": 0.766
     },
     {
       "id": "recommender-systems",
@@ -44,16 +44,16 @@
     {
       "id": "neural-networks",
       "label": "neural networks",
-      "score": 0.76
+      "score": 0.761
     },
     {
-      "id": "intelligence-redefinition",
-      "label": "intelligence redefinition",
-      "score": 0.76
+      "id": "real-time-inference",
+      "label": "real-time inference",
+      "score": 0.757
     },
     {
-      "id": "knowledge-cutoff",
-      "label": "knowledge cutoff",
+      "id": "everyday-ai",
+      "label": "everyday AI",
       "score": 0.757
     }
   ],
@@ -61,27 +61,27 @@
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.114
+      "position": 0.123
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.465
+      "position": -0.512
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.262
+      "position": 0.165
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.105
+      "position": -0.123
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.212
+      "position": 0.216
     },
     {
       "slug": "neural-symbolic",
@@ -91,7 +91,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.093
+      "position": -0.109
     }
   ],
   "top_items": [
@@ -103,24 +103,10 @@
       "kind": "technique"
     },
     {
-      "title": "World Model Self-Distillation: Training World Models to Solve General Tasks",
-      "url": "https://huggingface.co/papers/2606.12072",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-09T20:00:00.000Z",
-      "kind": "technique"
-    },
-    {
       "title": "Lip Forcing: Few-Step Autoregressive Diffusion for Real-time Lip Synchronization",
       "url": "http://arxiv.org/abs/2606.11180v1",
       "author_or_channel": "Paul Hyunbin Cho, Jinhyuk Jang, SeokYoung Lee",
       "published_at": "2026-06-09T17:56:36Z",
-      "kind": "technique"
-    },
-    {
-      "title": "The Role of Feedback Alignment in Self-Distillation",
-      "url": "http://arxiv.org/abs/2606.11173v1",
-      "author_or_channel": "Semih Kara, Oğuzhan Ersoy",
-      "published_at": "2026-06-09T17:50:09Z",
       "kind": "technique"
     },
     {
@@ -131,17 +117,31 @@
       "kind": "technique"
     },
     {
-      "title": "The Role of Feedback Alignment in Self-Distillation",
-      "url": "https://huggingface.co/papers/2606.11173",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-08T20:00:00.000Z",
+      "title": "Streaming Video Generation with Streaming Force Control",
+      "url": "http://arxiv.org/abs/2606.07508v1",
+      "author_or_channel": "Hanhui Wang, Yiming Xie, Haiwen Feng",
+      "published_at": "2026-06-05T17:57:32Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Unsupervised Continual Clustering via Forward-Backward Knowledge Distillation",
+      "url": "http://arxiv.org/abs/2606.07474v1",
+      "author_or_channel": "Mohammadreza Sadeghi, Sareh Soleimani, Zihan Wang",
+      "published_at": "2026-06-05T17:28:19Z",
+      "kind": "technique"
+    },
+    {
+      "title": "HANDOFF: Humanoid Agentic Task-Space Whole-Body Control via Distilled Complementary Teachers",
+      "url": "http://arxiv.org/abs/2606.06493v1",
+      "author_or_channel": "Lizhi Yang, Junheng Li, Nehar Poddar",
+      "published_at": "2026-06-04T17:59:50Z",
       "kind": "technique"
     }
   ],
-  "definition": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
+  "definition": "Compressing what a large teacher model knows into a smaller student by training the student to imitate the teacher's outputs rather than learn only from hard labels. The premise is that the teacher's full probability distribution carries far more than a single correct label, its \"dark knowledge\" of which wrong answers are nearly right, and in the LLM era distillation often means simply training a student on a strong model's generated outputs.",
   "body": [
     {
       "type": "p",

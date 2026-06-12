@@ -6,13 +6,17 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents techniques for training LLaMA models with multi-million token context windows on limited GPU memory. The work combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers, enabling 25% longer sequences than prior Ulysses implementations.",
+  "summary": "Max Ryabinin presents a full-stack approach to training LLMs with multi-million token contexts on limited GPU memory. The work combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior Ulysses implementations.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "a38e748fd656dd44",
+  "wh": "026c5edab5698f25",
   "concepts": [
     {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "data-parallelism",
+      "label": "data parallelism"
+    },
+    {
+      "slug": "ulysses",
+      "label": "Ulysses"
     },
     {
       "slug": "checkpointing",
@@ -25,48 +29,44 @@
     {
       "slug": "rnn-training",
       "label": "RNN training"
-    },
-    {
-      "slug": "ulysses",
-      "label": "Ulysses"
     }
   ],
   "similar": [
     {
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.623
+    },
+    {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.624
+      "score": 0.623
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.586
+      "score": 0.585
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.583
+      "score": 0.577
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.575
+      "id": "fk0pl6b7PKQ",
+      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
+      "channel": "Jordan Urbs",
+      "score": 0.554
     },
     {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.545
-    },
-    {
-      "id": "so9l_MwS2yg",
-      "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.543
+      "id": "k7HrSreatII",
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "channel": "Google Cloud Tech",
+      "score": 0.539
     }
   ]
 }

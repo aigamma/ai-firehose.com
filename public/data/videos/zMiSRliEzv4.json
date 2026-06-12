@@ -6,29 +6,29 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is building an automated pipeline that detects product signals like rage clicks, error spikes, and customer messages, then uses a background agent to group related signals, research the codebase, and generate pull requests. The system automatically surfaces fixes to developers without requiring manual triage and ticketing.",
-  "writeup": "This talk from PostHog's Joshua Snyder describes an automated pipeline that converts product signals into pull requests without manual triage or ticketing. The system detects signals like rage clicks, error spikes, and customer messages, then runs a background agent that groups related signals, researches the codebase, and generates fixes for developers. The flow draws on agentic workflows, clustering, embeddings, contrastive learning, and test-time compute. The takeaway is a concrete pattern for surfacing candidate fixes directly to developers rather than queuing work for human review.",
-  "wh": "f0f2fa3cca6c8952",
+  "summary": "PostHog is building an automated agent pipeline that detects product signals like rage clicks, error spikes, and customer messages, groups related issues via embeddings, researches the codebase, and opens pull requests. The system uses embedding models for signal clustering and LLM-generated queries to improve semantic accuracy over direct signal embeddings.",
+  "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
+  "wh": "ba8c2e679a05b69c",
   "concepts": [
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "clustering",
-      "label": "clustering"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "embeddings",
       "label": "embeddings"
     },
     {
-      "slug": "contrastive-learning",
-      "label": "contrastive learning"
+      "slug": "code-generation",
+      "label": "code generation"
+    },
+    {
+      "slug": "error-recovery",
+      "label": "error recovery"
+    },
+    {
+      "slug": "session-replay",
+      "label": "session replay"
     }
   ],
   "similar": [
@@ -36,37 +36,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.62
-    },
-    {
-      "id": "zTZ0qunQXnM",
-      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
-      "channel": "AI Engineer",
-      "score": 0.555
+      "score": 0.596
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.536
+      "score": 0.587
+    },
+    {
+      "id": "zTZ0qunQXnM",
+      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
+      "channel": "AI Engineer",
+      "score": 0.576
     },
     {
       "id": "luBkbzjo-TA",
       "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
       "channel": "Cole Medin",
-      "score": 0.534
+      "score": 0.569
+    },
+    {
+      "id": "10g1iJnfLWQ",
+      "title": "Biomedical AI Copilot with Neo4j and Qdrant",
+      "channel": "Qdrant Vector Search",
+      "score": 0.568
     },
     {
       "id": "xR9pPlLSwJI",
       "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
       "channel": "EO",
-      "score": 0.533
-    },
-    {
-      "id": "ikH1--DSzMs",
-      "title": "How to build proactive agents & self-improving company (Fully explained)",
-      "channel": "AI Jason",
-      "score": 0.53
+      "score": 0.562
     }
   ]
 }

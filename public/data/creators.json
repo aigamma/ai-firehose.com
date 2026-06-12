@@ -145,27 +145,27 @@
           "url": "https://www.youtube.com/watch?v=iUWwcG-C8OU",
           "thumbnail": "https://i.ytimg.com/vi/iUWwcG-C8OU/hqdefault.jpg",
           "kind": "tool",
-          "summary": "WorkOS built Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion. The tool generates reusable declarative JavaScript widgets that call data sources directly, making subsequent executions deterministic and cost-efficient.",
+          "summary": "Studio is an internal workspace that answers business questions in natural language against Snowflake, Linear, and Notion. It generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. Three reliability techniques enable production use: preflight sequencing with just-in-time schema injection, explicit layering rules to force model reliance on primary sources over learned knowledge, and query validation before widget hardcoding.",
           "concepts": [
             {
-              "slug": "in-context-learning",
-              "label": "in-context learning"
+              "slug": "prompt-layering",
+              "label": "prompt layering"
+            },
+            {
+              "slug": "context-window-management",
+              "label": "context window management"
             },
             {
               "slug": "query-validation",
               "label": "query validation"
             },
             {
-              "slug": "schema-injection",
-              "label": "schema injection"
+              "slug": "test-time-execution",
+              "label": "test-time execution"
             },
             {
-              "slug": "deterministic-execution",
-              "label": "deterministic execution"
-            },
-            {
-              "slug": "widget-generation",
-              "label": "widget generation"
+              "slug": "natural-language-to-sql",
+              "label": "natural language to SQL"
             }
           ]
         },
@@ -176,23 +176,19 @@
           "url": "https://www.youtube.com/watch?v=ghJmWQCIHRM",
           "thumbnail": "https://i.ytimg.com/vi/ghJmWQCIHRM/hqdefault.jpg",
           "kind": "tool",
-          "summary": "WebMCP is a proposed web standard introduced by Google that replaces DOM-based agent navigation with structured tools. Agents can call named, typed, described actions directly rather than guessing site behavior through screenshots and pixel math. The standard supports both declarative HTML attributes and imperative JavaScript APIs for registering custom tools.",
+          "summary": "WebMCP is a proposed web standard from Google Chrome that enables AI agents to interact with websites through structured tools instead of DOM parsing and pixel-coordinate clicking. It provides both declarative HTML-based and imperative JavaScript APIs for defining agent-callable actions on web pages.",
           "concepts": [
             {
-              "slug": "agent",
-              "label": "agent"
+              "slug": "agent-tools",
+              "label": "agent tools"
             },
             {
-              "slug": "structured-actions",
-              "label": "structured actions"
+              "slug": "web-standards",
+              "label": "web standards"
             },
             {
-              "slug": "web-standard",
-              "label": "web standard"
-            },
-            {
-              "slug": "dom-automation",
-              "label": "DOM automation"
+              "slug": "dom-interaction",
+              "label": "DOM interaction"
             }
           ]
         },
@@ -203,35 +199,35 @@
           "url": "https://www.youtube.com/watch?v=so9l_MwS2yg",
           "thumbnail": "https://i.ytimg.com/vi/so9l_MwS2yg/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Zack Proser presents a framework for delegating software development tasks to AI agents while minimizing human attention overhead. The stack includes signal agents that monitor communication channels, verification gates for safety, weekly meta-analysis of conversation history for skill discovery, and biometric integration to prevent developer burnout.",
+          "summary": "Zack Proser argues that human attention is the hard constraint in agent-based development, not tool speed. He outlines a four-layer architecture: signal agents that monitor Slack and Linear, verification gates spanning lint to browser interaction, weekly self-improvement loops over conversation history, and health integration via Oura ring to maintain developer well-being during asynchronous agent execution.",
           "concepts": [
             {
-              "slug": "agentic-workflows",
-              "label": "agentic workflows"
+              "slug": "ai-agents",
+              "label": "AI agents"
             },
             {
-              "slug": "human-in-the-loop",
-              "label": "human-in-the-loop"
+              "slug": "agentic-workflow",
+              "label": "agentic workflow"
             },
             {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
-            },
-            {
-              "slug": "voice-interfaces",
-              "label": "voice interfaces"
+              "slug": "voice-first-interaction",
+              "label": "voice-first interaction"
             },
             {
               "slug": "verification-gates",
               "label": "verification gates"
             },
             {
+              "slug": "remote-execution",
+              "label": "remote execution"
+            },
+            {
               "slug": "conversation-history-mining",
               "label": "conversation history mining"
             },
             {
-              "slug": "background-execution",
-              "label": "background execution"
+              "slug": "test-time-compute",
+              "label": "test-time compute"
             }
           ]
         },
@@ -241,8 +237,8 @@
           "published": "2026-06-10T17:00:25+00:00",
           "url": "https://www.youtube.com/watch?v=TNwJ1LMiENk",
           "thumbnail": "https://i.ytimg.com/vi/TNwJ1LMiENk/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "Kobie Crawford argues that tool discipline and behavior training matter more than model scale for query tasks. A 4B Snorkel-finetuned model with RL outperforms Qwen 3 235B by using proper tool invocation (get_table_name, schema inspection, self-correction) rather than reasoning depth, achieving this with under $500 training cost.",
+          "kind": "technique",
+          "summary": "Snorkel finetuned a 4B model using RL to enforce tool discipline for database queries, enabling it to call get_table_name, inspect schema, and self-correct on errors. Training cost under $500 and outperformed Qwen 3 235B which hallucinated on the same task. Single-table training transferred to multi-table problems with improvements from 13.9% to 26.6% on FinQA benchmark.",
           "concepts": [
             {
               "slug": "reinforcement-learning",
@@ -253,16 +249,16 @@
               "label": "tool use"
             },
             {
-              "slug": "model-finetuning",
-              "label": "model finetuning"
-            },
-            {
               "slug": "self-correction",
               "label": "self-correction"
             },
             {
-              "slug": "behavioral-training",
-              "label": "behavioral training"
+              "slug": "model-finetuning",
+              "label": "model finetuning"
+            },
+            {
+              "slug": "tool-discipline",
+              "label": "tool discipline"
             }
           ]
         }
@@ -283,15 +279,15 @@
           "url": "https://www.youtube.com/watch?v=CrLMktzEzmM",
           "thumbnail": "https://i.ytimg.com/vi/CrLMktzEzmM/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Cole Medin conducts a live stream testing Anthropic's Fable 5, examining whether the model's capabilities justify its 2x price premium over Opus 4.8. The stream puts the model through real-world tasks to assess its practical value proposition.",
+          "summary": "Cole Medin tests Anthropic's Fable 5 model in a live stream to evaluate whether it justifies the hype and its 2x price premium over Claude Opus 4.8. The model is presented as Anthropic's most capable release to date.",
           "concepts": [
             {
               "slug": "model-evaluation",
               "label": "model evaluation"
             },
             {
-              "slug": "cost-benefit-analysis",
-              "label": "cost-benefit analysis"
+              "slug": "inference-performance",
+              "label": "inference performance"
             }
           ]
         },
@@ -302,23 +298,23 @@
           "url": "https://www.youtube.com/watch?v=1wfY7GCVvh0",
           "thumbnail": "https://i.ytimg.com/vi/1wfY7GCVvh0/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Google's Agents CLI is an open-source command-line tool that enables building and deploying AI agents to production in minutes. The tool provides agent identity, sandboxed code execution, and audit trails for production-grade deployment.",
+          "summary": "Google has released an open-source Agents CLI that enables building and deploying production-grade AI agents with sandbox execution, audit trails, and identity management. The tool integrates with coding assistants like Claude and simplifies the agent development workflow from local testing through production deployment.",
           "concepts": [
             {
-              "slug": "agent",
-              "label": "agent"
+              "slug": "agent-development",
+              "label": "agent development"
             },
             {
-              "slug": "cli",
-              "label": "CLI"
-            },
-            {
-              "slug": "sandbox",
-              "label": "sandbox"
+              "slug": "sandbox-execution",
+              "label": "sandbox execution"
             },
             {
               "slug": "audit-trail",
               "label": "audit trail"
+            },
+            {
+              "slug": "agent-deployment",
+              "label": "agent deployment"
             }
           ]
         },
@@ -329,15 +325,15 @@
           "url": "https://www.youtube.com/watch?v=nvW-dTgHAHg",
           "thumbnail": "https://i.ytimg.com/vi/nvW-dTgHAHg/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Cole Medin hosts a live AI Q&A stream on Saturdays where viewers can ask about AI coding, agents, Claude Code, and Archon. The stream combines technical discussion with casual chess gameplay as entertainment.",
+          "summary": "Cole Medin is hosting a live AI Q&A stream on Saturday where viewers can ask questions about AI coding, agents, Claude Code, and Archon. The session will include chess gameplay alongside the discussion, positioning it as a casual community hangout event.",
           "concepts": [
             {
               "slug": "agents",
               "label": "agents"
             },
             {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
+              "slug": "claude-code",
+              "label": "Claude Code"
             }
           ]
         },
@@ -348,23 +344,19 @@
           "url": "https://www.youtube.com/watch?v=iICZTWcryac",
           "thumbnail": "https://i.ytimg.com/vi/iICZTWcryac/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Cole Medin demonstrates a multi-model development workflow that routes planning and reasoning to Claude Opus while delegating UI design to Gemini 3.5 Flash. The approach leverages each model's relative strengths: Opus for complex reasoning and integration logic, Gemini for visual frontend generation, with handoff documents enabling task composition across models.",
+          "summary": "A workflow that composes Claude Opus for planning and reasoning tasks with Gemini 3.5 Flash for frontend design and implementation. The approach routes each phase to the model best suited for it: Opus handles specification and integration logic while Gemini generates UI code more efficiently and aesthetically.",
           "concepts": [
             {
-              "slug": "multi-model-composition",
-              "label": "multi-model composition"
+              "slug": "model-composition",
+              "label": "model composition"
+            },
+            {
+              "slug": "multi-model-routing",
+              "label": "multi-model routing"
             },
             {
               "slug": "agentic-coding",
               "label": "agentic coding"
-            },
-            {
-              "slug": "routing",
-              "label": "routing"
-            },
-            {
-              "slug": "handoff-documents",
-              "label": "handoff documents"
             }
           ]
         }
@@ -384,23 +376,23 @@
           "url": "https://www.youtube.com/watch?v=ikH1--DSzMs",
           "thumbnail": "https://i.ytimg.com/vi/ikH1--DSzMs/hqdefault.jpg",
           "kind": "technique",
-          "summary": "The video explains how to construct proactive AI agents that can autonomously improve system performance through feedback loops. Key use cases include autonomous ads optimization and SEO, enabled by memory and tool integration through frameworks like Loopany.",
+          "summary": "Video explains how to construct proactive AI agents and self-improving systems through autonomous loops. It covers building proactive AI loops and demonstrates use cases like autonomous ads optimization and SEO using tools like Loopany, memory systems, and agent tooling.",
           "concepts": [
             {
-              "slug": "agentic-loops",
-              "label": "agentic loops"
+              "slug": "proactive-agents",
+              "label": "proactive agents"
             },
             {
-              "slug": "autonomous-optimization",
-              "label": "autonomous optimization"
+              "slug": "autonomous-loops",
+              "label": "autonomous loops"
             },
             {
-              "slug": "self-improving-systems",
-              "label": "self-improving systems"
+              "slug": "agentic-ai",
+              "label": "agentic AI"
             },
             {
-              "slug": "memory",
-              "label": "memory"
+              "slug": "memory-systems",
+              "label": "memory systems"
             },
             {
               "slug": "tool-use",
@@ -415,19 +407,19 @@
           "url": "https://www.youtube.com/watch?v=rIs802-bXDY",
           "thumbnail": "https://i.ytimg.com/vi/rIs802-bXDY/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AI Jason discusses the /goal feature and autonomous coding capabilities, comparing progress to Ralph-loop 2.0. The video covers how goal-setting features work in coding assistants, setup methods, and long-horizon task execution through /Mission exploration.",
+          "summary": "AI Jason discusses /goal feature and autonomous coding workflows including goal-buddy and mission exploration capabilities. The video covers setup, prompting strategies, and long-horizon task execution for next-generation autonomous coding agents.",
           "concepts": [
             {
               "slug": "autonomous-coding",
               "label": "autonomous coding"
             },
             {
-              "slug": "agent-orchestration",
-              "label": "agent orchestration"
+              "slug": "agentic-systems",
+              "label": "agentic systems"
             },
             {
-              "slug": "goal-driven-execution",
-              "label": "goal-driven execution"
+              "slug": "goal-directed-reasoning",
+              "label": "goal-directed reasoning"
             },
             {
               "slug": "long-horizon-tasks",
@@ -442,15 +434,19 @@
           "url": "https://www.youtube.com/watch?v=M_AmPWmkpwA",
           "thumbnail": "https://i.ytimg.com/vi/M_AmPWmkpwA/hqdefault.jpg",
           "kind": "tool",
-          "summary": "OpenAI Symphony is described as a new AI coding paradigm. The video covers what Symphony is, how it works, harness setup with auto testing capabilities, and WORKFLOW.md configuration for Symphony setup.",
+          "summary": "OpenAI Symphony is presented as a new coding paradigm for AI development. The video demonstrates its setup, auto-testing capabilities, and workflow integration through a harness system.",
           "concepts": [
             {
-              "slug": "ai-assisted-coding",
-              "label": "AI-assisted coding"
+              "slug": "agentic-coding",
+              "label": "agentic coding"
             },
             {
-              "slug": "test-automation",
-              "label": "test automation"
+              "slug": "auto-testing",
+              "label": "auto-testing"
+            },
+            {
+              "slug": "workflow-automation",
+              "label": "workflow automation"
             }
           ]
         },
@@ -461,23 +457,27 @@
           "url": "https://www.youtube.com/watch?v=2zhchG0r6iI",
           "thumbnail": "https://i.ytimg.com/vi/2zhchG0r6iI/hqdefault.jpg",
           "kind": "tool",
-          "summary": "AI Jason demonstrates agent-related tools and frameworks including autoresearch capabilities, Claude Code's memory architecture, and self-evolving mechanisms in Hermes and OpenClaw. The content covers practical agent implementations and skill development patterns.",
+          "summary": "A video overview comparing free AI agent frameworks and their capabilities. Topics include Autoresearch and AutoAgent for autonomous research, Claude's 3-layer memory system, Hermes and Openclaw self-evolution mechanisms, and the Crewlet multi-agent platform.",
           "concepts": [
             {
-              "slug": "agents",
-              "label": "agents"
+              "slug": "agent",
+              "label": "agent"
             },
             {
-              "slug": "agent-memory",
-              "label": "agent memory"
+              "slug": "autonomous-research",
+              "label": "autonomous research"
             },
             {
-              "slug": "self-evolving-agents",
-              "label": "self-evolving agents"
+              "slug": "multi-layer-memory",
+              "label": "multi-layer memory"
             },
             {
-              "slug": "autoresearch",
-              "label": "autoresearch"
+              "slug": "self-evolution",
+              "label": "self-evolution"
+            },
+            {
+              "slug": "agent-orchestration",
+              "label": "agent orchestration"
             }
           ]
         }
@@ -498,15 +498,11 @@
           "url": "https://www.youtube.com/watch?v=wzHXUtkoY-c",
           "thumbnail": "https://i.ytimg.com/vi/wzHXUtkoY-c/hqdefault.jpg",
           "kind": "tool",
-          "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra models that combine hybrid Mamba transformer, MTP, and Latent MoE architectures. The video explains how these components differentiate Nemotron 3 from other open models.",
+          "summary": "NVIDIA released Nemotron 3 Nano, Super, and Ultra models. The series uses hybrid mamba transformer, MTP, and Latent MoE architectures to differentiate from other open models.",
           "concepts": [
             {
               "slug": "hybrid-mamba-transformer",
-              "label": "Hybrid Mamba Transformer"
-            },
-            {
-              "slug": "latent-mixture-of-experts",
-              "label": "Latent Mixture of Experts"
+              "label": "hybrid mamba transformer"
             },
             {
               "slug": "mixture-of-experts",
@@ -525,15 +521,15 @@
           "url": "https://www.youtube.com/watch?v=-zIF318p7J8",
           "thumbnail": "https://i.ytimg.com/vi/-zIF318p7J8/hqdefault.jpg",
           "kind": "tool",
-          "summary": "MiniMax M3 is a language model that implements sparse attention (MSA or MiniMax Sparse Attention) instead of full attention. It includes tiled I/O improvements and optimized KV cache reading to reduce latency during prefill and decode stages of inference.",
+          "summary": "MiniMax M3 is a large language model that introduces MiniMax Sparse Attention (MSA) to replace full attention mechanisms. The model includes optimizations for KV cache management, tiled I/O improvements, and continuous memory reading patterns that reduce latency during both prefill and decode inference stages.",
           "concepts": [
             {
               "slug": "sparse-attention",
               "label": "sparse attention"
             },
             {
-              "slug": "kv-cache-optimization",
-              "label": "KV cache optimization"
+              "slug": "kv-cache",
+              "label": "KV cache"
             },
             {
               "slug": "prefill",
@@ -546,6 +542,10 @@
             {
               "slug": "inference-optimization",
               "label": "inference optimization"
+            },
+            {
+              "slug": "memory-bandwidth",
+              "label": "memory bandwidth"
             }
           ]
         },
@@ -556,7 +556,7 @@
           "url": "https://www.youtube.com/watch?v=FJxgz5pN4wU",
           "thumbnail": "https://i.ytimg.com/vi/FJxgz5pN4wU/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Pi is an agent framework that features a unique harness layer architecture. The video compares Pi against other coding agents like Claude Code, Codex, Cursor, and Antigravity, discussing how increasing product complexity affects harness layer design.",
+          "summary": "Pi is an agent framework that includes a harness layer for controlling agent behavior. The video compares Pi against other frontier coding agents like Claude Code, Codex, Cursor, and Antigravity, discussing how Pi's harness architecture handles increasing product complexity.",
           "concepts": [
             {
               "slug": "agents",
@@ -565,6 +565,10 @@
             {
               "slug": "harness-layer",
               "label": "harness layer"
+            },
+            {
+              "slug": "agentic-workflows",
+              "label": "agentic workflows"
             }
           ]
         },
@@ -575,11 +579,11 @@
           "url": "https://www.youtube.com/watch?v=-ANAWX8ph5o",
           "thumbnail": "https://i.ytimg.com/vi/-ANAWX8ph5o/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Caleb Writes Code discusses Huawei's announcement of the Tau Scaling Law as part of the ongoing hardware and semiconductor race between China and the USA. The video covers the roles of EUV and DUV lithography, packaging, and logic folding in advancing chip manufacturing capabilities.",
+          "summary": "Caleb Eom discusses Huawei's announcement of Tau Scaling Law as part of the China-USA semiconductor race. The video covers how EUV and DUV lithography, packaging, and logic folding contribute to advancing chip manufacturing capabilities amid growing geopolitical competition.",
           "concepts": [
             {
-              "slug": "scaling-laws",
-              "label": "scaling laws"
+              "slug": "scaling-law",
+              "label": "scaling law"
             },
             {
               "slug": "euv-lithography",
@@ -615,19 +619,19 @@
           "url": "https://www.youtube.com/watch?v=0nR3wYm602c",
           "thumbnail": "https://i.ytimg.com/vi/0nR3wYm602c/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AWS Developers discuss strategies for standing out in the 2026 tech job market as AI screens resumes. The video covers networking, personal branding, the Feynman Principle, and argues that junior developers will evolve rather than be replaced, drawing parallels to how transportation jobs transformed rather than disappeared.",
+          "summary": "AWS Developers discusses strategies for tech job hunting in 2026 as AI screening becomes common. The video argues that junior developers remain valuable, personal branding and networking outperform mass applications, and developers should build projects and contribute to open source to stand out.",
           "concepts": [
             {
-              "slug": "resume-screening",
-              "label": "resume screening"
+              "slug": "ai-screening",
+              "label": "AI screening"
             },
             {
               "slug": "personal-branding",
               "label": "personal branding"
             },
             {
-              "slug": "feynman-principle",
-              "label": "Feynman Principle"
+              "slug": "job-market-evolution",
+              "label": "job market evolution"
             }
           ]
         },
@@ -638,39 +642,39 @@
           "url": "https://www.youtube.com/watch?v=j1wfE0SOBbE",
           "thumbnail": "https://i.ytimg.com/vi/j1wfE0SOBbE/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AWS Developers outlines five production best practices for TypeScript AI agents: streaming tool call events for UI responsiveness, layered authentication with OAuth and IAM, type-safe contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and distributed tracing. The recommendations emphasize scaling from localhost prototypes to production systems handling real users.",
+          "summary": "AWS Developers presents five production deployment best practices for AI agents: streaming tool events for UI responsiveness, layered authentication with OAuth and IAM, contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability with metrics and distributed tracing. Patterns are demonstrated using TypeScript with Strands Agents SDK and AWS services but claimed to apply generally.",
           "concepts": [
             {
-              "slug": "streaming",
-              "label": "streaming"
-            },
-            {
-              "slug": "authentication",
-              "label": "authentication"
-            },
-            {
-              "slug": "tenant-isolation",
-              "label": "tenant isolation"
-            },
-            {
-              "slug": "guardrails",
-              "label": "guardrails"
+              "slug": "agent-observability",
+              "label": "agent observability"
             },
             {
               "slug": "cost-controls",
               "label": "cost controls"
             },
             {
-              "slug": "observability",
-              "label": "observability"
-            },
-            {
               "slug": "distributed-tracing",
               "label": "distributed tracing"
             },
             {
+              "slug": "guardrails",
+              "label": "guardrails"
+            },
+            {
               "slug": "model-routing",
               "label": "model routing"
+            },
+            {
+              "slug": "streaming",
+              "label": "streaming"
+            },
+            {
+              "slug": "tenant-isolation",
+              "label": "tenant isolation"
+            },
+            {
+              "slug": "test-time-optimization",
+              "label": "test-time optimization"
             }
           ]
         },
@@ -681,23 +685,27 @@
           "url": "https://www.youtube.com/watch?v=TXQpWbH56q8",
           "thumbnail": "https://i.ytimg.com/vi/TXQpWbH56q8/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Tutorial on Infrastructure as Code using AWS CDK with Python to build a serverless REST API. Covers setting up DynamoDB, Lambda, and API Gateway via CDK compared to manual console configuration, with deployment, testing, and teardown examples.",
+          "summary": "A YouTube tutorial from AWS Developers on Infrastructure as Code fundamentals using AWS CDK with Python. The tutorial demonstrates building a serverless REST API with DynamoDB, Lambda, and API Gateway, comparing manual console setup against CDK-based Infrastructure as Code.",
           "concepts": [
             {
               "slug": "infrastructure-as-code",
               "label": "Infrastructure as Code"
             },
             {
+              "slug": "cloudformation",
+              "label": "CloudFormation"
+            },
+            {
               "slug": "serverless",
-              "label": "serverless"
+              "label": "Serverless"
+            },
+            {
+              "slug": "lambda",
+              "label": "Lambda"
             },
             {
               "slug": "api-gateway",
               "label": "API Gateway"
-            },
-            {
-              "slug": "lambda-functions",
-              "label": "Lambda functions"
             }
           ]
         },
@@ -708,8 +716,12 @@
           "url": "https://www.youtube.com/watch?v=O-QEhFFhXNA",
           "thumbnail": "https://i.ytimg.com/vi/O-QEhFFhXNA/hqdefault.jpg",
           "kind": "technique",
-          "summary": "AWS presents five techniques to prevent AI hallucinations and improve agent reliability: semantic tool selection to reduce context window bloat, graph RAG for precise structured queries, multi-agent validation to catch failures, symbolic guardrails via Python code to enforce rules, and runtime steering for agent self-correction. Demonstrations use a travel agent built with Strands Agents framework.",
+          "summary": "AWS Developers presents five techniques to reduce AI hallucinations in agents: semantic tool selection to filter context, graph RAG for precise queries, multi-agent validation to catch failures, symbolic guardrails implemented in code, and runtime steering for self-correction. Demonstrates each technique with a travel agent example and shows how Amazon Bedrock AgentCore implements these at scale.",
           "concepts": [
+            {
+              "slug": "hallucination-mitigation",
+              "label": "hallucination mitigation"
+            },
             {
               "slug": "semantic-tool-selection",
               "label": "semantic tool selection"
@@ -723,20 +735,16 @@
               "label": "multi-agent validation"
             },
             {
-              "slug": "symbolic-guardrails",
-              "label": "symbolic guardrails"
+              "slug": "neurosymbolic-guardrails",
+              "label": "neurosymbolic guardrails"
             },
             {
-              "slug": "runtime-guardrails",
-              "label": "runtime guardrails"
+              "slug": "runtime-steering",
+              "label": "runtime steering"
             },
             {
-              "slug": "agent-steering",
-              "label": "agent steering"
-            },
-            {
-              "slug": "hallucination-reduction",
-              "label": "hallucination reduction"
+              "slug": "agent-control",
+              "label": "agent control"
             }
           ]
         }
@@ -764,7 +772,7 @@
           "url": "https://www.youtube.com/watch?v=PbsocBPkoUc",
           "thumbnail": "https://i.ytimg.com/vi/PbsocBPkoUc/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "A video essay examining whether Google engineers use \"vibing\" (casual, intuitive coding) versus structured approaches. It compares OpenAI Codex and Claude Code capabilities and explores coding culture at Google across 2024-2026, including references to Google Tech Island.",
+          "summary": "Alberta Tech discusses whether Google engineers use AI code generation (\"vibing code\") and compares vibing practices at Google with OpenAI Codex and Claude Code. The video covers current and predicted future trends in AI-assisted coding at Google through 2026.",
           "concepts": [
             {
               "slug": "code-generation",
@@ -783,15 +791,19 @@
           "url": "https://www.youtube.com/watch?v=bpqFZBWcStU",
           "thumbnail": "https://i.ytimg.com/vi/bpqFZBWcStU/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Alberta Tech discusses Malus, a company described as potentially ending open source development. The video explores how Malus operates and raises questions about its impact on open source maintainers and the sustainability of the open source model.",
+          "summary": "Alberta Tech discusses Malus, a company and tool that the creator frames as disruptive to open source maintenance practices. The video explores tensions between AI agents, open source sustainability, and the future of maintainer incentives in response to commercial pressure.",
           "concepts": [
+            {
+              "slug": "ai-agents",
+              "label": "AI agents"
+            },
             {
               "slug": "open-source",
               "label": "open source"
             },
             {
-              "slug": "ai-agents",
-              "label": "AI agents"
+              "slug": "maintainer-sustainability",
+              "label": "maintainer sustainability"
             }
           ]
         },
@@ -802,7 +814,7 @@
           "url": "https://www.youtube.com/watch?v=ODXdXJ322Qw",
           "thumbnail": "https://i.ytimg.com/vi/ODXdXJ322Qw/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "A creator documents an experiment where Claude Code completed their coding work more effectively than they could. The video explores whether AI will replace human developers across all tasks, framed as both serious concern and clickable premise.",
+          "summary": "Alberta Tech conducted an experiment comparing Claude Code against their own coding job performance. The creator tests whether Claude Code can outperform human developers and explores integration with Higgsfield's model context protocol tooling.",
           "concepts": [
             {
               "slug": "agentic-ai",
@@ -813,8 +825,8 @@
               "label": "code generation"
             },
             {
-              "slug": "ai-capability-assessment",
-              "label": "AI capability assessment"
+              "slug": "ai-displacement",
+              "label": "AI displacement"
             }
           ]
         }
@@ -828,29 +840,48 @@
       "blurb": "Conversations and stories with founders and builders in tech.",
       "videos": [
         {
+          "videoId": "5ehxutchdXU",
+          "title": "How to Steal Customers From Giants 600x Bigger than Your Startup | Pigment, Eléonore Crespo",
+          "published": "2026-06-12T13:00:13+00:00",
+          "url": "https://www.youtube.com/watch?v=5ehxutchdXU",
+          "thumbnail": "https://i.ytimg.com/vi/5ehxutchdXU/hqdefault.jpg",
+          "kind": "opinion",
+          "summary": "Eléonore Crespo, co-founder of Pigment, discusses how her company competes with much larger incumbents by building a full enterprise platform for performance management that integrates finance, supply chain, HR, and sales data. She argues that building the hard path of a complete platform from day one, rather than shipping single features, creates a sustainable competitive advantage, and emphasizes that hiring discipline and securing endorsements from respected companies are critical to enterprise growth.",
+          "concepts": [
+            {
+              "slug": "enterprise-sales",
+              "label": "enterprise sales"
+            },
+            {
+              "slug": "platform-strategy",
+              "label": "platform strategy"
+            },
+            {
+              "slug": "hiring-philosophy",
+              "label": "hiring philosophy"
+            }
+          ]
+        },
+        {
           "videoId": "xR9pPlLSwJI",
           "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
           "published": "2026-06-08T13:45:33+00:00",
           "url": "https://www.youtube.com/watch?v=xR9pPlLSwJI",
           "thumbnail": "https://i.ytimg.com/vi/xR9pPlLSwJI/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Jake Stauch, CEO of Serval, argues that passionate early adopters are not proof of product-market fit and that real PMF manifests as customer pull rather than founder push. He advocates for embedding in customer workflows over formal interviews and emphasizes betting on AI model trajectories rather than current capabilities.",
+          "summary": "Jake Stauch, CEO of Serval, argues that real product-market fit manifests as customer pull rather than push, and that embedded customer relationships reveal true demand better than formal interviews. He warns that passionate early adopters often mask weak market fit and advocates for betting on where AI models are heading rather than their current capabilities.",
           "concepts": [
             {
               "slug": "product-market-fit",
               "label": "product-market fit"
             },
             {
-              "slug": "customer-pull",
-              "label": "customer pull"
+              "slug": "customer-signal",
+              "label": "customer signal"
             },
             {
               "slug": "ai-model-trajectory",
               "label": "AI model trajectory"
-            },
-            {
-              "slug": "enterprise-adoption",
-              "label": "enterprise adoption"
             }
           ]
         },
@@ -861,27 +892,23 @@
           "url": "https://www.youtube.com/watch?v=SC4hr_U8298",
           "thumbnail": "https://i.ytimg.com/vi/SC4hr_U8298/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Nic Baird founded Koah Labs, an ad monetization platform for AI tools, raising $26M. He argues that subscriptions have failed for AI applications and that ads will drive adoption, while the real bottleneck for AI agents is human trust rather than technology.",
+          "summary": "Nic Baird founded Koah Labs, an ad monetization platform for AI tools, and raised $26M by betting on advertising as the primary business model for AI applications. The video discusses his decision-making framework from competitive sailing, why subscriptions have failed for AI apps, and identifies human trust adoption rather than technology as the bottleneck for AI agents.",
           "concepts": [
             {
-              "slug": "ai-monetization",
-              "label": "AI monetization"
-            },
-            {
-              "slug": "subscription-models",
-              "label": "subscription models"
-            },
-            {
-              "slug": "ad-supported-business-models",
-              "label": "ad-supported business models"
+              "slug": "monetization",
+              "label": "monetization"
             },
             {
               "slug": "ai-agents",
               "label": "AI agents"
             },
             {
-              "slug": "human-trust",
-              "label": "human trust"
+              "slug": "business-model",
+              "label": "business model"
+            },
+            {
+              "slug": "decision-making-under-uncertainty",
+              "label": "decision-making under uncertainty"
             }
           ]
         },
@@ -892,7 +919,7 @@
           "url": "https://www.youtube.com/watch?v=CCX1Zc3q5cY",
           "thumbnail": "https://i.ytimg.com/vi/CCX1Zc3q5cY/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Yasser Elsaid, founder of Chatbase, shares his bootstrapped path to $10M ARR without external funding. He covers strategies for reaching $1M ARR in 117 days, product-led growth, SEO, churn reduction, pricing experiments, and decision-making frameworks for founders.",
+          "summary": "Yasser Elsaid, founder of Chatbase, shares his bootstrapped growth playbook from $0 to $10M ARR in the span of 117 days to $1M and beyond. He covers strategies for reducing churn, product-led growth, SEO optimization, pricing experiments, and decision-making frameworks for early-stage founders.",
           "concepts": [
             {
               "slug": "bootstrapping",
@@ -915,31 +942,8 @@
               "label": "pricing strategy"
             },
             {
-              "slug": "business-scaling",
-              "label": "business scaling"
-            }
-          ]
-        },
-        {
-          "videoId": "BAgxGp2WEu4",
-          "title": "A CS Professor on Why Slow Learning Wins in the AI Era | CU Boulder, Tom Yeh",
-          "published": "2026-05-25T13:45:02+00:00",
-          "url": "https://www.youtube.com/watch?v=BAgxGp2WEu4",
-          "thumbnail": "https://i.ytimg.com/vi/BAgxGp2WEu4/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "Tom Yeh argues that teaching AI fundamentals by hand at human speed, grounded in mathematical foundations rather than the latest tools, builds durable skills that survive hype cycles. He contends that people shape AI rather than the reverse, and warns against the \"AI-Native\" trap of becoming dependent on current tools.",
-          "concepts": [
-            {
-              "slug": "mathematical-foundations",
-              "label": "mathematical foundations"
-            },
-            {
-              "slug": "hands-on-learning",
-              "label": "hands-on learning"
-            },
-            {
-              "slug": "pedagogy",
-              "label": "pedagogy"
+              "slug": "outbound-sales",
+              "label": "outbound sales"
             }
           ]
         }
@@ -959,36 +963,24 @@
           "published": "2026-06-11T19:35:45+00:00",
           "url": "https://www.youtube.com/watch?v=MigowTEcJHA",
           "thumbnail": "https://i.ytimg.com/vi/MigowTEcJHA/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "Cyril Imhof discusses Fable 5 as a second brain for AI entrepreneurs, comparing it to Mythos 5 and covering loop engineering for recursive self-improvement, memory systems for long-running tasks, and emerging opportunities in agentic payments. The episode explores how smaller models balance capabilities with guardrails for regulated industries.",
+          "kind": "tool",
+          "summary": "Cyril Imhof discusses Fable 5, an Anthropic model designed for AI entrepreneurs, highlighting its features, guardrails, memory capabilities, and agentic payment integration compared to Mythos 5.",
           "concepts": [
             {
-              "slug": "recursive-self-improvement",
-              "label": "recursive self-improvement"
-            },
-            {
-              "slug": "loop-engineering",
-              "label": "loop engineering"
-            },
-            {
-              "slug": "agentic-workflows",
-              "label": "agentic workflows"
-            },
-            {
-              "slug": "guardrails",
-              "label": "guardrails"
-            },
-            {
-              "slug": "memory-systems",
-              "label": "memory systems"
+              "slug": "agentic-ai",
+              "label": "agentic AI"
             },
             {
               "slug": "test-time-compute",
               "label": "test-time compute"
             },
             {
-              "slug": "agent-loops",
-              "label": "agent loops"
+              "slug": "recursive-self-improvement",
+              "label": "recursive self-improvement"
+            },
+            {
+              "slug": "long-context-models",
+              "label": "long-context models"
             }
           ]
         },
