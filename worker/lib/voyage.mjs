@@ -1,18 +1,37 @@
 import { ENV } from "./env.mjs";
+import { recordLlm } from "./otel.mjs";
 
 // Voyage AI client. voyage-3 (1024-dim) for embeddings, rerank-2 for the live
 // search second stage. Ported from the civil and worldthought RAG substrate.
 const BASE = "https://api.voyageai.com/v1";
 
 async function post(path, body) {
-  const r = await fetch(`${BASE}${path}`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${ENV.voyageKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-    signal: AbortSignal.timeout(30000),
-  });
-  if (!r.ok) throw new Error(`Voyage ${path} ${r.status}: ${(await r.text()).slice(0, 300)}`);
-  return r.json();
+  const startMs = Date.now();
+  const op = path.replace(/^\//, "");
+  try {
+    const r = await fetch(`${BASE}${path}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${ENV.voyageKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(30000),
+    });
+    if (!r.ok) throw new Error(`Voyage ${path} ${r.status}: ${(await r.text()).slice(0, 300)}`);
+    const j = await r.json();
+    // Voyage bills embeddings and rerank on input tokens only (no output).
+    recordLlm({
+      system: "voyage",
+      model: body.model || "voyage-3",
+      operation: op,
+      inputTokens: j.usage?.total_tokens ?? 0,
+      outputTokens: 0,
+      startMs,
+      ok: true,
+    });
+    return j;
+  } catch (e) {
+    recordLlm({ system: "voyage", model: body.model || "voyage-3", operation: op, startMs, ok: false });
+    throw e;
+  }
 }
 
 // Voyage returns each embedding tagged with its input index. Reorder by that index
