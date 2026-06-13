@@ -7,7 +7,7 @@ A one-page map of the project's documents, ranked by where to start and what eac
 | Tier | What it is | When to read | Documents |
 |---|---|---|---|
 | 1. Orientation | "Read first." What this is, the conventions, the contracts. | New contributor, human or AI. | `OVERVIEW.md`, `CLAUDE.md`, `README.md` |
-| 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, glossary, ops, or deploy work, or onboarding a feature. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/GLOSSARY.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`, `docs/FEATURE_PLAYBOOK.md` |
+| 2. Active reference | "Read when building or running a subsystem." | Doing ingestion, RAG, sources, glossary, ops, or deploy work, or onboarding a feature. | `docs/INGESTION.md`, `docs/RAG.md`, `docs/SOURCES.md`, `docs/GLOSSARY.md`, `docs/OPERATIONS.md`, `docs/DEPLOYMENT.md`, `docs/FEATURE_PLAYBOOK.md`, `docs/OBSERVABILITY.md` |
 | 3. Cumulative wisdom | "Read to understand why, and to avoid past mistakes." | Before any non-trivial change. Append to it when you learn something. | `LESSONS_LEARNED.md` |
 | 4. Run record | "Read to see what the pipeline has actually done." | Tuning rotation windows or thresholds, debugging a bad run. | `docs/INGESTION_LOG.md` |
 
@@ -30,6 +30,7 @@ Public-facing overview for someone landing on the GitHub repo or curious about t
 - `docs/ONBOARD_YOUTUBE_CHANNEL.md`: the one-command runbook for onboarding a list of YouTube educators (`node scripts/onboard_youtube.mjs @list` resolves each, adds it to the ingestion registry, and rebuilds the browse-and-subscribe directory; then choose weight and kind, verify against oracles, commit and push so the worker sees them). The companion runbook to `docs/SOURCES.md`; read it whenever Eric drops a list of handles.
 - `docs/OPERATIONS.md`: keys and where they come from, the daily schedule, cost ceilings, monitoring, and recovery recipes.
 - `docs/DEPLOYMENT.md`: the Fly worker and the Netlify site, DNS, and the deploy chain.
+- `docs/OBSERVABILITY.md`: how the site reports into the fleet observability spine (the Grafana Alloy collector and Grafana Cloud), the worker's zero-dependency OTLP emitter (`worker/lib/otel.mjs`) and the instrumented LLM call sites, the fail-open env-gated contract, and the LLM cost and token metrics. Read before touching telemetry.
 - `docs/GLOSSARY.md`: the durable knowledge layer. The two-layer model (authored durable knowledge versus the trending corpus), authoring entries, the build into served artifacts, the durability contract, and wiki-style auto-linking. Read before touching the glossary or `content/glossary`.
 - `docs/FEATURE_PLAYBOOK.md`: the repeatable recipe for onboarding a feature, with a dedicated path for a fully Pinecone/Voyage-integrated one (the embedding integration, the citation contract, the agentic-summary pattern, the served-artifact rule, the UI integration, and the closing checklist). Read before adding any feature.
 
@@ -70,6 +71,7 @@ Append-only per-run log: what ran, when, by which agent or model, with what coun
 | Touch the embedding substrate or artifacts | `docs/RAG.md` |
 | Change the rotation math or thresholds | `docs/RAG.md`, `docs/INGESTION_LOG.md` |
 | Deploy or change infrastructure | `docs/DEPLOYMENT.md`, `docs/OPERATIONS.md` |
+| Add or change telemetry or observability | `docs/OBSERVABILITY.md` |
 | Re-pass existing glossary entries for quality | `docs/GLOSSARY_QUALITY_PASS.md` (method, per-category checklist, live status) |
 | Continue or expand the glossary (new entries) | `docs/GLOSSARY_ONBOARDING.md` (procedure and live status), then `docs/glossary_backlog.md` and `docs/glossary_queue.md` (what to author) |
 | Discover a new rule or insight mid-session | Put it in `CLAUDE.md` (if a convention) or `LESSONS_LEARNED.md` (if a lesson). Never rely on session memory. |
