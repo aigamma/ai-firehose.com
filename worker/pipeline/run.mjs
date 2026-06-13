@@ -11,6 +11,7 @@ import { spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requireKeys } from "../lib/env.mjs";
+import { flushTelemetry } from "../lib/otel.mjs";
 import { fetchAll } from "../sources/index.mjs";
 import { loadShortIds } from "../sources/youtube_shorts.mjs";
 import { classifyItem } from "./classify.mjs";
@@ -524,6 +525,9 @@ async function main() {
   } catch (e) {
     console.error(`harness: ${e.message}`);
   }
+
+  // Flush LLM cost/usage telemetry to the fleet collector (no-op if unconfigured).
+  await flushTelemetry();
 
   console.log("DONE. Real artifacts written to public/data.");
 }
