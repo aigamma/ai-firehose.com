@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud Tech demonstrates building multi-agent systems for automating enterprise migrations using the Agent Development Kit (ADK). The tutorial covers multi-agent orchestration with SequentialAgent, self-correcting loops with LoopAgent, context caching, and deployment to production via Google Agent Engine.",
-  "writeup": "",
+  "writeup": "A practical walkthrough of Google Agent Development Kit (ADK) through a concrete enterprise use case: mapping Microsoft 365 licenses and add-ons to Google Workspace equivalents and producing a structured 10-chapter report. The video argues that reliable agents require state management, routing, and guardrails, not just raw API calls, and demonstrates how ADK's sequential and loop agent primitives enforce that discipline. The through-line is modularity: decomposing a hard single-prompt task into small focused sub-agents, adding a self-correcting review loop, and caching a large knowledge base to control cost and latency.",
   "wh": "02e8c5c841c63e55",
   "concepts": [
     {
@@ -80,5 +80,54 @@
       "channel": "Google Cloud Tech",
       "score": 0.602
     }
-  ]
+  ],
+  "key_points": [
+    "ADK's sequential agent breaks the license-mapping pipeline into three focused sub-agents (input parser, researchers, reporter), each with its own system prompt, which reduces hallucinations and makes debugging easier than a single large prompt.",
+    "A self-correcting loop pairs the License Mapper with a report reviewer: the reviewer checks for missing features and broken formatting and bounces the output back to the mapper before the run finishes, replacing one-shot validation with an iterative correction cycle.",
+    "Context caching in ADK loads a large local CSV knowledge base once and reuses it across runs, avoiding context-window bloat and the API cost spike that comes from injecting the full file on every call.",
+    "The agent combines Google Search for real-time grounding with a locally stored enterprise feature matrix, giving it both current web data and a controlled authoritative knowledge base.",
+    "HTTP 429 resource exhaustion errors are prevented by adding two HTTP headers that activate priority inference, giving the agent guaranteed and prioritized slots at the model endpoint under load.",
+    "Deployment to Google Agent Engine requires a single command because ADK abstracts away custom Docker files and hosting infrastructure, making the path from local IDE to production direct."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Case for Reliable Agent Architecture"
+    },
+    {
+      "t": 31,
+      "title": "The Problem: Enterprise License Mapping"
+    },
+    {
+      "t": 62,
+      "title": "Multi-Agent Pipeline with ADK Sequential Agent"
+    },
+    {
+      "t": 120,
+      "title": "Self-Correcting Loop Agent"
+    },
+    {
+      "t": 150,
+      "title": "Grounding and Context Caching"
+    },
+    {
+      "t": 180,
+      "title": "Logging and Observability"
+    },
+    {
+      "t": 213,
+      "title": "Recap and Deployment"
+    },
+    {
+      "t": 241,
+      "title": "Preventing HTTP 429 with Priority Inference"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "6a51fe27332da566"
 }

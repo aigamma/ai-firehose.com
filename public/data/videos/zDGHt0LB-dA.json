@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Flash is a Python decorator-based tool that deploys async functions to GPU cloud from an IDE with hot reload. It eliminates the traditional iteration cycle of Docker builds and container management, supporting multi-model chaining and serverless autoscaling across data centers.",
-  "writeup": "Audry Hsu of RunPod presents Flash, a deployment framework that replaces traditional Docker and cloud allocation workflows with a single decorator on async Python functions. The talk covers hot reload for model swaps and GPU cloud deployment driven directly from an IDE, removing the usual container-and-allocation steps between code and a running model. RunPod supplies the GPU instances, priced at $0.00116 per second on H100s. The framing also touches edge deployment, serverless inference, and model compression.",
+  "writeup": "A live conference demo of RunPod's Flash Python SDK, which eliminates the commit-build-push-allocate loop that slows GPU model iteration by deploying a decorated async function directly from a local IDE onto RunPod's serverless GPU cloud. The presenter swaps Stable Diffusion models mid-session and then chains a three-model pipeline (Qwen 3 for prompt generation, DreamShaper for image synthesis, Nano Banana 2 for composition) to show that Flash's value scales with orchestration complexity. RunPod, founded in 2022 from spare crypto-mining GPUs, reached $120M ARR across 30-plus data centers in 10 countries.",
   "wh": "cc4f8ec32c9a6580",
   "concepts": [
     {
@@ -68,5 +68,50 @@
       "channel": "Google Cloud Tech",
       "score": 0.542
     }
-  ]
+  ],
+  "key_points": [
+    "Flash's core mechanism is a single Python decorator, @flash_endpoint, that packages only the decorated async function onto RunPod's GPU cloud while the surrounding orchestration code continues running locally, so the developer never leaves the IDE.",
+    "Hot module reload means any code change is immediately repackaged and re-deployed to the GPU worker without rebuilding a Docker image or re-provisioning infrastructure, collapsing the inner iteration loop to seconds.",
+    "The endpoint decorator accepts explicit GPU family targeting (e.g., Ada 80 Pro, which are Nvidia H100 variants), a max_workers ceiling (demonstrated at 5), and an active_workers floor (demonstrated at 1 to keep one worker always warm).",
+    "RunPod's serverless pricing charges only for the duration of an active request, not for idle time, so auto-scaling to zero between bursts means developers pay nothing when no inference is running.",
+    "A three-stage pipeline demo chains Qwen 3 (prompt generation on a public endpoint), DreamShaper (a Stable Diffusion 1.5 fine-tune optimized for illustrative art styles, 25 inference steps), and Nano Banana 2 (a Google photo-composition model) to illustrate that Flash handles multi-model orchestration, not just single-model calls.",
+    "RunPod was founded in 2022 from spare GPUs left over from a failed crypto mining venture, grew to $120M in annual recurring revenue by 2025, and operates 30-plus data centers across 10 countries with roughly 500 developers on the platform."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "RunPod Company Overview"
+    },
+    {
+      "t": 211,
+      "title": "Product Tiers: Pods, Serverless, Clusters, Hub"
+    },
+    {
+      "t": 343,
+      "title": "Flash SDK: The Dev Iteration Problem"
+    },
+    {
+      "t": 451,
+      "title": "Live Demo: Single Model Image Generation"
+    },
+    {
+      "t": 691,
+      "title": "Live Model Swap: DreamShaper"
+    },
+    {
+      "t": 841,
+      "title": "Multi-Model Pipeline Demo"
+    },
+    {
+      "t": 1020,
+      "title": "Pricing and Serverless Economics"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "edd83fd079600aea"
 }

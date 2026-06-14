@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Google has released an open-source Agents CLI that enables building and deploying production-grade AI agents with sandbox execution, audit trails, and identity management. The tool integrates with coding assistants like Claude and simplifies the agent development workflow from local testing through production deployment.",
-  "writeup": "Cole Medin covers Google's open-source Agents CLI, a tool for building and deploying production-grade AI agents. The CLI provides sandboxed execution, audit trails, and identity management, and it integrates with coding assistants such as Claude. The walkthrough spans the agent development workflow from local testing through production deployment.",
+  "writeup": "A walkthrough of building and deploying an AI agent entirely through Claude Code, using Google's Agent CLI and its bundled skills without touching the terminal or reading documentation directly. The video traces the evolution from manual LangChain coding through early AI coding assistants to the current pattern: a single CLI install injects Google ADK documentation as skills, then the coding agent scaffolds, evaluates, optimizes prompts, and deploys the agent end to end. The through-line is a concrete tradeoff: coding agent SDKs (like the Anthropic SDK) are powerful but token-heavy and slow, making frameworks like Google ADK the right choice for production platforms where sub-4-second first-token latency is critical for user retention.",
   "wh": "cfd51b86205f4c09",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "AWS Developers",
       "score": 0.667
     }
-  ]
+  ],
+  "key_points": [
+    "Google's Agent CLI pairs CLI capabilities with skills that embed Google ADK documentation directly into the coding agent, eliminating the need to read or reference external docs during development.",
+    "The CLI covers the full production lifecycle: scaffold, single-prompt test, evaluation, prompt optimization via eval data, and deployment, all driven by the coding agent running CLI commands rather than the developer.",
+    "The 'ask your data' demo agent uses Google ADK's built-in sandboxed code executor for secure arbitrary code execution against a user-supplied CSV, a component Google handles automatically on cloud deployment.",
+    "Coding agent SDKs (such as the Anthropic SDK powering second-brain workflows) are token-inefficient and slow, making them poor fits for customer-facing platforms; traditional frameworks like Google ADK are minimalistic and controllable, enabling the token efficiency and speed production scale requires.",
+    "Research cited in the video puts the tolerance threshold for a customer waiting for a first token from a deployed agent at 4 seconds, after which abandonment probability rises sharply, anchoring the case for lightweight framework-based agents over SDK-based ones in platform contexts.",
+    "The build in the video is done entirely through Claude Code with speech-to-text input, no terminal commands run by the developer; the agent CLI skills tell the coding agent how to drive every CLI command in the correct order."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: CLI and Skills"
+    },
+    {
+      "t": 61,
+      "title": "Evolution of Agent Development"
+    },
+    {
+      "t": 150,
+      "title": "How the Agent CLI and Skills Work"
+    },
+    {
+      "t": 270,
+      "title": "Live Build: Ask Your Data Agent"
+    },
+    {
+      "t": 450,
+      "title": "Framework vs. SDK Tradeoff"
+    },
+    {
+      "t": 570,
+      "title": "Agent Output and Streamlit Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ab0f38756d3d820d"
 }

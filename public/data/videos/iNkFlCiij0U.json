@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Vincent Chen argues that benchmark design has fallen behind AI capability development. He outlines a framework for benchmarking agents based on reviewing 120 applications to Snorkel's grant program, combining scientific criteria (task quality, distributional diversity, model headroom, robust evaluation) with artistic choices (thesis-driven design, research roadmaps, researcher UX). He proposes three axes for next-generation benchmarks: environment complexity, autonomy horizon, and output complexity beyond plain text.",
-  "writeup": "",
+  "writeup": "Vincent, research fellow and co-founder at Snorkel AI, argues that AI agent capabilities have outpaced the field's ability to measure them, and that closing this evaluation gap requires better open benchmarks, not just red teaming or private human evals. Drawing on Snorkel's review of 120+ applications for its $3M Open Benchmarks grant, the talk lays out a two-part framework: the science of building reliable measuring sticks (task quality, distributional diversity, model headroom) and the art of building benchmarks that actually shape where the field goes. Canonical benchmarks including GPQA, MMLU, and ARC-AGI-2 are used as concrete case studies for each principle.",
   "wh": "f0e962908203823b",
   "concepts": [
     {
@@ -56,5 +56,49 @@
       "channel": "AI Engineer",
       "score": 0.555
     }
-  ]
+  ],
+  "key_points": [
+    "GPQA's lasting value comes largely from its adversarial multi-reviewer quality control protocol (author, reviewers, and adjudicators in sequence with revision opportunities, and payouts tied to inter-rater agreement), which set a new bar for ensuring individual tasks are both well-posed and tractable for domain experts other than the author.",
+    "MMLU's durability as a benchmark traces directly to its intentional taxonomy of 57 academic and professional domains across STEM and humanities, illustrating that distributional diversity requires a deliberate, pre-specified coverage map rather than ad-hoc task collection.",
+    "ARC-AGI-2 remained unsaturated for months to years and then saw a sudden leap in scores that tracked the real-world o1-style reasoning push 18-24 months ago, demonstrating that unsaturation and preserved model headroom are what allow a benchmark to actually detect genuine capability jumps rather than benchmark-specific overfitting.",
+    "ARC-AGI-3 launched with frontier models scoring under 1% while every task remained human-solvable, making it the current gold standard for a benchmark with meaningful headroom and a clear human-AI gap to close.",
+    "A benchmark that matters is not a backward-looking snapshot but a forward-looking goalpost: the best open benchmarks define where capabilities need to go and inspire new research roadmaps, as seen with Terminal Bench and long-horizon agent benchmarks emerging as guideposts for trustworthy agent deployment."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Context"
+    },
+    {
+      "t": 120,
+      "title": "The Evaluation Gap in Agent Deployment"
+    },
+    {
+      "t": 211,
+      "title": "Open Benchmarks as a Critical Toolkit"
+    },
+    {
+      "t": 270,
+      "title": "Snorkel's $3M Open Benchmarks Grant"
+    },
+    {
+      "t": 390,
+      "title": "Science of Benchmarks: Task Quality and GPQA"
+    },
+    {
+      "t": 511,
+      "title": "Distributional Diversity and MMLU"
+    },
+    {
+      "t": 601,
+      "title": "Model Headroom: ARC-AGI-2 and ARC-AGI-3"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "07ec563af51b26a2"
 }

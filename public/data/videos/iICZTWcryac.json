@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "A workflow that composes Claude Opus for planning and reasoning tasks with Gemini 3.5 Flash for frontend design and implementation. The approach routes each phase to the model best suited for it: Opus handles specification and integration logic while Gemini generates UI code more efficiently and aesthetically.",
-  "writeup": "",
+  "writeup": "This video presents a multi-provider AI coding workflow that deliberately splits tasks between Gemini 2.5 Flash and Claude Opus 4.8, assigning each model to the work it does best. Gemini 2.5 Flash handles front-end UI generation, where it produces unusually polished, human-looking interfaces in one shot; Opus 4.8 handles planning, page copy, and backend integrations, where stronger reasoning prevents hallucination. Each step runs as a separate coding agent session and passes a structured handoff document to the next node, making provider-mixing possible and enabling focused, single-task context windows. The result is a one-shot workflow capable of producing non-trivial full-stack MVPs without either model being asked to do more than it handles well.",
   "wh": "61b13e01c0f62d57",
   "concepts": [
     {
@@ -60,5 +60,46 @@
       "channel": "Cole Medin",
       "score": 0.579
     }
-  ]
+  ],
+  "key_points": [
+    "Gemini 2.5 Flash produces front-end UIs that are noticeably less \"AI-looking\" than outputs from Claude Code, Lovable, or Bolt in one-shot generation, but its page copy and reasoning quality trails Opus 4.8 on real-world benchmarks and in practice.",
+    "Opus 4.8 is used for planning, page copy accuracy, and full-stack integrations precisely because its reasoning superiority prevents the hallucinated content that Gemini 2.5 Flash produces when asked to handle those tasks.",
+    "Every step in the workflow is an independent coding agent session; cross-provider context hand-off is achieved through structured markdown handoff documents (context.md and equivalents) rather than attempting to pass a live context window between providers, which is not possible.",
+    "Gemini 2.5 Flash costs $1.50 per million input tokens versus the significantly higher Opus 4.8 rate, so routing high-token UI iteration to Gemini 2.5 Flash and reserving Opus 4.8 for lower-volume reasoning tasks reduces overall cost while improving output quality on both fronts.",
+    "The workflow ships as a set of Claude Code skills invokable step-by-step or combined into an Archon autonomous run; the repository README is designed to be handed directly to a coding agent to handle setup, including configuring Pi with OpenRouter for Gemini 2.5 Flash access.",
+    "Splitting a large workflow into single-task sessions is presented as a general best practice: even the best models degrade when asked to handle exploration, planning, UI generation, and backend integration in one session for anything beyond a trivial application."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Gemini 2.5 Flash and Opus 4.8 Strengths"
+    },
+    {
+      "t": 91,
+      "title": "Workflow Overview and Provider Mixing Strategy"
+    },
+    {
+      "t": 301,
+      "title": "Why Separate Sessions With Handoff Documents"
+    },
+    {
+      "t": 331,
+      "title": "Single-Task Focus as a Core Design Principle"
+    },
+    {
+      "t": 540,
+      "title": "Exploration Step and Sonnet for Survey"
+    },
+    {
+      "t": 600,
+      "title": "Spec File and Repository Structure"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "21223fa930b89eee"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Jack Roberts demonstrates a YouTube channel monetization system using Claude Code Fable 5 for automated video editing. The workflow involves analyzing high-performing channels, scripting with Claude, recording voiceovers, and using Higsfield CLI to automate editing and composition, claiming production costs around $2 per video.",
-  "writeup": "Jack Roberts walks through a YouTube monetization workflow built around Claude Code Fable 5 for automated video editing. The process covers analyzing high-performing channels, scripting with Claude, recording voiceovers, and using the Higsfield CLI to automate editing and composition. Roberts claims production costs of around $2 per video and frames the system around a $30,000 per month earnings target.",
+  "writeup": "The video walks through a \"ZeroEdit pipeline\" for building AI-assisted YouTube content at scale, using Claude Code with Claude Opus (launched June 9th) as the agentic backbone. The presenter structures the process into discrete phases: reverse-engineering top-performing channels via Claude analysis, then identifying outlier videos to clone their unmet demand. The core argument is that attention is the monetizable asset and that AI now makes the production side cheap enough to compete with established faceless channels.",
   "wh": "c4fbe083cc35c9e6",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "AI Master",
       "score": 0.618
     }
-  ]
+  ],
+  "key_points": [
+    "Ad revenue is the lowest-leverage of the three YouTube income streams; sponsorships can reach $30,000+ per video and the creator's own products or services carry the highest margin and ceiling.",
+    "Phase 0 of the pipeline is a deconstruction pass: Claude Code visits a target channel (Fireship is the worked example), analyzes the last 5 to 10 videos for title structure, thumbnail pattern, pacing, and on-screen visuals, then outputs a structured HTML report of automatable patterns.",
+    "Outlier discovery is the one unavoidable manual step: the presenter uses the browser plugin \"1of10\" filtered to videos with at least 10,000 views, an outlier score of 2x the channel average, and published within the past month, to surface topics with proven unmet demand before committing to a video.",
+    "Claude Opus is invoked inside Claude Code via the slash-model flag (`/model claude-opus-4-5` or equivalent); the presenter sets the token-usage strength to \"extra\" or higher for analytical passes, noting that the model's agentic ranking makes it suited for the multi-step research and generation work.",
+    "The strategic principle is to copy the recipe, not the video: study the structural formula of successful channels (title as unfinished sentence, four repeatable show formats, etc.) and replicate the format in a new niche rather than reproducing any specific content."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and ZeroEdit Pipeline Overview"
+    },
+    {
+      "t": 90,
+      "title": "Three YouTube Revenue Streams"
+    },
+    {
+      "t": 180,
+      "title": "Phase 0: Channel Deconstruction Strategy"
+    },
+    {
+      "t": 270,
+      "title": "Running Claude Opus in Claude Code"
+    },
+    {
+      "t": 480,
+      "title": "Analyzing the Fireship Formula"
+    },
+    {
+      "t": 510,
+      "title": "Outlier Discovery with 1of10"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "63407b584a2322cf"
 }

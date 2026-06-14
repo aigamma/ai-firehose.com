@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Google Cloud Tech presents a multi-agent system architecture that uses deterministic code and callbacks to skip LLM calls where unnecessary. The example system runs 1000 agents to plan marathon routes using the Spine & Sprout algorithm, bypassing the LLM entirely for route planning tasks that are NP-hard and deterministic.",
-  "writeup": "",
+  "writeup": "This episode goes deep into the cost and correctness architecture behind a 1,000-concurrent-agent marathon simulation built on Google Cloud, co-presented with Casey Vest who led its construction. The central design question is where to invoke an LLM and where to write deterministic code, and the answer shapes every layer of the system. The routing and simulation cores are fully deterministic, making the system unit-testable and NP-hard-problem-safe, while AI is reserved for the tasks it actually helps: algorithm selection at design time and lifecycle orchestration at runtime.",
   "wh": "fc181c2fc885ffc1",
   "concepts": [
     {
@@ -72,5 +72,45 @@
       "channel": "Google Cloud Tech",
       "score": 0.546
     }
-  ]
+  ],
+  "key_points": [
+    "Marathon route planning uses a deterministic spine-and-sprout algorithm combining Dijkstra shortest-path over a GeoJSON road graph with Haversine-weighted edges to chain landmarks, a serpentine waypoint extension pass, and a final trim to exactly 26.2188 miles, chosen over Gemini at runtime because NP-hard pathfinding problems are noisy and unreliable for LLMs to handle in context.",
+    "Google Maps routing was unsuitable for two distinct reasons: driving directions honor one-way street restrictions that closed marathon roads ignore, and walking directions route through pedestrian bridges and indoor passages (such as through the Luxor casino) that no real marathon course would use.",
+    "Gemini AI Studio with code execution and Google Search grounding was used at design time to research and prototype the routing algorithms, then Gemini CLI iterated on that prototype with unit-testability constraints, meaning AI accelerated algorithm selection without entering the runtime hot path.",
+    "The simulator agent uses a game-development-style server-side tick loop to track the state of all 1,000 runners, and its underlying LLM agent objects have a model registered (required to instantiate the framework object) but that model is never called during simulation ticks, keeping the high-frequency path free of LLM cost.",
+    "The governing principle stated explicitly: use the model where it actually helps and skip it where it does not, with deterministic code preferred wherever the logic is unit-testable, optimal, and well-understood by computer science."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "1,000 Agents Running a Marathon"
+    },
+    {
+      "t": 32,
+      "title": "When to Use an LLM vs Deterministic Code"
+    },
+    {
+      "t": 180,
+      "title": "Why Google Maps Could Not Plan the Route"
+    },
+    {
+      "t": 330,
+      "title": "Spine-and-Sprout Routing Algorithm"
+    },
+    {
+      "t": 421,
+      "title": "AI Studio to Select the Algorithm"
+    },
+    {
+      "t": 540,
+      "title": "Simulator Agent and Server-Side Ticks"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "25c4b831af1218a6"
 }

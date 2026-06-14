@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Keith AI presents a case study of a $20,000 incident involving improper API key handling. The video serves as a warning about the financial risks of security mismanagement in AI API usage.",
-  "writeup": "Keith AI walks through a case study of a $20,000 incident caused by improper API key handling. The video frames the episode as a warning about the financial risks of security mismanagement in AI API usage, tying API integration practices to cost management. The takeaway: mishandled API keys can carry real and steep monetary consequences.",
+  "writeup": "This short clip covers three practical workflow tips for using an AI coding assistant: running a security review to catch exposed API keys before deploying (a real failure mode that has produced five-figure cloud bills), using the clear command to end a task session and reclaim token budget, and creating reusable named skills by pasting a prompt so it can be invoked on demand. The through-line is deliberate session hygiene rather than letting the assistant accumulate context indefinitely.",
   "wh": "043246fe7dc07e5c",
   "concepts": [
     {
@@ -56,5 +56,27 @@
       "channel": "Wes Roth",
       "score": 0.489
     }
-  ]
+  ],
+  "key_points": [
+    "Skipping a security review before deploying vibe-coded apps is a documented failure mode: exposed API keys have resulted in bills as high as $20,000 when discovered and exploited by others.",
+    "The clear command ends the current conversation and starts a fresh session, preventing accumulated context from consuming the token budget across unrelated tasks.",
+    "Skills are saved, named prompt templates: pasting a prompt into a create-skill command stores it under a label (such as YouTube script polish) and makes it reusable in any future session without re-entering the full prompt."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Security Review and API Key Risk"
+    },
+    {
+      "t": 31,
+      "title": "Clear Command and Skills"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a0630d86113200ea"
 }

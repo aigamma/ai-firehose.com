@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Agentic coding is an AI-driven development approach that helps developers by automating code understanding and modernization tasks. The technique addresses the reality that developers spend most time understanding existing code rather than writing new code, and uses AI agents to accelerate software development workflows while reducing risk and improving DevSecOps outcomes.",
-  "writeup": "This IBM Technology video defines agentic coding: the use of AI agents to speed software development by automating code comprehension and modernization. It matters because much developer effort goes into understanding legacy code, and agents can cut that time while reducing risk in complex systems. The concrete takeaways: agentic coding draws on multi-agent systems, code refactoring, and automated code review, and it aims to improve DevSecOps outcomes.",
+  "writeup": "Studies show 60 to 70% of developer time goes toward understanding existing systems rather than writing new code, and this video examines how agentic coding addresses that cost in the specific context of legacy modernization. Using a Java financial services application as a running example, it walks through a five-step iterative cycle an AI development partner enables: codebase analysis, boundary identification, test generation, developer review, and parallel shadow running. The through-line is that the hard problem of modernization is not the old code itself but the lost institutional knowledge buried beneath years of patches, and agentic tools recover that knowledge before any change is made.",
   "wh": "6cc875a378573046",
   "concepts": [
     {
@@ -60,5 +60,49 @@
       "channel": "AWS Developers",
       "score": 0.629
     }
-  ]
+  ],
+  "key_points": [
+    "An AI development partner analyzing a Java loan-processing system surfaced an undocumented strict ordering constraint, credit checks, watchlist reviews, and compliance validations must run in a fixed sequence, a dependency that would have caused incorrect loan decisions if the team had separated the logic without knowing about it.",
+    "Three compounding forces make Java legacy modernization especially dangerous: tangled dependencies where unrelated modules silently share database tables, framework gaps where upgrading from Java 8 to Java 17 surfaces hidden library incompatibilities, and undocumented external connections to credit bureaus and regulatory systems with strict data-format requirements.",
+    "Before any code is changed, the AI development partner generates test coverage around real observed behavior, including edge cases such as credit check timeouts and mid-process customer flags, producing more coverage than a team under time pressure could realistically write from scratch.",
+    "Shadow running keeps the old and new loan decisioning services operating in parallel on the same inputs; any divergence between their outputs is flagged immediately with full context on what changed, catching issues before they reach customers or compliance reports.",
+    "The governance model that makes this approach viable in a regulated environment has three components: every change requires a developer review and approval before it moves forward, the full change history lives in Git and is rollback-ready, and no autonomous deployment ever occurs without a developer in the loop."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Context Problem in Software Teams"
+    },
+    {
+      "t": 62,
+      "title": "What Agentic Coding and Modernization Mean"
+    },
+    {
+      "t": 97,
+      "title": "The Financial Services Java Example"
+    },
+    {
+      "t": 180,
+      "title": "Three Forces That Make Legacy Change Hard"
+    },
+    {
+      "t": 302,
+      "title": "The Five-Step Modernization Cycle"
+    },
+    {
+      "t": 482,
+      "title": "Developer Review and Shadow Running"
+    },
+    {
+      "t": 543,
+      "title": "Governance Safeguards for Regulated Systems"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c2b30a6ce4423d9c"
 }

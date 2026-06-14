@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Anthropic released Claude Mythos 5 and Fable 5 (Mythos 5 with guardrails). Both are now generally available. Fable 5 is temporarily included at no extra cost on Pro, Max, Team, and Enterprise plans through June 22, then will require usage credits, with plans to restore it as a standard subscription feature when capacity allows.",
-  "writeup": "The video covers Anthropic's release of Claude Mythos 5 and Fable 5 to general availability, with Fable 5 described as Mythos 5 paired with guardrails. The pricing detail matters for current subscribers: Fable 5 is included at no extra cost on Pro, Max, Team, and Enterprise plans through June 22, after which usage will require credits.",
+  "writeup": "This video breaks down Anthropic's release of Claude Fable 5 and Claude Mythos 5, where Fable 5 is the Mythos-class model made generally available with classifier-based guardrails, while Mythos 5 ships without those guardrails to a small subset of users (a cybersecurity pilot called Glass Wing). The presenter works through pricing ($10/M input, $50/M output tokens), benchmark jumps over Opus 4.8, real-world deployment results from Stripe, and the classifier routing system that falls back to Opus 4.8 for risky queries in fewer than 5% of sessions. The through-line is that Fable 5 is a genuine architectural step forward rather than an incremental revision, with the safeguard layer being the substantive design decision separating the two releases.",
   "wh": "6c234fcb3d6bce70",
   "concepts": [
     {
@@ -52,5 +52,50 @@
       "channel": "Cyril Imhof",
       "score": 0.589
     }
-  ]
+  ],
+  "key_points": [
+    "Fable 5 is priced at $10 per million input tokens and $50 per million output tokens, less than half the cost of the Mythos preview but double Opus 4.8, and the presenter notes token efficiency gains may soften the per-project cost increase.",
+    "On SWE-Bench Pro, Fable 5 scores 80% versus 69% for Opus 4.8, and on Agentic Coding the gap is 29.3 versus 13.4, representing the largest benchmark jump the presenter has seen between consecutive Claude generations.",
+    "Stripe used Fable 5 to perform a codebase-wide migration of a 50-million-line Ruby codebase in a single day, a task the team estimated would take over two months of manual engineering work.",
+    "The classifier routing system detects queries touching cybersecurity, biology, chemistry, and distillation and automatically routes them to Opus 4.8 instead of Fable 5, with fallback occurring in fewer than 5% of sessions and the model disclosing the switch to the user.",
+    "On a Firefox offensive-cyber benchmark, Mythos 5 succeeds 88.4% of the time while Fable 5 scores zero across the board, a result of the classifier blocking those queries entirely; a concurrent external bug bounty found no universal jailbreaks in over 1,000 hours of testing.",
+    "At the effort-level cost curve for Fable 5, accuracy gains flatten sharply moving from extra-high to max effort while cost spikes from roughly $12 to $20, making extra-high the practical sweet spot for most coding tasks."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Fable 5 vs Mythos 5 Overview"
+    },
+    {
+      "t": 91,
+      "title": "Pricing and Cost Comparison"
+    },
+    {
+      "t": 121,
+      "title": "Benchmark Results"
+    },
+    {
+      "t": 210,
+      "title": "Real-World Deployments and Token Efficiency"
+    },
+    {
+      "t": 331,
+      "title": "Safeguards and Classifier Routing"
+    },
+    {
+      "t": 450,
+      "title": "Offensive Cyber Testing and Jailbreak Results"
+    },
+    {
+      "t": 527,
+      "title": "Data Retention Policy"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "387c0c5f20ad54af"
 }

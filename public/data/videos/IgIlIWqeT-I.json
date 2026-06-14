@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Claude released Ultra Code, a feature that coordinates up to 100 parallel workers to decompose and execute tasks concurrently, then verify results. The feature combines extended thinking with dynamic workflows to enable team-like code generation and task execution at scale.",
-  "writeup": "",
+  "writeup": "This video walks through Claude Code's Ultra Code setting, explaining how it bundles two distinct capabilities: an extra-high thinking level (one tier below Max) applied to every step, and dynamic workflows that spin up a team of parallel agents, each tackling a different sub-task, with a separate agent then checking the combined output. The through-line is distinguishing Ultra Code from the Max effort level, showing via a food-truck research demo how concurrent agents compress multi-tab research into seconds, then quantifying the cost tradeoff the documentation itself calls out.",
   "wh": "12b93cb045cef823",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "Nate Herk | AI Automation",
       "score": 0.64
     }
-  ]
+  ],
+  "key_points": [
+    "Ultra Code is not a higher effort tier than Max; it is a separate mode that combines extra-high thinking on every step with dynamic multi-agent workflows, activated once per session via the /effort menu.",
+    "Dynamic workflows follow a three-phase pattern: Claude first forms a plan, then spawns multiple agents each pursuing a different sub-task concurrently (up to 100 agents depending on hardware), then routes the combined result to a dedicated checking agent before returning output.",
+    "Max effort maximizes depth of thought in a single chain of reasoning, while Ultra Code trades some thinking depth (extra-high rather than Max) for breadth via parallelism; choosing between them depends on whether the bottleneck is reasoning depth or task decomposition.",
+    "In the food-truck research demo, a rising lightning-bolt counter in the UI showed agents simultaneously chasing permits, equipment costs, and supplier sourcing, producing a fact-checked starter guide in far less time than sequential single-thread execution.",
+    "Ultra Code is explicitly the most expensive way to run Claude Code by a significant margin, a fact the official documentation calls out directly; running /usage after a session breaks down the token and credit cost of a run."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Ultra Code Does"
+    },
+    {
+      "t": 31,
+      "title": "The /effort Menu and Effort Levels"
+    },
+    {
+      "t": 90,
+      "title": "Dynamic Workflows and Parallel Agents"
+    },
+    {
+      "t": 121,
+      "title": "Enabling Ultra Code"
+    },
+    {
+      "t": 180,
+      "title": "Food Truck Research Demo"
+    },
+    {
+      "t": 241,
+      "title": "Cost and Usage"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ddafad9968c77bbc"
 }

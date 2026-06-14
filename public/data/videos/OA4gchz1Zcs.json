@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Ideogram 4 is a local AI image generator featuring text rendering, prompt adherence, bounding box control, and manga/comics generation. The tutorial demonstrates integration with ComfyUI and highlights uncensored open-source capabilities.",
-  "writeup": "The video demonstrates Ideogram 4, a local open-source text-to-image generator, and walks through installation, workflow setup, and usage on local hardware. It highlights capabilities including text rendering, prompt adherence, and bounding box control, along with integration into ComfyUI. The takeaway is a practical path to running Ideogram models locally rather than through a hosted service.",
+  "writeup": "Ideogram 4 is an open-source image generator that distinguishes itself from Flux and comparable models through a bounding-box layout system: rather than generating from a single text prompt, the user drags spatial regions onto a canvas, assigns each region its own description, font style, or color, and the model composes the result to match. The video demonstrates this workflow through progressively complex examples, from music-festival posters with precisely placed typography to multi-panel manga pages with speech bubbles and sound effects, and then covers local installation via ComfyUI using a KJ Prompt Builder node that replaces the error-prone native JSON prompt format.",
   "wh": "a6d980124e11938c",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.543
     }
-  ]
+  ],
+  "key_points": [
+    "Ideogram 4's defining feature is a bounding-box canvas where each region gets its own text description, letting the user specify position, size, and style for individual elements such as a character, a typographic block, or a background layer, rather than relying on the model to decide layout from a single prompt.",
+    "The model demonstrates strong world knowledge in text-to-image mode, correctly rendering named video-game characters (Mario, Link, Sephiroth, Chun-Li) and complex scene compositions with specific spatial relationships, including recursive imagery and mirror-reflection distortions.",
+    "Text rendering and typography control are highlighted as particular strengths: the user can specify font style (cursive, bold, grunge, italic) and hex color per text bounding box, and Ideogram renders them correctly within the generated image.",
+    "Running Ideogram 4 locally requires ComfyUI, which handles automatic CPU offloading so the 9 GB model can run on GPUs with as little as 6 GB of VRAM by spilling to system RAM.",
+    "The recommended local workflow uses a community KJ Prompt Builder node rather than the official ComfyUI template, because the official template requires hand-crafted JSON prompt formatting that is error-prone; the KJ node exposes the bounding-box interface directly.",
+    "The video claims Ideogram 4 quality and prompt adherence exceed Flux and comparable open models after hands-on testing, citing specific multi-element layout fidelity as the primary evidence."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Ideogram 4 Introduction"
+    },
+    {
+      "t": 31,
+      "title": "Knowledge and Text Rendering Demos"
+    },
+    {
+      "t": 151,
+      "title": "Bounding Box Layout System"
+    },
+    {
+      "t": 181,
+      "title": "Music Festival Poster Walkthrough"
+    },
+    {
+      "t": 301,
+      "title": "Multi-Element Scene Control"
+    },
+    {
+      "t": 391,
+      "title": "Manga Page With Speech Bubbles"
+    },
+    {
+      "t": 481,
+      "title": "ComfyUI Installation"
+    },
+    {
+      "t": 570,
+      "title": "KJ Prompt Builder Workflow"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "199ad6791b116250"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Graphify builds a knowledge graph of code projects so Claude can efficiently query repositories without skimming the entire codebase each session. This reduces token usage and improves inference speed and accuracy. The tutorial demonstrates integrating Graphify with Claude Code, Hermes, and AntiGravity into an agentic operating system.",
-  "writeup": "This video demonstrates Graphify, a tool that builds knowledge graphs of code repositories so Claude can query project structure instead of reading entire codebases. The approach matters because it reduces token consumption, lowers costs, and improves accuracy during code analysis. Graphify is shown inside an agentic operating system architecture that combines Claude Code, Hermes, and AntiGravity dashboards.",
+  "writeup": "Graphify is a tool that builds a persistent knowledge graph of any codebase so Claude Code can navigate it without re-reading the full repository each session. The graph clusters files into modules, ranks load-bearing files as 'god nodes,' and labels extracted facts versus inferences, enabling Claude to answer from summaries rather than raw code. The video demonstrates setup from the GitHub repo, live querying inside Claude Code, and a deeper integration into an agentic dashboard (Hermes) that makes the graph always-on and shared across devices. The core argument is that the rereading tax is the primary driver of token costs in code assistants, and a shared graph eliminates that tax at scale.",
   "wh": "67c30d3b5d17bd32",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.645
     }
-  ]
+  ],
+  "key_points": [
+    "Graphify reads code rather than summarizing it, clusters files into modules, ranks the most load-bearing files as 'god nodes,' and explicitly labels what it extracted versus what it inferred, giving Claude a structured map instead of raw text.",
+    "The token cost saving comes from a specific mechanism: without the graph, Claude either re-reads the entire repository every session or holds it in context; with the graph, it answers from cached summaries, and every session compounds on prior work rather than starting over.",
+    "Setup involves cloning the Graphify GitHub repo and instructing Claude Code to index a target project, after which an interactive visual graph of file communities and dependencies is available for querying.",
+    "Integrating Graphify into an agentic operating system (Hermes) makes the graph always-on and shared: Claude Code, the Hermes agent, and a web dashboard all read one registry, so switching between laptop and mobile or between tools does not require re-indexing.",
+    "Any public GitHub repository can be imported and graphed at zero cost because the indexing runs locally on the user's machine, not through an external API.",
+    "The estimated per-conversation dollar saving is surfaced directly in the Hermes dashboard alongside file counts and link counts, making the cost benefit concrete and measurable rather than approximate."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Problem Statement"
+    },
+    {
+      "t": 90,
+      "title": "What Graphify Does: Reads, Clusters, and Ranks God Nodes"
+    },
+    {
+      "t": 180,
+      "title": "Benefits: Instant Orientation and Blast Radius Visibility"
+    },
+    {
+      "t": 211,
+      "title": "The Rereading Tax and Why the Map Eliminates It"
+    },
+    {
+      "t": 331,
+      "title": "Setup Demo in Claude Code"
+    },
+    {
+      "t": 391,
+      "title": "Agentic OS Integration with Hermes"
+    },
+    {
+      "t": 510,
+      "title": "Importing Any GitHub Repo at Zero Cost"
+    },
+    {
+      "t": 540,
+      "title": "One Shared Brain Across Devices and Tools"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "01bdffe11fad925a"
 }

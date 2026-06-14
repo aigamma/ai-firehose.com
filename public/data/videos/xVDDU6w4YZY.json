@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Keith AI's 57-minute video demonstrates advanced use of Claude Code as a coding system rather than a chat interface. The video covers Desktop, CLI, and web modes, permissions, connectors, slash commands, plugins, routines, sub-agents, and dynamic workflows for building apps and automating development workflows.",
-  "writeup": "Keith AI's 57-minute video treats Claude Code as a coding system rather than a chat interface, walking through its Desktop, CLI, and web modes. It covers permissions, connectors, slash commands, plugins, routines, sub-agents, and dynamic workflows for building apps and automating development tasks. The framing matters because it shifts Claude Code from a question-and-answer tool toward agentic workflows that route work across multiple modes and delegated agents. Concrete takeaways include how to configure permissions and connectors, how slash commands and plugins extend behavior, and how sub-agents and routines structure multi-step development automation.",
+  "writeup": "A comprehensive Claude Code tutorial that reframes the tool as a configurable system rather than a chatbot, covering execution locations (local, cloud, remote), all five permission modes, the CLI, core agentic primitives (skills, loops, hooks, subagents), and built-in slash commands including code review and security review. The through-line is that the model choice matters less than the rules, habits, and permission structure built around it. The presenter draws on hundreds of hours of real use, including building an iPhone app and running Claude Code from a phone via remote control.",
   "wh": "56942a2b76916385",
   "concepts": [
     {
@@ -68,5 +68,48 @@
       "channel": "Nick Saraev",
       "score": 0.662
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code supports three execution locations: local (runs on the user's machine, required for device-specific tooling like Xcode), cloud (sandboxed server, continues when the laptop is off), and remote control (Claude operates a separate always-on machine, enabling mobile use from a phone or tablet).",
+    "The five permission modes form a safety-to-autonomy spectrum: Plan (read-only, no file edits), Ask (prompts before every action), Accept Edits (allows code changes without per-edit confirmation, the recommended default for most workflows), Auto (skips safe actions, pauses on risky ones like file deletion), and Bypass Permissions (fully autonomous, no interruptions).",
+    "The presenter's personal workflow uses Plan mode to think through architecture before touching code, then switches to Auto mode for implementation, citing sufficient custom rules as the guard rail that makes Auto mode safe for daily use.",
+    "The central argument is that the model tier (Opus, Sonnet, Haiku) matters less than the system built around Claude Code: the CLAUDE.md rules, the chosen permission mode, and the hooks and skills that make the agent's behavior repeatable and tailored over time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "System Over Model"
+    },
+    {
+      "t": 91,
+      "title": "Execution Locations: Local, Cloud, Remote"
+    },
+    {
+      "t": 330,
+      "title": "Local Mode and Its Tradeoffs"
+    },
+    {
+      "t": 390,
+      "title": "Cloud and Remote Control Modes"
+    },
+    {
+      "t": 421,
+      "title": "Permission Modes Overview"
+    },
+    {
+      "t": 450,
+      "title": "Plan, Ask, and Accept Edits"
+    },
+    {
+      "t": 571,
+      "title": "Auto and Bypass Permissions"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "666ef8363c63a23c"
 }

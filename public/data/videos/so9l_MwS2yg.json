@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Zack Proser argues that human attention is the hard constraint in agent-based development, not tool speed. He outlines a four-layer architecture: signal agents that monitor Slack and Linear, verification gates spanning lint to browser interaction, weekly self-improvement loops over conversation history, and health integration via Oura ring to maintain developer well-being during asynchronous agent execution.",
-  "writeup": "Zack Proser of WorkOS argues that human attention, not tool speed, is the binding constraint in agent-based development, and he lays out a four-layer architecture for shipping while away from the desk. The layers are: signal agents that monitor Slack and Linear, verification gates spanning lint checks to browser interaction, weekly self-improvement loops that mine conversation history, and health integration via Oura ring to track developer well-being during asynchronous agent runs. The takeaway is a concrete design for offloading work to agents while gating their output and preserving the engineer's focus.",
+  "writeup": "WorkOS applied AI engineer Zach argues that agent capability has outpaced human cognitive capacity: the real bottleneck in AI-assisted development is now attention, not tooling. He grounds the talk in a concrete example of using Claude Code with MCP-connected Slack so an agent could write, deploy, test, and verify a bug fix in a closed loop without the developer re-entering context. The through-line is a practical framework for staying productive without burning out: signal layers (letting agents filter noise), voice-first input (sustaining 184 wpm across parallel sessions), and remote-control sessions that let diffuse-mode thinking produce work while away from the desk.",
   "wh": "889f624dceb02fd3",
   "concepts": [
     {
@@ -76,5 +76,46 @@
       "channel": "Jack Roberts",
       "score": 0.61
     }
-  ]
+  ],
+  "key_points": [
+    "Human attention is now the hard constraint on AI-assisted development, not agent throughput: Simon Willison noted that running four parallel agents leaves him wiped out by 11:00 a.m., illustrating that linear scaling of workload with agent count accelerates burnout rather than capacity.",
+    "Giving Claude Code MCP access to Slack allowed an agent to autonomously post a test message to the blog-post channel, observe the bot's response, verify the acronym-safe sentence-case fix was correct, and close the loop without the developer returning to check intermediate state.",
+    "Voice-first input at roughly 184 words per minute enables parallel orchestration across multiple Cursor windows, Codex, and Claude tabs simultaneously, putting agents in motion before a keyboard-first developer has finished typing the first prompt.",
+    "Claude Code's remote-control flag lets a running desktop session be monitored and steered from a phone on a different network, making diffuse-mode thinking (shower principle) actionable: insights that arrive away from the desk can now be fed directly to an agent still executing.",
+    "Agents can loop indefinitely toward a verification criterion, but human judgment about whether that criterion actually maps to business or product needs remains irreplaceable, forming the basis for the human-agent division of labor the speaker describes.",
+    "Routing Slack at-mentions and DMs through an agent filter on a loop, with Linear ticket deduplication via MCP, acts as a signal layer that preserves developer focus by blocking the context-switching that degrades attention under high-traffic conditions."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and the Burnout Problem"
+    },
+    {
+      "t": 90,
+      "title": "Bug Fix With a Closed Agent Loop"
+    },
+    {
+      "t": 150,
+      "title": "Agents Are Not the Bottleneck Anymore"
+    },
+    {
+      "t": 270,
+      "title": "Signal Layers and Attention Management"
+    },
+    {
+      "t": 420,
+      "title": "Voice-First Flows"
+    },
+    {
+      "t": 510,
+      "title": "The Shower Principle and Remote Control"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2cfe1458b34366c3"
 }

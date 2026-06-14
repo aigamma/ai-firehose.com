@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "IBM Security Intelligence podcast examines whether AI systems can be socially engineered to divulge secrets, discusses a self-replicating AI worm from University of Toronto, and reports that nonhuman identities account for significant identity-based data breaches according to Sophos research.",
-  "writeup": "This IBM Technology podcast episode covers three AI security threats: whether AI systems can be manipulated through social engineering and prompt injection to reveal secrets, a self-replicating AI worm developed at the University of Toronto, and the role of nonhuman identities in identity-based data breaches per Sophos research. The discussion matters because AI agents and the credentials they hold expand the attack surface beyond traditional human-centered defenses. Key takeaways: prompt injection can coax AI into divulging protected information, autonomous worms can propagate across AI systems, and nonhuman identities account for a significant share of identity-based breaches, raising the stakes for practices like credential rotation.",
+  "writeup": "IBM's Security Intelligence podcast convenes three X-Force practitioners to dissect a real-world case in which attackers tricked Meta's AI customer support agent into updating Instagram account recovery emails to attacker-controlled addresses, effectively handing over account access without any secondary authentication. The panel traces the root cause to a fundamental property of current AI agents: they optimise for helpfulness as instructed but carry no embedded common sense about which requests are unreasonable, making them more susceptible to social engineering than a trained human operator. The through-line is that deploying agents in high-stakes customer-facing roles requires explicit, enumerated negative constraints, not just a general directive to assist.",
   "wh": "2ade7ecacdb49037",
   "concepts": [
     {
@@ -76,5 +76,53 @@
       "channel": "Wes Roth",
       "score": 0.597
     }
-  ]
+  ],
+  "key_points": [
+    "Attackers posed as legitimate Instagram account owners, contacted Meta's AI customer support agent via message, and requested an email address change to one they controlled; the agent complied without requiring additional authentication, allowing password recovery and full account takeover (reported by 404 Media).",
+    "The attack required only a VPN to spoof the victim's geographic location and a plain-language request: because the agent's system prompt said to be a helpful customer support assistant, it executed the request rather than questioning the absence of secondary verification.",
+    "Jeff Crume (IBM distinguished engineer) frames the core vulnerability as AI having a thousand PhDs but no lived experience above ground: high book intelligence with no street sense, meaning agents cannot yet recognize when a request is inherently unreasonable without being explicitly told so.",
+    "The lesson the panel draws is that general helpfulness directives are insufficient; builders must enumerate specific prohibitions (for example, do not change account recovery email without multi-factor verification) because an agent will otherwise default to satisfying any plausible-sounding request.",
+    "Claire Nunez (IBM X-Force Cyber Range) notes that agents lack nuance and will not spontaneously ask why a user wants to change an email, a question a cautious human agent would ask, so safeguards must come from the system design rather than the model's judgment."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI Social Engineering Teaser"
+    },
+    {
+      "t": 32,
+      "title": "Panel Introductions and Episode Agenda"
+    },
+    {
+      "t": 63,
+      "title": "The Meta Instagram Agent Attack"
+    },
+    {
+      "t": 120,
+      "title": "Claire Nunez: Agents Lack Nuance"
+    },
+    {
+      "t": 183,
+      "title": "Jeff Crume: Thousand PhDs No Street Sense"
+    },
+    {
+      "t": 211,
+      "title": "Helpfulness as a Vulnerability"
+    },
+    {
+      "t": 242,
+      "title": "Attack Mechanics: VPN and Email Swap"
+    },
+    {
+      "t": 274,
+      "title": "Explicit Constraints Are the Fix"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bcbbd203f150d160"
 }

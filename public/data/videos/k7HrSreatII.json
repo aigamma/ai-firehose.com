@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud and NVIDIA demonstrated GPU-accelerated virtual drug screening using cuML and Agent Platform. The approach achieves 20x-45x training speedups for molecular predictions using cuDF and cuML as drop-in replacements for pandas and scikit-learn, enabling screening at trillion-molecule scale.",
-  "writeup": "Google Cloud Tech walks through a joint Google Cloud and NVIDIA demonstration of GPU-accelerated virtual drug screening for molecular binding prediction at scale. The setup pairs cuDF and cuML to reach 20x-45x training speedups on tabular data without changes to existing pandas or scikit-learn code, then applies the workflow to billion-molecule screening against lung cancer targets such as EGFR. The takeaway: drop-in GPU acceleration of standard tabular ML libraries can compress training time enough to make screening at that volume practical.",
+  "writeup": "A Google Cloud Live session with Nvidia BioNeMo and Google Cloud advocates demonstrating GPU-accelerated virtual drug screening against the EGFR lung-cancer target. The core argument is that swapping two import lines in a standard scikit-learn and pandas pipeline to use cuML and cuDF moves training and inference onto GPUs, letting a 2.9-million-molecule dataset be screened at sub-second latency instead of years of lab assays. The same pattern generalizes beyond pharma to fraud detection, predictive maintenance, and retail churn.",
   "wh": "770a0f9be8657564",
   "concepts": [
     {
@@ -68,5 +68,50 @@
       "channel": "AI Engineer",
       "score": 0.542
     }
-  ]
+  ],
+  "key_points": [
+    "A live demo app resolves a drug name through PubChem, converts the structure to a molecular fingerprint, and queries a GPU endpoint to classify EGFR binding in 97 milliseconds, a task that would require days per experiment in a physical lab assay.",
+    "EGFR (epidermal growth factor receptor) mutated in lung cancer acts as a permanently switched-on proliferation signal; a small-molecule drug that binds to its active site blocks the signal, which is the target the demo screens for.",
+    "Traditional small-molecule screening synthesizes and tests roughly one thousand candidates over years in vitro; computational virtual screening with GPU acceleration allows millions of candidates to be evaluated in seconds.",
+    "Nvidia's cuML and cuDF libraries are drop-in GPU replacements for scikit-learn and pandas respectively, requiring only two changed import lines to port an existing ML pipeline to GPU execution and shrink training time by an order of magnitude.",
+    "The ChEMBL database (maintained by EMBL-EBI) provides the open-source training data: compound-target bioactivity measurements from the medicinal chemistry literature, with each molecule encoded as a canonical SMILES string that fully describes its atomic structure.",
+    "Nvidia BioNeMo frames its goal as 'from prompt to drug in silico at the speed of light,' positioning hardware co-design and GPU-accelerated simulation as the infrastructure layer for the next decade of computational drug discovery."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Live Drug Screening Demo"
+    },
+    {
+      "t": 270,
+      "title": "EGFR Biology and Binding Explained"
+    },
+    {
+      "t": 360,
+      "title": "GPUs for Traditional Tabular ML"
+    },
+    {
+      "t": 450,
+      "title": "Drug Discovery as a Search Problem"
+    },
+    {
+      "t": 570,
+      "title": "BioNeMo and Virtual Screening at Scale"
+    },
+    {
+      "t": 600,
+      "title": "Coding Walkthrough in Colab Enterprise"
+    },
+    {
+      "t": 780,
+      "title": "ChEMBL Database and SMILES Representation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bbc33a002f82376d"
 }

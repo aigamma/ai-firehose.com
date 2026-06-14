@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Chase AI demonstrates a hybrid approach to creating social media carousels by combining Claude Code's HTML generation with Higgsfield's CLI for AI image generation. The technique addresses the quality issues of purely Claude-generated carousels by integrating image generation to create more polished, non-generic outputs.",
-  "writeup": "",
+  "writeup": "This tutorial diagnoses why Claude Code carousels fail on social media (they are all pure HTML and look identical) and proposes a two-part hybrid fix: use an external AI image model for the cover slide, then use Claude Code HTML assets for the lower-stakes body slides. The presenter demonstrates the full workflow live, generating a cover with GPT Images 2 via the Higgsfield CLI, a tool that unifies DALL-E, Midjourney, and GPT Images 2 behind one terminal interface. A carousel the presenter built this way reached hundreds of thousands of views and 18,000 likes, making the case that the cover image is the decisive conversion lever.",
   "wh": "edaf57d31f75f90a",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.594
     }
-  ]
+  ],
+  "key_points": [
+    "The core diagnosis is that Claude Code carousels saturate feeds because they are rendered as raw HTML slide decks with no visual differentiation; the cover image is the only slide that must be visually striking enough to stop a scroll, so that is the one place to spend money and iteration time on a real AI image generator.",
+    "The hybrid workflow splits cost and effort deliberately: the cover is generated with GPT Images 2 or Nana Banana Pro at 2K quality and a 4:5 aspect ratio, while the remaining body and value slides are built cheaply as Claude Code HTML assets, keeping the system repeatable and fast.",
+    "Higgsfield CLI (installed from higgsfield.ai) provides a single terminal interface for generating images across DALL-E, Midjourney, and GPT Images 2, so switching image models requires only a prompt change rather than a new account or UI.",
+    "Cover image generation is inherently iterative: the presenter requested four image variants from a single prompt, selected the best, then submitted a follow-up pass to add the title text with a rainbow gradient, expecting and accepting that one-shotting a strong cover is rare.",
+    "Building a personal carousel folder and accumulating 30 to 60 finished carousels creates a reusable template library: once 10 to 15 formats are proven, new carousels can be created by instructing Claude Code to replicate a numbered prior template on a new topic.",
+    "Cross-niche inspiration research on Instagram or TikTok (spending 20 to 30 minutes and screenshotting both the cover slide and a body slide of carousels that catch the eye) is the prerequisite step before any generation, because starting from a blank slate without a reference image produces weaker prompts and weaker results."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why Claude Code Carousels Fail"
+    },
+    {
+      "t": 31,
+      "title": "The Hybrid Approach"
+    },
+    {
+      "t": 181,
+      "title": "Step 0: Cross-Niche Inspiration Research"
+    },
+    {
+      "t": 300,
+      "title": "Step 1: Install Higgsfield CLI"
+    },
+    {
+      "t": 360,
+      "title": "Cover Image Generation Walkthrough"
+    },
+    {
+      "t": 511,
+      "title": "Reviewing and Iterating on the Cover"
+    },
+    {
+      "t": 570,
+      "title": "Adding Text to the Final Cover"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b0a5c556233be0d8"
 }

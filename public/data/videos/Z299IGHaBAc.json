@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Arthur Winer demonstrates a full AI-powered YouTube production workflow covering idea research, scripting, avatar generation, editing, and upload. The tutorial walks through 11 production stages using multiple AI tools and services, from trending topic discovery via ChatGPT to final repurposing via Opus Clip, completing a video from blank screen to published in 20 minutes.",
-  "writeup": "Arthur demonstrates a full AI-driven YouTube production workflow, moving from idea research through scripting, voice cloning, AI avatar generation, video editing, and upload. The pipeline chains multiple tools: ChatGPT and Claude for writing, ElevenLabs for voice, HeyGen for avatars, Descript and Opus Clip for editing and repurposing, and VidIQ for research. The throughline is automating the steps of channel production to scale output.",
+  "writeup": "A practitioner walks through a complete YouTube channel launch workflow on camera, from blank browser tab to a live published video, using ChatGPT, VidIQ, YouTube Ask Studio, Claude, GPT Image, and ElevenLabs in sequence. The through-line is that each tool fills a specific role: ChatGPT generates angles fast, VidIQ and Ask Studio validate them against real search and algorithm data, Claude holds channel strategy as persistent context across every downstream stage, and the generative tools produce thumbnail and voiceover assets that are shaped by that brief. The key discipline is that AI gets you most of the way, but every output requires a human editing pass before it ships.",
   "wh": "cdb6ee8b793a8364",
   "concepts": [
     {
@@ -76,5 +76,54 @@
       "channel": "Liam Ottley",
       "score": 0.619
     }
-  ]
+  ],
+  "key_points": [
+    "ChatGPT is used only for rapid angle generation, with a two-part prompt specifying niche, audience, and search intent, followed by a single follow-up that ranks the top five angles by search potential and flags which competitor channels already own each one, preventing the choice of an idea that looks strong but is saturated.",
+    "VidIQ is the data layer that ChatGPT cannot provide: it surfaces actual search volume and whether recent videos on the topic have outperformed their channel average, the latter being the signal that the algorithm is already pushing that content to new audiences.",
+    "YouTube's built-in Ask Studio assistant queries real platform data directly, not third-party estimates, and can answer what topics the algorithm is currently surfacing in a given niche, a meaningfully different signal than anything external tools offer.",
+    "Claude is used inside a persistent Project with an 11-section system prompt that produces a channel brief covering name options, host persona, target audience, and production details; this brief stays in shared context for every downstream conversation, so the script, thumbnail prompt, and voice copy all draw from the same strategic foundation without re-pasting.",
+    "Script editing requires three passes beyond the AI draft: a hook pass (read aloud, sharpen any vague promise), a structure pass (cut sections that do not earn their length), and a rhythm pass (rewrite transitions that fall apart when spoken), because the model cannot feel where energy drops.",
+    "Thumbnail construction in GPT Image uses four separate reference images, each with a single assigned role: one competitor thumbnail for composition, one portrait for the face, one photo for the background environment, and one font screenshot for typography, with the text overlay spelled out word for word in the prompt."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Full Workflow Overview"
+    },
+    {
+      "t": 31,
+      "title": "Angle Generation with ChatGPT"
+    },
+    {
+      "t": 91,
+      "title": "Validating with VidIQ"
+    },
+    {
+      "t": 150,
+      "title": "Ask Studio and Algorithm Signals"
+    },
+    {
+      "t": 272,
+      "title": "Channel Brief with Claude"
+    },
+    {
+      "t": 390,
+      "title": "Scripting and Editing Passes"
+    },
+    {
+      "t": 542,
+      "title": "Thumbnail Prompting with GPT Image"
+    },
+    {
+      "t": 630,
+      "title": "Voice Cloning with ElevenLabs"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2db574ae3c9bdc18"
 }

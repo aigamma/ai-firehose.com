@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "PAI (Personal AI Infrastructure) is a Life OS built on Claude Code that provides persistent memory, custom skills, structured workflows, and a dashboard to maintain context across AI development sessions. It implements a seven-phase algorithm for AI agents to observe, think, plan, build, execute, verify, and learn throughout development workflows.",
-  "writeup": "The video covers PAI (Personal AI Infrastructure), a Life OS built on Claude Code that adds persistent memory, custom skills, structured workflows, and a dashboard to keep context across AI development sessions. It addresses a core limitation of agent-based coding: losing state between sessions. The central mechanism is a seven-phase algorithm guiding AI agents to observe, think, plan, build, execute, verify, and learn through a development workflow.",
+  "writeup": "Pi (Personal AI Infrastructure), created by Daniel Miessler of Fabric, is an operating layer built on top of Claude Code that adds persistent memory, custom skills, and a structured seven-step process called the algorithm to each session. The core problem it addresses is continuity: Claude Code discards repo context, past architectural decisions, and coding standards at session end, forcing developers to re-explain the same ground repeatedly. Pi stores that context durably so each new session inherits project knowledge, preference, and style. The presenter concludes Pi is valuable for developers already committed to Claude Code who want reusable, compounding workflows, but carries real setup and maintenance cost that makes it wrong for those seeking a plug-and-play solution.",
   "wh": "7350602aef38d6fa",
   "concepts": [
     {
@@ -72,5 +72,50 @@
       "channel": "Liam Ottley",
       "score": 0.628
     }
-  ]
+  ],
+  "key_points": [
+    "Pi's algorithm structures Claude's responses in a fixed seven-step order, producing architectural plans that include risks, assumptions, what needs to change, and explicit verification steps rather than vague open-ended suggestions.",
+    "Persistent memory across sessions is the central differentiator from plain Claude Code: Pi retains the project stack, service boundaries, coding standards, and past decisions so developers stop re-onboarding the model each session.",
+    "Custom skills encode a developer's own roles and preferences for tasks like Next.js code review, security review, and debugging, and these skills compound in usefulness after dozens of sessions because the context layer deepens.",
+    "Pi is lighter than agent orchestration frameworks such as LangChain or Crew AI: it is text-first and personal rather than a multi-agent pipeline, making it closer to a coworker with continuity than a programmable automation system.",
+    "Setup requires comfort with terminal, git, and config files; users must actively define their telos (ideal state), edit memory, and manage upgrades if they customize heavily, so it is dev tooling with ongoing maintenance overhead.",
+    "Pi is built natively around Claude Code, meaning non-Claude users face a hard blocker, and API costs accumulate meaningfully for developers not on the Max plan."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Continuity Problem"
+    },
+    {
+      "t": 30,
+      "title": "What Pi Is"
+    },
+    {
+      "t": 90,
+      "title": "Live Demo"
+    },
+    {
+      "t": 151,
+      "title": "Pi vs Plain Claude Code"
+    },
+    {
+      "t": 211,
+      "title": "Custom Skills"
+    },
+    {
+      "t": 240,
+      "title": "Limitations and Setup Cost"
+    },
+    {
+      "t": 300,
+      "title": "Who Should Use Pi"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "219d93d316d47c8c"
 }

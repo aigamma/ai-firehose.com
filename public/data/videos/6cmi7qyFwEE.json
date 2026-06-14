@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Graphify is a non-RAG solution for analyzing large codebases by creating knowledge graphs, enabling more accurate responses with reduced token overhead. It addresses Claude Code's memory constraints by storing collected information as structured graph representations.",
-  "writeup": "The video covers Graphify, a Claude Code feature that builds knowledge graphs from codebases instead of relying on RAG. The motivation is memory constraints that surface when analyzing large codebases: Graphify generates structured representations from code analysis to work around them. The concrete takeaways are reduced token overhead and improved response accuracy, achieved by replacing retrieval-augmented generation with graph-based structure.",
+  "writeup": "This video breaks down Claude Code's Ultra Code mode and dynamic workflows, showing how they differ from the default single-context-window approach by spawning multiple sub-agents, each with a fresh context window and a focused goal. The central argument is that long, complex tasks degrade in a single session due to context rot: agentic laziness, self-preferential bias, and goal drift. Ultra Code addresses this by automatically deciding when a dynamic workflow is warranted and building a custom harness tuned to the specific task. A live deep research demo using the built-in /deep-research workflow illustrates how the fan-out-and-synthesize pattern gathers, cross-references, and verifies information before producing a final report.",
   "wh": "c0615badadc62a2d",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "NeuralNine",
       "score": 0.566
     }
-  ]
+  ],
+  "key_points": [
+    "Ultra Code is activated via /effort inside Claude Code, setting effort to 'extra high' and enabling automatic dynamic workflow orchestration so that complex prompts trigger a custom multi-agent harness without the user explicitly invoking /workflow each time.",
+    "The core problem dynamic workflows solve is context rot in long single-session tasks: agentic laziness (Claude only partially completes large scopes), self-preferential bias (Claude cannot reliably judge its own output within the same session), and goal drifting on complex multi-step work.",
+    "A dynamic workflow builds a task-specific harness at runtime rather than applying a static default approach; for a checkout-migration question, for example, this means separate agents reading billing code, checking provider documentation, pricing transaction volume, and running a devil's-advocate review before producing a targeted recommendation.",
+    "Anthropic's blog 'A Harness for Every Task: Dynamic Workflows in Claude Code' documents the main workflow patterns: classify and act (routing subtasks to appropriate agents), fan out and synthesize (parallel sourcing then cross-referenced verification), adversarial verification, loop-until-done, tournament-style selection, and generate-and-filter.",
+    "Claude Code ships a built-in /deep-research workflow that implements the fan-out-and-synthesize pattern out of the box, and completed workflows can be saved and reused as replayable skills."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Ultra Code Overview"
+    },
+    {
+      "t": 60,
+      "title": "Static Harness vs Dynamic Workflow"
+    },
+    {
+      "t": 210,
+      "title": "What Ultra Code Actually Does"
+    },
+    {
+      "t": 330,
+      "title": "Context Rot: Why Single Sessions Fail"
+    },
+    {
+      "t": 450,
+      "title": "Workflow Patterns From the Anthropic Blog"
+    },
+    {
+      "t": 572,
+      "title": "Built-in Deep Research Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "561172046bf71085"
 }

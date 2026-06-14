@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube tutorial demonstrating Claude Design as a Figma alternative for design workflows. The video covers a 4-step framework including design system building, design generation, editing, and template deployment, positioning Claude Design as a production-ready design assistant that maintains brand consistency.",
-  "writeup": "This tutorial walks through Claude Design as a Figma alternative for design work, organized around a four-step framework: building a design system, generating designs, editing them, and deploying templates. It positions Claude Design as a production-ready assistant that holds brand consistency across outputs. The concrete takeaways are the structured workflow itself and the use of prompt engineering and workflow automation to keep a consistent brand throughout the design process.",
+  "writeup": "A practical walkthrough of Claude Design (claude.ai/design), structured around a four-step framework: invest in a detailed design system before generating anything, use high-fidelity mode with the right skill selected, exhaust the zero-token refinement tools (Tweaks, Markup, Edit) before spending tokens on full regenerations, then save as a reusable template and export to Claude Code for deployment. The central argument is that most users fail by skipping the design system setup, which is what makes every subsequent generation on-brand from the first draft rather than requiring five rounds of correction. The tutorial builds a complete landing page for a fictional observability SaaS called Neuroflow, achieving roughly 85% ship-ready output on the first generation.",
   "wh": "e9454f5cd903b4f9",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.661
     }
-  ]
+  ],
+  "key_points": [
+    "Building the design system first is the highest-leverage step: a 200-word-minimum brand description covering colors, fonts, voice, and references in one field gives Claude enough signal to write copy that matches the brand voice, as demonstrated by the generated headline 'Find the span that broke' and copy referencing OpenTelemetry, P95 latency, and failure-first triage without any explicit per-prompt instruction.",
+    "getdesign.md hosts ready-made brand system files from major companies (Vercel, Linear, Stripe, Notion, and others) in markdown format; downloading one whose aesthetic matches the target product and dragging it into the design system field is a shortcut for establishing a precise visual language before the first generation.",
+    "Claude Design's three zero-token refinement tools should always be tried before rewriting the main prompt: Tweaks opens a model-generated controls panel (atmosphere, accent color, spacing rhythm, scroll motion) at no token cost; Markup lets the user click any element and give targeted feedback inline; Edit gives a direct property panel for instant color and font changes without involving the model at all.",
+    "Three token-management rules govern cost: never regenerate a full page when only one section needs changing, since a full-page regeneration costs roughly 10 times a single-section one; batch related work (such as five carousels) into one session to avoid cold-start token overhead; and write shorter prompts by pushing specificity upstream into the design system rather than the per-generation prompt, because every extra sentence in the prompt adds input tokens on every regeneration.",
+    "The export pipeline connects directly to Claude Code: the hand-off option attaches the full design file to a new Claude Code session (browser or local terminal), which reads the structure and implements working code; a push to GitHub and a Vercel connection then produces a live URL in approximately 10 minutes.",
+    "Saving a finished project as a template via the share menu means every future project of the same type starts at roughly 80% completion, eliminating the cost of rebuilding the design system and prompt context from scratch each time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Claude Design Overview and Modes"
+    },
+    {
+      "t": 30,
+      "title": "Design System Setup and the 200-Word Rule"
+    },
+    {
+      "t": 60,
+      "title": "Using getdesign.md Brand Files"
+    },
+    {
+      "t": 123,
+      "title": "Reviewing the Generated System"
+    },
+    {
+      "t": 240,
+      "title": "Creating a Project and Writing the Prompt"
+    },
+    {
+      "t": 300,
+      "title": "First-Generation Output and Copy Quality"
+    },
+    {
+      "t": 361,
+      "title": "Tweaks, Markup, and Edit: Zero-Token Refinement"
+    },
+    {
+      "t": 541,
+      "title": "Token Rules, Export, and the Full Pipeline"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b84b16f1a7b816b7"
 }

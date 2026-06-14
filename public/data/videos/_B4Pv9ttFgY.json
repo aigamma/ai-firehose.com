@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Michael Hablich describes lessons from building Chrome DevTools MCP for agents, including decomposing monolithic tools into focused ones, rewriting error messages for agent self-healing, and measuring interface efficiency via tokens per successful outcome. The work emphasizes tool discoverability and safety considerations like prompt injection resistance.",
-  "writeup": "",
+  "writeup": "Michael Hablich, Chrome DevTools PM at Google, presents four engineering lessons from building a purpose-built MCP server that lets agents (Gemini CLI, Claude Code, Codex) automate browser debugging tasks like performance tracing and layout diagnosis. The central insight is that agents and humans share the same goals but have fundamentally different cognitive bottlenecks: humans need visual layout and color, while agents need semantic summaries and tight tool surfaces to avoid context-window collapse. The talk is grounded in a concrete failure (throwing 50,000-line JSON trace files at models and blowing the context window) and the practical instrumentation, token-efficiency metrics, and error-recovery patterns the team developed in response.",
   "wh": "280059870e54b25c",
   "concepts": [
     {
@@ -72,5 +72,46 @@
       "channel": "Google Antigravity",
       "score": 0.602
     }
-  ]
+  ],
+  "key_points": [
+    "Throwing raw trace files at agents fails: a Chrome performance trace is tens of megabytes and roughly 50,000 lines of JSON, which blows through model context windows; the fix was returning structured Markdown semantic summaries with metrics like Largest Contentful Paint and INP instead of the raw data, pointing the agent at the right sentence rather than forcing it to read the whole book.",
+    "Agents are a distinct user class with their own cognitive bottlenecks: where humans rely on visual complexity (color, layout) to find signal, agents are constrained by token limits and tool-call count, so a separate purpose-built interface is warranted rather than retrofitting the human-facing DevTools.",
+    "The key efficiency metric is tokens per successful outcome, not raw token count: effectiveness (did the agent complete the full user journey?) must gate efficiency (token cost, tool calls, duration), because fuel efficiency is worthless if the destination is never reached, and this metric varies sharply by task class (web scraping is cheap; responsive-layout debugging is expensive and appropriately so).",
+    "Token burn is cut from three angles in Chrome DevTools for Agents: tool categorization hides niche tools (Chrome extension debugging) behind CLI flags to keep the default context window lean; slim mode exposes only three tools (select page, navigate page, evaluate script) for maximum context efficiency at the cost of fewer agent capabilities; and a CLI interface allows shell pipe chaining so the model never sees intermediate tokens (the accessibility-tree ID is grepped and piped directly into a click command on the client side).",
+    "Error recovery is a spectrum with three tiers: useful error messages with actionable guidance (adding a final sentence like the specific history entry not found enabled agent self-healing without human intervention); proactive detours that override model training priors (steering the agent to the start-performance-trace tool instead of the Lighthouse audit); and diagnostic playbooks (a troubleshooting skill that fires when setup problems are detected and helps the agent self-repair its own configuration).",
+    "Even imperfect measurement of tokens per successful outcome beats gut-driven decisions: the team tracks this per user-journey class with neon bar charts, uses the shortest bars to prioritize improvement work, and treats the metric as data-informed rather than a global comparison, because different task classes have legitimately different costs."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Demo Overview"
+    },
+    {
+      "t": 211,
+      "title": "Why Agents Were Flying Blind"
+    },
+    {
+      "t": 301,
+      "title": "Agents as a Distinct User Class"
+    },
+    {
+      "t": 489,
+      "title": "Measuring Effectiveness and Efficiency"
+    },
+    {
+      "t": 663,
+      "title": "Reducing Token Burn"
+    },
+    {
+      "t": 780,
+      "title": "Error Recovery Strategies"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "42c7461f8d03e717"
 }

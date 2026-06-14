@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Anthropic's GTM Product Manager built CLAFTS, an AI email assistant powered by Claude API and Claude Code that automatically drafts customer replies in the user's voice. The tool helps sales reps reduce administrative work by automating email composition tasks.",
-  "writeup": "",
+  "writeup": "A go-to-market architect at Anthropic describes building Class (Claude Draft), a personal email-automation tool he created as an account executive managing 600-700 accounts. Class connects the Claude API to a role-specific system prompt, Google Docs context, and web URL retrieval to generate customer email drafts without manually searching Slack, knowledge bases, or shared drives. The through-line is a non-engineer shipping a production internal tool that changed both his daily workflow and his career trajectory.",
   "wh": "8c3772e3136421cc",
   "concepts": [
     {
@@ -60,5 +60,41 @@
       "channel": "Tristen O'Brien",
       "score": 0.626
     }
-  ]
+  ],
+  "key_points": [
+    "Class (Claude Draft) uses the Claude API with a user-supplied system prompt, role selection, and Google Docs or web URL context retrieval to generate customer-facing email drafts, replacing manual searches across Slack and Google Drive.",
+    "The tool saves Jared an estimated 2-3 hours per day on email alone, and thousands of emails have been sent through the Class system since he built it.",
+    "The workflow is role-parameterized: the user enters their name, selects a role (such as account executive), describes what they help customers with, and generates a system prompt before connecting context sources.",
+    "Context retrieval is dual-source: it can pull live content from a linked Google Doc or fetch a web URL such as product documentation, giving the draft access to both internal and public knowledge without the user switching tabs.",
+    "Jared credits the dissolving technical barrier with enabling him to move from startup AE to go-to-market architect at Anthropic, designing additional internal solutions that senior engineers then help bring to production."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Career Context"
+    },
+    {
+      "t": 30,
+      "title": "The AE Email Problem"
+    },
+    {
+      "t": 63,
+      "title": "Building Class with the Claude API"
+    },
+    {
+      "t": 90,
+      "title": "Live Demo of Class Workflow"
+    },
+    {
+      "t": 120,
+      "title": "Results and Career Impact"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "724319f1672bdcc7"
 }

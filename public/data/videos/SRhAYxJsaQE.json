@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cyril Imhof discusses Anthropic's new Claude Fable 5 model and its applications in regulated industries. The video covers new use cases for the model and introduces \"Know Your Agent\" methodology for effective context engineering in long-running AI applications.",
-  "writeup": "Cyril Imhof breaks down Anthropic's new Claude Fable 5 model and its use in regulated industries. The video walks through fresh use cases for the model and introduces a \"Know Your Agent\" methodology aimed at context engineering for long-running AI applications. Key takeaways center on context management and how it supports AI agents operating over extended sessions.",
+  "writeup": "Released one hour before filming, Anthropic's Fable 5.0 is built on the Mythos 5.0 model architecture and represents a new tier above Opus 4.8, not an incremental Opus update. Access is gated through a trusted program called Glass Wing, and the model includes routing logic that falls back to Opus 4.8 when requests are flagged as potentially harmful. The video benchmarks Fable 5.0 against Opus 4.8 and GPT-5.5 across coding, knowledge work, tool use, and domain verticals, then examines how the capability jump changes agent economics and opens a new enterprise concern the presenter calls Know Your Agent (KYA).",
   "wh": "38ab6945aedac7d2",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "Nate Herk | AI Automation",
       "score": 0.644
     }
-  ]
+  ],
+  "key_points": [
+    "Fable 5.0 is built on the Mythos 5.0 architecture, making it a new model category rather than an Opus iteration; access is restricted to a trusted Glass Wing program, and the model routes requests it flags as harmful back to Opus 4.8 rather than completing them.",
+    "On agentic coding benchmarks, Fable 5.0 outpaces both Opus 4.8 and the Mistral preview that had already led that category; on exploit bench it scores 78% versus GPT-5.5 at 34%, a gap the presenter highlights as the single most striking number.",
+    "The recommended model routing strategy for AI builders becomes: Haiku for cheap high-volume tasks, Sonnet 4.6 for most heavy lifting, Opus 4.8 for subtasks Sonnet cannot handle, and now Fable 5.0 reserved for the most complex or highest-stakes substasks only.",
+    "Fable 5.0's long-horizon autonomy capability shifts the unit economics of AI: previous multi-agent setups required humans to govern, check, and re-delegate, making ROI ambiguous; more stable long-running agents reduce that overhead and push ROI toward clearly positive.",
+    "The Know Your Agent (KYA) concept, analogous to banking's Know Your Customer (KYC), addresses the emerging need for enterprises to assign verifiable digital identities to autonomous agents so they can authenticate when reading or writing to enterprise systems."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Fable 5.0 Announced"
+    },
+    {
+      "t": 120,
+      "title": "Glass Wing Access and Safety Routing"
+    },
+    {
+      "t": 210,
+      "title": "Benchmark Comparison"
+    },
+    {
+      "t": 360,
+      "title": "Model Tier Selection for AI Builders"
+    },
+    {
+      "t": 450,
+      "title": "Long-Horizon Autonomy and ROI"
+    },
+    {
+      "t": 630,
+      "title": "Know Your Agent (KYA)"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3add4fe40a9f413e"
 }

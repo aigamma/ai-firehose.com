@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Ara Khan argues that AI benchmarks are neither gospel nor irrelevant, but require systematic analysis of failure modes. He proposes a three-zone framework: obvious bugs, nuanced improvements specific to model families, and overfitting risks. Improvements to Cline on Terminal Bench came from infrastructure tuning and prompt engineering, not model upgrades.",
-  "writeup": "",
+  "writeup": "A conference talk from a Cline engineer arguing that the two dominant stances on evals, pure benchmark worship and pure vibes, are both wrong, and that the right approach is to treat evals as a dual engineering and philosophy problem. The talk moves from three heuristics for reading external benchmark scores to the specific challenge Cline faced building agent evals from opt-in user data, surfacing why multi-step agent grading is fundamentally harder than single-turn LLM scoring. Terminal Bench (Stanford, 89 real-world coding problems) is named as a concrete benchmark that approximates actual software engineering work, unlike the now-obsolete SWE-bench Verified.",
   "wh": "00da45d575bc139a",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "AI Engineer",
       "score": 0.569
     }
-  ]
+  ],
+  "key_points": [
+    "Model-published benchmark numbers should not be taken at face value: frontier labs routinely top leaderboards with numbers that do not hold up against real-world use, and AI researchers themselves largely dismiss these figures as approximations.",
+    "The Epoch Index shows the frontier model changes every few months, so the practical heuristic is to let a new model settle for a few weeks before switching rather than always chasing the latest release.",
+    "SWE-bench Verified has been acknowledged by OpenAI as no longer measuring frontier coding capabilities, since its tasks (Fibonacci, matrix multiplication) do not represent real-world software engineering; evals must be both recent and domain-precise to be useful.",
+    "Single-turn LLM evals have a bounded, near-binary answer space, but agent evals are radically harder because the agent reads files, installs environments, runs scripts, and executes tests across many steps, and the grader must judge whether the final outcome worked without breaking other things.",
+    "Cline built its own coding evals by collecting a large opt-in dataset of real user coding sessions, paying contributors, and manually curating problems that reflect what engineers actually do, because no adequate off-the-shelf benchmark existed for coding agents.",
+    "Terminal Bench (Stanford, 89 problems covering race conditions, database bugs, and infrastructure issues) is a concrete example of a benchmark that approximates genuine software engineering problems rather than toy exercises."
+  ],
+  "chapters": [
+    {
+      "t": 15,
+      "title": "Introduction and Talk Framing"
+    },
+    {
+      "t": 91,
+      "title": "Two Wrong Camps: Benchmark Maxing vs. Pure Vibes"
+    },
+    {
+      "t": 182,
+      "title": "The Middle Path and Three Stages of Eval Use"
+    },
+    {
+      "t": 211,
+      "title": "Heuristics for Reading External Benchmark Scores"
+    },
+    {
+      "t": 331,
+      "title": "Why Evals Must Be New and Precise"
+    },
+    {
+      "t": 392,
+      "title": "Evals as Both Engineering and Philosophy Problem"
+    },
+    {
+      "t": 420,
+      "title": "Cline Builds Agent Evals from Real User Data"
+    },
+    {
+      "t": 570,
+      "title": "Why Agent Grading Is Harder Than Single-Turn Scoring"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "55d519b14060d662"
 }

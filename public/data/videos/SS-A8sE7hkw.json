@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Gemma 4's 31B model ranks fourth on the LM Arena leaderboard while requiring half the GPU memory of comparable competitors. The model runs on single GPUs and even 2B and 4B parameter variants fit on mobile devices, enabling deployment scenarios from phones to hospital systems.",
-  "writeup": "Gus Martins and Ian Ballantyne of Google DeepMind present Gemma 4, focusing on ownership through open models. The 31B variant ranks fourth on the LM Arena leaderboard while using half the GPU memory of comparable competitors, and it runs on single GPUs. Smaller 2B and 4B parameter variants fit on mobile devices, opening deployment across a range from phones to hospital systems. The takeaway: compression and inference optimization let open models compete near the top of the leaderboard while lowering hardware requirements.",
+  "writeup": "Google DeepMind engineers Gus and Ian present Gemma 4, a four-model open family released to complement Gemini for workloads where data cannot leave an organization's infrastructure. The lineup spans E2B and E4B for on-device inference (phone-scale GPU memory despite 5B actual parameters) up to a 26B mixture-of-experts and a 31B dense model that ranks fourth and seventh on the LM Arena open-model leaderboard while requiring a single GPU where competitors need four or five. The talk frames the economic case for self-hosted open models around agentic coding workloads, which OpenRouter data identifies as among the highest token-generation tasks, then closes on the Apache 2.0 license switch that removes the legal friction blocking sovereign and government adoption.",
   "wh": "6cfb3eb440a5e756",
   "concepts": [
     {
@@ -60,5 +60,53 @@
       "channel": "AI Engineer",
       "score": 0.576
     }
-  ]
+  ],
+  "key_points": [
+    "The 'effective' (E) parameter naming in Gemma 4 means the E2B model consumes only 2B of GPU memory: its additional ~3B parameters are token-mapping tables that live in separate memory, making genuine phone-scale inference practical.",
+    "The 31B dense model ranks fourth and seventh on the LM Arena open-model ELO leaderboard against competitors that are two to twenty times larger in parameter count, representing a significant intelligence-per-parameter advantage.",
+    "Gemma 4 switches from a custom Gemma license to Apache 2.0, eliminating the multi-month legal procurement cycles that previously blocked sovereign institutions and governments from adopting the models; Ukraine, Bulgaria, and Brazil are cited as prior Gemma deployments enabled by this kind of openness.",
+    "Programming and code-generation tasks are among the highest token consumers on OpenRouter according to the State of AI report, so agentic coding workflows are precisely where the cost advantage of self-hosted inference on owned hardware compounds most rapidly.",
+    "The second speaker frames model selection as a threshold problem across four axes: task capability, hardware fit, acceptable latency, and cost structure, arguing that Gemma 4 at 31B on a single GPU clears all four thresholds for refactoring, code generation, and document analysis, even if it is not the right tool for full systems architecture."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro: Gemma 4 Release and Talk Scope"
+    },
+    {
+      "t": 91,
+      "title": "Why Open Models Alongside Gemini"
+    },
+    {
+      "t": 151,
+      "title": "Four Model Sizes and the E-Parameter Naming"
+    },
+    {
+      "t": 240,
+      "title": "Mixture of Experts 26B and Dense 31B"
+    },
+    {
+      "t": 391,
+      "title": "LM Arena Rankings and Intelligence per Parameter"
+    },
+    {
+      "t": 420,
+      "title": "Apache 2.0 License and Sovereign Adoption"
+    },
+    {
+      "t": 571,
+      "title": "Agentic Token Costs and the Case for Self-Hosted Inference"
+    },
+    {
+      "t": 661,
+      "title": "Task Thresholds: Capability, Hardware, Latency, Cost"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "be8d065b235a455b"
 }

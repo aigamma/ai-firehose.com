@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Studio is an internal workspace that answers business questions in natural language against Snowflake, Linear, and Notion. It generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. Three reliability techniques enable production use: preflight sequencing with just-in-time schema injection, explicit layering rules to force model reliance on primary sources over learned knowledge, and query validation before widget hardcoding.",
-  "writeup": "Garrett Galow of WorkOS presents Studio, an internal workspace that answers business questions in natural language by querying Snowflake, Linear, and Notion. Rather than re-running model calls each time, Studio generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. The talk details three reliability techniques for production use: preflight sequencing with just-in-time schema injection, explicit layering rules that force the model to rely on primary sources over learned knowledge, and query validation before a widget is hardcoded. The takeaway is a pattern for turning natural language to SQL into stable, low-cost artifacts through context management and test-time control.",
+  "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
   "wh": "afde52462e13d5f1",
   "concepts": [
     {
@@ -68,5 +68,49 @@
       "channel": "Liam Ottley",
       "score": 0.518
     }
-  ]
+  ],
+  "key_points": [
+    "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
+    "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
+    "The Radar support use case illustrates the payoff: instead of sharing one-off SQL or waiting on a data team, support staff query a self-built widget by customer email and immediately see session history and block decisions, making diagnostic work fully self-serve.",
+    "Context injection is deferred to the moment a tool is invoked, not preloaded into the system prompt, so the Snowflake schema guidance (which is lengthy and encodes table relationships and join patterns) only hits the context window when Snowflake is actually being called.",
+    "Agent sequencing enforces pre-flight checks before any query runs: verify tool connectivity, assess whether enough context exists to answer the question, ask clarifying questions if not, then select the minimal set of tools needed."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and WorkOS Context"
+    },
+    {
+      "t": 60,
+      "title": "The Problem: Rigid Dashboards and the SQL Bottleneck"
+    },
+    {
+      "t": 151,
+      "title": "Studio Demo: Content Attribution Query"
+    },
+    {
+      "t": 241,
+      "title": "Architecture: LangGraph, Opus, Snowflake, Convex"
+    },
+    {
+      "t": 330,
+      "title": "Live Results and Widget Generation"
+    },
+    {
+      "t": 450,
+      "title": "Radar Support Use Case"
+    },
+    {
+      "t": 600,
+      "title": "Reliability Principles: Sequencing and Context Injection"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "498f36513c37970a"
 }

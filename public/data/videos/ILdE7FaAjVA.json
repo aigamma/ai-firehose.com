@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "RunPod is a platform enabling deployment of LLM endpoints in under five minutes on GPU infrastructure like H100s. It operates a serverless model where users pay only when workers handle requests. The company has grown from a 2022 Reddit post to 500,000 developers and $120 million annual recurring revenue.",
-  "writeup": "This talk from RunPod's Audry Hsu walks through deploying an LLM endpoint on RunPod's serverless GPU platform in under five minutes. RunPod, founded in 2022, runs inference on infrastructure like H100s with pay-per-request, usage-based pricing rather than persistent provisioning. The company reports $120 million in annual recurring revenue and 500,000 developers, framing serverless GPU inference as the deployment path the platform is built around.",
+  "writeup": "A conference demo by a RunPod developer advocate covering the company's GPU cloud platform, with a live walk-through of deploying a vLLM serverless endpoint from the RunPod Hub in under five minutes. The talk spans the founding story (two crypto-mining rigs in a basement in 2022, a Reddit post offering free GPU access, bootstrapped to $120M ARR), a product overview across Pods, Serverless, Clusters, and Hub, and a hands-on deploy showing cold-start and execution latency. The through-line is that GPU infrastructure complexity should be abstracted away so developers can focus on building applications.",
   "wh": "0a15529722151390",
   "concepts": [
     {
@@ -60,5 +60,49 @@
       "channel": "Cursor",
       "score": 0.495
     }
-  ]
+  ],
+  "key_points": [
+    "RunPod reached 500,000 developers, 30-plus data centers worldwide, and $120 million in annual recurring revenue, bootstrapped from a 2022 Reddit post by two founders whose crypto mining rigs sat idle after the market crashed.",
+    "The Serverless product auto-scales workers for bursty or batch workloads and charges only while a worker is actively handling a request, with configurable spending caps, max worker counts (up to 15 in the demo), and always-on workers that avoid cold-start latency for latency-sensitive paths.",
+    "Deploying a vLLM endpoint from the Hub requires no Dockerfile authoring: the Hub provides pre-vetted, pre-configured GitHub repos, and the console passes environment variables directly as vLLM serve flags, including context window length and max LoRA count.",
+    "In the live demo the first request sat in queue for 41 seconds due to cold start (model download from Hugging Face plus container initialization), but subsequent execution time was roughly 1.5 seconds, illustrating the tradeoff between always-on worker cost and first-request latency.",
+    "The endpoint exposes a standard HTTP API with built-in observability: per-endpoint telemetry shows request count, execution time, and queue delay time in the console without additional instrumentation."
+  ],
+  "chapters": [
+    {
+      "t": 7,
+      "title": "Introduction and Audience Poll"
+    },
+    {
+      "t": 30,
+      "title": "What RunPod Solves"
+    },
+    {
+      "t": 120,
+      "title": "Founding Story"
+    },
+    {
+      "t": 240,
+      "title": "Product Overview"
+    },
+    {
+      "t": 332,
+      "title": "Serverless Deep Dive"
+    },
+    {
+      "t": 390,
+      "title": "Live Demo: Hub to Endpoint"
+    },
+    {
+      "t": 691,
+      "title": "Latency Results and Q&A"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a9ca22534101d8c6"
 }

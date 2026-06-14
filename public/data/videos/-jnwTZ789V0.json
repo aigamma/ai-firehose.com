@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Cursor's Sam Whitmore discusses scaling coding agents with Baseten representatives. The conversation covers running hundreds of agents in parallel, enabling agents to communicate and review each other's work, and transitioning from task parallelization to building integrated multi-agent systems.",
-  "writeup": "Cursor's Sam Whitmore talks with Baseten representatives about scaling coding agents to run hundreds in parallel. The discussion covers enabling agents to communicate and review each other's work, and it traces the shift from simple task parallelization to integrated multi-agent systems. The core takeaway is that orchestration, not just raw parallelism, is what turns many concurrent agents into a coordinated system.",
+  "writeup": "A roundtable conversation with engineers from Cursor and Base10/Paused covering how practitioners actually run and manage large fleets of AI coding agents today. The discussion traces concrete patterns: naming agents after mathematicians to track task ownership, using separate judge agents to prevent main agents from prematurely declaring completion, and the 'thermonuclear review' adversarial critique loop Cursor uses internally. The through-line is that verifiability is the decisive variable: tasks with clear success criteria can be hill-climbed overnight by agents, while non-verifiable tasks bottleneck on human taste and require continuous steering.",
   "wh": "bc664e21b177c08e",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "Cole Medin",
       "score": 0.615
     }
-  ]
+  ],
+  "key_points": [
+    "Running 64 to 128 concurrent agents on KB cache compaction across 16 nodes of 8 GPUs each is operational today, with agents partitioning compute autonomously and communicating via direct messaging scripts.",
+    "A separate judge agent continuously evaluating whether the main agent has completed its task prevents the common failure mode where the main agent declares 'I've done my best' and stops, allowing multi-day autonomous runs.",
+    "Models trained with token-use penalties develop a bias toward testing random hypotheses one at a time rather than reading all relevant code first; explicitly instructing agents to read code before testing hypotheses corrects this but may cost 500,000 tokens upfront.",
+    "Cursor's internal 'thermonuclear review' skill switches the agent into an adversarial critic mode, reading the full codebase from a fresh perspective, and is used for multiple rounds before shipping; Bugbot applies this same pattern publicly on GitHub PRs.",
+    "Taste is the named bottleneck for quasi-verifiable tasks: human judgment must continuously inject signal to constrain the search space, because agents cannot yet self-determine what 'good' means in open-ended design or eval work.",
+    "Agents can read open-source harness implementations (such as Codex's Rust source) and port those techniques into a different setup, making harness self-improvement a tractable automated task."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Agent Fleet in Production"
+    },
+    {
+      "t": 90,
+      "title": "Base10 and Paused Origins"
+    },
+    {
+      "t": 270,
+      "title": "Specialization and Inference Coupling"
+    },
+    {
+      "t": 390,
+      "title": "Agent Reliability and Oversight Patterns"
+    },
+    {
+      "t": 480,
+      "title": "Verifiability as the Key Variable"
+    },
+    {
+      "t": 570,
+      "title": "Thermonuclear Review and Adversarial Loops"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "04ee99cbfd7a6d6d"
 }

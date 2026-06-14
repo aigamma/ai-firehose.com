@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Liam Ottley demonstrates how to build a one-person AI creative agency using Higgsfield for image generation, Claude for automation and copywriting, Notion for client databases, and Apify for competitor scraping. The system produces product photography, UGC ads, commercials, and ad copy while automatically tracking performance and competitor data.",
-  "writeup": "Liam Ottley walks through building a one-person AI creative agency from four tools: Higgsfield for image generation, Claude for automation and copywriting, Notion for client databases, and Apify for competitor scraping. The assembled system produces product photography, UGC ads, commercials, and ad copy, then tracks performance and competitor data automatically. The takeaway is a concrete stack and workflow where generation, copy, client records, and competitive monitoring are wired together rather than handled as separate manual tasks.",
+  "writeup": "A walkthrough of a two-tool solo creative agency stack, Higgsfield for AI image and video generation plus Claude as the orchestration layer, demonstrated by building a complete ad campaign for a fictional streetwear brand called Vault. The presenter shows how to generate product images, logos, multi-view reference sheets, packaging mockups, and a 30-second fashion film commercial using Claude-written prompts fed into Higgsfield. The through-line is system-building: the goal is not one-off generation but wiring these outputs into a repeatable AI operating system (AIOS) backed by a Notion workspace that tracks every client, asset, and approval.",
   "wh": "9180e256fdd0aec5",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "Cole Medin",
       "score": 0.638
     }
-  ]
+  ],
+  "key_points": [
+    "Claude serves as the pipeline brain by writing Higgsfield image and video prompts from a brief, researching competitors via Apify, and orchestrating the overall campaign workflow, keeping a human from having to hand-craft generation prompts for each asset.",
+    "A Claude skill file, a small instruction file loaded via Settings > Capabilities, teaches Claude the exact prompt format Higgsfield expects, eliminating repeated hand-holding and reducing wasted generation credits on off-format outputs.",
+    "The two-part commercial technique addresses Higgsfield's 15-second video generation ceiling: prompt one generates the opening scene, then prompt two attaches that generated clip as a video reference alongside the product image, so the second 15-second clip inherits the visual language of the first and the 30-second cut reads as a single cohesive piece.",
+    "The Higgsfield Marketing Studio offers preset ad templates trained on proven formats, letting a solo operator drop a product image into a tested ad structure in minutes rather than prompting from scratch.",
+    "The AIOS (AI operating system) concept frames the stack as more than generation tools: Notion becomes the agency backend tracking clients, assets, and approvals, while Apify supplies live competitive signals to feed fresh ideas into the pipeline on an ongoing basis.",
+    "The presenter estimates this creative stack replaces a full agency creative department that previously cost 15,000 to 30,000 dollars per month, collapsing that to two tool subscriptions a solo operator can run."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Stack Overview and Promise"
+    },
+    {
+      "t": 91,
+      "title": "Brand and Product Image Generation"
+    },
+    {
+      "t": 210,
+      "title": "Logo Generation and Batch Iteration"
+    },
+    {
+      "t": 301,
+      "title": "Packaging Mockup"
+    },
+    {
+      "t": 330,
+      "title": "Intro to Video Generation"
+    },
+    {
+      "t": 360,
+      "title": "Claude Skill Files for Higgsfield Prompts"
+    },
+    {
+      "t": 420,
+      "title": "Two-Part Commercial Video Generation"
+    },
+    {
+      "t": 490,
+      "title": "Marketing Studio Presets and AIOS"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "48f223d174664f54"
 }
