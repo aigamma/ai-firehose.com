@@ -7,34 +7,34 @@
     "output filtering"
   ],
   "kind": "technique",
-  "attention": 28,
+  "attention": 30,
   "first_seen": "2026-05-06T19:32:23+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
-    "ratio": 114.6,
-    "momentum": 90.9,
+    "ratio": 106.6,
+    "momentum": 88.4,
     "sparkline": [
-      7,
-      7,
-      6,
-      11,
+      10,
       10,
       9,
-      9,
-      8
+      13,
+      12,
+      11,
+      11,
+      10
     ]
   },
   "neighbors": [
     {
-      "id": "neurosymbolic-guardrails",
-      "label": "Neurosymbolic guardrails",
-      "score": 0.756
+      "id": "model-guardrails",
+      "label": "model guardrails",
+      "score": 0.759
     },
     {
       "id": "infrastructure",
       "label": "infrastructure",
-      "score": 0.743
+      "score": 0.742
     },
     {
       "id": "safety",
@@ -42,9 +42,9 @@
       "score": 0.723
     },
     {
-      "id": "training-harness",
-      "label": "training harness",
-      "score": 0.706
+      "id": "safety-filters",
+      "label": "safety filters",
+      "score": 0.704
     },
     {
       "id": "security",
@@ -52,21 +52,21 @@
       "score": 0.702
     },
     {
-      "id": "safety-constraints",
-      "label": "safety constraints",
-      "score": 0.697
+      "id": "positioning",
+      "label": "positioning",
+      "score": 0.69
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.234
+      "position": -0.256
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.258
+      "position": 0.14
     },
     {
       "slug": "capability-safety",
@@ -76,12 +76,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.049
+      "position": 0.051
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.482
+      "position": -0.397
     },
     {
       "slug": "neural-symbolic",
@@ -91,17 +91,10 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.281
+      "position": -0.288
     }
   ],
   "top_items": [
-    {
-      "title": "The Fable 5 Backlash Is Getting Serious",
-      "url": "https://www.youtube.com/watch?v=9LzBF70aI6k",
-      "author_or_channel": "AI Revolution",
-      "published_at": "2026-06-11T22:57:43+00:00",
-      "kind": "opinion"
-    },
     {
       "title": "Cybersecurity researchers aren't happy about the guardrails on Anthropic's Fable",
       "url": "https://techcrunch.com/2026/06/10/cybersecurity-researchers-arent-happy-about-the-guardrails-on-anthropics-fable/",
@@ -131,6 +124,13 @@
       "kind": "tool"
     },
     {
+      "title": "5 tips for using Antigravity 2.0 on enterprise codebases, planning phase",
+      "url": "https://www.youtube.com/watch?v=HyGm01UKfaE",
+      "author_or_channel": "Google Cloud Tech",
+      "published_at": "2026-06-04T16:00:08+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "Automate M365 to Google Workspace Migrations with ADK multi-agents",
       "url": "https://www.youtube.com/watch?v=9BwFgEFVLOk",
       "author_or_channel": "Google Cloud Tech",
@@ -138,10 +138,10 @@
       "kind": "tool"
     }
   ],
+  "definition": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment. The mental model is belt and suspenders: alignment shapes what the model wants to do, guardrails are an independent layer that constrains what the system is allowed to do.",
   "category": "Alignment and Safety",
   "durable": true,
   "source": "authored",
-  "definition": "The runtime safety layer wrapped around a deployed model: input and output filters, policy checks, and action constraints that catch unsafe or off-policy content before it reaches a user or a tool, complementing rather than replacing training-time alignment. The mental model is belt and suspenders: alignment shapes what the model wants to do, guardrails are an independent layer that constrains what the system is allowed to do.",
   "body": [
     {
       "type": "p",

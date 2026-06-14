@@ -6,21 +6,21 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Garrett Galow from WorkOS presented Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion, generating reusable widgets as declarative JavaScript. The system uses preflight sequencing for schema injection, explicit distrust of model knowledge, and query validation to ensure reliability for production use.",
-  "writeup": "Garrett Galow of WorkOS presents Studio, an internal workspace that lets non-technical users query business data in natural language against Snowflake, Linear, and Notion, and produces reusable widgets as declarative JavaScript. The talk addresses a common gap: business questions that stall because answering them requires technical access. Concrete reliability techniques covered include preflight sequencing to inject schema context, explicit distrust of the model's built-in knowledge, and query validation before results are trusted in production.",
-  "wh": "1b86d7a602b77209",
+  "summary": "WorkOS built Studio, an internal workspace where non-technical users can ask business questions in natural language against Snowflake, Linear, and Notion and receive answers or reusable widgets. The LLM generates declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cost-effective.",
+  "writeup": "Garrett Galow of WorkOS walks through Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion and get back answers or reusable widgets. The architecture has the LLM generate declarative JavaScript widgets that call data sources directly, so subsequent runs are deterministic and cheaper than re-prompting the model each time. The talk covers the supporting techniques: schema context injection, query validation, preflight sequencing, and prompt layering. The takeaway is a pattern that converts open-ended natural language queries into persistent, low-cost widgets rather than repeated LLM calls.",
+  "wh": "77c9c3a8fced0929",
   "concepts": [
     {
-      "slug": "natural-language-querying",
-      "label": "natural language querying"
+      "slug": "natural-language-interface",
+      "label": "natural language interface"
     },
     {
-      "slug": "llms",
-      "label": "LLMs"
+      "slug": "procedural-generation",
+      "label": "procedural generation"
     },
     {
-      "slug": "javascript",
-      "label": "JavaScript"
+      "slug": "preflight-sequencing",
+      "label": "preflight sequencing"
     },
     {
       "slug": "schema-context-injection",
@@ -31,8 +31,8 @@
       "label": "query validation"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "prompt-layering",
+      "label": "prompt layering"
     }
   ],
   "similar": [
@@ -40,37 +40,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.555
-    },
-    {
-      "id": "zMiSRliEzv4",
-      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
-      "channel": "AI Engineer",
-      "score": 0.535
+      "score": 0.603
     },
     {
       "id": "kUQD5ZElyB4",
       "title": "The Problem Solvers: Michele Catasta at Replit",
       "channel": "Claude",
-      "score": 0.529
-    },
-    {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.526
-    },
-    {
-      "id": "4azVjKhqDzw",
-      "title": "Building the App Store for Agentic Engineering",
-      "channel": "Cole Medin",
-      "score": 0.516
+      "score": 0.553
     },
     {
       "id": "rjSvJYrVY2k",
       "title": "The Problem Solvers | Anton Osika at Lovable",
       "channel": "Claude",
-      "score": 0.51
+      "score": 0.546
+    },
+    {
+      "id": "zMiSRliEzv4",
+      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
+      "channel": "AI Engineer",
+      "score": 0.542
+    },
+    {
+      "id": "DnMtDdkSIi0",
+      "title": "Finally… A NotebookLM Alternative With an API",
+      "channel": "Better Stack",
+      "score": 0.539
+    },
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.525
     }
   ]
 }

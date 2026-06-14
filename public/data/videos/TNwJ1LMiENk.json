@@ -6,9 +6,9 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "A 4B model finetuned with RL using tool discipline (calling get_table_name, inspecting schema, self-correcting) outperformed Qwen 3 235B on SQL query tasks. The approach emphasizes structured tool use over model scale, with single-table training transferring to multi-table problems (13.9% to 26.6% on FinQA) at under $500 training cost.",
+  "summary": "Small finetuned models with tool discipline and self-correction outperform much larger models on structured query tasks. Training smaller models on tool use patterns with reinforcement learning cost under $500 and achieved better accuracy than Qwen 3 235B on database queries and FinQA reasoning benchmarks.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "96f645986921e8dc",
+  "wh": "0e570f7c5bf46b41",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -23,50 +23,50 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "model-behavior",
-      "label": "model behavior"
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
     },
     {
-      "slug": "reasoning-models",
-      "label": "reasoning models"
+      "slug": "behavioral-training",
+      "label": "behavioral training"
     }
   ],
   "similar": [
     {
-      "id": "QuuIywMG4s8",
-      "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
-      "channel": "AI Engineer",
-      "score": 0.575
-    },
-    {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.562
+      "score": 0.621
     },
     {
       "id": "SS-A8sE7hkw",
       "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.561
+      "score": 0.615
+    },
+    {
+      "id": "QuuIywMG4s8",
+      "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
+      "channel": "AI Engineer",
+      "score": 0.61
     },
     {
       "id": "mFLlVpnGpds",
       "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.552
+      "score": 0.583
     },
     {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.545
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.58
     },
     {
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.543
+      "score": 0.575
     }
   ]
 }
