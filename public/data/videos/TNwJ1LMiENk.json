@@ -6,9 +6,9 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Small finetuned models with tool discipline and self-correction outperform much larger models on structured query tasks. Training smaller models on tool use patterns with reinforcement learning cost under $500 and achieved better accuracy than Qwen 3 235B on database queries and FinQA reasoning benchmarks.",
+  "summary": "A 4B parameter model finetuned with RL to use a get_table_name tool and self-correct SQL queries outperforms a 235B model that hallucinates answers. The technique emphasizes tool discipline and behavioral training over model scaling, achieving results on FinQA with training costs under 500 dollars.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "0e570f7c5bf46b41",
+  "wh": "834dd7524f4e660f",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -25,30 +25,26 @@
     {
       "slug": "fine-tuning",
       "label": "fine-tuning"
-    },
-    {
-      "slug": "behavioral-training",
-      "label": "behavioral training"
     }
   ],
   "similar": [
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.621
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.615
-    },
-    {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.61
+      "score": 0.599
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.598
+    },
+    {
+      "id": "s3rNDndvav0",
+      "title": "The biggest AI breakthrough in medicine & drug discovery",
+      "channel": "AI Search",
+      "score": 0.588
     },
     {
       "id": "mFLlVpnGpds",
@@ -57,16 +53,16 @@
       "score": 0.583
     },
     {
-      "id": "TUnPNY4E2fw",
-      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
-      "channel": "AI Engineer",
-      "score": 0.58
-    },
-    {
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.575
+      "score": 0.579
+    },
+    {
+      "id": "jxHIw_OA8_I",
+      "title": "Stop perfecting your prompt. Do this instead",
+      "channel": "Jeff Su",
+      "score": 0.578
     }
   ]
 }

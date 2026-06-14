@@ -6,33 +6,33 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WorkOS built Studio, an internal workspace where non-technical users can ask business questions in natural language against Snowflake, Linear, and Notion and receive answers or reusable widgets. The LLM generates declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cost-effective.",
-  "writeup": "Garrett Galow of WorkOS walks through Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion and get back answers or reusable widgets. The architecture has the LLM generate declarative JavaScript widgets that call data sources directly, so subsequent runs are deterministic and cheaper than re-prompting the model each time. The talk covers the supporting techniques: schema context injection, query validation, preflight sequencing, and prompt layering. The takeaway is a pattern that converts open-ended natural language queries into persistent, low-cost widgets rather than repeated LLM calls.",
-  "wh": "77c9c3a8fced0929",
+  "summary": "WorkOS built Studio, an internal workspace where non-technical users can ask business questions in natural language against Snowflake, Linear, and Notion without SQL knowledge. The LLM generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cost-effective.",
+  "writeup": "Garrett Galow of WorkOS presents Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion without writing SQL. Rather than re-running an LLM for every query, the system generates reusable declarative JavaScript widgets that call data sources directly, so subsequent runs become deterministic and cost-effective. The talk covers the practical mechanics behind this approach, including context window optimization, preflight sequencing, and query validation.",
+  "wh": "58a6542dd40dfdd8",
   "concepts": [
     {
-      "slug": "natural-language-interface",
-      "label": "natural language interface"
+      "slug": "natural-language-querying",
+      "label": "natural language querying"
     },
     {
-      "slug": "procedural-generation",
-      "label": "procedural generation"
+      "slug": "context-window-optimization",
+      "label": "context window optimization"
     },
     {
       "slug": "preflight-sequencing",
       "label": "preflight sequencing"
     },
     {
-      "slug": "schema-context-injection",
-      "label": "schema context injection"
-    },
-    {
       "slug": "query-validation",
       "label": "query validation"
     },
     {
-      "slug": "prompt-layering",
-      "label": "prompt layering"
+      "slug": "video-generation",
+      "label": "video generation"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -40,37 +40,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.603
-    },
-    {
-      "id": "kUQD5ZElyB4",
-      "title": "The Problem Solvers: Michele Catasta at Replit",
-      "channel": "Claude",
-      "score": 0.553
-    },
-    {
-      "id": "rjSvJYrVY2k",
-      "title": "The Problem Solvers | Anton Osika at Lovable",
-      "channel": "Claude",
-      "score": 0.546
+      "score": 0.589
     },
     {
       "id": "zMiSRliEzv4",
       "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
       "channel": "AI Engineer",
-      "score": 0.542
+      "score": 0.582
+    },
+    {
+      "id": "rjSvJYrVY2k",
+      "title": "The Problem Solvers | Anton Osika at Lovable",
+      "channel": "Claude",
+      "score": 0.582
+    },
+    {
+      "id": "kUQD5ZElyB4",
+      "title": "The Problem Solvers: Michele Catasta at Replit",
+      "channel": "Claude",
+      "score": 0.568
+    },
+    {
+      "id": "TNwJ1LMiENk",
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawdord, Snorkel",
+      "channel": "AI Engineer",
+      "score": 0.557
     },
     {
       "id": "DnMtDdkSIi0",
       "title": "Finally… A NotebookLM Alternative With an API",
       "channel": "Better Stack",
-      "score": 0.539
-    },
-    {
-      "id": "SKDJo2CopRs",
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
-      "channel": "AI Engineer",
-      "score": 0.525
+      "score": 0.547
     }
   ]
 }

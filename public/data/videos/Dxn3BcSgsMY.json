@@ -6,25 +6,29 @@
   "published": "2026-06-13T15:09:16+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Google DeepMind released DiffusionGemma, a text generation model that applies diffusion techniques from image generation to achieve token generation speeds exceeding 1,000 tokens per second on H100 GPUs. The model uses uniform state diffusion and bidirectional passes to refine text generation, shifting the computational bottleneck from memory-bound to compute-bound operations.",
-  "writeup": "The video covers DiffusionGemma, a text generation model from Google DeepMind that adapts diffusion techniques from image generation to produce text at over 1,000 tokens per second on H100 GPUs. It explains that the model relies on uniform state diffusion and bidirectional passes to refine generated text, rather than the standard left-to-right autoregressive approach. The central technical point is the shift of the computational bottleneck from memory-bound to compute-bound operations, which is what enables the higher throughput.",
-  "wh": "046364bb45c81adb",
+  "summary": "Google DeepMind released DiffusionGemma, a model that applies image-generation diffusion techniques to text generation using uniform state diffusion. The architecture shifts local LLMs from memory-bound to compute-bound, theoretically achieving generation speeds exceeding 1,000 tokens per second on H100 GPUs through bidirectional multi-pass refinement.",
+  "writeup": "Better Stack covers DiffusionGemma, a Google DeepMind model that brings diffusion techniques from image generation to text generation via uniform state diffusion. The architecture shifts local LLMs from memory-bound to compute-bound, which matters for the throughput ceiling of local inference. The central claim: bidirectional multi-pass refinement that theoretically exceeds 1,000 tokens per second on H100 GPUs. The video also touches on test-time compute and sparse attention as part of the approach.",
+  "wh": "b980ac34a62a11c1",
   "concepts": [
     {
       "slug": "diffusion-models",
       "label": "diffusion models"
     },
     {
-      "slug": "sparse-attention",
-      "label": "sparse attention"
+      "slug": "text-generation",
+      "label": "text generation"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "noise-prediction",
-      "label": "noise prediction"
+      "slug": "sparse-attention",
+      "label": "sparse attention"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
@@ -32,37 +36,37 @@
       "id": "YiIrnYalHS4",
       "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
       "channel": "AI Revolution",
-      "score": 0.904
-    },
-    {
-      "id": "HfRVXadseCo",
-      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
-      "channel": "Better Stack",
-      "score": 0.72
+      "score": 0.905
     },
     {
       "id": "WLtCHXdHTF0",
       "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
       "channel": "Better Stack",
-      "score": 0.708
+      "score": 0.736
     },
     {
-      "id": "J02-39xtlt4",
-      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
-      "channel": "AI Search",
-      "score": 0.704
+      "id": "HfRVXadseCo",
+      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
+      "channel": "Better Stack",
+      "score": 0.716
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.698
+      "score": 0.701
     },
     {
-      "id": "aSY_vFFmkW0",
-      "title": "Generating novel scientific hypotheses with Co-Scientist",
-      "channel": "Google DeepMind",
-      "score": 0.629
+      "id": "J02-39xtlt4",
+      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
+      "channel": "AI Search",
+      "score": 0.627
+    },
+    {
+      "id": "gbI7THwqEjk",
+      "title": "Most people get these 3 AI terms wrong",
+      "channel": "Jeff Su",
+      "score": 0.623
     }
   ]
 }

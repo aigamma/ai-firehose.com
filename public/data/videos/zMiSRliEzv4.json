@@ -6,9 +6,9 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is developing an autonomous agent system that detects product signals (rage clicks, error spikes, customer messages), clusters them semantically, analyzes related codebase context, and automatically generates pull requests to fix issues. The approach uses LLM-generated query embeddings instead of raw signal embeddings to improve clustering, prioritizes actionable error data over user session context, and applies multi-shot agent patterns before collapsing to single-shot optimization.",
+  "summary": "PostHog is developing an autonomous agent pipeline that ingests product signals like rage clicks, error spikes, and Slack messages, clusters them using embedded LLM queries, and automatically generates pull requests with fixes. The system groups signals by semantic meaning rather than surface similarity and prioritizes actionable signals like error tracking over less specific ones.",
   "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
-  "wh": "73f0e0544029f090",
+  "wh": "a3c21835883c32ee",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -23,16 +23,12 @@
       "label": "clustering"
     },
     {
-      "slug": "llms",
-      "label": "LLMs"
-    },
-    {
-      "slug": "pr-generation",
-      "label": "PR generation"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     }
   ],
   "similar": [
@@ -40,37 +36,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.644
+      "score": 0.611
     },
     {
-      "id": "luBkbzjo-TA",
-      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
-      "channel": "Cole Medin",
-      "score": 0.605
+      "id": "iUWwcG-C8OU",
+      "title": "Why Can't Anyone Answer Questions About the Business? — Garrett Galow, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.582
     },
     {
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.596
+      "score": 0.578
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.592
+      "score": 0.567
     },
     {
-      "id": "10g1iJnfLWQ",
-      "title": "Biomedical AI Copilot with Neo4j and Qdrant",
-      "channel": "Qdrant Vector Search",
-      "score": 0.581
+      "id": "luBkbzjo-TA",
+      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
+      "channel": "Cole Medin",
+      "score": 0.567
     },
     {
-      "id": "_5XF5CCnbDk",
-      "title": "Build a Real-World Multi-Agent AI System using LangGraph,  APIs and Memory",
-      "channel": "Code With Aarohi",
-      "score": 0.57
+      "id": "ikH1--DSzMs",
+      "title": "How to build proactive agents & self-improving company (Fully explained)",
+      "channel": "AI Jason",
+      "score": 0.55
     }
   ]
 }

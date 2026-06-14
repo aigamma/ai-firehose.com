@@ -6,17 +6,21 @@
   "published": "2026-06-11T16:18:52+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Jordan Urbs demonstrates running two types of local AI agents: Odysseus (workspace agent) and OpenCode (build agent), both executed on personal hardware. The tutorial covers installing Odysseus via Docker, running Gemma 4 locally through Ollama at 7.4GB RAM, and using Claude Opus as a fallback teacher model for self-healing agent skills.",
-  "writeup": "The tutorial walks through running two local AI agents on personal hardware: Odysseus, a workspace agent, and OpenCode, a build agent. It covers installing Odysseus via Docker, serving Gemma 4 locally through Ollama at 7.4GB RAM, and configuring Claude Opus as a fallback teacher model for self-healing agent skills. The setup matters because it keeps agent execution on local hardware while reserving a stronger remote model for cases the local model cannot handle. Key takeaways: local inference is viable at modest memory budgets, and a teacher-model fallback offers a path to recover and improve agent skills.",
-  "wh": "d4d54ca312153992",
+  "summary": "Jordan Urbs demonstrates how to run two types of AI agents locally: Odysseus (a workspace agent) for task orchestration and OpenCode (a build agent) for code generation. The setup uses Gemma 4 via Ollama for local inference with Venice API as fallback, deployed in Docker for privacy-focused local execution.",
+  "writeup": "The tutorial walks through running two distinct local AI agents: Odysseus, a workspace agent for task orchestration, and OpenCode, a build agent for code generation. Inference runs on Gemma 4 through Ollama, with the Venice API configured as a fallback, and the whole setup is deployed in Docker for privacy-focused local execution. The takeaway is a concrete multi-agent pattern that separates orchestration from code generation while keeping computation on local hardware.",
+  "wh": "914884f1cbe63dda",
   "concepts": [
     {
-      "slug": "edge-deployment",
-      "label": "edge deployment"
+      "slug": "local-inference",
+      "label": "local inference"
     },
     {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
       "slug": "teacher-models",
@@ -25,48 +29,44 @@
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
-    },
-    {
-      "slug": "model-fallback",
-      "label": "model fallback"
     }
   ],
   "similar": [
     {
-      "id": "tCiMXc4txf4",
-      "title": "How to setup and use Claude Code for FREE  (Step-by-Step Guide)",
-      "channel": "Code With Aarohi",
-      "score": 0.599
-    },
-    {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.585
-    },
-    {
       "id": "yaMcm3sQswc",
       "title": "Hermes Agent + Ollama = 100% Private OS",
       "channel": "Jack Roberts",
-      "score": 0.578
+      "score": 0.647
     },
     {
-      "id": "0WDkwMxj13s",
-      "title": "I Turned Claude Opus 4.8 Into My Entire AI Operating System",
-      "channel": "Nate Herk | AI Automation",
-      "score": 0.577
+      "id": "tCiMXc4txf4",
+      "title": "How to setup and use Claude Code for FREE  (Step-by-Step Guide)",
+      "channel": "Code With Aarohi",
+      "score": 0.579
     },
     {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
+      "id": "xQcbwGS6Ahc",
+      "title": "AIventure: Vibe Coding Journey",
+      "channel": "Google for Developers",
+      "score": 0.569
+    },
+    {
+      "id": "qGm6gtHpJq0",
+      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.556
+      "score": 0.555
     },
     {
-      "id": "zqUdtL5l9yM",
-      "title": "Hermes Agentic OS is Insane... just watch",
-      "channel": "Jack Roberts",
-      "score": 0.55
+      "id": "okx6dUzDPRY",
+      "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
+      "channel": "Google Cloud Tech",
+      "score": 0.552
+    },
+    {
+      "id": "AYQtRqW1xX4",
+      "title": "How to Build & Sell AI Agents in 2026: Ultimate Beginner’s Guide",
+      "channel": "Liam Ottley",
+      "score": 0.551
     }
   ]
 }

@@ -6,13 +6,17 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a technical stack for training LLMs with millions of token context windows on modest hardware. The work introduces Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers to reduce activation memory while maintaining throughput, achieving 25% longer sequences than prior Ulysses implementations at 8B and 32B scales.",
+  "summary": "Max Ryabinin presents a stack of techniques for training LLMs with very long context windows, culminating in Untied Ulysses, a refinement of context parallelism that chunks attention heads and reuses buffers to reduce activation memory with minimal throughput cost. The approach successfully trains models up to 5 million tokens on commodity hardware like 8xH100 nodes.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "621491b06ba934d9",
+  "wh": "be06bb39e3e1701e",
   "concepts": [
     {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "data-parallelism",
+      "label": "data parallelism"
+    },
+    {
+      "slug": "ulysses",
+      "label": "Ulysses"
     },
     {
       "slug": "checkpointing",
@@ -25,52 +29,44 @@
     {
       "slug": "rnn-training",
       "label": "RNN training"
-    },
-    {
-      "slug": "untied-ulysses",
-      "label": "Untied Ulysses"
-    },
-    {
-      "slug": "memory-optimization",
-      "label": "memory optimization"
     }
   ],
   "similar": [
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "id": "so9l_MwS2yg",
+      "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.63
-    },
-    {
-      "id": "fCHe_fOqlYA",
-      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
-      "channel": "IBM Technology",
-      "score": 0.595
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.59
+      "score": 0.604
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.585
+      "score": 0.602
     },
     {
       "id": "fk0pl6b7PKQ",
       "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
       "channel": "Jordan Urbs",
-      "score": 0.584
+      "score": 0.598
     },
     {
       "id": "gbI7THwqEjk",
       "title": "Most people get these 3 AI terms wrong",
       "channel": "Jeff Su",
-      "score": 0.581
+      "score": 0.585
+    },
+    {
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "channel": "AI Engineer",
+      "score": 0.58
+    },
+    {
+      "id": "TNwJ1LMiENk",
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawdord, Snorkel",
+      "channel": "AI Engineer",
+      "score": 0.576
     }
   ]
 }
