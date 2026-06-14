@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AI Jason discusses /goal feature and autonomous coding workflows including goal-buddy and mission exploration capabilities. The video covers setup, prompting strategies, and long-horizon task execution for next-generation autonomous coding agents.",
-  "writeup": "",
+  "writeup": "Codex and Hermes have each shipped a persistent \"goal\" feature that keeps coding agents running for hours on complex tasks by replacing the old programmatic rough loop with an LLM judge that decides whether the goal has actually been met. The video walks through how both implementations work under the hood, the specific commands to activate and monitor the feature in Codex, and the prompting discipline required to get useful results. The through-line is precise: without an explicit, quantifiable definition of done, agents either quit too early or spiral; the feature solves early termination but transfers the hard problem to prompt authorship.",
   "wh": "e11048c617975f7c",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Caleb Writes Code",
       "score": 0.576
     }
-  ]
+  ],
+  "key_points": [
+    "The rough loop (running a coding agent in a for-loop with a fixed iteration cap) was the prior art; the new goal feature replaces the programmatic stop condition with an LLM call that judges whether the stated objective has actually been achieved, so the agent continues working rather than prematurely declaring victory.",
+    "Codex and Hermes implement the judging step differently: Codex instructs the agent to self-mark the goal complete using an `update goal --status complete` command only when the audit confirms no required work remains, while Hermes uses a separate LLM judge call external to the agent turn.",
+    "To activate in Codex: run `codex features enable goals`, then use `/goal <description>` to set a standing goal; during a run, `/goal` shows elapsed time and total tokens consumed, and `goal pause` or `goal clear` stops the work; the `/side` command forks the conversation mid-run without interrupting the goal.",
+    "Effective goal prompts must define what to achieve, what not to change, how to validate progress, and a concrete verifiable stop condition, for example specifying that all screens must match visually and Playwright interactive must pass, rather than a loose directive like \"fix everything.\"",
+    "Vincent, a maintainer of Open Claw, ran the goal feature for 3 days across 13 rounds and found that an initial alignment interview, where the agent is given full project context and asked to raise questions before starting, is critical; fuzzy definitions of done cause the agent to either quit too early or loop without converging.",
+    "Go Body (`npx go-body`) is an open-source tool that interviews the user about a vague goal and produces a structured `goal.md` (constraints, stop rules, loop detail) plus a `state.yaml` task breakdown, which Codex can then reference on every loop iteration to maintain context and track progress."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Goal Feature Overview"
+    },
+    {
+      "t": 61,
+      "title": "The Rough Loop Problem"
+    },
+    {
+      "t": 121,
+      "title": "LLM Judge Mechanism"
+    },
+    {
+      "t": 180,
+      "title": "Goal vs Rough Loop Comparison"
+    },
+    {
+      "t": 270,
+      "title": "Activating Goals in Codex"
+    },
+    {
+      "t": 360,
+      "title": "Writing Effective Goal Prompts"
+    },
+    {
+      "t": 420,
+      "title": "Learnings from Open Claw Maintainer"
+    },
+    {
+      "t": 511,
+      "title": "Go Body Prompt Construction Tool"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c816675b78e56e6c"
 }

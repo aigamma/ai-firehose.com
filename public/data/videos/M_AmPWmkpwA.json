@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "OpenAI Symphony is presented as a new coding paradigm for AI development. The video demonstrates its setup, auto-testing capabilities, and workflow integration through a harness system.",
-  "writeup": "",
+  "writeup": "OpenAI's open-source Symphony project proposes a fundamental shift in how developers interact with coding agents: instead of managing multiple concurrent interactive sessions, engineers manage tickets in a tracker like Linear while a background scheduler picks up work, spins up isolated workspaces, and runs agents autonomously every 30 seconds. The core mechanism is a single workflow.md file that lives in the repo, version-controlled like any code, combining a YAML front matter that configures the scheduler with a Markdown prompt that defines the agent's standard operating procedure. A critical companion concern is harness engineering: the codebase must supply self-verifying tools so agents can confirm their own output end-to-end, with Playwright's CRI video-recording capability highlighted as the key missing piece most teams have not yet wired up.",
   "wh": "241ef22a5dea2647",
   "concepts": [
     {
@@ -60,5 +60,53 @@
       "channel": "Cole Medin",
       "score": 0.616
     }
-  ]
+  ],
+  "key_points": [
+    "Symphony's central argument is that the bottleneck in agentic coding is no longer model capability but human cognitive load from context-switching across sessions; moving humans up a level to ticket management breaks that ceiling.",
+    "The workflow.md file is the architectural keystone: its YAML front matter configures the scheduler (polling interval, parallelism, workspace paths, Linear project slug, post-setup hooks) and its Markdown body is the system prompt rendered to the agent on every turn, encoding the definition of done and when to request human review.",
+    "Symphony is designed to be backend-agnostic: the reference implementation is in Elixir, a spec.md file describes the full protocol, and community members have already rebuilt it targeting Claude Code as the agent harness and a custom TUI for task visualization.",
+    "The Playwright CRI tool enables agents to call video_start and video_stop to capture their own browser session as an MP4 or WebM, annotate actions with overlaid HTML elements, and upload the recording directly to the Linear ticket as proof of end-to-end verification.",
+    "Harness engineering, making the codebase atomically completable by an agent, requires three things beyond documentation: a bootable environment via a single script, skill files for domain-specific operations (Linear API, Grafana log fetching), and self-verifying tools like Playwright CRI that eliminate the need for human spot-checking of each PR."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Symphony Overview"
+    },
+    {
+      "t": 60,
+      "title": "Why Tickets Beat Sessions"
+    },
+    {
+      "t": 91,
+      "title": "How Symphony Works"
+    },
+    {
+      "t": 121,
+      "title": "The Workflow.md File"
+    },
+    {
+      "t": 210,
+      "title": "Flexibility and the Spec"
+    },
+    {
+      "t": 270,
+      "title": "Harness Engineering"
+    },
+    {
+      "t": 301,
+      "title": "Playwright CRI for Video Verification"
+    },
+    {
+      "t": 450,
+      "title": "Setup Walkthrough"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a29e4dece648cf6a"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Caleb Eom discusses Huawei's announcement of Tau Scaling Law as part of the China-USA semiconductor race. The video covers how EUV and DUV lithography, packaging, and logic folding contribute to advancing chip manufacturing capabilities amid growing geopolitical competition.",
-  "writeup": "",
+  "writeup": "Huawei's Tao scaling law proposes a path to 1.4nm-equivalent transistor density and zetaflop-level infrastructure by 2030 without access to EUV lithography, using a technique called logic folding that stacks transistor logic in three dimensions rather than continuing to shrink in the 2D geometric plane. The talk grounds the proposal in semiconductor history: Moore's law, Dennard scaling, the physical breakdown around 100nm circa 2005, and the 2019 US ban that cut China off from TSMC and EUV equipment. The central question the video interrogates is whether a 16-page paper describing ambitious targets constitutes a credible engineering roadmap or a marketing exercise, given that Huawei has not yet demonstrated mass-production capability with DUV-only tooling at those densities. The strategic punchline is that China does not need to match US frontier-model performance: controlling the 50-100 tokens-per-second mid-tier inference market, which covers email, bug fixes, and daily routines, represents a large and structurally reachable position using Ascend-class GPUs.",
   "wh": "fb584a14cc36b472",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "AI Revolution",
       "score": 0.45
     }
-  ]
+  ],
+  "key_points": [
+    "Huawei's Tao scaling law targets 1.4nm-equivalent transistor density, 400 million transistors per square nanometer, 5 GHz operation, and zetaflop-scale pod infrastructure by 2030, but the published 16-page paper reads as a roadmap rather than a production plan.",
+    "Logic folding is the core technique: instead of continuing 2D geometric shrinkage blocked by the EUV ban, Huawei proposes folding logic layers upon each other in 3D, allowing transistor density to advance in the stacking dimension while sidestepping the need for sub-7nm lithography equipment.",
+    "Dennard scaling broke around 2005 near the 100nm node when gate leakage caused power density to explode; Intel's Pentium 4 program targeting 10 GHz had to be canceled after topping at 3.6 GHz, and CPU base clocks have barely moved in 20 years, establishing the precedent that scaling can hit hard physical walls.",
+    "The critical manufacturing gap is DUV versus EUV precision: DUV is a coarser tool that raises error rates and complicates yield at fine geometries, whereas EUV's narrower wavelength enables cleaner patterning, and Huawei's entire proposal depends on working around this gap at scale.",
+    "DeepSeek models are still trained on Nvidia hardware, but Huawei's Ascend pod is the intended long-term inference platform for Chinese labs, making the Tao scaling law directly relevant to whether China can serve its own model ecosystem without US silicon.",
+    "If Huawei executes, China is structurally positioned to dominate the 50-100 tokens-per-second inference tier: email, small code fixes, scheduling, and correspondence, tasks that represent aggregate demand at least as large as frontier-model workloads."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Huawei Tao Scaling Law Overview"
+    },
+    {
+      "t": 31,
+      "title": "US Export Bans and the EUV Cutoff"
+    },
+    {
+      "t": 61,
+      "title": "Moore's Law and Dennard Scaling History"
+    },
+    {
+      "t": 151,
+      "title": "How Dennard Scaling Broke Around 2005"
+    },
+    {
+      "t": 271,
+      "title": "Tao Scaling Law: Targets and Logic Folding"
+    },
+    {
+      "t": 359,
+      "title": "DUV vs EUV: The Manufacturing Gap"
+    },
+    {
+      "t": 421,
+      "title": "Strategic Positioning: China's Mid-Tier Inference Market"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f426b08561d20f10"
 }

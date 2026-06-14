@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A crash course on MLFlow, an MLOps platform in Python. The course covers environment setup, tracing, evaluation, prompt templates, AI gateways, agent servers, hyperparameter tuning, and integration with Scikit-Learn and PyTorch.",
-  "writeup": "",
+  "writeup": "A hands-on crash course on MLflow, the open-source MLOps toolkit that spans two domains: GenAI observability (LLM tracing, prompt management, LLM-as-judge evaluation) and classic ML operations (hyperparameter tuning, model checkpointing, model registry). The video demonstrates how adding three lines to existing Python code, an import, a tracking URI, and a provider-specific autolog call, captures per-request token counts, latency percentiles, and cost breakdowns in a local MLflow dashboard. The through-line is that production AI systems require the same instrumentation discipline as any software service, and MLflow provides a unified surface for it across OpenAI, LangChain, and Mistral.",
   "wh": "074deaef1cf67737",
   "concepts": [
     {
@@ -64,5 +64,53 @@
       "channel": "AI Master",
       "score": 0.564
     }
-  ]
+  ],
+  "key_points": [
+    "MLflow autolog requires only three additions to existing code: import mlflow, call mlflow.set_tracking_uri pointing to the local server on port 5000, and invoke the provider-specific autolog (mlflow.openai.autolog or mlflow.langchain.autolog), after which all traces are captured automatically with no further changes.",
+    "The MLflow dashboard exposes per-trace detail (system prompt, messages, tool calls, token counts) alongside aggregated statistics including 99th-percentile latency and a dollar cost view, giving operators the data to negotiate SLAs and identify expensive requests.",
+    "Experiments act as named namespaces that group traces and evaluation runs; setting mlflow.set_experiment in Python routes all subsequent telemetry to that bucket, keeping production, staging, and exploratory runs cleanly separated.",
+    "The platform operates in two distinct modes toggled in the dashboard, GenAI for LLM and agent workflows and model training for PyTorch and scikit-learn workflows covering hyperparameter tuning, model checkpointing, and a versioned model registry.",
+    "A single MLflow server instance (mlflow server, or uv run mlflow server) serves both the REST backend the Python client connects to and the browser dashboard, so the only infrastructure requirement is one persistent terminal process."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "MLflow Overview and Prerequisites"
+    },
+    {
+      "t": 91,
+      "title": "Project Setup with uv and pip"
+    },
+    {
+      "t": 210,
+      "title": "Launching the MLflow Server"
+    },
+    {
+      "t": 240,
+      "title": "Dashboard Tour: GenAI vs Model Training Modes"
+    },
+    {
+      "t": 331,
+      "title": "Experiments and Namespacing Traces"
+    },
+    {
+      "t": 390,
+      "title": "OpenAI Autolog Integration"
+    },
+    {
+      "t": 570,
+      "title": "Aggregated Stats, Latency Percentiles, and Cost Dashboard"
+    },
+    {
+      "t": 600,
+      "title": "LangChain and Mistral Autolog"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c67411ba382160a9"
 }

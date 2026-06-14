@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Austin Marchese identifies four rules for effectively prompting Claude Code by analyzing how Anthropic engineers actually use it: prompt skills not the model directly, recognize skills as distinct from prompts, build composable rather than custom skills, and leverage session-based learning. The video emphasizes patterns like embedding scripts and controlling invocation scope.",
-  "writeup": "",
+  "writeup": "Drawing on Anthropic engineering presentations and the AI Code Summit, this video distills four rules for how Anthropic's own engineers prompt Claude Code. The central shift is from writing one-off prompts to building reusable skills: organized file collections holding a description, step-by-step instructions, and tools (scripts, API calls, reference files). Composability and iterative refinement are the through-line: small, focused skills that chain together and sharpen with each session outperform monolithic prompts that degrade the moment a chat closes.",
   "wh": "be56ffdbab5cd612",
   "concepts": [
     {
@@ -64,5 +64,49 @@
       "channel": "Austin Marchese",
       "score": 0.672
     }
-  ]
+  ],
+  "key_points": [
+    "Skills in Claude Code are folders with three layers: a description (tells Claude when to invoke the skill), instructions (the step-by-step playbook), and tools (code scripts, API calls, reference files); most users stop at layer two and neglect the tools layer where Anthropic engineers say the real leverage lives.",
+    "Saving a deterministic script inside a skill trades expensive, variable AI token generation for cheap, repeatable code compute: Barry's team stopped letting Claude rewrite the same Python slide-styling script each session and instead saved it as a tool inside the skill folder.",
+    "Two invocation flags control who can trigger a skill: setting user_invocable to false hides a skill from the slash menu so only agents can invoke it, while disable_model_invocation reserves a skill for human-only use, which is appropriate for high-risk actions like sending messages or deploying code to production.",
+    "Composable skills (small, single-purpose, reusable) outperform monolithic skills because a focused skill is easier to debug, improvements propagate automatically to every workflow that uses it, and individual skills can be reused across entirely different pipelines without rebuilding.",
+    "Skills accumulate value across sessions: unlike a prompt that is lost when the chat closes, a skill persists and can be sharpened on every use, so Anthropic's framing is that Claude on day 30 is materially better than Claude on day 1 because the skill layer encodes learned working patterns."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Four Rules From Anthropic Engineers"
+    },
+    {
+      "t": 61,
+      "title": "Rule 1: Prompt Skills, Not Claude"
+    },
+    {
+      "t": 120,
+      "title": "Rule 2: Skills Are More Than Prompts"
+    },
+    {
+      "t": 211,
+      "title": "Tools Layer and the Prompts-vs-Tools Mistake"
+    },
+    {
+      "t": 270,
+      "title": "Rule 3: Build Composable Skills"
+    },
+    {
+      "t": 392,
+      "title": "Saving Scripts and Invocation Control Flags"
+    },
+    {
+      "t": 511,
+      "title": "Rule 4: Skills Improve Every Session"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "25599cc7380a2e19"
 }

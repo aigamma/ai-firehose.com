@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "A YouTube video tutorial by Tristen O'Brien demonstrates five practical uses of Claude Cowork, an AI tool by Anthropic, for automating business tasks. The video shows how Claude Cowork can reduce a 10-hour daily administrative workload to a streamlined process by analyzing financial spreadsheets, comparing supplier quotes, and generating business reports for small businesses.",
-  "writeup": "",
+  "writeup": "Claude CoWork, Anthropic's agentic workspace product, is demonstrated across five real admin tasks for an 18-location bulk candy vending business, replacing work the owner estimates at roughly 10 hours per day. The through-line is that CoWork differs from Claude Chat by connecting directly to Gmail, Google Drive, and local desktop files, and by spawning multiple parallel agents (up to 10 requested, 8 actually dispatched) to run sub-tasks concurrently. Each task produces a concrete, reviewable artifact rather than a chat reply, and the supplier comparison task surfaces $251 per year in hidden savings the owner did not know existed.",
   "wh": "585508dfa6fb53c8",
   "concepts": [
     {
@@ -60,5 +60,46 @@
       "channel": "Nick Saraev",
       "score": 0.633
     }
-  ]
+  ],
+  "key_points": [
+    "CoWork's connector architecture links Gmail, Google Drive, and local desktop files in a single session, persisting those connections across every subsequent session so setup is one-time, not per-task.",
+    "Spawning multiple agents in parallel is a first-class feature: a prompt requesting 10 agents resulted in 8 running concurrently, with visible progress tasks (pull files, filter 5-month window, calculate revenue per visit, generate visual) completing in minutes rather than the hours manual analysis would require.",
+    "The supplier comparison task (SweetTooth vs. Midwest distributors, analyzed product by product against monthly volume) found $251 per year in potential savings and flagged that premium-product pricing still favored the current distributor, producing a decision-ready executive summary rather than raw numbers.",
+    "Receipt categorization read 7 receipts from Google Drive, updated a desktop expense spreadsheet, and flagged an anomalous 30% tax charge on an $8 line item, illustrating that the anomaly-detection instruction is taken literally and acts as a lightweight audit pass.",
+    "The 18-location profitability analysis over 5 months (November through March) ranked every location by revenue per visit: top performer was an ice cream parlor at $45.17 per visit ($451.65 total across 10 visits), bottom performer at $6.78 per visit, directly surfacing a keep-or-cut decision the owner had deferred for lack of time to run the analytics.",
+    "The final task combined three desktop spreadsheets (collections data, expense tracking, supplier pricing) with same-day Gmail context to produce both a reusable monthly P&L spreadsheet with formulas and an interactive KPI dashboard showing revenue by location, expense breakdown, inventory alerts, and action items in a single run."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What CoWork Is and Why It Differs from Claude Chat"
+    },
+    {
+      "t": 62,
+      "title": "Task 1: Overnight Email Triage and Draft Replies"
+    },
+    {
+      "t": 182,
+      "title": "Task 2: Supplier Price Comparison"
+    },
+    {
+      "t": 271,
+      "title": "Task 3: Receipt Categorization and Anomaly Flagging"
+    },
+    {
+      "t": 360,
+      "title": "Task 4: Location Profitability Analysis Across 18 Sites"
+    },
+    {
+      "t": 511,
+      "title": "Task 5: Monthly P&L Report and KPI Dashboard"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a213283610ed9dbe"
 }

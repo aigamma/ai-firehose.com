@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Julia Turc provides an in-depth technical analysis of the Flow Matching training algorithm, covering time-variant probability densities, velocity fields, continuous normalizing flows, and optimal transport. The video walks through the complete Flow Matching algorithm including conditional velocity fields and Rectified Flow variants.",
-  "writeup": "",
+  "writeup": "Flow matching is the generative modeling paradigm now underlying open-source image and video models including Flux, Stable Diffusion 3, and CogVideo, requiring only 2 to 3 denoising steps instead of the 10 to 20 steps diffusion demands. The talk traces the physics and mathematics that make this possible: the 19th-century continuity equation, which connects a time-variant velocity field to the evolution of a probability density, then explains why the seemingly naive straight-line training algorithm actually works. The central insight is a divide-and-conquer trick: training on simple conditional transports (noise to a Gaussian centered on one image) implicitly teaches the model the hard unconditional transport, a non-obvious free lunch that flow-based methods only discovered in 2023.",
   "wh": "c1edc9da761e0e31",
   "concepts": [
     {
@@ -72,5 +72,53 @@
       "channel": "Tristen O'Brien",
       "score": 0.467
     }
-  ]
+  ],
+  "key_points": [
+    "Flow matching replaced Continuous Normalizing Flows (CNF, 2018) by eliminating the costly full backward simulation during training: CNF required one model invocation per trajectory segment to compute maximum likelihood, while flow matching needs only a single forward pass per step using a mean-squared-error objective against a supervised velocity label V* = X1 - X0.",
+    "The training algorithm is a deliberate approximation: rather than learning the true curved velocity field directly, flow matching trains on straight-line conditional paths between independent noise sample X0 and image X1, then relies on the mathematical guarantee that averaging over all conditionals recovers the correct marginal velocity field at inference time.",
+    "Flow matching achieves 2 to 3 inference steps versus 10 to 20 for diffusion because straighter transport paths require fewer ODE integration steps to traverse accurately; diffusion trajectories curve, while flow matching paths are by construction nearly linear.",
+    "The probability-density transport framing is grounded in a classical physics result: the continuity equation, which governs any conserved quantity (electric charge, water, probability mass) and relates the time derivative of a density to a divergence term involving the velocity field, making the whole framework rigorously founded rather than heuristically motivated.",
+    "Flow matching and diffusion models are mathematically equivalent (proven in the literature), but the flow matching perspective yields simpler training and faster sampling, which is why it displaced diffusion as the default in new open-source architectures after 2023."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Flow Matching Overview"
+    },
+    {
+      "t": 90,
+      "title": "Generative Modeling as Density Transport"
+    },
+    {
+      "t": 211,
+      "title": "The Continuity Equation and Velocity Fields"
+    },
+    {
+      "t": 390,
+      "title": "History of Flow-Based Methods"
+    },
+    {
+      "t": 510,
+      "title": "Why CNF Training Was Too Expensive"
+    },
+    {
+      "t": 570,
+      "title": "The Flow Matching Algorithm"
+    },
+    {
+      "t": 660,
+      "title": "Divide and Conquer: Conditional Velocity Fields"
+    },
+    {
+      "t": 780,
+      "title": "Conditional to Marginal: The Core Insight"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "56e93246e7e274ab"
 }

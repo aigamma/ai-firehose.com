@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cole Medin demonstrates a production-grade AI video generation workflow that takes a URL as input and produces a fully rendered MP4. The system uses Claude for planning and code generation, Remotion for video composition, Archon for orchestration, and Cartesia and ElevenLabs for voice, music, and sound effects.",
-  "writeup": "",
+  "writeup": "This livestream walks through a fully agentic video-production pipeline built on Archon, ElevenLabs (or Cartesia) for voice synthesis, and Remotion for programmatic video rendering. A single YAML workflow file orchestrates every stage: article fetch, narration authoring, sound-effect generation, voice cloning, and Remotion assembly, taking roughly 15 minutes to produce a short-form video from one prompt. The through-line is Archon's core design principle: encode the process as a durable, versioned asset rather than stuffing instructions into agent context, making large agentic workflows reliable and token-efficient.",
   "wh": "c96c31c337e4f03f",
   "concepts": [
     {
@@ -68,5 +68,46 @@
       "channel": "Jack Roberts",
       "score": 0.704
     }
-  ]
+  ],
+  "key_points": [
+    "Archon is an open-source harness builder that encodes agentic processes as YAML workflow files, turning a multi-step pipeline into a repeatable, versioned asset rather than a fragile set of markdown instructions fed to an agent.",
+    "The video-generation workflow chains article ingestion, narration writing, sound-effect creation, ElevenLabs or Cartesia voice synthesis, and Remotion video rendering inside one YAML file, invoked by telling Claude Code (or Codex) to generate a video on a topic.",
+    "Archon's key architectural insight is to build agents into workflows rather than workflows into agents: deterministic steps that must always run (validation, command sequences) are enforced by the harness, not left to the model's memory.",
+    "The YAML format supports looping, per-step model and provider selection (e.g., Claude for implementation and Codex for validation), parallel workflow execution via worktrees, and an interactive mode requiring human approval before the agent proceeds.",
+    "First-pass output from the demo (a TI-84 Evo calculator explainer) contained voice blips but required zero iteration, and the workflow supports iterative refinement by feeding Claude Code feedback on the generated video within the same session.",
+    "Setup requires only a Cartesia or ElevenLabs API key plus an Archon installation; loading the Archon skill file into the dot-Claude skills directory gives any Claude Code session immediate knowledge of how to invoke the workflow."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Archon, ElevenLabs, and Remotion Stack"
+    },
+    {
+      "t": 151,
+      "title": "Demo Video: TI-84 Evo Calculator Explainer"
+    },
+    {
+      "t": 332,
+      "title": "Workflow Asset Walkthrough"
+    },
+    {
+      "t": 510,
+      "title": "What Archon Is: Open-Source Harness Builder"
+    },
+    {
+      "t": 570,
+      "title": "Setup and YAML Workflow Structure"
+    },
+    {
+      "t": 630,
+      "title": "Agents Into Workflows, Not Workflows Into Agents"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "5fb40f817482d933"
 }

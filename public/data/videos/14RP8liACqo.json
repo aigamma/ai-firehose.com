@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A full-stack SaaS development tutorial showing architecture-first workflow with AI agents, proper context management, and deployment using Next.js, Prisma, Postgres, TypeScript, and Tailwind. Covers authentication, real-time collaboration via Liveblocks, automated workflows with Trigger.dev, and AI-driven spec generation for systems architecture design.",
-  "writeup": "",
+  "writeup": "A working demonstration of spec-driven agentic development: the presenter builds Ghost AI, a real-time multiplayer SaaS workspace, without writing a single line of code, using a disciplined six-file context system to keep the AI agent oriented across the entire build. The core argument is that AI coding failures are architecture failures, not model failures, and that the developers who thrive are those who think at the systems level and then delegate implementation. The video teaches the planning methodology as thoroughly as the tooling, making the build itself evidence for the method.",
   "wh": "ff855f98db01abc3",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "JavaScript Mastery",
       "score": 0.641
     }
-  ]
+  ],
+  "key_points": [
+    "The six-file context system (project overview, architecture, code standards, AI workflow rules, UI context, and a live progress tracker) is what prevents an agent from drifting mid-project; the progress tracker is the one file that updates constantly and lets the agent resume from exactly where work stopped.",
+    "Spec-driven development separates architectural thinking from implementation: the developer defines goals, design decisions, dependencies, and a done-checklist in a per-unit spec file before the agent writes anything, keeping the developer as architect and the agent as execution engine.",
+    "The contrast between two prompts for the same feature illustrates the core skill gap: a vague prompt outsources thinking to the model, while a precise prompt that names the auth layer, component boundaries, and what must not be touched encodes a developer who already understands the system.",
+    "At Google, Amazon, and Netflix, senior engineers routinely go months without writing production code; they write design docs and RFCs to clarify what should exist before it exists, and that pre-build discipline is what AI-assisted development now demands of every developer.",
+    "Vibe coding (describe the outcome, let the agent run, react to output) works for weekend prototypes but collapses under maintenance: new features break old ones and the codebase starts contradicting itself, a symptom of missing architecture rather than weak models.",
+    "The production stack for Ghost AI is Next.js with React 19, Liveblocks for real-time collaboration with agents, Trigger.dev for background agent work, Clerk for auth, Prisma and Postgres for data, and Vercel Blob for storage, all deployed by the end of the video."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Senior Engineers Let AI Build"
+    },
+    {
+      "t": 181,
+      "title": "The Six-File Context System"
+    },
+    {
+      "t": 241,
+      "title": "Why AI Projects Break"
+    },
+    {
+      "t": 330,
+      "title": "Spec-Driven vs Vibe Coding"
+    },
+    {
+      "t": 540,
+      "title": "Two Prompts, One Skill Gap"
+    },
+    {
+      "t": 601,
+      "title": "Inside the Six Context Files"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2e9f33b893cce78d"
 }

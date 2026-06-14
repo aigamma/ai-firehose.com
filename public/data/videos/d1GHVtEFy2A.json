@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Agent Toolkit for AWS enables AI coding agents to interact with AWS services through up-to-date documentation, best practices, and tested procedures. The toolkit includes agent skills as markdown runbooks, plugins, and MCP configuration. It supports rapid deployment workflows like Lambda and API Gateway with auditability through CloudTrail.",
-  "writeup": "",
+  "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
   "wh": "2f8188cab91e41fd",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "AWS Developers",
       "score": 0.6
     }
-  ]
+  ],
+  "key_points": [
+    "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
+    "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
+    "IAM condition keys allow platform engineers to restrict agent-initiated API calls independently of the developer's own IAM role, enabling read-only agent access even when the developer has write permissions through the MCP server.",
+    "Hard limits per account per region: 27 concurrent connections and 3 requests per second sustained; for a single developer this is fine, but teams rolling this out should monitor CloudWatch usage metrics because the 27-connection cap surprises faster than expected.",
+    "The MCP server currently runs in two regions, US East 1 and EU Central 1, but agents can operate on resources in any AWS region regardless of where the server is hosted.",
+    "The agent adapted the REST API skill to the newer, simpler HTTP API format rather than following it rigidly, then caught a catch-all route and scoped it down to the requested path, illustrating that the skill provides structure while the model handles judgment."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Problem: Agents Miss Critical AWS Steps"
+    },
+    {
+      "t": 31,
+      "title": "Toolkit Architecture: Four Components"
+    },
+    {
+      "t": 90,
+      "title": "Skills: Markdown Runbooks From Real Runs"
+    },
+    {
+      "t": 150,
+      "title": "Plugins and Rules Files"
+    },
+    {
+      "t": 180,
+      "title": "Demo: Lambda and API Gateway Deployment"
+    },
+    {
+      "t": 270,
+      "title": "CloudTrail Audit and IAM Controls"
+    },
+    {
+      "t": 300,
+      "title": "Limits, Regions, and Team Rollout"
+    },
+    {
+      "t": 390,
+      "title": "Installation and Getting Started"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "133551da4d02971e"
 }

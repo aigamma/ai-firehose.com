@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "The ColPali family includes compact embedding models (ColSmol, ColFlor, ColModernVBERT) for visual document retrieval with reduced parameters compared to the base ColPali. Multilingual variants from NVIDIA and Nomic AI are available, and ViDoRe V3 serves as the benchmark for evaluating visual retrieval models. Qdrant is a vector search engine in Rust supporting semantic and hybrid search.",
-  "writeup": "",
+  "writeup": "This lesson surveys the ColPali model family for multi-vector visual document retrieval, walking through the spectrum from the original 3B-parameter ColPali down to the 174M-parameter ColFlor (17x smaller, 9.8x faster, only about 1.8% accuracy drop on text-rich English documents). The central technical argument is that ColPali ModernBERT's bidirectional attention lets every token attend to the full input sequence, achieving near-ColPali quality at roughly 250M parameters instead of 3B. The lesson closes with a practical decision matrix: edge and browser deployments favor ColFlor or ColSmall, production efficiency favors ColPali ModernBERT, and maximum-quality unconstrained deployments warrant the full ColPali.",
   "wh": "a51331ef458408ca",
   "concepts": [
     {
@@ -68,5 +68,53 @@
       "channel": "Qdrant Vector Search",
       "score": 0.565
     }
-  ]
+  ],
+  "key_points": [
+    "ColFlor at 174M parameters is 17 times smaller than ColPali and up to 9.8 times faster, with a benchmark accuracy drop of only about 1.8% on text-rich English documents, making it the primary option for demos and edge or CPU-only deployments.",
+    "ColSmall, built on a small vision-language model and available in 256M and 500M parameter sizes, is Apache 2 licensed for commercial use, which distinguishes it from models like Nvidia's multilingual option that restricts use to non-commercial and research contexts.",
+    "ColPali ModernBERT uses bidirectional attention rather than the unidirectional attention used in text generation, allowing every token to attend to every other token in the sequence; the result is competitive retrieval quality at approximately 250M parameters compared to ColPali's 3B.",
+    "The ViDoRe v3 benchmark covers over 26,000 pages and more than 3,000 queries across six languages and ten diverse datasets designed to mirror enterprise document retrieval complexity, and it is the leading standard for evaluating visual document retrieval models.",
+    "A quality-versus-model-size comparison shows bidirectional models (ColPali ModernBERT) punch above their weight, achieving near-ColPali retrieval quality at a fraction of the parameter count, which makes CPU-only production deployments viable."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "ColPali Family Overview"
+    },
+    {
+      "t": 30,
+      "title": "ColSmall and ColFlor for Compact Deployments"
+    },
+    {
+      "t": 92,
+      "title": "ViDoRe Benchmark and Evaluation"
+    },
+    {
+      "t": 120,
+      "title": "Bidirectional vs Unidirectional Attention"
+    },
+    {
+      "t": 152,
+      "title": "ColPali ModernBERT Architecture"
+    },
+    {
+      "t": 180,
+      "title": "Model Selection Decision Matrix"
+    },
+    {
+      "t": 242,
+      "title": "Quality vs Size Tradeoff Chart"
+    },
+    {
+      "t": 270,
+      "title": "Interpretability and Heatmap Preview"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "09be4289f83575ec"
 }

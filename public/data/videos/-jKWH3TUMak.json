@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Anthropic released Claude Opus 4.8, an updated version of their flagship language model. This appears to be a significant model release from the company.",
-  "writeup": "",
+  "writeup": "A rapid walkthrough of Claude Opus 4.8, covering benchmark results against GPT-5.5 and Gemini 3.1 Pro, the model's improved honesty and alignment profile, and three platform-level changes shipping alongside it. The through-line is that Opus 4.8 delivers meaningful capability gains at the same price as 4.7 while addressing one of the most frustrating reliability failures in production AI use: the model claiming it did work it did not actually do.",
   "wh": "59744cb7960c3b05",
   "concepts": [
     {
@@ -56,5 +56,46 @@
       "channel": "Matthew Berman",
       "score": 0.717
     }
-  ]
+  ],
+  "key_points": [
+    "Opus 4.8 outperforms GPT-5.5 and Gemini 3.1 Pro on SWE-Bench Pro, multidisciplinary reasoning, agentic computer use, knowledge work, and agentic financial analysis, but scores 74.6 on TerminalBench 2.1 compared to GPT-5.5, which leads that category.",
+    "Anthropic's system card (approximately 250 pages) reports Opus 4.8 is four times less likely than Opus 4.7 to allow flaws encoded as written to pass unremarked, directly targeting the failure mode where models silently do less than instructed.",
+    "Misaligned behaviors such as deception and cooperation with misuse are substantially lower in Opus 4.8 than in Opus 4.7 or Sonnet 4.6, and are now comparable to Mythos.",
+    "Dynamic workflows enable Claude Code to spawn tens to hundreds of parallel agents within a single session to handle tasks too large for a single planning pass; it can be activated via natural language or the new ultra code setting in Claude Code.",
+    "The Messages API now accepts system entries inside the message array, allowing instruction updates mid-task, a capability compared to the steer feature in Codex.",
+    "Opus 4.8 defaults to high effort rather than the extra high default signaled for Opus 4.7, meaning two effort levels above the default remain available; rate limits in Claude Code have been raised to accommodate the higher token usage at elevated effort levels."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Benchmark Overview"
+    },
+    {
+      "t": 31,
+      "title": "Opus 4.8 vs GPT-5.5 and Gemini 3.1 Pro"
+    },
+    {
+      "t": 60,
+      "title": "Honesty and Alignment Improvements"
+    },
+    {
+      "t": 151,
+      "title": "Dynamic Workflows in Claude Code"
+    },
+    {
+      "t": 210,
+      "title": "Effort Controls and Messages API Changes"
+    },
+    {
+      "t": 240,
+      "title": "Pricing and Rate Limits"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "86280c43c4b6e45c"
 }

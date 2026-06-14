@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Anthropic released Claude Opus 4.8 with Dynamic Workflows, Effort Control, and Fast Mode. Dynamic Workflows allows Claude to spawn multiple agents to work on tasks in parallel. The update is available via Claude Code, the web app, and command-line interfaces.",
-  "writeup": "",
+  "writeup": "This video covers the five major updates Anthropic shipped with Claude Opus 4.8: a stronger honesty profile (four times fewer bugs passed through silently in Claude Code), dynamic multi-agent workflows, effort control, fast mode, and mid-conversation instruction updates. The through-line is a shift from a single diligent worker toward a system that can fan out to hundreds of parallel agents, self-audit, and surface problems before handing results back, making the model more trustworthy at scale without a price increase.",
   "wh": "eb9de36a63c92225",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "AI Revolution",
       "score": 0.68
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Opus 4.8 is four times less likely than Opus 4.7 to let a code flaw or bug pass through silently in Claude Code, which Anthropic frames as the core honesty improvement.",
+    "Dynamic workflows (research preview, Max, Team, or Enterprise plans only) allow Claude Code to spin up hundreds of parallel agents simultaneously by including the word 'workflow' in the prompt; a live demo pulled 30 years of weather data across 15 states using one agent per state and produced a ranked report.",
+    "Effort control adds a 'max' setting above the default 'high', but Anthropic warns it consumes tokens heavily, slows responses, and can exhaust plan limits faster, so it is intended only for the hardest problems.",
+    "Fast mode in Claude Code runs at 2.5 times normal speed and is billed from usage credits (separate from plan quota), but the new fast-mode rate is three times cheaper than fast mode on Opus 4.7.",
+    "Developers can now update Claude's system instructions mid-conversation without resetting the full context, a meaningful change for long-running automated pipelines."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Overview"
+    },
+    {
+      "t": 30,
+      "title": "Opus 4.8 Setup and Improvements"
+    },
+    {
+      "t": 151,
+      "title": "Dynamic Workflows"
+    },
+    {
+      "t": 271,
+      "title": "Effort Control"
+    },
+    {
+      "t": 300,
+      "title": "Fast Mode"
+    },
+    {
+      "t": 330,
+      "title": "Mid-Conversation Instructions"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a85e7a06f14b9777"
 }

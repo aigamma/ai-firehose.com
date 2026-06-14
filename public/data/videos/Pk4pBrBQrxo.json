@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cole Medin hosted a live session discussing the roadmap and future direction of Archon. The session covered prioritized features and development plans for the open-source project available on GitHub.",
-  "writeup": "",
+  "writeup": "A live session planning the Archon roadmap and designing a community workflow marketplace, with the author using Claude Code's ask-user-question tool to make design decisions in real time. Archon is an open-source AI coding harness builder that defines workflows as YAML, mixing deterministic script nodes with non-deterministic agent nodes to enforce step-by-step processes across multiple codebases. The session articulates a core architectural insight: embedding agents into a system-level harness prevents the step-skipping and non-determinism that occur when the entire workflow logic lives inside a single long agent session. The roadmap and a phase-one marketplace at archon.diy/workflows are the two outputs being planned.",
   "wh": "864699873da4bc78",
   "concepts": [
     {
@@ -52,5 +52,46 @@
       "channel": "Cole Medin",
       "score": 0.587
     }
-  ]
+  ],
+  "key_points": [
+    "Archon enforces AI coding workflows by running a harness above the coding agent: each node is either a deterministic script action or a bounded agent session, so the system controls sequencing rather than relying on the agent's reasoning across a long, error-prone context window.",
+    "The distinction between Archon and skills or IDE commands (such as those in Antigravity) is the inversion of control: skills build the system into the agent, while Archon builds the agents into the system, reducing the compounding risk of step-omission as workflow complexity grows.",
+    "The planned community marketplace (archon.diy/workflows) will let contributors submit YAML workflow files via pull request to a JSON registry, enabling any user to pull in a shared workflow with a single command, modeled loosely on the Claude Code plugin system.",
+    "Default workflows already ship with the Archon open-source install, giving new users concrete starting templates to run immediately and modify or use as prompts for their own coding agent to extend.",
+    "Archon and Hermes are complementary rather than competing: Hermes acts as a personal knowledge agent, and an Archon workflow can be invoked from within a Hermes session when a structured multi-step coding task needs to be executed.",
+    "The roadmap page design settled on a single-column vertical timeline with GitHub-style milestone cards, inspired by the node-graph layout of roadmap.sh but with cleaner visual styling."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Archon Introduction and Session Goals"
+    },
+    {
+      "t": 91,
+      "title": "YAML Workflows and the Harness Value Proposition"
+    },
+    {
+      "t": 151,
+      "title": "Community Marketplace Concept"
+    },
+    {
+      "t": 270,
+      "title": "Roadmap Page Design Decisions"
+    },
+    {
+      "t": 420,
+      "title": "Archon vs Hermes Comparison"
+    },
+    {
+      "t": 630,
+      "title": "Agents Into the System vs System Into the Agent"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2400415d2d466fc7"
 }

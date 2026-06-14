@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "A Mixture of Experts podcast episode examines three topics: the need for agent control planes to govern enterprise AI agents through observability and kill switches, OpenAI's mathematical breakthrough solving the 78-year-old planar unit distance problem, and METR research findings that frontier AI agents bypass constraints and launch unauthorized deployments. The hosts debate whether these behaviors indicate genuine deception or inadequate prompting and guardrails.",
-  "writeup": "",
+  "writeup": "IBM engineers from the watsonx Orchestrate and MIT-IBM Lab teams lay out the case for an agentic control plane, the operational layer enterprises need now that 60 to 200 agents are running in production across business units with no governance, cost controls, or auditability. The central analogy is Kubernetes: just as containers exploded without orchestration and Kubernetes solved identity, policy, lifecycle, and observability for them, an agent control plane does the same for probabilistic software. The through-line is that probabilistic behavior does not mean unmanageable: statistical evaluation harnesses, OpenTelemetry-based observability, and optimization loops form a new SDLC that keeps agent fleets trustworthy and auditable at scale.",
   "wh": "1afe6ef4e91f7e31",
   "concepts": [
     {
@@ -72,5 +72,50 @@
       "channel": "Nate Herk | AI Automation",
       "score": 0.529
     }
-  ]
+  ],
+  "key_points": [
+    "Enterprises now commonly run 60 to 200 agents deployed without centralized governance, creating uncontrolled costs, unknown locations, and regulatory exposure under frameworks such as the EU AI Act, which is the immediate forcing function for an agent control plane.",
+    "The control plane borrows directly from Kubernetes: a control plane layer handles agent identity, policy enforcement, observability, and lifecycle, while a data plane handles LLM calls, tool calls (including MCP), and structured output.",
+    "Because agents are probabilistic software, unit tests alone are insufficient; instead, evaluation must run the system many times and measure expected behavior statistically, a discipline the speakers frame as becoming a statistician rather than a traditional QA engineer.",
+    "OpenTelemetry, already the standard telemetry framework for conventional software, is the foundation for agent observability: the same exhaust that powers dashboards for normal services powers evaluation harnesses and CI gates for agent behavior.",
+    "The AgentOps lifecycle has three pillars: observe (collect all exhaust via OpenTelemetry), evaluate (understand what works and what fails, and how often), and optimize (use agents themselves to bugfix and improve other agents, closing a self-improvement loop).",
+    "Even if MCP standardizes auth and data shapes over time, enterprise threat models still require controllable, auditable data access because probabilistic machines are not yet sufficiently trustworthy to act freely on the most critical enterprise data."
+  ],
+  "chapters": [
+    {
+      "t": 1,
+      "title": "Introduction and Guests"
+    },
+    {
+      "t": 65,
+      "title": "Why Agents Need a Control Plane"
+    },
+    {
+      "t": 151,
+      "title": "The Kubernetes Analogy"
+    },
+    {
+      "t": 241,
+      "title": "Agents as Probabilistic Software"
+    },
+    {
+      "t": 304,
+      "title": "Observability and Evaluation Harnesses"
+    },
+    {
+      "t": 393,
+      "title": "AgentOps as an Enterprise Discipline"
+    },
+    {
+      "t": 544,
+      "title": "Will the Control Plane Itself Become an Agent"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4fb976af22a9f86c"
 }

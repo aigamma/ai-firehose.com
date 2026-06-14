@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Sasha Rush presents Cursor's training pipeline for Composer 2, covering base model selection using Kimi K2.5, coding-focused continued pre-training, long-horizon reinforcement learning with auto-install bootstrapping, reward shaping with nonlinear length penalties, and self-summarization for extended context handling.",
-  "writeup": "",
+  "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
   "wh": "ef63b2f55bfbedc1",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "Cursor",
       "score": 0.55
     }
-  ]
+  ],
+  "key_points": [
+    "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
+    "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
+    "RL training uses a two-stage Auto Install process driven by Composer 1.5 to automatically set up and verify hundreds of real-world coding environments, with rollouts that can reach 200,000 tokens and call hundreds of tools per trajectory.",
+    "A non-linear length penalty shapes agent verbosity during RL: short responses are penalized on easy problems to enforce efficiency, while the per-token penalty decreases as output grows longer, rewarding deep effort on genuinely hard tasks without punishing extended reasoning.",
+    "Self-summarization enables effective infinite-length training: when a rollout exceeds the context limit, the model is prompted to summarize its progress, the summary seeds the next context window, and all segments are credited with the same final reward during RL, letting the model learn to sustain long multi-step work.",
+    "Best-of-16 performance improved in parallel with single-sample accuracy throughout RL training, evidence that the model maintained output diversity rather than collapsing onto a narrow solution mode."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Composer 2 Introduction and Benchmarks"
+    },
+    {
+      "t": 91,
+      "title": "Shift to Full Agentic Coding"
+    },
+    {
+      "t": 181,
+      "title": "Three Design Subgoals and Pre-Training"
+    },
+    {
+      "t": 361,
+      "title": "Long-Horizon Reinforcement Learning"
+    },
+    {
+      "t": 451,
+      "title": "Auto Install: Automated Environment Setup"
+    },
+    {
+      "t": 601,
+      "title": "Non-Linear Length Penalty and Self-Summarization"
+    },
+    {
+      "t": 720,
+      "title": "RL Training Curves and Diversity"
+    },
+    {
+      "t": 781,
+      "title": "CursorBench: Realistic Evaluation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b89fc4377d47746b"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Matthew Berman covers Composer 2.5 and presents an interview with the CEO of Alphabet. The video discusses recent AI tool developments and offers insights from AI industry leadership.",
-  "writeup": "",
+  "writeup": "Cursor's Composer 2.5, a dot-release built on Moonshot's Kimi K2.5 open-source base, scores roughly 64% on Cursor's internal Cursor Bench benchmark while costing approximately $0.50 per task, against $11 per task for Claude Opus 4.7 and $4 per task for GPT-5.5 Extra High at comparable quality. The central argument is that price-to-performance ratio, not raw benchmark score, is the decisive metric for the vast majority of real coding workloads, and Composer 2.5 currently leads on that measure. The video also covers how Cursor trained the model by scaling RL environments and introducing text feedback during rollouts spanning hundreds of thousands of tokens, and why Cursor's proprietary coding dataset gives it a structural advantage.",
   "wh": "c25fc84f6e010b72",
   "concepts": [
     {
@@ -52,5 +52,46 @@
       "channel": "Matthew Berman",
       "score": 0.576
     }
-  ]
+  ],
+  "key_points": [
+    "On Cursor Bench, Composer 2.5 reaches approximately 64% quality, within one percentage point of Opus 4.7 Max and GPT-5.5 Extra High, but at roughly $0.50 per task versus $11 for Opus 4.7, a cost reduction of more than 20x for near-equivalent coding output.",
+    "Composer 2.5 is exclusive to the Cursor IDE and is not available via any external API, making the price advantage accessible only to Cursor subscribers.",
+    "Cursor improved the model by scaling RL training, generating more complex reinforcement learning environments, and using text feedback during RL to assign credit across rollouts spanning hundreds of thousands of tokens.",
+    "Composer 2.5 is fine-tuned on Moonshot's Kimi K2.5 open-source base, not Kimi's latest release, and Cursor initially downplayed this lineage before being pushed to acknowledge it publicly.",
+    "The recommended model strategy is a mixture: frontier models (Opus 4.7, GPT-5.5) for high-stakes upfront planning and architecture, Composer-class workhorse models for the bulk of code generation and delegation where a few percentage-point quality gap costs far less than the token spend.",
+    "Cursor's dataset advantage stems from being the first agentic AI-first IDE, predating Claude Code and Codex, which gave it an earlier and larger collection of real-world coding sessions to train on."
+  ],
+  "chapters": [
+    {
+      "t": 329,
+      "title": "Stream Intro and Google IO Sundar Pichai Interview"
+    },
+    {
+      "t": 520,
+      "title": "Introducing the Composer 2.5 Argument"
+    },
+    {
+      "t": 871,
+      "title": "Announcement Details and Workhorse Model Positioning"
+    },
+    {
+      "t": 1050,
+      "title": "Cost Per Task Benchmark Comparison"
+    },
+    {
+      "t": 1350,
+      "title": "Case for Mixed Model Strategy"
+    },
+    {
+      "t": 1441,
+      "title": "RL Training Method and Kimi K2.5 Foundation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4176feb83022e465"
 }

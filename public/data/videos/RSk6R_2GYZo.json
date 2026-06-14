@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Cole Medin demonstrates his AI coding workflow using Archon with Claude Code, claiming a 10x productivity improvement in output. The livestream covers practical daily usage patterns and shows how developers can integrate Archon into their coding process.",
-  "writeup": "",
+  "writeup": "Archon is an open-source harness builder for AI coding whose central argument is an inversion: instead of forcing a software development process into LLM prompts and skills (leaving the entire lifecycle non-deterministic), developers build LLMs into a structured workflow where only steps that need reasoning, such as writing code, invoke a model. The live stream demonstrates this philosophy on a real production codebase by working through GitHub issues (brownfield) and bootstrapping a workflow marketplace (greenfield) where contributors host self-contained bundles and install them via a single command.",
   "wh": "f2735a2439195c4e",
   "concepts": [
     {
@@ -56,5 +56,49 @@
       "channel": "Cole Medin",
       "score": 0.669
     }
-  ]
+  ],
+  "key_points": [
+    "Archon's defining distinction from prompt-heavy coding agents is architectural: the software development lifecycle is encoded as a graph of workflow nodes (planning, implementation, validation, PR creation/merge), with LLM calls reserved strictly for steps requiring reasoning while deterministic code handles the rest, making the overall process as repeatable and predictable as possible.",
+    "A workflow marketplace is the greenfield feature being built live: contributors host a self-contained bundle in their own repository (core YAML file, deterministic-node scripts, and any included skills), then submit a pull request to a central registry, enabling single-command install analogous to NPM.",
+    "Provider mixing is a first-class feature: one workflow can send the implementation step to Claude Code while routing validation to Codex or any other supported model, with explicit parameters controlling how context passes between nodes.",
+    "Work trees run in isolation under the hood, so concurrent or parallel agent invocations within Archon do not contaminate each other's state.",
+    "The stream uses Archon's own production codebase as the working example rather than a contrived demo, with open GitHub issues serving as the structured input that drives the brownfield coding agent."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Stream Goals and Session Plan"
+    },
+    {
+      "t": 90,
+      "title": "Brownfield and Greenfield Scope"
+    },
+    {
+      "t": 120,
+      "title": "Workflow Marketplace Concept"
+    },
+    {
+      "t": 450,
+      "title": "GitHub Issues as Agent Input"
+    },
+    {
+      "t": 511,
+      "title": "Archon Elevator Pitch"
+    },
+    {
+      "t": 540,
+      "title": "Build LLMs Into Your System"
+    },
+    {
+      "t": 602,
+      "title": "Deterministic Nodes and Provider Mixing"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "7c69094d535cf113"
 }

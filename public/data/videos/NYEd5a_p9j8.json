@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "An AWS tutorial video covering foundational SQL concepts, database design, and hands-on deployment to the cloud. Covers CRUD operations, normalization, relationships, JOINs, and deploying MySQL databases to Amazon RDS.",
-  "writeup": "",
+  "writeup": "A ground-up introduction to relational databases using MySQL, tracing every concept from the four CRUD operations through hands-on SQL table design and data insertion. The video installs MySQL and MySQL Workbench on both Mac (Homebrew) and Windows, creates a database and a users table with typed columns, constraints, and an auto-incrementing primary key, then walks through INSERT and SELECT queries against a live schema. The through-line is that the same 1970s relational model underlies every tap, swipe, and form submission in modern apps.",
   "wh": "51fb4ac313a257ce",
   "concepts": [
     {
@@ -68,5 +68,46 @@
       "channel": "AI Master",
       "score": 0.502
     }
-  ]
+  ],
+  "key_points": [
+    "CRUD (Create, Read, Update, Delete) are the four operations every app performs against a database: account signup is a create, loading a feed is a read, editing a bio is an update, and deleting a post is a delete.",
+    "A relational database table mirrors a spreadsheet: each row is one record, each column is a typed field, and every row gets a unique integer primary key (auto-incremented) that no two rows can share.",
+    "MySQL Workbench is the GUI layer; MySQL Community Server is the actual database engine. On Mac, Homebrew installs the server with a single command (brew install mysql) and a second command starts it (brew services start mysql); Windows users use the MySQL Community Server installer from dev.mysql.com.",
+    "The CREATE TABLE statement defines column names, data types (INT, VARCHAR, TIMESTAMP), and constraints (NOT NULL, UNIQUE, PRIMARY KEY, AUTO_INCREMENT, DEFAULT CURRENT_TIMESTAMP) all at once, enforcing data integrity before any row is inserted.",
+    "INSERT INTO specifies only the columns the application controls (username, email, password); the database fills in the auto-incremented ID and the created_at timestamp automatically, mirroring how an e-commerce system assigns an order number without user input.",
+    "SELECT with an asterisk (SELECT * FROM users) returns every column of every row in a table, the R in CRUD, and is the foundation for reading any data the app needs to display."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why Every App Uses a 1970s Technology"
+    },
+    {
+      "t": 93,
+      "title": "CRUD: The Four Database Operations"
+    },
+    {
+      "t": 152,
+      "title": "Relational Tables and Primary Keys"
+    },
+    {
+      "t": 210,
+      "title": "Installing MySQL and MySQL Workbench"
+    },
+    {
+      "t": 455,
+      "title": "Creating a Database and Users Table"
+    },
+    {
+      "t": 630,
+      "title": "Inserting and Reading Data with SQL"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0580af00fadfbf9c"
 }

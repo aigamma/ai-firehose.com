@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube guide demonstrating eight practical workflows using Google's Gemini 3.5 Flash model, including multimodal vision analysis, video understanding, contract analysis, code generation, and workspace automation. The presenter claims Gemini 3.5 Flash delivers performance comparable to the Pro tier at lower cost.",
-  "writeup": "",
+  "writeup": "Gemini 3.5 Flash is tested across seven distinct workflows, from fridge-contents vision to 40-page contract analysis, and the results consistently outperform what 2.5 Pro produced on the same tasks. The core argument is structural: at $1.50 per million input tokens and $9 per million output tokens, Flash sits in a different cost bracket from Claude Opus 4.7 ($5/$25) and GPT-5.5 ($5/$30), and the 64,000-token output limit means long generations that previously truncated now finish in a single response. The thinking level toggle in AI Studio, scalable from low to high, adds a chain-of-thought layer that caught two penalty clauses and an auto-renewal trigger in a contract that the low-thinking pass missed entirely, making Flash a credible choice for high-stakes document work, not just fast drafts.",
   "wh": "92fedaac03e95fb2",
   "concepts": [
     {
@@ -68,5 +68,50 @@
       "channel": "Google for Developers",
       "score": 0.633
     }
-  ]
+  ],
+  "key_points": [
+    "Flash's 64,000-token output limit is the most consequential practical change: a full React and Tailwind component spanning hundreds of lines streams to completion without truncation, eliminating the mid-generation wall that required follow-up prompting with earlier models.",
+    "In the thinking level demo on a 40-page B2B contract, switching from low to high thinking caused the model to catch two penalty clauses and an automatic renewal trigger that the low-thinking pass missed, establishing a concrete rule: set thinking to high whenever the cost of a wrong answer is real.",
+    "Flash's pricing ($1.50 input, $9 output per million tokens) versus Claude Opus 4.7 ($5/$25) and GPT-5.5 ($5/$30) is not a marginal gap: on output-heavy production workflows, the $9-vs-$25 difference compresses costs substantially at scale.",
+    "Native video understanding accepts a long video file dropped directly into chat, with no transcription step or external tool, and returns timestamped insights verified accurate within roughly 20 seconds, plus a Python chart rendered in the same response from data pulled at a specified timestamp.",
+    "In AI Studio's structured output panel, 15 receipt photos in mixed languages and formats were processed in one request with no API code written: Flash returned valid JSON in a uniform schema for every receipt, handling language switching automatically.",
+    "Google set Gemini 3.5 Flash as the default model inside AI mode in Google Search globally, meaning Flash is already the model most people encounter when they use AI-assisted search, a deployment decision that effectively ends the \"budget tier\" framing."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Flash Replaces the Pro Tier"
+    },
+    {
+      "t": 31,
+      "title": "Multimodal Vision Demo"
+    },
+    {
+      "t": 151,
+      "title": "Native Video Understanding"
+    },
+    {
+      "t": 331,
+      "title": "Pricing and Context Window Specs"
+    },
+    {
+      "t": 391,
+      "title": "Long Document Analysis with Thinking Levels"
+    },
+    {
+      "t": 512,
+      "title": "Vibe Coding in AI Studio"
+    },
+    {
+      "t": 660,
+      "title": "JSON Structured Output from Receipts"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "92cf96e2fe4da78a"
 }

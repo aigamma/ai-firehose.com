@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "A biomedical AI copilot demonstration integrating Neo4j graph database and Qdrant vector search to navigate PubMed literature. The system uses context engineering techniques to wire retrieval-augmented generation into an agentic system for medical research applications.",
-  "writeup": "",
+  "writeup": "A joint Qdrant and Neo4j webinar demonstrating a live agentic PubMed Navigator for biomedical literature research. The system routes three distinct query types (keyword-semantic hybrid, vector-space constraint filtering, and relationship/collaboration queries) to different retrieval tools, combining dense and sparse vector search from Qdrant with graph traversal over MeSH ontologies in Neo4j before fusing both into a single LLM-generated answer. The central argument is that PubMed's keyword-only interface is structurally insufficient for research workflows and that layering vector search with a knowledge graph is the minimum viable context engineering stack for this domain.",
   "wh": "84f18c51fc23c6de",
   "concepts": [
     {
@@ -68,5 +68,53 @@
       "channel": "Qdrant Vector Search",
       "score": 0.586
     }
-  ]
+  ],
+  "key_points": [
+    "Healthcare was the top AI-adopting domain in the Menlo Ventures 2025 report despite heavy data-protection constraints, driven by use cases including ambient scribes, drug development semantic search over molecules and proteins, and AI-assisted literature synthesis.",
+    "PubMed's keyword-only interface and strict rate limits create a hard ceiling for research queries: keyword search cannot capture synonymity, cannot steer away from unwanted concepts (such as animal studies), and cannot answer relationship questions like which authors collaborated on a given topic.",
+    "The system architecture routes queries through three distinct tool types: Qdrant hybrid retrieval (sparse vectors for exact token matching, dense vectors for semantic range) for broad recall; Qdrant negative-example filtering to traverse vector space away from counter-examples; and Neo4j graph tools for MeSH-topic-based paper retrieval, gene co-occurrence, and collaborator network queries.",
+    "In the live demo, a query about TP53 in cancer progression triggers both Qdrant retrieval (top-K scored documents with visible relevance scores) and Neo4j collaborator/topic graph traversal, with the full trace exposed in a right-panel inspector alongside the LLM-synthesized answer with per-paper citations and links.",
+    "The demo system runs live on Vercel (frontend) and Render (backend), illustrating that a production agentic RAG system combining vector and graph retrieval is deployable today with commodity hosting."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Agenda"
+    },
+    {
+      "t": 60,
+      "title": "Medical AI in 2026"
+    },
+    {
+      "t": 150,
+      "title": "Healthcare Adoption and the Menlo Ventures Report"
+    },
+    {
+      "t": 242,
+      "title": "PubMed Limitations and the Research Query Problem"
+    },
+    {
+      "t": 360,
+      "title": "Three Query Types Requiring Different Retrieval"
+    },
+    {
+      "t": 571,
+      "title": "Agentic System Architecture"
+    },
+    {
+      "t": 720,
+      "title": "Live PubMed Navigator Demo"
+    },
+    {
+      "t": 780,
+      "title": "Trace Inspector and Results"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b94b0e19c3100d5c"
 }

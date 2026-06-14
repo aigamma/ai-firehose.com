@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AI Search presents a curated news roundup covering recent AI model releases, research tools, and robotics developments. The video highlights Claude Opus 4.8, Step 3.7 Flash, DeepSWE, and various computer vision and 3D generation techniques, along with robotic systems like Astribot T1.",
-  "writeup": "",
+  "writeup": "A weekly AI news roundup cataloguing seven new open-source or soon-to-open releases across computer vision, 3D reconstruction, image upscaling, and generative world modeling. The throughline is that consumer-GPU compute is the target in nearly every release: model weights and training code land alongside the papers, and size constraints (3 B to 7.8 GB) are cited as explicit design goals. The week's releases span Nvidia (Locate Anything, PiD), third-party researchers (ControlLight, TriPlat, InstructAV-to-AV, GenRecon), and a generative FPS world model (SCOPE).",
   "wh": "49e8cf4d001ebcc6",
   "concepts": [
     {
@@ -76,5 +76,54 @@
       "channel": "Wes Roth",
       "score": 0.656
     }
-  ]
+  ],
+  "key_points": [
+    "Nvidia's Locate Anything uses parallel box decoding to predict an entire bounding box in a single step rather than token-by-token, making it faster and geometrically more reliable; it is trained on 103 million language queries across object detection, OCR, and layout tasks, runs at 3 billion parameters (7.8 GB), and is fully open source.",
+    "ControlLight, a Flux-based image relighting tool, learns a continuous spectrum of brightness levels rather than a single before-and-after pair, so it can raise exposure on dark scenes without the artifact and noise problems of a traditional brightness slider; the model weights, training code, and training dataset are all released.",
+    "TriPlat bypasses the standard Gaussian-splat-to-mesh conversion step in 3D reconstruction by representing the entire scene as triangle primitives from the start, yielding a simulation-ready mesh that supports physics and collision without post-processing; the 4.4 GB model is open source.",
+    "Nvidia's PiD replaces the two-stage latent-decode-then-upscale pipeline with a single pixel diffusion decoder that outputs 2K directly, achieving under one second for a 512x512 to 2K upscale and roughly six times the speed of SeedVR2 while winning the majority of quality comparisons; it supports Flux, SD3, and several other base models.",
+    "InstructAV-to-AV edits both audio and lip sync in a video from a single text prompt, allowing word changes, voice gender swaps, or entirely new speech while keeping lip motion consistent, though model weights were not yet publicly available at time of coverage.",
+    "GenRecon reconstructs a PBR-ready 3D mesh from casual smartphone video by generating scene chunks jointly for global consistency and using Trellis 2 as a generative shape prior, giving the system knowledge of plausible 3D geometry beyond what the input frames directly show; a technical paper is available but the code is not yet released."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Weekly AI Releases Overview"
+    },
+    {
+      "t": 61,
+      "title": "Nvidia Locate Anything: Parallel Box Decoding"
+    },
+    {
+      "t": 150,
+      "title": "ControlLight: Generative Image Relighting"
+    },
+    {
+      "t": 272,
+      "title": "TriPlat: Triangle-Primitive 3D Reconstruction"
+    },
+    {
+      "t": 362,
+      "title": "Nvidia PiD: Pixel Diffusion Upscaler"
+    },
+    {
+      "t": 451,
+      "title": "InstructAV-to-AV: Prompted Video and Audio Editing"
+    },
+    {
+      "t": 540,
+      "title": "GenRecon: Smartphone Video to 3D Mesh"
+    },
+    {
+      "t": 631,
+      "title": "SCOPE: Generative FPS World Simulator"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "361216898c07c5c6"
 }

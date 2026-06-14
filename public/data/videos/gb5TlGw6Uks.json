@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Nate Herk provides a one-hour tutorial on setting up Hermes Agent from scratch on a VPS, covering installation on Hostinger, Telegram integration, skill creation, cron jobs, and GitHub backup. The course explains Hermes's five pillars and how it compares to Claude Code and OpenClaw.",
-  "writeup": "",
+  "writeup": "A hands-on walkthrough of Hermes Agent, an MIT-licensed open-source self-hosting agent from News Research with 140,000 GitHub stars that runs on a VPS or Docker container and interfaces through Telegram (also Discord, Slack, WhatsApp). The through-line is a practical taxonomy of when to use which agent class: Claude Code stays on the desktop for knowledge work and coding, while Hermes and OpenClaw serve the mobile, ambient-automation use case via scheduled crons and conversational Telegram access. The five-pillar architecture centers persistence across stateless sessions: two Markdown files, user.md and memory.md, are loaded at every session start and auto-populated by the agent so context is never lost between wakeups.",
   "wh": "180f79d67ced2f98",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "Code With Aarohi",
       "score": 0.55
     }
-  ]
+  ],
+  "key_points": [
+    "Hermes ships with 91 built-in skills out of 684 total documented skills, including Excalidraw diagram generation, voice responses, and transcription, with no manual installation required for the defaults.",
+    "The presenter's live cron stack includes a daily AI news briefing posted to his community, YouTube comment monitoring and reply automation using video transcripts and personal context, morning business summaries, and server health checks, illustrating that the agent is already doing real ambient work rather than serving as a demo toy.",
+    "Hermes differs from OpenClaw (350,000 GitHub stars, larger team, Nvidia's Nemo enterprise stack built on top, created by Peter Steinberger before he joined OpenAI) in being lighter, faster, and explicitly oriented toward self-improvement and tinkering with open-source models including Llama alongside Claude.",
+    "A GitHub repo acts as the shared substrate across agent ecosystems: the same knowledge base, business context, and skill files can be pointed at by Claude Code, Hermes, OpenClaw, or Codex with only minor terminology differences (claude.md vs. agents.md), enabling a multi-agent setup without duplicating context.",
+    "Memory persistence in Hermes is handled by two Markdown files loaded at every stateless session start: user.md captures preferences, communication style, and dislikes, while memory.md captures active projects, environment details, and business context, and Hermes auto-extracts and updates both files so the operator does not need to maintain them manually."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Demo: Hermes in Action via Telegram"
+    },
+    {
+      "t": 91,
+      "title": "Live Cron Stack and HyperFrames Video Test"
+    },
+    {
+      "t": 211,
+      "title": "What Hermes Agent Is"
+    },
+    {
+      "t": 240,
+      "title": "Claude Code vs OpenClaw vs Hermes"
+    },
+    {
+      "t": 361,
+      "title": "GitHub Repo as Shared Agent Substrate"
+    },
+    {
+      "t": 422,
+      "title": "Five Pillars: Memory Architecture"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "6075e0ae8cff7051"
 }

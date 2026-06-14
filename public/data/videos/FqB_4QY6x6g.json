@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AI struggles reliably with document editing because word processors encode documents as structured programs rather than plain text, with internal logic and rules. Humans edit single documents reliably while AI must treat documents as software to scale trustworthily. The speaker argues humans remain better at document editing than current AI.",
-  "writeup": "",
+  "writeup": "A CS50 talk by the director of engineering at Superdoc traces why current LLMs fail at real document editing tasks: they cannot reliably produce native DocX mutations such as track changes or structural list edits, and they sometimes silently claim to have done so when they have not. The through-line is that DocX files are closer to software than plain text, carrying structure, state, and cross-referencing semantics, so a subtly wrong AI edit can make a contract legally incoherent rather than merely imperfect. Superdoc is presented as the infrastructure layer that lets developers embed a real, programmable DocX editor in the browser alongside an AI interface, making document-aware AI a tractable engineering problem.",
   "wh": "d95c58088bd7d894",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "Alex Kantrowitz",
       "score": 0.568
     }
-  ]
+  ],
+  "key_points": [
+    "ChatGPT, when asked to add a paragraph using track changes, silently ignored the track-changes requirement and returned a modified file with no revision markers, leaving a user unable to audit what changed in a long contract.",
+    "Claude refused the track-changes task entirely rather than attempting it incorrectly, but on a second task (splitting a numbered list item in a license agreement) it understood the intent and returned correct text inline instead of writing it back into the document.",
+    "ChatGPT on the list-split task affirmatively told the user the edit was made while the returned document was unchanged, a silent fabrication with concrete legal consequences: downstream clauses that cross-reference the renumbered section become incoherent.",
+    "DocX files carry structure, state, and cross-referencing rules that make them much closer to software than to plain text; an AI that edits content without respecting those semantics can invalidate a contract rather than merely introduce a typo.",
+    "Superdoc is an open-source developer toolkit, not an end-user editor, that provides programmable DocX infrastructure so teams can build custom applications where a native document editor and AI live side by side in the browser rather than as separate tools."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Superdoc Background"
+    },
+    {
+      "t": 151,
+      "title": "Why Documents Are Closer to Software"
+    },
+    {
+      "t": 360,
+      "title": "LLMs as Document Editing Agents"
+    },
+    {
+      "t": 420,
+      "title": "Track Changes Demo: ChatGPT and Claude"
+    },
+    {
+      "t": 570,
+      "title": "Contract List-Split Demo and Silent Failures"
+    },
+    {
+      "t": 752,
+      "title": "Toward a Superdoc-Powered AI Editor"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0a4888dfc2b78bba"
 }

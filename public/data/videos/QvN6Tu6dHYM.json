@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google's Co-scientist and Robin agent system automate medical discoveries. The systems identified novel treatments for cancer, antibiotic resistance, vision loss, and liver fibrosis by discovering genetic connections and drug combinations.",
-  "writeup": "",
+  "writeup": "Google's Co-Scientist is a multi-agent system published in Nature that autonomously conducts biomedical research by running a pipeline of specialized agents: generation, reflection, proximity clustering, evolution, and a ranking agent that resolves competition between hypotheses through an ELO-rated tournament of simulated debates. In a blind evaluation against PhD-level human experts and other state-of-the-art AI models on 15 unsolved biomedical goals, Co-Scientist's outputs were rated significantly higher in novelty, plausibility, and impact. Applied to acute myeloid leukemia, it identified binimetinib (an existing skin-cancer drug) as a repurposing candidate with an IC50 of 2 nanomolars against AML cells, and independently proposed KIRA6 targeting the IRE1-alpha stress pathway, a connection no prior human publication had made. The video covers the full architecture in detail before walking through the experimental validation that confirmed these AI-generated hypotheses in the lab.",
   "wh": "74e97918173df798",
   "concepts": [
     {
@@ -64,5 +64,49 @@
       "channel": "AI Revolution",
       "score": 0.611
     }
-  ]
+  ],
+  "key_points": [
+    "Co-Scientist uses six specialized agents in a closed loop: a supervisor, a generation agent that synthesizes scientific literature via web search, a reflection agent that stress-tests every hypothesis, a proximity agent that collapses near-duplicate ideas, an evolution agent that iteratively refines survivors, and a ranking agent that hosts ELO-rated head-to-head debates between hypotheses across hundreds or thousands of automated rounds.",
+    "In a blind evaluation on 15 challenging, unsolved biomedical goals, independent human judges rated Co-Scientist's outputs as significantly superior to both human expert solutions and competing AI models on novelty, plausibility, and impact, establishing that the system generates genuinely new ideas rather than recombining known ones.",
+    "Searching 2,300 FDA-approved drugs for AML repurposing candidates, Co-Scientist identified binimetinib (approved for melanoma) as highly potent against leukemia cells, confirmed in lab assays with an IC50 of 2 nanomolars, a concentration indicating very strong efficacy.",
+    "Co-Scientist generated a hypothesis with no prior human literature support: that KIRA6, an inhibitor of the IRE1-alpha enzyme involved in cellular stress response and protein clearance, could selectively kill leukemia stem cells because those cells, dividing uncontrollably, rely on that stress pathway to survive their own protein-manufacturing overload, while normal cells tolerate its inhibition.",
+    "The ELO tournament mechanism is architecturally central: pairs of hypotheses argue their merits in simulated debate, a separate AI judge scores each round, and ratings shift according to the same mathematics used in chess ratings, so stronger ideas accumulate points through hundreds of repetitions rather than being selected by a single pass."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI Hits Scientific Discovery"
+    },
+    {
+      "t": 61,
+      "title": "Co-Scientist Architecture Overview"
+    },
+    {
+      "t": 181,
+      "title": "Reflection and Proximity Agents"
+    },
+    {
+      "t": 241,
+      "title": "ELO Tournament of Ideas"
+    },
+    {
+      "t": 300,
+      "title": "Validation Against Human Experts"
+    },
+    {
+      "t": 390,
+      "title": "AML Drug Repurposing"
+    },
+    {
+      "t": 511,
+      "title": "KIRA6: A Novel Hypothesis"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "496a1fd67c89b612"
 }

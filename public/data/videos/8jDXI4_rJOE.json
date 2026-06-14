@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "David Ondrej showcases CMUX, a 100% open-source terminal designed for AI agents and development. The video promotes CMUX alongside related AI coding learning resources and employment opportunities at Scale Software.",
-  "writeup": "",
+  "writeup": "Cmux is a native macOS terminal multiplexer built on libGhostty (Swift, not Electron) and designed specifically for running multiple AI agents in parallel. The video walks through its three core concepts (workspaces, panes, and surfaces), its keyboard-driven workflow, and an integrated browser surface that agents can use directly to debug running apps. The through-line is that every design choice, from per-pane independent zoom to the notification system that highlights whichever agent just finished, is oriented around the assumption that the user is orchestrating several concurrent coding agents at once.",
   "wh": "e2bf80b2035bc5e7",
   "concepts": [
     {
@@ -52,5 +52,46 @@
       "channel": "Alberta Tech",
       "score": 0.611
     }
-  ]
+  ],
+  "key_points": [
+    "Cmux is built on libGhostty, the GPU-accelerated rendering engine that powers the Ghostty terminal, giving it native macOS speed without Electron overhead; it is open source and free to download at cmux.com.",
+    "The three structural concepts are workspaces (separate projects, switched on the left sidebar), panes (splits within a workspace, created with Command-D for horizontal or Command-Shift-D for vertical), and surfaces (tabs within a pane that can be either a terminal or a full integrated browser).",
+    "Per-pane independent zoom (Command-Minus and Command-Plus) means zooming in on one Claude Code session does not affect adjacent panes, a quality-of-life feature that directly addresses multi-agent monitoring.",
+    "The notification system highlights panes with a blue outline when an agent finishes and the Command-Shift-U shortcut jumps to the latest unread agent output, so the user can stay in a different workspace until an agent needs attention.",
+    "Agents such as Claude Code, Codex, and Py can themselves invoke the Cmux CLI to create new panes, split the screen, and arrange the workspace, making the terminal environment something agents can construct and reconfigure programmatically.",
+    "The integrated browser surface lets agents open a browser tab inside the same terminal window for live app debugging, removing the need to switch to a separate browser process."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Is Cmux"
+    },
+    {
+      "t": 30,
+      "title": "Built on libGhostty"
+    },
+    {
+      "t": 60,
+      "title": "Native Speed and Agent Compatibility"
+    },
+    {
+      "t": 330,
+      "title": "Workspaces, Panes, and Surfaces"
+    },
+    {
+      "t": 452,
+      "title": "Notification System"
+    },
+    {
+      "t": 600,
+      "title": "Agents Operating Cmux Itself"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b4b237f576b89c6a"
 }

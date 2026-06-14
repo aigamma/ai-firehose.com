@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "AWS Developers presents five techniques to reduce AI hallucinations in agents: semantic tool selection to filter context, graph RAG for precise queries, multi-agent validation to catch failures, symbolic guardrails implemented in code, and runtime steering for self-correction. Demonstrates each technique with a travel agent example and shows how Amazon Bedrock AgentCore implements these at scale.",
-  "writeup": "",
+  "writeup": "A live-coded walkthrough of five production techniques for reducing token waste and catching failures in AI agents, demonstrated on a 31-tool travel agent built with AWS Strands Agents. The core argument is that agent reliability problems are engineering problems solved in code, not prompt-tuning problems. The first two techniques receive full demos: semantic tool selection (embedding-based filtering that drops per-call token counts from roughly 2,000 to under 400 while raising accuracy) and Graph-RAG (replacing vector search with Neo4j Cypher queries to get computed, verifiable answers for aggregation and multi-hop questions where RAG fabricates confident-sounding estimates).",
   "wh": "389030beacc0debc",
   "concepts": [
     {
@@ -76,5 +76,49 @@
       "channel": "AI Engineer",
       "score": 0.614
     }
-  ]
+  ],
+  "key_points": [
+    "Semantic tool selection embeds each tool's name and docstring into a local FAISS vector store using sentence-transformers, then filters the agent's available tools per query so the model sees only the 3 most relevant tools instead of all 29, cutting per-call token usage from roughly 2,000 tokens to under 400 and raising accuracy from 31% to meaningfully higher.",
+    "Standard RAG breaks down for aggregation and relationship queries (average rating across all hotels, count of hotels with a pool) because vector search returns a top-N chunk sample and the model presents its estimate as fact with full confidence; Graph-RAG replaces this with a Neo4j knowledge graph where the agent writes a Cypher query that executes across the full dataset and returns a computed, verifiable result without consuming additional tokens.",
+    "All five techniques are implemented as code changes, not prompt changes: semantic tool selection, Graph-RAG via Neo4j, multi-agent validation (a second agent checks every response before it reaches the user), neurosymbolic guardians (business rules enforced in Python code the model cannot skip), and runtime guardrails that steer the agent to self-correct rather than issuing a hard stop.",
+    "Amazon AgentCore Gateway provides the production equivalent of the demo's hand-built tool-selection index: register tools once and the managed routing layer handles per-request tool selection automatically, with no infrastructure to manage.",
+    "In Strands Agents each tool schema (name, description, typed parameters) costs roughly 70 to 100 tokens per call; a 31-tool agent therefore burns approximately 3,000 tokens on tool descriptions alone before any user message or response, and with conversation memory that cost grows with every turn."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Five Techniques Overview"
+    },
+    {
+      "t": 94,
+      "title": "Strands Agent Demo Setup"
+    },
+    {
+      "t": 243,
+      "title": "Semantic Tool Selection: How It Works"
+    },
+    {
+      "t": 544,
+      "title": "Token Comparison: All Tools vs Semantic Filter"
+    },
+    {
+      "t": 726,
+      "title": "AgentCore Gateway in Production"
+    },
+    {
+      "t": 752,
+      "title": "When RAG Fails: Aggregation Queries"
+    },
+    {
+      "t": 840,
+      "title": "Graph-RAG with Neo4j"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "57d34673a1227806"
 }

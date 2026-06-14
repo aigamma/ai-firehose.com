@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "TurboQuant is a vector compression technique integrated into Qdrant that achieves 8x, 16x, and 32x compression with higher recall than Binary Quantization. It builds on Google Research's algorithm with Qdrant enhancements including length re-normalization, per-coordinate anisotropy compensation, and integer-arithmetic scoring.",
-  "writeup": "",
+  "writeup": "A Qdrant engineering webinar walks through the quantization hierarchy in Qdrant 1.18, from scalar (4x compression) and binary (up to 32x) to product quantization (up to 46x), then lays the groundwork for TurboQuant, which the team built as a direct improvement on product quantization. The through-line is a concrete tradeoff analysis: each compression tier trades accuracy for memory reduction, and TurboQuant aims to recover accuracy that standard product quantization loses while preserving its aggressive compression ratio. Matryoshka dimensionality reduction is distinguished from quantization: the former truncates dimensions, the latter compresses all dimensions into fewer bits.",
   "wh": "2fc714de9de06732",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "Qdrant Vector Search",
       "score": 0.559
     }
-  ]
+  ],
+  "key_points": [
+    "Product quantization achieves up to 46x compression by clustering per-dimension value distributions and storing only the nearest cluster index (3 bits instead of 32), but this introduces approximation error and is slow at scoring because every dimension must be reconstructed.",
+    "Qdrant's four quantization tiers span a wide accuracy-size tradeoff: scalar quantization (32-bit float to 8-bit int, 4x) is least lossy, binary quantization (1-2 bits, 32x) is most extreme, product quantization reaches 46x at the cost of meaningful accuracy regression, and TurboQuant targets a better accuracy-to-compression point than standard product quantization.",
+    "TurboQuant shipped in Qdrant 1.18 and was built by two core Qdrant engineers; the session is a direct engineering deep-dive from the implementers, not a marketing overview.",
+    "Product quantization requires enough vectors for the per-dimension cluster distributions to be representative; roughly 1,000 vectors is a practical floor, with accuracy improving as the corpus grows.",
+    "Quantization and Matryoshka representation are complementary, not competing: Matryoshka skips trailing dimensions entirely while quantization preserves all dimensions in fewer bits, and the two techniques can be combined."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introductions and Session Overview"
+    },
+    {
+      "t": 150,
+      "title": "What Is Quantization"
+    },
+    {
+      "t": 240,
+      "title": "Qdrant Quantization Types Compared"
+    },
+    {
+      "t": 361,
+      "title": "Matryoshka vs Quantization"
+    },
+    {
+      "t": 452,
+      "title": "Product Quantization Deep Dive"
+    },
+    {
+      "t": 722,
+      "title": "Cluster Assignment and Compression Mechanics"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f6f360cccd379a31"
 }

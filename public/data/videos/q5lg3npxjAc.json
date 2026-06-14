@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Nate Herk reviews Claude Opus 4.8 release, analyzing benchmark performance and documenting practical workflow integration strategies. The video critiques benchmark-only evaluation and highlights improvements over Opus 4.7, including honesty and reasoning improvements.",
-  "writeup": "",
+  "writeup": "Released May 28, 2026 at the same price as Opus 4.7, Claude Opus 4.8 targets the most-cited failures of its predecessor: dishonesty about task progress, early abandonment of long-running work, safety overreach, and a stubborn tone. The video walks through the new effort slider in Claude Code (low through ultra code), the misaligned-behavior evaluation where 4.8 scores roughly half of 4.7, and the community complaints that shaped the release. The through-line is that model quality and prompting craft are both levers: effort level, positive framing of instructions, and explaining the why behind a constraint each move outcomes more than waiting for the next model.",
   "wh": "0daa82a786eab444",
   "concepts": [
     {
@@ -60,5 +60,50 @@
       "channel": "AI Search",
       "score": 0.64
     }
-  ]
+  ],
+  "key_points": [
+    "Opus 4.8 ships at the same input and output token price as 4.7, but Anthropic increased rate limits for Claude Code API users to accommodate higher token consumption at elevated effort levels.",
+    "The effort slider now runs from low to ultra code (extra high plus dynamic workflows), and the gap between low and extra high on the same model is large enough to feel like a separate model version, making effort the primary dial to tune before switching models.",
+    "On Anthropic's misaligned-behavior evaluation (lower is better), Opus 4.8 scores roughly half of both Opus 4.7 and Sonnet 4.6, the most concrete quantitative improvement cited in the release.",
+    "The four most-reported Opus 4.7 complaints were laziness (abandoning tasks too early), safety overreach, excessive token burn, and an argumentative tone; 4.8 was built explicitly to address all four.",
+    "Anthropic teased Mythos, a new model class above Opus in capability, currently restricted to a small number of cybersecurity organizations pending stronger safety safeguards before general release.",
+    "Prompting best practices from the Claude API docs recommend stating what to do rather than what to avoid, and attaching the reasoning behind each constraint so the model can apply the instruction more accurately across edge cases."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Opus 4.8 Release Overview"
+    },
+    {
+      "t": 60,
+      "title": "Rate Limits and Effort Levels"
+    },
+    {
+      "t": 150,
+      "title": "Benchmarks and Marketing Caveats"
+    },
+    {
+      "t": 300,
+      "title": "Opus 4.7 Community Complaints"
+    },
+    {
+      "t": 360,
+      "title": "What 4.8 Was Built to Fix"
+    },
+    {
+      "t": 420,
+      "title": "Effort as the Primary Lever"
+    },
+    {
+      "t": 480,
+      "title": "Prompting Best Practices"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c44f45a84c493d87"
 }

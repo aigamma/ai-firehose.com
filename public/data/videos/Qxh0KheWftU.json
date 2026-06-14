@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "CS50 2D Lecture 3 covers building a Match-3 game using tile grids, tweening, timers, and color palettes. The lecture is part of Harvard's CS50 introductory computer science course available through edX, Harvard Extension School, and OpenCourseWare.",
-  "writeup": "",
+  "writeup": "CS 52D (Harvard Game Development) Week 3 walks through building a Match 3 game in Lua/LÖVE2D, using Bejeweled and Candy Crush as reference points. The lecture centers on two new mechanics that give games the feel of being alive rather than mechanical: tweening (smooth interpolation between two positions or values) and timers (scheduling discrete actions over time). It also revisits quads and texture atlases from Week 2, showing how a uniform 32x32 tile grid maps tile IDs to sprite positions and makes match detection a matter of comparing integer IDs.",
   "wh": "23b89ce6a010ee2e",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "CS50",
       "score": 0.603
     }
-  ]
+  ],
+  "key_points": [
+    "Tweening, the interpolation of a value between two points over a fixed duration, is what turns instantaneous grid swaps and tile falls into smooth animations; without it, even correct game logic reads as abrupt and unfinished.",
+    "Timers reframe a game as a sequence of operations scheduled across time rather than a physics simulation, enabling features like countdown clocks, color-cycling title text, and deferred state transitions that would be awkward to express as velocity updates.",
+    "A uniform 32x32 tile sheet assigns a numeric ID to each tile by its grid position, reducing match detection to finding three or more contiguous cells with the same integer ID rather than any image comparison.",
+    "The live demo with a student shows the full game loop: select a tile, move the cursor to an adjacent tile, swap them, and watch the grid animate the swap and then interpolate falling replacement tiles down from above, all driven by the same tween-and-timer primitives.",
+    "State transitions between game screens (start screen to play, level text sliding on and off) are implemented as Y-position tweens, demonstrating that the same interpolation primitive handles both in-game tile motion and full-screen UI animations."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Match 3 Genre Overview"
+    },
+    {
+      "t": 121,
+      "title": "Tweening, Timers, and Lecture Roadmap"
+    },
+    {
+      "t": 243,
+      "title": "Live Demo with Student"
+    },
+    {
+      "t": 360,
+      "title": "Transitions and Timer Features Highlighted"
+    },
+    {
+      "t": 481,
+      "title": "Quads and Texture Atlas Review"
+    },
+    {
+      "t": 600,
+      "title": "Code Walkthrough: Quads Zero and Quads One"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "605148830b0692ad"
 }

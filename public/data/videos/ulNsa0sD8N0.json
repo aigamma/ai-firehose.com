@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Harness engineering separates the coding agent into the model and the harness (wrapper), with the harness comprising roughly 98 percent of the value. It operates at two levels: an AI layer managing rules, skills, and hooks within a session, and orchestration of multiple agent sessions into focused workflows to reliably scale larger tasks.",
-  "writeup": "",
+  "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
   "wh": "b8d90179c04c1112",
   "concepts": [
     {
@@ -64,5 +64,49 @@
       "channel": "IBM Technology",
       "score": 0.653
     }
-  ]
+  ],
+  "key_points": [
+    "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
+    "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
+    "Harness engineering is mostly continuous with context engineering for five of its six components; the true evolution is in the sixth, control, specifically loops and orchestration of multiple coding agent sessions chained into larger workflows.",
+    "The harness engineering mindset reframes every agent mistake as an opportunity to improve the system: if the agent lacked a convention, it goes in AGENTS.md; if it ran a destructive command, a hook blocks it next time, so quality compounds session over session.",
+    "System evolution works through a feedback loop: initial context and principles feed the agent, hooks and review agents act as sensors, skills provide self-correction, and the AI layer is updated forward so each future session inherits the lessons of past failures."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Is Harness Engineering"
+    },
+    {
+      "t": 91,
+      "title": "Two Layers: Session vs. Multi-Session"
+    },
+    {
+      "t": 122,
+      "title": "The Diagram: LLM, Tool Layer, AI Layer"
+    },
+    {
+      "t": 270,
+      "title": "Harness Engineering vs. Context Engineering"
+    },
+    {
+      "t": 331,
+      "title": "The Skill Issue Reframe"
+    },
+    {
+      "t": 420,
+      "title": "System Evolution and Feedback Loop"
+    },
+    {
+      "t": 571,
+      "title": "AI Layer Components Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "60739f16f8267a10"
 }

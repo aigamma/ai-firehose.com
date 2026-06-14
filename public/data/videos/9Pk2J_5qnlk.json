@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AWS Developers explains foundational IAM concepts through analogies (bouncer, employee badge vs. visitor pass) and advocates for least privilege as the primary security principle. The video covers users, roles, policies, and warns against embedding access keys in code, with IAM Access Analyzer as a tool to discover required permissions.",
-  "writeup": "",
+  "writeup": "This nine-minute AWS primer dissects the access denied error that nearly every new user patches with administrator access, and explains why that reflex is a serious security failure. The video walks through the three load-bearing IAM concepts (users, roles, policies), illustrates the difference with concrete analogies (employee badge versus visitor pass), and builds to the principle of least privilege with a real Lambda-to-S3 example. The through-line is that the error message is a precise signal, not an obstacle: reading it correctly makes guessing unnecessary.",
   "wh": "c69bfb6b3b01c044",
   "concepts": [
     {
@@ -60,5 +60,46 @@
       "channel": "Austin Marchese",
       "score": 0.48
     }
-  ]
+  ],
+  "key_points": [
+    "Attaching administrator access to silence an access denied error gives the identity permission to delete databases, spin up costly resources, and read every piece of data in the account, because it needed exactly one action on one bucket.",
+    "IAM users carry long-term credentials and represent humans logging into the console or CLI; IAM roles carry short-lived, auto-expiring credentials and are the correct identity for services such as Lambda functions and EC2 instances.",
+    "A policy is a JSON document that must explicitly grant every permission; without an attached policy an IAM identity is denied everything by default, so the correct fix for access denied is reading the error and granting only the specific action and resource named.",
+    "The least privilege principle limits blast radius: a Lambda function scoped to s3:GetObject on a single bucket, if compromised, can only read objects from that bucket rather than touching the entire account.",
+    "IAM Access Analyzer observes what an identity actually calls over a period of time and generates a scoped policy from that real activity, removing the excuse that writing precise policies is too much work up front.",
+    "Access keys must never appear in source code, config files, or environment variables committed to git; bots scan public repositories for exposed keys within minutes, so roles with temporary credentials are the correct pattern for any code that runs on AWS."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Access Denied Mistake"
+    },
+    {
+      "t": 93,
+      "title": "What IAM Actually Is"
+    },
+    {
+      "t": 124,
+      "title": "Users, Roles, and Policies"
+    },
+    {
+      "t": 274,
+      "title": "Least Privilege Principle"
+    },
+    {
+      "t": 366,
+      "title": "IAM Access Analyzer"
+    },
+    {
+      "t": 393,
+      "title": "Account Setup Checklist"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "57e5ca4d16ae3460"
 }

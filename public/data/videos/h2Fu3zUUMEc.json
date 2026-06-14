@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Kevin Figueroa demonstrates how Qdrant vector search can modernize cybersecurity threat intelligence workflows through semantic retrieval and similarity search. The session covers applying vector search to security data correlation, threat modeling, and LLM-based analysis instead of keyword-based querying.",
-  "writeup": "",
+  "writeup": "A Qdrant community live session in which Kevin, a 30-year cybersecurity veteran and red teamer, demonstrates how vector search collapses multi-day threat intelligence correlation into milliseconds. The through-line is a practical answer to the privacy objection: organizations unwilling to push proprietary data to third-party AI systems can run Qdrant locally, feeding it recon output, CVE records, and tool results, then query semantically across all of it. The talk draws directly from a 2020-2021 island-wide pen test of Puerto Rico's critical infrastructure triggered by a government ransomware incident, where traditional relational databases could not keep up with the volume and cross-referencing demands.",
   "wh": "2689e9a8a8f10a74",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Qdrant Vector Search",
       "score": 0.565
     }
-  ]
+  ],
+  "key_points": [
+    "Analysis and correlation work that previously took one to three days now executes in milliseconds via a single Qdrant query, a concrete speedup Kevin demonstrated live at multiple cybersecurity conferences.",
+    "The core argument for vector databases in security is the AI knowledge-gap problem: LLMs only know what they were trained on, so proprietary threat data, fresh CVEs, and internal recon never reach them without a local retrieval layer.",
+    "Running Qdrant locally, rather than through a third-party cloud system, directly addresses enterprise data-leakage concerns, which Kevin identifies as the primary blocker preventing security teams from adopting AI tooling.",
+    "Security researcher Nicholas Carlini used Claude Opus to uncover a Linux kernel vulnerability that had existed undetected for 23 years, illustrating the scale of AI-assisted vulnerability discovery.",
+    "At two cybersecurity conferences totaling roughly 1,600 attendees, Kevin found only about five people willing to engage seriously with vector search, signaling that the cybersecurity field is significantly behind on this technology.",
+    "Qdrant ships AI-ready without add-ons or plugins, in contrast to traditional relational databases that require bolt-on vectorization extensions, lowering the engineering barrier for security teams standing up a local threat-intel store."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Conference Recap"
+    },
+    {
+      "t": 390,
+      "title": "Why Vector Databases for Cybersecurity"
+    },
+    {
+      "t": 537,
+      "title": "Speaker Introductions and Session Overview"
+    },
+    {
+      "t": 552,
+      "title": "AI Knowledge Limits and the RAG Case"
+    },
+    {
+      "t": 780,
+      "title": "Speaker Background and Threat Intel Context"
+    },
+    {
+      "t": 840,
+      "title": "Puerto Rico Pen Test Origin Story"
+    },
+    {
+      "t": 900,
+      "title": "Proof of Value: Millisecond Correlation"
+    },
+    {
+      "t": 1080,
+      "title": "Takeaways and Live Demonstration Setup"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b8cd693c97520bce"
 }

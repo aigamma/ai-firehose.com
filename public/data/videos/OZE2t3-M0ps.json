@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "CS50 for Business Lecture 7 covers deploying and managing databases at scale using SQL and NoSQL technologies. The lecture emphasizes best practices for efficient data storage and querying in production environments. This is part of Harvard University's CS50 business education program available through edX and other platforms.",
-  "writeup": "",
+  "writeup": "David Malan (CS50) builds the case for relational databases from first principles, starting with flat files and CSV format, then demonstrating why raw files fail once data must be queried, updated, or deduplicated at scale. The through-line is normalization: a concrete schools-and-cities dataset exposes redundancy and ambiguity that a CSV cannot solve, which motivates splitting data into linked tables joined by integer IDs. SQL enters as the language that makes those linked tables queryable without manual number-matching, with CRUD as the four operations the language reduces to.",
   "wh": "1d7daff58e3e1682",
   "concepts": [
     {
@@ -68,5 +68,48 @@
       "channel": "CS50",
       "score": 0.438
     }
-  ]
+  ],
+  "key_points": [
+    "Flat file databases like CSV store data as rows and columns separated by a delimiter, but offer no built-in query or update functionality: reading a specific record requires scanning the entire file top to bottom in code.",
+    "Relational databases address redundancy and ambiguity by decomposing a single table into multiple tables, assigning each row a unique integer ID (the primary key), and referencing that ID as a foreign key in related tables, as illustrated by separating a schools table from a cities table to distinguish Cambridge, UK from Cambridge, Massachusetts.",
+    "SQL (Structured Query Language) is the programming language used to read and write relational data, and it reduces to four fundamental operations captured by the acronym CRUD: Create, Read, Update, Delete, with SELECT for reads and INSERT for new rows.",
+    "Data warehouses aggregate multiple databases into one place, data marts are narrower subsets (e.g. a marketing database), and data lakes are unstructured dumps of raw files with deferred organization, contrasting with the organized, relational approach the lecture develops."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Is a Database"
+    },
+    {
+      "t": 63,
+      "title": "Data Warehouses, Marts, and Lakes"
+    },
+    {
+      "t": 90,
+      "title": "Flat Files and CSV Format"
+    },
+    {
+      "t": 181,
+      "title": "Limitations of Flat Files"
+    },
+    {
+      "t": 361,
+      "title": "Normalization and Relational Tables"
+    },
+    {
+      "t": 482,
+      "title": "Primary Keys and Foreign Keys"
+    },
+    {
+      "t": 602,
+      "title": "Introducing SQL and CRUD"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "6614efbbbcfba652"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Qdrant demonstrates visual interpretability for ColPali embeddings, which represent documents as 1,024 patch embeddings mapped to spatial locations. The system computes per-token similarity heatmaps overlaid on documents to show which regions match query terms, enabling interpretable multi-vector search and relevance debugging.",
-  "writeup": "",
+  "writeup": "This segment from a ColPali course explains how the model's multi-vector architecture enables visual interpretability: because each of the 1,024 patch embeddings maps to a fixed spatial location in a 32x32 grid, a similarity computation between a query token and each patch embedding produces a heat map that pinpoints exactly which image regions drove a match. The walk-through covers the math from patch index to pixel coordinates, the jet-colormap overlay construction, and four practical uses of the resulting visualizations, closing with a preview of module 3 on quantization, pooling, and multi-stage retrieval at production scale.",
   "wh": "4e91ce11b5b8efc1",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "Qdrant Vector Search",
       "score": 0.591
     }
-  ]
+  ],
+  "key_points": [
+    "ColPali produces 1,024 patch embeddings per document image, each corresponding to a fixed position in a 32x32 grid, so patch index i maps to row i/32 (integer division) and column i mod 32, and the top-left pixel corner is found by multiplying row and column by 14.",
+    "To build a heat map for a single query token, compute its dot product similarity with all 1,024 patch embeddings, reshape the resulting similarity vector into a 32x32 grid, upsample to 448x448 to match the image dimensions, apply a color map such as jet, and overlay the result on the original image with transparency.",
+    "For document-level relevance, an aggregated view takes the maximum similarity across all query tokens for each patch, revealing which spatial regions matter most to the total retrieval score rather than to any individual token.",
+    "The four practical applications of ColPali interpretability are: debugging unexpected matches by tracing which regions fired, building user trust by showing the model attends to semantically relevant content, validating whether matches are semantic or merely visual, and identifying failure-mode edge cases.",
+    "Traditional single-vector embeddings produce an opaque list of numbers with no spatial provenance; ColPali's multi-vector design is what makes this traceable, spatial interpretability possible in the first place.",
+    "Module 3, previewed at the end, will cover memory optimization through quantization, reducing vector counts through pooling, efficient indexing, and building multi-stage retrieval pipelines for millions of documents."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Case for Visual Interpretability"
+    },
+    {
+      "t": 32,
+      "title": "Patch Index to Spatial Location"
+    },
+    {
+      "t": 60,
+      "title": "Pixel Coordinates from Grid Position"
+    },
+    {
+      "t": 90,
+      "title": "Building the Heat Map"
+    },
+    {
+      "t": 121,
+      "title": "What Each Query Token Sees"
+    },
+    {
+      "t": 152,
+      "title": "Four Practical Applications"
+    },
+    {
+      "t": 210,
+      "title": "Aggregated Document-Level Relevance"
+    },
+    {
+      "t": 240,
+      "title": "Module 3 Preview: Scalability and Optimization"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "76163e45d7da3bbd"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "DeepSeek V4 is a large language model supporting 1M context length with hybrid attention mechanisms including Cluster Sparse Attention (CSA), Hybrid Chunk Attention (HCA), and sliding window attention. The model achieves efficiency gains through sparse selection and anticipatory routing techniques.",
-  "writeup": "",
+  "writeup": "DeepSeek V4 Pro is a 1.6-trillion-parameter open-source model with a 1-million-token context window, built by a team roughly 40 times smaller than OpenAI and without access to top-tier Nvidia hardware. The video walks through the quadratic attention bottleneck and KV cache memory explosion that make long contexts prohibitively expensive, then dissects how DeepSeek's hybrid attention architecture sidesteps both problems. The through-line is resource constraint as a design forcing function: the team could not brute-force scale, so they invented a three-pathway compression strategy that cuts compute to 27% and KV cache memory to 10% of the previous V3.2 baseline while preserving retrieval fidelity.",
   "wh": "e3279a119746bb0c",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Caleb Writes Code",
       "score": 0.574
     }
-  ]
+  ],
+  "key_points": [
+    "DeepSeek V4 Pro reaches 1.6 trillion parameters and a 1-million-token context window while requiring only 27% of the compute (3.7x lower FLOPs) that DeepSeek V3.2 needed, according to benchmarks documented in the paper.",
+    "The core problem the architecture solves is that standard attention requires every token to compare itself against all prior tokens, so at one million tokens the number of comparisons becomes astronomically expensive and the KV cache balloons to gigabytes of GPU memory per conversation.",
+    "Compressed Sparse Attention (CSA) groups tokens into chunks of roughly four and merges them into a single dense representation, reducing sequence length by a factor of four and shrinking both compute and memory proportionally.",
+    "A fast internal scoring mechanism called the lightning indexer then selects only the most relevant compressed blocks for any given token, discarding the rest entirely, so the model attends to a small high-value subset of history rather than the full compressed sequence.",
+    "Heavily Compressed Attention (HCA) applies far more aggressive compression, collapsing roughly 128 tokens into one representation, making the entire history short enough to attend over completely and providing a broad, low-resolution view of everything seen so far.",
+    "Sliding window attention runs in parallel as a third pathway, preserving the most recent tokens at full, uncompressed fidelity so that immediately relevant context is never degraded, and the result is a 90% reduction in KV cache memory footprint relative to V3.2."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "DeepSeek V4 and the Constraint Advantage"
+    },
+    {
+      "t": 61,
+      "title": "Model Specs: 1.6T Parameters and 1M Token Context"
+    },
+    {
+      "t": 181,
+      "title": "Why Long Context Is Hard: Attention and KV Cache"
+    },
+    {
+      "t": 271,
+      "title": "Hybrid Attention Architecture Overview"
+    },
+    {
+      "t": 301,
+      "title": "Compressed Sparse Attention (CSA) and the Lightning Indexer"
+    },
+    {
+      "t": 420,
+      "title": "Heavily Compressed Attention (HCA)"
+    },
+    {
+      "t": 541,
+      "title": "Sliding Window Attention and the Three-Pathway System"
+    },
+    {
+      "t": 631,
+      "title": "Efficiency Benchmarks vs DeepSeek V3.2"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "602d0c91da8df459"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Jordan Urbs reviews the ZimaBoard 2, a compact self-hosting device, and demonstrates setting up OpenClaw (a community fork of leaked Cloud Code) with Venice AI and a Telegram bot for local AI inference without cloud dependency. The stack includes Apify for web scraping and runs various open models including Gemma, GLM5, and others through a local interface.",
-  "writeup": "",
+  "writeup": "A hands-on walkthrough of setting up the ZimaBoard 2, a paperback-sized x86 home server priced below a Mac Mini, and using it to self-host Open WebUI as a local AI assistant. The video covers hardware assembly, OS selection (Zima OS versus alternatives like Umbrel, Unraid, and TrueNAS), Docker-based app installation through Zima OS's app store, and configuring Open WebUI with Venice.ai as the API provider and a rotating set of models including Kimi K2, GPT-4.1 mini, and Gemma 4 31B. The through-line is that commodity home server hardware plus open-source software stacks now make a private, locally controlled AI setup accessible without a rack or a DevOps background.",
   "wh": "7ac33b8452cce29e",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "Keith AI",
       "score": 0.556
     }
-  ]
+  ],
+  "key_points": [
+    "The ZimaBoard 2 is an x86 home server board smaller than a paperback, supports NVMe and SSD expansion, accepts a GPU add-on, and costs less than a Mac Mini, making it a practical entry point for self-hosted AI rather than a hobbyist curiosity.",
+    "Zima OS is not open source; alternatives such as Umbrel (open source, strong Bitcoin node and Nextcloud support), Unraid, and TrueNAS run on the same x86 hardware and may suit users who prioritize a fully open stack.",
+    "Open WebUI installs from the Zima OS app store as a Docker container; configuration requires entering the container via sudo and running an interactive wizard to set an API provider and model list, with Venice.ai used here for its single-endpoint coverage of chat, image, and video models with a stated no-data-collection policy.",
+    "Docker images for any containerized AI tool, including Agent Zero, can be added directly through the app store's custom container interface or installed via an AI coding agent such as OpenCode running over SSH, sidestepping the graphical UI entirely.",
+    "A forked build of Claude Code was installed on the ZimaBoard over SSH using OpenCode, then used from the command line to manage further installs, demonstrating that the device can serve as a persistent, always-on agent host rather than just a model front end.",
+    "Venice.ai's model list at time of recording includes Kimi K2, GPT-4.1 mini, Gemma 4 31B, and GLM-4, giving Open WebUI access to a range of frontier and open-weight models through one API key without routing traffic through individual provider accounts."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "ZimaBoard 2 Overview and Motivation"
+    },
+    {
+      "t": 60,
+      "title": "Hardware Unboxing and Fan Installation"
+    },
+    {
+      "t": 150,
+      "title": "Drive and Cable Setup"
+    },
+    {
+      "t": 183,
+      "title": "OS Options: Zima OS, Umbrel, Unraid, TrueNAS"
+    },
+    {
+      "t": 271,
+      "title": "First Boot and Zima OS Dashboard"
+    },
+    {
+      "t": 390,
+      "title": "App Store and Docker Container Installs"
+    },
+    {
+      "t": 510,
+      "title": "Installing Claude Code via SSH"
+    },
+    {
+      "t": 570,
+      "title": "Configuring Open WebUI with Venice.ai"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "902b5717c1f68fb2"
 }

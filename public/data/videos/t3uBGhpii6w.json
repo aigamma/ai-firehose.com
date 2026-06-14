@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Anthropic released Claude Opus 4.8, a new version of their language model. The release includes new capabilities such as dynamic workflows in Claude Code.",
-  "writeup": "",
+  "writeup": "Claude Opus 4.8 lands six weeks after Opus 4.7 at the same price, with a 5-point SWE-bench Pro jump to 69.2% versus GPT-5.5's 58.6%, and a roughly 2.5x speed increase in fast mode. The centerpiece announcement is dynamic workflows in Claude Code, a research preview that lets Claude orchestrate tens to hundreds of parallel sub-agents within a single session, targeting large-scale tasks such as codebase-wide bug hunts and multi-file migrations. The video situates these gains against a compute constraint narrative: Anthropic's XAI/Colossus deal and third-party agreements with Amazon and others are framed as what finally made massive parallelization economically viable to offer.",
   "wh": "8c420d726ef36a1a",
   "concepts": [
     {
@@ -52,5 +52,54 @@
       "channel": "AI Revolution",
       "score": 0.724
     }
-  ]
+  ],
+  "key_points": [
+    "Opus 4.8 scores 69.2% on SWE-bench Pro, a 5-point improvement over Opus 4.7 released just six weeks prior, while GPT-5.5 scores 58.6% on the same benchmark, though Deep SWE scores show the inverse (GPT-5.5 at 70%, Opus 4.7 at 54%), illustrating how benchmark choice materially changes the competitive picture.",
+    "Fast mode delivers roughly 2.5x the token throughput of standard Opus 4.8 at no additional cost, accessible in Claude Code via the /fast flag or via the API with account manager access.",
+    "Dynamic workflows, available as a research preview in Claude Code CLI, desktop, and VS Code extension for Max, Team, and Enterprise plans plus the API, Amazon Bedrock, Vertex AI, and Microsoft Foundry, allow Claude to dynamically write orchestration scripts that spin up tens to hundreds of parallel sub-agents in a single session, targeting tasks like migrations touching hundreds of files.",
+    "The ultra code setting, found in Claude Code's effort menu, sets effort to extra high and lets Claude automatically decide when to invoke a dynamic workflow, with a warning that token consumption will be substantially higher than a typical session.",
+    "Opus 4.8 scores 83% on computer use benchmarks versus GPT-5.5's 78%, and shows roughly a 140-point Elo improvement on GDP-Val (a real-world knowledge work benchmark created by OpenAI) over both Opus 4.7 and GPT-5.5.",
+    "Anthropic's ability to release massive parallelization is attributed to new compute supply: a deal giving access to XAI's Colossus cluster (XAI has no frontier model and holds excess capacity) plus third-party agreements with Amazon and others, ending what the presenter characterizes as a prolonged compute crunch."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Opus 4.8 Overview and Pricing"
+    },
+    {
+      "t": 92,
+      "title": "Fast Mode and Speed Gains"
+    },
+    {
+      "t": 120,
+      "title": "Claude Code Agentic Features"
+    },
+    {
+      "t": 150,
+      "title": "Benchmark Deep Dive"
+    },
+    {
+      "t": 420,
+      "title": "Computer Use and Knowledge Work Benchmarks"
+    },
+    {
+      "t": 540,
+      "title": "Dynamic Workflows Introduction"
+    },
+    {
+      "t": 722,
+      "title": "Ultra Code Setting and Token Cost"
+    },
+    {
+      "t": 782,
+      "title": "Compute Supply and Parallelization Context"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "d83550f1eacc1112"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Video tutorial demonstrating how to use Claude Code projects within Codex by explaining file structure differences, skills and agents comparison, and conversion methods. Shows how both tools can run on the same project without duplicating files.",
-  "writeup": "",
+  "writeup": "A practical walkthrough of migrating a Claude Code project to also run under OpenAI Codex without duplicating or losing existing work. The core insight is that both tools share the same underlying knowledge files and skill markdown, differing only in a handful of naming conventions: CLAUDE.md versus agents.md, .claude versus .codex for config, and .agents for Codex skills. A single natural-language prompt handed to Codex handles the conversion automatically, and a session-handoff skill makes it easy to pass context between agents mid-task when one gets stuck.",
   "wh": "e863591c0df11e65",
   "concepts": [
     {
@@ -60,5 +60,50 @@
       "channel": "NeuralNine",
       "score": 0.609
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code reads CLAUDE.md and a .claude folder for config and agents; Codex reads agents.md, a .codex folder for config and agents, and a separate .agents folder for skills, so migrating a project requires creating only a few new files rather than restructuring the whole repo.",
+    "Skill files (markdown with YAML front matter) are identical between the two tools and only need to be placed in the correct folder; agent definition files differ in format, with Claude Code using markdown and Codex using TOML, though both carry the same semantic content.",
+    "A single natural-language prompt to Codex, asking it to create agents.md from CLAUDE.md, build a .codex config, move skills to .agents, and research both tools' documentation, handles the full project conversion automatically.",
+    "The session-handoff skill summarizes active files, active decisions, and next steps so that output can be copy-pasted into the other agent, letting work continue immediately when one agent gets stuck on a problem.",
+    "Codex sub-agents must be called explicitly and do not invoke automatically, which is a key behavioral difference from Claude Code that requires adjusting how orchestration prompts are written.",
+    "Both tools support global versus project-level config layers in the same way, meaning user preferences set globally for Claude Code have a direct Codex equivalent and do not need to be rebuilt."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Running Both Agents on One Project"
+    },
+    {
+      "t": 31,
+      "title": "Config File Naming Differences"
+    },
+    {
+      "t": 91,
+      "title": "Agent and Skill File Formats"
+    },
+    {
+      "t": 210,
+      "title": "Three-Layer Mental Model: Shared, Skills, Tool-Specific"
+    },
+    {
+      "t": 300,
+      "title": "Natural-Language Conversion Prompt"
+    },
+    {
+      "t": 360,
+      "title": "Maintenance and Sub-Agent Behavior Differences"
+    },
+    {
+      "t": 420,
+      "title": "Session Handoff Skill and Tool-Agnostic Workflow"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9eb1d57840a0c77a"
 }

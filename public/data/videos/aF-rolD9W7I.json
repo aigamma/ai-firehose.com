@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Engineering leaders from Intuit, DoorDash, and Atlassian discuss how their organizations are adopting AI coding tools at scale. They address workflow changes, productivity measurement, and lessons for other leaders navigating this transition, covering case studies like small pods completing nine-month roadmaps in one month and the inversion of the SDLC bell curve.",
-  "writeup": "",
+  "writeup": "A panel at a Cursor event brings together engineering leaders from Intuit, DoorDash, and Atlassian to trace the real trajectory of AI coding inside large organizations, from tab completion through agentic SDLC automation. The central finding is that coding itself is no longer the bottleneck: at Atlassian it is now 15% of engineer time, at DoorDash roughly 5%, and all three organizations have independently converged on the same conclusion that alignment, planning, and review are where the remaining friction lives. Intuit's staged agent pipeline (PRD agent, story-breakdown agent, coding agent, quality agent, architecture agent) and its incident-root-cause agent (45% resolution in 5 minutes) illustrate how gains compound once the entire PDLC is decomposed rather than just the coding step.",
   "wh": "8b42b0fed7c4cf7c",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "Cole Medin",
       "score": 0.616
     }
-  ]
+  ],
+  "key_points": [
+    "Intuit is targeting 3X from idea to release, not just 3X coding velocity, and attributes recent acceleration to agent-driven development after first proving measurement infrastructure (PR velocity, release velocity) during the AI-assisted phase.",
+    "DoorDash reduced engineer time spent coding from roughly 30% to about 5%, and credits AI as the only reason an 18-month, three-company M&A re-platforming across Finland, London, and the US is feasible; CI and build latency, not code generation, is now the primary engineering bottleneck.",
+    "Atlassian reports 85% of engineer time is in activities other than coding, and identifies alignment as the dominant bottleneck: AI reviewing human-written code has accelerated PR cycle time across most repos, but humans reviewing AI-generated code is failing because volume is too large for line-by-line scrutiny, requiring a rethink toward reviewing intent and execution demos rather than diffs.",
+    "Intuit's 'codecraft' practice injects all architecture rules and security requirements directly into agent context so conformance is enforced at generation time rather than caught in review, shifting quality enforcement to the left of the SDLC.",
+    "The SDLC effort curve is inverting: historically shaped like a bell with most time in the middle (writing code), it is now shifting so that planning and review at the edges consume the preponderance of engineering attention.",
+    "Atlassian has successfully automated feature flag cleanup, accessibility remediation, and alert response with agents, while incident root cause analysis remains the hard open problem where fully autonomous resolution is not yet reliable."
+  ],
+  "chapters": [
+    {
+      "t": 3,
+      "title": "Panel Introduction"
+    },
+    {
+      "t": 31,
+      "title": "AI Coding Inception Stories"
+    },
+    {
+      "t": 211,
+      "title": "SDLC Transformation and What Changed Most"
+    },
+    {
+      "t": 241,
+      "title": "Intuit's Full Agent Pipeline Across the PDLC"
+    },
+    {
+      "t": 332,
+      "title": "DoorDash: M&A Re-Platforming With AI"
+    },
+    {
+      "t": 450,
+      "title": "The SDLC Effort Curve Inverts"
+    },
+    {
+      "t": 481,
+      "title": "Atlassian: Alignment as the New Bottleneck"
+    },
+    {
+      "t": 510,
+      "title": "Rethinking Code Review for AI-Generated Code"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "746e568202e885f9"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Jeff Su presents Claude Cowork, a workspace architecture that turns Claude into an operating system for work using persistent memory, instruction files (CLAUDE.md), and a three-level hierarchy of workstations and projects. The system organizes work across root level, workstations, and project layers with practical applications including email management, spending trackers, and content drafting.",
-  "writeup": "",
+  "writeup": "This video walks through building a persistent, hierarchical workspace for Claude (called CoWork OS) using only plain Markdown files, with no code required. The system centers on two root files: claude.md (the instruction manual governing behavior) and memory.md (a notepad for cross-session recall), organized in a two-level hierarchy analogous to a constitution plus state laws. The through-line is that keeping token usage low while giving Claude persistent, relevant context is achievable through lazy-loading: the root files point to more detailed files that are read only when needed.",
   "wh": "382601ff5f36f116",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "Jeff Su",
       "score": 0.574
     }
-  ]
+  ],
+  "key_points": [
+    "The entire CoWork OS runs on two plain Markdown files: claude.md sets behavioral rules and a routing map to workstation folders, while memory.md stores entries that persist across sessions so Claude can recall projects, preferences, and prior context without re-explanation.",
+    "Context is loaded lazily to control token consumption: the root claude.md points to detailed resources files (such as a voice principles file) via references, and Claude only reads those files when the task requires them rather than loading everything at session start.",
+    "A two-level hierarchy mirrors a constitution-and-state-law model: root-level rules in claude.md apply to every session, while individual workstation folders (email HQ, personal finances, newsletter HQ) each carry their own claude.md, memory.md, and resources folder with rules that apply only within that workstation.",
+    "Voice profiling is automated by feeding Claude a prompt that reads the last 30 sent Gmail messages (or pasted writing samples if Gmail is not connected) and then writes extracted tone and style patterns directly into the voice principles Markdown file, which the newsletter workstation loads before drafting.",
+    "Persistent memory is triggered by a natural-language command: telling Claude to 'remember this' causes it to append a structured entry to memory.md, and reading that file at the start of every new session is enforced by a rule inside claude.md itself, making memory self-sustaining without any external database."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "CoWork OS Demo"
+    },
+    {
+      "t": 61,
+      "title": "How It Works Behind the Scenes"
+    },
+    {
+      "t": 180,
+      "title": "The Constitution Analogy"
+    },
+    {
+      "t": 300,
+      "title": "Building the Root Level"
+    },
+    {
+      "t": 480,
+      "title": "Memory and Voice Profiles"
+    },
+    {
+      "t": 660,
+      "title": "Workstations Explained"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "7064358fdf5914f2"
 }

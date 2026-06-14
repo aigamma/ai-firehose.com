@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "DeepSWE has made significant changes to software engineering benchmarking, as highlighted in Matthew Berman's analysis. The tool appears to represent a shift in how AI capabilities in code generation and software engineering tasks are measured and evaluated.",
-  "writeup": "",
+  "writeup": "DeepSWE is a new long-horizon software engineering benchmark from datacurve.ai designed to expose the gaps that SWE-bench Pro obscures. Its prompts are short and behavior-focused (half the length of SWE-bench Pro) while requiring 5.5x more code in solutions, the verifier false-positive rate is 0.3% versus SWE-bench Pro's 8.5%, and the score spread across models is wide enough to be diagnostic. On DeepSWE, GPT-5.5 leads Opus 4.7 by more than 15 percentage points, a gap invisible on existing public benchmarks.",
   "wh": "ceef7c881ddf73c6",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "AI Engineer",
       "score": 0.558
     }
-  ]
+  ],
+  "key_points": [
+    "DeepSWE tasks are hand-crafted from scratch across 91 active open-source repositories in TypeScript, Go, Python, JavaScript, and Rust, so no model could have seen the solutions during pre-training, eliminating the contamination problem that plagues benchmarks drawing from public GitHub commits and issues.",
+    "Prompts average half the length of SWE-bench Pro yet solutions require 5.5 times more code and 2 times more output tokens, meaning the benchmark tests whether a model can discover where and how to implement a change rather than execute an overspecified task.",
+    "DeepSWE's verifier reduces false positives from 8.5% (SWE-bench Pro) to 0.3% and false negatives from 24% to 1.1%, by rewarding any implementation that satisfies the behavioral specification rather than requiring syntactic similarity to a reference solution.",
+    "GPT-5.5 scores roughly 70% on DeepSWE, more than 15 points above Opus 4.7, whereas on SWE-bench Pro the two models cluster within a few points of each other, suggesting DeepSWE surfaces real capability differences the current gold-standard benchmark obscures.",
+    "Opus 4.7 uses a median of 60,000 output tokens per solution under the miniSWE agent harness versus 16,000 for GPT-5.5, and it is also more expensive per million output tokens, meaning GPT-5.5 is both more accurate and far more token-efficient on this benchmark.",
+    "The fixed miniSWE agent harness ensures the leaderboard reflects model capability rather than scaffolding, though the presenter notes that testing Opus 4.7 without Claude Code as its native harness may disadvantage it, pointing to an open question about whether model and harness should be evaluated together."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Benchmark Credibility Problem"
+    },
+    {
+      "t": 31,
+      "title": "DeepSWE Overview and Four Advances"
+    },
+    {
+      "t": 180,
+      "title": "Verifier Accuracy vs SWE-Bench Pro"
+    },
+    {
+      "t": 210,
+      "title": "Leaderboard: GPT-5.5 vs Opus 4.7"
+    },
+    {
+      "t": 391,
+      "title": "Prompt Design: Behavior-Focused and Short"
+    },
+    {
+      "t": 481,
+      "title": "Repository Coverage and Contamination-Free Tasks"
+    },
+    {
+      "t": 600,
+      "title": "Token Efficiency and Cost Comparison"
+    },
+    {
+      "t": 721,
+      "title": "Score Spread and Diagnostic Power"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "22963e520d61d951"
 }

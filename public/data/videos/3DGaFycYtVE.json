@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Caleb Writes Code provides analysis of DeepSeek V4, highlighting its breakthrough in reducing inference costs and compute demands. The video examines V4's significance in the open vs closed AI lab competition and discusses the different incentive structures driving development between nations.",
-  "writeup": "",
+  "writeup": "DeepSeek V4 is a 1.6 trillion parameter model that cuts inference costs to a fraction of comparable frontier models, continuing DeepSeek's pattern of architectural ingenuity born from compute scarcity. The video traces how three stacked attention techniques, DSA, CSA, and HCA, compound on each other to reduce KV cache requirements to 10% and compute to 27% of what the already-lean V3.2 model needed. The through-line is that China's restricted access to high-end chips has pushed Chinese labs to optimize token efficiency far beyond what US labs prioritize, producing a cost structure that reframes the inference pricing war.",
   "wh": "e756160a779a0cb1",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "AI Engineer",
       "score": 0.537
     }
-  ]
+  ],
+  "key_points": [
+    "DeepSeek V4's training corpus grew from 14.8 trillion tokens (V3, December 2024) to 32 trillion tokens in roughly 18 months, nearly doubling the pre-training scale of their flagship model.",
+    "Running V4 Pro continuously for a full month costs approximately $235 at current pricing, nearly matching Anthropic's $200/month Max subscription, though DeepSeek's published base rates are higher and current prices are likely subsidized.",
+    "Between V3.1 (September 2025) and V3.2 (December 2025) alone, inference cost dropped from $4.80 to $1.15 per million input tokens and from $16.50 to $1.25 per million output tokens in just four months, driven by DeepSeek Sparse Attention (DSA).",
+    "DSA uses a separately trained Lightning Indexer operating at lower numerical precision to rank tokens by importance and retain only the top-K, discarding the rest before the main attention pass, giving the model selective control over which token relationships to compute.",
+    "CSA (Compressed Sparse Attention) runs a 4x token compression step before passing to DSA, so the sparse selection operates on a condensed representation rather than raw tokens, stacking efficiency gains on top of each other.",
+    "HCA (Heavily Compressed Attention) compresses every token by a factor of 128 and maintains full (non-sparse) attention over that compressed sequence; interleaving HCA with CSA lets the model separately track global long-range dependencies and local short-range detail, achieving a 10% KV cache footprint and 27% of the FLOPs required by V3.2."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "DeepSeek V4 Overview"
+    },
+    {
+      "t": 63,
+      "title": "Training Scale: 14.8T to 32T Tokens"
+    },
+    {
+      "t": 90,
+      "title": "Open vs Closed Models and Token Efficiency"
+    },
+    {
+      "t": 271,
+      "title": "Inference Pricing Comparison"
+    },
+    {
+      "t": 362,
+      "title": "DeepSeek Sparse Attention (DSA)"
+    },
+    {
+      "t": 511,
+      "title": "CSA and HCA: Stacked Compression"
+    },
+    {
+      "t": 600,
+      "title": "Results and the US-China Compute Race"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "470665e815a520cf"
 }

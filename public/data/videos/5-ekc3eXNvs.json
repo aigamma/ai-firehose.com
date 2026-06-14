@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Caleb Writes Code discusses AutoResearch from Andrej Karpathy as demonstrating how iterative self-improvement can be applied to software development. The approach adds a new perspective on improving software, though the use cases are not universal.",
-  "writeup": "",
+  "writeup": "Andrej Karpathy's AutoResearch framework is demonstrated through two concrete experiments: a restaurant inventory simulation and a chess engine, both optimized without direct human involvement during iteration. The framework's internal loop runs incremental experiments, retains only those that improve the evaluation metric, and discards failures, a cycle the chess engine rode from 750 Elo to 2600 Elo over several hours. The restaurant case reveals a subtler lesson: the choice of evaluation metric shapes the outcome entirely, as maximizing inventory fill rate produced a working-capital crisis, while switching to maximize working capital produced careful, profitable purchasing decisions. The through-line is that AutoResearch shifts software development from writing implementation logic to defining goals, evals, and constraints precisely enough for the agent to self-optimize within them.",
   "wh": "311cabb1a08f7069",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "Austin Marchese",
       "score": 0.598
     }
-  ]
+  ],
+  "key_points": [
+    "AutoResearch runs a self-contained experiment loop: each candidate algorithm is evaluated against a fixed metric, improvements are kept, failures are discarded, and the cycle repeats with no human involvement between iterations, unlike vibe coding which checks work after each feature.",
+    "A chess engine built with AutoResearch improved from 750 Elo to 2600 Elo after hours of autonomous experimentation, with the Elo curve showing long flat stretches punctuated by step improvements each time a better algorithm survived eval.",
+    "The framework requires three structural components: a program.md file stating the goal, a prepare.py file defining the evaluation function, and a hard constraint that the agent may only modify the target algorithm and nothing else.",
+    "In the restaurant simulation, the naive algorithm triggered restocking only when stock hit zero, failed more than half of all orders, and ordered one unit at a time; AutoResearch learned to pre-order on day one, fill inventory aggressively, and group orders in bulk rather than ordering individually.",
+    "Maximizing inventory fill rate turned out to be the wrong metric: the agent satisfied it but drained working capital; changing the eval to maximize working capital over a 30-day window produced an algorithm that made careful purchasing decisions and let capital accumulate.",
+    "AutoResearch requires a well-scoped, measurable goal and a simulation or test harness that provides a tight feedback loop; a vague directive like 'make this restaurant better' cannot drive the loop, and the framework does not generalize beyond narrowly defined tasks."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Restaurant Simulation Before and After"
+    },
+    {
+      "t": 30,
+      "title": "AutoResearch vs. Vibe Coding"
+    },
+    {
+      "t": 60,
+      "title": "Chess Engine: 750 to 2600 Elo"
+    },
+    {
+      "t": 91,
+      "title": "Internal Loop Structure and Constraints"
+    },
+    {
+      "t": 121,
+      "title": "Why the Naive Inventory Algorithm Fails"
+    },
+    {
+      "t": 210,
+      "title": "Working Capital: Choosing the Right Metric"
+    },
+    {
+      "t": 241,
+      "title": "Implications for Software Development"
+    },
+    {
+      "t": 271,
+      "title": "Limitations of AutoResearch"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4a29e85984f7cafb"
 }

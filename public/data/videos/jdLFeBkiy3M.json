@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Austin Marchese breaks down how Boris Cherny, creator of Claude Code, uses the platform's Skills feature to automate work through agents, hooks, and loops. The video reverse-engineers Cherny's system by analyzing his interviews and configuration to identify the most powerful features and strategies for leveraging Claude Code's capabilities.",
-  "writeup": "",
+  "writeup": "Boris Cherny, creator of Claude Code, has documented a seven-skill system centered on a strict 'inner loop' filter: only automate tasks done multiple times per day that follow a consistent pattern and benefit from preloaded context. The video reverse-engineers his approach from public interviews and threads, then extends it through four automation strategies (agents, hooks, loops, and schedules) that trigger skills automatically without manual prompting. A key counterintuitive lesson runs through the whole talk: fewer, well-maintained skills outperform large inventories, because each skill carries ongoing maintenance cost and drifts as models improve.",
   "wh": "ad74b084a289aea7",
   "concepts": [
     {
@@ -72,5 +72,46 @@
       "channel": "NeuralNine",
       "score": 0.69
     }
-  ]
+  ],
+  "key_points": [
+    "Boris Cherny's inner loop test for creating a skill has three criteria: the task occurs two to three times per week, it follows the same pattern each time, and preloaded context would help; all three must be true.",
+    "His most-used skill is /commit-push-PR, a single well-defined command that diffs, generates a commit message, pushes to GitHub, and opens a pull request; he reports shipping 10 to 30 pull requests per day with no hand-edited lines.",
+    "Hooks fire automatically on internal Claude Code events rather than requiring manual invocation; his post-tool-use hook runs an auto-formatter whenever Claude writes a file, his stop hook instructs the model to keep working when tasks remain, and his session-start hook loads context the moment a session opens.",
+    "Boris identifies /loop and /schedule as the two most powerful features in Claude Code: /loop runs a skill on a timer within the current session (he uses '/loop 5 minutes /babysit'), while /schedule runs skills in the cloud on a cron cadence outside the local session.",
+    "Skill debt is the maintenance burden that accumulates with each new skill; Boris's entire Claude Code codebase has been rewritten repeatedly with no part surviving from six months ago, illustrating that skills are living tools, not permanent artifacts.",
+    "The recommended mental shift is from 'instructions to give Claude' to 'tools to equip Claude with': a skill like /commit can be triggered manually by the user or autonomously by Claude itself, sharing the logic across both use cases."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Inner Loop Filter"
+    },
+    {
+      "t": 90,
+      "title": "Boris's Seven Skills"
+    },
+    {
+      "t": 150,
+      "title": "Agents: Trained Skill Executors"
+    },
+    {
+      "t": 240,
+      "title": "Hooks: Automatic Event Triggers"
+    },
+    {
+      "t": 330,
+      "title": "Loops and Schedules"
+    },
+    {
+      "t": 420,
+      "title": "Quality Over Quantity and Skill Debt"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "09dd434cfff050d0"
 }

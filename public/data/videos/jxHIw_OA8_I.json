@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Jeff Su argues that perfecting prompts is less valuable than context engineering. He explains three related concepts: grounding anchors AI responses to provided documents, RAG retrieves sources before generating answers, and context engineering assembles all necessary inputs rather than optimizing wording alone.",
-  "writeup": "",
+  "writeup": "A short explainer defining three foundational AI terms: grounding, RAG (retrieval augmented generation), and context engineering. Each concept is illustrated with a concrete analogy that makes the practical implication immediately clear. The through-line is that AI output quality is less about how questions are phrased and more about what reference material and context the model has access to.",
   "wh": "e79a7f9afe760745",
   "concepts": [
     {
@@ -64,5 +64,29 @@
       "channel": "Jeff Su",
       "score": 0.604
     }
-  ]
+  ],
+  "key_points": [
+    "Grounding means constraining an AI to answer from a supplied document rather than from memory, which converts a probabilistic guess into a claim traceable to a source.",
+    "RAG (retrieval augmented generation) implements grounding at scale: the model first retrieves relevant material from a store, then generates its answer from that retrieved content rather than from parametric memory alone.",
+    "A practical heuristic for detecting RAG in production AI tools is whether the tool cites its sources; citation implies retrieval, the absence of citation implies the model is writing from memory.",
+    "Context engineering differs from prompt engineering in emphasis: prompt engineering focuses on the wording and structure of the question, while context engineering focuses on assembling the right background, examples, and constraints before the question is posed.",
+    "The actionable implication of context engineering is to invest effort in gathering and assembling the right reference material rather than in perfecting the phrasing of the prompt itself."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Grounding Explained"
+    },
+    {
+      "t": 31,
+      "title": "RAG and Context Engineering"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bd0d4a7a74ce10ef"
 }

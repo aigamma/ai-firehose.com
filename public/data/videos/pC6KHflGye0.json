@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AI Search covers a broad range of AI developments including new language models (Qwen 3.7), DNA editing tools (Carbon), robotics frameworks (LeRobot, CogOmniControl), audio/video generation (Stable Audio 3, WavFlow), and agent systems (Co-scientist). The video highlights emerging trends across multiple AI domains from research institutions and companies like Bytedance, Google DeepMind, and Stability AI.",
-  "writeup": "",
+  "writeup": "A weekly AI roundup covering roughly a dozen open-source releases spanning multimodal generation, 3D reconstruction, video alignment, game world models, pixel-space diffusion, and biological sequence modeling. The through-line is breadth over depth: each release is introduced with concrete benchmarks or demo comparisons, and every item ships with runnable code. The video is structured as a rapid-fire catalogue of what dropped, not an analysis of any single system.",
   "wh": "c4ca2ec1ecd40d43",
   "concepts": [
     {
@@ -72,5 +72,50 @@
       "channel": "Wes Roth",
       "score": 0.575
     }
-  ]
+  ],
+  "key_points": [
+    "ByteDance released Lance, a 3-billion-parameter unified multimodal model that handles text-to-video, video editing, text-to-image, and image editing in one architecture, though it requires a GPU with at least 40 GB of VRAM to run locally.",
+    "Apple's Lito (surface light field tokenization) generates 3D models from a single image while preserving view-dependent surface behavior such as reflections and lighting, outperforming the leading competitor Trellis on average accuracy.",
+    "Flash GRPO aligns large video diffusion models to human preferences by sampling only a single diffusion time step per update rather than the full trajectory, using isotemporal grouping and temporal gradient rectification to keep the reward signal valid, and it converges faster than Flow GRPO fast.",
+    "Reactive GWM is a game world model where NPC behavior is injected as a separate input via cross-attention alongside player button inputs, allowing an opponent in a Street Fighter-style simulation to be prompted at runtime to play offense or defense.",
+    "L2P removes the VAE and latent space from an established diffusion model entirely, generating images directly in pixel space at up to 4K resolution with 8K extrapolation, and benchmarks it as the strongest pixel-based diffusion model available; the initial public release supports 1K resolution and is approximately 20 GB.",
+    "Carbon is a small open-source foundation model for DNA that processes nearly 400,000 base pairs at once, learning genetic grammar by predicting the next base pair, and can continue DNA sequences, score genetic variants, or predict protein 3D structure."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Weekly Overview"
+    },
+    {
+      "t": 61,
+      "title": "ByteDance Lance: Unified Multimodal Model"
+    },
+    {
+      "t": 210,
+      "title": "Apple Lito: View-Dependent 3D Reconstruction"
+    },
+    {
+      "t": 301,
+      "title": "Flash GRPO: Efficient Video Alignment"
+    },
+    {
+      "t": 392,
+      "title": "Reactive GWM: Promptable NPC Game World"
+    },
+    {
+      "t": 510,
+      "title": "L2P: Pixel-Space Diffusion Imaging"
+    },
+    {
+      "t": 631,
+      "title": "Carbon: Open-Source DNA Foundation Model"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "de9da124e79adea3"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Claude Code released Agent View, a dashboard for running and managing multiple agent sessions from a single terminal interface. The feature includes a /goal command for long-running agents and simplifies session navigation and tracking.",
-  "writeup": "",
+  "writeup": "A hands-on walkthrough of Claude Code's new Agent View, a research-preview terminal feature that consolidates all parallel Claude Code sessions into a single tab navigated with arrow keys. The video covers the core keyboard interface (left arrow to open the view, right arrow to enter a session, /bg to background an active session, Ctrl-X twice to kill one), the complementary /goal feature for long-running autonomous objective loops, and the multi-directory workflow pattern for running agents across separate projects. The central argument is that Agent View eliminates the terminal-tab chaos that previously made scaling to five or more parallel sessions impractical.",
   "wh": "9aadf81eb8100369",
   "concepts": [
     {
@@ -56,5 +56,50 @@
       "channel": "Claude",
       "score": 0.632
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code Agent View (research preview, released at the time of recording) replaces the need for multiple terminal tabs by letting users view, enter, and manage all parallel sessions from one consolidated interface using only arrow keys or mouse clicks.",
+    "Status indicators color-code each session: yellow means the agent is waiting on user input, green means it completed, and the user can reply to a waiting agent directly from the Agent View without entering the session.",
+    "The /bg command (or --bg flag at launch) explicitly sends a session into the Agent View; without it, new sessions launched from within Claude Code are already placed there automatically.",
+    "The new /goal feature lets users set an objective metric for Claude Code to pursue autonomously for hours or overnight, analogous to Andrej Karpathy's auto-research pattern of optimizing for a measurable target rather than a subjective prompt.",
+    "Running agents across different project directories requires launching each session from its respective directory using the --bg flag with a quoted task description, since the Agent View does not currently display which directory each session is running in.",
+    "The --bg flag requires the task description to be wrapped in quotes; square brackets do not work, a bug discovered during the walkthrough that caused the prompt to be truncated."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Agent View Demo"
+    },
+    {
+      "t": 31,
+      "title": "What Agent View Replaces"
+    },
+    {
+      "t": 90,
+      "title": "CLI Navigation and Commands"
+    },
+    {
+      "t": 150,
+      "title": "Four Developer Patterns"
+    },
+    {
+      "t": 180,
+      "title": "The /goal Feature"
+    },
+    {
+      "t": 330,
+      "title": "Launching Sessions Across Directories"
+    },
+    {
+      "t": 390,
+      "title": "Killing Sessions and Replying to Agents"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0c932560f067fe52"
 }

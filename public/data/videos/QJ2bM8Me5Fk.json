@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "MoonShot AI released Kimi K2.6, an improved language model particularly suited for coding tasks, long-running operations, and agent swarm coordination. The model represents capability advancement from Chinese AI labs in stable and comprehensive LLM offerings.",
-  "writeup": "",
+  "writeup": "This video demonstrates the Kimi K2.6 model's coding and long-horizon agent capabilities, using two real data-collection projects as the frame: 1,500 US data center rows and 300+ AI model releases since 2020, both gathered via Kimi's agent swarm. The core argument is that prompt engineering still matters at the agent layer, and the practical form it takes is a 2-3 page markdown spec file, not a one-sentence command. K2.6 shows measurable UI/UX and benchmark gains over K2.5, and its long-horizon autonomy is validated by a 12-hour self-directed optimization task.",
   "wh": "b13af7000e8b2345",
   "concepts": [
     {
@@ -60,5 +60,41 @@
       "channel": "Keith AI",
       "score": 0.555
     }
-  ]
+  ],
+  "key_points": [
+    "A Kimi agent swarm parallelizes research across waves of sub-agents, reducing what would take a single agent 6-8 hours to gather 1,500 rows of structured data into a fraction of that wall-clock time.",
+    "K2.6 scores 58.6% on SWE-bench, placing it above competing state-of-the-art models on that benchmark, and produces noticeably better UI and UX than its predecessor K2.5 given identical prompts and data.",
+    "In a demonstrated long-horizon task, K2.6 autonomously spent 12 hours optimizing inference throughput for a local Qwen 3.5 0.8B model running on Apple M3 Max, lifting it from 15 tokens/second to 193 tokens/second, 20% higher than the LM Studio baseline.",
+    "Effective agent tasking requires a 2-3 page markdown file specifying the task scope, sourcing parameters, and expected output schema rather than a single-sentence prompt; this maps to the emerging practice called spec-driven development.",
+    "The markdown spec approach scales differently by task scope: iterative feature work can proceed conversationally with a coding agent, but large-scope or long-horizon tasks benefit from upfront architectural definition in document form."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Agent Swarms for Large-Scale Data Collection"
+    },
+    {
+      "t": 60,
+      "title": "Kimi K2.6 Coding Capabilities and Comparison to K2.5"
+    },
+    {
+      "t": 151,
+      "title": "Why the Data Matters More Than the Website"
+    },
+    {
+      "t": 180,
+      "title": "Spec-Driven Development and Markdown Prompts"
+    },
+    {
+      "t": 271,
+      "title": "K2.6 Benchmarks and Long-Horizon Task Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "525d60f713ead7aa"
 }

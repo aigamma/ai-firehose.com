@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "CS50 2D Lecture 6 covers using the Box2D physics engine in the Love2D framework to simulate Angry Birds-style gameplay. The lecture explores dynamic bodies, collision detection, joints, and trajectory simulation for mobile games.",
-  "writeup": "",
+  "writeup": "CS52D Lecture 6 uses an Angry Birds clone built in Love2D to introduce Box2D, a rigid-body physics simulator that handles gravity, collision detection, and velocity without requiring manual math from the programmer. The lecture walks through a live demo of the Alien-skinned clone, explains the Box2D world as the container that calls update(dt) to advance all physics, and introduces the three body types (dynamic, kinematic, static) alongside the core primitives: bodies, fixtures, shapes, and joints. Mouse drag-and-release input is covered for the first time, enabling the slingshot mechanic, and material-based damage thresholds (glass breaks in one hit, wood requires two) are framed as the problem-set extension.",
   "wh": "84fae30aece50a29",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "CS50",
       "score": 0.501
     }
-  ]
+  ],
+  "key_points": [
+    "Box2D is a standalone rigid-body physics library embedded in Love2D via wrapper functions; calling love.physics.newWorld() with a gravity vector hands off collision detection, continuous collision detection for fast-moving objects, and angular and linear velocity to the engine rather than the programmer.",
+    "The Box2D world contains all bodies and advances simulation by accepting dt on each update call, matching the same dt pattern used for manual velocity integration in earlier lectures on Mario and Flappy Bird.",
+    "Three body categories control how physics applies: dynamic bodies participate fully in simulation, kinematic bodies move under programmer control without reacting to forces, and static bodies (like the ground edge) do not move at all.",
+    "The slingshot mechanic is the first mouse-input example in the course: tracking X and Y during drag, then computing a release vector and applying it as an impulse to the projectile body.",
+    "Material-based damage is the core problem-set challenge: a collision callback checks impact velocity against a threshold, then either destroys a glass obstacle in one hit or transitions a wood obstacle to its cracked sprite variant before destruction on a second hit, using tile sets already included in the distribution.",
+    "iForce2D.net is cited as the recommended deep-reference blog for Box2D mechanics beyond what Love2D documentation covers."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Angry Birds Overview and Mobile Game Context"
+    },
+    {
+      "t": 120,
+      "title": "Box2D Introduction and Love2D Integration"
+    },
+    {
+      "t": 240,
+      "title": "Live Demo of Alien Birds Clone"
+    },
+    {
+      "t": 361,
+      "title": "Assets, Materials, and Problem Set Preview"
+    },
+    {
+      "t": 512,
+      "title": "Box2D World and Rigid Body Fundamentals"
+    },
+    {
+      "t": 601,
+      "title": "World Update, Body Types, and love.physics.newWorld"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a3f546a0aab5b3b9"
 }

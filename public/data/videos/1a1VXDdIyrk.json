@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Caleb Writes Code explains harness engineering as a discipline for managing agentic AI systems. The video traces the evolution from prompt engineering to context engineering to harness engineering, covering loops and architecture patterns.",
-  "writeup": "",
+  "writeup": "This video traces the evolution from prompt engineering through context engineering to agent harness engineering, explaining why each prior approach hit a ceiling on long-horizon tasks. The core argument is that context summarization, the mechanism coding agents used to manage finite context windows, caused agents to silently misreport task completion and produce partially finished work. Harness engineering breaks the loop by giving agents a fresh, structured context at each iteration rather than a compressed accumulation of previous state.",
   "wh": "0dff5d8a01f27c54",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "AWS Developers",
       "score": 0.619
     }
-  ]
+  ],
+  "key_points": [
+    "Context summarization, the technique coding agents used to shrink a filling context window, introduced a critical failure mode: agents would assume tasks were finished or skip untested features when the summary lost fidelity, producing half-completed outputs on long tasks like cloning an entire website.",
+    "Harness engineering introduces a loop architecture where the agent starts each iteration with a clean context and a strict entry and exit protocol, typically generating a requirements document first, then selecting and completing one task per loop, testing and documenting each step before the next iteration.",
+    "Early coding agents (Cursor, Windsurf, Cline, Roo, Aider) already used tool calling and context engineering to manage context, but these remained single-session, single-context approaches; harness engineering adds an orchestration layer above them that controls the environment the agent runs in.",
+    "Rolo's architecture, cited as a prominent early example, implements this loop pattern and its repository is notably small, demonstrating that effective harness designs tend to be lightweight rather than complex.",
+    "Harness engineering does not replace prompt engineering or context engineering: a well-written system prompt still defines the agent's persona (as seen in Cline's open-source code), and context techniques like tool calling, MCP, and RAG still operate within each loop iteration.",
+    "Anthropic's own demonstration of agent harnessing follows the same lightweight pattern, producing a small repository that mirrors the loop architecture described throughout the video."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Is Agent Harness Engineering"
+    },
+    {
+      "t": 30,
+      "title": "Origins: The Small Context Window Problem"
+    },
+    {
+      "t": 60,
+      "title": "Context Engineering Techniques"
+    },
+    {
+      "t": 241,
+      "title": "Why Context Summarization Fails"
+    },
+    {
+      "t": 361,
+      "title": "The Loop Architecture"
+    },
+    {
+      "t": 420,
+      "title": "Harness vs. Prompt and Context Engineering"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3bb21d928370a046"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "MAMMAL is a biology foundation model that jointly understands genes, proteins, and small molecules for drug design and discovery. It reportedly outperforms AlphaFold 3 on tasks like drug toxicity prediction, drug repurposing, antibody generation, and new drug design.",
-  "writeup": "",
+  "writeup": "A walkthrough of MAMMAL, a new foundation model for drug discovery that replaces a patchwork of siloed specialist tools (AlphaFold for proteins, Evo 2 for DNA, separate compound screeners) with a single model pre-trained on 2 billion samples spanning antibody sequences, protein records from UniProt, small molecules from Zinc and PubChem, and gene expression data from CellXGene. The core engineering problem is heterogeneous data formats: MAMMAL solves it with a modular tokenizer that converts molecules to SMILES strings, genes to ranked expression lists, and proteins to amino-acid sequences, then projects all three into one shared embedding space. Across 11 rigorous benchmarks covering the full drug discovery pipeline, MAMMAL achieves state-of-the-art performance, outperforming the previous best models on every task including blood-brain barrier penetration prediction and clinical toxicity prediction.",
   "wh": "9119771836af35bd",
   "concepts": [
     {
@@ -64,5 +64,53 @@
       "channel": "Caleb Writes Code",
       "score": 0.584
     }
-  ]
+  ],
+  "key_points": [
+    "Drug development has a roughly 90% failure rate from initial candidate to FDA approval, a figure that persists despite modern genomics and AI tools because existing models each cover only one slice of the biology: AlphaFold predicts protein structure, Evo 2 reads DNA, and separate tools handle compound screening or clinical trial analysis, with no unified cross-domain reasoning.",
+    "MAMMAL was pre-trained on 2 billion samples drawn from essentially every major biological database: billions of antibody sequences, nearly all known proteins via UniProt, millions of small-molecule structures from Zinc and PubChem, and gene expression profiles from CellXGene.",
+    "The key architectural innovation is a modular umbrella tokenizer: molecules are encoded as SMILES strings (a text serialization of 3D chemical structure where letters are atoms and symbols are bonds), genes are encoded as ranked lists ordered by expression level, and proteins are encoded as amino-acid chains, with each domain handled by its own sub-dictionary before all representations are merged into a single shared embedding space.",
+    "Evaluated across 11 benchmarks spanning the entire drug discovery pipeline, MAMMAL achieved state-of-the-art results on every task, outperforming the previous best specialist models, including on BBBP (blood-brain barrier penetration prediction, critical for CNS drugs like Alzheimer's and Parkinson's therapeutics) and ClinTox (predicting clinical toxicity and FDA approval likelihood).",
+    "Because MAMMAL learns relationships across chemistry, gene expression, and protein structure simultaneously rather than treating them as separate problems, it can in principle reason about the full causal chain from a DNA mutation through altered gene expression to protein dysfunction to disease, which is precisely the cross-domain signal that isolated specialist models cannot capture."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: MAMMAL and the Drug Discovery Problem"
+    },
+    {
+      "t": 92,
+      "title": "Biology Primer: DNA, Genes, Proteins, and Disease"
+    },
+    {
+      "t": 211,
+      "title": "How Drugs Are Designed Today"
+    },
+    {
+      "t": 330,
+      "title": "The Silo Problem: Why Specialist AI Tools Fall Short"
+    },
+    {
+      "t": 391,
+      "title": "MAMMAL: Unified Pre-Training at Scale"
+    },
+    {
+      "t": 450,
+      "title": "Modular Tokenization Across Three Domains"
+    },
+    {
+      "t": 601,
+      "title": "Benchmark Results Across 11 Tasks"
+    },
+    {
+      "t": 660,
+      "title": "Safety Benchmarks: Blood-Brain Barrier and ClinTox"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b344fcd3c92b45b5"
 }

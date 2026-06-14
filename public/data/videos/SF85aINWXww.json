@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Jordan Urbs demonstrates OpenClaw as a business automation platform deployed on commodity hardware running AI agents to manage websites, learn brand guidelines, and orchestrate sub-agents in content pipelines. The video compares multi-agent orchestration using OpenClaw with single-agent workflows using Claude Code.",
-  "writeup": "",
+  "writeup": "A practical walkthrough of wiring Claude (desktop, always-on) and Claude Code together into a two-tier business automation stack, with GitHub repos as the shared communication layer and MCP as the bridge that lets Claude spawn Claude Code subagents. The through-line is a concrete division of labor: Claude handles strategy, brand decisions, and 24/7 availability on low-power hardware (a Raspberry Pi), while Claude Code does the heavy execution work in a full IDE with fresh context windows per task. The live demo shows Claude cloning a site repo, getting SSH key authorization, making code edits, and pushing to GitHub to trigger an automatic Netlify deploy, all from a chat prompt.",
   "wh": "3a6a0aa88c890802",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Caleb Writes Code",
       "score": 0.58
     }
-  ]
+  ],
+  "key_points": [
+    "The key architectural argument is that a single-agent setup accumulates context until output quality degrades, whereas a multi-agent orchestration pattern gives each specialized subagent (lesson writer, slide designer, QA reviewer) its own fresh context window and its own CLAUDE.md behavior file, maintaining quality across long-running pipelines.",
+    "GitHub repos serve as the durable, agent-agnostic communication layer: Claude clones the repo, makes edits, and pushes; Claude Code on a separate machine pulls the same repo; this keeps all agents in sync without any direct agent-to-agent protocol.",
+    "MCP (referred to as ACPX/CPX in the talk) is the mechanism by which Claude can reach out and spawn a Claude Code subagent inside a specific workspace, turning the desktop orchestrator into a true dispatch layer for complex build tasks it cannot or should not execute on its own hardware.",
+    "The multi-agent harness includes a built-in quality assurance reviewer subagent that catches errors and retries before a human ever sees the output, reducing the human-in-the-loop burden to exceptions rather than every iteration.",
+    "The comparison run of Opus 4.6 through both Claude and Claude Code at the end of the video is positioned as evidence that the same model produces different effective results depending on the scaffolding around it, motivating the combined-stack approach over choosing one tool.",
+    "Hardware constraints are a real architectural input: tasks that require significant compute (video editing, large builds) should route to Claude Code on a capable machine rather than be attempted on Claude running on a Raspberry Pi, and MCP dispatch is the routing mechanism for that decision."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Three Jobs: Website, Brand, Subagents"
+    },
+    {
+      "t": 90,
+      "title": "Single Agent vs Multi-Agent Orchestration"
+    },
+    {
+      "t": 210,
+      "title": "The Manager-Builder Architecture"
+    },
+    {
+      "t": 301,
+      "title": "Business Orchestrator Overview"
+    },
+    {
+      "t": 480,
+      "title": "Website Management via GitHub and Claude"
+    },
+    {
+      "t": 660,
+      "title": "Live Demo: Claude Clones Repo and Pushes Edit"
+    },
+    {
+      "t": 800,
+      "title": "SSH Auth and Netlify Deploy in Action"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b0df85135019e65b"
 }

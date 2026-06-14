@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Austin Marchese breaks down four strategies that Garry Tan, CEO of Y Combinator, uses with Claude Code to ship 600,000 lines of code in 60 days. The strategies include role assignment, parallel sessions, custom tool building, and planning before implementation. The video references Boris Cherny's related work and highlights Tan's open-source gstack system.",
-  "writeup": "",
+  "writeup": "The video breaks down four strategies YCombinator CEO Garry Tan uses with Claude Code, drawn from his public posts and his open-sourced G stack framework. The through-line is treating AI agents like a managed engineering team: give each agent a defined role and the right level of effort, plan before building, and use the lower cost of AI-assisted development as a reason to build far more internal tools than was previously justifiable. The presenter both endorses and critiques Tan's approach, flagging where romanticized parallelism becomes unmanageable in practice.",
   "wh": "d1f913febeae260e",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Liam Ottley",
       "score": 0.634
     }
-  ]
+  ],
+  "key_points": [
+    "Garry Tan's G stack defines a virtual engineering team with distinct roles, including a CEO for product rethinking, an engineering manager for architecture, and a designer to catch AI slop, all routed via a custom Claude.md file that injects skill routing, mandatory code search before generation, and effort compression (fast responses for trivial tasks, deep analysis for architecture) into every prompt.",
+    "A major CTO reported that G stack's security role caught a critical vulnerability his entire engineering team had missed, crediting the structured role separation rather than raw model capability.",
+    "Tan runs 10 or more parallel Claude Code sessions simultaneously across independent workspaces, but the presenter argues this is an anti-goal for most users and caps his own personal rule at five concurrent sessions to avoid blindly approving work across too many threads.",
+    "The economics of AI-assisted development shift the ROI threshold: Tan shipped three production services and 40-plus features in 60 days part-time while running YC, and argues the cost to build something with Claude Code is now lower than the cost of explaining the requirements to a human engineer.",
+    "G stack includes a slash-command called office hours that forces a structured interview before any code is written, asking what problem the tool solves, who it is for, what success looks like, and what it should not do, mirroring the intake process Tan uses with YC founders.",
+    "Planning before building is the one strategy every top Claude Code user agrees on: Forest Brickey (the creator of Claude Code), Andrej Karpathy, and Tan all structure full context before the model runs, treating upfront specification as non-negotiable."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Garry Tan's Claude Code Approach"
+    },
+    {
+      "t": 31,
+      "title": "Strategy 1: Role-Based Agents and G Stack"
+    },
+    {
+      "t": 131,
+      "title": "Skill Routing, Search, and Effort Compression"
+    },
+    {
+      "t": 300,
+      "title": "Strategy 2: Parallel Sessions and the CEO Mindset"
+    },
+    {
+      "t": 392,
+      "title": "Strategy 3: Build More With Lower ROI Bar"
+    },
+    {
+      "t": 541,
+      "title": "Strategy 4: Plan Before You Build"
+    },
+    {
+      "t": 570,
+      "title": "G Stack Office Hours Command"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b09102e46d9b4cae"
 }

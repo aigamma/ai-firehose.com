@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Lesson comparing single-vector and multi-vector search approaches using BGE versus ColBERT on technical support queries. Multi-vector search with token-level verification prevents false positives from keyword-stuffed content by requiring strong matches at the token level rather than just topical overlap.",
-  "writeup": "",
+  "writeup": "This lesson from a multi-vector search course explains when token-level retrieval (ColBERT-style MaxSim) earns its overhead and when single-vector embeddings are sufficient. The core argument: single vectors perform lossy averaging that loses nuance, while MaxSim requires every query token to find a strong match, making it effective for multi-requirement queries and resistant to keyword stuffing. The lesson closes by previewing the cost side, memory explosion and computational overhead, covered in the next module.",
   "wh": "a4a530f66c02bf72",
   "concepts": [
     {
@@ -68,5 +68,45 @@
       "channel": "Qdrant Vector Search",
       "score": 0.629
     }
-  ]
+  ],
+  "key_points": [
+    "Multi-vector search performs token-level verification rather than topical summarization: every requirement in a query must find a strong match for the overall score to be high, making it effective for compound queries like 'Python async database connection pooling' where all specific concepts must co-occur.",
+    "MaxSim's per-token matching naturally suppresses keyword stuffing because a document that mentions query terms superficially cannot achieve a high score when each token must find a genuinely strong match in the document.",
+    "Single-vector embeddings remain the right choice for broad topical queries (e.g., 'Python tutorials' or 'machine learning basics') and for resource-constrained environments, since multi-vector search requires storing multiple vectors per document and computing similarities across all query-document token pairs.",
+    "The distinction between the two retrieval modes is the difference between 'what is this about' (topical, single-vector) and 'does this address all these specific things' (requirement verification, multi-vector); the query type, not the corpus, should drive the choice.",
+    "The next lesson will address the practical costs of multi-vector search head-on: memory explosion from storing multiple vectors per document, the computational overhead of MaxSim, and an indexing challenge that forces brute-force scans at scale."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "When Multi-Vector Search Is Worth It"
+    },
+    {
+      "t": 30,
+      "title": "Single Vector Lossy Averaging vs Token Verification"
+    },
+    {
+      "t": 62,
+      "title": "Multi-Requirement Query Example"
+    },
+    {
+      "t": 91,
+      "title": "Keyword Stuffing Resistance"
+    },
+    {
+      "t": 122,
+      "title": "When Single Vector Is Sufficient"
+    },
+    {
+      "t": 180,
+      "title": "Costs and What Comes Next"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "08830b284ae4ac16"
 }

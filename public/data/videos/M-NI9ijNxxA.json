@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Seedance 2.0 is an AI video generation tool tested for production tasks like chase scenes, fight scenes, lip-sync, and product ads. The video demonstrates its ability to handle multi-shot workflows with prompt structures and reference stacks, comparing it against Veo 3 and Kling 3.",
-  "writeup": "",
+  "writeup": "A hands-on production walkthrough of SeeDance 2.0 that argues the model is best understood as a directing tool, not a prompt box. The presenter builds four complete scenes (a SaaS ad, a fight sequence, a talking-head with native lip sync, and a product object test), showing every prompt, every failure, and every fix. The through-line is a structured eight-block prompt method called timeline prompting, which works because SeeDance was trained on structured shot data rather than captioned clips, so feeding it structure returns structure instead of drifting vibes.",
   "wh": "27d350408d50d1cf",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "AI Master",
       "score": 0.551
     }
-  ]
+  ],
+  "key_points": [
+    "Timeline prompting breaks every scene into eight named blocks before writing a single shot: Subject, Wardrobe, Environment, Mood, Music, Color, Logic, and Dial (a one-to-two-anchor cinematic reference by director or film stock), and this structure maps directly to how SeeDance 2.0 was trained.",
+    "SeeDance accepts up to nine reference images, three videos, and three audio clips per generation; the presenter's tested sweet spot is five character images (front, three-quarter, profile, expression, full body) to prevent face averaging, three video slots used for camera grammar such as dolly-in or handheld motion, and three audio slots for music tone, ambient texture, and voice reference.",
+    "The iteration workflow runs all drafts at 720p first because a 1080p or 2K generation costs roughly four times the credits of a 720p one, and only the confirmed winning prompt is re-run at 2K for the final deliverable.",
+    "Character sheets for reference images are generated with GPT-image-2 inside the AI Master designer agent (five poses, consistent wardrobe, neutral background) rather than assembled from mismatched Midjourney pulls, because purpose-built multi-angle sheets prevent the model from averaging a composite face.",
+    "The talking-head build embeds the exact dialogue line inside the prompt and SeeDance generates voice and lip sync in the same pass with no external voice tool or post-sync step, though the presenter notes the mouth shape lags the audio by a few frames and the format is currently deployable for short-form (under 15 seconds) but not for sustained long-form holds.",
+    "The fight-scene build demonstrates that character identity held across all strikes while a specific model failure appeared (Character B legs in an unnatural position on the third strike), illustrating that SeeDance preserves face locks but does not yet fully model physical context such as a character swiping a non-touchscreen laptop as though it were a touchscreen."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "One-Prompt Cinematic Open"
+    },
+    {
+      "t": 31,
+      "title": "Timeline Prompting Method"
+    },
+    {
+      "t": 120,
+      "title": "Reference Stack: Images, Video, Audio"
+    },
+    {
+      "t": 240,
+      "title": "Build 1: SaaS Product Ad"
+    },
+    {
+      "t": 421,
+      "title": "Build 2: Fight Scene"
+    },
+    {
+      "t": 541,
+      "title": "Build 3: Talking Head with Lip Sync"
+    },
+    {
+      "t": 660,
+      "title": "Build 4: Product Object Test"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "fd5fb6462ebda86c"
 }
