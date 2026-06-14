@@ -6,37 +6,33 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WorkOS built Studio, an internal workspace where non-engineers can ask business questions against Snowflake, Linear, and Notion in natural language. The system generates reusable declarative JavaScript widgets that call data sources directly, enabling deterministic and cost-efficient query execution while avoiding repetitive manual requests.",
-  "writeup": "Garrett Galow of WorkOS describes Studio, an internal workspace that lets non-engineers ask business questions in natural language against Snowflake, Linear, and Notion. Rather than re-running ad hoc queries, the system generates reusable declarative JavaScript widgets that call data sources directly, which makes query execution deterministic and cost-efficient. The talk covers the supporting machinery: context management, preflight sequencing, query validation, prompt layering, and retrieval-augmented generation. The core takeaway is that compiling natural language into persistent widgets reduces repetitive manual data requests while keeping results reliable.",
-  "wh": "00b6d995d5dd1cd1",
+  "summary": "Garrett Galow from WorkOS presented Studio, an internal workspace that lets non-technical users ask business questions in natural language against Snowflake, Linear, and Notion, generating reusable widgets as declarative JavaScript. The system uses preflight sequencing for schema injection, explicit distrust of model knowledge, and query validation to ensure reliability for production use.",
+  "writeup": "Garrett Galow of WorkOS presents Studio, an internal workspace that lets non-technical users query business data in natural language against Snowflake, Linear, and Notion, and produces reusable widgets as declarative JavaScript. The talk addresses a common gap: business questions that stall because answering them requires technical access. Concrete reliability techniques covered include preflight sequencing to inject schema context, explicit distrust of the model's built-in knowledge, and query validation before results are trusted in production.",
+  "wh": "1b86d7a602b77209",
   "concepts": [
     {
       "slug": "natural-language-querying",
       "label": "natural language querying"
     },
     {
-      "slug": "context-management",
-      "label": "context management"
+      "slug": "llms",
+      "label": "LLMs"
     },
     {
-      "slug": "preflight-sequencing",
-      "label": "preflight sequencing"
+      "slug": "javascript",
+      "label": "JavaScript"
+    },
+    {
+      "slug": "schema-context-injection",
+      "label": "schema context injection"
     },
     {
       "slug": "query-validation",
       "label": "query validation"
     },
     {
-      "slug": "declarative-widgets",
-      "label": "declarative widgets"
-    },
-    {
-      "slug": "prompt-layering",
-      "label": "prompt layering"
-    },
-    {
-      "slug": "retrieval-augmented-generation",
-      "label": "retrieval-augmented generation"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -44,37 +40,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.581
+      "score": 0.555
+    },
+    {
+      "id": "zMiSRliEzv4",
+      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
+      "channel": "AI Engineer",
+      "score": 0.535
     },
     {
       "id": "kUQD5ZElyB4",
       "title": "The Problem Solvers: Michele Catasta at Replit",
       "channel": "Claude",
-      "score": 0.564
-    },
-    {
-      "id": "rjSvJYrVY2k",
-      "title": "The Problem Solvers | Anton Osika at Lovable",
-      "channel": "Claude",
-      "score": 0.554
-    },
-    {
-      "id": "4azVjKhqDzw",
-      "title": "Building the App Store for Agentic Engineering",
-      "channel": "Cole Medin",
-      "score": 0.538
-    },
-    {
-      "id": "SKDJo2CopRs",
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
-      "channel": "AI Engineer",
-      "score": 0.525
+      "score": 0.529
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.525
+      "score": 0.526
+    },
+    {
+      "id": "4azVjKhqDzw",
+      "title": "Building the App Store for Agentic Engineering",
+      "channel": "Cole Medin",
+      "score": 0.516
+    },
+    {
+      "id": "rjSvJYrVY2k",
+      "title": "The Problem Solvers | Anton Osika at Lovable",
+      "channel": "Claude",
+      "score": 0.51
     }
   ]
 }

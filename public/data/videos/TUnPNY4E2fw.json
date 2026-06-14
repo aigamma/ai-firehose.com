@@ -6,13 +6,17 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a full stack of techniques to train LLMs with million-token context windows on commodity hardware. The key innovation, Untied Ulysses, improves context parallelism by chunking attention heads and reusing buffers, reducing activation memory while maintaining throughput and extending sequence length beyond prior implementations.",
+  "summary": "Max Ryabinin from Together AI presents a suite of techniques for training LLMs with extremely long context windows (up to 5 million tokens). The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel contribution Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior Ulysses implementations.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "00389d084efa0f58",
+  "wh": "17bc48d8b0d4afde",
   "concepts": [
     {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "data-parallelism",
+      "label": "data parallelism"
+    },
+    {
+      "slug": "ulysses",
+      "label": "Ulysses"
     },
     {
       "slug": "checkpointing",
@@ -25,48 +29,44 @@
     {
       "slug": "rnn-training",
       "label": "RNN training"
-    },
-    {
-      "slug": "untied-ulysses",
-      "label": "Untied Ulysses"
     }
   ],
   "similar": [
     {
-      "id": "uTgqYeVxy2c",
-      "title": "Training Composer 2",
-      "channel": "Cursor",
-      "score": 0.623
-    },
-    {
-      "id": "fCHe_fOqlYA",
-      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
-      "channel": "IBM Technology",
-      "score": 0.618
-    },
-    {
-      "id": "r305-aQTaU0",
-      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.598
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.614
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.596
+      "score": 0.601
+    },
+    {
+      "id": "fk0pl6b7PKQ",
+      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
+      "channel": "Jordan Urbs",
+      "score": 0.566
+    },
+    {
+      "id": "r305-aQTaU0",
+      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.559
     },
     {
       "id": "SS-A8sE7hkw",
       "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.594
+      "score": 0.557
     },
     {
       "id": "HfRVXadseCo",
       "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
       "channel": "Better Stack",
-      "score": 0.591
+      "score": 0.547
     }
   ]
 }

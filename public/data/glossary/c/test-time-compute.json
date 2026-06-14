@@ -6,29 +6,34 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 401,
+  "attention": 379,
   "first_seen": "2026-03-16T19:20:45+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "improving",
-    "ratio": 95.4,
-    "momentum": 101.9,
+    "quadrant": "lagging",
+    "ratio": 92.9,
+    "momentum": 98.2,
     "sparkline": [
-      58,
-      55,
+      63,
+      59,
+      68,
+      64,
       60,
-      57,
-      53,
-      62,
-      58,
-      62
+      68,
+      64,
+      64
     ]
   },
   "neighbors": [
     {
-      "id": "test-time-validation",
-      "label": "test-time validation",
-      "score": 0.766
+      "id": "cached-compute",
+      "label": "cached compute",
+      "score": 0.729
+    },
+    {
+      "id": "test-time-state",
+      "label": "test-time state",
+      "score": 0.715
     },
     {
       "id": "test-time-scaling",
@@ -36,36 +41,31 @@
       "score": 0.71
     },
     {
+      "id": "compute-bound",
+      "label": "compute-bound",
+      "score": 0.685
+    },
+    {
       "id": "compute-capacity",
       "label": "compute capacity",
       "score": 0.666
     },
     {
-      "id": "stateful-compute",
-      "label": "stateful compute",
-      "score": 0.663
-    },
-    {
       "id": "testing",
       "label": "testing",
       "score": 0.66
-    },
-    {
-      "id": "benchmark",
-      "label": "benchmark",
-      "score": 0.628
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.484
+      "position": 0.489
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.065
+      "position": 0.168
     },
     {
       "slug": "capability-safety",
@@ -75,12 +75,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.426
+      "position": 0.361
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.117
+      "position": -0.06
     },
     {
       "slug": "neural-symbolic",
@@ -90,7 +90,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.268
+      "position": 0.27
     }
   ],
   "top_items": [
@@ -102,24 +102,17 @@
       "kind": "opinion"
     },
     {
-      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
-      "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
-      "author_or_channel": "Better Stack",
-      "published_at": "2026-06-13T23:45:08+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "GPT-6 Is Launching Into a World OpenAI No Longer Controls",
-      "url": "https://www.youtube.com/watch?v=PKnyxxMoKWQ",
-      "author_or_channel": "AI Master",
-      "published_at": "2026-06-13T19:54:27+00:00",
-      "kind": "opinion"
-    },
-    {
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "url": "https://www.youtube.com/watch?v=Dxn3BcSgsMY",
       "author_or_channel": "Better Stack",
       "published_at": "2026-06-13T15:09:16+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "url": "https://www.youtube.com/watch?v=YiIrnYalHS4",
+      "author_or_channel": "AI Revolution",
+      "published_at": "2026-06-13T00:06:42+00:00",
       "kind": "tool"
     },
     {
@@ -135,6 +128,13 @@
       "author_or_channel": "Cyril Imhof",
       "published_at": "2026-06-11T19:35:45+00:00",
       "kind": "tool"
+    },
+    {
+      "title": "Yossi Matias on the golden age of research",
+      "url": "https://www.youtube.com/watch?v=FPBwadTeph0",
+      "author_or_channel": "Google for Developers",
+      "published_at": "2026-06-11T19:00:13+00:00",
+      "kind": "opinion"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
