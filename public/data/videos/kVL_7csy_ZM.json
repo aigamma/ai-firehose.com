@@ -7,8 +7,28 @@
   "kind": "tool",
   "recommended": true,
   "summary": "CopilotKit is a framework that enables developers to move beyond bolted-on chatbot windows by allowing AI agents to render real UI components, share state with React and Next.js apps, and support human-in-the-loop approval workflows. It addresses the problem of disconnected AI features in SaaS applications by tightly integrating agent capabilities with frontend rendering.",
-  "writeup": "This video covers CopilotKit, a framework for integrating AI agents into SaaS applications beyond the standard bolted-on chatbot window. It frames the core problem as disconnected AI features, where chat lives in isolation from the app's interface and data. The key capabilities: agents can render real UI components, share state with React and Next.js apps, and support human-in-the-loop approval workflows, which ties agent actions directly to frontend rendering.",
+  "writeup": "Better Stack walks through CopilotKit, a front-end stack for building AI that lives inside a product instead of in a chat box bolted to the side. The live demo shows an agent that renders real UI components, shares live state with a React or Next.js app in both directions, and pauses to ask for approval before it changes anything. The video breaks the framework into four parts (the AG-UI protocol, generative UI, shared-state co-agents, and human-in-the-loop control), weighs it against the lighter Vercel AI SDK, and lands on a clear verdict: worth it for serious in-app agentic UX, overkill for a basic support chatbot.",
   "wh": "3827c443802cb405",
+  "key_points": [
+    "CopilotKit is a front-end stack for agentic apps, not just a chat component or a wrapper around an LLM API: it supplies the pieces for AI that acts inside the product.",
+    "It rests on four parts: AG-UI, an open event-based protocol between agents and frontends; generative UI, where the agent renders real components instead of only text; shared state (co-agents) that syncs the app and the agent backend in both directions; and human-in-the-loop approval.",
+    "The pivotal demo moment is the agent pausing to ask for approval before acting, keeping the user in control where real software demands it.",
+    "Versus the Vercel AI SDK, CopilotKit is batteries-included (streaming chat, generative UI, shared state, and approval flows out of the box), while the Vercel AI SDK is lighter and gives more low-level control.",
+    "The tradeoffs are real: it is heavier than a minimal SDK, you adopt CopilotKit's patterns, and it is free only to a point, so you have to track what is open source, what needs keys, and what is paid at scale.",
+    "Reach for it when an agent should feel native inside a React or Next.js product; skip it for a basic support chatbot or a simple ask-and-answer feature."
+  ],
+  "chapters": [
+    { "t": 0, "title": "The Bolted-On Chatbot Problem" },
+    { "t": 91, "title": "Scaffolding the App" },
+    { "t": 150, "title": "Rendering Components and Asking Approval" },
+    { "t": 182, "title": "The Four Pieces: AG-UI" },
+    { "t": 240, "title": "Generative UI and Co-Agents" },
+    { "t": 270, "title": "Human in the Loop" },
+    { "t": 300, "title": "CopilotKit vs the Vercel AI SDK" },
+    { "t": 391, "title": "When to Use It, and When to Skip" }
+  ],
+  "insights": { "source": "captions", "model": "claude-opus-4-8", "prompt_version": "v1-2026-06-13", "generated": "2026-06-13" },
+  "ih": "b41f937263607f5c",
   "concepts": [
     {
       "slug": "generative-ai",
