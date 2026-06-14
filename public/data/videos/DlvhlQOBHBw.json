@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Nvidia's Pixel Diffusion (PiD) is an open-source AI model designed for high-resolution 4K image generation. The video demonstrates its performance on text-to-image and image-upscaling workflows, comparing it against alternatives like SeedVR2.",
-  "writeup": "",
+  "writeup": "Nvidia's Pixel Diffusion (PID) is a new open-source image upscaler that operates in pixel space rather than latent space: instead of decoding a compressed representation, it takes a latent from a base model such as Flux or Stable Diffusion as guidance and directly denoises the image at high resolution, producing 4K output in under a second. The video demonstrates PID against the leading alternative SeedVR2, showing sharper edges, more faithful textures, and up to 5.9x faster throughput. The second half is a hands-on ComfyUI installation walkthrough covering three workflows: text-to-image at 1K, image-to-2K/4K upscaling, and a pipeline that chains Flux or Z Image generation directly into PID for a single-pass high-resolution result.",
   "wh": "a8b3729827aa1979",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "AI Search",
       "score": 0.569
     }
-  ]
+  ],
+  "key_points": [
+    "PID denoises directly in high-resolution pixel space rather than using a traditional latent-space decoder, which reduces the artifacts common in conventional upscaling and produces sharper 4K results with fewer hallucinated details.",
+    "Against SeedVR2, the previous leading open-source upscaler, PID is up to 5.9x faster and wins the majority of side-by-side quality comparisons; the full BF16 model weighs only 2.7 GB, and the compressed MXFP8 variant (for Blackwell-architecture GPUs) is 1.5 GB.",
+    "Three ComfyUI workflows ship with the release: workflow O1 generates 1K images from text, O2 upscales an existing image to 2K or 4K, and O3 chains a base model (Flux or Z Image) with PID so the base model's latent feeds directly into PID for a higher-resolution final output.",
+    "Installation requires three downloads: the Gemma 2 2B text encoder (5.2 GB FP16 or 2.6 GB FP8, placed in models/text_encoders), the PID diffusion model matched to the latent type of the intended base model (e.g., Flux 1 for Z Image, placed in models/diffusion_models), and a VAE such as AE.safetensors (335 MB, placed in models/VAE).",
+    "ComfyUI must be updated to the latest version before loading the workflow; outdated installs show red-outlined nodes and fail to run, and the update is handled by running update_comfyui.bat from the portable ComfyUI folder."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Quick Demo Examples"
+    },
+    {
+      "t": 120,
+      "title": "How Pixel Diffusion Works in Pixel Space"
+    },
+    {
+      "t": 150,
+      "title": "PID vs SeedVR2 Quality and Speed Comparison"
+    },
+    {
+      "t": 240,
+      "title": "ComfyUI Setup and Workflow Overview"
+    },
+    {
+      "t": 420,
+      "title": "Downloading Models: Gemma 2, PID, and VAE"
+    },
+    {
+      "t": 600,
+      "title": "Running the Upscale Workflow End to End"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "efe50f9f0f4bd18b"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube video demonstrates building an event management system with role-based access control using Softr's AI Co-Builder. The video covers database structure generation, workflow automations, and comparisons with similar no-code platforms like Lovable and Replit. Softr appears designed to reduce AI token consumption during application development by minimizing the need for multiple prompts.",
-  "writeup": "",
+  "writeup": "A sponsored walkthrough of Softr's AI Co-Builder that uses building an event management app (with roles, permissions, and automations) to argue a concrete case against pure vibe-coding platforms. The central claim: AI builders optimized for the first-five-minute demo quietly drain credits at the 20% polish stage, because they generate before asking about access logic, flatten relational data into string columns, and force re-prompts every time the schema changes. The proposed alternative is a hybrid model where AI scaffolds the structure, a visual editor handles roles and workflows, and a contained \"Vibe Coding Block\" handles only small bespoke UI logic.",
   "wh": "32f05d402c944937",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "AI Jason",
       "score": 0.544
     }
-  ]
+  ],
+  "key_points": [
+    "Softr's Co-Builder asks about user groups and access rules before generating anything, so the permission model is correct the first time rather than requiring paid re-prompts to fix a wrong model built on the wrong assumptions.",
+    "Running the same one-sentence prompt on Lovable, Replit, and Softr revealed that Lovable produced a pretty UI where organizer vs. regular user was a label on a button rather than a real permission, while Replit scaffolded code but left the developer to write permission middleware, whereas Softr produced a properly normalized database with a sign-ups join table modeled as a real many-to-many relationship.",
+    "The Vibe Coding Block is a self-contained component dropped onto a page in one prompt for small custom UI logic (such as a live capacity counter that turns red below five spots), explicitly limited to that surgical role so it never touches the parts of the app that already work.",
+    "Workflow automations in Softr live next to the database schema, so when the schema changes the triggers update without regeneration; wiring the same trigger-send-confirm-notify-check-capacity flow through Zapier plus Make plus Postmark would require re-stitching the automation every time the schema shifts.",
+    "Softr's pricing model is a flat monthly fee covering database, app, workflows, and permissions, which the video contrasts with per-token or per-action credit meters on AI-native builders that stack charges before a single user touches the app.",
+    "The video draws a clear fit/no-fit boundary: Softr wins on business software with users, roles, data, and workflow (internal tools, portals, CRMs); consumer apps requiring custom animations, scroll-driven interactions, native gestures, or App Store distribution are explicitly outside its lane."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The 20% Problem With AI Builders"
+    },
+    {
+      "t": 62,
+      "title": "Database Schema and Competitor Comparison"
+    },
+    {
+      "t": 151,
+      "title": "Side-by-Side: Softr vs Lovable vs Replit"
+    },
+    {
+      "t": 211,
+      "title": "Visual Permission Editor"
+    },
+    {
+      "t": 331,
+      "title": "Vibe Coding Block for Custom UI Logic"
+    },
+    {
+      "t": 421,
+      "title": "Built-In Workflow Automations"
+    },
+    {
+      "t": 480,
+      "title": "Pricing and Fit vs No-Fit Lanes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f2bd6012e3575a1c"
 }

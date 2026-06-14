@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Higgsfield is an MCP integration for Claude that enables AI-powered video and image generation directly within the Claude interface. It can be connected in 30 seconds and supports agentic workflows for content creation, marketing automation, and web design with scroll-driven animations.",
-  "writeup": "",
+  "writeup": "A creator builds a full cinematic newsletter landing page in roughly 90 minutes using Claude Code paired with the Higgsfield MCP integration, which generates every image and video asset on demand. The video documents the end-to-end workflow: MCP connector setup in Claude settings, brand identity generation, hero image and multi-clip video production via Higgsfield's Cinema Studio model, HTML skeleton assembly, and scroll-driven video playback implemented with WebGL and Three.js. The through-line is a concrete demonstration that Claude supplies the coding and design logic while Higgsfield handles the cinematic media generation, with the human providing creative judgment at the margin.",
   "wh": "accb99da2a97c952",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Cole Medin",
       "score": 0.626
     }
-  ]
+  ],
+  "key_points": [
+    "Connecting Higgsfield to Claude takes roughly 30 seconds: go to Claude Settings, Connectors, Customize, add a new entry named Higgsfield, paste the provided URL, and authorize via the login window that appears.",
+    "An MCP (Model Context Protocol) is a connector that lets Claude invoke external tools on the user's behalf; in this workflow it lets Claude call Higgsfield directly to generate and deposit image and video files into the local project folder.",
+    "Higgsfield's Cinema Studio mode produces camera-move-style video clips (slow push-ins, page lifts) from a text prompt, handling model selection automatically so the user only describes the desired shot.",
+    "Scroll-driven video playback, where scrolling down advances the footage frame by frame and scrolling up reverses it, requires WebGL and the Three.js library; Claude writes this integration from a plain-language prompt.",
+    "The final hero sequence is a cinematic desk-to-phone zoom that ends on a single email, chosen after roughly 30 minutes of back-and-forth iteration to replace a first pass that felt too gimmicky.",
+    "The creator's assessment is that Claude and Higgsfield together reach about 90% of a finished site, with the remaining 10% being human creative judgment: deciding which shots to keep, which to cut, and what narrative the motion should serve."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Result Preview"
+    },
+    {
+      "t": 30,
+      "title": "Higgsfield MCP Setup in Claude"
+    },
+    {
+      "t": 61,
+      "title": "What MCP and Higgsfield Do"
+    },
+    {
+      "t": 181,
+      "title": "Brand Identity and Hero Image Generation"
+    },
+    {
+      "t": 241,
+      "title": "Cinematic Video Clips via Cinema Studio"
+    },
+    {
+      "t": 301,
+      "title": "HTML Build and Scroll-Driven Video"
+    },
+    {
+      "t": 390,
+      "title": "Final Result and Human Creative Judgment"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "1d14de44b60daa48"
 }

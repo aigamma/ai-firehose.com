@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A beginner-level tutorial covering PostgreSQL fundamentals including table creation, data manipulation with SELECT/INSERT/UPDATE/DELETE, filtering with WHERE clauses, aggregation with GROUP BY, joins across multiple tables, foreign keys, and relationship modeling.",
-  "writeup": "",
+  "writeup": "A practical crash course on PostgreSQL aimed squarely at ML and AI practitioners who can build agentic workflows but lack relational database fundamentals. The video walks from installation through the server/database/schema/table hierarchy, covering both a Docker Compose setup with pgAdmin and the psql command-line tool. The through-line is that PostgreSQL is the default choice for new projects because it is open source, beginner-friendly, and extensible enough to absorb specialized workloads like vector search via pgvector rather than requiring a separate database.",
   "wh": "82a771ad1243c0e0",
   "concepts": [
     {
@@ -64,5 +64,45 @@
       "channel": "AWS Developers",
       "score": 0.445
     }
-  ]
+  ],
+  "key_points": [
+    "PostgreSQL's extensibility is a decisive practical advantage: rather than adding a dedicated vector store, developers can install the pgvector extension and store embeddings as a native column type inside the existing PostgreSQL database.",
+    "The Docker Compose setup demonstrated runs PostgreSQL on port 5432 and pgAdmin 4 on port 5050 (mapped from container port 80), with persistence handled by a named Docker volume mapped to /var/lib/postgresql/data so data survives container restarts.",
+    "PostgreSQL's object hierarchy is server (the running instance, identified by hostname or IP) containing databases, each database containing schemas (focused namespaces grouping related tables, views, and triggers), and schemas containing tables, views, and other objects.",
+    "The psql CLI can be accessed either by entering the running PostgreSQL container via docker compose exec postgres bash, or by installing only the postgresql-libs package (on Arch Linux: pacman -S postgresql-libs), which provides the client tool without a full local server install.",
+    "pgAdmin 4 is a web-based management interface that connects to the PostgreSQL server by hostname (the container name within a Docker network, or localhost for a local install), username, password, and database name, all drawn directly from the Docker Compose environment variables."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Why PostgreSQL"
+    },
+    {
+      "t": 90,
+      "title": "Installation Overview and Docker Setup"
+    },
+    {
+      "t": 270,
+      "title": "Docker Compose Configuration"
+    },
+    {
+      "t": 390,
+      "title": "pgAdmin Setup and Port Mapping"
+    },
+    {
+      "t": 480,
+      "title": "Connecting pgAdmin and psql CLI"
+    },
+    {
+      "t": 600,
+      "title": "PostgreSQL Terminology Hierarchy"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "520ee461d93b4084"
 }

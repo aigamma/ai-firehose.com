@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud Tech presents the Agent Development Kit (ADK), a framework for simplifying the construction and testing of multi-agent systems. The tutorial demonstrates creating agents with custom tools, integrating real-time data retrieval and search capabilities, and using a web interface for debugging.",
-  "writeup": "This Google Cloud Tech tutorial introduces the Agent Development Kit (ADK), a framework for building and testing multi-agent systems. It walks through creating agents and equipping them with custom tools, including real-time date retrieval and Google Search, and using a web interface to debug them. Connecting agents to live tools matters because it addresses hallucinations by grounding responses in current data rather than relying on a model's internal knowledge alone.",
+  "writeup": "Google's Agent Development Kit (ADK) provides a Python framework that handles the boilerplate of equipping LLMs with tools and running them in a loop, reducing a first agent to a handful of lines. The video walks from a bare \"Hello World\" agent through adding a datetime tool, then a built-in Google Search tool, and finally a multi-agent system where specialized agents are passed as tools to an orchestrator. The motivating example is a Top Chef search that surfaces hallucinated URLs, which a URL-verifier sub-agent corrects by fetching and reading each page, demonstrating the LLM-as-judge pattern. The through-line is that decomposing work across single-purpose agents with appropriately sized models gives finer control over accuracy, memory, and cost than a single agent loaded with many tools.",
   "wh": "52fd8423ff1d9dde",
   "concepts": [
     {
@@ -60,5 +60,49 @@
       "channel": "Google Cloud Tech",
       "score": 0.646
     }
-  ]
+  ],
+  "key_points": [
+    "ADK ships two built-in testing interfaces: `adk run` launches a terminal dialogue and `adk web` spins up a local server at port 8000 with a visual stack trace panel, so debugging during development requires no external tooling.",
+    "Tools in ADK are ordinary Python functions appended to a `tools=[]` list on the agent definition; a `get_current_time` function returning `datetime.now()` is enough to give an agent real-time awareness the base LLM cannot provide.",
+    "The built-in Google Search tool requires `bypass_multiple_tools_limit=True` because a comprehensive search typically triggers several consecutive tool calls rather than a single one.",
+    "A multi-agent system is built by placing agent objects directly inside another agent's `tools=[]` list; the researcher orchestrator calls a search agent and then a URL-verifier agent in sequence, implementing LLM-as-judge without any custom orchestration code.",
+    "Assigning each sub-agent a single, narrow purpose allows different underlying models per agent: cheaper, faster models handle retrieval and verification subtasks while a more capable model drives the orchestrator reasoning step."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "ADK Overview and Setup"
+    },
+    {
+      "t": 60,
+      "title": "Creating the First Agent"
+    },
+    {
+      "t": 120,
+      "title": "CLI and Web Testing Interfaces"
+    },
+    {
+      "t": 210,
+      "title": "Adding Tools: Timekeeper Example"
+    },
+    {
+      "t": 330,
+      "title": "Built-In Google Search Tool"
+    },
+    {
+      "t": 480,
+      "title": "Multi-Agent System: URL Verifier"
+    },
+    {
+      "t": 570,
+      "title": "Orchestrator Agent and LLM-as-Judge Pattern"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "364f8c4a4c8ff076"
 }

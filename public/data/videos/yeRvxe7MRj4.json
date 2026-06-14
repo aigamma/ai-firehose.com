@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud video on building AI-powered agents using the Agent Development Kit and Looker, grounded in enterprise data. Covers Model Context Protocol, MCP Toolbox for Databases, tools.yaml configuration, and implementation through a Python environment with a local web interface.",
-  "writeup": "This Google Cloud Tech video walks through configuring an AI agent with the Agent Development Kit and Looker, grounding the agent in enterprise data through the Model Context Protocol. It covers the MCP Toolbox for Databases and the tools.yaml configuration that defines available tools, then implements the setup in a Python environment with a local web interface. The takeaway is a concrete first configuration that connects an agent to Looker via MCP for enterprise operations and API integration.",
+  "writeup": "A step-by-step walkthrough of connecting a local LLM agent to Looker via Google's Agent Development Kit (ADK) and the MCP Toolbox for Databases. The build starts from nothing: Python virtual environment setup, Looker API credential retrieval, a tools.yaml file that declares which Looker capabilities the agent can call, and a root agent defined in Python. The central insight is that the tools.yaml description field is what the LLM reads to decide which tool to invoke, so a well-described tool definition directly shapes response quality.",
   "wh": "0edf5c4411fe1c68",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Cole Medin",
       "score": 0.62
     }
-  ]
+  ],
+  "key_points": [
+    "Google ADK (Agent Development Kit) is an open-source framework built and proven at Google scale; it provides the scaffolding (ADK create, ADK web) for standing up a local agent with minimal boilerplate.",
+    "Looker authentication requires a client ID and client secret obtained from the user's own Looker account credentials; both must be stored as environment variables before any MCP connection is attempted.",
+    "Tools are declared in a tools.yaml file under a sources key (kind: looker, base URL, credential references) and a tools key where each entry names the Looker-specific functionality, for example get_connections, with a description the LLM uses to select the right tool at runtime.",
+    "The MCP Toolbox for Databases acts as the local MCP server; the agent Python file imports MCP toolsets and server parameters to wire the agent's root LLM to those declared tools.",
+    "Adding a tool is a live-reload operation: modifying tools.yaml and restarting ADK web immediately makes the new tool visible when queried, demonstrating the declarative, config-driven nature of the tooling layer.",
+    "Beyond get_connections, the Looker MCP toolset supports getting dashboards, Looks, Explores, toggling dev mode, and running health analysis, giving the agent broad read and inspection coverage of a Looker instance."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Overview: ADK, MCP, and Looker"
+    },
+    {
+      "t": 91,
+      "title": "Looker API Credentials"
+    },
+    {
+      "t": 122,
+      "title": "Python Environment and ADK Install"
+    },
+    {
+      "t": 180,
+      "title": "tools.yaml: Defining Sources and Tools"
+    },
+    {
+      "t": 241,
+      "title": "Agent Python File and MCP Server"
+    },
+    {
+      "t": 301,
+      "title": "Running the Agent with ADK Web"
+    },
+    {
+      "t": 330,
+      "title": "Adding Tools and Live Testing"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "17b0c1d599000a49"
 }

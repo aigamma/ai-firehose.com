@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "IBM Technology explains digital certificate management and the risks of certificate expiration. The video covers what digital certificates are, why shorter lifetimes increase operational risk, and positions certificate lifecycle management as essential to modern cybersecurity practice.",
-  "writeup": "",
+  "writeup": "This video explains how digital certificates work (public/private key pairs signed by certificate authorities to enable authentication, confidentiality, and integrity), why expiration is intentional rather than a flaw, and why the industry's accelerating reduction of certificate lifetimes (200 days in 2026, 100 days in 2027, 47 days in 2029 per the CA/Browser Forum) makes automated lifecycle management a non-negotiable operational discipline. The central argument: organizations with thousands of certificates across APIs, microservices, load balancers, and IoT devices cannot absorb this cadence manually, so those that automate will eliminate outages while those that do not will keep learning the same painful lessons.",
   "wh": "99bf7c063da507d4",
   "concepts": [
     {
@@ -56,5 +56,50 @@
       "channel": "Caleb Writes Code",
       "score": 0.481
     }
-  ]
+  ],
+  "key_points": [
+    "The CA/Browser Forum has set a roadmap that collapses public certificate lifetimes from 200 days in 2026 to 100 days in 2027 and then to 47 days in 2029, meaning large enterprises will need to issue and renew certificates continuously at machine scale.",
+    "A certificate failure is not subtle: browsers block users immediately, APIs reject connections hard, and services stop talking to each other, often with no useful error message, making expiration events among the most disruptive non-attack outages a production system can suffer.",
+    "Modern enterprise environments face machine identity sprawl: a single organization routinely runs thousands of certificates across web servers, APIs, microservices, load balancers, VPNs, IoT devices, and internal service-to-service channels, each with its own expiration date and renewal dependencies.",
+    "The full certificate lifecycle management loop is: discover all certificates (you cannot secure what you cannot see), issue and deploy via automated policy-driven workflows, monitor for upcoming expirations, rotate before expiry not after, revoke compromised certificates, and retire old keys.",
+    "Without certificates, all HTTPS traffic is vulnerable to man-in-the-middle attacks where an attacker proxies both sides of a session and reads every byte; the certificate's binding of a public key to a verified server identity is what defeats this class of attack.",
+    "A complete cryptographic posture covers more than certificates: key sizes, quantum-safe ciphers, secure libraries, and compliant protocol versions all need governance alongside certificate lifecycle, so the discipline extends to the full spectrum of cryptographic risk."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Certificate Expiry as a Threat Vector"
+    },
+    {
+      "t": 30,
+      "title": "What a Digital Certificate Is"
+    },
+    {
+      "t": 150,
+      "title": "Authentication, Confidentiality, and Integrity"
+    },
+    {
+      "t": 240,
+      "title": "Machine Identity Sprawl"
+    },
+    {
+      "t": 361,
+      "title": "Shrinking Certificate Lifetimes"
+    },
+    {
+      "t": 390,
+      "title": "Certificate Lifecycle Management"
+    },
+    {
+      "t": 481,
+      "title": "The Case for Full Automation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9a06a2aa94f65a58"
 }

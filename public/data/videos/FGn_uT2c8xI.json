@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Abacus AI launched AI SuperComputer, a cloud platform enabling AI agents to build, deploy, and run software in Ubuntu environments with integrated databases, storage, GitHub, AWS, and HTTPS deployment. The platform bridges code generation and live deployment by providing real infrastructure for autonomous agents to execute and host applications.",
-  "writeup": "",
+  "writeup": "Abacus AI's Supercomputer offers an always-on Ubuntu cloud environment for roughly $10 a month, giving AI coding agents a real file system, SQL databases, S3-compatible storage, custom subdomains, and one-click HTTPS deployment rather than just local code generation. The video walks through four launch demos spanning open-source model hosting, a Django CRM, a 3D browser game, and a macOS Electron app, each illustrating the gap Abacus is targeting: AI can write software but historically could not make it live. The core argument is that the next competitive axis in AI coding tools is not benchmark scores alone but which system can move an idea furthest down the actual deployment pipeline.",
   "wh": "1ef760df6d3b1090",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "AI Revolution",
       "score": 0.618
     }
-  ]
+  ],
+  "key_points": [
+    "Abacus Supercomputer provisions two vCPUs, 8 GB RAM, persistent disk, built-in PostgreSQL, S3-compatible storage, terminal and SSH access, GitHub and AWS integration, and public HTTPS subdomains under abacus.ai.cloud for approximately $10 a month.",
+    "The open-source hosting demo shows the Abacus CLI deploying Qwen 2.5 (a 500-million-parameter language model) with a Flask backend, Nginx reverse proxy, and automatic download resume, producing a public chat interface with conversation history and markdown rendering.",
+    "The always-on CRM demo uses Google Antigravity on Gemini 3.5 Flash to build a Django, PostgreSQL, Gunicorn, and Nginx stack from a single prompt, deployed to a live public URL with customer management, Kanban deal pipelines, task scheduling, analytics, and role-based access control.",
+    "The 3D browser game demo has Claude Code on Sonnet 4.6 produce a Three.js r160 endless runner with WebGL, Unreal Bloom post-processing, two shifting dimensions, combo scoring, local-storage high scores, and mobile swipe controls in 8 minutes 52 seconds from prompt to live URL.",
+    "Abacus publishes AES-256 at-rest and TLS 1.2 in-transit encryption, a no-training-on-prompts policy, and SOC 2, GDPR, and CCPA compliance claims; the video notes these claims come from Abacus's own material and have not yet been independently verified by wide user review.",
+    "The two-vCPU, 8 GB constraint is sufficient for demos, internal tools, and lightweight APIs but is not a substitute for real engineering decisions on heavy GPU workloads, large-scale production traffic, or enterprise devops requirements."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Abacus Supercomputer Overview"
+    },
+    {
+      "t": 31,
+      "title": "Infrastructure Specs and Agent Access"
+    },
+    {
+      "t": 91,
+      "title": "Open-Source Model Hosting Demo"
+    },
+    {
+      "t": 271,
+      "title": "Private AI and Compliance Considerations"
+    },
+    {
+      "t": 302,
+      "title": "Always-On CRM Demo"
+    },
+    {
+      "t": 392,
+      "title": "3D Browser Game Demo"
+    },
+    {
+      "t": 481,
+      "title": "macOS Desktop App Demo"
+    },
+    {
+      "t": 540,
+      "title": "Limits and Honest Assessment"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4a5db62164e7dcce"
 }

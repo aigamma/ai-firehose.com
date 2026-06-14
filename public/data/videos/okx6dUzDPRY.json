@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud Tech shows how to build a multi-agent AI system for automating project intake workflows. The system integrates Asana webhooks with Google Cloud Run services, uses the Agent Development Kit (ADK) for orchestration, dispatches specialist agents in parallel via the Agent-to-Agent protocol, and leverages the Model Context Protocol to connect Vertex AI agents to BigQuery and Asana. The architecture demonstrates secure enterprise-grade agent deployment using pay-per-request Cloud Run containers.",
-  "writeup": "",
+  "writeup": "Kevin Blanco demonstrates a production multi-agent system that intercepts an Asana project intake form submission and returns a fully enriched task, carrying a risk score, resource availability check, historical pattern analysis, and live workspace context, in roughly 20 seconds. The architecture has three layers: Asana as the human interface (webhook source and live data source via MCP), Google Cloud as the intelligence layer (ADK orchestrator plus four specialist Cloud Run agents talking to Vertex AI and BigQuery), and Asana again as the write-back surface. The through-line is that enterprises already hold years of project data in fragmented systems; this system makes that data queryable at intake time so approvals are grounded in evidence rather than gut.",
   "wh": "aff6b3669cdf1055",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Cole Medin",
       "score": 0.633
     }
-  ]
+  ],
+  "key_points": [
+    "Google ADK eliminates the boilerplate of building LLM agents from scratch: before ADK, session state management, Gemini API wiring, and tool dispatch had to be handled manually; with ADK, one class definition (model, instructions, tools) is the entire agent definition.",
+    "The orchestrator uses the agent-to-agent (A2A) protocol to dispatch three specialist agents in parallel and one sequentially, knowing only a task URL and expected result for each, so any specialist can be swapped or extended without touching the orchestrator.",
+    "The BigQuery analyst agent avoids bloating the context window by writing its own SQL at runtime against Google's fully managed BigQuery MCP server rather than dumping historical data into a prompt; it uses Application Default Credentials and Secret Manager automatically.",
+    "The resource advisor agent queries the Asana MCP server live at runtime, finding active projects that may overlap with the new request and checking current team task load, using the same MCP tool set class as the BigQuery agent but with a different URL, which the author cites as what open standards mean in practice.",
+    "All five Cloud Run services (orchestrator plus four agents) scale to zero between requests, making the entire system pay-per-request with no idle cost.",
+    "Every agent action, request payload, response, and orchestrator-to-agent communication is logged in Google Cloud Logging, giving full traceability for observability."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Problem: Manual Project Intake at Scale"
+    },
+    {
+      "t": 31,
+      "title": "Live Demo: Asana Form Submission"
+    },
+    {
+      "t": 91,
+      "title": "System Architecture Overview"
+    },
+    {
+      "t": 152,
+      "title": "ADK Orchestrator and Agent-to-Agent Protocol"
+    },
+    {
+      "t": 181,
+      "title": "BigQuery Analyst Agent"
+    },
+    {
+      "t": 211,
+      "title": "Asana Context Agent and MCP Open Standards"
+    },
+    {
+      "t": 241,
+      "title": "Cloud Run Deployment and Observability"
+    },
+    {
+      "t": 270,
+      "title": "Full System Summary and Source Code"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "35f7dde18663f830"
 }

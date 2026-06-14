@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "AlloyDB AI is a Google Cloud database product that combines PostgreSQL with hybrid search capabilities. It enables fast embedding generation, vector search at scale using ScaNN, full-text search, and built-in AI functions like summarization and generation integrated into SQL workflows.",
-  "writeup": "",
+  "writeup": "A Google product demo showing AlloyDB's hybrid search capability applied to S&P 500 10-K filings for a financial-analyst use case. The demo walks from the hard limit of keyword-only search (binary match, misses synonyms) through vector semantic search powered by AlloyDB's SCAN algorithm, then combines both via hybrid search with reranking. The through-line is collapsing a week-long manual research task into sub-second SQL queries augmented by in-database Gemini AI functions.",
   "wh": "feb4558c188d3a4b",
   "concepts": [
     {
@@ -64,5 +64,46 @@
       "channel": "Tristen O'Brien",
       "score": 0.55
     }
-  ]
+  ],
+  "key_points": [
+    "Full-text keyword search is binary: a query for 'shipping' returns zero results for documents that use 'maritime' instead, illustrating why keyword-only retrieval breaks on natural-language financial filings.",
+    "AlloyDB's SCAN algorithm, derived from 14 years of Google research, scales to 10 billion or more vectors and delivers filtered semantic search up to 10x faster than standard Postgres.",
+    "Hybrid search in AlloyDB combines keyword precision (native GIN indexing, the RUM extension, and forthcoming native BM25) with vector embeddings, then reranks results via reciprocal rank fusion or Vertex AI semantic ranker 512.",
+    "The HNSW index type gains up to 4x speed improvement through AlloyDB's columnar engine acceleration, giving operators a choice between SCAN and a supercharged HNSW depending on workload.",
+    "AlloyDB's AI.data.initialize_embeddings function generates millions of embeddings from chunked documents in minutes with no external pipelines or async code, entirely inside the database.",
+    "In-database AI functions AI.summarize and AI.generate bring Gemini's language capabilities directly into SQL, enabling per-chunk risk extraction and company overviews without leaving the query layer; a query that would take over 90 seconds without these capabilities runs in sub-second time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Demo Setup and Use Case"
+    },
+    {
+      "t": 30,
+      "title": "Loading 10-Ks and Generating Embeddings"
+    },
+    {
+      "t": 60,
+      "title": "Full-Text Search Limitation"
+    },
+    {
+      "t": 90,
+      "title": "Semantic Search with SCAN"
+    },
+    {
+      "t": 120,
+      "title": "Hybrid Search and Index Types"
+    },
+    {
+      "t": 150,
+      "title": "In-Database AI Functions"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "18230970dadb9a2b"
 }

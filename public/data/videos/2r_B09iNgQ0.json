@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Jordan Urbs demonstrates setting up Odysseus (a workspace agent framework) and OpenCode (a build agent) for local execution using Gemma 4 via Ollama, with Venice API as a fallback provider. The tutorial covers installation in Docker, model management, agent skills and memory systems, and a hybrid approach of building with frontier models then executing tasks locally.",
-  "writeup": "This tutorial walks through running AI agents locally by pairing Odysseus, a workspace agent framework, with OpenCode, a build agent, using Gemma 4 served through Ollama and the Venice API configured as a fallback provider. It covers Docker installation, model management, and the agent skills and memory systems that the two frameworks rely on. The central method is a hybrid workflow: build with frontier models, then run the resulting tasks locally. The takeaway is a concrete local setup that keeps execution on-machine while leaning on stronger remote models only for the building phase.",
+  "writeup": "This video introduces two distinct paradigms for running AI agents locally: an out-of-the-box agentic workspace (Odysseus, installed via Docker) and purpose-built custom agent pipelines for content creation. The central architectural argument is a tiered inference strategy: use a small, cheap, locally-run open-source model (Gemma 4 12B at 7.4 GB VRAM) for routine execution, and route to a privacy-preserving remote API (Venice) only when a larger frontier model is needed for high-stakes authoring. The through-line is practical privacy: mainstream providers log and train on your prompts, while Venice offers zero-data-retention contracts for agentic model tiers and acts as a privacy proxy for anonymized calls.",
   "wh": "00e102704cc7c85c",
   "concepts": [
     {
@@ -76,5 +76,53 @@
       "channel": "AI Engineer",
       "score": 0.523
     }
-  ]
+  ],
+  "key_points": [
+    "Odysseus (60,000-star GitHub repo) runs as a Docker container or native binary and supports any model provider through a unified interface, making it the recommended first stop for developers unfamiliar with self-hosted agent infrastructure.",
+    "Gemma 4 12B requires only 7.4 GB of RAM under quantization and is presented as matching reasoning quality previously associated with models needing 30 GB, making capable local inference accessible on a 16 GB consumer machine via Ollama.",
+    "Venice distinguishes between two privacy tiers on its agentic model list: 'private' (contractual zero-data-retention with the underlying GPU provider) and 'anonymized' (Venice acts as a proxy so the provider never sees identifying context), offering a concrete mechanism for using frontier APIs without logging.",
+    "The teacher/executor cost split is the core economic argument: a frontier model such as Claude Opus 4.8 at $30 per million output tokens authors or repairs the workflow once, then a cheap executor such as Kimi K2 at $4.66 per million tokens runs it repeatedly, cutting ongoing inference cost by roughly 6x.",
+    "Connecting Ollama to Odysseus running inside Docker requires manually finding the host machine's LAN IP address and pasting it as a custom endpoint, because the container cannot resolve 'localhost' to the host OS where Ollama is listening."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Two Agent Paradigms"
+    },
+    {
+      "t": 92,
+      "title": "Odysseus Workspace Overview"
+    },
+    {
+      "t": 120,
+      "title": "Installation via Docker"
+    },
+    {
+      "t": 243,
+      "title": "Model Provider Setup"
+    },
+    {
+      "t": 300,
+      "title": "Gemma 4 for Local Inference"
+    },
+    {
+      "t": 363,
+      "title": "Venice for Private Remote API"
+    },
+    {
+      "t": 423,
+      "title": "Teacher vs Executor Cost Architecture"
+    },
+    {
+      "t": 570,
+      "title": "Connecting Ollama in Docker"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "65ddcf5386288100"
 }

@@ -71,6 +71,14 @@ Eric curates Watch by asking Claude Code, which edits the one file `sources/feat
 - **Feature a creator.** Resolve the channel id (`node worker/sources/youtube_registry.mjs resolve @handle`), append a `creators[]` entry with a one-line `blurb` (no em dashes), optionally `npm run creators` to verify locally, then commit and push.
 - **Pin a video.** Extract the `v=` id from the watch URL (validate `^[\w-]{11}$`), append `{ videoId, note, pinned_at }` to `pinned[]` with `pinned_at` set to today (YYYY-MM-DD), optionally `npm run creators`, then commit and push. The pin self-expires 90 days after `pinned_at`; if you omit it, the worker stamps it on the next run.
 
+### Per-Video Study Notes (Transcript Insights)
+
+Each video page (`/watch/:videoId`) carries transcript-grounded study notes, so a reader gets the substance on-site instead of bouncing to YouTube: a short write-up, a key-points list, and timestamped chapters that SEEK the embedded player (`startAt`/`playToken` on `LiteYouTube`). They are authored from the video's CAPTIONS, not its metadata. This matters because the pipeline runs `ENABLE_TRANSCRIPTS=0`, so the classifier `summary` and the fallback write-up only ever saw the title plus the RSS description; the insights read what is actually said in the talk.
+
+The contract is in `worker/pipeline/prompts/video_insights.mjs` (a grounded write-up, 3 to 6 key points, and 4 to 8 chapters anchored to real `[mm:ss]` markers in the transcript). `worker/pipeline/videos.mjs` PRESERVES `key_points`, `chapters`, `insights`, and the upgraded `writeup` across a rebuild (a keyed run otherwise rebuilds each page from a fixed field set and would drop them); a metadata-only write-up remains the fallback where captions are absent.
+
+The library was backfilled once, on the Max subscription, never the API (see `docs/OPERATIONS.md` Spend Discipline): `scripts/batch_fetch_transcripts.mjs` fetches captions GENTLY in one paced `yt-dlp` process (parallel fetches trip YouTube's HTTP 429 bot-block, see `LESSONS_LEARNED.md` Session 29), one Sonnet subagent per video reads its cached transcript and writes insights to a staging cache (`worker/.cache/insights/<id>.json`), and `scripts/merge_video_insights.mjs` validates, sanitizes (em dashes), and merges them into the served per-video JSONs, preserving every other field. Genuinely caption-less videos keep the metadata write-up.
+
 ## Adding a Source
 
 Implement the adapter interface, register it, set a default authority weight, and document it here in the same commit (the maintenance rule). The classifier and the rest of the pipeline are source-agnostic downstream of fetch.

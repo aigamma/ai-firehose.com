@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google demonstrates how to build a custom app directly from a mobile browser using Google AI Studio, leveraging voice commands and the Nano Banana API to create an image-generation application without software installation. The system generates code in real time based on AI reasoning through user instructions.",
-  "writeup": "This Google Cloud Tech tutorial demonstrates building a custom application in Google AI Studio directly from a mobile browser, using voice commands and APIs rather than installed software. The walkthrough creates an image-generation app, with AI generating the code in real time. The takeaway: app construction can run entirely from a phone, with voice input driving code generation on the fly.",
+  "writeup": "A hands-on demonstration of building a fully functional React image-generation app directly from a mobile phone browser using Google AI Studio, with no installation required. The demo produces a custom stuffed-animal configurator for a 5-year-old by dictating app requirements via voice input, then watching AI Studio scaffold a complete React project with CSS styling and Imagen API integration. The through-line is that browser-based AI coding environments now lower the floor for app creation to anyone with a phone and an API key.",
   "wh": "db07f7038ac62189",
   "concepts": [
     {
@@ -60,5 +60,46 @@
       "channel": "Code With Aarohi",
       "score": 0.56
     }
-  ]
+  ],
+  "key_points": [
+    "Google AI Studio (aistudio.google.com) runs entirely in a mobile browser with no app install, accepting both typed and voice-described prompts to scaffold a full React application on demand.",
+    "The scaffolded app consisted of at least two files (index.css for styling and a React entry point), with AI Studio making autonomous styling decisions based on the stated audience (a 5-year-old).",
+    "The app was configured on first launch to prompt the user for a Google AI Studio API key, keeping credentials out of the generated code and enabling the Imagen API call at runtime.",
+    "Imagen API (misheard as 'Nano Banana' in captions) is called to generate a custom image from user-selected options (animal type, color, accessories), returning a rendered image within the app.",
+    "The voice prompt workflow transcribes and reformulates the spoken description into an optimized prompt before sending it to AI Studio, reducing the friction of composing precise instructions on a small keyboard.",
+    "The chat/thinking panel in AI Studio surfaces the model's reasoning and lists files as they are created, giving the builder visibility into the scaffolding process without requiring any code edits."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Demo Goal"
+    },
+    {
+      "t": 31,
+      "title": "Opening AI Studio on Mobile"
+    },
+    {
+      "t": 61,
+      "title": "Voice Prompt and API Key Setup"
+    },
+    {
+      "t": 90,
+      "title": "Watching the Scaffolding Process"
+    },
+    {
+      "t": 121,
+      "title": "Reviewing the Generated React App"
+    },
+    {
+      "t": 151,
+      "title": "Live Image Generation with Imagen API"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "cf96005b30839773"
 }
