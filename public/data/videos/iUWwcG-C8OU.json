@@ -6,29 +6,37 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Studio is an internal workspace that answers business questions in natural language against Snowflake, Linear, and Notion. It generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. Three reliability techniques enable production use: preflight sequencing with just-in-time schema injection, explicit layering rules to force model reliance on primary sources over learned knowledge, and query validation before widget hardcoding.",
-  "writeup": "Garrett Galow of WorkOS presents Studio, an internal workspace that answers business questions in natural language by querying Snowflake, Linear, and Notion. Rather than re-running model calls each time, Studio generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. The talk details three reliability techniques for production use: preflight sequencing with just-in-time schema injection, explicit layering rules that force the model to rely on primary sources over learned knowledge, and query validation before a widget is hardcoded. The takeaway is a pattern for turning natural language to SQL into stable, low-cost artifacts through context management and test-time control.",
-  "wh": "afde52462e13d5f1",
+  "summary": "WorkOS built Studio, an internal workspace where non-engineers can ask business questions against Snowflake, Linear, and Notion in natural language. The system generates reusable declarative JavaScript widgets that call data sources directly, enabling deterministic and cost-efficient query execution while avoiding repetitive manual requests.",
+  "writeup": "Garrett Galow of WorkOS describes Studio, an internal workspace that lets non-engineers ask business questions in natural language against Snowflake, Linear, and Notion. Rather than re-running ad hoc queries, the system generates reusable declarative JavaScript widgets that call data sources directly, which makes query execution deterministic and cost-efficient. The talk covers the supporting machinery: context management, preflight sequencing, query validation, prompt layering, and retrieval-augmented generation. The core takeaway is that compiling natural language into persistent widgets reduces repetitive manual data requests while keeping results reliable.",
+  "wh": "00b6d995d5dd1cd1",
   "concepts": [
     {
-      "slug": "prompt-layering",
-      "label": "prompt layering"
+      "slug": "natural-language-querying",
+      "label": "natural language querying"
     },
     {
       "slug": "context-management",
       "label": "context management"
     },
     {
+      "slug": "preflight-sequencing",
+      "label": "preflight sequencing"
+    },
+    {
       "slug": "query-validation",
       "label": "query validation"
     },
     {
-      "slug": "test-time-control",
-      "label": "test-time control"
+      "slug": "declarative-widgets",
+      "label": "declarative widgets"
     },
     {
-      "slug": "natural-language-to-sql",
-      "label": "natural language to SQL"
+      "slug": "prompt-layering",
+      "label": "prompt layering"
+    },
+    {
+      "slug": "retrieval-augmented-generation",
+      "label": "retrieval-augmented generation"
     }
   ],
   "similar": [
@@ -36,37 +44,37 @@
       "id": "so9l_MwS2yg",
       "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.6
+      "score": 0.581
+    },
+    {
+      "id": "kUQD5ZElyB4",
+      "title": "The Problem Solvers: Michele Catasta at Replit",
+      "channel": "Claude",
+      "score": 0.564
+    },
+    {
+      "id": "rjSvJYrVY2k",
+      "title": "The Problem Solvers | Anton Osika at Lovable",
+      "channel": "Claude",
+      "score": 0.554
     },
     {
       "id": "4azVjKhqDzw",
       "title": "Building the App Store for Agentic Engineering",
       "channel": "Cole Medin",
-      "score": 0.573
-    },
-    {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
       "score": 0.538
     },
     {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.53
-    },
-    {
-      "id": "TNwJ1LMiENk",
-      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawdord, Snorkel",
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
       "channel": "AI Engineer",
-      "score": 0.519
+      "score": 0.525
     },
     {
-      "id": "oC1h922cDoY",
-      "title": "The Biggest Shift in Business Since the Internet Just Happened",
-      "channel": "Liam Ottley",
-      "score": 0.518
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.525
     }
   ]
 }

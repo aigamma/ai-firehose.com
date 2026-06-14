@@ -6,9 +6,9 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Snorkel finetuned a 4B model using RL to enforce tool discipline for database queries, enabling it to call get_table_name, inspect schema, and self-correct on errors. Training cost under $500 and outperformed Qwen 3 235B which hallucinated on the same task. Single-table training transferred to multi-table problems with improvements from 13.9% to 26.6% on FinQA benchmark.",
+  "summary": "A 4B model fine-tuned with reinforcement learning to use tools systematically outperformed a 235B model on database query tasks by learning tool discipline before reasoning. The approach achieved significant benchmark improvements on FinQA with training costs under $500.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "f660775828d866b1",
+  "wh": "3aa4d9f363aa818a",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -19,12 +19,16 @@
       "label": "tool use"
     },
     {
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
+    },
+    {
       "slug": "recursive-self-improvement",
       "label": "recursive self-improvement"
     },
     {
-      "slug": "fine-tuning",
-      "label": "fine-tuning"
+      "slug": "test-time-validation",
+      "label": "test-time validation"
     }
   ],
   "similar": [
@@ -32,37 +36,37 @@
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.581
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.576
-    },
-    {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.563
-    },
-    {
-      "id": "s3rNDndvav0",
-      "title": "The biggest AI breakthrough in medicine & drug discovery",
-      "channel": "AI Search",
-      "score": 0.56
+      "score": 0.63
     },
     {
       "id": "Nfe5OCLeD38",
       "title": "NotebookLM is now bigger than Gemini",
       "channel": "Jeff Su",
-      "score": 0.559
+      "score": 0.597
     },
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.549
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.586
+    },
+    {
+      "id": "HfRVXadseCo",
+      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
+      "channel": "Better Stack",
+      "score": 0.584
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.584
+    },
+    {
+      "id": "zexcKJYQooU",
+      "title": "Elon Musk Just Shocked OpenAI With Grok 5",
+      "channel": "AI Revolution",
+      "score": 0.584
     }
   ]
 }

@@ -6,22 +6,22 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 102,
-  "first_seen": "2026-03-17T07:22:54+00:00",
+  "attention": 86,
+  "first_seen": "2026-04-04T10:03:00Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "leading",
-    "ratio": 144.4,
-    "momentum": 101.2,
+    "quadrant": "lagging",
+    "ratio": 99.5,
+    "momentum": 92.2,
     "sparkline": [
-      8,
-      7,
-      11,
-      15,
-      36,
-      39,
-      37,
-      34
+      17,
+      20,
+      32,
+      30,
+      29,
+      27,
+      25,
+      24
     ]
   },
   "neighbors": [
@@ -36,11 +36,6 @@
       "score": 0.769
     },
     {
-      "id": "discrete-tokenization",
-      "label": "discrete tokenization",
-      "score": 0.761
-    },
-    {
       "id": "prefill-optimization",
       "label": "prefill optimization",
       "score": 0.759
@@ -48,24 +43,29 @@
     {
       "id": "tokens",
       "label": "tokens",
-      "score": 0.754
+      "score": 0.756
     },
     {
       "id": "i-o-optimization",
       "label": "I/O optimization",
       "score": 0.741
+    },
+    {
+      "id": "logic-folding",
+      "label": "logic folding",
+      "score": 0.735
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.029
+      "position": 0.047
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.529
+      "position": -0.571
     },
     {
       "slug": "capability-safety",
@@ -75,12 +75,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.13
+      "position": -0.04
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.05
+      "position": -0.031
     },
     {
       "slug": "neural-symbolic",
@@ -95,17 +95,24 @@
   ],
   "top_items": [
     {
+      "title": "Claude Fable 5 Just Changed Website Design Forever",
+      "url": "https://www.youtube.com/watch?v=2ZwO6LhC0SU",
+      "author_or_channel": "Jack Roberts",
+      "published_at": "2026-06-12T18:54:49+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "How Seemingly Inconsequential Design Choices Dictate Performance of LLMs in Pathology",
+      "url": "http://arxiv.org/abs/2606.12407v1",
+      "author_or_channel": "Kian R. Weihrauch, Thomas A. Buckley, William Lotter",
+      "published_at": "2026-06-10T17:59:39Z",
+      "kind": "technique"
+    },
+    {
       "title": "TAHOE: Text-to-SQL with Automated Hint Optimization from Experience",
       "url": "http://arxiv.org/abs/2606.12387v1",
       "author_or_channel": "Zhiyi Chen, Jie Song, Peng Li",
       "published_at": "2026-06-10T17:52:15Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Model Quantization: Turn FP8 Checkpoints into High-Performance Inference Engines with NVIDIA TensorRT",
-      "url": "https://developer.nvidia.com/blog/model-quantization-turn-fp8-checkpoints-into-high-performance-inference-engines-with-nvidia-tensorrt/",
-      "author_or_channel": "NVIDIA Developer",
-      "published_at": "2026-06-09T18:27:52.000Z",
       "kind": "tool"
     },
     {
@@ -116,13 +123,6 @@
       "kind": "tool"
     },
     {
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "url": "https://www.youtube.com/watch?v=k7HrSreatII",
-      "author_or_channel": "Google Cloud Tech",
-      "published_at": "2026-06-09T16:57:57+00:00",
-      "kind": "tool"
-    },
-    {
       "title": "One Token per Multimodal Evidence: Latent Memory for Resource-Constrained QA",
       "url": "https://huggingface.co/papers/2606.10572",
       "author_or_channel": "HF Papers",
@@ -130,11 +130,11 @@
       "kind": "technique"
     },
     {
-      "title": "Why LLM Inference Needs a New Kind of Router",
-      "url": "https://www.modular.com/blog/why-llm-inference-needs-a-new-kind-of-router-part-1",
-      "author_or_channel": "aviziva",
-      "published_at": "2026-06-08T20:37:04.000Z",
-      "kind": "opinion"
+      "title": "Claude Code + Graphify = Insane Agentic OS",
+      "url": "https://www.youtube.com/watch?v=Owv503rTqYY",
+      "author_or_channel": "Jack Roberts",
+      "published_at": "2026-06-08T18:40:21+00:00",
+      "kind": "tool"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",
