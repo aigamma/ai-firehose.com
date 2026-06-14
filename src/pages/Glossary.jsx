@@ -147,7 +147,7 @@ export default function Glossary() {
   );
 }
 
-// The Atlas view: a category constellation. Each of the ~31 knowledge categories is a
+// The Atlas view: a category constellation. Each of the 33 knowledge categories is a
 // node placed on a ring (deterministic positions precomputed in atlas.json), sized by
 // concept count and colored by a stable hue. Curved edges, weighted by the count of
 // cross-category `related` links, show how the field connects. The SVG is the visual;
