@@ -1,0 +1,76 @@
+{
+  "id": "c-2eEv2ou7Y",
+  "title": "Why MCP and ChatGPT Apps Use Double Iframes — Frédéric Barthelet, Alpic",
+  "channel": "AI Engineer",
+  "channelUrl": "https://www.youtube.com/@aiDotEngineer",
+  "published": "2026-06-15T14:00:06+00:00",
+  "kind": "technique",
+  "recommended": false,
+  "summary": "Double iframe sandboxing nests one iframe within another to enforce security boundaries without sacrificing functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app via srcdoc into an inner frame, preventing CSP bypasses, storage collisions, and sandbox escapes while maintaining origin-specific storage isolation.",
+  "writeup": "This talk explains the double iframe sandboxing pattern used by MCP and ChatGPT Apps, where one iframe nests inside another to enforce security boundaries without losing functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app into an inner frame via srcdoc. The approach prevents CSP bypasses, storage collisions, and sandbox escapes while preserving origin-specific storage isolation. It matters for anyone embedding untrusted app content, since the nesting reconciles the sandbox attribute, Content Security Policy, and origin isolation in one design.",
+  "wh": "10aab1c7c7ce5939",
+  "concepts": [
+    {
+      "slug": "sandbox-attribute",
+      "label": "sandbox attribute"
+    },
+    {
+      "slug": "content-security-policy",
+      "label": "Content Security Policy"
+    },
+    {
+      "slug": "iframe",
+      "label": "iframe"
+    },
+    {
+      "slug": "srcdoc",
+      "label": "srcdoc"
+    },
+    {
+      "slug": "storage-isolation",
+      "label": "storage isolation"
+    },
+    {
+      "slug": "origin-isolation",
+      "label": "origin isolation"
+    }
+  ],
+  "similar": [
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.561
+    },
+    {
+      "id": "_xIwFcnHqp4",
+      "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
+      "channel": "AI Engineer",
+      "score": 0.549
+    },
+    {
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.537
+    },
+    {
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
+      "channel": "JavaScript Mastery",
+      "score": 0.536
+    },
+    {
+      "id": "gbI7THwqEjk",
+      "title": "Most people get these 3 AI terms wrong",
+      "channel": "Jeff Su",
+      "score": 0.517
+    },
+    {
+      "id": "B704UxLyqWA",
+      "title": "Claude Code Leak: What's Happening?",
+      "channel": "Jordan Urbs",
+      "score": 0.507
+    }
+  ]
+}

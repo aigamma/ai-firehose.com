@@ -6,34 +6,34 @@
     "post-training quantization"
   ],
   "kind": "technique",
-  "attention": 30,
+  "attention": 34,
   "first_seen": "2026-03-26T10:32:44Z",
   "rotation": {
     "horizon": "week",
     "quadrant": "leading",
-    "ratio": 125.8,
-    "momentum": 106.7,
+    "ratio": 130.7,
+    "momentum": 101.7,
     "sparkline": [
       7,
-      7,
-      8,
-      7,
-      7,
-      6,
+      12,
+      11,
+      11,
       10,
-      9
+      9,
+      13,
+      12
     ]
   },
   "neighbors": [
     {
+      "id": "coding-optimization",
+      "label": "coding optimization",
+      "score": 0.848
+    },
+    {
       "id": "oversampling",
       "label": "oversampling",
       "score": 0.846
-    },
-    {
-      "id": "compression",
-      "label": "compression",
-      "score": 0.837
     },
     {
       "id": "debiasing",
@@ -65,22 +65,22 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.206
+      "position": -0.276
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.692
+      "position": 0.729
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.165
+      "position": 0.117
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.028
+      "position": -0.175
     },
     {
       "slug": "neural-symbolic",
@@ -109,6 +109,13 @@
       "kind": "tool"
     },
     {
+      "title": "Gemma Playground: Robot Duck",
+      "url": "https://www.youtube.com/watch?v=pLwB_63yUBY",
+      "author_or_channel": "Google for Developers",
+      "published_at": "2026-06-09T04:00:33+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "Train Models Faster with JAX and MaxText Using NVFP4 on NVIDIA Blackwell",
       "url": "https://developer.nvidia.com/blog/train-models-faster-with-jax-and-maxtext-using-nvfp4-on-nvidia-blackwell/",
       "author_or_channel": "NVIDIA Developer",
@@ -128,19 +135,12 @@
       "author_or_channel": "guanming0717",
       "published_at": "2026-06-05T16:33:00.000Z",
       "kind": "tool"
-    },
-    {
-      "title": "SigmaScale: LLM Compression with SVD-based Low-Rank Decomposition and Learned Scaling Matrices",
-      "url": "https://huggingface.co/papers/2606.07098",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-05T05:48:58.000Z",
-      "kind": "technique"
     }
   ],
+  "definition": "Storing and computing a model's weights and activations at lower numerical precision, 8-bit or 4-bit integers instead of 16-bit floats, to shrink memory and speed inference with minimal accuracy loss. It works because memory bandwidth, not raw compute, is the dominant cost of serving large models, so fewer bits to move per token directly cuts latency, and the trade is precision against footprint.",
   "category": "Inference and Sampling",
   "durable": true,
   "source": "authored",
-  "definition": "Storing and computing a model's weights and activations at lower numerical precision, 8-bit or 4-bit integers instead of 16-bit floats, to shrink memory and speed inference with minimal accuracy loss. It works because memory bandwidth, not raw compute, is the dominant cost of serving large models, so fewer bits to move per token directly cuts latency, and the trade is precision against footprint.",
   "body": [
     {
       "type": "p",

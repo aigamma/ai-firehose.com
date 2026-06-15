@@ -6,9 +6,9 @@
   "published": "2026-06-13T23:45:08+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Xiaomi and TileRT released MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model achieving 3,000+ tokens per second on standard hardware. The architecture combines selective FP4 quantization, DFlash speculative decoding, and a persistent GPU kernel runtime to eliminate inference bottlenecks.",
-  "writeup": "The video stress tests MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model from Xiaomi and TileRT that reaches more than 3,000 tokens per second on standard hardware. It breaks down the three techniques behind that throughput: selective FP4 quantization, DFlash speculative decoding, and a persistent GPU kernel runtime, each aimed at removing inference bottlenecks. The takeaway is how these methods combine to push generation speed at trillion-parameter scale without specialized hardware.",
-  "wh": "dff1bf6bc96c01db",
+  "summary": "Xiaomi and TileRT released MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model achieving over 1,000 tokens per second on standard hardware. The model uses selective FP4 quantization, DFlash speculative decoding, and a TileRT persistent GPU kernel runtime to optimize inference speed.",
+  "writeup": "The video stress tests MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model from Xiaomi and TileRT that reaches over 1,000 tokens per second on standard hardware. It examines the three techniques behind that throughput: selective FP4 quantization, DFlash speculative decoding, and a TileRT persistent GPU kernel runtime. The takeaway is that inference speed gains come from combining sparse MoE routing with reduced-precision weights, draft-based decoding, and a kernel runtime tuned to keep the GPU busy.",
+  "wh": "e485800a44a6ec49",
   "concepts": [
     {
       "slug": "mixture-of-experts",
@@ -19,54 +19,54 @@
       "label": "quantization"
     },
     {
-      "slug": "dflash-speculative-decoding",
-      "label": "DFlash speculative decoding"
+      "slug": "speculative-decoding",
+      "label": "speculative decoding"
     },
     {
-      "slug": "persistent-gpu-kernel",
-      "label": "persistent GPU kernel"
+      "slug": "path-kernel",
+      "label": "path kernel"
     },
     {
-      "slug": "token-demand",
-      "label": "token demand"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     }
   ],
   "similar": [
     {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.642
-    },
-    {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.631
+      "score": 0.632
     },
     {
-      "id": "iOZf50YffCE",
-      "title": "This AI Chinese model is 15X cheaper?",
-      "channel": "Jack Roberts",
-      "score": 0.588
-    },
-    {
-      "id": "-zIF318p7J8",
-      "title": "MiniMax M3 explained in 8min..",
+      "id": "wzHXUtkoY-c",
+      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
       "channel": "Caleb Writes Code",
-      "score": 0.582
-    },
-    {
-      "id": "Ubazoyagym0",
-      "title": "Claude Mythos is FINALLY here (Fable 5)",
-      "channel": "Better Stack",
-      "score": 0.573
+      "score": 0.619
     },
     {
       "id": "V0c62734ix8",
       "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
       "channel": "AICodeKing",
-      "score": 0.57
+      "score": 0.587
+    },
+    {
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.58
+    },
+    {
+      "id": "Ubazoyagym0",
+      "title": "Claude Mythos is FINALLY here (Fable 5)",
+      "channel": "Better Stack",
+      "score": 0.575
+    },
+    {
+      "id": "VESRlr6lRQ8",
+      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
+      "channel": "AICodeKing",
+      "score": 0.572
     }
   ]
 }

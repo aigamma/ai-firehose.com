@@ -6,17 +6,17 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Kobie Crawford argues that smaller models finetuned with reinforcement learning to use tools correctly outperform much larger models that hallucinate. A 4B Snorkel model trained to query table schemas and self-correct surpassed Qwen 3 235B on a financial query task, with training costing under $500. Transfer from single-table to multi-table reasoning improved performance from 13.9% to 26.6% on FinQA.",
+  "summary": "Kobie Crawford argues that improving model behavior through finetuning and tool discipline matters more than scaling model size. He demonstrates a 4B model finetuned with RL outperforming a much larger 235B model on database query tasks, achieving improvement on FinQA from 13.9% to 26.6% with under $500 training cost. Tool discipline, rubric-based evals, and self-correction capability are positioned as key to task performance.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "dfd4af264e962ef2",
+  "wh": "c543abccb19489db",
   "concepts": [
     {
       "slug": "reinforcement-learning",
       "label": "reinforcement learning"
     },
     {
-      "slug": "behavioral-finetuning",
-      "label": "behavioral finetuning"
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
     },
     {
       "slug": "tool-use",
@@ -27,8 +27,12 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "fact-grounding",
-      "label": "fact-grounding"
+      "slug": "scaling",
+      "label": "scaling"
+    },
+    {
+      "slug": "evaluation-rubrics",
+      "label": "evaluation rubrics"
     }
   ],
   "similar": [
@@ -36,37 +40,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.625
-    },
-    {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
-      "channel": "AI Engineer",
-      "score": 0.585
+      "score": 0.624
     },
     {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.566
+      "score": 0.622
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.553
-    },
-    {
-      "id": "iOZf50YffCE",
-      "title": "This AI Chinese model is 15X cheaper?",
-      "channel": "Jack Roberts",
-      "score": 0.548
+      "score": 0.596
     },
     {
       "id": "TUnPNY4E2fw",
       "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
       "channel": "AI Engineer",
-      "score": 0.548
+      "score": 0.582
+    },
+    {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.559
+    },
+    {
+      "id": "jxHIw_OA8_I",
+      "title": "Stop perfecting your prompt. Do this instead",
+      "channel": "Jeff Su",
+      "score": 0.559
     }
   ]
 }

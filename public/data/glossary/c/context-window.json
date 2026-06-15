@@ -7,22 +7,22 @@
     "sequence length"
   ],
   "kind": "technique",
-  "attention": 25,
+  "attention": 34,
   "first_seen": "2026-04-02T13:29:33+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 98.4,
-    "momentum": 96,
+    "quadrant": "leading",
+    "ratio": 117.9,
+    "momentum": 118.4,
     "sparkline": [
-      1,
-      5,
-      6,
-      5,
-      5,
-      5,
-      4,
-      4
+      3,
+      3,
+      3,
+      3,
+      3,
+      7,
+      7,
+      6
     ]
   },
   "neighbors": [
@@ -30,11 +30,6 @@
       "id": "developer-tools",
       "label": "developer tools",
       "score": 0.754
-    },
-    {
-      "id": "tool-context",
-      "label": "tool context",
-      "score": 0.739
     },
     {
       "id": "text-editor-tool",
@@ -47,41 +42,46 @@
       "score": 0.728
     },
     {
-      "id": "model-context-windows",
-      "label": "model context windows",
-      "score": 0.723
+      "id": "browser-extension",
+      "label": "browser extension",
+      "score": 0.668
     },
     {
-      "id": "code-completion",
-      "label": "code completion",
-      "score": 0.694
+      "id": "workspace",
+      "label": "workspace",
+      "score": 0.658
+    },
+    {
+      "id": "ai-editor",
+      "label": "AI editor",
+      "score": 0.654
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.221
+      "position": 0.22
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.097
+      "position": 0
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.371
+      "position": 0.4
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.085
+      "position": -0.159
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.254
+      "position": -0.367
     },
     {
       "slug": "neural-symbolic",
@@ -95,6 +95,13 @@
     }
   ],
   "top_items": [
+    {
+      "title": "GLM-5.2 (Fully Tested): I got EARLY ACCESS & This MODEL is CRAZY!",
+      "url": "https://www.youtube.com/watch?v=MkFThJWJgg8",
+      "author_or_channel": "AICodeKing",
+      "published_at": "2026-06-13T10:43:33+00:00",
+      "kind": "tool"
+    },
     {
       "title": "Initial impressions of Claude Fable 5",
       "url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/#atom-everything",
@@ -129,19 +136,12 @@
       "author_or_channel": "Liam Ottley",
       "published_at": "2026-05-20T02:09:16+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "EpiCache: Episodic KV Cache Management for Long-Term Conversation on Resource-Constrained Environments",
-      "url": "https://machinelearning.apple.com/research/epicache",
-      "author_or_channel": "Apple ML Research",
-      "published_at": "2026-05-19T00:00:00.000Z",
-      "kind": "technique"
     }
   ],
+  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
-  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "body": [
     {
       "type": "p",
