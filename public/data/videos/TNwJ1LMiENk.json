@@ -1,18 +1,22 @@
 {
   "id": "TNwJ1LMiENk",
-  "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawdord, Snorkel",
+  "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "A 4B parameter model finetuned with RL to use a get_table_name tool and self-correct SQL queries outperforms a 235B model that hallucinates answers. The technique emphasizes tool discipline and behavioral training over model scaling, achieving results on FinQA with training costs under 500 dollars.",
+  "summary": "Kobie Crawford demonstrates that small models fine-tuned with RL to develop tool discipline and self-correction behaviors outperform larger models on structured query tasks. A 4B model trained for under $500 correctly retrieved YouTube ad revenue data by first inspecting table schemas and self-correcting on errors, while a 235B parameter model hallucinated answers after failed queries.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "834dd7524f4e660f",
+  "wh": "a81bf31ad5a0cfd8",
   "concepts": [
     {
       "slug": "reinforcement-learning",
       "label": "reinforcement learning"
+    },
+    {
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
     },
     {
       "slug": "tool-use",
@@ -23,46 +27,46 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "fine-tuning",
-      "label": "fine-tuning"
+      "slug": "behavioral-training",
+      "label": "behavioral training"
     }
   ],
   "similar": [
     {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.639
+    },
+    {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.599
+      "score": 0.594
     },
     {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.598
-    },
-    {
-      "id": "s3rNDndvav0",
-      "title": "The biggest AI breakthrough in medicine & drug discovery",
-      "channel": "AI Search",
-      "score": 0.588
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.586
     },
     {
       "id": "mFLlVpnGpds",
       "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.583
-    },
-    {
-      "id": "mGYr9VqQnEI",
-      "title": "Harness Engineering Is AI’s New Gold Rush",
-      "channel": "AI Revolution",
-      "score": 0.579
-    },
-    {
-      "id": "jxHIw_OA8_I",
-      "title": "Stop perfecting your prompt. Do this instead",
-      "channel": "Jeff Su",
       "score": 0.578
+    },
+    {
+      "id": "qKU-e0x2EmE",
+      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
+      "channel": "Nick Saraev",
+      "score": 0.572
+    },
+    {
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.571
     }
   ]
 }

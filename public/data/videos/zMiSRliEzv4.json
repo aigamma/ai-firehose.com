@@ -6,9 +6,9 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is developing an autonomous agent pipeline that ingests product signals like rage clicks, error spikes, and Slack messages, clusters them using embedded LLM queries, and automatically generates pull requests with fixes. The system groups signals by semantic meaning rather than surface similarity and prioritizes actionable signals like error tracking over less specific ones.",
+  "summary": "PostHog is developing an autonomous agent pipeline that detects product signals (rage clicks, error spikes, customer messages) and automatically generates pull requests to fix issues. The system groups related errors and session replays, researches the codebase, and opens PRs without manual triage or ticketing.",
   "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
-  "wh": "a3c21835883c32ee",
+  "wh": "510bd282f85cb9e1",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -19,53 +19,53 @@
       "label": "embeddings"
     },
     {
-      "slug": "clustering",
-      "label": "clustering"
+      "slug": "llm",
+      "label": "LLM"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "error-recovery",
+      "label": "error recovery"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "session-replay",
+      "label": "session replay"
     }
   ],
   "similar": [
     {
-      "id": "so9l_MwS2yg",
-      "title": "How to Keep Shipping When You Walk Away from Your Desk — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.611
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
+      "channel": "Cursor",
+      "score": 0.583
     },
     {
-      "id": "iUWwcG-C8OU",
-      "title": "Why Can't Anyone Answer Questions About the Business? — Garrett Galow, WorkOS",
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.582
+      "score": 0.562
+    },
+    {
+      "id": "qyB52HIiou8",
+      "title": "Archon + Jira: Drag a Ticket, Get a Pull Request (Live Build)",
+      "channel": "Cole Medin",
+      "score": 0.558
     },
     {
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.578
+      "score": 0.552
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.567
+      "score": 0.552
     },
     {
-      "id": "luBkbzjo-TA",
-      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
-      "channel": "Cole Medin",
-      "score": 0.567
-    },
-    {
-      "id": "ikH1--DSzMs",
-      "title": "How to build proactive agents & self-improving company (Fully explained)",
-      "channel": "AI Jason",
+      "id": "_GljcHROPX8",
+      "title": "What happens when agents get their own computers",
+      "channel": "Cursor",
       "score": 0.55
     }
   ]
