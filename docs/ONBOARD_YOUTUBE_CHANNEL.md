@@ -180,6 +180,8 @@ glossary layer is the only thing exempt from retention.
   `harness.json`, `creators.json`, `directory.json`) regardless of which actually changed, so
   trust `git status`, which names only the truly-changed file.
 
+- **Verify step 2 (`node worker/sources/youtube.mjs 3650`) writes `worker/.cache/shorts.json` as a side effect.** The adapter runs the `/shorts/<id>` redirect probe on every newly seen upload and caches the verdicts in the committed `worker/.cache/shorts.json`, so even a clean onboarding shows that file modified in `git status` though you only edited the registry. It is a real, correct cache update (a Short is always a Short), but it is not part of onboarding: either revert it (`git checkout -- worker/.cache/shorts.json`) to keep the commit scoped to `sources/youtube_channels.json` plus `public/data/directory.json` as the `git add` line above prescribes, or commit it deliberately as durable state. The worker reconciles the cache idempotently on its next run either way.
+
 - **A backlog already exists.** `sources/youtube_channels.json` carries a
   `_suggested_to_verify_and_add` list of high-signal channels worth adding. Pull from it when
   curating, then trim each name as it is added.
