@@ -4,69 +4,77 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-10T13:00:17+00:00",
-  "kind": "tool",
+  "kind": "technique",
   "recommended": false,
-  "summary": "PostHog is developing an autonomous agent pipeline that detects product signals (rage clicks, error spikes, customer messages) and automatically generates pull requests to fix issues. The system groups related errors and session replays, researches the codebase, and opens PRs without manual triage or ticketing.",
+  "summary": "PostHog is building an automated pipeline that converts product signals (errors, user actions, messages) into pull requests via a background agent that clusters related issues, researches code, and generates fixes. The approach uses LLM-generated query embeddings rather than direct signal embeddings for better semantic clustering, prioritizes actionable signals like error tracking, and advocates starting with expensive multi-call agent patterns before optimizing to single-shot solutions.",
   "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
-  "wh": "510bd282f85cb9e1",
+  "wh": "296543861e60777d",
   "concepts": [
     {
       "slug": "ai-agents",
       "label": "AI agents"
     },
     {
-      "slug": "embeddings",
-      "label": "embeddings"
+      "slug": "large-language-models",
+      "label": "large language models"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "semantic search"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "llm",
       "label": "LLM"
     },
     {
-      "slug": "error-recovery",
-      "label": "error recovery"
+      "slug": "pr-generation",
+      "label": "PR generation"
     },
     {
-      "slug": "session-replay",
-      "label": "session replay"
+      "slug": "clustering",
+      "label": "clustering"
     }
   ],
   "similar": [
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.583
-    },
-    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.562
-    },
-    {
-      "id": "qyB52HIiou8",
-      "title": "Archon + Jira: Drag a Ticket, Get a Pull Request (Live Build)",
-      "channel": "Cole Medin",
-      "score": 0.558
-    },
-    {
-      "id": "zTZ0qunQXnM",
-      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
-      "channel": "AI Engineer",
-      "score": 0.552
+      "score": 0.611
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.552
+      "score": 0.591
     },
     {
-      "id": "_GljcHROPX8",
-      "title": "What happens when agents get their own computers",
-      "channel": "Cursor",
-      "score": 0.55
+      "id": "luBkbzjo-TA",
+      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
+      "channel": "Cole Medin",
+      "score": 0.587
+    },
+    {
+      "id": "zTZ0qunQXnM",
+      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
+      "channel": "AI Engineer",
+      "score": 0.576
+    },
+    {
+      "id": "xR9pPlLSwJI",
+      "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
+      "channel": "EO",
+      "score": 0.575
+    },
+    {
+      "id": "C8El0OzQRrc",
+      "title": "This is the most useful n8n workflow I have ever built...",
+      "channel": "NeuralNine",
+      "score": 0.548
     }
   ]
 }

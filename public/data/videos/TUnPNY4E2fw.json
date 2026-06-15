@@ -6,9 +6,9 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a full stack of memory optimization techniques for training LLMs with very long context windows up to 5 million tokens. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The novel contribution, Untied Ulysses, further optimizes context parallelism through buffer reuse across attention heads, reducing activation memory while maintaining throughput and extending sequence length 25% beyond prior implementations.",
+  "summary": "Max Ryabinin presents techniques for training LLMs with extremely long context windows (3-5 million tokens) on consumer hardware. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, achieving 25% longer sequences than prior implementations.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "e528f831c4d7add4",
+  "wh": "f6226612b6ff7502",
   "concepts": [
     {
       "slug": "parallelization",
@@ -35,46 +35,46 @@
       "label": "Untied Ulysses"
     },
     {
-      "slug": "long-context-modeling",
-      "label": "long-context modeling"
+      "slug": "i-o-optimization",
+      "label": "I/O optimization"
     }
   ],
   "similar": [
     {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.602
+    },
+    {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.591
-    },
-    {
-      "id": "r305-aQTaU0",
-      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.572
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.571
+      "score": 0.595
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.568
+      "score": 0.577
     },
     {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.564
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.574
     },
     {
-      "id": "TNwJ1LMiENk",
-      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
-      "channel": "AI Engineer",
-      "score": 0.564
+      "id": "fk0pl6b7PKQ",
+      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
+      "channel": "Jordan Urbs",
+      "score": 0.57
+    },
+    {
+      "id": "qGm6gtHpJq0",
+      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
+      "channel": "Cole Medin",
+      "score": 0.565
     }
   ]
 }

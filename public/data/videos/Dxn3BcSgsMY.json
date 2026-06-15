@@ -6,14 +6,10 @@
   "published": "2026-06-13T15:09:16+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "DiffusionGemma is Google DeepMind's text generation model that applies diffusion-based image generation techniques to LLM inference. It uses uniform state diffusion with bidirectional passes over a noise canvas to achieve generation speeds exceeding 1,000 tokens per second on H100 GPUs by shifting from memory-bound to compute-bound execution.",
-  "writeup": "The video covers DiffusionGemma, Google DeepMind's text generation model that ports diffusion-based image generation techniques to LLM inference. It explains the core mechanism: uniform state diffusion with bidirectional passes over a noise canvas, which shifts execution from memory-bound to compute-bound and yields generation speeds exceeding 1,000 tokens per second on H100 GPUs. The significance lies in treating decoding as iterative refinement of a noise canvas rather than sequential token-by-token prediction, a departure from standard autoregressive inference.",
-  "wh": "8089ffd0777920d9",
+  "summary": "Google DeepMind released DiffusionGemma, a text generation model that applies image-generation diffusion techniques to text using uniform state diffusion for iterative refinement. The model achieves theoretical speeds exceeding 1,000 tokens per second on H100 GPUs by shifting from memory-bound to compute-bound execution through bidirectional attention and multi-pass token correction.",
+  "writeup": "The video covers DiffusionGemma, a Google DeepMind text generation model that adapts image-generation diffusion methods to text through uniform state diffusion, refining output iteratively rather than producing tokens left to right. It matters because the approach reframes generation as compute-bound instead of memory-bound, with theoretical throughput exceeding 1,000 tokens per second on H100 GPUs. The key mechanisms are bidirectional attention and multi-pass token correction, which together enable the iterative refinement that drives the speed gains.",
+  "wh": "4cd32c94b5ad6376",
   "concepts": [
-    {
-      "slug": "retrieval-augmented-generation",
-      "label": "retrieval-augmented generation"
-    },
     {
       "slug": "diffusion-models",
       "label": "diffusion models"
@@ -27,8 +23,12 @@
       "label": "test-time compute"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "llms",
+      "label": "LLMs"
+    },
+    {
+      "slug": "token-generation",
+      "label": "token generation"
     }
   ],
   "similar": [
@@ -36,37 +36,37 @@
       "id": "YiIrnYalHS4",
       "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
       "channel": "AI Revolution",
-      "score": 0.885
-    },
-    {
-      "id": "r305-aQTaU0",
-      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.723
-    },
-    {
-      "id": "HfRVXadseCo",
-      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
-      "channel": "Better Stack",
-      "score": 0.722
+      "score": 0.916
     },
     {
       "id": "WLtCHXdHTF0",
       "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
       "channel": "Better Stack",
-      "score": 0.71
+      "score": 0.712
+    },
+    {
+      "id": "r305-aQTaU0",
+      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.709
     },
     {
       "id": "J02-39xtlt4",
       "title": "Google strikes back! Gemini Omni, AI glasses, new models",
       "channel": "AI Search",
-      "score": 0.681
+      "score": 0.701
     },
     {
       "id": "1uypL1oNChI",
       "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
       "channel": "AICodeKing",
-      "score": 0.677
+      "score": 0.661
+    },
+    {
+      "id": "HfRVXadseCo",
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "channel": "Better Stack",
+      "score": 0.631
     }
   ]
 }

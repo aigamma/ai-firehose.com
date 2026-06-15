@@ -7,29 +7,34 @@
     "sparsely-gated mixture of experts"
   ],
   "kind": "technique",
-  "attention": 36,
-  "first_seen": "2026-05-21T20:32:39+00:00",
+  "attention": 27,
+  "first_seen": "2026-05-23T20:00:00.000Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "leading",
+    "quadrant": "weakening",
     "ratio": 145,
-    "momentum": 114.6,
+    "momentum": 89.3,
     "sparkline": [
-      3,
-      5,
-      5,
-      5,
-      13,
+      2,
+      4,
+      4,
       12,
-      15,
-      14
+      11,
+      10,
+      14,
+      13
     ]
   },
   "neighbors": [
     {
+      "id": "mixture-of-tokens",
+      "label": "Mixture of Tokens",
+      "score": 0.792
+    },
+    {
       "id": "expert-selection",
       "label": "expert selection",
-      "score": 0.779
+      "score": 0.778
     },
     {
       "id": "mixture-density-representation",
@@ -44,24 +49,19 @@
     {
       "id": "hybrid-strategy",
       "label": "hybrid strategy",
-      "score": 0.736
+      "score": 0.738
     },
     {
       "id": "superintelligence",
       "label": "superintelligence",
       "score": 0.735
-    },
-    {
-      "id": "shuffle-model",
-      "label": "Shuffle Model",
-      "score": 0.728
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.1
+      "position": 0.107
     },
     {
       "slug": "scaling-efficiency",
@@ -71,17 +71,17 @@
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": -0.084
+      "position": -0.105
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.188
+      "position": 0.274
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.291
+      "position": -0.181
     },
     {
       "slug": "neural-symbolic",
@@ -91,19 +91,12 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.183
+      "position": -0.18
     }
   ],
   "top_items": [
     {
-      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
-      "url": "https://www.youtube.com/watch?v=VESRlr6lRQ8",
-      "author_or_channel": "AICodeKing",
-      "published_at": "2026-06-14T09:15:47+00:00",
-      "kind": "opinion"
-    },
-    {
-      "title": "Is This The FASTEST AI Model In The World?!! (Xiaomi MiMo V2.5 Pro UltraSpeed)",
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
       "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
       "author_or_channel": "Better Stack",
       "published_at": "2026-06-13T23:45:08+00:00",
@@ -136,12 +129,19 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-08T20:00:00.000Z",
       "kind": "tool"
+    },
+    {
+      "title": "Sparse Subspace-to-Expert Sharing for Task-Agnostic Continual Learning",
+      "url": "http://arxiv.org/abs/2606.07500v1",
+      "author_or_channel": "Fatema Siddika, Md Anwar Hossen, Tanwi Mallick",
+      "published_at": "2026-06-05T17:53:52Z",
+      "kind": "technique"
     }
   ],
-  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
+  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "body": [
     {
       "type": "p",

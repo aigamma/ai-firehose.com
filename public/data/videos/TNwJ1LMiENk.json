@@ -4,19 +4,19 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-10T17:00:25+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": false,
-  "summary": "Kobie Crawford demonstrates that small models fine-tuned with RL to develop tool discipline and self-correction behaviors outperform larger models on structured query tasks. A 4B model trained for under $500 correctly retrieved YouTube ad revenue data by first inspecting table schemas and self-correcting on errors, while a 235B parameter model hallucinated answers after failed queries.",
+  "summary": "Kobie Crawford argues that smaller models finetuned with reinforcement learning to use tools correctly outperform much larger models that hallucinate. A 4B Snorkel model trained to query table schemas and self-correct surpassed Qwen 3 235B on a financial query task, with training costing under $500. Transfer from single-table to multi-table reasoning improved performance from 13.9% to 26.6% on FinQA.",
   "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "a81bf31ad5a0cfd8",
+  "wh": "dfd4af264e962ef2",
   "concepts": [
     {
       "slug": "reinforcement-learning",
       "label": "reinforcement learning"
     },
     {
-      "slug": "fine-tuning",
-      "label": "fine-tuning"
+      "slug": "behavioral-finetuning",
+      "label": "behavioral finetuning"
     },
     {
       "slug": "tool-use",
@@ -27,8 +27,8 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "behavioral-training",
-      "label": "behavioral training"
+      "slug": "fact-grounding",
+      "label": "fact-grounding"
     }
   ],
   "similar": [
@@ -36,37 +36,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.639
-    },
-    {
-      "id": "QuuIywMG4s8",
-      "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
-      "channel": "AI Engineer",
-      "score": 0.594
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.586
+      "score": 0.625
     },
     {
       "id": "mFLlVpnGpds",
       "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.578
+      "score": 0.585
     },
     {
-      "id": "qKU-e0x2EmE",
-      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
-      "channel": "Nick Saraev",
-      "score": 0.572
+      "id": "QuuIywMG4s8",
+      "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
+      "channel": "AI Engineer",
+      "score": 0.566
+    },
+    {
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.553
     },
     {
       "id": "iOZf50YffCE",
       "title": "This AI Chinese model is 15X cheaper?",
       "channel": "Jack Roberts",
-      "score": 0.571
+      "score": 0.548
+    },
+    {
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.548
     }
   ]
 }
