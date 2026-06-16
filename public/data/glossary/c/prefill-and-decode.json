@@ -1,14 +1,95 @@
 {
   "id": "prefill-and-decode",
   "label": "Prefill and Decode",
-  "kind": "technique",
-  "category": "Inference and Sampling",
   "aliases": [
     "prefill phase",
     "decode phase",
     "prompt processing",
     "prefill-decode"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-06-08T11:10:24+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "pre-fill",
+      "label": "pre-fill",
+      "score": 0.747
+    },
+    {
+      "id": "prefill-optimization",
+      "label": "prefill optimization",
+      "score": 0.677
+    },
+    {
+      "id": "blockwise-decoding",
+      "label": "blockwise decoding",
+      "score": 0.675
+    },
+    {
+      "id": "speculative-decoding",
+      "label": "speculative decoding",
+      "score": 0.638
+    },
+    {
+      "id": "predictive-coding",
+      "label": "predictive coding",
+      "score": 0.623
+    },
+    {
+      "id": "phase-encoding",
+      "label": "phase encoding",
+      "score": 0.621
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.295
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.032
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.367
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.224
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.111
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.258
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.178
+    }
+  ],
+  "top_items": [
+    {
+      "title": "MiniMax M3 explained in 8min..",
+      "url": "https://www.youtube.com/watch?v=-zIF318p7J8",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-06-08T11:10:24+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Inference and Sampling",
   "durable": true,
   "source": "authored",
   "definition": "The two distinct phases of autoregressive inference: a compute-bound prefill that processes the whole prompt in parallel to fill the key-value cache, then a memory-bound decode that generates output one token at a time. They have opposite performance characteristics, and almost every inference optimization, the KV cache, paged attention, continuous batching, speculative decoding, exists to exploit that split.",
@@ -62,12 +143,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/prefill-and-decode.png",
     "alt": "A serving diagram. Requests enter a controller that dispatches to prefill instances (each an LLM model on a parallel GPU runtime) on the left; the resulting key-value cache is transferred across to decoding instances on the right that generate the output tokens.",

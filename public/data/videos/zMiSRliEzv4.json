@@ -6,21 +6,25 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is building an autonomous pipeline that detects product signals (rage clicks, error spikes, customer messages), groups them with context using embeddings and session replays, analyzes the codebase with an agent, and automatically opens pull requests for fixes. The system uses LLM-generated query embeddings for semantic grouping and prioritizes high-signal inputs like error tracking over ambiguous signals.",
+  "summary": "PostHog is building an automated pipeline that converts product signals like error spikes and user feedback into pull requests via a background agent. The agent groups related errors and session replays, analyzes the codebase, and opens PRs for developers to review. The system collapses the manual triage and ticket workflow into autonomous execution.",
   "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
-  "wh": "817e11ea1db75d2a",
+  "wh": "b71e4ab1c206ebdc",
   "concepts": [
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "embeddings",
-      "label": "embeddings"
+      "slug": "large-language-models",
+      "label": "large language models"
     },
     {
       "slug": "llm",
       "label": "LLM"
+    },
+    {
+      "slug": "session-replay",
+      "label": "session replay"
     },
     {
       "slug": "clustering",
@@ -29,10 +33,6 @@
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
-    },
-    {
-      "slug": "error-recovery",
-      "label": "error recovery"
     }
   ],
   "similar": [
@@ -40,37 +40,37 @@
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.605
+      "score": 0.602
     },
     {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.586
+      "score": 0.561
     },
     {
       "id": "luBkbzjo-TA",
       "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
       "channel": "Cole Medin",
-      "score": 0.562
+      "score": 0.557
+    },
+    {
+      "id": "_GljcHROPX8",
+      "title": "What happens when agents get their own computers",
+      "channel": "Cursor",
+      "score": 0.551
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.549
     },
     {
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.56
-    },
-    {
-      "id": "jYvNSLQ_Qio",
-      "title": "How to build reliable software with AI agents",
-      "channel": "Google Cloud Tech",
-      "score": 0.55
-    },
-    {
-      "id": "xR9pPlLSwJI",
-      "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
-      "channel": "EO",
-      "score": 0.54
+      "score": 0.543
     }
   ]
 }
