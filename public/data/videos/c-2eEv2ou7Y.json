@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Double iframe sandboxing nests one iframe within another to enforce security boundaries without sacrificing functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app via srcdoc into an inner frame, preventing CSP bypasses, storage collisions, and sandbox escapes while maintaining origin-specific storage isolation.",
-  "writeup": "This talk explains the double iframe sandboxing pattern used by MCP and ChatGPT Apps, where one iframe nests inside another to enforce security boundaries without losing functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app into an inner frame via srcdoc. The approach prevents CSP bypasses, storage collisions, and sandbox escapes while preserving origin-specific storage isolation. It matters for anyone embedding untrusted app content, since the nesting reconciles the sandbox attribute, Content Security Policy, and origin isolation in one design.",
-  "wh": "10aab1c7c7ce5939",
+  "writeup": "This talk explains why MCP and ChatGPT Apps render embedded apps using a double iframe pattern, where an outer iframe loads a lightweight script from a controlled subdomain that then injects the actual app into an inner frame via srcdoc. The structure matters because it enforces security boundaries while preserving app functionality, blocking Content Security Policy bypasses, storage collisions, and sandbox escapes. Key takeaways: the sandbox attribute and CSP do the gating, srcdoc carries the real app, and the nested layout maintains origin-specific storage isolation and tenant isolation.",
+  "wh": "ea70b2185fa99b68",
   "concepts": [
     {
       "slug": "sandbox-attribute",
@@ -27,8 +27,8 @@
       "label": "srcdoc"
     },
     {
-      "slug": "storage-isolation",
-      "label": "storage isolation"
+      "slug": "tenant-isolation",
+      "label": "tenant isolation"
     },
     {
       "slug": "origin-isolation",

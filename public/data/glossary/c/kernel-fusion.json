@@ -1,13 +1,137 @@
 {
   "id": "kernel-fusion",
   "label": "Kernel Fusion",
-  "kind": "technique",
-  "category": "Systems and Infrastructure",
   "aliases": [
     "kernel fusion",
     "fused kernel",
     "operator fusion"
   ],
+  "kind": "technique",
+  "attention": 4,
+  "first_seen": "2026-06-05T17:49:19Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 89,
+    "sparkline": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "neural-networks",
+      "label": "neural networks",
+      "score": 0.809
+    },
+    {
+      "id": "feature-ablation",
+      "label": "feature ablation",
+      "score": 0.809
+    },
+    {
+      "id": "feature-modulation",
+      "label": "feature modulation",
+      "score": 0.805
+    },
+    {
+      "id": "k-nearest-neighbors",
+      "label": "k-nearest neighbors",
+      "score": 0.805
+    },
+    {
+      "id": "hybrid-architectures",
+      "label": "hybrid architectures",
+      "score": 0.803
+    },
+    {
+      "id": "data-augmentation",
+      "label": "data augmentation",
+      "score": 0.796
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.014
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.082
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.367
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.376
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.42
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.512
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.011
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Boosting MoE Training Throughput with Advanced Fusion Kernels",
+      "url": "https://developer.nvidia.com/blog/boosting-moe-training-throughput-with-advanced-fusion-kernels/",
+      "author_or_channel": "NVIDIA Developer",
+      "published_at": "2026-06-15T16:45:41.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+      "url": "https://huggingface.co/blog/torch-mlp-fusion",
+      "author_or_channel": "Hugging Face",
+      "published_at": "2026-06-11T00:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "SemDINO: A DINOv3-Driven Network for Cross-Temporal Semantic Alignment in Change Detection",
+      "url": "http://arxiv.org/abs/2606.09772v1",
+      "author_or_channel": "Xinyu Tong, Meihua Zhou, Jinxiao Sun",
+      "published_at": "2026-06-08T17:32:31Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Preserving Plasticity in Continual Learning via Dynamical Isometry",
+      "url": "http://arxiv.org/abs/2606.09762v1",
+      "author_or_channel": "Andries Rosseau, Robert Müller, Ann Nowé",
+      "published_at": "2026-06-08T17:24:15Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Second-Order Path Kernel Interpolation Formulas in Machine Learning",
+      "url": "http://arxiv.org/abs/2606.07495v1",
+      "author_or_channel": "Jin Guo, Roy Y. He, Jean-Michel Morel",
+      "published_at": "2026-06-05T17:49:19Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Systems and Infrastructure",
   "durable": true,
   "source": "authored",
   "definition": "A performance optimization that merges several elementary tensor operations into a single GPU kernel so intermediate results stay in fast on-chip memory instead of round-tripping through main memory, cutting the data movement that dominates memory-bound work. The math is unchanged, but the bytes moved collapse, which is why fusing a chain of element-wise ops can give a multiple-fold speedup, and why flash-attention is essentially one aggressive fusion.",
@@ -61,12 +185,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/kernel-fusion.png",
     "alt": "A transformer layer's operations drawn as a dataflow graph, with dashed boxes grouping consecutive operations into fused regions: a QKV box around the input normalization and the query, key, and value projections; an attention box; an MLP box around the feed-forward layers and activation; and a bias-add box. Each fused region is annotated with a speedup such as 1.5x, 2.9x, 3x.",
