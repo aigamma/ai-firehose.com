@@ -6,44 +6,34 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 433,
+  "attention": 423,
   "first_seen": "2026-03-16T19:20:45+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 82.1,
-    "momentum": 98,
+    "quadrant": "improving",
+    "ratio": 91.4,
+    "momentum": 100,
     "sparkline": [
       67,
+      64,
+      60,
       73,
       68,
-      72,
-      71,
-      66,
-      62,
-      61
+      63,
+      64,
+      64
     ]
   },
   "neighbors": [
-    {
-      "id": "test-time-execution",
-      "label": "test-time execution",
-      "score": 0.748
-    },
     {
       "id": "test-time-alignment",
       "label": "test-time alignment",
       "score": 0.736
     },
     {
-      "id": "cached-compute",
-      "label": "cached compute",
-      "score": 0.733
-    },
-    {
       "id": "compute",
       "label": "compute",
-      "score": 0.725
+      "score": 0.727
     },
     {
       "id": "test-time-scaling",
@@ -51,9 +41,19 @@
       "score": 0.71
     },
     {
-      "id": "testing",
-      "label": "testing",
-      "score": 0.66
+      "id": "test-time-efficiency",
+      "label": "test-time efficiency",
+      "score": 0.699
+    },
+    {
+      "id": "test-time-control",
+      "label": "test-time control",
+      "score": 0.659
+    },
+    {
+      "id": "compute-independence",
+      "label": "compute independence",
+      "score": 0.658
     }
   ],
   "axis_positions": [
@@ -65,7 +65,7 @@
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.065
+      "position": 0.16
     },
     {
       "slug": "capability-safety",
@@ -75,25 +75,32 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.376
+      "position": 0.396
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.06
+      "position": -0.005
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": -0.221
+      "position": -0.219
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.269
+      "position": 0.278
     }
   ],
   "top_items": [
+    {
+      "title": "Google Just Revealed What Comes After AGI And It’s Shocking",
+      "url": "https://www.youtube.com/watch?v=haB_od-xCWY",
+      "author_or_channel": "AI Revolution",
+      "published_at": "2026-06-15T22:52:27+00:00",
+      "kind": "opinion"
+    },
     {
       "title": "KVEraser: Learning to Steer KV Cache for Efficient Localized Context Erasing",
       "url": "http://arxiv.org/abs/2606.17034v1",
@@ -128,13 +135,6 @@
       "author_or_channel": "Tran Dinh Tien, Zhiqiang Shen",
       "published_at": "2026-06-15T17:31:30Z",
       "kind": "technique"
-    },
-    {
-      "title": "SpaceX’s IPO Triumph, Anthropic’s Fable Fumble, OpenAI’s Price War",
-      "url": "https://www.youtube.com/watch?v=5WrO5pAI-UU",
-      "author_or_channel": "Alex Kantrowitz",
-      "published_at": "2026-06-15T16:30:06+00:00",
-      "kind": "opinion"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",

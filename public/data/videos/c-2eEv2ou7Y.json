@@ -6,42 +6,20 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe sandboxing nests one iframe within another to enforce security boundaries without sacrificing functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app via srcdoc into an inner frame, preventing CSP bypasses, storage collisions, and sandbox escapes while maintaining origin-specific storage isolation.",
-  "writeup": "This talk explains why MCP and ChatGPT Apps render embedded apps using a double iframe pattern, where an outer iframe loads a lightweight script from a controlled subdomain that then injects the actual app into an inner frame via srcdoc. The structure matters because it enforces security boundaries while preserving app functionality, blocking Content Security Policy bypasses, storage collisions, and sandbox escapes. Key takeaways: the sandbox attribute and CSP do the gating, srcdoc carries the real app, and the nested layout maintains origin-specific storage isolation and tenant isolation.",
-  "wh": "ea70b2185fa99b68",
+  "summary": "MCP and ChatGPT apps use double iframe architecture to balance security and functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app HTML via srcdoc into an inner frame, following a pattern Facebook pioneered for their app marketplace. This approach prevents both CSP blocking of third-party scripts and sandbox escapes while isolating per-app storage.",
+  "writeup": "The talk explains the double iframe architecture behind MCP and ChatGPT apps, a design meant to balance security against functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML through srcdoc into an inner frame, a pattern Facebook originally developed for its app marketplace. The takeaway: the two-layer setup avoids Content Security Policy blocking of third-party scripts, blocks sandbox escapes, and isolates storage on a per-app basis, drawing on the same-origin policy and iframe sandboxing.",
+  "wh": "1eee31afec805a0b",
   "concepts": [
     {
-      "slug": "sandbox-attribute",
-      "label": "sandbox attribute"
+      "slug": "same-origin-policy",
+      "label": "same-origin policy"
     },
     {
-      "slug": "content-security-policy",
-      "label": "Content Security Policy"
-    },
-    {
-      "slug": "iframe",
-      "label": "iframe"
-    },
-    {
-      "slug": "srcdoc",
-      "label": "srcdoc"
-    },
-    {
-      "slug": "tenant-isolation",
-      "label": "tenant isolation"
-    },
-    {
-      "slug": "origin-isolation",
-      "label": "origin isolation"
+      "slug": "iframe-sandbox",
+      "label": "iframe sandbox"
     }
   ],
   "similar": [
-    {
-      "id": "SKDJo2CopRs",
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
-      "channel": "AI Engineer",
-      "score": 0.561
-    },
     {
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
@@ -49,28 +27,34 @@
       "score": 0.549
     },
     {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.537
+      "id": "zA3RirPFFsU",
+      "title": "What is MCP? Learn MCP Client, MCP Server & MCP Architecture",
+      "channel": "Code With Aarohi",
+      "score": 0.485
     },
     {
       "id": "MP_UtNV7m18",
       "title": "This is why my AI Agents never guess",
       "channel": "JavaScript Mastery",
-      "score": 0.536
+      "score": 0.485
     },
     {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.517
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.485
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.507
+      "score": 0.485
+    },
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.484
     }
   ]
 }

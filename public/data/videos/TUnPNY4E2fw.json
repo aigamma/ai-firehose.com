@@ -6,17 +6,13 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a full stack of techniques for training LLMs with million-token contexts, including fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution, Untied Ulysses, further reduces activation memory by chunking attention heads and reusing buffers across iterations, achieving memory efficiency comparable to prior baselines while extending sequence length 25% further.",
+  "summary": "Max Ryabinin from Together AI describes techniques for training LLMs with multi-million token contexts on limited GPU memory. The approach combines fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. Untied Ulysses, a novel refinement, chunks attention heads and reuses buffers to reduce activation memory without throughput loss.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "385360e4bea0e5e6",
+  "wh": "0644b5fbed818617",
   "concepts": [
     {
-      "slug": "data-parallelism",
-      "label": "data parallelism"
-    },
-    {
-      "slug": "deepspeed-ulysses",
-      "label": "DeepSpeed Ulysses"
+      "slug": "parallelization",
+      "label": "parallelization"
     },
     {
       "slug": "checkpointing",
@@ -27,12 +23,12 @@
       "label": "GPU acceleration"
     },
     {
-      "slug": "rnn-training",
-      "label": "RNN training"
-    },
-    {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
+    },
+    {
+      "slug": "rnn-training",
+      "label": "RNN training"
     }
   ],
   "similar": [
@@ -40,37 +36,37 @@
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.642
-    },
-    {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.61
+      "score": 0.608
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.593
+      "score": 0.586
+    },
+    {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.579
+    },
+    {
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.574
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.586
+      "score": 0.573
     },
     {
-      "id": "TNwJ1LMiENk",
-      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
-      "channel": "AI Engineer",
-      "score": 0.582
-    },
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.575
+      "id": "fk0pl6b7PKQ",
+      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
+      "channel": "Jordan Urbs",
+      "score": 0.568
     }
   ]
 }

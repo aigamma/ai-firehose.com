@@ -6,9 +6,9 @@
   "published": "2026-06-13T23:45:08+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Xiaomi and TileRT released MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model achieving over 1,000 tokens per second on standard hardware. The model uses selective FP4 quantization, DFlash speculative decoding, and a TileRT persistent GPU kernel runtime to optimize inference speed.",
-  "writeup": "Better Stack stress tests MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model from Xiaomi and TileRT that targets over 1,000 tokens per second on standard hardware. The video covers the three optimizations behind that throughput: selective FP4 quantization, DFlash speculative decoding, and TileRT, a persistent GPU kernel runtime. It matters because it shows how MoE sparsity combined with inference-level techniques can push token generation speed on commodity GPUs rather than relying on larger or specialized hardware.",
-  "wh": "e8f91864a5892533",
+  "summary": "Xiaomi and TileRT released a 1-trillion-parameter Mixture-of-Experts model capable of 1,000+ tokens per second on standard hardware using selective FP4 quantization, DFlash speculative decoding, and a persistent GPU kernel runtime. Better Stack stress-tested the model with real-world programming tasks and found it capable of high throughput but with quality degradation under extreme load.",
+  "writeup": "Better Stack stress-tests MiMo V2.5 Pro UltraSpeed, a 1-trillion-parameter Mixture-of-Experts model from Xiaomi and TileRT that reaches 1,000-plus tokens per second on standard hardware. The throughput comes from a stack of techniques: selective FP4 quantization, DFlash speculative decoding, and a persistent GPU kernel runtime. The tests use real-world programming tasks, and the takeaway is mixed: the model sustains high throughput but shows quality degradation under extreme load. The result matters as a concrete data point on how far MoE inference optimizations push local serving speed before output suffers.",
+  "wh": "4c9a3f30fedd5a75",
   "concepts": [
     {
       "slug": "mixture-of-experts",
@@ -27,46 +27,46 @@
       "label": "persistent kernel"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
     {
+      "id": "V0c62734ix8",
+      "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
+      "channel": "AICodeKing",
+      "score": 0.61
+    },
+    {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.632
+      "score": 0.597
     },
     {
       "id": "wzHXUtkoY-c",
       "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
       "channel": "Caleb Writes Code",
-      "score": 0.619
-    },
-    {
-      "id": "V0c62734ix8",
-      "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
-      "channel": "AICodeKing",
-      "score": 0.587
+      "score": 0.589
     },
     {
       "id": "iOZf50YffCE",
       "title": "This AI Chinese model is 15X cheaper?",
       "channel": "Jack Roberts",
-      "score": 0.58
+      "score": 0.586
     },
     {
       "id": "Ubazoyagym0",
       "title": "Claude Mythos is FINALLY here (Fable 5)",
       "channel": "Better Stack",
-      "score": 0.575
+      "score": 0.571
     },
     {
       "id": "VESRlr6lRQ8",
       "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
       "channel": "AICodeKing",
-      "score": 0.572
+      "score": 0.566
     }
   ]
 }
