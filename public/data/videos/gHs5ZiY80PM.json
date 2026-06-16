@@ -6,14 +6,10 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "NVIDIA's approach reduces diffusion model denoising steps from fifty to as few as one by combining dynamic quantization, latent chunk caching to skip recomputation, and student-teacher distillation. The technique achieves ten to two hundred times speedup enabling near real-time video generation on Blackwell B200, with gains described as additive so methods can be applied independently or stacked.",
-  "writeup": "Ziv Ilan of NVIDIA presents methods for cutting diffusion model denoising from fifty steps to as few as one, combining dynamic quantization, latent chunk caching that skips recomputation, and student-teacher distillation. The result is a ten to two hundred times speedup that enables near real-time video generation on Blackwell B200. The key point: the gains are additive, so each technique can be applied alone or stacked together.",
-  "wh": "608317a6202309d8",
+  "summary": "Ziv Ilan's team at NVIDIA achieved near real-time video diffusion generation on Blackwell B200 by combining dynamic quantization, latent chunk caching, and step distillation to reduce the typical 50-step denoising process to as few as one step. The distillation methods include trajectory-based and distribution-based training approaches, with distribution-based training being more common and higher quality.",
+  "writeup": "Ziv Ilan of NVIDIA presents how his team reached near real-time video diffusion generation on the Blackwell B200 by stacking three optimizations: dynamic quantization, latent chunk caching, and step distillation. The headline result is collapsing the standard 50-step denoising process down to as few as one step, which matters for the latency and cost of video generation. The talk distinguishes two distillation families, trajectory-based and distribution-based training, and notes that distribution-based training is more common and produces higher quality.",
+  "wh": "5dde4bec4a3fb350",
   "concepts": [
-    {
-      "slug": "distillation",
-      "label": "Distillation"
-    },
     {
       "slug": "quantization",
       "label": "quantization"
@@ -23,16 +19,20 @@
       "label": "prompt caching"
     },
     {
+      "slug": "distillation",
+      "label": "Distillation"
+    },
+    {
       "slug": "diffusion-models",
       "label": "diffusion models"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "training-free-methods",
+      "label": "training-free methods"
     },
     {
-      "slug": "knowledge-distillation",
-      "label": "knowledge distillation"
+      "slug": "distributed-training",
+      "label": "distributed training"
     }
   ],
   "similar": [
@@ -40,37 +40,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.683
+      "score": 0.634
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.614
-    },
-    {
-      "id": "TUnPNY4E2fw",
-      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
-      "channel": "AI Engineer",
-      "score": 0.614
+      "score": 0.574
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.587
+      "score": 0.564
     },
     {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.575
+      "id": "DlvhlQOBHBw",
+      "title": "The BEST AI for 4K images. Free & fast",
+      "channel": "AI Search",
+      "score": 0.545
     },
     {
-      "id": "k7HrSreatII",
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "channel": "Google Cloud Tech",
-      "score": 0.574
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.544
+    },
+    {
+      "id": "RdqYvdT74i0",
+      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
+      "channel": "AI Search",
+      "score": 0.538
     }
   ]
 }

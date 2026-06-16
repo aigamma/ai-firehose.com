@@ -6,25 +6,25 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe pattern isolates third-party apps in ChatGPT and MCP by nesting an srcdoc iframe within a sandboxed iframe loaded from a controlled subdomain. This avoids CSP violations, prevents localStorage/cookie access, blocks sandbox escapes, and allows per-app subdomain isolation. All external domains must be declared in MCP metadata.",
-  "writeup": "This talk explains the double iframe pattern that ChatGPT and MCP use to isolate third-party apps: an srcdoc iframe nested inside a sandboxed iframe loaded from a controlled subdomain. The nesting matters because it avoids CSP violations, blocks access to localStorage and cookies, prevents sandbox escapes, and enables per-app isolation by subdomain. The session also notes that all external domains must be declared in MCP metadata.",
-  "wh": "2540c64114023b73",
+  "summary": "Double iframe architecture isolates MCP and ChatGPT apps by nesting an srcdoc iframe inside a controlled-subdomain iframe. This pattern prevents Content Security Policy bypasses, credential theft, and sandbox escapes by separating app code (inner frame) from script loading (outer frame). Each app gets a unique subdomain to prevent cross-app storage collisions.",
+  "writeup": "Frédéric Barthelet of Alpic explains the double iframe architecture used to embed MCP and ChatGPT apps, which nests an srcdoc iframe inside an iframe served from a controlled subdomain. The split assigns distinct roles: the inner frame holds app code while the outer frame handles script loading, separating concerns that would otherwise enable Content Security Policy bypasses, credential theft, and sandbox escapes. The talk also covers why each app receives a unique subdomain, which prevents cross-app storage collisions. The takeaway is a concrete isolation pattern for app marketplace architecture grounded in CSP and sandboxed iframes.",
+  "wh": "b2617cd76a210a43",
   "concepts": [
     {
-      "slug": "iframe-sandbox",
-      "label": "iframe sandbox"
+      "slug": "content-security-policy",
+      "label": "Content Security Policy"
     },
     {
-      "slug": "same-origin-policy",
-      "label": "same-origin policy"
+      "slug": "sandboxed-iframe",
+      "label": "sandboxed iframe"
     },
     {
-      "slug": "srcdoc-attribute",
-      "label": "srcdoc attribute"
+      "slug": "tenant-isolation",
+      "label": "tenant isolation"
     },
     {
-      "slug": "app-isolation",
-      "label": "app isolation"
+      "slug": "app-marketplace-architecture",
+      "label": "app marketplace architecture"
     }
   ],
   "similar": [
@@ -32,37 +32,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.528
+      "score": 0.531
     },
     {
       "id": "MP_UtNV7m18",
       "title": "This is why my AI Agents never guess",
       "channel": "JavaScript Mastery",
-      "score": 0.495
-    },
-    {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.492
+      "score": 0.517
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.477
+      "score": 0.506
     },
     {
-      "id": "kVL_7csy_ZM",
-      "title": "The Rise of Generative UI for Developers (CopilotKit)",
-      "channel": "Better Stack",
-      "score": 0.457
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.503
     },
     {
       "id": "Gh1E9VgXZWs",
       "title": "Bridging Design Systems and Code with MCP and AI Agents",
       "channel": "IBM Technology",
-      "score": 0.453
+      "score": 0.497
+    },
+    {
+      "id": "4vfvvzzwcwI",
+      "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.493
     }
   ]
 }
