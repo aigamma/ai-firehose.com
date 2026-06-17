@@ -6,25 +6,25 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "ChatGPT apps and MCP use double iframe architecture to isolate third-party code while preserving functionality. The outer iframe loads from a controlled subdomain with a lightweight script, which then loads the actual app HTML via srcdoc into an inner frame, preventing CSP breaches and sandbox escapes while blocking cross-app storage collisions.",
-  "writeup": "This talk explains the double iframe architecture behind ChatGPT apps and MCP, which exists to isolate third-party code while keeping app functionality intact. The outer iframe loads from a controlled subdomain running a lightweight script, which then injects the real app HTML into an inner frame via srcdoc. The structure matters because it prevents CSP breaches and sandbox escapes and blocks cross-app storage collisions, tying together same-origin policy, sandbox, and srcdoc behavior.",
-  "wh": "c8155e842e18d266",
+  "summary": "The double iframe pattern nests an iframe within another iframe to work around Content Security Policy restrictions and sandbox escape vulnerabilities. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the application HTML via srcdoc into the inner frame, preventing storage collisions and unauthorized access to parent application data.",
+  "writeup": "Frédéric Barthelet of Alpic explains the double iframe pattern used by MCP and ChatGPT Apps, where one iframe nests inside another to work around Content Security Policy restrictions and sandbox escape vulnerabilities. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the application HTML via srcdoc into the inner frame. The arrangement enforces origin isolation, preventing storage collisions and unauthorized access to parent application data.",
+  "wh": "a1158e08f2d90698",
   "concepts": [
     {
       "slug": "double-iframe",
       "label": "double iframe"
     },
     {
-      "slug": "same-origin-policy",
-      "label": "same-origin policy"
-    },
-    {
-      "slug": "sandbox",
-      "label": "sandbox"
+      "slug": "content-security-policy",
+      "label": "Content Security Policy"
     },
     {
       "slug": "srcdoc",
       "label": "srcdoc"
+    },
+    {
+      "slug": "origin-isolation",
+      "label": "origin isolation"
     }
   ],
   "similar": [
@@ -32,37 +32,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.552
-    },
-    {
-      "id": "B704UxLyqWA",
-      "title": "Claude Code Leak: What's Happening?",
-      "channel": "Jordan Urbs",
-      "score": 0.536
+      "score": 0.543
     },
     {
       "id": "MP_UtNV7m18",
       "title": "This is why my AI Agents never guess",
       "channel": "JavaScript Mastery",
-      "score": 0.527
+      "score": 0.522
     },
     {
       "id": "6ipGnvXTF1Y",
       "title": "Why your AI prompt constraints don't work",
       "channel": "JavaScript Mastery",
-      "score": 0.525
+      "score": 0.52
     },
     {
-      "id": "o4pwkwg0zfk",
-      "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
-      "channel": "Alex Kantrowitz",
-      "score": 0.516
+      "id": "Gh1E9VgXZWs",
+      "title": "Bridging Design Systems and Code with MCP and AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.499
     },
     {
-      "id": "2pXbyAd7pr0",
-      "title": "ChatGPT Is Getting Its Biggest Upgrade Ever",
-      "channel": "AI Revolution",
-      "score": 0.51
+      "id": "B704UxLyqWA",
+      "title": "Claude Code Leak: What's Happening?",
+      "channel": "Jordan Urbs",
+      "score": 0.491
+    },
+    {
+      "id": "4vfvvzzwcwI",
+      "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.469
     }
   ]
 }

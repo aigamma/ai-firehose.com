@@ -6,9 +6,9 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan's team at NVIDIA demonstrated real-time video diffusion on Blackwell B200 by combining dynamic quantization, latent caching, and step distillation to reduce diffusion models from 50 steps to as few as one. The technique stacks three layers: quantization with Black Forest Labs on Flux 2, skip-caching that avoids recomputing unchanged latent chunks, and distillation using either trajectory-based or distribution-based student training approaches.",
-  "writeup": "Ziv Ilan of NVIDIA presents how his team ran real-time video diffusion on the Blackwell B200, cutting diffusion models from 50 steps down to as few as one. The method stacks three techniques: dynamic quantization (developed with Black Forest Labs on Flux 2), skip-caching that avoids recomputing unchanged latent chunks, and step distillation using either trajectory-based or distribution-based student training. The talk matters because compounding these layers attacks the per-step cost of diffusion inference rather than relying on a single optimization. The concrete takeaway: quantization, latent caching, and distillation are complementary and combine to compress the iterative sampling loop dramatically.",
-  "wh": "0dc1a192a8b75c45",
+  "summary": "NVIDIA's approach to accelerating video diffusion inference combines quantization, latent caching, and step distillation to reduce denoising steps from fifty to as few as one or four. The techniques are composable, with distribution-based distillation training a student model to match teacher outputs rather than exact trajectories. FastGen packages the post-training and GPU sharding infrastructure to apply these optimizations at scale.",
+  "writeup": "Ziv Ilan of NVIDIA walks through methods for accelerating video diffusion inference, cutting denoising steps from fifty to as few as one or four. Three composable techniques drive the speedup: quantization, latent caching, and step distillation, where distribution-based distillation trains a student model to match teacher outputs rather than reproduce exact trajectories. The talk also covers FastGen, which packages the post-training and GPU sharding infrastructure to apply these optimizations at scale.",
+  "wh": "842bb51ae8caf2ce",
   "concepts": [
     {
       "slug": "quantization",
@@ -23,16 +23,12 @@
       "label": "latent caching"
     },
     {
-      "slug": "diffusion-models",
-      "label": "diffusion models"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "knowledge-distillation",
       "label": "knowledge distillation"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -40,37 +36,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.59
-    },
-    {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.533
-    },
-    {
-      "id": "TUnPNY4E2fw",
-      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
-      "channel": "AI Engineer",
-      "score": 0.52
-    },
-    {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.51
-    },
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.507
+      "score": 0.638
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.504
+      "score": 0.589
+    },
+    {
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.563
+    },
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.559
+    },
+    {
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.553
+    },
+    {
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.545
     }
   ]
 }

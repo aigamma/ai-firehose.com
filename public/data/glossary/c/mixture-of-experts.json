@@ -7,17 +7,17 @@
     "sparsely-gated mixture of experts"
   ],
   "kind": "technique",
-  "attention": 34,
+  "attention": 44,
   "first_seen": "2026-05-21T20:32:39+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
-    "ratio": 130.4,
-    "momentum": 94.6,
+    "ratio": 136.4,
+    "momentum": 96.6,
     "sparkline": [
       5,
       9,
-      13,
+      9,
       13,
       16,
       15,
@@ -44,29 +44,29 @@
     {
       "id": "logit-mixing",
       "label": "logit mixing",
-      "score": 0.744
-    },
-    {
-      "id": "hybrid-strategy",
-      "label": "hybrid strategy",
-      "score": 0.737
+      "score": 0.743
     },
     {
       "id": "vanishing-gradients",
       "label": "vanishing gradients",
       "score": 0.737
+    },
+    {
+      "id": "hybrid-strategy",
+      "label": "hybrid strategy",
+      "score": 0.736
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.097
+      "position": 0.1
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.065
+      "position": -0.133
     },
     {
       "slug": "capability-safety",
@@ -76,12 +76,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.275
+      "position": 0.244
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.264
+      "position": -0.257
     },
     {
       "slug": "neural-symbolic",
@@ -91,7 +91,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.105
+      "position": -0.203
     }
   ],
   "top_items": [
@@ -110,10 +110,24 @@
       "kind": "technique"
     },
     {
+      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
+      "url": "https://www.youtube.com/watch?v=VESRlr6lRQ8",
+      "author_or_channel": "AICodeKing",
+      "published_at": "2026-06-14T09:15:47+00:00",
+      "kind": "opinion"
+    },
+    {
       "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
       "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
       "author_or_channel": "Better Stack",
       "published_at": "2026-06-13T23:45:08+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Claude Fable 5 is smarter💡",
+      "url": "https://www.youtube.com/watch?v=rtjP3xttJiU",
+      "author_or_channel": "IBM Technology",
+      "published_at": "2026-06-12T18:15:22+00:00",
       "kind": "tool"
     },
     {
@@ -122,26 +136,12 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-11T20:00:00.000Z",
       "kind": "tool"
-    },
-    {
-      "title": "\"An endless demand for compute\" | Jonathan Ross, founder of Groq",
-      "url": "https://www.youtube.com/watch?v=hzpAKA67dX0",
-      "author_or_channel": "Julia Turc",
-      "published_at": "2026-06-11T12:00:30+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "url": "https://www.youtube.com/watch?v=wzHXUtkoY-c",
-      "author_or_channel": "Caleb Writes Code",
-      "published_at": "2026-06-11T06:26:14+00:00",
-      "kind": "tool"
     }
   ],
+  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
-  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "body": [
     {
       "type": "p",

@@ -7,10 +7,30 @@
     "sequence length"
   ],
   "kind": "technique",
-  "attention": 24,
+  "attention": 41,
   "first_seen": "2026-04-02T13:29:33+00:00",
-  "rotation": null,
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 112.9,
+    "momentum": 118.9,
+    "sparkline": [
+      4,
+      3,
+      3,
+      7,
+      7,
+      7,
+      6,
+      9
+    ]
+  },
   "neighbors": [
+    {
+      "id": "tool-context",
+      "label": "tool context",
+      "score": 0.739
+    },
     {
       "id": "text-editor-tool",
       "label": "text editor tool",
@@ -19,12 +39,7 @@
     {
       "id": "scratchpad",
       "label": "scratchpad",
-      "score": 0.727
-    },
-    {
-      "id": "ide-integration",
-      "label": "IDE integration",
-      "score": 0.701
+      "score": 0.728
     },
     {
       "id": "web-interface",
@@ -34,24 +49,24 @@
     {
       "id": "browser-extension",
       "label": "browser extension",
-      "score": 0.667
+      "score": 0.668
     },
     {
-      "id": "ide",
-      "label": "IDE",
-      "score": 0.664
+      "id": "model-picker",
+      "label": "model picker",
+      "score": 0.663
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.211
+      "position": 0.214
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.097
+      "position": 0.012
     },
     {
       "slug": "capability-safety",
@@ -61,12 +76,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.082
+      "position": -0.109
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.33
+      "position": -0.323
     },
     {
       "slug": "neural-symbolic",
@@ -76,10 +91,24 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.095
+      "position": 0.014
     }
   ],
   "top_items": [
+    {
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "url": "https://www.youtube.com/watch?v=lyhnXvNnhsU",
+      "author_or_channel": "AICodeKing",
+      "published_at": "2026-06-17T09:15:20+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "GLM-5.2 (Fully Tested): I got EARLY ACCESS & This MODEL is CRAZY!",
+      "url": "https://www.youtube.com/watch?v=MkFThJWJgg8",
+      "author_or_channel": "AICodeKing",
+      "published_at": "2026-06-13T10:43:33+00:00",
+      "kind": "tool"
+    },
     {
       "title": "Initial impressions of Claude Fable 5",
       "url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/#atom-everything",
@@ -107,26 +136,12 @@
       "author_or_channel": "NVIDIA Developer",
       "published_at": "2026-06-01T22:00:00.000Z",
       "kind": "tool"
-    },
-    {
-      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
-      "url": "https://www.youtube.com/watch?v=qpa5XwGkLp8",
-      "author_or_channel": "Liam Ottley",
-      "published_at": "2026-05-20T02:09:16+00:00",
-      "kind": "opinion"
-    },
-    {
-      "title": "Most people get these 3 AI terms wrong",
-      "url": "https://www.youtube.com/watch?v=gbI7THwqEjk",
-      "author_or_channel": "Jeff Su",
-      "published_at": "2026-04-10T13:01:29+00:00",
-      "kind": "opinion"
     }
   ],
+  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
-  "definition": "The maximum number of tokens a language model can attend to at once, its working memory: everything it reasons over must fit inside or it is invisible. Quadratic attention is why the window is bounded and why longer is expensive, and even huge windows carry a soft caveat, models attend unevenly and recall the middle of a long context worse than the ends.",
   "body": [
     {
       "type": "p",
