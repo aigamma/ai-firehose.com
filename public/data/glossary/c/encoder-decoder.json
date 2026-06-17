@@ -1,12 +1,129 @@
 {
   "id": "encoder-decoder",
   "label": "Encoder-Decoder",
-  "kind": "technique",
-  "category": "Transformers and LLMs",
   "aliases": [
     "encoder-decoder",
     "seq2seq transformer"
   ],
+  "kind": "technique",
+  "attention": 7,
+  "first_seen": "2026-06-07T01:11:12+00:00",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 110,
+    "momentum": 84,
+    "sparkline": [
+      5,
+      5,
+      4,
+      4,
+      4,
+      3,
+      4,
+      4
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "phase-encoding",
+      "label": "phase encoding",
+      "score": 0.823
+    },
+    {
+      "id": "encryption",
+      "label": "encryption",
+      "score": 0.818
+    },
+    {
+      "id": "transformer-encoder",
+      "label": "transformer encoder",
+      "score": 0.818
+    },
+    {
+      "id": "parallel-decoding",
+      "label": "parallel decoding",
+      "score": 0.81
+    },
+    {
+      "id": "decode",
+      "label": "decode",
+      "score": 0.807
+    },
+    {
+      "id": "compression",
+      "label": "compression",
+      "score": 0.791
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.143
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.282
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.376
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.392
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.219
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.321
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.079
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Adaptive Volumetric Mechanical Property Fields Invariant to Resolution",
+      "url": "http://arxiv.org/abs/2606.18231v1",
+      "author_or_channel": "Rishit Dagli, Donglai Xiang, Vismay Modi",
+      "published_at": "2026-06-16T17:56:03Z",
+      "kind": "technique"
+    },
+    {
+      "title": "MeshLoom: Feed-Forward Non-Rigid Registration of Mesh Sequences",
+      "url": "http://arxiv.org/abs/2606.17027v1",
+      "author_or_channel": "Jianqi Chen, Jiraphon Yenphraphai, Xiangjun Tang",
+      "published_at": "2026-06-15T17:51:38Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Introducing Gemma 4 12B: a unified, encoder-free multimodal model",
+      "url": "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
+      "author_or_channel": "Google DeepMind",
+      "published_at": "2026-06-09T14:10:19.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
+      "url": "https://www.youtube.com/watch?v=WLtCHXdHTF0",
+      "author_or_channel": "Better Stack",
+      "published_at": "2026-06-07T01:11:12+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
   "definition": "The original transformer in two stacks: an encoder that reads the whole input bidirectionally into a representation, and a decoder that generates the output token by token while reaching into that representation through cross-attention. The clean split, fully understand the source before committing to any output, suits sequence-to-sequence tasks like translation, where most large language models instead went decoder-only.",
@@ -55,12 +172,6 @@
       "kind": "tool"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/encoder-decoder.svg",
     "alt": "The transformer architecture as two stacks. The encoder on the left takes source embeddings plus positional encoding through repeated blocks of multi-head attention and a positionwise feed-forward network, each with add-and-norm. The decoder on the right takes target embeddings through masked multi-head attention, then multi-head attention that reads the encoder output, then a feed-forward network, ending in a fully connected output layer.",

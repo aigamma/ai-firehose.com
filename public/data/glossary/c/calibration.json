@@ -1,13 +1,144 @@
 {
   "id": "calibration",
   "label": "Calibration",
-  "kind": "technique",
-  "category": "Evaluation and Benchmarks",
   "aliases": [
     "model calibration",
     "confidence calibration",
     "expected calibration error"
   ],
+  "kind": "technique",
+  "attention": 7,
+  "first_seen": "2026-06-03T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 95.9,
+    "sparkline": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      3,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "error-measurement",
+      "label": "error measurement",
+      "score": 0.796
+    },
+    {
+      "id": "fine-tuning",
+      "label": "fine-tuning",
+      "score": 0.781
+    },
+    {
+      "id": "bias-correction",
+      "label": "bias correction",
+      "score": 0.781
+    },
+    {
+      "id": "data-acquisition",
+      "label": "data acquisition",
+      "score": 0.78
+    },
+    {
+      "id": "atmospheric-compensation",
+      "label": "atmospheric compensation",
+      "score": 0.762
+    },
+    {
+      "id": "verification",
+      "label": "verification",
+      "score": 0.76
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.3
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.147
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.286
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.34
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.167
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.047
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.11
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Filtered Conformal Ellipsoids for Graph-Native Time Series",
+      "url": "http://arxiv.org/abs/2606.17014v1",
+      "author_or_channel": "Yannick Limmer",
+      "published_at": "2026-06-15T17:46:19Z",
+      "kind": "technique"
+    },
+    {
+      "title": "TuneJury: An Open Metric for Improving Music Generation Preference Alignment",
+      "url": "http://arxiv.org/abs/2606.17006v1",
+      "author_or_channel": "Yonghyun Kim, Junwon Lee, Haiwen Xia",
+      "published_at": "2026-06-15T17:39:30Z",
+      "kind": "tool"
+    },
+    {
+      "title": "ActiveSAM: Image-Conditional Class Pruning for Fast and Accurate Open-Vocabulary Segmentation",
+      "url": "http://arxiv.org/abs/2606.16996v1",
+      "author_or_channel": "Tran Dinh Tien, Zhiqiang Shen",
+      "published_at": "2026-06-15T17:31:30Z",
+      "kind": "technique"
+    },
+    {
+      "title": "How Confident Are AI Classifiers About Their Own Confidence?",
+      "url": "https://gmcirco.github.io/blog/posts/ai-calibration/calibration.html",
+      "author_or_channel": "apwheele",
+      "published_at": "2026-06-08T15:41:07.000Z",
+      "kind": "opinion"
+    },
+    {
+      "title": "TRIAGE: Dialectical Reasoning for Explainable Risk Prediction on Irregularly Sampled Medical Time Series with LLMs",
+      "url": "https://huggingface.co/papers/2606.09030",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-07T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Sycophantic Praise: Evaluating Excessive Praise in Language Models",
+      "url": "http://arxiv.org/abs/2606.07441v1",
+      "author_or_channel": "Daniel Vennemeyer, Phan Anh Duong, Meryl Ye",
+      "published_at": "2026-06-05T16:38:45Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Evaluation and Benchmarks",
   "durable": true,
   "source": "authored",
   "definition": "The property that a model's stated confidence matches its actual accuracy: one that says it is 80 percent sure is right about 80 percent of the time. It is orthogonal to accuracy, a model can be highly accurate yet overconfident, and it matters wherever a probability feeds a decision, which is why confidently-stated hallucinations and the overconfidence of modern deep networks make it a first-class evaluation concern.",
@@ -60,58 +191,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 3,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "fine-tuning",
-      "label": "fine-tuning",
-      "score": 0.814
-    },
-    {
-      "id": "surrogate-modeling",
-      "label": "surrogate modeling",
-      "score": 0.803
-    },
-    {
-      "id": "model-compression",
-      "label": "model compression",
-      "score": 0.789
-    },
-    {
-      "id": "classifier-retraining",
-      "label": "classifier retraining",
-      "score": 0.777
-    },
-    {
-      "id": "uncertainty-quantification",
-      "label": "uncertainty quantification",
-      "score": 0.774
-    },
-    {
-      "id": "conformal-prediction",
-      "label": "conformal prediction",
-      "score": 0.771
-    }
-  ],
-  "top_items": [
-    {
-      "title": "How Confident Are AI Classifiers About Their Own Confidence?",
-      "url": "https://gmcirco.github.io/blog/posts/ai-calibration/calibration.html",
-      "author_or_channel": "apwheele",
-      "published_at": "2026-06-08T15:41:07.000Z",
-      "kind": "opinion"
-    },
-    {
-      "title": "UnpredictaBench: A Benchmark for Evaluating Distributional Randomness in LLMs",
-      "url": "https://huggingface.co/papers/2606.06622",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-03T20:00:00.000Z",
-      "kind": "tool"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/calibration.png",
     "alt": "A reliability diagram plotting mean predicted probability on the x-axis against the observed fraction of positives on the y-axis. A dotted diagonal marks perfect calibration, and four classifiers are shown: logistic regression hugs the diagonal, uncalibrated naive Bayes bows away from it, and isotonic and sigmoid recalibration pull naive Bayes back toward the line. A histogram below shows how predictions are distributed across probability bins.",
@@ -121,8 +200,5 @@
     "license_url": "https://github.com/scikit-learn/scikit-learn/blob/main/COPYING",
     "source": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration_curve.html",
     "provider": "scikit-learn"
-  },
-  "folded_from": [
-    "model-calibration"
-  ]
+  }
 }
