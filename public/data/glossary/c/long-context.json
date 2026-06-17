@@ -7,34 +7,39 @@
     "extended context"
   ],
   "kind": "technique",
-  "attention": 28,
-  "first_seen": "2026-05-26T20:00:00.000Z",
+  "attention": 39,
+  "first_seen": "2026-05-01T03:30:27+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
-    "ratio": 112.4,
-    "momentum": 98.2,
+    "ratio": 113.7,
+    "momentum": 99.4,
     "sparkline": [
       13,
+      13,
       12,
-      12,
-      16,
       15,
       14,
       13,
+      12,
       15
     ]
   },
   "neighbors": [
     {
-      "id": "long-context-reasoning",
-      "label": "long-context reasoning",
-      "score": 0.743
+      "id": "long-context-window",
+      "label": "long context window",
+      "score": 0.745
+    },
+    {
+      "id": "context-rl",
+      "label": "Context-RL",
+      "score": 0.744
     },
     {
       "id": "context-preservation",
       "label": "context preservation",
-      "score": 0.739
+      "score": 0.737
     },
     {
       "id": "context-files",
@@ -50,23 +55,18 @@
       "id": "context-hygiene",
       "label": "context hygiene",
       "score": 0.702
-    },
-    {
-      "id": "tool-context",
-      "label": "tool context",
-      "score": 0.7
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.107
+      "position": 0.1
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.249
+      "position": -0.267
     },
     {
       "slug": "capability-safety",
@@ -76,12 +76,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.16
+      "position": 0.213
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.094
+      "position": -0.132
     },
     {
       "slug": "neural-symbolic",
@@ -91,7 +91,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.187
+      "position": -0.161
     }
   ],
   "top_items": [
@@ -101,6 +101,13 @@
       "author_or_channel": "AICodeKing",
       "published_at": "2026-06-17T09:15:20+00:00",
       "kind": "tool"
+    },
+    {
+      "title": "Build a Hermes Knowledge Base That Self-Improves",
+      "url": "https://www.youtube.com/watch?v=D3dQqqDx2V4",
+      "author_or_channel": "Jack Roberts",
+      "published_at": "2026-06-14T10:03:35+00:00",
+      "kind": "technique"
     },
     {
       "title": "This AI Chinese model is 15X cheaper?",
@@ -129,19 +136,12 @@
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-08T20:00:00.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "Seedance 3.0 — NEW AI Video Generator Makes 1H+ Movies",
-      "url": "https://www.youtube.com/watch?v=P19XDsu8VPQ",
-      "author_or_channel": "AI Master",
-      "published_at": "2026-06-06T19:21:32+00:00",
-      "kind": "tool"
     }
   ],
+  "definition": "A model's ability to process very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning. It is hard for three converging reasons, quadratic attention, a ballooning KV cache, and scarce long-reasoning training data, and the honest catch is that the advertised window often exceeds the effective one, with recall sagging in the middle.",
   "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
-  "definition": "A model's ability to process very long inputs, from tens of thousands to millions of tokens, enabling whole-document and multi-document reasoning. It is hard for three converging reasons, quadratic attention, a ballooning KV cache, and scarce long-reasoning training data, and the honest catch is that the advertised window often exceeds the effective one, with recall sagging in the middle.",
   "body": [
     {
       "type": "p",

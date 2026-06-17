@@ -6,25 +6,25 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "The double iframe pattern nests an iframe within another iframe to work around Content Security Policy restrictions and sandbox escape vulnerabilities. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the application HTML via srcdoc into the inner frame, preventing storage collisions and unauthorized access to parent application data.",
-  "writeup": "Frédéric Barthelet of Alpic explains the double iframe pattern used by MCP and ChatGPT Apps, where one iframe nests inside another to work around Content Security Policy restrictions and sandbox escape vulnerabilities. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the application HTML via srcdoc into the inner frame. The arrangement enforces origin isolation, preventing storage collisions and unauthorized access to parent application data.",
-  "wh": "a1158e08f2d90698",
+  "summary": "MCP and ChatGPT apps use nested iframes to isolate third-party code while maintaining security. An outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app HTML via srcdoc into an inner iframe, preventing CSP violations, localStorage leaks, and sandbox escapes. Each external domain must be declared in app metadata to pass submission review.",
+  "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
+  "wh": "bfff9ab4617bac4b",
   "concepts": [
     {
-      "slug": "double-iframe",
-      "label": "double iframe"
+      "slug": "sandboxed-iframe",
+      "label": "sandboxed iframe"
     },
     {
-      "slug": "content-security-policy",
-      "label": "Content Security Policy"
+      "slug": "same-origin-policy",
+      "label": "same-origin policy"
     },
     {
       "slug": "srcdoc",
       "label": "srcdoc"
     },
     {
-      "slug": "origin-isolation",
-      "label": "origin isolation"
+      "slug": "sandbox-attribute",
+      "label": "sandbox attribute"
     }
   ],
   "similar": [
@@ -32,37 +32,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.543
-    },
-    {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.522
-    },
-    {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.52
-    },
-    {
-      "id": "Gh1E9VgXZWs",
-      "title": "Bridging Design Systems and Code with MCP and AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.499
+      "score": 0.561
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.491
+      "score": 0.522
     },
     {
-      "id": "4vfvvzzwcwI",
-      "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.469
+      "id": "o4pwkwg0zfk",
+      "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
+      "channel": "Alex Kantrowitz",
+      "score": 0.504
+    },
+    {
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.502
+    },
+    {
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
+      "channel": "JavaScript Mastery",
+      "score": 0.494
+    },
+    {
+      "id": "2pXbyAd7pr0",
+      "title": "ChatGPT Is Getting Its Biggest Upgrade Ever",
+      "channel": "AI Revolution",
+      "score": 0.491
     }
   ]
 }

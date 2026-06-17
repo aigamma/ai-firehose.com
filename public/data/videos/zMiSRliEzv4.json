@@ -6,9 +6,9 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is building an autonomous system that converts product signals (rage clicks, error spikes, customer messages) into pull requests via a background agent that groups related issues, analyzes the codebase, and opens fixes automatically. The system uses LLM-generated query embeddings for semantic clustering and prioritizes high-specificity signals to improve PR quality.",
+  "summary": "PostHog is building an autonomous system that converts product signals (rage clicks, errors, Slack messages) into pull requests via a background agent. The agent groups related signals, researches the codebase, and automatically opens PRs to fix issues, reducing the time from signal detection to resolution.",
   "writeup": "Joshua Snyder of PostHog details an automated agent pipeline that turns product signals into pull requests. The system detects signals like rage clicks, error spikes, and customer messages, groups related issues using embeddings, researches the codebase, and opens PRs. A key design choice: rather than embedding raw signals directly, the pipeline uses LLM-generated queries to improve semantic accuracy when clustering, alongside error recovery and session replay as supporting components.",
-  "wh": "94560b39c261eaa4",
+  "wh": "86514f6cb89dfecf",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -19,8 +19,12 @@
       "label": "embeddings"
     },
     {
-      "slug": "clustering",
-      "label": "clustering"
+      "slug": "error-recovery",
+      "label": "error recovery"
+    },
+    {
+      "slug": "retrieval",
+      "label": "retrieval"
     },
     {
       "slug": "prompt-optimization",
@@ -32,37 +36,37 @@
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.577
+      "score": 0.602
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.57
+    },
+    {
+      "id": "C8El0OzQRrc",
+      "title": "This is the most useful n8n workflow I have ever built...",
+      "channel": "NeuralNine",
+      "score": 0.567
     },
     {
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.561
+      "score": 0.553
     },
     {
-      "id": "luBkbzjo-TA",
-      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
-      "channel": "Cole Medin",
-      "score": 0.559
-    },
-    {
-      "id": "_GljcHROPX8",
-      "title": "What happens when agents get their own computers",
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.555
+      "score": 0.55
     },
     {
-      "id": "10g1iJnfLWQ",
-      "title": "Biomedical AI Copilot with Neo4j and Qdrant",
-      "channel": "Qdrant Vector Search",
-      "score": 0.555
-    },
-    {
-      "id": "ikH1--DSzMs",
-      "title": "How to build proactive agents & self-improving company (Fully explained)",
-      "channel": "AI Jason",
-      "score": 0.543
+      "id": "pmoDeA3RBZY",
+      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
+      "channel": "AI Engineer",
+      "score": 0.548
     }
   ]
 }

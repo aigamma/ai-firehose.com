@@ -6,21 +6,25 @@
   "published": "2026-06-15T09:15:32+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "OpenRouter has released Fusion API, which combines responses from multiple models using a judge model architecture. Benchmarks claim Fable-level performance at half the cost, but real-world testing shows inconsistent results across diverse tasks and suggests it may be slower and more expensive than using individual models.",
-  "writeup": "AICodeKing examines OpenRouter's new Fusion API, which combines responses from multiple models through a judge model architecture and pairs that approach with OpenCode access to systems including MiniMax M3, Step 3.7 Flash, Nemotron 3 Ultra, GLM, and Kimi. The video weighs vendor benchmark claims of Fable-level performance at half the cost against hands-on testing. The takeaway: real-world results across diverse tasks were inconsistent, and the ensemble setup may run slower and cost more than calling individual models directly.",
-  "wh": "28dcb5423982a392",
+  "summary": "OpenRouter introduced Fusion API, a compound model system that routes prompts to a panel of models and uses a judge model to synthesize responses. The system claims Fable-level performance at lower cost based on DRACO Bench results, but real-world testing shows inconsistent performance and sometimes higher latency and cost than using a single strong model.",
+  "writeup": "The video examines OpenRouter's Fusion API, a compound model system that routes a prompt to a panel of models and then uses a judge model to synthesize their outputs into a final response. OpenRouter claims Fable-level performance at lower cost, citing DRACO Bench results. Real-world testing in the video contradicts that framing: performance is inconsistent, and latency and cost sometimes exceed those of a single strong model. The takeaway is that the ensemble-and-judge routing approach does not reliably beat picking one capable model.",
+  "wh": "cb53cbebd3782498",
   "concepts": [
     {
       "slug": "ensemble-methods",
       "label": "ensemble methods"
     },
     {
-      "slug": "judge-model",
-      "label": "judge model"
+      "slug": "model-routing",
+      "label": "model routing"
     },
     {
-      "slug": "foundation-models",
-      "label": "foundation models"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     }
   ],
   "similar": [
@@ -28,37 +32,37 @@
       "id": "VESRlr6lRQ8",
       "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
       "channel": "AICodeKing",
-      "score": 0.784
+      "score": 0.776
     },
     {
       "id": "wzay-VWjoRM",
       "title": "Fable 5 Replacement Just Dropped: Fusion (Fable Level AI)",
       "channel": "AI Revolution",
-      "score": 0.735
+      "score": 0.734
     },
     {
       "id": "V0c62734ix8",
       "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
       "channel": "AICodeKing",
-      "score": 0.664
-    },
-    {
-      "id": "iOZf50YffCE",
-      "title": "This AI Chinese model is 15X cheaper?",
-      "channel": "Jack Roberts",
-      "score": 0.643
+      "score": 0.632
     },
     {
       "id": "5zdvwxEouQ0",
       "title": "Step-3.7 Flash FULLY FREE Unlimited API + Hermes Agent: THIS IS ACTUALLY CRAZY!",
       "channel": "AICodeKing",
-      "score": 0.626
+      "score": 0.599
     },
     {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.594
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.579
+    },
+    {
+      "id": "lyhnXvNnhsU",
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "channel": "AICodeKing",
+      "score": 0.564
     }
   ]
 }
