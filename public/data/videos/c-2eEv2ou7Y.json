@@ -6,25 +6,25 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe architecture isolates MCP and ChatGPT apps by nesting an srcdoc iframe inside a controlled-subdomain iframe. This pattern prevents Content Security Policy bypasses, credential theft, and sandbox escapes by separating app code (inner frame) from script loading (outer frame). Each app gets a unique subdomain to prevent cross-app storage collisions.",
-  "writeup": "Frédéric Barthelet of Alpic explains the double iframe architecture used to embed MCP and ChatGPT apps, which nests an srcdoc iframe inside an iframe served from a controlled subdomain. The split assigns distinct roles: the inner frame holds app code while the outer frame handles script loading, separating concerns that would otherwise enable Content Security Policy bypasses, credential theft, and sandbox escapes. The talk also covers why each app receives a unique subdomain, which prevents cross-app storage collisions. The takeaway is a concrete isolation pattern for app marketplace architecture grounded in CSP and sandboxed iframes.",
-  "wh": "b2617cd76a210a43",
+  "summary": "ChatGPT apps and MCP use double iframe architecture to isolate third-party code while preserving functionality. The outer iframe loads from a controlled subdomain with a lightweight script, which then loads the actual app HTML via srcdoc into an inner frame, preventing CSP breaches and sandbox escapes while blocking cross-app storage collisions.",
+  "writeup": "This talk explains the double iframe architecture behind ChatGPT apps and MCP, which exists to isolate third-party code while keeping app functionality intact. The outer iframe loads from a controlled subdomain running a lightweight script, which then injects the real app HTML into an inner frame via srcdoc. The structure matters because it prevents CSP breaches and sandbox escapes and blocks cross-app storage collisions, tying together same-origin policy, sandbox, and srcdoc behavior.",
+  "wh": "c8155e842e18d266",
   "concepts": [
     {
-      "slug": "content-security-policy",
-      "label": "Content Security Policy"
+      "slug": "double-iframe",
+      "label": "double iframe"
     },
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "same-origin-policy",
+      "label": "same-origin policy"
     },
     {
-      "slug": "tenant-isolation",
-      "label": "tenant isolation"
+      "slug": "sandbox",
+      "label": "sandbox"
     },
     {
-      "slug": "app-marketplace-architecture",
-      "label": "app marketplace architecture"
+      "slug": "srcdoc",
+      "label": "srcdoc"
     }
   ],
   "similar": [
@@ -32,37 +32,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.531
-    },
-    {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.517
+      "score": 0.552
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.506
+      "score": 0.536
+    },
+    {
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
+      "channel": "JavaScript Mastery",
+      "score": 0.527
     },
     {
       "id": "6ipGnvXTF1Y",
       "title": "Why your AI prompt constraints don't work",
       "channel": "JavaScript Mastery",
-      "score": 0.503
+      "score": 0.525
     },
     {
-      "id": "Gh1E9VgXZWs",
-      "title": "Bridging Design Systems and Code with MCP and AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.497
+      "id": "o4pwkwg0zfk",
+      "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
+      "channel": "Alex Kantrowitz",
+      "score": 0.516
     },
     {
-      "id": "4vfvvzzwcwI",
-      "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.493
+      "id": "2pXbyAd7pr0",
+      "title": "ChatGPT Is Getting Its Biggest Upgrade Ever",
+      "channel": "AI Revolution",
+      "score": 0.51
     }
   ]
 }
