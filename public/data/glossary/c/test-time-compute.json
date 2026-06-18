@@ -6,22 +6,22 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 400,
+  "attention": 451,
   "first_seen": "2026-03-16T19:20:45+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 82.5,
-    "momentum": 94.6,
+    "quadrant": "improving",
+    "ratio": 89.7,
+    "momentum": 100.8,
     "sparkline": [
-      70,
-      74,
-      69,
-      70,
-      65,
-      61,
       57,
-      57
+      66,
+      61,
+      62,
+      58,
+      63,
+      59,
+      59
     ]
   },
   "neighbors": [
@@ -31,14 +31,14 @@
       "score": 0.757
     },
     {
-      "id": "test-time-alignment",
-      "label": "test-time alignment",
-      "score": 0.736
-    },
-    {
       "id": "cached-compute",
       "label": "cached compute",
-      "score": 0.733
+      "score": 0.729
+    },
+    {
+      "id": "test-time-compute-steering",
+      "label": "test-time compute steering",
+      "score": 0.72
     },
     {
       "id": "test-time-scaling",
@@ -46,26 +46,26 @@
       "score": 0.71
     },
     {
-      "id": "compute-bound",
-      "label": "compute-bound",
-      "score": 0.687
+      "id": "compute-capacity",
+      "label": "compute capacity",
+      "score": 0.666
     },
     {
-      "id": "boundary-testing",
-      "label": "boundary testing",
-      "score": 0.679
+      "id": "test-harness",
+      "label": "test harness",
+      "score": 0.656
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.394
+      "position": 0.486
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.072
+      "position": 0.145
     },
     {
       "slug": "capability-safety",
@@ -75,12 +75,12 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.453
+      "position": 0.376
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.039
+      "position": 0.003
     },
     {
       "slug": "neural-symbolic",
@@ -90,10 +90,24 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.275
+      "position": 0.259
     }
   ],
   "top_items": [
+    {
+      "title": "6 INSANE Claude Cowork Use Cases to Save Hours (AI Workflow Automation)",
+      "url": "https://www.youtube.com/watch?v=skU1-k7_wWE",
+      "author_or_channel": "AI Master",
+      "published_at": "2026-06-18T08:21:53+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "url": "https://www.youtube.com/watch?v=UztrFXaSWv0",
+      "author_or_channel": "Cole Medin",
+      "published_at": "2026-06-18T00:00:08+00:00",
+      "kind": "technique"
+    },
     {
       "title": "Native Active Perception as Reasoning for Omni-Modal Understanding",
       "url": "http://arxiv.org/abs/2606.19341v1",
@@ -121,20 +135,6 @@
       "author_or_channel": "Alex Kantrowitz",
       "published_at": "2026-06-17T17:00:06+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "Sumi: Open Uniform Diffusion Language Model from Scratch",
-      "url": "https://huggingface.co/papers/2606.19005",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-16T20:00:00.000Z",
-      "kind": "tool"
-    },
-    {
-      "title": "Externalizing Research Synthesis and Validation in AI Scientists through a Research Harness",
-      "url": "https://huggingface.co/papers/2606.18874",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-16T20:00:00.000Z",
-      "kind": "tool"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
