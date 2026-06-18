@@ -78,6 +78,7 @@ jobs:
             --region iad \
             --vm-memory 1024 \
             --env ENABLE_TRANSCRIPTS=0 \
+            --restart no \
             --detach 2>&1) || { echo "$run_out"; echo "flyctl machine run failed"; exit 1; }
           echo "$run_out"
 
@@ -102,20 +103,37 @@ jobs:
             sleep 10
           done
 
-          # Read the real exit code from the Machine's most recent exit event.
-          machines_json=$(flyctl machine list -a "$APP" --json 2>/dev/null)
-          exit_code=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
-            [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
-            | sort_by(.timestamp) | last | (.request.exit_event.exit_code // empty)' 2>/dev/null)
-          oom=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
-            [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
-            | sort_by(.timestamp) | last | (.request.exit_event.oom_killed // false)' 2>/dev/null)
-          echo "Machine $MID final state=${state:-gone} exit_code=${exit_code:-unknown} oom=${oom:-false}"
+          # Decide the outcome from the Machine's exit event. Fly serializes the event with
+          # omitempty, so a clean exit (code 0) OMITS exit_code entirely: an absent code
+          # means success. The event also lands a moment after the state flips to 'stopped',
+          # so retry until the exit event itself appears, then read the code (absent -> 0).
+          exit_found=""
+          exit_code="0"
+          oom="false"
+          for j in $(seq 1 18); do   # up to ~90s for the exit event to appear
+            machines_json=$(flyctl machine list -a "$APP" --json 2>/dev/null)
+            n=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" \
+              '[ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ] | length' 2>/dev/null)
+            if [ "${n:-0}" -ge 1 ] 2>/dev/null; then
+              exit_found=1
+              exit_code=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
+                [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
+                | sort_by(.timestamp) | last | (.request.exit_event.exit_code // 0)' 2>/dev/null)
+              oom=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
+                [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
+                | sort_by(.timestamp) | last | (.request.exit_event.oom_killed // false)' 2>/dev/null)
+              break
+            fi
+            echo "exit event not populated yet (attempt $j); waiting..."
+            sleep 5
+          done
+          echo "Machine $MID final state=${state:-gone} exit_found=${exit_found:-no} exit_code=${exit_code:-0} oom=${oom:-false}"
 
-          if [ "${exit_code:-}" = "0" ]; then
+          # Success only if the exit event appeared AND the code is 0 (absent counts as 0).
+          if [ -n "$exit_found" ] && [ "${exit_code:-0}" = "0" ]; then
             echo "Ingestion batch completed cleanly (exit 0)."
           else
-            msg="Ingestion batch did not exit 0 (state=${state:-gone}, exit=${exit_code:-unknown}"
+            msg="Ingestion batch failed (state=${state:-gone}, exit_found=${exit_found:-no}, exit=${exit_code:-unknown}"
             [ "${oom:-false}" = "true" ] && msg="$msg, OOM-killed"
             echo "$msg)."
             exit 1
