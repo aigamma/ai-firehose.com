@@ -7,22 +7,22 @@
     "sparsely-gated mixture of experts"
   ],
   "kind": "technique",
-  "attention": 43,
-  "first_seen": "2026-05-23T20:00:00.000Z",
+  "attention": 45,
+  "first_seen": "2026-05-16T11:33:51.000Z",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
     "ratio": 145,
-    "momentum": 86.5,
+    "momentum": 84.4,
     "sparkline": [
       4,
       13,
       12,
-      11,
+      16,
       15,
       18,
       17,
-      16
+      17
     ]
   },
   "neighbors": [
@@ -61,12 +61,12 @@
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.093
+      "position": 0.03
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.15
+      "position": -0.136
     },
     {
       "slug": "capability-safety",
@@ -96,6 +96,13 @@
   ],
   "top_items": [
     {
+      "title": "GLM-5.2 is probably the most powerful text-only open weights LLM",
+      "url": "https://simonwillison.net/2026/Jun/17/glm-52/#atom-everything",
+      "author_or_channel": "Simon Willison",
+      "published_at": "2026-06-17T23:58:39.000Z",
+      "kind": "tool"
+    },
+    {
       "title": "EventDrive: Event Cameras for Vision-Language Driving Intelligence",
       "url": "http://arxiv.org/abs/2606.18242v1",
       "author_or_channel": "Dongyue Lu, Rong Li, Ao Liang",
@@ -117,25 +124,18 @@
       "kind": "tool"
     },
     {
+      "title": "RepSelect: Robust LLM Unlearning via Representation Selectivity",
+      "url": "https://huggingface.co/papers/2606.17168",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-14T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
       "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
       "url": "https://www.youtube.com/watch?v=VESRlr6lRQ8",
       "author_or_channel": "AICodeKing",
       "published_at": "2026-06-14T09:15:47+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
-      "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
-      "author_or_channel": "Better Stack",
-      "published_at": "2026-06-13T23:45:08+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning",
-      "url": "https://huggingface.co/papers/2606.15007",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-11T20:00:00.000Z",
-      "kind": "tool"
     }
   ],
   "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",

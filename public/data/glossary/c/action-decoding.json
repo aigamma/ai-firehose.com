@@ -2,38 +2,48 @@
   "id": "action-decoding",
   "label": "action decoding",
   "aliases": [
-    "action prediction",
+    "action representation",
     "state-fusion action decoding"
   ],
   "kind": "technique",
-  "attention": 3,
-  "first_seen": "2026-05-31T20:00:00.000Z",
+  "attention": 4,
+  "first_seen": "2026-06-05T20:00:00.000Z",
   "rotation": {
     "horizon": "week",
     "quadrant": "weakening",
-    "ratio": 127,
-    "momentum": 96.8,
+    "ratio": 145,
+    "momentum": 94.8,
     "sparkline": [
       1,
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      1
+      3,
+      3,
+      3,
+      3
     ]
   },
   "neighbors": [
+    {
+      "id": "action-state-representation",
+      "label": "action-state representation",
+      "score": 0.774
+    },
+    {
+      "id": "encoder-decoder",
+      "label": "encoder-decoder",
+      "score": 0.753
+    },
     {
       "id": "parallel-decoding",
       "label": "parallel decoding",
       "score": 0.749
     },
     {
-      "id": "action-value-estimation",
-      "label": "action-value estimation",
-      "score": 0.731
+      "id": "action-conditioned-prediction",
+      "label": "action-conditioned prediction",
+      "score": 0.736
     },
     {
       "id": "speculative-decoding",
@@ -41,31 +51,21 @@
       "score": 0.729
     },
     {
-      "id": "action-aware-memory",
-      "label": "action-aware memory",
-      "score": 0.722
-    },
-    {
       "id": "best-action-identification",
       "label": "best-action identification",
       "score": 0.719
-    },
-    {
-      "id": "motion-capture",
-      "label": "motion capture",
-      "score": 0.715
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.007
+      "position": -0.064
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.067
+      "position": 0.078
     },
     {
       "slug": "capability-safety",
@@ -102,18 +102,18 @@
       "kind": "technique"
     },
     {
+      "title": "ACE-Ego-0: Unifying Egocentric Human and Robotic Data for VLA Pretraining",
+      "url": "https://huggingface.co/papers/2606.17200",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-14T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
       "title": "Light-WAM: Efficient World Action Models with State-Fusion Action Decoding",
       "url": "https://huggingface.co/papers/2606.08242",
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-05T20:00:00.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "RoboSemanticBench: Diagnosing Semantic Grounding in Action Prediction for VLA Models",
-      "url": "https://huggingface.co/papers/2606.02277",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-05-31T20:00:00.000Z",
-      "kind": "tool"
     }
   ]
 }
