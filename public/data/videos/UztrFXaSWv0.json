@@ -6,13 +6,13 @@
   "published": "2026-06-18T00:00:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Best AI engineers use automated loops to prompt agents repeatedly rather than prompting manually. These loops can orchestrate multiple worker agents in parallel, with an orchestrator deciding tasks. The approach reduces manual intervention but increases token costs and requires reliable observability harnesses.",
-  "writeup": "Cole Medin examines a shift in how leading AI engineers work with coding agents: instead of prompting manually, they build automated loops that prompt agents repeatedly. The video describes orchestration patterns where an orchestrator agent assigns tasks and coordinates multiple worker agents running in parallel. The tradeoffs are concrete: less manual intervention at the cost of higher token consumption and a dependence on reliable observability harnesses to track agent behavior.",
-  "wh": "aafba9725850ced2",
+  "summary": "AI engineers at frontier labs use self-prompting loops where an orchestrator agent spawns worker agents in parallel rather than prompting models directly. This approach scales task execution but requires observability tooling and incurs higher token costs as loops run for extended periods.",
+  "writeup": "Cole Medin examines a workflow used by AI engineers at frontier labs in which an orchestrator agent spawns worker agents in parallel instead of an engineer prompting models directly, a pattern described as self-prompting loops. The shift matters because it scales task execution across many agents running for extended periods. The concrete tradeoffs: the approach depends on observability tooling to track what the agents do, and it incurs higher token costs as the loops run.",
+  "wh": "86a8d7fc80f40b05",
   "concepts": [
     {
-      "slug": "loops",
-      "label": "loops"
+      "slug": "agentic-loops",
+      "label": "agentic loops"
     },
     {
       "slug": "agent-orchestration",
@@ -23,46 +23,50 @@
       "label": "test-time compute"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "observability",
+      "label": "observability"
+    },
+    {
+      "slug": "parallel-execution",
+      "label": "parallel execution"
     }
   ],
   "similar": [
     {
-      "id": "6ad-LyammTI",
-      "title": "STOP Using Claude to Code. Do THIS Instead.",
-      "channel": "Austin Marchese",
-      "score": 0.714
+      "id": "fEZ0GZ-vKhg",
+      "title": "Don’t miss this Claude update",
+      "channel": "Jack Roberts",
+      "score": 0.693
     },
     {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.711
-    },
-    {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
-      "channel": "Cole Medin",
-      "score": 0.695
-    },
-    {
-      "id": "JlwwyNtHsCI",
-      "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
-      "channel": "AI Revolution",
-      "score": 0.694
-    },
-    {
-      "id": "qOvc9IUKEIc",
-      "title": "How Anthropic Engineers ACTUALLY Prompt Claude Code",
-      "channel": "Austin Marchese",
-      "score": 0.689
+      "score": 0.684
     },
     {
       "id": "pmoDeA3RBZY",
       "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
       "channel": "AI Engineer",
-      "score": 0.682
+      "score": 0.68
+    },
+    {
+      "id": "6ad-LyammTI",
+      "title": "STOP Using Claude to Code. Do THIS Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.675
+    },
+    {
+      "id": "7zZy1QTvokM",
+      "title": "Stop Prompting Claude. Use Karpathy's Method Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.671
+    },
+    {
+      "id": "JlwwyNtHsCI",
+      "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
+      "channel": "AI Revolution",
+      "score": 0.661
     }
   ]
 }

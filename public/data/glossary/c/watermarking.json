@@ -1,13 +1,94 @@
 {
   "id": "watermarking",
   "label": "Watermarking",
-  "kind": "technique",
-  "category": "Alignment and Safety",
   "aliases": [
     "watermarking",
     "AI watermarking",
     "statistical watermark"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-05-22T16:09:49+00:00",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "encryption",
+      "label": "encryption",
+      "score": 0.803
+    },
+    {
+      "id": "phase-encoding",
+      "label": "phase encoding",
+      "score": 0.789
+    },
+    {
+      "id": "compression",
+      "label": "compression",
+      "score": 0.766
+    },
+    {
+      "id": "quantization",
+      "label": "quantization",
+      "score": 0.765
+    },
+    {
+      "id": "signal-multiplexing",
+      "label": "signal multiplexing",
+      "score": 0.755
+    },
+    {
+      "id": "oversampling",
+      "label": "oversampling",
+      "score": 0.75
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.179
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.05
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.462
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.233
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.023
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.031
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.035
+    }
+  ],
+  "top_items": [
+    {
+      "title": "SynthID, our imperceptible watermark for AI-generated content, is expanding to more partners.",
+      "url": "https://www.youtube.com/watch?v=EF1BFaNZN9U",
+      "author_or_channel": "Google DeepMind",
+      "published_at": "2026-05-22T16:09:49+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Alignment and Safety",
   "durable": true,
   "source": "authored",
   "definition": "Techniques that embed a detectable, often statistical, signal into AI-generated text or images so an output can later be identified as machine-made, aimed at provenance, misuse detection, and telling synthetic content apart from human work. Its hard limit is robustness: text watermarks wash out under paraphrasing or heavy editing, so watermarking is a useful provenance signal and a deterrent, not a guarantee.",
@@ -51,12 +132,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/watermarking.png",
     "alt": "A two-panel schematic of the KGW text watermarking method. The Watermark Generator takes the LLM logits, splits the vocabulary into a green list and a red list, adds a bias to the green tokens, and samples the next token from the adjusted logits. The Watermark Detector categorizes each generated token as red or green and counts the green fraction to decide watermarked or not.",

@@ -1,11 +1,107 @@
 {
   "id": "logits",
   "label": "Logits",
-  "kind": "technique",
-  "category": "Inference and Sampling",
   "aliases": [
     "logit"
   ],
+  "kind": "technique",
+  "attention": 4,
+  "first_seen": "2026-06-18T16:04:04+00:00",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 145,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "qubits",
+      "label": "qubits",
+      "score": 0.764
+    },
+    {
+      "id": "logic-gates",
+      "label": "logic gates",
+      "score": 0.736
+    },
+    {
+      "id": "softmax",
+      "label": "Softmax",
+      "score": 0.735
+    },
+    {
+      "id": "mlops",
+      "label": "MLOps",
+      "score": 0.731
+    },
+    {
+      "id": "encrypted-reasoning",
+      "label": "encrypted reasoning",
+      "score": 0.726
+    },
+    {
+      "id": "symbolic-computation",
+      "label": "Symbolic computation",
+      "score": 0.726
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.1
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.069
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.333
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.136
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.144
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": -0.054
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.205
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Karpathy Bigram explained in 10min..",
+      "url": "https://www.youtube.com/watch?v=Qd2bAzwH9uA",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-06-18T16:04:04+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Inference and Sampling",
   "durable": true,
   "source": "authored",
   "definition": "The raw, unnormalized scores a model emits for every token at each step, before a softmax converts them into a probability distribution. They are the single surface every decoding and sampling control acts on, temperature divides them, truncation reads the probabilities they produce, a penalty subtracts from them, so understanding sampling means seeing it as a sequence of edits to this one vector before it is normalized.",
@@ -54,12 +150,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/logits.png",
     "alt": "A network takes an input image and emits three raw scores for the classes cat, dog, and horse: 35.4, 38.1, and minus 5.0. These pass through a softmax box and come out as probabilities 0.06, 0.94, and 0.00.",

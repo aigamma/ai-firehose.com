@@ -6,21 +6,21 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan's team at NVIDIA demonstrated real-time video diffusion on Blackwell B200 by reducing the default 50-step denoising process through quantization, latent caching, and step distillation. The approach uses a student model trained to match a teacher's output in as few as one to eight steps, with gains that are composable and can yield 10 to 200x speedup.",
+  "summary": "Nvidia's Ziv Ilan demonstrated techniques for accelerating video diffusion models to near real-time speeds on Blackwell B200 by reducing denoising steps from 50 to as few as one. The approach combines dynamic quantization with Black Forest Labs, latent chunk caching to avoid recomputation, and step distillation using both trajectory-based and distribution-based training methods. The optimizations are modular and additive, delivering up to 200x speedups when stacked together.",
   "writeup": "Ziv Ilan of NVIDIA presents techniques for accelerating video diffusion, demonstrating real-time generation on the Blackwell B200 by cutting the default 50-step denoising process. The methods combine quantization, latent caching, and step distillation, where a student model is trained to match a teacher's output in as few as one to eight steps. These optimizations are composable and can stack to deliver 10 to 200x speedup, which matters for making diffusion inference cheap enough to run interactively.",
-  "wh": "89842b0c2227c1df",
+  "wh": "40120511dbf2ec6a",
   "concepts": [
-    {
-      "slug": "distillation",
-      "label": "Distillation"
-    },
     {
       "slug": "quantization",
       "label": "quantization"
     },
     {
-      "slug": "diffusion-models",
-      "label": "diffusion models"
+      "slug": "prompt-caching",
+      "label": "prompt caching"
+    },
+    {
+      "slug": "distillation",
+      "label": "Distillation"
     },
     {
       "slug": "training-free-methods",
@@ -29,10 +29,6 @@
     {
       "slug": "distributed-training",
       "label": "distributed training"
-    },
-    {
-      "slug": "latent-caching",
-      "label": "latent caching"
     },
     {
       "slug": "test-time-compute",
@@ -44,37 +40,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.634
+      "score": 0.591
     },
     {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.57
+      "score": 0.531
     },
     {
       "id": "TUnPNY4E2fw",
       "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
       "channel": "AI Engineer",
-      "score": 0.548
+      "score": 0.525
+    },
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.524
     },
     {
       "id": "RdqYvdT74i0",
       "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
       "channel": "AI Search",
-      "score": 0.547
+      "score": 0.505
     },
     {
-      "id": "vhbaZJtW2Hg",
-      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
-      "channel": "Cole Medin",
-      "score": 0.538
-    },
-    {
-      "id": "YiIrnYalHS4",
-      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
-      "channel": "AI Revolution",
-      "score": 0.537
+      "id": "k7HrSreatII",
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "channel": "Google Cloud Tech",
+      "score": 0.495
     }
   ]
 }

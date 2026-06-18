@@ -6,13 +6,17 @@
   "published": "2026-06-08T17:00:21+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Max Ryabinin presents a full stack of techniques for training LLMs with very long context windows, including fully sharded data parallelism, DeepSpeed Ulysses, activation checkpointing, CPU offloading, and chunked sequence training. The novel Untied Ulysses method further optimizes context parallelism by chunking attention heads and reusing buffers across iterations, enabling 5M token sequences while maintaining throughput on models from 8B to 32B parameters.",
+  "summary": "Max Ryabinin presents Untied Ulysses, a context parallelism technique that chunks attention heads and reuses buffers across iterations to reduce activation memory during long-context LLM training. The approach combines fully sharded data parallelism, activation checkpointing, CPU offloading, and chunked sequence training to enable training with 5 million token contexts on modest hardware.",
   "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "184b568c350898d0",
+  "wh": "c201dd3f57694d41",
   "concepts": [
     {
       "slug": "parallel-execution",
       "label": "parallel execution"
+    },
+    {
+      "slug": "untied-ulysses",
+      "label": "Untied Ulysses"
     },
     {
       "slug": "checkpointing",
@@ -23,54 +27,50 @@
       "label": "GPU acceleration"
     },
     {
-      "slug": "untied-ulysses",
-      "label": "Untied Ulysses"
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
     },
     {
-      "slug": "rnn-training",
-      "label": "RNN training"
-    },
-    {
-      "slug": "memory-efficiency",
-      "label": "memory efficiency"
+      "slug": "sparse-attention",
+      "label": "sparse attention"
     }
   ],
   "similar": [
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.617
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.595
     },
     {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.592
+      "score": 0.593
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.584
+      "score": 0.591
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.581
     },
     {
       "id": "fk0pl6b7PKQ",
       "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
       "channel": "Jordan Urbs",
+      "score": 0.581
+    },
+    {
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
       "score": 0.579
-    },
-    {
-      "id": "k7HrSreatII",
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "channel": "Google Cloud Tech",
-      "score": 0.573
-    },
-    {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.572
     }
   ]
 }
