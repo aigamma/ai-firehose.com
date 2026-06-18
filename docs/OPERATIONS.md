@@ -24,7 +24,7 @@ The vector sync state lives in `worker/.cache/vector_manifest.json`, also commit
 
 The target cadence is **every 6 hours** (four refreshes a day): the AI firehose moves fast enough that a single daily rebuild reads as stale, and the Day horizon benefits most from intraday refreshes. Each run commits both `worker/.cache/items.json` and `worker/.cache/vector_manifest.json` with the rebuilt artifacts, and that push triggers CI plus a Netlify deploy, so four runs a day is four deploys a day. Cost stays modest because the pipeline is idempotent (content-hash gated): a run only classifies and embeds items new since the last one, so an intraday run is mostly fetch-and-skip.
 
-Fly's scheduled-Machine `--schedule` only accepts the presets `hourly | daily | weekly | monthly`, so it cannot express a 6-hour cadence. The cron trigger therefore lives in GitHub Actions (`.github/workflows/ingest.yml`, `cron: 0 */6 * * *`): each tick launches a one-off worker Machine from the deployed image and removes it when the batch exits (`--rm`). That workflow is dormant until the image is deployed and `FLY_API_TOKEN` is set; its guard step no-ops cleanly until then. Build and push the image once, then arm the trigger:
+Fly's scheduled-Machine `--schedule` only accepts the presets `hourly | daily | weekly | monthly`, so it cannot express a 6-hour cadence. The cron trigger therefore lives in GitHub Actions (`.github/workflows/ingest.yml`, `cron: 0 */6 * * *`): each tick launches a one-off worker Machine from the deployed image with `--detach`, polls the Machine state until the batch exits, reads the Machine's real exit code, and destroys the Machine in an always-run cleanup step (it does NOT use `--rm`; see the start-wait gotcha below). That workflow is dormant until the image is deployed and `FLY_API_TOKEN` is set; its guard step no-ops cleanly until then. Build and push the image once, then arm the trigger:
 
 ```
 fly deploy . -c worker/fly.toml --build-only --push
@@ -38,10 +38,11 @@ fly machine run registry.fly.io/ai-firehose-worker:<deployment-tag> -c worker/fl
   --schedule daily --vm-memory 1024 --env ENABLE_TRANSCRIPTS=0 --name firehose-daily
 ```
 
-Two gotchas, both learned the hard way (see `LESSONS_LEARNED.md`):
+Three gotchas, all learned the hard way (see `LESSONS_LEARNED.md`):
 
 - **Memory.** `fly machine run` does NOT apply the `[[vm]]` memory in `fly.toml`; it defaults to 256 MB, which OOM-stalls the pipeline (a run clones, starts fetching, then goes silent for many minutes). Always pass `--vm-memory 1024`.
 - **Secret rotation.** A Machine captures secrets at create time, and a scheduled restart reuses that stored config. After `fly secrets set` (for example rotating `GH_TOKEN`), destroy and recreate `firehose-daily` so it picks up the new value; setting the secret alone is not enough, and the worker keeps using the old one until it expires.
+- **flyctl start-wait race (do not use `--rm` from CI).** `flyctl machine run --rm` stays attached and waits for the Machine to reach `started`, but that wait is short (about 57s) and is not configurable on `machine run`. When the iad host is slow to boot the VM (observed taking 6+ minutes at about 20:30 UTC), flyctl gives up with `machine failed to reach desired start state`, which (a) fails the GitHub job as a FALSE failure (the Machine starts fine moments later) and emails the owner, and (b) leaks the late-starting Machine, because `--rm` cleanup never runs, leaving a Machine running unattended in `ai-firehose-worker` (its own Fly alert source and wasted compute). The workflow therefore launches with `--detach`, polls `fly machine list --json` until the Machine stops, reads `events[].request.exit_event.exit_code`, and destroys every Machine in the app in an `if: always()` step. Note flyctl 0.4.58 exposes `--json` only on `machine list`, not on `machine run` or `machine status`, so the Machine ID is parsed from the `machine run` text output. See `LESSONS_LEARNED.md` Session 28.
 
 ## Known Datacenter-IP Limitations
 

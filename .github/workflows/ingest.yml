@@ -3,7 +3,17 @@
 # Why a GitHub Actions cron and not a Fly scheduled Machine: Fly's `--schedule` only
 # accepts the presets hourly | daily | weekly | monthly, so it cannot express "every 6
 # hours". This workflow is the cron trigger; each tick launches a one-off worker Machine
-# from the deployed image and removes it when the batch exits (--rm).
+# from the deployed image, waits for the batch to finish, and destroys the Machine.
+#
+# Why detached launch plus poll, not `flyctl machine run --rm`: `--rm` keeps flyctl
+# attached and waits for the Machine to reach "started", but that built-in wait is short
+# (~57s) and is NOT configurable on `machine run`. When the iad host is slow to boot the
+# VM (observed taking 6+ minutes at ~20:30 UTC), flyctl gives up with "machine failed to
+# reach desired start state", fails the job (a false failure: the Machine starts fine
+# moments later), AND leaks the late-starting Machine because `--rm` cleanup never runs.
+# Instead we launch with `--detach` (no dependence on that wait), poll the Machine state
+# until it stops, read its real exit code, and ALWAYS destroy the Machine afterward. See
+# docs/OPERATIONS.md and LESSONS_LEARNED.md.
 #
 # Activation: this is dormant until the worker is deployed and the FLY_API_TOKEN secret
 # is set (see docs/OPERATIONS.md and docs/DEPLOYMENT.md). The guard step short-circuits
@@ -20,7 +30,8 @@ on:
   workflow_dispatch: {} # manual trigger from the Actions tab
 
 # Never let two ingests overlap; a run is short (a few minutes) but the corpus commit
-# must be serialized so two runs do not race the same items.json.
+# must be serialized so two runs do not race the same items.json. Serialized runs also
+# make the "destroy every Machine in the app" cleanup below safe.
 concurrency:
   group: ingest
   cancel-in-progress: false
@@ -31,7 +42,7 @@ permissions:
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Guard on FLY_API_TOKEN (no-op until the worker is deployed)
         id: guard
@@ -49,16 +60,83 @@ jobs:
         if: steps.guard.outputs.ready == 'true'
         uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Run a one-off ingestion Machine
+      - name: Launch a one-off ingestion Machine and wait for it
         if: steps.guard.outputs.ready == 'true'
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         # The image tag is the rolling latest from `fly deploy`. If your deploy pins a
-        # different tag, update WORKER_IMAGE here (or have the deploy push :latest).
+        # different tag, update the image ref here (or have the deploy push :latest).
         run: |
-          flyctl machine run "registry.fly.io/ai-firehose-worker:latest" \
-            --app ai-firehose-worker \
+          set -uo pipefail
+          APP=ai-firehose-worker
+          IMAGE="registry.fly.io/${APP}:latest"
+
+          # Launch DETACHED. We do not depend on flyctl's short, non-configurable
+          # start-wait, which times out on slow iad starts and then leaks the Machine.
+          run_out=$(flyctl machine run "$IMAGE" \
+            --app "$APP" \
             --region iad \
             --vm-memory 1024 \
             --env ENABLE_TRANSCRIPTS=0 \
-            --rm
+            --detach 2>&1) || { echo "$run_out"; echo "flyctl machine run failed"; exit 1; }
+          echo "$run_out"
+
+          MID=$(printf '%s\n' "$run_out" | sed -n 's/.*Machine ID:[[:space:]]*\([0-9a-f]\{6,\}\).*/\1/p' | head -n1)
+          if [ -z "$MID" ]; then
+            echo "Could not parse a Machine ID from the launch output; failing so cleanup runs."
+            exit 1
+          fi
+          echo "MACHINE_ID=$MID" >> "$GITHUB_ENV"
+          echo "Launched Machine $MID; waiting for the detached batch to finish..."
+
+          # Poll until the Machine stops. A Machine that takes minutes to reach 'started'
+          # simply keeps polling instead of being declared a failure. 120 * 10s = 20 min.
+          state=""
+          for i in $(seq 1 120); do
+            state=$(flyctl machine list -a "$APP" --json 2>/dev/null \
+              | jq -r --arg id "$MID" '.[] | select(.id==$id) | .state' 2>/dev/null)
+            echo "poll $i: state=${state:-<not-listed>}"
+            case "$state" in
+              stopped|destroyed|"") break ;;
+            esac
+            sleep 10
+          done
+
+          # Read the real exit code from the Machine's most recent exit event.
+          machines_json=$(flyctl machine list -a "$APP" --json 2>/dev/null)
+          exit_code=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
+            [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
+            | sort_by(.timestamp) | last | (.request.exit_event.exit_code // empty)' 2>/dev/null)
+          oom=$(printf '%s' "$machines_json" | jq -r --arg id "$MID" '
+            [ .[] | select(.id==$id) | .events[]? | select(.type=="exit") ]
+            | sort_by(.timestamp) | last | (.request.exit_event.oom_killed // false)' 2>/dev/null)
+          echo "Machine $MID final state=${state:-gone} exit_code=${exit_code:-unknown} oom=${oom:-false}"
+
+          if [ "${exit_code:-}" = "0" ]; then
+            echo "Ingestion batch completed cleanly (exit 0)."
+          else
+            msg="Ingestion batch did not exit 0 (state=${state:-gone}, exit=${exit_code:-unknown}"
+            [ "${oom:-false}" = "true" ] && msg="$msg, OOM-killed"
+            echo "$msg)."
+            exit 1
+          fi
+
+      - name: Destroy the one-off Machine (always; replaces --rm, prevents leaks)
+        if: always() && steps.guard.outputs.ready == 'true'
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -uo pipefail
+          APP=ai-firehose-worker
+          # Every Machine in this app is an ephemeral one-off and runs are serialized
+          # (concurrency group), so destroying all of them here removes this run's Machine
+          # AND self-heals any orphan leaked by a previous slow-start failure.
+          ids=$(flyctl machine list -a "$APP" --json 2>/dev/null | jq -r '.[].id' 2>/dev/null)
+          if [ -z "$ids" ]; then
+            echo "No Machines to clean up."
+            exit 0
+          fi
+          for id in $ids; do
+            echo "Destroying Machine $id..."
+            flyctl machine destroy "$id" -a "$APP" --force || echo "  (destroy failed for $id; continuing)"
+          done
