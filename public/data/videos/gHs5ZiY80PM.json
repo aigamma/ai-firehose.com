@@ -6,33 +6,37 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan's team at NVIDIA combined quantization, caching, and step distillation to accelerate diffusion model inference from 50 steps down to 1-8 steps, enabling near real-time video generation on Blackwell B200. The approach includes dynamic quantization with Black Forest Labs on Flux 2, latent chunk caching to skip unchanged computations between denoising steps, and distribution-based training where student models match teacher output distributions.",
-  "writeup": "Ziv Ilan presents how an NVIDIA team cut diffusion model inference from 50 steps to 1-8 steps by combining three techniques: quantization, caching, and step distillation. The methods include dynamic quantization developed with Black Forest Labs on Flux 2, latent chunk caching that skips unchanged computations between denoising steps, and distribution-based training where student models match teacher output distributions. The result enables near real-time video generation on Blackwell B200. The takeaway is that step reduction plus quantization and caching compound to make diffusion inference dramatically faster without separate retraining for each technique.",
-  "wh": "1374f6a7eb3d2d37",
+  "summary": "Ziv Ilan's team at NVIDIA demonstrated real-time video diffusion on Blackwell B200 by reducing the default 50-step denoising process through quantization, latent caching, and step distillation. The approach uses a student model trained to match a teacher's output in as few as one to eight steps, with gains that are composable and can yield 10 to 200x speedup.",
+  "writeup": "Ziv Ilan of NVIDIA presents techniques for accelerating video diffusion, demonstrating real-time generation on the Blackwell B200 by cutting the default 50-step denoising process. The methods combine quantization, latent caching, and step distillation, where a student model is trained to match a teacher's output in as few as one to eight steps. These optimizations are composable and can stack to deliver 10 to 200x speedup, which matters for making diffusion inference cheap enough to run interactively.",
+  "wh": "89842b0c2227c1df",
   "concepts": [
+    {
+      "slug": "distillation",
+      "label": "Distillation"
+    },
     {
       "slug": "quantization",
       "label": "quantization"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "knowledge-distillation",
-      "label": "knowledge distillation"
-    },
-    {
-      "slug": "model-caching",
-      "label": "model caching"
     },
     {
       "slug": "diffusion-models",
       "label": "diffusion models"
     },
     {
-      "slug": "flow-matching",
-      "label": "flow matching"
+      "slug": "training-free-methods",
+      "label": "training-free methods"
+    },
+    {
+      "slug": "distributed-training",
+      "label": "distributed training"
+    },
+    {
+      "slug": "latent-caching",
+      "label": "latent caching"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -40,37 +44,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.606
+      "score": 0.634
     },
     {
       "id": "B18zBnjZKmc",
       "title": "Why Inference is hard..",
       "channel": "Caleb Writes Code",
-      "score": 0.547
+      "score": 0.57
     },
     {
       "id": "TUnPNY4E2fw",
       "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
       "channel": "AI Engineer",
-      "score": 0.54
+      "score": 0.548
     },
     {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.531
-    },
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.529
+      "id": "RdqYvdT74i0",
+      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
+      "channel": "AI Search",
+      "score": 0.547
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.524
+      "score": 0.538
+    },
+    {
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
+      "score": 0.537
     }
   ]
 }

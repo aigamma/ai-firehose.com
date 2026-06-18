@@ -1,11 +1,107 @@
 {
   "id": "group-relative-policy-optimization",
   "label": "Group Relative Policy Optimization",
-  "kind": "technique",
-  "category": "Training and Fine-Tuning",
   "aliases": [
     "GRPO"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-12T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 69.1,
+    "sparkline": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "kernel-bandits",
+      "label": "kernel bandits",
+      "score": 0.801
+    },
+    {
+      "id": "retrieval-augmented-policies",
+      "label": "retrieval-augmented policies",
+      "score": 0.796
+    },
+    {
+      "id": "reinforcement-learning",
+      "label": "reinforcement learning",
+      "score": 0.788
+    },
+    {
+      "id": "direct-preference-optimization",
+      "label": "Direct Preference Optimization",
+      "score": 0.783
+    },
+    {
+      "id": "risk-sensitive-optimization",
+      "label": "risk-sensitive optimization",
+      "score": 0.775
+    },
+    {
+      "id": "physics-informed-learning",
+      "label": "physics-informed learning",
+      "score": 0.774
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.103
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.044
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.271
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.243
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.466
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.313
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.279
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Beyond Scalar Distances: Semantic Attribute Gradients from Frozen MLLMs for Visual Embeddings",
+      "url": "https://huggingface.co/papers/2606.15134",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-12T20:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
   "definition": "A reinforcement-learning algorithm for language models that estimates each response's advantage by comparing it to a group of responses to the same prompt, deleting the separate value network proximal policy optimization needs. That single change makes reasoning-style training cheaper and simpler, and the group baseline is naturally matched to verifiable rewards like math and code correctness.",
@@ -59,75 +155,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 8,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "gru",
-      "label": "GRU",
-      "score": 0.79
-    },
-    {
-      "id": "gguf",
-      "label": "GGUF",
-      "score": 0.756
-    },
-    {
-      "id": "rpa",
-      "label": "RPA",
-      "score": 0.747
-    },
-    {
-      "id": "mcgs",
-      "label": "MCGS",
-      "score": 0.743
-    },
-    {
-      "id": "agi",
-      "label": "AGI",
-      "score": 0.733
-    },
-    {
-      "id": "hpc",
-      "label": "HPC",
-      "score": 0.721
-    },
-    {
-      "id": "rope",
-      "label": "RoPE",
-      "score": 0.72
-    },
-    {
-      "id": "lora",
-      "label": "LoRA",
-      "score": 0.704
-    }
-  ],
-  "top_items": [
-    {
-      "title": "Mitigating Perceptual Judgment Bias in Multimodal LLM-as-a-Judge via Perceptual Perturbation and Reward Modeling",
-      "url": "http://arxiv.org/abs/2606.02578v1",
-      "author_or_channel": "Seojeong Park, Jiho Choi, Junyong Kang",
-      "published_at": "2026-06-01T17:59:46Z",
-      "kind": "technique"
-    },
-    {
-      "title": "Where to Look: Can Foundation Models Reach a Target Viewpoint Through Active Exploration?",
-      "url": "https://huggingface.co/papers/2606.01247",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-05-30T20:00:00.000Z",
-      "kind": "technique"
-    },
-    {
-      "title": "RREDCoT: Segment-Level Reward Redistribution for Reasoning Models",
-      "url": "http://arxiv.org/abs/2606.06475v1",
-      "author_or_channel": "Mykyta Ielanskyi, Kajetan Schweighofer, Lukas Aichberger",
-      "published_at": "2026-06-04T17:56:31Z",
-      "kind": "technique"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/group-relative-policy-optimization.png",
     "alt": "A schematic of one GRPO step. For each prompt a group of completions is sampled; a reward model scores each completion, and the rewards are turned into advantages by subtracting the group mean and dividing by the group standard deviation. Below, the current policy and a frozen reference policy give a per-token KL divergence. The normalized advantages and the KL term are combined and averaged into the training objective.",
@@ -137,8 +164,5 @@
     "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
     "source": "https://huggingface.co/docs/trl/main/en/grpo_trainer",
     "provider": "GitHub: huggingface/trl"
-  },
-  "folded_from": [
-    "grpo"
-  ]
+  }
 }
