@@ -6,9 +6,9 @@
   "published": "2026-06-18T00:00:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "AI engineers at frontier labs use self-prompting loops where an orchestrator agent spawns worker agents in parallel rather than prompting models directly. This approach scales task execution but requires observability tooling and incurs higher token costs as loops run for extended periods.",
-  "writeup": "Cole Medin examines a workflow used by AI engineers at frontier labs in which an orchestrator agent spawns worker agents in parallel instead of an engineer prompting models directly, a pattern described as self-prompting loops. The shift matters because it scales task execution across many agents running for extended periods. The concrete tradeoffs: the approach depends on observability tooling to track what the agents do, and it incurs higher token costs as the loops run.",
-  "wh": "86a8d7fc80f40b05",
+  "summary": "AI engineers use loops that automatically prompt agents rather than manual prompting. The technique involves an orchestrator agent spawning worker agents in parallel to complete tasks, with observability and cost control via dashboards. This compounds both capability and hallucination risk.",
+  "writeup": "Cole Medin examines a workflow where AI engineers stop prompting agents by hand and instead run loops that prompt the agents automatically. The core pattern is an orchestrator agent that spawns worker agents in parallel to complete tasks, with dashboards providing observability and cost control. The tradeoff is direct: the approach compounds capability, and it compounds hallucination risk along with it.",
+  "wh": "fbc8229af75dbf07",
   "concepts": [
     {
       "slug": "agentic-loops",
@@ -19,54 +19,54 @@
       "label": "agent orchestration"
     },
     {
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "observability",
-      "label": "observability"
-    },
-    {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
     }
   ],
   "similar": [
     {
-      "id": "fEZ0GZ-vKhg",
-      "title": "Don’t miss this Claude update",
-      "channel": "Jack Roberts",
-      "score": 0.693
-    },
-    {
-      "id": "qpa5XwGkLp8",
-      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
-      "channel": "Liam Ottley",
-      "score": 0.684
-    },
-    {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.68
+      "id": "JlwwyNtHsCI",
+      "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
+      "channel": "AI Revolution",
+      "score": 0.736
     },
     {
       "id": "6ad-LyammTI",
       "title": "STOP Using Claude to Code. Do THIS Instead.",
       "channel": "Austin Marchese",
-      "score": 0.675
+      "score": 0.712
     },
     {
-      "id": "7zZy1QTvokM",
-      "title": "Stop Prompting Claude. Use Karpathy's Method Instead.",
-      "channel": "Austin Marchese",
-      "score": 0.671
+      "id": "fEZ0GZ-vKhg",
+      "title": "Don’t miss this Claude update",
+      "channel": "Jack Roberts",
+      "score": 0.702
     },
     {
-      "id": "JlwwyNtHsCI",
-      "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
-      "channel": "AI Revolution",
-      "score": 0.661
+      "id": "qpa5XwGkLp8",
+      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
+      "channel": "Liam Ottley",
+      "score": 0.692
+    },
+    {
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
+      "channel": "Cursor",
+      "score": 0.683
+    },
+    {
+      "id": "NF10evwkefM",
+      "title": "Claude Dispatch Just Dropped, And It Kills OpenClaw",
+      "channel": "Nick Saraev",
+      "score": 0.683
     }
   ]
 }
