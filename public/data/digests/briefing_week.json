@@ -1,67 +1,79 @@
 {
   "horizon": "week",
-  "generated": "2026-06-18",
+  "generated": "2026-06-19",
   "severity": 2,
-  "headline": "Long-running agent architecture broke out this week, led by separated evaluation and subagents.",
-  "body": "Separated evaluation and subagents both broke out as the structural patterns behind multi-day agents, with Google Cloud Tech laying out event-driven dormancy, durable checkpointing, and separated evaluation as the three core designs for workflows that outlast stateless chatbots. Persistent memory reinforced the theme: Hermes tools for Claude maintain a unified memory store and skill library across sessions, and the open-source Hermes Agent adds cron scheduling and self-improving AI that writes its own skills. On the enterprise side, Anthropic shipped enterprise-managed authentication for MCP connectors, moving agent deployment toward identity-provider control. New technique entrants including delegation chains, distillation, latent caching, and robot policy signal where the next rotation is forming.",
+  "headline": "Persistent agent memory and local-first tooling led the week as on-device models and long-running agent patterns advanced together.",
+  "body": "Agent memory and local-first tools dominated the rotation, anchored by Hermes, an open-source agent running locally on Mac and Windows with persistent memory, skill generation, and cron scheduling, plus a desktop companion that preserves Claude's context across sessions. Google pushed on-device inference forward with Gemma 4, whose 2B model now matches last year's 27B dense model and runs offline through the AI Edge Gallery with multimodal tasks and upcoming MCP integration. Architecturally, three patterns for long-running agents surfaced, including event-driven dormancy, durable checkpointing, and separated evaluation, the last of which broke out alongside encoder-decoder. Foundational technique breakouts in embeddings, visual tokenization, Pearson loss, and backpropagation traced to a walkthrough of Karpathy's bigram language model.",
   "cited_concepts": [
+    {
+      "slug": "agent-memory",
+      "label": "agent memory"
+    },
+    {
+      "slug": "local-first",
+      "label": "local-first"
+    },
+    {
+      "slug": "persistent-memory",
+      "label": "persistent memory"
+    },
+    {
+      "slug": "on-device-inference",
+      "label": "on device inference"
+    },
+    {
+      "slug": "model-compression",
+      "label": "model compression"
+    },
     {
       "slug": "separated-evaluation",
       "label": "separated evaluation"
     },
     {
-      "slug": "subagents",
-      "label": "subagents"
+      "slug": "encoder-decoder",
+      "label": "encoder-decoder"
     },
     {
-      "slug": "event-driven-dormancy",
-      "label": "event driven dormancy"
-    },
-    {
-      "slug": "checkpointing",
-      "label": "checkpointing"
-    },
-    {
-      "slug": "memory",
-      "label": "memory"
-    },
-    {
-      "slug": "skill-library",
-      "label": "skill library"
-    },
-    {
-      "slug": "session-persistence",
-      "label": "session persistence"
-    },
-    {
-      "slug": "self-improving-ai",
-      "label": "self-improving AI"
+      "slug": "embeddings",
+      "label": "embeddings"
     }
   ],
   "cited_items": [
     {
-      "n": 0,
+      "n": 1,
+      "title": "Gemma 4 and the AI Edge Gallery: On-Device AI Gets an Upgrade",
+      "url": "https://www.youtube.com/watch?v=O6499i4TFYA",
+      "author_or_channel": "Google for Developers"
+    },
+    {
+      "n": 2,
       "title": "Stop Claude from forgetting anything",
       "url": "https://www.youtube.com/watch?v=GmHt44005t4",
       "author_or_channel": "Jack Roberts"
     },
     {
-      "n": 1,
+      "n": 3,
       "title": "Hermes Agent Tutorial: How to Setup & Use Open Source AI Agent for Beginners",
       "url": "https://www.youtube.com/watch?v=uSdVgSY7ryU",
       "author_or_channel": "AI Master"
     },
     {
-      "n": 4,
+      "n": 5,
+      "title": "Gemma Playground: AI Edge Gallery",
+      "url": "https://www.youtube.com/watch?v=XkwQwBZ_Q8w",
+      "author_or_channel": "Google for Developers"
+    },
+    {
+      "n": 6,
       "title": "3 patterns to build long-running AI agents",
       "url": "https://www.youtube.com/watch?v=l6KeLCuB90o",
       "author_or_channel": "Google Cloud Tech"
     },
     {
-      "n": 7,
-      "title": "Enterprise-managed auth for MCP connectors",
-      "url": "https://www.youtube.com/watch?v=5kTDt9ewTwE",
-      "author_or_channel": "Claude"
+      "n": 11,
+      "title": "Karpathy Bigram explained in 10min..",
+      "url": "https://www.youtube.com/watch?v=Qd2bAzwH9uA",
+      "author_or_channel": "Caleb Writes Code"
     }
   ],
   "model": "claude-opus-4-8",
