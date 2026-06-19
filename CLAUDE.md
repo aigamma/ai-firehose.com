@@ -4,6 +4,14 @@ Project context: ai-firehose.com is a personal AI-industry intelligence dashboar
 
 This document is auto-loaded into every agent's context. If a contributor (human or AI) reads only one file, this is it. It is the canonical source of conventions. `AGENTS.md` delegates here.
 
+## Branching and Pull Requests Are Forbidden. Commit Linearly to `main`, Always.
+
+**This is a solo, single-author project with exactly ONE line of history: `main`. NEVER create a branch. NEVER open a pull request. NEVER push to any ref other than `main`. There are no exceptions short of Eric explicitly instructing otherwise in the moment.**
+
+Every commit lands directly on `main` and is pushed to `origin`. If a session begins on any other branch, switch to `main` before you commit (`git checkout main`). Do not create a feature branch "to be safe", do not open a PR "for review", and do not use any worktree or agent isolation that creates a non-`main` branch. There is no reviewer, no merge step, and no collaborator to coordinate with. A branch or a PR here buys nothing and costs real damage: it fragments history into parallel diverging lines and strands finished work off the trunk, where it is invisible and rots.
+
+This rule is written with deliberate, earned emphasis. The branch-per-session habit repeatedly fractured this repo into parallel branches (video-keypoints, site-polish, observability) behind three open pull requests, and left a shipped feature (the transcript-grounded video insights) missing from `main` while this very document claimed it was live. A feature that is not on `main` is not done, no matter what a branch holds. Linear history on `main` is non-negotiable.
+
 ## Writing Rules (apply to all generative output)
 
 Em dashes (the long dash, U+2014) are forbidden in any generative text on this project: UI copy, JSX strings, code comments, Markdown docs, JSON artifact content (summaries, definitions, cluster names, headlines), and all prompts shipped to models. Replace an em dash with the punctuation the sentence actually wants: comma, colon, semicolon, period, parentheses, or "and". En dashes (U+2013) are allowed only for numeric ranges. Model-generated prose (classifier summaries and stances, glossary definitions) is additionally sanitized through `worker/lib/text.mjs` before it enters the corpus, because a prompt instruction alone does not guarantee a model complies. Verbatim source titles are quotes, not generative text, and are left intact.

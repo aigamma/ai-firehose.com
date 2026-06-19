@@ -4,6 +4,12 @@ Append-only cumulative wisdom for AI Firehose. The lesson from one session is ab
 
 ---
 
+## Session 31, 2026-06-19: linear history on `main` only, the branch-per-session habit ends here
+
+- **The repo had fractured into four parallel branches (`main`, `video-keypoints`, `site-polish`, `observability`) and three open pull requests, one per past session, with a shipped feature stranded off `main`.** A session-start checkout left the working branch on `video-keypoints`, and a footer change was committed there instead of `main`, which is what surfaced the mess. Eric builds solo with a single linear history and never uses pull requests; the branch-per-session habit had been silently fragmenting that history. Worse, the transcript-grounded video-insights feature this doc's Current State calls "shipped" was never on `main` at all: its `public/data/videos/*.json` files on `main` carry only the fallback `writeup`, not the `insights` and `chapters` the branch holds. How to apply: never create a branch or a PR on this project; if a session opens on a non-`main` branch, run `git checkout main` before committing. The rule now leads `CLAUDE.md` and the global instructions, with extreme emphasis.
+
+- **A stranded feature branch makes the docs lie, the same class of failure as docs that misname a file.** Current State described the video insights as live, but `main` (the deployed trunk) did not contain them, because the work sat on an unmerged branch behind an open PR. How to apply: keep work on `main` so "shipped" means shipped; treat a feature that is not on `main` as not done. Consolidating the three stranded branches back onto `main` as linear commits, then deleting the branches and closing the PRs, is tracked as the cleanup that follows this lesson.
+
 ## Session 30, 2026-06-19: the ingest cron failures are now a TRUE positive (the Anthropic API monthly spend cap), and a temporary schedule pause
 
 (Numbered 30 because Session 29, dated 2026-06-13, lives on the unmerged `video-keypoints` branch and lands when it merges.)
