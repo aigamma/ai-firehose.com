@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "OpenClaw achieved 3,000 commits in a single day by orchestrating 60-70 agents in parallel coding swim lanes. The approach emphasizes managing token efficiency and interpreting agent reasoning outputs to identify failures, representing a shift from prompt engineering toward large-scale agent coordination.",
-  "writeup": "",
-  "wh": "0120da158c672d43",
+  "writeup": "Vincent, a core maintainer of OpenClaw (an open-source AI coding assistant), explains how a team of 10-15 people with day jobs sustained 800 commits per day and executed a 2,700-commit refactor touching 82% of the codebase in a single overnight session. The talk is a practitioner's account of operating at industrial-scale AI-assisted development, covering the specific swim-lane methodology he uses to manage 15-20 parallel agent sessions simultaneously. The central argument is that the engineering bottleneck has shifted from tokens to human attention and taste, and that engineers who do not adapt to a factory-manager role will fall behind a velocity that is about to become the industry norm.",
+  "wh": "2867f83628b83b7a",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -64,5 +64,50 @@
       "channel": "Cole Medin",
       "score": 0.587
     }
-  ]
+  ],
+  "key_points": [
+    "OpenClaw peaked at 800 commits per day with roughly 10-15 core maintainers all holding separate day jobs, and Vincent personally hit close to 3,000 commits in a single day on March 15th, a rate that makes conventional PR review unworkable.",
+    "The 'great refactor' was triggered by a spontaneous 2am decision: 2,700 commits, nearly a million lines of code changed, 82% of the core codebase touched, all to introduce a plugin architecture so providers like OpenAI, Mistral, and Anthropic can own their isolated code slices.",
+    "Vincent's swim-lane model assigns 5-20 parallel Claude Code sessions to distinct categories (CI fixes, feature development, bug triage, P0/P1 issues) with different supervision levels: low-attention lanes run autonomously and self-commit, while high-stakes lanes involve active back-and-forth conversation.",
+    "The bottleneck in this workflow is not token cost but raw compute and the human engineer's finite cognitive bandwidth for monitoring sessions; over-fitted AI-generated unit tests served as the key sanity signal that the massive refactor had not broken the codebase.",
+    "Anthropic building a new C compiler with agents, Spotify reportedly no longer writing code by hand, and Steve Yegge pushing 50 solo PRs per day are cited as evidence that agentic development at scale is already mainstream but largely undisclosed, mirroring early silent adoption of ChatGPT.",
+    "Git work trees, while appealing for isolation, caused serious machine performance problems at 70-80 active trees simultaneously, a practical scaling limit Vincent encountered and had to engineer around."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: OpenClaw Velocity"
+    },
+    {
+      "t": 152,
+      "title": "Industrial Revolution Analogy"
+    },
+    {
+      "t": 241,
+      "title": "Agentic Development Goes Mainstream"
+    },
+    {
+      "t": 390,
+      "title": "The Nvidia Session: 60-70 Agents"
+    },
+    {
+      "t": 451,
+      "title": "The Great Refactor"
+    },
+    {
+      "t": 570,
+      "title": "Swim Lane Factory Model"
+    },
+    {
+      "t": 661,
+      "title": "Compute and Attention as the Bottleneck"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f06c2253cd0e5239"
 }

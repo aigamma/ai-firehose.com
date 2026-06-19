@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "SpaceBot is an open-source framework designed for building AI agents integrated with community platforms like Discord, Telegram, Slack, Twitch, and WebChat. The tutorial demonstrates Docker installation, model routing for token efficiency, and multi-agent capabilities with features including memory, cron jobs, and platform bindings.",
-  "writeup": "",
-  "wh": "50d0517ca23b5829",
+  "writeup": "SpaceBot is a community agent framework (under 2,000 GitHub stars) built for Discord, Slack, Telegram, Twitch, and WebChat, and this tutorial installs it into a Telegram group via Docker, wires it to the Venice LLM provider, and configures a meme-scraping persona. The through-line is that SpaceBot ships working, opinionated defaults: a typed-graph knowledge system instead of flat markdown or unstructured vector blocks, four-level model routing to match cost to task complexity, and natural-language scheduling baked in. It is the rare community agent that actually behaves as advertised, convincing users it is human without heavy prompt engineering.",
+  "wh": "971a44d706945d9d",
   "concepts": [
     {
       "slug": "model-routing",
@@ -68,5 +68,54 @@
       "channel": "Nick Saraev",
       "score": 0.56
     }
-  ]
+  ],
+  "key_points": [
+    "SpaceBot stores agent memory as a typed graph connected knowledge system rather than markdown files or unstructured vector database blocks, and the tutorial credits this architecture for the framework's reliable out-of-the-box behavior.",
+    "Built-in model routing supports four levels, allowing cheap models (Haiku, GLM Flash, Ollama) to handle low-stakes tasks like git commits while reserving stronger models (Sonnet, Opus) for higher-stakes work such as writing PRDs, keeping token costs proportional to task complexity.",
+    "Native platform adapters cover Discord, Slack, Telegram, Twitch, and WebChat; natural-language scheduling works without configuration (example: setting a daily 8 a.m. check-in message required only a plain English instruction to the bot).",
+    "The install path demonstrated uses OpenCode (with GLM-5, an open-source model) to pull the Docker image and scaffold the config files, then populates provider credentials for Venice (an OpenAI-compatible endpoint), a Telegram bot token, and a plain-text identity file that defines persona, speech patterns, and skills.",
+    "A live deployment named Captain Jack in a Discord server went undetected as an AI by at least one community member, and the bot successfully responded to a direct user challenge (posting two consecutive messages) without admin intervention, illustrating personality persistence under low prompt engineering.",
+    "SpaceBot also supports MCP integration and can spawn an embedded Claude Code coding agent, which enabled a collaborative session where the community and the bot co-designed a learning platform PRD that was later vibe-coded as an MVP prototype."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "SpaceBot Introduction and Demo"
+    },
+    {
+      "t": 92,
+      "title": "Live Captain Jack Example in Discord"
+    },
+    {
+      "t": 201,
+      "title": "Community PRD Project and Prototype"
+    },
+    {
+      "t": 211,
+      "title": "SpaceBot Feature Overview"
+    },
+    {
+      "t": 278,
+      "title": "Model Routing Explained"
+    },
+    {
+      "t": 390,
+      "title": "Docker and Telegram Install Walkthrough"
+    },
+    {
+      "t": 515,
+      "title": "Configuration: Provider, Identity, Skills"
+    },
+    {
+      "t": 660,
+      "title": "Docker Container Launch"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "249eeaac37f3b409"
 }

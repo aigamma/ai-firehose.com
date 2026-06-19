@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud Tech demonstrates how to build autonomous multi-agent systems using the Google Agent Development Kit (ADK) in Python. The tutorial covers the ReAct Framework, three agent patterns (sequential, reactive, planning), and walks through building a self-correcting Blog Writing Agent with validation and retry logic.",
-  "writeup": "Google Cloud Tech walks through building autonomous, self-correcting multi-agent systems with the Google Agent Development Kit (ADK) in Python. The tutorial explains the ReAct Framework and three agent patterns: sequential, reactive, and planning. It then builds a practical Blog Writing Agent that adds validation and auto-correction through checker and loop agents. The result is a concrete example of how agentic workflows handle their own error correction rather than relying on a single pass.",
-  "wh": "949a0be9e464ebfb",
+  "writeup": "This tutorial builds a multi-agent blog-writing system using Google's ADK, grounding the implementation in the ReAct paper's reason-act-observe loop as the conceptual foundation. The agent architecture uses LLM agents for generation, loop agents for automatic retry-on-failure, and a root agent that coordinates sub-agents exposed as tools. The result is a concrete, runnable demonstration of how planning, validation, and shared state wire together in a real agent graph.",
+  "wh": "cbda04cbe157175c",
   "concepts": [
     {
       "slug": "react-framework",
@@ -68,5 +68,54 @@
       "channel": "Google for Developers",
       "score": 0.67
     }
-  ]
+  ],
+  "key_points": [
+    "The ReAct paper (Synergizing Reasoning and Acting in Language Models) established the core loop modern agents follow: reason, take an action (call a tool or API), observe the result, then decide what to do next, rather than generating a single response.",
+    "Google ADK distinguishes three agent types used in the build: LLM agents (model-powered generation), loop agents (workflow agents that handle automatic retries when a validation step returns 'retry'), and custom agents (subclassing the base agent for extensions beyond these patterns).",
+    "Shared state via output keys is the coordination mechanism: the blog planner writes its result under the key 'blog_outline', and the blog writer reads that same key automatically, so no manual wiring is needed between agents.",
+    "Each generative step (planning and writing) is paired with a strict validation checker that responds with exactly 'okay' or 'retry' plus a reason, and a wrapping loop agent retries the generative step up to three times until validation passes.",
+    "The root agent ('blogger') only sees two tools, the robust blog planner and the robust blog writer, keeping its workflow clear and controlled: plan the outline, write the post, then append three alternative titles and two tweet-length hooks.",
+    "The agent is launched via 'adk web', which surfaces a local browser UI for interacting with and inspecting the multi-agent graph in real time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Agents in Theory and Practice"
+    },
+    {
+      "t": 30,
+      "title": "The ReAct Loop: Reason, Act, Observe"
+    },
+    {
+      "t": 90,
+      "title": "Three Agent Patterns: Sequential, Reactive, Planning"
+    },
+    {
+      "t": 151,
+      "title": "Blog Writing Agent: Architecture Overview"
+    },
+    {
+      "t": 210,
+      "title": "Blog Planner Agent and Shared State"
+    },
+    {
+      "t": 271,
+      "title": "Validation Checkers and Loop Retry Logic"
+    },
+    {
+      "t": 392,
+      "title": "Root Agent and Tool Wrapping"
+    },
+    {
+      "t": 452,
+      "title": "Running the Agent with ADK Web"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c298a967fe621539"
 }

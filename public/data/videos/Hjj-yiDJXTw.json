@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A tutorial demonstrating Topview Drama Studio, an AI video generation tool that automates the filmmaking workflow from script to final render, enabling creation of cinematic content with consistent characters and dialogue without a production crew.",
-  "writeup": "",
-  "wh": "8d4705e5717553e3",
+  "writeup": "A hands-on walkthrough of TopView's Drama Studio, which pipelines a two-sentence story pitch into a rendered short dramatic episode: script, character references, storyboard, and video, all inside one tool. The presenter works through each stage sequentially (outline, beat sheet, shot review, render) while calling out the specific decisions and failure modes that separate a usable result from a broken one. The central argument is that the value is in the integrated pipeline, not in any single generation step, because eliminating the cross-tool handoffs saves the majority of the friction in solo AI video production.",
+  "wh": "bc7bc1772f8c9df1",
   "concepts": [
     {
       "slug": "text-to-speech",
@@ -60,5 +60,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.668
     }
-  ]
+  ],
+  "key_points": [
+    "Drama Studio auto-generates front, side, back, and close-up character reference images by reading descriptions directly from the script, eliminating the half-day of manual prompting and face-drift correction that separate tools require.",
+    "Each generated shot is capped at roughly 15 seconds, so heavy dialogue scenes must be manually split into two or three shots before rendering; skipping this step produces rushed dialogue with no room for close-ups or atmosphere.",
+    "The 'add a look' feature lets a creator describe only a wardrobe change for an existing character and preserves the face exactly, which directly solves the face-consistency problem across multi-scene productions.",
+    "GPT Image 2 is the storyboard model to keep: the presenter identifies it as the strongest option in the stack and notes that video generation downstream produces noticeably cleaner results when storyboard frames come from it.",
+    "Every shot prompt is editable before rendering and should be reviewed; the AI drifts from the original concept more than expected, and trusting the autofill blindly wastes credits on a generation that diverges from the intended scene.",
+    "Business and Ultra plan users can upload externally generated clips into the Drama Studio timeline via a side-panel upload button, which avoids burning platform credits for shot variations and changes the economics for anyone building a series."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Pitch to Episode: What Drama Studio Produces"
+    },
+    {
+      "t": 30,
+      "title": "Entering the Pitch and Choosing Settings"
+    },
+    {
+      "t": 91,
+      "title": "Outline Review and Directing the Story"
+    },
+    {
+      "t": 181,
+      "title": "Character Reference Generation and the Add-a-Look Feature"
+    },
+    {
+      "t": 211,
+      "title": "Beat Sheet and Shot Splitting Before Render"
+    },
+    {
+      "t": 301,
+      "title": "Storyboard Model Choice and Generation"
+    },
+    {
+      "t": 331,
+      "title": "Honest Assessment: Where It Delivers and Where You Still Work"
+    },
+    {
+      "t": 420,
+      "title": "Series Workflow and Who This Is Built For"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b6aefc85bd5ceed6"
 }

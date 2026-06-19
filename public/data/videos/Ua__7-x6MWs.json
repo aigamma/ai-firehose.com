@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A full-course tutorial on TanStack Start, a framework addressing hydration errors and RSC directive complexity. The course covers routing, data fetching, server functions, API routes, SEO best practices, and includes a complete full-stack marketplace application (Skild) built from scratch to deployment.",
-  "writeup": "",
-  "wh": "0ad9ab9b1a3aaba5",
+  "writeup": "This video is a full-course introduction to TanStack Start, a full-stack React framework built on TanStack Router and Vite, framed around building a marketplace for reusable AI agent skills. The instructor makes the architectural case against Next.js by pinpointing three recurring pain points: hydration errors, scattered use-client and use-server directives, and vendor lock-in. The through-line is a request-to-paint mental model that traces how a URL request flows through route matching, parallel loaders, server-side rendering, and hydration into a client-side SPA, so the viewer can reason precisely about the bugs that arise when this pipeline breaks. The stack combines TanStack Start with React 19, TypeScript, Tailwind, Clerk, and Firebase.",
+  "wh": "6a3c52ff7dfb4b1b",
   "concepts": [
     {
       "slug": "js-rendering",
@@ -80,5 +80,54 @@
       "channel": "JavaScript Mastery",
       "score": 0.48
     }
-  ]
+  ],
+  "key_points": [
+    "TanStack Start eliminates the use-client and use-server directive problem by confining server work to the route loader level rather than scattering it inside JSX, so React components remain plain React components with no boundary annotations.",
+    "End-to-end type safety flows automatically from database query through TanStack Router to the React component: changing a database query surfaces a type error in the editor immediately, which Next.js does not provide by default.",
+    "Server functions replace TRPC and a separate API layer for mutations; they validate input automatically and maintain type safety from front to back without additional installation.",
+    "Because TanStack Start is built on Vite, it deploys to any JavaScript runtime including Vercel, Cloudflare, Netlify, and a plain Node server, with no platform lock-in.",
+    "The SSR request lifecycle runs in strictly this order: URL-to-route match, parallel loader execution (data fetching before React renders), server-side render to an HTML string the browser paints immediately, then hydration so subsequent navigation runs as a client-side SPA without full reloads.",
+    "Major infrastructure partners including Cloudflare, Netlify, Clerk, and Neon are actively investing in TanStack Start as a first-class deployment target, indicating early industry-level adoption momentum."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why Another Framework"
+    },
+    {
+      "t": 270,
+      "title": "Project Build Overview and Stack"
+    },
+    {
+      "t": 331,
+      "title": "Core Mental Models Carry Over"
+    },
+    {
+      "t": 392,
+      "title": "SSR, Streaming, and Built-In Server Functions"
+    },
+    {
+      "t": 481,
+      "title": "Industry Adoption and Partner Ecosystem"
+    },
+    {
+      "t": 510,
+      "title": "Request to Paint Walkthrough"
+    },
+    {
+      "t": 571,
+      "title": "Loaders and Server-Side Rendering"
+    },
+    {
+      "t": 722,
+      "title": "Project Scaffolding with the CLI"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4801106d70bbf76a"
 }

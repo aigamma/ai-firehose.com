@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Google has released TPU 8t for training and TPU 8i for inference, served via Virgo Network to enable high-throughput model serving. The video compares these application-specific integrated circuits against general-purpose GPUs and discusses scaling-up versus scaling-out strategies for LLM inference and training economics.",
-  "writeup": "",
-  "wh": "e86cd11318d68bd2",
+  "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
+  "wh": "bb9398e8d65abf13",
   "concepts": [
     {
       "slug": "asics",
@@ -64,5 +64,54 @@
       "channel": "Caleb Writes Code",
       "score": 0.566
     }
-  ]
+  ],
+  "key_points": [
+    "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
+    "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
+    "Google's Virgo network extends scale-out to 134,000 chips today with a stated path to 1 million chips in a single fabric, directly targeting the network-bandwidth bottleneck that Jensen Huang has positioned Nvidia to own in the inference era.",
+    "Nvidia's pod architecture reflects a deliberately balanced profile because its customer base ranges from neo-clouds like CoreWeave to frontier labs like OpenAI and xAI to hyperscalers, each with different demand profiles; Google can optimize more aggressively because TPU demand has historically been internal and predictable.",
+    "Anthropic signed a $1 billion TPU deal with Google, allocating 40% to Anthropic's own datacenter and renting the remaining 60% from Google, reflecting how frontier labs are betting on TPU infrastructure as a serious alternative to GPU clusters.",
+    "Epoch AI projects more than 450 new pretrained models by 2030, including over 100 models at or above GPT-5 scale (estimated at 66 septillion floating-point operations); at 121 exaflops in FP4, Google's superpod could theoretically complete a GPT-5-scale pretraining run in under 7 days, though practical runs accounting for efficiency losses land closer to 3 to 4 weeks."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Per-Chip vs. Infrastructure Framing"
+    },
+    {
+      "t": 60,
+      "title": "Scale-Up: Cube Topology vs. NVL72"
+    },
+    {
+      "t": 90,
+      "title": "Scale-Out: Virgo Network vs. InfiniBand"
+    },
+    {
+      "t": 150,
+      "title": "Demand Profiles for Training and Inference"
+    },
+    {
+      "t": 241,
+      "title": "Why Nvidia Does Not Just Copy Google"
+    },
+    {
+      "t": 360,
+      "title": "Google's Internal Advantage and Big Deals"
+    },
+    {
+      "t": 420,
+      "title": "Epoch AI Projections and GPT-5 Training Math"
+    },
+    {
+      "t": 480,
+      "title": "Conclusion"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f725a37236624d9a"
 }

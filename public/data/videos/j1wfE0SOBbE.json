@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AWS Developers outlines five production deployment patterns for TypeScript AI agents: streaming tool call events for responsiveness, layered authentication combining API Gateway and IAM, type-safe contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and OpenTelemetry tracing. The guidance emphasizes moving beyond localhost development to handle real-world requirements like scale, security, and cost control.",
-  "writeup": "",
-  "wh": "8f4029317a71c127",
+  "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
+  "wh": "8336061f47868f42",
   "concepts": [
     {
       "slug": "streaming",
@@ -84,5 +84,50 @@
       "channel": "IBM Technology",
       "score": 0.533
     }
-  ]
+  ],
+  "key_points": [
+    "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
+    "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
+    "Contracted database tools, where the tool controls the query shape rather than the agent writing raw SQL, enforce tenant isolation by injecting the user ID from verified JWT state the model never sees, cap result sizes (limit 50), and use parameterized queries to block SQL injection.",
+    "A before-tool-call lifecycle hook blocks destructive tool names (delete, drop, purge prefixes) and enforces a 20-call-per-request ceiling, combined with a 25-second agent.cancel timeout, preventing confused agents from looping until the request times out.",
+    "Model routing by query complexity, sending simple status lookups to Amazon Nova Micro instead of Sonnet, cuts costs materially at scale since Nova Micro supports tool calling through the same converse API.",
+    "The Strands SDK emits per-request metrics automatically (cycle count, total duration, token usage, per-tool call counts and latencies) with no extra setup, and full distributed traces are available via OpenTelemetry spans sent to any OTLP endpoint such as CloudWatch, Grafana, or Datadog."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Five Production Best Practices Intro"
+    },
+    {
+      "t": 30,
+      "title": "Streaming Tool Events to the Frontend"
+    },
+    {
+      "t": 94,
+      "title": "Separating the Agent Into Its Own Service"
+    },
+    {
+      "t": 124,
+      "title": "Auth Layering: OAuth Gateway Plus IAM Internal"
+    },
+    {
+      "t": 242,
+      "title": "Contracted Database Tools and Tenant Isolation"
+    },
+    {
+      "t": 331,
+      "title": "Loop Guardrails, Timeouts, and Model Routing"
+    },
+    {
+      "t": 481,
+      "title": "Built-In Metrics and OpenTelemetry Tracing"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "13769c3cb8210737"
 }

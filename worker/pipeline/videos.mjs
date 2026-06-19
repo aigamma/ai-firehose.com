@@ -85,8 +85,14 @@ async function writeups(videos, priorById, { model = MODELS.enduring } = {}) {
   let budget = WRITEUP_MAX;
   const out = {};
   for (const v of videos) {
-    const h = writeupHash(v);
     const prior = priorById.get(v.id);
+    // A transcript-grounded write-up (from the insights pass) is richer than this
+    // metadata one; keep it verbatim and never spend a metadata generation on it.
+    if (prior && prior.insights) {
+      out[v.id] = prior.writeup || "";
+      continue;
+    }
+    const h = writeupHash(v);
     if (prior && prior.writeup && prior.wh === h) {
       out[v.id] = prior.writeup;
       continue;
@@ -124,15 +130,27 @@ export async function buildVideos({ generated, items, registry, priorById = new 
     id: v.id, title: v.title, channel: v.channel, channelUrl: v.channelUrl,
     published: v.published, kind: v.kind, summary: v.summary, recommended: v.recommended,
   }));
-  const pages = videos.map((v) => ({
-    id: v.id, title: v.title, channel: v.channel, channelUrl: v.channelUrl,
-    published: v.published, kind: v.kind, recommended: v.recommended,
-    summary: v.summary,
-    writeup: writeupById[v.id] || "",
-    wh: writeupHash(v), // gates the next run's reuse
-    concepts: v.concepts,
-    similar: sim[v.id] || [],
-  }));
+  const pages = videos.map((v) => {
+    // Carry the transcript-grounded insights (key points, chapters, the richer write-up)
+    // forward from the committed per-video JSON. They are generated out of band (the
+    // captions backfill, scripts/backfill_video_insights.mjs), so a normal keyed run must
+    // PRESERVE them rather than rebuild the page without them. The write-up prefers the
+    // insights one, then the metadata pass, then the prior, then empty.
+    const prior = priorById.get(v.id);
+    const hasInsights = !!(prior && prior.insights);
+    return {
+      id: v.id, title: v.title, channel: v.channel, channelUrl: v.channelUrl,
+      published: v.published, kind: v.kind, recommended: v.recommended,
+      summary: v.summary,
+      writeup: (hasInsights ? prior.writeup : writeupById[v.id]) || prior?.writeup || "",
+      wh: writeupHash(v), // gates the next run's reuse of the metadata write-up
+      ...(hasInsights
+        ? { key_points: prior.key_points || [], chapters: prior.chapters || [], insights: prior.insights, ih: prior.ih }
+        : {}),
+      concepts: v.concepts,
+      similar: sim[v.id] || [],
+    };
+  });
   return { index: { generated: stamp, count: index.length, videos: index }, pages };
 }
 
@@ -158,7 +176,7 @@ function loadPriors() {
     for (const f of readdirSync(VIDEO_DIR)) {
       if (f.endsWith(".json") && f !== "index.json") {
         const p = readJson(resolve(VIDEO_DIR, f), null);
-        if (p && p.id) map.set(p.id, { writeup: p.writeup, wh: p.wh });
+        if (p && p.id) map.set(p.id, { writeup: p.writeup, wh: p.wh, key_points: p.key_points, chapters: p.chapters, insights: p.insights, ih: p.ih });
       }
     }
   } catch {}

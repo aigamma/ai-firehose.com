@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Austin Marchese reviews 9 Claude Code plugins including Caveman, Exa, Firecrawl, Compound Engineering, Higgsfield, Anthropic Skill Creator, BuildPartner, Morph, and Codeburn. The plugins extend Claude with web scraping, model swapping, token spend tracking, and media generation to accelerate development workflows.",
-  "writeup": "",
-  "wh": "6d33410beee125af",
+  "writeup": "A walkthrough of nine Claude Code plugins chosen to accelerate development and reduce token spend, covering output compression, web research stacking, iterative build discipline, media generation via MCP, Anthropic's own official skill suite, and multi-model flexibility. The through-line is that Claude's raw capabilities have concrete gaps (keyword-only search, no media creation, verbose output) and each plugin targets a specific gap. The multi-model argument is the sharpest edge: VC subsidies currently mask the real cost of Claude Max at roughly $1,800 per month against a $200 subscription, making model independence a practical hedge, not a preference.",
+  "wh": "3ba94463fdbe8ca0",
   "concepts": [
     {
       "slug": "model-swapping",
@@ -72,5 +72,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.676
     }
-  ]
+  ],
+  "key_points": [
+    "The Caveman plugin forces Claude to respond in condensed, minimal prose, cutting token usage and response time by eliminating the verbose padding Claude adds by default.",
+    "Exa replaces Claude's native keyword search with semantic search (meaning-based retrieval), while Firecrawl strips headers, footers, and JavaScript noise from fetched pages; stacking the three tools gives Claude higher-quality source material than any one alone can provide.",
+    "The Compound Engineering plugin encodes a five-step vibe-coding discipline: plan, build, review, compound (teach the model from its own mistakes), repeat; Boris Cherny, the creator of Claude Code, identifies planning as the single most important step.",
+    "Anthropic's official plugins include a skill creator, a legal assistant, a front-end design generator (invoked with /frontend-design to produce multiple landing-page variants), and a security audit tool; official maintainership is cited as a reliability signal over community plugins.",
+    "OpenAI's Codex plugin runs inside Claude Code but routes inference to a different model, demonstrating that Claude Code is an interface layer decoupled from the underlying model, enabling multi-model workflows.",
+    "Claude Max at $200 per month is VC-subsidized: the presenter estimates the underlying token cost of his actual usage at approximately $1,800, making the ability to switch models a concrete cost-management strategy if subsidies contract."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Caveman Plugin: Forcing Concise Output"
+    },
+    {
+      "t": 31,
+      "title": "Firecrawl and Exa: Web Research Stack"
+    },
+    {
+      "t": 181,
+      "title": "Semantic vs Keyword Search Explained"
+    },
+    {
+      "t": 210,
+      "title": "Compound Engineering: Plan-Build-Review Loop"
+    },
+    {
+      "t": 270,
+      "title": "Higgsfield MCP: Context-Aware Media Generation"
+    },
+    {
+      "t": 390,
+      "title": "Anthropic Official Plugins"
+    },
+    {
+      "t": 481,
+      "title": "OpenAI Codex Plugin and Multi-Model Strategy"
+    },
+    {
+      "t": 541,
+      "title": "VC Subsidies and Model Independence"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "246ceb5f0fddc86c"
 }

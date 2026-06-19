@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Xavier Plantaz demonstrates running Gemma 4 E2B on Raspberry Pi 5 and Jetson Orin Nano using LiteRT for on-device inference. The system uses Parakeet for speech-to-text, Gemma 4 for multimodal inference, and Kokoro for text-to-speech to enable real-time conversational interaction with robotic hardware.",
-  "writeup": "Xavier Plantaz demonstrates running Gemma 4 E2B on Open Duck Mini v2 robots, using a Raspberry Pi 5 and a Jetson Orin Nano as the compute. The on-device stack pairs Parakeet for speech-to-text, Gemma 4 for inference, and Kokoro for text-to-speech, with cameras, microphones, and speakers feeding real-time multimodal interaction. The build shows a full edge deployment where speech recognition, model inference, and audio generation run locally rather than in the cloud.",
-  "wh": "c01450a6762036b0",
+  "writeup": "A live demo of two Open Duck Mini v2 bipedal robot ducks running Gemma 4 2B entirely on-device: one on a Raspberry Pi 5 via LiteRT, one on a Jetson Orin Nano. The ducks use Parakeet for speech-to-text, Gemma 4 for inference, and Cocoro for text-to-speech, processing multimodal input from built-in microphones and cameras. The demo shows real-time Q&A and self-introduction with low latency, establishing that a sub-2B model is sufficient for responsive conversational robotics at the edge. The presenter names autonomous locomotion and multi-duck peer interaction as the immediate next steps.",
+  "wh": "8addb3280d1cf2da",
   "concepts": [
     {
       "slug": "on-device-inference",
@@ -64,5 +64,41 @@
       "channel": "Google for Developers",
       "score": 0.493
     }
-  ]
+  ],
+  "key_points": [
+    "Gemma 4 2B runs fully on-device on a Raspberry Pi 5 using the LiteRT runtime, demonstrating that edge inference for conversational robotics no longer requires cloud offload.",
+    "The full audio pipeline combines three open-source components in sequence: Parakeet handles speech-to-text, Gemma 4 handles language inference, and Cocoro handles text-to-speech output.",
+    "The Jetson Orin Nano serves as the second hardware target alongside the Raspberry Pi 5, showing the same Gemma 4 2B model deploys across both ARM-class edge boards with camera and microphone peripherals.",
+    "The Open Duck Mini v2 project (by Antoine Piron on GitHub) adds physical expressiveness through antenna motion and LED states tied to attention and boot phases, not just verbal output.",
+    "The presenter identifies the next capability milestone as autonomous walking and multi-agent peer interaction, where the ducks would see each other and communicate without human prompting."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Project Overview"
+    },
+    {
+      "t": 31,
+      "title": "Hardware Targets and Sensor Stack"
+    },
+    {
+      "t": 62,
+      "title": "Boot Sequence and Expressiveness"
+    },
+    {
+      "t": 90,
+      "title": "Live Q&A Demo"
+    },
+    {
+      "t": 102,
+      "title": "Next Steps: Walking and Peer Interaction"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4673090d6c14225b"
 }

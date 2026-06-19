@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Tutorial on configuring Qdrant for multi-vector search using the MaxSim comparator, indexing documents with FastEmbed local inference, and querying with ColBERT embeddings. Covers collection setup, HNSW disabling for MaxSim compatibility, and on-disk vector storage for memory-constrained environments.",
-  "writeup": "",
+  "writeup": "This lesson walks through configuring Qdrant for multi-vector search using ColBERT's late interaction model, covering the key collection parameters (228-dimensional token embeddings, dot-product similarity, MaxSim comparator, and disabled HNSW indexing) that make the approach work. It explains why HNSW is incompatible with MaxSim due to the asymmetric query-dependency problem, then addresses disk offloading as a memory trade-off that sacrifices subsecond latency. The closing segment previews the same late interaction paradigm applied to visual documents via ColPali, which replaces text token embeddings with image patch embeddings while keeping the MaxSim scoring intact.",
   "wh": "97fd4fcec32fa110",
   "concepts": [
     {
@@ -84,5 +84,46 @@
       "channel": "Qdrant Vector Search",
       "score": 0.59
     }
-  ]
+  ],
+  "key_points": [
+    "ColBERT uses 228-dimensional vectors per token rather than a single vector per document, so a collection storing many vectors per document requires a dedicated multi-vector config with the MaxSim comparator set in Qdrant.",
+    "HNSW indexing must be disabled (M set to 0) for multi-vector MaxSim search because HNSW cannot handle the asymmetric, query-dependent nature of the MaxSim distance computation.",
+    "Qdrant can handle embedding generation client-side via FastEmbed: the application passes text and a model name, and Qdrant tokenizes and embeds without requiring the application to manage vectors directly.",
+    "Disk offloading (on_disk: true) reduces RAM requirements from hundreds of gigabytes but increases query latency from milliseconds to potentially seconds, making it insufficient alone for production subsecond response targets.",
+    "For production multi-vector deployments, disk storage should be combined with optimization techniques including quantization, pooling, and multi-stage retrieval rather than used in isolation.",
+    "ColPali extends the late interaction paradigm from text to visual documents by replacing text token embeddings with image patch embeddings, applying the same MaxSim scoring to PDFs, scanned pages, and photographs."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Collection Configuration for Multi-Vector Search"
+    },
+    {
+      "t": 62,
+      "title": "MaxSim Comparator and Disabling HNSW"
+    },
+    {
+      "t": 92,
+      "title": "Ingestion and Embedding via FastEmbed"
+    },
+    {
+      "t": 150,
+      "title": "Disk Offloading Trade-offs"
+    },
+    {
+      "t": 210,
+      "title": "Combining Optimizations for Production"
+    },
+    {
+      "t": 211,
+      "title": "Preview: ColPali and Visual Documents"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b5d21c42a2b0811c"
 }

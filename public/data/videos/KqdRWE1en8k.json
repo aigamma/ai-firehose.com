@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Headroom is an open-source tool that compresses inputs to LLMs using content-type-aware compressors and locally trained models, reducing token usage by 60-95%. Built by a Netflix engineer, it keeps compression local and uses breadcrumb hashing for on-demand retrieval of full original content.",
-  "writeup": "This video covers Headroom, an open-source tool from a Netflix engineer that compresses LLM inputs (tool outputs, code files, and RAG results) before they reach the model, cutting token usage by 60-95%. It matters because input tokens drive agent costs, and lower token counts translate directly into cheaper runs. Key takeaways: Headroom uses content-type-aware compressors and locally trained Kompress-based models to compress at zero token cost, and a breadcrumb hash mechanism lets the full originals be retrieved on demand.",
-  "wh": "02c772f0ec7b74d1",
+  "writeup": "Headroom is an open-source token-compression proxy, built by Netflix senior developer Tejas Chopra, that intercepts agent tool-call output before it reaches the LLM and compresses it by 60 to 95% using content-aware strategies. The core insight is that most tool-call payloads are redundant: build logs are mostly passing tests, JSON arrays are mostly normal rows, and log files repeat the same info line hundreds of times. Reversibility is the key design decision: Headroom embeds a hash breadcrumb in each compressed message so the model can request full data on demand, though each such retrieval adds a round-trip and can erase the savings if triggered too often.",
+  "wh": "2b2db5fcda5d7242",
   "concepts": [
     {
       "slug": "model-compression",
@@ -64,5 +64,54 @@
       "channel": "Caleb Writes Code",
       "score": 0.569
     }
-  ]
+  ],
+  "key_points": [
+    "Headroom uses content-type detection to apply different compression strategies: statistical summarization for repetitive log lines (removing 419 similar info entries in the demo), a syntax-tree-aware compressor for code files, and a locally-run model called Compress Base, trained specifically for plain-text compression.",
+    "In the demo against a log-analysis task, Headroom reduced a 17,000-plus-token tool response by 98%, producing a compressed representation that Claude used correctly to identify errors and root causes, with the full data available via hash retrieval if needed.",
+    "When run as a proxy for Claude Code reading all TypeScript files in a project, Headroom produced measurable token savings at medium effort level, but showed no savings at low effort, suggesting compression value scales with context density and agent aggressiveness.",
+    "The reversibility mechanism introduces a failure mode: if the model decides it needs the full data, a second API round-trip fires and total token usage can exceed what a direct call would have cost, making the Headroom Learn feature, which mines failed sessions to calibrate compression aggressiveness, load-bearing for sustained savings.",
+    "Headroom claimed at recording time to have saved users around $700,000 in tokens across its user base, and supports cross-agent memory so Claude Code, Codex, and other harnesses can share the same compressed context across sessions.",
+    "Caveman and Headroom are complementary rather than competing: Caveman shrinks what the model writes (output compression via terse response instructions), while Headroom shrinks what the model reads (input compression via proxy), so both can run simultaneously for maximum token reduction."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Headroom Does"
+    },
+    {
+      "t": 31,
+      "title": "Why Agent Token Costs Spike"
+    },
+    {
+      "t": 61,
+      "title": "Compression Strategies and Compress Base"
+    },
+    {
+      "t": 151,
+      "title": "Log Analysis Demo: 98% Reduction"
+    },
+    {
+      "t": 271,
+      "title": "Claude Code Integration Demo"
+    },
+    {
+      "t": 361,
+      "title": "Headroom Learn and Cross-Agent Memory"
+    },
+    {
+      "t": 391,
+      "title": "Round-Trip Trade-Off"
+    },
+    {
+      "t": 421,
+      "title": "Headroom vs Caveman: Input and Output Compression"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0d2fe41ab4e56f7f"
 }

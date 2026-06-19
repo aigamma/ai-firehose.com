@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Anthropic released Claude Managed Agents, a platform designed to replace no-code automation builders like n8n. The service enables users to build autonomous agents without API keys, with features including built-in debugging, session management, environment vaults, security controls, and cost analytics.",
-  "writeup": "",
+  "writeup": "This video walks through Anthropic's Managed Agents feature, which provisions a hosted, sandboxed Claude agent on Anthropic's backend from a plain-language description of the desired automation. The author demonstrates a complete workflow: describing a sales-call transcript processor, having Managed Agents scaffold the agent spec and system prompt, connecting to ClickUp via an OAuth vault (no manual API keys), running test passes, and iterating on the system prompt from within the same interface. A front-end chat app is then generated via a Claude Code prompt and deployed to Netlify, showing end-to-end delivery from natural-language spec to production URL in one session.",
   "wh": "8a94522fa0258703",
   "concepts": [
     {
@@ -60,5 +60,50 @@
       "channel": "Cole Medin",
       "score": 0.694
     }
-  ]
+  ],
+  "key_points": [
+    "Managed Agents accepts a plain-language automation goal, generates an agent spec and named agent (here: Transcript to ClickUp Tasks), and hosts the resulting agent on Anthropic's backend with limited networking and reusable parameters, removing the need to manage server infrastructure.",
+    "Credentials are stored in a per-agent vault with OAuth built in; the demo connects to ClickUp without touching API keys at all, which lowers the barrier for non-technical automation builders.",
+    "The test interface shows two panels: a Transcript view of the conversation with the agent and a Debug view with raw API events, giving full interpretability over model start/stop, token counts (the demo shows 3 input, 4 output tokens and 27,044 cache writes), and parallel tool calls.",
+    "After a test run, Managed Agents asks what to change and rewrites the system prompt in place; the author adds a default ClickUp list and assignee mapping guidance without leaving the dashboard.",
+    "The agent is locked to Sonnet 4.6 at release time and is more constrained than running Claude Code locally (no fast mode), but the hosted, shareable endpoint is suited to team workflows where multiple users paste transcripts into one standard interface.",
+    "To build the front end, the author uses the in-dashboard Ask Claude button to generate a Claude Code prompt, pastes it into a separate Claude Code session, runs the build, and pushes to Netlify, producing a working chat-to-ClickUp app in roughly 30 seconds of agent time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Managed Agents Overview"
+    },
+    {
+      "t": 31,
+      "title": "Describing the Automation Goal"
+    },
+    {
+      "t": 91,
+      "title": "Agent Creation and Credential Vault"
+    },
+    {
+      "t": 150,
+      "title": "Test Run and Debug Panel"
+    },
+    {
+      "t": 270,
+      "title": "Iterating on the System Prompt"
+    },
+    {
+      "t": 361,
+      "title": "Integrating a Front-End App"
+    },
+    {
+      "t": 451,
+      "title": "Claude Code Build and Netlify Deploy"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "01344f330dc071c8"
 }

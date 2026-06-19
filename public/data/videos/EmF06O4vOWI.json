@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Keith AI demonstrates how to build a practical personal AI system using Hermes by integrating it with Telegram, Gmail, Google Calendar, Apple Health, and social media. The video covers local and cloud deployment options, skills configuration, token cost optimization via OpenRouter, and comparison with OpenClaw.",
-  "writeup": "",
-  "wh": "71da9dff61975346",
+  "writeup": "This video is a practical end-to-end guide to setting up Hermes as a personal AI agent system, covering local and VPS installation, LLM routing via OpenRouter, Telegram gateway configuration, and the web dashboard. The core argument, grounded in Andrej Karpathy's LLM wiki concept, is that the real value of an AI agent is not installation but continuous improvement through persistent, accumulating context: health data, calendar, Gmail, and business outputs all feeding one self-updating knowledge vault. The author benchmarks Hermes against Claude directly on memory quality and cost, and explains why OpenAI Codex via a subscription plan is the practical model choice for sustained daily use.",
+  "wh": "b21a043f23e23729",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,50 @@
       "channel": "AI Jason",
       "score": 0.652
     }
-  ]
+  ],
+  "key_points": [
+    "Hermes agent installs in one terminal command and can import existing Claude profiles (souls, user profile, skills) automatically during setup, eliminating manual reconfiguration.",
+    "Running Hermes on the Claude API cost $64 in roughly one week; OpenAI Codex via a paid subscription plan is the recommended cost-saving model because, unlike Anthropic and Gemini APIs, it does not risk account bans when connected to third-party agents.",
+    "OpenRouter's auto-routing lets Hermes assign cheap or free models to lightweight tasks and powerful models to complex ones from a single API key, reducing per-run spend without manual model selection.",
+    "Telegram integration requires creating a bot via BotFather, disabling group privacy in bot settings, and capturing the group chat ID from the browser URL, after which Hermes can send proactive updates and respond to group topics organized by subject area.",
+    "The Hermes dashboard (port 9119) surfaces session history, token usage, API call counts, error logs, and a cron job editor, giving a persistent operational view the CLI alone cannot provide.",
+    "The author's target architecture, inspired by Karpathy's LLM wiki article, feeds all personal data streams (email, calendar, health, business metrics) into a single NAS-backed vault that the Hermes and Claude agents collaboratively maintain and incrementally improve over time."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Hermes Actually Enables"
+    },
+    {
+      "t": 31,
+      "title": "Installation: Local and VPS"
+    },
+    {
+      "t": 123,
+      "title": "LLM Wiki Concept and Use Case"
+    },
+    {
+      "t": 242,
+      "title": "LLM Model Selection and Cost"
+    },
+    {
+      "t": 361,
+      "title": "Cost Benchmarks and OpenRouter Routing"
+    },
+    {
+      "t": 451,
+      "title": "Telegram Gateway Setup"
+    },
+    {
+      "t": 631,
+      "title": "Dashboard and Cron Jobs"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "43fccf12e67055d6"
 }

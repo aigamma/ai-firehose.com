@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Jack Roberts demonstrates how to build a 100% private operating system by combining Hermes Agent with Ollama for local large language model inference. The setup keeps user data local rather than sending it to cloud services, trading inference speed for privacy and data ownership.",
-  "writeup": "",
-  "wh": "65c18fd67121088f",
+  "writeup": "A walkthrough of running Hermes Agent fully locally using Ollama, eliminating cloud dependencies for privacy and cost. The video covers installation of Ollama on macOS, model selection based on local hardware specs, and integration with the Hermes desktop app. The through-line is the case for local AI ownership: data never leaves the machine, there are no rate limits or subscription fees, and the capability gap versus frontier models is now roughly one year behind current state, placing local models at approximately Claude Sonnet 4 quality as of mid-2025.",
+  "wh": "e4b93f90288c2fc6",
   "concepts": [
     {
       "slug": "local-inference",
@@ -64,5 +64,50 @@
       "channel": "Jordan Urbs",
       "score": 0.601
     }
-  ]
+  ],
+  "key_points": [
+    "The best local open-source models available today are approximately one year behind frontier models, roughly equivalent to Claude Sonnet 4 from mid-2025, making them substantively capable rather than toy-grade.",
+    "Ollama is the recommended runtime for local model execution on macOS: installed via a single terminal command, it can then pull and run open-source models including Qwen, DeepSeek, Gemma, and Mistral, all free and offline after the initial download.",
+    "Hermes Agent functions as a unified AI operating system that consolidates memory, goals, personas, skills, document access, and connections across multiple AI tools (including ChatGPT, Claude, and local models) in one interface.",
+    "The Hermes desktop app is presented as an optional, more approachable alternative to interacting with Hermes via Telegram, but offers no fundamentally different capability in its current form, essentially providing a less terminal-intimidating entry point.",
+    "Local AI deployment means no company receives user data, no internet connection is required after model download, no rate limits apply, and there is no recurring cost, with the trade-off being reduced performance relative to the latest frontier models.",
+    "To select the right local model for a given machine, the workflow is to screenshot the system information (Mac: top-left Apple menu, About This Mac) and ask Hermes itself to recommend an appropriate model based on the available RAM and GPU specs."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Private Local AI"
+    },
+    {
+      "t": 62,
+      "title": "Why Local AI Matters"
+    },
+    {
+      "t": 270,
+      "title": "The Case for Ownership Over Renting Intelligence"
+    },
+    {
+      "t": 300,
+      "title": "Performance Reality: How Close Local Models Are"
+    },
+    {
+      "t": 360,
+      "title": "Ollama Setup and Model Options"
+    },
+    {
+      "t": 480,
+      "title": "Choosing the Right Model for Your Hardware"
+    },
+    {
+      "t": 540,
+      "title": "Hermes Desktop App Installation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8302a3069d57852e"
 }

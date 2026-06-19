@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google's Managed Agents service provides one-API-call autonomous agents that run in remote Linux sandboxes, powered by Gemini 3.5 Flash and the Antigravity Agent Harness. The system includes an Interactions API with agent-native documentation and skills, demonstrated turning Hacker News threads into radio shows using Gemini TTS and Lyria.",
-  "writeup": "",
+  "writeup": "Two members of the Gemini API team walk through the launch of managed agents in the Gemini API: a single API call that provisions an isolated Linux sandbox where a model can run code, execute bash commands, invoke sub-agents, and call tools like Gemini TTS and Lyria without touching a developer's production servers. The demo shows a radio-production app built on top of managed agents that ingests 18 Hacker News sources, writes a script with opposing viewpoints, generates voices via Gemini TTS, and produces a thumbnail, all from one API call. The through-line is the shift from a turn-based generate-content model to an agent-first data model where tools, skills, and environment steps are first-class citizens of the API alongside the user and model roles.",
   "wh": "3c7829b897f27ffa",
   "concepts": [
     {
@@ -56,5 +56,50 @@
       "channel": "AICodeKing",
       "score": 0.637
     }
-  ]
+  ],
+  "key_points": [
+    "A managed agent in the Gemini API runs inside a remote, isolated Linux sandbox, so the agent can write and execute code, run bash commands, and create files without risk to the caller's production infrastructure.",
+    "The Interactions API replaces the older generate-content API as the unified interface for both models and agents, with a data model that natively represents tool calls, sub-agent invocations, and environment steps as distinct interaction types rather than forcing everything into a user/model turn structure.",
+    "Deep Research was the first managed agent shipped under the Interactions API, establishing the pattern before the general managed-agent capability was opened to developers.",
+    "Managed agents are defined using plain markdown files: an agents.md file for system instructions and one markdown file per skill, making agent definitions readable by both humans and coding agents and writable without a custom DSL.",
+    "Google rebuilt its API documentation to be agent-first, exposing all docs as accessible markdown with an MCP server so a coding agent in an IDE can search the docs and iteratively build and deploy a managed agent in the same session.",
+    "The demo radio-production app combines managed agents with Gemini TTS, the Lyria music model, and a thumbnail generator across 18 sources, producing a coherent three-minute radio show from a single API call."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Managed Agents Overview"
+    },
+    {
+      "t": 31,
+      "title": "Interactions API and the Anti-Gravity Agent"
+    },
+    {
+      "t": 122,
+      "title": "From Generate Content to Agent-First API"
+    },
+    {
+      "t": 240,
+      "title": "Radio Production Demo"
+    },
+    {
+      "t": 360,
+      "title": "Agent-First Data Model and Interaction Steps"
+    },
+    {
+      "t": 451,
+      "title": "Agent-Native Documentation and MCP Server"
+    },
+    {
+      "t": 511,
+      "title": "Defining Agents with Markdown Files"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ed6d0ee18374d7a4"
 }

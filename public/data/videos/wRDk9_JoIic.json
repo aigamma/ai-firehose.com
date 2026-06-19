@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Abhishek Das argues that most AI agents are unreliable and the industry has normalized broken systems. He contends that error compounding across multi-step workflows makes agents fail at scale, and that reliability matters more than raw performance in shipping agents that work on the first try.",
-  "writeup": "",
-  "wh": "85da5a824b7b51aa",
+  "writeup": "Abhishek Das, co-founder and co-CEO of Uizard, makes the case that the current wave of web-agent products is failing on a basic reliability test: in a 10- to 50-step workflow with 90% per-step accuracy, compounding errors drive overall success rates well below acceptable. He argues against the normalization of non-determinism in agentic products and traces how Uizard responds, through comprehensive evals on every production query, self-correction and backtracking in models, and a rigorous internal dog-fooding culture. The through-line is that taste, craft, and first-try reliability are the true differentiators in a world where LLM-powered prototyping is cheap.",
+  "wh": "844fe55d21365173",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -64,5 +64,50 @@
       "channel": "AI Engineer",
       "score": 0.587
     }
-  ]
+  ],
+  "key_points": [
+    "In a 10- to 50-step agentic workflow, a 90% per-step accuracy rate compounds to a very low overall task success rate, which is why current technology cannot reliably handle long-horizon web tasks.",
+    "Abhishek Das draws a hard line against industry normalization of unreliable agentic products: if a product does not work on the first try, it is not good enough to ship.",
+    "Uizard runs a comprehensive set of evals on every single production user query to identify where their web agents succeed or fail and which domains need more work, treating reliability as a first-class product requirement.",
+    "Because no training set can cover every website on the internet, the critical model capability is not zero-error execution but recognizing mistakes and backtracking to a different branch.",
+    "In an era where LLM coding tools make first prototypes easy to produce, Das argues the real competitive differentiator is taste and craft, knowing which of 100 possible features are the 10 that matter, informed by intuition as much as user requests.",
+    "Grad-CAM, a paper Das co-authored at 25 that now has 20,000 to 30,000 citations, visualizes which regions of an image drive a classification model's prediction, and Das connects its \"proof of work\" principle directly to how Uizard surfaces agent reasoning in the Scouts product."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Agent Reliability Problem"
+    },
+    {
+      "t": 151,
+      "title": "Uizard and the Web Agent Vision"
+    },
+    {
+      "t": 270,
+      "title": "Digital Agents Before Physical Agents"
+    },
+    {
+      "t": 450,
+      "title": "Compounding Errors and the First-Try Standard"
+    },
+    {
+      "t": 570,
+      "title": "Evals, Guardrails, and Self-Correction"
+    },
+    {
+      "t": 750,
+      "title": "Product Taste, Dog-Fooding, and Craft"
+    },
+    {
+      "t": 930,
+      "title": "Grad-CAM and Proof of Work"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "6a1df526a5f904f5"
 }

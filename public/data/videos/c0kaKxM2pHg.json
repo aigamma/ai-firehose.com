@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "The \"grill-me skill\" is a technique that uses systematic questioning to interview users about a process and automatically document the results into a knowledge base. It employs checkpointing after each answer to preserve context and front-load information, reducing iteration cycles from 30+ to approximately one successful attempt.",
-  "writeup": "",
+  "writeup": "The video introduces the \"Grill Me\" skill for AI operating systems, a relentless self-interview loop that extracts tacit knowledge from the practitioner's head into a persistent, structured markdown doc. Originally a four-to-five sentence prompt by Matt Pocock, the presenter extended it with automatic checkpointing after every question, creating a brainstorms folder at the project root so nothing is lost across long sessions. The core argument is that the main bottleneck in building effective AI skills is not the model or the prompt but the quality of context feeding it, and this front-loaded extraction closes the gap between a skill that succeeds 70% of the time on iteration one versus one that starts at 90%.",
   "wh": "99a75e0f85f5e479",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Austin Marchese",
       "score": 0.639
     }
-  ]
+  ],
+  "key_points": [
+    "The \"Grill Me\" skill was originally authored by Matt Pocock as a minimal prompt: ask questions one at a time, explore the codebase when possible, provide a recommended answer for each question, and keep going until a shared understanding is reached.",
+    "The presenter added automatic checkpointing after every question, writing a running Q&A log to a markdown file in a brainstorms/ folder at the project root, addressing the risk of long sessions filling the context window and causing the model to misremember earlier answers.",
+    "Each brainstorm file captures the algorithm, key decisions, and a step-by-step Q&A log; at session end the model surfaces gaps and offers to update related skills and docs that lack the newly surfaced nuance.",
+    "The skill flags things the practitioner cannot answer well enough, directing them to consult the relevant stakeholder or operator and return with that information to update the brainstorm.",
+    "The presenter's iteration-curve argument: a cold brain-dump lands a new skill at roughly 70% success rate; a thorough grill-me session moves iteration one to roughly 90%, compressing the improvement curve and leaving more room to find higher-quality iterations faster.",
+    "The skill is invocable as a slash command and is available via Matt Pocock's published prompt or the presenter's free School community classroom."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Knowledge Extraction Problem"
+    },
+    {
+      "t": 62,
+      "title": "How Grill Me Works"
+    },
+    {
+      "t": 121,
+      "title": "Matt Pocock's Original Prompt"
+    },
+    {
+      "t": 151,
+      "title": "Adding Checkpointing"
+    },
+    {
+      "t": 210,
+      "title": "Brainstorm Files and Session Output"
+    },
+    {
+      "t": 240,
+      "title": "Iteration Curve Visualization"
+    },
+    {
+      "t": 330,
+      "title": "Live Demo"
+    },
+    {
+      "t": 421,
+      "title": "Closing and Where to Get the Skill"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "7423f8dd18807a9d"
 }

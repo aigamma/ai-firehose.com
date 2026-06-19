@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Chase AI presents grill-me-codex, a skill that extends the grill-me prompt foundation by adding verification and validation of Claude Code outputs. The tool helps ensure that code generation results are both logically sound and functionally correct.",
-  "writeup": "",
-  "wh": "9018c8697ffdf8fb",
+  "writeup": "This video introduces two Claude Code skills, Grill Me Codex and Grill With Docs Codex, which extend Matt Pocock's Grill Me planning skill by adding an iterative, adversarial code review loop between Claude Code and OpenAI Codex. The core argument is that neither a non-technical user nor Claude Code itself can reliably evaluate the quality of a generated plan, so a neutral third-party model running up to five back-and-forth review rounds closes that gap. A live demo building an email-gated skill download page shows Codex catching 11 real issues in round one, four more in round two, and reaching approval by round three, with specific security and correctness holes named throughout.",
+  "wh": "82983a9b9df859b2",
   "concepts": [
     {
       "slug": "prompt-engineering",
@@ -60,5 +60,46 @@
       "channel": "Tristen O'Brien",
       "score": 0.645
     }
-  ]
+  ],
+  "key_points": [
+    "Single-model self-grading is unreliable: Claude Code, by Anthropic's own acknowledgment, rates its own output favorably, making it a biased evaluator of the plans it produces.",
+    "The Grill Me Codex skill appends a Codex adversarial review phase after the Grill Me Q&A session, capping the loop at five back-and-forth rounds between Claude Code and Codex, with Codex retaining session memory across all iterations via a shared session ID.",
+    "Two markdown artifacts are produced: plan.md as the evolving source-of-truth deliverable and a plan review log that records each round of findings and rebuttals.",
+    "In the demo, round one surfaced 11 issues including an unbounded client skill slug, case-sensitive dedupe bypass, relative email link, raw list bombing vector, and a table-scanning rate limit; round two caught false fixes where claimed resolutions were not actually wired.",
+    "Approval came at round three of five, illustrating that the loop converges well before the maximum and avoids the full troubleshooting cycle that would follow building from an unreviewed plan.",
+    "Both skills are built on top of Matt Pocock's open GitHub repo, with Grill Me Codex and Grill With Docs Codex as drop-in extensions that add the Codex phase without replacing the original planning questions."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Self-Grading Problem"
+    },
+    {
+      "t": 61,
+      "title": "Introducing Grill Me Codex"
+    },
+    {
+      "t": 211,
+      "title": "How the Adversarial Loop Works"
+    },
+    {
+      "t": 360,
+      "title": "Live Demo Setup"
+    },
+    {
+      "t": 480,
+      "title": "Codex Review Rounds in Action"
+    },
+    {
+      "t": 540,
+      "title": "Results and Security Holes Caught"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ed0d6e1e76b84443"
 }

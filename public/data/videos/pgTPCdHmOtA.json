@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A video showing the Qwen LLM running locally on a Beelink mini PC. The content covers local AI deployment, coding, and related agent frameworks.",
-  "writeup": "",
-  "wh": "cd3cc16a3adcb614",
+  "writeup": "A hands-on test of the Beelink SER10 Max OpenClaw Edition mini PC as a local inference platform for Hermes and OpenClaw, motivated by cloud credit costs running $10 to $20 per day. The device ships pre-configured with llama.cpp and a quantized 3.6B model, promising immediate setup, but real-world multi-agent and tool-call workloads expose a hard ceiling: 12 tokens per second. The through-line is honest cost accounting: local hardware is not free, and the practical conclusion is a hybrid strategy, local inference as the default, cloud fallback when speed or complexity demands it.",
+  "wh": "221daa616323cc6d",
   "concepts": [
     {
       "slug": "local-inference",
@@ -56,5 +56,33 @@
       "channel": "Keith AI",
       "score": 0.597
     }
-  ]
+  ],
+  "key_points": [
+    "Running Hermes and OpenClaw in the cloud was costing roughly $10 to $20 USD per day in credits, making local inference economically attractive for privacy-sensitive agent workflows.",
+    "The Beelink SER10 Max OpenClaw Edition ships with llama.cpp and a quantized 3.6B model pre-installed, allowing the system to be operational within minutes of unboxing.",
+    "Under real agentic workloads, complex tool calls and multi-agent chains, the local quantized setup achieved only 12 tokens per second, which becomes a significant bottleneck when sub-agents chain sequentially.",
+    "The author previously tested local inference on a Jetson Nano, and the SER10 represents a second data point in that personal comparison, not a first experiment with local LLMs.",
+    "The recommended architecture is local-first with cloud fallback: local inference handles routine and privacy-sensitive tasks while cloud APIs absorb the latency-sensitive or compute-heavy work."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Cloud Cost Problem and Local Motivation"
+    },
+    {
+      "t": 30,
+      "title": "SER10 Max Setup and Speed Limits"
+    },
+    {
+      "t": 60,
+      "title": "Lessons From Local and Hybrid Strategy"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "35bc64225d40554d"
 }

@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Jeff Su shares five essential practices for setting up and maintaining Claude Cowork effectively after running his business on the platform for three months. The tips cover keeping root files lean, structuring memory correctly, archiving obsolete content, migrating projects, and choosing between skills and workstations.",
-  "writeup": "",
-  "wh": "4837acb76ce03206",
+  "writeup": "Five concrete workspace optimizations for Claude drawn from five months of daily use: keeping CLAUDE.md under 300 lines, structuring memory.md with a hard 150-line ceiling and a separate archive.md, and maintaining a strict split between prescriptive rules (CLAUDE.md) and mutable facts (memory.md). The through-line is that every file loaded at session start costs tokens on every single interaction, so bloat in any root file compounds continuously. Cutting CLAUDE.md from 600 lines to 250 lines alone produced a measured 25% drop in token usage.",
+  "wh": "24c5bc56595081c8",
   "concepts": [
     {
       "slug": "claude-code",
@@ -60,5 +60,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.614
     }
-  ]
+  ],
+  "key_points": [
+    "Keeping CLAUDE.md between 200 and 250 lines (300 absolute maximum) directly reduces per-session token consumption; trimming from 600 lines to 250 lines produced a measured 25% drop in token usage.",
+    "Rules and instructions belong in CLAUDE.md when they are prescriptive (contain words like 'always' or 'never'); facts that can change belong in memory.md, and mixing them up degrades output quality.",
+    "Non-essential sections of CLAUDE.md that apply only to specific tasks should be extracted into separate reference files and replaced with a one-line pointer, keeping the root file lean without losing any capability.",
+    "memory.md should have a hard 150-line ceiling enforced by a rule in CLAUDE.md: when breached, Claude compresses and archives stale entries rather than growing the file.",
+    "archive.md holds stale memory entries and is never loaded at session start, so it carries no per-session token cost and can grow without limit while still being queryable on demand.",
+    "Obsidian, pointed at the Claude workspace folder as a vault, renders markdown files with proper headings and formatting, making CLAUDE.md and memory.md far easier to read and edit than the raw text view inside the tool."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why Workspace Foundations Matter"
+    },
+    {
+      "t": 30,
+      "title": "Obsidian as Markdown Editor"
+    },
+    {
+      "t": 122,
+      "title": "The 300-Line Rule for CLAUDE.md"
+    },
+    {
+      "t": 271,
+      "title": "Relocating Non-Essential Rules to Reference Files"
+    },
+    {
+      "t": 331,
+      "title": "Rules vs Facts: The CLAUDE.md and memory.md Split"
+    },
+    {
+      "t": 512,
+      "title": "memory.md Structure and the 150-Line Ceiling"
+    },
+    {
+      "t": 631,
+      "title": "archive.md as Token-Free Long-Term Memory"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3d87d81d2ea96e96"
 }

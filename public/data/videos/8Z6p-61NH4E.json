@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Austin Marchese demonstrates using Claude Code (Anthropic's AI coding assistant) to build a revenue-generating product with no prior coding experience. The process involved five structured steps: problem-focused rapid shipping, strategic code generation versus existing solutions, learning vocabulary for better prompting, deliberate development methodology, and proactive error identification. The case study shows delivering 100,000 user adoption and $481,000 annual revenue in 45 days.",
-  "writeup": "",
-  "wh": "dcd0fd83ccc6f2a6",
+  "writeup": "A practitioner who built a fantasy football app serving over 100,000 users walks through the Claude Code workflow that generated over $250,000 in annual revenue, drawing on a collaboration between an 8-year software engineer and a non-technical co-founder. The talk is organized around five steps, four of which appear in the transcript: define a single-sentence problem, split work by risk tier (engineer vs. pirate), learn technical vocabulary before writing prompts, and build guardrails into the Claude Code workflow itself. The through-line is that Claude Code amplifies clarity, so vague prompts produce vague code, and the discipline of naming things correctly matters more than knowing how to implement them.",
+  "wh": "d9a32895bc5a33dd",
   "concepts": [
     {
       "slug": "code-generation",
@@ -64,5 +64,53 @@
       "channel": "Code With Aarohi",
       "score": 0.664
     }
-  ]
+  ],
+  "key_points": [
+    "Abstraction kills conversion: if a product cannot be described in one sentence it is too complicated, and every extra question a user must ask reduces the chance they complete the action, so the first prompt to write is the product definition itself.",
+    "The engineer-versus-pirate split draws a hard line between business-critical code (authentication, payments, database schema) that must be slowed down and reviewed, and everything else (UI, content pages, settings) where screenshots-to-Claude iteration is the correct workflow, matching the risk to the pace.",
+    "Vocabulary gaps cause architecture mistakes: asking for real-time updates without specifying WebSockets leads Claude Code to implement polling, which generates thousands of unnecessary database calls per minute at 1,000 concurrent users, a production failure that requires a rewrite rather than a fix.",
+    "Using Claude Code to interview you before writing any code, asking what the core problem is, who it is for, what success looks like, and what it should not do, converts a 3-hour back-and-forth into a one-shot build, trading 10 minutes of planning for 10 hours of avoided debugging.",
+    "Custom Claude Code slash commands such as /codereview and /prepare-to-deploy that enforce pre-deploy checklists (schema matches migrations, no errors, authentication and payment code flagged) function as automated engineering guardrails that apply equally to a veteran engineer and a first-time vibe coder."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: $250k App Built With Claude Code"
+    },
+    {
+      "t": 60,
+      "title": "Step 1: One-Sentence Problem, Ship Fast"
+    },
+    {
+      "t": 90,
+      "title": "Step 2: Engineer vs. Pirate Mindset"
+    },
+    {
+      "t": 211,
+      "title": "Step 3: Learn Vocabulary, Not Code"
+    },
+    {
+      "t": 391,
+      "title": "Step 4: Slow Is Smooth, Smooth Is Fast"
+    },
+    {
+      "t": 421,
+      "title": "Plan Before You Build"
+    },
+    {
+      "t": 480,
+      "title": "Review Before You Ship"
+    },
+    {
+      "t": 540,
+      "title": "Keep the Codebase Clean"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "75e842bd7f2cf9bb"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud's Antigravity 2.0 is an AI agent platform for working on enterprise codebases. The video outlines five planning tactics for setting up Antigravity projects: multi-repo linking, hierarchical coding standards, sandboxing and command allowlisting, voice-based context capture, and agent interrogation via the /grill-me command.",
-  "writeup": "",
-  "wh": "eade2b56443be666",
+  "writeup": "A practitioner's walkthrough of five setup habits for running an AI coding agent (Antigravity 2.0, a Google Gemini-based tool) on real enterprise codebases rather than greenfield demos. The core argument is that framing the agent as a supervised intern changes how you configure permissions, communicate requirements, and contain mistakes. Each tip is concrete and sequenced: configure the workspace first, define rules, lock down the blast radius, then brief the agent through voice and adversarial questioning before any code is written.",
+  "wh": "7b23b433aa353619",
   "concepts": [
     {
       "slug": "code-generation",
@@ -72,5 +72,49 @@
       "channel": "Google Antigravity",
       "score": 0.673
     }
-  ]
+  ],
+  "key_points": [
+    "Antigravity 2.0 supports multi-repo projects, so cross-cutting changes (such as updating a backend data model and then fixing the matching TypeScript interfaces in the frontend) can be orchestrated from a single project context rather than across isolated repos.",
+    "The rules hierarchy has three levels: global rules in `~/.gemini/gemini.md` for conventions shared across all projects, project-level rules in `.agents/rules` for per-codebase standards, and per-directory `README.md` files for hyper-local context such as how to run integration tests.",
+    "Blast-radius containment uses three layers: requiring manual approval before any terminal command runs (with an allowlist that grows incrementally), enabling sandbox mode to restrict destructive shell operations and unauthorized network calls at the OS level, and ensuring the developer's machine has no access to production cloud projects.",
+    "Voice input replaces typed prompts for initial planning: speaking through a problem, including legacy quirks and messy context, produces richer briefs than writing a compressed prompt, and the back-and-forth conversation with the model lets requirements converge before coding begins.",
+    "The `/grill me` slash command flips the agent's role: after receiving a voice brief, the agent reviews the codebase and returns five or six pointed questions about fuzzy requirements or unresolved architectural decisions, surfacing gaps before broken code has to be rewritten."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Enterprise vs Greenfield"
+    },
+    {
+      "t": 41,
+      "title": "The Digital Intern Mental Model"
+    },
+    {
+      "t": 91,
+      "title": "Tip 1: Multi-Repo Projects"
+    },
+    {
+      "t": 120,
+      "title": "Tip 2: Hierarchy of Rules"
+    },
+    {
+      "t": 180,
+      "title": "Tip 3: Containing the Blast Radius"
+    },
+    {
+      "t": 270,
+      "title": "Tip 4: Voice Input for Planning"
+    },
+    {
+      "t": 331,
+      "title": "Tip 5: Let the Agent Interrogate You"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f8ad6017d33d1bcf"
 }

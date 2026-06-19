@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "JavaScript Mastery demonstrates building a Duolingo clone in React Native using \"Practical Vibe Coding,\" a workflow that leverages AI to compress months of development into a weekend. The tutorial covers setup, UI design, authentication via Clerk, state management, and integration of vision agents and streaming capabilities without hand-coding.",
-  "writeup": "",
-  "wh": "58ec458ad419aae7",
+  "writeup": "A full Duolingo clone in React Native built entirely with AI, including onboarding, auth (Clerk), language lessons, and a real-time voice AI teacher powered by Stream voice agents. The video's core argument is that pure vibe coding collapses at feature five and overengineering never ships anything; the answer is \"practical vibe coding,\" a two-pillar method: an agents.md context file at the repo root, and a strict four-part prompt structure applied to every code generation request. The through-line is workflow discipline rather than any single tool, and the stack choices (NativeWind, Zustand, Clerk, PostHog, CodeRabbit) are each justified by what they replace or protect.",
+  "wh": "df31478729310c28",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -60,5 +60,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.608
     }
-  ]
+  ],
+  "key_points": [
+    "An agents.md file at the project root tells the AI coder its role (e.g., \"expert React Native plus Expo engineer\"), the full stack with one line per library, folder conventions, styling rules, and reusable patterns to follow; without it, 20 prompts across a session produce a codebase that looks like five different engineers working independently.",
+    "Every prompt follows four parts in order: reference agents.md and require strict compliance, state exactly one task (not three merged together), add behavioral constraints that describe what must not break rather than how to write the code, and attach a design image for any visual feature because the AI reads layouts better than prose descriptions of layouts.",
+    "Behavioral constraints are the most commonly skipped and most commonly wrong part of the four-part structure; they must describe observable behavior (\"keep the existing Stream audio flow intact,\" \"do not expose secrets in the mobile app\") rather than code-level instructions, protecting working features from unintended rewrites.",
+    "Pure vibe coding fails around feature five: a fix to one thing breaks another, and the developer ends up maintaining code they did not write in a project they cannot explain; overengineering fails earlier, spending days on folder structures and architecture docs before a single screen exists.",
+    "The real-time AI language teacher uses Stream voice agents: the learner speaks aloud, the AI responds in conversational turns, correcting pronunciation with specific phonetic guidance rather than generic feedback.",
+    "CodeRabbit reviews every AI-generated pull request before it merges, acting as an automated code review layer that catches drift and regressions introduced by AI generation without manual review of every diff."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Gap Between Idea and Shipped App"
+    },
+    {
+      "t": 91,
+      "title": "Practical Vibe Coding: The Middle Ground"
+    },
+    {
+      "t": 183,
+      "title": "Stack and App Overview"
+    },
+    {
+      "t": 303,
+      "title": "The Agents MD File"
+    },
+    {
+      "t": 482,
+      "title": "Four-Part Prompt Structure"
+    },
+    {
+      "t": 721,
+      "title": "Writing Behavioral Constraints"
+    },
+    {
+      "t": 842,
+      "title": "Prompting Without a Visual Design"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "760de947be0dc444"
 }

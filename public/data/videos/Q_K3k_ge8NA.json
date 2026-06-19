@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Jack Roberts presents Claude Code as a system for building responsive websites with an integrated CMS that allows clients to edit content without developer intervention. The workflow combines Claude Code for design generation, Firecrawl for blueprint extraction, MongoDB for backend data storage, Vercel for hosting, and GitHub for version control.",
-  "writeup": "",
-  "wh": "3b319faed6af1f6c",
+  "writeup": "This tutorial walks through a five-step workflow for using Claude Code to build production-quality marketing websites and pairing them with a CMS built entirely by Claude, so clients can make edits without touching the underlying code. The central argument is that the real limitation of Claude-generated sites is not visual quality but editability: without a CMS layer, every content change falls back on the developer. The presenter demos a working CMS with AI-assisted editing, responsive previews for tablet and mobile, per-page management, and a built-in SEO scoring tool, then shows how to use Dribbble screenshots and a Firecrawl-backed design blueprint extractor to feed Claude a concrete visual direction so the output does not look generic.",
+  "wh": "c71a076c08b2ca5a",
   "concepts": [
     {
       "slug": "claude-code",
@@ -68,5 +68,50 @@
       "channel": "Austin Marchese",
       "score": 0.617
     }
-  ]
+  ],
+  "key_points": [
+    "The core limitation of Claude Code websites is that clients cannot safely edit content without the original developer's login or involvement, which prevents a truly hands-off handoff and makes repeat sales difficult.",
+    "Claude can build the CMS itself alongside the site: the demo shows an interface where clients chat with an AI assistant to make copy or pricing changes, toggle spacing, switch between desktop, tablet, and mobile views, and publish updates, all without touching source code.",
+    "SEO is addressable inside the CMS: the presenter demos a keyword scoring panel that accepts a target phrase, returns a score out of roughly 60, and accepts a meta description that updates the live site instantly.",
+    "To avoid the generic Claude aesthetic, the workflow feeds Claude a visual reference before building: screenshots from Dribbble or a real site, optionally parsed by Firecrawl to extract font and color rationale, which Claude uses to produce a design blueprint before writing any code.",
+    "Claude can generate custom inline graphics during a one-shot build if given an image-generation API key (the presenter uses an external image API called Kia as a low-cost option), producing hero graphics that match the reference site's layout pattern rather than placeholder images.",
+    "Free hosting is presented as a solved problem within this workflow, making the CMS and recurring-edit model the primary value proposition for selling sites to clients."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Core CMS Problem"
+    },
+    {
+      "t": 90,
+      "title": "Five-Step Workflow Overview"
+    },
+    {
+      "t": 182,
+      "title": "CMS Demo: Editing, Previews, and Pages"
+    },
+    {
+      "t": 241,
+      "title": "SEO Scoring Inside the CMS"
+    },
+    {
+      "t": 330,
+      "title": "Building a Beautiful Site in Claude Code"
+    },
+    {
+      "t": 390,
+      "title": "Design References with Dribbble and Firecrawl"
+    },
+    {
+      "t": 480,
+      "title": "One-Shot Build and Image Generation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c6fe1da5f1126951"
 }

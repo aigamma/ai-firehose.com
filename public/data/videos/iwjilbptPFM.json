@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "CS50 2D Lecture 5 teaches game development fundamentals by recreating Legend of Zelda mechanics, including dungeon generation, hitbox design, screen scrolling, and data-driven design. The course is offered through Harvard University via edX, Harvard Extension School, and other platforms.",
-  "writeup": "",
-  "wh": "c9a0b48b77438441",
+  "writeup": "CS 52D Lecture 5 (GD50) walks through building a top-down 2D dungeon crawler in the style of the original Legend of Zelda, progressing from a bare player-movement prototype through procedural dungeon generation, enemy AI, and screen-scrolling room transitions. The core argument is that a top-down game reuses nearly all the same primitives as a side-scroller (AABB collision, state machines, tweens) but requires a critical new distinction: separating hitboxes (the rectangle that receives damage) from hurtboxes (the rectangle that inflicts it, such as a swung sword). The lecture closes by introducing data-driven design, moving entity definitions into external files so a designer can tune content without touching engine code.",
+  "wh": "52d1529e186f41c5",
   "concepts": [
     {
       "slug": "procedural-level-generation",
@@ -64,5 +64,46 @@
       "channel": "CS50",
       "score": 0.656
     }
-  ]
+  ],
+  "key_points": [
+    "In a top-down game the player has full freedom on both X and Y axes with no gravity constraint, unlike a side-scrolling platformer where the Y axis is governed by gravity and jumping; this single change ripples through movement, camera, and collision handling.",
+    "Hitboxes and hurtboxes are semantically distinct rectangles: a hitbox is the collider that can receive damage (the character body), while a hurtbox is the collider that deals damage (a swung sword), and the engine must treat them differently to avoid a character hurting itself.",
+    "Dungeon generation produces a grid of rooms connected by doorways, each room a discrete screen; a switch game object in each room triggers the doors to open, and pressing M reveals a minimap with the current room in red and visited rooms in green.",
+    "Screen scrolling in the Zelda style is a tween-based camera pan triggered when the player reaches a doorway edge, not continuous scrolling; this is the same interpolation technique used in prior lectures, applied to the camera rather than a sprite.",
+    "Sprite sheets for a sword-wielding character use two distinct atlases at different frame sizes (16x16 for walking, 32x32 for sword animations) because the sword extends the character bounding box, requiring separate hurtbox offsets.",
+    "Data-driven design externalizes entity definitions to separate files rather than hard-coding them in engine source, enabling a game designer to add or tune entities independently of the programmer writing collision and rendering systems."
+  ],
+  "chapters": [
+    {
+      "t": 19,
+      "title": "Introduction and Zelda Overview"
+    },
+    {
+      "t": 180,
+      "title": "Lecture Topics: Dungeon, Hitboxes, Scrolling"
+    },
+    {
+      "t": 271,
+      "title": "Live Demo with Audience Volunteer"
+    },
+    {
+      "t": 362,
+      "title": "Post-Demo Systems Walkthrough"
+    },
+    {
+      "t": 420,
+      "title": "Day Zero: Top-Down Movement in Code"
+    },
+    {
+      "t": 541,
+      "title": "Sprite Sheets and Frame Sizes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "498086b5bb548ba9"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Anthropic has released Claude Fable 5, its first Mythos class model, which achieves top performance on benchmarks including SWE Bench Pro and Frontier Code. The model demonstrates capabilities in vision, code generation, long-context reasoning, and handles various tasks from website testing to fullstack development.",
-  "writeup": "This video covers Anthropic's release of Claude Fable 5, described as its first Mythos class model. The model posts top results on benchmarks including SWE Bench Pro and Frontier Code, which matters as a measure of coding capability against competing systems. Concrete takeaways: Fable 5 supports extended context for long-running tasks, adds vision capabilities, and shows strong performance on code generation and fullstack app development.",
-  "wh": "3dbe884b9c7ea723",
+  "writeup": "Anthropic's new Mythos-class model, which the presenter calls Fable 5, leads nearly every major benchmark at launch, with a 10% jump on SWE-bench Pro agentic coding and roughly 20% ahead of GPT-5.5 on that task. The video walks through benchmark results, hands-on coding and vision demos (a Linear website clone from a screenshot, a full-stack finance dashboard built in 8 minutes from a blank folder), the model's unusually aggressive safety restrictions, and a pricing structure that temporarily removes the model from subscription plans on June 23rd before requiring usage credits. The through-line is that raw capability has clearly jumped, but the safeguard sensitivity and pricing mechanics introduce real friction for everyday use.",
+  "wh": "1878dce3745538a8",
   "concepts": [
     {
       "slug": "long-context-reasoning",
@@ -64,5 +64,46 @@
       "channel": "AI Revolution",
       "score": 0.74
     }
-  ]
+  ],
+  "key_points": [
+    "Fable 5 achieves roughly a 10% improvement on SWE-bench Pro agentic coding over the previous generation and sits approximately 20% ahead of GPT-5.5 on that benchmark; it also leads on Frontier Code, a new benchmark from Cognition (makers of Devin) that tests whether a maintainer would actually merge the model's output.",
+    "In a long-running task demonstration, Stripe used Fable 5 to complete a codebase-wide migration of a 50-million-line Ruby codebase in a single day, enabled by improved memory, long context handling, and the model's ability to use its own notes to refine outputs across millions of tokens.",
+    "Hands-on testing showed Fable 5 generating a plausible clone of the Linear website from a single screenshot (no web search), and building a working full-stack finance dashboard with a connected API from an empty folder in approximately 8 minutes, faster than Opus 4.8 (12 minutes) or GPT-5.5 (15 minutes).",
+    "The safety restrictions are severe: on a cybersecurity evaluation benchmark, Fable 5 with safeguards passes zero tests and flat-out refuses; even Opus 4.8 achieves an 88% pass rate on the same benchmark, suggesting Mythos users will encounter false-positive refusals frequently (Anthropic estimates under 5% of messages).",
+    "Pricing is $10 per million input tokens and $50 per million output tokens; the model is available in Pro, Max, Team, and Enterprise plans at launch but is scheduled to be removed from those plans on June 23rd, after which access requires usage credits, with a return to subscription plans at an unspecified later date.",
+    "A new 30-day data-retention policy applies to all traffic on first- and third-party tools when using Fable 5; Anthropic states no training will be performed on this data, framing retention as a security measure."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Fable 5 Announced"
+    },
+    {
+      "t": 30,
+      "title": "Benchmark Results"
+    },
+    {
+      "t": 90,
+      "title": "Long-Running Task Demo"
+    },
+    {
+      "t": 150,
+      "title": "Vision and Coding Demos"
+    },
+    {
+      "t": 211,
+      "title": "Safety Restrictions"
+    },
+    {
+      "t": 271,
+      "title": "Pricing and Availability"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "d89286eba108d293"
 }

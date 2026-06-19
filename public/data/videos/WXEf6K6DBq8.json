@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Qdrant has launched a Multi-Vector Search Course available at their course portal. The course covers multi-vector search capabilities, a technique for retrieving information across multiple vector representations simultaneously.",
-  "writeup": "",
+  "writeup": "This video is an intro and overview for the Qdrant multi-vector search course, authored by Casper Lakoski and structured across three substantive modules (plus an environment setup module zero). The course argues that compressing an entire document into a single embedding discards too much detail for precise retrieval, then teaches the late interaction paradigm and MaxSim as the alternative. It moves from text through images and PDFs, then to production-grade pipelines at billion scale, closing with a multimodal search portfolio project.",
   "wh": "36bb02741ea5a180",
   "concepts": [
     {
@@ -56,5 +56,42 @@
       "channel": "Qdrant Vector Search",
       "score": 0.59
     }
-  ]
+  ],
+  "key_points": [
+    "Single-vector embeddings hit a fundamental ceiling: collapsing a full document to one vector loses the token-level detail needed to answer specific questions, which is the central motivation for multi-vector systems.",
+    "The late interaction paradigm uses MaxSim as its distance metric, comparing each query token against all document token vectors and taking the maximum similarity, so semantic nuance that single vectors miss is preserved via ColBERT with Qdrant.",
+    "Module 2 extends late interaction beyond text using ColPali, applying the same technique to images and PDFs to identify specific regions of interest within documents rather than retrieving whole documents.",
+    "Module 3 builds production pipelines using Qdrant's universal query API with a two-stage pattern: single-vector prefetch for recall, then ColBERT reranking for precision, plus compression via quantization and pooling to manage cost.",
+    "Muvera is introduced in Module 3 as the approach for billion-scale indexing when the multi-vector corpus grows beyond what standard indexing handles.",
+    "The course concludes with running eval across the entire search pipeline and a multimodal search portfolio project, targeting ML engineers, back-end engineers, and search engineers comfortable with Python and basic vector search."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Course Introduction and Motivation"
+    },
+    {
+      "t": 31,
+      "title": "Course Structure and Module Overview"
+    },
+    {
+      "t": 61,
+      "title": "Module 1: Late Interaction and ColBERT with Qdrant"
+    },
+    {
+      "t": 91,
+      "title": "Module 2: Multi-Vector Beyond Text with ColPali"
+    },
+    {
+      "t": 121,
+      "title": "Module 3: Production Pipelines and Billion-Scale Indexing"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9977958b33dd1d8e"
 }

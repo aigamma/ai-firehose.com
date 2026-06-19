@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Sualeh Asif interviews Simon Eskildsen on infrastructure scaling at Shopify, the cyclical emergence of new database companies, and the limitations of current AI coding agents. Discussion covers engineering principles, database innovation trends, and P99 engineer hiring in the AI era.",
-  "writeup": "",
-  "wh": "34c4f681f1dedd63",
+  "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
+  "wh": "f2235ce0575c9e13",
   "concepts": [
     {
       "slug": "auto-scaling",
@@ -68,5 +68,50 @@
       "channel": "CS50",
       "score": 0.475
     }
-  ]
+  ],
+  "key_points": [
+    "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
+    "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
+    "Shopify's primary scaling levers were caching TTL increases, moving cache serving from Ruby into Nginx Lua to strip load before it hit app servers, and session-aware load shedding that prioritized requests with an active cart over anonymous browsing.",
+    "Around 2013 Shopify merged its pure-ops team with its application performance engineers to form a \"production engineering\" team, a pattern Facebook had pioneered, and having developers write Chef to configure infrastructure was considered radical at the time.",
+    "Shopify's Toxiproxy (an open-source TCP proxy that injects latency and failures) was created to test that Shopify stayed live when any downstream dependency, such as the session database, went down; GitHub and other companies adopted it.",
+    "GitHub built Ghost to run zero-downtime MySQL schema migrations via the bin log; SoundCloud built LHMS for trigger-based migrations; these tools circulated through informal cross-company phone calls because the wisdom was rarely written down and could not be extracted from public sources."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The lsof Mystery: MySQL Stall Root Cause"
+    },
+    {
+      "t": 91,
+      "title": "MySQL at Scale: Connection Explosion"
+    },
+    {
+      "t": 181,
+      "title": "Flash Sales and Inventory Lock Contention"
+    },
+    {
+      "t": 272,
+      "title": "Load Testing and Pre-Cloud Capacity Planning"
+    },
+    {
+      "t": 392,
+      "title": "Caching Layers and Load Shedding"
+    },
+    {
+      "t": 450,
+      "title": "Birth of Production Engineering at Shopify"
+    },
+    {
+      "t": 511,
+      "title": "Cross-Company Tribal Knowledge and Open-Source Tools"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "cb48ca314da51667"
 }

@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Stripe presents infrastructure for secure autonomous agent spending, addressing credential transmission and business discoverability to agents. The talk covers guardrails for safe autonomous transactions and infrastructure needs for agent-driven purchasing.",
-  "writeup": "",
+  "writeup": "A principal engineer from Stripe's issuing team lays out the infrastructure required for AI agents to transact safely in the open economy. The central argument is a clean separation: discovery and exploration can tolerate non-determinism from LLMs, but credentials, payments, and checkout require strict determinism enforced at the infrastructure level. Three concrete solutions are demonstrated: shared payment tokens with scoped limits, an HTTP 402-based machine payments protocol co-built with Tempo for API-layer monetization, and structured checkout flows that relay purchase details back to the human buyer.",
   "wh": "d3e455ed8b9fa12e",
   "concepts": [
     {
@@ -64,5 +64,53 @@
       "channel": "IBM Technology",
       "score": 0.576
     }
-  ]
+  ],
+  "key_points": [
+    "Stripe's principal engineer on issuing frames the core problem as four failure modes for browser-operating agents: buying from the wrong place (domain spoofing), the wrong thing (navigation errors), the wrong amount (price extraction errors and currency drift), and with the wrong credential (card numbers pasted into untrusted forms).",
+    "Shared payment tokens let an agent provision a credential scoped to a specific seller, capped at a dollar amount and a time window (in the demo: $25 limit, 30-day expiry), with Stripe enforcing those limits server-side so a seller attempting to charge $50 receives an enforcement failure rather than completing the overcharge.",
+    "The machine payments protocol, built with Tempo, uses HTTP 402 status codes to signal that an API endpoint requires payment; the response carries an encoded payload describing what is being purchased and how to pay, with settlement demonstrated on Tempo's stablecoin blockchain for one cent per tool call.",
+    "Agents are already economic actors: every inference call in Claude Code, Codex, or similar tools converts tokens into dollars, making the question not whether agents spend money but how to extend that spending to arbitrary merchants with safety guarantees.",
+    "The seller is not hidden from the token arrangement: the shared token still passes card brand, last four digits, and credit type to the merchant so existing risk systems can apply, preserving the seller's ability to do fraud checks while the buyer enforces spend limits upstream."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Speaker Background"
+    },
+    {
+      "t": 60,
+      "title": "Core Thesis: Discovery vs. Determinism"
+    },
+    {
+      "t": 152,
+      "title": "Four Agent Payment Failure Modes"
+    },
+    {
+      "t": 270,
+      "title": "Ideal Infrastructure Properties"
+    },
+    {
+      "t": 301,
+      "title": "Shared Payment Tokens"
+    },
+    {
+      "t": 360,
+      "title": "Shared Token Demo"
+    },
+    {
+      "t": 541,
+      "title": "Machine Payments Protocol (HTTP 402 and Tempo)"
+    },
+    {
+      "t": 600,
+      "title": "Machine Payments Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e0e7783ee42e2f71"
 }

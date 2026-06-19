@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Cursor released new data on coding agents and their impact on software engineering practices. The content examines how AI-powered coding assistants are transforming the field based on empirical insights from their platform.",
-  "writeup": "",
-  "wh": "eaf4d430db9d3068",
+  "writeup": "A Cursor engineer walks through Cursor's Developer Habits Report, a dataset-backed survey of how AI coding assistants are reshaping software engineering in 2025 and early 2026. The talk covers five themes: developer acceleration (coding speed doubling year over year), model intelligence and cost tradeoffs, and a widening gap between power users and the median engineer. The through-line is that raw output metrics (lines of code, tokens consumed) are directionally useful but imperfect, and the real discipline is controlling agent output quality before the code becomes an unmaintainable liability.",
+  "wh": "73658199af3d44a9",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -56,5 +56,53 @@
       "channel": "Google Antigravity",
       "score": 0.696
     }
-  ]
+  ],
+  "key_points": [
+    "Lines added per pull request are up 2.5x year over year in Cursor usage data, and PRs with over 1,000 lines changed are becoming markedly more common, a trend Cursor calls the 'mega PR' problem that poses a real quality and maintainability risk.",
+    "Tool calls (file edits, shell commands, web searches) rose roughly 30% in recent months and serve as a better proxy for agent usefulness than lines of code, since a model that is actively reading and writing is more likely to be genuinely productive.",
+    "AI-generated lines that are accepted by developers remain in the codebase after 60 minutes at high rates, meaning agent-written code is extremely sticky and the cost of generating unnecessary or over-defensive code compounds over time.",
+    "CursorBench plots models on a cost-per-task versus benchmark-score chart and compares against external evals (TerminalBench, SWE-bench multilingual, Artificial Analysis); the finding is that a more expensive model can have a lower effective cost if it one-shots a task that a cheaper model would spin on for far longer, but this calculus breaks down when the same expensive model is used indiscriminately for all agentic work.",
+    "The top 1% of Cursor power users merge 15 times more PRs per week than the median active user, and while some of their token consumption represents exploration overhead rather than pure productivity, the gap in shipped output between the bleeding-edge cohort and everyone else is widening."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro: Cursor Developer Habits Report"
+    },
+    {
+      "t": 91,
+      "title": "Developer Acceleration and Lines of Code"
+    },
+    {
+      "t": 151,
+      "title": "Mega PRs and Code Quality Risk"
+    },
+    {
+      "t": 241,
+      "title": "Tool Call Growth as Agent Quality Signal"
+    },
+    {
+      "t": 270,
+      "title": "AI Code Retention and Maintenance Liability"
+    },
+    {
+      "t": 332,
+      "title": "Model Intelligence and Cost Per Accepted Line"
+    },
+    {
+      "t": 482,
+      "title": "CursorBench and External Model Evals"
+    },
+    {
+      "t": 540,
+      "title": "Power User Gap and the Top 1 Percent"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "70f8ad91f253d6dc"
 }

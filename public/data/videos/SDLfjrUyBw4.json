@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Dolt is a SQL database that applies Git-style version control workflows to structured data tables. It enables branches, commits, diffs, merges, pull requests, and rollbacks for databases, addressing collaboration and data versioning challenges in ML datasets, test data, and production environments.",
-  "writeup": "",
-  "wh": "211b2abcef4a2f2c",
+  "writeup": "Dolt is a SQL database that adds Git-style version control directly to relational tables: branch, diff, commit, merge, and rollback against actual rows and columns, not files. The video walks through a live demo of cloning a DoltHub database, making row edits, running a table-level diff that shows exactly which row and column changed, committing, branching, and merging, all via familiar Git commands. It then explains the prolly tree data structure that makes efficient versioning possible without copying the whole database on every commit. The central argument is that developers have long been forced to choose between a real database and a Git workflow, and Dolt removes that tradeoff.",
+  "wh": "bb53b53a23a8f80b",
   "concepts": [
     {
       "slug": "version-control",
@@ -64,5 +64,42 @@
       "channel": "Cursor",
       "score": 0.469
     }
-  ]
+  ],
+  "key_points": [
+    "Dolt implements Git commands (status, diff, add, commit, branch, checkout, merge, log) against relational SQL tables, so teams get commit history, branching, and rollback for structured data without abandoning SQL, indexes, or schema enforcement.",
+    "When a row is changed and `dolt diff` is run, the output shows the specific table, row, column, old value, and new value, rather than a generic file diff, making data-change review precise and auditable.",
+    "Dolt uses a data structure called a prolly tree, a versioning-aware variant of the B-tree structures traditional databases use, which lets it share unchanged parts across commits and track only what changed, avoiding full-database copies per commit.",
+    "Running `dolt sql-server` exposes Dolt as a MySQL-compatible endpoint, so existing ORMs, BI tools, and application code connect to it as a normal database while gaining version-control semantics around the data.",
+    "The alternatives each solve a different problem: Git with CSVs lacks schema awareness, primary-key semantics, and join capability; DVC targets ML artifacts and large datasets, not live relational tables; LakeFS applies Git ideas to object storage and data lakes, not row-level SQL; and traditional audit logs or CDC do not give the clean branch-change-diff-merge-rollback loop.",
+    "The practical threshold for adopting Dolt is structured data that changes over time in ways that can break an application, where a silent bad data change is a real risk and there is currently no clean review or rollback path."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Problem: Databases Have No Git"
+    },
+    {
+      "t": 35,
+      "title": "Two Bad Options: Real DB vs CSV in Git"
+    },
+    {
+      "t": 122,
+      "title": "Live Demo: Clone, Diff, Commit, Branch, Merge"
+    },
+    {
+      "t": 210,
+      "title": "How Dolt Works: Prolly Tree and Versioning"
+    },
+    {
+      "t": 300,
+      "title": "Dolt vs Alternatives: DVC, LakeFS, Temporal Tables"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b14b6bee9d7dc5f2"
 }

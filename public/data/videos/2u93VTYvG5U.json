@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Nick Saraev demonstrates practical applications of Claude's computer use feature for automation tasks including LinkedIn outreach, data scraping, form submission, ad management, and QA testing. The video emphasizes real-world revenue-generating use cases and acknowledges some approaches that bypass standard browser features.",
-  "writeup": "",
-  "wh": "32a954cabfe466c5",
+  "writeup": "This video demonstrates eight practical applications of Anthropic's computer use feature, where Claude controls a real browser and keyboard to automate economically valuable tasks. The through-line is a single bypass technique: replacing Chrome (which Anthropic blocks for full read-write access) with the Min browser, an obscure free browser not on the block list, enabling unrestricted automation across social platforms, contact forms, and ad managers. The presenter grounds each use case in live screen recordings showing Claude navigating LinkedIn, filling dental clinic intake forms, and toggling Meta Ads performance tiers, making the gap between toy demo and revenue-generating automation concrete.",
+  "wh": "2332570a150fef9b",
   "concepts": [
     {
       "slug": "computer-use",
@@ -68,5 +68,46 @@
       "channel": "Tristen O'Brien",
       "score": 0.609
     }
-  ]
+  ],
+  "key_points": [
+    "Anthropic's computer use blocks Chrome, Safari, Firefox, and Edge for incoming read-write browser control; substituting the Min browser (free, not on the block list) bypasses this restriction and gives Claude full keyboard and mouse access to any site.",
+    "LinkedIn natively blocks most browser automation tools because it wants a human-feeling environment, but computer use with Min circumvents platform-level bot detection since the agent operates like a real user moving a real mouse, enabling automated personalized connection requests at scale.",
+    "The outreach prompt uses a quasi-customized icebreaker template with dynamic variable slots (first name, casual company name) so Claude can fill in per-lead details from visible page data rather than sending identical mass messages.",
+    "Social media scraping without an API becomes viable: Claude takes screenshots, extracts post text, and saves a structured file locally, which can then feed a content calendar or parasite-content workflow on platforms that have no official scraping endpoint.",
+    "Contact form outreach, which covers a large share of the web where email addresses are hidden behind gated forms, is automatable because computer use handles dynamic fields, date pickers, and even closes chat widgets in natural sequence before submission.",
+    "Ad platform management on Google Ads, Meta Ads, and TikTok Ads, which lock down API access and make programmatic control deliberately painful, can be automated by having Claude click through the ads manager, read cost-per-lead figures from the detail view, and turn off lowest-performing creatives according to a stated SOP."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and LinkedIn Demo"
+    },
+    {
+      "t": 90,
+      "title": "Min Browser Setup and Prompt Structure"
+    },
+    {
+      "t": 150,
+      "title": "Instagram and Other Platform Outreach"
+    },
+    {
+      "t": 270,
+      "title": "Scraping Social Media Posts to File"
+    },
+    {
+      "t": 361,
+      "title": "Automating Contact Form Outreach"
+    },
+    {
+      "t": 450,
+      "title": "Managing Ad Platforms Without API Access"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "88b0a32c64fc2aa2"
 }

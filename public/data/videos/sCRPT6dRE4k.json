@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Amazon Bedrock AgentCore Managed Harness simplifies agent deployment by replacing manual container and orchestration setup with a JSON config file and system prompt. It provides isolated micro VMs, persistent storage, cross-session memory, hot-swap model capabilities, and browser and code interpreter access out of the box.",
-  "writeup": "",
-  "wh": "d74b144cd228604f",
+  "writeup": "Amazon Bedrock AgentCore's managed harness collapses the production infrastructure problem, compute, containers, storage, memory, auth, and observability, into a JSON config file and a system prompt. The video builds a working agent called Pulse that scrapes Hacker News via a managed browser and Reddit via RSS on an hourly EventBridge schedule, accumulates JSON snapshots in persistent storage at /mount/data, and delivers a six-hour digest to Telegram. The through-line is that the operational boilerplate that makes running agent loops in production hard has been absorbed by the platform, leaving the developer to define behavior rather than infrastructure.",
+  "wh": "ebbae2ea941fe0b6",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,54 @@
       "channel": "Cole Medin",
       "score": 0.509
     }
-  ]
+  ],
+  "key_points": [
+    "The AgentCore managed harness provisions an isolated microVM per session with its own shell, file system, and cross-session memory scoped by user; persistent storage at /mount/data survives VM restarts and accumulates data across hourly invocations because the same session ID is reused.",
+    "Running shell commands on the VM with the --exec flag costs no additional tokens, making file-system operations and lightweight orchestration essentially free relative to LLM calls.",
+    "Deploying an agent is three steps: define via config (harness.json plus a system prompt Markdown file), run agentcore deploy (which provisions CDK-backed IAM roles and memory, taking three to five minutes), then invoke via agentcore invoke; model, tools, and system prompt can all be swapped per API call without redeploying.",
+    "The actor ID parameter on each invocation scopes the memory namespace, so the scheduled Lambda and future per-user chat sessions each maintain separate memory without collision.",
+    "The Lambda that drives the schedule uses a single invoke-harness API call passing the harness ARN, a session ID, an actor ID, and a prompt; the prompt content switches between collection mode and summary mode based on whether the UTC hour is divisible by six.",
+    "Telegram delivery is handled in the Lambda after the harness responds: a chunking function splits the digest to respect Telegram's 4,096-character message limit, and the bot token is fetched from Secrets Manager rather than an environment variable."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro: Agent Running in Production"
+    },
+    {
+      "t": 32,
+      "title": "How Agent Loops Work"
+    },
+    {
+      "t": 60,
+      "title": "AgentCore Managed Harness Overview"
+    },
+    {
+      "t": 150,
+      "title": "What Pulse Builds"
+    },
+    {
+      "t": 212,
+      "title": "CLI Setup and Harness Creation"
+    },
+    {
+      "t": 331,
+      "title": "Adding Browser Tool and System Prompt"
+    },
+    {
+      "t": 451,
+      "title": "Deploy and First Invocation"
+    },
+    {
+      "t": 542,
+      "title": "EventBridge, Lambda, and Telegram Delivery"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "6af4d8282a94f126"
 }

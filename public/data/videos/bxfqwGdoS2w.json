@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud's Database Migration Service uses Gemini to help developers convert Oracle database schemas and code to PostgreSQL. Gemini serves as an AI tutor that converts data types like VARCHAR2, NUMBER, and DATE while explaining the process for developer learning.",
-  "writeup": "",
-  "wh": "6fb0232d7e5c097e",
+  "writeup": "Google Cloud's Database Migration Service (DMS) converts Oracle schemas to Cloud SQL for PostgreSQL and pairs each automated type mapping with an inline Gemini explanation, turning a mechanical conversion step into an active learning loop. The video walks three concrete type pairs: Oracle's varchar2 to Postgres varchar (with a note on byte-vs-character length semantics), Oracle's catch-all number type to Postgres decimal (preserving precision and scale for financial data), and Oracle's date type to timestamp without time zone (preventing silent truncation of the time component). The through-line is that DMS is designed to build the migrator's trust and understanding, not just produce a converted DDL file.",
+  "wh": "83a745f28a79e926",
   "concepts": [
     {
       "slug": "database-migration",
@@ -64,5 +64,40 @@
       "channel": "Google Cloud Tech",
       "score": 0.54
     }
-  ]
+  ],
+  "key_points": [
+    "Oracle's varchar2 maps to Postgres varchar, but the length semantics differ: Oracle can measure length in bytes or characters while Postgres always measures in characters, a distinction that matters for multi-byte language support.",
+    "Oracle's all-purpose number type maps to Postgres decimal to preserve exact precision and scale, which is critical for financial data; DMS may also suggest bigint for integer-only number columns for better performance.",
+    "Oracle's date type stores both date and time down to the second, so DMS maps it to Postgres's timestamp without time zone rather than the Postgres date type, preventing silent truncation of time data at migration.",
+    "Each automated type conversion in the DMS Conversion Workspace is clickable and linked to a Gemini explanation, letting a developer query the reasoning behind any mapping on demand rather than accepting it blindly."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Oracle to Postgres Type Challenges"
+    },
+    {
+      "t": 30,
+      "title": "varchar2 to varchar: Length Semantics"
+    },
+    {
+      "t": 60,
+      "title": "number to decimal: Precision and Financial Data"
+    },
+    {
+      "t": 91,
+      "title": "date to timestamp: Preventing Silent Truncation"
+    },
+    {
+      "t": 120,
+      "title": "Building Trust Through Interactive Conversion"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c4abddb2fcfe9e61"
 }

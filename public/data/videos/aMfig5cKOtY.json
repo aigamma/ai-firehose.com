@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Anthropic released the /goal command for Claude Code, a feature that allows users to specify a task and a completion criterion, then Claude executes it autonomously with a second AI verifying completion. The video demonstrates the feature with a live demo creating a content calendar for a pizza shop.",
-  "writeup": "",
+  "writeup": "This video demonstrates Claude Code's /goal command, which lets a user specify a verifiable finish-line condition and then walk away while the tool runs autonomously turn after turn until the condition is satisfied. The mechanism is a dual-agent loop: a primary worker model (Opus or Sonnet) does the actual work, while a lightweight supervisor model evaluates after every step whether the goal has been met and either halts or restarts the worker with a progress report. The central lesson is that the quality of the finish-line description determines whether the loop converges cleanly or spins indefinitely burning tokens, making precise, checkable output conditions and an explicit turn or time cap essential hygiene.",
   "wh": "f49e816a39a97148",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "Chase AI",
       "score": 0.654
     }
-  ]
+  ],
+  "key_points": [
+    "The /goal command runs a dual-agent loop where a worker model builds or processes files and a second supervisor model checks after every turn whether the stated finish condition is met, continuing automatically until the supervisor confirms completion.",
+    "A finish-line condition must describe a concrete, verifiable output state (a specific named file, a folder structure, a CSV with one row per receipt) rather than a qualitative directive like 'make everything organized,' because the supervisor can only confirm what the worker reports back and cannot independently audit vague criteria.",
+    "Auto-approve is a separate toggle from /goal; without it, Claude pauses and requests permission before every file edit or command, so truly hands-off operation requires explicitly enabling auto-approve while understanding what system access that grants.",
+    "Appending 'stop after N turns' or 'stop after X minutes' to the goal condition is a mandatory safety cap: without it, a poorly specified finish line can cause the loop to run indefinitely, exhausting the daily token allowance or accumulating real API costs.",
+    "Typing /goal with no arguments displays an active-run dashboard showing elapsed time, turn count, and tokens consumed, giving a live view into the autonomous run without interrupting it.",
+    "The /usage command checks remaining credits before starting a long autonomous run, and the recommended cost discipline is to start with a small, bounded task (one folder, one batch of receipts) rather than a project-wide reorganization until the finish-line authoring pattern is practiced."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introducing the /goal Command"
+    },
+    {
+      "t": 31,
+      "title": "The Problem: Babysitting Long Multi-Step Tasks"
+    },
+    {
+      "t": 120,
+      "title": "Dual-Agent Architecture: Worker and Supervisor"
+    },
+    {
+      "t": 181,
+      "title": "Auto-Approve Setup and Security Caveats"
+    },
+    {
+      "t": 241,
+      "title": "Writing Effective Finish-Line Conditions"
+    },
+    {
+      "t": 330,
+      "title": "Safety Caps and Token Cost Control"
+    },
+    {
+      "t": 360,
+      "title": "Pizza Shop Social Media Demo"
+    },
+    {
+      "t": 451,
+      "title": "Three Rules for Safe Usage"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4cf1c85ec014228f"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra models. The models combine hybrid mamba transformer, Mixture of Experts in latent space (Latent MoE), and MTP architecture. The video analyzes how these architectural components differentiate Nemotron 3 from other open models.",
-  "writeup": "The video examines NVIDIA's Nemotron 3 release, which spans three model sizes: Nano, Super, and Ultra. The architectural focus is the combination of a hybrid Mamba transformer design, Latent Mixture of Experts, and MTP. The discussion also touches on vision transformer components alongside the Mixture of Experts and MTP elements that define the series.",
-  "wh": "9e3318bddaf2347b",
+  "writeup": "Nvidia's Nemotron 3 comes in three size variants (Nano at 30B total/3B active, Super at 120B/10B, Ultra at 550B/50B) sized to match distinct compute tiers from consumer hardware up to multi-GPU AI factory infrastructure. The architecture departs from standard transformers in three deliberate ways: Mamba 2 state-space layers interleaved with full attention to hold 1-million-token context at near-linear memory cost; a latent mixture-of-experts design that compresses token representations before routing so more experts can weigh in at lower bandwidth cost; and multi-token prediction to accelerate autoregressive output. Together these choices let Nvidia co-design model and hardware layers they already control, producing base-model accuracy scores that, per internal evaluations, exceed any previously published base model.",
+  "wh": "b0804e5d32c0ec89",
   "concepts": [
     {
       "slug": "mamba",
@@ -68,5 +68,49 @@
       "channel": "AI Search",
       "score": 0.594
     }
-  ]
+  ],
+  "key_points": [
+    "Nemotron 3 Nano (30B total, 3B active) runs on consumer hardware at roughly 15 GB in MX-FP4 precision; Super (120B total, 10B active) fits on one H100 80 GB in FP8 or on DGX Spark via Blackwell's compute acceleration; Ultra (550B total, 50B active) requires multi-GPU infrastructure at AI factory scale, comparable in size to DeepSeek V3.",
+    "The hybrid Mamba 2 transformer architecture replaces the quadratic KV-cache growth of standard attention with a fixed-size state matrix that updates linearly as tokens are processed, enabling a 1-million-token context window without proportional memory blowout, critical for enterprise workloads that must ingest large knowledge bases for concurrent queries.",
+    "Latent MoE (LatentE) projects each token down to a smaller latent representation before routing through the mixture-of-experts layer, cutting memory bandwidth and compute per token while using the freed budget to expose each token to more experts, improving routing quality without adding cost.",
+    "Nvidia bases the Ultra's accuracy claims on base-model evaluations (next-token prediction, not instruction-following or reasoning), reporting the highest scores they have seen for any published base model at that scale.",
+    "Expert parallelism spreads the Ultra's roughly 275 GB (4-bit) weight set across multiple GPUs, each streaming only about 35 GB from HBM to SRAM; combining this with 10 percent MoE activation narrows effective memory bandwidth per token dramatically, cutting end-to-end latency from 91 ms toward 34 ms per token on appropriate hardware."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Nemotron 3 Size Variants and Design Rationale"
+    },
+    {
+      "t": 150,
+      "title": "Nano, Super, and Ultra Compute Profiles"
+    },
+    {
+      "t": 210,
+      "title": "Architectural Overview: Mamba, LatentE, MTP"
+    },
+    {
+      "t": 302,
+      "title": "Hybrid Mamba 2 Transformer and Context Scaling"
+    },
+    {
+      "t": 420,
+      "title": "Mixture of Experts and Expert Parallelism"
+    },
+    {
+      "t": 541,
+      "title": "LatentE: Latent Mixture of Experts"
+    },
+    {
+      "t": 630,
+      "title": "Multi-Token Prediction"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "1b234e31c4a8d5c2"
 }

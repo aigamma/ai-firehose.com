@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "JavaScript Mastery published a comprehensive tutorial on building JobPilot, a full-stack job application platform using AI agents. The video teaches a workflow combining nine context files and five open-source agent skills, emphasizing system design around AI agents rather than code generation alone.",
-  "writeup": "",
-  "wh": "0255bd15f47cae78",
+  "writeup": "The video argues that AI does not erase developer skill but widens the gap between those who build with a structured system and those who react to whatever the model produces. The through-line is a concrete workflow: nine context files written before any code, plus five open-source agent skills (architect, remember, review, recover, imprint) that each solve a named failure mode (drift, lost memory, unreviewed features, broken sessions, and design inconsistency). The author demonstrates the system by building Job Pilot, a full-stack AI agent that finds jobs, scores them against a user profile, browses company websites with a real managed browser, and writes tailored cover letters and resumes, constructed solo in a couple of days without writing any code by hand.",
+  "wh": "44991df06322a9a3",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -64,5 +64,50 @@
       "channel": "Liam Ottley",
       "score": 0.612
     }
-  ]
+  ],
+  "key_points": [
+    "Before writing a single prompt, the author prepares nine context files covering product purpose, architecture, folder structure, code standards, UI rules, design tokens, library patterns, a build plan, and a living progress tracker, giving the agent a complete picture so it never guesses.",
+    "The 'architect' skill reads those context files before any complex feature, surfaces unresolved design decisions with focused questions, and produces a plan, preventing mid-build refactors caused by assumptions the agent made silently.",
+    "The 'remember' skill compresses each session's decisions, patterns, and progress into a memory file that loads on the next session open, giving continuity without reexplaining; without it every session restarts from zero.",
+    "The 'review' skill checks a finished feature against the original plan and architecture boundaries, returning issues ranked critical, important, or minor, and never autofixes anything so the developer retains control.",
+    "The 'recover' skill diagnoses which failure mode is active when something breaks (targeted bug, polluted context, or wrong earlier assumption) and returns the correct remediation, replacing a frustrated afternoon with one prompt.",
+    "The stack for Job Pilot is Next.js, Insforge (auth, database, file storage, with an MCP server so the agent reads the live schema directly), Browserbase with the Stagehand SDK for real managed-browser automation, GPT-4o for intelligence, and PostHog for analytics."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI Widens the Skill Gap, Not Closes It"
+    },
+    {
+      "t": 62,
+      "title": "Job Pilot Demo and Five Agent Skills"
+    },
+    {
+      "t": 183,
+      "title": "Why Reactive Prompting Fails at Scale"
+    },
+    {
+      "t": 270,
+      "title": "Nine Context Files Before Any Code"
+    },
+    {
+      "t": 361,
+      "title": "The Five Skills and What Each Prevents"
+    },
+    {
+      "t": 602,
+      "title": "The Full Workflow Loop"
+    },
+    {
+      "t": 739,
+      "title": "Stack Selection and Why Each Tool Earns Its Spot"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ee0fab278d5160b5"
 }

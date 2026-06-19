@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Open Notebook is a self-hosted, open-source alternative to Google NotebookLM that allows developers to manage documents, code, research, and AI workflows with an API. It supports features like grounded question-answering over custom sources and podcast generation from documents.",
-  "writeup": "This video from Better Stack covers Open Notebook, a self-hosted, open-source alternative to Google NotebookLM aimed at developers who want control over their documents, code, research, and AI workflows. It demonstrates the tool's core capabilities: document ingestion, grounded question-answering, and podcast generation from source documents. The distinguishing feature is API access, which allows Open Notebook to be integrated into custom pipelines rather than used only through a hosted interface.",
-  "wh": "75510e6e5b8d2e9d",
+  "writeup": "Open Notebook is a self-hosted, Docker-first alternative to Google NotebookLM with 27,000+ GitHub stars, built around privacy and developer extensibility. Where NotebookLM locks users into Gemini and Google infrastructure, Open Notebook lets teams run any provider including local models via Ollama, customize AI podcast generation with configurable speaker profiles, and integrate research workflows through a REST API. The video benchmarks it against NotebookLM and AnythingLLM, laying out the concrete trade-offs: more control and privacy at the cost of setup friction and polish.",
+  "wh": "4c110970cb3b53ea",
   "concepts": [
     {
       "slug": "retrieval-augmented-generation",
@@ -60,5 +60,50 @@
       "channel": "AI Search",
       "score": 0.594
     }
-  ]
+  ],
+  "key_points": [
+    "Open Notebook's REST API is its key differentiator for developers, enabling automated workflows such as generating research briefings from GitHub issues or piping outputs into Slack, Linear, or Notion, none of which are possible with NotebookLM.",
+    "Model flexibility lets users choose any hosted or local provider through Ollama, trading off quality, speed, cost, and privacy per task rather than being locked into a single vendor.",
+    "The podcast generator goes beyond NotebookLM's fixed format: users can define multiple speaker profiles (for example a product manager and a back-end developer debating an architecture doc) to make dense RFCs, white papers, or API specs easier to consume.",
+    "Against AnythingLLM, Open Notebook is narrower in scope but more focused on the notebook-style grounded-research experience; AnythingLLM wins on ease of entry and no-code agent workflows.",
+    "The stack is a modern front end, Python back end, SurrealDB, and an AI abstraction layer designed to be extended, not just used, which distinguishes it from typical AI wrappers.",
+    "Setup is Docker-first, which is the primary barrier: it is not a one-download app, and output quality depends on the models and configuration the user brings."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Open Notebook Introduction"
+    },
+    {
+      "t": 31,
+      "title": "What Open Notebook Actually Is"
+    },
+    {
+      "t": 121,
+      "title": "Docker Setup and Notebook Workflow"
+    },
+    {
+      "t": 181,
+      "title": "Model Selection and Podcast Generator"
+    },
+    {
+      "t": 271,
+      "title": "Comparison to NotebookLM and AnythingLLM"
+    },
+    {
+      "t": 390,
+      "title": "Wins and Complaints"
+    },
+    {
+      "t": 451,
+      "title": "Honest Take and Stack Overview"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bc1f658967513b96"
 }

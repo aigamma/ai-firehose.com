@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "MCP tools can return data alongside bundled HTML resources that VS Code renders in sandboxed iframes within chat windows. The UI maintains live bidirectional communication with a backend server to fetch updated data and render interactive visualizations like flame graphs, checkout flows, and architecture diagrams without exposing system access.",
-  "writeup": "",
-  "wh": "bd82471ca07191f6",
+  "writeup": "Microsoft developer advocates Madelaine and Liam Hampton introduce MCP apps, a mechanism that extends the Model Context Protocol so that server tools can return rich interactive HTML components rendered inside a sandboxed iframe in VS Code, rather than plain text. The talk moves from architecture (hosts, clients, servers, MCP resource references) through real adoption by Shopify, Excalidraw, and Figma, and closes with a live flame-graph demo that profiles a Go program using pprof and surfaces the result as an interactive React UI inside GitHub Copilot. The through-line is that keeping users inside a single chat context requires genuine bidirectional UI, not link-return workarounds.",
+  "wh": "3392508bc93290a1",
   "concepts": [
     {
       "slug": "model-context-protocol",
@@ -64,5 +64,54 @@
       "channel": "Better Stack",
       "score": 0.484
     }
-  ]
+  ],
+  "key_points": [
+    "MCP apps work by having the MCP server return a resource reference pointing to a server-generated HTML element; the host (VS Code) fetches that HTML and renders it in a sandboxed iframe, while GitHub Copilot acts as the client maintaining the one-to-one server connection, keeping the two roles distinct.",
+    "The canonical three-part structure of an MCP app is: the tool layer (LLM plus host), the resource layer (bundled HTML UI, which can be React, Vue, Svelte, or vanilla JS), and the link between them that lets the host recognize a data response paired with a renderable UI.",
+    "Shopify is actively building MCP apps with a hard requirement that rendered checkout components match their brand identity exactly as on the company website, so the full purchase flow can complete inside the chat without redirecting to a browser.",
+    "Excalidraw's MCP server replaces the ASCII-art workaround of early MCP by generating interactive, movable architecture diagrams directly in the chat, and Claude Code ships this integration by default.",
+    "The live demo profiles a Go program containing a bubble sort and Fibonacci implementation using Go pprof over 5 seconds, with a locally running TypeScript MCP server bundling, running, and profiling the code, then passing structured results to a React flame-graph component that renders inside Copilot in VS Code.",
+    "For security, Microsoft recommends installing MCP servers only from the VS Code extensions marketplace or GitHub rather than arbitrary internet sources, because unvetted servers can contain malicious code."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introductions and Session Agenda"
+    },
+    {
+      "t": 61,
+      "title": "MCP Protocol Overview: Hosts, Clients, and Servers"
+    },
+    {
+      "t": 211,
+      "title": "The Problem with Text-Only MCP Responses"
+    },
+    {
+      "t": 271,
+      "title": "What MCP Apps Are and How They Work"
+    },
+    {
+      "t": 393,
+      "title": "Use Cases: Data Exploration, E-Commerce, and Brand Fidelity"
+    },
+    {
+      "t": 570,
+      "title": "Who Is Building MCP Apps Today"
+    },
+    {
+      "t": 601,
+      "title": "Live Demo Setup: Flame Graph MCP App in VS Code"
+    },
+    {
+      "t": 751,
+      "title": "Profiling Go Code with pprof and the React Flame Graph UI"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8792c8a1140c5acf"
 }

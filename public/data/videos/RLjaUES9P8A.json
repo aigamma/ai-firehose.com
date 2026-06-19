@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Nate Herk conducted a 100-hour empirical comparison of Claude Code and ChatGPT Codex using identical prompts and build tasks side by side. The video presents comparative findings on performance, pricing, and suitability for coding automation, with stated surprises about one tool's capabilities.",
-  "writeup": "",
-  "wh": "aa6ddb1b13761759",
+  "writeup": "A month-long hands-on comparison of Claude Code and OpenAI Codex as agentic coding systems, evaluated across features, pricing, and three concrete use cases. The core argument is that both tools have converged on the same foundational capabilities (MCP support, hooks, sub-agents, skills format, cloud delegation, desktop apps, VS Code extensions) so the real question is which workflow each tool enables better. Claude Code leads on customization depth and autonomous orchestration; Codex leads on a tighter end-to-end shipping pipeline with native Git work trees, an in-app browser, and polished computer-use QA flows.",
+  "wh": "4512f43e6d3084d0",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -56,5 +56,54 @@
       "channel": "Chase AI",
       "score": 0.643
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code currently offers 30 hook events versus Codex's 6, giving roughly 5x more granularity for injecting automated behavior at every stage of the agent workflow, from prompt submission to session start to tool execution.",
+    "Claude Code can autonomously spawn sub-agents (planner, explorer, code reviewer) when it decides a task requires them; Codex's documentation explicitly states it will not spawn sub-agents unless the user asks, making its delegation model manual by design.",
+    "Codex builds Git work trees into every parallel thread by default, allowing multiple tasks to run simultaneously without conflicting with the main branch, and the desktop app lets users review, stage, commit, and push from a single window.",
+    "Codex includes a built-in in-app browser for reviewing shipped work and leaving visual comments on the page, keeping the entire loop (code, run, inspect, comment) inside one desktop window rather than switching to an external browser.",
+    "Codex has a polished computer-use QA flow where instructing it to QA a built app causes it to open the app, click around, find bugs, and log them with severity ratings, expected versus actual behavior, reproduction steps, and a triage summary, a first-party flow Claude Code has not shipped yet.",
+    "Both tools share the same skills format (a markdown file with YAML front matter dropped into a folder), both support MCP, both have plugin marketplaces, and Codex is included at no extra cost in every paid and free ChatGPT plan, whereas Claude Code has no free tier."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: The OpenAI Comeback Thesis"
+    },
+    {
+      "t": 30,
+      "title": "Claude Code Overview"
+    },
+    {
+      "t": 91,
+      "title": "Codex Overview"
+    },
+    {
+      "t": 151,
+      "title": "Pricing and Availability"
+    },
+    {
+      "t": 180,
+      "title": "Subjective Feel: Creative vs. Instructable"
+    },
+    {
+      "t": 210,
+      "title": "Where the Two Tools Overlap"
+    },
+    {
+      "t": 240,
+      "title": "Where Claude Code Excels"
+    },
+    {
+      "t": 361,
+      "title": "Where Codex Excels"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "afa43ccf63c51a83"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Tutorial on setting up and using Claude Code with Ollama to build agentic AI applications locally without paid APIs. Covers installation on Windows, LLM selection like Qwen 3.5, and demonstrates building a multi-agent travel app with Python and Flask UI.",
-  "writeup": "",
-  "wh": "8a978b0d5edc5582",
+  "writeup": "The video is a walkthrough for running Claude Code at zero cost by routing it through Ollama's local Anthropic-compatible API, which allows open-source models such as Qwen 3.5 to serve as the backend instead of Anthropic's paid service. The presenter installs Ollama and Claude Code on Windows, configures the PATH environment variable, selects an 11 GB local model, and then tasks Claude Code with generating a multi-agent Flask travel planner app from a single natural-language prompt. The demo illustrates both the capability and the limits of the approach: Claude Code autonomously scaffolds files, agents, HTML, CSS, and a README in roughly four minutes using 13.8k tokens, but the resulting project requires manual environment setup and debugging before it runs.",
+  "wh": "a48886393e5eec66",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -60,5 +60,53 @@
       "channel": "Tristen O'Brien",
       "score": 0.598
     }
-  ]
+  ],
+  "key_points": [
+    "Ollama exposes an Anthropic-compatible API endpoint that lets Claude Code treat a locally downloaded open-source model as its backend, eliminating API costs entirely.",
+    "On Windows, installing Claude Code via npm and then adding its binary path to the PATH environment variable are required steps before the Ollama launch command works; skipping them produces a 'Claude is not installed' error.",
+    "The Qwen 3.5 model used in the demo is approximately 11 GB; download time depends on connection speed and must complete before Claude Code can launch.",
+    "Claude Code generated a multi-agent architecture autonomously: a coordinating travel_agent.py manager plus separate Python files for tour-package, flight-offer, and hotel-offer agents, along with Flask routes, HTML pages, CSS, and a README, in about four minutes consuming 13.8k tokens.",
+    "The presenter explicitly frames Claude Code as a coding assistant, not a fully autonomous developer: the generated project does not run without additional environment configuration and debugging."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Method Overview"
+    },
+    {
+      "t": 30,
+      "title": "First Method: Built-in Ollama Claude Launch"
+    },
+    {
+      "t": 90,
+      "title": "Second Method: Installing Claude Code Separately"
+    },
+    {
+      "t": 150,
+      "title": "Navigating the Ollama Apps Page"
+    },
+    {
+      "t": 210,
+      "title": "Installing Claude Code and Fixing the PATH"
+    },
+    {
+      "t": 270,
+      "title": "Selecting and Downloading the Local Model"
+    },
+    {
+      "t": 330,
+      "title": "Prompting Claude Code to Build the Travel App"
+    },
+    {
+      "t": 450,
+      "title": "Reviewing Generated Files and Agent Architecture"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9bf4508f539dfdc3"
 }

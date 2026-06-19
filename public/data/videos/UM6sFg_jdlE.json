@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Kuba Rogut argues that \"RAG is dead\" claims misdiagnose the problem: retrieval itself remains valuable, but the narrow vector-search-only definition is obsolete. Modern RAG should combine vector search, full text search, regex, glob, and filters in an agentic loop. Cursor's indexed semantic search shows measurable gains in answer accuracy and code retention despite small per-query improvements.",
-  "writeup": "Kuba Rogut of Turbopuffer pushes back on the claim that RAG is dead, arguing the problem is a narrow definition rather than retrieval itself. The talk reframes RAG to span vector search, full text search, glob, regex, and filters applied iteratively by an agent, instead of treating retrieval as a single vector-similarity lookup. It also positions embeddings as cached compute justified by query volume. The takeaway: retrieval remains central to agentic workflows when defined broadly across multiple search methods.",
-  "wh": "23c2d1d07ddfccd9",
+  "writeup": "Kuba, a deployed engineer at TurboPuffer, argues that the \"RAG is dead\" discourse misidentifies what RAG actually is: retrieval covers vector search, BM25 full-text search, grep, glob, regex, and filters, not just a single embedding lookup. The real shift is from one-shot vector retrieval to iterative agentic search, where agents use a tool suite to progressively narrow and reason over context across multiple steps. A Cursor case study anchors the argument: upfront Merkle-tree-based codebase indexing delivers 12.5 to 13.5 percent accuracy gains on Cursor's internal benchmark (nearly 24 percent for the Composer model) and measurable retention improvements, illustrating that embeddings function as cached compute that pays off across repeated agent queries.",
+  "wh": "0a42a434e9a2ffa4",
   "concepts": [
     {
       "slug": "rag",
@@ -72,5 +72,50 @@
       "channel": "Cursor",
       "score": 0.534
     }
-  ]
+  ],
+  "key_points": [
+    "The \"RAG is dead\" framing collapses because simple vector search is only one retrieval mechanism; true retrieval-augmented generation encompasses BM25, grep, glob, regex, and filters alongside semantic search, and Google search volume for RAG hit a new inflection point in mid-2025.",
+    "Cursor indexes codebases with Merkle trees to detect unchanged files and avoid redundant re-chunking and re-embedding, then serves that index to agents at query time, yielding 12.5 to 13.5 percent accuracy gains on Cursor's internal benchmark and a near-24 percent gain for the Composer model.",
+    "Treating embeddings as cached compute separates per-session grep-and-repeat agents (Claude Code's early approach, which Boris Cherney confirmed did not use a vector DB) from upfront-index agents (Cursor): the one-time indexing cost amortizes across every subsequent query, saving tokens and latency at scale.",
+    "Jeff Dean's framing from a podcast appearance states the problem precisely: a trillion-token context window does not eliminate the need for staged retrieval; what agents need is the right million tokens, not a trillion at once.",
+    "Sophisticated production customers are no longer issuing a single vector query; they run multi-step agentic retrieval loops that combine semantic and full-text search iteratively, fetching only the context needed for each sub-step of the task.",
+    "Cursor's online A/B test showed a 2.6 percent improvement in code retention in large codebases and a 2.2 percent decrease in dissatisfied user requests from adding semantic search, with the effect appearing smaller only because semantic search is not invoked on every query."
+  ],
+  "chapters": [
+    {
+      "t": 7,
+      "title": "Talk Framing: RAG Is Dead?"
+    },
+    {
+      "t": 90,
+      "title": "Defining RAG and Agentic Search"
+    },
+    {
+      "t": 180,
+      "title": "Cursor: Merkle Tree Codebase Indexing"
+    },
+    {
+      "t": 302,
+      "title": "Cursor Benchmark Results"
+    },
+    {
+      "t": 360,
+      "title": "Claude Code and Embeddings as Cached Compute"
+    },
+    {
+      "t": 510,
+      "title": "From One-Shot RAG to Agentic Retrieval"
+    },
+    {
+      "t": 570,
+      "title": "Jeff Dean: Staged Retrieval Over Giant Context Windows"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a2719d8eefc83bbf"
 }

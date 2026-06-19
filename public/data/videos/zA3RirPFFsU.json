@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Model Context Protocol (MCP) is a standard protocol enabling AI applications and agents to connect with external tools, APIs, databases, and services through a common interface. The protocol uses JSON-RPC for communication between MCP clients and servers, supporting both local and remote server configurations, and is essential for building multi-agent AI systems with frameworks like LangGraph, CrewAI, and Claude Desktop.",
-  "writeup": "The video explains the Model Context Protocol (MCP), a standard framework that lets AI agents and applications connect with external tools, APIs, databases, and services. It covers the client-server communication model built on JSON-RPC, and the two transport options for local and remote servers: STDIO and HTTP. The relevance is MCP's role as infrastructure for multi-agent systems, with references to frameworks including LangGraph, CrewAI, and Claude Desktop. Key takeaways: the distinction between MCP client and MCP server, and how the protocol standardizes integration across local and remote architectures.",
-  "wh": "4432e22af07bdeeb",
+  "writeup": "A ground-up introduction to the Model Context Protocol (MCP) that builds the case through two concrete pain points: the explosion of bespoke API integration code in AI apps, and the inability to reuse that code across agentic frameworks such as LangGraph, OpenAI Agent SDK, and CrewAI. MCP resolves both by introducing a uniform client/server split where the AI app embeds only a thin MCP client that speaks JSON-RPC, while MCP servers encapsulate all integration complexity for any external resource, including REST APIs, databases, local files, GitHub, and internal systems. The through-line is portability and separation of concerns: one MCP server can be reused unchanged across every framework, and any number of servers can be composed inside a single multi-agent application.",
+  "wh": "70870aeb63235b01",
   "concepts": [
     {
       "slug": "model-context-protocol",
@@ -64,5 +64,49 @@
       "channel": "David Ondrej",
       "score": 0.554
     }
-  ]
+  ],
+  "key_points": [
+    "Without MCP, each external service (weather, Google Drive, GitHub, PostgreSQL) requires its own bespoke integration code written to that API's request and response format, and that code must be rewritten from scratch for every agentic framework (LangGraph, OpenAI Agent SDK, CrewAI, Agno) the developer adopts.",
+    "MCP splits the integration problem into two roles: an MCP client embedded in the AI application that handles only connection establishment, and an MCP server that owns all API authentication, request formatting, and response parsing, leaving the AI app with minimal integration surface.",
+    "All MCP communication travels over JSON-RPC, and this protocol is identical regardless of which agentic framework hosts the MCP client, making MCP servers portable and reusable across LangGraph, OpenAI Agent SDK, CrewAI, and Agno without modification.",
+    "In a multi-agent application each agent connects to its own MCP server (for example, a Tavily web-search server, a weather server, a GitHub server, and a Maps server), so the application avoids per-API authentication and documentation overhead for each agent separately.",
+    "MCP servers are not limited to REST APIs: the protocol covers local files, Google Drive, GitHub repositories, operating system tools, relational databases (PostgreSQL, MySQL), and internal company systems, making it a general-purpose external-resource interface for AI applications."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Problem: Bespoke API Integrations"
+    },
+    {
+      "t": 91,
+      "title": "Reusability Fails Across Frameworks"
+    },
+    {
+      "t": 181,
+      "title": "MCP Solution: Single Server, Any Framework"
+    },
+    {
+      "t": 330,
+      "title": "Client and Server: MCP Architecture"
+    },
+    {
+      "t": 421,
+      "title": "JSON-RPC and the Uniform Protocol"
+    },
+    {
+      "t": 601,
+      "title": "Multi-Agent Benefit: Per-Agent MCP Servers"
+    },
+    {
+      "t": 752,
+      "title": "MCP Beyond APIs: Files, Databases, OS Tools"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "033b146ed6817011"
 }

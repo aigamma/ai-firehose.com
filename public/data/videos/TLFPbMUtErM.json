@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "ChatGPT Images 2.0 is an AI image generator from OpenAI that handles a wide range of visual tasks including poster design, UI mockups, sprite sheets, and complex spatial reasoning. The tool demonstrates capabilities in text rendering, animation frame generation, diagram creation, and scene composition at scale.",
-  "writeup": "",
+  "writeup": "A systematic benchmark of GPT Image 2 against Google's image model across eight demanding prompts, from a 100-item anime poster grid and a cluttered Windows 11 desktop screenshot to branding decks, fashion infographics, pixel art sprite sheets, and data tables converted to bar charts. The through-line is text fidelity and compositional accuracy: GPT Image 2 consistently renders legible, correctly spelled text and accurately placed UI elements at high resolution, while the competing model produces misspellings, misaligned elements, and degraded detail at scale. The video is grounded in side-by-side generations for each prompt, making the quality gap concrete rather than impressionistic.",
   "wh": "0bb6ae2a02094fcf",
   "concepts": [
     {
@@ -60,5 +60,54 @@
       "channel": "AI Search",
       "score": 0.622
     }
-  ]
+  ],
+  "key_points": [
+    "GPT Image 2 handles dense text generation at scale with high accuracy, correctly rendering titles, channel names, spreadsheet data, and live-stream interface labels in complex scene prompts where the competing model produces widespread misspellings and gibberish.",
+    "The 100-poster anime grid test reveals a resolution ceiling in the competing model: faces and text degrade when the model must pack many distinct items into a single image, a limitation GPT Image 2 largely avoids by maintaining per-item detail.",
+    "Multi-reference image input lets GPT Image 2 ingest a table of AI model specs (name, context window, price per million tokens, speed, latency) and convert it accurately into bar charts with correct values and labels, while the competing model omits models, misspells names, and inserts bars for blank entries.",
+    "The pixel art sprite sheet test (5x5 grid, princess warrior sprinting then slashing) produces a fluid, dynamic animation loop from GPT Image 2 when fed through a sprite sheet animator, versus a nearly static result from the competing model.",
+    "GPT Image 2 accepts multiple reference images for editing and compositional tasks, not only text-to-image generation, which broadens its utility for branding, product catalog, and UI mockup workflows.",
+    "The branding identity board prompt (logo, construction grid, mood board, hex color palette, typography, and application mock-ups on one canvas) is fulfilled by both models, but GPT Image 2 produces cleaner layout and more accurate geometric guidelines, while the competing model renders results that read as cartoonish."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI-Generated Examples Intro"
+    },
+    {
+      "t": 32,
+      "title": "Anime Poster Grid Test"
+    },
+    {
+      "t": 120,
+      "title": "Windows 11 Desktop Screenshot"
+    },
+    {
+      "t": 240,
+      "title": "YouTube and TikTok UI Screenshots"
+    },
+    {
+      "t": 360,
+      "title": "Branding Identity Board"
+    },
+    {
+      "t": 480,
+      "title": "Fashion Infographic"
+    },
+    {
+      "t": 570,
+      "title": "Pixel Art Sprite Sheet"
+    },
+    {
+      "t": 630,
+      "title": "Data Table to Bar Charts"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "64c3a8a363b683fd"
 }

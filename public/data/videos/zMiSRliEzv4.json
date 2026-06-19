@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "PostHog is building an autonomous agent pipeline that detects product signals like rage clicks and error spikes, groups related issues using embeddings, analyzes the codebase, and automatically opens pull requests. The system collapses the manual triage-to-fix workflow into an automated background process.",
-  "writeup": "Joshua Snyder of PostHog describes an autonomous system that turns product signals such as rage clicks, errors, and Slack messages into pull requests through a background agent. The agent groups related signals, researches the codebase, and opens PRs to fix the underlying issues, compressing the path from signal detection to resolution. The talk covers the supporting machinery, including embeddings for grouping, information retrieval over the codebase, error recovery, and prompt optimization.",
-  "wh": "fd543aeff60edbae",
+  "writeup": "Josh from PostHog describes a production pipeline that converts observability signals (errors, logs, session replays, Slack messages) directly into GitHub pull requests without requiring a developer to look at a dashboard. The pipeline runs a Claude-powered research agent in a Modal sandbox, groups signals by LLM-generated semantic queries rather than raw embeddings, assesses actionability, then clones the repo, writes a fix, and iterates the PR until CI is green. The central argument is that the current observe-investigate-ticket-PR cycle takes hours to days and is the right target for full automation.",
+  "wh": "ba8c2e679a05b69c",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,58 @@
       "channel": "AI Jason",
       "score": 0.545
     }
-  ]
+  ],
+  "key_points": [
+    "Off-the-shelf embedding models cluster signals by structural type (all errors together, all Slack messages together) rather than by the underlying problem, so PostHog switched to embedding LLM-generated queries derived from each signal, which made cross-source grouping work significantly better.",
+    "The research agent runs the Claude agent SDK inside a Modal sandbox with three tool sources: PostHog's own MCP server for pulling in additional correlated data, codebase context, and external MCPs (Linear and Notion) that ground the agent's reasoning and improve result quality.",
+    "After research, the pipeline routes each grouped report through an actionability gate: not enough data returns it to the pool, ambiguous product decisions go to a human inbox, and immediately actionable problems (most reliably from error tracking sources like Sentry-style data) proceed to automated PR creation.",
+    "The execution agent snapshots the Modal sandbox after writing the initial fix; when CI fails or a reviewer leaves a comment, the snapshot is rehydrated and the agent continues iterating until the PR is green, so developers wake to mergeable PRs rather than CI failures.",
+    "Evals on representative production data are essential: vibe-checking the pipeline on local data produced misleading confidence, and only running against real customer data revealed the failure modes that mattered.",
+    "The pipeline handles public event sources with an LLM safety classifier at ingestion time to detect and drop adversarially crafted signals before they reach the grouping and research stages."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Vision"
+    },
+    {
+      "t": 91,
+      "title": "Current Observability Workflow and Its Cost"
+    },
+    {
+      "t": 180,
+      "title": "The Automated Pipeline Goal"
+    },
+    {
+      "t": 270,
+      "title": "Pipeline Overview: Ingestion and Normalization"
+    },
+    {
+      "t": 330,
+      "title": "Signal Grouping and the Embedding Problem"
+    },
+    {
+      "t": 450,
+      "title": "Research Agent Design"
+    },
+    {
+      "t": 540,
+      "title": "Actionability Assessment"
+    },
+    {
+      "t": 600,
+      "title": "Execution, PR Creation, and Iteration"
+    },
+    {
+      "t": 660,
+      "title": "Lessons Learned"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "7ef7bb97fc66f466"
 }

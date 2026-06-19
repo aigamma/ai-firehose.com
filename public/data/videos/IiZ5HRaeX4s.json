@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Austin Marchese demonstrates four Claude Code projects to increase productivity: an AI Board of Advisors, a niche command center, an AI-optimized personal website, and an internal operating system. The video emphasizes hands-on project building over passive tutorial consumption.",
-  "writeup": "",
-  "wh": "328fbe6a12a648ef",
+  "writeup": "The video walks through four Claude Code projects aimed at non-technical builders: a personal Board of Advisers (AI clones of chosen experts, queried via a custom /ask the board skill), a Niche Command Center (a personal-use tool built for a real workflow, demonstrated as a finance tracker), an AI-optimized personal website with a preloaded 'Ask AI about me' block, and a Hostinger MCP server deployment path that keeps the entire build-and-deploy loop inside a single Claude Code session. The through-line is that each project is concrete, immediately useful, and deliberately narrow in scope so iteration replaces perfection.",
+  "wh": "6f13b7f5b4c5b48c",
   "concepts": [
     {
       "slug": "claude-code",
@@ -60,5 +60,46 @@
       "channel": "Austin Marchese",
       "score": 0.656
     }
-  ]
+  ],
+  "key_points": [
+    "The Board of Advisers project ingests a chosen expert's public content (YouTube links pasted directly into Claude) to build an AI clone, then a custom Claude Code skill named 'ask the board' loops through every board member and synthesizes their responses to a single question.",
+    "Voice-to-text tools such as WhisperFlow or the free open-source alternative Hex are recommended for answering Claude's interview questions, with the stated speed gain described as roughly 10x faster than typing.",
+    "The Niche Command Center is intentionally built for personal use only, removing audience pressure and analysis paralysis; a planning prompt interviews the builder with technical guardrails baked in before any code is generated, following what is described as a universally agreed best practice.",
+    "AI SEO is the organizing concept for the personal website project: Claude generates structured content about the site owner, and an 'Ask AI about me' block at the bottom of each page carries preloaded prompts linking directly to each major AI provider so a visitor can query that AI about the owner in one click.",
+    "The Hostinger MCP server (their Claude Code connector) takes an API key and lets Claude handle the full deployment of a Node.js app from the terminal; if a deploy fails, Hostinger's AI troubleshooter scans the logs and feeds the diagnosis back to Claude for an in-session fix.",
+    "Custom skills are described as reusable, multi-step prompts callable by a slash command; the /ask the board skill is the concrete example, automating a loop over every board member without the user re-specifying each one."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Project 1: Board of Advisers Overview"
+    },
+    {
+      "t": 91,
+      "title": "Building the Ask the Board Skill"
+    },
+    {
+      "t": 150,
+      "title": "Project 2: Niche Command Center"
+    },
+    {
+      "t": 271,
+      "title": "Planning and Building the MVP"
+    },
+    {
+      "t": 390,
+      "title": "Project 3: AI-Optimized Personal Website"
+    },
+    {
+      "t": 481,
+      "title": "Deploying With the Hostinger MCP Connector"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8682c091c6ef4f41"
 }

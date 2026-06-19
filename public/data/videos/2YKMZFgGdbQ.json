@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A tutorial on building agentic AI applications using Claude Code across three interfaces: desktop app, terminal CLI, and VS Code integration. The example application is an AI Resume and Cover Letter Generator with features for personalization, skill suggestions, and improvement recommendations. The tutorial covers installation, setup, API key configuration, and local deployment.",
-  "writeup": "",
-  "wh": "748715d0fc1bfe97",
+  "writeup": "A hands-on walkthrough of Claude Code that builds a fully functional AI resume and cover letter generator from a single natural-language prompt, using FastAPI on the backend and HTML/CSS/JS on the frontend. The video covers all three access surfaces (desktop app, terminal, VS Code), demonstrates plan mode and model selection, then pivots to the CLAUDE.md file as the practical solution to Claude Code's 200k-token context window limit. The through-line is practical workflow: how to structure a session so the agent stays effective as a project grows.",
+  "wh": "3fdda8ab480b1513",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.68
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code offers three distinct access surfaces: a desktop app with a chat/co-work/code tab layout, a terminal CLI suited to technical users, and an IDE extension for VS Code, each producing files on the local machine.",
+    "Model selection carries a concrete recommended strategy: use Opus for the initial project build because it handles complex tasks with fewer mistakes, then switch to Sonnet for incremental edits and improvements; Haiku is fast but lightweight and less suited for greenfield builds.",
+    "Plan mode, enabled before submitting a prompt, has Claude generate a reviewable structured plan first; individual sections can be commented on and modified before the agent begins writing files, giving a low-cost correction point before any code is generated.",
+    "Claude Code's 200k-token context window is consumed by the full session history including plans, code, errors, and iterations; once the limit is reached, the agent begins silently dropping the oldest messages rather than crashing, which can degrade output quality.",
+    "The CLAUDE.md file is the standard remedy for context-window degradation: it persists project-level context across sessions so a fresh session can be started without the agent losing knowledge of the project's architecture, decisions, and current state.",
+    "The /context slash command within a Claude Code session reports current token consumption against the 200k-token window limit, giving a quantitative signal for when to start a new session backed by a CLAUDE.md."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Claude Code Is"
+    },
+    {
+      "t": 92,
+      "title": "Three Access Methods"
+    },
+    {
+      "t": 182,
+      "title": "Building the Resume Generator"
+    },
+    {
+      "t": 210,
+      "title": "Plan Mode and Model Selection"
+    },
+    {
+      "t": 390,
+      "title": "File Generation and Project Structure"
+    },
+    {
+      "t": 601,
+      "title": "API Key Setup and Running the App"
+    },
+    {
+      "t": 630,
+      "title": "App Demo Walkthrough"
+    },
+    {
+      "t": 663,
+      "title": "CLAUDE.md and Context Window Management"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e637713389639a13"
 }

@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Educational video explaining diffusion models as a process and framework for generative AI. Covers the progression, strengths, weaknesses, and theoretical foundations of diffusion, including how it can be implemented with transformer architectures like DiT.",
-  "writeup": "",
-  "wh": "1398a94a6c76a3a4",
+  "writeup": "A conversation between Caleb (Kale Bytes Code) and Julia Turk clarifying the conceptual landscape around diffusion models: what diffusion actually is (a training framework, not an architecture), how it relates to autoregressive and world models, and why GPT-style models remain dominant despite diffusion's theoretical advantages. The through-line is distinguishing diffusion as a superset framework that can wrap transformer architecture, tracing its history from the 2015 nonequilibrium thermodynamics paper through DDPM (2020), stable diffusion (2022), and flow matching, and honestly accounting for when diffusion's data-efficiency edge applies and when it does not.",
+  "wh": "4b16ed31945bc0a2",
   "concepts": [
     {
       "slug": "diffusion-models",
@@ -64,5 +64,50 @@
       "channel": "Better Stack",
       "score": 0.64
     }
-  ]
+  ],
+  "key_points": [
+    "Diffusion and transformers are orthogonal: transformers are a model architecture specifying how weights connect, while diffusion is a training framework specifying how to corrupt data, define the training objective, and run inference, which means a transformer backbone can be used inside a diffusion framework rather than competing with it.",
+    "Diffusion models outperform autoregressive models in data-scarce regimes (experiments used 25 to 100 million tokens), but this advantage disappears at the scale most LLMs actually train at, which exceeds 10 trillion tokens, so the claimed data efficiency does not translate into a practical production advantage today.",
+    "The core mechanism of diffusion is synthetic data augmentation: starting from one clean image and applying 1,000 incremental Gaussian noise steps produces 1,000 distinct training samples, allowing the model to learn how much noise was added at each step according to a known schedule.",
+    "Two historical schools of thought divided early diffusion research: a discrete-time school using Markov chains (which required solving every denoising step sequentially from step 1,000 back to zero at inference) and a later continuous-time school from Stanford using differential equations, which maps more faithfully to physical diffusion and imported centuries of existing mathematics.",
+    "The DDPM paper (2020) was the inflection point that made diffusion tractable: it reframed the training objective from predicting the mean and covariance of the noise distribution to simply predicting the noise itself, dramatically simplifying training and enabling DDIM's non-Markovian sampling.",
+    "Flow matching, adopted after 2022, replaced the multi-hundred-step inference loop with a few steps by learning straighter probability paths, delivering the speed gains that made diffusion-based image generation practical without sacrificing the quality gains stable diffusion demonstrated."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Diffusion vs. Autoregressive Models"
+    },
+    {
+      "t": 92,
+      "title": "Diffusion as a Framework, Not an Architecture"
+    },
+    {
+      "t": 150,
+      "title": "Data Efficiency and Its Limits"
+    },
+    {
+      "t": 300,
+      "title": "Two Schools: Markov Chains vs. Differential Equations"
+    },
+    {
+      "t": 391,
+      "title": "How Diffusion Works: The Noising Process"
+    },
+    {
+      "t": 511,
+      "title": "History from 2015 to Flow Matching"
+    },
+    {
+      "t": 600,
+      "title": "The DDPM 2020 Inflection Point"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bd0d10e3c927df39"
 }

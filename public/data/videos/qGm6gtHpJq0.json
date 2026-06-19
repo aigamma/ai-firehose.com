@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Cole Medin demonstrates optimizing an AI Dark Factory codebase generator by combining Claude Opus for deep reasoning tasks with Kimi K2.6 for faster implementation and validation. The approach allocates stronger models only where reasoning quality matters most while maintaining token efficiency at scale.",
-  "writeup": "",
-  "wh": "b1a93bf952cd023e",
+  "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
+  "wh": "be5a6068802cad48",
   "concepts": [
     {
       "slug": "model-ensembling",
@@ -64,5 +64,50 @@
       "channel": "IBM Technology",
       "score": 0.583
     }
-  ]
+  ],
+  "key_points": [
+    "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
+    "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
+    "Open-source alternatives such as Kimi K2.6, Qwen 3, and MiniMax M2.7 perform decently inside a well-structured Archon harness but consistently fall short of Opus or GPT on final pull-request quality.",
+    "Anthropic's 5-hour and weekly rate limits, tightened in mid-2025, make it impractical to route every workflow node through Opus, driving interest in mixed-provider strategies that reserve the stronger model for a subset of steps.",
+    "Two competing theories for where to assign Opus in a mixed workflow: use it for planning so the weaker executor follows a high-quality spec, or use it for implementation so it can self-correct a mediocre plan during code generation; the host leans toward planning but acknowledges the question is unresolved.",
+    "Switching the model for a given workflow node in Archon requires only changing the provider field on that node, with no prompt changes, making iteration across these strategies cheap."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Dark Factory Overview"
+    },
+    {
+      "t": 90,
+      "title": "Full Autonomous Pipeline: Issue to Deploy"
+    },
+    {
+      "t": 241,
+      "title": "Regression Testing and Self-Healing"
+    },
+    {
+      "t": 330,
+      "title": "Token Cost and Rate Limit Pressure"
+    },
+    {
+      "t": 510,
+      "title": "Open-Source Models vs. Frontier Quality"
+    },
+    {
+      "t": 570,
+      "title": "Mixed-Provider Strategy and Rationale"
+    },
+    {
+      "t": 600,
+      "title": "Planning vs. Implementation: Where Opus Fits"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "27bdb722567fa360"
 }

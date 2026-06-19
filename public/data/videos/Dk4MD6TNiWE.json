@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Antigravity 2.0 is an agentic platform that orchestrates specialized sub-agents for software development tasks. It unbundled from a simple IDE into a full ecosystem with a desktop agent manager, CLI, advanced SDK, and custom IDE. The platform enables developers to use voice prompts and skills to coordinate parallel agents for building, localizing, and deploying applications.",
-  "writeup": "This Google Cloud Tech video walks through Google Antigravity 2.0, an agentic software engineering platform that has unbundled from a single IDE into a standalone desktop agent manager, a CLI, an SDK, and a custom IDE. It demonstrates orchestrating parallel sub-agents for code generation, deployment, and testing, driven by voice prompts and slash commands. A key feature is context compression through reusable skills, which keeps agent context manageable across tasks. The shift from one IDE to a set of separate components signals how agentic development tooling is being restructured around multi-agent orchestration.",
-  "wh": "cb078308adec4621",
+  "writeup": "An interview with Roddy Davis, a lead engineer on Google Antigravity (formerly Firebase Studio), on how expert engineers integrate agentic tools into daily practice without surrendering judgment. Davis covers his workflow across the Antigravity IDE, CLI, SDK, and agent manager, with particular depth on the role of skills, architecture discipline, and selective code review. The through-line is a concrete, practitioner-level argument that flat architectures and well-scoped context make agents faster to steer and easier to audit.",
+  "wh": "2b310586e3d586e7",
   "concepts": [
     {
       "slug": "agent-orchestration",
@@ -64,5 +64,58 @@
       "channel": "Google Antigravity",
       "score": 0.745
     }
-  ]
+  ],
+  "key_points": [
+    "Skills in Antigravity compress reusable context into triggerable workflows: Davis maintains global skills (Obsidian, Flutter, Firebase) and per-project skills (design systems such as Shadcn) so the model inherits the right type vocabulary without lengthy prompts on every run.",
+    "Davis favors flat architectures where state, UI, and data layers are strictly separated, not because it is easier, but because deviations are immediately visible, letting the engineer steer the agent back on track before drift compounds.",
+    "Code review effort scales with stakes: HTML/CSS for a marketing site gets a visual pass only, while Go backend API contracts and ABI interfaces receive deep scrutiny because a schema change cascades to every downstream consumer.",
+    "A high-leverage review pattern is writing the first one or two implementations by hand, then letting the agent extend the pattern; this eliminates guessing about what the agent will produce because it is copying an existing example.",
+    "MCP servers provide tool-level context that changes output quality: Davis keeps a Flutter/Dart MCP server always enabled in Antigravity so the agent can trigger hot reloads and DevTools rather than reasoning about them abstractly.",
+    "Davis used Antigravity to build a macOS Finder extension in Swift and a Chrome extension, both from a single prompt, illustrating that agents can now target platform-native targets a typical engineer would avoid due to unfamiliarity with the language."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro: 10x Expectations and the Agent Setup Question"
+    },
+    {
+      "t": 90,
+      "title": "Roddy Davis: Background and Google Antigravity Role"
+    },
+    {
+      "t": 120,
+      "title": "How Agents Reduce Toil for Expert Engineers"
+    },
+    {
+      "t": 210,
+      "title": "Skills as Compressed Context and Triggerable Workflows"
+    },
+    {
+      "t": 330,
+      "title": "Live Demo: Antigravity Customizations and MCP Servers"
+    },
+    {
+      "t": 360,
+      "title": "Code Review Philosophy: Architecture Over Line-by-Line"
+    },
+    {
+      "t": 450,
+      "title": "Flat Architectures and Steering Agents Back on Track"
+    },
+    {
+      "t": 570,
+      "title": "Selective Review by Stakes: UI vs. API Contracts"
+    },
+    {
+      "t": 660,
+      "title": "Building Real Tools: Swift Finder Extension from a Prompt"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e2d4cdd4905bee70"
 }

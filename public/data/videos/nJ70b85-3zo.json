@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "NeuralNine presents a full beginner crash course on JavaScript covering syntax, data types, control flow, functions, arrays, classes, and HTML integration. The tutorial spans fundamentals from variables through object-oriented programming in a structured format.",
-  "writeup": "",
+  "writeup": "A fast-paced JavaScript crash course taught through Node.js at the terminal rather than in a browser context, framing JavaScript as the essential second language regardless of a programmer's primary background. The transcript covers variable declaration keywords (let, var, const), scoping rules, hoisting behavior, and JavaScript's dynamic type system, with the stated plan to continue through operators, functions, loops, and browser embedding. The through-line is demystifying JavaScript's genuinely confusing semantics for programmers who already know another language.",
   "wh": "4615d724590d6f8b",
   "concepts": [
     {
@@ -52,5 +52,45 @@
       "channel": "JavaScript Mastery",
       "score": 0.476
     }
-  ]
+  ],
+  "key_points": [
+    "JavaScript collapses all integer and floating-point values into a single 'number' type; arbitrarily large integers require the BigInt literal suffix 'n' (e.g. 123n), which is a distinct type with higher precision than number.",
+    "The three variable declaration keywords differ critically: var has function/global scope and is hoisted and initialized (accessing it before its declaration returns undefined, not an error), let has block scope and is hoisted but not initialized (accessing before declaration throws a ReferenceError), and const is block-scoped and immutable after assignment.",
+    "Hoisting in JavaScript means the engine moves variable declarations to the top of their scope before execution; only var gets an implicit undefined initialization, so a let in the same block shadows an outer binding from the very top of the block, meaning any access before the let line throws a ReferenceError even though an outer binding with the same name would otherwise resolve.",
+    "JavaScript is dynamically typed: the typeof operator at runtime reveals a value's type (number, string, boolean, undefined, bigint), and no type annotation is required at declaration.",
+    "The course runs entirely with Node.js at the command line (node main.js), not in a browser, making JavaScript testable without HTML and reinforcing that it is a general-purpose language rather than only a DOM scripting tool."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why JavaScript Is the Essential Second Language"
+    },
+    {
+      "t": 92,
+      "title": "Node.js Setup and Running Scripts"
+    },
+    {
+      "t": 120,
+      "title": "Hello World and console.log"
+    },
+    {
+      "t": 150,
+      "title": "Variables: let, var, and Scope"
+    },
+    {
+      "t": 301,
+      "title": "Hoisting and Initialization"
+    },
+    {
+      "t": 482,
+      "title": "Constants and Data Types"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2a477689388cf526"
 }

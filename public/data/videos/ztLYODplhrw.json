@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Google launched Antigravity 2.0, an AI code editor powered by Gemini 3.5 Flash that forces developers to transition from direct coding to supervising AI agents that build code in parallel. The forced rollout represents Google's strategic push toward agentic AI in software development, though the messy migration has frustrated developers unprepared for this workflow shift.",
-  "writeup": "",
+  "writeup": "Google shipped Antigravity 2.0 as a forced automatic update in May 2026, converting what was a code editor into a multi-agent orchestration platform with a desktop app, a Go-rewritten CLI, a developer SDK, and a managed-agents API layer. The rollout sparked immediate backlash as traditional editing features vanished overnight, workspace configs corrupted, and the two Antigravity installations conflicted over the same directory. The video traces the architecture of the new platform, its pricing tiers, how it stacks up against Cursor and GitHub Copilot Workspace, and why the speed of Gemini 3.5 Flash (claimed 289 tokens per second) is the enabling constraint that makes parallel agent orchestration practical.",
   "wh": "d56e7fdf87132660",
   "concepts": [
     {
@@ -56,5 +56,54 @@
       "channel": "AICodeKing",
       "score": 0.679
     }
-  ]
+  ],
+  "key_points": [
+    "Antigravity 2.0 is not an incremental update: it ships five new components (standalone desktop app, Go-based CLI, developer SDK, managed-agents API, and Google Cloud enterprise path) and repositions the product as what Google calls an agent control tower, where multiple AI agents work on different parts of a project simultaneously.",
+    "Google's managed-agents layer lets developers spin up an agent via a single Gemini API call; that agent can reason, use tools, and execute code in an isolated Linux environment that persists its state across subsequent calls, giving developers access to the same agent infrastructure Google uses internally.",
+    "The Gemini CLI migration is mandatory: the deadline is June 18, 2026, after which the old Gemini CLI stops processing requests for all tiers (free, pro, and ultra), forcing a switch to the Antigravity CLI.",
+    "Google claims Gemini 3.5 Flash runs at 289 tokens per second, roughly four times the stated rates for Claude Opus 4.7 (67 t/s) and GPT 5.5 (71 t/s); the speed advantage is presented as the prerequisite for chained multi-agent workflows where bottlenecks compound.",
+    "The Google I/O live demo showed the platform building a complete operating system from scratch in 12 hours for under $1,000, using 93 simultaneous sub-agents, 2.6 billion tokens, and 15,000 model requests, finishing with a live run of Doom on the resulting OS.",
+    "Against competitors on price, Antigravity Ultra starts at $100/month versus Cursor at $20 and GitHub Copilot Workspace at $19; Google is not competing on price but on depth of multi-agent capability and integration with Firebase, Android, and Google Cloud."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Forced Update Backlash"
+    },
+    {
+      "t": 61,
+      "title": "What Antigravity 2.0 Actually Is"
+    },
+    {
+      "t": 120,
+      "title": "Desktop App and Agent Control Tower"
+    },
+    {
+      "t": 180,
+      "title": "CLI Migration Deadline"
+    },
+    {
+      "t": 240,
+      "title": "Managed Agents API"
+    },
+    {
+      "t": 301,
+      "title": "Gemini 3.5 Flash Speed Claims"
+    },
+    {
+      "t": 360,
+      "title": "Google I/O Demo: OS in 12 Hours"
+    },
+    {
+      "t": 420,
+      "title": "Pricing Tiers and Competitive Positioning"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c8c5481b601fc24c"
 }

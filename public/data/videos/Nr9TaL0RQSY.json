@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Tutorial on using Claude Code and Remotion to generate professional video animations from text prompts. Covers installation, visual style configuration, plan mode workflow, and end-to-end animation creation in approximately ten minutes without manual editing.",
-  "writeup": "",
+  "writeup": "This video walks through a solo-creator workflow for producing professional motion-graphics animations without a video editor: the host records a talking-head video, passes it to Claude Code, which runs Whisper AI to extract word-level timing and context, then generates Remotion components that animate each section of the narration. The practical through-line is that a single natural-language prompt, reinforced by a persistent style file and quality-anchor language, can replace an entire motion-design step. The result is a full library of timed animation clips the creator picks from during editing rather than scrambling to produce.",
   "wh": "bbe4bbb40665ac92",
   "concepts": [
     {
@@ -60,5 +60,53 @@
       "channel": "AI Master",
       "score": 0.668
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code uses Whisper AI internally to transcribe the source video, extracting not just word-level timing but the contextual meaning of each section, so the generated Remotion animations match both pacing and argument rather than serving as generic overlays.",
+    "Enabling plan mode in Claude Code (Shift+Tab before any prompt) is presented as the single most impactful procedural step: it forces Claude to plan the full animation structure before writing any code, consistently producing better output than prompting without it.",
+    "A persistent style file, created once and referenced in every subsequent prompt, ensures visual consistency across all videos; the style is seeded with a quality-anchor phrase such as \"looks like it cost $100,000,\" which Claude interprets as a concrete standard to meet.",
+    "Remotion renders a live browser preview of each animation component, allowing iterative refinement through specific natural-language feedback (for example, \"the text is overlapping the graph\") before a final MP4 render is triggered.",
+    "The workflow produces animations for every section of a video, not just highlights, giving the editor a full library of clips to draw from rather than requiring on-demand production mid-edit."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Workflow Demo Introduction"
+    },
+    {
+      "t": 61,
+      "title": "How Claude Code Handles the Video"
+    },
+    {
+      "t": 122,
+      "title": "What Happens Under the Hood"
+    },
+    {
+      "t": 150,
+      "title": "Setup and Installation"
+    },
+    {
+      "t": 182,
+      "title": "Plan Mode and Why It Matters"
+    },
+    {
+      "t": 210,
+      "title": "Style File and Quality Anchor Prompt"
+    },
+    {
+      "t": 330,
+      "title": "Live Preview and Iteration"
+    },
+    {
+      "t": 390,
+      "title": "System Summary"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "01c4a89ce45ed699"
 }

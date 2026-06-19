@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "ImagineArt Film Studio is an AI video generation platform that addresses character consistency in AI films through storyboard mode, multi-shot generation with camera presets, and an integrated timeline editor. The platform enables end-to-end filmmaking in the browser without external software like Premiere or After Effects.",
-  "writeup": "",
-  "wh": "e20b09b7dc73b8d4",
+  "writeup": "A sponsored walkthrough of Imagine Art Film Studio, demonstrating how a 60-second AI short film called Glitch was built inside a single browser tab with one consistent chrome robot character across four radically different environments. The core argument is that AI films fall apart not because the models are weak but because creators skip the story and shot list that real directors build first. The pipeline runs from a nine-shot beat sheet with explicit lens and aperture choices through storyboard mode (which locks character appearance across all shots), multi-shot generation with a presets panel for camera moves, an in-platform Extend tool for shots that need more runtime, and a built-in timeline editor for final assembly and export.",
+  "wh": "0a6c85e3644570fd",
   "concepts": [
     {
       "slug": "character-consistency",
@@ -68,5 +68,54 @@
       "channel": "David Ondrej",
       "score": 0.602
     }
-  ]
+  ],
+  "key_points": [
+    "Storyboard mode in Film Studio solves character drift by reading a logline plus full shot list and returning one connected board of keyframes, locking every detail of the character (plating, chest glow, proportions) across all nine frames regardless of environment.",
+    "The presets panel replaces roughly 20 prompt rewrites with single clicks: camera move, lens focal length, aperture, and focus mode are each a discrete control, so choices like 35 mm at F2 with a rack focus from briefcase to eyes translate directly into emotional story beats.",
+    "The Extend feature pushes a clip past the five-shot, 15-second ceiling by continuing the existing generation forward in the same visual style, lighting, lens, and motion physics, producing a single continuous-feeling shot rather than a visible splice.",
+    "Scene-level iteration mattered more than prompt crafting: the medieval landing took three passes, and only rewriting the environment description to include distance, silhouette, and purple dusk sky produced a castle that read as a destination rather than a set piece.",
+    "The in-platform timeline editor lets the filmmaker drag generated clips into sequence, trim tails, drop a music track, and add dissolves without leaving Film Studio, with a final 1080p MP4 export rendering in under two minutes.",
+    "The tool's real limits are the five-shot, 15-second multi-shot ceiling and the absence of any AI director layer, meaning the creator must supply all cinematic vocabulary (lens choice, aperture, camera movement, pacing) before touching a button."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Opening Short Film Demo"
+    },
+    {
+      "t": 42,
+      "title": "The AI Film Collage Problem"
+    },
+    {
+      "t": 91,
+      "title": "Shot List and Story Planning"
+    },
+    {
+      "t": 242,
+      "title": "Film Studio Dashboard Overview"
+    },
+    {
+      "t": 300,
+      "title": "Storyboard Mode and Character Consistency"
+    },
+    {
+      "t": 361,
+      "title": "Multi-Shot Mode and Presets Panel"
+    },
+    {
+      "t": 510,
+      "title": "Extend Feature for Long Takes"
+    },
+    {
+      "t": 571,
+      "title": "Timeline Assembly and Export"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "21f0eaf001983cf7"
 }

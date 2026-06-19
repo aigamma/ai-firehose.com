@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Pi is a minimalist coding agent framework with a small core supporting read, write, edit, and bash operations, where additional functionality is added via custom extensions. It works with multiple models including Kimi K2.6, MiniMax M2.7, and Qwen 3.6, and offers an alternative to frontier model APIs with strict rate limits.",
-  "writeup": "",
-  "wh": "e0b896f01202be8d",
+  "writeup": "A live stream walkthrough of Pied (pi), a minimal coding agent designed to be built upon rather than used as a monolithic tool. The session covers setting up Pied with a Kimi K2.6 subscription via the Kimi Code API, exploring the extensions marketplace (sub-agents, MCP adapters, web access), and the central thesis that harness engineering matters more than model choice for consistent results. The through-line is a concrete argument: as top-tier subscriptions degrade in value, a well-engineered harness running a cheap open-source model can match Opus-level output.",
+  "wh": "ea473163975dabac",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -60,5 +60,42 @@
       "channel": "Caleb Writes Code",
       "score": 0.573
     }
-  ]
+  ],
+  "key_points": [
+    "Pied is architected as a minimal coding agent with no sub-agents or heavy tooling shipped by default; users install only what they need from a community package catalog, analogous to an extension marketplace.",
+    "The presenter's core claim is that harness engineering is more important than model selection: a carefully structured workflow with a cheaper model such as Kimi K2.6 can produce results equivalent to running Opus on every task.",
+    "Pied supports a wide range of model providers out of the box, including OpenRouter, Kimi, GitHub Copilot, and Codex, without requiring workarounds; using Claude Pro or Max subscriptions with Pied is explicitly against Anthropic terms of service.",
+    "The session demonstrates Pied's meta-reasoning capability: it can read its own documentation and walk a user through modifying its own configuration or building a custom extension, which the presenter treats as a meaningful signal of agent self-awareness about its own process.",
+    "The presenter frames the near-term industry shift as one where expensive frontier models handle high-stakes planning phases (such as drafting a comprehensive spec with Opus) while cheaper, faster models handle research, implementation, and validation.",
+    "Argon, the presenter's open-source harness-engineering tool, already lists Pied as a supported AI assistant client alongside Claude and Codex, and the presenter plans to test whether Pied with Kimi can reliably replace Opus on the Argon codebase."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro to Pied and Minimal Agent Philosophy"
+    },
+    {
+      "t": 150,
+      "title": "Model Provider Support and Kimi Subscription"
+    },
+    {
+      "t": 240,
+      "title": "Extensions Marketplace Overview"
+    },
+    {
+      "t": 390,
+      "title": "Harness Engineering Over Model Choice"
+    },
+    {
+      "t": 540,
+      "title": "Live Setup: Switching Pied to Kimi Code API"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "74db8b3887e507fe"
 }

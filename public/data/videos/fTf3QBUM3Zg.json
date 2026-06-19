@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Antigravity is an agentic development platform that evolves the IDE into an agent-first era. It enables developers to manage agents across workspaces while maintaining a familiar AI IDE experience, with agents autonomously planning and executing complex end-to-end tasks across editor, terminal, and browser.",
-  "writeup": "",
-  "wh": "ce98132622ff81a2",
+  "writeup": "Episode 3 of Antigravity's mission report series covers the product polish shipped to Google's AI coding agent in the latest cycle. The update simplifies the chat view to surface final outputs and artifacts directly, consolidates sidebar status indicators, adds one-click chat archival, and noticeably improves conversation load times. The release also introduces a two-file configuration convention (gemini.md for global agent rules, agents.md for project-specific rules), extends kernel-level sandboxing from macOS to Linux, and confirms that multi-agent orchestration is already partially live via a browser sub-agent that offloads actuation from the main context window.",
+  "wh": "165a74c6739d5463",
   "concepts": [
     {
       "slug": "low-code-development",
@@ -64,5 +64,45 @@
       "channel": "Google Antigravity",
       "score": 0.762
     }
-  ]
+  ],
+  "key_points": [
+    "The chat view now surfaces only the final output and artifacts from the model, removing intermediate steps from the default display so agents running in parallel are easier to monitor.",
+    "Antigravity now reads agents.md in addition to gemini.md: gemini.md holds global rules that apply to every session, while agents.md carries project-specific rules checked into individual repositories.",
+    "Kernel-level sandboxing for terminal commands executed by the agent, previously macOS-only, has been extended to Linux in this release.",
+    "Per-project MCP configuration can largely be achieved today through skills, which operate on progressive discovery and can be scoped to individual repositories to focus the agent on relevant MCP tools.",
+    "Browser actuation in Antigravity is already handled by a sub-agent, keeping the main agent's context window less cluttered, and the team confirmed active experimentation with broader multi-agent systems."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Episode 3 Overview"
+    },
+    {
+      "t": 30,
+      "title": "Chat View and Sidebar Improvements"
+    },
+    {
+      "t": 60,
+      "title": "Configuration Files and Sandboxing"
+    },
+    {
+      "t": 91,
+      "title": "Community Builder Showcases"
+    },
+    {
+      "t": 121,
+      "title": "Q&A: Per-Project MCP Configs"
+    },
+    {
+      "t": 151,
+      "title": "Q&A: Multi-Agent Orchestration"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "1a2769b6047f5be5"
 }

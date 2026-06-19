@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Multi-vector search improves retrieval quality but requires brute-force scanning because HNSW indexing fails with MaxSim due to its asymmetric, query-dependent nature. Storing hundreds of token embeddings per document incurs roughly 167x more memory overhead than single-vector approaches, creating significant computational and storage costs at scale.",
-  "writeup": "",
+  "writeup": "This lesson examines the practical limitations of multi-vector search (ColBERT-style late interaction) before production deployment. MaxSim scoring breaks the two invariants HNSW requires: symmetric distances and query-independent neighbors, collapsing approximate nearest-neighbor search back to brute-force linear scans. Memory costs compound the problem: a 128-dimension ColBERT representation with 500 tokens per document consumes roughly 250 KB per document, compared to 1.5 KB for a 384-dimension single-vector embedding, a 167x gap that puts 1 million documents at 250 GB versus 1.5 GB. The video closes by previewing the module-3 mitigations that make multi-vector search viable at scale.",
   "wh": "e8135147b2b398ce",
   "concepts": [
     {
@@ -68,5 +68,49 @@
       "channel": "Qdrant Vector Search",
       "score": 0.547
     }
-  ]
+  ],
+  "key_points": [
+    "MaxSim violates both HNSW assumptions: the distance from query Q to document D does not equal D to Q, and each document's nearest neighbors shift depending on the query, so no static proximity graph can be precomputed and every query degrades to a full linear scan across all documents.",
+    "At 1 million documents, each MaxSim operation compounds to a million per-document calculations, and each of those calculations involves computing similarities across all query tokens and all document tokens before finding maxima and summing, making raw throughput far more expensive than single-vector dot products.",
+    "Storage math: single-vector search at 384 dimensions costs 1,536 bytes per document; ColBERT at 128 dimensions but 500 tokens per document costs roughly 250 KB, meaning multi-vector representations use approximately 167 times more memory and scale the gap wider as documents grow longer.",
+    "Three core mitigation strategies are previewed: quantization (converting floats to integers or bits, reducing vector size by up to 32x), pooling (combining similar token vectors to reduce count per document), and multi-stage retrieval (fast single-vector first-pass retrieval followed by MaxSim reranking on top candidates only).",
+    "MuVeRA is introduced as a fourth approach: it constructs HNSW-indexable approximations of multi-vector representations, restoring fast approximate search without abandoning the late-interaction scoring model entirely."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Multi-Vector Search Limitations Overview"
+    },
+    {
+      "t": 31,
+      "title": "Why HNSW Breaks with MaxSim"
+    },
+    {
+      "t": 102,
+      "title": "Linear Scan Cost at Scale"
+    },
+    {
+      "t": 120,
+      "title": "Memory Explosion: Storage Math"
+    },
+    {
+      "t": 180,
+      "title": "Specialized Hardware and Memory Strategies"
+    },
+    {
+      "t": 211,
+      "title": "Optimization Techniques Preview"
+    },
+    {
+      "t": 270,
+      "title": "Next Step: Qdrant Implementation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "b1d5ebe03652ec69"
 }

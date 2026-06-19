@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Hervé Bredin argues that ASR leaderboards mask real-world performance gaps by using headset audio, while table microphones show 2.3x worse error rates on the same model and dataset. Current voice AI benchmarks focus on single-speaker scenarios that do not reflect conversational challenges like speaker overlap and diarization error in noisy environments reaching 41%.",
-  "writeup": "",
-  "wh": "909ab74075416f42",
+  "writeup": "Hervé Bredin, co-founder of PyAnnote AI, makes the case that raw speech-to-text is only the first layer of conversation understanding: knowing who said what, when, and how they said it (prosody, stress, laughter, back-channels) is often as important as the words themselves. The talk defines speaker diarization precisely, walks through its technical pipeline from voice activity detection through segmentation and speaker identity assignment, and explains why the problem remains unsolved despite decades of community work. The through-line is that richer audio annotations, not just text, are what downstream LLMs and voice AI systems actually need to reason about conversations well.",
+  "wh": "8bd1e9f9363d075e",
   "concepts": [
     {
       "slug": "speaker-diarization",
@@ -68,5 +68,46 @@
       "channel": "IBM Technology",
       "score": 0.564
     }
-  ]
+  ],
+  "key_points": [
+    "Speaker diarization answers 'who speaks when' and is distinct from speech-to-text: Whisper produces word sequences but no speaker labels, which is why PyAnnote grew sharply after Whisper's release, reaching roughly 10K GitHub stars as of the talk.",
+    "Among the top seven most-downloaded audio models on Hugging Face (filtered by the audio tag and sorted by downloads), three of the first are speaker identity or diarization models, demonstrating how central the problem is to the speech ML community.",
+    "The diarization pipeline has three ordered stages: voice activity detection (is anyone speaking?), segmentation (finding speaker change points and overlapping speech regions), and speaker identity assignment; the output is anonymous labels (Speaker 1, Speaker 2) that can be permuted without affecting the evaluation metric, not actual names.",
+    "Speaker diarization is hard for structural reasons independent of acoustic noise: the number of speakers is unknown in advance, speaker identities are anonymous and permutation-invariant, overlapping speech must be detected, very short back-channel turns (a quiet 'Mhm') carry disproportionate conversational meaning, and speaker-time imbalances are common.",
+    "Precise timestamps matter beyond speaker labels: without them, interruptions cannot be detected, back-channels (a single 'yes' that signals agreement) are missed, and pauses between turns, which can signal uncertainty or emphasis, are invisible.",
+    "Diarization Error Rate (DER) is the standard benchmark metric for evaluating diarization systems, introduced in the talk via a live Python notebook that was made publicly available on GitHub."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Scope of Conversation Understanding"
+    },
+    {
+      "t": 121,
+      "title": "Transcription vs. Speaker Attributed Transcription"
+    },
+    {
+      "t": 241,
+      "title": "Why Timing and Paralinguistics Matter"
+    },
+    {
+      "t": 451,
+      "title": "Focusing on Speaker Diarization"
+    },
+    {
+      "t": 510,
+      "title": "Diarization Pipeline: VAD, Segmentation, Identity"
+    },
+    {
+      "t": 750,
+      "title": "DER Evaluation Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4c23b685faac4e34"
 }

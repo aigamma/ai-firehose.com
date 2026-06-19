@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Code With Aarohi demonstrates building a real-world multi-agent AI travel planning system using LangGraph as the orchestration framework. The system coordinates four specialized agents (flight, hotel, itinerary, final response) that work together to provide travel recommendations by integrating external APIs, persistent memory, and a large language model.",
-  "writeup": "",
-  "wh": "1b5f814f73c15400",
+  "writeup": "A step-by-step tutorial building a four-agent AI travel planning system using LangGraph, Llama 3.3 70B via Groq, and a Streamlit frontend. The system chains a flight agent (AviationStack API), a hotel agent (Tavily search API), an itinerary agent, and a final synthesis agent, with PostgreSQL providing persistent conversational memory across turns. The video works entirely with free-tier APIs and an open-source model, and demonstrates a complete seven-day Japan trip plan including budget breakdown as its live demo.",
+  "wh": "e1ecf370af2654a9",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -68,5 +68,50 @@
       "channel": "Code With Aarohi",
       "score": 0.606
     }
-  ]
+  ],
+  "key_points": [
+    "LangGraph structures the system as a directed graph of four nodes, where each node is an agent with a distinct role: flight search via AviationStack, hotel search via Tavily, itinerary construction, and final synthesis that combines all prior outputs into a formatted plan with budget breakdown.",
+    "The LLM is Llama 3.3 70B, accessed through Groq (console.groq.com) using the langchain-groq package, enabling free, fast inference without a local GPU; the only requirement is a free Groq API key.",
+    "Tavily is used as the hotel-search tool because it connects an agent to live web search and supports data extraction and web crawling, not just static retrieval, making it suitable for real-time availability queries.",
+    "PostgreSQL (version 18.4, local install verified through PG Admin 4) acts as the agent memory backend, storing conversation history so the system can reference earlier user details within the same session; the connection requires the database password and port number at LangGraph initialization.",
+    "In LangGraph, state is the shared memory object all nodes read from and write to, enabling agents to pass results downstream without direct coupling; the tutorial introduces this concept before coding the graph so the architecture is clear before implementation.",
+    "The demo prompt, a complete seven-day Japan trip including flights, hotels, and sightseeing under a two-week window, produces sequenced outputs from all four agents with four separate LLM calls, and the final plan is downloadable as a file from the Streamlit UI."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "System Overview and Agent Roles"
+    },
+    {
+      "t": 92,
+      "title": "Framework and Model Selection"
+    },
+    {
+      "t": 152,
+      "title": "Live Demo of the Finished Application"
+    },
+    {
+      "t": 302,
+      "title": "Environment Setup and Package Installation"
+    },
+    {
+      "t": 450,
+      "title": "API Key Creation"
+    },
+    {
+      "t": 630,
+      "title": "PostgreSQL Memory Database Setup"
+    },
+    {
+      "t": 750,
+      "title": "Coding the LangGraph State"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2485b5bed89b2b87"
 }

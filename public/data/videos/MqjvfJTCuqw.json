@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Julia Turc explores the definition and implementations of world models, covering two main schools of thought: generative and predictive approaches. The video examines three primary application categories: synthetic data generation, interactive environments, and autonomous agents, with examples from NVIDIA, Meta, Wayve, Google, and World Labs.",
-  "writeup": "",
-  "wh": "021c76f2e7cab518",
+  "writeup": "A precise technical survey of world models: what they are, how two leading architectures implement them differently, and where they are deployed. The video traces the idea from Kenneth Craik's 1943 cognitive science proposal through the 2018 ML paper, then systematically contrasts Nvidia Cosmos Predict (generative, video diffusion) against Meta's V-JEPA 2-AC (predictive, latent-space-only), with commentary from Nvidia's TJ Galda. The through-line is the core architectural debate: whether a world model must output human-readable pixels or whether a compact abstract representation is more powerful.",
+  "wh": "ff5f84721272c511",
   "concepts": [
     {
       "slug": "world-models",
@@ -84,5 +84,50 @@
       "channel": "AI Search",
       "score": 0.497
     }
-  ]
+  ],
+  "key_points": [
+    "The strict definition of a world model is an AI system that takes the current world state plus a hypothetical action and predicts the resulting future world state, a formulation rooted in cognitive science and brought into ML by the 2018 'World Models' paper whose agent imagined Doom gameplay outcomes without executing them in the real game.",
+    "The generative school (Nvidia, Google DeepMind, Fei-Fei Li's World Labs) outputs pixel-level video: Cosmos Predict is a diffusion transformer stack trained on over 20 million hours of physics-first curated data and uses Cosmos Reason, a physics-aware VLM, as its text encoder rather than a generic T5, making it sensitive to causal-order distinctions like 'egg cracked after being dropped' versus 'egg was dropped after cracking'.",
+    "The predictive school, led by Yann LeCun, argues that pixel-level reconstruction is a distraction: his Joint Embedding Predictive Architecture (JEPA) trains a video encoder entirely in latent space by masking frame regions and recovering them without ever decoding back to pixels, so the learned representation captures abstract physical laws rather than irrelevant surface details like day-versus-night lighting.",
+    "V-JEPA 2-AC (AC = action conditioned) fine-tunes the base V-JEPA encoder into a true world model by adding a predictor module that takes the current latent state plus an action and outputs the predicted future latent, making it suitable for autonomous agents that consume abstract state rather than human-viewable video.",
+    "The core training challenge in JEPA is representation collapse: if the latent space degenerates to all-zeros the loss is trivially minimized, so the context encoder and target encoder are tied via exponential moving average, ensuring the target encoder moves slowly relative to the context encoder and preventing collapse.",
+    "Within Nvidia's Cosmos family, only Cosmos Predict meets the strict world-model definition; Cosmos Transfer is a style-transfer model and Cosmos Reason is a VLM, yet all three are routinely called 'world models' in industry usage, an ambiguity the video flags explicitly."
+  ],
+  "chapters": [
+    {
+      "t": 14,
+      "title": "General Video Models Fail at Physics"
+    },
+    {
+      "t": 90,
+      "title": "What Is a World Model"
+    },
+    {
+      "t": 241,
+      "title": "Two Schools: Generative vs Predictive"
+    },
+    {
+      "t": 301,
+      "title": "Nvidia Cosmos Predict Architecture"
+    },
+    {
+      "t": 481,
+      "title": "Physics-First Training Data"
+    },
+    {
+      "t": 630,
+      "title": "V-JEPA and the JEPA Philosophy"
+    },
+    {
+      "t": 720,
+      "title": "V-JEPA 2-AC: Action-Conditioned World Model"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a8fb87a55a9ea823"
 }

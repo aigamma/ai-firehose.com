@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "The video demonstrates various AI agent architectures and self-improvement mechanisms, including autoresearch frameworks, Claude's multi-layer memory system, and Hermes and Openclaw self-evolving skill mechanisms. The creator reviews and contrasts these agent capabilities.",
-  "writeup": "",
-  "wh": "fee935512c99ece5",
+  "writeup": "This video surveys the current state of self-evolving agents by drawing a hard line between two distinct approaches: harness-improvement loops (auto agent, auto research) that rewrite the agent software itself via a program.md vision, evaluation suite, and keep-or-discard loop, versus in-context learning systems (Claude Code, OpenHands, Hermes Agent) that accumulate facts, skills, and session history across runs. The through-line is a three-pillar memory architecture, hot facts always in the system prompt, warm facts loaded on demand, skills as domain knowledge, and history as a searchable conversation log, and the core argument is that purely prompt-based memory fails because LLMs reliably forget to write updates, making a background consolidation step necessary.",
+  "wh": "e9e247183ff88f7d",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,49 @@
       "channel": "Keith AI",
       "score": 0.652
     }
-  ]
+  ],
+  "key_points": [
+    "Auto agent and auto research improve the agent harness itself by running a loop: define a vision in program.md, let Claude Code or Codex rewrite the runtime or scripts, run an evaluation suite, keep improvements that win and discard the rest; the output is a frozen harness, not a continuously learning agent.",
+    "In-context self-learning systems organize memory into three pillars: facts (hot memory always in the system prompt, warm memory loaded on demand), skills (domain knowledge for specific task types), and history (raw conversation logs the agent can search); Claude Code, OpenHands, and Hermes Agent each implement these pillars differently.",
+    "Claude Code evolved from a single CLAUDE.md file through a hot-or-warm memory convention that most users already practice, to an auto-memory feature that writes typed files into .claude/memory/ indexed by memory.md, to a background auto-trim process discovered in the leaked source code that consolidates and prunes stale entries after a session ends.",
+    "The fundamental weakness of Claude Code's memory system is that it is purely prompt-based: the model must remember to create and update memory files, and when it forgets, stale information accumulates in the context and degrades performance.",
+    "OpenHands (OpenClaw) treats memory as a first-class citizen with a richer set of predefined memory file types and a bootstrap.md that instructs the agent to proactively gather information from users, filling the skill and searchable history gaps that Claude Code leaves open."
+  ],
+  "chapters": [
+    {
+      "t": 1,
+      "title": "Introduction and Framing"
+    },
+    {
+      "t": 60,
+      "title": "Two Categories of Self-Evolving Agents"
+    },
+    {
+      "t": 91,
+      "title": "Auto Agent Loop Mechanics"
+    },
+    {
+      "t": 271,
+      "title": "Three Memory Pillars"
+    },
+    {
+      "t": 301,
+      "title": "Claude Code Memory System Deep Dive"
+    },
+    {
+      "t": 481,
+      "title": "Auto-Trim Background Consolidation"
+    },
+    {
+      "t": 571,
+      "title": "OpenHands Memory as First-Class Citizen"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0d640f8663003979"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Nick Saraev describes building Clairvo, a $1M/year SaaS that uses Claude Code-generated techniques like predictive pacing and local number rotation to improve call pickup rates. He argues that using Claude to enumerate opportunities and practical implementation of AI agents is viable for building real-world revenue-generating businesses, contrasting his approach with many who talk automation without results.",
-  "writeup": "",
+  "writeup": "This video traces how the team behind Clarivo, an AI-enabled power dialer, used Claude Code to reach $1M ARR. The through-line is a repeatable loop: mine hundreds of solution ideas from Claude using parallel sub-agents, apply human judgment to filter down to a handful of feasible candidates, simulate the shortlisted mechanism against historical call data, iterate with Bayesian optimization, and stress-test in live deployments. The central technical result is a predictive pacing algorithm that eliminates dial-time waste by calling multiple numbers simultaneously, producing 50-80% revenue improvements for clients.",
   "wh": "088f982a5e7b58aa",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.651
     }
-  ]
+  ],
+  "key_points": [
+    "Predictive pacing calls multiple numbers simultaneously so that the fixed dial-time window is never wasted waiting on a single non-answer; a built-in call-routing queue then connects the answering party to an available agent, avoiding simultaneous-pickup collisions.",
+    "The idea-mining prompt instructs Claude to spawn 10 parallel sub-agents, each proposing 10 distinct mechanisms across algorithmic, behavioral, infrastructural, regulatory, psychological, time-based, and identity-based categories, with no feasibility self-censorship; of roughly 200-300 ideas generated, only 5-6 were shortlisted as viable.",
+    "The simulation harness ingests historical call data, runs the shortlisted algorithm (in this case the predictive pacer), and uses Bayesian optimization to tune parameters such as call offset across batches of 50,000 or more calls before any live rollout.",
+    "Data access and live deployment capacity are the real moat: improvements that look strong in simulation frequently fail in production, and only teams with pre-existing live businesses can run the parallel tests needed to validate them quickly.",
+    "Clarivo's predictive pacing lifted one Texas client from 3-5 million dollars per month to nearly double that figure, and the product broadly delivers 50-80% improvements in effective conversations per salesperson hour.",
+    "Problem selection criteria for the SaaS were high lifetime value per client, low churn driven by deep infrastructure lock-in, and a market with few existing entrants, all of which Claude Code also helped articulate and pressure-test during ideation."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Clarivo Overview"
+    },
+    {
+      "t": 61,
+      "title": "Problem Selection Criteria"
+    },
+    {
+      "t": 150,
+      "title": "Using Claude for Idea Generation"
+    },
+    {
+      "t": 180,
+      "title": "Idea Mining Prompt Structure"
+    },
+    {
+      "t": 270,
+      "title": "Filtering Ideas and Predictive Pacing"
+    },
+    {
+      "t": 360,
+      "title": "Simulation Harness and Bayesian Optimization"
+    },
+    {
+      "t": 420,
+      "title": "The Full Build Loop"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "435ee496ae90464d"
 }

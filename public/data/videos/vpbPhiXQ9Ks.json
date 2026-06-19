@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Qdrant Agent Skills is a new feature that encodes real-world engineering knowledge to help AI agents optimize vector search retrieval and understand when and how to tune performance. The feature moves beyond treating vector search as a black box to enable better search quality and decision-making in production AI systems.",
-  "writeup": "",
-  "wh": "dac6464e94bc5adc",
+  "writeup": "A Qdrant webinar walkthrough of Qdrant Skills, a set of structured, production-level decision guides that help LLM-based agents answer Qdrant-specific questions correctly rather than falling back on generic vector-database advice. The presenter, Terry Dibbo (senior developer experience engineer at Qdrant), demonstrates the gap with a concrete example: a search latency regression from 15ms to 200ms caused by tombstone degradation, where a skill routes the agent to the correct fix (start rotation) while an unskilled Claude recommends the problematic collection-rotation-with-alias-swapping approach. The session also reveals a live distinction between agents: when Codex picks up the skill, it extends it with web searches rather than stopping at the skill file, a behavior Dibbo flags as more thorough than Claude Code's skill-only response.",
+  "wh": "c8ef9f2236243409",
   "concepts": [
     {
       "slug": "vector-search",
@@ -64,5 +64,46 @@
       "channel": "Cole Medin",
       "score": 0.585
     }
-  ]
+  ],
+  "key_points": [
+    "Qdrant Skills are structured, if-else-style decision guides committed to a public GitHub repo (with Anthropic as a contributor), designed to give agents accurate knowledge of Qdrant features and best practices that fall outside LLM training data.",
+    "A snippet search tool at snippets.qdrant.tech returns only the minimal code needed for a given operation and language, deliberately limiting token usage for coding agents that would otherwise pull full documentation pages.",
+    "The tombstone degradation example is the clearest argument for skills: without one, Claude recommends collection rotation with alias swapping (operationally expensive and error-prone); the skill routes directly to start rotation, resolving the latency regression from 200ms back toward 15ms.",
+    "Skills are organized as a hub-and-spoke tree: a routing skill dispatches to top-level skills (deployment, monitoring, performance ops, scaling, search quality, version upgrade), and multi-topic skills like monitoring break further into sub-skills (debugging, setup) so the agent reads only the tokens relevant to its question.",
+    "When Claude Code's API went down mid-demo, the presenter installed the skills on Codex via the same NPX installer, and Codex not only read the skill but then ran its own web searches to reinforce the skill content, a behavior the presenter noted as potentially more thorough than stopping at the skill file alone.",
+    "Skills are installable via a single NPX command and work across multiple coding agents (Claude Code, Cursor, Codex), making agent-specific doc knowledge portable without duplicating the skill definitions per tool."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Are Qdrant Skills"
+    },
+    {
+      "t": 90,
+      "title": "The Tombstone Degradation Example"
+    },
+    {
+      "t": 210,
+      "title": "Skill Structure: Hubs and Sub-Skills"
+    },
+    {
+      "t": 390,
+      "title": "Live Demo and Claude Outage"
+    },
+    {
+      "t": 870,
+      "title": "Pivoting to Codex"
+    },
+    {
+      "t": 1020,
+      "title": "Codex Reads the Skill and Searches the Web"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "824e14fa5ee71f7d"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "CS50 2D is a Harvard University course that teaches 2D game development by recreating the Flappy Bird game. The lecture covers sprite management, parallax scrolling, procedural generation, collision detection, state machines, and input handling using a game development framework.",
-  "writeup": "",
-  "wh": "674c76296baa4a04",
+  "writeup": "CS50G Lecture 1 (zero-indexed) walks through rebuilding Flappy Bird from scratch in Love2D and Lua, advancing from Pong's pure-rectangle rendering to sprite-based graphics, parallax scrolling, procedural pipe generation, and a properly abstracted state machine. The lecture identifies six concrete new techniques the Flappy Bird example introduces over Pong: sprites and image loading via love.graphics.newImage, multi-layer scrolling with parallax, procedural Y-randomization of pipe pairs, a formal state-machine construct replacing string-flag conditionals, a background music track, and mouse input modeling touch. Code builds incrementally from a blank window to the finished game, with each stage illustrated in main.lua.",
+  "wh": "5719a5a5c7323d77",
   "concepts": [
     {
       "slug": "sprites",
@@ -72,5 +72,46 @@
       "channel": "CS50",
       "score": 0.662
     }
-  ]
+  ],
+  "key_points": [
+    "love.graphics.newImage(path) loads any PNG, GIF, or JPEG into memory, and love.graphics.draw renders it at a specified XY coordinate; everything draws from its top-left corner, so the ground texture (16 px tall) is placed at y = virtualHeight - 16 to sit flush at the bottom of the screen.",
+    "Parallax is achieved by scrolling the background and ground textures at different rates, creating a depth illusion without any 3D geometry; the background.png is a long repeating strip designed to tile horizontally as it scrolls.",
+    "Procedural generation in this lecture is intentionally minimal: only the Y value of each pipe pair is randomized as it enters from the right, but the instructor flags this as a foundation for more sophisticated generation techniques introduced in later lectures (Breakout onward).",
+    "The state machine is upgraded from Pong's single string-flag approach to a proper abstract construct that eliminates cascading conditional string checks and makes state transitions explicit; the game demo shows a three-state cycle of title, playing, and score/game-over screens.",
+    "Scoring awards one point per pipe pair cleared, and two loss conditions exist: hitting a pipe or touching the ground, both triggering the score screen and an Enter-to-restart transition identical in structure to Pong's end state.",
+    "Mouse input in Love2D maps directly onto touch input, making the same code portable to mobile devices; the spacebar-to-jump mechanic can be replicated with a mouse click or screen tap through Love2D's built-in input callbacks."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Course Intro and Lecture Goals"
+    },
+    {
+      "t": 91,
+      "title": "New Concepts: Sprites, Scrolling, State Machines"
+    },
+    {
+      "t": 240,
+      "title": "Live Flappy Bird Demo"
+    },
+    {
+      "t": 480,
+      "title": "Incremental Code Walkthrough Plan"
+    },
+    {
+      "t": 481,
+      "title": "Loading Images with love.graphics.newImage"
+    },
+    {
+      "t": 543,
+      "title": "Drawing Sprites and Ground Placement"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2a4a1914a523e068"
 }

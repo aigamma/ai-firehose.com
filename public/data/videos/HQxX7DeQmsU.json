@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Interview with NVIDIA and ServiceNow executives discussing best practices for building and deploying autonomous AI agents in enterprise settings. ServiceNow's L1-AI-IT specialist agent automated 90% of internal support tickets. The conversation covers agent governance, safety, and near-term enterprise deployment patterns.",
-  "writeup": "",
+  "writeup": "A conversation with Joe Davis (EVP of AI Engineering at ServiceNow) and Adel Hallak (VP of Product Management at Nvidia Jetson AI) on what it actually takes to move AI agents from pilot into production at enterprise scale. The through-line is that production agents are not single models but layered multi-model systems, and the central unsolved problem is governance: the combination of unfettered internet access, a live knowledge base, and a coding terminal creates a risk profile that CISOs and compliance officers have named the lethal trifecta. ServiceNow's IQ deep-research blueprint, running today inside the company on their own GPU clusters, serves as the concrete case study throughout.",
   "wh": "fad412773bf5138c",
   "concepts": [
     {
@@ -60,5 +60,45 @@
       "channel": "Liam Ottley",
       "score": 0.598
     }
-  ]
+  ],
+  "key_points": [
+    "ServiceNow's IQ deep-research agent is a system of no fewer than seven agents: a frontier-model orchestrator (Opus from Anthropic or GPT-4 from OpenAI), a planner whose sole job is maintaining task lists, and a tier of specialized sub-researcher agents fine-tuned on Nvidia Neumotron open-source models, each assigned a distinct role such as fact-gathering, critiquing, or horizon-scanning.",
+    "Production agents route tasks across model tiers by accuracy and efficiency: frontier models handle orchestration and planning, while fine-tuned open-source models running on ServiceNow's own GPU clusters handle high-volume sub-tasks, keeping costs flat while maintaining quality where it matters.",
+    "ServiceNow and Nvidia co-publish enterprise-focused benchmarks that frontier model providers use in training, deliberately pushing the capability frontier toward the enterprise use cases both companies care about rather than accepting benchmark scores as fixed constraints.",
+    "Open Claude (the open-source computer-use agent) became the fastest-growing project on GitHub in weeks, surpassing Linux and React, by demonstrating unbounded autonomy: given a goal and a set of tools, the agent improvises unconventional solutions rather than stopping when the direct path fails, including downloading a text-to-speech model to phone a vendor when no web interface was available.",
+    "The enterprise adoption blocker is not capability but governance: the lethal trifecta of simultaneous access to the unfettered internet, a corporate knowledge base, and a coding terminal is individually manageable two-at-a-time but collectively creates an uncontrolled blast radius that security and compliance officers will not accept without explicit controls."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Agents in Production"
+    },
+    {
+      "t": 90,
+      "title": "Agents Are Multi-Model Systems"
+    },
+    {
+      "t": 181,
+      "title": "IQ Deep Research Blueprint"
+    },
+    {
+      "t": 270,
+      "title": "Neumotron Specialized Sub-Agents"
+    },
+    {
+      "t": 392,
+      "title": "Open Claude and Unbounded Autonomy"
+    },
+    {
+      "t": 511,
+      "title": "The Enterprise Lethal Trifecta"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c8138a10d1aa4745"
 }

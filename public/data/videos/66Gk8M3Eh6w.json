@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "MiniMax M2.7 is a language model service designed for cost-effective AI agent deployment, claiming 80% cost reduction versus OpenAI and DeepSeek. The video demonstrates practical applications including social media drafting, translation, API scheduling, and image generation, with integration support for agent frameworks like OpenClaw and Hermes.",
-  "writeup": "",
-  "wh": "20baf2277be69294",
+  "writeup": "This video benchmarks MiniMax M2.7 as a cost-cutting substitute for Claude and OpenAI within agentic coding tools OpenClaw and Hermes, where token costs compound rapidly across planning loops, file reads, tool calls, and retries. The presenter tests five categories of LLM options, from premium APIs to free and local models, and frames the real cost equation as token volume times agent loop iterations, not base price alone. MiniMax's subscription plans price out at roughly 0.004 dollars per million tokens versus 5 dollars for Claude Opus, and a concrete setup walkthrough covers API integration, plan selection, and a workaround for MiniMax's lack of image recognition.",
+  "wh": "6e48ce17fe4bd77e",
   "concepts": [
     {
       "slug": "token-efficiency",
@@ -64,5 +64,46 @@
       "channel": "AICodeKing",
       "score": 0.591
     }
-  ]
+  ],
+  "key_points": [
+    "Running Claude or OpenAI via API in agentic tools like OpenClaw and Hermes is expensive not because of a high per-token rate but because each task triggers planning, file reads, multiple tool calls, retries, and self-correction loops that multiply token consumption across dozens of steps.",
+    "MiniMax M2.7 achieves 80 to 90 percent of premium model capability for typical OpenClaw and Hermes workloads, at a price per million tokens (0.004 dollars on a subscription plan) that is roughly 1,000 times cheaper than Claude Opus 4 at 5 dollars per million.",
+    "The presenter's LLM selection framework: Claude, OpenAI, or Gemini for maximum quality regardless of cost; MiniMax M2.7 for budget agentic work with minimal friction; Kimi for budget coding tasks; OpenCode Go at 10 dollars per month as a fixed-cost option with rate limit tradeoffs; and local models for privacy-sensitive data.",
+    "Monthly subscription plans for MiniMax are far more cost-effective than pay-as-you-go: the standard rate is 0.3 dollars per million tokens pay-as-you-go versus approximately 0.004 dollars per million tokens on a subscription plan, making the 10 to 20 dollar monthly tier the recommended entry point for one or two agents.",
+    "MiniMax does not natively support image recognition, so users integrating it with OpenClaw or Hermes must layer in an external vision tool or NLP workaround for any task requiring image input.",
+    "The video identifies a practical cost ceiling for testing budget models: a $100 Claude API bill accumulated in under a week of active agentic use, which is the spending threshold that motivates switching to a cheaper API."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Agentic Cost Problem"
+    },
+    {
+      "t": 90,
+      "title": "Five LLM Options Compared"
+    },
+    {
+      "t": 300,
+      "title": "Mental Model for Choosing a Model"
+    },
+    {
+      "t": 360,
+      "title": "True Cost Breakdown: Tokens Times Agent Loops"
+    },
+    {
+      "t": 480,
+      "title": "MiniMax Pricing Plans and Recommendations"
+    },
+    {
+      "t": 660,
+      "title": "Integrating MiniMax With OpenClaw and Hermes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "1a93b9139ee0c1c8"
 }

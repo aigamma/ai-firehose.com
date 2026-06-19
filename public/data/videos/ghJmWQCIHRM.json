@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "WebMCP is a proposed web standard from Google Chrome that enables AI agents to interact with websites through structured tools instead of DOM manipulation and pixel-based clicking. It offers both declarative HTML-attribute-based and imperative JavaScript-based APIs for registering actions, currently in experimental preview on Chrome 146.",
-  "writeup": "This talk introduces WebMCP, a proposed web standard for exposing structured tools and actions from websites directly to AI agents, using either declarative HTML attributes or imperative JavaScript APIs. It matters because it offers an alternative to DOM traversal and pixel-based interaction, the brittle methods agents currently rely on to operate web interfaces. The core takeaway: sites can publish named, typed, and described actions that agents call directly, replacing screen-scraping and visual navigation with explicit interfaces.",
-  "wh": "f2c5ad2aca04f73b",
+  "writeup": "A Google Chrome DevRel engineer introduces Web MCP (Web Model Context Protocol), a proposed browser standard that lets sites expose their capabilities as structured tools so in-browser AI agents can act reliably without scraping DOM trees, accessibility trees, or screenshots. The talk demonstrates the idea with a maze escape game driven entirely by Gemini 1.5 calling registered tools, then explains the two implementation paths: a declarative HTML attribute API for standard forms and an imperative JavaScript API for complex multi-step flows. The through-line is that the web was built for human eyes, and Web MCP is the minimal addition that makes existing sites legible to agents without requiring a full rewrite.",
+  "wh": "557337ce48549909",
   "concepts": [
     {
       "slug": "web-agents",
@@ -64,5 +64,50 @@
       "channel": "Alex Kantrowitz",
       "score": 0.579
     }
-  ]
+  ],
+  "key_points": [
+    "Unassisted browser agents today parse the full DOM, inspect the accessibility tree, take screenshots, and compute pixel coordinates before clicking, a process that is slow, brittle, and expensive in tokens, and can still fail if an ad shifts the layout after all that work.",
+    "Web MCP is a proposed web standard from the Chrome team that exposes a site's capabilities as a named, schema-described menu of tools; instead of guessing what a page does, an in-browser agent calls the tool directly, which the Chrome team describes as the 'USB-C of AI agent interactions.'",
+    "Web MCP is client-side only (the browser window must be open) and is inspired by but distinct from server-side MCP: it implements the tools portion of the MCP spec for in-browser agents, roughly analogous to how JavaScript is related to Java.",
+    "Good semantic HTML and robust accessibility standards are a prerequisite: the presenter explicitly states that agent-readiness follows from accessibility-first web foundations, and Web MCP only makes sense to add once those are in place.",
+    "The declarative API requires only a few HTML attributes (tool name, tool description) on a standard form element; the browser auto-generates the JSON schema the agent reads, and an agent-invoked boolean attribute lets the server distinguish human-submitted from agent-submitted forms.",
+    "The imperative API uses a registerTool JavaScript function with a manually authored JSON schema for complex, multi-step UI flows that cannot be captured by a single form element."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Speaker Background"
+    },
+    {
+      "t": 92,
+      "title": "The Agent Web Navigation Problem"
+    },
+    {
+      "t": 182,
+      "title": "Web Foundations First"
+    },
+    {
+      "t": 241,
+      "title": "What Web MCP Is"
+    },
+    {
+      "t": 271,
+      "title": "Live Maze Demo with Gemini 1.5"
+    },
+    {
+      "t": 603,
+      "title": "Web MCP vs MCP"
+    },
+    {
+      "t": 750,
+      "title": "Declarative and Imperative APIs"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a77514d96d627e16"
 }

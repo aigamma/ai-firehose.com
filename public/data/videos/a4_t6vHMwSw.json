@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A video tutorial covering 30 concrete techniques for using Claude, including prompting strategies, memory management, agents, automation, connectors, and multi-agent workflows. The content demonstrates advanced usage patterns across Claude's major feature areas.",
-  "writeup": "",
-  "wh": "8099566364390163",
+  "writeup": "A practical walkthrough of Claude's less-obvious configuration layer, covering adaptive thinking triggers in Anthropic's Opus 4.7, structured prompting with a five-part framework and XML tags, and the full suite of personalization settings from profile instructions and memory to custom writing styles and Projects. The through-line is that Claude's default behavior is deliberately conservative, and most of its power is gated behind explicit triggers, settings, and structural choices that most users never touch.",
+  "wh": "4606a8d84deaa5f2",
   "concepts": [
     {
       "slug": "prompting",
@@ -80,5 +80,54 @@
       "channel": "Code With Aarohi",
       "score": 0.638
     }
-  ]
+  ],
+  "key_points": [
+    "Opus 4.7's adaptive thinking mode is off by default and must be triggered with specific phrases such as 'think carefully', 'think harder', or 'ultra think'; without these, the model applies minimal reasoning even on high-stakes tasks.",
+    "A five-part prompt structure (Role, Task, Context, Constraints, Format) combined with XML tags such as <task>, <context>, <instructions>, and <constraints> produces a 30 to 50% quality improvement on complex prompts by separating instruction from background data.",
+    "Meta-prompting, where Claude is asked to rewrite and optimize a rough prompt using a structured template that specifies role, success criteria, XML structure, and an adaptive thinking trigger, consistently produces better output than manually iterating.",
+    "The 'interview first' technique, prompting Claude to ask 5 to 7 clarifying questions before starting a task, avoids multiple revision rounds on strategy work, creative briefs, and complex technical problems by calibrating the output to actual requirements.",
+    "Claude's Projects feature provides persistent workspaces with scoped instructions and file libraries (up to 20 files and 30 MB per chat on the free plan), and published Artifacts can store up to 20 MB of persistent state and call the Claude API via window.claude.complete without requiring users to supply an API key.",
+    "Opus 4.7 raised image analysis resolution to 2,576 pixels (3.75 megapixels), enabling reliable reading of fine text on document screenshots, financial spreadsheets, architectural drawings, and dense dashboards."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Adaptive Thinking in Opus 4.7"
+    },
+    {
+      "t": 61,
+      "title": "Five-Part Prompt Framework"
+    },
+    {
+      "t": 91,
+      "title": "XML Tags for Complex Prompts"
+    },
+    {
+      "t": 151,
+      "title": "Meta-Prompting and Interview Technique"
+    },
+    {
+      "t": 330,
+      "title": "Profile Instructions and Memory"
+    },
+    {
+      "t": 451,
+      "title": "Custom Styles and Conversation Search"
+    },
+    {
+      "t": 572,
+      "title": "Projects, Artifacts, and Live Outputs"
+    },
+    {
+      "t": 721,
+      "title": "Image Resolution and PDF Analysis"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "86b02d74a0bc116f"
 }

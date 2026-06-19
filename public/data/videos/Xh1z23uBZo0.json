@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cole Medin demonstrates an Archon workflow that chains Claude Opus for planning and integration logic with Gemini 3.5 Flash for UI design to build frontends. The workflow uses Clerk CLI for authentication and deploys complete applications combining multi-model strengths.",
-  "writeup": "",
-  "wh": "a0624c1358c2463c",
+  "writeup": "This live stream demonstrates a multi-model agent workflow that routes tasks to the model best suited for each step: Claude Opus for content planning and authentication setup, Gemini 3.5 Flash via OpenRouter for UI generation, and Claude Sonnet for validation. The motivation is a concrete failure Gemini showed when building solo: visually polished frontends filled with hallucinated information. The through-line is that mixing providers through Archon lets practitioners extract each model's strengths while compensating for their weaknesses, illustrated by building a benchmarking dashboard with Clerk authentication end to end.",
+  "wh": "bed6d092f6f557a4",
   "concepts": [
     {
       "slug": "agent-orchestration",
@@ -60,5 +60,46 @@
       "channel": "AI Master",
       "score": 0.59
     }
-  ]
+  ],
+  "key_points": [
+    "Gemini 3.5 Flash produces visually strong UIs but hallucinates content heavily when given a repo to draw from, producing roughly 10 factual errors on a simple landing page explaining a single tool.",
+    "The workflow assigns Opus to planning (deciding what information belongs on the page) and to complex integrations like Clerk authentication, Gemini 3.5 Flash to UI construction, and Sonnet to validation steps, on the rationale that Sonnet is cheaper and faster while Opus has stronger reasoning.",
+    "Prior benchmarking by the author found that Opus is only strictly necessary at the planning step in a multi-step workflow; using a cheaper model like Gemini (Kimmy) for exploration, implementation, and validation yields results nearly as good as running Opus end to end.",
+    "Gemini's direct API was unreliable for the author due to rate limiting even after upgrading account tiers; OpenRouter is the recommended access path for Gemini 3.5 Flash in Archon workflows.",
+    "The application built in the stream is a benchmarking dashboard for Archon that runs the same workflow with different model configurations and uses an LLM evaluator to judge and compare outputs, directly operationalizing the cost-vs-quality tradeoff analysis.",
+    "Clerk's new agent skill tells Claude Code how to wire up authentication automatically, making it a practical example of a non-trivial integration delegated entirely to Opus rather than Gemini."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Setup and Motivation"
+    },
+    {
+      "t": 60,
+      "title": "Multi-Model Workflow Design"
+    },
+    {
+      "t": 150,
+      "title": "Application Spec: Benchmarking Dashboard"
+    },
+    {
+      "t": 420,
+      "title": "Benchmarking Findings: Opus Only Needed for Planning"
+    },
+    {
+      "t": 480,
+      "title": "OpenRouter for Gemini Access"
+    },
+    {
+      "t": 540,
+      "title": "Building the Archon Workflow"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "64284747f4506d8a"
 }

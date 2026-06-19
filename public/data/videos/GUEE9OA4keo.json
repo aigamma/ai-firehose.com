@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AI Search YouTube channel reviews Claude Fable 5 (also called Claude Mythos 5) and compares it to GPT 5.5. The review demonstrates various capabilities including ray tracing, 3D reconstruction, music composition, chemistry education, and cancer classification, along with performance benchmarks and model specifications.",
-  "writeup": "AI Search reviews Claude Fable 5, running it through tasks that include ray tracing, 3D reconstruction, music composition, and cancer classification. The video sets Fable 5 against GPT 5.5 and walks through benchmarks and model specifications. The takeaway is a capability snapshot across coding, generation, and image classification, with comparative results framing how the two models stack up.",
-  "wh": "83530fd2ae4f45fd",
+  "writeup": "This video stress-tests Claude 4.5 across a suite of demanding agentic coding benchmarks, from a from-scratch ray-tracing renderer to a fully interactive 3D digital twin of Earth, to establish where the model leads and where it falls short relative to GPT-4.5. The through-line is that Claude 4.5 is purpose-built for agentic workflows: it self-verifies its output after each round, catches and repairs its own bugs, and consistently delivers in one to two prompts what previously required iteration-heavy sessions. Honest failure cases are included alongside the wins, making the comparison substantive rather than promotional.",
+  "wh": "5862edf355b835c3",
   "concepts": [
     {
       "slug": "ray-tracing",
@@ -68,5 +68,50 @@
       "channel": "AICodeKing",
       "score": 0.678
     }
-  ]
+  ],
+  "key_points": [
+    "Claude 4.5 is the first model to correctly locate and circle a hidden frog in a photograph by splitting the image into quadrants, inspecting each region, and pinpointing exact coordinates, a visual reasoning task no prior model had solved.",
+    "In Claude Code, Claude 4.5 built a from-scratch ray-tracing simulation (sphere, cube, pyramid with fully interactive reflectivity, roughness, transparency, and IOR controls) in two prompts and without any external libraries, validating its underlying physics and lighting understanding.",
+    "A one-prompt 3D digital twin of Earth succeeded fully: seamless zoom from orbit to street level, per-country hover stats (population, area, GDP), cloud cover, live flight traffic trails, a day-night terminator, and night-mode city lights.",
+    "Claude 4.5 auto-verifies its own fixes after each code iteration and runs browser tests to catch residual errors; this agentic self-checking makes outputs more robust but consumes significantly more tokens than non-verifying models.",
+    "The 3D office-scene reconstruction from a reference photograph was judged a failure: desk and desk-occupant positions diverged from the source image despite two rounds of correction, though the result was more coherent than the GPT-4.5 equivalent, which produced many disconnected pieces.",
+    "Claude 4.5 generated a fully functional DAW interface with five instrument tracks, piano-roll note editing, and standard mixer controls in a single prompt, and then composed a 32-bar expressive song on request."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Model Overview"
+    },
+    {
+      "t": 31,
+      "title": "Visual Reasoning: Hidden Frog Test"
+    },
+    {
+      "t": 121,
+      "title": "Agentic Coding in Claude Code"
+    },
+    {
+      "t": 150,
+      "title": "From-Scratch Ray Tracing Renderer"
+    },
+    {
+      "t": 360,
+      "title": "3D Digital Twin of Earth"
+    },
+    {
+      "t": 570,
+      "title": "3D Scene Reconstruction from Image"
+    },
+    {
+      "t": 660,
+      "title": "DAW Interface and Music Composition"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f9cbe78e5137df8b"
 }

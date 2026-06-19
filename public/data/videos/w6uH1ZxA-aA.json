@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "This video tutorial demonstrates how to implement percolation simulations in Python to model the spread of wildfires and diseases. Percolation theory is used to understand how phenomena propagate through networks and systems.",
-  "writeup": "This NeuralNine tutorial implements percolation simulations in Python to model how wildfires and diseases spread. It frames percolation theory as a way to understand how phenomena propagate through networks and systems. The takeaway is a working Python implementation that connects the abstract theory to concrete spreading dynamics across a grid or network.",
+  "writeup": "A step-by-step Python tutorial that builds an animated percolation simulation using only NumPy and Matplotlib, modeling the spread of disease or wildfire across a 2D grid. The central mathematical fact is the 59.27% site-occupancy threshold: above it a spanning cluster forms with near certainty on a large grid, below it the spread stays contained, and no closed-form formula derives this constant. The build proceeds from grid initialization through a BFS-style frontier algorithm, then separates simulation from rendering by pre-computing all state frames before handing them to FuncAnimation.",
   "wh": "b3ba8d880d84407e",
   "concepts": [
     {
@@ -60,5 +60,49 @@
       "channel": "IBM Technology",
       "score": 0.419
     }
-  ]
+  ],
+  "key_points": [
+    "The percolation threshold for a 2D square lattice is 59.27%: cross it and an infinite grid will be spanned end-to-end with near certainty; stay below it and the infection stays contained, with no algebraic formula that derives this constant from first principles.",
+    "The grid uses three integer states encoded in a NumPy array: 0 for empty cells, 1 for healthy occupied cells, and 2 for infected cells, with spreading restricted to state-1 neighbors only so empty cells never propagate infection.",
+    "A BFS frontier list drives the spread: each generation collects newly infected neighbors into a new frontier list, replaces the old one, and the loop terminates as soon as an iteration produces no new infections.",
+    "Simulation and rendering are deliberately decoupled: all state frames are computed and stored as NumPy array copies first, then Matplotlib FuncAnimation replays them, avoiding the latency of live computation during animation.",
+    "A 1000x1000 grid (one million cells) is chosen because statistical accuracy of the threshold improves with lattice size; small grids amplify noise and can cross or miss the threshold by chance."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Demo of Final Result"
+    },
+    {
+      "t": 92,
+      "title": "The 59.27% Percolation Threshold"
+    },
+    {
+      "t": 152,
+      "title": "Setup and Dependencies"
+    },
+    {
+      "t": 240,
+      "title": "Grid Parameters and Fill Percent"
+    },
+    {
+      "t": 450,
+      "title": "Grid Initialization and State Encoding"
+    },
+    {
+      "t": 511,
+      "title": "Frontier-Based Spread Algorithm"
+    },
+    {
+      "t": 540,
+      "title": "Pre-Computing Frames for Animation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a66b87f27254cc25"
 }

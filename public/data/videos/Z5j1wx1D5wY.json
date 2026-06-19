@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Qdrant released Query API 1.17.0 with built-in relevance feedback mechanisms for vector search. The feature enables injecting relevance signals directly into the vector index and building adaptive, feedback-driven retrieval systems beyond reranking. The implementation is demonstrated via tutorial for semantic search over documentation.",
-  "writeup": "",
-  "wh": "7b8c83c0dade7463",
+  "writeup": "Qdrant 1.17 ships relevance feedback as a first-class feature, and this live session traces the concept from its information retrieval roots through to production use. The presenter spent over six months surveying academic IR literature on feedback loops before designing the feature, so the talk doubles as a compressed survey of a field that vector-search engineers rarely study. The through-line is that a single retrieval pass is inherently uncalibrated to user intent, and iterative feedback, whether from a human, a re-ranker, or an agent, is the principled remedy.",
+  "wh": "72d4eaad77da3bac",
   "concepts": [
     {
       "slug": "test-time-feedback",
@@ -68,5 +68,45 @@
       "channel": "Qdrant Vector Search",
       "score": 0.61
     }
-  ]
+  ],
+  "key_points": [
+    "Relevance feedback is a decades-old information retrieval mechanism that lets a retrieval system iteratively refine results toward the user's actual intent, analogous to the multi-hop query refinement an agent performs during deep research.",
+    "Search relevance failures fall into four categories: a miscalibrated similarity score, a poorly formed query, a skewed dataset, or the wrong embedding model, and relevance feedback addresses the first category directly by adapting the search on subsequent iterations.",
+    "Three signal types exist in the feedback taxonomy: pseudo-relevance feedback (the system auto-assumes top results are relevant and expands the query from them), binary feedback (relevant or irrelevant), and granular feedback (a numeric relevance score per result), with granular being the most effective for iterative refinement.",
+    "User-provided feedback rarely scales in production, as demonstrated by Google removing its thumbs up/thumbs down button due to non-use, so practical relevance feedback systems route the signal through a machine: a re-ranker, a statistical function, or an agent.",
+    "Qdrant 1.17 bundles three improvements: search quality via relevance feedback, performance and reliability under real-world loads, and developer observability into system behavior."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Release Overview"
+    },
+    {
+      "t": 180,
+      "title": "Who Should Watch and Why"
+    },
+    {
+      "t": 360,
+      "title": "What Search Relevance Means"
+    },
+    {
+      "t": 542,
+      "title": "Relevance Feedback: The Core Concept"
+    },
+    {
+      "t": 662,
+      "title": "Who Provides the Feedback"
+    },
+    {
+      "t": 750,
+      "title": "Types of Feedback Signals"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "083627f7d9a91e4c"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cole Medin is building a workflow marketplace for Archon, a platform that lets users define YAML-based agentic workflows running in isolated git worktrees. The marketplace will enable users to install and share battle-tested AI coding workflows across the community.",
-  "writeup": "",
-  "wh": "2590bed6aa759329",
+  "writeup": "A live build session centered on adding a workflow marketplace to Archon, an open-source agentic coding harness builder that packages engineering processes as reusable, parallelizable YAML workflows. The core goal is closing the sharing gap: right now contributors cannot easily publish or discover each other's workflows, so this session ships the submission path via GitHub pull request and an Archon workflow that uses Claude Code to automatically review those PRs. The session makes the system self-referential: Archon is used to build the review gate that governs contributions to Archon itself.",
+  "wh": "8a24b21af58bc6b3",
   "concepts": [
     {
       "slug": "prompt-engineering",
@@ -60,5 +60,42 @@
       "channel": "Cole Medin",
       "score": 0.59
     }
-  ]
+  ],
+  "key_points": [
+    "Archon is a harness builder, not just a harness: its primary use case is authoring custom workflows that encode a team's agentic engineering process and run them reliably in parallel across codebases.",
+    "The workflow marketplace accepts contributions via GitHub pull request to a central registry file, lowering the barrier from sharing YAML files in chat to a discoverable, version-controlled catalog at archon.diy/workflows.",
+    "The PR review workflow built in this session runs Claude Code behind an Archon workflow, so marketplace submissions are automatically evaluated without manual maintainer review, reducing the ongoing contribution overhead.",
+    "The author works across two simultaneous Claude Code sessions, one driving the marketplace build and one previewing the docs site in a worktree, treating parallel AI coding sessions as a standard working pattern.",
+    "The initial marketplace UI was already merged from a prior session; this session merges that PR into the dev branch, resolving a minor conflict with a recently added roadmap page, then builds the automated review layer on top.",
+    "The target by end of stream is a fully wired end-to-end test: build the review workflow, set it to trigger on any workflow-submission PR, then live-test the contributor path so the feature ships to the dev branch ready for the next Archon release."
+  ],
+  "chapters": [
+    {
+      "t": 1,
+      "title": "Archon and the Workflow Marketplace Concept"
+    },
+    {
+      "t": 61,
+      "title": "Building Automated PR Review with Claude Code"
+    },
+    {
+      "t": 212,
+      "title": "Session Setup: Two Claude Code Sessions"
+    },
+    {
+      "t": 421,
+      "title": "Merging the Initial Marketplace PR"
+    },
+    {
+      "t": 540,
+      "title": "Planning a Live Workflow Submission Demo"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2930af359b5739f9"
 }

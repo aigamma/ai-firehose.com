@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Dat Ngo from Arize discusses LLM observability challenges in nondeterministic systems. Arize Phoenix is an open-source observability platform deployed as a single container, while the enterprise product adds an AI-driven layer called Alex that automatically scans traces, surfaces anomalies, and generates evaluations.",
-  "writeup": "This talk from Arize's Dat Ngo covers Phoenix, an open-source platform for LLM observability and evaluation that ships as a single container. It matters because tracing, anomaly detection, and evaluation generation remain heavy manual work in production LLM systems. The key takeaways: the enterprise tier adds an AI layer called Alex that automatically scans traces, detects anomalies, and generates evaluations to cut that overhead; the platform spans observability, golden datasets, and deterministic checks while keeping humans in control.",
-  "wh": "3b3ea80b845f04c9",
+  "writeup": "Dat from Arize AI, an AI architect working with large enterprises, walks through the three pillars of making AI agents work in production: observability, evaluation, and safe iteration. The talk argues that agent systems are software reimagined, not magic, and that the same engineering disciplines (traces, signal collection, regression testing) apply. A distributional view of agent behavior, not just individual trace inspection, is the key advance over classical observability. The eval taxonomy spans five signal types, from LLM-as-judge to deterministic logic checks, with a sharp division of labor between engineers who code and domain experts who define what good looks like.",
+  "wh": "b6cb7742efd66e37",
   "concepts": [
     {
       "slug": "observability",
@@ -84,5 +84,50 @@
       "channel": "AI Engineer",
       "score": 0.526
     }
-  ]
+  ],
+  "key_points": [
+    "OpenTelemetry (Otel) is Arize AX's foundational instrumentation layer: a single auto-instrumenter line produces traces and spans for any framework or SDK, giving an audit record of every step an agent took since classical code instrumentation does not capture agent behavior.",
+    "Distributional agent views answer questions individual traces cannot, such as what percentage of traffic routes down one branch versus another and which specific component in a given path caused elevated latency, enabling root-cause analysis at scale.",
+    "Trajectory evals surface ordering bugs in multi-step agent pipelines: if component B has a dependency on A but the LLM calls them in reverse, a trajectory eval catches the regression before it reaches production.",
+    "Evals come in five flavors: LLM-as-judge, human feedback (end-user and subject matter expert), golden datasets used to calibrate the judge, deterministic logic checks (valid JSON, schema presence, non-null fields), and business metrics (revenue, cost savings, time savings).",
+    "A key organizational pattern for enterprise AI teams is splitting eval authorship: engineers attach and run evals programmatically, while non-technical domain experts and product managers define the prompts and criteria through a no-code interface, keeping each role in its domain.",
+    "Multi-span evals are required when a single component's input-output pair is insufficient: evaluating how well agents pass data to each other demands collecting outputs from every agent in the chain and inspecting cross-component data flow together."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Speaker Background"
+    },
+    {
+      "t": 91,
+      "title": "Three Pillars: Observability, Evals, Regression"
+    },
+    {
+      "t": 122,
+      "title": "Observability: Traces, Spans, and Sessions"
+    },
+    {
+      "t": 331,
+      "title": "Distributional Agent Views and Trajectory Analysis"
+    },
+    {
+      "t": 420,
+      "title": "Five Flavors of Eval Signal"
+    },
+    {
+      "t": 511,
+      "title": "Business Metrics and the Technical vs. Domain Expert Split"
+    },
+    {
+      "t": 600,
+      "title": "Span, Multi-Span, and Trajectory Eval Scopes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e8789944073147a6"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Claude Code, an agentic coding tool that runs in the terminal, marked its first year of general availability. The video features Claude Code leaders discussing verification practices, auto mode, context minimalism, agent management at scale, and how engineering roles are evolving with AI-assisted development.",
-  "writeup": "Anthropic leaders mark the first year of general availability for Claude Code, an agentic coding tool, and review the design choices behind it. The discussion covers verification approaches, auto mode design, and adoption patterns observed over the year. Architectural decisions get specific attention: context minimalism, agent orchestration, and code review automation.",
-  "wh": "dde40320b4a542d3",
+  "writeup": "An Anthropic engineer reflects on one year of Claude Code, tracing its evolution from a limited single-agent tool to a system running thousands of nested agents autonomously. The through-line is a shift in philosophy: persistent learning via CLAUDE.md and skills, computer-use-based verification loops, and auto mode replacing plan mode as the default working pattern. Routines have emerged as the first obvious application of programmatic agent use, with engineers setting up autonomous agents that monitor GitHub issues and open PRs before a human even sees the bug.",
+  "wh": "48db607f4bf68b05",
   "concepts": [
     {
       "slug": "agentic-workflows",
@@ -76,5 +76,50 @@
       "channel": "Alberta Tech",
       "score": 0.66
     }
-  ]
+  ],
+  "key_points": [
+    "Every time Claude makes a mistake the correct response is to write the lesson to CLAUDE.md or create a skill, not to re-prompt inline; this is what allows an agent to run indefinitely without degrading.",
+    "Verification for agents is not lint or unit tests (already automated) but whether the agent can actually run the thing: the team's desktop skill has Claude spin up the local app and use computer use to click around, test edge cases, and fix issues before re-checking.",
+    "Auto mode has replaced plan mode starting around Claude 4.6 and 4.7 because the newer models no longer need an explicit planning step; it routes each permission request to a classifier model and denies suspicious commands, which Anthropic found empirically safer than a human saying yes to 99% of prompts and glazing over.",
+    "Auto mode was validated internally by collecting thousands of agent-trajectory transcripts, having it classify each permission prompt, then running red teamers and internal prompt-injection attempts to build evals before shipping.",
+    "Routines are the first clear killer application of the Claude Code SDK: one engineer monitors every GitHub issue about voice mode, auto-files PRs for bugs, and a second routine finds any unresponded bug report older than five hours and opens a fix, merging the ones that are easy to verify.",
+    "The role boundary between engineer, designer, PM, and finance is dissolving because Claude writes the code; what now differentiates output is product context and the quality of the idea, not implementation skill."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Year One Retrospective"
+    },
+    {
+      "t": 61,
+      "title": "CLAUDE.md and Persistent Agent Learning"
+    },
+    {
+      "t": 91,
+      "title": "Verification via Computer Use"
+    },
+    {
+      "t": 270,
+      "title": "Cross-Role Adoption Inside Anthropic"
+    },
+    {
+      "t": 302,
+      "title": "Routines: Autonomous Bug Fixing"
+    },
+    {
+      "t": 398,
+      "title": "Auto Mode Replaces Plan Mode"
+    },
+    {
+      "t": 481,
+      "title": "How Auto Mode Was Made Safe"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "800a97fe5512a8d5"
 }

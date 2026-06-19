@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Max Ryabinin from Together AI presents a stack of techniques for training LLMs with multi-million token context: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers, enabling 25% longer sequences than prior Ulysses implementations.",
-  "writeup": "Max Ryabinin of Together AI walks through the stack of techniques needed to train LLMs with very long context windows: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. The core contribution is Untied Ulysses, which optimizes context parallelism by chunking attention heads and reusing buffers across iterations. These methods together enable 5 million token context training at 8B and 32B parameter scale.",
-  "wh": "f8335fe59f17ef37",
+  "writeup": "Max, VP of R&D at Together AI, presents the 'Road to 5 Million Sequence Length' project, detailing how to fit 3-to-5 million training tokens into a single 8xH100 node using a stack of memory-reduction techniques. The talk traces the two core bottlenecks for long-context transformers (quadratic attention compute and linearly growing activation memory) and methodically layers FSDP, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and sequence-tiled loss/MLP computation until 3 million tokens are feasible. The primary novel contribution is U-Pipe (Untitled Ulysses), which chunks the attention head groups within a single GPU so buffers are reused across iterations, pushing the ceiling to 5 million tokens without significant throughput regression at 8B and 32B scales.",
+  "wh": "026c5edab5698f25",
   "concepts": [
     {
       "slug": "parallelization",
@@ -76,5 +76,50 @@
       "channel": "Jack Roberts",
       "score": 0.559
     }
-  ]
+  ],
+  "key_points": [
+    "Transformer long-context training faces two distinct bottlenecks: quadratic computation from pairwise token interactions, and linear memory growth from attention activations; both must be addressed together before million-token training is practical on commodity GPU nodes.",
+    "DeepSpeed Ulysses, introduced by Microsoft, distributes multi-head attention across GPUs so each GPU computes only its assigned heads over the full sequence and then aggregates, reducing peak memory roughly 8x and enabling use of Flash Attention kernels.",
+    "Activation checkpointing further cuts memory by recomputing activations on the backward pass rather than storing them, and CPU offloading of transformer-block inputs (a technique pioneered by Unsloth) allows those tensors to be prefetched asynchronously without stalling throughput.",
+    "Sequence-tiled computation (Arctic sequence-length training) chunks element-wise operations such as loss and MLP passes along the sequence axis, eliminating the large intermediate buffers that a 3-million-length dimension would otherwise require.",
+    "U-Pipe extends DeepSpeed Ulysses by further chunking the head groups assigned to each GPU so only one head-group buffer is live at a time; partial results accumulate, the buffer is reused across chunks, and activation memory drops again with negligible throughput impact at shorter lengths.",
+    "At both 8B and 32B parameter scales, the full technique stack matches the memory efficiency of the most optimized known transformer-training implementations while scaling to 5 million tokens, with throughput matching or exceeding baselines at shorter context lengths."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Together AI Overview"
+    },
+    {
+      "t": 120,
+      "title": "Why Long-Context Training Matters"
+    },
+    {
+      "t": 211,
+      "title": "Two Memory Bottlenecks in Transformers"
+    },
+    {
+      "t": 302,
+      "title": "Stacking Techniques: FSDP to Sequence Tiling"
+    },
+    {
+      "t": 600,
+      "title": "U-Pipe: Chunked Head-Group Attention"
+    },
+    {
+      "t": 691,
+      "title": "Benchmarks at 8B and 32B Scale"
+    },
+    {
+      "t": 780,
+      "title": "Takeaways and Q&A"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "aa85d6c45142f57f"
 }

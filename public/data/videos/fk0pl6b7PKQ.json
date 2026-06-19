@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Jordan Urbs presents context hygiene as a technique for maintaining AI agent performance across multiple messages and conversations. The approach involves three layers, Skills, Harnesses, and Hygiene, along with practices like lazy loading and multi-agent orchestration to keep context windows clean and avoid re-explaining requirements.",
-  "writeup": "",
+  "writeup": "The video argues that AI quality degradation mid-conversation is a context problem, not a prompting problem, and introduces context engineering as the successor to prompt engineering. The creator walks through a live Claude Code multi-agent harness built to produce course content for AI Captain's Academy, showing how CLAUDE.md, skills files, and subagent spawning eliminate the need to re-explain context. The through-line is that skills load lazily (only when needed), subagents run in isolated conversations with their own context windows, and hygiene rules embedded in CLAUDE.md enforce self-updating behavior so the workspace compounds over time rather than degrading.",
   "wh": "3277a395eba214c5",
   "concepts": [
     {
@@ -68,5 +68,53 @@
       "channel": "IBM Technology",
       "score": 0.66
     }
-  ]
+  ],
+  "key_points": [
+    "Context windows fill and quality drops because users repeatedly re-explain identity, style, and project details that a properly engineered workspace would already hold in a CLAUDE.md behavioral file loaded before every conversation.",
+    "Skills files (long documents describing templates, workflows, or personas) should be lazy-loaded: the orchestrator passes a file path to a subagent rather than its contents, preserving context budget until the specific capability is actually needed.",
+    "A multi-agent harness delegates phases (research, lesson writing, presentation design, storyboarding) to subagents spawned in isolated conversations, each given only the system prompt and skills it needs, so the main conversation's context window stays clean.",
+    "The three formal layers of a healthy AI workspace are skills (reusable, lazily loaded workflows), a harness (the multi-agent orchestration layer), and hygiene (maintenance rules baked into CLAUDE.md so the workspace self-updates when the harness changes).",
+    "Hygiene rules can be written into CLAUDE.md as standing instructions, for example: every time the harness infrastructure is updated, Claude must also update CLAUDE.md and any affected skill, agent, or command files, making the workspace self-maintaining rather than manually kept."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Context Problem"
+    },
+    {
+      "t": 30,
+      "title": "Context Engineering Defined"
+    },
+    {
+      "t": 60,
+      "title": "Three Compounding Failures"
+    },
+    {
+      "t": 120,
+      "title": "Prompting vs Context Engineering"
+    },
+    {
+      "t": 240,
+      "title": "CLAUDE.md Behavioral File"
+    },
+    {
+      "t": 300,
+      "title": "Agent Team and Workflow Phases"
+    },
+    {
+      "t": 390,
+      "title": "Lazy Loading Skills and Token Economy"
+    },
+    {
+      "t": 511,
+      "title": "Three Layers: Skills, Harness, Hygiene"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0b91c543adeb94f1"
 }

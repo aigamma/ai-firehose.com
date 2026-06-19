@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google demonstrated how to automate SAP order-to-cash processes using the Agent Development Kit and Model Context Protocol to replace brittle RPA with resilient multi-agent teams. The approach uses Gemini's context window and parallel execution to handle complex enterprise workflows through APIs.",
-  "writeup": "",
-  "wh": "a6d3e5fb6ed673ec",
+  "writeup": "This video demonstrates automating SAP's order-to-cash process using Google ADK and the Model Context Protocol, replacing brittle RPA bots with a structured multi-agent team that calls SAP OData APIs directly as MCP tools. The core insight is that ADK's hierarchical agent architecture mirrors corporate org charts: a supervisor root agent delegates to specialized sub-agents (a sales order creator and an inventory reviewer), each scoped to specific tools. A working demo creates a real sales order on a live SAP system, with the agent team reasoning through parameters, calling tools in parallel (a feature added in ADK 1.1), and returning a final summary including the calculated total of $208,000.",
+  "wh": "1afa62b9606cb4c5",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -64,5 +64,54 @@
       "channel": "Google Cloud Tech",
       "score": 0.661
     }
-  ]
+  ],
+  "key_points": [
+    "SAP's OData API specifications can be fed into the OpenAPI MCP generator CLI to automatically produce a full MCP server and tool set, sidestepping the need to hand-code hundreds of API integrations for large modules like Sales and Distribution or Material Management.",
+    "RPA (robotic process automation) is brittle because it mimics screen interaction and breaks on UI or resolution changes; the API-plus-MCP approach is more robust since it calls stable programmatic interfaces directly.",
+    "ADK agents can be nested hierarchically so a supervisor root agent holds no MCP tools itself but delegates to sub-agents that each own a scoped tool set, allowing agent team design to mirror existing organizational roles and responsibilities without redesigning business processes.",
+    "Gemini's 1-million-token context window is a practical necessity at SAP scale, where a single module can expose hundreds of APIs that would otherwise overflow a smaller context.",
+    "As of ADK version 1.1, agents can invoke multiple MCP tools in parallel, which the demo exploits when adding two separate line items to a sales order in a single pass.",
+    "The demo agent does more than parameter-passing: it constructs OData filter expressions autonomously to retrieve only the fields needed, demonstrating genuine reasoning rather than rote tool invocation."
+  ],
+  "chapters": [
+    {
+      "t": 1,
+      "title": "Business Case: Automating SAP Order to Cash"
+    },
+    {
+      "t": 61,
+      "title": "Why RPA Falls Short"
+    },
+    {
+      "t": 92,
+      "title": "The MCP and ADK Approach"
+    },
+    {
+      "t": 121,
+      "title": "Scale Challenge and Gemini Context Window"
+    },
+    {
+      "t": 151,
+      "title": "Mapping Agent Hierarchy to Org Structure"
+    },
+    {
+      "t": 181,
+      "title": "Generating MCP Tools from OpenAPI Specs"
+    },
+    {
+      "t": 212,
+      "title": "Defining the ADK Agent Team"
+    },
+    {
+      "t": 241,
+      "title": "Live Demo: Querying and Creating Sales Orders"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "991651ad6708636e"
 }

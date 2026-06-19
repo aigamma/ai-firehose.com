@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Austin Marchese compares Claude Code and Codex across five categories: UI, technical output, design output, non-technical output, and cost/speed. He argues that the Claude Code vs Codex question itself is misguided and recommends focusing on a broader strategic consideration for developers building applications.",
-  "writeup": "",
-  "wh": "90ef10dbfb557a5f",
+  "writeup": "A structured five-category scorecard pits Codex against Claude Code across UI, technical benchmarks, design output, non-technical work, and cost, arriving at a 2-2 tie before concluding the comparison is secondary. The real argument is that neither tool matters as much as building a personal LLM knowledge base, a set of local folders the AI writes and maintains, so context accumulates across sessions rather than being rediscovered from scratch each time. Andrej Karpathy's framing drives the thesis: 'The LLM is rediscovering knowledge from scratch on every question. There's no accumulation.'",
+  "wh": "f55d71f3731c5947",
   "concepts": [
     {
       "slug": "code-generation",
@@ -56,5 +56,58 @@
       "channel": "Austin Marchese",
       "score": 0.622
     }
-  ]
+  ],
+  "key_points": [
+    "On Terminal Bench, Codex scores 82.7% versus Claude's 69.4% on multi-step engineering tasks, giving Codex a clear technical-benchmark edge, though SWE-bench Pro shows Claude with a slight advantage on real GitHub issues.",
+    "Claude leads on design output: Code Arena's image-to-web-dev test shows Anthropic in a clear lead over OpenAI, and this category is framed as more important than raw engineering benchmarks for most builders.",
+    "For non-technical work (research, ops, content, decisions), Claude wins; McKay Wrigley's summary captures the distinction: 'Codex feels like an engineer, Claude feels like a general purpose worker.'",
+    "On token consumption across identical tasks, Claude consistently uses three times more tokens than Codex, meaning Claude users hit usage limits around Tuesday while Codex users run through Friday on the same workload.",
+    "OpenAI shipped an official Codex plugin for Claude Code on March 30th; the command '/codex:rescue' inside a Claude Code terminal routes a task to Codex, removing the need to pick one tool as a permanent home base.",
+    "An LLM knowledge base consists of three components: a 'raw' folder for source files, a 'knowledge' folder where the AI writes organized summaries cross-referenced back to raw, and a Claude.md or agents.md librarian file that tells the AI how to navigate the system, so every session starts with accumulated personal context already loaded."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Codex vs Claude Code Overview"
+    },
+    {
+      "t": 61,
+      "title": "Five Category Scorecard"
+    },
+    {
+      "t": 91,
+      "title": "Technical Benchmarks"
+    },
+    {
+      "t": 150,
+      "title": "Design Output Comparison"
+    },
+    {
+      "t": 182,
+      "title": "Non-Technical Output"
+    },
+    {
+      "t": 242,
+      "title": "Cost and Speed"
+    },
+    {
+      "t": 301,
+      "title": "The Undeniable Test"
+    },
+    {
+      "t": 360,
+      "title": "Codex Plugin Inside Claude Code"
+    },
+    {
+      "t": 391,
+      "title": "The LLM Knowledge Base"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "283cb88f842e807b"
 }

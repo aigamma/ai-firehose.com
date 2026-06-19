@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google DeepMind presented Gemini 3 Flash Preview, which provides audio understanding including speaker identification, timestamps, emotion detection, language detection with translation, and summarization through a single API call. The model also supports speech generation directed by text descriptions and enables real-time multimodal audio processing.",
-  "writeup": "This talk from Google DeepMind's Thor Schaeff covers Gemini's audio stack across two models. Gemini 3 Flash Preview handles audio understanding, returning speaker identification, emotion tagging, language detection, and translation from a single API call. Gemini 3.1 Flash Live is a real-time multimodal model built for sound-to-sound processing with integrated reasoning. The takeaway: audio tasks that previously required separate pipelines collapse into one model, and live sound-to-sound runs with reasoning attached.",
-  "wh": "41bbefc93d5195cb",
+  "writeup": "A Google DeepMind developer-experience engineer walks through the current state of AI audio at DeepMind, covering three distinct capabilities built on Gemini 3 Flash: rich audio understanding (speaker diarization, emotion tagging, multilingual transcription in one API call), directive speech synthesis (a small set of base voices steerable by scene description and director-style notes), and Gemini 2.0 Flash Live, a native sound-to-sound real-time multimodal model. The through-line is that a shared audio-understanding substrate powers all three tiers, so the same comprehension that parses pacing and accent in transcription also enables accent-accurate synthesis and in-model reasoning without a text-LLM intermediary.",
+  "wh": "80dbbea54b3d2f2f",
   "concepts": [
     {
       "slug": "audio-processing",
@@ -72,5 +72,41 @@
       "channel": "AI Engineer",
       "score": 0.604
     }
-  ]
+  ],
+  "key_points": [
+    "EchoScript, a demo app in the Google AI Studio gallery, extracts speaker labels, timestamps, language tags, emotion labels (happy, sad, angry, neutral), and an overall summary from a single Gemini 3 Flash Preview API call with a structured JSON response schema.",
+    "Rather than maintaining a large voice library filtered by gender or accent, Gemini speech generation starts from roughly 30 base voices and accepts a natural-language director's note (scene setting, performance guidance, transcript) to steer accent and delivery, demonstrated by converting a standard American base voice to a convincing Irish brogue and Singaporean Singlish.",
+    "Gemini 2.0 Flash Live is a native audio-to-audio model that accepts real-time text, audio, and video over a WebSocket connection and returns streamed audio plus a text transcript, with reasoning and intelligence baked into the audio model itself rather than routed through a separate text LLM.",
+    "All three capabilities share a common foundation in Gemini 3 foundational research, meaning the model genuinely understands what different accents, pacing patterns, and emotional registers sound like rather than applying post-hoc filtering.",
+    "Google AI Studio (ai.google.dev/aistudio) lets developers try Gemini Live and the voice library without a paid API key, making it a zero-cost entry point for audio model evaluation."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and DeepMind Audio Overview"
+    },
+    {
+      "t": 96,
+      "title": "Recent Releases: Gemma 4 and Gemini Flash Live"
+    },
+    {
+      "t": 240,
+      "title": "EchoScript Demo: Rich Audio Understanding in One API Call"
+    },
+    {
+      "t": 480,
+      "title": "Speech Generation with Director-Style Voice Control"
+    },
+    {
+      "t": 720,
+      "title": "Gemini 2.0 Flash Live: Native Sound-to-Sound Real-Time Model"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "bd95e7d2efcb9c6e"
 }

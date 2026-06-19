@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "AWS Developers video walks through a cleanup checklist for identifying surprise charges that persist after deleting cloud resources. Covers hidden costs from RDS snapshots, EBS volumes, elastic IPs, and NAT gateways, and recommends setting up billing alarms for cost monitoring.",
-  "writeup": "",
-  "wh": "d45acc8e4d3f9aad",
+  "writeup": "AWS charges in specific, predictable ways tied to orphaned resources that survive deletion: RDS snapshots, unattached EBS volumes, elastic IPs, and NAT gateways. This video walks through a concrete cleanup checklist for each of these resource types and demonstrates configuring a billing alarm in AWS Budgets as a mandatory first step on any new account. The through-line is that surprise bills come from a knowledge gap about what deletion actually leaves behind, not from opaque or hidden AWS pricing.",
+  "wh": "44d1aea4734786ac",
   "concepts": [
     {
       "slug": "billing-alarms",
@@ -60,5 +60,46 @@
       "channel": "Jack Roberts",
       "score": 0.459
     }
-  ]
+  ],
+  "key_points": [
+    "RDS database deletion often triggers an automatic final snapshot that persists in the account and accrues storage charges indefinitely unless explicitly deleted.",
+    "EBS volumes attached to EC2 instances do not always delete when the instance is terminated; filtering EC2 volumes by the 'available' state reveals any orphaned volumes still accumulating monthly charges.",
+    "Elastic IPs remain allocated and billable after an instance is terminated unless manually released, because AWS charges for unattached elastic IPs as a penalty for holding scarce IPv4 space.",
+    "NAT gateways created during VPC tutorials with public and private subnets cost approximately $32 per month regardless of traffic and must be explicitly deleted when no longer needed.",
+    "AWS Budgets supports multi-threshold alerts, for example at 80% and 100% of a monthly cap, so a billing alarm fires before a limit is breached rather than after.",
+    "AWS Resource Explorer provides a cross-region view of all provisioned resources in a single pane, making it a reliable starting point for a post-project cleanup pass."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro: The Surprise Bill Problem"
+    },
+    {
+      "t": 62,
+      "title": "RDS Snapshots and EBS Volumes"
+    },
+    {
+      "t": 181,
+      "title": "The Cleanup Checklist"
+    },
+    {
+      "t": 212,
+      "title": "Usual Suspects: Snapshots, Volumes, Elastic IPs"
+    },
+    {
+      "t": 302,
+      "title": "NAT Gateways and the Billing Alarm"
+    },
+    {
+      "t": 330,
+      "title": "Setting Up AWS Budgets"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8a4fe3849f69b16f"
 }

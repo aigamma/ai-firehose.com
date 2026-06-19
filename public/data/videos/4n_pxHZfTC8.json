@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Matthew Berman discusses Anthropic's Opus 4.8 release and speculates about a potential GPT 5.6 from OpenAI. The video appears to cover updates to these frontier language models.",
-  "writeup": "",
+  "writeup": "A livestream walkthrough of the Claude Opus 4.8 release, covering the model's headline claims, benchmark suite, and new Claude Code features. The through-line is a tension between official benchmarks and real-world perception: Opus 4.8 posts a 5-point SWE-bench Pro jump to 69.2% over Opus 4.7 (released just 6 weeks prior), yet the newer DeepSuite benchmark tells a different story, showing GPT 5.5 at 70% versus Opus 4.7 at 54%, which better matches developer vibe-checks. Pricing holds at Opus 4.7 levels while a fast mode delivers roughly 2.5x throughput.",
   "wh": "b035afdea01991a8",
   "concepts": [
     {
@@ -52,5 +52,54 @@
       "channel": "Nick Saraev",
       "score": 0.635
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Opus 4.8 ships at the same price as Opus 4.7, making the capability improvement an effective cost reduction per unit of work, and arrives only 6 weeks after 4.7, illustrating the accelerating cadence of frontier releases.",
+    "SWE-bench Pro shows Opus 4.8 at 69.2%, a 5-point gain over Opus 4.7, but DeepSuite (presented as more reflective of real-world coding feel) puts GPT 5.5 at 70% versus Opus 4.7 at 54%, raising serious doubts about SWE-bench Pro as a discriminating signal at high score levels.",
+    "Opus 4.8 fast mode runs at approximately 2.5x the token generation speed of the standard mode, enabled via /fast in Claude Code or through the API, with broader access gated behind a waitlist.",
+    "On Humanity's Last Exam (multidisciplinary reasoning), Opus 4.8 leads the field by a wide margin, roughly 3 points above Opus 4.7 and substantially above GPT 5.5 (41.4% without tools, 52.2% with tools); on agentic terminal coding (TerminalBench 2.1), GPT 5.5 holds a clear lead at 78.2%.",
+    "Dynamic workflows, a research preview in Claude Code, lets Opus 4.8 plan a task, spin up hundreds of parallel subagents to execute it, and verify the result before reporting back, with large-scale file migrations cited as the target use case.",
+    "Financial analysis is emerging as a deliberate second vertical for Anthropic alongside coding: Finance Agent v2 results show a 2-point improvement for Opus 4.8, and the presenter notes the significant market opportunity if the model can reliably handle financial knowledge work."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Live Chat"
+    },
+    {
+      "t": 390,
+      "title": "Opus 4.8 Announcement and Pricing"
+    },
+    {
+      "t": 481,
+      "title": "Fast Mode and Claude Code Improvements"
+    },
+    {
+      "t": 570,
+      "title": "Dynamic Workflows Research Preview"
+    },
+    {
+      "t": 691,
+      "title": "Benchmark Overview: SWE-bench Pro"
+    },
+    {
+      "t": 804,
+      "title": "DeepSuite vs SWE-bench Divergence"
+    },
+    {
+      "t": 933,
+      "title": "Terminal Coding and Reasoning Benchmarks"
+    },
+    {
+      "t": 1141,
+      "title": "Financial Analysis and Benchmark Caveats"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "461af842058b4187"
 }

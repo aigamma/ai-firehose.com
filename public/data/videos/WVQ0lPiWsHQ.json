@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Claude Opus-4.7 is the latest version of Anthropic's Claude model. Nick Saraev discusses the release and its applications in a YouTube video covering practical automation workflows and business use cases.",
-  "writeup": "",
+  "writeup": "A rapid benchmark walkthrough of Claude Opus 4.7 against Opus 4.6, GPT-5.4, Gemini 3.1 Pro, and Mythos Preview, followed by a candid assessment of what the release actually means for practitioners. The presenter argues that Opus 4.7 lands as a deliberate half-step: roughly 50% of the performance gap between 4.6 and the still-restricted Mythos Preview, with the terminal-use and agentic-search scores intentionally held back for security reasons. The through-line is a skeptical read on benchmark hype: genuine capability leaps ended at GPT-3 in 2020, and everything since has been incremental expansion of what was already possible, now achievable with less scaffolding.",
   "wh": "c753b7242e49ce07",
   "concepts": [
     {
@@ -56,5 +56,54 @@
       "channel": "Wes Roth",
       "score": 0.712
     }
-  ]
+  ],
+  "key_points": [
+    "On SWE-bench Pro, Opus 4.7 scores 64.3% versus 53.4% for Opus 4.6, a gain of roughly 10 percentage points that is mathematically close to half the distance between 4.6 and Mythos Preview (which itself scored near 75%), suggesting Opus 4.7 is a distilled, faster version of Mythos rather than an independent architecture.",
+    "Agentic terminal coding improved only modestly (65.4% to 69.4% versus Mythos at 82%), and agentic search (BrowseComp) actually regressed versus Opus 4.6; the presenter reads both as deliberate security-motivated suppression of the model's ability to interact with operating systems and external networks.",
+    "Visual reasoning saw the sharpest absolute jump of any category, rising from 69.1% to 82.1% with no tools, which the presenter flags as the single most notable qualitative leap in the release.",
+    "Humanity's Last Exam moved from 40% on 4.6 to 46.9% on 4.7 (Mythos: 56.8%); the presenter's broader claim is that the nonlinear nature of benchmark saturation means a model at 50% on such a test is closer to 90% of the way to full saturation, and most of these benchmarks will be saturated within one model generation.",
+    "The presenter's core thesis is that AI stopped creating new possibilities at GPT-3 in 2020 and has since been lowering the scaffolding required to reach the same outcomes: tasks that previously needed precise prompt engineering and elaborate harnesses now work with raw prompts, but the tasks themselves are not new.",
+    "For practitioners already running Opus 4.6 pipelines, the presenter recommends against immediate migration when only incremental benchmark differences exist, because personality drift between model versions can disrupt production behavior more than the marginal score gain justifies."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Opus 4.7 First Look"
+    },
+    {
+      "t": 30,
+      "title": "Benchmark Scorecard Overview"
+    },
+    {
+      "t": 150,
+      "title": "SWE-Bench and Coding Results"
+    },
+    {
+      "t": 212,
+      "title": "Agentic and Security-Sensitive Benchmarks"
+    },
+    {
+      "t": 300,
+      "title": "Visual Reasoning and Multilingual Results"
+    },
+    {
+      "t": 420,
+      "title": "Security Rationale for Withheld Capabilities"
+    },
+    {
+      "t": 480,
+      "title": "What Actually Changed Since GPT-3"
+    },
+    {
+      "t": 540,
+      "title": "Model Commoditization and Migration Advice"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "364b69843b25f035"
 }

@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Anthropic and OpenAI have warned about accelerating AI self-improvement trends, with Claude increasingly writing code, reviewing code, running experiments, and assisting in AI development. The concern centers on AI systems beginning to participate directly in their own improvement cycle, with humans setting goals but AI handling execution.",
-  "writeup": "",
-  "wh": "96b50f4ee4a9dd72",
+  "writeup": "Anthropic's May 2026 blog post 'When AI builds itself' argues that AI may already be entering the early stages of recursive self-improvement, with Claude now authoring over 80% of Anthropic's merged code and running AI safety research experiments end to end. The video walks through the concrete numbers behind this claim, including a 50-percentage-point jump in Claude's success rate on hard open-ended coding tasks in six months and a multi-agent experiment that recovered 97% of a weak-to-strong supervision performance gap versus 23% for a human team. The through-line is that the transition from AI as tool to AI as contributor to its own development is measurable, already underway at a leading lab, and acknowledged simultaneously by both Anthropic and OpenAI.",
+  "wh": "1fc48605db2df678",
   "concepts": [
     {
       "slug": "self-improving-ai",
@@ -68,5 +68,50 @@
       "channel": "Wes Roth",
       "score": 0.693
     }
-  ]
+  ],
+  "key_points": [
+    "As of May 2026, more than 80% of the code merged into Anthropic's codebase was written by Claude, up from low single digits before Claude Code launched in research preview in February 2025, and engineers are merging eight times as much code per day as in 2024.",
+    "On the most open-ended and difficult coding tasks, where the specification is vague and the answer unknown, Claude's success rate reached 76% in May 2026, up from 26% six months earlier; in one documented incident, Claude isolated an obscure debugging flag crashing tens of thousands of training jobs in about two hours, a task that would normally take a human two to three days.",
+    "A benchmark tracking how fast Claude can optimize training code for speed shows Claude Opus 4 averaged roughly a 3x speedup in May 2025, while Claude Mythos preview reached roughly a 52x speedup by April 2026, surpassing the 4x a skilled human researcher typically achieves in 4 to 8 hours.",
+    "In an April 2026 experiment on weak-to-strong supervision, nine parallel Claude Opus 4.6 agents, working for roughly 800 cumulative hours at about $22 per agent hour, recovered 97% of the performance gap between a weak and a strong model baseline; two human researchers working for seven days recovered only 23% of the same gap.",
+    "METR's task completion time horizon data shows AI agents have scaled from handling 4-minute software tasks reliably in March 2024 (Claude Opus 3) to roughly 12-hour tasks by the Claude Opus 4.6 generation, with Claude Mythos preview extending that further.",
+    "Anthropic states it would participate in a coordinated, verifiable multi-lab slowdown if one could be verified, but argues a unilateral pause by a single company only shifts who leads the race; OpenAI's separate governance blueprint published around the same time independently describes early signs of recursive self-improvement and calls for a federal AI safety framework."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Anthropic's Self-Improvement Warning"
+    },
+    {
+      "t": 61,
+      "title": "The Conditional Pause Argument"
+    },
+    {
+      "t": 121,
+      "title": "Claude Writing Anthropic's Code"
+    },
+    {
+      "t": 330,
+      "title": "Claude Reviewing Code and Catching Bugs"
+    },
+    {
+      "t": 450,
+      "title": "AI Safety Research by AI Agents"
+    },
+    {
+      "t": 630,
+      "title": "OpenAI's Parallel Acknowledgment"
+    },
+    {
+      "t": 690,
+      "title": "METR Task Horizon Data"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a9ee862d6920dcc5"
 }

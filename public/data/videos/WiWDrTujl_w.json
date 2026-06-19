@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Antigravity announced a lightweight terminal interface called Antigravity CLI. The platform enables AI agents to perform autonomous development tasks by connecting directly to code editors, terminals, and browsers.",
-  "writeup": "",
-  "wh": "96079e1b0cbd0613",
+  "writeup": "This video introduces the Antigravity CLI, a terminal-native interface to the same agent and intelligence layer behind the Antigravity 2.0 desktop GUI. It walks through the core design choices: lower overhead than the GUI, full conversation export to the desktop with a single command, parallel sub-agents for reading codebases and generating code and tests simultaneously, and granular per-command user approval built directly into the shell. The through-line is that the terminal is treated as a first-class agentic environment rather than a fallback, with scripting hooks, custom slash commands, and in-flow background queries designed for developers who never want to leave their shell.",
+  "wh": "da15f6dce1e356d7",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -60,5 +60,50 @@
       "channel": "Google Antigravity",
       "score": 0.72
     }
-  ]
+  ],
+  "key_points": [
+    "The Antigravity CLI runs the identical agent and intelligence as Antigravity 2.0, so there is no quality tradeoff for choosing the terminal over the desktop GUI, and a CLI session can be exported to the full GUI at any point with one command.",
+    "Sub-agents run in parallel inside a single CLI session: one agent reads the codebase architecture, another generates code across multiple files, and a third writes tests concurrently, compressing what formerly required many sequential turns into a few.",
+    "The /btw slash command lets the user ask a background question while a long build or test run is still active, avoiding the need to interrupt or wait; /fork branches the conversation instantly so an alternative approach can be explored without discarding the current state.",
+    "Every shell command and every file change the agent proposes is surfaced for explicit approval inside the terminal: Y executes, N rejects, giving the user full control over what touches the workspace.",
+    "The -p flag passes a prompt at startup, making the CLI scriptable and embeddable inside data pipelines, cron jobs, and automation scripts as a first-class use case rather than an afterthought.",
+    "Custom skills defined in the workspace automatically register as native slash commands with tab completion, allowing personal workflows and team playbooks to surface as first-class commands without any extra configuration."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introducing the Antigravity CLI"
+    },
+    {
+      "t": 31,
+      "title": "Same Agent, GUI Export, Speed Tradeoffs"
+    },
+    {
+      "t": 60,
+      "title": "Parallel Sub-Agents in the Terminal"
+    },
+    {
+      "t": 91,
+      "title": "Real-Time Progress and Walk-Through"
+    },
+    {
+      "t": 120,
+      "title": "Background Queries and Conversation Forking"
+    },
+    {
+      "t": 150,
+      "title": "Per-Command Approval and Sandboxing"
+    },
+    {
+      "t": 180,
+      "title": "Scripting, Custom Skills, and Slash Commands"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "1890f1c8f4d1f539"
 }

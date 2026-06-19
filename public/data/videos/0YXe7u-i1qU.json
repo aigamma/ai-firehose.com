@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google released a tutorial on building custom agents using Managed Agents in Google AI Studio and the Gemini API. The resource demonstrates how to get started with agent development on Google's platforms.",
-  "writeup": "",
+  "writeup": "Patrick from the Gemini API team demonstrates Google's new managed agents feature, which runs Gemini 2.5 Flash inside a secure, Google-hosted Linux sandbox capable of browsing the web, writing and executing code, and managing files. The tutorial covers both the AI Studio no-code path and the Python SDK path, showing how a single API call can spin up a full agentic environment. Agents are customized through agents.md and skill.md files or a linked GitHub repository, making the pattern portable and version-controllable. The through-line is that heavy multi-step agentic work (fetch data, parse, generate an artifact, iterate) now requires almost no scaffolding from the caller.",
   "wh": "52dfa97b2d3ff7ee",
   "concepts": [
     {
@@ -56,5 +56,50 @@
       "channel": "Google Antigravity",
       "score": 0.638
     }
-  ]
+  ],
+  "key_points": [
+    "Managed agents run in a Google-hosted secure Linux sandbox where the agent can reason, execute arbitrary code, browse the web, and manage files, all without the developer provisioning any infrastructure.",
+    "The Python SDK entry point is client.interactions.create, specifying the agent ID, the user input, and environment='remote'; the Interactions API is optimized for multi-turn sessions by passing the previous interaction_id and environment_id to continue in the same sandbox.",
+    "Agents are customized by injecting sources into the agent definition: an agents.md file for system-level instructions, a skill.md file for named capabilities, inline scripts, cloud storage URLs, or a full GitHub repository, all configurable in both AI Studio and via client.agents.create in the API.",
+    "File retrieval from the sandbox is not yet supported in the Python SDK and requires a plain REST GET request that returns a tar archive of all files the agent produced in the session.",
+    "Streaming is available on the Interactions API, letting callers receive step-by-step agent actions as they happen rather than waiting for a final result, which enables more interactive UI experiences.",
+    "The weather dashboard demo illustrates the end-to-end loop: the agent performed a Google search, wrote a Python scraper, parsed the data, and produced an interactive Tailwind CSS HTML dashboard, all from a single natural-language prompt."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction to Managed Agents"
+    },
+    {
+      "t": 90,
+      "title": "Weather Dashboard Demo"
+    },
+    {
+      "t": 181,
+      "title": "Demo Results and File Download"
+    },
+    {
+      "t": 241,
+      "title": "Templates and Agent Configuration in AI Studio"
+    },
+    {
+      "t": 332,
+      "title": "Python SDK Quickstart"
+    },
+    {
+      "t": 451,
+      "title": "Multi-Turn Conversations and Sandbox File Access"
+    },
+    {
+      "t": 513,
+      "title": "Streaming and Custom Agent Creation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "42772bd16b91c541"
 }

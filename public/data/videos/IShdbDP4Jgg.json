@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Chase AI presents ten tools and plugins designed to extend Claude Code capabilities, with emphasis on Graphify as a knowledge graph solution for handling large codebases without RAG. Featured tools include grill-me, Codex, claude-obsidian, impeccable, and n8n-mcp among others.",
-  "writeup": "Chase AI reviews ten plugins for extending Claude Code, including Graphify for knowledge graph generation, grill-me for skill querying, a Codex plugin, claude-obsidian, NotebookLM integration, and n8n MCP. The throughline is solving Claude Code's memory limitations through non-RAG approaches such as knowledge graphs. Concepts covered include memory systems, the Claude API, and the Model Context Protocol.",
-  "wh": "e78713b437a7d5dd",
+  "writeup": "A curated walkthrough of 10 lesser-known Claude Code plugins, skills, and CLIs that the presenter argues deliver real workflow impact, deliberately omitting well-known names like Superpowers or Frontend Design. The list spans codebase understanding (Graphify's AST knowledge graph), alignment and adversarial plan review (Grill Me, Grill Me Codex, the official OpenAI Codex plugin), knowledge management (Claude Obsidian, Karpathy's CLAUDE.md), front-end design (Impeccable), and media generation (Higgs Field CLI). The through-line is concrete friction reduction: each tool targets a specific failure mode, from token-heavy grep traversal to agent-human misalignment to AI design slop.",
+  "wh": "78c6e72bd3b26d3c",
   "concepts": [
     {
       "slug": "knowledge-graph",
@@ -72,5 +72,54 @@
       "channel": "Chase AI",
       "score": 0.685
     }
-  ]
+  ],
+  "key_points": [
+    "Graphify converts any codebase into a knowledge graph that replaces grep-based context retrieval, reducing token consumption, and its post-commit hook auto-rebuilds the graph using AST only with no LLM call, keeping costs flat as the repo evolves.",
+    "Matt Pocock's Grill Me and Grill with Docs skills extend Claude Code's plan mode with deeper upfront questioning, and the presenter's own Grill Me Codex layer adds up to five adversarial back-and-forth rounds between Claude Code and Codex in a read-only sandbox, requiring consensus before proceeding.",
+    "OpenAI's official Codex plugin for Claude Code offers basic review, adversarial review, and a Codex rescue mode that lets Codex work a feature independently inside the Claude Code terminal, and it is accessible on the free Codex tier.",
+    "The Claude Obsidian plugin automates Karpathy's wiki-style vault setup: Claude extracts entities and concepts from dropped-in sources, files them into a structured vault, and writes a hot cache at session end so the next session opens with full recent context and no recap needed.",
+    "Karpathy's CLAUDE.md file (170k GitHub stars) encodes four conventions that deliberately bias toward caution over speed: think before coding, simplicity first, surgical changes, and goal-driven execution, and codifying these in CLAUDE.md makes them apply to every project automatically.",
+    "Impeccable packs 23 front-end design commands (colorize, animate, bolder, quieter, and others) into a single Claude Code skill, and its live mode starts a dev server and allows pointing at page elements for real-time visual iteration without editing code directly."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: 10 Underrated Tools"
+    },
+    {
+      "t": 31,
+      "title": "Graphify: Codebase Knowledge Graph"
+    },
+    {
+      "t": 120,
+      "title": "Grill Me and Grill with Docs"
+    },
+    {
+      "t": 181,
+      "title": "Grill Me Codex: Adversarial Plan Review"
+    },
+    {
+      "t": 270,
+      "title": "Official OpenAI Codex Plugin"
+    },
+    {
+      "t": 362,
+      "title": "Claude Obsidian: Automated Knowledge Vault"
+    },
+    {
+      "t": 450,
+      "title": "Karpathy's CLAUDE.md Conventions"
+    },
+    {
+      "t": 481,
+      "title": "Impeccable: Front-End Design Skill"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "93594fedf538663c"
 }

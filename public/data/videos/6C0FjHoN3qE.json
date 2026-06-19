@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Antigravity 2.0 is a standalone desktop application designed for multi-agent team coordination. It includes scheduled tasks, native voice capabilities, and one-click integration with other Google products.",
-  "writeup": "",
-  "wh": "d2eee402b252361c",
+  "writeup": "Anti-Gravity 2.0 is a standalone desktop app for orchestrating AI coding agents, built on Gemini models, demonstrated here by building a street-guessing map game called Street Guesser from scratch. The demo progresses from voice-driven planning through parallel sub-agents working simultaneously on distinct features (confetti animation, image-generated trophies, preset locations) to a full-stack SQLite backend with game history and high scores. The through-line is how an agent-first GUI changes the development loop: the human reviews plans, leaves comments on artifacts, grants or denies shell commands, and fans work across isolated work trees, while agents handle research, code generation, image generation, and browser-based self-verification in parallel.",
+  "wh": "ba8c1e38ccbf2f5a",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -64,5 +64,54 @@
       "channel": "Google Antigravity",
       "score": 0.685
     }
-  ]
+  ],
+  "key_points": [
+    "Anti-Gravity 2.0 centers on a project primitive that bundles folders and Git repositories as the launchpad for agents, replacing the previous IDE-embedded agent manager with a dedicated orchestration surface.",
+    "Gemini 2.5 Flash is the model powering the coding agent throughout the demo; its speed is repeatedly cited as the reason parallel sub-agents can return results before the user finishes reviewing another branch of work.",
+    "Work trees are a first-class feature: selecting 'new work tree' spins up a copy of the codebase in a separate folder so a sub-agent can iterate without touching the main conversation, enabling genuinely parallel development without merge conflicts mid-session.",
+    "Command permissioning is explicit and granular: the agent asks before running shell commands, and the user can whitelist categories, require per-command approval, or enable sandboxing and network permissioning from settings.",
+    "The slash-browser tool lets the agent open Chrome, navigate the running app, and verify its own work visually, closing the loop between code generation and runtime correctness without human intervention.",
+    "Adding a SQLite backend with user game history, favorite maps, and high-score tracking is framed as a test of the sub-agent architecture on a gnarly, cross-cutting refactor that touches both client and server."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Anti-Gravity 2.0 Introduction"
+    },
+    {
+      "t": 31,
+      "title": "Onboarding and Project Setup"
+    },
+    {
+      "t": 120,
+      "title": "Voice-Driven Planning for Street Guesser"
+    },
+    {
+      "t": 241,
+      "title": "First Build and Live Preview"
+    },
+    {
+      "t": 301,
+      "title": "Parallel Sub-Agents and Work Trees"
+    },
+    {
+      "t": 480,
+      "title": "Presets, Trophies, and Artifact Comments"
+    },
+    {
+      "t": 510,
+      "title": "Playing the Game Live"
+    },
+    {
+      "t": 540,
+      "title": "SQL Backend and Browser Self-Verification"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9675becd2dfb7f7d"
 }

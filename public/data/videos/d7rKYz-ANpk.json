@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Wagtail is a Django-based CMS designed for blogging in Python. It provides content management capabilities built on top of the Django web framework.",
-  "writeup": "",
+  "writeup": "A hands-on introduction to Wagtail, the open-source Django-based CMS that takes an Arch Linux-style philosophy: the framework ships nothing beyond a bare Django scaffold, and the developer must explicitly model every page type, field, and template from scratch. The video walks through project creation with the uv package manager, initial migrations and superuser setup, and then the core Wagtail pattern of adding a RichTextField to a page model, wiring it to content_panels, and rendering it in a Django template with the wagtailcore_tags filter. The through-line is that Wagtail's radical code-first, define-everything approach trades WordPress-style convenience for complete structural control.",
   "wh": "77eb9ccefe5676d3",
   "concepts": [],
   "similar": [
@@ -47,5 +47,54 @@
       "channel": "Better Stack",
       "score": 0.436
     }
-  ]
+  ],
+  "key_points": [
+    "Wagtail ships with a working Django admin and database layer but zero content schema: until the developer defines a page model with explicit fields (such as RichTextField), even the home page cannot hold any content beyond its title, which is what forces a code-first discipline rather than a plugin-configuration workflow.",
+    "The recommended installation path shown uses uv (a Rust-based Python package manager), creating a project with 'uv init' and adding Wagtail via 'uv add wagtail', followed by 'wagtail start <name>' to scaffold the project, offering per-project dependency isolation and faster installs compared to system pip.",
+    "Three setup commands are required before the server is usable: 'python manage.py migrate' applies Wagtail's built-in migrations to create all necessary tables, 'python manage.py createsuperuser' creates the admin account that gates all content editing, and 'python manage.py runserver' starts the dev server on localhost:8000.",
+    "Adding editable content to a page requires three coordinated changes in models.py: importing RichTextField from wagtail.fields, declaring the field on the model class (e.g. body = RichTextField(blank=True)), and appending a FieldPanel for 'body' to content_panels so the field appears in the Wagtail admin editor.",
+    "Rendering a RichTextField in a Django template requires loading the 'wagtailcore_tags' template tag library with '{% load wagtailcore_tags %}' and then piping the field through the 'richtext' filter (e.g. {{ page.body|richtext }}), because raw RichTextField output is stored HTML that needs Wagtail-specific processing.",
+    "Any change to a page model's fields requires running 'python manage.py makemigrations' followed by 'python manage.py migrate' before the new field appears in the admin, following the standard Django migration workflow that Wagtail inherits directly."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Wagtail Overview and Philosophy"
+    },
+    {
+      "t": 61,
+      "title": "Project Setup and Installation with uv"
+    },
+    {
+      "t": 181,
+      "title": "Project Structure and Django Familiarity"
+    },
+    {
+      "t": 270,
+      "title": "Migrations, Superuser, and Running the Server"
+    },
+    {
+      "t": 360,
+      "title": "Exploring the Admin Panel"
+    },
+    {
+      "t": 420,
+      "title": "Editing Templates for Static Content"
+    },
+    {
+      "t": 540,
+      "title": "Adding a RichTextField to a Page Model"
+    },
+    {
+      "t": 630,
+      "title": "Migrations for Model Changes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3c23329847e57bfc"
 }

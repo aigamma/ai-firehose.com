@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Hermes Agent is an open-source agent framework with over 180,000 GitHub stars. The video demonstrates running Hermes Agent with MiniMax m3 model to achieve 100x cost reduction compared to baseline approaches.",
-  "writeup": "The video covers Hermes Agent, a GitHub project with over 180,000 stars, and demonstrates running it with MiniMax's m3 model. The focus is cost-effective deployment: the pairing is presented as reducing inference costs by 100x relative to alternatives. Concepts touched include multi-agent systems and token optimization for cost reduction.",
-  "wh": "4b303c6e7b5e4b2c",
+  "writeup": "This video demonstrates Minimax M3, a model the author argues is the first to sit above the price-to-capability curve, outperforming Claude Opus 4.8 and GPT-5.5 on SWE Pro, SVG BenchBench, and BrowseComp benchmarks at roughly 10 to 20 times lower cost during its current 50% off promotion. The core mechanism is Minimax Sparse Attention (MSA), which reads only contextually relevant tokens rather than the full context, yielding a 1-million-token window at an estimated 1/20th of standard transformer compute. The video walks through connecting Minimax M3 as the backend for two open-source agents: Hermes Agent (a terminal-based autonomous agent) and Open Code (a Claude Code alternative), running both simultaneously on the same subscription plan. A live cost check mid-demo shows 1 cent spent and 1% of weekly quota consumed after 60,000 tokens across both agents, making always-on agent loops economically viable.",
+  "wh": "747c112e49c89266",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -60,5 +60,53 @@
       "channel": "Jack Roberts",
       "score": 0.614
     }
-  ]
+  ],
+  "key_points": [
+    "Minimax M3 is claimed to be the first model above the price-to-capability line, benchmarking above Claude Opus 4.8 and GPT-5.5 on SWE Pro and SVG BenchBench while costing $0.60 per million input tokens versus Opus at $5.00, a roughly 8x base difference that widens to 10-20x with the current 50% discount.",
+    "MSA (Minimax Sparse Attention) is the architectural basis: instead of attending to every token in context on each forward pass, it identifies and reads only the relevant portions, enabling 1M-token context at an estimated 1/20th of standard compute.",
+    "The $20/month Minimax subscription plan provides 1.7 billion tokens per month; the $50/month plan provides 5.1 billion, making it feasible to run long-horizon autonomous agent loops such as Hermes Agent's slash-goal feature, which can sustain over 24 hours and up to 2,000 tool calls without human intervention.",
+    "Hermes Agent and Open Code both accept Minimax M3 via a subscription key from the Minimax console, with no per-token API billing required: Hermes is configured at install time by selecting the Minimax provider and pasting the key, and Open Code connects via the /connect provider command.",
+    "A live deep-research task (cataloguing AI, tech, and business events across Katowice, Krakow, and Warsaw over 90 days into a Markdown file) ran concurrently with an SVG animation generation task, consuming 1 cent and 1% of the weekly token quota after processing roughly 60,000 tokens across both sessions."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Minimax M3 Breaks the Price-Capability Curve"
+    },
+    {
+      "t": 62,
+      "title": "Benchmarks and Architecture Overview"
+    },
+    {
+      "t": 120,
+      "title": "MSA Explained and Pricing Comparison"
+    },
+    {
+      "t": 210,
+      "title": "Minimax Subscription Plan Value"
+    },
+    {
+      "t": 330,
+      "title": "Installing Hermes Agent with Minimax"
+    },
+    {
+      "t": 450,
+      "title": "Configuring Minimax in Open Code"
+    },
+    {
+      "t": 570,
+      "title": "Live Demo: Parallel Agent Runs"
+    },
+    {
+      "t": 810,
+      "title": "SVG Generation and Cost Check"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "401aedcf95590283"
 }

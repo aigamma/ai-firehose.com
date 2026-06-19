@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Google Cloud Tech demonstrates building a no-code calendar app using Google AI Studio and Gemini. The app extracts travel itineraries and converts them into calendar invitations using advanced reasoning capabilities.",
-  "writeup": "This Google Cloud Tech tutorial walks through building a no-code calendar app in Google AI Studio, using Gemini to extract travel itineraries and convert them into calendar invitations. It shows Gemini's reasoning capabilities applied to the task along with error troubleshooting during the build. The takeaway is a concrete demonstration of code generation and conversational AI inside AI Studio, completed in roughly six minutes.",
-  "wh": "93e5d3e2625abc23",
+  "writeup": "A non-developer documents building a working travel-itinerary-to-calendar app in Google AI Studio entirely through natural language prompts, with no prior coding experience. The initial app failed on international dateline crossings and red-eye layover durations; a plain-language complaint triggered a switch to a more capable reasoning model (Gemini 3.1 Pro via Google Cloud billing) that resolved the edge cases. The through-line is that vibe coding is self-tutorializing: the same interface that generates code also explains what it generated, diagnoses failures, and accepts UI feedback, making a 2-hour end-to-end build achievable for someone who has never written code.",
+  "wh": "6d025de82fd9d1e0",
   "concepts": [
     {
       "slug": "code-generation",
@@ -60,5 +60,45 @@
       "channel": "Google Cloud Tech",
       "score": 0.589
     }
-  ]
+  ],
+  "key_points": [
+    "The first version of the app produced an .ics calendar file that placed a New York-to-Hong Kong flight at 1 hour because it had no dateline or timezone reasoning, demonstrating that a naive LLM-generated app silently produces wrong outputs on edge cases rather than erroring.",
+    "Switching the underlying model to Gemini 3.1 Pro (requiring a Google Cloud billing account) added advanced reasoning, dateline awareness, and universal timezone conversion, fixing the duration errors without rewriting the app from scratch.",
+    "Vibe coding is self-tutorializing: when the author encountered an unfamiliar artifact (.ics file), asking the tool what it was and how to use it produced an immediate, accurate tutorial, meaning prior knowledge gaps do not block progress.",
+    "UI customization is a first-class use of the vibe coding loop: after functionality was verified, the author spent an additional hour restyling the interface through conversation, and AI Studio engaged with cosmetic requests as readily as bug fixes.",
+    "A sticky, data-based repetitive task that took 30 minutes per multi-leg international trip was eliminated in roughly 2 hours of total build time, including troubleshooting, and the tool was subsequently adopted by colleagues who share the same workflow."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Problem: Manual Itinerary-to-Calendar Work"
+    },
+    {
+      "t": 30,
+      "title": "First Attempt in AI Studio"
+    },
+    {
+      "t": 90,
+      "title": "Initial App Fails on Dateline and Layovers"
+    },
+    {
+      "t": 150,
+      "title": "Natural Language Complaint Triggers Model Upgrade"
+    },
+    {
+      "t": 240,
+      "title": "Working App: Extraction and .ics Output"
+    },
+    {
+      "t": 300,
+      "title": "UI Customization and Team Adoption"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9fffa17ad849e24f"
 }

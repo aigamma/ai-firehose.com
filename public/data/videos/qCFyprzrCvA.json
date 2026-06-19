@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Princeton researchers introduced Continual Harness, a self-improving AI system that learns while running, can modify its own instructions, create helper agents and tools, and maintain memories across interactions. The approach enables AI agents to adapt and improve without human intervention or system resets, demonstrated on tasks like playing Pokémon.",
-  "writeup": "",
+  "writeup": "Princeton researchers built Continual Harness, an AI agent architecture that rewrites its own system prompt, creates specialized sub-agents, builds a reusable skill library, and updates its own memory every few hundred moves, all while actively playing Pokemon, without ever resetting. The system emerged from Gemini Plays Pokemon, which became the first AI to complete Pokemon Blue and beat Crystal without an end-game loss under human supervision; Continual Harness eliminates that human from the loop. The core shift is from stateless, episode-by-episode training to a single continuous run that accumulates capability in real time, a feedback structure the researchers also used to co-train smaller open-source models through what they call model harvest co-learning.",
   "wh": "5f6ac7ada971cc19",
   "concepts": [
     {
@@ -68,5 +68,54 @@
       "channel": "Alex Kantrowitz",
       "score": 0.597
     }
-  ]
+  ],
+  "key_points": [
+    "Continual Harness edits four components of itself every few hundred moves: system prompt, specialized sub-agents for navigation and combat, a library of reusable code skills, and a persistent strategic memory, allowing it to close most of the gap between a bare-bones AI and a hand-engineered expert system on Pokemon Red and Emerald starting from nothing.",
+    "The architecture is not game-specific: researchers tested it across frontier models (Gemini) and smaller open-source models, framing it as a general framework for any embodied agent that must interact with an environment over time, including robots and autonomous computer-management systems.",
+    "A documented failure took 16,403 turns at Olivine Lighthouse before the system recognized a wrong assumption about game mechanics and updated its memory without human intervention, illustrating both the persistence and the blind-spot risks of continuous self-modification.",
+    "The system spontaneously invented named strategies, including 'Operation Zombie Phoenix' for the Crystal end-game, constructing multi-stage battle plans from its own understanding of game mechanics rather than from training data.",
+    "The pathfinding experiment quantified the improvement: the AI's self-created routes started nearly twice the optimal length and self-corrected to within single-digit percentage points of perfect, all during live gameplay without a separate training phase.",
+    "Researchers identified a capability threshold: below it, self-improvement degrades performance in a compounding death spiral because the model cannot correctly diagnose its own failures; above it, the feedback loop is strongly positive, raising the question of what happens when that threshold is crossed by systems operating outside controlled game environments."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI Self-Improvement via Pokemon"
+    },
+    {
+      "t": 90,
+      "title": "Continual Harness Architecture"
+    },
+    {
+      "t": 181,
+      "title": "Removing the Human From the Loop"
+    },
+    {
+      "t": 300,
+      "title": "Metacognition and Self-Refactoring"
+    },
+    {
+      "t": 390,
+      "title": "Model Harvest Co-Learning"
+    },
+    {
+      "t": 510,
+      "title": "Implications Beyond Games"
+    },
+    {
+      "t": 600,
+      "title": "Stateless vs Stateful AI Systems"
+    },
+    {
+      "t": 690,
+      "title": "Capability Threshold and Failure Modes"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "fd0561be64e990f4"
 }

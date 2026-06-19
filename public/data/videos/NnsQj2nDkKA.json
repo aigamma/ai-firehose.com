@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "AI Search publishes a news roundup covering recent AI developments including 3D generation (Pixal3D), world models (Sana-WM), small language models (MiniCPM), text-to-speech (Krea2, DramaBox), and ChatGPT feature updates. The video demonstrates applications across 3D synthesis, video generation, voice cloning, motion capture, and financial tools.",
-  "writeup": "",
-  "wh": "62c4131eb3960f2e",
+  "writeup": "A weekly roundup covering seven newly released or announced open-source AI tools across video, 3D generation, image synthesis, and real-time interaction. The through-line is a wave of open releases: nearly every item covered ships code or model weights, making this a practical catalog of what practitioners can actually run now. The coverage spans dubbing via LTX 2.3 fine-tuning, pixel-space image generation that outperforms latent-space baselines, interactive world models from NVIDIA, physics-grounded video correction, and a new paradigm for real-time AI conversation that abandons turn-taking.",
+  "wh": "83fcbd18e4b49a03",
   "concepts": [
     {
       "slug": "3d-reconstruction",
@@ -76,5 +76,50 @@
       "channel": "AI Search",
       "score": 0.639
     }
-  ]
+  ],
+  "key_points": [
+    "Just Dub It is a 2.5 GB LoRA built on LTX 2.3 that synchronizes lip movements to dubbed audio in a new language, outperforming HeyGen on sync quality according to the presenter's side-by-side tests.",
+    "Pixel3D improves image-to-3D reconstruction by explicitly mapping 2D pixels to 3D structure rather than relying on loose latent conditioning, producing higher-fidelity meshes than competitors Trellis 2 and Hunyuan3D; the released models total 24 GB and require a mid-to-high-end GPU.",
+    "Asymmetric flow models bypass the latent space and VAE entirely, generating images directly in pixel space; clever architecture changes recovered the expected compute penalty and made inference 40% faster than a naive pixel-space approach, with image quality benchmarks ranking it above latent-space competitors.",
+    "NVIDIA's Sana WM is a 2.8B parameter open-source world model trained in 15 days on 64 H100 GPUs using 200,000 labeled video clips; a distilled variant runs on a single RTX 5090 with quantization and generates a minute-long interactive clip in 34 seconds.",
+    "Phi Motion uses the physics simulator MuJoCo to score generated video: it recovers a 3D human body from the output, re-simulates it, and rewards the model for physically plausible joint angles and ground contact, substantially reducing extra or missing limbs in anatomically tricky motions like figure skating and kung fu.",
+    "Thinking Machines' interaction models replace the strict turn-taking of current voice AI with continuous multimodal input processing, letting the model notice silence, overlapping speech, interruptions, and visual cues simultaneously rather than waiting for a user to finish speaking."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "This Week in AI: Overview"
+    },
+    {
+      "t": 61,
+      "title": "Just Dub It: Lip-Sync Video Dubbing"
+    },
+    {
+      "t": 181,
+      "title": "Pixel3D: Pixel-Aligned Image-to-3D"
+    },
+    {
+      "t": 270,
+      "title": "Asymmetric Flow Models: Pixel-Space Image Generation"
+    },
+    {
+      "t": 391,
+      "title": "NVIDIA Sana WM: Interactive World Model"
+    },
+    {
+      "t": 540,
+      "title": "Phi Motion: Physics-Grounded Video Correction"
+    },
+    {
+      "t": 630,
+      "title": "Thinking Machines Interaction Models"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "15897e8833dcace9"
 }

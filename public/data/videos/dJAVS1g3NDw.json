@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Tido Carriero explains that AI coding assistants plateau at 40% productivity gains when focused narrowly on code generation. The real opportunity lies in agentic systems deployed across the full software development lifecycle, including bug triage, security review, and growth experimentation, with organizational adaptation required to realize gains.",
-  "writeup": "",
-  "wh": "4b254d68c99bad95",
+  "writeup": "A Cursor engineering leader presents field notes on moving past the 40% productivity plateau that most teams hit after adopting AI coding assistants, arguing that replacing only the code-writing step leaves every other SDLC phase as a new bottleneck. The talk walks through Cursor's own agent teams: a Slack-triggered bug reporter agent that enriches vague issue reports using 'how' and 'why' codebase-inspection skills, a PM agent that triages issues into P0/P1/P2, and an experimental EM agent that synthesizes engineering-manager-level insights across the issue stream. The through-line is that agent teams must produce polished, human-reviewable artifacts at every SDLC checkpoint, not just generate code, and that the next unlock is building the review and feedback loop around those artifacts.",
+  "wh": "57c87e855df160b6",
   "concepts": [
     {
       "slug": "agentic-workflows",
@@ -68,5 +68,49 @@
       "channel": "Cursor",
       "score": 0.664
     }
-  ]
+  ],
+  "key_points": [
+    "Cursor sees roughly 98% of merged commits written by AI internally, yet even for forward-leaning teams the productivity gain plateaus around 40% because AI assistance has only replaced the code-writing slice of the SDLC while planning, architecture review, shipping approval, and retro remain human-gated bottlenecks.",
+    "The speaker's framing for breaking past 40%: design the agent system by first enumerating the human checkpoints that should remain, then build agents to produce polished artifacts at each checkpoint so humans review a clear synthesis plus a short decision list rather than raw output.",
+    "Engineer Lauren built a Slack-triggered bug reporter agent using two custom skills ('how' and 'why') that inspect the codebase and ask clarifying questions back to the bug reporter within minutes, enriching vague reports enough that downstream cloud agents can actually make progress on fixes.",
+    "Layered on top of the bug reporter, a PM agent triages the enriched issues into P0, P1, and P2 priority buckets, and a more experimental EM agent synthesizes engineering-manager-level observations across the full issue stream.",
+    "The key artifact contract: agent output must include a clear synthesis of what was done, an explicit set of decisions for the human to make, and enough visual or demo fidelity that the human can approve it for production without reading the full 20,000-line PR."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Third Era of Agent Teams"
+    },
+    {
+      "t": 31,
+      "title": "The 40% Productivity Plateau"
+    },
+    {
+      "t": 150,
+      "title": "SDLC Bottleneck Analysis"
+    },
+    {
+      "t": 181,
+      "title": "Human Checkpoints That Must Remain"
+    },
+    {
+      "t": 330,
+      "title": "Artifact Contract Between Agents and Humans"
+    },
+    {
+      "t": 421,
+      "title": "Bug Reporter Agent: How and Why Skills"
+    },
+    {
+      "t": 600,
+      "title": "PM Agent and EM Agent"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "de9ffd3379b68490"
 }

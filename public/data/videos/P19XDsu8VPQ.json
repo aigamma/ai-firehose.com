@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube video from AI Master reviews Seedance 3.0 leak claims about an AI video generator that purportedly generates 18-minute movies from single prompts. The video fact-checks seven leaked features against credibility criteria, including Narrative Memory Chain, MMDiT v2 upgrades, and cost reductions, while covering current competitive standing of Seedance 2.0 on leaderboards.",
-  "writeup": "The video examines Seedance 3.0, an AI video generator rumored to produce feature-length output (18+ minutes) from single prompts, and it fact-checks the circulating claims against Seedance 2.0's current benchmark performance. The rumored features include a Narrative Memory Chain, an MMDiT v2 upgrade, an 8x cost reduction, and native 4K output. The framing matters because it separates marketing claims from what the prior version actually delivers on benchmarks.",
-  "wh": "fbbf4004d831db1a",
+  "writeup": "A sourced breakdown of ByteDance's SeedDance video generation line, using the Artificial Analysis Video Arena leaderboard to establish SeedDance 2.0 as the current top-ranked audio-paired video model, then applying a credible/possible/unverified framework to a viral Chinese-language leak claiming SeedDance 3.0 will offer 18-minute generation, a narrative memory chain architecture, and 1/8 the cost of 2.0. The core argument is that the incumbents' legal and political response (Disney cease and desist, 400-actor open letter, bipartisan Senate pressure) is itself a reliable signal of genuine technical disruption, independent of any specific leak claim.",
+  "wh": "65471483766c4d8c",
   "concepts": [
     {
       "slug": "video-generation",
@@ -64,5 +64,46 @@
       "channel": "AI Master",
       "score": 0.519
     }
-  ]
+  ],
+  "key_points": [
+    "SeedDance 2.0 holds the top Elo score on the Artificial Analysis Video Arena in both text-to-video with audio (1,214) and image-to-video with audio (1,194), making it the strongest publicly ranked audio-paired video model; the only model that beats it is Alibaba's HaiPer (Happy Horse) 1.0, which leads the no-audio benchmarks at 1,293 and 1,294 respectively.",
+    "SeedDance's architectural differentiator is MM-DiT, a dual-branch diffusion transformer that co-generates audio and video in parallel rather than sequentially, which tightens audio sync and lowers cost per second compared to sequential pipelines like early Sora and VEO designs.",
+    "The SeedDance 3.0 leak originates from a single unverified Chinese-language account (@MokouCN, February 14, 2026) with no confirmed ByteDance affiliation; the author rates 18-minute generation and narrative memory chain as 'possible' (technically plausible given published ByteDance direction), the MM-DiT V2 upgrade as 'credible', and the 4K Hollywood-grade quality and specific June release date as 'unverified'.",
+    "SeedDance 2.0 currently costs roughly 1 yuan (about 14 cents) per second on Volcano Engine direct, or 5 to 20 cents per second through third-party aggregators such as Fal and Segmind; an 8x cost reduction to ~1.75 cents per second is the 3.0 claim that most alarmed Hollywood writers, but no ByteDance source has confirmed the number.",
+    "The near-term releases with better sourcing than the 3.0 leak are SeedDance 2.1 (reportedly a roughly 20% quality lift over 2.0) and SeedDance 2.0 mini (reportedly priced around 7.3 cents per second while beating 2.0 Fast on quality), both rumored for June 2026 and reported by Wave Speed and Pan Daily rather than a single anonymous account.",
+    "OpenAI's position in the video generation category has eroded sharply: Sora's consumer app shut down on April 26, 2026, and the API is set to sunset September 24, 2026, a concrete outcome for the model that launched the category."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Industry Context and Legal Pressure"
+    },
+    {
+      "t": 91,
+      "title": "SeedDance Architecture and the MM-DiT Edge"
+    },
+    {
+      "t": 150,
+      "title": "SeedDance 2.0 Leaderboard Standing"
+    },
+    {
+      "t": 240,
+      "title": "Rating the 3.0 Leak Claim by Claim"
+    },
+    {
+      "t": 540,
+      "title": "Live Leaderboard and Competitor Landscape"
+    },
+    {
+      "t": 690,
+      "title": "Near-Term Releases and Access Options"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "451d94193a796397"
 }

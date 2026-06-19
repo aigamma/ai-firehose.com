@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Matthew Berman reviews Perplexity Computer, a new AI product claimed to handle multiple tasks. The video promotes the tool and links to Perplexity's product page for more details.",
-  "writeup": "",
+  "writeup": "This video compares Perplexity Computer, a fully hosted AI agent platform, against self-hosted OpenClaw, arguing that the hosted approach is the right default for most practitioners. The presenter walks through Perplexity Computer's core architecture: threaded task contexts, hundreds of pre-built service connectors (Gmail, Google Calendar, Telegram, GitHub, Notion, and more), customizable skills, and a choice of frontier orchestrator models including Claude Sonnet 4.6, Opus 4.6, and GPT-4.5. Four hands-on demos show the agent writing and executing code, scheduling a future research sweep, building a food-intake log from photos, and generating a benchmark comparison chart for newly released small models.",
   "wh": "52384779f42b9095",
   "concepts": [
     {
@@ -56,5 +56,54 @@
       "channel": "Wes Roth",
       "score": 0.599
     }
-  ]
+  ],
+  "key_points": [
+    "Perplexity Computer is a fully hosted AI agent environment that replicates the core capabilities of self-hosted OpenClaw (code writing and execution, web search, tool use, multi-thread context isolation) while eliminating the setup and credential-management burden that makes OpenClaw impractical for non-technical users.",
+    "The connectors system ships pre-built OAuth integrations with hundreds of services including Drive, Gmail, OneDrive, Box, Linear, Dropbox, Notion, GitHub, and Telegram, replacing the manual API-key plumbing required by OpenClaw and wrapping all service access inside Perplexity's own security layer.",
+    "Orchestrator model selection is user-configurable per thread, offering Claude Sonnet 4.6, Opus 4.6, and GPT-4.5 as frontier options; the presenter runs Sonnet 4.6 as the primary orchestrator in both OpenClaw and Perplexity Computer, noting it delivers strong performance at lower cost than Opus.",
+    "Parallel sub-agent execution is built in: a single task can spawn multiple sub-agents, fan them out across web searches or code execution steps, then schedule a future wakeup (demonstrated with a UFC fight-night brief set to resume Saturday at 1:00 p.m. PST after a final research sweep).",
+    "Skills (reusable workflow definitions, analogous to system prompts for specific tasks) transfer directly from OpenClaw: the presenter installs a food-journal skill and an earnings-preview workflow into Perplexity Computer in seconds, both of which previously required manual setup on OpenClaw.",
+    "The food-journal demo shows the agent initializing a persistent markdown log from a photo of a meal, and the earnings-preview demo shows a Sunday 9:00 a.m. scheduled scan that fetches upcoming tech earnings, prompts for selection, pulls transcripts after earnings release, and delivers an analysis automatically."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "OpenClaw vs. Hosted Agents"
+    },
+    {
+      "t": 30,
+      "title": "What Perplexity Computer Is"
+    },
+    {
+      "t": 90,
+      "title": "Threaded Tasks and Parallel Context"
+    },
+    {
+      "t": 150,
+      "title": "Connectors: Pre-Built Service Integrations"
+    },
+    {
+      "t": 270,
+      "title": "Skills and Orchestrator Model Selection"
+    },
+    {
+      "t": 390,
+      "title": "Live Demo: UFC Fight-Night Brief"
+    },
+    {
+      "t": 450,
+      "title": "Food Journal and Mobile App"
+    },
+    {
+      "t": 570,
+      "title": "Benchmark Chart and Earnings Workflow"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "622a0c952c0d1c12"
 }

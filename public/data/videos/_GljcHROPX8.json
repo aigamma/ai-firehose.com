@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Cursor demonstrated new agent capabilities that automate code testing with video proof and cloud-based PR management. The update introduces an agents-first view and primitives for building custom agent systems to reduce human bottlenecks in development workflows.",
-  "writeup": "",
-  "wh": "c0d092193dbcf27c",
+  "writeup": "Jonas from Cursor demos two concrete workflow features that convert blocking human checkpoints in the software development lifecycle into asynchronous agent handoffs. The first removes the build-to-test bottleneck by having a cloud agent generate a video proof of its own test run, so a developer reviews a completed, evidenced PR rather than raw uncommitted changes. The second removes the PR-to-merge bottleneck via a \"babysit PR in cloud\" button that spins up a new cloud agent, seeded with the local agent's context, to fix CI failures, address merge conflicts, and resolve review comments autonomously. The organizing principle is that agents should own entire SDLC segments, not just isolated coding steps, so human judgment enters at intentional, high-value moments rather than as a default blocker.",
+  "wh": "c2031111f09277f3",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,49 @@
       "channel": "AI Jason",
       "score": 0.652
     }
-  ]
+  ],
+  "key_points": [
+    "Cursor cloud agents now produce video artifacts (and optionally screenshots or logs) as proof of test execution, letting a reviewer watch the feature work before reading a single line of diff.",
+    "The developer can take live control of the cloud dev server the agent ran, inspecting edge cases and interacting with the running app directly from Cursor web without any local environment.",
+    "The 'babysit PR in cloud' button clones a locally running agent into a cloud VM with its full context and instructs it to fix CI, address merge conflicts, and resolve review comments, freeing the developer for higher-value work during the typical 10-minute CI wait.",
+    "Cloud agents are not tied to the developer's local machine: the laptop could be discarded and the agent continues, and multiple such agents can run in parallel on separate PRs.",
+    "Cursor frames these as two illustrative instances of a broader category: many SDLC bottlenecks can be handed off to agent teams, and the company is shipping both built-in product features and lower-level primitives for organizations to build their own agent systems."
+  ],
+  "chapters": [
+    {
+      "t": 3,
+      "title": "Talk Overview: Removing SDLC Bottlenecks"
+    },
+    {
+      "t": 60,
+      "title": "Demo 1: Cloud Agent Builds and Tests"
+    },
+    {
+      "t": 91,
+      "title": "Video Proof of Test Execution"
+    },
+    {
+      "t": 150,
+      "title": "Taking Live Control of the Cloud Dev Server"
+    },
+    {
+      "t": 211,
+      "title": "Demo 2: Agents-First View in Desktop App"
+    },
+    {
+      "t": 270,
+      "title": "Babysit PR in Cloud"
+    },
+    {
+      "t": 330,
+      "title": "Primitives for Custom Agent Teams"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a3c65853f908163c"
 }

@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "A smaller 4B model fine-tuned with RL to use tools systematically (table inspection, schema awareness, error recovery) outperforms a 235B model that hallucinates on SQL query tasks. Single-table training transferred to multi-table FinQA reasoning with 13.9% to 26.6% improvement at under 500 dollars training cost.",
-  "writeup": "Kobie Crawford of Snorkel walks through finetuning a 4B model with reinforcement learning to enforce tool discipline on database queries, training it to call get_table_name, inspect schema, and self-correct after errors. The case matters because the small model outperformed Qwen 3 235B, which hallucinated on the same task, at a training cost under $500. Key takeaways: behavior shaping through RL can beat raw scale on structured tool use, and single-table training transferred to multi-table problems, raising FinQA results from 13.9% to 26.6%.",
-  "wh": "ec56011e485b1adb",
+  "writeup": "Kobe Crawford (Snorkel AI) and the UC Berkeley RLLM team demonstrate that a 4-billion-parameter model fine-tuned with reinforcement learning on expert-curated data can outperform a 235-billion-parameter reasoning model on financial tool-use tasks. The central argument is that raw reasoning scale is the wrong solution to the wrong problem: a domain-specific task like SQL-based financial analysis does not require Terence Tao-level general mathematical breadth, and RL is better suited than supervised fine-tuning for reshaping tool-use behavior. The talk grounds the claim in a live failure demo where the 235B model queries a non-existent table twice and then hallucinates an answer, a failure no amount of general reasoning prevented.",
+  "wh": "f660775828d866b1",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -72,5 +72,45 @@
       "channel": "AI Engineer",
       "score": 0.59
     }
-  ]
+  ],
+  "key_points": [
+    "A 235-billion-parameter quantized reasoning model, when asked for the year-over-year YouTube ads revenue growth rate from 2023 to 2024, failed to inspect available database tables, queried a non-existent table twice, and fell back to a hallucinated answer, illustrating that raw reasoning capability does not guarantee disciplined tool use.",
+    "The RLLM team frames oversized model selection as the 'Terence Tao effect': deploying a mathematician capable of any domain to do routine SQL queries and arithmetic is a category mismatch, and the domain-specific behavioral discipline a financial analyst needs is not the same as general brilliance.",
+    "Reinforcement learning is chosen over supervised fine-tuning specifically because the target improvement is behavioral, shaping how the model chooses and sequences tool calls rather than injecting new factual knowledge into its weights.",
+    "Snorkel's data-generation process uses PhD-level domain experts and industry practitioners in the loop, combined with a verification stage that confirms each task has a reliably queryable answer, making data quality the primary lever rather than model scale.",
+    "Enterprise production drivers for the small-model approach include inference cost, latency, on-premise deployment feasibility, and data-control compliance requirements in regulated sectors such as finance and healthcare, all of which are undercut by dependence on a 235B hosted model."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Conference Intro and Snorkel Overview"
+    },
+    {
+      "t": 120,
+      "title": "Research Objective: 4B vs. 235B"
+    },
+    {
+      "t": 210,
+      "title": "Enterprise Case for Smaller Models"
+    },
+    {
+      "t": 361,
+      "title": "The Terence Tao Effect"
+    },
+    {
+      "t": 421,
+      "title": "235B Model Failure Demo"
+    },
+    {
+      "t": 541,
+      "title": "RL Approach and Expert Data Pipeline"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e054fd37bffa8513"
 }

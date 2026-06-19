@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube video by NeuralNine reviewing a favorite feature of Claude Code, an AI coding assistant product. The creator discusses a specific capability they found particularly useful for coding work.",
-  "writeup": "",
-  "wh": "57387f6fd89792cf",
+  "writeup": "This video demonstrates Claude Code's remote control feature, which allows a running desktop Claude Code session to be driven from a mobile phone via a QR code or link. The host walks through activating remote control with the `/remote-control` slash command or the `--remote-control` CLI flag, shows prompts and tool-call approvals flowing from the phone in real time, and discusses practical limits: the feature suits low-stakes tasks like front-end tweaks, code-base exploration, and brainstorming, not deep engineering work. The through-line is that remote control turns idle transit time into productive asynchronous coding time, provided the session runs in an isolated sandbox.",
+  "wh": "c3c36b10b4def340",
   "concepts": [
     {
       "slug": "code-generation",
@@ -56,5 +56,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.665
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code's remote control is activated either with the `/remote-control` slash command inside an interactive session or with the `--remote-control` CLI flag; omitting the double dashes (`claude remote control`) starts a phone-only session with no interactive terminal, which the host considers less useful.",
+    "From the phone, a user can send prompts and approve or deny tool calls without touching the laptop keyboard, demonstrated live by adding Flask routes and to-do app functionality purely from mobile input.",
+    "The `/exit` slash command can be sent from the phone to terminate the session, but the host notes it is unreliable enough that running the session inside a VM or isolated sandbox with restricted permissions is the safer production pattern.",
+    "Remote control is not suited for complex feature work requiring sustained focus; the host explicitly limits it to front-end style changes, asking about bugs or security issues, and exploring a code base conversationally.",
+    "Multiple projects can run simultaneous remote-control sessions, and the phone UI lists all of them so a user can switch between projects during the same commute or errand.",
+    "Voice input on the phone works as a prompt-entry method, making the feature usable hands-free during a walk."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Feature Overview"
+    },
+    {
+      "t": 38,
+      "title": "Activating Remote Control"
+    },
+    {
+      "t": 92,
+      "title": "Live Phone Demo: Sending Prompts and Approvals"
+    },
+    {
+      "t": 151,
+      "title": "CLI Flag Variants Explained"
+    },
+    {
+      "t": 183,
+      "title": "Practical Limits and Best Use Cases"
+    },
+    {
+      "t": 230,
+      "title": "Voice Input and Multi-Project Workflow"
+    },
+    {
+      "t": 301,
+      "title": "Security Recommendation and Wrap-Up"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "878661da30cec800"
 }

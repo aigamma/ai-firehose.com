@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Austin Marchese argues that Claude Code is not just for coding but should form the foundation of a personal AI operating system that learns user patterns, retains memory, and improves with use. He frames this as \"owning\" AI rather than \"renting\" it and positions this approach as critical for building sustainable AI-driven workflows and scaling to teams.",
-  "writeup": "",
-  "wh": "589a9ddf43f088e2",
+  "writeup": "This video presents a three-step framework for turning Claude Code into a self-improving productivity system organized around three local folders: skills (reusable instruction sets), knowledge (accumulated session learnings), and projects (output). The core argument is that separating foundational skills (which improve the system itself via knowledge capture) from execution skills (which do repeatable work) is what makes the setup compound over time. Automation via hooks, loops, and schedules removes the human as the prompt bottleneck, and skill chaining links discrete skills into multi-stage workflows. A real client case study shows an 80-report carbon emissions task that dropped from 5 hours per report to 5 minutes.",
+  "wh": "69a189d938bd224a",
   "concepts": [
     {
       "slug": "claude-code",
@@ -64,5 +64,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.693
     }
-  ]
+  ],
+  "key_points": [
+    "The system separates two skill types: execution skills handle repeatable tasks (report generation, email analysis, funnel analysis), while foundational skills improve the system itself by capturing session learnings into a knowledge folder that all future skills read from.",
+    "The 'inner loop test' identifies what to build: a task qualifies for a skill if it occurs two to three times a day, follows the same pattern, and benefits from preloaded context; alternatively, the prompt 'based on my past activity, what are five skills I should create?' lets Claude suggest candidates from actual usage history.",
+    "Boris Cherny, the creator of Claude Code, identifies hooks, loops, and schedules as its most powerful features: hooks fire automatically on events (session end, file edit), loops run on a timer (every 10 minutes), and schedules trigger at a fixed time (a 6 a.m. funnel analysis runs daily without any prompt).",
+    "After every session, a hook can run a recap that extracts what worked, what failed, and what was learned, then saves that to the knowledge folder so the next session starts with accumulated context rather than from scratch, creating what the presenter calls a recursive improvement loop.",
+    "Concrete results from one client deployment: 80 carbon emissions (Local Law 97) reports that previously took a 2-week job and 5 hours per report were reduced to 5-minute generation after 2 hours spent crafting a single skill with an engineer from the team.",
+    "Skill chaining connects discrete skills sequentially: a YouTube-script-writer skill produces a draft, a consultant-panel skill reviews it against stored expert knowledge, and a newsletter-writer skill reformats the approved script into an email, with each skill reading from the shared knowledge and projects folders."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Claude Code Beyond Coding"
+    },
+    {
+      "t": 31,
+      "title": "Three-Folder System Overview"
+    },
+    {
+      "t": 60,
+      "title": "Step 1: Selecting the Right Skills"
+    },
+    {
+      "t": 151,
+      "title": "Foundational Skills and Knowledge Capture"
+    },
+    {
+      "t": 240,
+      "title": "Step 2: Hooks, Loops, and Schedules"
+    },
+    {
+      "t": 330,
+      "title": "Step 3: Scaling Out and Common Mistakes"
+    },
+    {
+      "t": 421,
+      "title": "Live Setup Demo in Obsidian"
+    },
+    {
+      "t": 511,
+      "title": "Real-World Examples and Skill Chaining"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a1afed9a24529974"
 }

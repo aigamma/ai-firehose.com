@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Claude Dispatch is Anthropic's new feature for agentic workflows through the Claude app. It provides a more secure alternative to OpenClaw by running autonomous tasks directly within Claude rather than through third-party platforms like Telegram.",
-  "writeup": "",
+  "writeup": "Claude Dispatch is Anthropic's native feature that connects a phone directly to a local Claude Code instance, letting users invoke pre-built agent skills remotely without leaving their subscription. The video walks through three live demonstrations on a phone: scraping 200 business leads, running an inbox cleaner that pre-drafts replies, and generating a thumbnail, all in parallel. The through-line is that DIY Telegram-bot agent stacks expose API keys and billing users at raw API rates (roughly 4 to 8x more expensive than a subscription), whereas Dispatch runs locally behind a per-request permission allowlist and counts against a flat monthly charge.",
   "wh": "7d7fb9bd6d42f902",
   "concepts": [
     {
@@ -60,5 +60,49 @@
       "channel": "Nick Saraev",
       "score": 0.695
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Dispatch routes phone commands to a locally running Claude Code process, so the agent runs on the user's own machine rather than a third-party server, preserving file and MCP connector access without exposing credentials to external services.",
+    "Third-party Telegram-style agent bridges such as Open Claw have leaked tens of thousands of API keys and bill at direct API pricing, which the presenter estimates ran to roughly $100 in a few days of casual use versus a subsidized subscription that is 4 to 8x cheaper.",
+    "The security model is an explicit per-request permission allowlist: when a running skill needs access to a resource it was not pre-authorized for, a prompt surfaces on the phone and the user approves or denies before execution continues, replacing implicit ambient credential exposure.",
+    "Three skills ran in parallel during the demo: a lead scraper returning 200 California agency owners with phone numbers, an inbox cleaner that marked solicitation email as read and pre-drafted replies to important messages, and a thumbnail generator with face-swap functionality, all initiated from a phone and reported back to it.",
+    "At recording time Dispatch was live on Max plans with Anthropic stating intent to extend it to Pro plans, positioning it as the sanctioned, subscription-bundled path for running agentic workflows from mobile rather than a separate product or API tier."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Claude Dispatch Overview"
+    },
+    {
+      "t": 30,
+      "title": "Claude Code Skills and the Phone Problem"
+    },
+    {
+      "t": 61,
+      "title": "Live Demo: Lead Scraping from Phone"
+    },
+    {
+      "t": 120,
+      "title": "Parallel Skills: Inbox Cleaner and Thumbnail"
+    },
+    {
+      "t": 211,
+      "title": "Permission Allowlisting and Security Model"
+    },
+    {
+      "t": 330,
+      "title": "Why DIY Agent Stacks Fail"
+    },
+    {
+      "t": 451,
+      "title": "Dispatch as the Native Alternative"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "443ec83002f9cc90"
 }

@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "AWS Developers demonstrates building AI agents using the Strands Agents SDK, showing how agents work as loops where models reason, select tools, and execute them iteratively. The video covers single-tool agents, multi-tool agents with model-driven selection, agents with execution hooks for visibility, and multi-agent orchestrators.",
-  "writeup": "",
-  "wh": "ee1eb3842ae8b817",
+  "writeup": "A ground-up demonstration of AI agents using the open-source Strands Agent SDK from AWS, showing that the core mechanism is a single loop: the model receives input, decides whether to call a tool, executes it, inspects the result, and repeats until satisfied. The video builds four progressively capable agents, from a single-tool calculator through multi-tool orchestration to a nested multi-agent router, all running identical underlying logic. The through-line is that docstrings are the contract between developer and model, and the loop is the only concept needed to build production agents.",
+  "wh": "f3200c9ec1d5ca81",
   "concepts": [
     {
       "slug": "agentic-loops",
@@ -64,5 +64,50 @@
       "channel": "Cole Medin",
       "score": 0.588
     }
-  ]
+  ],
+  "key_points": [
+    "The agent loop is the entire mechanism: reason, select, execute, repeat. A model receives input, decides it needs a tool, calls a Python function, reads the result, and continues until it has enough to respond, with no special framework logic beyond that cycle.",
+    "In the Strands SDK, any Python function decorated with @tool becomes an agent-callable tool; the docstring is the instruction the model reads to decide when that tool is relevant, so vague docstrings produce vague tool selection and precise ones produce precise behavior.",
+    "When given multiple tools, the model reads all docstrings and selects the correct one autonomously, including inferring implicit parameters such as latitude and longitude for a city name, with no developer-written routing logic.",
+    "Strands exposes a hook system that fires before and after each tool call, printing the tool name and the exact inputs the model chose, making every decision in the loop visible and debuggable as ordinary code.",
+    "Multi-agent orchestration follows the same pattern: each specialist agent is wrapped as a tool with a docstring, an orchestrator agent reads those docstrings and routes questions, and the nested loops run independently. The pattern stacks arbitrarily deep.",
+    "Strands is model-agnostic: the same code runs against Claude via Amazon Bedrock, OpenAI, or Ollama locally with no changes, and the same agent runs identically on a laptop, in a container, or on serverless infrastructure."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "One-Function Agent Demo"
+    },
+    {
+      "t": 31,
+      "title": "The Agent Loop Explained"
+    },
+    {
+      "t": 122,
+      "title": "Strands SDK Setup and Tool Decorator"
+    },
+    {
+      "t": 182,
+      "title": "Multi-Tool Selection and Routing"
+    },
+    {
+      "t": 301,
+      "title": "Hooks and Observability"
+    },
+    {
+      "t": 392,
+      "title": "Multi-Agent Orchestration"
+    },
+    {
+      "t": 481,
+      "title": "Recap and Production Paths"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "054373476f61982c"
 }

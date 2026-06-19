@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "IBM Technology discusses how AI accelerates detection of zero-day vulnerabilities faster than traditional methods. The video examines the dual-use implications of AI in cybersecurity, exploring both risks and defense strategy improvements through AI-driven scanning and DevSecOps integration.",
-  "writeup": "IBM Technology examines how AI is accelerating the detection of zero-day vulnerabilities and what that shift means for cybersecurity risk management. The video covers AI-driven vulnerability scanning and DevSecOps as mechanisms for improving system safety. The takeaway is that faster AI-based detection changes how organizations identify and respond to exploits before they are weaponized.",
-  "wh": "29c961de0cf4c3ca",
+  "writeup": "AI models are now finding zero-day vulnerabilities at a scale and speed that has no human precedent: a bug in OpenBSD, an open-source operating system audited by the global community for decades, had gone undetected for 27 years before a new AI model caught it almost immediately. The talk frames this not as a crisis but as a replay of the SATAN controversy from 30 years ago, when the first automated network scanner triggered the same debate about dual-use capability, and argues the outcome will follow the same arc. The through-line is a risk timeline from bug introduction through discovery, publicization, patch release, and patch application, and the case that defenders who embed AI into the DevSecOps pipeline can close that danger window faster than attackers can exploit it.",
+  "wh": "0aac1e70b069bd38",
   "concepts": [
     {
       "slug": "vulnerability-detection",
@@ -60,5 +60,46 @@
       "channel": "IBM Technology",
       "score": 0.604
     }
-  ]
+  ],
+  "key_points": [
+    "SATAN (System Administrator Tool for Analyzing Networks), developed by Dan Farmer and Wietse Venema roughly 30 years ago, was one of the first automated vulnerability scanners and sparked an identical debate about whether a dual-use security tool was too dangerous for public release; that debate is now considered a non-issue, and the same resolution is expected for AI vulnerability models.",
+    "The risk danger zone in any vulnerability lifecycle is the window between discovery and patch application: risk spikes whether a bug is known only to a few bad actors or widely publicized, and the only way to close that window is to apply the patch, which is why rapid AI-assisted discovery paired with responsible disclosure is preferable to slow human-only detection.",
+    "Responsible disclosure, a 30-plus-year practice of privately notifying vendors with a fixed deadline (commonly 30, 60, or 90 days) before going public, provides a structural framework for handling AI-found vulnerabilities: it gives vendors a head start on a patch while imposing accountability through the public-release deadline.",
+    "Mozilla announced that Firefox 150 shipped fixes for 271 vulnerabilities identified by an AI model, a concrete example of defenders using AI to plug holes at a volume and rate that would be impossible by manual review alone.",
+    "WormGPT demonstrates that stripped-guardrail versions of AI models already exist and will write malware and exploits on request, meaning containment of offensive AI capability is not a viable strategy; the only viable response is ensuring defenders use AI more effectively than attackers.",
+    "Mozilla's team concluded that software defects are finite and that AI puts humanity within reach of finding all of them, framing AI vulnerability scanning not as an unbounded threat but as a potential path to a qualitatively more secure software ecosystem."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "AI Finds 27-Year-Old Bug"
+    },
+    {
+      "t": 91,
+      "title": "The SATAN Controversy, 30 Years Ago"
+    },
+    {
+      "t": 240,
+      "title": "AI as the New Dual-Use Scanner"
+    },
+    {
+      "t": 300,
+      "title": "The Zero-Day Risk Timeline"
+    },
+    {
+      "t": 509,
+      "title": "Responsible Disclosure and DevSecOps"
+    },
+    {
+      "t": 660,
+      "title": "AI vs AI: The Race for Defense"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ebb52e9ec2e1cb74"
 }

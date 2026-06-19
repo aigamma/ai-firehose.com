@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Claude Skills enable users to create persistent custom instructions and automations that Claude remembers and reuses across conversations. The video demonstrates building a pizza shop catering quote skill that converts customer emails into branded PDF quotes, highlighting both practical applications and security considerations for using third-party skills.",
-  "writeup": "",
+  "writeup": "A practical walkthrough of Claude Skills, the saved-instruction-set feature in the Claude desktop app that persists reusable workflows across sessions. The video explains the underlying file format (a YAML-front-matter Markdown file in a named folder), demonstrates the Skill Creator tool as a no-code authoring path, and works through a concrete catering-quote example. The through-line is a security warning: over a third of publicly available third-party skills carry security flaws, some designed to silently exfiltrate files through code execution.",
   "wh": "4349c77d29ae6b05",
   "concepts": [
     {
@@ -64,5 +64,50 @@
       "channel": "Nick Saraev",
       "score": 0.551
     }
-  ]
+  ],
+  "key_points": [
+    "A skill is a folder containing a skill.md file with YAML front matter and a Markdown body; Claude loads skills on demand, so 50 to 60 installed skills impose no meaningful slowdown.",
+    "The Skill Creator is a built-in skill that accepts a plain-language description, asks clarifying questions, and then generates and saves the correctly formatted skill file, removing the need to hand-author YAML.",
+    "Plugins (such as a marketing plugin) bundle multiple skills, agents, and connectors into a single install, delivering a full workflow rather than a single saved instruction set.",
+    "Studies cited in the video found that over a third of publicly available third-party AI skills contain security flaws; some are designed to instruct Claude to grab files and transmit them without the user's knowledge, exploiting the code-execution capability skills can invoke.",
+    "Anthropic-built and Skill-Creator-generated skills are vetted or self-authored and therefore safe; the guidance is to read any third-party skill file before installing it, or build custom ones rather than downloading them.",
+    "Skills work on all Claude plans (free, pro, max, enterprise) but require the code execution and file creation capability to be enabled in settings and a signed-in account."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "The Problem Skills Solve"
+    },
+    {
+      "t": 60,
+      "title": "Skill File Format and Lazy Loading"
+    },
+    {
+      "t": 90,
+      "title": "Installing Built-in Skills and Plugins"
+    },
+    {
+      "t": 150,
+      "title": "Skill Creator Overview"
+    },
+    {
+      "t": 180,
+      "title": "Pizza Shop Catering Quote Demo"
+    },
+    {
+      "t": 300,
+      "title": "Security Risks of Third-Party Skills"
+    },
+    {
+      "t": 360,
+      "title": "Safe Usage Guidelines and Cost"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "469f3fabfea8a847"
 }

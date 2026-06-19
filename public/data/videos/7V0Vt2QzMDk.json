@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": true,
   "summary": "TurboQuant is a Google quantization technique that compresses KV cache and vectors to reduce VRAM and graphics card requirements. It uses vector quantization with codebooks and optimizes for mean squared error and inner product error.",
-  "writeup": "",
-  "wh": "647aa2b58453a7e7",
+  "writeup": "This video breaks down the theory behind TurboQuant, a lossy KV cache quantization algorithm that reduces memory requirements for LLM inference without pruning or discarding attention tokens. The core insight is that multiplying input vectors by a random rotation matrix transforms arbitrarily \"spiky\" data into a near-Gaussian distribution, as guaranteed by the Central Limit Theorem, making it possible to precompute a single optimal codebook for any input. The algorithm combines a Max weight codebook step (minimizing mean squared error) with a QJL pass (preserving dot-product fidelity), and the result cuts KV cache memory by multiples, which could reduce inference GPU requirements by 2 to 3x.",
+  "wh": "f1c147245b755191",
   "concepts": [
     {
       "slug": "quantization",
@@ -60,5 +60,58 @@
       "channel": "Google DeepMind",
       "score": 0.494
     }
-  ]
+  ],
+  "key_points": [
+    "TurboQuant operates on the KV cache, not model weights: the KV cache can consume as much memory as the model weights themselves, so quantizing it at lower bit widths directly multiplies throughput and the number of users that can be served on fixed hardware.",
+    "The central mathematical trick is a random rotation matrix applied to normalized input vectors: regardless of whether the input is all-identical characters, HTML, or legal text, the rotation spreads concentrated energy evenly, and the Central Limit Theorem guarantees convergence toward a Gaussian distribution with mean 1 divided by the square root of the dimension and variance 1 divided by the dimension.",
+    "Because the post-rotation distribution is predictable, TurboQuant precomputes the optimal codebook for that Gaussian once per bit width (1-bit, 2-bit, 3-bit, and so on) using the Max weight algorithm, storing the results in a lookup table rather than recomputing per input.",
+    "Unlike SnapKV and PyramidKV, which prune or select parts of the KV cache, TurboQuant preserves the entire attention representation and stores it at reduced precision, so no context tokens are discarded.",
+    "A second algorithmic step, the QJL algorithm from a 2024 paper, corrects the bias introduced by snapping coordinates to codebook values by working on the residual error at one fewer bit of quantization and preserving the dot-product (inner product) used in attention scoring.",
+    "The paper's projected hardware impact is a 2 to 3x reduction in the number of GPUs required for inference at the same context window length, or equivalently, a proportional increase in context capacity on existing hardware, which is why it moved stocks including Micron, Western Digital, and SanDisk by more than 7%."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Compression Analogy"
+    },
+    {
+      "t": 61,
+      "title": "Lossy Compression and KV Cache Quantization"
+    },
+    {
+      "t": 121,
+      "title": "Prior Methods: SnapKV and PyramidKV"
+    },
+    {
+      "t": 242,
+      "title": "Codebook Construction and the Color Illustration"
+    },
+    {
+      "t": 391,
+      "title": "Random Rotation Matrix Walk-Through"
+    },
+    {
+      "t": 480,
+      "title": "Central Limit Theorem and Gaussian Convergence"
+    },
+    {
+      "t": 541,
+      "title": "Max Weight Algorithm and Lookup Table"
+    },
+    {
+      "t": 570,
+      "title": "QJL Algorithm and Inner Product Error"
+    },
+    {
+      "t": 631,
+      "title": "Inference Hardware Impact"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "7d7f2a254928cbe6"
 }

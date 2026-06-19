@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "IBM Technology breaks down six security risks associated with autonomous AI agents and the OpenClaw project, including prompt injection and credential exposure. The video examines how agent autonomy, tool access, and memory mechanisms create real-world vulnerabilities in agentic AI systems.",
-  "writeup": "",
-  "wh": "e2541e817f0dfc33",
+  "writeup": "A security-focused breakdown of AI agents and the risks they introduce, anchored on OpenClaw, an open-source self-hosted autonomous agent platform. The video defines an agent as a model using tools in a loop autonomously, then maps each component (model, tools, loop, autonomy) to a distinct risk category before enumerating six concrete attack surfaces specific to OpenClaw. The through-line is that capability and risk scale together: the same features that make autonomous agents powerful (persistent memory, credential access, arbitrary command execution) are exactly what make them dangerous when untrusted code is in the picture.",
+  "wh": "fe8a0187fb3b5ae5",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -68,5 +68,54 @@
       "channel": "AI Master",
       "score": 0.612
     }
-  ]
+  ],
+  "key_points": [
+    "An AI agent is defined precisely as a model using tools in a loop with autonomy, and each of those four components independently introduces security risks: hallucinations in the model, malicious or buggy tools, velocity and volume amplification in the loop, and no human oversight from the autonomy.",
+    "OpenClaw installs skills from public registries like ClawHub and GitHub, and multiple audits have found a non-trivial percentage of malicious or vulnerable skills, meaning installing a skill is effectively running third-party code at the agent's system privilege level.",
+    "Indirect prompt injection is a demonstrated real-world attack: OpenClaw ingests untrusted text from web pages, emails, PDFs, and other agents, and attackers have embedded instructions in that content to leak secrets, execute commands, and modify the agent's own memory or rules.",
+    "OpenClaw stores long-term state in files like memory.md and identity.md, making persistent memory poisoning a low-friction attack: an attacker quietly alters those files and malicious instructions survive across multiple restarts.",
+    "Researchers found tens of thousands of exposed OpenClaw gateways leaking plaintext API keys, OAuth tokens, and cloud credentials, because OpenClaw routinely holds authentication secrets needed to act on behalf of the user.",
+    "Microsoft explicitly states OpenClaw should not run on standard personal or enterprise workstations, because a compromised agent can modify host files, access SSH keys, pivot to other systems, exfiltrate data, or trigger cost amplification attacks by exhausting API token budgets."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Agents and the Power They Promise"
+    },
+    {
+      "t": 34,
+      "title": "What Is an AI Agent"
+    },
+    {
+      "t": 130,
+      "title": "Risk Surface of Each Agent Component"
+    },
+    {
+      "t": 300,
+      "title": "What Is OpenClaw"
+    },
+    {
+      "t": 470,
+      "title": "Untrusted Code Execution via Skills"
+    },
+    {
+      "t": 540,
+      "title": "Prompt Injection and Memory Poisoning"
+    },
+    {
+      "t": 603,
+      "title": "Credential Exposure and Autonomous Action Risk"
+    },
+    {
+      "t": 690,
+      "title": "Host Compromise and Responsible Use"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "753016b3db4393a8"
 }

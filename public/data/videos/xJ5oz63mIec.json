@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Video tutorial on deploying Claude Code automations using three methods: /loop command for simple cases, scheduled tasks and Claude routines for intermediate scenarios, and Modal or Trigger.dev for production agentic systems. Addresses practical deployment patterns for autonomous agents.",
-  "writeup": "",
-  "wh": "9511d00229fa062e",
+  "writeup": "A practical walkthrough of three methods for deploying Claude Code agents to run autonomously, organized around a two-axis framework: where the agent runs (local machine versus cloud) and how deterministic it is (scripted workflow versus full agentic loop). The first method, session-scoped cron loops via Claude Code's built-in CronCreate/CronList/CronDelete tools, is covered in full depth; the tutorial also begins covering desktop scheduled tasks and cloud routines as Method 2. The core argument is that no single deployment method is universally best: the right choice depends on whether the workload needs true agentic autonomy and whether it can tolerate a machine or session dependency.",
+  "wh": "fb48d3f2f783fc0b",
   "concepts": [
     {
       "slug": "agent-sdk",
@@ -64,5 +64,49 @@
       "channel": "Claude",
       "score": 0.588
     }
-  ]
+  ],
+  "key_points": [
+    "Claude Code exposes three internal scheduling tools (CronCreate, CronList, CronDelete) that power the /loop skill; loops are session-scoped and die when the terminal session closes, with a hard 7-day expiry and up to 30 minutes of random jitter on each firing to prevent API saturation.",
+    "The terminal client is strictly more capable than the desktop app for loop-based automation: a /clear command inside a loop actually fires as the slash command (useful for flushing context rot without killing crons), and clearing the chat in terminal does not terminate live crons the way it does in the desktop app.",
+    "Context rot is a real operational hazard when a loop runs frequently and accumulates session history; the recommended mitigation is a second cron on a shorter interval that injects /clear, keeping context lean while the primary automation loop continues.",
+    "The WAT framework (Workflow, Agent, Tools) maps directly onto what a deployment method provides: session loops deliver all three including the full agentic decision layer, making them the highest-autonomy option among the methods, but at the cost of requiring both the machine and the session to stay live.",
+    "A practical use case demonstrated is a Claude Code agent that reads new YouTube comments every 10 minutes and replies using the video transcript, with the loop configured to self-terminate after 24 hours, illustrating zero-infrastructure autonomous agent deployment from a single natural-language prompt."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction: Three Deployment Methods"
+    },
+    {
+      "t": 61,
+      "title": "Two-Axis Framework: Where It Runs vs. How Deterministic"
+    },
+    {
+      "t": 91,
+      "title": "Method 1: Session-Scoped Cron Loops"
+    },
+    {
+      "t": 300,
+      "title": "Terminal vs. Desktop App Differences"
+    },
+    {
+      "t": 391,
+      "title": "Jitter, Expiry, and Real-World Loop Example"
+    },
+    {
+      "t": 451,
+      "title": "Method 1 Pros, Cons, and WAT Summary"
+    },
+    {
+      "t": 510,
+      "title": "Method 2: Desktop Routines and Cloud Routines"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "5bb901a36648dea3"
 }

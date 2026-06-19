@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Cole Medin demonstrates an end-to-end AI video generation workflow using Claude Code that automates planning, coding, voiceover, visuals, and music production from a single input or URL. The system uses Archon as the orchestration engine and HyperFrames as the video generation framework, eliminating the need for human editors, animators, or voice actors in the production pipeline.",
-  "writeup": "",
-  "wh": "76737cc359e09d83",
+  "writeup": "This video demonstrates an open-source pipeline that generates YouTube Shorts end-to-end from a single prompt or URL, stitching together Hyperframes (HTML-based scene renderer), Claude Code (orchestrating agent), ElevenLabs or Kokoro (text-to-speech), and Archon (workflow harness with parallel execution and Postgres/SQLite persistence). The pipeline runs a research pass with an anti-fabrication gate, engineers the script with TTS-optimized tags and breaks, makes a single audio call, times the animation to the resulting audio, lints frame-by-frame for layout overflow, opens a browser preview, and only then renders the final MP4. The author frames it as an ongoing experiment rather than production-ready tooling, with real utility for team explainers and short-form content, and the entire stack is free unless ElevenLabs is chosen over Kokoro.",
+  "wh": "5b6a6d0f72976641",
   "concepts": [
     {
       "slug": "retrieval-augmented-generation",
@@ -64,5 +64,46 @@
       "channel": "AI Master",
       "score": 0.714
     }
-  ]
+  ],
+  "key_points": [
+    "Hyperframes renders video scenes as plain HTML, enabling in-browser preview and iteration before committing to an MP4 export, a key differentiator from earlier tools like Remotion that the author found less reliable.",
+    "The workflow is fully orchestrated by Archon, the author's open-source harness builder, which provides parallel video generation, durable state persistence per run (SQLite or Neon/Postgres), and isolated asset folders per workflow execution.",
+    "An anti-fabrication gate sits between the research step and script generation, preventing Claude Code from hallucinating facts about the topic rather than drawing on actual research.",
+    "The script is not plain prose: it is engineered with tags, breaks, and natural abbreviations to optimize TTS output before being passed as a single call to ElevenLabs or the free Kokoro alternative.",
+    "Scene timing is derived from the audio output, so Hyperframes animation pacing is anchored to the actual synthesized speech duration rather than estimated in advance.",
+    "Setup requires cloning the repo and sending a two-sentence prompt to Claude Code; all dependencies install automatically, and three default video templates ship with the repository as starting points for customization."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Demo and Stack Introduction"
+    },
+    {
+      "t": 91,
+      "title": "Use Cases and Current Limitations"
+    },
+    {
+      "t": 150,
+      "title": "Repo Setup and Getting Started"
+    },
+    {
+      "t": 240,
+      "title": "Templates and First Run"
+    },
+    {
+      "t": 450,
+      "title": "Workflow Architecture Walkthrough"
+    },
+    {
+      "t": 540,
+      "title": "Scene Composition and Quality Checks"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "ef3cf48101c0859a"
 }

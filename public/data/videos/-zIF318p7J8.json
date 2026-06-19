@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "MiniMax released M3, a large language model featuring MiniMax Sparse Attention (MSA), which replaces full attention with sparse attention patterns. The model includes tiled reads and optimized KV cache handling to improve performance during prefill and decode stages of inference.",
-  "writeup": "This video covers MiniMax M3, a language model that replaces full attention with MiniMax Sparse Attention (MSA). It explains how the architecture pairs MSA with KV cache management and tiled I/O improvements to cut latency. The key takeaways: the sparse attention design and these optimizations reduce latency across both the prefill and decode stages of inference.",
-  "wh": "a6020cd0f8a207fb",
+  "writeup": "The Minimax M3 model's defining innovation is its shift from full multi-head attention (MHA) to sparse attention, a change its own research team had been skeptical of just seven months prior. The video grounds that decision in GPU memory physics: the HBM-to-SRAM bandwidth gap (terabytes per second versus petaflops of compute) means inference is bottlenecked by memory movement, not arithmetic. M3 addresses this by combining Grouped Query Attention (GQA) to shrink the KV cache footprint, sparse top-K token selection to cut attention computation, and tile-based IO batching so the KV cache is read in continuous chunks rather than scattered lookups. The reported gains are substantial: 1/20th the per-token compute versus M2 at 1 million context, with 9.7x prefill and 15.6x decoding speedups.",
+  "wh": "12f2634711bbdd7b",
   "concepts": [
     {
       "slug": "sparse-attention",
@@ -64,5 +64,45 @@
       "channel": "AI Revolution",
       "score": 0.561
     }
-  ]
+  ],
+  "key_points": [
+    "The fundamental inference bottleneck is memory bandwidth, not compute: HBM-to-SRAM transfer runs at a few terabytes per second while SRAM computation runs at petaflops, a gap of over 300x, which makes KV cache movement the limiting factor as context windows grow past 100,000 tokens.",
+    "Minimax M3 combines three complementary techniques: GQA (multiple query heads share one KV cache, reducing its memory footprint), sparse attention (each token attends only to the top-K most relevant tokens rather than all tokens, reducing both data movement and attention score computation), and tile-based IO (tokens are grouped into fixed-size tiles so the KV cache is read once per tile in a sequential outer loop rather than pulled in scattered per-token passes).",
+    "MiniMax's reported benchmark results show M3 achieves 1/20th the per-token compute of M2 at a 1-million-token context, a 9.7x speedup in the prefill stage, and a 15.6x speedup in the decoding stage, while matching full attention on the vast majority of capability benchmarks.",
+    "The architectural progression from MHA to GQA to MLA represents an ongoing industry search to make attention cheaper at scale; M3 adds sparse attention to that lineage, a step DeepSeek's NSA and DSA work also pursues, suggesting convergence across frontier labs on sparse and IO-efficient attention as the path forward for long-context and agentic workloads.",
+    "Inference efficiency at the model-architecture layer (M3's approach) directly eases infrastructure pressure: as agentic use cases grow and context windows lengthen, HBM memory scarcity becomes acute, and an architecture that cuts KV cache volume and attention compute translates to higher throughput and lower serving cost per token at the infrastructure level."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Why Attention Became a Bottleneck"
+    },
+    {
+      "t": 60,
+      "title": "GPU Memory Hierarchy and Bandwidth Limits"
+    },
+    {
+      "t": 152,
+      "title": "Taxonomy of Inference Efficiency Techniques"
+    },
+    {
+      "t": 240,
+      "title": "M3 Sparse Attention and GQA Design"
+    },
+    {
+      "t": 330,
+      "title": "Tile-Based IO Optimization"
+    },
+    {
+      "t": 401,
+      "title": "M3 Performance Results and Industry Trajectory"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a92e3e1598e986a9"
 }

@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Nate Herk explains Claude's dynamic workflows feature added in Claude Opus 4.8, comparing it to similar capabilities like skills, subagents, and agent teams. The video covers practical considerations including token costs, complexity tradeoffs, and hidden features like ultracode mode.",
-  "writeup": "",
+  "writeup": "This video maps Claude Code's dynamic workflows feature against the rest of Claude's agent primitives (skills, sub-agents, agent teams, and /goal), clarifying when each tier is appropriate and what each one costs. The central demonstration ran 41 Haiku scoring agents in parallel feeding into a single Opus synthesis agent, consuming roughly 5 million input tokens and half of a $200/month subscription in under 30 minutes. The through-line is a capability ladder: more agents and more coordination unlock more power, but also more token burn and more risk of runaway cost, so the right tool is the one that matches the problem's actual shape.",
   "wh": "263d98e4783ec4b1",
   "concepts": [
     {
@@ -72,5 +72,50 @@
       "channel": "Tristen O'Brien",
       "score": 0.64
     }
-  ]
+  ],
+  "key_points": [
+    "A dynamic workflow in Claude Code is a JavaScript file Claude generates and executes to orchestrate potentially hundreds of parallel sub-agents; the plan lives in that script rather than in Claude's own context window, which is the key structural difference from ordinary sub-agent delegation.",
+    "Workflow agents are parallel but isolated: they each work alone and report results back to one merged output, unlike agent teams where agents communicate with each other in a shared context, debate, and coordinate toward a goal.",
+    "The /goal command targets depth (a single loop that runs until a done-equals-true criterion is met, potentially for 24 hours or more), while workflows target width (many parallel agents each doing one pass and merging results), making them suited to different problem shapes.",
+    "The capability ladder from cheapest to most expensive runs: single session, then skills (reusable recipes), then sub-agents (parallel but isolated), then agent teams (parallel and communicating), then workflows (orchestrated mass parallelism); cost and risk grow at each rung.",
+    "One workflow prompt consumed roughly half of a $200/month Claude Max subscription in about 30 minutes by crawling all local files and repos across an entire desktop through dozens of sub-agents, illustrating that token cost is dominated by input volume when many agents each load large file contexts.",
+    "Skills nest inside workflows because workflow sub-agents can read and invoke them alongside MCP server connections and stored API keys, so existing reusable recipes do not need to be rewritten to participate in a workflow."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Live Demo: 41-Agent Skill Analysis"
+    },
+    {
+      "t": 61,
+      "title": "What Are Dynamic Workflows"
+    },
+    {
+      "t": 120,
+      "title": "Skills, Sub-Agents, and Agent Teams Defined"
+    },
+    {
+      "t": 180,
+      "title": "How Workflows Differ: The JavaScript Plan"
+    },
+    {
+      "t": 360,
+      "title": "The Capability Ladder"
+    },
+    {
+      "t": 510,
+      "title": "Workflow vs. Agent Teams vs. Slash Goal"
+    },
+    {
+      "t": 540,
+      "title": "Depth vs. Width: Goal vs. Workflow"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3f20364f2c13c35d"
 }

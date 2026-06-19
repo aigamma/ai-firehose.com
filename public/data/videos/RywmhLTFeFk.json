@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "A YouTube tutorial guide on using Claude Code for beginners covers practical application building with AI, including screenshot-based debugging, working with Claude Opus and Sonnet models, and avoiding common mistakes. The guide demonstrates four complete projects: personal landing page, Chrome extension, image-to-caption generator, and habit tracker.",
-  "writeup": "",
-  "wh": "dc4bc450ae406175",
+  "writeup": "A walkthrough of four projects built entirely with Claude Code and no hand-written code: a personal landing page, a Chrome extension that summarizes highlighted text via the OpenAI API, a Python folder-watcher that generates platform-specific social captions for dropped images, and a browser-based habit tracker. The central pattern throughout is Opus for architecture planning and Sonnet for fast, accurate execution, with screenshot-driven iteration replacing manual CSS debugging. The video's underlying argument is that the developer's role has shifted from writing syntax to exercising taste and judgment about what is worth building.",
+  "wh": "e69d0c4a33e12fbe",
   "concepts": [
     {
       "slug": "claude-code",
@@ -60,5 +60,50 @@
       "channel": "Keith AI",
       "score": 0.667
     }
-  ]
+  ],
+  "key_points": [
+    "The Opus-to-Sonnet handoff is the core workflow: use Opus to plan (it reasons deeper and catches edge cases that Sonnet misses) then switch to Sonnet to build (same quality, faster, cheaper per token), treating them like a senior consultant and a contractor respectively.",
+    "Claude Code reads screenshots directly alongside the full project context, letting a developer point at a visual problem rather than describing specific DOM elements; in the demo it updated every button to match a changed style without being told about the other buttons.",
+    "A Chrome extension is four files; Claude writes all of them, and the entire cycle from prompt to a live, installable extension in Chrome developer mode takes roughly 15 minutes.",
+    "The Python folder-watcher project demonstrates a fully local automation: drop an image in, the script calls the OpenAI Vision API, and a text file with both an Instagram caption (hashtags, casual tone) and a LinkedIn caption (shorter, no hashtags, professional register) appears alongside the image within seconds.",
+    "Error handling with Claude Code collapses to paste-the-error-and-say-fix-this: Claude reads the stack trace, locates the line, and fixes it, eliminating Stack Overflow debugging loops entirely.",
+    "The shift the video argues for is from coder to taste-maker: Claude has no opinion about whether the result is good, so the human's irreplaceable job is judgment about what to keep, cut, and polish."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Intro and Setup: Node, Claude Code, Cursor"
+    },
+    {
+      "t": 60,
+      "title": "Project 1: Landing Page with Opus-to-Sonnet Pattern"
+    },
+    {
+      "t": 150,
+      "title": "Screenshot-Driven Iteration and Visual Debugging"
+    },
+    {
+      "t": 300,
+      "title": "Project 2: Chrome Extension Text Summarizer"
+    },
+    {
+      "t": 510,
+      "title": "Project 3: Python Image Caption Folder Watcher"
+    },
+    {
+      "t": 630,
+      "title": "Mindset Shift: From Coder to Taste-Maker"
+    },
+    {
+      "t": 660,
+      "title": "Project 4: Personal Habit Tracker"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "cc9d788cf8e51fd7"
 }

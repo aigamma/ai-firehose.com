@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Claude Routines is a new feature that allows users to schedule, set up webhooks, and trigger cloud AI agent flows via API calls. The feature enables automation of tasks like email drafting and proposal generation, integrating with workflow platforms like n8n.",
-  "writeup": "",
-  "wh": "b079a85a34e1c463",
+  "writeup": "Anthropic's Claude Routines feature enables cloud-hosted automations triggered by schedule, webhook, or API call, running on a standardized container rather than a local machine. The video argues Routines are a literal one-to-one functional replacement for no-code drag-and-drop platforms like n8n: the same event-in, logic-applied, output-to-Slack pipeline, but authored in natural language instead of wired node graphs. Two live demos illustrate the claim: a daily Gmail triage that drafts replies and pushes a Slack summary, and a Fireflies meeting transcript piped via API into a proposal generator using Claude managed sessions. The through-line is that a task previously requiring 2.5 to 3 hours of node configuration now requires minutes of natural-language instruction.",
+  "wh": "1fe3db41ff9b41e0",
   "concepts": [
     {
       "slug": "agentic-workflows",
@@ -64,5 +64,54 @@
       "channel": "Cole Medin",
       "score": 0.634
     }
-  ]
+  ],
+  "key_points": [
+    "Routines run on a cloud container, not the local machine, so prompts must be self-contained and explicit about the definition of done rather than relying on mid-run human steering.",
+    "The Gmail triage routine is scheduled at 5:10 AM, checks unreads via the Gmail connector, applies a drafting SOP, and delivers a Slack DM with summaries and drafted replies, with no human in the loop.",
+    "The transcript-to-proposal demo fires the routine via a curl API call carrying a Fireflies transcript as a text payload, which the routine processes through a managed session to produce a complete business proposal.",
+    "Managed sessions provide siloed, interconnected agent containers with separate security and safety boundaries, useful when a routine needs to delegate to another specialized agent mid-execution.",
+    "The structural comparison to n8n is explicit: both take an event trigger, apply a logic layer, and emit output to a downstream platform; Routines replace the drag-and-drop node graph with a natural-language instruction block.",
+    "Multiple triggers can be stacked on a single routine, combining a fixed daily schedule with an on-demand API call trigger so the same workflow runs both automatically and on external request."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Claude Routines Overview"
+    },
+    {
+      "t": 31,
+      "title": "Gmail Triage Demo Live Run"
+    },
+    {
+      "t": 151,
+      "title": "Slack Output and Draft Emails"
+    },
+    {
+      "t": 210,
+      "title": "Scheduling a Routine"
+    },
+    {
+      "t": 270,
+      "title": "Transcript-to-Proposal via API"
+    },
+    {
+      "t": 360,
+      "title": "Managed Sessions Explained"
+    },
+    {
+      "t": 390,
+      "title": "Routines vs n8n Comparison"
+    },
+    {
+      "t": 510,
+      "title": "Proposal Output Review"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "e0c4b7e02eb19010"
 }

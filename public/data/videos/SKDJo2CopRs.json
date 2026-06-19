@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Cloudflare's Dynamic Workers enable safe execution of LLM-generated code in sandboxed isolates with explicit permission grants. The system avoids ambient access and is positioned as a compute primitive for AI agents. Cloudflare is shipping a coding agent harness built entirely on Workers.",
-  "writeup": "Sunil Pai and Matt Carrie present Cloudflare's Eval++, a compute primitive that runs LLM-generated code inside sandboxed isolates using Dynamic Workers, with explicit capability grants governing what that code can access. The design builds on Durable Objects to deliver addressable, persistent, stateful compute at low latency. For AI agents, the system adds resumable streaming and multi-tab sync, addressing how generated code executes safely and how agent state persists across sessions.",
-  "wh": "e56bbe46e5391c3c",
+  "writeup": "Two Cloudflare engineers working on AI agents walk through the infrastructure stack they have built over the past year, centered on Durable Objects as a stateful, addressable compute primitive. They trace the path from that foundation through a full Agents SDK, first-class MCP server hosting (powering PayPal, Sentry, Linear, and others), and a new Dynamic Workers primitive that runs LLM-generated code in a minimal, capability-scoped isolate. The through-line is that serverless primitives originally built for edge networking turn out to map cleanly onto the long-running, stateful, concurrent demands of production AI agents.",
+  "wh": "3796307b46d11b21",
   "concepts": [
     {
       "slug": "sandboxing",
@@ -64,5 +64,45 @@
       "channel": "Cursor",
       "score": 0.566
     }
-  ]
+  ],
+  "key_points": [
+    "Durable Objects provide stateful serverless: a single class instance persists across requests and WebSocket connections for a given ID, runs in the background, hibernates, and scales across Cloudflare's global network with around 15 ms latency in London, making them a natural fit for long-running agent loops.",
+    "The Cloudflare Agents SDK wraps Durable Objects with React hooks, plain-JavaScript clients, callable endpoints, and first-class scheduling so agent logic such as weekly Git-history summarization can be expressed declaratively and runs without a persistent server process.",
+    "Durable Objects solved a key MCP deployment problem: the original MCP protocol required a stateful connection between client and server, which is exactly what Durable Objects provide natively, letting Cloudflare host production MCP servers for major platforms including PayPal, Sentry, Linear, and Intercom.",
+    "Dynamic Workers allow a running worker to receive a string of code (user-generated or LLM-generated) and execute it in a fully isolated, capability-scoped sandbox: no file system, no environment variables, no outgoing fetch by default, with only explicitly granted APIs permitted, replacing DSL-based approaches and reopening a branch of the design space closed off by decades of eval warnings.",
+    "The upcoming code-mode talk promises to demonstrate how Dynamic Workers enable access to all 2,600 Cloudflare API endpoints through an MCP server using only 1,000 tokens, by generating and running targeted code rather than describing every endpoint statically."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introductions and Team Background"
+    },
+    {
+      "t": 121,
+      "title": "Durable Objects: Stateful Serverless Explained"
+    },
+    {
+      "t": 240,
+      "title": "Agents SDK: Scheduling, Hooks, and Tool Calls"
+    },
+    {
+      "t": 361,
+      "title": "MCP Servers on Durable Objects"
+    },
+    {
+      "t": 422,
+      "title": "Dynamic Workers: Running LLM-Generated Code Safely"
+    },
+    {
+      "t": 601,
+      "title": "Code Mode Teaser and Upcoming Talks"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "c6c33abeeab5346a"
 }

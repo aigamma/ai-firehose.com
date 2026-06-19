@@ -7,7 +7,7 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Tristen O'Brien reviews seven best practices from Anthropic's official Claude Code playbook, covering verification, planning, prompt specificity, context management, interactive prompting, session hygiene, and parallel workflow patterns. The guide is framed as separating professional from hobbyist usage approaches.",
-  "writeup": "",
+  "writeup": "A walkthrough of Anthropic's official seven-practice playbook for Claude Code, drawn from how the team uses the tool internally. The video moves through each practice with concrete examples: grounding Claude in verifiable completion criteria, using plan mode before building, writing precise prompts, maintaining a CLAUDE.md project handbook, using Claude's own questioning to surface missing requirements, managing context window hygiene with /clear, /compact, and rewind, and running parallel sessions for separation of concerns. The through-line is that Claude Code works best when the user constrains it structurally rather than relying on hope.",
   "wh": "340e5e903dbf6568",
   "concepts": [
     {
@@ -64,5 +64,54 @@
       "channel": "Tristen O'Brien",
       "score": 0.669
     }
-  ]
+  ],
+  "key_points": [
+    "Anthropic identifies giving Claude a testable completion condition as the single highest-leverage practice: instead of 'build me a sign-up page,' specify the validation rules, the success message, and ask Claude to screenshot the result so it self-checks before reporting done.",
+    "Plan mode breaks work into three explicit steps: describe the goal so Claude reads existing files first, review the written plan Claude produces, then approve it and exit plan mode to build, preventing wasted effort on large tasks.",
+    "The @ symbol in a prompt points Claude directly to a specific file or folder, which the video frames as handing Claude the exact menu page rather than asking it to guess what you want.",
+    "The /init command scans a project and creates a CLAUDE.md file that acts as a persistent handbook; Anthropic's playbook warns to keep it short because an overly long CLAUDE.md causes Claude to skip sections.",
+    "Appending 'interview me about my project and ask me questions I haven't thought of yet' to a prompt inverts the dynamic so Claude surfaces edge cases (login failure handling, mobile support) before they become bugs, without requiring the user to write a perfect spec upfront.",
+    "Context window saturation causes errors and repetition; the remedies are /clear between tasks to reset the session, escape-then-escape to open the rewind menu and roll back both code and conversation to any prior point, and /compact to summarize and compress a deep session without losing progress."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Anthropic's Official Playbook"
+    },
+    {
+      "t": 30,
+      "title": "Practice 1: Testable Completion Criteria"
+    },
+    {
+      "t": 90,
+      "title": "Practice 2: Plan Mode"
+    },
+    {
+      "t": 151,
+      "title": "Practice 3: Precise Prompts and @ References"
+    },
+    {
+      "t": 241,
+      "title": "Practice 4: CLAUDE.md Project Handbook"
+    },
+    {
+      "t": 300,
+      "title": "Practice 5: Let Claude Interview You"
+    },
+    {
+      "t": 360,
+      "title": "Practice 6: Context Window Hygiene"
+    },
+    {
+      "t": 420,
+      "title": "Practice 7: Parallel Sessions and Cross-Review"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a96c592898ae3e1f"
 }

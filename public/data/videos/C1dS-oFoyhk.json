@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": true,
   "summary": "Cole Medin tested mixed-provider workflows combining Claude Opus and Kimi K2.6 for code generation tasks. Using the Archon benchmark tool, he ran four workflow configurations against three GitHub issues and scored the resulting pull requests across seven dimensions to determine the optimal provider arrangement for planning versus implementation.",
-  "writeup": "",
-  "wh": "37f804f1d5149236",
+  "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
+  "wh": "4fdbc8bebf3bf5f8",
   "concepts": [
     {
       "slug": "mixture-of-providers",
@@ -64,5 +64,50 @@
       "channel": "Cole Medin",
       "score": 0.539
     }
-  ]
+  ],
+  "key_points": [
+    "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
+    "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
+    "Each resulting pull request is scored on seven dimensions (issue resolution, root cause quality, scope discipline, subtle correctness, code quality, test coverage, and plan-to-implementation fidelity) for a maximum of 70 points, with smoke-test runs suggesting real results cluster around 60 out of 70.",
+    "Scope discipline emerged as a notable differentiator: Gemini 2.6 and Minimax were observed to exceed the required scope and touch unrelated code, while a top score on that dimension requires a surgical diff limited to exactly what the issue demands.",
+    "The motivation for provider mixing is explicitly economic and practical: frontier model subscriptions are increasingly rate-limited, and routing only the highest-reasoning step (planning) to the most expensive model keeps token spend proportional to task complexity.",
+    "Archon makes provider mixing a node-level configuration parameter, so switching between Claude Code for Anthropic calls and the Gemini CLI for Gemini calls requires changing only a couple of workflow parameters rather than rewriting the agent logic."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Dark Factory and Provider Mixing Setup"
+    },
+    {
+      "t": 151,
+      "title": "Four Benchmark Workflow Variants (KK, KO, OK, OO)"
+    },
+    {
+      "t": 182,
+      "title": "Why Rate Limits Drive the Experiment"
+    },
+    {
+      "t": 271,
+      "title": "Workflow Internals: Exploration, Planning, and Implementation"
+    },
+    {
+      "t": 480,
+      "title": "12-Workflow Benchmark Matrix"
+    },
+    {
+      "t": 540,
+      "title": "Seven-Dimension Pull Request Scoring Rubric"
+    },
+    {
+      "t": 660,
+      "title": "Running the Benchmark Live"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "08b40abf38b6da46"
 }

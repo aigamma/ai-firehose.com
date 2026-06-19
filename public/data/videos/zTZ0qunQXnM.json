@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Rafael Levi demonstrates how Bright Data's Model Context Protocol integrates with agents to automate web scraper generation, maintenance, and repair. The system uses agents to inspect site structures, generate production scrapers, and self-repair pipelines when websites change.",
-  "writeup": "Rafael Levi of Bright Data shows how AI agents use the Model Context Protocol to inspect websites and generate production scrapers automatically, then keep the resulting pipelines running as sites change. The talk frames a shift away from manually written scrapers toward agents that build parsers, optimize token usage, and repair broken collection jobs without human intervention. The practical takeaway: MCP serves as the tool-use layer that lets agents both author and maintain data pipelines, with self-repair handling site changes that would otherwise require manual fixes.",
-  "wh": "fef7608462b608bd",
+  "writeup": "A live conference demo by a Bright Data presenter showing how to pair Claude Code with Bright Data's MCP server to auto-generate and self-maintaining web scrapers rather than feeding raw HTML to an LLM on every request. The central argument is that LLM-per-page parsing is prohibitively token-expensive at scale, and that a code-generation approach, where the agent inspects a page once and writes a reusable parser, collapses ongoing costs by roughly a million tokens for a three-page Walmart scrape. The demo also illustrates bypassing aggressive anti-bot systems (Walmart, Cloudflare) through Bright Data's 150-million-IP pool and in-house CAPTCHA solvers.",
+  "wh": "e3db0f3eb5b2c1ed",
   "concepts": [
     {
       "slug": "model-context-protocol",
@@ -68,5 +68,46 @@
       "channel": "AI Engineer",
       "score": 0.63
     }
-  ]
+  ],
+  "key_points": [
+    "Bright Data's MCP server exposes 66 tools to an LLM agent, including a 'scrape as markdown' endpoint that returns only page text, stripping HTML tags to minimize token consumption during site exploration and selector discovery.",
+    "For three pages of Walmart headphone search results, building a scraper via the agent-plus-MCP approach saves approximately one million tokens compared to feeding raw HTML to the LLM for every page.",
+    "The MCP also provides roughly 500 domain-specific pre-built APIs (including one for Amazon) that let an agent retrieve structured JSON for a product directly, skipping scraper generation entirely for supported sites.",
+    "Bright Data's infrastructure includes over 150 million IPs and a remote browser pool that can solve CAPTCHAs and simulate human interactions such as click-and-hold challenges, enabling agents to access sites behind Cloudflare and similar bot-detection layers from a developer laptop.",
+    "Agent-managed scrapers can be scheduled to run every 30 minutes with self-healing: if a data-validation check fails, the agent rewrites the broken selector automatically, eliminating manual on-call maintenance.",
+    "Claude Code (referred to as 'Cloud Code' in the session) reads a Bright Data GitHub skills repository at prompt time to learn current scraping best practices and selectors before generating the scraper, keeping the code-generation step informed without hard-coded instructions."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Problem: LLM-Per-Page Parsing Does Not Scale"
+    },
+    {
+      "t": 151,
+      "title": "Live Demo with Claude Code"
+    },
+    {
+      "t": 270,
+      "title": "Token Savings and Personal Use Cases"
+    },
+    {
+      "t": 606,
+      "title": "Inside the Bright Data MCP: 66 Tools and 500 APIs"
+    },
+    {
+      "t": 691,
+      "title": "Side-by-Side: With and Without MCP on Walmart"
+    },
+    {
+      "t": 811,
+      "title": "Token Cost Breakdown"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a5eb00d84513ad4d"
 }

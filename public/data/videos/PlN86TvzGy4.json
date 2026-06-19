@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Herdr is a Rust-based terminal multiplexer that runs multiple AI coding agents like Claude Code, OpenCode, and Codex side-by-side in persistent panes and tabs. Built on ratatui without Electron, it provides live status tracking, keyboard-driven navigation, and supports remote orchestration over SSH.",
-  "writeup": "",
-  "wh": "51ac10db2225211f",
+  "writeup": "Herder is a single Rust binary terminal multiplexer built by Oğulcan Celik that adds native AI coding-agent awareness to the split-pane, persistent-session model pioneered by tmux. Unlike tmux, which predates agents and treats them as opaque processes, Herder automatically detects Claude Code, Codex CLI, and similar tools running in its panes and surfaces real-time statuses (working, blocked, idle, done) with system notifications. Because it renders entirely over the host terminal's PTY rather than replacing it, it works inside WezTerm, iTerm, or any terminal the user already configures, and extends over SSH via a client-server Unix-socket design that keeps local config on the client while the server runs on the remote machine. A socket API also lets agents themselves create panes and workspaces, demonstrated live by having Claude Code spawn two parallel agents, collect their outputs, and close them autonomously.",
+  "wh": "847c3541fd7ebf37",
   "concepts": [
     {
       "slug": "agent-orchestration",
@@ -52,5 +52,54 @@
       "channel": "Jack Roberts",
       "score": 0.604
     }
-  ]
+  ],
+  "key_points": [
+    "Herder is a single Rust binary built with Ratatui: no Electron, no separate app, and it runs inside whatever terminal the user already has configured rather than forcing a migration to a new environment.",
+    "The core differentiator over tmux is agent-status awareness: Herder automatically detects Claude Code and Codex CLI running in its panes and shows live statuses (working, blocked, idle, done) along with system notifications, which tmux cannot do because it was built before agents existed.",
+    "The SSH remote mode splits the architecture so the server runs on the remote machine and a thin client runs locally, meaning the user's local Herder config (key bindings, themes) applies even to a remote session.",
+    "A Unix-socket API lets agents drive Herder programmatically: in the demo, Claude Code is prompted to spawn two panes with separate instructions (summarize the largest file; scan for hardcoded secrets), collect both outputs, and close the panes, all without human interaction.",
+    "The default prefix key is Ctrl-B (matching tmux), but the demo changes it to Ctrl-Space, and the tool supports named workspaces, horizontal and vertical splits, mouse navigation, and multiple themes including Nord, Gruvbox, and Catppuccin.",
+    "Windows support is absent at the time of recording because Herder depends on Unix sockets and terminal PTY primitives; the presenter recommends dual-booting Linux rather than relying on WSL."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "What Is Herder"
+    },
+    {
+      "t": 30,
+      "title": "Why Not Just Use tmux"
+    },
+    {
+      "t": 91,
+      "title": "Installation and First Look"
+    },
+    {
+      "t": 150,
+      "title": "Agent Status Detection Demo"
+    },
+    {
+      "t": 210,
+      "title": "Agents Driving Herder via Socket API"
+    },
+    {
+      "t": 271,
+      "title": "SSH and Remote Mode"
+    },
+    {
+      "t": 360,
+      "title": "Themes and Additional Features"
+    },
+    {
+      "t": 391,
+      "title": "Limitations and Closing Thoughts"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "56aa7655df5fea30"
 }

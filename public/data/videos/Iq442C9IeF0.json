@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Archon Workflow Marketplace launched to accept community-submitted AI coding workflows. The marketplace uses an auto-review pipeline built and operated by Archon itself to process submissions.",
-  "writeup": "",
-  "wh": "7ad97135e7d4c43e",
+  "writeup": "A live coding stream walking through the launch of Archon's agentic workflow marketplace, merging the first community-contributed workflow, the idea-to-work-order generator. The session shows end-to-end how community contributions work, how a GitHub Actions pipeline driven by Archon itself handles automated security review and auto-merge, and closes with a candid discussion of Anthropic's June 15 pricing change that ends subsidized SDK access for subscribers.",
+  "wh": "4f65ae8f8babb51f",
   "concepts": [
     {
       "slug": "ai-coding",
@@ -60,5 +60,44 @@
       "channel": "AI Jason",
       "score": 0.542
     }
-  ]
+  ],
+  "key_points": [
+    "The idea-to-work-order workflow takes a raw feature idea, interviews the developer through a series of clarifying questions, and produces a set of fully specced phased work orders tied to the actual codebase, going beyond a PRD by diving into implementation detail for each phase.",
+    "Community contributions to the Archon marketplace follow a manifest-only pull request model: the author hosts the workflow in their own public repo, then opens a PR that updates a single manifest file in the Archon repo pointing to their commit SHA, keeping maintenance decentralized.",
+    "Archon drives its own marketplace governance: a GitHub Actions workflow installs Archon and runs a security review and analysis workflow on any PR that touches the manifest file, then auto-merges if the workflow passes, removing the burden from human maintainers entirely.",
+    "Anthropic announced that Claude agent SDK programmatic access, previously covered by a Max subscription, will require separate payment from June 15, with $200 per month in credits included; the streamer notes that $200 burns quickly with Opus and flags Codex and Pi as alternatives for ambient agentic workloads."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Stream Intro and Agenda"
+    },
+    {
+      "t": 150,
+      "title": "Idea-to-Work-Order Workflow Explained"
+    },
+    {
+      "t": 240,
+      "title": "Marketplace Contribution Process"
+    },
+    {
+      "t": 420,
+      "title": "Triggering Automated PR Review"
+    },
+    {
+      "t": 540,
+      "title": "GitHub Actions Security Review Pipeline"
+    },
+    {
+      "t": 660,
+      "title": "Anthropic SDK Pricing Change Discussion"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "a19496164f344eeb"
 }

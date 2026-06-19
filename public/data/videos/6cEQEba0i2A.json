@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Prompt caching in Claude enables users to save millions of tokens weekly by caching input data and reusing it across requests. The technique involves understanding cache costs, cache TTL behavior, and practices that preserve cache state to maximize token efficiency.",
-  "writeup": "",
-  "wh": "4b8faf352f376568",
+  "writeup": "This video explains how Claude Code prompt caching works mechanically, why session limits burn faster than expected, and what habits preserve them. Cached tokens cost only 10% of normal input, so a 91-million-token cached day effectively bills as 9 million tokens. The cache TTL is one hour on a Claude subscription but drops to 5 minutes on API or sub-agents, and several common actions (switching models mid-session, waiting over an hour, changing the system prompt) silently blow the cache and force a full re-process of every prior token in the conversation.",
+  "wh": "7b6a8efecc5fc5cc",
   "concepts": [
     {
       "slug": "prompt-caching",
@@ -60,5 +60,54 @@
       "channel": "Nate Herk | AI Automation",
       "score": 0.587
     }
-  ]
+  ],
+  "key_points": [
+    "Cached tokens are billed at 10% of normal input cost: a session with 91 million cached tokens costs the same as processing roughly 9 million fresh tokens.",
+    "The cache TTL is one hour for Claude Code on a subscription plan but only 5 minutes for API calls and sub-agents on any plan; users who exhaust their weekly subscription limit and fall into per-token overage territory also drop to the 5-minute TTL.",
+    "Three cache layers exist in Claude Code: a globally cached system layer (base instructions and tool definitions), a per-project layer (CLAUDE.md and memory files), and a per-turn conversation layer that must be re-processed each turn.",
+    "Switching models mid-session (including the Opus-plan-then-Sonnet-execution pattern) resets the cache entirely, because each model maintains its own cache keyed on a prefix that does not carry over.",
+    "Editing CLAUDE.md mid-session is safe: the edit does not take effect until the session restarts, so the in-flight cache is preserved.",
+    "The recommended habits to protect session limits are: hand off to a new session after one hour of inactivity, use /compact or /clear when switching tasks, and use a session-handoff summary skill to carry context across a fresh /clear without losing state."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Cache Savings Demo and Overview"
+    },
+    {
+      "t": 31,
+      "title": "What Caching Costs and the TTL Window"
+    },
+    {
+      "t": 120,
+      "title": "How the Cache Grows Across Turns"
+    },
+    {
+      "t": 270,
+      "title": "Three Cache Layers Explained"
+    },
+    {
+      "t": 361,
+      "title": "TTL Confusion: Subscription vs API vs Sub-Agents"
+    },
+    {
+      "t": 391,
+      "title": "Three Habits That Cover 95 Percent of Cases"
+    },
+    {
+      "t": 451,
+      "title": "Session Handoff Skill in Practice"
+    },
+    {
+      "t": 481,
+      "title": "What Breaks the Cache: Model Switching"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "f9cdf3b9deccda0a"
 }

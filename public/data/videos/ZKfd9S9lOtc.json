@@ -7,8 +7,8 @@
   "kind": "opinion",
   "recommended": false,
   "summary": "Video overview of recent AI developments across multiple domains including new model releases from DeepSeek, OpenAI, Kimi, Xiaomi, and Alibaba Qwen, alongside research projects in game engines, geometry understanding, image generation, and video editing. The content emphasizes rapid innovation velocity and breadth of AI applications from language models to robotics.",
-  "writeup": "",
-  "wh": "468b79e37a2264c7",
+  "writeup": "A rapid-fire weekly roundup covering roughly a dozen open-source AI releases across video generation, agentic coding, image synthesis, and frontier model rankings. The through-line is open-source catching up to closed labs: Kimi K2.6 (1.1 trillion parameters, 300 sub-agents) and Xiaomi MiMo 2.5 Pro are tied at the top of the Artificial Analysis intelligence index, both matching GPT-5.4 and Opus 4.6 on agentic coding benchmarks. The week also surfaces two novel architectural ideas: MultiWorld's multi-agent condition module for coherent multi-camera video generation, and UniGenDet's symbiotic self-attention loop where generation and detection reinforce each other.",
+  "wh": "02c118bb35848e1b",
   "concepts": [
     {
       "slug": "video-generation",
@@ -68,5 +68,50 @@
       "channel": "AI Search",
       "score": 0.662
     }
-  ]
+  ],
+  "key_points": [
+    "Kimi K2.6, a 1.1-trillion-parameter open-source model at roughly 600 GB, can orchestrate up to 300 sub-agents across 4,000 coordinated steps; in one benchmark run it improved Qwen 3.5 inference throughput from 15 to 193 tokens per second after 4,000 tool calls, 14 iterations, and 12 hours of continuous autonomous execution.",
+    "Xiaomi MiMo 2.5 Pro ties Kimi K2.6 at the top of the Artificial Analysis open-source intelligence index and autonomously built a full-featured desktop video editor with multiple tracks, cross-fades, and audio mixing: 8,000 lines of code, 1,800 tool calls, 11.5 hours; it also leads the efficiency frontier, achieving high performance with fewer tokens per trajectory than competing top models.",
+    "OpenGame frames itself as the first open-source agentic framework for end-to-end video game creation; its architecture has three parts (model training, an autonomous agent workflow with classification-scaffolding-design-asset synthesis-implementation-verification self-correction loop, and a continuously evolving game skill library that accumulates successful templates and verified debug fixes).",
+    "MultiWorld generates coherent multi-agent, multi-camera video worlds by combining an agent identity embedding injected into action tokens with a global state encoder that reconstructs full scene state from partial observations, making it useful for generating robot training data from multiple viewpoints.",
+    "UniGenDet couples image generation and deepfake detection in a single model via symbiotic self-attention, where each task reinforces the other; the result outperforms detection-only competitors on fake-image benchmarks while also producing more photorealistic generated images than models like Bagel.",
+    "Open Co-design is an open-source, self-hosted alternative to Lovable and Figma AI that accepts text descriptions or reference images and autonomously produces UIs, slide decks, PDFs, and posters; it ships as a standalone executable and supports plugging in any local or API-accessible model."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Week Overview"
+    },
+    {
+      "t": 60,
+      "title": "MultiWorld: Multi-Agent Video Generation"
+    },
+    {
+      "t": 182,
+      "title": "OpenGame: Agentic Video Game Creation"
+    },
+    {
+      "t": 271,
+      "title": "UniGenDet: Unified Generation and Detection"
+    },
+    {
+      "t": 392,
+      "title": "Kimi K2.6: New Top Open-Source Model"
+    },
+    {
+      "t": 570,
+      "title": "Open Co-design: Self-Hosted AI Design"
+    },
+    {
+      "t": 631,
+      "title": "Xiaomi MiMo 2.5 Pro"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8ad45ae62a9f4d2b"
 }

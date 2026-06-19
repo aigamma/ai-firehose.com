@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Archon is an AI coding orchestration tool that automates workflow triggers from communication and project management platforms. A new Jira adapter enables automatic bug fixing and pull request creation from Jira tickets, with each ticket maintaining a dedicated conversation context.",
-  "writeup": "",
-  "wh": "0fec4864a9822ecf",
+  "writeup": "This live stream builds a Jira community adapter for Archon, an open-source agent orchestration framework, so that developers can hold per-ticket conversations with a coding agent directly inside Jira, mirroring how Archon already handles parallel conversations via Slack threads. The host uses a 12-step Archon workflow called PIV System Evolution, which takes a GitHub issue as input and produces a pull request as output, to build the adapter itself. The broader argument is that Jira's near-universal adoption in enterprise development makes it the highest-leverage integration surface, and that mapping one agent conversation per ticket is more useful than fully automated ticket resolution. A concrete model-efficiency finding from prior benchmarking drives the run: Opus 4.8 handles only the planning step, and Sonnet handles everything else.",
+  "wh": "b63f8d73c21ea41e",
   "concepts": [
     {
       "slug": "agentic-workflows",
@@ -56,5 +56,53 @@
       "channel": "Cole Medin",
       "score": 0.55
     }
-  ]
+  ],
+  "key_points": [
+    "Archon supports multiple adapter types (web UI, CLI, Slack, GitHub, Telegram, Discord), each mapping a platform's thread or channel primitive to a dedicated Archon conversation; the Jira adapter follows the same pattern by mapping individual Jira tickets to conversations rather than polling the board automatically.",
+    "The adapter taxonomy splits into maintainer-supported adapters and community adapters, the latter contributed and self-maintained by outside developers; Jira is being introduced as a community adapter, with Gitea and GitLab as prior examples in that category.",
+    "The PIV (Plan, Implement, Validate) System Evolution workflow is a 12-step Archon workflow that loads codebase context, generates a plan from a GitHub issue, executes implementation with validation steps (type checking, linting, manual and code review), then produces a pull request, with human-approval gates at the plan and implementation stages to keep the engineer in the loop.",
+    "Benchmarking from a prior session showed that using Opus 4.8 exclusively for the planning step and Sonnet for all remaining steps (implementation, validation, system evolution) produces results close to all-Opus quality at significantly lower token cost, making this the adopted strategy for the live build.",
+    "The intended Jira interaction model is conversational rather than fire-and-forget: a developer comments inside a ticket and Archon replies in-thread, running workflows on demand, with ticket movement (column transitions on the Kanban board) handled by a Jira skill inside those workflows rather than by the adapter itself."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Goal: Jira Adapter for Archon"
+    },
+    {
+      "t": 90,
+      "title": "Existing Adapters and Architecture"
+    },
+    {
+      "t": 180,
+      "title": "Community vs. Maintainer Adapters"
+    },
+    {
+      "t": 301,
+      "title": "Two Jira Integration Modes"
+    },
+    {
+      "t": 422,
+      "title": "Creating the GitHub Issue"
+    },
+    {
+      "t": 510,
+      "title": "PIV System Evolution Workflow"
+    },
+    {
+      "t": 601,
+      "title": "Human Approval Gates and Workflow Structure"
+    },
+    {
+      "t": 662,
+      "title": "Model Selection: Opus for Planning, Sonnet for Execution"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "0a4d543f132ad29c"
 }

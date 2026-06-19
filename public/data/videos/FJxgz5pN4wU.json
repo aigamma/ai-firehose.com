@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Caleb Writes Code explains Pi, an agent framework with a unique harness layer that enables flexible deployment patterns. The video compares Pi against other frontier agent tools like Claude Code, Cursor, and Codex in terms of architectural complexity and use cases.",
-  "writeup": "",
-  "wh": "73b9f6d46df10fdb",
+  "writeup": "This video examines the Pye agent framework, the engine behind OpenClaude, and argues that its defining strength is radical minimalism: no built-in sub-agents, no MCP, no background bash, no to-do list. Where conventional coding agents like Claude Code and Codex lock the harness and let users only configure around it, Pye lets developers extend the harness itself in native TypeScript, making it a composable foundation rather than a finished product. The through-line is a design philosophy borrowed from the SOLID open-closed principle: open for extension, closed for modification, positioned as a long-term hedge against the rapid churn that has forced frameworks like LangChain and Manus through multiple full rewrites.",
+  "wh": "9646a5f225a8bdf2",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -60,5 +60,46 @@
       "channel": "Cursor",
       "score": 0.589
     }
-  ]
+  ],
+  "key_points": [
+    "Pye distinguishes itself by what it omits: unlike Claude Code, Codex, and Antigravity, it ships without sub-agents, MCP, background bash, or to-do lists, forcing developers to build only what they actually need on top of a minimal core.",
+    "Hook extensibility is the core technical differentiator: instead of writing hook configuration into a settings.json file for the agent to parse, Pye lets a developer write a full TypeScript extension of the harness itself, then reload it live with the /reload command.",
+    "Pye componentizes into four segments following separation-of-concerns: a provider abstraction layer (completions API, token tracking, tool calling, streaming across Anthropic, OpenAI, Google, and OpenRouter), an agentic loop (validation, event streaming, tool execution), a coding agent layer, and a terminal UI, so each concern is independently replaceable.",
+    "OpenClaude is the direct proof-of-concept: it wraps Pye by importing its components and layering MCP integrations, messaging-app connectors, and a hosting gateway on top, all scaffolding that Pye deliberately does not bake in.",
+    "The framework-churn argument is concrete: LangChain was rewritten four times and Manus five times as underlying model capabilities in tool calling improved, eroding the value of complex harness code; Pye's 'built to delete' posture is an explicit bet that less harness code means less throwaway work as models get better.",
+    "Pye is described as a hedge rather than a replacement for Claude Code or Codex: the two categories serve different users, with Pye suited to developers who want to build purpose-specific agents (code review agents, research agents) rather than guide a general-purpose agent through prompts."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Coding Agents All Look Alike"
+    },
+    {
+      "t": 31,
+      "title": "What Is Pye and Why Not Claude Code"
+    },
+    {
+      "t": 61,
+      "title": "The Negative Space Philosophy"
+    },
+    {
+      "t": 91,
+      "title": "Harness Extensibility via TypeScript Hooks"
+    },
+    {
+      "t": 240,
+      "title": "Four-Component Architecture and SOLID Design"
+    },
+    {
+      "t": 361,
+      "title": "The Harness Churn Hedge"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9ae272f524d24342"
 }

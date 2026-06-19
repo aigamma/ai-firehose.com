@@ -7,7 +7,7 @@
   "kind": "tool",
   "recommended": false,
   "summary": "NeuralNine presents a tool designed to help users track and calculate their token expenditure costs. The tool appears to assist developers in managing API or LLM usage expenses.",
-  "writeup": "",
+  "writeup": "cc-usage is an open-source CLI tool that reads locally cached session data from AI coding agent CLIs (Claude Code, Codex, OpenCode) and reports token consumption with projected API costs, even when running under a subscription. The primary use case is subscription ROI analysis: seeing what API spending would have been without a flat-rate plan makes the upgrade-or-cancel decision concrete and data-driven. The video walks through provider filtering, daily and monthly breakdowns, session-level and 5-hour-block views, date range slicing, and a JSON output flag for scripting.",
   "wh": "b61a60f93de442a7",
   "concepts": [
     {
@@ -56,5 +56,54 @@
       "channel": "Keith AI",
       "score": 0.483
     }
-  ]
+  ],
+  "key_points": [
+    "cc-usage projects token usage into USD at API rates regardless of subscription, so a user paying a flat monthly fee can directly compare what they consumed against what it would have cost on pay-per-token.",
+    "Data is machine-local only: the tool reads whichever agent's local cache exists on that specific machine, so usage across multiple devices or cloud environments is not aggregated.",
+    "Filtering by provider is done by passing the agent name as a positional argument (e.g., cc-usage claude or cc-usage codex), and granularity switches between daily, monthly, and session views.",
+    "Claude Code's 5-hour rolling billing blocks are surfaced with cc-usage claude blocks, exposing per-block cost for users who need to understand session-window economics.",
+    "Date range filtering uses --since and --until flags with YYYY-MM-DD dates, enabling arbitrary time slices for any view.",
+    "The --json flag serializes the full result as a JSON object, making cc-usage composable with scripts and automation pipelines."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction"
+    },
+    {
+      "t": 35,
+      "title": "What cc-usage Does"
+    },
+    {
+      "t": 61,
+      "title": "Installation Options"
+    },
+    {
+      "t": 91,
+      "title": "Live Demo: Token and Cost Overview"
+    },
+    {
+      "t": 120,
+      "title": "Filtering by Provider and Granularity"
+    },
+    {
+      "t": 211,
+      "title": "Session and Blocks Views"
+    },
+    {
+      "t": 240,
+      "title": "Date Range Filtering"
+    },
+    {
+      "t": 301,
+      "title": "JSON Output for Automation"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "68898cbae9800d24"
 }

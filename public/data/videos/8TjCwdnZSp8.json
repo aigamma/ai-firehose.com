@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": false,
   "summary": "Anthropic released Claude Fable 5, described as a Mythos-class model with strong capabilities in software engineering, knowledge work, vision, analytics, and research. Anthropic implemented safety systems to restrict its use in high-risk domains like cybersecurity and biology despite the model's underlying power in these areas.",
-  "writeup": "The video covers Anthropic's release of Claude Fable 5, described as a Mythos-class model with capabilities spanning software engineering, knowledge work, vision, analytics, and scientific research. It details the model's built-in safety systems, which restrict responses in high-risk domains including cybersecurity, biology, and chemistry. The takeaway is a model positioned for broad technical and analytical work paired with domain-specific guardrails on hazardous topics.",
-  "wh": "ebe6dc89526cb2c4",
+  "writeup": "Anthropic released Claude Fable 5, a public-facing version of its Mythos-class frontier model, with a classifier layer that routes flagged queries in cybersecurity, biology, chemistry, and model distillation to Claude Opus 4.8 rather than the full model. The safeguard triggers in fewer than 5% of sessions, leaving the rest on Fable 5 proper, which sets state-of-the-art marks across software engineering, knowledge work, vision, and scientific reasoning. A parallel release, Claude Mythos 5, carries the same weights with guards lifted and is restricted to vetted organizations via a US government collaboration called Project Glasswing. The release also mandates 30-day traffic retention for all Fable 5 and Mythos 5 customers, including enterprises that previously held zero-retention agreements.",
+  "wh": "f5a39c9f09868961",
   "concepts": [
     {
       "slug": "safety-testing",
@@ -64,5 +64,54 @@
       "channel": "Cyril Imhof",
       "score": 0.732
     }
-  ]
+  ],
+  "key_points": [
+    "Fable 5 is the publicly available Mythos-class model with a separate classifier system that intercepts high-risk requests and falls back to Opus 4.8; Anthropic reports this fallback fires in fewer than 5% of sessions based on early data.",
+    "Stripe reported that Fable 5 completed a codebase-wide migration of a 50-million-line Ruby codebase in a single day, a task Stripe estimated would have taken a full engineering team over two months manually.",
+    "Hex, an analytics company, found Fable 5 to be the first model to reach 90% on their core analytics benchmark of complex long-running analytical tasks, with the model showing strong judgment on the hardest questions.",
+    "Mythos-class models outperformed specialized protein language models on a challenging adeno-associated virus design task without explicit training for that domain, a capability Anthropic considers dual-use for both gene therapy and potential bioweapon design.",
+    "An external bug bounty running over 1,000 hours produced no universal jailbreaks, though the UK AI Safety Institute made partial progress toward one within an initial testing window; Anthropic frames its goal as making remaining jailbreaks slow and costly to execute at scale rather than impossible.",
+    "Fable 5 and Mythos 5 are priced at $10 per million input tokens and $50 per million output tokens, double the price of Opus 4.8 but less than half the price of the earlier Mythos preview; Fable 5 is included in Pro, Max, Team, and enterprise subscription plans through June 22 before shifting to usage-credit billing."
+  ],
+  "chapters": [
+    {
+      "t": 2,
+      "title": "Unprecedented Release and Safety-Gated Model"
+    },
+    {
+      "t": 90,
+      "title": "Classifier Fallback to Opus 4.8"
+    },
+    {
+      "t": 150,
+      "title": "Benchmarks and Real-World Deployments"
+    },
+    {
+      "t": 271,
+      "title": "Cybersecurity Risks and Agentic Hacking"
+    },
+    {
+      "t": 330,
+      "title": "Jailbreak Testing and Biology Dual-Use Risk"
+    },
+    {
+      "t": 420,
+      "title": "Mythos 5 and Project Glasswing"
+    },
+    {
+      "t": 511,
+      "title": "Mandatory Data Retention and IPO Context"
+    },
+    {
+      "t": 600,
+      "title": "Subscription Rollout Timeline"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "3ca88eba199b60e9"
 }

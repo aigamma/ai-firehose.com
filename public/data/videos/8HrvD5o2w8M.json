@@ -7,7 +7,7 @@
   "kind": "technique",
   "recommended": true,
   "summary": "Late interaction is a search paradigm that preserves token-level representations while enabling pre-computation of documents, contrasted against single-vector embeddings and cross-encoders. The video explains how late interaction models like ColBERT balance retrieval speed with relevance precision for large-scale collections.",
-  "writeup": "",
+  "writeup": "This lesson introduces the late interaction paradigm, the conceptual foundation of multi-vector search, by contrasting it with no-interaction bi-encoders and early-interaction cross-encoders. The core idea: documents are encoded once into one vector per token (not pooled into a single vector), stored, and reused for every query, with token-level comparison happening only at scoring time. The result is pre-computation efficiency from independent encoding combined with fine-grained precision from token-level matching, a combination neither extreme achieves alone.",
   "wh": "6897b907424e7be6",
   "concepts": [
     {
@@ -72,5 +72,53 @@
       "channel": "Qdrant Vector Search",
       "score": 0.607
     }
-  ]
+  ],
+  "key_points": [
+    "Late interaction encodes query and document independently, preserving one embedding vector per token rather than pooling into a single fixed-size vector, so a 200-token document yields 200 stored vectors.",
+    "The critical scalability advantage is pre-computation: document token vectors are computed once and reused across millions of queries, unlike cross-encoders that must re-encode the full query-document pair every time.",
+    "Single-vector models discard rich token-level information through mean pooling or CLS aggregation; late interaction retains that information and defers the interaction step to the scoring phase.",
+    "Contextual token embeddings mean the same word receives different vector representations depending on surrounding text, so 'bank' in 'river bank' and 'bank account' maps to distinct points in embedding space, enabling precise semantic disambiguation.",
+    "The lesson closes by framing MaxSim, the distance metric that defines how sets of query token vectors are compared against sets of document token vectors, as the next required concept for understanding the full late interaction pipeline."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Search Interaction Paradigms"
+    },
+    {
+      "t": 31,
+      "title": "No Interaction: Bi-Encoders"
+    },
+    {
+      "t": 62,
+      "title": "Early Interaction: Cross-Encoders"
+    },
+    {
+      "t": 90,
+      "title": "Late Interaction Overview"
+    },
+    {
+      "t": 121,
+      "title": "Token-Level Multi-Vector Storage"
+    },
+    {
+      "t": 210,
+      "title": "Late Interaction Workflow"
+    },
+    {
+      "t": 240,
+      "title": "Pre-Computation and Fine-Grained Matching"
+    },
+    {
+      "t": 303,
+      "title": "Next: MaxSim Scoring"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "2f7e09bd6a7adc30"
 }

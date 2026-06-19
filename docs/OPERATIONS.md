@@ -14,6 +14,12 @@ Names are listed in `.env.example`. For local runs, `worker/.env.local` (gitigno
 
 The `ai-firehose` Pinecone index was created with the civil project's key, so it currently lives in that Pinecone project alongside `civil-rights` (isolated by index name; `pinecone.mjs` resolves the host from the index name and never writes to a sibling index). Optionally migrate it to a dedicated `ai-firehose` Pinecone project later.
 
+## Spend Discipline: External Credits Are Money
+
+The Anthropic API, OpenAI, Voyage, and Pinecone keys above are all METERED, and are reserved for the DEPLOYED production runtime. The scheduled worker (it commits as `ai-firehose worker` roughly every 6 hours) is the bulk of the monthly bill, not any interactive session: each run does classify (Haiku), embeddings (Voyage), the Opus briefings, digests, glossary definitions, and per-video write-ups, and Pinecone upserts. The Opus generation (the per-video write-ups especially, capped per run but recurring) and Voyage embeddings dominate the cost. The live `/api/retrieve` function also spends a Voyage rerank plus a Pinecone query per visitor search.
+
+A Claude Code session's OWN model usage (the agent's reasoning and its subagents) bills the user's Max SUBSCRIPTION, not the API; there is no `ANTHROPIC_API_KEY` in the session environment, so sessions do not silently drain the API budget unless they RUN code that calls a paid API. The rule: do not run `npm run ingest`, a generate/embed/define/transcribe/image script, or a backfill loop in a session without explicit permission. Drive one-time backfills on the subscription instead (subagents author the output, zero API), as the video-insights backfill did. To cut the recurring bill, throttle the worker cadence and the per-run Opus volume. See `LESSONS_LEARNED.md` Session 29 and the global Claude Code instructions.
+
 ## State: the Accumulating Corpus and Vector Manifest
 
 The rolling-quarter corpus lives in `worker/.cache/items.json`, the retention-pruned raw items that are the substrate for every rebuild and the recovery source above. This is **durable state, not a cache**, so it is committed to the repo: each scheduled run clones fresh, loads the corpus, adds the new feed items, prunes by `published_at`, and commits the updated `items.json` back alongside the artifacts. Without this, a clone-fresh run would start empty and the corpus would collapse to the latest feed snapshot.
