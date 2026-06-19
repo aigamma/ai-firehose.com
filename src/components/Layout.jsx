@@ -83,6 +83,9 @@ export default function Layout() {
           A personal instrument for staying organized and courageous on the AI frontier.
           Sibling to <a href="https://worldthought.com" target="_blank" rel="noopener noreferrer">worldthought.com</a> and <a href="https://aigamma.com" target="_blank" rel="noopener noreferrer">aigamma.com</a>. The corpus self-expires at one quarter,
           so nothing here is ever stale. <a href="/feed.xml">RSS</a>.
+          <div className="footer-credit">
+            Created by <a className="footer-author" href="https://about.aigamma.com/" target="_blank" rel="noopener noreferrer">Eric Allione</a>
+          </div>
         </div>
       </footer>
     </>
