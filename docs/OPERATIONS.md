@@ -22,6 +22,19 @@ The vector sync state lives in `worker/.cache/vector_manifest.json`, also commit
 
 ## Schedule
 
+> **PAUSED 2026-06-19 to 2026-06-21 (UTC).** Scheduled ingestion is suspended while a
+> runaway Anthropic API spend problem is investigated. The metered API monthly cap is
+> exhausted, so every classify returns a 400 ("You have reached your specified API usage
+> limits. You will regain access on 2026-07-01"), the worker exits 1 on `nothing
+> classified` (`worker/pipeline/run.mjs`), and the cron emails a failure every 6 hours.
+> Raising the cap has re-exhausted it almost immediately, so spend telemetry is being
+> stood up before re-enabling. The pause is a `PAUSE_UNTIL` date-guard in the workflow's
+> guard step (`.github/workflows/ingest.yml`) that no-ops scheduled ticks (no spend, no
+> email) and auto-resumes on the date; manual `workflow_dispatch` is unaffected. NOTE: the
+> API cap itself does not reset until 2026-07-01, so if the schedule resumes on 2026-06-21
+> before the cap is raised (or the worker is taught to skip the cap 400 gracefully), the
+> failure emails return. To extend the pause, bump `PAUSE_UNTIL`. See `LESSONS_LEARNED.md`.
+
 The target cadence is **every 6 hours** (four refreshes a day): the AI firehose moves fast enough that a single daily rebuild reads as stale, and the Day horizon benefits most from intraday refreshes. Each run commits both `worker/.cache/items.json` and `worker/.cache/vector_manifest.json` with the rebuilt artifacts, and that push triggers CI plus a Netlify deploy, so four runs a day is four deploys a day. Cost stays modest because the pipeline is idempotent (content-hash gated): a run only classifies and embeds items new since the last one, so an intraday run is mostly fetch-and-skip.
 
 Fly's scheduled-Machine `--schedule` only accepts the presets `hourly | daily | weekly | monthly`, so it cannot express a 6-hour cadence. The cron trigger therefore lives in GitHub Actions (`.github/workflows/ingest.yml`, `cron: 0 */6 * * *`): each tick launches a one-off worker Machine from the deployed image with `--detach`, polls the Machine state until the batch exits, reads the Machine's real exit code, and destroys the Machine in an always-run cleanup step (it does NOT use `--rm`; see the start-wait gotcha below). That workflow is dormant until the image is deployed and `FLY_API_TOKEN` is set; its guard step no-ops cleanly until then. Build and push the image once, then arm the trigger:

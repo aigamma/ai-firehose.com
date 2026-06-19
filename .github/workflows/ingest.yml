@@ -22,6 +22,15 @@
 #
 # Each run clones main, ingests, commits the refreshed artifacts, and pushes; that push
 # triggers CI and a Netlify deploy. Four runs a day means four deploys a day.
+#
+# PAUSED (2026-06-19): scheduled runs are suspended until 2026-06-21 (UTC) while a
+# runaway Anthropic API spend problem is investigated. The metered API monthly cap is
+# exhausted (every classify returns a 400 "usage limits" error, so the worker exits 1
+# and emails a failure every 6 hours), and it re-caps almost immediately when raised, so
+# spend telemetry is being stood up before re-enabling. The guard step below no-ops
+# scheduled ticks until that date (no spend, no failure email), then the schedule resumes
+# automatically. workflow_dispatch is never paused. To change the resume date, edit
+# PAUSE_UNTIL in the guard step. See docs/OPERATIONS.md and LESSONS_LEARNED.md.
 name: Ingest (every 6 hours)
 
 on:
@@ -44,12 +53,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Guard on FLY_API_TOKEN (no-op until the worker is deployed)
+      - name: Guard (pause window, then FLY_API_TOKEN; no-op unless ready)
         id: guard
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: |
-          if [ -z "$FLY_API_TOKEN" ]; then
+          # PAUSE_UNTIL (UTC, YYYYMMDD): scheduled ticks before this date no-op cleanly so
+          # they neither spend the metered API nor email a failure while the runaway-spend
+          # issue is investigated. The schedule auto-resumes on this date. Manual
+          # workflow_dispatch is never paused. See the header comment and docs/OPERATIONS.md.
+          PAUSE_UNTIL=20260621
+          today=$(date -u +%Y%m%d)
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$today" -lt "$PAUSE_UNTIL" ]; then
+            echo "Scheduled ingestion is paused until $PAUSE_UNTIL (UTC); investigating API spend. Skipping. Use 'Run workflow' to dispatch manually."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          elif [ -z "$FLY_API_TOKEN" ]; then
             echo "FLY_API_TOKEN is not set; the worker is not deployed yet. Skipping."
             echo "ready=false" >> "$GITHUB_OUTPUT"
           else
