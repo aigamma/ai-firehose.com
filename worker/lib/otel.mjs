@@ -130,9 +130,9 @@ export function recordLlm({ system, model, operation, inputTokens = 0, outputTok
           {
             metrics: [
               counter("gen_ai.cost.usd", "usd", cost),
-              counter("gen_ai.usage.input_tokens", "token", inTok),
-              counter("gen_ai.usage.output_tokens", "token", outTok),
-              counter("gen_ai.calls", "call", 1),
+              counter("gen_ai.usage.input_tokens", "", inTok),
+              counter("gen_ai.usage.output_tokens", "", outTok),
+              counter("gen_ai.calls", "", 1),
             ],
           },
         ],
