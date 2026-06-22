@@ -24,6 +24,18 @@ const SERVICE = process.env.OTEL_SERVICE_NAME || "ai-firehose-worker";
 const ENVIRONMENT = process.env.DEPLOY_ENV || "prod";
 const ENABLED = ENDPOINT.length > 0;
 
+// Bearer auth for the hardened fleet collector (it rejects unauthenticated pushes
+// with 401). Parse OTEL_EXPORTER_OTLP_HEADERS ("Authorization=Bearer <token>") once.
+const HEADERS = (() => {
+  const h = { "content-type": "application/json" };
+  const raw = process.env.OTEL_EXPORTER_OTLP_HEADERS || "";
+  for (const pair of raw.split(",")) {
+    const eq = pair.indexOf("=");
+    if (eq > 0) h[pair.slice(0, eq).trim()] = pair.slice(eq + 1).trim();
+  }
+  return h;
+})();
+
 // USD per 1,000 tokens, [input, output]. The single source of truth for cost.
 // Embedding and rerank models bill input only. Keep roughly in step with the
 // provider price sheets; an out-of-date entry undercounts but never breaks a run.
@@ -45,7 +57,7 @@ const pending = new Set();
 function send(path, payload) {
   const p = fetch(`${ENDPOINT}${path}`, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: HEADERS,
     body: JSON.stringify(payload),
     signal: AbortSignal.timeout(5000),
   })
