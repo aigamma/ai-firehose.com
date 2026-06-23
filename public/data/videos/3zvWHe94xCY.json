@@ -6,9 +6,9 @@
   "published": "2026-05-13T21:00:46+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "AWS Developers demonstrates building four AI agents from scratch using the Strands Agents SDK, progressing from single-tool agents to multi-agent orchestrators. The video illustrates the core agent loop pattern: model reasoning, tool selection, execution, and repetition until completion.",
+  "summary": "AWS Developers tutorial on building AI agents using the open-source Strands Agents SDK. The video demonstrates that agents are fundamentally loops where a model reasons about available tools, selects one, executes it, and repeats until task completion. Four progressive examples show single-tool agents, multi-tool selection, execution hooks, and multi-agent orchestration patterns.",
   "writeup": "A ground-up demonstration of AI agents using the open-source Strands Agent SDK from AWS, showing that the core mechanism is a single loop: the model receives input, decides whether to call a tool, executes it, inspects the result, and repeats until satisfied. The video builds four progressively capable agents, from a single-tool calculator through multi-tool orchestration to a nested multi-agent router, all running identical underlying logic. The through-line is that docstrings are the contract between developer and model, and the loop is the only concept needed to build production agents.",
-  "wh": "e30deaac57a68b15",
+  "wh": "a5bfd2b75e267048",
   "key_points": [
     "The agent loop is the entire mechanism: reason, select, execute, repeat. A model receives input, decides it needs a tool, calls a Python function, reads the result, and continues until it has enough to respond, with no special framework logic beyond that cycle.",
     "In the Strands SDK, any Python function decorated with @tool becomes an agent-callable tool; the docstring is the instruction the model reads to decide when that tool is relevant, so vague docstrings produce vague tool selection and precise ones produce precise behavior.",
@@ -60,12 +60,16 @@
       "label": "game loop"
     },
     {
+      "slug": "tool-context",
+      "label": "tool context"
+    },
+    {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "tool-use",
-      "label": "tool use"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     }
   ],
   "similar": [
@@ -73,37 +77,37 @@
       "id": "W6x-hb44C0c",
       "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.649
-    },
-    {
-      "id": "Zqno_vux6d8",
-      "title": "AI agents explained: Build your first agent in 8 minutes",
-      "channel": "Google Cloud Tech",
-      "score": 0.619
-    },
-    {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.618
-    },
-    {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.611
-    },
-    {
-      "id": "ikH1--DSzMs",
-      "title": "How to build proactive agents & self-improving company (Fully explained)",
-      "channel": "AI Jason",
-      "score": 0.61
+      "score": 0.667
     },
     {
       "id": "1a1VXDdIyrk",
       "title": "Agent Harness explained in 8min..",
       "channel": "Caleb Writes Code",
-      "score": 0.597
+      "score": 0.643
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.62
+    },
+    {
+      "id": "bSDkbx5rrpM",
+      "title": "This Is The First Real Shape Of AGI: Fusion Agents",
+      "channel": "AI Revolution",
+      "score": 0.616
+    },
+    {
+      "id": "Zqno_vux6d8",
+      "title": "AI agents explained: Build your first agent in 8 minutes",
+      "channel": "Google Cloud Tech",
+      "score": 0.616
+    },
+    {
+      "id": "JsNbFnT0QCw",
+      "title": "Building long-running AI agents with ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.61
     }
   ]
 }

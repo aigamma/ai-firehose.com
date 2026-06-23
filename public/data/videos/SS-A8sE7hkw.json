@@ -6,9 +6,9 @@
   "published": "2026-06-10T15:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Gemma 4's 31B model ranks fourth on the LM Arena leaderboard despite being much smaller than comparable competitors, running on a single GPU instead of four or five. The model runs efficiently on mobile devices, healthcare deployments, and local machines via LM Studio, and shifted from a custom license to Apache 2.0 to enable easier adoption by sovereign institutions.",
+  "summary": "Gemma 4's 31B variant ranks fourth on the LM Arena open model leaderboard despite being 2-20x smaller than comparable competitors. The model runs on a single GPU, supports on-device inference on Pixel phones via 2B and 4B parameter variants, and can be deployed in production settings like hospital medical systems or via tools like LM Studio. Google DeepMind shifted Gemma's license from a custom agreement to Apache 2.0, enabling sovereign institutions in countries like Ukraine, Bulgaria, and Brazil to deploy without lengthy procurement reviews.",
   "writeup": "Google DeepMind engineers Gus and Ian present Gemma 4, a four-model open family released to complement Gemini for workloads where data cannot leave an organization's infrastructure. The lineup spans E2B and E4B for on-device inference (phone-scale GPU memory despite 5B actual parameters) up to a 26B mixture-of-experts and a 31B dense model that ranks fourth and seventh on the LM Arena open-model leaderboard while requiring a single GPU where competitors need four or five. The talk frames the economic case for self-hosted open models around agentic coding workloads, which OpenRouter data identifies as among the highest token-generation tasks, then closes on the Apache 2.0 license switch that removes the legal friction blocking sovereign and government adoption.",
-  "wh": "c818410c0c563feb",
+  "wh": "feb8c5a537786fdd",
   "key_points": [
     "The 'effective' (E) parameter naming in Gemma 4 means the E2B model consumes only 2B of GPU memory: its additional ~3B parameters are token-mapping tables that live in separate memory, making genuine phone-scale inference practical.",
     "The 31B dense model ranks fourth and seventh on the LM Arena open-model ELO leaderboard against competitors that are two to twenty times larger in parameter count, representing a significant intelligence-per-parameter advantage.",
@@ -67,46 +67,50 @@
       "label": "on-device inference"
     },
     {
-      "slug": "model-compression",
-      "label": "model compression"
+      "slug": "foundation-models",
+      "label": "foundation models"
+    },
+    {
+      "slug": "apache-2-0-license",
+      "label": "Apache 2.0 license"
     }
   ],
   "similar": [
     {
-      "id": "6VV5Gvmtrl4",
-      "title": "What’s new in Gemma 4?",
-      "channel": "Google DeepMind",
-      "score": 0.705
-    },
-    {
       "id": "1uypL1oNChI",
       "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
       "channel": "AICodeKing",
-      "score": 0.686
+      "score": 0.684
+    },
+    {
+      "id": "6VV5Gvmtrl4",
+      "title": "What’s new in Gemma 4?",
+      "channel": "Google DeepMind",
+      "score": 0.683
     },
     {
       "id": "O6499i4TFYA",
       "title": "Gemma 4 and the AI Edge Gallery: On-Device AI Gets an Upgrade",
       "channel": "Google for Developers",
-      "score": 0.639
+      "score": 0.671
     },
     {
       "id": "WLtCHXdHTF0",
       "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
       "channel": "Better Stack",
-      "score": 0.635
-    },
-    {
-      "id": "J02-39xtlt4",
-      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
-      "channel": "AI Search",
-      "score": 0.621
+      "score": 0.613
     },
     {
       "id": "R6mM0m3IZWY",
       "title": "Gemini 3.5 Flash has landed.",
       "channel": "Google DeepMind",
-      "score": 0.62
+      "score": 0.597
+    },
+    {
+      "id": "-CoCF9koVfc",
+      "title": "Odysseus + Gemma-4 26B & FREE APIs: RIP Hermes & OpenClaw! THIS IS CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.583
     }
   ]
 }

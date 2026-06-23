@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Stripe presents infrastructure for secure autonomous agent spending, addressing credential transmission and business discoverability to agents. The talk covers guardrails for safe autonomous transactions and infrastructure needs for agent-driven purchasing.",
   "writeup": "A principal engineer from Stripe's issuing team lays out the infrastructure required for AI agents to transact safely in the open economy. The central argument is a clean separation: discovery and exploration can tolerate non-determinism from LLMs, but credentials, payments, and checkout require strict determinism enforced at the infrastructure level. Three concrete solutions are demonstrated: shared payment tokens with scoped limits, an HTTP 402-based machine payments protocol co-built with Tempo for API-layer monetization, and structured checkout flows that relay purchase details back to the human buyer.",
-  "wh": "d3e455ed8b9fa12e",
+  "wh": "342684c171f7d8c7",
   "key_points": [
     "Stripe's principal engineer on issuing frames the core problem as four failure modes for browser-operating agents: buying from the wrong place (domain spoofing), the wrong thing (navigation errors), the wrong amount (price extraction errors and currency drift), and with the wrong credential (card numbers pasted into untrusted forms).",
     "Shared payment tokens let an agent provision a credential scoped to a specific seller, capped at a dollar amount and a time window (in the demo: $25 limit, 30-day expiry), with Stripe enforcing those limits server-side so a seller attempting to charge $50 receives an enforcement failure rather than completing the overcharge.",
@@ -71,17 +71,11 @@
       "label": "guardrails"
     },
     {
-      "slug": "credential-rotation",
-      "label": "credential rotation"
+      "slug": "secure-credential-transmission",
+      "label": "secure credential transmission"
     }
   ],
   "similar": [
-    {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.621
-    },
     {
       "id": "4vfvvzzwcwI",
       "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
@@ -101,16 +95,22 @@
       "score": 0.586
     },
     {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.576
+    },
+    {
       "id": "HQxX7DeQmsU",
       "title": "The Right Way To Build AI Agents — With NVIDIA's Adel El Hallak and ServiceNow's Joe Davis",
       "channel": "Alex Kantrowitz",
       "score": 0.575
     },
     {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.571
+      "id": "9-4kiL6tEOw",
+      "title": "Is Unstructured Data The Key To Successful AI Deployments?",
+      "channel": "Alex Kantrowitz",
+      "score": 0.572
     }
   ]
 }

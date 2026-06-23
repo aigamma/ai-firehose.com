@@ -6,9 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering is the practice of building wrapper systems and orchestration layers around coding agents to enable reliable task execution. It comprises an AI layer for single-session control (rules, skills, hooks, subagents) and a second layer for orchestrating multiple agent sessions into workflows. Cole Medin argues harness engineering, not the underlying model, is the dominant factor determining agent capability.",
+  "summary": "Harness engineering separates the harness (wrapper, rules, skills, hooks) from the model itself in coding agents. It operates at two levels: optimizing the AI layer within a single agent session and orchestrating multiple focused agent sessions into scalable workflows. The harness comprises roughly 98% of a production coding agent's value.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "51a310a1b08673c7",
+  "wh": "a348f4a871ad35bc",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -55,20 +55,24 @@
   "ih": "60739f16f8267a10",
   "concepts": [
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
     },
     {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "agent",
+      "label": "agent"
+    },
+    {
+      "slug": "multi-session-workflows",
+      "label": "multi-session workflows"
     }
   ],
   "similar": [
@@ -76,37 +80,37 @@
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.759
+      "score": 0.8
     },
     {
       "id": "1a1VXDdIyrk",
       "title": "Agent Harness explained in 8min..",
       "channel": "Caleb Writes Code",
-      "score": 0.739
+      "score": 0.737
     },
     {
       "id": "efRIrLXoOVA",
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.698
+      "score": 0.718
     },
     {
-      "id": "luBkbzjo-TA",
-      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
-      "channel": "Cole Medin",
-      "score": 0.639
-    },
-    {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.635
+      "id": "PjrXaC5UsIw",
+      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
+      "channel": "IBM Technology",
+      "score": 0.691
     },
     {
       "id": "UztrFXaSWv0",
       "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
       "channel": "Cole Medin",
-      "score": 0.634
+      "score": 0.669
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.663
     }
   ]
 }

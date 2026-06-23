@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Amazon Bedrock AgentCore Managed Harness simplifies agent deployment by replacing manual container and orchestration setup with a JSON config file and system prompt. It provides isolated micro VMs, persistent storage, cross-session memory, hot-swap model capabilities, and browser and code interpreter access out of the box.",
   "writeup": "Amazon Bedrock AgentCore's managed harness collapses the production infrastructure problem, compute, containers, storage, memory, auth, and observability, into a JSON config file and a system prompt. The video builds a working agent called Pulse that scrapes Hacker News via a managed browser and Reddit via RSS on an hourly EventBridge schedule, accumulates JSON snapshots in persistent storage at /mount/data, and delivers a six-hour digest to Telegram. The through-line is that the operational boilerplate that makes running agent loops in production hard has been absorbed by the platform, leaving the developer to define behavior rather than infrastructure.",
-  "wh": "273b46eedc0104f1",
+  "wh": "c9aa175e4db6cc71",
   "key_points": [
     "The AgentCore managed harness provisions an isolated microVM per session with its own shell, file system, and cross-session memory scoped by user; persistent storage at /mount/data survives VM restarts and accumulates data across hourly invocations because the same session ID is reused.",
     "Running shell commands on the VM with the --exec flag costs no additional tokens, making file-system operations and lightweight orchestration essentially free relative to LLM calls.",
@@ -68,8 +68,8 @@
       "label": "agentic workflows"
     },
     {
-      "slug": "cloud-infrastructure",
-      "label": "cloud infrastructure"
+      "slug": "data-center-infrastructure",
+      "label": "data center infrastructure"
     },
     {
       "slug": "tool-use",
@@ -88,34 +88,34 @@
       "score": 0.582
     },
     {
+      "id": "1a1VXDdIyrk",
+      "title": "Agent Harness explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.536
+    },
+    {
       "id": "Psa8mLikdag",
       "title": "Managed Agents in the Gemini API",
       "channel": "Google for Developers",
       "score": 0.532
     },
     {
+      "id": "1wfY7GCVvh0",
+      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
+      "channel": "Cole Medin",
+      "score": 0.531
+    },
+    {
+      "id": "d1GHVtEFy2A",
+      "title": "Introducing Agent Toolkit for AWS",
+      "channel": "AWS Developers",
+      "score": 0.528
+    },
+    {
       "id": "am0lg5-ofvQ",
       "title": "Google Antigravity CLI Full Walkthrough",
       "channel": "Google Antigravity",
-      "score": 0.512
-    },
-    {
-      "id": "OWfxybbff9k",
-      "title": "Stop managing infrastructure for AI Agents 🛠️",
-      "channel": "Google for Developers",
-      "score": 0.511
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.511
-    },
-    {
-      "id": "WiWDrTujl_w",
-      "title": "FIRST LOOK into Google Antigravity CLI",
-      "channel": "Google Antigravity",
-      "score": 0.509
+      "score": 0.522
     }
   ]
 }

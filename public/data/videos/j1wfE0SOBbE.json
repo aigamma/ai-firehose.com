@@ -4,11 +4,11 @@
   "channel": "AWS Developers",
   "channelUrl": "https://www.youtube.com/@awsdevelopers",
   "published": "2026-06-02T18:22:23+00:00",
-  "kind": "opinion",
+  "kind": "technique",
   "recommended": false,
-  "summary": "AWS Developers presents five production best practices for deploying AI agents built with TypeScript: streaming tool call events for UI responsiveness, layered authentication using API Gateway and Cognito, type-safe database access with tenant isolation, guardrails and cost budgets via lifecycle hooks and model routing, and observability through metrics and OpenTelemetry tracing. The recommendations are demonstrated using Strands Agents SDK and AWS services.",
+  "summary": "AWS Developers presents five production deployment patterns for AI agents: streaming tool call events for responsive UIs, layered authentication using API Gateway and Cognito with IAM bridges, type-safe contracted database access with tenant isolation, guardrails and cost budgets with model routing, and observability via metrics and distributed tracing. The patterns apply across platforms and are demonstrated using Strands Agents SDK on AWS infrastructure.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "c2ea549aeb186896",
+  "wh": "b0fe9c834cc452e2",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -56,8 +56,12 @@
   "ih": "13769c3cb8210737",
   "concepts": [
     {
-      "slug": "streaming",
-      "label": "streaming"
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "tool-calls",
+      "label": "tool calls"
     },
     {
       "slug": "access-control",
@@ -82,6 +86,14 @@
     {
       "slug": "tracing",
       "label": "tracing"
+    },
+    {
+      "slug": "model-routing",
+      "label": "model routing"
+    },
+    {
+      "slug": "lifecycle-hooks",
+      "label": "lifecycle hooks"
     }
   ],
   "similar": [
@@ -89,37 +101,37 @@
       "id": "ObTPqBGsEbA",
       "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
       "channel": "AI Engineer",
-      "score": 0.628
+      "score": 0.649
     },
     {
       "id": "O-QEhFFhXNA",
       "title": "Stop AI Hallucinations With These 5 Techniques",
       "channel": "AWS Developers",
-      "score": 0.617
-    },
-    {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.612
-    },
-    {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
-      "channel": "Cole Medin",
-      "score": 0.591
+      "score": 0.622
     },
     {
       "id": "19HDQ9HppOA",
       "title": "Ship your first Managed Agent",
       "channel": "Claude",
-      "score": 0.588
+      "score": 0.605
     },
     {
-      "id": "d1GHVtEFy2A",
-      "title": "Introducing Agent Toolkit for AWS",
+      "id": "l6KeLCuB90o",
+      "title": "3 patterns to build long-running AI agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.603
+    },
+    {
+      "id": "3zvWHe94xCY",
+      "title": "Agents Are Just Loops",
       "channel": "AWS Developers",
-      "score": 0.585
+      "score": 0.6
+    },
+    {
+      "id": "14RP8liACqo",
+      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
+      "channel": "JavaScript Mastery",
+      "score": 0.596
     }
   ]
 }

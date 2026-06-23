@@ -4,11 +4,11 @@
   "channel": "Cursor",
   "channelUrl": "https://www.youtube.com/@cursor_ai",
   "published": "2026-05-21T20:32:39+00:00",
-  "kind": "tool",
+  "kind": "technique",
   "recommended": false,
-  "summary": "Cursor's Composer 2 is built from Kimi K2.5 with 1T parameters and 32B active parameters. The training pipeline includes continued pre-training on coding tasks and long-horizon reinforcement learning with auto-install, using reward shaping and self-summarization techniques. Performance is evaluated on Cursor Bench, an internal benchmark of real engineer queries.",
+  "summary": "Sasha Rush describes how Cursor's research team trains Composer 2, starting from Kimi K2.5 as the base model and applying coding-focused continued pre-training. The system uses long-horizon reinforcement learning with auto-install bootstrapping, nonlinear reward shaping, and self-summarization to handle context limits, evaluated on Cursor Bench with real engineer queries.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "0b71604dec33bac7",
+  "wh": "40aa7481fce336cd",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -60,6 +60,10 @@
   "ih": "b89fc4377d47746b",
   "concepts": [
     {
+      "slug": "model-evaluation",
+      "label": "model evaluation"
+    },
+    {
       "slug": "continual-pretraining",
       "label": "continual pretraining"
     },
@@ -76,46 +80,46 @@
       "label": "text summarization"
     },
     {
-      "slug": "mixture-of-experts",
-      "label": "Mixture of Experts"
+      "slug": "auto-install-bootstrapping",
+      "label": "auto-install bootstrapping"
     }
   ],
   "similar": [
     {
-      "id": "tk9lt-9x8mE",
-      "title": "Composer 2.5 and I INTERVIEWED THE CEO OF ALPHABET",
-      "channel": "Matthew Berman",
-      "score": 0.58
-    },
-    {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.557
-    },
-    {
-      "id": "_GljcHROPX8",
-      "title": "What happens when agents get their own computers",
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.554
+      "score": 0.633
     },
     {
       "id": "blgUmyMiROI",
       "title": "How are coding agents changing software engineering?",
       "channel": "Cursor",
-      "score": 0.553
+      "score": 0.6
     },
     {
-      "id": "fWa7uxyhVDE",
-      "title": "Opening Keynote, Michael Truell | Compile 26",
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.596
+    },
+    {
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.552
+      "score": 0.59
     },
     {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
-      "channel": "Cole Medin",
-      "score": 0.55
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.585
+    },
+    {
+      "id": "_GljcHROPX8",
+      "title": "What happens when agents get their own computers",
+      "channel": "Cursor",
+      "score": 0.58
     }
   ]
 }

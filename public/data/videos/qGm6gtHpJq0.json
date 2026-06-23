@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "tool",
+  "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates rebuilding his AI Dark Factory to combine Claude Opus and Kimi K2.6 models. Opus handles deep reasoning and planning while Kimi K2.6 manages implementation, validation, and research, optimizing reasoning power allocation for token efficiency at scale.",
+  "summary": "Cole Medin demonstrates a hybrid multi-model architecture that routes complex reasoning steps to Claude Opus while delegating implementation and validation to Kimi K2.6. The approach maintains token efficiency by applying expensive models only where reasoning depth impacts outcomes, rather than uniformly across all steps.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "f709e4b05e146317",
+  "wh": "9215ed0a409ba210",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -60,54 +60,54 @@
       "label": "model routing"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
+      "slug": "token-optimization",
+      "label": "token optimization"
+    },
+    {
+      "slug": "workflow-automation",
+      "label": "workflow automation"
     }
   ],
   "similar": [
     {
-      "id": "CwePo4847ho",
-      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
-      "channel": "Kimi AI",
-      "score": 0.631
+      "id": "C1dS-oFoyhk",
+      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
+      "channel": "Cole Medin",
+      "score": 0.704
+    },
+    {
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "channel": "Cole Medin",
+      "score": 0.653
     },
     {
       "id": "gKBazze-8qU",
       "title": "China’s New AI Is 6X More Efficient Than Claude",
       "channel": "AI Revolution",
-      "score": 0.627
+      "score": 0.641
     },
     {
-      "id": "QJ2bM8Me5Fk",
-      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "id": "DAlC8mL5ZlI",
+      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
+      "channel": "IBM Technology",
+      "score": 0.632
+    },
+    {
+      "id": "ENB3lqbCup8",
+      "title": "Claude Mythos explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.6
+      "score": 0.619
     },
     {
-      "id": "ZKfd9S9lOtc",
-      "title": "The most insane week in AI",
-      "channel": "AI Search",
-      "score": 0.594
-    },
-    {
-      "id": "B0zw0tN9VUU",
-      "title": "LIVE: Sakana VS Claude Fable 5 VS Fusion!",
-      "channel": "Julian Goldie SEO",
-      "score": 0.589
-    },
-    {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.587
+      "id": "7zZy1QTvokM",
+      "title": "Stop Prompting Claude. Use Karpathy's Method Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.615
     }
   ]
 }
