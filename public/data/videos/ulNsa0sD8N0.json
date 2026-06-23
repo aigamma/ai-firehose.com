@@ -6,65 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering is the practice of building the orchestration layer around coding agents that comprises approximately 98% of their effectiveness. It operates at two levels: rules and hooks within a single AI session, and multi-session orchestration that breaks complex tasks into focused workflows to enable reliable scaling of agentic systems.",
+  "summary": "Harness engineering is the practice of building the wrapper systems and orchestration layers around LLMs in coding agents. The approach has two levels: an AI layer managing rules, skills, and hooks within a session, and a higher orchestration layer coordinating multiple focused agent sessions into reliable workflows. The technique emphasizes that 98% of Claude Code's architecture consists of this harness rather than the model itself.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "b8d90179c04c1112",
-  "concepts": [
-    {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
-    },
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    },
-    {
-      "slug": "multi-session-workflows",
-      "label": "multi-session workflows"
-    },
-    {
-      "slug": "system-architecture",
-      "label": "system architecture"
-    }
-  ],
-  "similar": [
-    {
-      "id": "mGYr9VqQnEI",
-      "title": "Harness Engineering Is AI’s New Gold Rush",
-      "channel": "AI Revolution",
-      "score": 0.767
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.738
-    },
-    {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.694
-    },
-    {
-      "id": "blgUmyMiROI",
-      "title": "How are coding agents changing software engineering?",
-      "channel": "Cursor",
-      "score": 0.691
-    },
-    {
-      "id": "efRIrLXoOVA",
-      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
-      "channel": "Cole Medin",
-      "score": 0.691
-    },
-    {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
-      "channel": "Cole Medin",
-      "score": 0.675
-    }
-  ],
+  "wh": "568845ce77fddedd",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -108,5 +52,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "60739f16f8267a10"
+  "ih": "60739f16f8267a10",
+  "concepts": [
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
+    },
+    {
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
+    },
+    {
+      "slug": "context-management",
+      "label": "context management"
+    }
+  ],
+  "similar": [
+    {
+      "id": "mGYr9VqQnEI",
+      "title": "Harness Engineering Is AI’s New Gold Rush",
+      "channel": "AI Revolution",
+      "score": 0.765
+    },
+    {
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.758
+    },
+    {
+      "id": "1a1VXDdIyrk",
+      "title": "Agent Harness explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.726
+    },
+    {
+      "id": "YAS4ojuhbW4",
+      "title": "Stop Prompting Claude. Start Loop Engineering.",
+      "channel": "Austin Marchese",
+      "score": 0.721
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.703
+    },
+    {
+      "id": "PjrXaC5UsIw",
+      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
+      "channel": "IBM Technology",
+      "score": 0.676
+    }
+  ]
 }

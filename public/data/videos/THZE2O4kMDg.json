@@ -8,83 +8,7 @@
   "recommended": true,
   "summary": "Tutorial on configuring Qdrant for multi-vector search using the MaxSim comparator, indexing documents with FastEmbed local inference, and querying with ColBERT embeddings. Covers collection setup, HNSW disabling for MaxSim compatibility, and on-disk vector storage for memory-constrained environments.",
   "writeup": "This lesson walks through configuring Qdrant for multi-vector search using ColBERT's late interaction model, covering the key collection parameters (228-dimensional token embeddings, dot-product similarity, MaxSim comparator, and disabled HNSW indexing) that make the approach work. It explains why HNSW is incompatible with MaxSim due to the asymmetric query-dependency problem, then addresses disk offloading as a memory trade-off that sacrifices subsecond latency. The closing segment previews the same late interaction paradigm applied to visual documents via ColPali, which replaces text token embeddings with image patch embeddings while keeping the MaxSim scoring intact.",
-  "wh": "97fd4fcec32fa110",
-  "concepts": [
-    {
-      "slug": "embeddings",
-      "label": "embeddings"
-    },
-    {
-      "slug": "vector-search",
-      "label": "vector search"
-    },
-    {
-      "slug": "maxsim",
-      "label": "MaxSim"
-    },
-    {
-      "slug": "hnsw",
-      "label": "HNSW"
-    },
-    {
-      "slug": "fastembed",
-      "label": "FastEmbed"
-    },
-    {
-      "slug": "colbert",
-      "label": "ColBERT"
-    },
-    {
-      "slug": "semantic-search",
-      "label": "semantic search"
-    },
-    {
-      "slug": "vector-database",
-      "label": "vector database"
-    },
-    {
-      "slug": "on-disk-indexing",
-      "label": "on-disk indexing"
-    }
-  ],
-  "similar": [
-    {
-      "id": "vQKF1hO7hzU",
-      "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.72
-    },
-    {
-      "id": "qIjPepsY35E",
-      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.641
-    },
-    {
-      "id": "8HrvD5o2w8M",
-      "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.628
-    },
-    {
-      "id": "35WO2_Q_0C0",
-      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.624
-    },
-    {
-      "id": "5ypH0t_X-4k",
-      "title": "ColPali Family Overview | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.606
-    },
-    {
-      "id": "sQcuYWMS4bo",
-      "title": "Visual Interpretability of ColPali | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.59
-    }
-  ],
+  "wh": "d9363242afafcab7",
   "key_points": [
     "ColBERT uses 228-dimensional vectors per token rather than a single vector per document, so a collection storing many vectors per document requires a dedicated multi-vector config with the MaxSim comparator set in Qdrant.",
     "HNSW indexing must be disabled (M set to 0) for multi-vector MaxSim search because HNSW cannot handle the asymmetric, query-dependent nature of the MaxSim distance computation.",
@@ -125,5 +49,81 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "b5d21c42a2b0811c"
+  "ih": "b5d21c42a2b0811c",
+  "concepts": [
+    {
+      "slug": "embeddings",
+      "label": "embeddings"
+    },
+    {
+      "slug": "vector-search",
+      "label": "vector search"
+    },
+    {
+      "slug": "maxsim",
+      "label": "MaxSim"
+    },
+    {
+      "slug": "hnsw",
+      "label": "HNSW"
+    },
+    {
+      "slug": "fastembed",
+      "label": "FastEmbed"
+    },
+    {
+      "slug": "colbert",
+      "label": "ColBERT"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "semantic search"
+    },
+    {
+      "slug": "vector-database",
+      "label": "vector database"
+    },
+    {
+      "slug": "indexing",
+      "label": "indexing"
+    }
+  ],
+  "similar": [
+    {
+      "id": "vQKF1hO7hzU",
+      "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.72
+    },
+    {
+      "id": "qIjPepsY35E",
+      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.641
+    },
+    {
+      "id": "8HrvD5o2w8M",
+      "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.627
+    },
+    {
+      "id": "35WO2_Q_0C0",
+      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.625
+    },
+    {
+      "id": "5ypH0t_X-4k",
+      "title": "ColPali Family Overview | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.606
+    },
+    {
+      "id": "sQcuYWMS4bo",
+      "title": "Visual Interpretability of ColPali | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.59
+    }
+  ]
 }

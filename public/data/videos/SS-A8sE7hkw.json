@@ -6,61 +6,9 @@
   "published": "2026-06-10T15:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Gemma 4's 31B model achieves fourth place on LM Arena while being significantly smaller and more efficient than competitors at comparable quality, running on a single GPU and deployable on phones, hospitals, and consumer devices. The model line includes 2B and 4B variants and has shifted to Apache 2.0 licensing to enable deployment in sovereign institutions.",
+  "summary": "Gemma 4's 31B model ranks fourth on the LM Arena leaderboard while being 2-20 times smaller than comparable competitors. The model runs on a single GPU and can be deployed on Pixel phones, hospital systems with two GPUs, or Mac machines for multi-agent workloads. The shift from custom Gemma license to Apache 2.0 enables sovereign institutions to adopt the model without extended procurement review.",
   "writeup": "Google DeepMind engineers Gus and Ian present Gemma 4, a four-model open family released to complement Gemini for workloads where data cannot leave an organization's infrastructure. The lineup spans E2B and E4B for on-device inference (phone-scale GPU memory despite 5B actual parameters) up to a 26B mixture-of-experts and a 31B dense model that ranks fourth and seventh on the LM Arena open-model leaderboard while requiring a single GPU where competitors need four or five. The talk frames the economic case for self-hosted open models around agentic coding workloads, which OpenRouter data identifies as among the highest token-generation tasks, then closes on the Apache 2.0 license switch that removes the legal friction blocking sovereign and government adoption.",
-  "wh": "6cfb3eb440a5e756",
-  "concepts": [
-    {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
-    },
-    {
-      "slug": "foundation-models",
-      "label": "foundation models"
-    },
-    {
-      "slug": "on-device-inference",
-      "label": "on-device inference"
-    }
-  ],
-  "similar": [
-    {
-      "id": "6VV5Gvmtrl4",
-      "title": "What’s new in Gemma 4?",
-      "channel": "Google DeepMind",
-      "score": 0.713
-    },
-    {
-      "id": "1uypL1oNChI",
-      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
-      "channel": "AICodeKing",
-      "score": 0.695
-    },
-    {
-      "id": "O6499i4TFYA",
-      "title": "Gemma 4 and the AI Edge Gallery: On-Device AI Gets an Upgrade",
-      "channel": "Google for Developers",
-      "score": 0.673
-    },
-    {
-      "id": "WLtCHXdHTF0",
-      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
-      "channel": "Better Stack",
-      "score": 0.665
-    },
-    {
-      "id": "3DGaFycYtVE",
-      "title": "DeepSeek V4 Analysis..",
-      "channel": "Caleb Writes Code",
-      "score": 0.65
-    },
-    {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.642
-    }
-  ],
+  "wh": "e5f84266eacd3f5b",
   "key_points": [
     "The 'effective' (E) parameter naming in Gemma 4 means the E2B model consumes only 2B of GPU memory: its additional ~3B parameters are token-mapping tables that live in separate memory, making genuine phone-scale inference practical.",
     "The 31B dense model ranks fourth and seventh on the LM Arena open-model ELO leaderboard against competitors that are two to twenty times larger in parameter count, representing a significant intelligence-per-parameter advantage.",
@@ -108,5 +56,57 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "be8d065b235a455b"
+  "ih": "be8d065b235a455b",
+  "concepts": [
+    {
+      "slug": "scaling",
+      "label": "scaling"
+    },
+    {
+      "slug": "on-device-inference",
+      "label": "on-device inference"
+    },
+    {
+      "slug": "training-efficiency",
+      "label": "training efficiency"
+    }
+  ],
+  "similar": [
+    {
+      "id": "6VV5Gvmtrl4",
+      "title": "What’s new in Gemma 4?",
+      "channel": "Google DeepMind",
+      "score": 0.719
+    },
+    {
+      "id": "1uypL1oNChI",
+      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
+      "channel": "AICodeKing",
+      "score": 0.706
+    },
+    {
+      "id": "O6499i4TFYA",
+      "title": "Gemma 4 and the AI Edge Gallery: On-Device AI Gets an Upgrade",
+      "channel": "Google for Developers",
+      "score": 0.661
+    },
+    {
+      "id": "WLtCHXdHTF0",
+      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
+      "channel": "Better Stack",
+      "score": 0.655
+    },
+    {
+      "id": "nODxez6nZEU",
+      "title": "GLM 5.2 is my new favorite model...",
+      "channel": "Better Stack",
+      "score": 0.621
+    },
+    {
+      "id": "-CoCF9koVfc",
+      "title": "Odysseus + Gemma-4 26B & FREE APIs: RIP Hermes & OpenClaw! THIS IS CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.618
+    }
+  ]
 }

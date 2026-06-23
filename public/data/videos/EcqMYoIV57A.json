@@ -8,71 +8,7 @@
   "recommended": false,
   "summary": "Long context windows do not fix agent degradation in the middle of documents, a phenomenon called the U curve. Nupur Sharma presents iterative retrieval, hierarchical summarization, and self correction as solutions, along with a hybrid model approach where high-reasoning models handle discovery and lighter models perform validation.",
   "writeup": "A practitioner from Kodo (an agentic code-review company) presents hard-won failure modes observed while building production multi-agent systems, grounding each in concrete benchmarking work. The talk moves through three structural problems: context loss following a U-curve where middle-of-window information is silently discarded, an orchestration paradox where capable models enter infinite method-selection loops instead of executing, and task-overwhelm in monolithic agents that silently drop goals as context grows. For each failure, a practical mitigation is named and assessed, culminating in the 80/20 hybrid model-tier strategy and mixture-of-agents decomposition.",
-  "wh": "88018d6a4e2fb487",
-  "concepts": [
-    {
-      "slug": "iterative-refinement",
-      "label": "iterative refinement"
-    },
-    {
-      "slug": "text-summarization",
-      "label": "text summarization"
-    },
-    {
-      "slug": "recursive-self-improvement",
-      "label": "recursive self-improvement"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "mixture-of-experts",
-      "label": "Mixture of Experts"
-    },
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    }
-  ],
-  "similar": [
-    {
-      "id": "fk0pl6b7PKQ",
-      "title": "How to Make Your AI Agents Work Better (With Context Hygiene)",
-      "channel": "Jordan Urbs",
-      "score": 0.691
-    },
-    {
-      "id": "TNwJ1LMiENk",
-      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
-      "channel": "AI Engineer",
-      "score": 0.657
-    },
-    {
-      "id": "jxHIw_OA8_I",
-      "title": "Stop perfecting your prompt. Do this instead",
-      "channel": "Jeff Su",
-      "score": 0.65
-    },
-    {
-      "id": "iOZf50YffCE",
-      "title": "This AI Chinese model is 15X cheaper?",
-      "channel": "Jack Roberts",
-      "score": 0.63
-    },
-    {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.626
-    },
-    {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.619
-    }
-  ],
+  "wh": "3b9a9bf3bb555dc4",
   "key_points": [
     "LLMs attending to context follow a U-curve: inputs at the start and end of the context window are retained, but middle-context content (Jira tickets, MCP references, intermediate retrieval results) is silently purged, so dumping a full codebase or tool list into one context window does not guarantee that content influences the output.",
     "Four context-optimization strategies are assessed on input cost versus scale: context engines (good ranking logic but indexing breaks down past 600-700 repositories), hierarchical summarization (file-level summaries reduce search scope but require LLM processing on every file change), knowledge graphs (handles complex cross-repo dependencies well but demands high upfront developer investment), and iterative retrieval (low developer input, library-card-style indexing, works well for most non-product-company agent builds).",
@@ -112,5 +48,69 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "aa54067f044e50be"
+  "ih": "aa54067f044e50be",
+  "concepts": [
+    {
+      "slug": "iterative-refinement",
+      "label": "iterative refinement"
+    },
+    {
+      "slug": "text-summarization",
+      "label": "text summarization"
+    },
+    {
+      "slug": "recursive-self-improvement",
+      "label": "recursive self-improvement"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
+    }
+  ],
+  "similar": [
+    {
+      "id": "jxHIw_OA8_I",
+      "title": "Stop perfecting your prompt. Do this instead",
+      "channel": "Jeff Su",
+      "score": 0.651
+    },
+    {
+      "id": "7jrZ4JqeGyY",
+      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
+      "channel": "AI Revolution",
+      "score": 0.641
+    },
+    {
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.628
+    },
+    {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.626
+    },
+    {
+      "id": "gbI7THwqEjk",
+      "title": "Most people get these 3 AI terms wrong",
+      "channel": "Jeff Su",
+      "score": 0.625
+    },
+    {
+      "id": "TNwJ1LMiENk",
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
+      "channel": "AI Engineer",
+      "score": 0.621
+    }
+  ]
 }

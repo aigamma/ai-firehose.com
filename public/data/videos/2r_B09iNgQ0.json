@@ -8,67 +8,7 @@
   "recommended": false,
   "summary": "Jordan Urbs demonstrates how to run two types of AI agents locally: Odysseus (a workspace agent) for task orchestration and OpenCode (a build agent) for code generation. The setup uses Gemma 4 via Ollama for local inference with Venice API as fallback, deployed in Docker for privacy-focused local execution.",
   "writeup": "This video introduces two distinct paradigms for running AI agents locally: an out-of-the-box agentic workspace (Odysseus, installed via Docker) and purpose-built custom agent pipelines for content creation. The central architectural argument is a tiered inference strategy: use a small, cheap, locally-run open-source model (Gemma 4 12B at 7.4 GB VRAM) for routine execution, and route to a privacy-preserving remote API (Venice) only when a larger frontier model is needed for high-stakes authoring. The through-line is practical privacy: mainstream providers log and train on your prompts, while Venice offers zero-data-retention contracts for agentic model tiers and acts as a privacy proxy for anonymized calls.",
-  "wh": "00e102704cc7c85c",
-  "concepts": [
-    {
-      "slug": "local-inference",
-      "label": "local inference"
-    },
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    },
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
-      "slug": "teacher-models",
-      "label": "teacher models"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    }
-  ],
-  "similar": [
-    {
-      "id": "-CoCF9koVfc",
-      "title": "Odysseus + Gemma-4 26B & FREE APIs: RIP Hermes & OpenClaw! THIS IS CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.705
-    },
-    {
-      "id": "tCiMXc4txf4",
-      "title": "How to setup and use Claude Code for FREE  (Step-by-Step Guide)",
-      "channel": "Code With Aarohi",
-      "score": 0.606
-    },
-    {
-      "id": "yaMcm3sQswc",
-      "title": "Hermes Agent + Ollama = 100% Private OS",
-      "channel": "Jack Roberts",
-      "score": 0.601
-    },
-    {
-      "id": "jcUqsNpDDDk",
-      "title": "If you don’t run Pi locally you’re falling behind…",
-      "channel": "David Ondrej",
-      "score": 0.594
-    },
-    {
-      "id": "1uypL1oNChI",
-      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
-      "channel": "AICodeKing",
-      "score": 0.593
-    },
-    {
-      "id": "_PdQSpvIViA",
-      "title": "Zed + Gemma-4 12B & Qwen-3.6: HOW IS THIS POSSIBLE?! THIS IS CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.585
-    }
-  ],
+  "wh": "914884f1cbe63dda",
   "key_points": [
     "Odysseus (60,000-star GitHub repo) runs as a Docker container or native binary and supports any model provider through a unified interface, making it the recommended first stop for developers unfamiliar with self-hosted agent infrastructure.",
     "Gemma 4 12B requires only 7.4 GB of RAM under quantization and is presented as matching reasoning quality previously associated with models needing 30 GB, making capable local inference accessible on a 16 GB consumer machine via Ollama.",
@@ -116,5 +56,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "65ddcf5386288100"
+  "ih": "65ddcf5386288100",
+  "concepts": [
+    {
+      "slug": "local-inference",
+      "label": "local inference"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
+    },
+    {
+      "slug": "teacher-models",
+      "label": "teacher models"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    }
+  ],
+  "similar": [
+    {
+      "id": "-CoCF9koVfc",
+      "title": "Odysseus + Gemma-4 26B & FREE APIs: RIP Hermes & OpenClaw! THIS IS CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.706
+    },
+    {
+      "id": "bfvS1UeAkN0",
+      "title": "Gemma Playground: Parallel Agents in Action",
+      "channel": "Google for Developers",
+      "score": 0.612
+    },
+    {
+      "id": "yaMcm3sQswc",
+      "title": "Hermes Agent + Ollama = 100% Private OS",
+      "channel": "Jack Roberts",
+      "score": 0.601
+    },
+    {
+      "id": "jcUqsNpDDDk",
+      "title": "If you don’t run Pi locally you’re falling behind…",
+      "channel": "David Ondrej",
+      "score": 0.593
+    },
+    {
+      "id": "1uypL1oNChI",
+      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
+      "channel": "AICodeKing",
+      "score": 0.593
+    },
+    {
+      "id": "_PdQSpvIViA",
+      "title": "Zed + Gemma-4 12B & Qwen-3.6: HOW IS THIS POSSIBLE?! THIS IS CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.588
+    }
+  ]
 }

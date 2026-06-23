@@ -9,6 +9,24 @@
   "summary": "A technique for multi-agent AI systems where one agent assumes a management or coordinator role (CEO) while another executes tasks (Worker). This hierarchical approach enables task delegation and specialized role-based operations in AI agent architectures.",
   "writeup": "This short covers a two-agent local setup where Hermes acts as the orchestrating model (the CEO) and Open Claw handles delegated tasks, with both tools installed on the same machine so they share file access. The key infrastructure detail is storing all knowledge as Markdown files on a Ugreen NAS, giving both agents a common, persistent knowledge base. The through-line is practical co-orchestration: a top-level planner dispatches work to a specialized executor, and shared storage is what makes the handoff coherent.",
   "wh": "2e2635b94a2cde5d",
+  "key_points": [
+    "Hermes serves as the top-level orchestrator, acting as the CEO that breaks down goals and delegates individual tasks to Open Claw, which executes and reports back.",
+    "Installing both Hermes and Open Claw on the same machine is the prerequisite for shared file access, which is what makes the orchestrator-executor handoff possible without explicit data transfer steps.",
+    "All Markdown files and knowledge assets are stored on a Ugreen NAS, creating a single shared knowledge store that both agents can read from and write to across sessions."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Two-Agent Orchestration Setup"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "8a674154f50bd019",
   "concepts": [
     {
       "slug": "multi-agent-systems",
@@ -28,55 +46,37 @@
       "id": "ulNsa0sD8N0",
       "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
       "channel": "Cole Medin",
-      "score": 0.637
+      "score": 0.627
     },
     {
       "id": "UztrFXaSWv0",
       "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
       "channel": "Cole Medin",
-      "score": 0.623
-    },
-    {
-      "id": "4Vg2aVtrX8k",
-      "title": "Building AI Agents for Real-World Problems & Workflows",
-      "channel": "IBM Technology",
-      "score": 0.621
+      "score": 0.611
     },
     {
       "id": "nGjGUCOiXk4",
       "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
       "channel": "Google Cloud Tech",
-      "score": 0.609
+      "score": 0.608
     },
     {
       "id": "fCHe_fOqlYA",
       "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
       "channel": "IBM Technology",
-      "score": 0.609
+      "score": 0.607
+    },
+    {
+      "id": "4Vg2aVtrX8k",
+      "title": "Building AI Agents for Real-World Problems & Workflows",
+      "channel": "IBM Technology",
+      "score": 0.605
     },
     {
       "id": "kYkZI3oj2W4",
       "title": "Multi AI Agent Systems: When One AI Brain Isn’t Enough",
       "channel": "IBM Technology",
-      "score": 0.608
+      "score": 0.604
     }
-  ],
-  "key_points": [
-    "Hermes serves as the top-level orchestrator, acting as the CEO that breaks down goals and delegates individual tasks to Open Claw, which executes and reports back.",
-    "Installing both Hermes and Open Claw on the same machine is the prerequisite for shared file access, which is what makes the orchestrator-executor handoff possible without explicit data transfer steps.",
-    "All Markdown files and knowledge assets are stored on a Ugreen NAS, creating a single shared knowledge store that both agents can read from and write to across sessions."
-  ],
-  "chapters": [
-    {
-      "t": 0,
-      "title": "Two-Agent Orchestration Setup"
-    }
-  ],
-  "insights": {
-    "source": "captions",
-    "model": "claude-sonnet-4-6",
-    "prompt_version": "v1-2026-06-13",
-    "generated": "2026-06-13"
-  },
-  "ih": "8a674154f50bd019"
+  ]
 }

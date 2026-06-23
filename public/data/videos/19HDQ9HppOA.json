@@ -8,67 +8,7 @@
   "recommended": false,
   "summary": "Anthropic's Managed Agents platform enables building incident-investigator agents through simple abstractions: Agent, Environment, and Session. The tutorial covers streaming events, custom tool integration, and deployment patterns for production use cases including subagents, vaults, and memory.",
   "writeup": "Isabella He of Anthropic's Applied AI team walks through the architecture of Claude Managed Agents and leads a hands-on workshop for building a production-ready incident response agent. The session traces the progression from the raw Messages API through the Agent SDK to the fully managed harness, explaining the specific design decisions and measured performance gains that distinguish each layer. The through-line is that as models grow more capable and tasks grow more complex, the primitives required to run agents reliably in production outpace what individual developers should manage themselves.",
-  "wh": "caaff1eb1cb528eb",
-  "concepts": [
-    {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "tool-use",
-      "label": "tool use"
-    },
-    {
-      "slug": "streaming",
-      "label": "streaming"
-    },
-    {
-      "slug": "persistent-memory",
-      "label": "persistent memory"
-    }
-  ],
-  "similar": [
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.608
-    },
-    {
-      "id": "Zqno_vux6d8",
-      "title": "AI agents explained: Build your first agent in 8 minutes",
-      "channel": "Google Cloud Tech",
-      "score": 0.603
-    },
-    {
-      "id": "0YXe7u-i1qU",
-      "title": "Getting Started with Managed Agents",
-      "channel": "Google for Developers",
-      "score": 0.596
-    },
-    {
-      "id": "efRIrLXoOVA",
-      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
-      "channel": "Cole Medin",
-      "score": 0.585
-    },
-    {
-      "id": "uSdVgSY7ryU",
-      "title": "Hermes Agent Tutorial: How to Setup & Use Open Source AI Agent for Beginners",
-      "channel": "AI Master",
-      "score": 0.582
-    },
-    {
-      "id": "sCRPT6dRE4k",
-      "title": "AgentCore Managed Harness: Getting Started",
-      "channel": "AWS Developers",
-      "score": 0.582
-    }
-  ],
+  "wh": "736ed80b0c5112b6",
   "key_points": [
     "Claude Managed Agents decouples the agent loop (the 'brain') from tool execution environments (the 'hands'), a split that reduced P95 time-to-first-token latency by over 90% and tightens security by preventing the agent from accessing credentials without explicit decryption.",
     "Anthropic observed a behavior called 'context anxiety' in Sonnet 4.5, where the model wrapped up tasks early even with context window space remaining; the team added harness-level mitigations, then saw the behavior disappear entirely in Opus 4.5, illustrating why harnesses must evolve alongside model generations rather than being built once.",
@@ -117,5 +57,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "0013f8de95e123c3"
+  "ih": "0013f8de95e123c3",
+  "concepts": [
+    {
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "tool-use",
+      "label": "tool use"
+    },
+    {
+      "slug": "streaming",
+      "label": "streaming"
+    },
+    {
+      "slug": "persistent-memory",
+      "label": "persistent memory"
+    }
+  ],
+  "similar": [
+    {
+      "id": "yeRvxe7MRj4",
+      "title": "Your first agent configuration with MCP and Looker",
+      "channel": "Google Cloud Tech",
+      "score": 0.609
+    },
+    {
+      "id": "Zqno_vux6d8",
+      "title": "AI agents explained: Build your first agent in 8 minutes",
+      "channel": "Google Cloud Tech",
+      "score": 0.604
+    },
+    {
+      "id": "0YXe7u-i1qU",
+      "title": "Getting Started with Managed Agents",
+      "channel": "Google for Developers",
+      "score": 0.595
+    },
+    {
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.589
+    },
+    {
+      "id": "3zvWHe94xCY",
+      "title": "Agents Are Just Loops",
+      "channel": "AWS Developers",
+      "score": 0.584
+    },
+    {
+      "id": "sCRPT6dRE4k",
+      "title": "AgentCore Managed Harness: Getting Started",
+      "channel": "AWS Developers",
+      "score": 0.582
+    }
+  ]
 }

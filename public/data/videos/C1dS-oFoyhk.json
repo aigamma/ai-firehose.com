@@ -6,65 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin tested mixed-provider workflows combining Claude Opus and Kimi K2.6 for code generation tasks. Using the Archon benchmark tool, he ran four workflow configurations against three GitHub issues and scored the resulting pull requests across seven dimensions to determine the optimal provider arrangement for planning versus implementation.",
+  "summary": "Cole Medin benchmarked mixed-provider LLM workflows using Archon to test whether Claude Opus or Kimi K2.6 should handle planning versus implementation in coding tasks. The test evaluated 12 PRs across three GitHub issues on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "4fdbc8bebf3bf5f8",
-  "concepts": [
-    {
-      "slug": "mixture-of-providers",
-      "label": "mixture of providers"
-    },
-    {
-      "slug": "multi-model-chaining",
-      "label": "multi-model chaining"
-    },
-    {
-      "slug": "model-evaluation",
-      "label": "model evaluation"
-    },
-    {
-      "slug": "code-generation",
-      "label": "code generation"
-    }
-  ],
-  "similar": [
-    {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
-      "channel": "Cole Medin",
-      "score": 0.683
-    },
-    {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.599
-    },
-    {
-      "id": "mWLDn49_8HA",
-      "title": "Graphify + Obsidian + Claude Code = CHEAT CODE",
-      "channel": "Chase AI",
-      "score": 0.567
-    },
-    {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.56
-    },
-    {
-      "id": "ptKzEs9-qm4",
-      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
-      "channel": "AICodeKing",
-      "score": 0.541
-    },
-    {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "channel": "Cole Medin",
-      "score": 0.539
-    }
-  ],
+  "wh": "93dd2d7c77db9f92",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -109,5 +53,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "08b40abf38b6da46"
+  "ih": "08b40abf38b6da46",
+  "concepts": [
+    {
+      "slug": "mixed-provider-workflows",
+      "label": "mixed-provider workflows"
+    },
+    {
+      "slug": "benchmark",
+      "label": "benchmark"
+    },
+    {
+      "slug": "long-horizon-planning",
+      "label": "long-horizon planning"
+    },
+    {
+      "slug": "code-generation",
+      "label": "code generation"
+    }
+  ],
+  "similar": [
+    {
+      "id": "qGm6gtHpJq0",
+      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
+      "channel": "Cole Medin",
+      "score": 0.63
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.575
+    },
+    {
+      "id": "ptKzEs9-qm4",
+      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
+      "channel": "AICodeKing",
+      "score": 0.567
+    },
+    {
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
+      "channel": "Cole Medin",
+      "score": 0.559
+    },
+    {
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.547
+    },
+    {
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "channel": "Cole Medin",
+      "score": 0.541
+    }
+  ]
 }

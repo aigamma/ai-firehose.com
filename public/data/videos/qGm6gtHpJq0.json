@@ -6,65 +6,9 @@
   "published": "2026-05-19T03:35:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates optimizing an AI Dark Factory codebase generator by combining Claude Opus for deep reasoning tasks with Kimi K2.6 for faster implementation and validation. The approach allocates stronger models only where reasoning quality matters most while maintaining token efficiency at scale.",
+  "summary": "A strategy to combine Opus and Kimi K2.6 in an AI-driven code generation system, routing deep reasoning tasks to Opus while using the faster model for implementation and validation. The approach aims to maximize reasoning power where it impacts outcomes while maintaining token efficiency during scaling.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "be5a6068802cad48",
-  "concepts": [
-    {
-      "slug": "model-ensembling",
-      "label": "model ensembling"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "workflow-automation",
-      "label": "workflow automation"
-    },
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    }
-  ],
-  "similar": [
-    {
-      "id": "C1dS-oFoyhk",
-      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
-      "channel": "Cole Medin",
-      "score": 0.683
-    },
-    {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.653
-    },
-    {
-      "id": "qKU-e0x2EmE",
-      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
-      "channel": "Nick Saraev",
-      "score": 0.604
-    },
-    {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.595
-    },
-    {
-      "id": "mWLDn49_8HA",
-      "title": "Graphify + Obsidian + Claude Code = CHEAT CODE",
-      "channel": "Chase AI",
-      "score": 0.586
-    },
-    {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.583
-    }
-  ],
+  "wh": "6f3b62c92cd22f22",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -109,5 +53,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "27bdb722567fa360"
+  "ih": "27bdb722567fa360",
+  "concepts": [
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "model-routing",
+      "label": "model routing"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "token-optimization",
+      "label": "token optimization"
+    }
+  ],
+  "similar": [
+    {
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.648
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.636
+    },
+    {
+      "id": "C1dS-oFoyhk",
+      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
+      "channel": "Cole Medin",
+      "score": 0.63
+    },
+    {
+      "id": "CwePo4847ho",
+      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
+      "channel": "Kimi AI",
+      "score": 0.628
+    },
+    {
+      "id": "lOIGISTntrc",
+      "title": "Why I never trust fully generated Code",
+      "channel": "JavaScript Mastery",
+      "score": 0.609
+    },
+    {
+      "id": "DAlC8mL5ZlI",
+      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
+      "channel": "IBM Technology",
+      "score": 0.6
+    }
+  ]
 }

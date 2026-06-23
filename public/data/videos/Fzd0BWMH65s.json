@@ -8,67 +8,7 @@
   "recommended": false,
   "summary": "A multi-agent system design approach that skips LLM inference where deterministic algorithms suffice. The technique uses callback hooks to route agent decisions through code instead of model calls, demonstrated by a 1000-agent marathon planning system where deterministic route planning replaces NP-hard LLM-based solutions.",
   "writeup": "This episode goes deep into the cost and correctness architecture behind a 1,000-concurrent-agent marathon simulation built on Google Cloud, co-presented with Casey Vest who led its construction. The central design question is where to invoke an LLM and where to write deterministic code, and the answer shapes every layer of the system. The routing and simulation cores are fully deterministic, making the system unit-testable and NP-hard-problem-safe, while AI is reserved for the tasks it actually helps: algorithm selection at design time and lifecycle orchestration at runtime.",
-  "wh": "fc181c2fc885ffc1",
-  "concepts": [
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
-      "slug": "model-routing",
-      "label": "model routing"
-    },
-    {
-      "slug": "decision-making",
-      "label": "decision-making"
-    },
-    {
-      "slug": "deterministic-algorithms",
-      "label": "deterministic algorithms"
-    },
-    {
-      "slug": "spine-and-sprout-algorithm",
-      "label": "Spine and Sprout algorithm"
-    }
-  ],
-  "similar": [
-    {
-      "id": "EtxJJJ_7WQY",
-      "title": "1,000 AI agents, 0 LLM calls?",
-      "channel": "Google Cloud Tech",
-      "score": 0.776
-    },
-    {
-      "id": "4Vg2aVtrX8k",
-      "title": "Building AI Agents for Real-World Problems & Workflows",
-      "channel": "IBM Technology",
-      "score": 0.657
-    },
-    {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
-      "channel": "Cole Medin",
-      "score": 0.635
-    },
-    {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.627
-    },
-    {
-      "id": "_5XF5CCnbDk",
-      "title": "Build a Real-World Multi-Agent AI System using LangGraph,  APIs and Memory",
-      "channel": "Code With Aarohi",
-      "score": 0.625
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.618
-    }
-  ],
+  "wh": "4f8ec1bd5b836536",
   "key_points": [
     "Marathon route planning uses a deterministic spine-and-sprout algorithm combining Dijkstra shortest-path over a GeoJSON road graph with Haversine-weighted edges to chain landmarks, a serpentine waypoint extension pass, and a final trim to exactly 26.2188 miles, chosen over Gemini at runtime because NP-hard pathfinding problems are noisy and unreliable for LLMs to handle in context.",
     "Google Maps routing was unsuitable for two distinct reasons: driving directions honor one-way street restrictions that closed marathon roads ignore, and walking directions route through pedestrian bridges and indoor passages (such as through the Luxor casino) that no real marathon course would use.",
@@ -108,5 +48,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "25c4b831af1218a6"
+  "ih": "25c4b831af1218a6",
+  "concepts": [
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
+    },
+    {
+      "slug": "ai-routing",
+      "label": "AI routing"
+    },
+    {
+      "slug": "decision-making",
+      "label": "decision-making"
+    },
+    {
+      "slug": "deterministic-algorithms",
+      "label": "deterministic algorithms"
+    },
+    {
+      "slug": "spine-and-sprout-algorithm",
+      "label": "Spine and Sprout algorithm"
+    }
+  ],
+  "similar": [
+    {
+      "id": "EtxJJJ_7WQY",
+      "title": "1,000 AI agents, 0 LLM calls?",
+      "channel": "Google Cloud Tech",
+      "score": 0.776
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.654
+    },
+    {
+      "id": "_5XF5CCnbDk",
+      "title": "Build a Real-World Multi-Agent AI System using LangGraph,  APIs and Memory",
+      "channel": "Code With Aarohi",
+      "score": 0.638
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.631
+    },
+    {
+      "id": "4vfvvzzwcwI",
+      "title": "Kagenti’s Approach to Multi-Agent Security for AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.614
+    },
+    {
+      "id": "ulNsa0sD8N0",
+      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
+      "channel": "Cole Medin",
+      "score": 0.607
+    }
+  ]
 }

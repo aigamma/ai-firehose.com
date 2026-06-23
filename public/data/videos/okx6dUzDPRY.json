@@ -8,63 +8,7 @@
   "recommended": false,
   "summary": "Google Cloud Tech shows how to build a multi-agent AI system for automating project intake workflows. The system integrates Asana webhooks with Google Cloud Run services, uses the Agent Development Kit (ADK) for orchestration, dispatches specialist agents in parallel via the Agent-to-Agent protocol, and leverages the Model Context Protocol to connect Vertex AI agents to BigQuery and Asana. The architecture demonstrates secure enterprise-grade agent deployment using pay-per-request Cloud Run containers.",
   "writeup": "Kevin Blanco demonstrates a production multi-agent system that intercepts an Asana project intake form submission and returns a fully enriched task, carrying a risk score, resource availability check, historical pattern analysis, and live workspace context, in roughly 20 seconds. The architecture has three layers: Asana as the human interface (webhook source and live data source via MCP), Google Cloud as the intelligence layer (ADK orchestrator plus four specialist Cloud Run agents talking to Vertex AI and BigQuery), and Asana again as the write-back surface. The through-line is that enterprises already hold years of project data in fragmented systems; this system makes that data queryable at intake time so approvals are grounded in evidence rather than gut.",
-  "wh": "aff6b3669cdf1055",
-  "concepts": [
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
-      "slug": "model-context-protocol",
-      "label": "Model Context Protocol"
-    },
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    },
-    {
-      "slug": "autonomous-task-execution",
-      "label": "autonomous task execution"
-    }
-  ],
-  "similar": [
-    {
-      "id": "z4CXn4CKHQI",
-      "title": "Automate SAP order-to-cash with multi-agent AI & Google Agent Development Kit (ADK)",
-      "channel": "Google Cloud Tech",
-      "score": 0.757
-    },
-    {
-      "id": "nGjGUCOiXk4",
-      "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
-      "channel": "Google Cloud Tech",
-      "score": 0.705
-    },
-    {
-      "id": "JsNbFnT0QCw",
-      "title": "Building long-running AI agents with ADK",
-      "channel": "Google Cloud Tech",
-      "score": 0.7
-    },
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.691
-    },
-    {
-      "id": "wBnnA8aIxUs",
-      "title": "How to build an AI Agent and MCP Server (step-by-step)",
-      "channel": "Google Cloud Tech",
-      "score": 0.681
-    },
-    {
-      "id": "9BwFgEFVLOk",
-      "title": "Automate M365 to Google Workspace Migrations with ADK multi-agents",
-      "channel": "Google Cloud Tech",
-      "score": 0.678
-    }
-  ],
+  "wh": "fa9f30effa001683",
   "key_points": [
     "Google ADK eliminates the boilerplate of building LLM agents from scratch: before ADK, session state management, Gemini API wiring, and tool dispatch had to be handled manually; with ADK, one class definition (model, instructions, tools) is the entire agent definition.",
     "The orchestrator uses the agent-to-agent (A2A) protocol to dispatch three specialist agents in parallel and one sequentially, knowing only a task URL and expected result for each, so any specialist can be swapped or extended without touching the orchestrator.",
@@ -113,5 +57,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "35f7dde18663f830"
+  "ih": "35f7dde18663f830",
+  "concepts": [
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
+    },
+    {
+      "slug": "model-context-protocol",
+      "label": "Model Context Protocol"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
+    },
+    {
+      "slug": "parallel-execution",
+      "label": "parallel execution"
+    }
+  ],
+  "similar": [
+    {
+      "id": "z4CXn4CKHQI",
+      "title": "Automate SAP order-to-cash with multi-agent AI & Google Agent Development Kit (ADK)",
+      "channel": "Google Cloud Tech",
+      "score": 0.757
+    },
+    {
+      "id": "nGjGUCOiXk4",
+      "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
+      "channel": "Google Cloud Tech",
+      "score": 0.704
+    },
+    {
+      "id": "JsNbFnT0QCw",
+      "title": "Building long-running AI agents with ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.7
+    },
+    {
+      "id": "yeRvxe7MRj4",
+      "title": "Your first agent configuration with MCP and Looker",
+      "channel": "Google Cloud Tech",
+      "score": 0.691
+    },
+    {
+      "id": "wBnnA8aIxUs",
+      "title": "How to build an AI Agent and MCP Server (step-by-step)",
+      "channel": "Google Cloud Tech",
+      "score": 0.681
+    },
+    {
+      "id": "9BwFgEFVLOk",
+      "title": "Automate M365 to Google Workspace Migrations with ADK multi-agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.678
+    }
+  ]
 }

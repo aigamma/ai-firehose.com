@@ -9,58 +9,6 @@
   "summary": "Anthropic released Claude Channels, a new feature that encapsulates functionality previously available in OpenClaw. The feature allows users to set up integrated workflows across Discord, Telegram, and other platforms within Claude Code, demonstrated with setup guidance across multiple communication channels.",
   "writeup": "Claude Code's new channels feature routes incoming messages from Telegram and Discord into a running local Claude Code session, letting any configured skill or tool execute in response to a text message the same way it would from a desktop prompt. The demo covers two practical tasks: repurposing a YouTube thumbnail via a local image skill and scraping 98 leads into a CSV via an Apify integration, both triggered from a phone and delivered back over the messaging app. Security is handled through a per-plugin sender allow list that silently drops any message from an ID not pre-approved, preserving the existing Claude Code permission model. The author frames channels as Anthropic's direct answer to third-party tools like Open Claude that had already built this kind of messaging-app-to-agent bridge.",
   "wh": "f0a0857c6b839033",
-  "concepts": [
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "integrations",
-      "label": "integrations"
-    },
-    {
-      "slug": "claude-code",
-      "label": "Claude Code"
-    }
-  ],
-  "similar": [
-    {
-      "id": "NF10evwkefM",
-      "title": "Claude Dispatch Just Dropped, And It Kills OpenClaw",
-      "channel": "Nick Saraev",
-      "score": 0.833
-    },
-    {
-      "id": "Ob5Vu-gD3mo",
-      "title": "Claude Managed Agents Just Dropped, And It Kills n8n",
-      "channel": "Nick Saraev",
-      "score": 0.714
-    },
-    {
-      "id": "fEZ0GZ-vKhg",
-      "title": "Don’t miss this Claude update",
-      "channel": "Jack Roberts",
-      "score": 0.692
-    },
-    {
-      "id": "j3aXJNu9804",
-      "title": "Claude Routines Just Dropped, And It's Perfect",
-      "channel": "Nick Saraev",
-      "score": 0.681
-    },
-    {
-      "id": "t3uBGhpii6w",
-      "title": "Anthropic just dropped Opus 4.8... (WOAH)",
-      "channel": "Matthew Berman",
-      "score": 0.674
-    },
-    {
-      "id": "WVQ0lPiWsHQ",
-      "title": "Claude Opus-4.7 Just Dropped, And...",
-      "channel": "Nick Saraev",
-      "score": 0.669
-    }
-  ],
   "key_points": [
     "Claude Code channels push events into a live local session from Telegram or Discord, meaning the agent runs on the user's own machine with full access to locally configured skills and tools, not on a remote server.",
     "Each approved channel plugin enforces a sender allow list: only pre-registered Telegram or Discord user IDs can trigger the agent, and all other messages are silently dropped, preserving the same security posture Claude Code had before channels existed.",
@@ -109,5 +57,57 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "08c883d5e35da56e"
+  "ih": "08c883d5e35da56e",
+  "concepts": [
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "integrations",
+      "label": "integrations"
+    },
+    {
+      "slug": "claude-code",
+      "label": "Claude Code"
+    }
+  ],
+  "similar": [
+    {
+      "id": "NF10evwkefM",
+      "title": "Claude Dispatch Just Dropped, And It Kills OpenClaw",
+      "channel": "Nick Saraev",
+      "score": 0.832
+    },
+    {
+      "id": "Ob5Vu-gD3mo",
+      "title": "Claude Managed Agents Just Dropped, And It Kills n8n",
+      "channel": "Nick Saraev",
+      "score": 0.715
+    },
+    {
+      "id": "fEZ0GZ-vKhg",
+      "title": "Don’t miss this Claude update",
+      "channel": "Jack Roberts",
+      "score": 0.693
+    },
+    {
+      "id": "j3aXJNu9804",
+      "title": "Claude Routines Just Dropped, And It's Perfect",
+      "channel": "Nick Saraev",
+      "score": 0.681
+    },
+    {
+      "id": "t3uBGhpii6w",
+      "title": "Anthropic just dropped Opus 4.8... (WOAH)",
+      "channel": "Matthew Berman",
+      "score": 0.674
+    },
+    {
+      "id": "WVQ0lPiWsHQ",
+      "title": "Claude Opus-4.7 Just Dropped, And...",
+      "channel": "Nick Saraev",
+      "score": 0.671
+    }
+  ]
 }

@@ -8,67 +8,7 @@
   "recommended": true,
   "summary": "JuiceFS is a POSIX-compliant virtual file system that layers cloud object storage like AWS S3 with a multi-tiered caching engine using local NVMe for performance. The video demonstrates setting up JuiceFS with Redis metadata, configuring local SSD cache, and running AI inference workloads directly against cloud buckets while monitoring performance via Prometheus and Better Stack observability.",
   "writeup": "JuiceFS is an open-source distributed file system that separates raw data (stored in cloud object storage like S3) from metadata (managed in a fast database such as Redis or Postgres), presenting both as a standard POSIX-compliant mount. Its defining feature is a multi-tiered caching engine that writes incoming data blocks to a local NVMe or SSD scratch partition, so subsequent reads bypass the network entirely and run at hardware line speeds. The demo shows a cold read of a large video file taking many seconds over S3, followed by a sub-second re-read from local cache, then extends to Kubernetes shared storage, ML training pipelines, and a Better Stack observability dashboard driven by JuiceFS's built-in Prometheus metrics endpoint.",
-  "wh": "d65664009dd27522",
-  "concepts": [
-    {
-      "slug": "multi-tiered-caching",
-      "label": "multi-tiered caching"
-    },
-    {
-      "slug": "virtualization",
-      "label": "virtualization"
-    },
-    {
-      "slug": "tool-integration",
-      "label": "tool integration"
-    },
-    {
-      "slug": "posix-compliant-filesystem",
-      "label": "POSIX-compliant filesystem"
-    },
-    {
-      "slug": "local-inference",
-      "label": "local inference"
-    }
-  ],
-  "similar": [
-    {
-      "id": "SBA5Qxkj7-o",
-      "title": "Stop Paying for AI APIs: Go Local with Beelink",
-      "channel": "Keith AI",
-      "score": 0.551
-    },
-    {
-      "id": "ARyp6R-pDKY",
-      "title": "Local AI Is Free—But There’s a Catch (Hybrid Setup Fix)",
-      "channel": "Keith AI",
-      "score": 0.541
-    },
-    {
-      "id": "yaMcm3sQswc",
-      "title": "Hermes Agent + Ollama = 100% Private OS",
-      "channel": "Jack Roberts",
-      "score": 0.527
-    },
-    {
-      "id": "C20PFYd2dOM",
-      "title": "Privacy Is the Real AI Bottleneck",
-      "channel": "Keith AI",
-      "score": 0.517
-    },
-    {
-      "id": "qpa5XwGkLp8",
-      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
-      "channel": "Liam Ottley",
-      "score": 0.498
-    },
-    {
-      "id": "KqdRWE1en8k",
-      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
-      "channel": "Better Stack",
-      "score": 0.493
-    }
-  ],
+  "wh": "cf63b6aee37ea89a",
   "key_points": [
     "JuiceFS stores raw file data as 4 MB chunks in any S3-compatible bucket while keeping all metadata (directory structure, permissions, file layout) in a separate fast database such as Redis, Postgres, or TiKV, allowing legacy POSIX applications to run on top of object storage without code changes.",
     "The multi-tiered caching engine silently populates a local NVMe or SSD partition on the first read of each data block; on the second access the block is served entirely from local storage, reducing latency from network-bound to hardware line speed.",
@@ -113,5 +53,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "183b958244948b90"
+  "ih": "183b958244948b90",
+  "concepts": [
+    {
+      "slug": "multi-tiered-caching",
+      "label": "multi-tiered caching"
+    },
+    {
+      "slug": "virtualization",
+      "label": "virtualization"
+    },
+    {
+      "slug": "tool-integration",
+      "label": "tool integration"
+    },
+    {
+      "slug": "posix-compliant-filesystem",
+      "label": "POSIX-compliant filesystem"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
+    }
+  ],
+  "similar": [
+    {
+      "id": "SBA5Qxkj7-o",
+      "title": "Stop Paying for AI APIs: Go Local with Beelink",
+      "channel": "Keith AI",
+      "score": 0.55
+    },
+    {
+      "id": "ARyp6R-pDKY",
+      "title": "Local AI Is Free—But There’s a Catch (Hybrid Setup Fix)",
+      "channel": "Keith AI",
+      "score": 0.542
+    },
+    {
+      "id": "yaMcm3sQswc",
+      "title": "Hermes Agent + Ollama = 100% Private OS",
+      "channel": "Jack Roberts",
+      "score": 0.528
+    },
+    {
+      "id": "C20PFYd2dOM",
+      "title": "Privacy Is the Real AI Bottleneck",
+      "channel": "Keith AI",
+      "score": 0.518
+    },
+    {
+      "id": "qpa5XwGkLp8",
+      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
+      "channel": "Liam Ottley",
+      "score": 0.501
+    },
+    {
+      "id": "KqdRWE1en8k",
+      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
+      "channel": "Better Stack",
+      "score": 0.495
+    }
+  ]
 }

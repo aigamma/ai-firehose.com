@@ -8,59 +8,7 @@
   "recommended": false,
   "summary": "AWS Developers video walks through a cleanup checklist for identifying surprise charges that persist after deleting cloud resources. Covers hidden costs from RDS snapshots, EBS volumes, elastic IPs, and NAT gateways, and recommends setting up billing alarms for cost monitoring.",
   "writeup": "AWS charges in specific, predictable ways tied to orphaned resources that survive deletion: RDS snapshots, unattached EBS volumes, elastic IPs, and NAT gateways. This video walks through a concrete cleanup checklist for each of these resource types and demonstrates configuring a billing alarm in AWS Budgets as a mandatory first step on any new account. The through-line is that surprise bills come from a knowledge gap about what deletion actually leaves behind, not from opaque or hidden AWS pricing.",
-  "wh": "44d1aea4734786ac",
-  "concepts": [
-    {
-      "slug": "billing-alarms",
-      "label": "billing alarms"
-    },
-    {
-      "slug": "cost-management",
-      "label": "cost management"
-    },
-    {
-      "slug": "cloud-resource-cleanup",
-      "label": "cloud resource cleanup"
-    }
-  ],
-  "similar": [
-    {
-      "id": "X9YXS3r4udE",
-      "title": "Claude code for free?",
-      "channel": "Jack Roberts",
-      "score": 0.498
-    },
-    {
-      "id": "Ve83Tc69Pgs",
-      "title": "Claude API Sticker Shock: $100 a Week #minimax",
-      "channel": "Keith AI",
-      "score": 0.487
-    },
-    {
-      "id": "0nR3wYm602c",
-      "title": "AI and the Job Market in 2026",
-      "channel": "AWS Developers",
-      "score": 0.468
-    },
-    {
-      "id": "9Pk2J_5qnlk",
-      "title": "Learn AWS IAM in less than 10 minutes",
-      "channel": "AWS Developers",
-      "score": 0.468
-    },
-    {
-      "id": "VBHISHDZ3wQ",
-      "title": "Is AI lying to us?👀",
-      "channel": "IBM Technology",
-      "score": 0.464
-    },
-    {
-      "id": "SwKW_D964Tk",
-      "title": "Claude Fable 5 + YouTube = $30,000/mo",
-      "channel": "Jack Roberts",
-      "score": 0.459
-    }
-  ],
+  "wh": "d45acc8e4d3f9aad",
   "key_points": [
     "RDS database deletion often triggers an automatic final snapshot that persists in the account and accrues storage charges indefinitely unless explicitly deleted.",
     "EBS volumes attached to EC2 instances do not always delete when the instance is terminated; filtering EC2 volumes by the 'available' state reveals any orphaned volumes still accumulating monthly charges.",
@@ -101,5 +49,57 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "8a4fe3849f69b16f"
+  "ih": "8a4fe3849f69b16f",
+  "concepts": [
+    {
+      "slug": "billing-alarms",
+      "label": "billing alarms"
+    },
+    {
+      "slug": "cost-management",
+      "label": "cost management"
+    },
+    {
+      "slug": "cloud-resource-cleanup",
+      "label": "cloud resource cleanup"
+    }
+  ],
+  "similar": [
+    {
+      "id": "9Pk2J_5qnlk",
+      "title": "Learn AWS IAM in less than 10 minutes",
+      "channel": "AWS Developers",
+      "score": 0.499
+    },
+    {
+      "id": "X9YXS3r4udE",
+      "title": "Claude code for free?",
+      "channel": "Jack Roberts",
+      "score": 0.497
+    },
+    {
+      "id": "ZkzkdhmcIVQ",
+      "title": "Become an AI Native Cloud Engineer",
+      "channel": "AWS Developers",
+      "score": 0.482
+    },
+    {
+      "id": "Ve83Tc69Pgs",
+      "title": "Claude API Sticker Shock: $100 a Week #minimax",
+      "channel": "Keith AI",
+      "score": 0.481
+    },
+    {
+      "id": "I2gdkrPCUrk",
+      "title": "I Asked Claude AI The Questions It Wasn't Supposed To Answer",
+      "channel": "AI Master",
+      "score": 0.471
+    },
+    {
+      "id": "VBHISHDZ3wQ",
+      "title": "Is AI lying to us?👀",
+      "channel": "IBM Technology",
+      "score": 0.463
+    }
+  ]
 }

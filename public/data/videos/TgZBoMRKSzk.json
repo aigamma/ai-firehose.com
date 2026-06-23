@@ -8,7 +8,48 @@
   "recommended": false,
   "summary": "CS50 2D Lecture 2 covers building a Breakout game using sprite sheets, collision detection, procedural level generation, particle systems, game states, and persistent high scores. The course is offered through Harvard University on edX with free open courseware options available.",
   "writeup": "CS50's game development lecture 2 builds a Breakout clone in Lua using the LOVE2D framework, using the classic Atari game as a vehicle for teaching sprite sheets, an 8-state finite state machine, procedural brick layouts, particle systems, AABB collision detection against a grid of bricks, and disk-persistent high scores. The lecture walks through each incremental version of the project (Breakout-0 through the complete game), grounding every new concept in a concrete change to running code. The through-line is complexity management: as a game grows from Pong-scale to a multi-level, multi-state product, disciplined file organization, shared state containers, and composable systems become non-negotiable.",
-  "wh": "353b58be2c0e7158",
+  "wh": "291c274acb1c1d45",
+  "key_points": [
+    "Breakout's 8-state machine (Start, High Score, Paddle Select, Serve, Play, Victory, Game Over, Enter High Score) is fully unidirectional: every arc has one legal direction and all paths eventually cycle back to Start, making the overall loop explicit and preventing illegal state transitions.",
+    "Sprite sheets solve the problem of managing many small graphics (bricks, paddles, backgrounds) as a single image asset; individual quads are sliced from the sheet at runtime rather than loading dozens of separate files, keeping the asset pipeline tractable as the game scales.",
+    "Procedural brick layouts, generated fresh each play, make every session different without manual level design; the layout algorithm runs at startup driven by the current level number, so difficulty increases automatically as the player advances.",
+    "Particle systems in LOVE2D attach to brick-collision events to emit debris, adding visual polish with minimal code; the lecture positions this as the correct abstraction for one-shot visual effects rather than manually tracking individual particles.",
+    "Persistent high scores require writing state to disk via Lua file I/O so scores survive session restarts; the lecture demonstrates reading and writing this data and routing through the Enter High Score state when a player qualifies.",
+    "Project file organization into src/, lib/, graphics/, sounds/, and fonts/ subdirectories is introduced at this scale because flat folders become unmanageable once a project has multiple Lua modules, third-party libraries (Push, Class), fonts, and generated sound assets from tools like BFXR or ChipTone."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Introduction and Breakout History"
+    },
+    {
+      "t": 90,
+      "title": "Live Demo and Game Features"
+    },
+    {
+      "t": 212,
+      "title": "Topics Overview: Sprites, State, Collision, Persistence"
+    },
+    {
+      "t": 302,
+      "title": "8-State Machine Walkthrough"
+    },
+    {
+      "t": 481,
+      "title": "Breakout-0: Project File Organization"
+    },
+    {
+      "t": 540,
+      "title": "Asset Pipeline: Sounds, Music, and Fonts"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "9cac91dacd8d2af2",
   "concepts": [
     {
       "slug": "sprites",
@@ -72,46 +113,5 @@
       "channel": "CS50",
       "score": 0.64
     }
-  ],
-  "key_points": [
-    "Breakout's 8-state machine (Start, High Score, Paddle Select, Serve, Play, Victory, Game Over, Enter High Score) is fully unidirectional: every arc has one legal direction and all paths eventually cycle back to Start, making the overall loop explicit and preventing illegal state transitions.",
-    "Sprite sheets solve the problem of managing many small graphics (bricks, paddles, backgrounds) as a single image asset; individual quads are sliced from the sheet at runtime rather than loading dozens of separate files, keeping the asset pipeline tractable as the game scales.",
-    "Procedural brick layouts, generated fresh each play, make every session different without manual level design; the layout algorithm runs at startup driven by the current level number, so difficulty increases automatically as the player advances.",
-    "Particle systems in LOVE2D attach to brick-collision events to emit debris, adding visual polish with minimal code; the lecture positions this as the correct abstraction for one-shot visual effects rather than manually tracking individual particles.",
-    "Persistent high scores require writing state to disk via Lua file I/O so scores survive session restarts; the lecture demonstrates reading and writing this data and routing through the Enter High Score state when a player qualifies.",
-    "Project file organization into src/, lib/, graphics/, sounds/, and fonts/ subdirectories is introduced at this scale because flat folders become unmanageable once a project has multiple Lua modules, third-party libraries (Push, Class), fonts, and generated sound assets from tools like BFXR or ChipTone."
-  ],
-  "chapters": [
-    {
-      "t": 0,
-      "title": "Introduction and Breakout History"
-    },
-    {
-      "t": 90,
-      "title": "Live Demo and Game Features"
-    },
-    {
-      "t": 212,
-      "title": "Topics Overview: Sprites, State, Collision, Persistence"
-    },
-    {
-      "t": 302,
-      "title": "8-State Machine Walkthrough"
-    },
-    {
-      "t": 481,
-      "title": "Breakout-0: Project File Organization"
-    },
-    {
-      "t": 540,
-      "title": "Asset Pipeline: Sounds, Music, and Fonts"
-    }
-  ],
-  "insights": {
-    "source": "captions",
-    "model": "claude-sonnet-4-6",
-    "prompt_version": "v1-2026-06-13",
-    "generated": "2026-06-13"
-  },
-  "ih": "9cac91dacd8d2af2"
+  ]
 }

@@ -9,54 +9,6 @@
   "summary": "A video explaining why mutable objects like lists should not be used as default arguments in Python functions. This is a common gotcha where default mutable arguments are evaluated once at function definition time, leading to unexpected shared state across function calls.",
   "writeup": "A focused walkthrough of one of Python's most common silent bugs: mutable objects (lists, dicts, sets, and custom class instances) used as default function arguments are initialized once at function definition time, not on each call, so all callers share the same underlying object. The video demonstrates the problem with a game-inventory example, then shows two robust fixes. The core lesson is that default argument initialization is a property of the function object itself, not of any individual call.",
   "wh": "504e08c5b8831eee",
-  "concepts": [
-    {
-      "slug": "mutable-default-arguments",
-      "label": "mutable default arguments"
-    },
-    {
-      "slug": "python-best-practices",
-      "label": "Python best practices"
-    }
-  ],
-  "similar": [
-    {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.519
-    },
-    {
-      "id": "_KTBqChWzug",
-      "title": "The One Mistake Everyone Makes with AI",
-      "channel": "JavaScript Mastery",
-      "score": 0.515
-    },
-    {
-      "id": "I2gdkrPCUrk",
-      "title": "I Asked Claude AI The Questions It Wasn't Supposed To Answer",
-      "channel": "AI Master",
-      "score": 0.503
-    },
-    {
-      "id": "0R1E7-lFkcM",
-      "title": "This is why your AI project never ships",
-      "channel": "JavaScript Mastery",
-      "score": 0.503
-    },
-    {
-      "id": "XF8n2_84TYE",
-      "title": "It's not an AI problem",
-      "channel": "JavaScript Mastery",
-      "score": 0.502
-    },
-    {
-      "id": "w6uH1ZxA-aA",
-      "title": "Simulating Percolation in Python: How Do Wildfires & Diseases Spread?",
-      "channel": "NeuralNine",
-      "score": 0.497
-    }
-  ],
   "key_points": [
     "When a mutable object such as an empty list is written directly as a default argument, Python creates that object once when the function is defined; every subsequent call that omits the argument receives the same object, causing state to leak across calls.",
     "The bug appears identically for lists, dicts, sets, and user-defined class instances used as defaults, because all of these are mutable and initialized at definition time.",
@@ -104,5 +56,53 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "67888509aa14583f"
+  "ih": "67888509aa14583f",
+  "concepts": [
+    {
+      "slug": "mutable-default-arguments",
+      "label": "mutable default arguments"
+    },
+    {
+      "slug": "python-best-practices",
+      "label": "Python best practices"
+    }
+  ],
+  "similar": [
+    {
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.519
+    },
+    {
+      "id": "_KTBqChWzug",
+      "title": "The One Mistake Everyone Makes with AI",
+      "channel": "JavaScript Mastery",
+      "score": 0.515
+    },
+    {
+      "id": "9hoFss6JPsc",
+      "title": "Choosing the Wrong Language Costs AI Teams Months of Work",
+      "channel": "Darren Builds AI",
+      "score": 0.507
+    },
+    {
+      "id": "0R1E7-lFkcM",
+      "title": "This is why your AI project never ships",
+      "channel": "JavaScript Mastery",
+      "score": 0.501
+    },
+    {
+      "id": "XF8n2_84TYE",
+      "title": "It's not an AI problem",
+      "channel": "JavaScript Mastery",
+      "score": 0.501
+    },
+    {
+      "id": "w6uH1ZxA-aA",
+      "title": "Simulating Percolation in Python: How Do Wildfires & Diseases Spread?",
+      "channel": "NeuralNine",
+      "score": 0.494
+    }
+  ]
 }

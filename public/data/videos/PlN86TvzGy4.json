@@ -8,51 +8,7 @@
   "recommended": true,
   "summary": "Herdr is a Rust-based terminal multiplexer that runs multiple AI coding agents like Claude Code, OpenCode, and Codex side-by-side in persistent panes and tabs. Built on ratatui without Electron, it provides live status tracking, keyboard-driven navigation, and supports remote orchestration over SSH.",
   "writeup": "Herder is a single Rust binary terminal multiplexer built by Oğulcan Celik that adds native AI coding-agent awareness to the split-pane, persistent-session model pioneered by tmux. Unlike tmux, which predates agents and treats them as opaque processes, Herder automatically detects Claude Code, Codex CLI, and similar tools running in its panes and surfaces real-time statuses (working, blocked, idle, done) with system notifications. Because it renders entirely over the host terminal's PTY rather than replacing it, it works inside WezTerm, iTerm, or any terminal the user already configures, and extends over SSH via a client-server Unix-socket design that keeps local config on the client while the server runs on the remote machine. A socket API also lets agents themselves create panes and workspaces, demonstrated live by having Claude Code spawn two parallel agents, collect their outputs, and close them autonomously.",
-  "wh": "847c3541fd7ebf37",
-  "concepts": [
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    }
-  ],
-  "similar": [
-    {
-      "id": "ZAaxx3qyT8g",
-      "title": "Claude Code Just Got an Agent Dashboard",
-      "channel": "Nate Herk | AI Automation",
-      "score": 0.698
-    },
-    {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
-      "channel": "Cole Medin",
-      "score": 0.668
-    },
-    {
-      "id": "8jDXI4_rJOE",
-      "title": "This 100% open-source terminal is insane… just watch",
-      "channel": "David Ondrej",
-      "score": 0.659
-    },
-    {
-      "id": "Hth_tLaC2j8",
-      "title": "Reflecting on a year of Claude Code",
-      "channel": "Claude",
-      "score": 0.649
-    },
-    {
-      "id": "lyhnXvNnhsU",
-      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
-      "channel": "AICodeKing",
-      "score": 0.641
-    },
-    {
-      "id": "zqUdtL5l9yM",
-      "title": "Hermes Agentic OS is Insane... just watch",
-      "channel": "Jack Roberts",
-      "score": 0.604
-    }
-  ],
+  "wh": "51ac10db2225211f",
   "key_points": [
     "Herder is a single Rust binary built with Ratatui: no Electron, no separate app, and it runs inside whatever terminal the user already has configured rather than forcing a migration to a new environment.",
     "The core differentiator over tmux is agent-status awareness: Herder automatically detects Claude Code and Codex CLI running in its panes and shows live statuses (working, blocked, idle, done) along with system notifications, which tmux cannot do because it was built before agents existed.",
@@ -101,5 +57,49 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "56aa7655df5fea30"
+  "ih": "56aa7655df5fea30",
+  "concepts": [
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
+    }
+  ],
+  "similar": [
+    {
+      "id": "ZAaxx3qyT8g",
+      "title": "Claude Code Just Got an Agent Dashboard",
+      "channel": "Nate Herk | AI Automation",
+      "score": 0.697
+    },
+    {
+      "id": "8jDXI4_rJOE",
+      "title": "This 100% open-source terminal is insane… just watch",
+      "channel": "David Ondrej",
+      "score": 0.657
+    },
+    {
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.649
+    },
+    {
+      "id": "Hth_tLaC2j8",
+      "title": "Reflecting on a year of Claude Code",
+      "channel": "Claude",
+      "score": 0.644
+    },
+    {
+      "id": "lyhnXvNnhsU",
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "channel": "AICodeKing",
+      "score": 0.627
+    },
+    {
+      "id": "ZcpJKGGLHAs",
+      "title": "New Agent OS is INSANE!",
+      "channel": "Julian Goldie SEO",
+      "score": 0.619
+    }
+  ]
 }

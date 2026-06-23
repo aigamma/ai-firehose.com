@@ -8,67 +8,7 @@
   "recommended": true,
   "summary": "Qdrant demonstrates visual interpretability for ColPali embeddings, which represent documents as 1,024 patch embeddings mapped to spatial locations. The system computes per-token similarity heatmaps overlaid on documents to show which regions match query terms, enabling interpretable multi-vector search and relevance debugging.",
   "writeup": "This segment from a ColPali course explains how the model's multi-vector architecture enables visual interpretability: because each of the 1,024 patch embeddings maps to a fixed spatial location in a 32x32 grid, a similarity computation between a query token and each patch embedding produces a heat map that pinpoints exactly which image regions drove a match. The walk-through covers the math from patch index to pixel coordinates, the jet-colormap overlay construction, and four practical uses of the resulting visualizations, closing with a preview of module 3 on quantization, pooling, and multi-stage retrieval at production scale.",
-  "wh": "4e91ce11b5b8efc1",
-  "concepts": [
-    {
-      "slug": "vector-search",
-      "label": "vector search"
-    },
-    {
-      "slug": "visual-interpretability",
-      "label": "visual interpretability"
-    },
-    {
-      "slug": "embeddings",
-      "label": "embeddings"
-    },
-    {
-      "slug": "similarity-heatmaps",
-      "label": "similarity heatmaps"
-    },
-    {
-      "slug": "semantic-search",
-      "label": "semantic search"
-    }
-  ],
-  "similar": [
-    {
-      "id": "Fai9aY1PMCA",
-      "title": "How ColPali Models Work | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.769
-    },
-    {
-      "id": "5ypH0t_X-4k",
-      "title": "ColPali Family Overview | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.69
-    },
-    {
-      "id": "35WO2_Q_0C0",
-      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.655
-    },
-    {
-      "id": "8HrvD5o2w8M",
-      "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.61
-    },
-    {
-      "id": "qIjPepsY35E",
-      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.594
-    },
-    {
-      "id": "WXEf6K6DBq8",
-      "title": "Qdrant Multi-Vector Search Course Overview",
-      "channel": "Qdrant Vector Search",
-      "score": 0.59
-    }
-  ],
+  "wh": "234a65ac60b71b65",
   "key_points": [
     "ColPali produces 1,024 patch embeddings per document image, each corresponding to a fixed position in a 32x32 grid, so patch index i maps to row i/32 (integer division) and column i mod 32, and the top-left pixel corner is found by multiplying row and column by 14.",
     "To build a heat map for a single query token, compute its dot product similarity with all 1,024 patch embeddings, reshape the resulting similarity vector into a 32x32 grid, upsample to 448x448 to match the image dimensions, apply a color map such as jet, and overlay the result on the original image with transparency.",
@@ -117,5 +57,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "76163e45d7da3bbd"
+  "ih": "76163e45d7da3bbd",
+  "concepts": [
+    {
+      "slug": "vector-search",
+      "label": "vector search"
+    },
+    {
+      "slug": "explainability",
+      "label": "explainability"
+    },
+    {
+      "slug": "embeddings",
+      "label": "embeddings"
+    },
+    {
+      "slug": "similarity-heatmaps",
+      "label": "similarity heatmaps"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "semantic search"
+    }
+  ],
+  "similar": [
+    {
+      "id": "Fai9aY1PMCA",
+      "title": "How ColPali Models Work | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.769
+    },
+    {
+      "id": "5ypH0t_X-4k",
+      "title": "ColPali Family Overview | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.69
+    },
+    {
+      "id": "35WO2_Q_0C0",
+      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.654
+    },
+    {
+      "id": "8HrvD5o2w8M",
+      "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.609
+    },
+    {
+      "id": "qIjPepsY35E",
+      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.594
+    },
+    {
+      "id": "WXEf6K6DBq8",
+      "title": "Qdrant Multi-Vector Search Course Overview",
+      "channel": "Qdrant Vector Search",
+      "score": 0.59
+    }
+  ]
 }

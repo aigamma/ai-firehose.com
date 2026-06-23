@@ -6,69 +6,9 @@
   "published": "2026-05-18T06:56:26+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Tutorial on implementing memory systems in LangGraph AI agents, covering short-term and long-term memory, checkpointers, state management, and practical implementation using InMemorySaver and Thread IDs. Demonstrates how memory enables agents to retain conversation history and workflow state across interactions.",
+  "summary": "Tutorial on implementing memory systems in LangGraph-based AI agents using Python. Covers short-term and long-term memory, checkpointers, InMemorySaver, thread-level state management, and practical coding examples for conversation memory in agentic workflows.",
   "writeup": "A step-by-step tutorial on how LangGraph handles agent memory, covering both short-term (thread-level) and long-term memory and the checkpointer mechanism that underlies both. The video walks through a complete Python implementation using LangGraph with a Groq-hosted Llama 3.3 70B model, showing how conversation state is persisted across turns and sessions. The central argument is that memory is the foundational requirement for any real-world AI agent, not model capability or multi-agent topology.",
-  "wh": "de101b9940469da1",
-  "concepts": [
-    {
-      "slug": "memory-retrieval",
-      "label": "memory retrieval"
-    },
-    {
-      "slug": "state-management",
-      "label": "State Management"
-    },
-    {
-      "slug": "checkpointers",
-      "label": "Checkpointers"
-    },
-    {
-      "slug": "state-tracking",
-      "label": "state tracking"
-    },
-    {
-      "slug": "short-term-memory",
-      "label": "Short-term memory"
-    }
-  ],
-  "similar": [
-    {
-      "id": "Q7QbkHo4u20",
-      "title": "How I make my AI Agent remember everything",
-      "channel": "JavaScript Mastery",
-      "score": 0.673
-    },
-    {
-      "id": "uWLJAtMOVT0",
-      "title": "LangGraph Crash Course - Agent Workflows in Python",
-      "channel": "NeuralNine",
-      "score": 0.635
-    },
-    {
-      "id": "_5XF5CCnbDk",
-      "title": "Build a Real-World Multi-Agent AI System using LangGraph,  APIs and Memory",
-      "channel": "Code With Aarohi",
-      "score": 0.606
-    },
-    {
-      "id": "uSdVgSY7ryU",
-      "title": "Hermes Agent Tutorial: How to Setup & Use Open Source AI Agent for Beginners",
-      "channel": "AI Master",
-      "score": 0.574
-    },
-    {
-      "id": "l6KeLCuB90o",
-      "title": "3 patterns to build long-running AI agents",
-      "channel": "Google Cloud Tech",
-      "score": 0.571
-    },
-    {
-      "id": "Yt5xBk7Xbs0",
-      "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
-      "channel": "Code With Aarohi",
-      "score": 0.549
-    }
-  ],
+  "wh": "ba01ddb1ddda486c",
   "key_points": [
     "LangGraph distinguishes two memory scopes: short-term (in-memory, scoped to a single conversation session and lost on restart) and long-term (persisted across sessions and application restarts), managed through a component called the checkpointer.",
     "The checkpointer functions as an automatic save mechanism that snapshots the full graph state after every node execution, enabling an agent to resume from exactly where it left off after a crash or session end rather than restarting from scratch.",
@@ -113,5 +53,69 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "aa4487f2e982c798"
+  "ih": "aa4487f2e982c798",
+  "concepts": [
+    {
+      "slug": "memory-in-agents",
+      "label": "memory in agents"
+    },
+    {
+      "slug": "context-management",
+      "label": "context management"
+    },
+    {
+      "slug": "checkpointer",
+      "label": "checkpointer"
+    },
+    {
+      "slug": "memory-retrieval",
+      "label": "memory retrieval"
+    },
+    {
+      "slug": "thread-level-memory",
+      "label": "thread-level memory"
+    },
+    {
+      "slug": "dialogue-memory",
+      "label": "dialogue memory"
+    }
+  ],
+  "similar": [
+    {
+      "id": "uWLJAtMOVT0",
+      "title": "LangGraph Crash Course - Agent Workflows in Python",
+      "channel": "NeuralNine",
+      "score": 0.678
+    },
+    {
+      "id": "Q7QbkHo4u20",
+      "title": "How I make my AI Agent remember everything",
+      "channel": "JavaScript Mastery",
+      "score": 0.645
+    },
+    {
+      "id": "_5XF5CCnbDk",
+      "title": "Build a Real-World Multi-Agent AI System using LangGraph,  APIs and Memory",
+      "channel": "Code With Aarohi",
+      "score": 0.628
+    },
+    {
+      "id": "uSdVgSY7ryU",
+      "title": "Hermes Agent Tutorial: How to Setup & Use Open Source AI Agent for Beginners",
+      "channel": "AI Master",
+      "score": 0.567
+    },
+    {
+      "id": "Yt5xBk7Xbs0",
+      "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
+      "channel": "Code With Aarohi",
+      "score": 0.561
+    },
+    {
+      "id": "l6KeLCuB90o",
+      "title": "3 patterns to build long-running AI agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.558
+    }
+  ]
 }

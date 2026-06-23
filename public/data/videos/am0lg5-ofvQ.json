@@ -8,7 +8,55 @@
   "recommended": false,
   "summary": "Google Antigravity is an agent-first software development platform that enables developers to build, orchestrate, and monitor AI agents. The CLI provides tools for agents to perform development tasks autonomously by connecting to code editors, terminals, and browsers.",
   "writeup": "A hands-on walkthrough of Antigravity CLI, a terminal-based AI coding agent that builds, iterates, and researches inside the developer's own shell. The demo constructs a markdown to-do list app from a single prompt, then uses the tool's sub-agent system to autonomously research improvement ideas and implement them. The through-line is that every major workflow (artifact inspection, diff review, parallel sub-agents, session resumption) is accessible through slash commands without leaving the terminal.",
-  "wh": "fed988b09022e43c",
+  "wh": "2bbf6e393f0b28a6",
+  "key_points": [
+    "Antigravity CLI exposes a real-time context window token counter and an artifact browser accessible via /artifacts, so the developer can inspect both the plan and the deliverables the agent produced mid-run.",
+    "The /diff command surfaces the full Git diff of all files the agent touched during the current turn, giving an auditable view of every change before accepting it.",
+    "Session state is stored locally and fully resumable: running `agi-c` (continue) reattaches to the previous conversation so no work is lost between terminal sessions.",
+    "Sub-agents are invoked automatically when the main agent determines a task requires research: the CLI generates the sub-agent prompt itself, spins up an isolated window, runs web searches, and reports findings back to the main agent without manual intervention.",
+    "The permission system under /config lets the developer choose between confirmation-before-every-action (strict mode) and always-allow, and a separate rendering mode toggle switches between native terminal (mouse and copy-paste) and an auto-screen mode suited to highly parallel workflows."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Antigravity CLI Introduction"
+    },
+    {
+      "t": 33,
+      "title": "Prompting the Agent to Build an App"
+    },
+    {
+      "t": 61,
+      "title": "Slash Commands and Parallel Interaction"
+    },
+    {
+      "t": 91,
+      "title": "Context Window and Artifact Plans"
+    },
+    {
+      "t": 150,
+      "title": "Diff View and Iterating on the App"
+    },
+    {
+      "t": 211,
+      "title": "Session Persistence and Resume"
+    },
+    {
+      "t": 241,
+      "title": "Sub-Agent Research Workflow"
+    },
+    {
+      "t": 360,
+      "title": "Permissions and Customization"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "4350a505b54295fb",
   "concepts": [
     {
       "slug": "ai-agents",
@@ -60,53 +108,5 @@
       "channel": "Google Antigravity",
       "score": 0.78
     }
-  ],
-  "key_points": [
-    "Antigravity CLI exposes a real-time context window token counter and an artifact browser accessible via /artifacts, so the developer can inspect both the plan and the deliverables the agent produced mid-run.",
-    "The /diff command surfaces the full Git diff of all files the agent touched during the current turn, giving an auditable view of every change before accepting it.",
-    "Session state is stored locally and fully resumable: running `agi-c` (continue) reattaches to the previous conversation so no work is lost between terminal sessions.",
-    "Sub-agents are invoked automatically when the main agent determines a task requires research: the CLI generates the sub-agent prompt itself, spins up an isolated window, runs web searches, and reports findings back to the main agent without manual intervention.",
-    "The permission system under /config lets the developer choose between confirmation-before-every-action (strict mode) and always-allow, and a separate rendering mode toggle switches between native terminal (mouse and copy-paste) and an auto-screen mode suited to highly parallel workflows."
-  ],
-  "chapters": [
-    {
-      "t": 0,
-      "title": "Antigravity CLI Introduction"
-    },
-    {
-      "t": 33,
-      "title": "Prompting the Agent to Build an App"
-    },
-    {
-      "t": 61,
-      "title": "Slash Commands and Parallel Interaction"
-    },
-    {
-      "t": 91,
-      "title": "Context Window and Artifact Plans"
-    },
-    {
-      "t": 150,
-      "title": "Diff View and Iterating on the App"
-    },
-    {
-      "t": 211,
-      "title": "Session Persistence and Resume"
-    },
-    {
-      "t": 241,
-      "title": "Sub-Agent Research Workflow"
-    },
-    {
-      "t": 360,
-      "title": "Permissions and Customization"
-    }
-  ],
-  "insights": {
-    "source": "captions",
-    "model": "claude-sonnet-4-6",
-    "prompt_version": "v1-2026-06-13",
-    "generated": "2026-06-13"
-  },
-  "ih": "4350a505b54295fb"
+  ]
 }

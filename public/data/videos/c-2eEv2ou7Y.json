@@ -6,63 +6,59 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe pattern nests an inner srcdoc iframe inside an outer iframe loaded from a controlled subdomain to simultaneously enforce Content Security Policy, prevent storage collisions, and avoid sandbox escapes. The technique originated in Facebook's app marketplace and is now used by MCP and ChatGPT apps to securely isolate third-party code while maintaining necessary browser APIs.",
+  "summary": "Double iframe architecture isolates MCP and ChatGPT apps by nesting an inner srcdoc iframe inside an outer iframe served from a controlled subdomain. This approach avoids Content Security Policy violations, localStorage/cookie access vulnerabilities, and sandbox escapes that simpler isolation methods suffer from. The pattern originates from Facebook's app marketplace and requires apps to declare all external domains in metadata.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "be8e46c26269e600",
+  "wh": "e09df66feb972bc6",
   "concepts": [
     {
       "slug": "sandboxed-iframe",
       "label": "sandboxed iframe"
     },
     {
-      "slug": "content-security-policy",
-      "label": "Content Security Policy"
+      "slug": "same-origin-policy",
+      "label": "same-origin policy"
     },
     {
-      "slug": "cross-origin-isolation",
-      "label": "cross-origin isolation"
-    },
-    {
-      "slug": "tenant-isolation",
-      "label": "tenant isolation"
+      "slug": "origin-isolation",
+      "label": "origin isolation"
     }
   ],
   "similar": [
     {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.546
-    },
-    {
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.533
+      "score": 0.541
     },
     {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
       "channel": "JavaScript Mastery",
-      "score": 0.532
+      "score": 0.511
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.511
+      "score": 0.51
     },
     {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.506
+      "id": "xghOGIafjfw",
+      "title": "ego lite: I gave Claude Code & Codex a browser to run web automation — here's what happened",
+      "channel": "AICodeKing",
+      "score": 0.501
     },
     {
-      "id": "btxGmN8RvNU",
-      "title": "Your Agent's Biggest Lie: \"I Searched the Web\" — Rafael Levi, Bright Data",
-      "channel": "AI Engineer",
-      "score": 0.497
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.5
+    },
+    {
+      "id": "kVL_7csy_ZM",
+      "title": "The Rise of Generative UI for Developers (CopilotKit)",
+      "channel": "Better Stack",
+      "score": 0.483
     }
   ]
 }

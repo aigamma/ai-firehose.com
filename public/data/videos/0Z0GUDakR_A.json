@@ -8,59 +8,7 @@
   "recommended": false,
   "summary": "Google released the Agent Development Kit (ADK), a framework designed to simplify building and testing multi-agent systems. The tutorial demonstrates creating agents with custom tools including real-time date retrieval and Google Search integration, along with a built-in web interface for debugging.",
   "writeup": "Google's Agent Development Kit (ADK) provides a Python framework that handles the boilerplate of equipping LLMs with tools and running them in a loop, reducing a first agent to a handful of lines. The video walks from a bare \"Hello World\" agent through adding a datetime tool, then a built-in Google Search tool, and finally a multi-agent system where specialized agents are passed as tools to an orchestrator. The motivating example is a Top Chef search that surfaces hallucinated URLs, which a URL-verifier sub-agent corrects by fetching and reading each page, demonstrating the LLM-as-judge pattern. The through-line is that decomposing work across single-purpose agents with appropriately sized models gives finer control over accuracy, memory, and cost than a single agent loaded with many tools.",
-  "wh": "52fd8423ff1d9dde",
-  "concepts": [
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
-      "slug": "tool-use",
-      "label": "tool use"
-    },
-    {
-      "slug": "data-augmentation",
-      "label": "data augmentation"
-    }
-  ],
-  "similar": [
-    {
-      "id": "Zqno_vux6d8",
-      "title": "AI agents explained: Build your first agent in 8 minutes",
-      "channel": "Google Cloud Tech",
-      "score": 0.748
-    },
-    {
-      "id": "JsNbFnT0QCw",
-      "title": "Building long-running AI agents with ADK",
-      "channel": "Google Cloud Tech",
-      "score": 0.714
-    },
-    {
-      "id": "9BwFgEFVLOk",
-      "title": "Automate M365 to Google Workspace Migrations with ADK multi-agents",
-      "channel": "Google Cloud Tech",
-      "score": 0.702
-    },
-    {
-      "id": "nGjGUCOiXk4",
-      "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
-      "channel": "Google Cloud Tech",
-      "score": 0.693
-    },
-    {
-      "id": "okx6dUzDPRY",
-      "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
-      "channel": "Google Cloud Tech",
-      "score": 0.665
-    },
-    {
-      "id": "z4CXn4CKHQI",
-      "title": "Automate SAP order-to-cash with multi-agent AI & Google Agent Development Kit (ADK)",
-      "channel": "Google Cloud Tech",
-      "score": 0.661
-    }
-  ],
+  "wh": "7d4044b362017a19",
   "key_points": [
     "ADK ships two built-in testing interfaces: `adk run` launches a terminal dialogue and `adk web` spins up a local server at port 8000 with a visual stack trace panel, so debugging during development requires no external tooling.",
     "Tools in ADK are ordinary Python functions appended to a `tools=[]` list on the agent definition; a `get_current_time` function returning `datetime.now()` is enough to give an agent real-time awareness the base LLM cannot provide.",
@@ -104,5 +52,57 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "364f8c4a4c8ff076"
+  "ih": "364f8c4a4c8ff076",
+  "concepts": [
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
+    },
+    {
+      "slug": "tool-use",
+      "label": "tool use"
+    },
+    {
+      "slug": "data-augmentation",
+      "label": "data augmentation"
+    }
+  ],
+  "similar": [
+    {
+      "id": "Zqno_vux6d8",
+      "title": "AI agents explained: Build your first agent in 8 minutes",
+      "channel": "Google Cloud Tech",
+      "score": 0.749
+    },
+    {
+      "id": "JsNbFnT0QCw",
+      "title": "Building long-running AI agents with ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.714
+    },
+    {
+      "id": "9BwFgEFVLOk",
+      "title": "Automate M365 to Google Workspace Migrations with ADK multi-agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.702
+    },
+    {
+      "id": "nGjGUCOiXk4",
+      "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
+      "channel": "Google Cloud Tech",
+      "score": 0.693
+    },
+    {
+      "id": "okx6dUzDPRY",
+      "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
+      "channel": "Google Cloud Tech",
+      "score": 0.665
+    },
+    {
+      "id": "z4CXn4CKHQI",
+      "title": "Automate SAP order-to-cash with multi-agent AI & Google Agent Development Kit (ADK)",
+      "channel": "Google Cloud Tech",
+      "score": 0.661
+    }
+  ]
 }

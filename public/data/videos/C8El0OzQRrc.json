@@ -8,55 +8,7 @@
   "recommended": false,
   "summary": "NeuralNine demonstrates two practical n8n workflows: one that automatically converts GitHub issues into pull requests, and another that turns Slack messages into GitHub issues. The video covers environment setup and implementation details for both automation pipelines.",
   "writeup": "A step-by-step build of a fully autonomous coding agent that chains N8N, Claude Code (headless), OpenAI, Python, and GitHub webhooks into two interlocked workflows: one that fires whenever a GitHub issue is created and implements the requested change via Claude Code before opening a pull request, and a second that converts a plain Slack message into a GitHub issue to kick off the first. The through-line is the practical staffing problem of letting non-technical collaborators describe work in natural language while a developer only reviews and merges the resulting pull request.",
-  "wh": "34149f4645cc48da",
-  "concepts": [
-    {
-      "slug": "workflow-automation",
-      "label": "workflow automation"
-    },
-    {
-      "slug": "api-access",
-      "label": "API access"
-    }
-  ],
-  "similar": [
-    {
-      "id": "qyB52HIiou8",
-      "title": "Archon + Jira: Drag a Ticket, Get a Pull Request (Live Build)",
-      "channel": "Cole Medin",
-      "score": 0.611
-    },
-    {
-      "id": "skU1-k7_wWE",
-      "title": "6 INSANE Claude Cowork Use Cases to Save Hours (AI Workflow Automation)",
-      "channel": "AI Master",
-      "score": 0.573
-    },
-    {
-      "id": "zMiSRliEzv4",
-      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
-      "channel": "AI Engineer",
-      "score": 0.529
-    },
-    {
-      "id": "0R1E7-lFkcM",
-      "title": "This is why your AI project never ships",
-      "channel": "JavaScript Mastery",
-      "score": 0.494
-    },
-    {
-      "id": "AYQtRqW1xX4",
-      "title": "How to Build & Sell AI Agents in 2026: Ultimate Beginner’s Guide",
-      "channel": "Liam Ottley",
-      "score": 0.488
-    },
-    {
-      "id": "W6x-hb44C0c",
-      "title": "wtf is Loop Engineer & how to setup for real",
-      "channel": "AI Jason",
-      "score": 0.485
-    }
-  ],
+  "wh": "f7767264c631fe19",
   "key_points": [
     "The system operates through two N8N workflows: a GitHub-issue trigger that runs a local Python script invoking Claude Code in headless mode to implement changes, commit, push, and open a pull request, then notifies Slack on success; and a Slack-trigger workflow that uses an OpenAI-powered agent to convert a freeform Slack message into a structured GitHub issue, which in turn fires the first workflow.",
     "Claude Code runs in headless mode as the actual code-writing agent, meaning N8N does not do the coding but merely orchestrates the trigger and the local execution environment where Claude Code operates autonomously on the repository.",
@@ -101,5 +53,53 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "981b770a00217672"
+  "ih": "981b770a00217672",
+  "concepts": [
+    {
+      "slug": "workflow-automation",
+      "label": "workflow automation"
+    },
+    {
+      "slug": "tool-integration",
+      "label": "tool integration"
+    }
+  ],
+  "similar": [
+    {
+      "id": "qyB52HIiou8",
+      "title": "Archon + Jira: Drag a Ticket, Get a Pull Request (Live Build)",
+      "channel": "Cole Medin",
+      "score": 0.616
+    },
+    {
+      "id": "skU1-k7_wWE",
+      "title": "6 INSANE Claude Cowork Use Cases to Save Hours (AI Workflow Automation)",
+      "channel": "AI Master",
+      "score": 0.563
+    },
+    {
+      "id": "zMiSRliEzv4",
+      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
+      "channel": "AI Engineer",
+      "score": 0.525
+    },
+    {
+      "id": "0R1E7-lFkcM",
+      "title": "This is why your AI project never ships",
+      "channel": "JavaScript Mastery",
+      "score": 0.495
+    },
+    {
+      "id": "AYQtRqW1xX4",
+      "title": "How to Build & Sell AI Agents in 2026: Ultimate Beginner’s Guide",
+      "channel": "Liam Ottley",
+      "score": 0.489
+    },
+    {
+      "id": "4Vg2aVtrX8k",
+      "title": "Building AI Agents for Real-World Problems & Workflows",
+      "channel": "IBM Technology",
+      "score": 0.486
+    }
+  ]
 }

@@ -6,73 +6,9 @@
   "published": "2026-06-09T16:33:12+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Google DeepMind presented Gemini 3 Flash Preview, which provides audio understanding including speaker identification, timestamps, emotion detection, language detection with translation, and summarization through a single API call. The model also supports speech generation directed by text descriptions and enables real-time multimodal audio processing.",
+  "summary": "Google DeepMind's audio and multimodal stack integrates Gemini models for speech transcription with metadata extraction, real-time audio-to-audio processing with reasoning, and Lyria 3 for music generation with lyrics. The stack supports end-to-end audio workflows from understanding to generation via tool use.",
   "writeup": "A Google DeepMind developer-experience engineer walks through the current state of AI audio at DeepMind, covering three distinct capabilities built on Gemini 3 Flash: rich audio understanding (speaker diarization, emotion tagging, multilingual transcription in one API call), directive speech synthesis (a small set of base voices steerable by scene description and director-style notes), and Gemini 2.0 Flash Live, a native sound-to-sound real-time multimodal model. The through-line is that a shared audio-understanding substrate powers all three tiers, so the same comprehension that parses pacing and accent in transcription also enables accent-accurate synthesis and in-model reasoning without a text-LLM intermediary.",
-  "wh": "80dbbea54b3d2f2f",
-  "concepts": [
-    {
-      "slug": "audio-processing",
-      "label": "audio processing"
-    },
-    {
-      "slug": "speaker-diarization",
-      "label": "speaker diarization"
-    },
-    {
-      "slug": "object-detection",
-      "label": "object detection"
-    },
-    {
-      "slug": "text-to-speech",
-      "label": "text-to-speech"
-    },
-    {
-      "slug": "multimodal-learning",
-      "label": "multimodal learning"
-    },
-    {
-      "slug": "real-time-interaction",
-      "label": "real-time interaction"
-    }
-  ],
-  "similar": [
-    {
-      "id": "TNwKs39uSVk",
-      "title": "Introducing Gemini 3.5 Live Translate",
-      "channel": "Google for Developers",
-      "score": 0.698
-    },
-    {
-      "id": "kn9Gh5HWqQs",
-      "title": "NEW Gemini Features Explained — How to Use Google’s Latest AI Upgrade",
-      "channel": "AI Master",
-      "score": 0.67
-    },
-    {
-      "id": "J02-39xtlt4",
-      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
-      "channel": "AI Search",
-      "score": 0.636
-    },
-    {
-      "id": "rEcRuQkOOQo",
-      "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
-      "channel": "Google for Developers",
-      "score": 0.622
-    },
-    {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.618
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.604
-    }
-  ],
+  "wh": "37f433d839520b97",
   "key_points": [
     "EchoScript, a demo app in the Google AI Studio gallery, extracts speaker labels, timestamps, language tags, emotion labels (happy, sad, angry, neutral), and an overall summary from a single Gemini 3 Flash Preview API call with a structured JSON response schema.",
     "Rather than maintaining a large voice library filtered by gender or accent, Gemini speech generation starts from roughly 30 base voices and accepts a natural-language director's note (scene setting, performance guidance, transcript) to steer accent and delivery, demonstrated by converting a standard American base voice to a convincing Irish brogue and Singaporean Singlish.",
@@ -108,5 +44,69 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "bd95e7d2efcb9c6e"
+  "ih": "bd95e7d2efcb9c6e",
+  "concepts": [
+    {
+      "slug": "multimodal-learning",
+      "label": "multimodal learning"
+    },
+    {
+      "slug": "text-to-speech",
+      "label": "text-to-speech"
+    },
+    {
+      "slug": "on-device-inference",
+      "label": "on-device inference"
+    },
+    {
+      "slug": "video-generation",
+      "label": "video generation"
+    },
+    {
+      "slug": "tool-use",
+      "label": "tool use"
+    },
+    {
+      "slug": "reasoning",
+      "label": "reasoning"
+    }
+  ],
+  "similar": [
+    {
+      "id": "hv8ZI7foGZk",
+      "title": "Introducing Lyria 3 Pro",
+      "channel": "Google DeepMind",
+      "score": 0.645
+    },
+    {
+      "id": "TNwKs39uSVk",
+      "title": "Introducing Gemini 3.5 Live Translate",
+      "channel": "Google for Developers",
+      "score": 0.64
+    },
+    {
+      "id": "kn9Gh5HWqQs",
+      "title": "NEW Gemini Features Explained — How to Use Google’s Latest AI Upgrade",
+      "channel": "AI Master",
+      "score": 0.611
+    },
+    {
+      "id": "rEcRuQkOOQo",
+      "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
+      "channel": "Google for Developers",
+      "score": 0.597
+    },
+    {
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "channel": "AI Engineer",
+      "score": 0.593
+    },
+    {
+      "id": "vhbaZJtW2Hg",
+      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
+      "channel": "Cole Medin",
+      "score": 0.585
+    }
+  ]
 }

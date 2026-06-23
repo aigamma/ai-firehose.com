@@ -8,67 +8,7 @@
   "recommended": false,
   "summary": "Text Diffusion is a generative technique that uses iterative denoising steps instead of autoregressive token prediction. Brendon O'Donoghue from Google DeepMind explains that diffusion models with bidirectional attention can self-correct by seeing future tokens, require roughly 10x fewer memory transfers than autoregressive generation, but currently have lower throughput at scale compared to traditional language models.",
   "writeup": "A DeepMind research scientist (Brendan) presents text diffusion to an academic audience, explaining how the technique applies the image diffusion paradigm directly to language: a full token sequence is initialized as random noise and denoised iteratively across multiple forward passes, rather than generated one token at a time. The talk anchors on Gemini Diffusion, a research preview that matched Gemini 2.0 Flash quality on most benchmarks while hitting roughly 2,000 raw tokens per second, then works through the hardware-level reason for that gap: autoregressive generation is HBM-bandwidth-bound, and block diffusion needs 10x fewer memory transfers to produce the same output. The talk ends on the deployment blocker: lower batch throughput makes text diffusion too expensive to serve at scale, which is why no major production model has shipped it despite the latency advantage.",
-  "wh": "1ec891eacab89fb7",
-  "concepts": [
-    {
-      "slug": "text-diffusion",
-      "label": "text diffusion"
-    },
-    {
-      "slug": "sparse-attention",
-      "label": "sparse attention"
-    },
-    {
-      "slug": "denoising",
-      "label": "denoising"
-    },
-    {
-      "slug": "recursive-self-improvement",
-      "label": "recursive self-improvement"
-    },
-    {
-      "slug": "retrieval-augmented-generation",
-      "label": "retrieval-augmented generation"
-    }
-  ],
-  "similar": [
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.718
-    },
-    {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.708
-    },
-    {
-      "id": "YiIrnYalHS4",
-      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
-      "channel": "AI Revolution",
-      "score": 0.657
-    },
-    {
-      "id": "gHs5ZiY80PM",
-      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
-      "channel": "AI Engineer",
-      "score": 0.623
-    },
-    {
-      "id": "Qd2bAzwH9uA",
-      "title": "Karpathy Bigram explained in 10min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.574
-    },
-    {
-      "id": "qKU-e0x2EmE",
-      "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
-      "channel": "Nick Saraev",
-      "score": 0.568
-    }
-  ],
+  "wh": "9e887b3fda187d26",
   "key_points": [
     "Text diffusion initializes the full output as pure random tokens and iteratively denoises the entire block across multiple forward passes, giving the model bidirectional attention across the whole canvas and the ability to revise any position at any step.",
     "The Gemini Diffusion research preview reached approximately 2,000 raw tokens per second in the browser; the hardware explanation is that generating 256 tokens in 24 denoising passes requires roughly 10x fewer HBM-to-tensor-core memory transfers than producing 256 tokens sequentially in an autoregressive model.",
@@ -112,5 +52,65 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "b0b116de600f66e4"
+  "ih": "b0b116de600f66e4",
+  "concepts": [
+    {
+      "slug": "text-generation",
+      "label": "text generation"
+    },
+    {
+      "slug": "sparse-attention",
+      "label": "sparse attention"
+    },
+    {
+      "slug": "denoising",
+      "label": "denoising"
+    },
+    {
+      "slug": "recursive-self-improvement",
+      "label": "recursive self-improvement"
+    },
+    {
+      "slug": "autoregressive-generation",
+      "label": "autoregressive generation"
+    }
+  ],
+  "similar": [
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.715
+    },
+    {
+      "id": "gHs5ZiY80PM",
+      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
+      "channel": "AI Engineer",
+      "score": 0.671
+    },
+    {
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.654
+    },
+    {
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
+      "score": 0.651
+    },
+    {
+      "id": "Bc6Ojl2XS1w",
+      "title": "From Transcription to Live Music: Gemini's Audio Stack — Thor Schaeff, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.578
+    },
+    {
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.566
+    }
+  ]
 }

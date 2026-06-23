@@ -8,7 +8,42 @@
   "recommended": false,
   "summary": "A YouTube video from AI Search covering recent AI releases including HiDream-O1 Image, Gemma 4 MTP, Gene 26.5, Zaya1 8B, and other new models and tools. The video discusses self-evolving AI, robotic control improvements, voice interfaces, and local image generation models.",
   "writeup": "A weekly AI news roundup covering five or more model releases from a single week: a 3D scene reconstruction system, the new leading open-source image generator, an intrinsic video decomposition model, and Google's speculative-decoding speedup for Gemma 4. The through-line is the breadth and pace of open-source releases, with code published for nearly every result shown.",
-  "wh": "d816dcd7933cbf6f",
+  "wh": "f9198b53da6251c9",
+  "key_points": [
+    "RecGen reconstructs complete 3D geometry, textures, and positions of multiple objects from one or a few RGBD images, trained on nearly 200,000 high-quality 3D assets and over 3 million synthetic depth images, outperforming SAM3D on occluded-object benchmarks where lower score means better.",
+    "HiDream 01 image by Vivago AI is a 32 GB end-to-end pixel-space model with no VAE, built-in reasoning for complex layouts, supports up to 2048x2048 resolution, and ranks as the top open-source image generator on the Artificial Analysis independent leaderboard, ahead of Wan image and SD3 turbo.",
+    "UniVid X decomposes any input video into albedo, irradiance, surface normals, and an alpha channel using two separate 800 MB models, enabling relighting, background replacement, and character compositing in post-production.",
+    "Google's multi-token prediction for Gemma 4 uses speculative decoding, pairing the main model with a smaller drafter that predicts tokens ahead so the large model can verify and accept entire sequences at once, achieving up to 3.1x speedup and nearly 80 tokens per second with no degradation in output quality."
+  ],
+  "chapters": [
+    {
+      "t": 0,
+      "title": "Weekly AI Roundup Overview"
+    },
+    {
+      "t": 32,
+      "title": "RecGen: 3D Reconstruction from RGBD Images"
+    },
+    {
+      "t": 210,
+      "title": "HiDream 01: Open-Source Image Model"
+    },
+    {
+      "t": 421,
+      "title": "UniVid X: Intrinsic Video Decomposition"
+    },
+    {
+      "t": 600,
+      "title": "Gemma 4 Speculative Decoding Speedup"
+    }
+  ],
+  "insights": {
+    "source": "captions",
+    "model": "claude-sonnet-4-6",
+    "prompt_version": "v1-2026-06-13",
+    "generated": "2026-06-13"
+  },
+  "ih": "787b161d620586b4",
   "concepts": [
     {
       "slug": "multi-token-prediction",
@@ -44,31 +79,31 @@
       "id": "ZKfd9S9lOtc",
       "title": "The most insane week in AI",
       "channel": "AI Search",
-      "score": 0.706
+      "score": 0.707
     },
     {
       "id": "RdqYvdT74i0",
       "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
       "channel": "AI Search",
-      "score": 0.701
+      "score": 0.702
     },
     {
       "id": "7r_WJ9xpne0",
       "title": "Robot girlfriends, recursive AI agents, full AI research, Happy Horse: AI NEWS",
       "channel": "AI Search",
-      "score": 0.695
-    },
-    {
-      "id": "NnsQj2nDkKA",
-      "title": "Real gundams, top 3D generator, open-source world models, ChatGPT updates, new TTS: AI NEWS",
-      "channel": "AI Search",
-      "score": 0.679
+      "score": 0.693
     },
     {
       "id": "CzxqQJOswvo",
       "title": "Full body waifus, AI dreams, realtime AI music, open-source Gemini Omni: AI NEWS",
       "channel": "AI Search",
-      "score": 0.677
+      "score": 0.684
+    },
+    {
+      "id": "NnsQj2nDkKA",
+      "title": "Real gundams, top 3D generator, open-source world models, ChatGPT updates, new TTS: AI NEWS",
+      "channel": "AI Search",
+      "score": 0.678
     },
     {
       "id": "SxiRANj0xLs",
@@ -76,40 +111,5 @@
       "channel": "AI Search",
       "score": 0.659
     }
-  ],
-  "key_points": [
-    "RecGen reconstructs complete 3D geometry, textures, and positions of multiple objects from one or a few RGBD images, trained on nearly 200,000 high-quality 3D assets and over 3 million synthetic depth images, outperforming SAM3D on occluded-object benchmarks where lower score means better.",
-    "HiDream 01 image by Vivago AI is a 32 GB end-to-end pixel-space model with no VAE, built-in reasoning for complex layouts, supports up to 2048x2048 resolution, and ranks as the top open-source image generator on the Artificial Analysis independent leaderboard, ahead of Wan image and SD3 turbo.",
-    "UniVid X decomposes any input video into albedo, irradiance, surface normals, and an alpha channel using two separate 800 MB models, enabling relighting, background replacement, and character compositing in post-production.",
-    "Google's multi-token prediction for Gemma 4 uses speculative decoding, pairing the main model with a smaller drafter that predicts tokens ahead so the large model can verify and accept entire sequences at once, achieving up to 3.1x speedup and nearly 80 tokens per second with no degradation in output quality."
-  ],
-  "chapters": [
-    {
-      "t": 0,
-      "title": "Weekly AI Roundup Overview"
-    },
-    {
-      "t": 32,
-      "title": "RecGen: 3D Reconstruction from RGBD Images"
-    },
-    {
-      "t": 210,
-      "title": "HiDream 01: Open-Source Image Model"
-    },
-    {
-      "t": 421,
-      "title": "UniVid X: Intrinsic Video Decomposition"
-    },
-    {
-      "t": 600,
-      "title": "Gemma 4 Speculative Decoding Speedup"
-    }
-  ],
-  "insights": {
-    "source": "captions",
-    "model": "claude-sonnet-4-6",
-    "prompt_version": "v1-2026-06-13",
-    "generated": "2026-06-13"
-  },
-  "ih": "787b161d620586b4"
+  ]
 }

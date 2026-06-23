@@ -8,63 +8,7 @@
   "recommended": true,
   "summary": "Cyril Imhof discusses Fable 5, an Anthropic model designed for AI entrepreneurs, highlighting its features, guardrails, memory capabilities, and agentic payment integration compared to Mythos 5.",
   "writeup": "Episode 55 of the Swiss AI podcast for builders breaks down Claude 5 Sonnet (called 'Fable 5' by the hosts) and its raw counterpart 'Mythos 5', which Anthropic reserves for vetted enterprise participants without guardrails. The hosts dissect the model's aggressive safety routing (triggering a silent fallback to Opus 4.8 on sensitive topics), its 2x price increase over the prior generation, and the emerging design pattern of using an orchestrator model to delegate work rather than running Claude 5 end-to-end on every token. The through-line is a hardheaded return-on-AI framing: a 100% cost increase only makes sense if it translates into measurable productivity or revenue gains, and most product teams will need to route carefully to preserve margins.",
-  "wh": "980f2fb5a97fb743",
-  "concepts": [
-    {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "recursive-self-improvement",
-      "label": "recursive self-improvement"
-    },
-    {
-      "slug": "long-context-reasoning",
-      "label": "long-context reasoning"
-    }
-  ],
-  "similar": [
-    {
-      "id": "Ubazoyagym0",
-      "title": "Claude Mythos is FINALLY here (Fable 5)",
-      "channel": "Better Stack",
-      "score": 0.761
-    },
-    {
-      "id": "8TjCwdnZSp8",
-      "title": "Anthropic Just Dropped Fable 5 And It’s Terrifying",
-      "channel": "AI Revolution",
-      "score": 0.753
-    },
-    {
-      "id": "JQ4vBASZgLM",
-      "title": "Claude Fable 5 with Harness Engineering & Loops Will Do Everything.",
-      "channel": "Cyril Imhof",
-      "score": 0.726
-    },
-    {
-      "id": "SRhAYxJsaQE",
-      "title": "Anthropic's Brand New AI Just Started the Gold Rush (Fable 5)",
-      "channel": "Cyril Imhof",
-      "score": 0.717
-    },
-    {
-      "id": "9LzBF70aI6k",
-      "title": "The Fable 5 Backlash Is Getting Serious",
-      "channel": "AI Revolution",
-      "score": 0.696
-    },
-    {
-      "id": "lkR6mvqQQlk",
-      "title": "Is Claude Mythos Coming?",
-      "channel": "Nate Herk | AI Automation",
-      "score": 0.683
-    }
-  ],
+  "wh": "52ca745b11839a80",
   "key_points": [
     "Claude 5 Sonnet's guardrails are implemented as a silent rerouting layer: when the model flags a request in sensitive clusters (biotech, medicine, certain code patterns), the call is transparently fulfilled by Opus 4.8 and billed at Opus 4.8 rates, not Claude 5 rates, which is at least economically fair but means builders must verify which model actually answered.",
     "The 2x price increase on both input tokens and cached tokens versus the prior generation makes the orchestrator-versus-worker architecture critical: running Claude 5 as the sole model in a loop will exhaust context windows quickly and can cost 30,000 dollars or more on a single complex request, so the correct pattern is Claude 5 orchestrating and delegating aggressively to cheaper models.",
@@ -104,5 +48,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "718e8b31689dd22a"
+  "ih": "718e8b31689dd22a",
+  "concepts": [
+    {
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "recursive-self-improvement",
+      "label": "recursive self-improvement"
+    },
+    {
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
+    }
+  ],
+  "similar": [
+    {
+      "id": "Ubazoyagym0",
+      "title": "Claude Mythos is FINALLY here (Fable 5)",
+      "channel": "Better Stack",
+      "score": 0.76
+    },
+    {
+      "id": "8TjCwdnZSp8",
+      "title": "Anthropic Just Dropped Fable 5 And It’s Terrifying",
+      "channel": "AI Revolution",
+      "score": 0.755
+    },
+    {
+      "id": "JQ4vBASZgLM",
+      "title": "Claude Fable 5 with Harness Engineering & Loops Will Do Everything.",
+      "channel": "Cyril Imhof",
+      "score": 0.726
+    },
+    {
+      "id": "SRhAYxJsaQE",
+      "title": "Anthropic's Brand New AI Just Started the Gold Rush (Fable 5)",
+      "channel": "Cyril Imhof",
+      "score": 0.716
+    },
+    {
+      "id": "9LzBF70aI6k",
+      "title": "The Fable 5 Backlash Is Getting Serious",
+      "channel": "AI Revolution",
+      "score": 0.715
+    },
+    {
+      "id": "GRfznvYyuE8",
+      "title": "Claude Fable 5 (TESTED): UHM... It's actually not worth it..",
+      "channel": "AICodeKing",
+      "score": 0.691
+    }
+  ]
 }

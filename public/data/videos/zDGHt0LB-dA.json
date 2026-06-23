@@ -6,61 +6,9 @@
   "published": "2026-06-09T18:15:10+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Flash is a deployment framework from RunPod that simplifies GPU cloud deployment from an IDE using a single decorator on Python functions. It enables hot reload for rapid iteration, allowing model swaps with one line of code instead of container rebuilds.",
+  "summary": "Flash is a deployment tool that reduces GPU cloud iteration cycles to a single decorator on async Python functions, enabling hot reload and on-demand autoscaling. RunPod offers both pod-based and serverless options with per-second H100 pricing.",
   "writeup": "A live conference demo of RunPod's Flash Python SDK, which eliminates the commit-build-push-allocate loop that slows GPU model iteration by deploying a decorated async function directly from a local IDE onto RunPod's serverless GPU cloud. The presenter swaps Stable Diffusion models mid-session and then chains a three-model pipeline (Qwen 3 for prompt generation, DreamShaper for image synthesis, Nano Banana 2 for composition) to show that Flash's value scales with orchestration complexity. RunPod, founded in 2022 from spare crypto-mining GPUs, reached $120M ARR across 30-plus data centers in 10 countries.",
-  "wh": "cc4f8ec32c9a6580",
-  "concepts": [
-    {
-      "slug": "hot-reload",
-      "label": "hot reload"
-    },
-    {
-      "slug": "serverless-inference",
-      "label": "serverless inference"
-    },
-    {
-      "slug": "multi-model-chaining",
-      "label": "multi-model chaining"
-    }
-  ],
-  "similar": [
-    {
-      "id": "ILdE7FaAjVA",
-      "title": "Under 5 minutes to a deployed LLM endpoint — Audry Hsu, RunPod",
-      "channel": "AI Engineer",
-      "score": 0.644
-    },
-    {
-      "id": "k7HrSreatII",
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "channel": "Google Cloud Tech",
-      "score": 0.555
-    },
-    {
-      "id": "4FgAKzM_uYM",
-      "title": "MLFlow Crash Course: MLOps in Python",
-      "channel": "NeuralNine",
-      "score": 0.52
-    },
-    {
-      "id": "SKDJo2CopRs",
-      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
-      "channel": "AI Engineer",
-      "score": 0.518
-    },
-    {
-      "id": "5zdvwxEouQ0",
-      "title": "Step-3.7 Flash FULLY FREE Unlimited API + Hermes Agent: THIS IS ACTUALLY CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.511
-    },
-    {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
-      "channel": "AI Engineer",
-      "score": 0.507
-    }
-  ],
+  "wh": "8d59104b2aab101a",
   "key_points": [
     "Flash's core mechanism is a single Python decorator, @flash_endpoint, that packages only the decorated async function onto RunPod's GPU cloud while the surrounding orchestration code continues running locally, so the developer never leaves the IDE.",
     "Hot module reload means any code change is immediately repackaged and re-deployed to the GPU worker without rebuilding a Docker image or re-provisioning infrastructure, collapsing the inner iteration loop to seconds.",
@@ -105,5 +53,61 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "edd83fd079600aea"
+  "ih": "edd83fd079600aea",
+  "concepts": [
+    {
+      "slug": "hot-reload",
+      "label": "hot reload"
+    },
+    {
+      "slug": "serverless-inference",
+      "label": "serverless inference"
+    },
+    {
+      "slug": "model-serving",
+      "label": "model serving"
+    },
+    {
+      "slug": "autoscaling",
+      "label": "autoscaling"
+    }
+  ],
+  "similar": [
+    {
+      "id": "ILdE7FaAjVA",
+      "title": "Under 5 minutes to a deployed LLM endpoint — Audry Hsu, RunPod",
+      "channel": "AI Engineer",
+      "score": 0.728
+    },
+    {
+      "id": "k7HrSreatII",
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "channel": "Google Cloud Tech",
+      "score": 0.549
+    },
+    {
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.531
+    },
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.526
+    },
+    {
+      "id": "gHs5ZiY80PM",
+      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
+      "channel": "AI Engineer",
+      "score": 0.509
+    },
+    {
+      "id": "2xuFcmUAQUc",
+      "title": "This Claude Code Plugin Writes 94% Less Code (ponytail)",
+      "channel": "Better Stack",
+      "score": 0.503
+    }
+  ]
 }

@@ -9,70 +9,6 @@
   "summary": "Late interaction is a search paradigm that preserves token-level representations while enabling pre-computation of documents, contrasted against single-vector embeddings and cross-encoders. The video explains how late interaction models like ColBERT balance retrieval speed with relevance precision for large-scale collections.",
   "writeup": "This lesson introduces the late interaction paradigm, the conceptual foundation of multi-vector search, by contrasting it with no-interaction bi-encoders and early-interaction cross-encoders. The core idea: documents are encoded once into one vector per token (not pooled into a single vector), stored, and reused for every query, with token-level comparison happening only at scoring time. The result is pre-computation efficiency from independent encoding combined with fine-grained precision from token-level matching, a combination neither extreme achieves alone.",
   "wh": "6897b907424e7be6",
-  "concepts": [
-    {
-      "slug": "late-interaction",
-      "label": "late interaction"
-    },
-    {
-      "slug": "vector-search",
-      "label": "vector search"
-    },
-    {
-      "slug": "colbert",
-      "label": "ColBERT"
-    },
-    {
-      "slug": "cross-encoders",
-      "label": "cross-encoders"
-    },
-    {
-      "slug": "token-level-representations",
-      "label": "token-level representations"
-    },
-    {
-      "slug": "semantic-search",
-      "label": "semantic search"
-    }
-  ],
-  "similar": [
-    {
-      "id": "qIjPepsY35E",
-      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.683
-    },
-    {
-      "id": "35WO2_Q_0C0",
-      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.661
-    },
-    {
-      "id": "Fai9aY1PMCA",
-      "title": "How ColPali Models Work | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.648
-    },
-    {
-      "id": "THZE2O4kMDg",
-      "title": "Multi-Vector Embeddings in Qdrant | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.628
-    },
-    {
-      "id": "sQcuYWMS4bo",
-      "title": "Visual Interpretability of ColPali | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.61
-    },
-    {
-      "id": "vQKF1hO7hzU",
-      "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.607
-    }
-  ],
   "key_points": [
     "Late interaction encodes query and document independently, preserving one embedding vector per token rather than pooling into a single fixed-size vector, so a 200-token document yields 200 stored vectors.",
     "The critical scalability advantage is pre-computation: document token vectors are computed once and reused across millions of queries, unlike cross-encoders that must re-encode the full query-document pair every time.",
@@ -120,5 +56,69 @@
     "prompt_version": "v1-2026-06-13",
     "generated": "2026-06-13"
   },
-  "ih": "2f7e09bd6a7adc30"
+  "ih": "2f7e09bd6a7adc30",
+  "concepts": [
+    {
+      "slug": "late-interaction",
+      "label": "late interaction"
+    },
+    {
+      "slug": "vector-search",
+      "label": "vector search"
+    },
+    {
+      "slug": "colbert",
+      "label": "ColBERT"
+    },
+    {
+      "slug": "cross-encoders",
+      "label": "cross-encoders"
+    },
+    {
+      "slug": "token-level-representations",
+      "label": "token-level representations"
+    },
+    {
+      "slug": "semantic-search",
+      "label": "semantic search"
+    }
+  ],
+  "similar": [
+    {
+      "id": "qIjPepsY35E",
+      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.683
+    },
+    {
+      "id": "35WO2_Q_0C0",
+      "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.662
+    },
+    {
+      "id": "Fai9aY1PMCA",
+      "title": "How ColPali Models Work | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.648
+    },
+    {
+      "id": "THZE2O4kMDg",
+      "title": "Multi-Vector Embeddings in Qdrant | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.627
+    },
+    {
+      "id": "sQcuYWMS4bo",
+      "title": "Visual Interpretability of ColPali | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.609
+    },
+    {
+      "id": "vQKF1hO7hzU",
+      "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
+      "channel": "Qdrant Vector Search",
+      "score": 0.607
+    }
+  ]
 }
