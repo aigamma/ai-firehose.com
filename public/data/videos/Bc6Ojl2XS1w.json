@@ -6,9 +6,9 @@
   "published": "2026-06-09T16:33:12+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Google DeepMind's audio and multimodal stack integrates Gemini models for speech transcription with metadata extraction, real-time audio-to-audio processing with reasoning, and Lyria 3 for music generation with lyrics. The stack supports end-to-end audio workflows from understanding to generation via tool use.",
+  "summary": "Gemini 3 Flash Preview provides audio understanding via a single API call, extracting speaker labels, timestamps, emotion tags, language detection with translation, and summaries. It serves as the foundation for speech generation and multimodal audio processing in Google's audio stack.",
   "writeup": "A Google DeepMind developer-experience engineer walks through the current state of AI audio at DeepMind, covering three distinct capabilities built on Gemini 3 Flash: rich audio understanding (speaker diarization, emotion tagging, multilingual transcription in one API call), directive speech synthesis (a small set of base voices steerable by scene description and director-style notes), and Gemini 2.0 Flash Live, a native sound-to-sound real-time multimodal model. The through-line is that a shared audio-understanding substrate powers all three tiers, so the same comprehension that parses pacing and accent in transcription also enables accent-accurate synthesis and in-model reasoning without a text-LLM intermediary.",
-  "wh": "37f433d839520b97",
+  "wh": "0d6578a6ac23decb",
   "key_points": [
     "EchoScript, a demo app in the Google AI Studio gallery, extracts speaker labels, timestamps, language tags, emotion labels (happy, sad, angry, neutral), and an overall summary from a single Gemini 3 Flash Preview API call with a structured JSON response schema.",
     "Rather than maintaining a large voice library filtered by gender or accent, Gemini speech generation starts from roughly 30 base voices and accepts a natural-language director's note (scene setting, performance guidance, transcript) to steer accent and delivery, demonstrated by converting a standard American base voice to a convincing Irish brogue and Singaporean Singlish.",
@@ -47,66 +47,62 @@
   "ih": "bd95e7d2efcb9c6e",
   "concepts": [
     {
-      "slug": "multimodal-learning",
-      "label": "multimodal learning"
+      "slug": "audio-processing",
+      "label": "audio processing"
     },
     {
-      "slug": "text-to-speech",
-      "label": "text-to-speech"
+      "slug": "speaker-diarization",
+      "label": "speaker diarization"
     },
     {
-      "slug": "on-device-inference",
-      "label": "on-device inference"
+      "slug": "object-detection",
+      "label": "object detection"
     },
     {
-      "slug": "video-generation",
-      "label": "video generation"
+      "slug": "large-language-models",
+      "label": "large language models"
     },
     {
-      "slug": "tool-use",
-      "label": "tool use"
-    },
-    {
-      "slug": "reasoning",
-      "label": "reasoning"
+      "slug": "machine-translation",
+      "label": "machine translation"
     }
   ],
   "similar": [
     {
-      "id": "hv8ZI7foGZk",
-      "title": "Introducing Lyria 3 Pro",
-      "channel": "Google DeepMind",
-      "score": 0.645
-    },
-    {
       "id": "TNwKs39uSVk",
       "title": "Introducing Gemini 3.5 Live Translate",
       "channel": "Google for Developers",
-      "score": 0.64
+      "score": 0.691
     },
     {
       "id": "kn9Gh5HWqQs",
       "title": "NEW Gemini Features Explained — How to Use Google’s Latest AI Upgrade",
       "channel": "AI Master",
-      "score": 0.611
+      "score": 0.657
+    },
+    {
+      "id": "J02-39xtlt4",
+      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
+      "channel": "AI Search",
+      "score": 0.623
     },
     {
       "id": "rEcRuQkOOQo",
       "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
       "channel": "Google for Developers",
-      "score": 0.597
+      "score": 0.619
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
-      "channel": "AI Engineer",
-      "score": 0.593
+      "id": "1uypL1oNChI",
+      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
+      "channel": "AICodeKing",
+      "score": 0.607
     },
     {
-      "id": "vhbaZJtW2Hg",
-      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
-      "channel": "Cole Medin",
-      "score": 0.585
+      "id": "6VV5Gvmtrl4",
+      "title": "What’s new in Gemma 4?",
+      "channel": "Google DeepMind",
+      "score": 0.604
     }
   ]
 }

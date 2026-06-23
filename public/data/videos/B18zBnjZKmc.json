@@ -6,9 +6,9 @@
   "published": "2026-04-20T19:26:26+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Caleb Writes Code explains the challenges of LLM inference and surveys methods for efficient model loading and quantization. The video covers techniques like mmap, GGUF, AWQ, and EXL2, and compares inference engines including vLLM, llama.cpp, and TensorRT-LLM.",
+  "summary": "A video tutorial covering the technical challenges of LLM inference, including model loading, quantization methods, and inference engines. It discusses mmap, standard quantization, GGUF, AWQ, EXL2, FP8, NVFP4 and compares inference frameworks like llama.cpp, vLLM, SGLang, TensorRT-LLM, and TGI.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "93a0bde2060d8257",
+  "wh": "c883b8c0099dabd6",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -64,8 +64,8 @@
       "label": "quantization"
     },
     {
-      "slug": "model-serving",
-      "label": "model serving"
+      "slug": "model-loading",
+      "label": "model loading"
     },
     {
       "slug": "mmap",
@@ -92,12 +92,20 @@
       "label": "NVFP4"
     },
     {
-      "slug": "pre-fill",
-      "label": "pre-fill"
+      "slug": "prefill",
+      "label": "prefill"
     },
     {
-      "slug": "encoder-decoder",
-      "label": "encoder-decoder"
+      "slug": "decode",
+      "label": "decode"
+    },
+    {
+      "slug": "task-scheduling",
+      "label": "task scheduling"
+    },
+    {
+      "slug": "concurrency",
+      "label": "concurrency"
     }
   ],
   "similar": [
@@ -105,37 +113,37 @@
       "id": "-z2C3B29aho",
       "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
       "channel": "Keith AI",
-      "score": 0.581
+      "score": 0.59
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.576
-    },
-    {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.565
-    },
-    {
-      "id": "HfRVXadseCo",
-      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
-      "channel": "Better Stack",
-      "score": 0.56
-    },
-    {
-      "id": "Qd2bAzwH9uA",
-      "title": "Karpathy Bigram explained in 10min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.554
+      "score": 0.583
     },
     {
       "id": "SS-A8sE7hkw",
       "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.554
+      "score": 0.565
+    },
+    {
+      "id": "hzpAKA67dX0",
+      "title": "\"An endless demand for compute\" | Jonathan Ross, founder of Groq",
+      "channel": "Julia Turc",
+      "score": 0.564
+    },
+    {
+      "id": "I3YR5xVpcS4",
+      "title": "AGI is FAKE: The Biggest AI Lie Exposed",
+      "channel": "AI Master",
+      "score": 0.56
+    },
+    {
+      "id": "HfRVXadseCo",
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "channel": "Better Stack",
+      "score": 0.558
     }
   ]
 }

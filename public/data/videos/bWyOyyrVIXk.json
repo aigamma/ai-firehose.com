@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling challenges at Shopify, infrastructure team evolution, and why new database companies emerge cyclically every 15 years. The conversation covers database design principles, AI coding limitations, and recruitment of high-performing engineers.",
+  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling Shopify through infrastructure challenges, reflects on why new database companies emerge cyclically, and shares insights on engineering principles, AI coding limitations, and hiring top engineers in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "f649a2b08f556e08",
+  "wh": "a497374141342c45",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,62 +56,58 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "ai-coding-tools",
+      "label": "AI coding tools"
+    },
+    {
       "slug": "autoscaling",
       "label": "autoscaling"
     },
     {
       "slug": "software-engineering",
       "label": "software engineering"
-    },
-    {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "agent-limitations",
-      "label": "agent limitations"
     }
   ],
   "similar": [
     {
+      "id": "SC4hr_U8298",
+      "title": "He Raised $26M Betting on Probabilities, Not Guesses | Koah Labs, Nic Baird",
+      "channel": "EO",
+      "score": 0.54
+    },
+    {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.522
+      "score": 0.532
     },
     {
-      "id": "Ve_nYKw1TfA",
-      "title": "Built Two Unicorns in 12 Years. The Rule Has Never Changed | Glean, Arvind Jain",
+      "id": "bVSzAkuuymw",
+      "title": "How Gong Built a $7B+ Company in the Age of Vibe Coding | Amit Bendov",
       "channel": "EO",
-      "score": 0.518
-    },
-    {
-      "id": "NYEd5a_p9j8",
-      "title": "SQL Full Course - Build a Database and Deploy It",
-      "channel": "AWS Developers",
-      "score": 0.511
+      "score": 0.525
     },
     {
       "id": "nPc0hIreNaQ",
       "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
       "channel": "Cursor",
-      "score": 0.505
+      "score": 0.521
     },
     {
-      "id": "0nR3wYm602c",
-      "title": "AI and the Job Market in 2026",
-      "channel": "AWS Developers",
-      "score": 0.481
+      "id": "bjd98N1-Hwc",
+      "title": "3 takeaways on Software Ecology™️",
+      "channel": "Google for Developers",
+      "score": 0.517
     },
     {
       "id": "5ehxutchdXU",
       "title": "How to Steal Customers From Giants 600x Bigger than Your Startup | Pigment, Eléonore Crespo",
       "channel": "EO",
-      "score": 0.48
+      "score": 0.511
     }
   ]
 }

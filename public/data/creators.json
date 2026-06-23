@@ -145,7 +145,7 @@
           "url": "https://www.youtube.com/watch?v=0S8xe9ftGTM",
           "thumbnail": "https://i.ytimg.com/vi/0S8xe9ftGTM/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "The AI Engineer channel announces AIE World's Fair 2026 in San Francisco, highlighting expanded content, expo floor experiences, research-industry synergy, leadership tracks, and vertical-specific sessions. The event features $40k in sponsor offers and limited early-bird ticket availability.",
+          "summary": "AI Engineer announces AIE World's Fair 2026 in San Francisco, highlighting expanded content, expo floor, research-industry synergy, leadership tracks, and AI verticals. The event offers $40k in sponsor offers and YouTube discount code YOUTUBEPROMO for attendees.",
           "concepts": []
         },
         {
@@ -155,19 +155,23 @@
           "url": "https://www.youtube.com/watch?v=ObTPqBGsEbA",
           "thumbnail": "https://i.ytimg.com/vi/ObTPqBGsEbA/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Sandipan Bhaumik from Databricks presents a five-pillar production framework for enterprise AI agents: evaluation, observability, data foundation, multi-agent orchestration, and governance. The talk uses a retail banking case study where initial PoC failure was traced to stale embeddings after policy updates, demonstrating the critical need for comprehensive tracing and monitoring systems in production AI systems.",
+          "summary": "Sandipan Bhaumik from Databricks presents a production AI framework addressing enterprise agent deployment challenges. The \"five pillars\" approach integrates evaluation, observability, data foundations, multi-agent orchestration, and governance based on a case study where a retail bank's chatbot PoC failed until systematic measurement and tracing infrastructure identified root causes of production failures.",
           "concepts": [
             {
               "slug": "observability",
               "label": "observability"
             },
             {
-              "slug": "agent-evaluation",
-              "label": "agent evaluation"
+              "slug": "evaluation",
+              "label": "evaluation"
             },
             {
               "slug": "multi-agent-orchestration",
               "label": "multi-agent orchestration"
+            },
+            {
+              "slug": "governance",
+              "label": "governance"
             },
             {
               "slug": "production-deployment",
@@ -176,10 +180,6 @@
             {
               "slug": "tracing",
               "label": "tracing"
-            },
-            {
-              "slug": "governance",
-              "label": "governance"
             }
           ]
         },
@@ -190,31 +190,27 @@
           "url": "https://www.youtube.com/watch?v=btxGmN8RvNU",
           "thumbnail": "https://i.ytimg.com/vi/btxGmN8RvNU/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Agents often fail to search the web due to blocks, CAPTCHAs, or stale data but return answers as if successful. Using Bright Data's Web MCP enables real web access, improving reliability, citations, real-time results, and reducing hallucinations compared to agents without proper web connectivity.",
+          "summary": "Rafael Levi demonstrates how agents frequently fail to access the open web, falling back to stale training data while falsely claiming successful searches. The session compares blocked versus unblocked agent runs across major platforms and explains the technical barriers including anti-bot systems, JavaScript rendering, and CAPTCHA challenges that undermine agent reliability and citation accuracy.",
           "concepts": [
             {
-              "slug": "agent-web-access",
-              "label": "agent web access"
+              "slug": "agents",
+              "label": "agents"
             },
             {
-              "slug": "web-scraping",
-              "label": "web scraping"
-            },
-            {
-              "slug": "anti-bot-systems",
-              "label": "anti-bot systems"
-            },
-            {
-              "slug": "captcha-handling",
-              "label": "CAPTCHA handling"
+              "slug": "web-search",
+              "label": "web search"
             },
             {
               "slug": "hallucination",
               "label": "hallucination"
             },
             {
-              "slug": "real-time-results",
-              "label": "real-time results"
+              "slug": "anti-bot-systems",
+              "label": "anti-bot systems"
+            },
+            {
+              "slug": "real-time-access",
+              "label": "real-time access"
             }
           ]
         },
@@ -225,27 +221,39 @@
           "url": "https://www.youtube.com/watch?v=gHs5ZiY80PM",
           "thumbnail": "https://i.ytimg.com/vi/gHs5ZiY80PM/hqdefault.jpg",
           "kind": "technique",
-          "summary": "NVIDIA's approach combines dynamic quantization, latent caching, and step distillation to reduce diffusion model denoising from fifty steps to one to eight steps, achieving real-time video generation on Blackwell B200. The techniques are modular and composable, with trajectory-based and distribution-based distillation approaches for training student models.",
+          "summary": "Ziv Ilan's team at NVIDIA reduced diffusion model inference from 50 steps to 1-8 steps by combining dynamic quantization, latent caching, and step distillation. The approach uses trajectory-based or distribution-based distillation where a student model learns to match a teacher's output in far fewer denoising steps. NVIDIA's FastGen framework packages these techniques for production use.",
           "concepts": [
+            {
+              "slug": "step-distillation",
+              "label": "step distillation"
+            },
             {
               "slug": "quantization",
               "label": "quantization"
+            },
+            {
+              "slug": "knowledge-distillation",
+              "label": "knowledge distillation"
             },
             {
               "slug": "caching",
               "label": "caching"
             },
             {
-              "slug": "step-distillation",
-              "label": "step distillation"
+              "slug": "latent-caching",
+              "label": "latent caching"
             },
             {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
+              "slug": "trajectory-based-training",
+              "label": "trajectory-based training"
             },
             {
-              "slug": "model-distillation",
-              "label": "model distillation"
+              "slug": "distribution-based-training",
+              "label": "distribution-based training"
+            },
+            {
+              "slug": "test-time-compute-reduction",
+              "label": "test-time compute reduction"
             }
           ]
         }
@@ -266,23 +274,27 @@
           "url": "https://www.youtube.com/watch?v=UztrFXaSWv0",
           "thumbnail": "https://i.ytimg.com/vi/UztrFXaSWv0/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Top AI engineers use automated loops to repeatedly prompt agents instead of manual prompting. An orchestrator agent spins up worker agents in parallel, with the system storing all runs in a database and providing observability dashboards. This approach is more cost-effective than relying solely on expensive frontier models.",
+          "summary": "Top AI engineers use self-prompting loops instead of manual prompting, where agents prompt agents via an orchestrator that spawns parallel workers. This scales agent capability but requires cost control and hallucination mitigation through observability dashboards.",
           "concepts": [
-            {
-              "slug": "agentic-loops",
-              "label": "agentic loops"
-            },
             {
               "slug": "agent-orchestration",
               "label": "agent orchestration"
+            },
+            {
+              "slug": "agentic-loops",
+              "label": "agentic loops"
             },
             {
               "slug": "test-time-compute",
               "label": "test-time compute"
             },
             {
-              "slug": "prompt-automation",
-              "label": "prompt automation"
+              "slug": "parallel-agents",
+              "label": "parallel agents"
+            },
+            {
+              "slug": "self-prompting",
+              "label": "self-prompting"
             }
           ]
         },
@@ -293,19 +305,15 @@
           "url": "https://www.youtube.com/watch?v=oGE_Dwz-rMk",
           "thumbnail": "https://i.ytimg.com/vi/oGE_Dwz-rMk/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Omnigent is a meta-harness that orchestrates multiple coding agents (Claude Code, Codex, Pi) as interchangeable workers. It enables routing tasks to different models based on suitability, includes human-in-the-loop governance, and maintains sessions across devices. The framework is open source and designed to help engineers use the right model for each job.",
+          "summary": "Omnigent is a meta-harness that orchestrates multiple coding models like Claude Code, Codex, and Pi as interchangeable workers. It enables workflows where different models handle different tasks such as implementation and review, with human-in-the-loop governance and cross-device session persistence.",
           "concepts": [
             {
-              "slug": "agentic-coding",
-              "label": "agentic coding"
+              "slug": "multi-model-orchestration",
+              "label": "multi-model orchestration"
             },
             {
-              "slug": "model-orchestration",
-              "label": "model orchestration"
-            },
-            {
-              "slug": "multi-model-inference",
-              "label": "multi-model inference"
+              "slug": "agent-orchestration",
+              "label": "agent orchestration"
             },
             {
               "slug": "human-in-the-loop",
@@ -320,23 +328,19 @@
           "url": "https://www.youtube.com/watch?v=CrLMktzEzmM",
           "thumbnail": "https://i.ytimg.com/vi/CrLMktzEzmM/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Cole Medin discusses the sudden removal of Claude Fable 5 following a US government export-control directive reportedly triggered by claimed jailbreak vulnerability. He analyzes why Anthropic pulled the model from all customers overnight and shares benchmarking results comparing Fable 5 to Opus 4.8 before its removal.",
+          "summary": "Cole Medin discusses the suspension of Anthropic's Claude Fable 5 following a US government export-control directive, reportedly triggered by a jailbreak claim. He contrasts pre-suspension benchmarks of Fable 5 against Opus 4.8 and discusses the implications for developers building on large language models.",
           "concepts": [
-            {
-              "slug": "jailbreak",
-              "label": "jailbreak"
-            },
             {
               "slug": "export-control",
               "label": "export control"
             },
             {
-              "slug": "model-capability",
-              "label": "model capability"
+              "slug": "jailbreak",
+              "label": "jailbreak"
             },
             {
-              "slug": "benchmarking",
-              "label": "benchmarking"
+              "slug": "model-capability-benchmarking",
+              "label": "model capability benchmarking"
             }
           ]
         },
@@ -347,23 +351,27 @@
           "url": "https://www.youtube.com/watch?v=1wfY7GCVvh0",
           "thumbnail": "https://i.ytimg.com/vi/1wfY7GCVvh0/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Google's Agents CLI is an open source command-line tool for building and deploying AI agents to production. It provides sandbox isolation for agent code execution, audit trails, and integrates with AI coding assistants like Claude.",
+          "summary": "Google's Agents CLI is an open-source command-line tool that simplifies building and deploying AI agents to production. It provides agent identity management, sandboxed code execution, and audit trails for production-grade AI agents. The tool integrates with AI coding assistants like Claude and supports rapid development and deployment workflows.",
           "concepts": [
-            {
-              "slug": "agentic-systems",
-              "label": "agentic systems"
-            },
             {
               "slug": "agent-framework",
               "label": "agent framework"
             },
             {
-              "slug": "code-execution-sandbox",
-              "label": "code execution sandbox"
+              "slug": "cli-tool",
+              "label": "CLI tool"
             },
             {
-              "slug": "audit-trail",
-              "label": "audit trail"
+              "slug": "code-sandboxing",
+              "label": "code sandboxing"
+            },
+            {
+              "slug": "audit-trails",
+              "label": "audit trails"
+            },
+            {
+              "slug": "agentic-coding",
+              "label": "agentic coding"
             }
           ]
         }
@@ -382,16 +390,16 @@
           "published": "2026-06-18T14:04:35+00:00",
           "url": "https://www.youtube.com/watch?v=W6x-hb44C0c",
           "thumbnail": "https://i.ytimg.com/vi/W6x-hb44C0c/hqdefault.jpg",
-          "kind": "technique",
-          "summary": "AI Jason explains Loop Engineer, a technique for setting up AI agents. The video includes a free course on building AI agents, links to a GitHub template, and a workshop for learning the approach in practical context.",
+          "kind": "tool",
+          "summary": "AI Jason presents Loop Engineer as a framework or tool for constructing AI agents. The video includes a free course on building AI agents, code templates on GitHub, and a workshop in the AI Builder Club community.",
           "concepts": [
             {
-              "slug": "loop-engineer",
-              "label": "Loop Engineer"
+              "slug": "loop-engineering",
+              "label": "loop engineering"
             },
             {
-              "slug": "ai-agents",
-              "label": "AI agents"
+              "slug": "agentic-workflows",
+              "label": "agentic workflows"
             }
           ]
         },
@@ -402,31 +410,27 @@
           "url": "https://www.youtube.com/watch?v=ikH1--DSzMs",
           "thumbnail": "https://i.ytimg.com/vi/ikH1--DSzMs/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Video explains how to construct proactive AI agents and self-improving systems. Covers building autonomous feedback loops and demonstrates use cases including autonomous ads optimization and SEO. Mentions Loopany framework and the role of memory and tools in enabling autonomous agent capabilities.",
+          "summary": "Video explains how to build proactive agents and self-improving company systems through AI loops. Covers technical architectures, autonomous use cases like ads optimization and SEO, and tools like Loopany that enable agent memory and tool use.",
           "concepts": [
-            {
-              "slug": "autonomous-agents",
-              "label": "autonomous agents"
-            },
-            {
-              "slug": "feedback-loops",
-              "label": "feedback loops"
-            },
             {
               "slug": "proactive-agents",
               "label": "proactive agents"
             },
             {
+              "slug": "ai-loops",
+              "label": "AI loops"
+            },
+            {
+              "slug": "agent-memory",
+              "label": "agent memory"
+            },
+            {
+              "slug": "autonomous-optimization",
+              "label": "autonomous optimization"
+            },
+            {
               "slug": "self-improving-systems",
               "label": "self-improving systems"
-            },
-            {
-              "slug": "memory",
-              "label": "memory"
-            },
-            {
-              "slug": "tool-use",
-              "label": "tool use"
             }
           ]
         },
@@ -437,23 +441,23 @@
           "url": "https://www.youtube.com/watch?v=rIs802-bXDY",
           "thumbnail": "https://i.ytimg.com/vi/rIs802-bXDY/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AI Jason discusses the /goal feature and related autonomous coding capabilities, comparing emerging systems to Ralph-loop 2.0. He covers goal-setting practices, mission exploration for long-horizon tasks, and tools like Crewlet and Superdesign for building autonomous agents.",
+          "summary": "AI Jason discusses upcoming autonomous coding tools and agent frameworks, featuring demonstrations of the /goal feature for task orchestration and /Mission exploration for multi-step workflows. The video positions these capabilities as advances toward true autonomous coder systems.",
           "concepts": [
             {
               "slug": "autonomous-coding",
               "label": "autonomous coding"
             },
             {
-              "slug": "agentic-ai",
-              "label": "agentic AI"
+              "slug": "agent-frameworks",
+              "label": "agent frameworks"
             },
             {
-              "slug": "goal-driven-systems",
-              "label": "goal-driven systems"
+              "slug": "task-orchestration",
+              "label": "task orchestration"
             },
             {
-              "slug": "long-horizon-planning",
-              "label": "long-horizon planning"
+              "slug": "multi-step-workflows",
+              "label": "multi-step workflows"
             }
           ]
         },
@@ -464,19 +468,19 @@
           "url": "https://www.youtube.com/watch?v=M_AmPWmkpwA",
           "thumbnail": "https://i.ytimg.com/vi/M_AmPWmkpwA/hqdefault.jpg",
           "kind": "tool",
-          "summary": "OpenAI Symphony is a new AI coding paradigm demonstrated by AI Jason that includes codebase harness setup, auto-testing capabilities, and workflow configuration. The presentation covers Symphony's functionality, implementation details, and integration with development practices.",
+          "summary": "AI Jason discusses OpenAI Symphony as a new AI coding paradigm. The video covers what Symphony is, how it works, harness setup with auto testing, and workflow configuration for developers.",
           "concepts": [
             {
-              "slug": "agentic-workflows",
-              "label": "agentic workflows"
+              "slug": "auto-testing",
+              "label": "auto-testing"
             },
             {
-              "slug": "code-generation",
-              "label": "code generation"
+              "slug": "ai-assisted-coding",
+              "label": "AI-assisted coding"
             },
             {
-              "slug": "test-automation",
-              "label": "test automation"
+              "slug": "workflow-orchestration",
+              "label": "workflow orchestration"
             }
           ]
         }
@@ -497,11 +501,11 @@
           "url": "https://www.youtube.com/watch?v=Qd2bAzwH9uA",
           "thumbnail": "https://i.ytimg.com/vi/Qd2bAzwH9uA/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Caleb Writes Code presents Andrej Karpathy's explanation of bigram language models as a foundation for understanding larger language models like GPT. The video covers essential components including tokenization, embeddings, loss functions, softmax, and optimization with AdamW.",
+          "summary": "Andrej Karpathy's explanation of bigram language models, a simple but instructive approach that demonstrates tokenization, embedding, training, loss computation, and backpropagation. The video frames bigrams as essential preparation for understanding GPT and attention mechanisms in large language models.",
           "concepts": [
             {
               "slug": "bigram-language-model",
-              "label": "Bigram language model"
+              "label": "Bigram Language Model"
             },
             {
               "slug": "tokenization",
@@ -513,19 +517,23 @@
             },
             {
               "slug": "cross-entropy",
-              "label": "Cross entropy"
+              "label": "Cross Entropy"
             },
             {
               "slug": "softmax",
               "label": "Softmax"
             },
             {
+              "slug": "backpropagation",
+              "label": "Backpropagation"
+            },
+            {
               "slug": "adamw",
               "label": "AdamW"
             },
             {
-              "slug": "backpropagation",
-              "label": "Backpropagation"
+              "slug": "logits",
+              "label": "Logits"
             }
           ]
         },
@@ -536,7 +544,7 @@
           "url": "https://www.youtube.com/watch?v=wzHXUtkoY-c",
           "thumbnail": "https://i.ytimg.com/vi/wzHXUtkoY-c/hqdefault.jpg",
           "kind": "tool",
-          "summary": "NVIDIA released Nemotron 3 models in three sizes: Nano, Super, and Ultra. The series combines hybrid mamba transformer architecture, Mixture of Experts (Latent MoE), and MTP techniques. The models are positioned as open models with distinctive architectural choices compared to competitors.",
+          "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra models. The architecture combines hybrid mamba transformer, Mixture of Experts (latent), and Multi-token prediction approaches.",
           "concepts": [
             {
               "slug": "hybrid-mamba-transformer",
@@ -547,12 +555,12 @@
               "label": "Mixture of Experts"
             },
             {
-              "slug": "mtp",
-              "label": "MTP"
+              "slug": "multi-token-prediction",
+              "label": "Multi-token Prediction"
             },
             {
-              "slug": "latent-moe",
-              "label": "Latent MoE"
+              "slug": "test-time-compute",
+              "label": "test-time compute"
             }
           ]
         },
@@ -562,8 +570,8 @@
           "published": "2026-06-08T11:10:24+00:00",
           "url": "https://www.youtube.com/watch?v=-zIF318p7J8",
           "thumbnail": "https://i.ytimg.com/vi/-zIF318p7J8/hqdefault.jpg",
-          "kind": "tool",
-          "summary": "MiniMax M3 introduces MiniMax Sparse Attention, replacing full attention with sparse attention patterns. The model includes tiled and I/O optimizations for KV cache reads, reducing overhead in both prefill and decode stages of inference.",
+          "kind": "technique",
+          "summary": "MiniMax released M3, a model using Sparse Attention instead of full attention mechanisms. The M3 includes tiled optimizations and KV cache improvements that reduce memory bandwidth during prefill and decode stages through continuous sequential reads.",
           "concepts": [
             {
               "slug": "sparse-attention",
@@ -574,16 +582,16 @@
               "label": "KV cache optimization"
             },
             {
-              "slug": "prefill-optimization",
-              "label": "prefill optimization"
+              "slug": "tiling",
+              "label": "tiling"
             },
             {
-              "slug": "decode-optimization",
-              "label": "decode optimization"
+              "slug": "prefill",
+              "label": "prefill"
             },
             {
-              "slug": "i-o-efficiency",
-              "label": "I/O efficiency"
+              "slug": "decode",
+              "label": "decode"
             }
           ]
         },
@@ -594,19 +602,19 @@
           "url": "https://www.youtube.com/watch?v=FJxgz5pN4wU",
           "thumbnail": "https://i.ytimg.com/vi/FJxgz5pN4wU/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Pi is an agent framework highlighted for its unique approach to harnessing, enabling diverse use cases like OpenClaw. The video compares Pi against other frontier agent systems including Claude Code, Codex, Cursor, and Antigravity in terms of complexity and capability.",
+          "summary": "Pi is an agentic framework that provides a harness layer for composing and deploying AI agents. The video compares Pi against other agent platforms like Claude Code, Codex, Cursor, and Antigravity, discussing how it handles increasing complexity in agent composition.",
           "concepts": [
             {
-              "slug": "agent",
-              "label": "agent"
+              "slug": "agents",
+              "label": "agents"
             },
             {
-              "slug": "harnessing",
-              "label": "harnessing"
+              "slug": "harness-layer",
+              "label": "harness layer"
             },
             {
-              "slug": "framework",
-              "label": "framework"
+              "slug": "agentic-framework",
+              "label": "agentic framework"
             }
           ]
         }
@@ -626,19 +634,23 @@
           "url": "https://www.youtube.com/watch?v=PGrmbZ1TDmA",
           "thumbnail": "https://i.ytimg.com/vi/PGrmbZ1TDmA/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Agent Toolkit for AWS is a framework that equips AI coding agents with tools, documentation, best practices, and guardrails for working with AWS services. It provides access to up-to-date AWS knowledge and procedures to improve agent success rates and reduce inefficient attempts.",
+          "summary": "Agent Toolkit for AWS is a tool that equips AI coding agents with up-to-date AWS documentation, best practices, and guardrails to improve their effectiveness and reduce errors when interacting with AWS services. It bridges the gap between agents' general knowledge and current AWS capabilities.",
           "concepts": [
             {
-              "slug": "agents",
-              "label": "agents"
+              "slug": "ai-agents",
+              "label": "AI agents"
             },
             {
-              "slug": "tool-use",
-              "label": "tool use"
+              "slug": "agentic-tools",
+              "label": "agentic tools"
             },
             {
               "slug": "guardrails",
               "label": "guardrails"
+            },
+            {
+              "slug": "retrieval-augmentation",
+              "label": "retrieval augmentation"
             }
           ]
         },
@@ -649,23 +661,23 @@
           "url": "https://www.youtube.com/watch?v=sAYmTv6nKSY",
           "thumbnail": "https://i.ytimg.com/vi/sAYmTv6nKSY/hqdefault.jpg",
           "kind": "tool",
-          "summary": "AWS Bedrock enables developers to run Claude Code with data residency compliance and cost control. The service includes cross-region inference, prompt caching, the Mantle endpoint for efficient routing, per-team cost tracking, and Guardrails for content governance.",
+          "summary": "AWS Developers demonstrates how to run Claude Code on Amazon Bedrock, enabling developers to keep data within AWS infrastructure for compliance and residency requirements. The walkthrough covers setup, cross-region inference, prompt caching, the Bedrock Mantle endpoint, cost tracking, and content governance guardrails.",
           "concepts": [
             {
               "slug": "prompt-caching",
               "label": "prompt caching"
             },
             {
-              "slug": "multi-region-inference",
-              "label": "multi-region inference"
+              "slug": "cross-region-inference",
+              "label": "cross-region inference"
             },
             {
-              "slug": "cost-tracking",
-              "label": "cost tracking"
+              "slug": "agents",
+              "label": "agents"
             },
             {
-              "slug": "content-moderation",
-              "label": "content moderation"
+              "slug": "content-governance",
+              "label": "content governance"
             }
           ]
         },
@@ -676,23 +688,15 @@
           "url": "https://www.youtube.com/watch?v=0nR3wYm602c",
           "thumbnail": "https://i.ytimg.com/vi/0nR3wYm602c/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AWS Developers discusses how AI is changing tech recruitment and job hunting in 2026, emphasizing that networking and personal branding matter more than mass applications. The content argues that junior developers remain valuable, drawing parallels to historical technology transitions where jobs evolve rather than disappear.",
+          "summary": "AWS Developers discusses career strategies for tech workers in 2026 as AI screening reshapes hiring. The video argues that personal networking, building a brand, and continuous learning remain critical for junior developers, and that AI adoption will evolve jobs rather than eliminate them. Practical advice includes open source contribution, building portfolio projects, and the Feynman Principle for mastering concepts.",
           "concepts": [
-            {
-              "slug": "personal-branding",
-              "label": "personal branding"
-            },
-            {
-              "slug": "networking",
-              "label": "networking"
-            },
             {
               "slug": "ai-screening",
               "label": "AI screening"
             },
             {
-              "slug": "career-development",
-              "label": "career development"
+              "slug": "job-market-displacement",
+              "label": "job market displacement"
             }
           ]
         },
@@ -702,12 +706,12 @@
           "published": "2026-06-02T18:22:23+00:00",
           "url": "https://www.youtube.com/watch?v=j1wfE0SOBbE",
           "thumbnail": "https://i.ytimg.com/vi/j1wfE0SOBbE/hqdefault.jpg",
-          "kind": "technique",
-          "summary": "AWS Developers outlines five production deployment practices for TypeScript AI agents: streaming tool call events for UI responsiveness, layered authentication with API Gateway and Cognito, contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and distributed tracing. The patterns are demonstrated using Strands Agents SDK on AWS infrastructure.",
+          "kind": "opinion",
+          "summary": "AWS Developers presents five production best practices for deploying AI agents built with TypeScript: streaming tool call events for UI responsiveness, layered authentication using API Gateway and Cognito, type-safe database access with tenant isolation, guardrails and cost budgets via lifecycle hooks and model routing, and observability through metrics and OpenTelemetry tracing. The recommendations are demonstrated using Strands Agents SDK and AWS services.",
           "concepts": [
             {
-              "slug": "streaming-tool-calls",
-              "label": "streaming tool calls"
+              "slug": "streaming",
+              "label": "streaming"
             },
             {
               "slug": "authentication",
@@ -722,8 +726,8 @@
               "label": "guardrails"
             },
             {
-              "slug": "cost-budgets",
-              "label": "cost budgets"
+              "slug": "cost-control",
+              "label": "cost control"
             },
             {
               "slug": "observability",
@@ -732,10 +736,6 @@
             {
               "slug": "distributed-tracing",
               "label": "distributed tracing"
-            },
-            {
-              "slug": "ai-agents",
-              "label": "AI agents"
             }
           ]
         }
@@ -763,15 +763,15 @@
           "url": "https://www.youtube.com/watch?v=PbsocBPkoUc",
           "thumbnail": "https://i.ytimg.com/vi/PbsocBPkoUc/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "A video discussing the prevalence and definition of \"vibe coding\" among engineers, comparing OpenAI Codex and Claude Code capabilities, and examining vibe coding adoption at Google across 2024-2026. The content explores whether major tech companies and their engineers use informal or intuitive coding practices.",
+          "summary": "A video essay examining whether Google engineers use generative code tools. The discussion compares OpenAI Codex and Claude for code generation, surveys current practices at Google, and speculates on future adoption trends through 2026.",
           "concepts": [
-            {
-              "slug": "vibe-coding",
-              "label": "vibe coding"
-            },
             {
               "slug": "code-generation",
               "label": "code generation"
+            },
+            {
+              "slug": "test-time-compute",
+              "label": "test-time compute"
             }
           ]
         },
@@ -782,19 +782,15 @@
           "url": "https://www.youtube.com/watch?v=bpqFZBWcStU",
           "thumbnail": "https://i.ytimg.com/vi/bpqFZBWcStU/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Alberta Tech discusses how a company is affecting the open source landscape, featuring an interview with Mike about Malus. The video examines tensions between open source maintainers and commercial interests, questioning whether this represents an existential threat to open source.",
+          "summary": "Alberta Tech discusses the impact of Malus, a company or product, on the open source ecosystem. The video explores questions about open source maintenance sustainability and whether Malus represents a threat to open source development models.",
           "concepts": [
             {
               "slug": "open-source",
               "label": "open source"
             },
             {
-              "slug": "ai-agents",
-              "label": "AI agents"
-            },
-            {
-              "slug": "software-maintainability",
-              "label": "software maintainability"
+              "slug": "open-source-maintenance",
+              "label": "open source maintenance"
             }
           ]
         },
@@ -833,31 +829,23 @@
           "url": "https://www.youtube.com/watch?v=bVSzAkuuymw",
           "thumbnail": "https://i.ytimg.com/vi/bVSzAkuuymw/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Amit Bendov, CEO of Gong, argues that code alone does not create lasting software advantage. Real moats come from customer context, proprietary data, product experience, and operational scale. He contends that fears of AI destroying SaaS companies are exaggerated and that the best AI products build deep customer loyalty through raving fan experiences.",
+          "summary": "Amit Bendov argues that software competitive advantage depends on customer context, proprietary data, and operational complexity rather than code alone. He contends that the fear of AI destroying SaaS is exaggerated and that the best AI products create strong customer loyalty rather than simply optimizing for happiness.",
           "concepts": [
             {
-              "slug": "ai-moats",
-              "label": "AI moats"
-            },
-            {
-              "slug": "saas-strategy",
-              "label": "SaaS strategy"
+              "slug": "customer-context",
+              "label": "customer context"
             },
             {
               "slug": "proprietary-data",
               "label": "proprietary data"
             },
             {
-              "slug": "product-experience",
-              "label": "product experience"
+              "slug": "ai-products",
+              "label": "AI products"
             },
             {
-              "slug": "meeting-assistant",
-              "label": "meeting assistant"
-            },
-            {
-              "slug": "revenue-operations",
-              "label": "revenue operations"
+              "slug": "software-moats",
+              "label": "software moats"
             }
           ]
         },
@@ -868,19 +856,19 @@
           "url": "https://www.youtube.com/watch?v=9eHNYMuvQjA",
           "thumbnail": "https://i.ytimg.com/vi/9eHNYMuvQjA/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Catie Cuan argues that a \"ChatGPT Moment\" is coming for robotics but that humanoid robot development may be myopic. She contends that the real challenge is not intelligence but designing robots for delight and human interaction rather than utility alone, and that billions of robots will soon enter society requiring thoughtful design philosophy.",
+          "summary": "Catie Cuan argues that the humanoid robotics focus led by companies like 1X and Unitree represents a limited vision. She advocates for robot design prioritizing human interaction and delight over pure utility as the robotics industry scales to billions of units.",
           "concepts": [
             {
               "slug": "humanoid-robotics",
               "label": "humanoid robotics"
             },
             {
-              "slug": "human-robot-interaction",
-              "label": "human-robot interaction"
-            },
-            {
               "slug": "robot-design",
               "label": "robot design"
+            },
+            {
+              "slug": "human-robot-interaction",
+              "label": "human-robot interaction"
             }
           ]
         },
@@ -890,20 +878,20 @@
           "published": "2026-06-12T13:00:13+00:00",
           "url": "https://www.youtube.com/watch?v=5ehxutchdXU",
           "thumbnail": "https://i.ytimg.com/vi/5ehxutchdXU/hqdefault.jpg",
-          "kind": "tool",
-          "summary": "Pigment is an AI performance management platform that integrates finance, supply chain, HR, and sales data for business decision-making. The company has raised over $400 million, grows 2x year-over-year, and counts major firms like Figma, Brex, and Anthropic as customers.",
+          "kind": "opinion",
+          "summary": "Eléonore Crespo, co-founder of Pigment, discusses how her AI performance management platform competes against legacy enterprise software by consolidating finance, supply chain, HR, and sales data. She argues that even innovative giants like Google rely on outdated tools like spreadsheets and that building a full enterprise platform from day one, combined with customer trust and selective hiring, creates sustainable competitive advantage over established 30-year-old competitors.",
           "concepts": [
             {
-              "slug": "enterprise-planning",
-              "label": "enterprise planning"
+              "slug": "enterprise-platform",
+              "label": "enterprise platform"
             },
             {
-              "slug": "data-integration",
-              "label": "data integration"
+              "slug": "performance-management",
+              "label": "performance management"
             },
             {
-              "slug": "business-intelligence",
-              "label": "business intelligence"
+              "slug": "data-consolidation",
+              "label": "data consolidation"
             }
           ]
         },
@@ -914,19 +902,23 @@
           "url": "https://www.youtube.com/watch?v=xR9pPlLSwJI",
           "thumbnail": "https://i.ytimg.com/vi/xR9pPlLSwJI/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Jake Stauch, CEO of Serval, argues that passionate early users do not signal real product-market fit and contrasts \"pull\" demand (customers asking pricing) with \"push\" (keeping customers posted). He advises against formal customer interviews in favor of embedded relationships and emphasizes betting on the trajectory of AI models rather than their current state.",
+          "summary": "Jake Stauch, CEO of Serval, discusses how to distinguish real product-market fit from false signals. He argues that passionate users alone are not proof of PMF, that genuine fit manifests as customer pull rather than founder push, and that deep embedding with customers beats formal interviews for understanding product viability.",
           "concepts": [
             {
               "slug": "product-market-fit",
               "label": "product-market fit"
             },
             {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
+              "slug": "customer-pull",
+              "label": "customer pull"
             },
             {
-              "slug": "customer-discovery",
-              "label": "customer discovery"
+              "slug": "ai-model-timing",
+              "label": "AI model timing"
+            },
+            {
+              "slug": "customer-engagement",
+              "label": "customer engagement"
             }
           ]
         }
@@ -940,6 +932,40 @@
       "recommended": true,
       "blurb": "AI automation and workflow builds for real projects.",
       "videos": [
+        {
+          "videoId": "G_Orj_Z2Y8E",
+          "title": "AI Agents: Stop Button Building, Start Startup Speed! #shorts",
+          "published": "2026-06-22T06:59:32+00:00",
+          "url": "https://www.youtube.com/watch?v=G_Orj_Z2Y8E",
+          "thumbnail": "https://i.ytimg.com/vi/G_Orj_Z2Y8E/hqdefault.jpg",
+          "kind": "opinion",
+          "summary": "Cyril Imhof argues that building AI agents requires agility and startup-style iteration rather than traditional software engineering approaches. He contends that startups like Anthropic adapt faster to the unpredictable nature of AI agents than large technology companies.",
+          "concepts": [
+            {
+              "slug": "ai-agents",
+              "label": "AI agents"
+            }
+          ]
+        },
+        {
+          "videoId": "k0sr4Ly7wAU",
+          "title": "Microsoft & Nvidia Laptop: Local AI Revolutionized! #shorts",
+          "published": "2026-06-22T04:55:25+00:00",
+          "url": "https://www.youtube.com/watch?v=k0sr4Ly7wAU",
+          "thumbnail": "https://i.ytimg.com/vi/k0sr4Ly7wAU/hqdefault.jpg",
+          "kind": "tool",
+          "summary": "Microsoft integrates Nvidia's chip technology into laptops to enable on-device AI acceleration. This represents a hardware-level approach to local AI processing power.",
+          "concepts": [
+            {
+              "slug": "on-device-inference",
+              "label": "on-device inference"
+            },
+            {
+              "slug": "hardware-acceleration",
+              "label": "hardware acceleration"
+            }
+          ]
+        },
         {
           "videoId": "JQ4vBASZgLM",
           "title": "Claude Fable 5 with Harness Engineering & Loops Will Do Everything.",
@@ -987,56 +1013,6 @@
             {
               "slug": "geopolitical-ai-restrictions",
               "label": "geopolitical AI restrictions"
-            }
-          ]
-        },
-        {
-          "videoId": "MigowTEcJHA",
-          "title": "The Ultimate Second Brain for AI Entrepreneurs: Fable 5 Claude with Loops",
-          "published": "2026-06-11T19:35:45+00:00",
-          "url": "https://www.youtube.com/watch?v=MigowTEcJHA",
-          "thumbnail": "https://i.ytimg.com/vi/MigowTEcJHA/hqdefault.jpg",
-          "kind": "tool",
-          "summary": "Cyril Imhof discusses Fable 5, an Anthropic model designed for AI entrepreneurs, highlighting its features, guardrails, memory capabilities, and agentic payment integration compared to Mythos 5.",
-          "concepts": [
-            {
-              "slug": "agentic-ai",
-              "label": "agentic AI"
-            },
-            {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
-            },
-            {
-              "slug": "recursive-self-improvement",
-              "label": "recursive self-improvement"
-            },
-            {
-              "slug": "long-context-models",
-              "label": "long-context models"
-            }
-          ]
-        },
-        {
-          "videoId": "SRhAYxJsaQE",
-          "title": "Anthropic's Brand New AI Just Started the Gold Rush (Fable 5)",
-          "published": "2026-06-09T19:34:17+00:00",
-          "url": "https://www.youtube.com/watch?v=SRhAYxJsaQE",
-          "thumbnail": "https://i.ytimg.com/vi/SRhAYxJsaQE/hqdefault.jpg",
-          "kind": "tool",
-          "summary": "Cyril Imhof discusses Anthropic's new Claude Fable 5 model and its applications in regulated industries. The video covers new use cases for the model and introduces \"Know Your Agent\" methodology for effective context engineering in long-running AI applications.",
-          "concepts": [
-            {
-              "slug": "context-engineering",
-              "label": "context engineering"
-            },
-            {
-              "slug": "long-running-applications",
-              "label": "long-running applications"
-            },
-            {
-              "slug": "ai-agents",
-              "label": "AI agents"
             }
           ]
         }

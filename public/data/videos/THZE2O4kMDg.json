@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Tutorial on configuring Qdrant for multi-vector search using the MaxSim comparator, indexing documents with FastEmbed local inference, and querying with ColBERT embeddings. Covers collection setup, HNSW disabling for MaxSim compatibility, and on-disk vector storage for memory-constrained environments.",
   "writeup": "This lesson walks through configuring Qdrant for multi-vector search using ColBERT's late interaction model, covering the key collection parameters (228-dimensional token embeddings, dot-product similarity, MaxSim comparator, and disabled HNSW indexing) that make the approach work. It explains why HNSW is incompatible with MaxSim due to the asymmetric query-dependency problem, then addresses disk offloading as a memory trade-off that sacrifices subsecond latency. The closing segment previews the same late interaction paradigm applied to visual documents via ColPali, which replaces text token embeddings with image patch embeddings while keeping the MaxSim scoring intact.",
-  "wh": "d9363242afafcab7",
+  "wh": "97fd4fcec32fa110",
   "key_points": [
     "ColBERT uses 228-dimensional vectors per token rather than a single vector per document, so a collection storing many vectors per document requires a dedicated multi-vector config with the MaxSim comparator set in Qdrant.",
     "HNSW indexing must be disabled (M set to 0) for multi-vector MaxSim search because HNSW cannot handle the asymmetric, query-dependent nature of the MaxSim distance computation.",
@@ -84,8 +84,8 @@
       "label": "vector database"
     },
     {
-      "slug": "indexing",
-      "label": "indexing"
+      "slug": "on-disk-indexing",
+      "label": "on-disk indexing"
     }
   ],
   "similar": [
@@ -105,13 +105,13 @@
       "id": "8HrvD5o2w8M",
       "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.627
+      "score": 0.628
     },
     {
       "id": "35WO2_Q_0C0",
       "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.625
+      "score": 0.624
     },
     {
       "id": "5ypH0t_X-4k",

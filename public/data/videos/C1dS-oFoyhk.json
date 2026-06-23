@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-22T03:36:08+00:00",
-  "kind": "opinion",
+  "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin benchmarked mixed-provider LLM workflows using Archon to test whether Claude Opus or Kimi K2.6 should handle planning versus implementation in coding tasks. The test evaluated 12 PRs across three GitHub issues on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
+  "summary": "Archon is a benchmarking tool that enables systematic testing of multi-provider workflows. In this case, it ran a coding workflow four different ways across three GitHub issues to measure performance of different provider combinations.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "93dd2d7c77db9f92",
+  "wh": "52a99ac6e9c9fe4d",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,58 +56,50 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "mixed-provider-workflows",
-      "label": "mixed-provider workflows"
+      "slug": "multi-provider-workflows",
+      "label": "multi-provider workflows"
     },
     {
       "slug": "benchmark",
       "label": "benchmark"
-    },
-    {
-      "slug": "long-horizon-planning",
-      "label": "long-horizon planning"
-    },
-    {
-      "slug": "code-generation",
-      "label": "code generation"
     }
   ],
   "similar": [
     {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
       "channel": "Cole Medin",
-      "score": 0.63
-    },
-    {
-      "id": "-z2C3B29aho",
-      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
-      "channel": "Keith AI",
-      "score": 0.575
-    },
-    {
-      "id": "ptKzEs9-qm4",
-      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
-      "channel": "AICodeKing",
-      "score": 0.567
+      "score": 0.582
     },
     {
       "id": "RSk6R_2GYZo",
       "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
       "channel": "Cole Medin",
-      "score": 0.559
+      "score": 0.58
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.547
-    },
-    {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "id": "4azVjKhqDzw",
+      "title": "Building the App Store for Agentic Engineering",
       "channel": "Cole Medin",
-      "score": 0.541
+      "score": 0.572
+    },
+    {
+      "id": "ptKzEs9-qm4",
+      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
+      "channel": "AICodeKing",
+      "score": 0.561
+    },
+    {
+      "id": "mWLDn49_8HA",
+      "title": "Graphify + Obsidian + Claude Code = CHEAT CODE",
+      "channel": "Chase AI",
+      "score": 0.544
+    },
+    {
+      "id": "_D-z201rEoA",
+      "title": "Claude Oceanus V1-P (Mythos?- FULLY TESTED): I TESTED IT & IT'S ACTUALLY CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.542
     }
   ]
 }

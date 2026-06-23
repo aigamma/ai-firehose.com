@@ -6,9 +6,9 @@
   "published": "2026-06-11T16:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WebMCP is a proposed web standard by Google that enables AI agents to interact with websites through structured tools instead of DOM parsing and screenshot-based reasoning. It offers both declarative HTML attributes and imperative JavaScript APIs for defining actions agents can call directly.",
+  "summary": "WebMCP is a proposed web standard from Google that allows AI agents to interact with web applications through structured tools instead of DOM manipulation. It provides declarative HTML attributes for auto-generated schemas and an imperative JavaScript API for custom multi-step workflows.",
   "writeup": "A Google Chrome DevRel engineer introduces Web MCP (Web Model Context Protocol), a proposed browser standard that lets sites expose their capabilities as structured tools so in-browser AI agents can act reliably without scraping DOM trees, accessibility trees, or screenshots. The talk demonstrates the idea with a maze escape game driven entirely by Gemini 1.5 calling registered tools, then explains the two implementation paths: a declarative HTML attribute API for standard forms and an imperative JavaScript API for complex multi-step flows. The through-line is that the web was built for human eyes, and Web MCP is the minimal addition that makes existing sites legible to agents without requiring a full rewrite.",
-  "wh": "b899c58faca8ca77",
+  "wh": "5807c9e6770e2ed5",
   "key_points": [
     "Unassisted browser agents today parse the full DOM, inspect the accessibility tree, take screenshots, and compute pixel coordinates before clicking, a process that is slow, brittle, and expensive in tokens, and can still fail if an ad shifts the layout after all that work.",
     "Web MCP is a proposed web standard from the Chrome team that exposes a site's capabilities as a named, schema-described menu of tools; instead of guessing what a page does, an in-browser agent calls the tool directly, which the Chrome team describes as the 'USB-C of AI agent interactions.'",
@@ -60,12 +60,20 @@
       "label": "AI agents"
     },
     {
-      "slug": "model-context-protocol",
-      "label": "Model Context Protocol"
+      "slug": "tool-calling",
+      "label": "tool calling"
     },
     {
       "slug": "web-scraping",
       "label": "web scraping"
+    },
+    {
+      "slug": "structured-actions",
+      "label": "structured actions"
+    },
+    {
+      "slug": "api-integration",
+      "label": "API integration"
     }
   ],
   "similar": [
@@ -73,37 +81,37 @@
       "id": "zTZ0qunQXnM",
       "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.657
+      "score": 0.673
     },
     {
       "id": "_B4Pv9ttFgY",
       "title": "Building Agent Interfaces: Lessons from Chrome DevTools (MCP) for Agents — Michael Hablich, Google",
       "channel": "AI Engineer",
-      "score": 0.628
+      "score": 0.642
+    },
+    {
+      "id": "CgwslR4pgL4",
+      "title": "Governed agents: Looker + MCP explained",
+      "channel": "Google Cloud Tech",
+      "score": 0.619
     },
     {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.595
-    },
-    {
-      "id": "1rF_SZZ3yWs",
-      "title": "How marketers are using Google Antigravity",
-      "channel": "Google Antigravity",
-      "score": 0.59
-    },
-    {
-      "id": "fTf3QBUM3Zg",
-      "title": "Mission Report Ep. 03 | Antigravity Updates",
-      "channel": "Google Antigravity",
-      "score": 0.588
+      "score": 0.612
     },
     {
       "id": "okx6dUzDPRY",
       "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
       "channel": "Google Cloud Tech",
-      "score": 0.581
+      "score": 0.6
+    },
+    {
+      "id": "z4CXn4CKHQI",
+      "title": "Automate SAP order-to-cash with multi-agent AI & Google Agent Development Kit (ADK)",
+      "channel": "Google Cloud Tech",
+      "score": 0.592
     }
   ]
 }

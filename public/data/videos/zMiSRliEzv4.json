@@ -6,9 +6,9 @@
   "published": "2026-06-10T13:00:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PostHog is building an automated pipeline that detects product signals such as rage clicks, error spikes, and customer messages, then uses background agents to group related issues, analyze codebases, and automatically open pull requests. The system aims to replace manual developer triage workflows with autonomous problem detection and resolution.",
+  "summary": "PostHog is building an autonomous agent pipeline that detects product signals like rage clicks and error spikes, groups related issues using embeddings and LLM queries, analyzes the codebase, and automatically opens pull requests. The system learns that embedding LLM-generated queries yields better signal clustering than embedding raw signals, specificity matters more than coverage, and agent patterns can be optimized into cheaper one-shot calls.",
   "writeup": "Josh from PostHog describes a production pipeline that converts observability signals (errors, logs, session replays, Slack messages) directly into GitHub pull requests without requiring a developer to look at a dashboard. The pipeline runs a Claude-powered research agent in a Modal sandbox, groups signals by LLM-generated semantic queries rather than raw embeddings, assesses actionability, then clones the repo, writes a fix, and iterates the PR until CI is green. The central argument is that the current observe-investigate-ticket-PR cycle takes hours to days and is the right target for full automation.",
-  "wh": "f65beea1e18fec24",
+  "wh": "c017e5543135305a",
   "key_points": [
     "Off-the-shelf embedding models cluster signals by structural type (all errors together, all Slack messages together) rather than by the underlying problem, so PostHog switched to embedding LLM-generated queries derived from each signal, which made cross-source grouping work significantly better.",
     "The research agent runs the Claude agent SDK inside a Modal sandbox with three tool sources: PostHog's own MCP server for pulling in additional correlated data, codebase context, and external MCPs (Linear and Notion) that ground the agent's reasoning and improve result quality.",
@@ -80,46 +80,46 @@
       "label": "test-time compute"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "clustering",
+      "label": "clustering"
     }
   ],
   "similar": [
     {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.614
-    },
-    {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.608
+      "score": 0.625
     },
     {
-      "id": "zTZ0qunQXnM",
-      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.57
+      "score": 0.61
     },
     {
       "id": "luBkbzjo-TA",
       "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
       "channel": "Cole Medin",
-      "score": 0.568
+      "score": 0.598
     },
     {
-      "id": "KLSuFPj2ld0",
-      "title": "Building safe Payment Infrastructure for the autonomous economy — Steve Kaliski, Stripe",
+      "id": "zTZ0qunQXnM",
+      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.538
+      "score": 0.59
     },
     {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
-      "channel": "AI Engineer",
-      "score": 0.535
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
+      "channel": "Cursor",
+      "score": 0.578
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.576
     }
   ]
 }
