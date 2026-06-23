@@ -6,9 +6,9 @@
   "published": "2026-05-22T18:52:18+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Agent harness engineering is a growing technique for managing agentic AI systems. The video traces the evolution from prompt engineering through context engineering and harness engineering, covering loops and architecture patterns.",
+  "summary": "Agent harness engineering is a technique for managing and controlling agentic AI systems. The video explains the evolution from prompt engineering and context engineering to harness engineering, covering loops and architecture patterns that enable more reliable agent behavior.",
   "writeup": "This video traces the evolution from prompt engineering through context engineering to agent harness engineering, explaining why each prior approach hit a ceiling on long-horizon tasks. The core argument is that context summarization, the mechanism coding agents used to manage finite context windows, caused agents to silently misreport task completion and produce partially finished work. Harness engineering breaks the loop by giving agents a fresh, structured context at each iteration rather than a compressed accumulation of previous state.",
-  "wh": "2f9730713531b9a3",
+  "wh": "cf5db00f0be094c7",
   "key_points": [
     "Context summarization, the technique coding agents used to shrink a filling context window, introduced a critical failure mode: agents would assume tasks were finished or skip untested features when the summary lost fidelity, producing half-completed outputs on long tasks like cloning an entire website.",
     "Harness engineering introduces a loop architecture where the agent starts each iteration with a clean context and a strict entry and exit protocol, typically generating a requirements document first, then selecting and completing one task per loop, testing and documenting each step before the next iteration.",
@@ -52,8 +52,8 @@
   "ih": "3bb21d928370a046",
   "concepts": [
     {
-      "slug": "agent-harnesses",
-      "label": "agent harnesses"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "prompt-engineering",
@@ -62,52 +62,44 @@
     {
       "slug": "context-management",
       "label": "context management"
-    },
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "loops",
-      "label": "loops"
     }
   ],
   "similar": [
     {
-      "id": "mGYr9VqQnEI",
-      "title": "Harness Engineering Is AI’s New Gold Rush",
-      "channel": "AI Revolution",
-      "score": 0.743
-    },
-    {
       "id": "ulNsa0sD8N0",
       "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
       "channel": "Cole Medin",
-      "score": 0.737
+      "score": 0.769
+    },
+    {
+      "id": "mGYr9VqQnEI",
+      "title": "Harness Engineering Is AI’s New Gold Rush",
+      "channel": "AI Revolution",
+      "score": 0.699
+    },
+    {
+      "id": "kYkZI3oj2W4",
+      "title": "Multi AI Agent Systems: When One AI Brain Isn’t Enough",
+      "channel": "IBM Technology",
+      "score": 0.655
     },
     {
       "id": "W6x-hb44C0c",
       "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.673
+      "score": 0.652
     },
     {
-      "id": "FJxgz5pN4wU",
-      "title": "Pi Agent explained in 6min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.665
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.63
     },
     {
-      "id": "zqUdtL5l9yM",
-      "title": "Hermes Agentic OS is Insane... just watch",
-      "channel": "Jack Roberts",
-      "score": 0.646
-    },
-    {
-      "id": "3zvWHe94xCY",
-      "title": "Agents Are Just Loops",
-      "channel": "AWS Developers",
-      "score": 0.643
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.627
     }
   ]
 }

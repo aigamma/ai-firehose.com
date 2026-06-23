@@ -6,9 +6,9 @@
   "published": "2026-05-06T19:32:23+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Agent Toolkit for AWS provides AI coding agents with up-to-date documentation, best practices, and tested procedures for working with AWS services. It includes agent skills as markdown runbooks, plugins, and MCP configuration to improve agent success rates and reduce errors.",
+  "summary": "Agent Toolkit for AWS provides AI coding agents with up-to-date documentation, best practices, and guardrails for working with AWS services. It includes agent skills (Markdown runbooks), plugins, and MCP configuration to improve success rates and auditability through services like Lambda, API Gateway, and CloudTrail.",
   "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
-  "wh": "adbd6ad4e2ba7322",
+  "wh": "6a4bde9374b1ef81",
   "key_points": [
     "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
     "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
@@ -64,12 +64,16 @@
       "label": "AI agents"
     },
     {
-      "slug": "model-context-protocol",
-      "label": "Model Context Protocol"
+      "slug": "mcp",
+      "label": "MCP"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "agent-skills",
+      "label": "agent skills"
+    },
+    {
+      "slug": "guardrails",
+      "label": "guardrails"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "PGrmbZ1TDmA",
       "title": "Agent Toolkit for AWS Explained in 2 Minutes",
       "channel": "AWS Developers",
-      "score": 0.854
-    },
-    {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.655
+      "score": 0.831
     },
     {
       "id": "1wfY7GCVvh0",
       "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
       "channel": "Cole Medin",
-      "score": 0.64
+      "score": 0.649
+    },
+    {
+      "id": "PjrXaC5UsIw",
+      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
+      "channel": "IBM Technology",
+      "score": 0.622
     },
     {
       "id": "RGhunHLnVIg",
       "title": "Announcing Google Antigravity SDK",
       "channel": "Google Antigravity",
-      "score": 0.62
+      "score": 0.615
     },
     {
-      "id": "omytUseAJy8",
-      "title": "Coding with ADK to beat a text adventure game",
+      "id": "yeRvxe7MRj4",
+      "title": "Your first agent configuration with MCP and Looker",
       "channel": "Google Cloud Tech",
-      "score": 0.606
+      "score": 0.597
     },
     {
-      "id": "1rF_SZZ3yWs",
-      "title": "How marketers are using Google Antigravity",
-      "channel": "Google Antigravity",
-      "score": 0.599
+      "id": "j1wfE0SOBbE",
+      "title": "5 Tips for Deploying AI Agents to Production",
+      "channel": "AWS Developers",
+      "score": 0.586
     }
   ]
 }

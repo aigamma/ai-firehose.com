@@ -6,9 +6,9 @@
   "published": "2026-06-11T15:19:44+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Model Context Protocol (MCP) is a standard for connecting AI applications with external tools, APIs, databases, and services. The video explains MCP architecture, client-server communication via JSON-RPC, local vs remote servers, and real-world integration patterns for AI agents using frameworks like LangGraph, CrewAI, and Claude Desktop.",
+  "summary": "Model Context Protocol (MCP) is a standard that enables AI agents and applications to communicate with external tools, APIs, databases, and services through a client-server architecture. The protocol supports JSON-RPC for communication and can operate via STDIO or HTTP transports, allowing AI agents to access resources like Google Drive, GitHub, and local files through a unified interface.",
   "writeup": "A ground-up introduction to the Model Context Protocol (MCP) that builds the case through two concrete pain points: the explosion of bespoke API integration code in AI apps, and the inability to reuse that code across agentic frameworks such as LangGraph, OpenAI Agent SDK, and CrewAI. MCP resolves both by introducing a uniform client/server split where the AI app embeds only a thin MCP client that speaks JSON-RPC, while MCP servers encapsulate all integration complexity for any external resource, including REST APIs, databases, local files, GitHub, and internal systems. The through-line is portability and separation of concerns: one MCP server can be reused unchanged across every framework, and any number of servers can be composed inside a single multi-agent application.",
-  "wh": "dc384791f5d1fc13",
+  "wh": "c73912027951834c",
   "key_points": [
     "Without MCP, each external service (weather, Google Drive, GitHub, PostgreSQL) requires its own bespoke integration code written to that API's request and response format, and that code must be rewritten from scratch for every agentic framework (LangGraph, OpenAI Agent SDK, CrewAI, Agno) the developer adopts.",
     "MCP splits the integration problem into two roles: an MCP client embedded in the AI application that handles only connection establishment, and an MCP server that owns all API authentication, request formatting, and response parsing, leaving the AI app with minimal integration surface.",
@@ -63,12 +63,12 @@
       "label": "JSON-RPC"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "ai-agent-tool-integration",
+      "label": "AI agent tool integration"
     },
     {
-      "slug": "system-architecture",
-      "label": "system architecture"
+      "slug": "grid-architecture",
+      "label": "grid architecture"
     }
   ],
   "similar": [
@@ -76,37 +76,37 @@
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.757
+      "score": 0.743
     },
     {
       "id": "CgwslR4pgL4",
       "title": "Governed agents: Looker + MCP explained",
       "channel": "Google Cloud Tech",
-      "score": 0.643
+      "score": 0.637
     },
     {
-      "id": "Yt5xBk7Xbs0",
-      "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
-      "channel": "Code With Aarohi",
-      "score": 0.621
-    },
-    {
-      "id": "Gh1E9VgXZWs",
-      "title": "Bridging Design Systems and Code with MCP and AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.614
+      "id": "V80QfRa7t_c",
+      "title": "This MCP makes Hermes Agent 10x more powerful",
+      "channel": "David Ondrej",
+      "score": 0.628
     },
     {
       "id": "yeRvxe7MRj4",
       "title": "Your first agent configuration with MCP and Looker",
       "channel": "Google Cloud Tech",
-      "score": 0.601
+      "score": 0.621
     },
     {
-      "id": "okx6dUzDPRY",
-      "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
-      "channel": "Google Cloud Tech",
-      "score": 0.569
+      "id": "ghJmWQCIHRM",
+      "title": "The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google",
+      "channel": "AI Engineer",
+      "score": 0.611
+    },
+    {
+      "id": "Gh1E9VgXZWs",
+      "title": "Bridging Design Systems and Code with MCP and AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.604
     }
   ]
 }

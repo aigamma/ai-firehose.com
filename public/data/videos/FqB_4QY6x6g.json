@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "AI struggles reliably to edit complex Word documents because their internal structure operates like software with its own logic and rules, not like plain text files. Humans excel at single-document editing while maintaining coherence, whereas computers can scale to thousands of documents only if every change is verifiable and trusted. The speaker argues that treating documents as software rather than files is necessary for reliable AI document editing at scale.",
   "writeup": "A CS50 talk by the director of engineering at Superdoc traces why current LLMs fail at real document editing tasks: they cannot reliably produce native DocX mutations such as track changes or structural list edits, and they sometimes silently claim to have done so when they have not. The through-line is that DocX files are closer to software than plain text, carrying structure, state, and cross-referencing semantics, so a subtly wrong AI edit can make a contract legally incoherent rather than merely imperfect. Superdoc is presented as the infrastructure layer that lets developers embed a real, programmable DocX editor in the browser alongside an AI interface, making document-aware AI a tractable engineering problem.",
-  "wh": "ba264fe76726eeb1",
+  "wh": "f40c39199df9a419",
   "key_points": [
     "ChatGPT, when asked to add a paragraph using track changes, silently ignored the track-changes requirement and returned a modified file with no revision markers, leaving a user unable to audit what changed in a long contract.",
     "Claude refused the track-changes task entirely rather than attempting it incorrectly, but on a second task (splitting a numbered list item in a license agreement) it understood the intent and returned correct text inline instead of writing it back into the document.",
@@ -51,8 +51,8 @@
   "ih": "0a4888dfc2b78bba",
   "concepts": [
     {
-      "slug": "document-structure",
-      "label": "document structure"
+      "slug": "scaffold-structure",
+      "label": "scaffold structure"
     },
     {
       "slug": "image-editing",
@@ -69,28 +69,28 @@
   ],
   "similar": [
     {
-      "id": "4wMRXmLpdA8",
-      "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.61
-    },
-    {
       "id": "EDDgH3hs-5U",
       "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
       "channel": "Google Cloud Tech",
-      "score": 0.605
+      "score": 0.611
     },
     {
       "id": "jYvNSLQ_Qio",
       "title": "Are senior developers going back to writing code by hand?",
       "channel": "Google Cloud Tech",
-      "score": 0.6
+      "score": 0.611
     },
     {
-      "id": "ain0OoBx74A",
-      "title": "Did Apple (Finally) Get AI Right At WWDC?, Anthropic’s Worry, Microsoft vs. OpenAI",
-      "channel": "Alex Kantrowitz",
-      "score": 0.596
+      "id": "4wMRXmLpdA8",
+      "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.609
+    },
+    {
+      "id": "jHFX-8cA07U",
+      "title": "The Internet Is No Longer Human",
+      "channel": "AI Revolution",
+      "score": 0.593
     },
     {
       "id": "ODXdXJ322Qw",
@@ -99,10 +99,10 @@
       "score": 0.592
     },
     {
-      "id": "Nn2eXwch-K0",
-      "title": "we JUST figured out how AI thinks",
-      "channel": "Wes Roth",
-      "score": 0.582
+      "id": "5GsWP9djV8s",
+      "title": "AI Agents VS Basic Chatbots: The FUTURE is HERE! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.59
     }
   ]
 }

@@ -6,25 +6,33 @@
   "published": "2026-06-18T00:00:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "AI engineers use automated loops that prompt agents repeatedly instead of manual prompting. This approach has agents prompting agents, with orchestrators spinning up parallel workers. The pattern reduces human friction but increases computational cost and hallucination risk.",
+  "summary": "AI engineers use automated loops that prompt agents iteratively rather than direct prompting, reducing manual intervention. This approach scales with orchestrator-worker patterns where an orchestrator spawns parallel agent tasks, storing traces in a database with observability dashboards for monitoring.",
   "writeup": "Cole Medin explains loop-based orchestration, a pattern where AI engineers automate agent prompting instead of issuing prompts by hand. An orchestrator chains agents together and spawns parallel workers for tasks, storing observations in a database for monitoring and reliability. The trade-offs are direct: the method cuts manual prompting but raises token costs and can compound hallucinations without an observability harness in place.",
-  "wh": "bc84cc0d0d969868",
+  "wh": "07a4b1f3c6db40be",
   "concepts": [
     {
-      "slug": "loops",
-      "label": "loops"
+      "slug": "loop-agents",
+      "label": "loop agents"
     },
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "orchestrator-worker-pattern",
+      "label": "orchestrator-worker pattern"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "observability",
+      "label": "observability"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     }
   ],
   "similar": [
@@ -32,37 +40,37 @@
       "id": "JlwwyNtHsCI",
       "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
       "channel": "AI Revolution",
-      "score": 0.745
+      "score": 0.729
     },
     {
-      "id": "6ad-LyammTI",
-      "title": "STOP Using Claude to Code. Do THIS Instead.",
-      "channel": "Austin Marchese",
-      "score": 0.717
-    },
-    {
-      "id": "YAS4ojuhbW4",
-      "title": "Stop Prompting Claude. Start Loop Engineering.",
-      "channel": "Austin Marchese",
-      "score": 0.705
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.719
     },
     {
       "id": "fEZ0GZ-vKhg",
       "title": "Don’t miss this Claude update",
       "channel": "Jack Roberts",
-      "score": 0.69
+      "score": 0.699
+    },
+    {
+      "id": "6ad-LyammTI",
+      "title": "STOP Using Claude to Code. Do THIS Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.698
     },
     {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.69
+      "score": 0.697
     },
     {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.679
+      "id": "pmoDeA3RBZY",
+      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
+      "channel": "AI Engineer",
+      "score": 0.691
     }
   ]
 }

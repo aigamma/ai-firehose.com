@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Anthropic's Managed Agents platform enables building incident-investigator agents through simple abstractions: Agent, Environment, and Session. The tutorial covers streaming events, custom tool integration, and deployment patterns for production use cases including subagents, vaults, and memory.",
   "writeup": "Isabella He of Anthropic's Applied AI team walks through the architecture of Claude Managed Agents and leads a hands-on workshop for building a production-ready incident response agent. The session traces the progression from the raw Messages API through the Agent SDK to the fully managed harness, explaining the specific design decisions and measured performance gains that distinguish each layer. The through-line is that as models grow more capable and tasks grow more complex, the primitives required to run agents reliably in production outpace what individual developers should manage themselves.",
-  "wh": "736ed80b0c5112b6",
+  "wh": "6972b8121e2b62be",
   "key_points": [
     "Claude Managed Agents decouples the agent loop (the 'brain') from tool execution environments (the 'hands'), a split that reduced P95 time-to-first-token latency by over 90% and tightens security by preventing the agent from accessing credentials without explicit decryption.",
     "Anthropic observed a behavior called 'context anxiety' in Sonnet 4.5, where the model wrapped up tasks early even with context window space remaining; the team added harness-level mitigations, then saw the behavior disappear entirely in Opus 4.5, illustrating why harnesses must evolve alongside model generations rather than being built once.",
@@ -64,8 +64,8 @@
       "label": "AI agents"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
       "slug": "tool-use",
@@ -82,16 +82,16 @@
   ],
   "similar": [
     {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.61
-    },
-    {
       "id": "j1wfE0SOBbE",
       "title": "5 Tips for Deploying AI Agents to Production",
       "channel": "AWS Developers",
-      "score": 0.605
+      "score": 0.645
+    },
+    {
+      "id": "yeRvxe7MRj4",
+      "title": "Your first agent configuration with MCP and Looker",
+      "channel": "Google Cloud Tech",
+      "score": 0.608
     },
     {
       "id": "Zqno_vux6d8",
@@ -103,19 +103,19 @@
       "id": "0YXe7u-i1qU",
       "title": "Getting Started with Managed Agents",
       "channel": "Google for Developers",
-      "score": 0.594
+      "score": 0.596
     },
     {
-      "id": "3zvWHe94xCY",
-      "title": "Agents Are Just Loops",
-      "channel": "AWS Developers",
-      "score": 0.591
-    },
-    {
-      "id": "l6KeLCuB90o",
-      "title": "3 patterns to build long-running AI agents",
+      "id": "JsNbFnT0QCw",
+      "title": "Building long-running AI agents with ADK",
       "channel": "Google Cloud Tech",
-      "score": 0.589
+      "score": 0.584
+    },
+    {
+      "id": "sCRPT6dRE4k",
+      "title": "AgentCore Managed Harness: Getting Started",
+      "channel": "AWS Developers",
+      "score": 0.582
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-05-22T20:15:37+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "AWS Developers demonstrates five techniques to reduce hallucinations and improve AI agent accuracy: semantic tool selection to filter context, graph RAG for precise reasoning, multi-agent validation for error detection, symbolic guardrails in code, and runtime steering for self-correction. Each technique is demonstrated with before-and-after examples using Strands Agents.",
+  "summary": "AWS Developers presents five techniques to reduce AI hallucinations and token waste in agent systems: semantic tool selection filters context to reduce tokens from thousands to under 300, graph RAG uses computed database queries for precise answers, multi-agent validation catches failures before user exposure, symbolic guardians enforce rules via Python code rather than prompts, and runtime guardrails enable self-correction without blocking users. Demonstrations use a travel agent built with Strands Agents framework.",
   "writeup": "A live-coded walkthrough of five production techniques for reducing token waste and catching failures in AI agents, demonstrated on a 31-tool travel agent built with AWS Strands Agents. The core argument is that agent reliability problems are engineering problems solved in code, not prompt-tuning problems. The first two techniques receive full demos: semantic tool selection (embedding-based filtering that drops per-call token counts from roughly 2,000 to under 400 while raising accuracy) and Graph-RAG (replacing vector search with Neo4j Cypher queries to get computed, verifiable answers for aggregation and multi-hop questions where RAG fabricates confident-sounding estimates).",
-  "wh": "eeaf60918b8dd39e",
+  "wh": "e66eacfac95df408",
   "key_points": [
     "Semantic tool selection embeds each tool's name and docstring into a local FAISS vector store using sentence-transformers, then filters the agent's available tools per query so the model sees only the 3 most relevant tools instead of all 29, cutting per-call token usage from roughly 2,000 tokens to under 400 and raising accuracy from 31% to meaningfully higher.",
     "Standard RAG breaks down for aggregation and relationship queries (average rating across all hotels, count of hotels with a pool) because vector search returns a top-N chunk sample and the model presents its estimate as fact with full confidence; Graph-RAG replaces this with a Neo4j knowledge graph where the agent writes a Cypher query that executes across the full dataset and returns a computed, verifiable result without consuming additional tokens.",
@@ -71,8 +71,8 @@
       "label": "multi-agent systems"
     },
     {
-      "slug": "guardrails",
-      "label": "guardrails"
+      "slug": "neurosymbolic",
+      "label": "neurosymbolic"
     },
     {
       "slug": "runtime-guardrails",
@@ -81,44 +81,52 @@
     {
       "slug": "ai-agents",
       "label": "AI agents"
+    },
+    {
+      "slug": "context-window-optimization",
+      "label": "context window optimization"
+    },
+    {
+      "slug": "procedural-generation",
+      "label": "procedural generation"
     }
   ],
   "similar": [
     {
-      "id": "kYkZI3oj2W4",
-      "title": "Multi AI Agent Systems: When One AI Brain Isn’t Enough",
-      "channel": "IBM Technology",
-      "score": 0.632
+      "id": "j1wfE0SOBbE",
+      "title": "5 Tips for Deploying AI Agents to Production",
+      "channel": "AWS Developers",
+      "score": 0.656
     },
     {
-      "id": "jxHIw_OA8_I",
-      "title": "Stop perfecting your prompt. Do this instead",
+      "id": "gbI7THwqEjk",
+      "title": "Most people get these 3 AI terms wrong",
       "channel": "Jeff Su",
-      "score": 0.627
+      "score": 0.656
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.636
+    },
+    {
+      "id": "EtxJJJ_7WQY",
+      "title": "1,000 AI agents, 0 LLM calls?",
+      "channel": "Google Cloud Tech",
+      "score": 0.628
     },
     {
       "id": "p1ak5NfWuEA",
       "title": "Most AI agents are fake (here's a 10-second test)",
       "channel": "Jeff Su",
-      "score": 0.625
+      "score": 0.627
     },
     {
-      "id": "j1wfE0SOBbE",
-      "title": "5 Tips for Deploying AI Agents to Production",
-      "channel": "AWS Developers",
-      "score": 0.622
-    },
-    {
-      "id": "3zvWHe94xCY",
-      "title": "Agents Are Just Loops",
-      "channel": "AWS Developers",
-      "score": 0.62
-    },
-    {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.598
+      "id": "jxHIw_OA8_I",
+      "title": "Stop perfecting your prompt. Do this instead",
+      "channel": "Jeff Su",
+      "score": 0.623
     }
   ]
 }

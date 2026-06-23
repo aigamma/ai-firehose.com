@@ -1,13 +1,116 @@
 {
   "id": "feed-forward-network",
   "label": "Feed-Forward Network",
-  "kind": "technique",
-  "category": "Transformers and LLMs",
   "aliases": [
     "FFN",
     "position-wise feed-forward",
     "MLP block"
   ],
+  "kind": "technique",
+  "attention": 4,
+  "first_seen": "2026-06-01T17:58:11Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 145,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "critic-networks",
+      "label": "critic networks",
+      "score": 0.808
+    },
+    {
+      "id": "neural-cellular-automata",
+      "label": "neural cellular automata",
+      "score": 0.775
+    },
+    {
+      "id": "backpropagation",
+      "label": "backpropagation",
+      "score": 0.761
+    },
+    {
+      "id": "rectified-flow",
+      "label": "Rectified Flow",
+      "score": 0.758
+    },
+    {
+      "id": "deep-learning",
+      "label": "deep learning",
+      "score": 0.756
+    },
+    {
+      "id": "deterministic-fan-out",
+      "label": "deterministic fan-out",
+      "score": 0.756
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.254
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.502
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.377
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 1
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.202
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.694
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.507
+    }
+  ],
+  "top_items": [
+    {
+      "title": "GPT explained visually..",
+      "url": "https://www.youtube.com/watch?v=7gkaWaDEpHg",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-06-23T16:49:54+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "HumanNOVA: Photorealistic, Universal and Rapid 3D Human Avatar Modeling from a Single Image",
+      "url": "http://arxiv.org/abs/2606.02573v1",
+      "author_or_channel": "Hezhen Hu, Wangbo Zhao, Lanqing Guo",
+      "published_at": "2026-06-01T17:58:11Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Transformers and LLMs",
   "durable": true,
   "source": "authored",
   "definition": "The position-wise two-layer network in every transformer block after attention: it expands each token's vector to a wider hidden dimension, applies a nonlinearity, and projects back, identically and independently at every position. If attention mixes information between tokens, the FFN is where each token thinks about what it gathered, and interpretability reads it as a key-value memory where a model's facts live.",
@@ -61,12 +164,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/feed-forward-network.png",
     "alt": "The transformer feed-forward module. An input vector of size d-emb passes through a linear layer that expands it to a wider hidden size d-ffn, then an activation function, then a second linear layer that projects it back down to d-emb. A compact symbol on the right abbreviates the whole block as FFN.",

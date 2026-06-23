@@ -4,11 +4,11 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-10T17:00:25+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": false,
-  "summary": "Kobie Crawford demonstrates that a 4B model trained with reinforcement learning to use tools like table schema inspection and self-correction outperforms a 235B model on database query tasks. A single training run costing under $500 taught the smaller model to call get_table_name first, inspect schemas, self-correct on errors, and achieve strong transfer to multi-table reasoning problems on FinQA.",
+  "summary": "Kobie Crawford argues that smaller models trained with reinforcement learning to use tools correctly outperform much larger models on query tasks. A 4B model trained by Snorkel with RL costing under $500 solved a task where Qwen 3 235B hallucinated, demonstrating that tool discipline and self-correction behavior matter more than reasoning depth for structured query problems.",
   "writeup": "Kobe Crawford (Snorkel AI) and the UC Berkeley RLLM team demonstrate that a 4-billion-parameter model fine-tuned with reinforcement learning on expert-curated data can outperform a 235-billion-parameter reasoning model on financial tool-use tasks. The central argument is that raw reasoning scale is the wrong solution to the wrong problem: a domain-specific task like SQL-based financial analysis does not require Terence Tao-level general mathematical breadth, and RL is better suited than supervised fine-tuning for reshaping tool-use behavior. The talk grounds the claim in a live failure demo where the 235B model queries a non-existent table twice and then hallucinates an answer, a failure no amount of general reasoning prevented.",
-  "wh": "e5d1174ce2e103ad",
+  "wh": "116e2ea542456774",
   "key_points": [
     "A 235-billion-parameter quantized reasoning model, when asked for the year-over-year YouTube ads revenue growth rate from 2023 to 2024, failed to inspect available database tables, queried a non-existent table twice, and fell back to a hallucinated answer, illustrating that raw reasoning capability does not guarantee disciplined tool use.",
     "The RLLM team frames oversized model selection as the 'Terence Tao effect': deploying a mathematician capable of any domain to do routine SQL queries and arithmetic is a category mismatch, and the domain-specific behavioral discipline a financial analyst needs is not the same as general brilliance.",
@@ -63,12 +63,16 @@
       "label": "recursive self-improvement"
     },
     {
-      "slug": "behavior-training",
-      "label": "behavior training"
+      "slug": "fine-tuning",
+      "label": "fine-tuning"
     },
     {
-      "slug": "parameter-efficient-fine-tuning",
-      "label": "parameter-efficient fine-tuning"
+      "slug": "hallucination-detection",
+      "label": "hallucination detection"
+    },
+    {
+      "slug": "rubric-based-rewards",
+      "label": "rubric-based rewards"
     }
   ],
   "similar": [
@@ -76,37 +80,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.627
-    },
-    {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.584
+      "score": 0.639
     },
     {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.578
+      "score": 0.593
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.573
+      "score": 0.583
     },
     {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
-      "channel": "Cole Medin",
-      "score": 0.567
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.581
     },
     {
-      "id": "7jrZ4JqeGyY",
-      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
+      "id": "mGYr9VqQnEI",
+      "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.566
+      "score": 0.575
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.574
     }
   ]
 }

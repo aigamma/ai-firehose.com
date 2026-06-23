@@ -6,59 +6,59 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe architecture isolates untrusted third-party app code in ChatGPT. An outer iframe loads a lightweight script from a controlled subdomain, which in turn loads the actual app HTML via srcdoc into an inner frame, preventing CSP violations and sandbox escapes while maintaining origin-indexed storage.",
+  "summary": "ChatGPT apps and MCP servers use double nested iframes to balance security and functionality. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app via srcdoc into an inner frame, preventing CSP violations, origin leakage, and sandbox escapes while avoiding cross-app storage collisions.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "ec8bc9c4e2203467",
+  "wh": "7bcf451107150e75",
   "concepts": [
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "double-iframe",
+      "label": "double iframe"
     },
     {
       "slug": "same-origin-policy",
       "label": "same-origin policy"
     },
     {
-      "slug": "sandbox-attribute",
-      "label": "sandbox attribute"
+      "slug": "srcdoc",
+      "label": "srcdoc"
     }
   ],
   "similar": [
     {
-      "id": "xghOGIafjfw",
-      "title": "ego lite: I gave Claude Code & Codex a browser to run web automation — here's what happened",
-      "channel": "AICodeKing",
-      "score": 0.57
-    },
-    {
-      "id": "2pXbyAd7pr0",
-      "title": "ChatGPT Is Getting Its Biggest Upgrade Ever",
-      "channel": "AI Revolution",
-      "score": 0.556
-    },
-    {
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.553
+      "score": 0.552
     },
     {
       "id": "MP_UtNV7m18",
       "title": "This is why my AI Agents never guess",
       "channel": "JavaScript Mastery",
-      "score": 0.548
+      "score": 0.513
+    },
+    {
+      "id": "2pXbyAd7pr0",
+      "title": "ChatGPT Is Getting Its Biggest Upgrade Ever",
+      "channel": "AI Revolution",
+      "score": 0.508
+    },
+    {
+      "id": "B704UxLyqWA",
+      "title": "Claude Code Leak: What's Happening?",
+      "channel": "Jordan Urbs",
+      "score": 0.499
+    },
+    {
+      "id": "CgwslR4pgL4",
+      "title": "Governed agents: Looker + MCP explained",
+      "channel": "Google Cloud Tech",
+      "score": 0.497
     },
     {
       "id": "6ipGnvXTF1Y",
       "title": "Why your AI prompt constraints don't work",
       "channel": "JavaScript Mastery",
-      "score": 0.548
-    },
-    {
-      "id": "EDDgH3hs-5U",
-      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
-      "channel": "Google Cloud Tech",
-      "score": 0.547
+      "score": 0.495
     }
   ]
 }

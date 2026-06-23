@@ -1,14 +1,124 @@
 {
   "id": "residual-connection",
   "label": "Residual Connection",
-  "kind": "technique",
-  "category": "Deep Learning Architectures",
   "aliases": [
     "skip connection",
     "residual",
     "shortcut connection",
     "ResNet"
   ],
+  "kind": "technique",
+  "attention": 10,
+  "first_seen": "2026-05-01T03:30:27+00:00",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 145,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "higher-order-connectivity",
+      "label": "Higher-order Connectivity",
+      "score": 0.786
+    },
+    {
+      "id": "grounding",
+      "label": "grounding",
+      "score": 0.783
+    },
+    {
+      "id": "connectors",
+      "label": "connectors",
+      "score": 0.761
+    },
+    {
+      "id": "grounded-generation",
+      "label": "grounded generation",
+      "score": 0.754
+    },
+    {
+      "id": "in-band-signaling",
+      "label": "in-band signaling",
+      "score": 0.753
+    },
+    {
+      "id": "gradient-interference",
+      "label": "gradient interference",
+      "score": 0.735
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.471
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.262
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.259
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.368
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.336
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.341
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.111
+    }
+  ],
+  "top_items": [
+    {
+      "title": "GPT explained visually..",
+      "url": "https://www.youtube.com/watch?v=7gkaWaDEpHg",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-06-23T16:49:54+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Exploding and vanishing gradients in deep neural networks: the effect of residual connections",
+      "url": "http://arxiv.org/abs/2606.17013v1",
+      "author_or_channel": "Vivek S Borkar",
+      "published_at": "2026-06-15T17:46:16Z",
+      "kind": "technique"
+    },
+    {
+      "title": "The insane engineering of Deepseek V4",
+      "url": "https://www.youtube.com/watch?v=XJUpuOBpT-4",
+      "author_or_channel": "AI Search",
+      "published_at": "2026-05-01T03:30:27+00:00",
+      "kind": "tool"
+    }
+  ],
+  "category": "Deep Learning Architectures",
   "durable": true,
   "source": "authored",
   "definition": "A shortcut that adds a layer's input directly to its output, so the layer only has to learn a residual correction rather than the full mapping. The addition gives the gradient an unobstructed identity path backward, which is what made networks of hundreds of layers trainable for the first time, one of the quietly load-bearing ideas in deep learning.",
@@ -62,12 +172,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/residual-connection.svg",
     "alt": "Two network blocks side by side: a regular block on the left whose stacked layers must learn the full mapping f(x), and a residual block on the right where a skip arrow adds the input x back to the block output, so the layers learn g(x) and the block computes f(x) equals g(x) plus x.",

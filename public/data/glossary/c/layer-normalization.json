@@ -1,12 +1,115 @@
 {
   "id": "layer-normalization",
   "label": "Layer Normalization",
-  "kind": "technique",
-  "category": "Deep Learning Architectures",
   "aliases": [
     "layernorm",
     "LN"
   ],
+  "kind": "technique",
+  "attention": 4,
+  "first_seen": "2026-06-01T17:34:38Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 145,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "correspondence-consistency-loss",
+      "label": "Correspondence Consistency Loss",
+      "score": 0.796
+    },
+    {
+      "id": "pre-norm-layers",
+      "label": "pre-norm layers",
+      "score": 0.793
+    },
+    {
+      "id": "backpropagation",
+      "label": "backpropagation",
+      "score": 0.792
+    },
+    {
+      "id": "variance-regularization",
+      "label": "variance regularization",
+      "score": 0.788
+    },
+    {
+      "id": "gradient-stability",
+      "label": "gradient stability",
+      "score": 0.788
+    },
+    {
+      "id": "deep-learning",
+      "label": "deep learning",
+      "score": 0.781
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.539
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.163
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.12
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.556
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.332
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.911
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.198
+    }
+  ],
+  "top_items": [
+    {
+      "title": "GPT explained visually..",
+      "url": "https://www.youtube.com/watch?v=7gkaWaDEpHg",
+      "author_or_channel": "Caleb Writes Code",
+      "published_at": "2026-06-23T16:49:54+00:00",
+      "kind": "tool"
+    },
+    {
+      "title": "Why Not Hyperparameter-Friendly Optimisation? A Monotonic Adaptive Norm Rescaling Approach For Long-Tailed Recognition",
+      "url": "http://arxiv.org/abs/2606.02526v1",
+      "author_or_channel": "Shuo Zhang, Chenqi Li, Tingting Zhu",
+      "published_at": "2026-06-01T17:34:38Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Deep Learning Architectures",
   "durable": true,
   "source": "authored",
   "definition": "Normalization that standardizes each example across its own features rather than across the batch, making it entirely batch-independent. That single change removes batch normalization's weaknesses, no train/inference gap, no collapse at batch size one, clean handling of variable-length sequences, which is why it is the normalization of the transformer.",
@@ -60,12 +163,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/layer-normalization.webp",
     "alt": "Across the features of each example, an arbitrary distribution is rescaled to a normalized one; labeled features and layer normalization.",

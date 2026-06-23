@@ -7,30 +7,25 @@
     "sparsely-gated mixture of experts"
   ],
   "kind": "technique",
-  "attention": 56,
+  "attention": 51,
   "first_seen": "2026-05-01T03:30:27+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 99.9,
-    "momentum": 87,
+    "ratio": 88.5,
+    "momentum": 91.3,
     "sparkline": [
-      18,
-      17,
-      17,
-      16,
       15,
       14,
+      14,
       13,
-      12
+      12,
+      11,
+      10,
+      10
     ]
   },
   "neighbors": [
-    {
-      "id": "model-ensembling",
-      "label": "model ensembling",
-      "score": 0.779
-    },
     {
       "id": "mixture-density-representation",
       "label": "mixture-density representation",
@@ -49,39 +44,44 @@
     {
       "id": "logit-mixing",
       "label": "logit mixing",
-      "score": 0.743
+      "score": 0.744
     },
     {
       "id": "vanishing-gradients",
       "label": "vanishing gradients",
       "score": 0.738
+    },
+    {
+      "id": "expertise",
+      "label": "expertise",
+      "score": 0.737
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.04
+      "position": 0.024
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.133
+      "position": -0.077
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": -0.165
+      "position": -0.163
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.295
+      "position": 0.215
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.288
+      "position": -0.323
     },
     {
       "slug": "neural-symbolic",
@@ -91,7 +91,7 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.18
+      "position": -0.187
     }
   ],
   "top_items": [
@@ -124,24 +124,24 @@
       "kind": "technique"
     },
     {
-      "title": "FULLY FREE Unlimited API + OpenCode: MiniMax M3,Step 3.7 Flash,Nemotron 3 Ultra,GLM,Kimi!",
-      "url": "https://www.youtube.com/watch?v=oyM4cGlTy2U",
-      "author_or_channel": "AICodeKing",
-      "published_at": "2026-06-15T09:15:32+00:00",
-      "kind": "tool"
-    },
-    {
       "title": "RepSelect: Robust LLM Unlearning via Representation Selectivity",
       "url": "https://huggingface.co/papers/2606.17168",
       "author_or_channel": "HF Papers",
       "published_at": "2026-06-14T20:00:00.000Z",
       "kind": "technique"
+    },
+    {
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
+      "author_or_channel": "Better Stack",
+      "published_at": "2026-06-13T23:45:08+00:00",
+      "kind": "tool"
     }
   ],
+  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
-  "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",
   "body": [
     {
       "type": "p",

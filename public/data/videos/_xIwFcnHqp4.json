@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "MCP tools can return data alongside bundled HTML resources that VS Code renders in sandboxed iframes within chat windows. The UI maintains live bidirectional communication with a backend server to fetch updated data and render interactive visualizations like flame graphs, checkout flows, and architecture diagrams without exposing system access.",
   "writeup": "Microsoft developer advocates Madelaine and Liam Hampton introduce MCP apps, a mechanism that extends the Model Context Protocol so that server tools can return rich interactive HTML components rendered inside a sandboxed iframe in VS Code, rather than plain text. The talk moves from architecture (hosts, clients, servers, MCP resource references) through real adoption by Shopify, Excalidraw, and Figma, and closes with a live flame-graph demo that profiles a Go program using pprof and surfaces the result as an interactive React UI inside GitHub Copilot. The through-line is that keeping users inside a single chat context requires genuine bidirectional UI, not link-return workarounds.",
-  "wh": "bd82471ca07191f6",
+  "wh": "1cb846bc710e4e17",
   "key_points": [
     "MCP apps work by having the MCP server return a resource reference pointing to a server-generated HTML element; the host (VS Code) fetches that HTML and renders it in a sandboxed iframe, while GitHub Copilot acts as the client maintaining the one-to-one server connection, keeping the two roles distinct.",
     "The canonical three-part structure of an MCP app is: the tool layer (LLM plus host), the resource layer (bundled HTML UI, which can be React, Vue, Svelte, or vanilla JS), and the link between them that lets the host recognize a data response paired with a renderable UI.",
@@ -64,8 +64,8 @@
       "label": "Model Context Protocol"
     },
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "double-iframe",
+      "label": "double iframe"
     },
     {
       "slug": "interactive-ui",
@@ -81,7 +81,7 @@
       "id": "c-2eEv2ou7Y",
       "title": "Why MCP and ChatGPT Apps Use Double Iframes — Frédéric Barthelet, Alpic",
       "channel": "AI Engineer",
-      "score": 0.553
+      "score": 0.552
     },
     {
       "id": "_B4Pv9ttFgY",
@@ -99,19 +99,19 @@
       "id": "zA3RirPFFsU",
       "title": "What is MCP? Learn MCP Client, MCP Server & MCP Architecture",
       "channel": "Code With Aarohi",
-      "score": 0.514
+      "score": 0.532
     },
     {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.507
+      "score": 0.508
     },
     {
       "id": "m7TJqx8CYG8",
       "title": "Artifacts in Claude Code: share your work as it happens",
       "channel": "Claude",
-      "score": 0.5
+      "score": 0.491
     }
   ]
 }

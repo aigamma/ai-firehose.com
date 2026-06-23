@@ -6,9 +6,9 @@
   "published": "2026-05-13T21:00:46+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "AWS Developers tutorial on building AI agents using the open-source Strands Agents SDK. The video demonstrates that agents are fundamentally loops where a model reasons about available tools, selects one, executes it, and repeats until task completion. Four progressive examples show single-tool agents, multi-tool selection, execution hooks, and multi-agent orchestration patterns.",
+  "summary": "AWS Developers demonstrates agent fundamentals using Strands Agents SDK, showing that AI agents are implemented as loops where a model reasons, selects tools, executes them, and repeats. The video builds four agents progressively: single-tool, multi-tool, instrumented with hooks, and multi-agent orchestrator.",
   "writeup": "A ground-up demonstration of AI agents using the open-source Strands Agent SDK from AWS, showing that the core mechanism is a single loop: the model receives input, decides whether to call a tool, executes it, inspects the result, and repeats until satisfied. The video builds four progressively capable agents, from a single-tool calculator through multi-tool orchestration to a nested multi-agent router, all running identical underlying logic. The through-line is that docstrings are the contract between developer and model, and the loop is the only concept needed to build production agents.",
-  "wh": "a5bfd2b75e267048",
+  "wh": "b4fe3b7a17f593c9",
   "key_points": [
     "The agent loop is the entire mechanism: reason, select, execute, repeat. A model receives input, decides it needs a tool, calls a Python function, reads the result, and continues until it has enough to respond, with no special framework logic beyond that cycle.",
     "In the Strands SDK, any Python function decorated with @tool becomes an agent-callable tool; the docstring is the instruction the model reads to decide when that tool is relevant, so vague docstrings produce vague tool selection and precise ones produce precise behavior.",
@@ -60,16 +60,16 @@
       "label": "game loop"
     },
     {
-      "slug": "tool-context",
-      "label": "tool context"
+      "slug": "tool-calling",
+      "label": "tool calling"
     },
     {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "reasoning",
+      "label": "reasoning"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "W6x-hb44C0c",
       "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.667
+      "score": 0.628
     },
     {
       "id": "1a1VXDdIyrk",
       "title": "Agent Harness explained in 8min..",
       "channel": "Caleb Writes Code",
-      "score": 0.643
-    },
-    {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.62
-    },
-    {
-      "id": "bSDkbx5rrpM",
-      "title": "This Is The First Real Shape Of AGI: Fusion Agents",
-      "channel": "AI Revolution",
-      "score": 0.616
+      "score": 0.617
     },
     {
       "id": "Zqno_vux6d8",
       "title": "AI agents explained: Build your first agent in 8 minutes",
       "channel": "Google Cloud Tech",
-      "score": 0.616
+      "score": 0.601
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.588
+    },
+    {
+      "id": "1wfY7GCVvh0",
+      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
+      "channel": "Cole Medin",
+      "score": 0.585
     },
     {
       "id": "JsNbFnT0QCw",
       "title": "Building long-running AI agents with ADK",
       "channel": "Google Cloud Tech",
-      "score": 0.61
+      "score": 0.582
     }
   ]
 }
