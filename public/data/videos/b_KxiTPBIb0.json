@@ -6,9 +6,9 @@
   "published": "2026-04-30T02:16:18+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Google released the TPU 8t for training and TPU 8i for inference, served via Virgo Network to enable high throughput. The video analyzes how these ASICs compare to general-purpose GPUs and examines scaling strategies that affect token economics and LLM serving for mass deployment.",
+  "summary": "Google has released the TPU 8t for training and TPU 8i for inference, specialized ASIC processors served via Virgo Network. The video discusses scaling strategies (scale up vs scale out) and their impact on the economics of token serving and LLM deployment at scale.",
   "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
-  "wh": "3a213064ce420898",
+  "wh": "90f27df350755cb3",
   "key_points": [
     "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
     "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
@@ -64,57 +64,53 @@
       "label": "ASIC"
     },
     {
-      "slug": "scaling",
-      "label": "scaling"
-    },
-    {
       "slug": "local-inference",
       "label": "local inference"
     },
     {
-      "slug": "post-training",
-      "label": "post-training"
+      "slug": "scaling",
+      "label": "scaling"
     },
     {
-      "slug": "ai-economics",
-      "label": "AI economics"
+      "slug": "network-throughput",
+      "label": "network throughput"
     }
   ],
   "similar": [
     {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.613
+      "id": "J02-39xtlt4",
+      "title": "Google strikes back! Gemini Omni, AI glasses, new models",
+      "channel": "AI Search",
+      "score": 0.601
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.606
+      "score": 0.596
     },
     {
       "id": "1uypL1oNChI",
       "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
       "channel": "AICodeKing",
-      "score": 0.597
+      "score": 0.595
     },
     {
       "id": "WLtCHXdHTF0",
       "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
       "channel": "Better Stack",
-      "score": 0.59
+      "score": 0.585
     },
     {
-      "id": "YiIrnYalHS4",
-      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
-      "channel": "AI Revolution",
-      "score": 0.582
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.579
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
+      "id": "wzHXUtkoY-c",
+      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
+      "channel": "Caleb Writes Code",
       "score": 0.574
     }
   ]

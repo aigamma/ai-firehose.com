@@ -6,9 +6,9 @@
   "published": "2026-04-20T19:26:26+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Video covers methods for efficient LLM inference including model loading via mmap and quantization approaches like GGUF, AWQ, EXL2, FP8, and NVFP4. Discusses inference engines llama.cpp, vLLM, SGLang, TensorRT-LLM, and TGI, with emphasis on pre-fill, decoding, and concurrent serving with scheduling.",
+  "summary": "Video covers techniques for efficient LLM inference including model loading via mmap and various quantization methods. Discusses inference engines and their differences in handling pre-fill, decoding, and concurrent serving with scheduling.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "b35e0c25e1f31791",
+  "wh": "ceea6878994f9fe7",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -60,12 +60,12 @@
   "ih": "cff37e0d0c64b618",
   "concepts": [
     {
-      "slug": "quantization",
-      "label": "quantization"
-    },
-    {
       "slug": "mmap",
       "label": "mmap"
+    },
+    {
+      "slug": "quantization",
+      "label": "quantization"
     },
     {
       "slug": "gguf",
@@ -88,16 +88,20 @@
       "label": "NVFP4"
     },
     {
-      "slug": "prefill",
-      "label": "prefill"
+      "slug": "pre-fill",
+      "label": "pre-fill"
     },
     {
-      "slug": "decode",
-      "label": "decode"
+      "slug": "encoder-decoder",
+      "label": "encoder-decoder"
     },
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "serving",
+      "label": "serving"
+    },
+    {
+      "slug": "scheduling",
+      "label": "scheduling"
     }
   ],
   "similar": [
@@ -105,37 +109,37 @@
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.627
+      "score": 0.651
     },
     {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.616
-    },
-    {
-      "id": "b_KxiTPBIb0",
-      "title": "Google TPU 8t and 8i is here..",
-      "channel": "Caleb Writes Code",
-      "score": 0.613
+      "id": "XAP78BNKGEs",
+      "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.624
     },
     {
       "id": "-z2C3B29aho",
       "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
       "channel": "Keith AI",
-      "score": 0.587
+      "score": 0.604
     },
     {
-      "id": "HfRVXadseCo",
-      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "id": "KqdRWE1en8k",
+      "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
       "channel": "Better Stack",
-      "score": 0.583
+      "score": 0.599
     },
     {
-      "id": "WLtCHXdHTF0",
-      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
-      "channel": "Better Stack",
-      "score": 0.582
+      "id": "TNwJ1LMiENk",
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
+      "channel": "AI Engineer",
+      "score": 0.595
+    },
+    {
+      "id": "-zIF318p7J8",
+      "title": "MiniMax M3 explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.593
     }
   ]
 }

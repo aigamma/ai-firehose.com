@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Sualeh Asif and Simon Eskildsen discuss scaling infrastructure at Shopify, the cyclical emergence of new database companies, and engineering principles that define top-tier talent. Topics include handling flash sales, infrastructure team evolution, on-call practices, and the role of AI in coding.",
+  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling challenges at Shopify, the cyclical emergence of new database companies, and the limitations of AI coding agents. The conversation covers infrastructure evolution, engineering principles from on-call operations, and what it takes to build P99-scale engineering teams in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "b2cbfdea64ad2184",
+  "wh": "b42ddd87e7eee242",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,66 +56,62 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "flash-sales",
-      "label": "flash sales"
+      "slug": "scaling",
+      "label": "scaling"
     },
     {
-      "slug": "auto-scaling",
-      "label": "auto-scaling"
+      "slug": "compute-infrastructure",
+      "label": "compute infrastructure"
+    },
+    {
+      "slug": "databases",
+      "label": "databases"
+    },
+    {
+      "slug": "ai-coding",
+      "label": "AI coding"
     },
     {
       "slug": "prompt-engineering",
       "label": "prompt engineering"
-    },
-    {
-      "slug": "software-engineering",
-      "label": "software engineering"
-    },
-    {
-      "slug": "ai-education",
-      "label": "AI education"
-    },
-    {
-      "slug": "p99-engineers",
-      "label": "P99 engineers"
     }
   ],
   "similar": [
     {
-      "id": "NYEd5a_p9j8",
-      "title": "SQL Full Course - Build a Database and Deploy It",
-      "channel": "AWS Developers",
-      "score": 0.528
+      "id": "ev96Qkpaykw",
+      "title": "AI Agents: Why Building Them Is Way Harder Than You Think! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.553
     },
     {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.526
+      "score": 0.553
     },
     {
-      "id": "SvBheXuKY8s",
-      "title": "Microsoft’s new AI models & bots dominate the internet",
-      "channel": "IBM Technology",
-      "score": 0.522
+      "id": "G_Orj_Z2Y8E",
+      "title": "AI Agents: Stop Button Building, Start Startup Speed! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.536
     },
     {
-      "id": "-5rc6m3-6Ek",
-      "title": "AI Fact or Fiction: The Fable Ban, Tokenmaxxing, Saaspocolypse — With Ara Kharazian",
-      "channel": "Alex Kantrowitz",
-      "score": 0.509
+      "id": "nPc0hIreNaQ",
+      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
+      "channel": "Cursor",
+      "score": 0.534
     },
     {
       "id": "aF-rolD9W7I",
       "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
       "channel": "Cursor",
-      "score": 0.502
+      "score": 0.532
     },
     {
-      "id": "OZE2t3-M0ps",
-      "title": "CS50 for Business - Lecture 7 - Deploying Databases",
-      "channel": "CS50",
-      "score": 0.501
+      "id": "9-4kiL6tEOw",
+      "title": "Is Unstructured Data The Key To Successful AI Deployments?",
+      "channel": "Alex Kantrowitz",
+      "score": 0.529
     }
   ]
 }

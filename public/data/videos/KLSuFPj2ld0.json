@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Stripe presents infrastructure for secure autonomous agent spending, addressing credential transmission and business discoverability to agents. The talk covers guardrails for safe autonomous transactions and infrastructure needs for agent-driven purchasing.",
   "writeup": "A principal engineer from Stripe's issuing team lays out the infrastructure required for AI agents to transact safely in the open economy. The central argument is a clean separation: discovery and exploration can tolerate non-determinism from LLMs, but credentials, payments, and checkout require strict determinism enforced at the infrastructure level. Three concrete solutions are demonstrated: shared payment tokens with scoped limits, an HTTP 402-based machine payments protocol co-built with Tempo for API-layer monetization, and structured checkout flows that relay purchase details back to the human buyer.",
-  "wh": "342684c171f7d8c7",
+  "wh": "d3e455ed8b9fa12e",
   "key_points": [
     "Stripe's principal engineer on issuing frames the core problem as four failure modes for browser-operating agents: buying from the wrong place (domain spoofing), the wrong thing (navigation errors), the wrong amount (price extraction errors and currency drift), and with the wrong credential (card numbers pasted into untrusted forms).",
     "Shared payment tokens let an agent provision a credential scoped to a specific seller, capped at a dollar amount and a time window (in the demo: $25 limit, 30-day expiry), with Stripe enforcing those limits server-side so a seller attempting to charge $50 receives an enforcement failure rather than completing the overcharge.",
@@ -71,8 +71,8 @@
       "label": "guardrails"
     },
     {
-      "slug": "secure-credential-transmission",
-      "label": "secure credential transmission"
+      "slug": "credential-rotation",
+      "label": "credential rotation"
     }
   ],
   "similar": [
@@ -80,7 +80,13 @@
       "id": "V04bm-3d6EQ",
       "title": "When millions of AI agents meet",
       "channel": "Google DeepMind",
-      "score": 0.651
+      "score": 0.645
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.619
     },
     {
       "id": "4vfvvzzwcwI",
@@ -101,16 +107,10 @@
       "score": 0.586
     },
     {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.581
-    },
-    {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "id": "ObTPqBGsEbA",
+      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
       "channel": "AI Engineer",
-      "score": 0.578
+      "score": 0.583
     }
   ]
 }

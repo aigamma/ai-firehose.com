@@ -6,9 +6,9 @@
   "published": "2026-05-02T11:45:03+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "OpenAI Symphony is presented as a new AI coding paradigm. The video covers what Symphony is, how it works, and setup procedures including harness configuration and automated testing. It appears to be part of a broader ecosystem that includes Crewlet and Superdesign.",
+  "summary": "OpenAI Symphony is a new AI coding paradigm discussed by AI Jason. The video covers how it works, harness setup with auto-testing capabilities, and workflow configuration through a WORKFLOW.md file.",
   "writeup": "OpenAI's open-source Symphony project proposes a fundamental shift in how developers interact with coding agents: instead of managing multiple concurrent interactive sessions, engineers manage tickets in a tracker like Linear while a background scheduler picks up work, spins up isolated workspaces, and runs agents autonomously every 30 seconds. The core mechanism is a single workflow.md file that lives in the repo, version-controlled like any code, combining a YAML front matter that configures the scheduler with a Markdown prompt that defines the agent's standard operating procedure. A critical companion concern is harness engineering: the codebase must supply self-verifying tools so agents can confirm their own output end-to-end, with Playwright's CRI video-recording capability highlighted as the key missing piece most teams have not yet wired up.",
-  "wh": "79e674b2af7a0f77",
+  "wh": "ab81e26b421c6212",
   "key_points": [
     "Symphony's central argument is that the bottleneck in agentic coding is no longer model capability but human cognitive load from context-switching across sessions; moving humans up a level to ticket management breaks that ceiling.",
     "The workflow.md file is the architectural keystone: its YAML front matter configures the scheduler (polling interval, parallelism, workspace paths, Linear project slug, post-setup hooks) and its Markdown body is the system prompt rendered to the agent on every turn, encoding the definition of done and when to request human review.",
@@ -59,16 +59,12 @@
   "ih": "a29e4dece648cf6a",
   "concepts": [
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
-    },
-    {
-      "slug": "safety-testing",
-      "label": "safety testing"
+      "slug": "workflow-automation",
+      "label": "workflow automation"
     }
   ],
   "similar": [
@@ -76,36 +72,36 @@
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.598
-    },
-    {
-      "id": "Ya51a1EJPZk",
-      "title": "Make the PERFECT Videos with Claude Code (Full Workflow)",
-      "channel": "Cole Medin",
-      "score": 0.589
-    },
-    {
-      "id": "8jDXI4_rJOE",
-      "title": "This 100% open-source terminal is insane… just watch",
-      "channel": "David Ondrej",
-      "score": 0.585
+      "score": 0.612
     },
     {
       "id": "MfzhriTfYNY",
       "title": "The “Final Boss” of AI Workflows: UltraCode",
       "channel": "Keith AI",
-      "score": 0.581
+      "score": 0.609
     },
     {
-      "id": "AQbXapvjBzc",
-      "title": "OpenAI's Secret: Why Compute Power Fuels AI Success! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.576
+      "id": "Ya51a1EJPZk",
+      "title": "Make the PERFECT Videos with Claude Code (Full Workflow)",
+      "channel": "Cole Medin",
+      "score": 0.609
     },
     {
-      "id": "PbsocBPkoUc",
-      "title": "Do Google engineers actually vibe code?",
-      "channel": "Alberta Tech",
+      "id": "W6x-hb44C0c",
+      "title": "wtf is Loop Engineer & how to setup for real",
+      "channel": "AI Jason",
+      "score": 0.6
+    },
+    {
+      "id": "Nn2eXwch-K0",
+      "title": "we JUST figured out how AI thinks",
+      "channel": "Wes Roth",
+      "score": 0.582
+    },
+    {
+      "id": "4FgAKzM_uYM",
+      "title": "MLFlow Crash Course: MLOps in Python",
+      "channel": "NeuralNine",
       "score": 0.572
     }
   ]

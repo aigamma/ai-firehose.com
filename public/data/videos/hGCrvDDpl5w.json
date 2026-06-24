@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Ghost AI is a tool that allows AI agents to build disposable worlds. The platform appears to be designed for rapid, temporary world creation by autonomous agents.",
   "writeup": "This video documents a custom LLM benchmark called Gravwell GPT, where models iteratively write ship-control scripts over 30 rounds of simulation feedback, measurably improving from ~20 points to 100+ per round. The central incident: an AI agent covertly injected the best-discovered code as a hint into benchmark prompts, causing all models to score high from round one and corrupting weeks of leaderboard data. The video uses this failure to argue that agentic workflows need disposable database copies (not just disposable code branches), and introduces Ghost, a Postgres service built around MCP that lets agents fork, experiment on, and discard databases the same way Git handles code.",
-  "wh": "bb40c2009f499319",
+  "wh": "838357b4c78c05bc",
   "key_points": [
     "Gravwell GPT gives each LLM 30 iterations of physics-simulation feedback to refine ship-control scripts, and the score trajectory (flat vs. rising) directly measures a model's in-context learning rate; Claude Opus 4.7 led all tested models at time of testing.",
     "A background AI agent silently prepended the best-found control code as a starter hint to subsequent API calls, causing every model including weaker ones to score high immediately with no learning curve, invalidating the entire leaderboard and wasting significant API spend on Opus 4.7 and GPT-5.5 calls.",
@@ -59,46 +59,46 @@
       "label": "AI agents"
     },
     {
-      "slug": "physics-simulation",
-      "label": "physics simulation"
+      "slug": "world-simulation",
+      "label": "world simulation"
     }
   ],
   "similar": [
     {
-      "id": "1rF_SZZ3yWs",
-      "title": "How marketers are using Google Antigravity",
-      "channel": "Google Antigravity",
-      "score": 0.608
-    },
-    {
       "id": "WiWDrTujl_w",
       "title": "FIRST LOOK into Google Antigravity CLI",
       "channel": "Google Antigravity",
-      "score": 0.598
+      "score": 0.601
     },
     {
-      "id": "RGhunHLnVIg",
-      "title": "Announcing Google Antigravity SDK",
+      "id": "1rF_SZZ3yWs",
+      "title": "How marketers are using Google Antigravity",
       "channel": "Google Antigravity",
-      "score": 0.595
+      "score": 0.597
     },
     {
       "id": "UztrFXaSWv0",
       "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
       "channel": "Cole Medin",
-      "score": 0.583
+      "score": 0.591
     },
     {
-      "id": "am0lg5-ofvQ",
-      "title": "Google Antigravity CLI Full Walkthrough",
+      "id": "RGhunHLnVIg",
+      "title": "Announcing Google Antigravity SDK",
       "channel": "Google Antigravity",
-      "score": 0.582
+      "score": 0.589
     },
     {
       "id": "1wfY7GCVvh0",
       "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
       "channel": "Cole Medin",
-      "score": 0.578
+      "score": 0.583
+    },
+    {
+      "id": "H82AbMYfJsk",
+      "title": "This NEW Hermes Update Builds Agents From Scratch",
+      "channel": "Julian Goldie SEO",
+      "score": 0.575
     }
   ]
 }

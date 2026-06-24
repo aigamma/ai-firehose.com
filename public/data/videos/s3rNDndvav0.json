@@ -6,9 +6,9 @@
   "published": "2026-05-14T03:27:14+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "MAMMAL is a biology foundation model that understands genes, proteins, and small molecules for drug discovery. It reportedly outperforms AlphaFold 3 at predicting drug toxicity, designing new drugs, and discovering antibodies. The model enables applications in drug repurposing and cancer drug discovery.",
+  "summary": "MAMMAL is a biology foundation model that understands genes, proteins, and small molecules for drug discovery and protein prediction. The video claims it outperforms AlphaFold 3 on various tasks including drug toxicity prediction, cancer drug discovery, and antibody generation.",
   "writeup": "A walkthrough of MAMMAL, a new foundation model for drug discovery that replaces a patchwork of siloed specialist tools (AlphaFold for proteins, Evo 2 for DNA, separate compound screeners) with a single model pre-trained on 2 billion samples spanning antibody sequences, protein records from UniProt, small molecules from Zinc and PubChem, and gene expression data from CellXGene. The core engineering problem is heterogeneous data formats: MAMMAL solves it with a modular tokenizer that converts molecules to SMILES strings, genes to ranked expression lists, and proteins to amino-acid sequences, then projects all three into one shared embedding space. Across 11 rigorous benchmarks covering the full drug discovery pipeline, MAMMAL achieves state-of-the-art performance, outperforming the previous best models on every task including blood-brain barrier penetration prediction and clinical toxicity prediction.",
-  "wh": "2f2f90d1a7718793",
+  "wh": "abd0cad724adfa80",
   "key_points": [
     "Drug development has a roughly 90% failure rate from initial candidate to FDA approval, a figure that persists despite modern genomics and AI tools because existing models each cover only one slice of the biology: AlphaFold predicts protein structure, Evo 2 reads DNA, and separate tools handle compound screening or clinical trial analysis, with no unified cross-domain reasoning.",
     "MAMMAL was pre-trained on 2 billion samples drawn from essentially every major biological database: billions of antibody sequences, nearly all known proteins via UniProt, millions of small-molecule structures from Zinc and PubChem, and gene expression profiles from CellXGene.",
@@ -63,20 +63,28 @@
       "label": "foundation models"
     },
     {
-      "slug": "scientific-discovery",
-      "label": "scientific discovery"
+      "slug": "biology",
+      "label": "biology"
     },
     {
       "slug": "protein-structure-prediction",
       "label": "protein structure prediction"
     },
     {
-      "slug": "dna-design",
-      "label": "DNA design"
+      "slug": "drug-discovery",
+      "label": "drug discovery"
     },
     {
-      "slug": "drug-toxicity-prediction",
-      "label": "drug toxicity prediction"
+      "slug": "small-molecule",
+      "label": "small molecule"
+    },
+    {
+      "slug": "antibody-generation",
+      "label": "antibody generation"
+    },
+    {
+      "slug": "gene-expression",
+      "label": "gene expression"
     }
   ],
   "similar": [
@@ -84,37 +92,37 @@
       "id": "exh1vwGlrSo",
       "title": "Understanding cancer at a genetic level with AI",
       "channel": "Google DeepMind",
-      "score": 0.7
+      "score": 0.655
+    },
+    {
+      "id": "Nn2eXwch-K0",
+      "title": "we JUST figured out how AI thinks",
+      "channel": "Wes Roth",
+      "score": 0.613
+    },
+    {
+      "id": "ZKfd9S9lOtc",
+      "title": "The most insane week in AI",
+      "channel": "AI Search",
+      "score": 0.607
+    },
+    {
+      "id": "I3YR5xVpcS4",
+      "title": "AGI is FAKE: The Biggest AI Lie Exposed",
+      "channel": "AI Master",
+      "score": 0.606
     },
     {
       "id": "Cnuj24PjWrQ",
       "title": "Using AI to outsmart drug-resistant bacteria",
       "channel": "Google DeepMind",
-      "score": 0.657
+      "score": 0.601
     },
     {
-      "id": "8TjCwdnZSp8",
-      "title": "Anthropic Just Dropped Fable 5 And It’s Terrifying",
-      "channel": "AI Revolution",
-      "score": 0.607
-    },
-    {
-      "id": "QvN6Tu6dHYM",
-      "title": "The acceleration is here!",
-      "channel": "AI Search",
-      "score": 0.607
-    },
-    {
-      "id": "nODxez6nZEU",
-      "title": "GLM 5.2 is my new favorite model...",
-      "channel": "Better Stack",
-      "score": 0.6
-    },
-    {
-      "id": "zexcKJYQooU",
-      "title": "Elon Musk Just Shocked OpenAI With Grok 5",
-      "channel": "AI Revolution",
-      "score": 0.592
+      "id": "VBHISHDZ3wQ",
+      "title": "Is AI lying to us?👀",
+      "channel": "IBM Technology",
+      "score": 0.593
     }
   ]
 }
