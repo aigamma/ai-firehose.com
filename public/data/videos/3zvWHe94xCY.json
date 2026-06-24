@@ -6,9 +6,9 @@
   "published": "2026-05-13T21:00:46+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "AWS Developers demonstrates how to build AI agents using the Strands Agents SDK. The video shows that agents work through iterative loops where a model reasons, selects tools, executes them, and repeats. Four progressively complex agents are built: single-tool, multi-tool with model selection, instrumented with hooks, and a multi-agent orchestrator.",
+  "summary": "AWS Developers tutorial demonstrating how to build AI agents using the open-source Strands Agents SDK. The video shows four progressively complex agents: single-tool agent, multi-tool agent with model selection, agent with hooks for observability, and a multi-agent orchestrator, all illustrating the core agent loop pattern of reasoning, tool selection, execution, and iteration.",
   "writeup": "A ground-up demonstration of AI agents using the open-source Strands Agent SDK from AWS, showing that the core mechanism is a single loop: the model receives input, decides whether to call a tool, executes it, inspects the result, and repeats until satisfied. The video builds four progressively capable agents, from a single-tool calculator through multi-tool orchestration to a nested multi-agent router, all running identical underlying logic. The through-line is that docstrings are the contract between developer and model, and the loop is the only concept needed to build production agents.",
-  "wh": "497b40a651b67380",
+  "wh": "4acae8c112cc6398",
   "key_points": [
     "The agent loop is the entire mechanism: reason, select, execute, repeat. A model receives input, decides it needs a tool, calls a Python function, reads the result, and continues until it has enough to respond, with no special framework logic beyond that cycle.",
     "In the Strands SDK, any Python function decorated with @tool becomes an agent-callable tool; the docstring is the instruction the model reads to decide when that tool is relevant, so vague docstrings produce vague tool selection and precise ones produce precise behavior.",
@@ -60,54 +60,54 @@
       "label": "game loop"
     },
     {
-      "slug": "tool-routing",
-      "label": "tool routing"
+      "slug": "tool-use",
+      "label": "tool use"
     },
     {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "long-context-reasoning",
-      "label": "long-context reasoning"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     }
   ],
   "similar": [
     {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.635
-    },
-    {
       "id": "22E0bXQwwZ8",
       "title": "Your AI Agent Needs a Tool",
       "channel": "AWS Developers",
-      "score": 0.628
-    },
-    {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.603
-    },
-    {
-      "id": "nGjGUCOiXk4",
-      "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
-      "channel": "Google Cloud Tech",
-      "score": 0.602
-    },
-    {
-      "id": "EDDgH3hs-5U",
-      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
-      "channel": "Google Cloud Tech",
-      "score": 0.597
+      "score": 0.732
     },
     {
       "id": "W6x-hb44C0c",
       "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.594
+      "score": 0.675
+    },
+    {
+      "id": "Zqno_vux6d8",
+      "title": "AI agents explained: Build your first agent in 8 minutes",
+      "channel": "Google Cloud Tech",
+      "score": 0.644
+    },
+    {
+      "id": "JsNbFnT0QCw",
+      "title": "Building long-running AI agents with ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.643
+    },
+    {
+      "id": "2zhchG0r6iI",
+      "title": "Okay, this unleashed my agent",
+      "channel": "AI Jason",
+      "score": 0.618
+    },
+    {
+      "id": "j1wfE0SOBbE",
+      "title": "5 Tips for Deploying AI Agents to Production",
+      "channel": "AWS Developers",
+      "score": 0.617
     }
   ]
 }

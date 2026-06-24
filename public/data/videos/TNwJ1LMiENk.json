@@ -6,9 +6,9 @@
   "published": "2026-06-10T17:00:25+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Kobie Crawford demonstrates how a 4B model finetuned with RL to call tools correctly (like `get_table_name`, schema inspection, and self-correction) outperforms a 235B model on SQL query tasks. The approach emphasizes tool discipline over model scale, with training costs under $500 and transfer from single-table to multi-table tasks showing 13.9% to 26.6% improvement on FinQA.",
+  "summary": "Kobie Crawford demonstrates that smaller models trained with reinforcement learning to exhibit correct tool-use behavior (like proper table querying and error correction) outperform much larger models on structured query tasks. A 4B model finetuned on Snorkel's framework showed measurable gains on FinQA benchmarks with minimal training cost.",
   "writeup": "Kobe Crawford (Snorkel AI) and the UC Berkeley RLLM team demonstrate that a 4-billion-parameter model fine-tuned with reinforcement learning on expert-curated data can outperform a 235-billion-parameter reasoning model on financial tool-use tasks. The central argument is that raw reasoning scale is the wrong solution to the wrong problem: a domain-specific task like SQL-based financial analysis does not require Terence Tao-level general mathematical breadth, and RL is better suited than supervised fine-tuning for reshaping tool-use behavior. The talk grounds the claim in a live failure demo where the 235B model queries a non-existent table twice and then hallucinates an answer, a failure no amount of general reasoning prevented.",
-  "wh": "9a08f3948a71e508",
+  "wh": "f29a46f533800cc2",
   "key_points": [
     "A 235-billion-parameter quantized reasoning model, when asked for the year-over-year YouTube ads revenue growth rate from 2023 to 2024, failed to inspect available database tables, queried a non-existent table twice, and fell back to a hallucinated answer, illustrating that raw reasoning capability does not guarantee disciplined tool use.",
     "The RLLM team frames oversized model selection as the 'Terence Tao effect': deploying a mathematician capable of any domain to do routine SQL queries and arithmetic is a category mismatch, and the domain-specific behavioral discipline a financial analyst needs is not the same as general brilliance.",
@@ -59,16 +59,24 @@
       "label": "tool use"
     },
     {
-      "slug": "recursive-self-improvement",
-      "label": "recursive self-improvement"
+      "slug": "scaling",
+      "label": "scaling"
     },
     {
       "slug": "fine-tuning",
       "label": "fine-tuning"
     },
     {
-      "slug": "sql",
-      "label": "SQL"
+      "slug": "behavioral-training",
+      "label": "behavioral training"
+    },
+    {
+      "slug": "rubric-based-rewards",
+      "label": "rubric-based rewards"
+    },
+    {
+      "slug": "recursive-self-improvement",
+      "label": "recursive self-improvement"
     }
   ],
   "similar": [
@@ -76,37 +84,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.636
+      "score": 0.643
     },
     {
-      "id": "mFLlVpnGpds",
-      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
+      "id": "btxGmN8RvNU",
+      "title": "Your Agent's Biggest Lie: \"I Searched the Web\" — Rafael Levi, Bright Data",
       "channel": "AI Engineer",
-      "score": 0.619
+      "score": 0.591
     },
     {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
-      "score": 0.612
+      "score": 0.587
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.606
+      "score": 0.584
     },
     {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
+      "id": "mFLlVpnGpds",
+      "title": "Beyond Transcription: Building Voice AI That Understands Conversations — Hervé Bredin, pyannoteAI",
       "channel": "AI Engineer",
-      "score": 0.6
+      "score": 0.574
     },
     {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.595
+      "id": "mGYr9VqQnEI",
+      "title": "Harness Engineering Is AI’s New Gold Rush",
+      "channel": "AI Revolution",
+      "score": 0.565
     }
   ]
 }

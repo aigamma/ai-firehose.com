@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin tested four configurations of mixed-provider AI coding workflows using Claude Opus and Kimi K2.6 to determine optimal role allocation. An Opus-based evaluator scored the resulting pull requests across seven dimensions including correctness, code quality, and plan-implementation fidelity. The benchmark tests both provider combinations across three real GitHub issues to measure which model assignment works best.",
+  "summary": "Cole Medin benchmarks mixed-provider LLM workflows using Claude Opus and Kimi K2.6 in a Dark Factory system. A benchmark matrix tests four routing strategies across three GitHub issues, evaluating outputs on seven dimensions including code quality and plan fidelity. Results inform optimal allocation of planning versus implementation tasks across providers.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "7fa26cca6c213cb1",
+  "wh": "ca5420f17da1b73c",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,24 +56,20 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "model-routing",
+      "label": "model routing"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
       "slug": "code-generation",
       "label": "code generation"
-    },
-    {
-      "slug": "benchmark",
-      "label": "benchmark"
     }
   ],
   "similar": [
@@ -81,37 +77,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.641
+      "score": 0.659
     },
     {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.585
-    },
-    {
-      "id": "ptKzEs9-qm4",
-      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
-      "channel": "AICodeKing",
-      "score": 0.582
-    },
-    {
-      "id": "_D-z201rEoA",
-      "title": "Claude Oceanus V1-P (Mythos?- FULLY TESTED): I TESTED IT & IT'S ACTUALLY CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.56
-    },
-    {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.554
+      "score": 0.561
     },
     {
       "id": "Xh1z23uBZo0",
       "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.553
+      "score": 0.557
+    },
+    {
+      "id": "ptKzEs9-qm4",
+      "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
+      "channel": "AICodeKing",
+      "score": 0.55
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.541
+    },
+    {
+      "id": "VESRlr6lRQ8",
+      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
+      "channel": "AICodeKing",
+      "score": 0.539
     }
   ]
 }

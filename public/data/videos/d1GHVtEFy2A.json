@@ -6,9 +6,9 @@
   "published": "2026-05-06T19:32:23+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Agent Toolkit for AWS is a framework that equips AI coding agents with up-to-date AWS documentation, best practices, and tested procedures through skills, plugins, and MCP configuration. It enables rapid deployment of agentic workflows, such as deploying Lambda functions behind API Gateway in minutes, while maintaining auditability through CloudTrail.",
+  "summary": "Agent Toolkit for AWS equips AI coding agents with up-to-date AWS documentation, best practices, and tested procedures to improve success rates. The toolkit includes agent skills as markdown runbooks, plugins, and MCP configuration, enabling agents to deploy infrastructure like Lambda and API Gateway with reduced hallucination and wasted effort.",
   "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
-  "wh": "120a1a814d1ff4e7",
+  "wh": "41c64cac19406fef",
   "key_points": [
     "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
     "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
@@ -60,24 +60,24 @@
   "ih": "133551da4d02971e",
   "concepts": [
     {
-      "slug": "ai-coding",
-      "label": "AI coding"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "slug": "mcp",
-      "label": "MCP"
-    },
-    {
       "slug": "guardrails",
       "label": "guardrails"
     },
     {
-      "slug": "agent-skills",
-      "label": "agent skills"
+      "slug": "grounding",
+      "label": "grounding"
+    },
+    {
+      "slug": "mcp",
+      "label": "MCP"
     }
   ],
   "similar": [
@@ -85,37 +85,37 @@
       "id": "PGrmbZ1TDmA",
       "title": "Agent Toolkit for AWS Explained in 2 Minutes",
       "channel": "AWS Developers",
-      "score": 0.842
+      "score": 0.8
+    },
+    {
+      "id": "22E0bXQwwZ8",
+      "title": "Your AI Agent Needs a Tool",
+      "channel": "AWS Developers",
+      "score": 0.69
     },
     {
       "id": "1wfY7GCVvh0",
       "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
       "channel": "Cole Medin",
-      "score": 0.67
+      "score": 0.655
     },
     {
       "id": "PjrXaC5UsIw",
       "title": "What Is Agentic Coding? How AI Agents Modernize Code",
       "channel": "IBM Technology",
-      "score": 0.652
-    },
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.618
+      "score": 0.65
     },
     {
       "id": "RGhunHLnVIg",
       "title": "Announcing Google Antigravity SDK",
       "channel": "Google Antigravity",
-      "score": 0.607
+      "score": 0.634
     },
     {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.604
+      "id": "1rF_SZZ3yWs",
+      "title": "How marketers are using Google Antigravity",
+      "channel": "Google Antigravity",
+      "score": 0.61
     }
   ]
 }

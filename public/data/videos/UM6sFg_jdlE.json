@@ -6,9 +6,9 @@
   "published": "2026-06-09T17:00:27+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Kuba Rogut argues that RAG is not dead but rather misunderstood. The real issue is a narrow definition of retrieval. RAG should encompass vector search, full text search, glob, regex, and filters applied iteratively by an agent, not just vector search alone. Cursor's one-time indexing with lightweight runtime calls exemplifies this broader approach better than Claude Code's stateless grep-per-session model.",
+  "summary": "Kuba Rogut argues that RAG is not dead despite social media discourse, but rather the problem was a narrow definition of retrieval. He frames RAG as iterative agent-driven search combining vector search, full text search, regex, and filters, contrasting approaches like Cursor's upfront indexing with Claude Code's per-session grep model, and proposes embeddings as cached compute.",
   "writeup": "Kuba, a deployed engineer at TurboPuffer, argues that the \"RAG is dead\" discourse misidentifies what RAG actually is: retrieval covers vector search, BM25 full-text search, grep, glob, regex, and filters, not just a single embedding lookup. The real shift is from one-shot vector retrieval to iterative agentic search, where agents use a tool suite to progressively narrow and reason over context across multiple steps. A Cursor case study anchors the argument: upfront Merkle-tree-based codebase indexing delivers 12.5 to 13.5 percent accuracy gains on Cursor's internal benchmark (nearly 24 percent for the Composer model) and measurable retention improvements, illustrating that embeddings function as cached compute that pays off across repeated agent queries.",
-  "wh": "7d0912a2414bdcc6",
+  "wh": "811e4e68ccfb22a4",
   "key_points": [
     "The \"RAG is dead\" framing collapses because simple vector search is only one retrieval mechanism; true retrieval-augmented generation encompasses BM25, grep, glob, regex, and filters alongside semantic search, and Google search volume for RAG hit a new inflection point in mid-2025.",
     "Cursor indexes codebases with Merkle trees to detect unchanged files and avoid redundant re-chunking and re-embedding, then serves that index to agents at query time, yielding 12.5 to 13.5 percent accuracy gains on Cursor's internal benchmark and a near-24 percent gain for the Composer model.",
@@ -56,20 +56,28 @@
   "ih": "a2719d8eefc83bbf",
   "concepts": [
     {
-      "slug": "generative-ai",
-      "label": "generative AI"
+      "slug": "rag",
+      "label": "RAG"
     },
     {
       "slug": "semantic-search",
       "label": "semantic search"
     },
     {
+      "slug": "vector-search",
+      "label": "vector search"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
       "slug": "embeddings",
       "label": "embeddings"
     },
     {
-      "slug": "vector-search",
-      "label": "vector search"
+      "slug": "context-window-optimization",
+      "label": "context window optimization"
     }
   ],
   "similar": [
@@ -77,37 +85,37 @@
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.543
+      "score": 0.579
     },
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.532
+      "id": "Z5j1wx1D5wY",
+      "title": "Search Relevance Built Into the Vector Index",
+      "channel": "Qdrant Vector Search",
+      "score": 0.568
     },
     {
       "id": "jxHIw_OA8_I",
       "title": "Stop perfecting your prompt. Do this instead",
       "channel": "Jeff Su",
-      "score": 0.519
+      "score": 0.564
     },
     {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
-      "channel": "Cole Medin",
-      "score": 0.518
+      "id": "gbI7THwqEjk",
+      "title": "Most people get these 3 AI terms wrong",
+      "channel": "Jeff Su",
+      "score": 0.552
     },
     {
-      "id": "ChskqGovoHg",
-      "title": "This Open Source Repo Just Solved Claude Code's #1 Problem",
-      "channel": "Chase AI",
-      "score": 0.513
+      "id": "l1woKdpTZHo",
+      "title": "AI Agents: DEAD or ALIVE? Businesses Are Still Waiting! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.55
     },
     {
-      "id": "blgUmyMiROI",
-      "title": "How are coding agents changing software engineering?",
-      "channel": "Cursor",
-      "score": 0.509
+      "id": "aanqEqQwjNU",
+      "title": "Your AI Agent Is Missing Half the Internet… Until Now (Agent-Reach)",
+      "channel": "Better Stack",
+      "score": 0.55
     }
   ]
 }

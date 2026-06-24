@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Video tutorial demonstrating how to use Claude Code projects within Codex by explaining file structure differences, skills and agents comparison, and conversion methods. Shows how both tools can run on the same project without duplicating files.",
   "writeup": "A practical walkthrough of migrating a Claude Code project to also run under OpenAI Codex without duplicating or losing existing work. The core insight is that both tools share the same underlying knowledge files and skill markdown, differing only in a handful of naming conventions: CLAUDE.md versus agents.md, .claude versus .codex for config, and .agents for Codex skills. A single natural-language prompt handed to Codex handles the conversion automatically, and a session-handoff skill makes it easy to pass context between agents mid-task when one gets stuck.",
-  "wh": "52fa789a303c7d63",
+  "wh": "851f2f8ba1f21522",
   "key_points": [
     "Claude Code reads CLAUDE.md and a .claude folder for config and agents; Codex reads agents.md, a .codex folder for config and agents, and a separate .agents folder for skills, so migrating a project requires creating only a few new files rather than restructuring the whole repo.",
     "Skill files (markdown with YAML front matter) are identical between the two tools and only need to be placed in the correct folder; agent definition files differ in format, with Claude Code using markdown and Codex using TOML, though both carry the same semantic content.",
@@ -56,12 +56,12 @@
   "ih": "9eb1d57840a0c77a",
   "concepts": [
     {
-      "slug": "tool-integration",
-      "label": "tool integration"
+      "slug": "ide-integration",
+      "label": "IDE integration"
     },
     {
-      "slug": "code-navigation",
-      "label": "code navigation"
+      "slug": "code-project-structure",
+      "label": "code project structure"
     },
     {
       "slug": "multi-agent-systems",
@@ -70,28 +70,22 @@
   ],
   "similar": [
     {
+      "id": "fS5M3kLaXAA",
+      "title": "Claude Code vs Codex: Which Should You ACTUALLY Use?",
+      "channel": "Austin Marchese",
+      "score": 0.665
+    },
+    {
       "id": "xVDDU6w4YZY",
       "title": "Master Claude Code with Fable 5 (57 mins)",
       "channel": "Keith AI",
       "score": 0.656
     },
     {
-      "id": "fS5M3kLaXAA",
-      "title": "Claude Code vs Codex: Which Should You ACTUALLY Use?",
-      "channel": "Austin Marchese",
-      "score": 0.655
-    },
-    {
-      "id": "2YKMZFgGdbQ",
-      "title": "Build AI Apps with Claude Code  | Full Tutorial for Beginners (Desktop + Terminal + VS Code)",
-      "channel": "Code With Aarohi",
-      "score": 0.632
-    },
-    {
       "id": "RywmhLTFeFk",
       "title": "Ultimate Claude Code Guide: How to Use Claude Code for Beginners in 2026",
       "channel": "AI Master",
-      "score": 0.629
+      "score": 0.628
     },
     {
       "id": "RLjaUES9P8A",
@@ -103,7 +97,13 @@
       "id": "exfBqkraEk0",
       "title": "Top 6 Claude Code Features to Get You Ahead of 99% of Users. (In Under 10 Minutes).",
       "channel": "Tristen O'Brien",
-      "score": 0.612
+      "score": 0.613
+    },
+    {
+      "id": "2YKMZFgGdbQ",
+      "title": "Build AI Apps with Claude Code  | Full Tutorial for Beginners (Desktop + Terminal + VS Code)",
+      "channel": "Code With Aarohi",
+      "score": 0.606
     }
   ]
 }

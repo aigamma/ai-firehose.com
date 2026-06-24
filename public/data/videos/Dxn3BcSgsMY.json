@@ -6,9 +6,9 @@
   "published": "2026-06-13T15:09:16+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Google DeepMind released DiffusionGemma, a model that applies diffusion-based image generation techniques to text generation using uniform state diffusion. The architecture shifts LLMs from memory-bound to compute-bound operation, achieving generation speeds exceeding 1,000 tokens per second on H100 GPUs while trading off some maximum quality.",
+  "summary": "Google DeepMind released DiffusionGemma, a model applying diffusion-based generation techniques to text using uniform state diffusion to refine token outputs over multiple bidirectional passes. The architecture shifts local LLMs from memory-bound to compute-bound, achieving theoretical generation speeds exceeding 1,000 tokens per second on H100 GPUs. The model trades maximum output quality for dramatic speed improvements.",
   "writeup": "This Better Stack video covers DiffusionGemma, a Google DeepMind text generation model that applies image diffusion techniques to language using uniform state diffusion. The core claim is generation speeds above 1,000 tokens per second on H100 GPUs, achieved by shifting work from memory-bound to compute-bound operations via bidirectional multi-pass refinement. The significance lies in the architectural departure from autoregressive decoding: rather than generating tokens one at a time, the model refines text across multiple passes, which changes where the hardware bottleneck sits.",
-  "wh": "c50614148adda9b2",
+  "wh": "cfa56d187d13d378",
   "concepts": [
     {
       "slug": "diffusion-models",
@@ -19,12 +19,16 @@
       "label": "sparse attention"
     },
     {
-      "slug": "compute-bound",
-      "label": "compute-bound"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "token-generation-speed",
+      "label": "token generation speed"
+    },
+    {
+      "slug": "inference-time-compute",
+      "label": "inference-time compute"
     }
   ],
   "similar": [
@@ -32,37 +36,37 @@
       "id": "YiIrnYalHS4",
       "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
       "channel": "AI Revolution",
-      "score": 0.901
+      "score": 0.912
     },
     {
       "id": "WLtCHXdHTF0",
       "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
       "channel": "Better Stack",
-      "score": 0.73
+      "score": 0.724
     },
     {
       "id": "J02-39xtlt4",
       "title": "Google strikes back! Gemini Omni, AI glasses, new models",
       "channel": "AI Search",
-      "score": 0.711
+      "score": 0.703
     },
     {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.688
+      "score": 0.681
     },
     {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.68
+      "id": "O6499i4TFYA",
+      "title": "Gemma 4 and the AI Edge Gallery: On-Device AI Gets an Upgrade",
+      "channel": "Google for Developers",
+      "score": 0.666
     },
     {
       "id": "AEH6dBOnE_U",
       "title": "This is Gemini Omni ♾️ #GoogleIO",
       "channel": "Google DeepMind",
-      "score": 0.676
+      "score": 0.664
     }
   ]
 }

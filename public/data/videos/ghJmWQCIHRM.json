@@ -6,9 +6,9 @@
   "published": "2026-06-11T16:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WebMCP is a proposed web standard that provides agents with structured tools and typed actions instead of requiring DOM parsing and screenshot analysis. It offers both a declarative API using HTML attributes and an imperative API for custom JavaScript tools, currently in early preview on Chrome 146.",
+  "summary": "WebMCP is a proposed web standard from the Google Chrome team that enables AI agents to interact with websites through structured tools instead of DOM parsing and screenshot analysis. It offers declarative HTML attributes and an imperative JavaScript API for registering typed, named actions that agents can call directly.",
   "writeup": "A Google Chrome DevRel engineer introduces Web MCP (Web Model Context Protocol), a proposed browser standard that lets sites expose their capabilities as structured tools so in-browser AI agents can act reliably without scraping DOM trees, accessibility trees, or screenshots. The talk demonstrates the idea with a maze escape game driven entirely by Gemini 1.5 calling registered tools, then explains the two implementation paths: a declarative HTML attribute API for standard forms and an imperative JavaScript API for complex multi-step flows. The through-line is that the web was built for human eyes, and Web MCP is the minimal addition that makes existing sites legible to agents without requiring a full rewrite.",
-  "wh": "8143eeffc435d2c2",
+  "wh": "15608b70db28a28d",
   "key_points": [
     "Unassisted browser agents today parse the full DOM, inspect the accessibility tree, take screenshots, and compute pixel coordinates before clicking, a process that is slow, brittle, and expensive in tokens, and can still fail if an ad shifts the layout after all that work.",
     "Web MCP is a proposed web standard from the Chrome team that exposes a site's capabilities as a named, schema-described menu of tools; instead of guessing what a page does, an in-browser agent calls the tool directly, which the Chrome team describes as the 'USB-C of AI agent interactions.'",
@@ -60,16 +60,16 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "structured-tools",
-      "label": "structured tools"
+      "slug": "tool-use",
+      "label": "tool use"
     },
     {
-      "slug": "web-standards",
-      "label": "web standards"
+      "slug": "structured-apis",
+      "label": "structured APIs"
     },
     {
-      "slug": "tool-integration",
-      "label": "tool integration"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -77,7 +77,13 @@
       "id": "_B4Pv9ttFgY",
       "title": "Building Agent Interfaces: Lessons from Chrome DevTools (MCP) for Agents — Michael Hablich, Google",
       "channel": "AI Engineer",
-      "score": 0.694
+      "score": 0.649
+    },
+    {
+      "id": "zTZ0qunQXnM",
+      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
+      "channel": "AI Engineer",
+      "score": 0.636
     },
     {
       "id": "CgwslR4pgL4",
@@ -86,28 +92,22 @@
       "score": 0.626
     },
     {
-      "id": "zTZ0qunQXnM",
-      "title": "From MCP to Scale: Pipelines That Build Themselves — Rafael Levi, Bright Data",
-      "channel": "AI Engineer",
-      "score": 0.625
-    },
-    {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.593
+      "score": 0.607
     },
     {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.593
+      "id": "btxGmN8RvNU",
+      "title": "Your Agent's Biggest Lie: \"I Searched the Web\" — Rafael Levi, Bright Data",
+      "channel": "AI Engineer",
+      "score": 0.604
     },
     {
-      "id": "fTf3QBUM3Zg",
-      "title": "Mission Report Ep. 03 | Antigravity Updates",
-      "channel": "Google Antigravity",
-      "score": 0.592
+      "id": "o4pwkwg0zfk",
+      "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
+      "channel": "Alex Kantrowitz",
+      "score": 0.583
     }
   ]
 }

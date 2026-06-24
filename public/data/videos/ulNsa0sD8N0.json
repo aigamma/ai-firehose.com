@@ -6,9 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering is the practice of building the wrapper and orchestration layer around AI models (roughly 98% of a coding agent), comprising single-session AI layers with rules and hooks, and multi-session orchestration workflows. The technique focuses on iterating the harness based on model failures and coordinating multiple focused agent sessions for reliable, scalable task completion.",
+  "summary": "Harness engineering is the architecture and control logic wrapping an LLM in a coding agent, comprising rules, skills, hooks, and subagents at the session level, with the key leverage coming from orchestrating multiple focused agent sessions into a single workflow. Cole Medin argues the harness, not the model itself, is the critical differentiator for reliable large-task execution.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "ec7283b2f34b8000",
+  "wh": "42f72d8a678fb7fa",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -59,12 +59,20 @@
       "label": "prompt engineering"
     },
     {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "multi-session-workflows",
+      "label": "multi-session workflows"
+    },
+    {
+      "slug": "llm-integration",
+      "label": "LLM integration"
     }
   ],
   "similar": [
@@ -72,37 +80,37 @@
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.803
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.708
+      "score": 0.776
     },
     {
       "id": "efRIrLXoOVA",
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.694
+      "score": 0.725
     },
     {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.693
+      "id": "1a1VXDdIyrk",
+      "title": "Agent Harness explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.688
     },
     {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "id": "luBkbzjo-TA",
+      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
       "channel": "Cole Medin",
-      "score": 0.677
+      "score": 0.651
     },
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.668
+      "id": "Fzd0BWMH65s",
+      "title": "How to design a multi-agent system that skips the LLM",
+      "channel": "Google Cloud Tech",
+      "score": 0.642
+    },
+    {
+      "id": "EtxJJJ_7WQY",
+      "title": "1,000 AI agents, 0 LLM calls?",
+      "channel": "Google Cloud Tech",
+      "score": 0.638
     }
   ]
 }
