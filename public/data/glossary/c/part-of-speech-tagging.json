@@ -1,12 +1,108 @@
 {
   "id": "part-of-speech-tagging",
   "label": "Part-of-Speech Tagging",
-  "kind": "technique",
-  "category": "NLP Foundations",
   "aliases": [
     "POS tagging",
     "part of speech tagging"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-23T17:10:46Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 145,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "tokenization",
+      "label": "tokenization",
+      "score": 0.811
+    },
+    {
+      "id": "morpho-semantic-annotation",
+      "label": "morpho-semantic annotation",
+      "score": 0.788
+    },
+    {
+      "id": "next-token-prediction",
+      "label": "next-token prediction",
+      "score": 0.758
+    },
+    {
+      "id": "text-embeddings",
+      "label": "text embeddings",
+      "score": 0.746
+    },
+    {
+      "id": "token-counting",
+      "label": "token counting",
+      "score": 0.74
+    },
+    {
+      "id": "token-level-chunking",
+      "label": "token-level chunking",
+      "score": 0.739
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.173
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.206
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.233
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.332
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.327
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": -0.233
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.254
+    }
+  ],
+  "top_items": [
+    {
+      "title": "L3Cube-MahaPOS: A Marathi Part-of-Speech Tagging Dataset and BERT Models",
+      "url": "http://arxiv.org/abs/2606.24825v1",
+      "author_or_channel": "Hariom Ingle, Ronit Ghode, Ishwari Gondkar",
+      "published_at": "2026-06-23T17:10:46Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "NLP Foundations",
   "durable": true,
   "source": "authored",
   "definition": "The classic task of labeling each word with its grammatical category (noun, verb, adjective), a foundational preprocessing step that resolves syntactic ambiguity and feeds parsing and extraction. Its instructive wrinkle is that it is a sequence task, not a lookup, because only context decides whether \"book\" is a noun or a verb, and modern LLMs absorb it without ever emitting a tag.",
@@ -55,12 +151,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/part-of-speech-tagging.png",
     "alt": "The sentence 'displaCy uses JavaScript, SVG and CSS.' with a grammatical tag printed in color under each word: NN, VBZ, NNP, NNP, CC, NNP. Curved labeled arcs above the words show the dependency relations nsubj, dobj, conj and cc.",

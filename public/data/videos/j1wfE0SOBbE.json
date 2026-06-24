@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "AWS tutorial covering five production deployment patterns for AI agents: streaming tool call events for responsive UIs, layered authentication with OAuth and IAM separation, type-safe database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and distributed tracing.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "8ddfd10f574ed393",
+  "wh": "6dd7709703bef8af",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -60,8 +60,8 @@
       "label": "streaming"
     },
     {
-      "slug": "agent-persistence",
-      "label": "agent persistence"
+      "slug": "access-control",
+      "label": "access control"
     },
     {
       "slug": "tenant-isolation",
@@ -80,8 +80,8 @@
       "label": "observability"
     },
     {
-      "slug": "tracing",
-      "label": "tracing"
+      "slug": "agent-tracing",
+      "label": "agent tracing"
     },
     {
       "slug": "model-routing",

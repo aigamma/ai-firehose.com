@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "TurboQuant is a Google quantization technique that compresses KV cache and vectors to reduce VRAM and graphics card requirements. It uses vector quantization with codebooks and optimizes for mean squared error and inner product error.",
   "writeup": "This video breaks down the theory behind TurboQuant, a lossy KV cache quantization algorithm that reduces memory requirements for LLM inference without pruning or discarding attention tokens. The core insight is that multiplying input vectors by a random rotation matrix transforms arbitrarily \"spiky\" data into a near-Gaussian distribution, as guaranteed by the Central Limit Theorem, making it possible to precompute a single optimal codebook for any input. The algorithm combines a Max weight codebook step (minimizing mean squared error) with a QJL pass (preserving dot-product fidelity), and the result cuts KV cache memory by multiples, which could reduce inference GPU requirements by 2 to 3x.",
-  "wh": "ee4c842f9a3ce8d1",
+  "wh": "8db0c96bde75668f",
   "key_points": [
     "TurboQuant operates on the KV cache, not model weights: the KV cache can consume as much memory as the model weights themselves, so quantizing it at lower bit widths directly multiplies throughput and the number of users that can be served on fixed hardware.",
     "The central mathematical trick is a random rotation matrix applied to normalized input vectors: regardless of whether the input is all-identical characters, HTML, or legal text, the rotation spreads concentrated energy evenly, and the Central Limit Theorem guarantees convergence toward a Gaussian distribution with mean 1 divided by the square root of the dimension and variance 1 divided by the dimension.",
@@ -72,8 +72,8 @@
       "label": "KV cache quantization"
     },
     {
-      "slug": "prompt-compression",
-      "label": "prompt compression"
+      "slug": "context-compression",
+      "label": "context compression"
     }
   ],
   "similar": [

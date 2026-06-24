@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Headroom is an open-source tool that compresses inputs to LLMs using content-type-aware compressors and locally trained models, reducing token usage by 60-95%. Built by a Netflix engineer, it keeps compression local and uses breadcrumb hashing for on-demand retrieval of full original content.",
   "writeup": "Headroom is an open-source token-compression proxy, built by Netflix senior developer Tejas Chopra, that intercepts agent tool-call output before it reaches the LLM and compresses it by 60 to 95% using content-aware strategies. The core insight is that most tool-call payloads are redundant: build logs are mostly passing tests, JSON arrays are mostly normal rows, and log files repeat the same info line hundreds of times. Reversibility is the key design decision: Headroom embeds a hash breadcrumb in each compressed message so the model can request full data on demand, though each such retrieval adds a round-trip and can erase the savings if triggered too often.",
-  "wh": "8f39386da864f3eb",
+  "wh": "163970df095cda43",
   "key_points": [
     "Headroom uses content-type detection to apply different compression strategies: statistical summarization for repetitive log lines (removing 419 similar info entries in the demo), a syntax-tree-aware compressor for code files, and a locally-run model called Compress Base, trained specifically for plain-text compression.",
     "In the demo against a log-analysis task, Headroom reduced a 17,000-plus-token tool response by 98%, producing a compressed representation that Claude used correctly to identify errors and root causes, with the full data available via hash retrieval if needed.",
@@ -60,8 +60,8 @@
   "ih": "0d2fe41ab4e56f7f",
   "concepts": [
     {
-      "slug": "prompt-compression",
-      "label": "prompt compression"
+      "slug": "context-compression",
+      "label": "context compression"
     },
     {
       "slug": "token-optimization",

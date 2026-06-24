@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Google released the TPU 8t for training and TPU 8i for inference, served via Virgo Network to enable high throughput. The video analyzes how these ASICs compare to general-purpose GPUs and examines scaling strategies that affect token economics and LLM serving for mass deployment.",
   "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
-  "wh": "937ecb7cdfffef19",
+  "wh": "3a213064ce420898",
   "key_points": [
     "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
     "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
@@ -64,8 +64,8 @@
       "label": "ASIC"
     },
     {
-      "slug": "scaling-laws",
-      "label": "scaling laws"
+      "slug": "scaling",
+      "label": "scaling"
     },
     {
       "slug": "local-inference",

@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Rafael Levi demonstrates how Bright Data's Model Context Protocol integrates with agents to automate web scraper generation, maintenance, and repair. The system uses agents to inspect site structures, generate production scrapers, and self-repair pipelines when websites change.",
   "writeup": "A live conference demo by a Bright Data presenter showing how to pair Claude Code with Bright Data's MCP server to auto-generate and self-maintaining web scrapers rather than feeding raw HTML to an LLM on every request. The central argument is that LLM-per-page parsing is prohibitively token-expensive at scale, and that a code-generation approach, where the agent inspects a page once and writes a reusable parser, collapses ongoing costs by roughly a million tokens for a three-page Walmart scrape. The demo also illustrates bypassing aggressive anti-bot systems (Walmart, Cloudflare) through Bright Data's 150-million-IP pool and in-house CAPTCHA solvers.",
-  "wh": "23ba755281591253",
+  "wh": "79c127d2e6c6eb6b",
   "key_points": [
     "Bright Data's MCP server exposes 66 tools to an LLM agent, including a 'scrape as markdown' endpoint that returns only page text, stripping HTML tags to minimize token consumption during site exploration and selector discovery.",
     "For three pages of Walmart headphone search results, building a scraper via the agent-plus-MCP approach saves approximately one million tokens compared to feeding raw HTML to the LLM for every page.",
@@ -68,8 +68,8 @@
       "label": "pipeline generation"
     },
     {
-      "slug": "self-repair-systems",
-      "label": "self-repair systems"
+      "slug": "self-healing",
+      "label": "self-healing"
     }
   ],
   "similar": [
