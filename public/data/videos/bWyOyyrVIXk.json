@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling challenges at Shopify, the cyclical emergence of new database companies, and the characteristics of top-tier infrastructure engineers. The conversation covers infrastructure evolution in the 2010s, principles from on-call engineering culture, and perspectives on AI coding tools and their current limitations.",
+  "summary": "Sualeh Asif and Simon Eskildsen discuss infrastructure scaling at Shopify, the cyclical emergence of new database companies, the role of AI coding agents, and traits of exceptional engineers in the modern era. Topics span flash sales, on-call culture, the Napkin Math blog, and the future of database technology.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "202e7ed01a0ca4b5",
+  "wh": "cca01f80729e279e",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,66 +56,58 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "relational-databases",
-      "label": "relational databases"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "database-systems",
+      "label": "database systems"
     },
     {
       "slug": "auto-scaling",
       "label": "auto-scaling"
-    },
-    {
-      "slug": "flash-sales",
-      "label": "flash sales"
-    },
-    {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
-    },
-    {
-      "slug": "ai-coding",
-      "label": "AI coding"
-    },
-    {
-      "slug": "system-architecture",
-      "label": "system architecture"
     }
   ],
   "similar": [
     {
+      "id": "ByOF8qByGHU",
+      "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
+      "channel": "Cursor",
+      "score": 0.616
+    },
+    {
+      "id": "zxvyO5vnknI",
+      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
+      "channel": "Cursor",
+      "score": 0.586
+    },
+    {
+      "id": "aF-rolD9W7I",
+      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
+      "channel": "Cursor",
+      "score": 0.556
+    },
+    {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.544
+      "score": 0.549
     },
     {
-      "id": "XAP78BNKGEs",
-      "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.524
+      "id": "SvBheXuKY8s",
+      "title": "Microsoft’s new AI models & bots dominate the internet",
+      "channel": "IBM Technology",
+      "score": 0.547
     },
     {
-      "id": "j3rmJfWIRxM",
-      "title": "More Developers =/= Faster? Why Teams DON'T Scale! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.521
-    },
-    {
-      "id": "xR9pPlLSwJI",
-      "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
-      "channel": "EO",
-      "score": 0.519
-    },
-    {
-      "id": "nPc0hIreNaQ",
-      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
-      "channel": "Cursor",
-      "score": 0.514
-    },
-    {
-      "id": "JRe0MxtVgxE",
-      "title": "EU Cloud vs US Giants: A New European Cloud Option? #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.513
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.533
     }
   ]
 }

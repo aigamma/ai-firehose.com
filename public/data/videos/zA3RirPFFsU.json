@@ -6,9 +6,9 @@
   "published": "2026-06-11T15:19:44+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "The Model Context Protocol is a standard framework enabling AI agents and applications to communicate with external tools, APIs, databases, and services. MCP uses JSON-RPC for client-server communication and supports multiple transport mechanisms including STDIO and HTTP, allowing AI systems like those built with LangGraph, CrewAI, or Claude Desktop to integrate diverse data sources.",
+  "summary": "Model Context Protocol (MCP) is a standard enabling AI agents and applications to connect with external tools, APIs, databases, and services through a common protocol. The tutorial covers MCP architecture, client-server communication patterns, JSON-RPC transport, and real-world implementation examples across frameworks like LangGraph, CrewAI, and OpenAI Agents SDK.",
   "writeup": "A ground-up introduction to the Model Context Protocol (MCP) that builds the case through two concrete pain points: the explosion of bespoke API integration code in AI apps, and the inability to reuse that code across agentic frameworks such as LangGraph, OpenAI Agent SDK, and CrewAI. MCP resolves both by introducing a uniform client/server split where the AI app embeds only a thin MCP client that speaks JSON-RPC, while MCP servers encapsulate all integration complexity for any external resource, including REST APIs, databases, local files, GitHub, and internal systems. The through-line is portability and separation of concerns: one MCP server can be reused unchanged across every framework, and any number of servers can be composed inside a single multi-agent application.",
-  "wh": "25a1ca4974fb2072",
+  "wh": "51d55ceea0689c28",
   "key_points": [
     "Without MCP, each external service (weather, Google Drive, GitHub, PostgreSQL) requires its own bespoke integration code written to that API's request and response format, and that code must be rewritten from scratch for every agentic framework (LangGraph, OpenAI Agent SDK, CrewAI, Agno) the developer adopts.",
     "MCP splits the integration problem into two roles: an MCP client embedded in the AI application that handles only connection establishment, and an MCP server that owns all API authentication, request formatting, and response parsing, leaving the AI app with minimal integration surface.",
@@ -65,48 +65,44 @@
     {
       "slug": "ai-agents",
       "label": "AI agents"
-    },
-    {
-      "slug": "system-architecture",
-      "label": "system architecture"
     }
   ],
   "similar": [
     {
+      "id": "cGuyrANVi4A",
+      "title": "How Model Context Protocol (MCP) actually works",
+      "channel": "Google Cloud Tech",
+      "score": 0.816
+    },
+    {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.726
-    },
-    {
-      "id": "Gh1E9VgXZWs",
-      "title": "Bridging Design Systems and Code with MCP and AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.628
-    },
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.606
+      "score": 0.765
     },
     {
       "id": "CgwslR4pgL4",
       "title": "Governed agents: Looker + MCP explained",
       "channel": "Google Cloud Tech",
-      "score": 0.599
+      "score": 0.658
     },
     {
-      "id": "okx6dUzDPRY",
-      "title": "Automate project intake with multi-agent AI using MCP, Google ADK, Cloud Run, and BigQuery",
+      "id": "yeRvxe7MRj4",
+      "title": "Your first agent configuration with MCP and Looker",
       "channel": "Google Cloud Tech",
-      "score": 0.574
+      "score": 0.65
+    },
+    {
+      "id": "Gh1E9VgXZWs",
+      "title": "Bridging Design Systems and Code with MCP and AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.634
     },
     {
       "id": "Yt5xBk7Xbs0",
       "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
       "channel": "Code With Aarohi",
-      "score": 0.562
+      "score": 0.629
     }
   ]
 }

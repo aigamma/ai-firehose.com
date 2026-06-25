@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Video tutorial on deploying Claude Code automations using three methods: /loop command for simple cases, scheduled tasks and Claude routines for intermediate scenarios, and Modal or Trigger.dev for production agentic systems. Addresses practical deployment patterns for autonomous agents.",
   "writeup": "A practical walkthrough of three methods for deploying Claude Code agents to run autonomously, organized around a two-axis framework: where the agent runs (local machine versus cloud) and how deterministic it is (scripted workflow versus full agentic loop). The first method, session-scoped cron loops via Claude Code's built-in CronCreate/CronList/CronDelete tools, is covered in full depth; the tutorial also begins covering desktop scheduled tasks and cloud routines as Method 2. The core argument is that no single deployment method is universally best: the right choice depends on whether the workload needs true agentic autonomy and whether it can tolerate a machine or session dependency.",
-  "wh": "c3db0abb1a01748f",
+  "wh": "fb48d3f2f783fc0b",
   "key_points": [
     "Claude Code exposes three internal scheduling tools (CronCreate, CronList, CronDelete) that power the /loop skill; loops are session-scoped and die when the terminal session closes, with a hard 7-day expiry and up to 30 minutes of random jitter on each firing to prevent API saturation.",
     "The terminal client is strictly more capable than the desktop app for loop-based automation: a /clear command inside a loop actually fires as the slash command (useful for flushing context rot without killing crons), and clearing the chat in terminal does not terminate live crons the way it does in the desktop app.",
@@ -55,8 +55,8 @@
   "ih": "5bb901a36648dea3",
   "concepts": [
     {
-      "slug": "agent-development-kit",
-      "label": "Agent Development Kit"
+      "slug": "claude-api",
+      "label": "Claude API"
     },
     {
       "slug": "edge-deployment",
@@ -73,22 +73,22 @@
   ],
   "similar": [
     {
+      "id": "jdLFeBkiy3M",
+      "title": "How Claude Code's Creator ACTUALLY Automates his work",
+      "channel": "Austin Marchese",
+      "score": 0.683
+    },
+    {
       "id": "xVDDU6w4YZY",
       "title": "Master Claude Code with Fable 5 (57 mins)",
       "channel": "Keith AI",
       "score": 0.645
     },
     {
-      "id": "jdLFeBkiy3M",
-      "title": "How Claude Code's Creator ACTUALLY Automates his work",
-      "channel": "Austin Marchese",
-      "score": 0.645
-    },
-    {
       "id": "Ya51a1EJPZk",
       "title": "Make the PERFECT Videos with Claude Code (Full Workflow)",
       "channel": "Cole Medin",
-      "score": 0.616
+      "score": 0.615
     },
     {
       "id": "Nr9TaL0RQSY",
@@ -100,13 +100,13 @@
       "id": "exfBqkraEk0",
       "title": "Top 6 Claude Code Features to Get You Ahead of 99% of Users. (In Under 10 Minutes).",
       "channel": "Tristen O'Brien",
-      "score": 0.609
+      "score": 0.608
     },
     {
-      "id": "LIEuGD0pJ18",
-      "title": "Learn 97% of Claude in Under 12 Minutes",
-      "channel": "Jack Roberts",
-      "score": 0.587
+      "id": "YAS4ojuhbW4",
+      "title": "Stop Prompting Claude. Start Loop Engineering.",
+      "channel": "Austin Marchese",
+      "score": 0.598
     }
   ]
 }

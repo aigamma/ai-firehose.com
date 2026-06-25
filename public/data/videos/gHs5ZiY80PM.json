@@ -6,33 +6,29 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan's NVIDIA team demonstrated a video diffusion model achieving near real-time generation on a single Blackwell B200 by reducing denoising steps from fifty through quantization, caching, and distillation techniques. The approach trains student models to match teacher outputs in four, eight, or one step using trajectory-based or distribution-based distillation strategies.",
+  "summary": "NVIDIA engineers combined quantization, caching, and step distillation to reduce diffusion model denoising from 50 steps to as few as one step, enabling near-real-time video generation on a single Blackwell B200. The approach uses dynamic quantization, latent chunk caching to avoid recomputation, and student-teacher distillation with trajectory or distribution-based training.",
   "writeup": "Ziv Ilan presents NVIDIA's work on accelerating video diffusion, showing near real-time generation on a single Blackwell B200 by cutting denoising steps down from fifty. The speedup combines three techniques: quantization, caching, and distillation. On the distillation side, student models are trained to match teacher outputs in four, eight, or a single step, using either trajectory-based or distribution-based strategies. The takeaway is that the standard fifty-step count is not required, and step reduction plus quantization and caching can bring diffusion inference toward interactive speeds.",
-  "wh": "2381fd71a9c55617",
+  "wh": "a622112755587c2c",
   "concepts": [
-    {
-      "slug": "diffusion-step-reduction",
-      "label": "diffusion step reduction"
-    },
     {
       "slug": "quantization",
       "label": "quantization"
-    },
-    {
-      "slug": "prompt-caching",
-      "label": "prompt caching"
     },
     {
       "slug": "distillation",
       "label": "Distillation"
     },
     {
-      "slug": "on-policy-distillation",
-      "label": "on-policy distillation"
+      "slug": "prompt-caching",
+      "label": "prompt caching"
     },
     {
       "slug": "knowledge-distillation",
       "label": "knowledge distillation"
+    },
+    {
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     }
   ],
   "similar": [
@@ -40,37 +36,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.663
-    },
-    {
-      "id": "RdqYvdT74i0",
-      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
-      "channel": "AI Search",
-      "score": 0.592
+      "score": 0.629
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.586
+      "score": 0.565
     },
     {
       "id": "UYVObn1HUeU",
       "title": "Diffusion Models explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.579
+      "score": 0.565
+    },
+    {
+      "id": "RdqYvdT74i0",
+      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
+      "channel": "AI Search",
+      "score": 0.558
+    },
+    {
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.556
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.576
-    },
-    {
-      "id": "lcfYRJPwL-o",
-      "title": "Nvidia's Catalyst: AI Security & Cloud Data Fears! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.562
+      "score": 0.543
     }
   ]
 }

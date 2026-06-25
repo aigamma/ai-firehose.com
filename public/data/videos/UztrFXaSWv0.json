@@ -6,25 +6,29 @@
   "published": "2026-06-18T00:00:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Engineers at Anthropic and other organizations use automated loops that prompt AI agents repeatedly rather than manual prompting. These loops can run for extended periods unattended and involve orchestrators spawning parallel worker agents. The approach trades cost for automation and reliability gains.",
+  "summary": "AI engineers use self-prompting agent loops where orchestrators spawn parallel worker agents instead of manually prompting agents. The loop architecture stores runs in a database with observability dashboards, enabling hands-off agentic systems that can run for extended periods.",
   "writeup": "Cole Medin explains loop-based orchestration, a pattern where AI engineers automate agent prompting instead of issuing prompts by hand. An orchestrator chains agents together and spawns parallel workers for tasks, storing observations in a database for monitoring and reliability. The trade-offs are direct: the method cuts manual prompting but raises token costs and can compound hallucinations without an observability harness in place.",
-  "wh": "dbe728c1d59f57c7",
+  "wh": "f1cb1c0542ea5805",
   "concepts": [
     {
-      "slug": "agentic-loops",
-      "label": "agentic loops"
+      "slug": "loop-agents",
+      "label": "loop agents"
     },
     {
-      "slug": "prompting",
-      "label": "prompting"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     }
   ],
   "similar": [
@@ -32,37 +36,37 @@
       "id": "JlwwyNtHsCI",
       "title": "Anthropic Just Warned Everyone About Claude (It’s Evolving)",
       "channel": "AI Revolution",
-      "score": 0.768
-    },
-    {
-      "id": "efRIrLXoOVA",
-      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
-      "channel": "Cole Medin",
-      "score": 0.729
+      "score": 0.711
     },
     {
       "id": "fEZ0GZ-vKhg",
       "title": "Don’t miss this Claude update",
       "channel": "Jack Roberts",
-      "score": 0.726
-    },
-    {
-      "id": "Ob5Vu-gD3mo",
-      "title": "Claude Managed Agents Just Dropped, And It Kills n8n",
-      "channel": "Nick Saraev",
-      "score": 0.712
+      "score": 0.707
     },
     {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.708
+      "score": 0.698
     },
     {
-      "id": "NF10evwkefM",
-      "title": "Claude Dispatch Just Dropped, And It Kills OpenClaw",
-      "channel": "Nick Saraev",
-      "score": 0.707
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.692
+    },
+    {
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.689
+    },
+    {
+      "id": "6ad-LyammTI",
+      "title": "STOP Using Claude to Code. Do THIS Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.687
     }
   ]
 }

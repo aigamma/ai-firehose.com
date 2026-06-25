@@ -6,9 +6,9 @@
   "published": "2026-05-19T03:35:08+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin's AI Dark Factory is a self-building codebase that uses custom agent workflows (Archon) to ship its own code. The system combines Claude Opus for deep reasoning and planning with Kimi K2.6 for implementation and validation to optimize token efficiency while scaling.",
+  "summary": "Cole Medin's AI Dark Factory is a self-building codebase that ships its own code through Archon workflows. He demonstrated combining Claude Opus and Kimi K2.6 to route hard reasoning steps to Opus while using Kimi for implementation, validation, and research tasks to maintain token efficiency at scale.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "8dbd3d7c7445f579",
+  "wh": "5b1bcae0d15c9384",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,20 +56,20 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
       "slug": "model-routing",
       "label": "model routing"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
+      "slug": "token-optimization",
+      "label": "token optimization"
+    },
+    {
+      "slug": "reasoning",
+      "label": "reasoning"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "pmoDeA3RBZY",
       "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
       "channel": "AI Engineer",
-      "score": 0.667
-    },
-    {
-      "id": "C1dS-oFoyhk",
-      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
-      "channel": "Cole Medin",
-      "score": 0.659
-    },
-    {
-      "id": "4azVjKhqDzw",
-      "title": "Building the App Store for Agentic Engineering",
-      "channel": "Cole Medin",
-      "score": 0.606
-    },
-    {
-      "id": "EDDgH3hs-5U",
-      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
-      "channel": "Google Cloud Tech",
-      "score": 0.598
+      "score": 0.617
     },
     {
       "id": "RSk6R_2GYZo",
       "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
       "channel": "Cole Medin",
-      "score": 0.59
+      "score": 0.615
     },
     {
-      "id": "luBkbzjo-TA",
-      "title": "FULL Guide to Becoming a Principled Agentic Engineer (Build Anything with AI)",
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.59
+      "score": 0.594
+    },
+    {
+      "id": "C1dS-oFoyhk",
+      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
+      "channel": "Cole Medin",
+      "score": 0.594
+    },
+    {
+      "id": "4azVjKhqDzw",
+      "title": "Building the App Store for Agentic Engineering",
+      "channel": "Cole Medin",
+      "score": 0.588
+    },
+    {
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.57
     }
   ]
 }

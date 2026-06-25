@@ -6,22 +6,22 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 97,
+  "attention": 94,
   "first_seen": "2026-04-04T10:03:00Z",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 92.2,
-    "momentum": 99,
+    "ratio": 96.7,
+    "momentum": 95,
     "sparkline": [
-      20,
-      18,
       17,
-      20,
+      16,
+      25,
+      28,
+      26,
       24,
-      22,
-      21,
-      19
+      23,
+      21
     ]
   },
   "neighbors": [
@@ -29,11 +29,6 @@
       "id": "token-generation",
       "label": "token generation",
       "score": 0.799
-    },
-    {
-      "id": "token-generation-speed",
-      "label": "token generation speed",
-      "score": 0.78
     },
     {
       "id": "tokenization",
@@ -46,26 +41,31 @@
       "score": 0.769
     },
     {
-      "id": "context-window-optimization",
-      "label": "context window optimization",
-      "score": 0.767
+      "id": "end-to-end-optimization",
+      "label": "end-to-end optimization",
+      "score": 0.766
     },
     {
       "id": "rendering-aware-optimization",
       "label": "rendering-aware optimization",
       "score": 0.765
+    },
+    {
+      "id": "context-window-optimization",
+      "label": "context window optimization",
+      "score": 0.764
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.007
+      "position": 0.147
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.544
+      "position": -0.572
     },
     {
       "slug": "capability-safety",
@@ -75,17 +75,17 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.027
+      "position": -0.185
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.166
+      "position": -0.182
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.139
+      "position": 0.178
     },
     {
       "slug": "central-local",
@@ -94,6 +94,13 @@
     }
   ],
   "top_items": [
+    {
+      "title": "What I'm Finding About LLM Code Style and Token Costs",
+      "url": "https://www.jimmont.com/llm-style-token-costs",
+      "author_or_channel": "jimmont",
+      "published_at": "2026-06-25T00:52:40.000Z",
+      "kind": "opinion"
+    },
     {
       "title": "Sakana Fugu vs Fusion (Beats Fable 5?)",
       "url": "https://www.youtube.com/watch?v=PLJJbqqEUCE",
@@ -109,6 +116,13 @@
       "kind": "tool"
     },
     {
+      "title": "This Claude Code Plugin Writes 94% Less Code (ponytail)",
+      "url": "https://www.youtube.com/watch?v=2xuFcmUAQUc",
+      "author_or_channel": "Better Stack",
+      "published_at": "2026-06-20T09:00:01+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "Save 70% of your AI Tokens",
       "url": "https://www.youtube.com/watch?v=E4OkSRTghy0",
       "author_or_channel": "Jack Roberts",
@@ -121,20 +135,6 @@
       "author_or_channel": "stevesolun",
       "published_at": "2026-06-16T18:14:48.000Z",
       "kind": "tool"
-    },
-    {
-      "title": "Show the Signal, Hide the Noise: Spectral Forcing for Pixel-Space Diffusion",
-      "url": "https://huggingface.co/papers/2606.15236",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-15T20:00:00.000Z",
-      "kind": "technique"
-    },
-    {
-      "title": "TokenPilot: Cache-Efficient Context Management for LLM Agents",
-      "url": "http://arxiv.org/abs/2606.17016v1",
-      "author_or_channel": "Buqiang Xu, Zirui Xue, Dianmou Chen",
-      "published_at": "2026-06-15T17:46:50Z",
-      "kind": "technique"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",
