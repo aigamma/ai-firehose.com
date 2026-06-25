@@ -7,8 +7,8 @@
   "kind": "tool",
   "recommended": true,
   "summary": "Google DeepMind released DiffusionGemma, a model applying diffusion-based generation techniques to text using uniform state diffusion to refine token outputs over multiple bidirectional passes. The architecture shifts local LLMs from memory-bound to compute-bound, achieving theoretical generation speeds exceeding 1,000 tokens per second on H100 GPUs. The model trades maximum output quality for dramatic speed improvements.",
-  "writeup": "This Better Stack video covers DiffusionGemma, a Google DeepMind text generation model that applies image diffusion techniques to language using uniform state diffusion. The core claim is generation speeds above 1,000 tokens per second on H100 GPUs, achieved by shifting work from memory-bound to compute-bound operations via bidirectional multi-pass refinement. The significance lies in the architectural departure from autoregressive decoding: rather than generating tokens one at a time, the model refines text across multiple passes, which changes where the hardware bottleneck sits.",
-  "wh": "cfa56d187d13d378",
+  "writeup": "The video covers Google DeepMind's DiffusionGemma, a model that applies diffusion-based generation to text using uniform state diffusion to refine token outputs across multiple bidirectional passes rather than producing tokens strictly left to right. The central architectural shift moves local LLMs from memory-bound to compute-bound, which yields theoretical generation speeds exceeding 1,000 tokens per second on H100 GPUs. The key tradeoff is explicit: the approach sacrifices maximum output quality in exchange for the speed gains.",
+  "wh": "53b7410802dc2641",
   "concepts": [
     {
       "slug": "diffusion-models",
@@ -23,12 +23,12 @@
       "label": "test-time compute"
     },
     {
-      "slug": "token-generation-speed",
-      "label": "token generation speed"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     },
     {
-      "slug": "inference-time-compute",
-      "label": "inference-time compute"
+      "slug": "memory-bound-to-compute-bound",
+      "label": "memory-bound to compute-bound"
     }
   ],
   "similar": [

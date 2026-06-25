@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Cole Medin's AI Dark Factory is a self-building codebase that uses custom agent workflows (Archon) to ship its own code. The system combines Claude Opus for deep reasoning and planning with Kimi K2.6 for implementation and validation to optimize token efficiency while scaling.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "ad3ae0ecb9693f8a",
+  "wh": "8dbd3d7c7445f579",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -64,8 +64,8 @@
       "label": "model routing"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     },
     {
       "slug": "code-generation",

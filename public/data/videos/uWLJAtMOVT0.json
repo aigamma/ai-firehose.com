@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "A crash course on LangGraph covering agent workflows in Python. Topics include environment setup, basic workflows, memory management, conditional routing, RAG integration, human-in-the-loop patterns, and graph visualization for building multi-step agentic systems.",
   "writeup": "A hands-on crash course in LangGraph, the lower-level Langchain-ecosystem library for modeling agent workflows as directed graphs with explicit nodes, edges, and typed state. The tutorial builds from a minimal single-node graph up through the graph compilation pattern, explaining why the MessagesState class uses an append annotation rather than a replace semantic. The through-line is that LangGraph trades LangChain's high-level convenience for precise control over durable, branching, and conditional processes.",
-  "wh": "3ecc67cc0e565dd4",
+  "wh": "ac969f377ca785cd",
   "key_points": [
     "LangGraph sits below LangChain in the same ecosystem: LangChain wraps LLM calls at a high level, while LangGraph models entire processes as stateful graphs with explicit nodes and edges, suited to complex or durable workflows. LangSmith is the third tool in the trio, handling monitoring and MLops.",
     "Every LangGraph workflow is a directed graph starting at a reserved START node and ending at a reserved END node, with arbitrary intermediate nodes (each a plain Python function that receives the current state and returns an update) and edges (including conditional branches and loops) wired between them.",
@@ -68,8 +68,8 @@
       "label": "human-in-the-loop"
     },
     {
-      "slug": "smart-routing",
-      "label": "smart routing"
+      "slug": "tier-routing",
+      "label": "tier routing"
     },
     {
       "slug": "memory-management",

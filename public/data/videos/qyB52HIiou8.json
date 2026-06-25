@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Cole Medin demonstrates building a Jira adapter for Archon that automatically triggers AI-driven code fixes from tickets. When a Jira ticket arrives, Archon analyzes it, generates a fix, opens a pull request, and posts the result back to the ticket. Each ticket gets a dedicated conversation context within Archon.",
   "writeup": "This live stream builds a Jira community adapter for Archon, an open-source agent orchestration framework, so that developers can hold per-ticket conversations with a coding agent directly inside Jira, mirroring how Archon already handles parallel conversations via Slack threads. The host uses a 12-step Archon workflow called PIV System Evolution, which takes a GitHub issue as input and produces a pull request as output, to build the adapter itself. The broader argument is that Jira's near-universal adoption in enterprise development makes it the highest-leverage integration surface, and that mapping one agent conversation per ticket is more useful than fully automated ticket resolution. A concrete model-efficiency finding from prior benchmarking drives the run: Opus 4.8 handles only the planning step, and Sonnet handles everything else.",
-  "wh": "01881e8b08baf7c2",
+  "wh": "c25ec27041648275",
   "key_points": [
     "Archon supports multiple adapter types (web UI, CLI, Slack, GitHub, Telegram, Discord), each mapping a platform's thread or channel primitive to a dedicated Archon conversation; the Jira adapter follows the same pattern by mapping individual Jira tickets to conversations rather than polling the board automatically.",
     "The adapter taxonomy splits into maintainer-supported adapters and community adapters, the latter contributed and self-maintained by outside developers; Jira is being introduced as a community adapter, with Gitea and GitLab as prior examples in that category.",
@@ -67,8 +67,8 @@
       "label": "code generation"
     },
     {
-      "slug": "llm-integration",
-      "label": "LLM integration"
+      "slug": "llms",
+      "label": "LLMs"
     },
     {
       "slug": "platform-adapters",

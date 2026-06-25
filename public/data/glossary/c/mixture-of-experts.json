@@ -7,21 +7,21 @@
     "sparsely-gated mixture of experts"
   ],
   "kind": "technique",
-  "attention": 46,
+  "attention": 48,
   "first_seen": "2026-05-01T03:30:27+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "lagging",
-    "ratio": 88.1,
-    "momentum": 87.4,
+    "ratio": 90.4,
+    "momentum": 89,
     "sparkline": [
-      13,
+      14,
       13,
       12,
+      11,
       12,
       11,
       10,
-      9,
       9
     ]
   },
@@ -30,6 +30,11 @@
       "id": "best-action-identification",
       "label": "best-action identification",
       "score": 0.748
+    },
+    {
+      "id": "bag-mixing",
+      "label": "bag mixing",
+      "score": 0.747
     },
     {
       "id": "evidence-synthesis",
@@ -50,11 +55,6 @@
       "id": "expertise",
       "label": "expertise",
       "score": 0.737
-    },
-    {
-      "id": "superintelligence",
-      "label": "superintelligence",
-      "score": 0.735
     }
   ],
   "axis_positions": [
@@ -86,7 +86,7 @@
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.256
+      "position": 0.29
     },
     {
       "slug": "central-local",
@@ -95,6 +95,20 @@
     }
   ],
   "top_items": [
+    {
+      "title": "SARA: Unlocking Multilingual Knowledge in Mixture-of-Experts via Semantically Anchored Routing Alignment",
+      "url": "http://arxiv.org/abs/2606.25821v1",
+      "author_or_channel": "Tianyu Dong, Yangyang Liu, Jiang Zhou",
+      "published_at": "2026-06-24T13:36:46Z",
+      "kind": "technique"
+    },
+    {
+      "title": "The Hitchhiker's Guide to Agentic AI: From Foundations to Systems",
+      "url": "https://huggingface.co/papers/2606.24937",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-21T20:00:00.000Z",
+      "kind": "tool"
+    },
     {
       "title": "Microsoft’s new AI models & bots dominate the internet",
       "url": "https://www.youtube.com/watch?v=SvBheXuKY8s",
@@ -122,20 +136,6 @@
       "author_or_channel": "NVIDIA Developer",
       "published_at": "2026-06-15T16:45:41.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "RepSelect: Robust LLM Unlearning via Representation Selectivity",
-      "url": "https://huggingface.co/papers/2606.17168",
-      "author_or_channel": "HF Papers",
-      "published_at": "2026-06-14T20:00:00.000Z",
-      "kind": "technique"
-    },
-    {
-      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
-      "url": "https://www.youtube.com/watch?v=HfRVXadseCo",
-      "author_or_channel": "Better Stack",
-      "published_at": "2026-06-13T23:45:08+00:00",
-      "kind": "tool"
     }
   ],
   "definition": "An architecture that replaces a dense layer with many parallel expert subnetworks and a router that activates only a few per input, so total parameters grow without a proportional rise in compute per token. It breaks the usual coupling between a model's capacity and its per-token cost, which is why frontier systems use it, at the price of a tricky-to-balance router and a memory-hungry footprint to serve.",

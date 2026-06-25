@@ -1,12 +1,143 @@
 {
   "id": "variational-inference",
   "label": "Variational Inference",
-  "kind": "technique",
-  "category": "Probabilistic Machine Learning",
   "aliases": [
     "VI",
     "variational Bayes"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-05-25T20:00:00.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 107.2,
+    "momentum": 131.1,
+    "sparkline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "geometric-priors",
+      "label": "geometric priors",
+      "score": 0.851
+    },
+    {
+      "id": "bayesian-networks",
+      "label": "Bayesian networks",
+      "score": 0.847
+    },
+    {
+      "id": "stochastic-gradient-descent",
+      "label": "stochastic gradient descent",
+      "score": 0.834
+    },
+    {
+      "id": "latent-dynamics-learning",
+      "label": "latent dynamics learning",
+      "score": 0.826
+    },
+    {
+      "id": "logit-mixing",
+      "label": "logit mixing",
+      "score": 0.823
+    },
+    {
+      "id": "probabilistic-programming",
+      "label": "probabilistic programming",
+      "score": 0.815
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.313
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.156
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.096
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.716
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.059
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.398
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.076
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Variational Autoencoder Layer",
+      "url": "http://arxiv.org/abs/2606.25900v1",
+      "author_or_channel": "Gananath R",
+      "published_at": "2026-06-24T14:48:23Z",
+      "kind": "technique"
+    },
+    {
+      "title": "An Analysis of Posterior Collapse, Parameterization and Initialization in Variational Deep Gaussian Processes",
+      "url": "http://arxiv.org/abs/2606.25882v1",
+      "author_or_channel": "Francisco Javier Sáez-Maldonado, Juan Maroñas, Daniel Hernández-Lobato",
+      "published_at": "2026-06-24T14:25:39Z",
+      "kind": "technique"
+    },
+    {
+      "title": "A Unifying Lens on Supervised Fine-Tuning Through Target Distribution Design",
+      "url": "http://arxiv.org/abs/2606.11189v1",
+      "author_or_channel": "Tong Xie, Yuanhao Ban, Yunqi Hong",
+      "published_at": "2026-06-09T17:59:54Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Data assimilation for subsurface flow using latent diffusion model parameterization: performance of ensemble-Kalman and Monte Carlo techniques",
+      "url": "http://arxiv.org/abs/2606.11140v1",
+      "author_or_channel": "Guido Di Federico, Wenchao Teng, Louis J. Durlofsky",
+      "published_at": "2026-06-09T17:29:47Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Causal Atlases from Entropic Inference: Bayesian Networks beyond Optimal DAGs",
+      "url": "http://arxiv.org/abs/2606.06440v1",
+      "author_or_channel": "Hazhir Aliahmadi, Irina Babayan, Greg van Anders",
+      "published_at": "2026-06-04T17:41:32Z",
+      "kind": "technique"
+    },
+    {
+      "title": "DEI: Diversity in Evolutionary Inference for Quality-Diversity Search",
+      "url": "https://huggingface.co/papers/2605.27130",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-05-25T20:00:00.000Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Probabilistic Machine Learning",
   "durable": true,
   "source": "authored",
   "definition": "An approximate Bayesian method that turns intractable posterior inference into optimization: instead of computing a hopeless integral, fit a simple tractable distribution to the true posterior by minimizing the KL divergence. Trading exactness for speed is what let probabilistic models ride the same gradient hardware as everything else and made deep generative models practical.",
@@ -65,12 +196,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/variational-inference.svg",
     "alt": "A schematic with two coordinate axes. A grey ellipse labeled Q sits over the origin, representing the family of tractable approximating distributions. A point labeled p(z given x), the true posterior, lies outside the ellipse. A point labeled q-star sits on the boundary of Q, connected to the true posterior by a dashed line labeled KL(q-star given p), with a tangent line touching Q at q-star.",

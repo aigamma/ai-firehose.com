@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Google has released two new TPU variants: the 8t for training and 8i for inference, both served via Virgo Network. The video compares these application-specific integrated circuits against NVIDIA GPUs and analyzes scaling strategies that affect token economics and LLM serving at scale.",
   "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
-  "wh": "7ae4d3c2a3c93fbc",
+  "wh": "990ba94d6bba6605",
   "key_points": [
     "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
     "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
@@ -76,8 +76,8 @@
       "label": "post-training"
     },
     {
-      "slug": "ai-economics",
-      "label": "AI economics"
+      "slug": "token-economics",
+      "label": "token economics"
     }
   ],
   "similar": [

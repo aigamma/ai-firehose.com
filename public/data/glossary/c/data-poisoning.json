@@ -1,13 +1,101 @@
 {
   "id": "data-poisoning",
   "label": "Data Poisoning",
-  "kind": "technique",
-  "category": "Alignment and Safety",
   "aliases": [
     "data poisoning",
     "training-data poisoning",
     "backdoor attack"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-05T23:56:40.000Z",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "cyberattack",
+      "label": "cyberattack",
+      "score": 0.8
+    },
+    {
+      "id": "account-takeover",
+      "label": "account takeover",
+      "score": 0.754
+    },
+    {
+      "id": "api-key-theft",
+      "label": "API key theft",
+      "score": 0.752
+    },
+    {
+      "id": "attack-vectors",
+      "label": "attack vectors",
+      "score": 0.752
+    },
+    {
+      "id": "poisoning-attacks",
+      "label": "poisoning attacks",
+      "score": 0.751
+    },
+    {
+      "id": "vulnerability-detection",
+      "label": "vulnerability detection",
+      "score": 0.743
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": -0.587
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.381
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.249
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.022
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.02
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.083
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.059
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Color Matters: Trigger Color Affects Success in Federated Backdoor Attacks",
+      "url": "http://arxiv.org/abs/2606.25858v1",
+      "author_or_channel": "Kavindu Herath, Joshua C. Zhao, Saurabh Bagchi",
+      "published_at": "2026-06-24T14:07:10Z",
+      "kind": "technique"
+    },
+    {
+      "title": "OpenAI Help: Lockdown Mode",
+      "url": "https://simonwillison.net/2026/Jun/5/openai-help-lockdown-mode/#atom-everything",
+      "author_or_channel": "Simon Willison",
+      "published_at": "2026-06-05T23:56:40.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Alignment and Safety",
   "durable": true,
   "source": "authored",
   "definition": "An attack that corrupts a model by injecting malicious examples into its training data, so the model learns attacker-chosen behavior (such as a hidden backdoor trigger or degraded performance) that is hard to detect after training. The most insidious variant is the backdoor: the model behaves normally until a secret trigger appears, so it passes every test that does not contain the trigger, and research shows poisoning even a tiny fraction of a corpus suffices.",
@@ -51,12 +139,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/data-poisoning.webp",
     "alt": "A training-data barrel holds one poisoned item that funnels into a model, which then exposes a backdoor drawn as a key; labeled training data, model, and backdoor.",

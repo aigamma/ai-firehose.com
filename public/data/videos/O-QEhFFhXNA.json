@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "AWS Developers video demonstrating five techniques to reduce AI hallucinations and token waste: semantic tool selection (filtering context), graph RAG (computed answers from graphs), multi-agent validation (verification layer), symbolic guardrails (code-based rules), and runtime steering (self-correction). Includes demos using a travel agent with 31 tools and integration with Amazon Bedrock AgentCore.",
   "writeup": "A live-coded walkthrough of five production techniques for reducing token waste and catching failures in AI agents, demonstrated on a 31-tool travel agent built with AWS Strands Agents. The core argument is that agent reliability problems are engineering problems solved in code, not prompt-tuning problems. The first two techniques receive full demos: semantic tool selection (embedding-based filtering that drops per-call token counts from roughly 2,000 to under 400 while raising accuracy) and Graph-RAG (replacing vector search with Neo4j Cypher queries to get computed, verifiable answers for aggregation and multi-hop questions where RAG fabricates confident-sounding estimates).",
-  "wh": "04cdb8a734ffb502",
+  "wh": "95581d5b51c2d27c",
   "key_points": [
     "Semantic tool selection embeds each tool's name and docstring into a local FAISS vector store using sentence-transformers, then filters the agent's available tools per query so the model sees only the 3 most relevant tools instead of all 29, cutting per-call token usage from roughly 2,000 tokens to under 400 and raising accuracy from 31% to meaningfully higher.",
     "Standard RAG breaks down for aggregation and relationship queries (average rating across all hotels, count of hotels with a pool) because vector search returns a top-N chunk sample and the model presents its estimate as fact with full confidence; Graph-RAG replaces this with a Neo4j knowledge graph where the agent writes a Cypher query that executes across the full dataset and returns a computed, verifiable result without consuming additional tokens.",
@@ -79,8 +79,8 @@
       "label": "Hallucination reduction"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "token-pruning",
+      "label": "token pruning"
     },
     {
       "slug": "human-control",

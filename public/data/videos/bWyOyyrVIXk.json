@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling challenges at Shopify, the cyclical emergence of new database companies, and the characteristics of top-tier infrastructure engineers. The conversation covers infrastructure evolution in the 2010s, principles from on-call engineering culture, and perspectives on AI coding tools and their current limitations.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "fe64d6d251c3957a",
+  "wh": "202e7ed01a0ca4b5",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -76,8 +76,8 @@
       "label": "AI coding"
     },
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "system-architecture",
+      "label": "system architecture"
     }
   ],
   "similar": [

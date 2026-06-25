@@ -7,8 +7,8 @@
   "kind": "technique",
   "recommended": false,
   "summary": "Ziv Ilan's NVIDIA team demonstrated a video diffusion model achieving near real-time generation on a single Blackwell B200 by reducing denoising steps from fifty through quantization, caching, and distillation techniques. The approach trains student models to match teacher outputs in four, eight, or one step using trajectory-based or distribution-based distillation strategies.",
-  "writeup": "Ziv Ilan of NVIDIA presents techniques for accelerating video diffusion, demonstrating real-time generation on the Blackwell B200 by cutting the default 50-step denoising process. The methods combine quantization, latent caching, and step distillation, where a student model is trained to match a teacher's output in as few as one to eight steps. These optimizations are composable and can stack to deliver 10 to 200x speedup, which matters for making diffusion inference cheap enough to run interactively.",
-  "wh": "7b753e5ae861794a",
+  "writeup": "Ziv Ilan presents NVIDIA's work on accelerating video diffusion, showing near real-time generation on a single Blackwell B200 by cutting denoising steps down from fifty. The speedup combines three techniques: quantization, caching, and distillation. On the distillation side, student models are trained to match teacher outputs in four, eight, or a single step, using either trajectory-based or distribution-based strategies. The takeaway is that the standard fifty-step count is not required, and step reduction plus quantization and caching can bring diffusion inference toward interactive speeds.",
+  "wh": "2381fd71a9c55617",
   "concepts": [
     {
       "slug": "diffusion-step-reduction",
@@ -27,12 +27,12 @@
       "label": "Distillation"
     },
     {
-      "slug": "knowledge-distillation",
-      "label": "knowledge distillation"
+      "slug": "on-policy-distillation",
+      "label": "on-policy distillation"
     },
     {
-      "slug": "variational-score-distillation",
-      "label": "variational score distillation"
+      "slug": "knowledge-distillation",
+      "label": "knowledge distillation"
     }
   ],
   "similar": [
