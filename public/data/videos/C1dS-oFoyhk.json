@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-22T03:36:08+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarks mixed-provider LLM workflows by assigning Claude Opus and Kimi K2.6 to different roles (planning vs implementation) and evaluating the results on seven dimensions across real GitHub issues. The benchmark matrix tests four configurations to determine the optimal provider allocation for coding tasks.",
+  "summary": "Cole Medin benchmarked optimal provider assignment in a mixed-model workflow by running four variants of the same coding task (planning and implementation split across Claude Opus and Kimi K2.6) against three real GitHub issues and evaluating the resulting pull requests on seven dimensions. The test shows that mixed-provider approaches can work effectively in automated code generation pipelines.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "da7c272cf338ae14",
+  "wh": "74f4338a29794c4e",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,54 +56,54 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "multi-provider-workflows",
-      "label": "multi-provider workflows"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "model-routing",
-      "label": "model routing"
+      "slug": "multi-model-workflows",
+      "label": "multi-model workflows"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     }
   ],
   "similar": [
     {
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
+      "channel": "Cole Medin",
+      "score": 0.667
+    },
+    {
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.594
-    },
-    {
-      "id": "-z2C3B29aho",
-      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
-      "channel": "Keith AI",
-      "score": 0.587
-    },
-    {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
-      "channel": "Cole Medin",
-      "score": 0.573
+      "score": 0.649
     },
     {
       "id": "iICZTWcryac",
       "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.552
+      "score": 0.583
+    },
+    {
+      "id": "phtIqZcVLQE",
+      "title": "Claude Code VS Codex VS OpenCode",
+      "channel": "NeuralNine",
+      "score": 0.566
+    },
+    {
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "channel": "AICodeKing",
+      "score": 0.562
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.551
-    },
-    {
-      "id": "Z6EjpfSEfCQ",
-      "title": "Best LLM model for Hermes",
-      "channel": "Keith AI",
-      "score": 0.55
+      "score": 0.558
     }
   ]
 }

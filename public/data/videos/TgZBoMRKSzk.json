@@ -6,9 +6,9 @@
   "published": "2026-04-23T13:03:11+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "CS50 2D Lecture 2 teaches classic Breakout game development using sprite sheets, collision detection, procedural level generation, particle systems, game states, and persistent high scores. The course is offered through Harvard University via edX, Harvard Extension School, and Harvard Summer School.",
+  "summary": "CS50 2D Lecture 2 teaches classic game development through building a Breakout game. The course covers sprite sheets, collision detection, procedural level generation, particle systems, game states, and persistent high scores. It is part of Harvard's introduction to computer science available through edX and other platforms.",
   "writeup": "CS50's game development lecture 2 builds a Breakout clone in Lua using the LOVE2D framework, using the classic Atari game as a vehicle for teaching sprite sheets, an 8-state finite state machine, procedural brick layouts, particle systems, AABB collision detection against a grid of bricks, and disk-persistent high scores. The lecture walks through each incremental version of the project (Breakout-0 through the complete game), grounding every new concept in a concrete change to running code. The through-line is complexity management: as a game grows from Pong-scale to a multi-level, multi-state product, disciplined file organization, shared state containers, and composable systems become non-negotiable.",
-  "wh": "1d2861eac6b7fe68",
+  "wh": "30500b64338c23a3",
   "key_points": [
     "Breakout's 8-state machine (Start, High Score, Paddle Select, Serve, Play, Victory, Game Over, Enter High Score) is fully unidirectional: every arc has one legal direction and all paths eventually cycle back to Start, making the overall loop explicit and preventing illegal state transitions.",
     "Sprite sheets solve the problem of managing many small graphics (bricks, paddles, backgrounds) as a single image asset; individual quads are sliced from the sheet at runtime rather than loading dozens of separate files, keeping the asset pipeline tractable as the game scales.",
@@ -52,12 +52,16 @@
   "ih": "9cac91dacd8d2af2",
   "concepts": [
     {
+      "slug": "sprites",
+      "label": "sprites"
+    },
+    {
       "slug": "collision-detection",
       "label": "collision detection"
     },
     {
-      "slug": "dungeon-generation",
-      "label": "dungeon generation"
+      "slug": "procedural-level-generation",
+      "label": "procedural level generation"
     },
     {
       "slug": "particle-systems",
@@ -66,10 +70,6 @@
     {
       "slug": "game-states",
       "label": "game states"
-    },
-    {
-      "slug": "sprites",
-      "label": "sprites"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "4oaN94oOdTM",
       "title": "CS50 2D - Introduction",
       "channel": "CS50",
-      "score": 0.766
-    },
-    {
-      "id": "2rboPz0plD8",
-      "title": "CS50 2D - Lecture 1 - Flappy Bird",
-      "channel": "CS50",
-      "score": 0.736
+      "score": 0.781
     },
     {
       "id": "MY2y3dDwgMk",
       "title": "CS50 2D - Lecture 0 - Pong",
       "channel": "CS50",
-      "score": 0.736
+      "score": 0.757
+    },
+    {
+      "id": "2rboPz0plD8",
+      "title": "CS50 2D - Lecture 1 - Flappy Bird",
+      "channel": "CS50",
+      "score": 0.718
     },
     {
       "id": "iwjilbptPFM",
       "title": "CS50 2D - Lecture 5 - Legend of Zelda",
       "channel": "CS50",
-      "score": 0.685
+      "score": 0.703
     },
     {
       "id": "wjzaqNwZrPM",
       "title": "CS50 2D - Lecture 4 - Super Mario Bros.",
       "channel": "CS50",
-      "score": 0.645
+      "score": 0.688
     },
     {
-      "id": "pdBhw2QirRI",
-      "title": "CS50 2D - Lecture 7 - Pokémon",
+      "id": "Qxh0KheWftU",
+      "title": "CS50 2D - Lecture 3 - Match 3",
       "channel": "CS50",
-      "score": 0.637
+      "score": 0.649
     }
   ]
 }

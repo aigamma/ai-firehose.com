@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "ColPali extends late interaction from text to visual documents by using a Vision Language Model (PaliGemma-3B) to divide document images into a 32x32 grid of patches, each producing visual token embeddings. Text queries match directly against these visual patches using MaxSim scoring without requiring OCR.",
   "writeup": "ColPali extends the late interaction paradigm from ColBERT to visual documents by treating image patches as visual tokens rather than running OCR. Built on PaLI-3 Gemma 3B (SigLIP SO400M vision encoder plus Gemma 2B language model), it processes document pages as a 32x32 grid of 1,024 patches, each producing a 128-dimensional embedding. The same MaxSim scoring ColBERT uses for text tokens now aligns query words directly against spatial image regions, preserving layout, diagrams, and tables that OCR discards. Fine-tuned with LoRA, ColPali 1.3 represents a family whose variants trade off model size and multilingual support.",
-  "wh": "b0be406653f0681b",
+  "wh": "c766edd38cc909c3",
   "key_points": [
     "Traditional OCR-based document retrieval loses layout information, ignores diagrams, and reduces two-column or formatted documents to a flat text stream; ColPali bypasses OCR entirely by processing the document image directly.",
     "ColPali 1.3 is built on PaLI-3 Gemma 3B: SigLIP SO400M serves as the vision encoder that extracts visual features from image regions, and Gemma 2B is the language model that contextualizes those features into region embeddings using transformer layers.",
@@ -55,8 +55,8 @@
       "label": "late interaction"
     },
     {
-      "slug": "embeddings",
-      "label": "embeddings"
+      "slug": "patch-based-embeddings",
+      "label": "patch-based embeddings"
     },
     {
       "slug": "maxsim",
@@ -80,7 +80,7 @@
       "id": "sQcuYWMS4bo",
       "title": "Visual Interpretability of ColPali | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.77
+      "score": 0.771
     },
     {
       "id": "5ypH0t_X-4k",
@@ -92,25 +92,25 @@
       "id": "8HrvD5o2w8M",
       "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.648
+      "score": 0.649
     },
     {
       "id": "qIjPepsY35E",
       "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.598
+      "score": 0.601
     },
     {
       "id": "35WO2_Q_0C0",
       "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.568
+      "score": 0.571
     },
     {
       "id": "vQKF1hO7hzU",
       "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.545
+      "score": 0.547
     }
   ]
 }

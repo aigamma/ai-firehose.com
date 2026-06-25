@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Sualeh Asif and Simon Eskildsen discuss infrastructure scaling at Shopify, the cyclical emergence of new database companies, the role of AI coding agents, and traits of exceptional engineers in the modern era. Topics span flash sales, on-call culture, the Napkin Math blog, and the future of database technology.",
+  "summary": "Sualeh Asif interviews Simon Eskildsen on infrastructure scaling at Shopify, the database market dynamics that spawn new companies every 15 years, and reflections on engineering excellence in the AI era. Topics span flash sales, on-call culture, the \"Napkin Math\" blog, AI agents' current limitations, and hiring practices for top-tier engineers.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "cca01f80729e279e",
+  "wh": "ef8253176513c701",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,20 +56,24 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "scaling",
+      "label": "scaling"
+    },
+    {
+      "slug": "software-engineering",
+      "label": "software engineering"
+    },
+    {
+      "slug": "on-call-culture",
+      "label": "on-call culture"
     },
     {
       "slug": "ai-agents",
       "label": "AI agents"
     },
     {
-      "slug": "database-systems",
-      "label": "database systems"
-    },
-    {
-      "slug": "auto-scaling",
-      "label": "auto-scaling"
+      "slug": "hiring",
+      "label": "hiring"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "ByOF8qByGHU",
       "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
       "channel": "Cursor",
-      "score": 0.616
+      "score": 0.602
     },
     {
       "id": "zxvyO5vnknI",
       "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
       "channel": "Cursor",
-      "score": 0.586
-    },
-    {
-      "id": "aF-rolD9W7I",
-      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
-      "channel": "Cursor",
-      "score": 0.556
+      "score": 0.59
     },
     {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.549
+      "score": 0.53
     },
     {
       "id": "SvBheXuKY8s",
       "title": "Microsoft’s new AI models & bots dominate the internet",
       "channel": "IBM Technology",
-      "score": 0.547
+      "score": 0.526
     },
     {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.533
+      "id": "ev96Qkpaykw",
+      "title": "AI Agents: Why Building Them Is Way Harder Than You Think! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.516
+    },
+    {
+      "id": "7Z1kn6JNUbE",
+      "title": "Are AI Glasses Over? + Big Technology AI Summit Audience Questions",
+      "channel": "Alex Kantrowitz",
+      "score": 0.512
     }
   ]
 }

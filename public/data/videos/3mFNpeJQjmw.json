@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Julia Turc provides an in-depth analysis of the Flow Matching training algorithm, covering the physics foundations including time-variant probability density, continuity equations, velocity fields, and optimal transport. The video examines Flow Matching alongside concurrent related works including Rectified Flow and Stochastic Interpolants, with detailed treatment of conditional velocity fields and the algorithmic implementation.",
   "writeup": "Flow matching is the generative modeling paradigm now underlying open-source image and video models including Flux, Stable Diffusion 3, and CogVideo, requiring only 2 to 3 denoising steps instead of the 10 to 20 steps diffusion demands. The talk traces the physics and mathematics that make this possible: the 19th-century continuity equation, which connects a time-variant velocity field to the evolution of a probability density, then explains why the seemingly naive straight-line training algorithm actually works. The central insight is a divide-and-conquer trick: training on simple conditional transports (noise to a Gaussian centered on one image) implicitly teaches the model the hard unconditional transport, a non-obvious free lunch that flow-based methods only discovered in 2023.",
-  "wh": "c5eef2bbdaf88804",
+  "wh": "f7b94093415504c0",
   "key_points": [
     "Flow matching replaced Continuous Normalizing Flows (CNF, 2018) by eliminating the costly full backward simulation during training: CNF required one model invocation per trajectory segment to compute maximum likelihood, while flow matching needs only a single forward pass per step using a mean-squared-error objective against a supervised velocity label V* = X1 - X0.",
     "The training algorithm is a deliberate approximation: rather than learning the true curved velocity field directly, flow matching trains on straight-line conditional paths between independent noise sample X0 and image X1, then relies on the mathematical guarantee that averaging over all conditionals recovers the correct marginal velocity field at inference time.",
@@ -71,8 +71,8 @@
       "label": "Rectified Flow"
     },
     {
-      "slug": "gaussian-splatting",
-      "label": "Gaussian splatting"
+      "slug": "gaussian-interpolants",
+      "label": "Gaussian interpolants"
     },
     {
       "slug": "optimal-transport",
@@ -92,37 +92,37 @@
       "id": "UYVObn1HUeU",
       "title": "Diffusion Models explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.53
-    },
-    {
-      "id": "xmP7bhigCWE",
-      "title": "Claude Fable 5 sets a fluid simulation to Beethoven",
-      "channel": "Claude",
-      "score": 0.502
-    },
-    {
-      "id": "MqjvfJTCuqw",
-      "title": "But what exactly are world models?",
-      "channel": "Julia Turc",
-      "score": 0.469
-    },
-    {
-      "id": "vhbaZJtW2Hg",
-      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
-      "channel": "Cole Medin",
-      "score": 0.467
-    },
-    {
-      "id": "4FgAKzM_uYM",
-      "title": "MLFlow Crash Course: MLOps in Python",
-      "channel": "NeuralNine",
-      "score": 0.461
+      "score": 0.548
     },
     {
       "id": "7gkaWaDEpHg",
       "title": "GPT explained visually..",
       "channel": "Caleb Writes Code",
-      "score": 0.46
+      "score": 0.5
+    },
+    {
+      "id": "xmP7bhigCWE",
+      "title": "Claude Fable 5 sets a fluid simulation to Beethoven",
+      "channel": "Claude",
+      "score": 0.498
+    },
+    {
+      "id": "MqjvfJTCuqw",
+      "title": "But what exactly are world models?",
+      "channel": "Julia Turc",
+      "score": 0.471
+    },
+    {
+      "id": "vhbaZJtW2Hg",
+      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
+      "channel": "Cole Medin",
+      "score": 0.469
+    },
+    {
+      "id": "4FgAKzM_uYM",
+      "title": "MLFlow Crash Course: MLOps in Python",
+      "channel": "NeuralNine",
+      "score": 0.463
     }
   ]
 }

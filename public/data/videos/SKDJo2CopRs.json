@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Cloudflare's Dynamic Workers enable safe execution of LLM-generated code in sandboxed isolates with explicit permission grants. The system avoids ambient access and is positioned as a compute primitive for AI agents. Cloudflare is shipping a coding agent harness built entirely on Workers.",
   "writeup": "Two Cloudflare engineers working on AI agents walk through the infrastructure stack they have built over the past year, centered on Durable Objects as a stateful, addressable compute primitive. They trace the path from that foundation through a full Agents SDK, first-class MCP server hosting (powering PayPal, Sentry, Linear, and others), and a new Dynamic Workers primitive that runs LLM-generated code in a minimal, capability-scoped isolate. The through-line is that serverless primitives originally built for edge networking turn out to map cleanly onto the long-running, stateful, concurrent demands of production AI agents.",
-  "wh": "d612a9afe5d7d86c",
+  "wh": "4a243ac58953cd6e",
   "key_points": [
     "Durable Objects provide stateful serverless: a single class instance persists across requests and WebSocket connections for a given ID, runs in the background, hibernates, and scales across Cloudflare's global network with around 15 ms latency in London, making them a natural fit for long-running agent loops.",
     "The Cloudflare Agents SDK wraps Durable Objects with React hooks, plain-JavaScript clients, callable endpoints, and first-class scheduling so agent logic such as weekly Git-history summarization can be expressed declaratively and runs without a persistent server process.",
@@ -59,8 +59,8 @@
       "label": "code generation"
     },
     {
-      "slug": "capability-gating",
-      "label": "capability gating"
+      "slug": "dynamic-security-model",
+      "label": "dynamic security model"
     },
     {
       "slug": "test-time-compute",
@@ -69,40 +69,40 @@
   ],
   "similar": [
     {
-      "id": "EDDgH3hs-5U",
-      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
-      "channel": "Google Cloud Tech",
-      "score": 0.596
-    },
-    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.594
+      "score": 0.593
     },
     {
-      "id": "vljxQZfJ9wY",
-      "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
-      "channel": "AI Engineer",
-      "score": 0.581
+      "id": "V04bm-3d6EQ",
+      "title": "When millions of AI agents meet",
+      "channel": "Google DeepMind",
+      "score": 0.584
     },
     {
-      "id": "SvBheXuKY8s",
-      "title": "Microsoft’s new AI models & bots dominate the internet",
-      "channel": "IBM Technology",
-      "score": 0.579
+      "id": "o4pwkwg0zfk",
+      "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
+      "channel": "Alex Kantrowitz",
+      "score": 0.582
     },
     {
       "id": "OQHX15CVwLY",
       "title": "What’s going on with Developers and AI?",
       "channel": "Google Cloud Tech",
+      "score": 0.579
+    },
+    {
+      "id": "SvBheXuKY8s",
+      "title": "Microsoft’s new AI models & bots dominate the internet",
+      "channel": "IBM Technology",
       "score": 0.578
     },
     {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
-      "channel": "AI Engineer",
-      "score": 0.572
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.574
     }
   ]
 }

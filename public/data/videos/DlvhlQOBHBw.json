@@ -6,9 +6,9 @@
   "published": "2026-06-02T03:26:17+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "PiD (Pixel Diffusion) is a free, open-source AI image model by Nvidia designed for generating high-resolution 4K images. The video demonstrates its capabilities in image generation and upscaling workflows using ComfyUI.",
+  "summary": "PixelDiffusion (PiD) is an open-source AI model by Nvidia designed for generating high-resolution 4K images. It supports text-to-image and image-upscaling workflows and integrates with ComfyUI for user workflows.",
   "writeup": "Nvidia's Pixel Diffusion (PID) is a new open-source image upscaler that operates in pixel space rather than latent space: instead of decoding a compressed representation, it takes a latent from a base model such as Flux or Stable Diffusion as guidance and directly denoises the image at high resolution, producing 4K output in under a second. The video demonstrates PID against the leading alternative SeedVR2, showing sharper edges, more faithful textures, and up to 5.9x faster throughput. The second half is a hands-on ComfyUI installation walkthrough covering three workflows: text-to-image at 1K, image-to-2K/4K upscaling, and a pipeline that chains Flux or Z Image generation directly into PID for a single-pass high-resolution result.",
-  "wh": "d15f24a1b95948da",
+  "wh": "528a6cd3dbfe14f4",
   "key_points": [
     "PID denoises directly in high-resolution pixel space rather than using a traditional latent-space decoder, which reduces the artifacts common in conventional upscaling and produces sharper 4K results with fewer hallucinated details.",
     "Against SeedVR2, the previous leading open-source upscaler, PID is up to 5.9x faster and wins the majority of side-by-side quality comparisons; the full BF16 model weighs only 2.7 GB, and the compressed MXFP8 variant (for Blackwell-architecture GPUs) is 1.5 GB.",
@@ -59,8 +59,12 @@
       "label": "video generation"
     },
     {
-      "slug": "upscaling",
-      "label": "upscaling"
+      "slug": "text-to-image-generation",
+      "label": "text-to-image generation"
+    },
+    {
+      "slug": "super-resolution",
+      "label": "super-resolution"
     }
   ],
   "similar": [
@@ -68,37 +72,37 @@
       "id": "OA4gchz1Zcs",
       "title": "New BEST local AI image generator is here!",
       "channel": "AI Search",
-      "score": 0.61
-    },
-    {
-      "id": "1U8dJ94QFNc",
-      "title": "New top local AI image generator is here! Already uncensored",
-      "channel": "AI Search",
-      "score": 0.579
-    },
-    {
-      "id": "RdqYvdT74i0",
-      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
-      "channel": "AI Search",
-      "score": 0.563
-    },
-    {
-      "id": "TLFPbMUtErM",
-      "title": "New AI image generator BEATS EVERYTHING",
-      "channel": "AI Search",
-      "score": 0.561
-    },
-    {
-      "id": "6d__WOpZswY",
-      "title": "New #1 open-source AI model is here!",
-      "channel": "AI Search",
-      "score": 0.556
+      "score": 0.644
     },
     {
       "id": "9v4B-4dY24Q",
       "title": "Better Free AI Image than Midjourney?",
       "channel": "Jack Roberts",
-      "score": 0.552
+      "score": 0.608
+    },
+    {
+      "id": "1U8dJ94QFNc",
+      "title": "New top local AI image generator is here! Already uncensored",
+      "channel": "AI Search",
+      "score": 0.589
+    },
+    {
+      "id": "TLFPbMUtErM",
+      "title": "New AI image generator BEATS EVERYTHING",
+      "channel": "AI Search",
+      "score": 0.58
+    },
+    {
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
+      "score": 0.55
+    },
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.531
     }
   ]
 }

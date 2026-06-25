@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "tool",
+  "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin's AI Dark Factory is a self-building codebase that ships its own code through Archon workflows. He demonstrated combining Claude Opus and Kimi K2.6 to route hard reasoning steps to Opus while using Kimi for implementation, validation, and research tasks to maintain token efficiency at scale.",
+  "summary": "Cole Medin demonstrates a hybrid multi-model system that routes reasoning-intensive tasks to Claude Opus while delegating implementation and validation work to Kimi K2.6. The approach maintains token efficiency and cost-effectiveness as the self-building codebase scales by applying stronger models only where reasoning depth materially impacts outcomes.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "5b1bcae0d15c9384",
+  "wh": "82020e8bc6c8663c",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,58 +56,62 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "model-routing",
-      "label": "model routing"
+      "slug": "ensemble-methods",
+      "label": "ensemble methods"
+    },
+    {
+      "slug": "task-decomposition",
+      "label": "task decomposition"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "reinforcement-learning",
+      "label": "reinforcement learning"
     },
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
-    },
-    {
-      "slug": "token-optimization",
-      "label": "token optimization"
-    },
-    {
-      "slug": "reasoning",
-      "label": "reasoning"
     }
   ],
   "similar": [
     {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.617
-    },
-    {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.615
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.673
     },
     {
       "id": "iICZTWcryac",
       "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.594
+      "score": 0.658
     },
     {
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.594
+      "score": 0.649
     },
     {
-      "id": "4azVjKhqDzw",
-      "title": "Building the App Store for Agentic Engineering",
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.588
+      "score": 0.638
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.57
+      "id": "CwePo4847ho",
+      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
+      "channel": "Kimi AI",
+      "score": 0.636
+    },
+    {
+      "id": "MigowTEcJHA",
+      "title": "The Ultimate Second Brain for AI Entrepreneurs: Fable 5 Claude with Loops",
+      "channel": "Cyril Imhof",
+      "score": 0.624
     }
   ]
 }

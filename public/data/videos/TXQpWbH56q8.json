@@ -6,9 +6,9 @@
   "published": "2026-05-27T20:07:46+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "A beginner tutorial on Infrastructure as Code using AWS Cloud Development Kit with Python. The video demonstrates building a serverless REST API by first showing manual AWS console setup of DynamoDB, Lambda, and API Gateway, then reproducing the same infrastructure using CDK for automated deployment.",
+  "summary": "A tutorial on Infrastructure as Code using AWS CDK with Python to build a serverless REST API. The video contrasts manual AWS console setup with automated infrastructure definition, covering DynamoDB, Lambda, and API Gateway deployment and teardown.",
   "writeup": "A hands-on introduction to AWS CDK that builds a serverless CRUD API (DynamoDB, Lambda, API Gateway) twice: first through the console to illustrate the fragility of manual clickops, then again with Python CDK to show how the same infrastructure becomes a version-controlled, one-command deploy. The through-line is reproducibility: the console works once, but IaC is what lets a second person or a second environment exist without pain.",
-  "wh": "530e973fae8d475c",
+  "wh": "caa78b4cdb2a981d",
   "key_points": [
     "Clickops fails the moment a second person or environment enters the picture: a teammate recreates the same table with the wrong partition-key casing, staging silently diverges from production, and a deleted API Gateway resource is unrecoverable because its custom IAM policy was never saved anywhere.",
     "AWS CDK generates CloudFormation templates from real Python code, giving access to loops, conditionals, and autocomplete rather than hand-formatting YAML; it sits above CloudFormation (verbose but foundational) and below Terraform (multi-cloud HCL, but no CloudFormation abstraction for AWS-only work).",
@@ -55,66 +55,54 @@
   "ih": "7704c2f77f03c407",
   "concepts": [
     {
+      "slug": "low-code-development",
+      "label": "low-code development"
+    },
+    {
       "slug": "infrastructure-as-code",
-      "label": "Infrastructure as Code"
+      "label": "infrastructure-as-code"
     },
     {
-      "slug": "iac",
-      "label": "IaC"
-    },
-    {
-      "slug": "serverless",
-      "label": "serverless"
-    },
-    {
-      "slug": "api",
-      "label": "API"
-    },
-    {
-      "slug": "cloudformation",
-      "label": "CloudFormation"
-    },
-    {
-      "slug": "terraform",
-      "label": "Terraform"
+      "slug": "cloud-computing",
+      "label": "cloud computing"
     }
   ],
   "similar": [
     {
-      "id": "d1GHVtEFy2A",
-      "title": "Introducing Agent Toolkit for AWS",
+      "id": "9Pk2J_5qnlk",
+      "title": "Learn AWS IAM in less than 10 minutes",
       "channel": "AWS Developers",
-      "score": 0.593
+      "score": 0.6
     },
     {
       "id": "6iZdPOt290E",
       "title": "From App Idea to Deployed Infrastructure in minutes",
       "channel": "Kiro",
-      "score": 0.564
-    },
-    {
-      "id": "9Pk2J_5qnlk",
-      "title": "Learn AWS IAM in less than 10 minutes",
-      "channel": "AWS Developers",
-      "score": 0.558
+      "score": 0.573
     },
     {
       "id": "NYEd5a_p9j8",
       "title": "SQL Full Course - Build a Database and Deploy It",
       "channel": "AWS Developers",
-      "score": 0.557
+      "score": 0.568
     },
     {
       "id": "E-jwkYoyLYA",
       "title": "Build your own AI butler and other similar projects",
       "channel": "Kiro",
-      "score": 0.533
+      "score": 0.546
     },
     {
       "id": "v9zktuaJ4P8",
       "title": "Automate your deployment pipelines",
       "channel": "Kiro",
-      "score": 0.531
+      "score": 0.543
+    },
+    {
+      "id": "ZkzkdhmcIVQ",
+      "title": "Become an AI Native Cloud Engineer",
+      "channel": "AWS Developers",
+      "score": 0.533
     }
   ]
 }

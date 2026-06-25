@@ -6,9 +6,9 @@
   "published": "2026-05-15T19:45:01+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Austin Marchese presents four rules for effective prompting of Claude Code derived from studying Anthropic engineers' practices: prompt skills rather than Claude directly, treat skills as more than static prompts, build composable skills instead of custom ones, and recognize that skills improve with repeated sessions. The guidance emphasizes patterns like saving scripts within skills and controlling invocation access.",
+  "summary": "Austin Marchese presents four rules for effectively prompting Claude Code derived from studying Anthropic engineers' practices. The rules emphasize prompting skills rather than Claude directly, treating skills as composable units beyond simple prompts, building reusable skills, and iterating skills across sessions. Concepts covered include saving scripts within skills, controlling invocation scope, and skill composability.",
   "writeup": "Drawing on Anthropic engineering presentations and the AI Code Summit, this video distills four rules for how Anthropic's own engineers prompt Claude Code. The central shift is from writing one-off prompts to building reusable skills: organized file collections holding a description, step-by-step instructions, and tools (scripts, API calls, reference files). Composability and iterative refinement are the through-line: small, focused skills that chain together and sharpen with each session outperform monolithic prompts that degrade the moment a chat closes.",
-  "wh": "a1835219586f543a",
+  "wh": "f3f88146d5baab91",
   "key_points": [
     "Skills in Claude Code are folders with three layers: a description (tells Claude when to invoke the skill), instructions (the step-by-step playbook), and tools (code scripts, API calls, reference files); most users stop at layer two and neglect the tools layer where Anthropic engineers say the real leverage lives.",
     "Saving a deterministic script inside a skill trades expensive, variable AI token generation for cheap, repeatable code compute: Barry's team stopped letting Claude rewrite the same Python slide-styling script each session and instead saved it as a tool inside the skill folder.",
@@ -55,29 +55,23 @@
   "ih": "25599cc7380a2e19",
   "concepts": [
     {
-      "slug": "prompting",
-      "label": "prompting"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
+    },
+    {
+      "slug": "custom-skills",
+      "label": "custom skills"
     },
     {
       "slug": "claude-code",
       "label": "Claude Code"
     },
     {
-      "slug": "agent-skills",
-      "label": "agent skills"
-    },
-    {
-      "slug": "composability",
-      "label": "composability"
+      "slug": "test-time-optimization",
+      "label": "test-time optimization"
     }
   ],
   "similar": [
-    {
-      "id": "3UWxMPUko1k",
-      "title": "How Anthropic Employees ACTUALLY Use Claude Skills",
-      "channel": "Austin Marchese",
-      "score": 0.764
-    },
     {
       "id": "NDb-sfHyi7A",
       "title": "Claude Code | 7 Rules That Separate Pros from Hobbyists (All In 8 Minutes)",
@@ -85,28 +79,34 @@
       "score": 0.757
     },
     {
-      "id": "BX5dLXe6CTI",
-      "title": "How Anthropic Employees ACTUALLY Use Claude Code to Grow",
-      "channel": "Austin Marchese",
-      "score": 0.695
-    },
-    {
       "id": "7zZy1QTvokM",
       "title": "Stop Prompting Claude. Use Karpathy's Method Instead.",
       "channel": "Austin Marchese",
-      "score": 0.686
+      "score": 0.744
     },
     {
-      "id": "YAS4ojuhbW4",
-      "title": "Stop Prompting Claude. Start Loop Engineering.",
+      "id": "3UWxMPUko1k",
+      "title": "How Anthropic Employees ACTUALLY Use Claude Skills",
       "channel": "Austin Marchese",
-      "score": 0.666
+      "score": 0.722
     },
     {
       "id": "jdLFeBkiy3M",
       "title": "How Claude Code's Creator ACTUALLY Automates his work",
       "channel": "Austin Marchese",
-      "score": 0.66
+      "score": 0.715
+    },
+    {
+      "id": "BX5dLXe6CTI",
+      "title": "How Anthropic Employees ACTUALLY Use Claude Code to Grow",
+      "channel": "Austin Marchese",
+      "score": 0.697
+    },
+    {
+      "id": "6ad-LyammTI",
+      "title": "STOP Using Claude to Code. Do THIS Instead.",
+      "channel": "Austin Marchese",
+      "score": 0.669
     }
   ]
 }

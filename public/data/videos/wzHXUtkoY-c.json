@@ -6,9 +6,9 @@
   "published": "2026-06-11T06:26:14+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "NVIDIA released Nemotron 3 series models in Nano, Super, and Ultra variants featuring hybrid Mamba transformer, MTP, and Latent MoE architectures. The video analyzes how these architectural components combine to differentiate Nemotron 3 from other open models.",
+  "summary": "NVIDIA released the Nemotron 3 model series in Nano, Super, and Ultra variants. The models combine hybrid Mamba transformer, MTP, and Latent MoE components in their architecture to differentiate from other open models.",
   "writeup": "Nvidia's Nemotron 3 comes in three size variants (Nano at 30B total/3B active, Super at 120B/10B, Ultra at 550B/50B) sized to match distinct compute tiers from consumer hardware up to multi-GPU AI factory infrastructure. The architecture departs from standard transformers in three deliberate ways: Mamba 2 state-space layers interleaved with full attention to hold 1-million-token context at near-linear memory cost; a latent mixture-of-experts design that compresses token representations before routing so more experts can weigh in at lower bandwidth cost; and multi-token prediction to accelerate autoregressive output. Together these choices let Nvidia co-design model and hardware layers they already control, producing base-model accuracy scores that, per internal evaluations, exceed any previously published base model.",
-  "wh": "f709a81eeab633b2",
+  "wh": "ba98edbcd8db3303",
   "key_points": [
     "Nemotron 3 Nano (30B total, 3B active) runs on consumer hardware at roughly 15 GB in MX-FP4 precision; Super (120B total, 10B active) fits on one H100 80 GB in FP8 or on DGX Spark via Blackwell's compute acceleration; Ultra (550B total, 50B active) requires multi-GPU infrastructure at AI factory scale, comparable in size to DeepSeek V3.",
     "The hybrid Mamba 2 transformer architecture replaces the quadratic KV-cache growth of standard attention with a fixed-size state matrix that updates linearly as tokens are processed, enabling a 1-million-token context window without proportional memory blowout, critical for enterprise workloads that must ingest large knowledge bases for concurrent queries.",
@@ -55,54 +55,58 @@
   "ih": "1b234e31c4a8d5c2",
   "concepts": [
     {
+      "slug": "mamba",
+      "label": "Mamba"
+    },
+    {
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
+    },
+    {
+      "slug": "latent-space",
+      "label": "latent space"
+    },
+    {
       "slug": "transformer",
       "label": "Transformer"
-    },
-    {
-      "slug": "latent-moe",
-      "label": "Latent MoE"
-    },
-    {
-      "slug": "mtp",
-      "label": "MTP"
     }
   ],
   "similar": [
     {
-      "id": "V0c62734ix8",
-      "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
-      "channel": "AICodeKing",
-      "score": 0.623
-    },
-    {
       "id": "P0tkFtrG3jU",
       "title": "The Big Bang Of AI Just Happened: Cosmos 3",
       "channel": "AI Revolution",
-      "score": 0.616
+      "score": 0.654
+    },
+    {
+      "id": "-zIF318p7J8",
+      "title": "MiniMax M3 explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.639
+    },
+    {
+      "id": "V0c62734ix8",
+      "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
+      "channel": "AICodeKing",
+      "score": 0.638
+    },
+    {
+      "id": "R6mM0m3IZWY",
+      "title": "Gemini 3.5 Flash has landed.",
+      "channel": "Google DeepMind",
+      "score": 0.626
     },
     {
       "id": "HfRVXadseCo",
       "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
       "channel": "Better Stack",
-      "score": 0.607
-    },
-    {
-      "id": "RdqYvdT74i0",
-      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
-      "channel": "AI Search",
-      "score": 0.6
-    },
-    {
-      "id": "ZKfd9S9lOtc",
-      "title": "The most insane week in AI",
-      "channel": "AI Search",
-      "score": 0.593
+      "score": 0.624
     },
     {
       "id": "6VV5Gvmtrl4",
       "title": "What’s new in Gemma 4?",
       "channel": "Google DeepMind",
-      "score": 0.593
+      "score": 0.614
     }
   ]
 }
