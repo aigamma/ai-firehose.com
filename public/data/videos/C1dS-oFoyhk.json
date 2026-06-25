@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarked optimal provider assignment in a mixed-model workflow by running four variants of the same coding task (planning and implementation split across Claude Opus and Kimi K2.6) against three real GitHub issues and evaluating the resulting pull requests on seven dimensions. The test shows that mixed-provider approaches can work effectively in automated code generation pipelines.",
+  "summary": "Cole Medin presents empirical results from a mixed-provider benchmark comparing Claude Opus and Kimi K2.6 in a coding workflow. He tests four configurations varying which model handles planning versus implementation across three real GitHub issues, scored on seven dimensions by an Opus-based evaluator.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "74f4338a29794c4e",
+  "wh": "61d30b86c5da9873",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,54 +56,58 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
+      "slug": "provider-routing",
+      "label": "provider routing"
+    },
+    {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "multi-model-workflows",
-      "label": "multi-model workflows"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "benchmark",
+      "label": "benchmark"
     }
   ],
   "similar": [
     {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.667
-    },
-    {
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.649
+      "score": 0.662
+    },
+    {
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.604
     },
     {
       "id": "iICZTWcryac",
       "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.583
-    },
-    {
-      "id": "phtIqZcVLQE",
-      "title": "Claude Code VS Codex VS OpenCode",
-      "channel": "NeuralNine",
-      "score": 0.566
-    },
-    {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.562
+      "score": 0.588
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.558
+      "score": 0.576
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.571
+    },
+    {
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "channel": "AICodeKing",
+      "score": 0.567
     }
   ]
 }

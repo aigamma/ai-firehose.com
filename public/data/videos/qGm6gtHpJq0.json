@@ -6,9 +6,9 @@
   "published": "2026-05-19T03:35:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates a hybrid multi-model system that routes reasoning-intensive tasks to Claude Opus while delegating implementation and validation work to Kimi K2.6. The approach maintains token efficiency and cost-effectiveness as the self-building codebase scales by applying stronger models only where reasoning depth materially impacts outcomes.",
+  "summary": "Cole Medin demonstrates a hybrid model orchestration approach within an AI Dark Factory system that allocates Opus for complex reasoning and planning tasks while using Kimi K2.6 for implementation and validation. The strategy optimizes token efficiency and output quality by matching model capability to task complexity rather than applying expensive reasoning uniformly.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "82020e8bc6c8663c",
+  "wh": "54778d34e8b06d24",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,62 +56,54 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "ensemble-methods",
-      "label": "ensemble methods"
-    },
-    {
-      "slug": "task-decomposition",
-      "label": "task decomposition"
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "reinforcement-learning",
-      "label": "reinforcement learning"
-    },
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "token-optimization",
+      "label": "token optimization"
     }
   ],
   "similar": [
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.673
-    },
-    {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "channel": "Cole Medin",
-      "score": 0.658
-    },
-    {
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.649
+      "score": 0.662
     },
     {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.638
+      "id": "X_VaHjeQmKk",
+      "title": "The art of the possible with Kiro",
+      "channel": "Kiro",
+      "score": 0.585
     },
     {
       "id": "CwePo4847ho",
       "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
       "channel": "Kimi AI",
-      "score": 0.636
+      "score": 0.577
     },
     {
-      "id": "MigowTEcJHA",
-      "title": "The Ultimate Second Brain for AI Entrepreneurs: Fable 5 Claude with Loops",
-      "channel": "Cyril Imhof",
-      "score": 0.624
+      "id": "DAlC8mL5ZlI",
+      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
+      "channel": "IBM Technology",
+      "score": 0.575
+    },
+    {
+      "id": "fYrPKhHouxs",
+      "title": "The New Kimi K2.7 Model is VERY Impressive",
+      "channel": "Cole Medin",
+      "score": 0.571
+    },
+    {
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "channel": "Cole Medin",
+      "score": 0.557
     }
   ]
 }

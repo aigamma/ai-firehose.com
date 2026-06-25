@@ -6,21 +6,29 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "MCP and ChatGPT apps use nested iframes with sandbox restrictions to isolate third-party code while preventing CSP violations, cookie theft, and sandbox escapes. The outer iframe loads a lightweight script from a controlled subdomain, which then loads the actual app via srcdoc into an inner frame, following Facebook's app marketplace pattern.",
+  "summary": "Double iframe nesting is used by MCP and ChatGPT apps to isolate third-party code while preventing CSP violations and sandbox escapes. An outer iframe from a controlled subdomain loads actual app HTML via srcdoc into an inner frame, a pattern originally deployed by Facebook for their app marketplace.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "ddbcfbef3a2afb34",
+  "wh": "1ed9f329bd880782",
   "concepts": [
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "double-iframe",
+      "label": "double iframe"
     },
     {
-      "slug": "same-origin-policy",
-      "label": "same-origin policy"
+      "slug": "csp",
+      "label": "CSP"
     },
     {
-      "slug": "csp-inspector",
-      "label": "CSP inspector"
+      "slug": "sandbox",
+      "label": "sandbox"
+    },
+    {
+      "slug": "srcdoc",
+      "label": "srcdoc"
+    },
+    {
+      "slug": "origin-isolation",
+      "label": "origin isolation"
     }
   ],
   "similar": [
@@ -28,37 +36,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.58
+      "score": 0.559
     },
     {
-      "id": "cGuyrANVi4A",
-      "title": "How Model Context Protocol (MCP) actually works",
-      "channel": "Google Cloud Tech",
-      "score": 0.53
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
+      "channel": "JavaScript Mastery",
+      "score": 0.508
     },
     {
       "id": "6ipGnvXTF1Y",
       "title": "Why your AI prompt constraints don't work",
       "channel": "JavaScript Mastery",
-      "score": 0.521
+      "score": 0.508
     },
     {
-      "id": "Yt5xBk7Xbs0",
-      "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
-      "channel": "Code With Aarohi",
-      "score": 0.513
+      "id": "cGuyrANVi4A",
+      "title": "How Model Context Protocol (MCP) actually works",
+      "channel": "Google Cloud Tech",
+      "score": 0.503
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.506
+      "score": 0.494
     },
     {
       "id": "kVL_7csy_ZM",
       "title": "The Rise of Generative UI for Developers (CopilotKit)",
       "channel": "Better Stack",
-      "score": 0.504
+      "score": 0.491
     }
   ]
 }

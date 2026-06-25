@@ -4,11 +4,11 @@
   "channel": "Cursor",
   "channelUrl": "https://www.youtube.com/@cursor_ai",
   "published": "2026-05-21T20:32:39+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": false,
-  "summary": "Composer 2 training combines base model selection from Kimi K2.5, coding-focused continued pre-training, long-horizon RL with auto-install bootstrapping that generates install commands and verification tests, reward shaping with nonlinear length penalties, and self-summarization for context extension. Training is evaluated on Cursor Bench, an internal benchmark of ambiguous prompts and real engineer queries.",
+  "summary": "Cursor's Composer 2 is built on Kimi K2.5 (1T params, 32B active) with a continued pre-training stage for coding followed by long-horizon reinforcement learning with auto-install. The system uses nonlinear length penalties and self-summarization to balance speed and depth while handling long contexts.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "6161eda28a5d3c60",
+  "wh": "bb1961d1e458afea",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -76,8 +76,8 @@
       "label": "text summarization"
     },
     {
-      "slug": "bootstrapping",
-      "label": "bootstrapping"
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     }
   ],
   "similar": [
@@ -85,37 +85,37 @@
       "id": "qFhwsb78hko",
       "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
       "channel": "AICodeKing",
-      "score": 0.565
+      "score": 0.588
     },
     {
-      "id": "QJ2bM8Me5Fk",
-      "title": "Kimi K2.6 and Agent Swarm explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.563
-    },
-    {
-      "id": "tk9lt-9x8mE",
-      "title": "Composer 2.5 and I INTERVIEWED THE CEO OF ALPHABET",
-      "channel": "Matthew Berman",
-      "score": 0.535
+      "id": "fYrPKhHouxs",
+      "title": "The New Kimi K2.7 Model is VERY Impressive",
+      "channel": "Cole Medin",
+      "score": 0.586
     },
     {
       "id": "scuzhhZpoHs",
       "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
       "channel": "Kimi AI",
-      "score": 0.535
+      "score": 0.555
     },
     {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
-      "channel": "Cole Medin",
-      "score": 0.534
+      "id": "tk9lt-9x8mE",
+      "title": "Composer 2.5 and I INTERVIEWED THE CEO OF ALPHABET",
+      "channel": "Matthew Berman",
+      "score": 0.553
     },
     {
-      "id": "fWa7uxyhVDE",
-      "title": "Opening Keynote, Michael Truell | Compile 26",
-      "channel": "Cursor",
-      "score": 0.525
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.55
+    },
+    {
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.549
     }
   ]
 }
