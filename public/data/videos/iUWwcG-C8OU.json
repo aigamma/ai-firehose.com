@@ -6,9 +6,9 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Studio is an internal workspace that enables natural language querying against databases like Snowflake, Linear, and Notion. Generated widgets are written as declarative JavaScript that calls data sources directly, making subsequent runs deterministic and cheap while maintaining reliability through preflight sequencing, schema layering rules, and query validation.",
+  "summary": "WorkOS built Studio, an internal workspace where non-engineers can ask questions against Snowflake, Linear, and Notion in natural language. The tool generates reusable declarative JavaScript widgets that call data sources directly, with techniques like preflight sequencing, schema layering rules, and query validation to ensure reliability.",
   "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
-  "wh": "877d138c10166c49",
+  "wh": "458cad63973912f1",
   "key_points": [
     "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
     "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
@@ -55,62 +55,62 @@
   "ih": "498f36513c37970a",
   "concepts": [
     {
-      "slug": "natural-language-interfaces",
-      "label": "natural language interfaces"
+      "slug": "preflight-sequencing",
+      "label": "preflight sequencing"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
-    },
-    {
-      "slug": "context-management",
-      "label": "context management"
+      "slug": "schema-context-injection",
+      "label": "schema context injection"
     },
     {
       "slug": "query-validation",
       "label": "query validation"
+    },
+    {
+      "slug": "natural-language-to-sql",
+      "label": "natural language to SQL"
+    },
+    {
+      "slug": "declarative-widgets",
+      "label": "declarative widgets"
     }
   ],
   "similar": [
     {
-      "id": "rEcRuQkOOQo",
-      "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
-      "channel": "Google for Developers",
-      "score": 0.523
+      "id": "so9l_MwS2yg",
+      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
+      "channel": "AI Engineer",
+      "score": 0.586
+    },
+    {
+      "id": "kUQD5ZElyB4",
+      "title": "The Problem Solvers: Michele Catasta at Replit",
+      "channel": "Claude",
+      "score": 0.561
     },
     {
       "id": "4azVjKhqDzw",
       "title": "Building the App Store for Agentic Engineering",
       "channel": "Cole Medin",
-      "score": 0.515
+      "score": 0.54
     },
     {
-      "id": "Owv503rTqYY",
-      "title": "Claude Code + Graphify = Insane Agentic OS",
-      "channel": "Jack Roberts",
-      "score": 0.5
+      "id": "rjSvJYrVY2k",
+      "title": "The Problem Solvers | Anton Osika at Lovable",
+      "channel": "Claude",
+      "score": 0.528
     },
     {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.499
+      "id": "14RP8liACqo",
+      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
+      "channel": "JavaScript Mastery",
+      "score": 0.523
     },
     {
-      "id": "DnMtDdkSIi0",
-      "title": "Finally… A NotebookLM Alternative With an API",
-      "channel": "Better Stack",
-      "score": 0.498
-    },
-    {
-      "id": "mWLDn49_8HA",
-      "title": "Graphify + Obsidian + Claude Code = CHEAT CODE",
-      "channel": "Chase AI",
-      "score": 0.491
+      "id": "7awKinJhGPo",
+      "title": "Power intelligent agents with AI-native databases",
+      "channel": "Google Cloud Tech",
+      "score": 0.519
     }
   ]
 }

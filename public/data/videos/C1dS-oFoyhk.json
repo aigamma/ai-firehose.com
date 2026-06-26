@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin presents empirical results from a mixed-provider benchmark comparing Claude Opus and Kimi K2.6 in a coding workflow. He tests four configurations varying which model handles planning versus implementation across three real GitHub issues, scored on seven dimensions by an Opus-based evaluator.",
+  "summary": "Cole Medin benchmarked mixed-provider LLM workflows using Archon to determine optimal allocation of planning vs. implementation tasks between Claude Opus and Kimi K2.6. The experiment tested four configurations across three real GitHub issues, scoring each of 12 PRs on seven dimensions including correctness, code quality, and fidelity to plan.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "61d30b86c5da9873",
+  "wh": "722d84bbb541fedd",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,20 +56,20 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "provider-routing",
-      "label": "provider routing"
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "foundation-models",
+      "label": "foundation models"
     },
     {
-      "slug": "benchmark",
-      "label": "benchmark"
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.662
+      "score": 0.637
     },
     {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
-      "channel": "Cole Medin",
-      "score": 0.604
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.57
     },
     {
       "id": "iICZTWcryac",
       "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.588
+      "score": 0.566
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.576
+      "score": 0.562
     },
     {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.571
-    },
-    {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "id": "VESRlr6lRQ8",
+      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
       "channel": "AICodeKing",
-      "score": 0.567
+      "score": 0.539
+    },
+    {
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.537
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-05-06T19:32:23+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Agent Toolkit for AWS provides AI coding agents with up-to-date documentation, best practices, guardrails, and tested procedures for AWS service integration. The toolkit consists of agent skills defined as Markdown runbooks, plugins configured via MCP, and provides auditability through CloudTrail. It enables rapid deployment of AI-powered workflows, as demonstrated with Lambda and API Gateway setup in under three minutes.",
+  "summary": "Agent Toolkit for AWS is a framework that equips AI coding agents with up-to-date AWS documentation, best practices, guardrails, and skills. It enables agents to deploy infrastructure like Lambda functions behind API Gateway with minimal latency. The toolkit includes Markdown runbooks, MCP plugin configuration, and CloudTrail auditability for team rollout.",
   "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
-  "wh": "860ae1e26d52a65b",
+  "wh": "57c5322cb3b5c71c",
   "key_points": [
     "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
     "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
@@ -68,12 +68,12 @@
       "label": "MCP"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
-    },
-    {
       "slug": "guardrails",
       "label": "guardrails"
+    },
+    {
+      "slug": "tool-use",
+      "label": "tool use"
     }
   ],
   "similar": [
@@ -81,37 +81,37 @@
       "id": "PGrmbZ1TDmA",
       "title": "Agent Toolkit for AWS Explained in 2 Minutes",
       "channel": "AWS Developers",
-      "score": 0.805
+      "score": 0.816
     },
     {
       "id": "1wfY7GCVvh0",
       "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
       "channel": "Cole Medin",
-      "score": 0.679
-    },
-    {
-      "id": "C5zYVlBsHLQ",
-      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
-      "channel": "Google Cloud Tech",
-      "score": 0.672
-    },
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
-      "channel": "Google Cloud Tech",
-      "score": 0.633
-    },
-    {
-      "id": "tQGalTBL1Ek",
-      "title": "Agent development and AgentOps with BigQuery, ADK, and MCP",
-      "channel": "Google Cloud Tech",
-      "score": 0.622
+      "score": 0.638
     },
     {
       "id": "PjrXaC5UsIw",
       "title": "What Is Agentic Coding? How AI Agents Modernize Code",
       "channel": "IBM Technology",
-      "score": 0.609
+      "score": 0.621
+    },
+    {
+      "id": "Z-AfOcWO_kk",
+      "title": "What's new with data agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.615
+    },
+    {
+      "id": "j1wfE0SOBbE",
+      "title": "5 Tips for Deploying AI Agents to Production",
+      "channel": "AWS Developers",
+      "score": 0.613
+    },
+    {
+      "id": "C5zYVlBsHLQ",
+      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.608
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Simon Eskildsen (CEO of turbopuffer) discusses scaling Shopify infrastructure, the cyclical emergence of database companies, engineering principles from on-call practices, and the current limitations of AI coding agents. The conversation covers what distinguishes P99 engineers and the future of database technology.",
+  "summary": "Sualeh Asif interviews Simon Eskildsen about scaling challenges at Shopify, the recurring emergence of new database companies, and hiring P99 engineers in the AI era. The discussion covers infrastructure evolution, engineering principles, and limitations of AI coding agents.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "572d68a6146f9ad5",
+  "wh": "9ab67fad1efded77",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,58 +56,58 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "scaling-ai-systems",
-      "label": "scaling AI systems"
+      "slug": "auto-scaling",
+      "label": "auto-scaling"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "software-engineering",
+      "label": "software engineering"
     },
     {
-      "slug": "database-design",
-      "label": "database design"
+      "slug": "ai-coding",
+      "label": "AI coding"
     },
     {
-      "slug": "ai-coding-tools",
-      "label": "AI coding tools"
+      "slug": "ai-agents",
+      "label": "AI agents"
     }
   ],
   "similar": [
     {
-      "id": "zxvyO5vnknI",
-      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
-      "channel": "Cursor",
-      "score": 0.613
-    },
-    {
       "id": "ByOF8qByGHU",
       "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
       "channel": "Cursor",
-      "score": 0.585
+      "score": 0.583
     },
     {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.545
+      "id": "zxvyO5vnknI",
+      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
+      "channel": "Cursor",
+      "score": 0.539
+    },
+    {
+      "id": "Y7HwVL3LdNo",
+      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
+      "channel": "Google Cloud Tech",
+      "score": 0.531
     },
     {
       "id": "7awKinJhGPo",
       "title": "Power intelligent agents with AI-native databases",
       "channel": "Google Cloud Tech",
-      "score": 0.542
+      "score": 0.519
     },
     {
-      "id": "xR9pPlLSwJI",
-      "title": "The Fastest Way to Know if Your Product Market Fit Is Real | Serval CEO, Jake Stauch",
-      "channel": "EO",
-      "score": 0.529
+      "id": "14RP8liACqo",
+      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
+      "channel": "JavaScript Mastery",
+      "score": 0.51
     },
     {
-      "id": "NYEd5a_p9j8",
-      "title": "SQL Full Course - Build a Database and Deploy It",
-      "channel": "AWS Developers",
-      "score": 0.528
+      "id": "7Z1kn6JNUbE",
+      "title": "Are AI Glasses Over? + Big Technology AI Summit Audience Questions",
+      "channel": "Alex Kantrowitz",
+      "score": 0.504
     }
   ]
 }

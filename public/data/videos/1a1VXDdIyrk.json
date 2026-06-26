@@ -6,9 +6,9 @@
   "published": "2026-05-22T18:52:18+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Agent harness engineering is presented as an evolved methodology for building agentic systems, building on prompt engineering and context engineering. The video explains harness engineering's role in controlling agent behavior through loops and architecture design.",
+  "summary": "A video explanation of agent harness engineering, tracing the evolution from prompt engineering through context engineering to harness engineering as a structured approach for agentic systems. The content covers loops, architecture, and limitations of agent design.",
   "writeup": "This video traces the evolution from prompt engineering through context engineering to agent harness engineering, explaining why each prior approach hit a ceiling on long-horizon tasks. The core argument is that context summarization, the mechanism coding agents used to manage finite context windows, caused agents to silently misreport task completion and produce partially finished work. Harness engineering breaks the loop by giving agents a fresh, structured context at each iteration rather than a compressed accumulation of previous state.",
-  "wh": "d81ea140947b0f80",
+  "wh": "ced3339e466e7007",
   "key_points": [
     "Context summarization, the technique coding agents used to shrink a filling context window, introduced a critical failure mode: agents would assume tasks were finished or skip untested features when the summary lost fidelity, producing half-completed outputs on long tasks like cloning an entire website.",
     "Harness engineering introduces a loop architecture where the agent starts each iteration with a clean context and a strict entry and exit protocol, typically generating a requirements document first, then selecting and completing one task per loop, testing and documenting each step before the next iteration.",
@@ -52,10 +52,6 @@
   "ih": "3bb21d928370a046",
   "concepts": [
     {
-      "slug": "llm-harness",
-      "label": "LLM harness"
-    },
-    {
       "slug": "prompt-engineering",
       "label": "prompt engineering"
     },
@@ -64,8 +60,16 @@
       "label": "context management"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "ai-agents",
+      "label": "AI agents"
+    },
+    {
+      "slug": "agentic-loops",
+      "label": "agentic loops"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     }
   ],
   "similar": [
@@ -73,37 +77,37 @@
       "id": "ulNsa0sD8N0",
       "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
       "channel": "Cole Medin",
-      "score": 0.745
+      "score": 0.77
     },
     {
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.696
+      "score": 0.713
     },
     {
       "id": "W6x-hb44C0c",
       "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.661
+      "score": 0.708
     },
     {
-      "id": "JirDfgJcJFU",
-      "title": "The Four Step Process to Loop Engineer ANYTHING (+ Why Prompt Engineering Isn't Dead)",
-      "channel": "Chase AI",
-      "score": 0.646
+      "id": "kYkZI3oj2W4",
+      "title": "Multi AI Agent Systems: When One AI Brain Isn’t Enough",
+      "channel": "IBM Technology",
+      "score": 0.658
     },
     {
-      "id": "zbmuiaPuiNM",
-      "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.643
+      "score": 0.656
     },
     {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.642
+      "id": "EDDgH3hs-5U",
+      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
+      "channel": "Google Cloud Tech",
+      "score": 0.651
     }
   ]
 }
