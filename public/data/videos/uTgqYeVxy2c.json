@@ -6,9 +6,9 @@
   "published": "2026-05-21T20:32:39+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Cursor's Composer 2 is built on Kimi K2.5 with 1T parameters and 256K context. The model uses continued domain-specific pre-training followed by long-horizon reinforcement learning with auto-install exploration, reward shaping via nonlinear length penalties, and self-summarization for handling context overflow.",
+  "summary": "Cursor's Composer 2 is built on the Kimi K2.5 base model with 1T parameters and 256K context window. Training involves domain-focused pre-training, long-horizon reinforcement learning with auto-install capabilities, reward shaping with nonlinear length penalties, and self-summarization to extend context usage.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "4bc9f1f94595d67a",
+  "wh": "60db64b908828acc",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -68,16 +68,20 @@
       "label": "reward modeling"
     },
     {
-      "slug": "continual-pretraining",
-      "label": "continual pretraining"
+      "slug": "offline-rl",
+      "label": "offline RL"
     },
     {
       "slug": "text-summarization",
       "label": "text summarization"
     },
     {
-      "slug": "mixture-of-experts",
-      "label": "Mixture of Experts"
+      "slug": "continual-pretraining",
+      "label": "continual pretraining"
+    },
+    {
+      "slug": "context-management",
+      "label": "context management"
     }
   ],
   "similar": [
@@ -85,37 +89,37 @@
       "id": "qFhwsb78hko",
       "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
       "channel": "AICodeKing",
-      "score": 0.616
-    },
-    {
-      "id": "QJ2bM8Me5Fk",
-      "title": "Kimi K2.6 and Agent Swarm explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.579
+      "score": 0.599
     },
     {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.574
-    },
-    {
-      "id": "lyhnXvNnhsU",
-      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
-      "channel": "AICodeKing",
-      "score": 0.559
+      "score": 0.586
     },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
       "channel": "AI Engineer",
-      "score": 0.558
+      "score": 0.566
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.554
+      "score": 0.56
+    },
+    {
+      "id": "tk9lt-9x8mE",
+      "title": "Composer 2.5 and I INTERVIEWED THE CEO OF ALPHABET",
+      "channel": "Matthew Berman",
+      "score": 0.558
+    },
+    {
+      "id": "qGm6gtHpJq0",
+      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
+      "channel": "Cole Medin",
+      "score": 0.553
     }
   ]
 }

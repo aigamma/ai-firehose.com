@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Google DeepMind released Gemma 4 12B, a multimodal LLM that processes images and audio by reading raw pixels and waveforms directly instead of using separate encoder models. The architecture eliminates intermediate encoder models, enabling faster offline performance on consumer hardware like Apple Silicon.",
   "writeup": "Google DeepMind's Gemma 4 12B model eliminates the separate vision and audio encoders that every other multimodal model relies on, replacing them with a single thin linear projection layer of only 35 million parameters. Where traditional multimodal models tape together multiple networks (a vision encoder alone can run 550 million parameters) and saturate VRAM before the language backbone even receives data, Gemma 4 maps raw 48x48 pixel patches and 40-millisecond audio frames directly into the LLM's token space in one static mathematical step. The main transformer backbone handles all visual and audio reasoning natively, shrinking the total footprint enough to run on a standard 16 GB VRAM laptop while benchmarking close to Google's own 26B parameter models.",
-  "wh": "79c735ebf4c8a9e4",
+  "wh": "4f9699d56238cc65",
   "key_points": [
     "Gemma 4's encoder-free architecture replaces a conventional 550-million-parameter vision encoder with a single 35-million-parameter linear projection layer that reformats raw 48x48 pixel patches (2,304 color values each) into the LLM's hidden-dimension token format without performing any internal visual analysis.",
     "Audio input is handled by slicing a 16 kHz signal into 40-millisecond frames of 640 floating-point values each, then projecting those floats directly into the transformer's input space; because audio is already a chronological sequence like text, the backbone treats it as a continuous token stream, enabling live transcription and translation in a single forward pass.",
@@ -56,8 +56,8 @@
   "ih": "f7bce98bba0c4d50",
   "concepts": [
     {
-      "slug": "multimodal-llm",
-      "label": "multimodal LLM"
+      "slug": "llms",
+      "label": "LLMs"
     },
     {
       "slug": "encoder-decoder",
@@ -77,13 +77,13 @@
       "id": "YiIrnYalHS4",
       "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
       "channel": "AI Revolution",
-      "score": 0.767
+      "score": 0.759
     },
     {
       "id": "1uypL1oNChI",
       "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
       "channel": "AICodeKing",
-      "score": 0.76
+      "score": 0.759
     },
     {
       "id": "O6499i4TFYA",
@@ -92,22 +92,22 @@
       "score": 0.745
     },
     {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.741
+    },
+    {
       "id": "J02-39xtlt4",
       "title": "Google strikes back! Gemini Omni, AI glasses, new models",
       "channel": "AI Search",
-      "score": 0.741
+      "score": 0.736
     },
     {
       "id": "6VV5Gvmtrl4",
       "title": "What’s new in Gemma 4?",
       "channel": "Google DeepMind",
-      "score": 0.727
-    },
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.715
+      "score": 0.725
     }
   ]
 }

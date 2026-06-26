@@ -1,13 +1,116 @@
 {
   "id": "loss-function",
   "label": "Loss Function",
-  "kind": "technique",
-  "category": "Optimization",
   "aliases": [
     "cost function",
     "objective function",
     "criterion"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-10T17:35:23Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 112.5,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "cross-entropy",
+      "label": "Cross-entropy",
+      "score": 0.854
+    },
+    {
+      "id": "pearson-loss",
+      "label": "Pearson loss",
+      "score": 0.819
+    },
+    {
+      "id": "variance-regularization",
+      "label": "variance regularization",
+      "score": 0.815
+    },
+    {
+      "id": "softmax",
+      "label": "Softmax",
+      "score": 0.805
+    },
+    {
+      "id": "layer-normalization",
+      "label": "layer normalization",
+      "score": 0.803
+    },
+    {
+      "id": "local-reduction",
+      "label": "local reduction",
+      "score": 0.801
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.353
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.132
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.033
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.515
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.073
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.681
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.222
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Deep Neural Networks with Ordinal Loss for Medical Applications",
+      "url": "http://arxiv.org/abs/2606.25769v1",
+      "author_or_channel": "Tal Dvora, Rotem Haba, Gonen Singer",
+      "published_at": "2026-06-24T12:45:17Z",
+      "kind": "technique"
+    },
+    {
+      "title": "DepthMaster: Unified Monocular Depth Estimation for Perspective and Panoramic Images",
+      "url": "http://arxiv.org/abs/2606.12368v1",
+      "author_or_channel": "Pengfei Wang, Shihao Wang, Liyi Chen",
+      "published_at": "2026-06-10T17:35:23Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Optimization",
   "durable": true,
   "source": "authored",
   "definition": "The single number that says how wrong a model is, the quantity training drives down. It is where you specify what the model should do, and its quiet danger is that a model optimizes exactly what you measure: a loss that fails to reward the behavior you actually want produces a model that does the wrong thing perfectly.",
@@ -61,12 +164,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/loss-function.png",
     "alt": "Plot of several classification loss functions (zero-one, hinge, log, squared hinge, modified Huber, perceptron) as a function of the decision-function output, all decreasing as the prediction becomes more confidently correct.",

@@ -6,9 +6,9 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WorkOS built Studio, an internal workspace enabling non-engineers to ask business questions in natural language against Snowflake, Linear, and Notion without filing requests. The system generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap. Reliability comes from preflight sequencing to manage context, a layering rule to prevent hallucination about internal systems, and query validation before widget deployment.",
+  "summary": "WorkOS Studio is an internal workspace that allows non-technical users to query Snowflake, Linear, and Notion databases in natural language. The LLM generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cost-efficient. Reliability is achieved through preflight sequencing to manage context, layering rules to prioritize primary sources, and query validation before widget hardcoding.",
   "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
-  "wh": "eafa94436b667ee1",
+  "wh": "578497d259e2f051",
   "key_points": [
     "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
     "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
@@ -55,62 +55,62 @@
   "ih": "498f36513c37970a",
   "concepts": [
     {
-      "slug": "natural-language-interface",
-      "label": "natural language interface"
+      "slug": "natural-language-interfaces",
+      "label": "natural language interfaces"
     },
     {
-      "slug": "llm",
-      "label": "LLM"
+      "slug": "ai-generated-content",
+      "label": "AI-generated content"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "context-management",
+      "label": "context management"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "query-validation",
+      "label": "query validation"
     },
     {
-      "slug": "schema-context-management",
-      "label": "schema context management"
+      "slug": "deterministic-widgets",
+      "label": "deterministic widgets"
     }
   ],
   "similar": [
     {
+      "id": "DnMtDdkSIi0",
+      "title": "Finally… A NotebookLM Alternative With an API",
+      "channel": "Better Stack",
+      "score": 0.542
+    },
+    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.595
-    },
-    {
-      "id": "kUQD5ZElyB4",
-      "title": "The Problem Solvers: Michele Catasta at Replit",
-      "channel": "Claude",
-      "score": 0.544
-    },
-    {
-      "id": "zMiSRliEzv4",
-      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
-      "channel": "AI Engineer",
-      "score": 0.539
+      "score": 0.537
     },
     {
       "id": "4azVjKhqDzw",
       "title": "Building the App Store for Agentic Engineering",
       "channel": "Cole Medin",
-      "score": 0.537
+      "score": 0.527
     },
     {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.529
+      "id": "ZRM_TfEZcIo",
+      "title": "Turn 10,994 Notes Into Memory - Paul Iusztin, Decoding AI & Louis-François Bouchard, Towards AI",
+      "channel": "AI Engineer",
+      "score": 0.526
     },
     {
-      "id": "gbI7THwqEjk",
-      "title": "Most people get these 3 AI terms wrong",
-      "channel": "Jeff Su",
-      "score": 0.524
+      "id": "JsCCrBF7F1g",
+      "title": "LLM Observability, Evaluation, Experimentation Platform — Dat Ngo, Arize",
+      "channel": "AI Engineer",
+      "score": 0.522
+    },
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.516
     }
   ]
 }

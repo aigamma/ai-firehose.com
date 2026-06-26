@@ -6,9 +6,9 @@
   "published": "2026-06-11T16:51:03+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Cursor's Sam Whitmore, Baseten's Charlie O'Neill and Harry Partridge discuss scaling agent systems to handle hundreds of parallel coding agents. They explore agent-to-agent messaging, peer review mechanisms, and the transition from managing parallel tasks to building integrated agent systems.",
+  "summary": "Cursor's Sam Whitmore discusses scaling coding agents to run in parallel at scale, with focus on agent-to-agent communication and collaborative review. The conversation explores moving from task parallelization to building integrated agent systems.",
   "writeup": "A roundtable conversation with engineers from Cursor and Base10/Paused covering how practitioners actually run and manage large fleets of AI coding agents today. The discussion traces concrete patterns: naming agents after mathematicians to track task ownership, using separate judge agents to prevent main agents from prematurely declaring completion, and the 'thermonuclear review' adversarial critique loop Cursor uses internally. The through-line is that verifiability is the decisive variable: tasks with clear success criteria can be hill-climbed overnight by agents, while non-verifiable tasks bottleneck on human taste and require continuous steering.",
-  "wh": "59a53b0a17a08751",
+  "wh": "9982d896d33af1f6",
   "key_points": [
     "Running 64 to 128 concurrent agents on KB cache compaction across 16 nodes of 8 GPUs each is operational today, with agents partitioning compute autonomously and communicating via direct messaging scripts.",
     "A separate judge agent continuously evaluating whether the main agent has completed its task prevents the common failure mode where the main agent declares 'I've done my best' and stops, allowing multi-day autonomous runs.",
@@ -52,6 +52,10 @@
   "ih": "04ee99cbfd7a6d6d",
   "concepts": [
     {
+      "slug": "scaling",
+      "label": "scaling"
+    },
+    {
       "slug": "multi-agent-systems",
       "label": "multi-agent systems"
     },
@@ -60,46 +64,46 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "ai-agents",
+      "label": "AI agents"
     }
   ],
   "similar": [
     {
-      "id": "blgUmyMiROI",
-      "title": "How are coding agents changing software engineering?",
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.693
-    },
-    {
-      "id": "fCHe_fOqlYA",
-      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
-      "channel": "IBM Technology",
-      "score": 0.689
+      "score": 0.727
     },
     {
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.68
+      "score": 0.712
     },
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
+      "id": "blgUmyMiROI",
+      "title": "How are coding agents changing software engineering?",
       "channel": "Cursor",
-      "score": 0.679
+      "score": 0.711
     },
     {
       "id": "_GljcHROPX8",
       "title": "What happens when agents get their own computers",
       "channel": "Cursor",
-      "score": 0.678
+      "score": 0.696
     },
     {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
-      "channel": "Cole Medin",
-      "score": 0.658
+      "id": "fCHe_fOqlYA",
+      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
+      "channel": "IBM Technology",
+      "score": 0.682
+    },
+    {
+      "id": "jVjt-2g8NMY",
+      "title": "A Genius With Amnesia - Victor Savkin, Nx",
+      "channel": "AI Engineer",
+      "score": 0.671
     }
   ]
 }

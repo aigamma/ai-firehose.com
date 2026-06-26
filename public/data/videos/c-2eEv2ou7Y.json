@@ -6,21 +6,25 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe architecture isolates MCP and ChatGPT apps by nesting an inner iframe with srcdoc inside an outer iframe from a controlled subdomain. This design prevents CSP bypasses, storage collisions, and sandbox escapes while maintaining security isolation. Each external domain must be declared in app metadata for submission.",
+  "summary": "MCP and ChatGPT apps use double nested iframes to sandbox third-party code while avoiding CSP violations and storage isolation problems. The outer iframe loads a lightweight script from a controlled subdomain, which loads the actual app HTML via srcdoc into the inner frame. This pattern parallels Facebook's app marketplace architecture and requires declaring all external domains in app metadata.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "a506fbe647f8d0bb",
+  "wh": "f197fb8c021be711",
   "concepts": [
+    {
+      "slug": "sandbox-isolation",
+      "label": "sandbox isolation"
+    },
     {
       "slug": "same-origin-policy",
       "label": "same-origin policy"
     },
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "iframe-nesting",
+      "label": "iframe nesting"
     },
     {
-      "slug": "data-isolation",
-      "label": "data isolation"
+      "slug": "srcdoc",
+      "label": "srcdoc"
     }
   ],
   "similar": [
@@ -28,7 +32,7 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.552
+      "score": 0.565
     },
     {
       "id": "cGuyrANVi4A",
@@ -37,28 +41,28 @@
       "score": 0.513
     },
     {
+      "id": "6ipGnvXTF1Y",
+      "title": "Why your AI prompt constraints don't work",
+      "channel": "JavaScript Mastery",
+      "score": 0.494
+    },
+    {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.512
+      "score": 0.491
+    },
+    {
+      "id": "xghOGIafjfw",
+      "title": "ego lite: I gave Claude Code & Codex a browser to run web automation — here's what happened",
+      "channel": "AICodeKing",
+      "score": 0.487
     },
     {
       "id": "EDDgH3hs-5U",
       "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
       "channel": "Google Cloud Tech",
-      "score": 0.502
-    },
-    {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.502
-    },
-    {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.5
+      "score": 0.484
     }
   ]
 }

@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin combines Claude Opus for deep reasoning and planning with Kimi K2.6 for faster implementation and validation in an autonomous code generation system. The approach optimizes token efficiency by routing expensive reasoning only to steps where it materially improves outcomes, while keeping a faster model as the primary workhorse.",
+  "summary": "Cole Medin demonstrates scaling his AI Dark Factory (a self-building codebase with custom agent harness) by combining Claude Opus for deep reasoning with Kimi K2.6 for implementation and validation. The hybrid approach optimizes cost and token efficiency while adding reasoning power where it matters most.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "eae687e37b3938d9",
+  "wh": "b43e80dfa3411032",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,20 +56,24 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "routing",
-      "label": "routing"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "model-routing",
+      "label": "model routing"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     },
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "slug": "test-time-optimization",
-      "label": "test-time optimization"
-    },
-    {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.695
+      "score": 0.687
+    },
+    {
+      "id": "pmoDeA3RBZY",
+      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
+      "channel": "AI Engineer",
+      "score": 0.628
+    },
+    {
+      "id": "CwePo4847ho",
+      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
+      "channel": "Kimi AI",
+      "score": 0.622
     },
     {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.646
+      "score": 0.614
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.646
+      "id": "QJ2bM8Me5Fk",
+      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.611
     },
     {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.643
-    },
-    {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.641
-    },
-    {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.631
+      "id": "HRw-vP0j8OM",
+      "title": "The Agentic OS Setup That Will 10x Claude Code",
+      "channel": "Chase AI",
+      "score": 0.603
     }
   ]
 }

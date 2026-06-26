@@ -4,11 +4,11 @@
   "channel": "AI Jason",
   "channelUrl": "https://www.youtube.com/@AIJasonZ",
   "published": "2026-05-09T12:15:09+00:00",
-  "kind": "tool",
+  "kind": "opinion",
   "recommended": false,
-  "summary": "AI Jason demonstrates the /goal feature for autonomous task execution and /mission exploration for long-form horizontal tasks in development tools. The video covers setup, prompting strategies, and goal-buddy functionality as part of an emerging autonomous coder ecosystem.",
+  "summary": "AI Jason discusses the /goal feature and autonomous coding capabilities, positioning them as the next evolution beyond Ralph-loop. The video covers goal-setting frameworks, mission exploration for horizontal task execution, and tools like Crewlet and Superdesign for autonomous code generation and design.",
   "writeup": "Codex and Hermes have each shipped a persistent \"goal\" feature that keeps coding agents running for hours on complex tasks by replacing the old programmatic rough loop with an LLM judge that decides whether the goal has actually been met. The video walks through how both implementations work under the hood, the specific commands to activate and monitor the feature in Codex, and the prompting discipline required to get useful results. The through-line is precise: without an explicit, quantifiable definition of done, agents either quit too early or spiral; the feature solves early termination but transfers the hard problem to prompt authorship.",
-  "wh": "d0a208c11bda27f4",
+  "wh": "c00fc68fad072e44",
   "key_points": [
     "The rough loop (running a coding agent in a for-loop with a fixed iteration cap) was the prior art; the new goal feature replaces the programmatic stop condition with an LLM call that judges whether the stated objective has actually been achieved, so the agent continues working rather than prematurely declaring victory.",
     "Codex and Hermes implement the judging step differently: Codex instructs the agent to self-mark the goal complete using an `update goal --status complete` command only when the audit confirms no required work remains, while Hermes uses a separate LLM judge call external to the agent turn.",
@@ -60,20 +60,20 @@
   "ih": "c816675b78e56e6c",
   "concepts": [
     {
-      "slug": "predictive-coding",
-      "label": "predictive coding"
+      "slug": "coding-models",
+      "label": "coding models"
     },
     {
-      "slug": "goal-conditioned-policy",
-      "label": "goal-conditioned policy"
-    },
-    {
-      "slug": "long-context-reasoning",
-      "label": "long-context reasoning"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "ai-agents",
       "label": "AI agents"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     }
   ],
   "similar": [
@@ -81,37 +81,37 @@
       "id": "I2uKi_DMQ0M",
       "title": "How to ACTUALLY Use AI For Coding",
       "channel": "Jack Roberts",
-      "score": 0.711
+      "score": 0.73
     },
     {
       "id": "aMfig5cKOtY",
       "title": "Claude Code Just Dropped /Goal. (Master it in 8 Minutes).",
       "channel": "Tristen O'Brien",
-      "score": 0.671
+      "score": 0.711
     },
     {
       "id": "uqCWfJRi66U",
       "title": "Stop Prompting. Start Looping (The New AI Way)",
       "channel": "Julian Goldie SEO",
-      "score": 0.599
+      "score": 0.594
+    },
+    {
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
+      "channel": "Cursor",
+      "score": 0.594
     },
     {
       "id": "5HVPeux24WU",
       "title": "Embrace long-running tasks with Opus 4.8 and Claude Code",
       "channel": "Claude",
-      "score": 0.599
+      "score": 0.592
     },
     {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
+      "id": "W6x-hb44C0c",
+      "title": "wtf is Loop Engineer & how to setup for real",
       "channel": "AI Jason",
-      "score": 0.598
-    },
-    {
-      "id": "M_AmPWmkpwA",
-      "title": "New AI coding paradiagm - OpenAI Symphony",
-      "channel": "AI Jason",
-      "score": 0.588
+      "score": 0.59
     }
   ]
 }
