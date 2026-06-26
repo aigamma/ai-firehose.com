@@ -6,9 +6,9 @@
   "published": "2026-06-11T16:51:03+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Cursor's Sam Whitmore discusses with Baseten executives the next frontier in agent orchestration: scaling to hundreds of agents, enabling inter-agent communication and review, and shifting from task parallelization to systematic agent-based architecture.",
+  "summary": "Cursor and Baseten leaders discuss scaling coding agents to run in large numbers with coordination mechanisms. The focus is on advancing from simple parallelism to agent collaboration systems where agents review each other's work.",
   "writeup": "A roundtable conversation with engineers from Cursor and Base10/Paused covering how practitioners actually run and manage large fleets of AI coding agents today. The discussion traces concrete patterns: naming agents after mathematicians to track task ownership, using separate judge agents to prevent main agents from prematurely declaring completion, and the 'thermonuclear review' adversarial critique loop Cursor uses internally. The through-line is that verifiability is the decisive variable: tasks with clear success criteria can be hill-climbed overnight by agents, while non-verifiable tasks bottleneck on human taste and require continuous steering.",
-  "wh": "3c0f30c94eeac65e",
+  "wh": "d53b9671ac8b4cbf",
   "key_points": [
     "Running 64 to 128 concurrent agents on KB cache compaction across 16 nodes of 8 GPUs each is operational today, with agents partitioning compute autonomously and communicating via direct messaging scripts.",
     "A separate judge agent continuously evaluating whether the main agent has completed its task prevents the common failure mode where the main agent declares 'I've done my best' and stops, allowing multi-day autonomous runs.",
@@ -52,12 +52,12 @@
   "ih": "04ee99cbfd7a6d6d",
   "concepts": [
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "agent-evaluation",
+      "label": "agent evaluation"
     },
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
       "slug": "test-time-compute",
@@ -66,40 +66,40 @@
   ],
   "similar": [
     {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.718
+    },
+    {
       "id": "8h9j2rskP14",
       "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.721
-    },
-    {
-      "id": "_GljcHROPX8",
-      "title": "What happens when agents get their own computers",
-      "channel": "Cursor",
-      "score": 0.703
-    },
-    {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
-      "channel": "Cole Medin",
-      "score": 0.685
+      "score": 0.711
     },
     {
       "id": "blgUmyMiROI",
       "title": "How are coding agents changing software engineering?",
       "channel": "Cursor",
-      "score": 0.681
+      "score": 0.693
     },
     {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
+      "id": "_GljcHROPX8",
+      "title": "What happens when agents get their own computers",
       "channel": "Cursor",
-      "score": 0.671
+      "score": 0.692
     },
     {
-      "id": "3hXJI2q0Jz8",
-      "title": "Recursive Coding Agents - Raymond Weitekamp, OpenProse",
-      "channel": "AI Engineer",
-      "score": 0.656
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.665
+    },
+    {
+      "id": "fCHe_fOqlYA",
+      "title": "Building AI Agent Systems and Scaling Challenges in Agentic AI",
+      "channel": "IBM Technology",
+      "score": 0.642
     }
   ]
 }

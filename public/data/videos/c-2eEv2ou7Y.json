@@ -6,63 +6,63 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe architecture isolates third-party app content within stricter CSP by nesting an srcdoc iframe inside a same-origin iframe served from a controlled subdomain. This pattern prevents both CSP bypass attacks and cross-app storage collisions while allowing apps to load arbitrary HTML without exposing parent origin data.",
+  "summary": "Double iframe architecture isolates third-party app code in ChatGPT and MCP by nesting an srcdoc iframe within a controlled-origin iframe, avoiding CSP and sandbox escape vulnerabilities. Each app gets a unique subdomain to prevent cross-app storage collisions, and all external domains must be declared in app metadata.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "037651aeddcb2009",
+  "wh": "0b4c680a45d5d10e",
   "concepts": [
     {
       "slug": "same-origin-policy",
       "label": "same-origin policy"
     },
     {
-      "slug": "browser-sandbox",
-      "label": "browser sandbox"
+      "slug": "iframe-sandbox",
+      "label": "iframe sandbox"
     },
     {
-      "slug": "sandboxed-iframe",
-      "label": "sandboxed iframe"
+      "slug": "srcdoc",
+      "label": "srcdoc"
     },
     {
-      "slug": "localstorage-isolation",
-      "label": "localStorage isolation"
+      "slug": "third-party-script-isolation",
+      "label": "third-party script isolation"
     }
   ],
   "similar": [
     {
-      "id": "_xIwFcnHqp4",
-      "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
-      "channel": "AI Engineer",
-      "score": 0.528
-    },
-    {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.526
-    },
-    {
-      "id": "6ipGnvXTF1Y",
-      "title": "Why your AI prompt constraints don't work",
-      "channel": "JavaScript Mastery",
-      "score": 0.521
-    },
-    {
       "id": "o4pwkwg0zfk",
       "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
       "channel": "Alex Kantrowitz",
-      "score": 0.514
+      "score": 0.556
     },
     {
       "id": "B704UxLyqWA",
       "title": "Claude Code Leak: What's Happening?",
       "channel": "Jordan Urbs",
-      "score": 0.512
+      "score": 0.544
+    },
+    {
+      "id": "EDDgH3hs-5U",
+      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
+      "channel": "Google Cloud Tech",
+      "score": 0.542
+    },
+    {
+      "id": "_xIwFcnHqp4",
+      "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
+      "channel": "AI Engineer",
+      "score": 0.542
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.537
     },
     {
       "id": "cGuyrANVi4A",
       "title": "How Model Context Protocol (MCP) actually works",
       "channel": "Google Cloud Tech",
-      "score": 0.503
+      "score": 0.535
     }
   ]
 }

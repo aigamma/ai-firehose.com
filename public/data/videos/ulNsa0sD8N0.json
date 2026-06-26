@@ -6,9 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering is the practice of building control systems around coding agents that includes an AI layer with rules, skills, and hooks for single sessions, and orchestration logic for chaining multiple focused agent sessions into reliable workflows. It emphasizes that the harness comprises roughly 98% of a production agent's value compared to the underlying model.",
+  "summary": "Harness engineering is the practice of building wrapper systems around LLMs for coding tasks, consisting of two layers: an AI layer for single-session control (rules, skills, hooks, subagents) and multi-session orchestration for scaling. The harness comprises approximately 98% of a production coding agent like Claude Code, with the core strategy being iterative evolution of the harness based on LLM failures.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "5b49439144752bfd",
+  "wh": "9da4cf6b51a38897",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -55,24 +55,20 @@
   "ih": "60739f16f8267a10",
   "concepts": [
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     },
     {
       "slug": "ai-agents",
       "label": "AI agents"
     },
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "design-systems",
+      "label": "design systems"
     },
     {
-      "slug": "ai-layer",
-      "label": "AI layer"
-    },
-    {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
     }
   ],
   "similar": [
@@ -80,37 +76,37 @@
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.822
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.77
-    },
-    {
-      "id": "ZD9-4fW2HhM",
-      "title": "Build Systems, Not Code - Angie Jones, Agentic AI Foundation",
-      "channel": "AI Engineer",
-      "score": 0.752
+      "score": 0.766
     },
     {
       "id": "efRIrLXoOVA",
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.716
+      "score": 0.766
     },
     {
       "id": "UztrFXaSWv0",
       "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
       "channel": "Cole Medin",
-      "score": 0.706
+      "score": 0.719
     },
     {
       "id": "zbmuiaPuiNM",
       "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
       "channel": "Cole Medin",
-      "score": 0.702
+      "score": 0.709
+    },
+    {
+      "id": "HRw-vP0j8OM",
+      "title": "The Agentic OS Setup That Will 10x Claude Code",
+      "channel": "Chase AI",
+      "score": 0.695
+    },
+    {
+      "id": "ZD9-4fW2HhM",
+      "title": "Build Systems, Not Code - Angie Jones, Agentic AI Foundation",
+      "channel": "AI Engineer",
+      "score": 0.687
     }
   ]
 }

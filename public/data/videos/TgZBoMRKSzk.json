@@ -6,9 +6,9 @@
   "published": "2026-04-23T13:03:11+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "CS50 2D is a Harvard University course teaching game development through building a Breakout game. The lecture covers sprite sheets, collision detection, procedural level generation, particle systems, game states, and persistent high scores.",
+  "summary": "CS50 2D Lecture 2 covers building a Breakout game with sprite sheets, collision detection, procedural level generation, particle systems, game states, and persistent high scores. This is part of Harvard University's introductory computer science course available through edX and other platforms.",
   "writeup": "CS50's game development lecture 2 builds a Breakout clone in Lua using the LOVE2D framework, using the classic Atari game as a vehicle for teaching sprite sheets, an 8-state finite state machine, procedural brick layouts, particle systems, AABB collision detection against a grid of bricks, and disk-persistent high scores. The lecture walks through each incremental version of the project (Breakout-0 through the complete game), grounding every new concept in a concrete change to running code. The through-line is complexity management: as a game grows from Pong-scale to a multi-level, multi-state product, disciplined file organization, shared state containers, and composable systems become non-negotiable.",
-  "wh": "5dcce10521b5ca64",
+  "wh": "0bebc57f2c14edef",
   "key_points": [
     "Breakout's 8-state machine (Start, High Score, Paddle Select, Serve, Play, Victory, Game Over, Enter High Score) is fully unidirectional: every arc has one legal direction and all paths eventually cycle back to Start, making the overall loop explicit and preventing illegal state transitions.",
     "Sprite sheets solve the problem of managing many small graphics (bricks, paddles, backgrounds) as a single image asset; individual quads are sliced from the sheet at runtime rather than loading dozens of separate files, keeping the asset pipeline tractable as the game scales.",
@@ -70,44 +70,48 @@
     {
       "slug": "game-states",
       "label": "game states"
+    },
+    {
+      "slug": "persistent-memory",
+      "label": "persistent memory"
     }
   ],
   "similar": [
     {
-      "id": "MY2y3dDwgMk",
-      "title": "CS50 2D - Lecture 0 - Pong",
-      "channel": "CS50",
-      "score": 0.747
-    },
-    {
       "id": "4oaN94oOdTM",
       "title": "CS50 2D - Introduction",
       "channel": "CS50",
-      "score": 0.741
+      "score": 0.721
+    },
+    {
+      "id": "MY2y3dDwgMk",
+      "title": "CS50 2D - Lecture 0 - Pong",
+      "channel": "CS50",
+      "score": 0.719
     },
     {
       "id": "wjzaqNwZrPM",
       "title": "CS50 2D - Lecture 4 - Super Mario Bros.",
       "channel": "CS50",
-      "score": 0.728
+      "score": 0.698
     },
     {
       "id": "2rboPz0plD8",
       "title": "CS50 2D - Lecture 1 - Flappy Bird",
       "channel": "CS50",
-      "score": 0.721
+      "score": 0.689
     },
     {
       "id": "iwjilbptPFM",
       "title": "CS50 2D - Lecture 5 - Legend of Zelda",
       "channel": "CS50",
-      "score": 0.679
+      "score": 0.648
     },
     {
       "id": "Qxh0KheWftU",
       "title": "CS50 2D - Lecture 3 - Match 3",
       "channel": "CS50",
-      "score": 0.637
+      "score": 0.644
     }
   ]
 }

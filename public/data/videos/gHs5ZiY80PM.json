@@ -6,33 +6,37 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan's team at NVIDIA achieved near real-time video diffusion generation by reducing the default 50-step denoising process through a combination of dynamic quantization, latent chunk caching, and step distillation. The approach stacks additive techniques where student models are trained to match teacher outputs in as few as one to eight steps, with gains of ten to two hundred times speedup.",
+  "summary": "Ziv Ilan's team at NVIDIA achieved near real-time video diffusion generation on a single Blackwell B200 by reducing the default 50-step denoising process through quantization, latent caching, and step distillation. These techniques can be applied independently or stacked together to achieve 10-200x speedups, enabling practical real-time generation.",
   "writeup": "Ziv Ilan presents NVIDIA's work on accelerating video diffusion, showing near real-time generation on a single Blackwell B200 by cutting denoising steps down from fifty. The speedup combines three techniques: quantization, caching, and distillation. On the distillation side, student models are trained to match teacher outputs in four, eight, or a single step, using either trajectory-based or distribution-based strategies. The takeaway is that the standard fifty-step count is not required, and step reduction plus quantization and caching can bring diffusion inference toward interactive speeds.",
-  "wh": "142b63233357be60",
+  "wh": "6f1d1517ce81f930",
   "concepts": [
+    {
+      "slug": "diffusion-models",
+      "label": "diffusion models"
+    },
     {
       "slug": "quantization",
       "label": "quantization"
-    },
-    {
-      "slug": "prompt-caching",
-      "label": "prompt caching"
     },
     {
       "slug": "distillation",
       "label": "Distillation"
     },
     {
-      "slug": "training-free-methods",
-      "label": "training-free methods"
-    },
-    {
-      "slug": "distributed-training",
-      "label": "distributed training"
-    },
-    {
       "slug": "knowledge-distillation",
       "label": "knowledge distillation"
+    },
+    {
+      "slug": "latent-caching",
+      "label": "latent caching"
+    },
+    {
+      "slug": "on-policy-distillation",
+      "label": "on-policy distillation"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -40,37 +44,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.663
+      "score": 0.635
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.592
+      "score": 0.61
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.571
+      "score": 0.568
     },
     {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.563
-    },
-    {
-      "id": "RdqYvdT74i0",
-      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
+      "id": "DlvhlQOBHBw",
+      "title": "The BEST AI for 4K images. Free & fast",
       "channel": "AI Search",
-      "score": 0.559
+      "score": 0.557
     },
     {
-      "id": "TUnPNY4E2fw",
-      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
-      "channel": "AI Engineer",
-      "score": 0.545
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
+      "score": 0.551
+    },
+    {
+      "id": "lcfYRJPwL-o",
+      "title": "Nvidia's Catalyst: AI Security & Cloud Data Fears! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.548
     }
   ]
 }

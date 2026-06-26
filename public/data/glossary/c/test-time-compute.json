@@ -6,30 +6,25 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 526,
+  "attention": 529,
   "first_seen": "2026-03-18T16:58:57+00:00",
   "rotation": {
     "horizon": "week",
     "quadrant": "improving",
-    "ratio": 97.6,
-    "momentum": 105.5,
+    "ratio": 91.5,
+    "momentum": 101.5,
     "sparkline": [
-      60,
-      56,
+      58,
       54,
-      50,
       56,
-      57,
-      71,
-      70
+      53,
+      55,
+      51,
+      56,
+      59
     ]
   },
   "neighbors": [
-    {
-      "id": "inference-time-compute",
-      "label": "inference-time compute",
-      "score": 0.737
-    },
     {
       "id": "test-time-alignment",
       "label": "test-time alignment",
@@ -43,7 +38,7 @@
     {
       "id": "test-time-refinement",
       "label": "test-time refinement",
-      "score": 0.713
+      "score": 0.714
     },
     {
       "id": "test-time-scaling",
@@ -51,31 +46,36 @@
       "score": 0.71
     },
     {
-      "id": "test-time-accuracy",
-      "label": "test-time accuracy",
-      "score": 0.703
+      "id": "test-time-planning",
+      "label": "test-time planning",
+      "score": 0.677
+    },
+    {
+      "id": "test-harness",
+      "label": "test harness",
+      "score": 0.656
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.4
+      "position": 0.408
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.131
+      "position": 0.145
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.2
+      "position": 0.314
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.311
+      "position": 0.306
     },
     {
       "slug": "agents-assistive",
@@ -90,10 +90,17 @@
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": 0.259
+      "position": 0.255
     }
   ],
   "top_items": [
+    {
+      "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
+      "url": "https://www.youtube.com/watch?v=4uFVSLgD2Q4",
+      "author_or_channel": "AI Engineer",
+      "published_at": "2026-06-26T07:00:38+00:00",
+      "kind": "opinion"
+    },
     {
       "title": "Recursive Coding Agents - Raymond Weitekamp, OpenProse",
       "url": "https://www.youtube.com/watch?v=3hXJI2q0Jz8",
@@ -109,17 +116,17 @@
       "kind": "opinion"
     },
     {
+      "title": "What's new in Looker: Empowering business users in the governed agentic era",
+      "url": "https://www.youtube.com/watch?v=u72ZSc8jLg4",
+      "author_or_channel": "Google Cloud Tech",
+      "published_at": "2026-06-25T16:31:52+00:00",
+      "kind": "tool"
+    },
+    {
       "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
       "url": "https://www.youtube.com/watch?v=zbmuiaPuiNM",
       "author_or_channel": "Cole Medin",
       "published_at": "2026-06-25T00:00:05+00:00",
-      "kind": "opinion"
-    },
-    {
-      "title": "Claude 5.1 Confirmed: What Happens After The Fable 5 Ban?",
-      "url": "https://www.youtube.com/watch?v=dNx5TEByofI",
-      "author_or_channel": "AI Master",
-      "published_at": "2026-06-24T19:45:29+00:00",
       "kind": "opinion"
     },
     {
@@ -128,13 +135,6 @@
       "author_or_channel": "Google Research",
       "published_at": "2026-06-24T16:51:52.000Z",
       "kind": "technique"
-    },
-    {
-      "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
-      "url": "https://www.youtube.com/watch?v=ByOF8qByGHU",
-      "author_or_channel": "Cursor",
-      "published_at": "2026-06-24T15:00:27+00:00",
-      "kind": "opinion"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",
