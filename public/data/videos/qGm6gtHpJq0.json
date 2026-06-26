@@ -6,9 +6,9 @@
   "published": "2026-05-19T03:35:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates combining Claude Opus and Kimi K2.6 in an agentic code generation system to optimize inference efficiency. Opus handles deep reasoning and planning steps while Kimi K2.6 executes implementation and validation, reducing token costs while maintaining reasoning power where it matters.",
+  "summary": "Cole Medin combines Claude Opus for deep reasoning and planning with Kimi K2.6 for faster implementation and validation in an autonomous code generation system. The approach optimizes token efficiency by routing expensive reasoning only to steps where it materially improves outcomes, while keeping a faster model as the primary workhorse.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "b7c6be5845b052a0",
+  "wh": "eae687e37b3938d9",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -60,16 +60,16 @@
       "label": "routing"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "test-time-optimization",
+      "label": "test-time optimization"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.696
+      "score": 0.695
     },
     {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.688
-    },
-    {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.665
-    },
-    {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.662
+      "score": 0.646
     },
     {
       "id": "gKBazze-8qU",
       "title": "China’s New AI Is 6X More Efficient Than Claude",
       "channel": "AI Revolution",
-      "score": 0.654
+      "score": 0.646
     },
     {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.647
+      "score": 0.643
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.641
+    },
+    {
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "channel": "AICodeKing",
+      "score": 0.631
     }
   ]
 }

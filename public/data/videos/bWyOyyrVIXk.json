@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling practices from his time at Shopify, the cyclical emergence of new database companies, and challenges in AI-assisted coding and engineering hiring in the AI era.",
+  "summary": "Sualeh Asif and Simon Eskildsen discuss scaling challenges at Shopify, the recurring emergence of new database companies, and the role of AI coding tools in infrastructure engineering. Topics include infrastructure team evolution, on-call engineering principles, and hiring strategies for high-performing engineers in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "42e4a339746578b5",
+  "wh": "0c6fd106adfc0c79",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,20 +56,20 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "scaling",
-      "label": "scaling"
+      "slug": "relational-databases",
+      "label": "relational databases"
     },
     {
-      "slug": "databases",
-      "label": "databases"
+      "slug": "auto-scaling",
+      "label": "auto-scaling"
     },
     {
       "slug": "ai-coding",
       "label": "AI coding"
     },
     {
-      "slug": "infrastructure",
-      "label": "infrastructure"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
     },
     {
       "slug": "test-time-compute",
@@ -81,37 +81,37 @@
       "id": "ByOF8qByGHU",
       "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
       "channel": "Cursor",
-      "score": 0.591
+      "score": 0.655
     },
     {
-      "id": "Y7HwVL3LdNo",
-      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
-      "channel": "Google Cloud Tech",
-      "score": 0.547
+      "id": "zxvyO5vnknI",
+      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
+      "channel": "Cursor",
+      "score": 0.624
     },
     {
       "id": "aF-rolD9W7I",
       "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
       "channel": "Cursor",
-      "score": 0.537
+      "score": 0.593
+    },
+    {
+      "id": "Y7HwVL3LdNo",
+      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
+      "channel": "Google Cloud Tech",
+      "score": 0.58
+    },
+    {
+      "id": "14RP8liACqo",
+      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
+      "channel": "JavaScript Mastery",
+      "score": 0.577
     },
     {
       "id": "7awKinJhGPo",
       "title": "Power intelligent agents with AI-native databases",
       "channel": "Google Cloud Tech",
-      "score": 0.536
-    },
-    {
-      "id": "bVSzAkuuymw",
-      "title": "How Gong Built a $7B+ Company in the Age of Vibe Coding | Amit Bendov",
-      "channel": "EO",
-      "score": 0.533
-    },
-    {
-      "id": "BX5dLXe6CTI",
-      "title": "How Anthropic Employees ACTUALLY Use Claude Code to Grow",
-      "channel": "Austin Marchese",
-      "score": 0.531
+      "score": 0.556
     }
   ]
 }

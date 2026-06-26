@@ -6,9 +6,9 @@
   "published": "2026-05-21T20:32:39+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Sasha Rush describes how Cursor built Composer 2, starting from Kimi K2.5 as a base model with 1T parameters and 256K context. The training pipeline includes coding-focused pre-training, long-horizon reinforcement learning with auto-install capabilities, reward shaping with nonlinear length penalties, and self-summarization to handle context limits.",
+  "summary": "Cursor's Composer 2 is built on Kimi K2.5 with 1T parameters and 256K context. The model uses continued domain-specific pre-training followed by long-horizon reinforcement learning with auto-install exploration, reward shaping via nonlinear length penalties, and self-summarization for handling context overflow.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "8976ce9b27ca034c",
+  "wh": "4bc9f1f94595d67a",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -68,54 +68,54 @@
       "label": "reward modeling"
     },
     {
-      "slug": "text-summarization",
-      "label": "text summarization"
-    },
-    {
       "slug": "continual-pretraining",
       "label": "continual pretraining"
     },
     {
-      "slug": "base-model-selection",
-      "label": "base model selection"
+      "slug": "text-summarization",
+      "label": "text summarization"
+    },
+    {
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     }
   ],
   "similar": [
     {
-      "id": "fYrPKhHouxs",
-      "title": "The New Kimi K2.7 Model is VERY Impressive",
-      "channel": "Cole Medin",
-      "score": 0.607
-    },
-    {
-      "id": "-jnwTZ789V0",
-      "title": "Running 128 Coding Agents at Once",
-      "channel": "Cursor",
-      "score": 0.604
-    },
-    {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.596
-    },
-    {
       "id": "qFhwsb78hko",
       "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
       "channel": "AICodeKing",
-      "score": 0.59
+      "score": 0.616
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.589
+      "id": "QJ2bM8Me5Fk",
+      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.579
     },
     {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.585
+      "id": "fYrPKhHouxs",
+      "title": "The New Kimi K2.7 Model is VERY Impressive",
+      "channel": "Cole Medin",
+      "score": 0.574
+    },
+    {
+      "id": "lyhnXvNnhsU",
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "channel": "AICodeKing",
+      "score": 0.559
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.558
+    },
+    {
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.554
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-05-25T13:52:12+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "A tutorial on building a real-world multi-agent AI system using LangGraph, demonstrating an AI Travel Planning application with four specialized agents for flights, hotels, itineraries, and final responses. The project integrates Llama 3.3 70B via Groq, PostgreSQL for memory, external APIs for real-time data, and Streamlit for the interface.",
+  "summary": "Tutorial demonstrating construction of a multi-agent AI travel planning system using LangGraph. The system integrates four specialized agents for flights, hotels, itineraries, and final responses, leveraging Llama 3.3 70B via Groq and PostgreSQL for memory persistence.",
   "writeup": "A step-by-step tutorial building a four-agent AI travel planning system using LangGraph, Llama 3.3 70B via Groq, and a Streamlit frontend. The system chains a flight agent (AviationStack API), a hotel agent (Tavily search API), an itinerary agent, and a final synthesis agent, with PostgreSQL providing persistent conversational memory across turns. The video works entirely with free-tier APIs and an open-source model, and demonstrates a complete seven-day Japan trip plan including budget breakdown as its live demo.",
-  "wh": "50740effedce62b7",
+  "wh": "fdf603323c9ba44f",
   "key_points": [
     "LangGraph structures the system as a directed graph of four nodes, where each node is an agent with a distinct role: flight search via AviationStack, hotel search via Tavily, itinerary construction, and final synthesis that combines all prior outputs into a formatted plan with budget breakdown.",
     "The LLM is Llama 3.3 70B, accessed through Groq (console.groq.com) using the langchain-groq package, enabling free, fast inference without a local GPU; the only requirement is a free Groq API key.",
@@ -64,8 +64,12 @@
       "label": "AI agents"
     },
     {
-      "slug": "langgraph",
-      "label": "LangGraph"
+      "slug": "persistent-memory",
+      "label": "persistent memory"
+    },
+    {
+      "slug": "tool-integration",
+      "label": "tool integration"
     }
   ],
   "similar": [
@@ -73,37 +77,37 @@
       "id": "Yt5xBk7Xbs0",
       "title": "Build a Real-World Multi-Agent AI App with MCP + LangGraph | Part 2",
       "channel": "Code With Aarohi",
-      "score": 0.846
+      "score": 0.818
     },
     {
       "id": "uWLJAtMOVT0",
       "title": "LangGraph Crash Course - Agent Workflows in Python",
       "channel": "NeuralNine",
-      "score": 0.698
-    },
-    {
-      "id": "EtxJJJ_7WQY",
-      "title": "1,000 AI agents, 0 LLM calls?",
-      "channel": "Google Cloud Tech",
-      "score": 0.638
-    },
-    {
-      "id": "6GtF_uHbGhw",
-      "title": "Every Level of Hermes Agent Explained",
-      "channel": "Jack Roberts",
-      "score": 0.637
-    },
-    {
-      "id": "Fzd0BWMH65s",
-      "title": "How to design a multi-agent system that skips the LLM",
-      "channel": "Google Cloud Tech",
-      "score": 0.63
+      "score": 0.689
     },
     {
       "id": "59GB3tW2Kns",
       "title": "How to Add Memory in LangGraph AI Agents | Full Tutorial",
       "channel": "Code With Aarohi",
-      "score": 0.623
+      "score": 0.659
+    },
+    {
+      "id": "6GtF_uHbGhw",
+      "title": "Every Level of Hermes Agent Explained",
+      "channel": "Jack Roberts",
+      "score": 0.633
+    },
+    {
+      "id": "Fzd0BWMH65s",
+      "title": "How to design a multi-agent system that skips the LLM",
+      "channel": "Google Cloud Tech",
+      "score": 0.627
+    },
+    {
+      "id": "EtxJJJ_7WQY",
+      "title": "1,000 AI agents, 0 LLM calls?",
+      "channel": "Google Cloud Tech",
+      "score": 0.617
     }
   ]
 }
