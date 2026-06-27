@@ -6,9 +6,9 @@
   "published": "2026-05-06T19:32:23+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Agent Toolkit for AWS provides AI coding agents with up-to-date AWS documentation, best practices, and guardrails to work effectively with AWS services. It reduces outdated knowledge and wasted effort by supplying tested procedures and security controls. The toolkit integrates via plugins and Model Context Protocol configuration.",
+  "summary": "Agent Toolkit for AWS provides AI coding agents with up-to-date documentation, best practices, and guardrails to work with AWS services. The toolkit reduces reliance on agents' outdated general knowledge and improves success rates. It integrates with MCP and enables rapid deployment of agent-driven AWS workflows.",
   "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
-  "wh": "8ec1887869786302",
+  "wh": "3a8546e7d253bb7f",
   "key_points": [
     "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
     "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
@@ -60,24 +60,16 @@
   "ih": "133551da4d02971e",
   "concepts": [
     {
-      "slug": "agent",
-      "label": "agent"
-    },
-    {
       "slug": "ai-agents",
       "label": "AI agents"
-    },
-    {
-      "slug": "model-context-protocol",
-      "label": "Model Context Protocol"
     },
     {
       "slug": "guardrails",
       "label": "guardrails"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "model-context-protocol",
+      "label": "Model Context Protocol"
     }
   ],
   "similar": [
@@ -85,37 +77,37 @@
       "id": "PGrmbZ1TDmA",
       "title": "Agent Toolkit for AWS Explained in 2 Minutes",
       "channel": "AWS Developers",
-      "score": 0.845
+      "score": 0.826
     },
     {
       "id": "PjrXaC5UsIw",
       "title": "What Is Agentic Coding? How AI Agents Modernize Code",
       "channel": "IBM Technology",
-      "score": 0.659
-    },
-    {
-      "id": "cGuyrANVi4A",
-      "title": "How Model Context Protocol (MCP) actually works",
-      "channel": "Google Cloud Tech",
-      "score": 0.648
-    },
-    {
-      "id": "RGhunHLnVIg",
-      "title": "Announcing Google Antigravity SDK",
-      "channel": "Google Antigravity",
-      "score": 0.635
+      "score": 0.671
     },
     {
       "id": "C5zYVlBsHLQ",
       "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
       "channel": "Google Cloud Tech",
-      "score": 0.63
+      "score": 0.654
     },
     {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
-      "channel": "Cole Medin",
-      "score": 0.627
+      "id": "Z-AfOcWO_kk",
+      "title": "What's new with data agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.64
+    },
+    {
+      "id": "Gh1E9VgXZWs",
+      "title": "Bridging Design Systems and Code with MCP and AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.638
+    },
+    {
+      "id": "cGuyrANVi4A",
+      "title": "How Model Context Protocol (MCP) actually works",
+      "channel": "Google Cloud Tech",
+      "score": 0.637
     }
   ]
 }

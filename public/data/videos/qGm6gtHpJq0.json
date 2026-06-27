@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin demonstrates a technique that combines Claude Opus and Kimi K2.6 models in his AI Dark Factory system, routing heavy reasoning tasks to Opus and implementation tasks to the faster Kimi model to maximize reasoning power while maintaining token efficiency as the system scales.",
+  "summary": "Cole Medin demonstrates scaling an AI Dark Factory by combining Claude Opus for complex reasoning with Kimi K2.6 for implementation tasks. The system uses Archon, an open-source AI coding harness, to orchestrate multi-model workflows that assign reasoning work to stronger models and execution work to faster, more cost-efficient ones.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "5513702252f91ac9",
+  "wh": "717ff09fa76d0c1b",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -60,54 +60,54 @@
       "label": "model routing"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
-    },
-    {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
     {
-      "id": "fYrPKhHouxs",
-      "title": "The New Kimi K2.7 Model is VERY Impressive",
+      "id": "C1dS-oFoyhk",
+      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.641
-    },
-    {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "channel": "Cole Medin",
-      "score": 0.624
-    },
-    {
-      "id": "CwePo4847ho",
-      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
-      "channel": "Kimi AI",
-      "score": 0.613
+      "score": 0.639
     },
     {
       "id": "gKBazze-8qU",
       "title": "China’s New AI Is 6X More Efficient Than Claude",
       "channel": "AI Revolution",
-      "score": 0.606
+      "score": 0.63
     },
     {
-      "id": "C1dS-oFoyhk",
-      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
       "channel": "Cole Medin",
-      "score": 0.604
+      "score": 0.621
     },
     {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.593
+      "id": "pmoDeA3RBZY",
+      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
+      "channel": "AI Engineer",
+      "score": 0.613
+    },
+    {
+      "id": "fYrPKhHouxs",
+      "title": "The New Kimi K2.7 Model is VERY Impressive",
+      "channel": "Cole Medin",
+      "score": 0.602
+    },
+    {
+      "id": "CwePo4847ho",
+      "title": "How We Scaled Kimi K2.5 | Zhilin Yang's full GTC 2026 Keynote",
+      "channel": "Kimi AI",
+      "score": 0.602
     }
   ]
 }

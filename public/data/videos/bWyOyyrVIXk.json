@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Sualeh Asif (Cursor Co-Founder) interviews Simon Eskildsen (turbopuffer CEO) on infrastructure scaling at Shopify, the recurring emergence of new database companies every 15 years, the role of AI coding agents, and characteristics of high-performing infrastructure engineers in the AI era.",
+  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses scaling infrastructure at Shopify, the cyclical emergence of new database companies, and the current state of AI coding agents. The conversation covers engineering best practices, hiring elite engineers, and the future landscape of databases in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "5ef6fb3a6163467a",
+  "wh": "af318e32ef445236",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,20 +56,24 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "relational-databases",
-      "label": "relational databases"
+      "slug": "scaling-ai-systems",
+      "label": "scaling AI systems"
     },
     {
-      "slug": "auto-scaling",
-      "label": "auto-scaling"
+      "slug": "flash-sales",
+      "label": "flash sales"
     },
     {
-      "slug": "ai-coding",
-      "label": "AI coding"
+      "slug": "on-call",
+      "label": "on-call"
     },
     {
-      "slug": "on-call-practices",
-      "label": "on-call practices"
+      "slug": "software-engineering",
+      "label": "software engineering"
+    },
+    {
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "test-time-compute",
@@ -81,37 +85,37 @@
       "id": "ByOF8qByGHU",
       "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
       "channel": "Cursor",
-      "score": 0.6
-    },
-    {
-      "id": "Y7HwVL3LdNo",
-      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
-      "channel": "Google Cloud Tech",
-      "score": 0.584
+      "score": 0.62
     },
     {
       "id": "zxvyO5vnknI",
       "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
       "channel": "Cursor",
-      "score": 0.577
+      "score": 0.58
     },
     {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.554
+      "score": 0.547
     },
     {
-      "id": "ev96Qkpaykw",
-      "title": "AI Agents: Why Building Them Is Way Harder Than You Think! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.55
-    },
-    {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
+      "id": "aF-rolD9W7I",
+      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
       "channel": "Cursor",
-      "score": 0.541
+      "score": 0.539
+    },
+    {
+      "id": "nPc0hIreNaQ",
+      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
+      "channel": "Cursor",
+      "score": 0.536
+    },
+    {
+      "id": "G_Orj_Z2Y8E",
+      "title": "AI Agents: Stop Button Building, Start Startup Speed! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.535
     }
   ]
 }

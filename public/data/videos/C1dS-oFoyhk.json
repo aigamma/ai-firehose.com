@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarks mixed-provider configurations where Claude Opus and Kimi K2.6 handle planning and implementation phases of a coding workflow. Using Archon, he runs four variants against three GitHub issues and scores resulting PRs on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
+  "summary": "Cole Medin benchmarked mixed-provider LLM workflows using Claude Opus and Kimi K2.6 across four configurations on three real GitHub issues. An Opus evaluator scored 12 generated PRs on seven dimensions to determine whether Opus should handle planning or implementation, or vice versa.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "8c78f3ebacaae6cf",
+  "wh": "cec2869ac6388dd4",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,58 +56,54 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "mixed-provider-workflows",
-      "label": "mixed-provider workflows"
-    },
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
-      "slug": "model-evaluation",
-      "label": "model evaluation"
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     },
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
+    },
+    {
+      "slug": "code-generation",
+      "label": "code generation"
     }
   ],
   "similar": [
     {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.655
-    },
-    {
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.604
+      "score": 0.639
     },
     {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.587
+      "id": "hEv_8tyfdHc",
+      "title": "I Tested GLM 5.2 vs Opus 4.8 vs GPT 5.5",
+      "channel": "Chase AI",
+      "score": 0.589
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.573
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.567
+      "score": 0.561
     },
     {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
-      "channel": "Cole Medin",
-      "score": 0.565
+      "id": "q5lg3npxjAc",
+      "title": "Opus 4.8 Just Dropped. Here's How To Actually Use It.",
+      "channel": "Nate Herk | AI Automation",
+      "score": 0.547
     },
     {
-      "id": "fYrPKhHouxs",
-      "title": "The New Kimi K2.7 Model is VERY Impressive",
-      "channel": "Cole Medin",
-      "score": 0.564
+      "id": "VESRlr6lRQ8",
+      "title": "OpenRouter Fusion: They OFFICIALLY CLAIM THAT THIS MODEL beats FABLE?",
+      "channel": "AICodeKing",
+      "score": 0.538
     }
   ]
 }

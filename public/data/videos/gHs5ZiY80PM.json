@@ -6,9 +6,9 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "NVIDIA's technique for accelerating video diffusion models reduces the standard 50-step denoising process to 1-8 steps by combining quantization, latent caching, and distillation. The approach achieves 10-200x speedup through composable optimizations that can be applied independently or stacked together.",
+  "summary": "Ziv Ilan's team at NVIDIA demonstrated real-time video diffusion generation on a Blackwell B200 by combining dynamic quantization, latent caching, and step distillation to reduce diffusion steps from fifty to as few as one. The approach supports both trajectory-based and distribution-based distillation training, with gains stacking additively to achieve ten to two hundred times speedup.",
   "writeup": "Ziv Ilan presents NVIDIA's work on accelerating video diffusion, showing near real-time generation on a single Blackwell B200 by cutting denoising steps down from fifty. The speedup combines three techniques: quantization, caching, and distillation. On the distillation side, student models are trained to match teacher outputs in four, eight, or a single step, using either trajectory-based or distribution-based strategies. The takeaway is that the standard fifty-step count is not required, and step reduction plus quantization and caching can bring diffusion inference toward interactive speeds.",
-  "wh": "4d19672bf311c67a",
+  "wh": "bdbcd455733a96e5",
   "concepts": [
     {
       "slug": "quantization",
@@ -27,20 +27,12 @@
       "label": "diffusion models"
     },
     {
-      "slug": "step-reduction",
-      "label": "step reduction"
-    },
-    {
-      "slug": "training-free-methods",
-      "label": "training-free methods"
-    },
-    {
-      "slug": "distributed-training",
-      "label": "distributed training"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
@@ -48,37 +40,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.654
-    },
-    {
-      "id": "B18zBnjZKmc",
-      "title": "Why Inference is hard..",
-      "channel": "Caleb Writes Code",
-      "score": 0.641
+      "score": 0.616
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.6
-    },
-    {
-      "id": "TUnPNY4E2fw",
-      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
-      "channel": "AI Engineer",
-      "score": 0.585
-    },
-    {
-      "id": "k7HrSreatII",
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "channel": "Google Cloud Tech",
-      "score": 0.584
+      "score": 0.577
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.584
+      "score": 0.546
+    },
+    {
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.543
+    },
+    {
+      "id": "lcfYRJPwL-o",
+      "title": "Nvidia's Catalyst: AI Security & Cloud Data Fears! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.535
+    },
+    {
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.531
     }
   ]
 }
