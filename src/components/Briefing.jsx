@@ -42,7 +42,7 @@ function Briefing({ horizon }) {
             put two different dates in one view. Freshness lives in the dateline. */}
       </div>
       <p className="briefing-headline">{data.headline}</p>
-      {data.body && <RichText as="p" className="briefing-body" text={data.body} citeMap={citeMap} withCitations />}
+      {data.body && <RichText as="p" className="briefing-body" text={data.body} citeMap={citeMap} withCitations noWiki />}
       {concepts.length > 0 && (
         <div className="briefing-reads">
           <span className="eyebrow">Reads On</span>

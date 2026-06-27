@@ -728,16 +728,19 @@ a { text-underline-offset: 3px; }
 .brand .spark { font-size: 1.1em; }
 
 /* Wiki-style auto-links inside prose (the briefing body, item summaries, and authored
-   hub bodies). Bold and colored by the KIND of concept they point to: technique
-   indigo, tool teal, opinion pink, the accent for everything else. Color encodes
-   meaning (the project ethos) and turns dense prose into a navigable, colored mesh
-   instead of a wall of grey terminal text. The underline fills in and a soft tint
-   blooms on hover. */
-.wikilink { font-weight: 600; color: var(--accent); text-decoration: none;
-  border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
-  transition: border-color var(--motion-fast) var(--ease-out), background var(--motion-fast) var(--ease-out); }
-.wikilink:hover { border-bottom-color: currentColor; text-decoration: none;
-  background: color-mix(in oklab, currentColor 13%, transparent); border-radius: 3px; }
+   hub bodies). Colored by the KIND of concept they point to (technique indigo, tool
+   teal, opinion pink, the accent for everything else) and underlined, so they read as
+   a navigable, colored mesh and stay distinguishable by more than color (a11y). The
+   wiki-link matcher loads asynchronously (the glossary index is ~800KB, too large to
+   inline), so prose first paints plain and re-renders linked once it arrives; the
+   link style therefore MUST be metric-neutral, color and underline only, never a
+   weight or width change. An earlier `font-weight: 600` reflowed the briefing on that
+   re-render (the Largest Contentful Paint block), which scored as layout shift (CLS).
+   The underline comes from the shared in-text-link rule above; a soft tint blooms on
+   hover (paint only, no layout). */
+.wikilink { color: var(--accent);
+  transition: background var(--motion-fast) var(--ease-out); }
+.wikilink:hover { background: color-mix(in oklab, currentColor 13%, transparent); border-radius: 3px; }
 .wikilink-technique { color: var(--kind-technique); }
 .wikilink-tool { color: var(--kind-tool); }
 .wikilink-opinion { color: var(--kind-opinion); }

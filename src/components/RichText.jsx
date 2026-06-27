@@ -53,12 +53,19 @@ function renderTokens(tokens, keyPrefix, citeMap) {
   });
 }
 
-function RichText({ blocks, text, currentSlug = null, citeMap = null, withCitations = false, as: As = "div", className }) {
+function RichText({ blocks, text, currentSlug = null, citeMap = null, withCitations = false, as: As = "div", className, noWiki = false }) {
+  // The wiki-link matcher loads asynchronously (the glossary index is ~800KB), so a
+  // RichText that mounts before it resolves first paints plain and then re-renders
+  // linked. For above-the-fold prose that is the Largest Contentful Paint block (the
+  // home briefing), that second render shifts layout (CLS). `noWiki` opts such prose
+  // out of auto-linking entirely so it renders once and never shifts; citations and
+  // explicit Markdown links still render. The hook is still called unconditionally
+  // (rules of hooks); its matcher is simply ignored when noWiki is set.
   const { matcher } = useGlossary();
   // A fresh set per render so each term links on its first occurrence across the
   // whole passage; parseInline mutates it as it walks the blocks in order.
   const linked = new Set();
-  const opts = { matcher, currentSlug, linked, withCitations };
+  const opts = { matcher: noWiki ? null : matcher, currentSlug, linked, withCitations };
 
   if (text != null && blocks == null) {
     return <As className={className}>{renderTokens(parseInline(text, opts), "t", citeMap)}</As>;
