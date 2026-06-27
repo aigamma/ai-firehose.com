@@ -6,9 +6,9 @@
   "published": "2026-06-15T14:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Double iframe architecture isolates third-party app code in ChatGPT and MCP apps by nesting an inner iframe with srcdoc inside an outer iframe served from a controlled subdomain. This pattern prevents CSP violations, storage collisions, and sandbox escape vulnerabilities while allowing controlled access to external resources declared in app metadata.",
+  "summary": "ChatGPT apps and MCP servers use double iframes for safe isolation: an outer iframe loads a lightweight script from a controlled subdomain, which then loads the app HTML via srcdoc into an inner iframe. This avoids CSP conflicts, localStorage/cookie leaks, and sandbox escapes that simpler approaches face. External domains must be declared in MCP metadata or submission is rejected.",
   "writeup": "Frédéric Barthelet of Alpic explains why MCP and ChatGPT apps render third-party code inside nested iframes. An outer iframe loads a lightweight script from a controlled subdomain, which then injects the actual app HTML into an inner iframe via srcdoc, isolating untrusted code while preserving security guarantees. The talk details how this structure prevents CSP violations, localStorage leaks, and sandbox escapes, and notes that each external domain must be declared in app metadata to pass submission review. The takeaway is a concrete account of the same-origin policy and sandbox attribute mechanics behind app embedding.",
-  "wh": "0472be016cf5c115",
+  "wh": "56f647b8281c0d17",
   "concepts": [
     {
       "slug": "sandboxed-iframe",
@@ -19,8 +19,12 @@
       "label": "same-origin policy"
     },
     {
-      "slug": "subresource-integrity",
-      "label": "subresource integrity"
+      "slug": "srcdoc",
+      "label": "srcdoc"
+    },
+    {
+      "slug": "csp-relaxation",
+      "label": "CSP relaxation"
     }
   ],
   "similar": [
@@ -28,37 +32,37 @@
       "id": "_xIwFcnHqp4",
       "title": "Building Interactive UIs in VS Code with MCP Apps — Marlene Mhangami & Liam Hampton, GitHub",
       "channel": "AI Engineer",
-      "score": 0.561
-    },
-    {
-      "id": "B704UxLyqWA",
-      "title": "Claude Code Leak: What's Happening?",
-      "channel": "Jordan Urbs",
       "score": 0.543
-    },
-    {
-      "id": "MP_UtNV7m18",
-      "title": "This is why my AI Agents never guess",
-      "channel": "JavaScript Mastery",
-      "score": 0.529
     },
     {
       "id": "cGuyrANVi4A",
       "title": "How Model Context Protocol (MCP) actually works",
       "channel": "Google Cloud Tech",
-      "score": 0.527
+      "score": 0.513
+    },
+    {
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.477
     },
     {
       "id": "6ipGnvXTF1Y",
       "title": "Why your AI prompt constraints don't work",
       "channel": "JavaScript Mastery",
-      "score": 0.526
+      "score": 0.477
     },
     {
-      "id": "EDDgH3hs-5U",
-      "title": "Beyond chatbots: How AI agents built a full OS, web apps, and more",
-      "channel": "Google Cloud Tech",
-      "score": 0.515
+      "id": "zA3RirPFFsU",
+      "title": "What is MCP? Learn MCP Client, MCP Server & MCP Architecture",
+      "channel": "Code With Aarohi",
+      "score": 0.474
+    },
+    {
+      "id": "MP_UtNV7m18",
+      "title": "This is why my AI Agents never guess",
+      "channel": "JavaScript Mastery",
+      "score": 0.474
     }
   ]
 }

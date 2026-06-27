@@ -6,25 +6,37 @@
   "published": "2026-06-16T13:00:06+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Ziv Ilan from NVIDIA demonstrated real-time video diffusion generation on Blackwell B200 by combining quantization, caching, and step distillation to reduce the typical fifty-step denoising process to as few as one to eight steps. The approach uses dynamic quantization on Flux 2, latent-chunk caching to avoid recomputation between steps, and knowledge distillation in both trajectory-based and distribution-based variants, achieving ten to two hundred times speedup.",
+  "summary": "NVIDIA's technique for accelerating video diffusion models reduces the standard 50-step denoising process to 1-8 steps by combining quantization, latent caching, and distillation. The approach achieves 10-200x speedup through composable optimizations that can be applied independently or stacked together.",
   "writeup": "Ziv Ilan presents NVIDIA's work on accelerating video diffusion, showing near real-time generation on a single Blackwell B200 by cutting denoising steps down from fifty. The speedup combines three techniques: quantization, caching, and distillation. On the distillation side, student models are trained to match teacher outputs in four, eight, or a single step, using either trajectory-based or distribution-based strategies. The takeaway is that the standard fifty-step count is not required, and step reduction plus quantization and caching can bring diffusion inference toward interactive speeds.",
-  "wh": "4a372e6377c95670",
+  "wh": "4d19672bf311c67a",
   "concepts": [
     {
       "slug": "quantization",
       "label": "quantization"
     },
     {
-      "slug": "prompt-caching",
-      "label": "prompt caching"
-    },
-    {
       "slug": "knowledge-distillation",
       "label": "knowledge distillation"
     },
     {
-      "slug": "distillation",
-      "label": "Distillation"
+      "slug": "prompt-caching",
+      "label": "prompt caching"
+    },
+    {
+      "slug": "diffusion-models",
+      "label": "diffusion models"
+    },
+    {
+      "slug": "step-reduction",
+      "label": "step reduction"
+    },
+    {
+      "slug": "training-free-methods",
+      "label": "training-free methods"
+    },
+    {
+      "slug": "distributed-training",
+      "label": "distributed training"
     },
     {
       "slug": "test-time-compute",
@@ -36,37 +48,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.61
-    },
-    {
-      "id": "UYVObn1HUeU",
-      "title": "Diffusion Models explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.573
-    },
-    {
-      "id": "vhbaZJtW2Hg",
-      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
-      "channel": "Cole Medin",
-      "score": 0.542
-    },
-    {
-      "id": "Dxn3BcSgsMY",
-      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
-      "channel": "Better Stack",
-      "score": 0.536
-    },
-    {
-      "id": "k7HrSreatII",
-      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
-      "channel": "Google Cloud Tech",
-      "score": 0.523
+      "score": 0.654
     },
     {
       "id": "B18zBnjZKmc",
       "title": "Why Inference is hard..",
       "channel": "Caleb Writes Code",
-      "score": 0.523
+      "score": 0.641
+    },
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.6
+    },
+    {
+      "id": "TUnPNY4E2fw",
+      "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
+      "channel": "AI Engineer",
+      "score": 0.585
+    },
+    {
+      "id": "k7HrSreatII",
+      "title": "GPU-accelerated virtual drug screening with cuML and Agent Platform",
+      "channel": "Google Cloud Tech",
+      "score": 0.584
+    },
+    {
+      "id": "vhbaZJtW2Hg",
+      "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
+      "channel": "Cole Medin",
+      "score": 0.584
     }
   ]
 }

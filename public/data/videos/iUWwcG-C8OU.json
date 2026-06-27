@@ -6,9 +6,9 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Studio is an internal workspace from WorkOS that allows non-engineers to query databases like Snowflake, Linear, and Notion in natural language. It generates reusable declarative JavaScript widgets that call data sources directly, making results deterministic and cheap on subsequent runs. Reliability is ensured through preflight sequencing, layering rules that defer to primary sources, and query validation before widget hardcoding.",
+  "summary": "Garrett Galow from WorkOS presented Studio, an internal workspace that allows non-technical users to ask questions in natural language against Snowflake, Linear, and Notion. The system generates reusable JavaScript widgets that call data sources directly, reducing the need for repeated engineer requests and improving query reliability through preflight sequencing, schema layering, and query validation.",
   "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
-  "wh": "2fb8e0af9974112b",
+  "wh": "49eb25ad7d7f8403",
   "key_points": [
     "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
     "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
@@ -59,58 +59,58 @@
       "label": "natural language interface"
     },
     {
-      "slug": "prompt-engineering",
-      "label": "prompt engineering"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
-      "slug": "context-management",
-      "label": "context management"
+      "slug": "preflight-sequencing",
+      "label": "preflight sequencing"
+    },
+    {
+      "slug": "schema-layering",
+      "label": "schema layering"
     },
     {
       "slug": "query-validation",
       "label": "query validation"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
     }
   ],
   "similar": [
     {
-      "id": "4azVjKhqDzw",
-      "title": "Building the App Store for Agentic Engineering",
-      "channel": "Cole Medin",
-      "score": 0.525
-    },
-    {
-      "id": "Owv503rTqYY",
-      "title": "Claude Code + Graphify = Insane Agentic OS",
-      "channel": "Jack Roberts",
-      "score": 0.523
-    },
-    {
-      "id": "rEcRuQkOOQo",
-      "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
-      "channel": "Google for Developers",
-      "score": 0.518
-    },
-    {
-      "id": "v0eokiSJO74",
-      "title": "From Genetic Variant to Wet-lab: Accelerating the path from hypothesis to experiment",
-      "channel": "Google Antigravity",
-      "score": 0.512
-    },
-    {
-      "id": "mWLDn49_8HA",
-      "title": "Graphify + Obsidian + Claude Code = CHEAT CODE",
-      "channel": "Chase AI",
-      "score": 0.511
-    },
-    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.507
+      "score": 0.576
+    },
+    {
+      "id": "kUQD5ZElyB4",
+      "title": "The Problem Solvers: Michele Catasta at Replit",
+      "channel": "Claude",
+      "score": 0.536
+    },
+    {
+      "id": "ZRM_TfEZcIo",
+      "title": "Turn 10,994 Notes Into Memory - Paul Iusztin, Decoding AI & Louis-François Bouchard, Towards AI",
+      "channel": "AI Engineer",
+      "score": 0.522
+    },
+    {
+      "id": "ij-AU9dpJjc",
+      "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
+      "channel": "AI Engineer",
+      "score": 0.518
+    },
+    {
+      "id": "rjSvJYrVY2k",
+      "title": "The Problem Solvers | Anton Osika at Lovable",
+      "channel": "Claude",
+      "score": 0.511
+    },
+    {
+      "id": "zMiSRliEzv4",
+      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
+      "channel": "AI Engineer",
+      "score": 0.508
     }
   ]
 }

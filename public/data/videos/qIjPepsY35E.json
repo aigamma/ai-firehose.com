@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Qdrant's prefetch plus rerank pattern uses fast initial retrieval (single-vector or BM25) to narrow candidates down from millions to hundreds, then applies ColBERT reranking to refine results. The technique emphasizes oversampling in stage one to ensure sufficient candidates for effective reranking.",
   "writeup": "This lesson from a Qdrant-focused course demonstrates how multi-stage retrieval pipelines resolve the core tension between speed and accuracy in vector search. Fast HNSW single-vector search pulls a broad candidate set in milliseconds; MaxSim multi-vector scoring then reranks only those candidates at full precision. The through-line is a concrete cost argument: reranking 500 candidates instead of 1 million documents is roughly 2,000 times cheaper while preserving final result quality.",
-  "wh": "e48ed5540d51556f",
+  "wh": "4df1bc90cf44a0e4",
   "key_points": [
     "Multi-stage retrieval separates the work by tool: HNSW approximate single-vector search retrieves around 500 candidates fast, then MaxSim multi-vector scoring reranks only those candidates, making the overall pipeline roughly collection-size divided by candidate-count times cheaper than running MaxSim over the full index.",
     "Oversampling is non-negotiable: the prefetch stage must retrieve more candidates than the desired final result count, because any document the fast method ranks outside that wider net is invisible to the reranker and the pipeline is capped at single-vector quality.",
@@ -64,8 +64,8 @@
       "label": "prefetch and rerank"
     },
     {
-      "slug": "upscaling",
-      "label": "upscaling"
+      "slug": "oversampling",
+      "label": "oversampling"
     },
     {
       "slug": "hybrid-architectures",

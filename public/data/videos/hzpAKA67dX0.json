@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Jonathan Ross, founder of Groq, discusses his hardware chip designed for LLM inference and its $20 billion strategic agreement with NVIDIA. The conversation covers LPU vs. GPU tradeoffs, static scheduling, mixture-of-experts models, and the economic dynamics driving compute demand growth.",
   "writeup": "Jonathan Ross, who pioneered Google's TPUs before founding Groq, explains how the Language Processing Unit (LPU) architecture addresses a specific bottleneck: GPU inference is memory-bound because it relies on slow external DRAM, forcing large batch sizes that hurt latency. The LPU instead spreads models across chips using fast on-chip SRAM and uses static compile-time scheduling, achieving lower cost-per-token at high speeds where GPUs underperform. The conversation traces from the original Google compute scarcity that sparked the TPU, through how static scheduling accommodates mixture-of-experts routing, to why real-time audio quality actually improves on faster hardware by enabling larger chunk sizes.",
-  "wh": "cf873aae395ebe4e",
+  "wh": "aa4477b37b132a5a",
   "key_points": [
     "The original motivation for the TPU was a 2013 Google speech recognition model that beat human transcription accuracy but could not be deployed at scale, being limited to Nexus phone users because Google lacked sufficient inference compute.",
     "GPUs are memory-bottlenecked at inference time because they pull expert weights from external DRAM and must amortize that cost across large batch sizes, sometimes hundreds of queries; the LPU uses on-chip SRAM so a batch size of around 10 is economically viable, cutting queuing latency.",
@@ -60,8 +60,8 @@
       "label": "LPU"
     },
     {
-      "slug": "static-scheduling",
-      "label": "static scheduling"
+      "slug": "scheduling",
+      "label": "scheduling"
     },
     {
       "slug": "mixture-of-experts",
@@ -89,7 +89,13 @@
       "id": "B18zBnjZKmc",
       "title": "Why Inference is hard..",
       "channel": "Caleb Writes Code",
-      "score": 0.561
+      "score": 0.589
+    },
+    {
+      "id": "b_KxiTPBIb0",
+      "title": "Google TPU 8t and 8i is here..",
+      "channel": "Caleb Writes Code",
+      "score": 0.55
     },
     {
       "id": "EKULOf_Cy0w",
@@ -101,25 +107,19 @@
       "id": "XAP78BNKGEs",
       "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.507
+      "score": 0.515
     },
     {
       "id": "oIk3R-sMX5o",
       "title": "Chip design from the bottom up – Reiner Pope",
       "channel": "Dwarkesh Patel",
-      "score": 0.501
+      "score": 0.5
     },
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
+      "id": "lcfYRJPwL-o",
+      "title": "Nvidia's Catalyst: AI Security & Cloud Data Fears! #shorts",
+      "channel": "Cyril Imhof",
       "score": 0.499
-    },
-    {
-      "id": "zexcKJYQooU",
-      "title": "Elon Musk Just Shocked OpenAI With Grok 5",
-      "channel": "AI Revolution",
-      "score": 0.493
     }
   ]
 }
