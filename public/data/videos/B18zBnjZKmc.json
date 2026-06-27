@@ -4,11 +4,11 @@
   "channel": "Caleb Writes Code",
   "channelUrl": "https://www.youtube.com/@CalebWritesCode",
   "published": "2026-04-20T19:26:26+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": true,
-  "summary": "The video covers methods for efficient model loading and quantization in LLM inference, including mmap, GGUF, AWQ, EXL2, and FP8/NVFP4 formats. It contrasts inference engines like llama.cpp, vLLM, SGLang, TensorRT-LLM, and TGI with focus on pre-fill, decoding, concurrency, and scheduling challenges.",
+  "summary": "Caleb Writes Code explains the complexities of LLM inference, covering model loading techniques like mmap and quantization methods including GGUF, AWQ, EXL2, FP8, and NVFP4. The video discusses inference engines vLLM, SGLang, TensorRT-LLM, TGI, and llama.cpp, with emphasis on pre-fill, decoding, and concurrent serving.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "b8bdbb066491a261",
+  "wh": "c5f6601f407021b8",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -64,82 +64,58 @@
       "label": "quantization"
     },
     {
-      "slug": "model-loading",
-      "label": "model loading"
+      "slug": "memory-management",
+      "label": "memory management"
     },
     {
-      "slug": "mmap",
-      "label": "mmap"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
-      "slug": "gguf",
-      "label": "GGUF"
+      "slug": "local-inference",
+      "label": "local inference"
     },
     {
-      "slug": "awq",
-      "label": "AWQ"
-    },
-    {
-      "slug": "exl2",
-      "label": "EXL2"
-    },
-    {
-      "slug": "fp8",
-      "label": "FP8"
-    },
-    {
-      "slug": "nvfp4",
-      "label": "NVFP4"
-    },
-    {
-      "slug": "prefill",
-      "label": "prefill"
-    },
-    {
-      "slug": "decode",
-      "label": "decode"
-    },
-    {
-      "slug": "inference-efficiency",
-      "label": "inference efficiency"
+      "slug": "scheduling",
+      "label": "scheduling"
     }
   ],
   "similar": [
     {
-      "id": "b_KxiTPBIb0",
-      "title": "Google TPU 8t and 8i is here..",
-      "channel": "Caleb Writes Code",
-      "score": 0.597
-    },
-    {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.591
-    },
-    {
-      "id": "SS-A8sE7hkw",
-      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
-      "channel": "AI Engineer",
-      "score": 0.572
-    },
-    {
-      "id": "-z2C3B29aho",
-      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
-      "channel": "Keith AI",
-      "score": 0.569
+      "id": "XAP78BNKGEs",
+      "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.594
     },
     {
       "id": "hzpAKA67dX0",
       "title": "\"An endless demand for compute\" | Jonathan Ross, founder of Groq",
       "channel": "Julia Turc",
-      "score": 0.567
+      "score": 0.565
     },
     {
-      "id": "WLtCHXdHTF0",
-      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
-      "channel": "Better Stack",
-      "score": 0.56
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.565
+    },
+    {
+      "id": "ImPESBftwr8",
+      "title": "GLM 5.2 is insane… he runs it 100% locally",
+      "channel": "David Ondrej",
+      "score": 0.561
+    },
+    {
+      "id": "DAlC8mL5ZlI",
+      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
+      "channel": "IBM Technology",
+      "score": 0.555
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.552
     }
   ]
 }

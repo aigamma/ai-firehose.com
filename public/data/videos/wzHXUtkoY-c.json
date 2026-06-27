@@ -6,9 +6,9 @@
   "published": "2026-06-11T06:26:14+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra variants. The models combine hybrid Mamba-Transformer architecture with Latent Mixture of Experts and Mixture of Tokens for efficient inference and performance.",
+  "summary": "NVIDIA released Nemotron 3 in three sizes: Nano, Super, and Ultra. The models combine hybrid Mamba transformer architecture, Multi-Token Prediction (MTP), and Latent Mixture of Experts (MoE) in their design.",
   "writeup": "Nvidia's Nemotron 3 comes in three size variants (Nano at 30B total/3B active, Super at 120B/10B, Ultra at 550B/50B) sized to match distinct compute tiers from consumer hardware up to multi-GPU AI factory infrastructure. The architecture departs from standard transformers in three deliberate ways: Mamba 2 state-space layers interleaved with full attention to hold 1-million-token context at near-linear memory cost; a latent mixture-of-experts design that compresses token representations before routing so more experts can weigh in at lower bandwidth cost; and multi-token prediction to accelerate autoregressive output. Together these choices let Nvidia co-design model and hardware layers they already control, producing base-model accuracy scores that, per internal evaluations, exceed any previously published base model.",
-  "wh": "f1a04ca9fc6b018f",
+  "wh": "33b88bcce5dff710",
   "key_points": [
     "Nemotron 3 Nano (30B total, 3B active) runs on consumer hardware at roughly 15 GB in MX-FP4 precision; Super (120B total, 10B active) fits on one H100 80 GB in FP8 or on DGX Spark via Blackwell's compute acceleration; Ultra (550B total, 50B active) requires multi-GPU infrastructure at AI factory scale, comparable in size to DeepSeek V3.",
     "The hybrid Mamba 2 transformer architecture replaces the quadratic KV-cache growth of standard attention with a fixed-size state matrix that updates linearly as tokens are processed, enabling a 1-million-token context window without proportional memory blowout, critical for enterprise workloads that must ingest large knowledge bases for concurrent queries.",
@@ -55,58 +55,58 @@
   "ih": "1b234e31c4a8d5c2",
   "concepts": [
     {
-      "slug": "hybrid-mamba-transformer",
-      "label": "Hybrid Mamba-Transformer"
+      "slug": "transformer",
+      "label": "Transformer"
     },
     {
       "slug": "mixture-of-experts",
       "label": "Mixture of Experts"
     },
     {
-      "slug": "mixture-of-tokens",
-      "label": "Mixture of Tokens"
+      "slug": "next-token-prediction",
+      "label": "next-token prediction"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "latent-space",
+      "label": "latent space"
     }
   ],
   "similar": [
     {
-      "id": "-zIF318p7J8",
-      "title": "MiniMax M3 explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.656
-    },
-    {
       "id": "P0tkFtrG3jU",
       "title": "The Big Bang Of AI Just Happened: Cosmos 3",
       "channel": "AI Revolution",
-      "score": 0.655
-    },
-    {
-      "id": "HfRVXadseCo",
-      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
-      "channel": "Better Stack",
-      "score": 0.65
-    },
-    {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.634
+      "score": 0.654
     },
     {
       "id": "V0c62734ix8",
       "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
       "channel": "AICodeKing",
-      "score": 0.629
+      "score": 0.633
+    },
+    {
+      "id": "-zIF318p7J8",
+      "title": "MiniMax M3 explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.631
+    },
+    {
+      "id": "7jrZ4JqeGyY",
+      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
+      "channel": "AI Revolution",
+      "score": 0.615
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.618
+      "score": 0.615
+    },
+    {
+      "id": "HfRVXadseCo",
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "channel": "Better Stack",
+      "score": 0.606
     }
   ]
 }

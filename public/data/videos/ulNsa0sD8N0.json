@@ -6,9 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering separates the model from the surrounding control layer, rules, and orchestration logic that comprises most of a coding agent's value. The technique involves two levels: single-session AI layer optimization and multi-session workflow orchestration for scaling reliable task execution. Top engineers treat each LLM mistake as an opportunity to refine the harness rather than waiting for better models.",
+  "summary": "Harness engineering is the practice of building and orchestrating the wrapper systems around AI models that control behavior, recovery, and task execution. It comprises an AI layer for single-session control (rules, skills, hooks, subagents) and multi-session orchestration for scaling complex workflows. The harness accounts for roughly 98% of systems like Claude Code, making it more critical than model selection.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "b2ef0cda444a04dd",
+  "wh": "223b3bc4eec36e0e",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -55,16 +55,16 @@
   "ih": "60739f16f8267a10",
   "concepts": [
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "prompt-engineering",
+      "label": "prompt engineering"
     },
     {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
+    },
+    {
+      "slug": "agent-orchestration",
+      "label": "agent orchestration"
     }
   ],
   "similar": [
@@ -72,37 +72,37 @@
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.812
-    },
-    {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.713
+      "score": 0.787
     },
     {
       "id": "zbmuiaPuiNM",
       "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
       "channel": "Cole Medin",
-      "score": 0.711
+      "score": 0.747
     },
     {
       "id": "efRIrLXoOVA",
       "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
       "channel": "Cole Medin",
-      "score": 0.703
+      "score": 0.743
     },
     {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.688
+      "id": "1a1VXDdIyrk",
+      "title": "Agent Harness explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.739
     },
     {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.683
+      "id": "-HtvTk5mv4Q",
+      "title": "5 things every AI agent harness needs",
+      "channel": "Google Cloud Tech",
+      "score": 0.707
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.704
     }
   ]
 }

@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Anthropic released the /goal command for Claude Code, a feature that allows users to specify a task and a completion criterion, then Claude executes it autonomously with a second AI verifying completion. The video demonstrates the feature with a live demo creating a content calendar for a pizza shop.",
   "writeup": "This video demonstrates Claude Code's /goal command, which lets a user specify a verifiable finish-line condition and then walk away while the tool runs autonomously turn after turn until the condition is satisfied. The mechanism is a dual-agent loop: a primary worker model (Opus or Sonnet) does the actual work, while a lightweight supervisor model evaluates after every step whether the goal has been met and either halts or restarts the worker with a progress report. The central lesson is that the quality of the finish-line description determines whether the loop converges cleanly or spins indefinitely burning tokens, making precise, checkable output conditions and an explicit turn or time cap essential hygiene.",
-  "wh": "833a4e5c3f50d15c",
+  "wh": "82d218a685b833fd",
   "key_points": [
     "The /goal command runs a dual-agent loop where a worker model builds or processes files and a second supervisor model checks after every turn whether the stated finish condition is met, continuing automatically until the supervisor confirms completion.",
     "A finish-line condition must describe a concrete, verifiable output state (a specific named file, a folder structure, a CSV with one row per receipt) rather than a qualitative directive like 'make everything organized,' because the supervisor can only confirm what the worker reports back and cannot independently audit vague criteria.",
@@ -64,8 +64,8 @@
       "label": "reasoning"
     },
     {
-      "slug": "autonomous-task-execution",
-      "label": "autonomous task execution"
+      "slug": "workflow-automation",
+      "label": "workflow automation"
     },
     {
       "slug": "verification",
@@ -98,16 +98,16 @@
       "score": 0.664
     },
     {
+      "id": "hDsZMb_8FYo",
+      "title": "Anthropic Just Replaced Claude Code With New Claude Tag",
+      "channel": "AI Revolution",
+      "score": 0.659
+    },
+    {
       "id": "ZAaxx3qyT8g",
       "title": "Claude Code Just Got an Agent Dashboard",
       "channel": "Nate Herk | AI Automation",
-      "score": 0.66
-    },
-    {
-      "id": "ENCRw5-uJBA",
-      "title": "I Updated /grill-me And Solved Claude Code",
-      "channel": "Chase AI",
-      "score": 0.654
+      "score": 0.659
     }
   ]
 }

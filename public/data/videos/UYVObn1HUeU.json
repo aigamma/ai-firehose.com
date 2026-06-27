@@ -6,9 +6,9 @@
   "published": "2026-04-28T17:59:16+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "A YouTube video explaining diffusion models as a process and framework rather than a single model architecture. The video covers the progression, strengths, weaknesses, and mechanics of diffusion, including implementations like Diffusion Transformers (DiT).",
+  "summary": "The video explains diffusion models as a process and framework rather than a single architecture, covering their progression, strengths, weaknesses, and implementation details. It discusses how diffusion can be implemented with transformers (DiT) and explores multiple angles of how diffusion works.",
   "writeup": "A conversation between Caleb (Kale Bytes Code) and Julia Turk clarifying the conceptual landscape around diffusion models: what diffusion actually is (a training framework, not an architecture), how it relates to autoregressive and world models, and why GPT-style models remain dominant despite diffusion's theoretical advantages. The through-line is distinguishing diffusion as a superset framework that can wrap transformer architecture, tracing its history from the 2015 nonequilibrium thermodynamics paper through DDPM (2020), stable diffusion (2022), and flow matching, and honestly accounting for when diffusion's data-efficiency edge applies and when it does not.",
-  "wh": "efca90d04d5a0ac9",
+  "wh": "4bf2a86f8db3d71a",
   "key_points": [
     "Diffusion and transformers are orthogonal: transformers are a model architecture specifying how weights connect, while diffusion is a training framework specifying how to corrupt data, define the training objective, and run inference, which means a transformer backbone can be used inside a diffusion framework rather than competing with it.",
     "Diffusion models outperform autoregressive models in data-scarce regimes (experiments used 25 to 100 million tokens), but this advantage disappears at the scale most LLMs actually train at, which exceeds 10 trillion tokens, so the claimed data efficiency does not translate into a practical production advantage today.",
@@ -60,8 +60,12 @@
       "label": "diffusion models"
     },
     {
-      "slug": "diffusion-transformers",
-      "label": "diffusion transformers"
+      "slug": "transformer",
+      "label": "Transformer"
+    },
+    {
+      "slug": "denoising",
+      "label": "denoising"
     },
     {
       "slug": "generative-ai",
@@ -73,37 +77,37 @@
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.664
+      "score": 0.658
     },
     {
       "id": "7gkaWaDEpHg",
       "title": "It's about time we learn Transformers..",
       "channel": "Caleb Writes Code",
-      "score": 0.611
-    },
-    {
-      "id": "ZKfd9S9lOtc",
-      "title": "The most insane week in AI",
-      "channel": "AI Search",
-      "score": 0.591
-    },
-    {
-      "id": "VBHISHDZ3wQ",
-      "title": "Is AI lying to us?👀",
-      "channel": "IBM Technology",
-      "score": 0.59
+      "score": 0.634
     },
     {
       "id": "kYkZI3oj2W4",
       "title": "Multi AI Agent Systems: When One AI Brain Isn’t Enough",
       "channel": "IBM Technology",
-      "score": 0.585
+      "score": 0.605
+    },
+    {
+      "id": "VBHISHDZ3wQ",
+      "title": "Is AI lying to us?👀",
+      "channel": "IBM Technology",
+      "score": 0.593
+    },
+    {
+      "id": "gHs5ZiY80PM",
+      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
+      "channel": "AI Engineer",
+      "score": 0.588
     },
     {
       "id": "I3YR5xVpcS4",
       "title": "AGI is FAKE: The Biggest AI Lie Exposed",
       "channel": "AI Master",
-      "score": 0.582
+      "score": 0.586
     }
   ]
 }
