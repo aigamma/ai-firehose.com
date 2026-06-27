@@ -7,16 +7,19 @@ import { Link } from "react-router-dom";
 function VideoCard({ video }) {
   if (!video?.id) return null;
   return (
-    <Link to={`/watch/${video.id}`} className="card video-card" aria-label={video.title}>
+    <Link to={`/watch/${video.id}`} className="card video-card">
       <div className="video-card-thumb">
         <img
-          src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+          src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
           alt=""
           loading="lazy"
+          decoding="async"
+          width="320"
+          height="180"
           onError={(e) => {
             if (!e.currentTarget.dataset.fb) {
               e.currentTarget.dataset.fb = "1";
-              e.currentTarget.src = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`;
+              e.currentTarget.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
             }
           }}
         />

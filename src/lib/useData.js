@@ -18,6 +18,18 @@ import { useEffect, useState } from "react";
 const cache = new Map();
 const inflight = new Map();
 
+// Seed the cache from any build-time inlined home data (the inline-home-data Vite
+// plugin injects window.__HOME_DATA__ into <head>). This lets the first render of
+// the home page resolve its critical artifacts synchronously, with no fetch, so the
+// above-the-fold view paints in a single commit: a real LCP element and no layout
+// shift. Only /data/* path keys are seeded here; other inlined values (the slim
+// videos list) are read directly by the component that needs them.
+if (typeof window !== "undefined" && window.__HOME_DATA__) {
+  for (const [k, v] of Object.entries(window.__HOME_DATA__)) {
+    if (k.startsWith("/data/") && v != null && !cache.has(k)) cache.set(k, v);
+  }
+}
+
 function load(path) {
   if (cache.has(path)) return Promise.resolve(cache.get(path));
   if (inflight.has(path)) return inflight.get(path);

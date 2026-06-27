@@ -559,7 +559,16 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 
 /* Video rail: a horizontal, scroll-snapping strip of recent videos to surf the firehose
    without leaving the page. Native scroll on touch/trackpad; floating arrows on the desktop. */
-.video-rail-wrap { position: relative; }
+/* The rail is a wide, horizontally-scrolling strip that sits BELOW the fold on the
+   home page. Painting its off-screen carousel content at load suppressed the page's
+   Largest Contentful Paint under mobile / high-DPR emulation (the overflow that runs
+   off the right edge confuses Chrome's LCP candidate selection, so no element was
+   ever reported, the NO_LCP error), and it wasted layout work on 30 off-screen
+   cards. content-visibility skips rendering the rail until it scrolls near the
+   viewport; contain-intrinsic-size reserves its height so nothing shifts. When the
+   rail IS in view (the Watch page), it renders normally. Unsupported browsers ignore
+   the property and render as before. */
+.video-rail-wrap { position: relative; content-visibility: auto; contain-intrinsic-size: auto 300px; }
 .video-rail { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity;
   padding: 2px 2px 10px; scroll-behavior: smooth; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .video-rail > .video-card { flex: 0 0 clamp(220px, 74vw, 264px); scroll-snap-align: start; }
@@ -682,6 +691,25 @@ h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 
 /* Visual polish */
 a { text-underline-offset: 3px; }
+
+/* Inline links inside running text carry a permanent underline, so they are
+   distinguishable from the prose by more than color alone (WCAG 1.4.1, the
+   Lighthouse "links rely on color" / link-in-text-block audit). UI links that are
+   NOT in a block of text (nav pills, chips, cards, the breakout hero, video tiles)
+   read as their own controls and stay underline-free; only prose contexts opt in. */
+.briefing-body a,
+.summary-clamp a,
+.gloss-def a,
+.prose a,
+.article p a,
+.site-footer a,
+.rt-p a,
+.rt-ul a,
+.rt-quote a,
+.wikilink {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
 .card { box-shadow: var(--shadow); transition: border-color var(--motion-mid) var(--ease-out), box-shadow var(--motion-mid) var(--ease-out); }
 /* Hero headline paints the momentum spectrum through its text: lagging to
    leading, left to right. Fallback color first for non-supporting engines. */
@@ -814,8 +842,15 @@ a { text-underline-offset: 3px; }
 
 /* Choreographed front-page entrance: each top-level block rises in, staggered
    top to bottom, so the page reads like it is being set rather than dumped. The
-   reduced-motion block below zeroes the duration, so it lands instantly there. */
-@keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+   reduced-motion block below zeroes the duration, so it lands instantly there.
+
+   The keyframe animates transform ONLY, never opacity. An opacity:0 start hides
+   the element from the paint timeline, so on throttled mobile the largest text
+   block (the briefing) was never registered as painted before the trace ended:
+   Lighthouse reported NO_LCP. A composited translateY keeps every block fully
+   opaque and painted from the first frame, so the LCP element is recorded at once,
+   and transform movement is excluded from layout shift, so the rise costs no CLS. */
+@keyframes riseIn { from { transform: translateY(14px); } to { transform: none; } }
 .home-stack > * { animation: riseIn var(--motion-slow) var(--ease-out) both; }
 .home-stack > *:nth-child(2) { animation-delay: 70ms; }
 .home-stack > *:nth-child(3) { animation-delay: 140ms; }

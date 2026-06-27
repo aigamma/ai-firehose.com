@@ -28,12 +28,15 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Precomputed data artifacts are rebuilt by the worker. Short cache with a
-# long stale-while-revalidate tail so the site stays fast and fresh.
+# Precomputed data artifacts are rebuilt by the worker. Atomic Netlify deploys
+# purge the CDN on every publish, so a longer browser cache never strands a stale
+# artifact past a deploy; the stale-while-revalidate tail keeps repeat visits fast.
+# The home above-the-fold data is additionally inlined into the HTML at build time
+# (see vite.config.js), so the landing view never waits on these fetches at all.
 [[headers]]
   for = "/data/*"
   [headers.values]
-    Cache-Control = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400"
+    Cache-Control = "public, max-age=1800, s-maxage=1800, stale-while-revalidate=604800"
 
 # Security headers for all routes. CSP allows the inline theme-bootstrap script
 # and JSX inline styles ('unsafe-inline'); everything else is same-origin, except

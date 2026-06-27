@@ -90,7 +90,6 @@ export default function NavMenu() {
         onClick={onTrigger}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="More pages"
       >
         <span>Menu</span>
         <span className={`app-menu-caret${open ? " is-open" : ""}`} aria-hidden="true">▾</span>

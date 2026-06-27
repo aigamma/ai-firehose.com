@@ -1,0 +1,30 @@
+# AI Firehose
+
+> A personal AI-industry intelligence dashboard that turns the daily flood of AI developments into something navigable: what is new and what is breaking out across four nested time depths (Day, Week, Month, and Quarter), organized by an embedding and RAG substrate and opened by an agentic daily briefing.
+
+AI Firehose ingests the most salient signal across the AI field every day (YouTube, Hacker News, arXiv, GitHub, blogs and newsletters, Hugging Face daily papers, and Reddit), classifies and clusters it with a Voyage embedding and Pinecone vector substrate, and ranks topics by how fast attention is growing (Mansfield rotation momentum). It also maintains a durable, authored glossary of AI concepts. The corpus self-expires on a rolling quarter, so the boards always show the current frontier. The site is static and read-only: there is no chatbot.
+
+## Core Pages
+
+- [Home](https://ai-firehose.com/): the agentic daily briefing, what is breaking out, and the trend boards across Day, Week, Month, and Quarter.
+- [Glossary](https://ai-firehose.com/glossary): a durable, authored knowledge base of AI concepts, grouped by category with an Atlas view.
+- [Watch](https://ai-firehose.com/watch): the latest video from tracked AI educators, with transcript-grounded study notes.
+- [Explore](https://ai-firehose.com/explore): semantic search across the corpus, plus themes, spectrums, and connections.
+- [Learn](https://ai-firehose.com/learn): curated learning paths through the glossary.
+- [Methodology](https://ai-firehose.com/methodology): how the ingestion pipeline and rotation math work.
+- [About](https://ai-firehose.com/about): what the project is and why it exists.
+
+## Data and API
+
+- [Semantic search API](https://ai-firehose.com/api/retrieve): a read-only endpoint that accepts a POST body of {"query": "..."} and returns reranked corpus matches.
+- [Corpus stats](https://ai-firehose.com/data/stats.json): item and concept counts.
+- [RSS feed](https://ai-firehose.com/feed.xml): what is new on the wire.
+- [Sitemap](https://ai-firehose.com/sitemap.xml): every indexed page.
+
+## MCP
+
+- [ai-firehose-mcp](https://www.npmjs.com/package/ai-firehose-mcp): a Model Context Protocol server that exposes the public read API over stdio with four tools (search_ai, whats_new, define, stats). It needs no keys and no local data. Install with: npx -y ai-firehose-mcp
+
+## Source
+
+- [GitHub repository](https://github.com/aigamma/ai-firehose.com): the full source, MIT licensed.

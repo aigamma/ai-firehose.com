@@ -18,8 +18,13 @@ export default function Home() {
   const h = getHorizon(horizon);
   const { data: digest, loading: digestLoading, error: digestError } = useData(`/data/digests/${horizon}.json`);
   const { entities, loading: attnLoading, error: attnError, anyData: anyAttn } = useUnifiedAttention(horizon);
+  // The full videos index is fetched at runtime, but the build inlines a slim list
+  // of the first tiles (window.__HOME_DATA__.videos) so the Watch section renders at
+  // its final size on the first commit instead of inserting late and shifting the
+  // layout. The fetched index then replaces it with the identical leading videos.
   const { data: vids } = useData("/data/videos/index.json");
-  const recentVideos = (vids?.videos || []).slice(0, 30);
+  const inlineVideos = (typeof window !== "undefined" && window.__HOME_DATA__?.videos) || null;
+  const recentVideos = (vids?.videos || inlineVideos || []).slice(0, 30);
   const synthetic = digest?.synthetic;
 
   // Group the merged boards by kind for the three trend heat boards, and pick the
