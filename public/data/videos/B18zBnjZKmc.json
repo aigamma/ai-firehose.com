@@ -4,11 +4,11 @@
   "channel": "Caleb Writes Code",
   "channelUrl": "https://www.youtube.com/@CalebWritesCode",
   "published": "2026-04-20T19:26:26+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": true,
-  "summary": "A video tutorial covering the technical depth of inference optimization, including model loading techniques like mmap and quantization methods such as GGUF, AWQ, EXL2, FP8, and NVFP4. It also discusses inference engines including llama.cpp, vLLM, SGLang, TensorRT-LLM, and TGI, with emphasis on pre-fill, decoding, and concurrent serving.",
+  "summary": "A video exploring challenges in LLM inference, covering model loading and quantization methods such as mmap, GGUF, AWQ, and EXL2, as well as inference engines like llama.cpp, vLLM, and TensorRT-LLM. The video discusses pre-fill, decoding, and serving patterns for concurrent model deployment.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "1a04e81837b7ad71",
+  "wh": "4fcf35c236dcee0f",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -60,12 +60,12 @@
   "ih": "cff37e0d0c64b618",
   "concepts": [
     {
-      "slug": "model-loading",
-      "label": "model loading"
-    },
-    {
       "slug": "quantization",
       "label": "quantization"
+    },
+    {
+      "slug": "model-serving",
+      "label": "model serving"
     },
     {
       "slug": "mmap",
@@ -92,58 +92,54 @@
       "label": "NVFP4"
     },
     {
-      "slug": "pre-fill",
-      "label": "pre-fill"
+      "slug": "prefill",
+      "label": "prefill"
     },
     {
-      "slug": "encoder-decoder",
-      "label": "encoder-decoder"
+      "slug": "decode",
+      "label": "decode"
     },
     {
-      "slug": "serving",
-      "label": "serving"
-    },
-    {
-      "slug": "scheduling",
-      "label": "scheduling"
+      "slug": "noise-scheduling",
+      "label": "noise scheduling"
     }
   ],
   "similar": [
     {
-      "id": "b_KxiTPBIb0",
-      "title": "Google TPU 8t and 8i is here..",
-      "channel": "Caleb Writes Code",
-      "score": 0.596
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.614
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.597
     },
     {
       "id": "XAP78BNKGEs",
       "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.593
+      "score": 0.595
+    },
+    {
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.589
+    },
+    {
+      "id": "HfRVXadseCo",
+      "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
+      "channel": "Better Stack",
+      "score": 0.584
     },
     {
       "id": "7gkaWaDEpHg",
       "title": "It's about time we learn Transformers..",
       "channel": "Caleb Writes Code",
-      "score": 0.588
-    },
-    {
-      "id": "7V0Vt2QzMDk",
-      "title": "TurboQuant Explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.581
-    },
-    {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.579
-    },
-    {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.573
+      "score": 0.578
     }
   ]
 }

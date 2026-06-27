@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarks mixed-provider AI workflows by running the same coding task four ways across three real GitHub issues, varying whether Claude Opus or Kimi K2.6 handles planning versus implementation. An Opus evaluator then scores each of the 12 resulting pull requests on seven dimensions including correctness, code quality, and fidelity.",
+  "summary": "Cole Medin used Archon to benchmark mixed-provider LLM workflows for code generation, testing whether Claude Opus or Kimi K2.6 should handle planning versus implementation. The Dark Factory's first mixed-provider PR succeeded, but the optimal allocation of tasks across providers remained unmeasured. Medin designed a benchmark matrix testing four configurations against three real GitHub issues, scoring 12 resulting PRs on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "b0d8f7a571047437",
+  "wh": "e0c7d9585eeb8753",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,16 +56,20 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "provider-routing",
-      "label": "provider routing"
+      "slug": "multi-provider-workflows",
+      "label": "multi-provider workflows"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
+      "slug": "task-decomposition",
+      "label": "task decomposition"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "code-generation",
+      "label": "code generation"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
@@ -73,37 +77,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.687
+      "score": 0.601
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.622
+      "score": 0.566
     },
     {
-      "id": "oGE_Dwz-rMk",
-      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.591
+      "score": 0.524
+    },
+    {
+      "id": "4azVjKhqDzw",
+      "title": "Building the App Store for Agentic Engineering",
+      "channel": "Cole Medin",
+      "score": 0.52
     },
     {
       "id": "iICZTWcryac",
       "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
       "channel": "Cole Medin",
-      "score": 0.581
+      "score": 0.519
     },
     {
-      "id": "_D-z201rEoA",
-      "title": "Claude Oceanus V1-P (Mythos?- FULLY TESTED): I TESTED IT & IT'S ACTUALLY CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.579
-    },
-    {
-      "id": "B0zw0tN9VUU",
-      "title": "LIVE: Sakana VS Claude Fable 5 VS Fusion!",
-      "channel": "Julian Goldie SEO",
-      "score": 0.572
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
+      "channel": "Cole Medin",
+      "score": 0.505
     }
   ]
 }

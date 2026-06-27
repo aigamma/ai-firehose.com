@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Jordan Urbs demonstrates OpenClaw as a business automation platform deployed on commodity hardware running AI agents to manage websites, learn brand guidelines, and orchestrate sub-agents in content pipelines. The video compares multi-agent orchestration using OpenClaw with single-agent workflows using Claude Code.",
   "writeup": "A practical walkthrough of wiring Claude (desktop, always-on) and Claude Code together into a two-tier business automation stack, with GitHub repos as the shared communication layer and MCP as the bridge that lets Claude spawn Claude Code subagents. The through-line is a concrete division of labor: Claude handles strategy, brand decisions, and 24/7 availability on low-power hardware (a Raspberry Pi), while Claude Code does the heavy execution work in a full IDE with fresh context windows per task. The live demo shows Claude cloning a site repo, getting SSH key authorization, making code edits, and pushing to GitHub to trigger an automatic Netlify deploy, all from a chat prompt.",
-  "wh": "a906645a06d4b126",
+  "wh": "d655c50069c8262f",
   "key_points": [
     "The key architectural argument is that a single-agent setup accumulates context until output quality degrades, whereas a multi-agent orchestration pattern gives each specialized subagent (lesson writer, slide designer, QA reviewer) its own fresh context window and its own CLAUDE.md behavior file, maintaining quality across long-running pipelines.",
     "GitHub repos serve as the durable, agent-agnostic communication layer: Claude clones the repo, makes edits, and pushes; Claude Code on a separate machine pulls the same repo; this keeps all agents in sync without any direct agent-to-agent protocol.",
@@ -60,8 +60,8 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "ai-harness",
-      "label": "AI harness"
+      "slug": "llm-harness",
+      "label": "LLM harness"
     },
     {
       "slug": "test-time-compute",
@@ -74,12 +74,6 @@
   ],
   "similar": [
     {
-      "id": "FJxgz5pN4wU",
-      "title": "Pi Agent explained in 6min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.668
-    },
-    {
       "id": "7qZH3D7u-z8",
       "title": "OpenClaw Security Risks: 6 Dangers of Autonomous AI Agents",
       "channel": "IBM Technology",
@@ -89,13 +83,19 @@
       "id": "UztrFXaSWv0",
       "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
       "channel": "Cole Medin",
-      "score": 0.603
+      "score": 0.631
     },
     {
       "id": "qpa5XwGkLp8",
       "title": "Claude Managed Agents Will Make Millionaires (do this now)",
       "channel": "Liam Ottley",
-      "score": 0.591
+      "score": 0.59
+    },
+    {
+      "id": "2zhchG0r6iI",
+      "title": "Okay, this unleashed my agent",
+      "channel": "AI Jason",
+      "score": 0.589
     },
     {
       "id": "ot3NM5OVFmc",

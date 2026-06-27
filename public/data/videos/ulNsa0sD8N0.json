@@ -6,9 +6,9 @@
   "published": "2026-05-28T00:00:02+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Harness engineering is the practice of building the wrapper system around a coding agent that handles rules, skills, hooks, and orchestration across multiple sessions. It comprises an AI layer for single-session control and a workflow orchestration layer that runs multiple focused agent sessions to reliably scale to larger tasks. Cole Medin argues that the harness represents roughly 98% of a practical agent system's value, far exceeding the underlying model.",
+  "summary": "Harness engineering is the practice of building the wrapper layer around coding agents, consisting of rules, skills, hooks, and subagents at the session level, and orchestrating multiple agent sessions into workflows for reliable execution of larger tasks. The technique emphasizes that the harness, not the model, is the critical component for effective agentic systems.",
   "writeup": "This talk defines harness engineering as the practice of building the AI layer wrapped around a coding agent: the global rules, skills, MCP servers, code-base search tools, hooks, and sub-agents that give an LLM its actual capabilities beyond raw text generation. The presenter argues it is a direct evolution of context engineering, with one genuinely new element: control flow, meaning loops and orchestration across multiple coding agent sessions. The central through-line is a mindset shift from blaming the model for mistakes to treating every failure as a signal to improve the harness, so the system compounds in quality over time rather than waiting for the next model version.",
-  "wh": "d3259019928c1746",
+  "wh": "1c3b799f0a164cca",
   "key_points": [
     "A large language model alone cannot access a filesystem, run Git commands, or execute shell commands; those capabilities come from the first harness layer built into tools like Claude Code and Codex, not from the model itself.",
     "The AI layer, which the developer actually controls, consists of six components: global rules, skills, MCP servers, code-base search (LSP or knowledge graphs), hooks, and sub-agents.",
@@ -55,10 +55,6 @@
   "ih": "60739f16f8267a10",
   "concepts": [
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
       "slug": "prompt-engineering",
       "label": "prompt engineering"
     },
@@ -67,46 +63,50 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     }
   ],
   "similar": [
     {
-      "id": "1a1VXDdIyrk",
-      "title": "Agent Harness explained in 8min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.795
-    },
-    {
       "id": "mGYr9VqQnEI",
       "title": "Harness Engineering Is AI’s New Gold Rush",
       "channel": "AI Revolution",
-      "score": 0.762
+      "score": 0.783
     },
     {
-      "id": "zbmuiaPuiNM",
-      "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
-      "channel": "Cole Medin",
-      "score": 0.727
-    },
-    {
-      "id": "efRIrLXoOVA",
-      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
-      "channel": "Cole Medin",
-      "score": 0.686
+      "id": "1a1VXDdIyrk",
+      "title": "Agent Harness explained in 8min..",
+      "channel": "Caleb Writes Code",
+      "score": 0.731
     },
     {
       "id": "-HtvTk5mv4Q",
       "title": "5 things every AI agent harness needs",
       "channel": "Google Cloud Tech",
-      "score": 0.668
+      "score": 0.692
     },
     {
-      "id": "ZD9-4fW2HhM",
-      "title": "Build Systems, Not Code - Angie Jones, Agentic AI Foundation",
-      "channel": "AI Engineer",
-      "score": 0.662
+      "id": "PjrXaC5UsIw",
+      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
+      "channel": "IBM Technology",
+      "score": 0.687
+    },
+    {
+      "id": "zbmuiaPuiNM",
+      "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
+      "channel": "Cole Medin",
+      "score": 0.682
+    },
+    {
+      "id": "efRIrLXoOVA",
+      "title": "Anthropic Just Dropped a Masterclass on Building Agent Harnesses (for Large Codebases)",
+      "channel": "Cole Medin",
+      "score": 0.676
     }
   ]
 }

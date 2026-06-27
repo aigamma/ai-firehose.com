@@ -6,9 +6,9 @@
   "published": "2026-06-02T18:22:23+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "AWS Developers outlines five production deployment best practices for TypeScript AI agents: streaming tool call events for UI responsiveness, layered authentication using API Gateway, Cognito, and IAM, type-safe contracted database access with tenant isolation, guardrails with cost controls and model routing, and observability via metrics and OpenTelemetry tracing.",
+  "summary": "AWS Developers video presents five production deployment patterns for AI agents: streaming tool call events for UI responsiveness, layered authentication with API Gateway and Cognito, type-safe contracted database access with tenant isolation, guardrails and cost budgets with model routing, and observability via metrics and OpenTelemetry tracing.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "40251f88f6523588",
+  "wh": "2afde2e5d483a896",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -56,16 +56,16 @@
   "ih": "13769c3cb8210737",
   "concepts": [
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
       "slug": "streaming",
       "label": "streaming"
     },
     {
       "slug": "access-control",
       "label": "access control"
+    },
+    {
+      "slug": "rate-limiting",
+      "label": "rate limiting"
     },
     {
       "slug": "tenant-isolation",
@@ -76,58 +76,58 @@
       "label": "guardrails"
     },
     {
-      "slug": "cost-optimization",
-      "label": "cost optimization"
-    },
-    {
-      "slug": "model-routing",
-      "label": "model routing"
+      "slug": "cost-management",
+      "label": "cost management"
     },
     {
       "slug": "observability",
       "label": "observability"
     },
     {
-      "slug": "opentelemetry",
-      "label": "OpenTelemetry"
+      "slug": "agent-tracing",
+      "label": "agent tracing"
+    },
+    {
+      "slug": "routing",
+      "label": "routing"
     }
   ],
   "similar": [
     {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.603
-    },
-    {
       "id": "ObTPqBGsEbA",
       "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
       "channel": "AI Engineer",
-      "score": 0.598
+      "score": 0.66
     },
     {
-      "id": "22E0bXQwwZ8",
-      "title": "Your AI Agent Needs a Tool",
-      "channel": "AWS Developers",
-      "score": 0.584
+      "id": "l6KeLCuB90o",
+      "title": "3 patterns to build long-running AI agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.653
     },
     {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
-      "channel": "Cole Medin",
-      "score": 0.584
-    },
-    {
-      "id": "4uFVSLgD2Q4",
-      "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
-      "channel": "AI Engineer",
-      "score": 0.582
+      "id": "4Vg2aVtrX8k",
+      "title": "Building AI Agents for Real-World Problems & Workflows",
+      "channel": "IBM Technology",
+      "score": 0.63
     },
     {
       "id": "d1GHVtEFy2A",
       "title": "Introducing Agent Toolkit for AWS",
       "channel": "AWS Developers",
-      "score": 0.582
+      "score": 0.629
+    },
+    {
+      "id": "-HtvTk5mv4Q",
+      "title": "5 things every AI agent harness needs",
+      "channel": "Google Cloud Tech",
+      "score": 0.628
+    },
+    {
+      "id": "C5zYVlBsHLQ",
+      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.604
     }
   ]
 }

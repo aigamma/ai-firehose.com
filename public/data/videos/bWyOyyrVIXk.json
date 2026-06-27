@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Simon Eskildsen, CEO of turbopuffer, discusses infrastructure scaling at Shopify, the cyclical emergence of new database companies every 15 years, and the future role of AI coding agents. The conversation covers engineering principles, database innovation, and hiring practices for high-caliber engineers in the AI era.",
+  "summary": "Sualeh Asif interviews Simon Eskildsen on infrastructure scaling at Shopify, the cyclical emergence of new database companies, and the state of AI coding agents. Topics span operational lessons from on-call practices, database design philosophy, and hiring strategies for high-performance engineers in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "75efd8d21e368f71",
+  "wh": "77bc86744d5e2966",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,58 +56,58 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
+      "slug": "flash-sales-infrastructure",
+      "label": "flash sales infrastructure"
+    },
+    {
       "slug": "system-design",
       "label": "system design"
     },
     {
-      "slug": "auto-scaling",
-      "label": "auto-scaling"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
       "slug": "prompt-engineering",
       "label": "prompt engineering"
-    },
-    {
-      "slug": "ai-agents",
-      "label": "AI agents"
     }
   ],
   "similar": [
     {
-      "id": "ByOF8qByGHU",
-      "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
-      "channel": "Cursor",
-      "score": 0.604
-    },
-    {
       "id": "zxvyO5vnknI",
       "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
       "channel": "Cursor",
-      "score": 0.555
+      "score": 0.612
     },
     {
-      "id": "Y7HwVL3LdNo",
-      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
-      "channel": "Google Cloud Tech",
-      "score": 0.546
+      "id": "ByOF8qByGHU",
+      "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
+      "channel": "Cursor",
+      "score": 0.611
     },
     {
       "id": "7awKinJhGPo",
       "title": "Power intelligent agents with AI-native databases",
       "channel": "Google Cloud Tech",
-      "score": 0.544
+      "score": 0.573
+    },
+    {
+      "id": "Y7HwVL3LdNo",
+      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
+      "channel": "Google Cloud Tech",
+      "score": 0.547
     },
     {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.538
+      "score": 0.535
     },
     {
-      "id": "20p5-kQXF_Q",
-      "title": "What does the next training paradigm look like?",
-      "channel": "Dwarkesh Patel",
-      "score": 0.536
+      "id": "ev96Qkpaykw",
+      "title": "AI Agents: Why Building Them Is Way Harder Than You Think! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.533
     }
   ]
 }

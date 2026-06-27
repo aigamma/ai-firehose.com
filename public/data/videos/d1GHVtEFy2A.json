@@ -6,9 +6,9 @@
   "published": "2026-05-06T19:32:23+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Agent Toolkit for AWS is a framework that provides AI coding agents with up-to-date documentation, best practices, and guardrails for working with AWS services. It enables agents to deploy infrastructure like Lambda and API Gateway in minutes by combining agent skills, plugins, and MCP configuration.",
+  "summary": "Agent Toolkit for AWS equips AI coding agents with up-to-date AWS documentation, best practices, and tested procedures to improve success rates. The toolkit enables agents to deploy infrastructure such as Python Lambda functions behind API Gateway in under three minutes and includes guardrails, auditability through CloudTrail, and a rollout strategy starting with read-only access.",
   "writeup": "AWS Agent Toolkit wires coding agents into live AWS documentation and auditable API calls via the Model Context Protocol, solving two structural failures: models working from stale training data and agents skipping critical workflow steps. The demo deploys a Python Lambda behind an API Gateway HTTP API in 2 minutes 35 seconds, with every API call logged to CloudTrail under the developer's IAM identity. The key differentiator is the skills layer, markdown runbooks authored from real deployment runs, which carry the steps agents consistently miss when working from training data alone.",
-  "wh": "ae8aa90a2a94c6ee",
+  "wh": "17f9b77a6c20a126",
   "key_points": [
     "The toolkit has four components: an AWS MCP server (managed endpoint for live docs and authenticated API calls), agent skills (compact markdown runbooks for specific AWS tasks, a few thousand tokens each), plugins (for Claude Code and Codex), and rules files (project-level config that applies across sessions).",
     "The 'add permission' step, which grants API Gateway the right to invoke the Lambda function, is the step agents most consistently skip when working from training data; the Lambda-plus-API-Gateway skill includes it explicitly, and the demo agent ran it correctly.",
@@ -64,16 +64,16 @@
       "label": "AI agents"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "mcp",
-      "label": "MCP"
+      "slug": "model-context-protocol",
+      "label": "Model Context Protocol"
     },
     {
       "slug": "guardrails",
       "label": "guardrails"
+    },
+    {
+      "slug": "video-generation",
+      "label": "video generation"
     }
   ],
   "similar": [
@@ -81,37 +81,37 @@
       "id": "PGrmbZ1TDmA",
       "title": "Agent Toolkit for AWS Explained in 2 Minutes",
       "channel": "AWS Developers",
-      "score": 0.848
-    },
-    {
-      "id": "C5zYVlBsHLQ",
-      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
-      "channel": "Google Cloud Tech",
-      "score": 0.643
+      "score": 0.82
     },
     {
       "id": "1wfY7GCVvh0",
       "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
       "channel": "Cole Medin",
-      "score": 0.641
+      "score": 0.64
     },
     {
-      "id": "22E0bXQwwZ8",
-      "title": "Your AI Agent Needs a Tool",
+      "id": "j1wfE0SOBbE",
+      "title": "5 Tips for Deploying AI Agents to Production",
       "channel": "AWS Developers",
-      "score": 0.631
+      "score": 0.629
+    },
+    {
+      "id": "TXQpWbH56q8",
+      "title": "Infrastructure as Code for Beginners (AWS CDK)",
+      "channel": "AWS Developers",
+      "score": 0.625
     },
     {
       "id": "PjrXaC5UsIw",
       "title": "What Is Agentic Coding? How AI Agents Modernize Code",
       "channel": "IBM Technology",
-      "score": 0.622
+      "score": 0.624
     },
     {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
+      "id": "FxnjRYo3fpU",
+      "title": "What's new in Google Cloud's agent platform",
       "channel": "Google Cloud Tech",
-      "score": 0.603
+      "score": 0.607
     }
   ]
 }
