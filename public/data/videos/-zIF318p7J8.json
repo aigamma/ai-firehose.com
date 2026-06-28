@@ -6,9 +6,9 @@
   "published": "2026-06-08T11:10:24+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "MiniMax released the M3 model featuring MiniMax Sparse Attention (MSA), a shift from full attention to sparse attention mechanisms. The model includes tiled KV cache optimizations, continuous single-pass cache reads, and I/O improvements targeting reduced latency in both prefill and decode stages during inference.",
+  "summary": "MiniMax released M3, a language model implementing MiniMax Sparse Attention (MSA) to replace full attention mechanisms. The model optimizes KV cache access patterns and uses tiled I/O improvements to reduce latency during prefill and decode stages, addressing infrastructure bottlenecks between HBM and SRAM.",
   "writeup": "The Minimax M3 model's defining innovation is its shift from full multi-head attention (MHA) to sparse attention, a change its own research team had been skeptical of just seven months prior. The video grounds that decision in GPU memory physics: the HBM-to-SRAM bandwidth gap (terabytes per second versus petaflops of compute) means inference is bottlenecked by memory movement, not arithmetic. M3 addresses this by combining Grouped Query Attention (GQA) to shrink the KV cache footprint, sparse top-K token selection to cut attention computation, and tile-based IO batching so the KV cache is read in continuous chunks rather than scattered lookups. The reported gains are substantial: 1/20th the per-token compute versus M2 at 1 million context, with 9.7x prefill and 15.6x decoding speedups.",
-  "wh": "6d0a7ec5c1bd42d6",
+  "wh": "6e36c84c16ba9b80",
   "key_points": [
     "The fundamental inference bottleneck is memory bandwidth, not compute: HBM-to-SRAM transfer runs at a few terabytes per second while SRAM computation runs at petaflops, a gap of over 300x, which makes KV cache movement the limiting factor as context windows grow past 100,000 tokens.",
     "Minimax M3 combines three complementary techniques: GQA (multiple query heads share one KV cache, reducing its memory footprint), sparse attention (each token attends only to the top-K most relevant tokens rather than all tokens, reducing both data movement and attention score computation), and tile-based IO (tokens are grouped into fixed-size tiles so the KV cache is read once per tile in a sequential outer loop rather than pulled in scattered per-token passes).",
@@ -59,16 +59,12 @@
       "label": "KV cache"
     },
     {
+      "slug": "prefill-decode",
+      "label": "prefill decode"
+    },
+    {
       "slug": "test-time-compute",
       "label": "test-time compute"
-    },
-    {
-      "slug": "tiling",
-      "label": "tiling"
-    },
-    {
-      "slug": "prefill-optimization",
-      "label": "prefill optimization"
     }
   ],
   "similar": [
@@ -76,37 +72,37 @@
       "id": "iOZf50YffCE",
       "title": "This AI Chinese model is 15X cheaper?",
       "channel": "Jack Roberts",
-      "score": 0.642
+      "score": 0.666
     },
     {
       "id": "wzHXUtkoY-c",
       "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
       "channel": "Caleb Writes Code",
-      "score": 0.631
+      "score": 0.664
     },
     {
       "id": "V0c62734ix8",
       "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
       "channel": "AICodeKing",
-      "score": 0.629
+      "score": 0.654
     },
     {
       "id": "lyhnXvNnhsU",
       "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
       "channel": "AICodeKing",
-      "score": 0.589
+      "score": 0.623
     },
     {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.554
+      "id": "7jrZ4JqeGyY",
+      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
+      "channel": "AI Revolution",
+      "score": 0.585
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.552
+      "score": 0.585
     }
   ]
 }

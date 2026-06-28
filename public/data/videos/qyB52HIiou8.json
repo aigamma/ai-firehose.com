@@ -6,9 +6,9 @@
   "published": "2026-05-24T04:41:55+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Archon is an AI-driven automation tool that integrates with issue tracking and communication platforms. The content demonstrates a live build of a Jira adapter for Archon that enables tickets to automatically trigger bug fixes and pull request generation.",
+  "summary": "Archon is an AI workflow orchestration system that integrates with Jira, GitHub, Slack, Telegram, and Discord to automate coding tasks. A new Jira adapter allows tickets to trigger AI-driven bug fixes and pull requests with dedicated persistent conversations per ticket.",
   "writeup": "This live stream builds a Jira community adapter for Archon, an open-source agent orchestration framework, so that developers can hold per-ticket conversations with a coding agent directly inside Jira, mirroring how Archon already handles parallel conversations via Slack threads. The host uses a 12-step Archon workflow called PIV System Evolution, which takes a GitHub issue as input and produces a pull request as output, to build the adapter itself. The broader argument is that Jira's near-universal adoption in enterprise development makes it the highest-leverage integration surface, and that mapping one agent conversation per ticket is more useful than fully automated ticket resolution. A concrete model-efficiency finding from prior benchmarking drives the run: Opus 4.8 handles only the planning step, and Sonnet handles everything else.",
-  "wh": "6895db0e5f1180f2",
+  "wh": "81bc7f2a2f120d7e",
   "key_points": [
     "Archon supports multiple adapter types (web UI, CLI, Slack, GitHub, Telegram, Discord), each mapping a platform's thread or channel primitive to a dedicated Archon conversation; the Jira adapter follows the same pattern by mapping individual Jira tickets to conversations rather than polling the board automatically.",
     "The adapter taxonomy splits into maintainer-supported adapters and community adapters, the latter contributed and self-maintained by outside developers; Jira is being introduced as a community adapter, with Gitea and GitLab as prior examples in that category.",
@@ -59,54 +59,58 @@
   "ih": "0a4d543f132ad29c",
   "concepts": [
     {
-      "slug": "ai-coding",
-      "label": "AI coding"
+      "slug": "ai-driven-code-generation",
+      "label": "AI-driven code generation"
     },
     {
       "slug": "workflow-automation",
       "label": "workflow automation"
     },
     {
-      "slug": "vertical-integration",
-      "label": "vertical integration"
+      "slug": "api-integration",
+      "label": "API integration"
+    },
+    {
+      "slug": "debugging",
+      "label": "debugging"
     }
   ],
   "similar": [
     {
+      "id": "14RP8liACqo",
+      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
+      "channel": "JavaScript Mastery",
+      "score": 0.619
+    },
+    {
       "id": "C8El0OzQRrc",
       "title": "This is the most useful n8n workflow I have ever built...",
       "channel": "NeuralNine",
-      "score": 0.617
-    },
-    {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.563
+      "score": 0.615
     },
     {
       "id": "Pk4pBrBQrxo",
       "title": "🔴LIVE - What's Next for Archon - Live Roadmap Session",
       "channel": "Cole Medin",
-      "score": 0.557
+      "score": 0.61
+    },
+    {
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
+      "channel": "Cole Medin",
+      "score": 0.604
+    },
+    {
+      "id": "Iq442C9IeF0",
+      "title": "🔴 The AI Coding Marketplace is Finally LIVE!",
+      "channel": "Cole Medin",
+      "score": 0.593
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.557
-    },
-    {
-      "id": "pygkxDj2STI",
-      "title": "From Idea to Code: Building with Miro and Kiro — Live",
-      "channel": "Kiro",
-      "score": 0.54
-    },
-    {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.521
+      "score": 0.593
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-06-02T18:22:23+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "AWS Developers outlines five production-ready practices for deploying TypeScript AI agents: streaming tool call events for UI responsiveness, multi-layer authentication using API Gateway and Cognito, type-safe contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and OpenTelemetry tracing. These patterns are demonstrated using the Strands Agents SDK on AWS infrastructure.",
+  "summary": "AWS Developers outlines five production best practices for TypeScript AI agents: streaming tool call events for responsive UIs, layered authentication with API Gateway and Cognito, contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via OpenTelemetry. The patterns are framework-agnostic but demonstrated using Strands Agents SDK on AWS services.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "f9827b2500279ea3",
+  "wh": "2d67bd7aaaf7702a",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -56,16 +56,8 @@
   "ih": "13769c3cb8210737",
   "concepts": [
     {
-      "slug": "streaming",
-      "label": "streaming"
-    },
-    {
-      "slug": "access-control",
-      "label": "access control"
-    },
-    {
-      "slug": "tenant-isolation",
-      "label": "tenant isolation"
+      "slug": "streaming-tool-events",
+      "label": "streaming tool events"
     },
     {
       "slug": "guardrails",
@@ -76,12 +68,16 @@
       "label": "cost management"
     },
     {
+      "slug": "tenant-isolation",
+      "label": "tenant isolation"
+    },
+    {
       "slug": "observability",
       "label": "observability"
     },
     {
-      "slug": "agent-tracing",
-      "label": "agent tracing"
+      "slug": "tracing",
+      "label": "tracing"
     },
     {
       "slug": "model-routing",
@@ -90,40 +86,40 @@
   ],
   "similar": [
     {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.632
-    },
-    {
       "id": "d1GHVtEFy2A",
       "title": "Introducing Agent Toolkit for AWS",
       "channel": "AWS Developers",
-      "score": 0.617
-    },
-    {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
-      "channel": "AI Engineer",
-      "score": 0.61
-    },
-    {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
-      "channel": "Cole Medin",
-      "score": 0.595
+      "score": 0.628
     },
     {
       "id": "14RP8liACqo",
       "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
       "channel": "JavaScript Mastery",
-      "score": 0.587
+      "score": 0.603
+    },
+    {
+      "id": "ObTPqBGsEbA",
+      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
+      "channel": "AI Engineer",
+      "score": 0.598
+    },
+    {
+      "id": "4uFVSLgD2Q4",
+      "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
+      "channel": "AI Engineer",
+      "score": 0.595
+    },
+    {
+      "id": "-HtvTk5mv4Q",
+      "title": "5 things every AI agent harness needs",
+      "channel": "Google Cloud Tech",
+      "score": 0.591
     },
     {
       "id": "19HDQ9HppOA",
       "title": "Ship your first Managed Agent",
       "channel": "Claude",
-      "score": 0.568
+      "score": 0.584
     }
   ]
 }

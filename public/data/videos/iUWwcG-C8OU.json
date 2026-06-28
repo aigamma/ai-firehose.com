@@ -6,9 +6,9 @@
   "published": "2026-06-11T18:00:06+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "WorkOS built Studio, an internal workspace where non-technical users ask business questions in natural language against Snowflake, Linear, and Notion. The system generates reusable declarative JavaScript widgets that call data sources directly, ensuring deterministic and cost-efficient subsequent runs.",
+  "summary": "Garrett Galow from WorkOS presented Studio, an internal workspace that allows anyone to ask questions in natural language against Snowflake, Linear, and Notion without requiring engineers. The tool generates reusable declarative JavaScript widgets that call data sources directly, making subsequent runs deterministic and cheap.",
   "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
-  "wh": "bee01eb9e84f2c0e",
+  "wh": "dc0f7617f631a940",
   "key_points": [
     "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
     "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
@@ -59,24 +59,16 @@
       "label": "natural language interface"
     },
     {
-      "slug": "prompt-injection",
-      "label": "prompt injection"
-    },
-    {
-      "slug": "query-validation",
-      "label": "query validation"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "context-management",
       "label": "context management"
     },
     {
-      "slug": "schema-injection",
-      "label": "schema injection"
-    },
-    {
-      "slug": "deterministic-widget-generation",
-      "label": "deterministic widget generation"
+      "slug": "query-validation",
+      "label": "query validation"
     }
   ],
   "similar": [
@@ -84,37 +76,37 @@
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
-      "score": 0.601
+      "score": 0.586
     },
     {
       "id": "kUQD5ZElyB4",
       "title": "The Problem Solvers: Michele Catasta at Replit",
       "channel": "Claude",
-      "score": 0.575
+      "score": 0.553
     },
     {
-      "id": "45JqVBihguo",
-      "title": "How Alex Hormozi ACTUALLY Uses AI",
-      "channel": "Austin Marchese",
-      "score": 0.547
-    },
-    {
-      "id": "zMiSRliEzv4",
-      "title": "Self Driving Products: Product Signals to Pull Requests — Joshua Snyder, PostHog",
-      "channel": "AI Engineer",
+      "id": "7awKinJhGPo",
+      "title": "Power intelligent agents with AI-native databases",
+      "channel": "Google Cloud Tech",
       "score": 0.542
     },
     {
-      "id": "ij-AU9dpJjc",
-      "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
-      "channel": "AI Engineer",
+      "id": "Y7HwVL3LdNo",
+      "title": "NoSQL for modern apps and AI: The future of Memorystore, Firestore, and Bigtable",
+      "channel": "Google Cloud Tech",
       "score": 0.541
     },
     {
-      "id": "rjSvJYrVY2k",
-      "title": "The Problem Solvers | Anton Osika at Lovable",
-      "channel": "Claude",
-      "score": 0.54
+      "id": "SKDJo2CopRs",
+      "title": "Why Eval++ Is the Next Great Compute Primitive — Sunil Pai & Matt Carey, Cloudflare",
+      "channel": "AI Engineer",
+      "score": 0.53
+    },
+    {
+      "id": "dJAVS1g3NDw",
+      "title": "How Cursor builds agentic workflows across the SDLC",
+      "channel": "Cursor",
+      "score": 0.527
     }
   ]
 }

@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Dat Ngo from Arize discusses LLM observability challenges in nondeterministic systems. Arize Phoenix is an open-source observability platform deployed as a single container, while the enterprise product adds an AI-driven layer called Alex that automatically scans traces, surfaces anomalies, and generates evaluations.",
   "writeup": "Dat from Arize AI, an AI architect working with large enterprises, walks through the three pillars of making AI agents work in production: observability, evaluation, and safe iteration. The talk argues that agent systems are software reimagined, not magic, and that the same engineering disciplines (traces, signal collection, regression testing) apply. A distributional view of agent behavior, not just individual trace inspection, is the key advance over classical observability. The eval taxonomy spans five signal types, from LLM-as-judge to deterministic logic checks, with a sharp division of labor between engineers who code and domain experts who define what good looks like.",
-  "wh": "4597e63d456c829e",
+  "wh": "82d0c26c3ea4b0f2",
   "key_points": [
     "OpenTelemetry (Otel) is Arize AX's foundational instrumentation layer: a single auto-instrumenter line produces traces and spans for any framework or SDK, giving an audit record of every step an agent took since classical code instrumentation does not capture agent behavior.",
     "Distributional agent views answer questions individual traces cannot, such as what percentage of traffic routes down one branch versus another and which specific component in a given path caused elevated latency, enabling root-cause analysis at scale.",
@@ -68,8 +68,8 @@
       "label": "LLM-as-a-judge"
     },
     {
-      "slug": "feedback-loops",
-      "label": "feedback loops"
+      "slug": "feedback-loop",
+      "label": "feedback loop"
     },
     {
       "slug": "golden-datasets",
@@ -80,8 +80,8 @@
       "label": "deterministic checks"
     },
     {
-      "slug": "business-metrics",
-      "label": "business metrics"
+      "slug": "business-models",
+      "label": "business models"
     },
     {
       "slug": "tracing",
@@ -94,16 +94,22 @@
   ],
   "similar": [
     {
-      "id": "ObTPqBGsEbA",
-      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
-      "channel": "AI Engineer",
-      "score": 0.602
-    },
-    {
       "id": "vljxQZfJ9wY",
       "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
       "score": 0.595
+    },
+    {
+      "id": "UPwGaM2MKHY",
+      "title": "The Log Is The Agent - Ishaan Sehgal, Omnara",
+      "channel": "AI Engineer",
+      "score": 0.573
+    },
+    {
+      "id": "ObTPqBGsEbA",
+      "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
+      "channel": "AI Engineer",
+      "score": 0.568
     },
     {
       "id": "SKDJo2CopRs",
@@ -118,16 +124,10 @@
       "score": 0.543
     },
     {
-      "id": "so9l_MwS2yg",
-      "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
-      "channel": "AI Engineer",
-      "score": 0.538
-    },
-    {
       "id": "ij-AU9dpJjc",
       "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
       "channel": "AI Engineer",
-      "score": 0.533
+      "score": 0.54
     }
   ]
 }

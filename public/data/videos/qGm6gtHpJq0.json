@@ -6,9 +6,9 @@
   "published": "2026-05-19T03:35:08+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin's AI Dark Factory is a self-building codebase that ships its own code through custom agent workflows (Archon). The system combines Claude Opus for deep reasoning tasks with Kimi K2.6 for implementation and validation to optimize token efficiency while scaling reasoning capacity.",
+  "summary": "Cole Medin's AI Dark Factory is a self-building codebase powered by Archon workflows that generates and deploys its own code. It was initially built on Kimi K2.6 but is being redesigned to use Claude Opus for deep reasoning tasks and Kimi K2.6 for implementation and validation to improve capability without sacrificing token efficiency at scale.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "aa232b321b1b06e5",
+  "wh": "226780478a44cfec",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,16 +56,16 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
-    },
-    {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     },
     {
       "slug": "model-routing",
       "label": "model routing"
+    },
+    {
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
       "slug": "code-generation",
@@ -74,40 +74,40 @@
   ],
   "similar": [
     {
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.618
+    },
+    {
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.708
+      "score": 0.616
     },
     {
       "id": "pmoDeA3RBZY",
       "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
       "channel": "AI Engineer",
-      "score": 0.656
+      "score": 0.609
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.631
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
+      "channel": "Cole Medin",
+      "score": 0.607
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.584
     },
     {
       "id": "qFhwsb78hko",
       "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
       "channel": "AICodeKing",
-      "score": 0.621
-    },
-    {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.612
-    },
-    {
-      "id": "HRw-vP0j8OM",
-      "title": "The Agentic OS Setup That Will 10x Claude Code",
-      "channel": "Chase AI",
-      "score": 0.606
+      "score": 0.58
     }
   ]
 }

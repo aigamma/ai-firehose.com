@@ -6,9 +6,9 @@
   "published": "2026-05-21T20:32:39+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Sasha Rush presents Cursor's research on building Composer 2, a coding agent trained from Kimi K2.5 base model using continued pre-training and long-horizon reinforcement learning with auto-install. The model incorporates reward shaping, self-summarization, and is evaluated on Cursor Bench, an internal evaluation set of real engineer queries and multi-file diffs.",
+  "summary": "Cursor's Composer 2 is a code assistant model built on Kimi K2.5 with continued pre-training for coding tasks and long-horizon reinforcement learning with auto-install capabilities. The model uses reward shaping with nonlinear length penalties and self-summarization to handle long contexts, and is evaluated on Cursor Bench, an internal benchmark of real engineer queries.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "04aef00b5fc50031",
+  "wh": "ba05ebdf312e97d5",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -60,45 +60,31 @@
   "ih": "b89fc4377d47746b",
   "concepts": [
     {
-      "slug": "reinforcement-learning",
-      "label": "reinforcement learning"
-    },
-    {
       "slug": "continual-pretraining",
       "label": "continual pretraining"
+    },
+    {
+      "slug": "reinforcement-learning",
+      "label": "reinforcement learning"
     },
     {
       "slug": "reward-modeling",
       "label": "reward modeling"
     },
     {
+      "slug": "auto-install",
+      "label": "auto-install"
+    },
+    {
       "slug": "text-summarization",
       "label": "text summarization"
     },
     {
-      "slug": "mixture-of-experts",
-      "label": "Mixture of Experts"
+      "slug": "context-management",
+      "label": "context management"
     }
   ],
   "similar": [
-    {
-      "id": "8h9j2rskP14",
-      "title": "The next era of AI coding",
-      "channel": "Cursor",
-      "score": 0.658
-    },
-    {
-      "id": "dJAVS1g3NDw",
-      "title": "How Cursor builds agentic workflows across the SDLC",
-      "channel": "Cursor",
-      "score": 0.651
-    },
-    {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.632
-    },
     {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
@@ -106,16 +92,34 @@
       "score": 0.622
     },
     {
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "channel": "AICodeKing",
+      "score": 0.577
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.577
+    },
+    {
+      "id": "8h9j2rskP14",
+      "title": "The next era of AI coding",
+      "channel": "Cursor",
+      "score": 0.565
+    },
+    {
       "id": "QJ2bM8Me5Fk",
       "title": "Kimi K2.6 and Agent Swarm explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.614
+      "score": 0.554
     },
     {
-      "id": "blgUmyMiROI",
-      "title": "How are coding agents changing software engineering?",
+      "id": "UxbULt_hCdA",
+      "title": "Introducing Cursor 3",
       "channel": "Cursor",
-      "score": 0.611
+      "score": 0.546
     }
   ]
 }
