@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Google Cloud Tech shows how to build a multi-agent AI system for automating project intake workflows. The system integrates Asana webhooks with Google Cloud Run services, uses the Agent Development Kit (ADK) for orchestration, dispatches specialist agents in parallel via the Agent-to-Agent protocol, and leverages the Model Context Protocol to connect Vertex AI agents to BigQuery and Asana. The architecture demonstrates secure enterprise-grade agent deployment using pay-per-request Cloud Run containers.",
   "writeup": "Kevin Blanco demonstrates a production multi-agent system that intercepts an Asana project intake form submission and returns a fully enriched task, carrying a risk score, resource availability check, historical pattern analysis, and live workspace context, in roughly 20 seconds. The architecture has three layers: Asana as the human interface (webhook source and live data source via MCP), Google Cloud as the intelligence layer (ADK orchestrator plus four specialist Cloud Run agents talking to Vertex AI and BigQuery), and Asana again as the write-back surface. The through-line is that enterprises already hold years of project data in fragmented systems; this system makes that data queryable at intake time so approvals are grounded in evidence rather than gut.",
-  "wh": "087780669bbf6f30",
+  "wh": "2561ae840d003e4c",
   "key_points": [
     "Google ADK eliminates the boilerplate of building LLM agents from scratch: before ADK, session state management, Gemini API wiring, and tool dispatch had to be handled manually; with ADK, one class definition (model, instructions, tools) is the entire agent definition.",
     "The orchestrator uses the agent-to-agent (A2A) protocol to dispatch three specialist agents in parallel and one sequentially, knowing only a task URL and expected result for each, so any specialist can be swapped or extended without touching the orchestrator.",
@@ -76,8 +76,8 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "parallel-execution",
-      "label": "parallel execution"
+      "slug": "autonomous-task-execution",
+      "label": "autonomous task execution"
     }
   ],
   "similar": [
@@ -85,7 +85,7 @@
       "id": "tQGalTBL1Ek",
       "title": "Agent development and AgentOps with BigQuery, ADK, and MCP",
       "channel": "Google Cloud Tech",
-      "score": 0.776
+      "score": 0.767
     },
     {
       "id": "z4CXn4CKHQI",
@@ -94,16 +94,16 @@
       "score": 0.758
     },
     {
-      "id": "C5zYVlBsHLQ",
-      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
-      "channel": "Google Cloud Tech",
-      "score": 0.733
-    },
-    {
       "id": "nGjGUCOiXk4",
       "title": "Building with ADK & A2A: How multi-agent collaboration designs a game",
       "channel": "Google Cloud Tech",
-      "score": 0.729
+      "score": 0.73
+    },
+    {
+      "id": "C5zYVlBsHLQ",
+      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.727
     },
     {
       "id": "wBnnA8aIxUs",
@@ -115,7 +115,7 @@
       "id": "CgwslR4pgL4",
       "title": "Governed agents: Looker + MCP explained",
       "channel": "Google Cloud Tech",
-      "score": 0.698
+      "score": 0.697
     }
   ]
 }
