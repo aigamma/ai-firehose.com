@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin demonstrates a hybrid inference strategy that pairs Claude Opus for complex reasoning tasks with Kimi K2.6 for faster execution on implementation and validation work. The approach optimizes token efficiency by allocating expensive compute only to steps where stronger reasoning changes outcomes.",
+  "summary": "Cole Medin demonstrates scaling an AI Dark Factory by combining Claude Opus and Kimi K2.6 models in a single agent workflow. Opus handles deep reasoning and planning steps while Kimi K2.6 handles implementation, validation, and research to maintain token efficiency.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "474c81b65cf9b103",
+  "wh": "b7194b20ec655624",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,16 +56,20 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "model-routing",
-      "label": "model routing"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "routing",
+      "label": "routing"
+    },
+    {
+      "slug": "token-optimization",
+      "label": "token optimization"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
-    },
-    {
-      "slug": "mixture-of-experts",
-      "label": "Mixture of Experts"
     }
   ],
   "similar": [
@@ -73,37 +77,37 @@
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.669
+      "score": 0.698
     },
     {
-      "id": "q5lg3npxjAc",
-      "title": "Opus 4.8 Just Dropped. Here's How To Actually Use It.",
-      "channel": "Nate Herk | AI Automation",
-      "score": 0.631
+      "id": "QJ2bM8Me5Fk",
+      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.651
     },
     {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.624
+      "id": "v7IJ8JNUNQ8",
+      "title": "Meet Kimi K2.6 Agent Swarm 🐝",
+      "channel": "Kimi AI",
+      "score": 0.63
     },
     {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "id": "pmoDeA3RBZY",
+      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
+      "channel": "AI Engineer",
+      "score": 0.623
+    },
+    {
+      "id": "fYrPKhHouxs",
+      "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.607
+      "score": 0.611
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.6
-    },
-    {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.593
+      "score": 0.608
     }
   ]
 }

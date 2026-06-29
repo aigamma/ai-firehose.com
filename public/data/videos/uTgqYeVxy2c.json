@@ -6,9 +6,9 @@
   "published": "2026-05-21T20:32:39+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Cursor's Composer 2 is built from Kimi K2.5 base model with 1T parameters and 256K context. The model undergoes coding-focused continued pre-training and long-horizon reinforcement learning with auto-install capabilities, using reward shaping and self-summarization to balance speed and depth.",
+  "summary": "Cursor's Composer 2 model is trained starting from Kimi K2.5 (1T parameters, 32B active, 256K context) with continued pre-training on coding tasks followed by long-horizon reinforcement learning. The training pipeline includes auto-install exploration, reward shaping with nonlinear length penalties, and self-summarization to extend context understanding beyond the context window limit.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "3590fe03c9e5cfd7",
+  "wh": "f9923dfeb6ca60d0",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -72,8 +72,12 @@
       "label": "reward modeling"
     },
     {
-      "slug": "text-summarization",
-      "label": "text summarization"
+      "slug": "summarization",
+      "label": "summarization"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
       "slug": "mixture-of-experts",
@@ -82,40 +86,40 @@
   ],
   "similar": [
     {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.628
-    },
-    {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.611
+      "score": 0.604
     },
     {
       "id": "QJ2bM8Me5Fk",
       "title": "Kimi K2.6 and Agent Swarm explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.582
+      "score": 0.589
+    },
+    {
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
+      "channel": "AICodeKing",
+      "score": 0.586
+    },
+    {
+      "id": "lyhnXvNnhsU",
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "channel": "AICodeKing",
+      "score": 0.576
     },
     {
       "id": "scuzhhZpoHs",
       "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
       "channel": "Kimi AI",
+      "score": 0.571
+    },
+    {
+      "id": "qGm6gtHpJq0",
+      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
+      "channel": "Cole Medin",
       "score": 0.567
-    },
-    {
-      "id": "jzjhRgya2gM",
-      "title": "GLM 5.2 FULLY FREE & FAST CODER: This AI Coder is CRAZY & WORKS!",
-      "channel": "AICodeKing",
-      "score": 0.559
-    },
-    {
-      "id": "fWa7uxyhVDE",
-      "title": "Opening Keynote, Michael Truell | Compile 26",
-      "channel": "Cursor",
-      "score": 0.556
     }
   ]
 }
