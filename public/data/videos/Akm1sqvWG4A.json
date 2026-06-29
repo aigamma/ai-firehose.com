@@ -6,9 +6,9 @@
   "published": "2026-06-28T21:00:30+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "This talk covers production-scale architectural patterns for RAG systems including local-first document ingestion with OCR pipelines, database-first retrieval combining dense embeddings with sparse keyword indices via Reciprocal Rank Fusion, and client-side telemetry with prompt-injection validation. The approach emphasizes cost optimization by minimizing cloud API token usage through local processing.",
+  "summary": "A comprehensive technical session demonstrating how to build scalable enterprise RAG applications by replacing cloud API dependencies with local processing and optimized database search. Key patterns include local document parsing with OCR fallbacks to reduce token costs, heading-based semantic chunking with HNSW-tracked hybrid dense-sparse vector search using Reciprocal Rank Fusion, and client-side telemetry with prompt-injection detection guardrails.",
   "writeup": "Abed Matini of Ogilvy walks through production-scale RAG architecture patterns aimed at cutting the cost of multimodal pipelines by keeping work local. The talk covers local-first document ingestion with OCR pipelines, database-first retrieval that combines dense embeddings with sparse keyword indices through Reciprocal Rank Fusion, and client-side telemetry paired with prompt-injection validation. The throughline is cost optimization: minimizing cloud API token usage by pushing processing onto local infrastructure. Specifics referenced include semantic chunking, vector search with HNSW, and pgvector.",
-  "wh": "26b57a929e8feeb8",
+  "wh": "6d74a743185e1bd8",
   "concepts": [
     {
       "slug": "generative-ai",
@@ -41,48 +41,44 @@
     {
       "slug": "ocr",
       "label": "OCR"
-    },
-    {
-      "slug": "llm",
-      "label": "LLM"
     }
   ],
   "similar": [
     {
+      "id": "7awKinJhGPo",
+      "title": "Power intelligent agents with AI-native databases",
+      "channel": "Google Cloud Tech",
+      "score": 0.64
+    },
+    {
       "id": "UM6sFg_jdlE",
       "title": "RAG is dead, right?? — Kuba Rogut, Turbopuffer",
       "channel": "AI Engineer",
-      "score": 0.591
-    },
-    {
-      "id": "dRmWYHuIJxM",
-      "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
-      "channel": "AI Engineer",
-      "score": 0.56
-    },
-    {
-      "id": "qIjPepsY35E",
-      "title": "Multi-Stage Retrieval with Universal Query API | Qdrant Multi-Vector Search",
-      "channel": "Qdrant Vector Search",
-      "score": 0.534
-    },
-    {
-      "id": "O-QEhFFhXNA",
-      "title": "Stop AI Hallucinations With These 5 Techniques",
-      "channel": "AWS Developers",
-      "score": 0.533
-    },
-    {
-      "id": "EcqMYoIV57A",
-      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
-      "channel": "AI Engineer",
-      "score": 0.527
+      "score": 0.626
     },
     {
       "id": "fAf4Zh-CC08",
       "title": "Boost AI context with hybrid search in Spanner",
       "channel": "Google Cloud Tech",
-      "score": 0.522
+      "score": 0.618
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.609
+    },
+    {
+      "id": "dRmWYHuIJxM",
+      "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
+      "channel": "AI Engineer",
+      "score": 0.605
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.583
     }
   ]
 }

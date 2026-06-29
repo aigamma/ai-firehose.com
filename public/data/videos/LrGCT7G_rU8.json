@@ -4,11 +4,11 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-29T00:30:05+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": false,
-  "summary": "An RL-guided agent automates ETL pipeline failure recovery by detecting anomalies such as schema drift and data-quality issues, then selecting repair actions like retry or rollback. The system combines deterministic rules, Q-learning, and safety guardrails to achieve minutes-scale recovery.",
-  "writeup": "This talk presents a reinforcement-learning-guided agent that automates ETL pipeline failure recovery. The agent detects anomalies including schema drift and data-quality issues, then selects repair actions such as retry or rollback. It combines deterministic rules, Q-learning, and safety guardrails, reaching recovery on a minutes-scale timeframe.",
-  "wh": "66f511dbb3d81f0c",
+  "summary": "A reinforcement learning agent automates detection and remediation of ETL pipeline failures, detecting schema drift, null-rate spikes, type changes, and runtime failures. The system uses interpretable Q-learning with bounded remediation actions like retry, schema coercion, rollback, quarantine, and escalation, plus an external safety layer. Evaluation on 30 synthetic runs showed minutes-scale recovery for resolved cases.",
+  "writeup": "This talk presents a reinforcement learning agent that detects and remediates ETL pipeline failures, covering schema drift, null-rate spikes, type changes, and runtime failures. The agent relies on interpretable Q-learning with a bounded action set: retry, schema coercion, rollback, quarantine, and escalation, paired with an external safety layer that constrains its choices. The interpretability and bounded actions matter because data pipeline remediation carries real risk, and keeping actions auditable and constrained limits the damage from a wrong decision. Evaluation across 30 synthetic runs reported minutes-scale recovery for the cases that were resolved.",
+  "wh": "01ee38156f7507d1",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -19,8 +19,12 @@
       "label": "vulnerability detection"
     },
     {
-      "slug": "guardrails",
-      "label": "guardrails"
+      "slug": "anachronism-detection",
+      "label": "Anachronism Detection"
+    },
+    {
+      "slug": "safety-layer",
+      "label": "Safety Layer"
     }
   ],
   "similar": [
@@ -28,37 +32,37 @@
       "id": "APh1Vx0oLmQ",
       "title": "Deterministic Infra for Non-Deterministic AI Agents - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.646
+      "score": 0.639
     },
     {
       "id": "vljxQZfJ9wY",
       "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.601
+      "score": 0.627
+    },
+    {
+      "id": "TNwJ1LMiENk",
+      "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
+      "channel": "AI Engineer",
+      "score": 0.598
+    },
+    {
+      "id": "zxvyO5vnknI",
+      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
+      "channel": "Cursor",
+      "score": 0.58
     },
     {
       "id": "Iwe_RY-fYgI",
       "title": "AI-Driven Multi-Document Correlation for Financial Compliance - Varsha Shah, Independent",
       "channel": "AI Engineer",
-      "score": 0.581
-    },
-    {
-      "id": "ev96Qkpaykw",
-      "title": "AI Agents: Why Building Them Is Way Harder Than You Think! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.576
-    },
-    {
-      "id": "4Vg2aVtrX8k",
-      "title": "Building AI Agents for Real-World Problems & Workflows",
-      "channel": "IBM Technology",
-      "score": 0.575
+      "score": 0.573
     },
     {
       "id": "3hXJI2q0Jz8",
       "title": "Recursive Coding Agents - Raymond Weitekamp, OpenProse",
       "channel": "AI Engineer",
-      "score": 0.57
+      "score": 0.572
     }
   ]
 }

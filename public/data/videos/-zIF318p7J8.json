@@ -6,9 +6,9 @@
   "published": "2026-06-08T11:10:24+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "MiniMax released M3, an LLM that implements MiniMax Sparse Attention (MSA) to replace full attention mechanisms. The model includes tiled improvements and optimized KV cache reading strategies to reduce latency during prefill and decode stages of inference.",
+  "summary": "MiniMax released M3, a language model featuring MiniMax Sparse Attention (MSA) that replaces full attention with sparse attention patterns. The model includes optimizations for KV cache reading and tiled I/O improvements to reduce latency in prefill and decode stages.",
   "writeup": "The Minimax M3 model's defining innovation is its shift from full multi-head attention (MHA) to sparse attention, a change its own research team had been skeptical of just seven months prior. The video grounds that decision in GPU memory physics: the HBM-to-SRAM bandwidth gap (terabytes per second versus petaflops of compute) means inference is bottlenecked by memory movement, not arithmetic. M3 addresses this by combining Grouped Query Attention (GQA) to shrink the KV cache footprint, sparse top-K token selection to cut attention computation, and tile-based IO batching so the KV cache is read in continuous chunks rather than scattered lookups. The reported gains are substantial: 1/20th the per-token compute versus M2 at 1 million context, with 9.7x prefill and 15.6x decoding speedups.",
-  "wh": "e296dd31b4a0fcb0",
+  "wh": "e47a501fd6d22d34",
   "key_points": [
     "The fundamental inference bottleneck is memory bandwidth, not compute: HBM-to-SRAM transfer runs at a few terabytes per second while SRAM computation runs at petaflops, a gap of over 300x, which makes KV cache movement the limiting factor as context windows grow past 100,000 tokens.",
     "Minimax M3 combines three complementary techniques: GQA (multiple query heads share one KV cache, reducing its memory footprint), sparse attention (each token attends only to the top-K most relevant tokens rather than all tokens, reducing both data movement and attention score computation), and tile-based IO (tokens are grouped into fixed-size tiles so the KV cache is read once per tile in a sequential outer loop rather than pulled in scattered per-token passes).",
@@ -59,16 +59,12 @@
       "label": "KV cache"
     },
     {
-      "slug": "prefill",
-      "label": "prefill"
-    },
-    {
-      "slug": "decode",
-      "label": "decode"
-    },
-    {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "prefill-optimization",
+      "label": "prefill optimization"
     }
   ],
   "similar": [
@@ -76,37 +72,37 @@
       "id": "iOZf50YffCE",
       "title": "This AI Chinese model is 15X cheaper?",
       "channel": "Jack Roberts",
-      "score": 0.652
-    },
-    {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.615
+      "score": 0.657
     },
     {
       "id": "V0c62734ix8",
       "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
       "channel": "AICodeKing",
-      "score": 0.613
+      "score": 0.649
     },
     {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.591
+      "id": "wzHXUtkoY-c",
+      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
+      "channel": "Caleb Writes Code",
+      "score": 0.623
     },
     {
       "id": "lyhnXvNnhsU",
       "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
       "channel": "AICodeKing",
-      "score": 0.59
+      "score": 0.605
     },
     {
-      "id": "AVh5i51oxIA",
-      "title": "Minimax Uses Fewer Tokens—Here’s Why #minimax #llm #hermes #openclaw",
+      "id": "66Gk8M3Eh6w",
+      "title": "MiniMax M2.7: Run AI Agents for $20/Month?",
       "channel": "Keith AI",
-      "score": 0.576
+      "score": 0.579
+    },
+    {
+      "id": "R6mM0m3IZWY",
+      "title": "Gemini 3.5 Flash has landed.",
+      "channel": "Google DeepMind",
+      "score": 0.57
     }
   ]
 }

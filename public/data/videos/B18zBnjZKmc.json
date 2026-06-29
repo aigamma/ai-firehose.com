@@ -6,9 +6,9 @@
   "published": "2026-04-20T19:26:26+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Caleb Writes Code covers the technical depth of LLM inference including model loading, quantization methods, and inference engines. The video discusses techniques like mmap, GGUF, AWQ, EXL2, and formats like FP8 and NVFP4, then compares inference frameworks on pre-fill, decoding, and concurrent serving.",
+  "summary": "Caleb Writes Code covers the technical depth of LLM inference, including model loading strategies with mmap, quantization methods such as GGUF, AWQ, EXL2, FP8, and NVFP4, and inference engines including llama.cpp, vLLM, SGLang, TensorRT-LLM, and TGI. The video addresses pre-fill, decoding, concurrency, and scheduling challenges.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "0eb064063a2ba40f",
+  "wh": "a267f74c748c70ca",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -60,6 +60,10 @@
   "ih": "cff37e0d0c64b618",
   "concepts": [
     {
+      "slug": "model-serving",
+      "label": "model serving"
+    },
+    {
       "slug": "quantization",
       "label": "quantization"
     },
@@ -84,20 +88,20 @@
       "label": "FP8"
     },
     {
-      "slug": "model-loading",
-      "label": "model loading"
+      "slug": "nvfp4",
+      "label": "NVFP4"
     },
     {
-      "slug": "prefill",
-      "label": "prefill"
+      "slug": "pre-fill",
+      "label": "pre-fill"
     },
     {
-      "slug": "decode",
-      "label": "decode"
+      "slug": "encoder-decoder",
+      "label": "encoder-decoder"
     },
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "scheduling",
+      "label": "scheduling"
     }
   ],
   "similar": [
@@ -105,37 +109,37 @@
       "id": "XAP78BNKGEs",
       "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.619
+      "score": 0.618
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
+      "score": 0.613
+    },
+    {
+      "id": "gHs5ZiY80PM",
+      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
+      "channel": "AI Engineer",
       "score": 0.591
     },
     {
       "id": "-z2C3B29aho",
       "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
       "channel": "Keith AI",
-      "score": 0.581
-    },
-    {
-      "id": "3DGaFycYtVE",
-      "title": "DeepSeek V4 Analysis..",
-      "channel": "Caleb Writes Code",
-      "score": 0.577
+      "score": 0.589
     },
     {
       "id": "DAlC8mL5ZlI",
       "title": "Why AI Models Pause to Think: Test Time Compute Explained",
       "channel": "IBM Technology",
-      "score": 0.571
+      "score": 0.585
     },
     {
-      "id": "Qd2bAzwH9uA",
-      "title": "Karpathy Bigram explained in 10min..",
-      "channel": "Caleb Writes Code",
-      "score": 0.568
+      "id": "WLtCHXdHTF0",
+      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
+      "channel": "Better Stack",
+      "score": 0.576
     }
   ]
 }

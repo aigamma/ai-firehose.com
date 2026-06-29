@@ -1,12 +1,93 @@
 {
   "id": "supervised-fine-tuning",
   "label": "Supervised Fine-Tuning",
-  "kind": "technique",
-  "category": "Training and Fine-Tuning",
   "aliases": [
     "SFT",
     "supervised finetuning"
   ],
+  "kind": "technique",
+  "attention": 1,
+  "first_seen": "2026-06-11T20:00:00.000Z",
+  "rotation": null,
+  "neighbors": [
+    {
+      "id": "weight-learning",
+      "label": "weight learning",
+      "score": 0.833
+    },
+    {
+      "id": "space-bounded-learning",
+      "label": "Space-bounded learning",
+      "score": 0.827
+    },
+    {
+      "id": "hyperparameter-optimization",
+      "label": "hyperparameter optimization",
+      "score": 0.825
+    },
+    {
+      "id": "stochastic-gradient-descent",
+      "label": "stochastic gradient descent",
+      "score": 0.823
+    },
+    {
+      "id": "variance-regularization",
+      "label": "variance regularization",
+      "score": 0.815
+    },
+    {
+      "id": "fine-tuning",
+      "label": "fine-tuning",
+      "score": 0.812
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.329
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.235
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": -0.268
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.261
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.047
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.775
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.476
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning",
+      "url": "https://huggingface.co/papers/2606.15007",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-11T20:00:00.000Z",
+      "kind": "tool"
+    }
+  ],
+  "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
   "definition": "Training a pretrained model on labeled input-output demonstrations with the ordinary next-token objective, the first alignment stage that teaches a base model to follow instructions before any reinforcement learning. It works by imitation, which is exactly its limit: the model can only be as good as its demonstrations and gets no signal about what is wrong, the gap preference optimization fills.",
@@ -55,12 +136,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/supervised-fine-tuning.png",
     "alt": "A three-stage vertical workflow. Stage 1, pretraining, turns web text into a pretrained base model via next-token prediction. Stage 2, supervised fine-tuning, trains the base model on prompt-and-demonstration pairs to produce an instruction-tuned model. Stage 3, reinforcement learning from human feedback, uses a reward model and PPO to produce an aligned assistant model.",

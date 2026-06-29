@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-22T03:36:08+00:00",
-  "kind": "opinion",
+  "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin benchmarked mixed-provider LLM workflows using Claude Opus and Kimi K2.6 in different roles (planner vs. implementer) on a Dark Factory coding task. The benchmark ran four workflow configurations against three GitHub issues, then used Opus-based evaluation to score each PR on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
+  "summary": "Cole Medin benchmarks mixed-provider workflows using Claude Opus and Kimi K2.6 for code generation, testing which model should handle planning versus implementation. He uses Archon to run the same coding workflow four ways against three real GitHub issues, then evaluates the 12 resulting PRs on seven dimensions including correctness and code quality.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "4f71e18d7c89f3d8",
+  "wh": "be04577c6b1b4e34",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -60,16 +60,16 @@
       "label": "local inference"
     },
     {
+      "slug": "model-routing",
+      "label": "model routing"
+    },
+    {
       "slug": "agentic-workflows",
       "label": "agentic workflows"
     },
     {
-      "slug": "llm-evaluation",
-      "label": "LLM evaluation"
-    },
-    {
-      "slug": "benchmark",
-      "label": "benchmark"
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.698
+      "score": 0.619
     },
     {
       "id": "Xh1z23uBZo0",
       "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.583
+      "score": 0.602
+    },
+    {
+      "id": "RSk6R_2GYZo",
+      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
+      "channel": "Cole Medin",
+      "score": 0.598
+    },
+    {
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "channel": "Cole Medin",
+      "score": 0.582
+    },
+    {
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.57
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.577
-    },
-    {
-      "id": "hEv_8tyfdHc",
-      "title": "I Tested GLM 5.2 vs Opus 4.8 vs GPT 5.5",
-      "channel": "Chase AI",
-      "score": 0.572
-    },
-    {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.539
-    },
-    {
-      "id": "q5lg3npxjAc",
-      "title": "Opus 4.8 Just Dropped. Here's How To Actually Use It.",
-      "channel": "Nate Herk | AI Automation",
-      "score": 0.528
+      "score": 0.568
     }
   ]
 }

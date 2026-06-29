@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Hervé Bredin argues that ASR leaderboards mask real-world performance gaps by using headset audio, while table microphones show 2.3x worse error rates on the same model and dataset. Current voice AI benchmarks focus on single-speaker scenarios that do not reflect conversational challenges like speaker overlap and diarization error in noisy environments reaching 41%.",
   "writeup": "Hervé Bredin, co-founder of PyAnnote AI, makes the case that raw speech-to-text is only the first layer of conversation understanding: knowing who said what, when, and how they said it (prosody, stress, laughter, back-channels) is often as important as the words themselves. The talk defines speaker diarization precisely, walks through its technical pipeline from voice activity detection through segmentation and speaker identity assignment, and explains why the problem remains unsolved despite decades of community work. The through-line is that richer audio annotations, not just text, are what downstream LLMs and voice AI systems actually need to reason about conversations well.",
-  "wh": "8fada2de054811c6",
+  "wh": "f59453168c61a7c7",
   "key_points": [
     "Speaker diarization answers 'who speaks when' and is distinct from speech-to-text: Whisper produces word sequences but no speaker labels, which is why PyAnnote grew sharply after Whisper's release, reaching roughly 10K GitHub stars as of the talk.",
     "Among the top seven most-downloaded audio models on Hugging Face (filtered by the audio tag and sorted by downloads), three of the first are speaker identity or diarization models, demonstrating how central the problem is to the speech ML community.",
@@ -60,8 +60,12 @@
       "label": "text-to-speech"
     },
     {
-      "slug": "benchmark",
-      "label": "benchmark"
+      "slug": "automatic-speech-recognition",
+      "label": "automatic speech recognition"
+    },
+    {
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     },
     {
       "slug": "speaker-overlap",
@@ -70,10 +74,28 @@
   ],
   "similar": [
     {
+      "id": "spNAUEgq_A8",
+      "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
+      "channel": "AI Engineer",
+      "score": 0.64
+    },
+    {
+      "id": "65X0pQ6Lmbg",
+      "title": "Voice In, Visuals Out: The Agony and the Ecstasy - Allen Pike, Forestwalk Labs",
+      "channel": "AI Engineer",
+      "score": 0.623
+    },
+    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
       "score": 0.621
+    },
+    {
+      "id": "6bmM45jkMDY",
+      "title": "You Can't Prompt the Room: The Last Skill AI Won't Replace - Balázs Horváth, VisualLabs",
+      "channel": "AI Engineer",
+      "score": 0.615
     },
     {
       "id": "QuuIywMG4s8",
@@ -82,28 +104,10 @@
       "score": 0.607
     },
     {
-      "id": "spNAUEgq_A8",
-      "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
-      "channel": "AI Engineer",
-      "score": 0.603
-    },
-    {
-      "id": "qzPOuqz0Dhw",
-      "title": "Open vs Closed AI: The Future Is CHEAPER & SMARTER #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.603
-    },
-    {
       "id": "ij-AU9dpJjc",
       "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
       "channel": "AI Engineer",
       "score": 0.601
-    },
-    {
-      "id": "vljxQZfJ9wY",
-      "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
-      "channel": "AI Engineer",
-      "score": 0.597
     }
   ]
 }

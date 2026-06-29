@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-19T03:35:08+00:00",
-  "kind": "tool",
+  "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates scaling an AI Dark Factory by combining Claude Opus and Kimi K2.6 models in a single agent workflow. Opus handles deep reasoning and planning steps while Kimi K2.6 handles implementation, validation, and research to maintain token efficiency.",
+  "summary": "Cole Medin's AI Dark Factory combines Claude Opus for deep reasoning tasks with Kimi K2.6 for faster implementation and validation. The architecture selectively routes reasoning-critical steps to the stronger model while keeping the pipeline token-efficient by reserving expensive models only where they meaningfully improve outcomes.",
   "writeup": "A live-stream session developing the \"dark factory\": a self-evolving codebase where no human writes or reviews any code. Issues trigger Archon workflows that triage, plan, implement, open a pull request, have an agent review and merge it, and auto-deploy to production. The session's specific focus is introducing mixed-provider routing, assigning Claude Opus 4 to the high-reasoning steps while keeping Kimi K2.6 as the token-efficient workhorse, motivated by worsening Anthropic rate limits and the cost of running Opus across every workflow node.",
-  "wh": "b7194b20ec655624",
+  "wh": "afe65687f253377d",
   "key_points": [
     "The dark factory architecture uses Archon workflows end-to-end: a triage workflow determines issue priority, a per-issue workflow handles planning, implementation, and validation, a code-review agent merges the PR, and deployment fires automatically, with no human touching the code or reviewing the output at any stage.",
     "A weekly regression-testing workflow exercises the entire application autonomously, then opens new issues for any failures it finds, making the factory partially self-healing.",
@@ -56,20 +56,24 @@
   "ih": "27bdb722567fa360",
   "concepts": [
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     },
     {
-      "slug": "routing",
-      "label": "routing"
-    },
-    {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "model-routing",
+      "label": "model routing"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
+    },
+    {
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
+    },
+    {
+      "slug": "cost-optimization",
+      "label": "cost optimization"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "C1dS-oFoyhk",
       "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
       "channel": "Cole Medin",
-      "score": 0.698
+      "score": 0.619
     },
     {
-      "id": "QJ2bM8Me5Fk",
-      "title": "Kimi K2.6 and Agent Swarm explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.651
+      "id": "DAlC8mL5ZlI",
+      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
+      "channel": "IBM Technology",
+      "score": 0.613
     },
     {
-      "id": "v7IJ8JNUNQ8",
-      "title": "Meet Kimi K2.6 Agent Swarm 🐝",
-      "channel": "Kimi AI",
-      "score": 0.63
-    },
-    {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.623
+      "id": "gKBazze-8qU",
+      "title": "China’s New AI Is 6X More Efficient Than Claude",
+      "channel": "AI Revolution",
+      "score": 0.599
     },
     {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.611
+      "score": 0.597
     },
     {
       "id": "Xh1z23uBZo0",
       "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.608
+      "score": 0.584
+    },
+    {
+      "id": "MigowTEcJHA",
+      "title": "The Ultimate Second Brain for AI Entrepreneurs: Fable 5 Claude with Loops",
+      "channel": "Cyril Imhof",
+      "score": 0.58
     }
   ]
 }

@@ -6,71 +6,67 @@
   "published": "2026-06-29T00:00:39+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "The record and replay pattern captures every model invocation, tool execution, memory access, and state transition into an append-only event log to enable deterministic replay of failed agent executions in production. This approach moves beyond state recovery and API mocking to provide engineers with the ability to step through execution traces line by line for root cause analysis. The pattern brings low-level systems debugging philosophy (similar to Mozilla rr) into autonomous agent loops to address the challenge of non-deterministic failures that are difficult to reproduce.",
-  "writeup": "This talk presents a record and replay pattern for debugging agent failures in production, capturing every model invocation, tool execution, memory access, and state transition into an append-only event log so a failed run can be replayed deterministically. It matters because non-deterministic agent failures are hard to reproduce, which blocks root cause analysis. The key takeaways: the approach goes beyond state recovery and API mocking, lets engineers step through execution traces line by line, and imports low-level systems debugging philosophy (comparable to Mozilla rr) into autonomous agent loops.",
-  "wh": "aa58df7077fc1a96",
+  "summary": "The record and replay pattern for autonomous agents captures model invocations, tool executions, memory reads, and state transitions into an append-only event log to enable deterministic replay of failed production executions. This enables engineers to perform postmortem root cause analysis on non-deterministic agent failures that cannot be reproduced through standard logging or state recovery mechanisms.",
+  "writeup": "This talk from Microsoft's Tisha Chawla and Susheem Koul presents a record and replay pattern for debugging autonomous agents that fail in production and cannot be reproduced through standard logging or state recovery. The approach captures model invocations, tool executions, memory reads, and state transitions into an append-only event log, enabling deterministic replay of a failed execution. The concrete takeaway: capturing these events as an immutable log lets engineers perform postmortem root cause analysis on non-deterministic agent failures.",
+  "wh": "eaf0c8a89aeb58a5",
   "concepts": [
     {
       "slug": "session-replay",
       "label": "session replay"
     },
     {
-      "slug": "durable-execution",
-      "label": "durable execution"
-    },
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
-    },
-    {
       "slug": "deterministic-behavior",
       "label": "deterministic behavior"
     },
     {
-      "slug": "debugging",
-      "label": "debugging"
+      "slug": "ai-agents",
+      "label": "AI agents"
     },
     {
-      "slug": "event-log",
-      "label": "event log"
+      "slug": "observability",
+      "label": "observability"
+    },
+    {
+      "slug": "debugging",
+      "label": "debugging"
     }
   ],
   "similar": [
     {
-      "id": "wRDk9_JoIic",
-      "title": "The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das",
-      "channel": "EO",
-      "score": 0.557
-    },
-    {
-      "id": "UPwGaM2MKHY",
-      "title": "The Log Is The Agent - Ishaan Sehgal, Omnara",
-      "channel": "AI Engineer",
-      "score": 0.553
-    },
-    {
       "id": "APh1Vx0oLmQ",
       "title": "Deterministic Infra for Non-Deterministic AI Agents - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.552
-    },
-    {
-      "id": "19HDQ9HppOA",
-      "title": "Ship your first Managed Agent",
-      "channel": "Claude",
-      "score": 0.543
+      "score": 0.612
     },
     {
       "id": "l6KeLCuB90o",
       "title": "3 patterns to build long-running AI agents",
       "channel": "Google Cloud Tech",
-      "score": 0.541
+      "score": 0.582
     },
     {
-      "id": "4uFVSLgD2Q4",
-      "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
+      "id": "UPwGaM2MKHY",
+      "title": "The Log Is The Agent - Ishaan Sehgal, Omnara",
       "channel": "AI Engineer",
-      "score": 0.532
+      "score": 0.571
+    },
+    {
+      "id": "wRDk9_JoIic",
+      "title": "The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das",
+      "channel": "EO",
+      "score": 0.566
+    },
+    {
+      "id": "4Vg2aVtrX8k",
+      "title": "Building AI Agents for Real-World Problems & Workflows",
+      "channel": "IBM Technology",
+      "score": 0.562
+    },
+    {
+      "id": "19HDQ9HppOA",
+      "title": "Ship your first Managed Agent",
+      "channel": "Claude",
+      "score": 0.555
     }
   ]
 }
