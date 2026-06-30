@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-21T00:00:30+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": true,
-  "summary": "Cole Medin presents a structured approach to building AI agent harnesses for large codebases, emphasizing that the system architecture around the model matters more than the model itself. The \"AI Layer\" framework includes CLAUDE.md hierarchies, self-improving hooks, scoped skills, LSP, Model Context Protocol, subagents, and plugins, with an example codebase demonstrating each component.",
+  "summary": "Cole Medin built and documented a complete \"AI Layer\" harness for integrating Claude Code into large codebases, following Anthropic's playbook. The architecture includes CLAUDE.md hierarchies, self-improving hooks, scoped skills, LSP, MCPs, and subagents. The core finding is that the harness context and tooling matter more than the model itself.",
   "writeup": "This tutorial translates Anthropic's blog post on using Claude Code in large codebases into concrete, demonstrated strategies, centering on the claim that the harness matters as much as the model. Claude Code navigates codebases through agentic search (grep and folder traversal, not RAG or indexing), which means it performs best when given enough upfront context to know where to look. The video walks through seven components of an \"AI layer\" added to any codebase, from lean, layered CLAUDE.md files to hooks and MCP servers, each with a live demo in a purpose-built example repository.",
-  "wh": "d75febe657b0d355",
+  "wh": "ee12cd4f0f990815",
   "key_points": [
     "Claude Code uses agentic search rather than traditional RAG or semantic indexing: it navigates a codebase the way an engineer would, using command-line tools like grep and reading directory structure, with no index to keep in sync but a corresponding dependency on good upfront context.",
     "Anthropic's core thesis is that the harness matters as much as the model: seven components form the AI layer around a codebase (global rules, skills, MCP servers, sub-agents, LSP, hooks, and a codebase map), and tuning these outweighs chasing model benchmark improvements.",
@@ -64,62 +64,66 @@
       "label": "AI agents"
     },
     {
-      "slug": "recursive-self-improvement",
-      "label": "recursive self-improvement"
+      "slug": "context-management",
+      "label": "context management"
     },
     {
-      "slug": "model-context-protocol",
-      "label": "Model Context Protocol"
+      "slug": "mcp",
+      "label": "MCP"
     },
     {
-      "slug": "scoped-skills",
-      "label": "scoped skills"
+      "slug": "lsp",
+      "label": "LSP"
+    },
+    {
+      "slug": "self-improvement",
+      "label": "self-improvement"
     },
     {
       "slug": "sub-agents",
       "label": "sub-agents"
     },
     {
-      "slug": "language-server-protocol",
-      "label": "Language Server Protocol"
+      "slug": "claude-code",
+      "label": "Claude Code"
     }
   ],
   "similar": [
     {
-      "id": "ulNsa0sD8N0",
-      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
-      "channel": "Cole Medin",
-      "score": 0.714
-    },
-    {
-      "id": "-HtvTk5mv4Q",
-      "title": "5 things every AI agent harness needs",
-      "channel": "Google Cloud Tech",
-      "score": 0.681
-    },
-    {
-      "id": "zbmuiaPuiNM",
-      "title": "Google Just Dropped a Masterclass on Agentic Engineering (It's SO Good)",
-      "channel": "Cole Medin",
-      "score": 0.678
-    },
-    {
-      "id": "mGYr9VqQnEI",
-      "title": "Harness Engineering Is AI’s New Gold Rush",
-      "channel": "AI Revolution",
-      "score": 0.673
-    },
-    {
       "id": "BX5dLXe6CTI",
       "title": "How Anthropic Employees ACTUALLY Use Claude Code to Grow",
       "channel": "Austin Marchese",
-      "score": 0.663
+      "score": 0.713
+    },
+    {
+      "id": "qOvc9IUKEIc",
+      "title": "How Anthropic Engineers ACTUALLY Prompt Claude Code",
+      "channel": "Austin Marchese",
+      "score": 0.694
     },
     {
       "id": "Ob5Vu-gD3mo",
       "title": "Claude Managed Agents Just Dropped, And It Kills n8n",
       "channel": "Nick Saraev",
-      "score": 0.663
+      "score": 0.689
+    },
+    {
+      "id": "lyhnXvNnhsU",
+      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "channel": "AICodeKing",
+      "score": 0.682
+    },
+    {
+      "id": "3UWxMPUko1k",
+      "title": "How Anthropic Employees ACTUALLY Use Claude Skills",
+      "channel": "Austin Marchese",
+      "score": 0.676
+    },
+    {
+      "id": "ulNsa0sD8N0",
+      "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
+      "channel": "Cole Medin",
+      "score": 0.675
     }
   ]
 }

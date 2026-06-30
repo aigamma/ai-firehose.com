@@ -6,22 +6,22 @@
     "sparse transformer"
   ],
   "kind": "technique",
-  "attention": 86,
+  "attention": 91,
   "first_seen": "2026-03-22T11:55:40.000Z",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 89.5,
-    "momentum": 94.4,
+    "quadrant": "leading",
+    "ratio": 100.2,
+    "momentum": 101.2,
     "sparkline": [
       17,
       17,
       16,
-      14,
+      15,
       14,
       13,
       12,
-      12
+      15
     ]
   },
   "neighbors": [
@@ -51,36 +51,36 @@
       "score": 0.805
     },
     {
-      "id": "weight-learning",
-      "label": "weight learning",
-      "score": 0.804
+      "id": "mask-conditioning",
+      "label": "mask conditioning",
+      "score": 0.802
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.412
+      "position": 0.28
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.126
+      "position": -0.056
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": -0.035
+      "position": -0.03
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.687
+      "position": 0.595
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.047
+      "position": 0.181
     },
     {
       "slug": "neural-symbolic",
@@ -94,6 +94,13 @@
     }
   ],
   "top_items": [
+    {
+      "title": "Meituan LongCat 2.0 (Tested): China's 1.6T OPEN MODEL looks CRAZY!",
+      "url": "https://www.youtube.com/watch?v=Lh_QUSgEWwg",
+      "author_or_channel": "AICodeKing",
+      "published_at": "2026-06-30T08:59:56+00:00",
+      "kind": "tool"
+    },
     {
       "title": "Reweighting Framewise Attention in Video Transformers for Facial Expression Understanding",
       "url": "http://arxiv.org/abs/2606.30611v1",
@@ -128,13 +135,6 @@
       "author_or_channel": "Cursor",
       "published_at": "2026-06-29T15:30:17+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "The Memory Problem, Baseten | Compile 26",
-      "url": "https://www.youtube.com/watch?v=I8YnwUV2C9w",
-      "author_or_channel": "Cursor",
-      "published_at": "2026-06-29T15:30:09+00:00",
-      "kind": "technique"
     }
   ],
   "definition": "Attention computed over a chosen subset of token pairs instead of all of them, trading the transformer's full all-pairs interaction for a pattern that scales far better with sequence length. It rests on the observation that most of the attention in a trained model is local or structured, so the full quadratic computation is largely wasted.",

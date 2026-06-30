@@ -6,34 +6,34 @@
     "test-time scaling"
   ],
   "kind": "technique",
-  "attention": 521,
+  "attention": 535,
   "first_seen": "2026-03-26T06:43:05+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "lagging",
-    "ratio": 90.3,
-    "momentum": 95.9,
+    "quadrant": "leading",
+    "ratio": 106.7,
+    "momentum": 104.1,
     "sparkline": [
+      40,
       42,
-      39,
-      55,
-      52,
       54,
-      50,
-      47,
-      45
+      51,
+      53,
+      49,
+      60,
+      62
     ]
   },
   "neighbors": [
     {
-      "id": "test-time-validation",
-      "label": "test-time validation",
-      "score": 0.766
+      "id": "test-time-composition",
+      "label": "test-time composition",
+      "score": 0.767
     },
     {
-      "id": "inference-time-compute",
-      "label": "inference-time compute",
-      "score": 0.737
+      "id": "test-time-optimization",
+      "label": "test-time optimization",
+      "score": 0.754
     },
     {
       "id": "compute",
@@ -46,41 +46,41 @@
       "score": 0.71
     },
     {
-      "id": "test-time-efficiency",
-      "label": "test-time efficiency",
-      "score": 0.7
+      "id": "compute-race",
+      "label": "compute race",
+      "score": 0.685
     },
     {
-      "id": "test-time-interrogation",
-      "label": "test-time interrogation",
-      "score": 0.693
+      "id": "test-time-memory-revision",
+      "label": "test-time memory revision",
+      "score": 0.678
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": 0.439
+      "position": 0.304
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.062
+      "position": 0.142
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.287
+      "position": 0.293
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.461
+      "position": 0.382
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.084
+      "position": 0.146
     },
     {
       "slug": "neural-symbolic",
@@ -109,6 +109,13 @@
       "kind": "technique"
     },
     {
+      "title": "Mythos is Back, OpenAI Releases GPT 5.6, Apple’s Price Increases",
+      "url": "https://www.youtube.com/watch?v=pj7TzkII7hk",
+      "author_or_channel": "Alex Kantrowitz",
+      "published_at": "2026-06-29T17:00:06+00:00",
+      "kind": "opinion"
+    },
+    {
       "title": "The Memory Problem, Baseten | Compile 26",
       "url": "https://www.youtube.com/watch?v=I8YnwUV2C9w",
       "author_or_channel": "Cursor",
@@ -128,13 +135,6 @@
       "author_or_channel": "Import AI",
       "published_at": "2026-06-29T13:03:27.000Z",
       "kind": "opinion"
-    },
-    {
-      "title": "Every Claude Tool Explained: Master Full Ecosystem in 20 Minutes",
-      "url": "https://www.youtube.com/watch?v=G4MMpT8-kKI",
-      "author_or_channel": "AI Master",
-      "published_at": "2026-06-29T10:29:09+00:00",
-      "kind": "tool"
     }
   ],
   "definition": "Spending more computation at inference, rather than only at training, to improve a model's answers: generating longer reasoning, sampling many candidates, or searching, so accuracy scales with the compute spent per query. Its defining property is a smooth scaling curve, accuracy rises predictably as the budget grows, giving a dial you can set per request according to how much the answer is worth.",

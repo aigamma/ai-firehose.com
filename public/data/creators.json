@@ -144,16 +144,24 @@
           "published": "2026-06-29T18:53:10+00:00",
           "url": "https://www.youtube.com/watch?v=UNzCG3lw6O0",
           "thumbnail": "https://i.ytimg.com/vi/UNzCG3lw6O0/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "Matt from AI Engineer presents guidance on building effective agent skills, framed as a comprehensive manual for agent development. This appears to be the third contribution from the same creator on the topic.",
+          "kind": "technique",
+          "summary": "Matt Pocock introduces a \"Skill Checklist Framework\" for building high-quality AI agent skills. The framework addresses \"skill hell\" through four components: Trigger (user-invoked vs model-invoked decisions), Structure (organizing steps and references), Steering (using leading words to guide agent behavior), and Pruning (removing obsolete material and no-ops).",
           "concepts": [
             {
               "slug": "agent-skills",
               "label": "agent skills"
             },
             {
-              "slug": "agent-development",
-              "label": "agent development"
+              "slug": "prompt-design",
+              "label": "prompt design"
+            },
+            {
+              "slug": "agentic-patterns",
+              "label": "agentic patterns"
+            },
+            {
+              "slug": "context-management",
+              "label": "context management"
             }
           ]
         },
@@ -164,7 +172,7 @@
           "url": "https://www.youtube.com/watch?v=fWXJM-J0ZB8",
           "thumbnail": "https://i.ytimg.com/vi/fWXJM-J0ZB8/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "RL Nabors from Arize argues that most applications can use small local models instead of frontier models, reducing latency, energy, and cost. He presents a framework using capability evals, golden datasets, and LLM-as-judge to measure when local models are sufficient and shares production examples including agentic systems, moderation classifiers, and summarization features.",
+          "summary": "RL Nabors argues that most applications unnecessarily default to frontier models at high cost in latency, energy, and money when small local models would suffice. The talk provides vocabulary for model evaluation (capability evals, golden datasets, LLM-as-judge) and a framework for deciding when to use small local models versus frontier models, supported by production-trace-based eval examples.",
           "concepts": [
             {
               "slug": "capability-evals",
@@ -179,20 +187,16 @@
               "label": "LLM-as-judge"
             },
             {
-              "slug": "model-evaluation",
-              "label": "model evaluation"
+              "slug": "test-time-compute",
+              "label": "test-time compute"
+            },
+            {
+              "slug": "agentic-systems",
+              "label": "agentic systems"
             },
             {
               "slug": "local-models",
               "label": "local models"
-            },
-            {
-              "slug": "frontier-models",
-              "label": "frontier models"
-            },
-            {
-              "slug": "production-trace-evals",
-              "label": "production-trace evals"
             }
           ]
         },
@@ -203,7 +207,7 @@
           "url": "https://www.youtube.com/watch?v=spNAUEgq_A8",
           "thumbnail": "https://i.ytimg.com/vi/spNAUEgq_A8/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Justin Schroeder argues that domain-specific agents composed together deliver superior performance, reliability, and cost efficiency compared to traditional skill-based approaches. He claims this architecture enables smaller models to handle real work and shifts AI from internal copilots to customer-facing products.",
+          "summary": "Justin Schroeder argues that domain-specific agents composed together form a more powerful and reliable AI architecture than skills-based approaches. This composition pattern enables smaller models to perform real work and moves AI from internal tools to customer-facing products.",
           "concepts": [
             {
               "slug": "agent-composition",
@@ -214,8 +218,8 @@
               "label": "domain-specific agents"
             },
             {
-              "slug": "smaller-models",
-              "label": "smaller models"
+              "slug": "composition-over-inheritance",
+              "label": "composition over inheritance"
             }
           ]
         },
@@ -226,8 +230,12 @@
           "url": "https://www.youtube.com/watch?v=6bmM45jkMDY",
           "thumbnail": "https://i.ytimg.com/vi/6bmM45jkMDY/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Balázs Horváth argues that as AI handles code generation, the bottleneck shifts to human-centered work: stakeholder alignment, requirements elicitation, and value validation. He presents practical frameworks (story mapping, 4-question value framework, VAD thinking path) to bridge this gap, illustrated by VisualLabs' experience where only 4 of 21 hackathon agent ideas reached production.",
+          "summary": "Balázs Horváth argues that AI code generation has shifted the bottleneck from implementation to stakeholder management and requirements elicitation. He presents a framework using story mapping and value assessment to distinguish production agents from demos, grounded in a VisualLabs hackathon where 17 of 21 agent ideas were abandoned due to poor problem framing rather than technical limitations.",
           "concepts": [
+            {
+              "slug": "agent-development",
+              "label": "agent development"
+            },
             {
               "slug": "requirements-elicitation",
               "label": "requirements elicitation"
@@ -237,12 +245,12 @@
               "label": "story mapping"
             },
             {
-              "slug": "agent-development",
-              "label": "agent development"
+              "slug": "test-time-compute",
+              "label": "test-time compute"
             },
             {
-              "slug": "value-framework",
-              "label": "value framework"
+              "slug": "value-assessment",
+              "label": "value assessment"
             }
           ]
         }
@@ -263,11 +271,15 @@
           "url": "https://www.youtube.com/watch?v=zbmuiaPuiNM",
           "thumbnail": "https://i.ytimg.com/vi/zbmuiaPuiNM/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Cole Medin breaks down Google's 50-page whitepaper on agentic engineering for software development, arguing that the AI model is only 10% of success while the surrounding harness (context, tools, guardrails, verification) comprises the other 90%. The video positions agentic engineering as the future direction, contrasting it with \"vibe coding\" and emphasizing the shift from conductor to orchestrator roles for developers.",
+          "summary": "Cole Medin discusses Google's 50-page playbook on agentic engineering, arguing that the AI model choice is only 10% of success while the surrounding harness of context, tools, and verification determines 90%. The video covers the evolution from vibe coding to structured agentic engineering, the shift from conductor to orchestrator roles, and the economic implications of this approach.",
           "concepts": [
             {
               "slug": "agentic-engineering",
               "label": "agentic engineering"
+            },
+            {
+              "slug": "vibe-coding",
+              "label": "vibe coding"
             },
             {
               "slug": "context-engineering",
@@ -278,16 +290,12 @@
               "label": "harness engineering"
             },
             {
-              "slug": "vibe-coding",
-              "label": "vibe coding"
-            },
-            {
               "slug": "test-time-compute",
               "label": "test-time compute"
             },
             {
-              "slug": "sdlc",
-              "label": "SDLC"
+              "slug": "agent-architecture",
+              "label": "agent architecture"
             }
           ]
         },
@@ -298,23 +306,23 @@
           "url": "https://www.youtube.com/watch?v=JETG-4MmihY",
           "thumbnail": "https://i.ytimg.com/vi/JETG-4MmihY/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Walrus Memory is a decentralized memory layer that enables AI agents from different providers to share context across tools. It encrypts memories before storage, allows user ownership of keys, and supports fine-grained access control across multiple AI providers like Claude, Codex, and Pi.",
+          "summary": "Walrus Memory is a cross-tool memory layer that persists AI agent context across different LLM providers. It stores encrypted memories owned by the user, allowing different agents to access shared context regardless of which platform they run on.",
           "concepts": [
             {
-              "slug": "persistent-memory",
-              "label": "persistent memory"
+              "slug": "ai-memory",
+              "label": "AI memory"
             },
             {
-              "slug": "multi-agent-context",
-              "label": "multi-agent context"
+              "slug": "context-persistence",
+              "label": "context persistence"
             },
             {
               "slug": "encryption",
               "label": "encryption"
             },
             {
-              "slug": "access-control",
-              "label": "access control"
+              "slug": "multi-agent-systems",
+              "label": "multi-agent systems"
             }
           ]
         },
@@ -325,11 +333,11 @@
           "url": "https://www.youtube.com/watch?v=fYrPKhHouxs",
           "thumbnail": "https://i.ytimg.com/vi/fYrPKhHouxs/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Kimi K2.7 Code is an open-source, coding-focused agentic model developed by Moonshot AI. The reviewer notes it offers strong performance for its cost and parameter scale.",
+          "summary": "Kimi K2.7 Code is an open-source, coding-focused agentic model developed by Moonshot AI. The reviewer describes it as impressive for its price and size.",
           "concepts": [
             {
-              "slug": "agentic-models",
-              "label": "agentic models"
+              "slug": "agentic-model",
+              "label": "agentic model"
             },
             {
               "slug": "code-generation",
@@ -344,7 +352,7 @@
           "url": "https://www.youtube.com/watch?v=UztrFXaSWv0",
           "thumbnail": "https://i.ytimg.com/vi/UztrFXaSWv0/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Cole Medin discusses how AI engineers use self-prompting loops instead of manual prompting, where an orchestrator agent spins up worker agents to run tasks in parallel. He demonstrates this with a TypeScript dashboard for Pi loops that stores runs in a database and balances cost with reliability.",
+          "summary": "Loop engineering enables agents to prompt themselves iteratively rather than relying on manual prompting. An orchestrator agent spins up worker agents in parallel to execute tasks, with all runs persisted to a database for observability and debugging. This approach trades computational cost for reliability in agentic systems.",
           "concepts": [
             {
               "slug": "agentic-loops",
@@ -359,12 +367,8 @@
               "label": "test-time compute"
             },
             {
-              "slug": "loop-engineering",
-              "label": "loop engineering"
-            },
-            {
-              "slug": "parallel-agent-execution",
-              "label": "parallel agent execution"
+              "slug": "observability",
+              "label": "observability"
             }
           ]
         }
@@ -384,15 +388,15 @@
           "url": "https://www.youtube.com/watch?v=1HkqTlXbQmQ",
           "thumbnail": "https://i.ytimg.com/vi/1HkqTlXbQmQ/hqdefault.jpg",
           "kind": "tool",
-          "summary": "AI Jason discusses a secret project called Crabbox with a Codebase harness, available via GitHub repository for setup. The project is part of the AI Builder Club community and Superdesign platform offering.",
+          "summary": "AI Jason discusses OpenClaw Creator's new project involving Crabbox and a codebase harness. The video links to a GitHub repository with skills setup, an AI Builder Club course on loop engineering, and Superdesign.",
           "concepts": [
             {
               "slug": "codebase-harness",
               "label": "codebase harness"
             },
             {
-              "slug": "ai-development-workflow",
-              "label": "AI development workflow"
+              "slug": "loop-engineering",
+              "label": "loop engineering"
             }
           ]
         },
@@ -403,15 +407,15 @@
           "url": "https://www.youtube.com/watch?v=W6x-hb44C0c",
           "thumbnail": "https://i.ytimg.com/vi/W6x-hb44C0c/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Loop Engineer is a framework or tool for building AI agents. The content provides setup guidance, a GitHub template, and workshop materials for users to get started building their first AI agent.",
+          "summary": "AI Jason presents Loop Engineer, a tool for building AI agents, with a GitHub repository, workshop access, and integration with Superdesign. The video covers setup instructions and practical implementation guidance.",
           "concepts": [
             {
-              "slug": "ai-agents",
-              "label": "AI agents"
+              "slug": "agent",
+              "label": "agent"
             },
             {
-              "slug": "agentic-workflows",
-              "label": "agentic workflows"
+              "slug": "loop-engineering",
+              "label": "loop engineering"
             }
           ]
         },
@@ -422,27 +426,27 @@
           "url": "https://www.youtube.com/watch?v=ikH1--DSzMs",
           "thumbnail": "https://i.ytimg.com/vi/ikH1--DSzMs/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Video explains how to build proactive AI agents and self-improving company systems using AI loops. Covers use cases like autonomous ads optimization and SEO, and discusses tools like Loopany that enable this through memory and tooling.",
+          "summary": "The video covers how to build proactive AI agents and self-improving companies using autonomous feedback loops. It demonstrates practical use cases like autonomous ad optimization and SEO, emphasizing the role of memory and tool integration in enabling these systems.",
           "concepts": [
             {
               "slug": "proactive-agents",
               "label": "proactive agents"
             },
             {
+              "slug": "autonomous-loops",
+              "label": "autonomous loops"
+            },
+            {
               "slug": "self-improving-systems",
               "label": "self-improving systems"
             },
             {
-              "slug": "ai-loops",
-              "label": "AI loops"
+              "slug": "agentic-ai",
+              "label": "agentic AI"
             },
             {
-              "slug": "autonomous-optimization",
-              "label": "autonomous optimization"
-            },
-            {
-              "slug": "agent-memory",
-              "label": "agent memory"
+              "slug": "memory-systems",
+              "label": "memory systems"
             }
           ]
         },
@@ -453,15 +457,19 @@
           "url": "https://www.youtube.com/watch?v=rIs802-bXDY",
           "thumbnail": "https://i.ytimg.com/vi/rIs802-bXDY/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "AI Jason discusses emerging autonomous coding tools and features. The video covers the /goal feature for setting coding objectives, goal-buddy functionality, and mission exploration capabilities for executing longer-horizon tasks autonomously.",
+          "summary": "AI Jason discusses the /goal feature and autonomous coding workflows, presenting recent developments in agentic coding systems. The video covers setup, prompting strategies, and long-horizon task execution capabilities within coding frameworks.",
           "concepts": [
             {
-              "slug": "autonomous-agents",
-              "label": "autonomous agents"
+              "slug": "autonomous-coding",
+              "label": "autonomous coding"
             },
             {
-              "slug": "test-time-compute",
-              "label": "test-time compute"
+              "slug": "agent-architectures",
+              "label": "agent architectures"
+            },
+            {
+              "slug": "test-time-planning",
+              "label": "test-time planning"
             },
             {
               "slug": "code-generation",
@@ -486,7 +494,7 @@
           "url": "https://www.youtube.com/watch?v=6DKDgQ27smM",
           "thumbnail": "https://i.ytimg.com/vi/6DKDgQ27smM/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Caleb Writes Code discusses OpenAI's announcement of GPT 5.6, which faces government regulation as the AI industry matures. The video compares GPT 5.6 to Anthropic's Mythos 5 and Fable 5 models, both paused pending regulatory review. OpenAI is consolidating its model lineup to three offerings named Sol, Terra, and Luna.",
+          "summary": "Caleb Writes Code explains OpenAI's announcement of GPT 5.6 and discusses how government regulation is maturing the AI industry. The video compares GPT 5.6 with Anthropic's Mythos 5 and Fable 5 models, noting both face regulatory pauses, and highlights OpenAI's consolidation of models into three tiers: Sol, Terra, and Luna.",
           "concepts": [
             {
               "slug": "model-consolidation",
@@ -505,8 +513,12 @@
           "url": "https://www.youtube.com/watch?v=7gkaWaDEpHg",
           "thumbnail": "https://i.ytimg.com/vi/7gkaWaDEpHg/hqdefault.jpg",
           "kind": "technique",
-          "summary": "Caleb Writes Code explains the mechanics of generative pretrained transformers, covering self-attention, multi-head attention, feed-forward networks, positional embeddings, layer normalization, and residual connections. The video provides an overview of how foundational transformer-based models like GPT, Gemini, Opus, Kimi, Nemotron, and Qwen function at a fundamental level.",
+          "summary": "A video tutorial explaining how generative pretrained transformers work, covering self-attention, multi-head attention, feed forward networks, positional embeddings, layer normalization, and residual connections. The video demonstrates that GPT's basic mechanics are accessible to learn, using the example of models like Gemini, Opus, Kimi, Nemotron, and Qwen that rely on transformer architecture.",
           "concepts": [
+            {
+              "slug": "transformers",
+              "label": "Transformers"
+            },
             {
               "slug": "self-attention",
               "label": "self-attention"
@@ -516,20 +528,20 @@
               "label": "multi-head attention"
             },
             {
-              "slug": "feed-forward-networks",
-              "label": "feed-forward networks"
-            },
-            {
               "slug": "positional-embedding",
               "label": "positional embedding"
+            },
+            {
+              "slug": "feed-forward-network",
+              "label": "feed forward network"
             },
             {
               "slug": "layer-normalization",
               "label": "layer normalization"
             },
             {
-              "slug": "residual-connections",
-              "label": "residual connections"
+              "slug": "residual-connection",
+              "label": "residual connection"
             },
             {
               "slug": "token-embedding",
@@ -547,40 +559,36 @@
           "published": "2026-06-18T16:04:04+00:00",
           "url": "https://www.youtube.com/watch?v=Qd2bAzwH9uA",
           "thumbnail": "https://i.ytimg.com/vi/Qd2bAzwH9uA/hqdefault.jpg",
-          "kind": "technique",
-          "summary": "Caleb Writes Code explains Andrej Karpathy's Bigram Language Model, covering tokenization, embeddings, training, loss functions, backpropagation, and optimization. The video serves as foundational material for understanding GPT and transformer-based language models.",
+          "kind": "tool",
+          "summary": "Educational video explaining Andrej Karpathy's bigram language model as a pedagogical stepping stone toward GPT. Covers tokenization, embeddings, cross-entropy loss, softmax, and optimizer training to demonstrate core LLM mechanics.",
           "concepts": [
             {
               "slug": "bigram-language-model",
-              "label": "Bigram Language Model"
+              "label": "bigram language model"
             },
             {
               "slug": "tokenization",
-              "label": "Tokenization"
+              "label": "tokenization"
             },
             {
-              "slug": "embedding",
-              "label": "Embedding"
+              "slug": "embeddings",
+              "label": "embeddings"
             },
             {
-              "slug": "cross-entropy",
-              "label": "Cross Entropy"
+              "slug": "cross-entropy-loss",
+              "label": "cross-entropy loss"
             },
             {
               "slug": "softmax",
-              "label": "Softmax"
-            },
-            {
-              "slug": "logits",
-              "label": "Logits"
-            },
-            {
-              "slug": "backpropagation",
-              "label": "Backpropagation"
+              "label": "softmax"
             },
             {
               "slug": "adamw",
               "label": "AdamW"
+            },
+            {
+              "slug": "backpropagation",
+              "label": "backpropagation"
             }
           ]
         },
@@ -591,7 +599,7 @@
           "url": "https://www.youtube.com/watch?v=wzHXUtkoY-c",
           "thumbnail": "https://i.ytimg.com/vi/wzHXUtkoY-c/hqdefault.jpg",
           "kind": "tool",
-          "summary": "NVIDIA released Nemotron 3 series including Nano, Super, and Ultra models. The architecture combines hybrid mamba transformer design with latent mixture of experts and MTP mechanisms.",
+          "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra variants. The models combine hybrid Mamba transformer, Mixture of Experts (latent MoE), and multi-token prediction architectures.",
           "concepts": [
             {
               "slug": "hybrid-mamba-transformer",
@@ -602,12 +610,12 @@
               "label": "Mixture of Experts"
             },
             {
-              "slug": "mtp",
-              "label": "MTP"
-            },
-            {
               "slug": "latent-moe",
               "label": "Latent MoE"
+            },
+            {
+              "slug": "multi-token-prediction",
+              "label": "multi-token prediction"
             }
           ]
         }
@@ -621,25 +629,60 @@
       "blurb": "Official AWS tutorials, service deep dives, and developer demos.",
       "videos": [
         {
+          "videoId": "U2wmozx3uwM",
+          "title": "Containers on Amazon ECS with Mama J",
+          "published": "2026-06-29T20:02:38+00:00",
+          "url": "https://www.youtube.com/watch?v=U2wmozx3uwM",
+          "thumbnail": "https://i.ytimg.com/vi/U2wmozx3uwM/hqdefault.jpg",
+          "kind": "tool",
+          "summary": "AWS Developers video explaining containerization, Docker basics, and Amazon ECS orchestration. Covers the problem containers solve, VM vs container differences, ECS as an orchestrator, and Fargate vs EC2 deployment options with a shopping app example.",
+          "concepts": [
+            {
+              "slug": "containerization",
+              "label": "containerization"
+            },
+            {
+              "slug": "container-orchestration",
+              "label": "container orchestration"
+            },
+            {
+              "slug": "docker",
+              "label": "Docker"
+            },
+            {
+              "slug": "auto-scaling",
+              "label": "auto-scaling"
+            }
+          ]
+        },
+        {
           "videoId": "BAVrwcPDa-k",
           "title": "System Design for Beginners (Full Guide)",
           "published": "2026-06-26T18:30:34+00:00",
           "url": "https://www.youtube.com/watch?v=BAVrwcPDa-k",
           "thumbnail": "https://i.ytimg.com/vi/BAVrwcPDa-k/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "AWS Developers published a system design tutorial for beginners that advocates a seven-step problem-first framework: requirements, traffic estimation, high-level components, API contracts, tech stack, and implementation constraints. The video frames system design interviews around solving the problem before selecting technology.",
+          "kind": "technique",
+          "summary": "AWS Developers presents a system design interview framework with seven sequential steps: requirements gathering, traffic estimation, high-level component design, API specification, tech stack selection, and implementation constraints. The approach emphasizes understanding the problem and business requirements before choosing technology.",
           "concepts": [
             {
               "slug": "system-design",
               "label": "system design"
             },
             {
-              "slug": "requirements-gathering",
-              "label": "requirements gathering"
+              "slug": "requirements-analysis",
+              "label": "requirements analysis"
             },
             {
               "slug": "capacity-planning",
               "label": "capacity planning"
+            },
+            {
+              "slug": "api-design",
+              "label": "API design"
+            },
+            {
+              "slug": "tech-stack-selection",
+              "label": "tech stack selection"
             }
           ]
         },
@@ -650,7 +693,7 @@
           "url": "https://www.youtube.com/watch?v=22E0bXQwwZ8",
           "thumbnail": "https://i.ytimg.com/vi/22E0bXQwwZ8/hqdefault.jpg",
           "kind": "technique",
-          "summary": "AWS Developers video explaining how tool calling transforms AI agents from chatbots that guess into functional systems with real-time data access. Covers tool architecture (schema, description, handler), the loop mechanism where models request tools and frameworks execute them, and the role of system prompts in tool selection.",
+          "summary": "Tool calling enables AI agents to request external resources and actions rather than generating responses from training data alone. The technique involves agents invoking tools via schema-based requests, framework execution, and loop iteration. System prompts determine when agents use tools appropriately, distinguishing agents from stateless chatbots.",
           "concepts": [
             {
               "slug": "tool-calling",
@@ -661,20 +704,16 @@
               "label": "AI agents"
             },
             {
+              "slug": "lost-in-the-middle",
+              "label": "lost in the middle"
+            },
+            {
               "slug": "system-prompts",
               "label": "system prompts"
             },
             {
-              "slug": "test-time-execution",
-              "label": "test-time execution"
-            },
-            {
-              "slug": "model-in-the-loop",
-              "label": "model-in-the-loop"
-            },
-            {
-              "slug": "lost-in-the-middle",
-              "label": "lost in the middle"
+              "slug": "mcp",
+              "label": "MCP"
             }
           ]
         },
@@ -685,7 +724,7 @@
           "url": "https://www.youtube.com/watch?v=PGrmbZ1TDmA",
           "thumbnail": "https://i.ytimg.com/vi/PGrmbZ1TDmA/hqdefault.jpg",
           "kind": "tool",
-          "summary": "Agent Toolkit for AWS is a framework that equips AI coding agents with up-to-date AWS documentation, best practices, and tested procedures. It improves agent success rates by providing access to current knowledge rather than relying on outdated general knowledge of AWS services.",
+          "summary": "Agent Toolkit for AWS equips AI coding agents with up-to-date documentation, best practices, and guardrails for AWS service integration. It improves agent success rates and reduces wasted effort by providing tested procedures instead of relying on outdated general knowledge.",
           "concepts": [
             {
               "slug": "ai-agents",
@@ -698,37 +737,6 @@
             {
               "slug": "guardrails",
               "label": "guardrails"
-            },
-            {
-              "slug": "agent-framework",
-              "label": "agent framework"
-            }
-          ]
-        },
-        {
-          "videoId": "sAYmTv6nKSY",
-          "title": "Running Claude Code on Amazon Bedrock",
-          "published": "2026-06-16T19:35:19+00:00",
-          "url": "https://www.youtube.com/watch?v=sAYmTv6nKSY",
-          "thumbnail": "https://i.ytimg.com/vi/sAYmTv6nKSY/hqdefault.jpg",
-          "kind": "tool",
-          "summary": "Claude Code is an agentic coding tool by Anthropic that automates development tasks. AWS Developers explains how to deploy and run Claude Code on Amazon Bedrock, ensuring data residency within AWS infrastructure while enabling cross-region inference, prompt caching, cost tracking, and content governance.",
-          "concepts": [
-            {
-              "slug": "agentic-systems",
-              "label": "agentic systems"
-            },
-            {
-              "slug": "prompt-caching",
-              "label": "prompt caching"
-            },
-            {
-              "slug": "content-governance",
-              "label": "content governance"
-            },
-            {
-              "slug": "cost-tracking",
-              "label": "cost tracking"
             }
           ]
         }
@@ -756,11 +764,15 @@
           "url": "https://www.youtube.com/watch?v=PbsocBPkoUc",
           "thumbnail": "https://i.ytimg.com/vi/PbsocBPkoUc/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "A video commentary examining code generation practices at Google and comparing OpenAI's Codex with Claude Code. The video segments discuss what \"vibing code\" (likely shorthand for generating or using code generation) means, current practices at Google, and speculative future trends through 2026.",
+          "summary": "Alberta Tech discusses whether Google engineers use code generation tools and compares OpenAI Codex and Claude Code capabilities. The video explores code generation adoption trends at Google across 2024-2026.",
           "concepts": [
             {
               "slug": "code-generation",
               "label": "code generation"
+            },
+            {
+              "slug": "llm-based-coding",
+              "label": "LLM-based coding"
             }
           ]
         },
@@ -813,32 +825,32 @@
       "videos": [
         {
           "videoId": "90UkODFm5P8",
-          "title": "What you must know before Mythos arrives | Nebulock, Damien Lewke",
+          "title": "AI Hackers Are Targeting Ordinary People Now, Not Just Big Tech | Nebulock, Damien Lewke",
           "published": "2026-06-29T15:00:33+00:00",
           "url": "https://www.youtube.com/watch?v=90UkODFm5P8",
           "thumbnail": "https://i.ytimg.com/vi/90UkODFm5P8/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Damien Lewke argues that AI has drastically reduced the barrier to launching cyberattacks, enabling small teams with just a GPU to execute sophisticated campaigns that previously required elite teams and years of expertise. He outlines the cyber kill chain stages, identifies three behavioral signals that reveal active attackers inside networks, and advocates for an \"assume breach\" defensive posture as the only realistic security model.",
+          "summary": "Damien Lewke, founder of Nebulock, argues that AI has drastically lowered the barrier to entry for cyberattacks, enabling small teams with a GPU to execute complex attacks that previously required elite specialists. He advocates for an \"assume breach\" defensive posture and outlines behavioral signals that indicate attackers are already inside networks.",
           "concepts": [
             {
-              "slug": "automation-of-cyber-kill-chain",
-              "label": "automation of cyber kill chain"
-            },
-            {
-              "slug": "assume-breach",
-              "label": "assume breach"
+              "slug": "cyber-kill-chain",
+              "label": "cyber kill chain"
             },
             {
               "slug": "threat-hunting",
               "label": "threat hunting"
             },
             {
-              "slug": "behavioral-anomaly-detection",
-              "label": "behavioral anomaly detection"
+              "slug": "assume-breach",
+              "label": "assume breach"
             },
             {
-              "slug": "attack-cost-reduction",
-              "label": "attack cost reduction"
+              "slug": "ai-automation",
+              "label": "AI automation"
+            },
+            {
+              "slug": "attack-detection",
+              "label": "attack detection"
             }
           ]
         },
@@ -849,27 +861,23 @@
           "url": "https://www.youtube.com/watch?v=bVSzAkuuymw",
           "thumbnail": "https://i.ytimg.com/vi/bVSzAkuuymw/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Amit Bendov, CEO of Gong, argues that code alone is insufficient competitive moat; customer context, proprietary data, and operational complexity at scale provide the real advantage. He contends that fears of AI disrupting SaaS companies are overstated and that the best AI products succeed by creating raving fans rather than simply satisfying customers.",
+          "summary": "Amit Bendov, co-founder and CEO of Gong, argues that software moats depend on customer context, proprietary data, and operational complexity rather than code alone. He contends that fears of AI destroying SaaS companies are exaggerated, and that the best AI products create devoted customers.",
           "concepts": [
             {
-              "slug": "proprietary-data",
-              "label": "proprietary data"
+              "slug": "meeting-assistant",
+              "label": "meeting assistant"
             },
             {
-              "slug": "product-experience",
-              "label": "product experience"
-            },
-            {
-              "slug": "operational-complexity",
-              "label": "operational complexity"
-            },
-            {
-              "slug": "ai-products",
-              "label": "AI products"
+              "slug": "self-driving-revenue-system",
+              "label": "self-driving revenue system"
             },
             {
               "slug": "customer-context",
               "label": "customer context"
+            },
+            {
+              "slug": "proprietary-data",
+              "label": "proprietary data"
             }
           ]
         },
@@ -880,11 +888,11 @@
           "url": "https://www.youtube.com/watch?v=9eHNYMuvQjA",
           "thumbnail": "https://i.ytimg.com/vi/9eHNYMuvQjA/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Catie Cuan, a Stanford roboticist, argues that while a transformative moment for robotics is coming, the current focus on humanoid robots led by companies like 1X and Unitree is myopic. She contends that designing robots for human interaction and delight, rather than utility alone, will be critical to shaping the billions of robots entering our lives.",
+          "summary": "Catie Cuan argues that a \"ChatGPT Moment\" is coming for robotics but the focus on humanoid form factors by companies like 1X and Unitree may be limiting. She contends that future robot design should prioritize human interaction and delight over utility alone, with billions of robots expected to enter everyday life.",
           "concepts": [
             {
-              "slug": "humanoid-robots",
-              "label": "humanoid robots"
+              "slug": "humanoid-robotics",
+              "label": "humanoid robotics"
             },
             {
               "slug": "robot-design",
@@ -903,19 +911,19 @@
           "url": "https://www.youtube.com/watch?v=5ehxutchdXU",
           "thumbnail": "https://i.ytimg.com/vi/5ehxutchdXU/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Eléonore Crespo, co-founder of Pigment, discusses how her AI performance management platform competes against much larger enterprise software giants. She shares lessons from observing Google's reliance on spreadsheets for strategic planning and explains the strategic advantage of building a full platform from day one rather than shipping single features.",
+          "summary": "Eléonore Crespo, co-founder of Pigment, discusses how the startup competes against much larger enterprise software incumbents by building a complete platform from day one rather than a single feature. She explains Pigment's growth strategy centered on gaining trust through high-profile customer endorsements, why legacy spreadsheet-based planning fails at scale, and her hiring philosophy focused on raising organizational standards.",
           "concepts": [
             {
-              "slug": "enterprise-software",
-              "label": "enterprise software"
+              "slug": "enterprise-sales",
+              "label": "enterprise sales"
             },
             {
-              "slug": "business-intelligence",
-              "label": "business intelligence"
+              "slug": "platform-strategy",
+              "label": "platform strategy"
             },
             {
-              "slug": "data-consolidation",
-              "label": "data consolidation"
+              "slug": "hiring-philosophy",
+              "label": "hiring philosophy"
             }
           ]
         }
@@ -930,86 +938,78 @@
       "blurb": "AI automation and workflow builds for real projects.",
       "videos": [
         {
-          "videoId": "20GcuzdHR24",
-          "title": "Slash SaaS Costs: Build Your Own AI CRM with Chinese Models! #shorts",
-          "published": "2026-06-29T18:03:32+00:00",
-          "url": "https://www.youtube.com/watch?v=20GcuzdHR24",
-          "thumbnail": "https://i.ytimg.com/vi/20GcuzdHR24/hqdefault.jpg",
+          "videoId": "znesOxyUs90",
+          "title": "Anthropic vs. Microsoft: The AI Agent Integration Battle! #shorts",
+          "published": "2026-06-30T08:04:36+00:00",
+          "url": "https://www.youtube.com/watch?v=znesOxyUs90",
+          "thumbnail": "https://i.ytimg.com/vi/znesOxyUs90/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Organizations are shifting away from expensive SaaS platforms like CRMs to build proprietary AI-powered alternatives. Chinese AI models are presented as cost-effective alternatives for these system overhauls.",
-          "concepts": [
-            {
-              "slug": "cost-optimization",
-              "label": "cost optimization"
-            },
-            {
-              "slug": "model-deployment",
-              "label": "model deployment"
-            }
-          ]
-        },
-        {
-          "videoId": "HcXdS7MoF8M",
-          "title": "AI is KILLING your SaaS! Here's WHY. #shorts",
-          "published": "2026-06-29T16:01:20+00:00",
-          "url": "https://www.youtube.com/watch?v=HcXdS7MoF8M",
-          "thumbnail": "https://i.ytimg.com/vi/HcXdS7MoF8M/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "AI agents are evolving rapidly and pose a competitive threat to traditional SaaS businesses. The video discusses how companies need to adapt to survive in a changing AI-driven landscape.",
+          "summary": "Anthropic seeks direct Teams integration while Microsoft pursues the agent market. The piece questions whether Microsoft's ecosystem strategy will dominate in direct competition.",
           "concepts": [
             {
               "slug": "ai-agents",
               "label": "AI agents"
-            },
-            {
-              "slug": "agent-systems",
-              "label": "agent systems"
             }
           ]
         },
         {
-          "videoId": "TqFRswLkdlA",
-          "title": "Slash AI Costs: Smart Model Choice for Max ROAI! #shorts",
-          "published": "2026-06-29T14:04:29+00:00",
-          "url": "https://www.youtube.com/watch?v=TqFRswLkdlA",
-          "thumbnail": "https://i.ytimg.com/vi/TqFRswLkdlA/hqdefault.jpg",
+          "videoId": "yKsGWa2u1wc",
+          "title": "Why China's AI Models Are Taking Over: CHEAPER & FASTER! #shorts",
+          "published": "2026-06-30T05:55:35+00:00",
+          "url": "https://www.youtube.com/watch?v=yKsGWa2u1wc",
+          "thumbnail": "https://i.ytimg.com/vi/yKsGWa2u1wc/hqdefault.jpg",
           "kind": "opinion",
-          "summary": "Cyril Imhof advocates for strategic model selection based on task complexity to optimize Return on AI Investment (ROAI) and reduce costs. The core argument is that not all tasks require powerful models, and matching model complexity to actual needs improves efficiency.",
+          "summary": "Companies are increasingly adopting Chinese AI models due to cost savings and data sovereignty assurances. The commentary presents this as a market shift driven by economic and regulatory advantages over established providers.",
           "concepts": [
-            {
-              "slug": "model-selection",
-              "label": "model selection"
-            },
-            {
-              "slug": "cost-optimization",
-              "label": "cost optimization"
-            },
-            {
-              "slug": "inference-efficiency",
-              "label": "inference efficiency"
-            }
-          ]
-        },
-        {
-          "videoId": "OkkfA0slYzQ",
-          "title": "AI Ecosystems: Claude vs. SAP/Salesforce & Living Artifacts Explained! #shorts",
-          "published": "2026-06-29T11:54:26+00:00",
-          "url": "https://www.youtube.com/watch?v=OkkfA0slYzQ",
-          "thumbnail": "https://i.ytimg.com/vi/OkkfA0slYzQ/hqdefault.jpg",
-          "kind": "opinion",
-          "summary": "The video explores trade-offs between expensive AI queries and self-updating living artifacts as approaches to dynamic system integration. It examines the cost-effectiveness of different AI ecosystem architectures for enterprise systems.",
-          "concepts": [
-            {
-              "slug": "living-artifacts",
-              "label": "living artifacts"
-            },
             {
               "slug": "cost-efficiency",
               "label": "cost efficiency"
             },
             {
-              "slug": "ai-integration",
-              "label": "AI integration"
+              "slug": "data-sovereignty",
+              "label": "data sovereignty"
+            }
+          ]
+        },
+        {
+          "videoId": "5M_vK3Jm8_E",
+          "title": "AI Digital Employee? Claude Tagging & The AI Market Revealed! #shorts",
+          "published": "2026-06-30T03:58:33+00:00",
+          "url": "https://www.youtube.com/watch?v=5M_vK3Jm8_E",
+          "thumbnail": "https://i.ytimg.com/vi/5M_vK3Jm8_E/hqdefault.jpg",
+          "kind": "opinion",
+          "summary": "The video discusses AI assistants like Claude being integrated into workplace collaboration platforms like Slack and Microsoft Teams as digital employees. It covers the evolving AI market and introduces the concept of loop engineering as an innovative approach to AI-assisted work.",
+          "concepts": [
+            {
+              "slug": "loop-engineering",
+              "label": "loop engineering"
+            },
+            {
+              "slug": "ai-agents",
+              "label": "AI agents"
+            }
+          ]
+        },
+        {
+          "videoId": "rG7R4QJB-PY",
+          "title": "AI Frontier vs Open Source: The Gap is CLOSING FAST! #shorts",
+          "published": "2026-06-30T01:59:31+00:00",
+          "url": "https://www.youtube.com/watch?v=rG7R4QJB-PY",
+          "thumbnail": "https://i.ytimg.com/vi/rG7R4QJB-PY/hqdefault.jpg",
+          "kind": "opinion",
+          "summary": "Cyril Imhof argues that the performance gap between open-source and frontier AI models is closing rapidly, with the pace of innovation accelerating from annual to monthly intervals. This reflects a shift in the competitive landscape of AI development.",
+          "concepts": [
+            {
+              "slug": "open-source-ai",
+              "label": "open-source AI"
+            },
+            {
+              "slug": "frontier-models",
+              "label": "frontier models"
+            },
+            {
+              "slug": "model-convergence",
+              "label": "model convergence"
             }
           ]
         }

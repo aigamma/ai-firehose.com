@@ -6,9 +6,9 @@
   "published": "2026-04-30T02:16:18+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Google released new TPU variants: the 8t for training and 8i for inference. These ASICs are served via Virgo Network to enable high throughput, and the video analyzes their scaling economics compared to NVIDIA GPUs for training and serving large language models.",
+  "summary": "Google released TPU 8t for training and TPU 8i for inference, served via Virgo Network for high throughput. The video compares these ASICs with general-purpose GPUs and discusses how scaling strategies from major vendors affect token economics and LLM serving costs.",
   "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
-  "wh": "3b6de4fdb084ce62",
+  "wh": "f2517def6407ec4f",
   "key_points": [
     "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
     "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
@@ -64,12 +64,16 @@
       "label": "scaling"
     },
     {
-      "slug": "inference",
-      "label": "inference"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
-      "slug": "post-training",
-      "label": "post-training"
+      "slug": "custom-silicon",
+      "label": "custom silicon"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "J02-39xtlt4",
       "title": "Google strikes back! Gemini Omni, AI glasses, new models",
       "channel": "AI Search",
-      "score": 0.639
+      "score": 0.659
     },
     {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.627
-    },
-    {
-      "id": "YiIrnYalHS4",
-      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
-      "channel": "AI Revolution",
-      "score": 0.612
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.619
     },
     {
       "id": "1uypL1oNChI",
       "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
       "channel": "AICodeKing",
-      "score": 0.61
+      "score": 0.59
     },
     {
-      "id": "AoisAy_LGpI",
-      "title": "What's new in Cloud Run",
-      "channel": "Google Cloud Tech",
-      "score": 0.608
+      "id": "WLtCHXdHTF0",
+      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
+      "channel": "Better Stack",
+      "score": 0.587
     },
     {
-      "id": "cS0Tm6ddnsQ",
-      "title": "GPT-5.6 about to DROP",
-      "channel": "Wes Roth",
-      "score": 0.605
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
+      "score": 0.586
+    },
+    {
+      "id": "wzHXUtkoY-c",
+      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
+      "channel": "Caleb Writes Code",
+      "score": 0.585
     }
   ]
 }

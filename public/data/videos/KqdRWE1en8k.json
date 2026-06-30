@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Headroom is an open-source tool that compresses inputs to LLMs using content-type-aware compressors and locally trained models, reducing token usage by 60-95%. Built by a Netflix engineer, it keeps compression local and uses breadcrumb hashing for on-demand retrieval of full original content.",
   "writeup": "Headroom is an open-source token-compression proxy, built by Netflix senior developer Tejas Chopra, that intercepts agent tool-call output before it reaches the LLM and compresses it by 60 to 95% using content-aware strategies. The core insight is that most tool-call payloads are redundant: build logs are mostly passing tests, JSON arrays are mostly normal rows, and log files repeat the same info line hundreds of times. Reversibility is the key design decision: Headroom embeds a hash breadcrumb in each compressed message so the model can request full data on demand, though each such retrieval adds a round-trip and can erase the savings if triggered too often.",
-  "wh": "91785e39fd6b5ba5",
+  "wh": "63a14065ed150635",
   "key_points": [
     "Headroom uses content-type detection to apply different compression strategies: statistical summarization for repetitive log lines (removing 419 similar info entries in the demo), a syntax-tree-aware compressor for code files, and a locally-run model called Compress Base, trained specifically for plain-text compression.",
     "In the demo against a log-analysis task, Headroom reduced a 17,000-plus-token tool response by 98%, producing a compressed representation that Claude used correctly to identify errors and root causes, with the full data available via hash retrieval if needed.",
@@ -64,12 +64,12 @@
       "label": "compression"
     },
     {
-      "slug": "token-efficiency",
-      "label": "token efficiency"
+      "slug": "token-optimization",
+      "label": "token optimization"
     },
     {
-      "slug": "inference-optimization",
-      "label": "inference optimization"
+      "slug": "local-inference",
+      "label": "local inference"
     },
     {
       "slug": "rag",
@@ -81,13 +81,7 @@
       "id": "dRmWYHuIJxM",
       "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
       "channel": "AI Engineer",
-      "score": 0.658
-    },
-    {
-      "id": "uiP88SpCi1Q",
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "channel": "AI Engineer",
-      "score": 0.632
+      "score": 0.639
     },
     {
       "id": "iOZf50YffCE",
@@ -102,16 +96,22 @@
       "score": 0.615
     },
     {
-      "id": "7jrZ4JqeGyY",
-      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
-      "channel": "AI Revolution",
-      "score": 0.597
+      "id": "8tOfGkddPNM",
+      "title": "Claude + NotebookLM: Ultimate AI Automation Workflow to Work 10x Faster",
+      "channel": "AI Master",
+      "score": 0.59
     },
     {
       "id": "aanqEqQwjNU",
       "title": "Your AI Agent Is Missing Half the Internet… Until Now (Agent-Reach)",
       "channel": "Better Stack",
-      "score": 0.586
+      "score": 0.589
+    },
+    {
+      "id": "3hwGMTKvzMs",
+      "title": "AI API Costs Are Skyrocketing! Get Ready for the SHOCK! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.588
     }
   ]
 }

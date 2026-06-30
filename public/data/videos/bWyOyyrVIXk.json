@@ -6,9 +6,9 @@
   "published": "2026-05-14T18:21:40+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "Sualeh Asif interviews Simon Eskildsen on scaling Shopify infrastructure, the cyclical emergence of new database companies, engineering principles for building high-performance systems, and the role of AI coding agents. Topics include flash sales infrastructure, the evolution of top-tier infrastructure teams in the 2010s, lessons from on-call culture, and hiring P99 engineers.",
+  "summary": "Simon Eskildsen (CEO of turbopuffer) and Sualeh Asif discuss infrastructure scaling at Shopify, database company emergence patterns, and the role of AI coding agents. Topics include engineering principles for reliability, the Napkin Math blog, and hiring top engineering talent in the AI era.",
   "writeup": "A Shopify infrastructure veteran recounts scaling MySQL and Ruby-on-Rails through the 2010s, tracing the concrete failure modes that shaped modern production engineering. The through-line is that high-traffic commerce spikes, especially unpredictable celebrity flash sales jumping from 1,000 to 100,000 requests per second, forced Shopify to invent load shedding, proxy-layer caching, and chaos-injection tooling that later became open-source standards. Cross-company knowledge sharing between Shopify, GitHub, Zendesk, Intercom, and SoundCloud drove most of these advances, yet the lessons lived in phone calls and people's heads, not documentation.",
-  "wh": "127a5302ab0fc48c",
+  "wh": "1a5077948c7e19ae",
   "key_points": [
     "Shopify ran 30,000 to 40,000 open MySQL connections in the Ruby SaaS era because each process required its own connection; the absence of open-source proxies forced the team to hand-roll connection-reduction tricks before tools like ProxySQL existed.",
     "Flash sales (Kylie Jenner, Kanye sneaker drops) caused inventory row lock contention on a single MySQL SKU record as hundreds of thousands of concurrent buyers fought for perhaps 10,000 units, and those random events, unlike Black Friday, gave no lead time to provision capacity.",
@@ -56,58 +56,66 @@
   "ih": "cb48ca314da51667",
   "concepts": [
     {
-      "slug": "scaling",
-      "label": "scaling"
+      "slug": "flash-sales",
+      "label": "flash sales"
     },
     {
-      "slug": "infrastructure",
-      "label": "infrastructure"
+      "slug": "auto-scaling",
+      "label": "auto-scaling"
     },
     {
-      "slug": "databases",
-      "label": "databases"
+      "slug": "on-call-systems",
+      "label": "on-call systems"
     },
     {
-      "slug": "ai-coding",
-      "label": "AI coding"
+      "slug": "system-design",
+      "label": "system design"
+    },
+    {
+      "slug": "ai-coding-tools",
+      "label": "AI coding tools"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
     {
-      "id": "zxvyO5vnknI",
-      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
-      "channel": "Cursor",
-      "score": 0.605
-    },
-    {
       "id": "ByOF8qByGHU",
       "title": "What Is Your Job Now, Farhan Thawar | Compile 26",
       "channel": "Cursor",
-      "score": 0.58
-    },
-    {
-      "id": "7awKinJhGPo",
-      "title": "Power intelligent agents with AI-native databases",
-      "channel": "Google Cloud Tech",
-      "score": 0.534
+      "score": 0.623
     },
     {
       "id": "spNAUEgq_A8",
       "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
       "channel": "AI Engineer",
-      "score": 0.525
+      "score": 0.581
+    },
+    {
+      "id": "zxvyO5vnknI",
+      "title": "Agents and Infrastructure, Sam Lambert | Compile 26",
+      "channel": "Cursor",
+      "score": 0.572
     },
     {
       "id": "T0HhO4YtTfE",
       "title": "AI System Design: From Idea to Production - Apoorva Joshi, MongoDB",
       "channel": "AI Engineer",
-      "score": 0.519
+      "score": 0.557
+    },
+    {
+      "id": "7awKinJhGPo",
+      "title": "Power intelligent agents with AI-native databases",
+      "channel": "Google Cloud Tech",
+      "score": 0.544
     },
     {
       "id": "j3rmJfWIRxM",
       "title": "More Developers =/= Faster? Why Teams DON'T Scale! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.519
+      "score": 0.54
     }
   ]
 }

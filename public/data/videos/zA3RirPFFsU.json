@@ -6,9 +6,9 @@
   "published": "2026-06-11T15:19:44+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Model Context Protocol (MCP) is a standard for enabling AI applications to connect with external tools, APIs, databases, and services through a common interface. The protocol uses JSON-RPC for client-server communication and supports both local and remote server architectures, becoming essential for building multi-agent AI systems.",
+  "summary": "Model Context Protocol (MCP) is a standard protocol enabling AI applications to connect with external tools, APIs, databases, and services. The protocol defines client-server architecture with JSON-RPC communication, supporting both local and remote connections through STDIO and HTTP transport mechanisms.",
   "writeup": "A ground-up introduction to the Model Context Protocol (MCP) that builds the case through two concrete pain points: the explosion of bespoke API integration code in AI apps, and the inability to reuse that code across agentic frameworks such as LangGraph, OpenAI Agent SDK, and CrewAI. MCP resolves both by introducing a uniform client/server split where the AI app embeds only a thin MCP client that speaks JSON-RPC, while MCP servers encapsulate all integration complexity for any external resource, including REST APIs, databases, local files, GitHub, and internal systems. The through-line is portability and separation of concerns: one MCP server can be reused unchanged across every framework, and any number of servers can be composed inside a single multi-agent application.",
-  "wh": "6341844f86506ae4",
+  "wh": "71f54ca186fa066e",
   "key_points": [
     "Without MCP, each external service (weather, Google Drive, GitHub, PostgreSQL) requires its own bespoke integration code written to that API's request and response format, and that code must be rewritten from scratch for every agentic framework (LangGraph, OpenAI Agent SDK, CrewAI, Agno) the developer adopts.",
     "MCP splits the integration problem into two roles: an MCP client embedded in the AI application that handles only connection establishment, and an MCP server that owns all API authentication, request formatting, and response parsing, leaving the AI app with minimal integration surface.",
@@ -67,8 +67,12 @@
       "label": "AI agents"
     },
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "grid-architecture",
+      "label": "grid architecture"
+    },
+    {
+      "slug": "api-integration",
+      "label": "API integration"
     }
   ],
   "similar": [
@@ -76,37 +80,37 @@
       "id": "cGuyrANVi4A",
       "title": "How Model Context Protocol (MCP) actually works",
       "channel": "Google Cloud Tech",
-      "score": 0.822
+      "score": 0.816
     },
     {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.678
+      "score": 0.663
     },
     {
       "id": "CgwslR4pgL4",
       "title": "Governed agents: Looker + MCP explained",
       "channel": "Google Cloud Tech",
-      "score": 0.637
+      "score": 0.621
     },
     {
       "id": "Gh1E9VgXZWs",
       "title": "Bridging Design Systems and Code with MCP and AI Agents",
       "channel": "IBM Technology",
-      "score": 0.616
+      "score": 0.585
     },
     {
       "id": "yeRvxe7MRj4",
       "title": "Your first agent configuration with MCP and Looker",
       "channel": "Google Cloud Tech",
-      "score": 0.586
+      "score": 0.574
     },
     {
       "id": "ghJmWQCIHRM",
       "title": "The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google",
       "channel": "AI Engineer",
-      "score": 0.569
+      "score": 0.563
     }
   ]
 }

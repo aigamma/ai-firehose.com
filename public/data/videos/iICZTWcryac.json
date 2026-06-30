@@ -6,9 +6,9 @@
   "published": "2026-06-04T00:00:04+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "Cole Medin demonstrates a workflow that pairs Claude Opus for planning and reasoning with Gemini 3.5 Flash for frontend design and code generation. The approach routes each phase of development to the model best suited for it, using handoff documents to coordinate between models and achieve both quality and cost efficiency in full-stack app development.",
+  "summary": "Cole Medin describes a workflow that routes frontend development tasks between Claude Opus and Gemini 3.5 Flash, leveraging Opus for planning and reasoning while using Gemini for UI design due to superior visual output quality and lower cost. The approach demonstrates practical composition of multiple models within a single development pipeline.",
   "writeup": "This video presents a multi-provider AI coding workflow that deliberately splits tasks between Gemini 2.5 Flash and Claude Opus 4.8, assigning each model to the work it does best. Gemini 2.5 Flash handles front-end UI generation, where it produces unusually polished, human-looking interfaces in one shot; Opus 4.8 handles planning, page copy, and backend integrations, where stronger reasoning prevents hallucination. Each step runs as a separate coding agent session and passes a structured handoff document to the next node, making provider-mixing possible and enabling focused, single-task context windows. The result is a one-shot workflow capable of producing non-trivial full-stack MVPs without either model being asked to do more than it handles well.",
-  "wh": "45378510e99681c8",
+  "wh": "9d27e423d41976f8",
   "key_points": [
     "Gemini 2.5 Flash produces front-end UIs that are noticeably less \"AI-looking\" than outputs from Claude Code, Lovable, or Bolt in one-shot generation, but its page copy and reasoning quality trails Opus 4.8 on real-world benchmarks and in practice.",
     "Opus 4.8 is used for planning, page copy accuracy, and full-stack integrations precisely because its reasoning superiority prevents the hallucinated content that Gemini 2.5 Flash produces when asked to handle those tasks.",
@@ -52,24 +52,20 @@
   "ih": "21223fa930b89eee",
   "concepts": [
     {
-      "slug": "model-compression",
-      "label": "model compression"
+      "slug": "multi-model-workflows",
+      "label": "multi-model workflows"
     },
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "routing-by-capability",
-      "label": "routing by capability"
+      "slug": "model-routing",
+      "label": "model routing"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
-      "slug": "frontend-generation",
-      "label": "frontend generation"
+      "slug": "test-time-composition",
+      "label": "test-time composition"
     }
   ],
   "similar": [
@@ -77,37 +73,37 @@
       "id": "Xh1z23uBZo0",
       "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.896
+      "score": 0.885
     },
     {
       "id": "2ZwO6LhC0SU",
       "title": "Claude Fable 5 Just Changed Website Design Forever",
       "channel": "Jack Roberts",
-      "score": 0.619
+      "score": 0.643
+    },
+    {
+      "id": "C1dS-oFoyhk",
+      "title": "Plan with Claude Opus, Build with Kimi K2.6? LIVE Mixed-Provider Benchmark",
+      "channel": "Cole Medin",
+      "score": 0.607
+    },
+    {
+      "id": "bx8HO1qnoJc",
+      "title": "GLM-5.2 + OpenDesign: SOTA CHEAP DESIGN SYSTEM! This is AWESOME!",
+      "channel": "AICodeKing",
+      "score": 0.604
+    },
+    {
+      "id": "oGE_Dwz-rMk",
+      "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
+      "channel": "Cole Medin",
+      "score": 0.602
     },
     {
       "id": "8tOfGkddPNM",
       "title": "Claude + NotebookLM: Ultimate AI Automation Workflow to Work 10x Faster",
       "channel": "AI Master",
-      "score": 0.616
-    },
-    {
-      "id": "kn9Gh5HWqQs",
-      "title": "NEW Gemini Features Explained — How to Use Google’s Latest AI Upgrade",
-      "channel": "AI Master",
-      "score": 0.603
-    },
-    {
-      "id": "Q_K3k_ge8NA",
-      "title": "Claude Code just Changed Website Design Forever",
-      "channel": "Jack Roberts",
-      "score": 0.602
-    },
-    {
-      "id": "sBF3UumkL4Y",
-      "title": "9 Claude Code Plugins to Build 10x Faster",
-      "channel": "Austin Marchese",
-      "score": 0.599
+      "score": 0.596
     }
   ]
 }

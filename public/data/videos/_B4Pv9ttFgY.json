@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Michael Hablich describes lessons from building Chrome DevTools MCP for agents, including decomposing monolithic tools into focused ones, rewriting error messages for agent self-healing, and measuring interface efficiency via tokens per successful outcome. The work emphasizes tool discoverability and safety considerations like prompt injection resistance.",
   "writeup": "Michael Hablich, Chrome DevTools PM at Google, presents four engineering lessons from building a purpose-built MCP server that lets agents (Gemini CLI, Claude Code, Codex) automate browser debugging tasks like performance tracing and layout diagnosis. The central insight is that agents and humans share the same goals but have fundamentally different cognitive bottlenecks: humans need visual layout and color, while agents need semantic summaries and tight tool surfaces to avoid context-window collapse. The talk is grounded in a concrete failure (throwing 50,000-line JSON trace files at models and blowing the context window) and the practical instrumentation, token-efficiency metrics, and error-recovery patterns the team developed in response.",
-  "wh": "b2257970dc306fb5",
+  "wh": "580b1e2650196c28",
   "key_points": [
     "Throwing raw trace files at agents fails: a Chrome performance trace is tens of megabytes and roughly 50,000 lines of JSON, which blows through model context windows; the fix was returning structured Markdown semantic summaries with metrics like Largest Contentful Paint and INP instead of the raw data, pointing the agent at the right sentence rather than forcing it to read the whole book.",
     "Agents are a distinct user class with their own cognitive bottlenecks: where humans rely on visual complexity (color, layout) to find signal, agents are constrained by token limits and tool-call count, so a separate purpose-built interface is warranted rather than retrofitting the human-facing DevTools.",
@@ -56,8 +56,8 @@
       "label": "agent orchestration"
     },
     {
-      "slug": "skill-composition",
-      "label": "skill composition"
+      "slug": "tool-use",
+      "label": "tool use"
     },
     {
       "slug": "semantic-summaries",
@@ -96,20 +96,20 @@
       "score": 0.649
     },
     {
-      "id": "uiP88SpCi1Q",
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "channel": "AI Engineer",
-      "score": 0.641
-    },
-    {
       "id": "so9l_MwS2yg",
       "title": "Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS",
       "channel": "AI Engineer",
       "score": 0.638
     },
     {
-      "id": "4uFVSLgD2Q4",
-      "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
+      "id": "C5zYVlBsHLQ",
+      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
+      "channel": "Google Cloud Tech",
+      "score": 0.633
+    },
+    {
+      "id": "DqtmZE6Hl0g",
+      "title": "The Prompt is the Platform - Dominik Tornow, Resonate HQ",
       "channel": "AI Engineer",
       "score": 0.627
     }

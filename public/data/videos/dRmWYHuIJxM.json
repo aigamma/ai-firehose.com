@@ -6,13 +6,13 @@
   "published": "2026-06-28T22:30:29+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Tesco built a local code retrieval layer using AST-aware chunking, vector search combined with keyword matching, and lightweight relationship tracking to reduce tokens sent to AI coding agents by 94%. The system prioritizes context optimization over model tuning and includes LLM-based scoring with heuristic fallbacks to handle retrieval quality.",
+  "summary": "Tesco built a local code retrieval layer using AST-aware chunking and hybrid vector/keyword search to reduce tokens sent to AI coding models from 45,000 to 5,000 per query. The system achieved 94% token reduction with faster responses and improved accuracy by optimizing context selection instead of model parameters.",
   "writeup": "This talk from Tesco's Rajkumar Sakthivel details a local code retrieval layer that cut tokens sent to AI coding agents by 94%. The architecture combines AST-aware chunking, vector search paired with keyword matching, and lightweight relationship tracking, with LLM-based scoring backed by heuristic fallbacks to manage retrieval quality. The central argument is that optimizing the context fed to a model matters more than tuning the model itself, which directly addresses the cost and efficiency pressures of running coding agents at scale.",
-  "wh": "761df6ddb36efc94",
+  "wh": "eb037a00bf5da638",
   "concepts": [
     {
-      "slug": "video-generation",
-      "label": "video generation"
+      "slug": "code-indexing",
+      "label": "code indexing"
     },
     {
       "slug": "ast-aware-chunking",
@@ -23,12 +23,20 @@
       "label": "vector search"
     },
     {
-      "slug": "inference-optimization",
-      "label": "inference optimization"
+      "slug": "hybrid-retrieval",
+      "label": "hybrid retrieval"
     },
     {
-      "slug": "code-indexing",
-      "label": "code indexing"
+      "slug": "token-optimization",
+      "label": "token optimization"
+    },
+    {
+      "slug": "local-inference",
+      "label": "local inference"
+    },
+    {
+      "slug": "data-selection",
+      "label": "data selection"
     }
   ],
   "similar": [
@@ -36,37 +44,37 @@
       "id": "uiP88SpCi1Q",
       "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
       "channel": "AI Engineer",
-      "score": 0.679
+      "score": 0.646
+    },
+    {
+      "id": "w1oLs1bz4PI",
+      "title": "Run Powerful AI Locally: The Future is 18 Months Away! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.643
+    },
+    {
+      "id": "nPc0hIreNaQ",
+      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
+      "channel": "Cursor",
+      "score": 0.643
     },
     {
       "id": "4wMRXmLpdA8",
       "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
       "channel": "IBM Technology",
-      "score": 0.675
-    },
-    {
-      "id": "KxKPSqN3Eb4",
-      "title": "AI's REAL Strength: Greenfield Projects, Not Legacy Code! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.671
-    },
-    {
-      "id": "aF-rolD9W7I",
-      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
-      "channel": "Cursor",
-      "score": 0.669
+      "score": 0.641
     },
     {
       "id": "KqdRWE1en8k",
       "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
       "channel": "Better Stack",
-      "score": 0.658
+      "score": 0.639
     },
     {
-      "id": "PjrXaC5UsIw",
-      "title": "What Is Agentic Coding? How AI Agents Modernize Code",
-      "channel": "IBM Technology",
-      "score": 0.648
+      "id": "aF-rolD9W7I",
+      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
+      "channel": "Cursor",
+      "score": 0.638
     }
   ]
 }

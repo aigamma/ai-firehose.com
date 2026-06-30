@@ -7,22 +7,22 @@
     "context stacking"
   ],
   "kind": "technique",
-  "attention": 145,
-  "first_seen": "2026-03-22T07:36:16Z",
+  "attention": 156,
+  "first_seen": "2026-04-04T11:45:37.000Z",
   "rotation": {
     "horizon": "week",
     "quadrant": "improving",
-    "ratio": 99.3,
-    "momentum": 103.6,
+    "ratio": 91.9,
+    "momentum": 103.7,
     "sparkline": [
-      13,
       19,
       18,
       17,
-      20,
-      18,
+      16,
+      19,
       17,
-      17
+      16,
+      16
     ]
   },
   "neighbors": [
@@ -30,6 +30,11 @@
       "id": "lifecycle-control",
       "label": "lifecycle control",
       "score": 0.795
+    },
+    {
+      "id": "context-handling",
+      "label": "context handling",
+      "score": 0.78
     },
     {
       "id": "context-preservation",
@@ -49,39 +54,34 @@
     {
       "id": "long-context-capability",
       "label": "long-context capability",
-      "score": 0.763
-    },
-    {
-      "id": "tool-context",
-      "label": "tool context",
-      "score": 0.755
+      "score": 0.762
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.135
+      "position": -0.211
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.496
+      "position": -0.444
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.175
+      "position": 0.18
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.002
+      "position": -0.052
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.088
+      "position": 0.142
     },
     {
       "slug": "neural-symbolic",
@@ -110,11 +110,18 @@
       "kind": "technique"
     },
     {
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "url": "https://www.youtube.com/watch?v=uiP88SpCi1Q",
+      "title": "Building Great Agent Skills: The Missing Manual",
+      "url": "https://www.youtube.com/watch?v=UNzCG3lw6O0",
       "author_or_channel": "AI Engineer",
-      "published_at": "2026-06-28T22:00:14+00:00",
-      "kind": "opinion"
+      "published_at": "2026-06-29T18:53:10+00:00",
+      "kind": "technique"
+    },
+    {
+      "title": "The Memory Problem, Baseten | Compile 26",
+      "url": "https://www.youtube.com/watch?v=I8YnwUV2C9w",
+      "author_or_channel": "Cursor",
+      "published_at": "2026-06-29T15:30:09+00:00",
+      "kind": "technique"
     },
     {
       "title": "Turn 10,994 Notes Into Memory - Paul Iusztin, Decoding AI & Louis-François Bouchard, Towards AI",
@@ -129,13 +136,6 @@
       "author_or_channel": "Cole Medin",
       "published_at": "2026-06-25T00:00:05+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "Tag Claude in, right where you already work",
-      "url": "https://www.youtube.com/watch?v=VojDzHaciKQ",
-      "author_or_channel": "Claude",
-      "published_at": "2026-06-23T17:09:00+00:00",
-      "kind": "tool"
     }
   ],
   "definition": "Deciding what information occupies a model's limited context window at each step, and what to summarize, retrieve, or drop, so the model has what it needs without drowning in what it does not. It becomes the central engineering problem once an agent runs long enough to generate more history than it can hold.",

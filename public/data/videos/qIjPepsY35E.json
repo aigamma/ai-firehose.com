@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Qdrant's prefetch plus rerank pattern uses fast initial retrieval (single-vector or BM25) to narrow candidates down from millions to hundreds, then applies ColBERT reranking to refine results. The technique emphasizes oversampling in stage one to ensure sufficient candidates for effective reranking.",
   "writeup": "This lesson from a Qdrant-focused course demonstrates how multi-stage retrieval pipelines resolve the core tension between speed and accuracy in vector search. Fast HNSW single-vector search pulls a broad candidate set in milliseconds; MaxSim multi-vector scoring then reranks only those candidates at full precision. The through-line is a concrete cost argument: reranking 500 candidates instead of 1 million documents is roughly 2,000 times cheaper while preserving final result quality.",
-  "wh": "4df1bc90cf44a0e4",
+  "wh": "4e770d8dc321806e",
   "key_points": [
     "Multi-stage retrieval separates the work by tool: HNSW approximate single-vector search retrieves around 500 candidates fast, then MaxSim multi-vector scoring reranks only those candidates, making the overall pipeline roughly collection-size divided by candidate-count times cheaper than running MaxSim over the full index.",
     "Oversampling is non-negotiable: the prefetch stage must retrieve more candidates than the desired final result count, because any document the fast method ranks outside that wider net is invisible to the reranker and the pipeline is capped at single-vector quality.",
@@ -56,8 +56,8 @@
   "ih": "9577a1710e3df135",
   "concepts": [
     {
-      "slug": "long-range-retrieval",
-      "label": "long-range retrieval"
+      "slug": "hybrid-retrieval",
+      "label": "hybrid retrieval"
     },
     {
       "slug": "prefetch-and-rerank",
@@ -66,10 +66,6 @@
     {
       "slug": "oversampling",
       "label": "oversampling"
-    },
-    {
-      "slug": "hybrid-architectures",
-      "label": "hybrid architectures"
     },
     {
       "slug": "vector-search",
@@ -85,31 +81,31 @@
       "id": "35WO2_Q_0C0",
       "title": "Use Cases for Multi-Vector Search | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.702
+      "score": 0.703
     },
     {
       "id": "8HrvD5o2w8M",
       "title": "Late Interaction Basics | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.684
+      "score": 0.683
     },
     {
       "id": "vQKF1hO7hzU",
       "title": "Problems of Multi-Vector Search | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.644
+      "score": 0.643
     },
     {
       "id": "THZE2O4kMDg",
       "title": "Multi-Vector Embeddings in Qdrant | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.642
+      "score": 0.641
     },
     {
       "id": "5ypH0t_X-4k",
       "title": "ColPali Family Overview | Qdrant Multi-Vector Search",
       "channel": "Qdrant Vector Search",
-      "score": 0.623
+      "score": 0.624
     },
     {
       "id": "Z5j1wx1D5wY",

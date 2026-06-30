@@ -6,9 +6,9 @@
   "published": "2026-06-11T06:26:14+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "NVIDIA released Nemotron 3 series including Nano, Super, and Ultra models. The architecture combines hybrid mamba transformer design with latent mixture of experts and MTP mechanisms.",
+  "summary": "NVIDIA released the Nemotron 3 series comprising Nano, Super, and Ultra variants. The models combine hybrid Mamba transformer, Mixture of Experts (latent MoE), and multi-token prediction architectures.",
   "writeup": "Nvidia's Nemotron 3 comes in three size variants (Nano at 30B total/3B active, Super at 120B/10B, Ultra at 550B/50B) sized to match distinct compute tiers from consumer hardware up to multi-GPU AI factory infrastructure. The architecture departs from standard transformers in three deliberate ways: Mamba 2 state-space layers interleaved with full attention to hold 1-million-token context at near-linear memory cost; a latent mixture-of-experts design that compresses token representations before routing so more experts can weigh in at lower bandwidth cost; and multi-token prediction to accelerate autoregressive output. Together these choices let Nvidia co-design model and hardware layers they already control, producing base-model accuracy scores that, per internal evaluations, exceed any previously published base model.",
-  "wh": "5a0a0f86460bd0a9",
+  "wh": "989d03b6a5c18ad0",
   "key_points": [
     "Nemotron 3 Nano (30B total, 3B active) runs on consumer hardware at roughly 15 GB in MX-FP4 precision; Super (120B total, 10B active) fits on one H100 80 GB in FP8 or on DGX Spark via Blackwell's compute acceleration; Ultra (550B total, 50B active) requires multi-GPU infrastructure at AI factory scale, comparable in size to DeepSeek V3.",
     "The hybrid Mamba 2 transformer architecture replaces the quadratic KV-cache growth of standard attention with a fixed-size state matrix that updates linearly as tokens are processed, enabling a 1-million-token context window without proportional memory blowout, critical for enterprise workloads that must ingest large knowledge bases for concurrent queries.",
@@ -63,12 +63,12 @@
       "label": "Mixture of Experts"
     },
     {
-      "slug": "mtp",
-      "label": "MTP"
-    },
-    {
       "slug": "latent-space",
       "label": "latent space"
+    },
+    {
+      "slug": "multi-token-prediction",
+      "label": "multi-token prediction"
     }
   ],
   "similar": [
@@ -76,37 +76,37 @@
       "id": "P0tkFtrG3jU",
       "title": "The Big Bang Of AI Just Happened: Cosmos 3",
       "channel": "AI Revolution",
-      "score": 0.663
-    },
-    {
-      "id": "7jrZ4JqeGyY",
-      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
-      "channel": "AI Revolution",
-      "score": 0.635
-    },
-    {
-      "id": "RdqYvdT74i0",
-      "title": "Self-improving AI, Opus 4.8, Nvidia bangers, game-ready 3D models, juggling robots: AI NEWS",
-      "channel": "AI Search",
-      "score": 0.631
-    },
-    {
-      "id": "b_KxiTPBIb0",
-      "title": "Google TPU 8t and 8i is here..",
-      "channel": "Caleb Writes Code",
-      "score": 0.627
+      "score": 0.659
     },
     {
       "id": "HfRVXadseCo",
       "title": "3,000+ Tokens Per Second? Let's Stress Test Xiaomi's New Model: MiMo V2.5 Pro UltraSpeed",
       "channel": "Better Stack",
-      "score": 0.624
+      "score": 0.655
     },
     {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.624
+      "id": "V0c62734ix8",
+      "title": "Minimax M3 (Fully Tested) + FULLY FREE API: This is ACTUALLY GOOD!",
+      "channel": "AICodeKing",
+      "score": 0.644
+    },
+    {
+      "id": "Dxn3BcSgsMY",
+      "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
+      "channel": "Better Stack",
+      "score": 0.631
+    },
+    {
+      "id": "Lh_QUSgEWwg",
+      "title": "Meituan LongCat 2.0 (Tested): China's 1.6T OPEN MODEL looks CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.63
+    },
+    {
+      "id": "XJUpuOBpT-4",
+      "title": "The insane engineering of Deepseek V4",
+      "channel": "AI Search",
+      "score": 0.629
     }
   ]
 }

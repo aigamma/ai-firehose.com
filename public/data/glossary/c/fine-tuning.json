@@ -5,22 +5,22 @@
     "finetuning"
   ],
   "kind": "technique",
-  "attention": 46,
-  "first_seen": "2026-05-28T22:00:11+00:00",
+  "attention": 52,
+  "first_seen": "2026-05-25T15:56:30+00:00",
   "rotation": {
     "horizon": "week",
-    "quadrant": "weakening",
-    "ratio": 106.1,
-    "momentum": 94.9,
+    "quadrant": "improving",
+    "ratio": 94.7,
+    "momentum": 100.7,
     "sparkline": [
-      11,
-      11,
-      12,
-      11,
-      10,
+      8,
+      8,
       9,
-      9,
-      9
+      8,
+      8,
+      7,
+      7,
+      7
     ]
   },
   "neighbors": [
@@ -30,19 +30,9 @@
       "score": 0.816
     },
     {
-      "id": "supervised-fine-tuning",
-      "label": "Supervised Fine Tuning",
-      "score": 0.812
-    },
-    {
       "id": "parameterization",
       "label": "parameterization",
       "score": 0.803
-    },
-    {
-      "id": "hyperparameter-optimization",
-      "label": "hyperparameter optimization",
-      "score": 0.794
     },
     {
       "id": "gradient-stability",
@@ -53,33 +43,43 @@
       "id": "progressive-training",
       "label": "progressive training",
       "score": 0.792
+    },
+    {
+      "id": "domain-adaptation",
+      "label": "domain adaptation",
+      "score": 0.788
+    },
+    {
+      "id": "early-stopping",
+      "label": "early stopping",
+      "score": 0.786
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.003
+      "position": -0.093
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": 0.073
+      "position": 0.154
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.319
+      "position": 0.326
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.364
+      "position": 0.29
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.079
+      "position": 0.15
     },
     {
       "slug": "neural-symbolic",
@@ -108,6 +108,13 @@
       "kind": "opinion"
     },
     {
+      "title": "He spent $7k of his own money to make GLM-5.2 better - 0xSero",
+      "url": "https://www.youtube.com/watch?v=ImPESBftwr8",
+      "author_or_channel": "David Ondrej",
+      "published_at": "2026-06-24T16:45:41+00:00",
+      "kind": "opinion"
+    },
+    {
       "title": "Accelerating Transformers Fine-Tuning with NVIDIA NeMo AutoModel",
       "url": "https://huggingface.co/blog/nvidia/accelerating-fine-tuning-nvidia-nemo-automodel",
       "author_or_channel": "Hugging Face",
@@ -127,19 +134,12 @@
       "author_or_channel": "Han Jeon, Shiv Medler, Joseph Voyles",
       "published_at": "2026-06-24T13:00:25Z",
       "kind": "technique"
-    },
-    {
-      "title": "ShutterMuse: Capture-Time Photography Guidance with MLLMs",
-      "url": "http://arxiv.org/abs/2606.25763v1",
-      "author_or_channel": "Jiayu Li, Yixiao Fang, Tianyu Hu",
-      "published_at": "2026-06-24T12:37:56Z",
-      "kind": "tool"
     }
   ],
+  "definition": "Continuing to train an already pretrained model on a smaller, task- or domain-specific dataset, so its general knowledge is specialized toward a particular use. It is the engine of the dominant \"pretrain once, fine-tune many\" workflow, and its two costs, a full model copy per task and the risk of overwriting general competence, are exactly what the parameter-efficient methods were invented to dodge.",
   "category": "Training and Fine-Tuning",
   "durable": true,
   "source": "authored",
-  "definition": "Continuing to train an already pretrained model on a smaller, task- or domain-specific dataset, so its general knowledge is specialized toward a particular use. It is the engine of the dominant \"pretrain once, fine-tune many\" workflow, and its two costs, a full model copy per task and the risk of overwriting general competence, are exactly what the parameter-efficient methods were invented to dodge.",
   "body": [
     {
       "type": "p",

@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Flash is a GPU deployment tool that simplifies cloud inference by replacing Docker build-and-push cycles with a single @flash.endpoint decorator on async Python functions. It supports hot reload for model swaps and integrates with RunPod's serverless GPU infrastructure, enabling automatic scaling across data centers.",
   "writeup": "A live conference demo of RunPod's Flash Python SDK, which eliminates the commit-build-push-allocate loop that slows GPU model iteration by deploying a decorated async function directly from a local IDE onto RunPod's serverless GPU cloud. The presenter swaps Stable Diffusion models mid-session and then chains a three-model pipeline (Qwen 3 for prompt generation, DreamShaper for image synthesis, Nano Banana 2 for composition) to show that Flash's value scales with orchestration complexity. RunPod, founded in 2022 from spare crypto-mining GPUs, reached $120M ARR across 30-plus data centers in 10 countries.",
-  "wh": "4982a448e7787437",
+  "wh": "a95b26aae743e101",
   "key_points": [
     "Flash's core mechanism is a single Python decorator, @flash_endpoint, that packages only the decorated async function onto RunPod's GPU cloud while the surrounding orchestration code continues running locally, so the developer never leaves the IDE.",
     "Hot module reload means any code change is immediately repackaged and re-deployed to the GPU worker without rebuilding a Docker image or re-provisioning infrastructure, collapsing the inner iteration loop to seconds.",
@@ -64,8 +64,8 @@
       "label": "serverless"
     },
     {
-      "slug": "gpu-acceleration",
-      "label": "GPU acceleration"
+      "slug": "on-device-inference",
+      "label": "on-device inference"
     },
     {
       "slug": "decorator-pattern",
@@ -95,13 +95,13 @@
       "id": "gHs5ZiY80PM",
       "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
       "channel": "AI Engineer",
-      "score": 0.552
+      "score": 0.553
     },
     {
-      "id": "sBF3UumkL4Y",
-      "title": "9 Claude Code Plugins to Build 10x Faster",
-      "channel": "Austin Marchese",
-      "score": 0.539
+      "id": "R6mM0m3IZWY",
+      "title": "Gemini 3.5 Flash has landed.",
+      "channel": "Google DeepMind",
+      "score": 0.537
     },
     {
       "id": "SKDJo2CopRs",
