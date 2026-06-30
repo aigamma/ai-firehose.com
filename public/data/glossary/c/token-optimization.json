@@ -6,14 +6,19 @@
     "token reduction"
   ],
   "kind": "technique",
-  "attention": 98,
+  "attention": 115,
   "first_seen": "2026-04-04T10:03:00Z",
   "rotation": null,
   "neighbors": [
     {
-      "id": "token-allocation",
-      "label": "token allocation",
-      "score": 0.779
+      "id": "token-generation",
+      "label": "token generation",
+      "score": 0.799
+    },
+    {
+      "id": "dataset-optimization",
+      "label": "dataset optimization",
+      "score": 0.772
     },
     {
       "id": "token-counting",
@@ -21,36 +26,31 @@
       "score": 0.769
     },
     {
-      "id": "end-to-end-optimization",
-      "label": "end-to-end optimization",
-      "score": 0.766
-    },
-    {
       "id": "rendering-aware-optimization",
       "label": "rendering-aware optimization",
       "score": 0.765
     },
     {
-      "id": "test-time-optimization",
-      "label": "test-time optimization",
-      "score": 0.761
-    },
-    {
       "id": "discrete-tokenization",
       "label": "discrete tokenization",
       "score": 0.76
+    },
+    {
+      "id": "prefill-optimization",
+      "label": "prefill optimization",
+      "score": 0.759
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.075
+      "position": -0.09
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.525
+      "position": -0.52
     },
     {
       "slug": "capability-safety",
@@ -60,7 +60,7 @@
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": -0.031
+      "position": -0.021
     },
     {
       "slug": "agents-assistive",
@@ -80,6 +80,13 @@
   ],
   "top_items": [
     {
+      "title": "Intelligence Efficiency, Ben Geist | Compile 26",
+      "url": "https://www.youtube.com/watch?v=Z5M33oh-SAU",
+      "author_or_channel": "Cursor",
+      "published_at": "2026-06-29T15:30:17+00:00",
+      "kind": "opinion"
+    },
+    {
       "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
       "url": "https://www.youtube.com/watch?v=dRmWYHuIJxM",
       "author_or_channel": "AI Engineer",
@@ -87,10 +94,10 @@
       "kind": "technique"
     },
     {
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "url": "https://www.youtube.com/watch?v=uiP88SpCi1Q",
-      "author_or_channel": "AI Engineer",
-      "published_at": "2026-06-28T22:00:14+00:00",
+      "title": "Big Technology AI Summit (full): Greg Brockman, Mike Krieger, Aaron Levie & Friends of The Podcast",
+      "url": "https://www.youtube.com/watch?v=_qkN88el9IQ",
+      "author_or_channel": "Alex Kantrowitz",
+      "published_at": "2026-06-26T17:30:06+00:00",
       "kind": "opinion"
     },
     {
@@ -101,25 +108,18 @@
       "kind": "opinion"
     },
     {
+      "title": "Focusing on What Matters: Saliency-Harnessing Accurate Routing for Diffusion MoE",
+      "url": "https://huggingface.co/papers/2606.26938",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-24T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
       "title": "Sakana Fugu vs Fusion (Beats Fable 5?)",
       "url": "https://www.youtube.com/watch?v=PLJJbqqEUCE",
       "author_or_channel": "Julian Goldie SEO",
       "published_at": "2026-06-22T15:00:33+00:00",
       "kind": "opinion"
-    },
-    {
-      "title": "This OpenSource Repo will 10X Your Hermes Agent",
-      "url": "https://www.youtube.com/watch?v=yOZVYw9FIWc",
-      "author_or_channel": "Jack Roberts",
-      "published_at": "2026-06-20T17:48:03+00:00",
-      "kind": "tool"
-    },
-    {
-      "title": "This Claude Code Plugin Writes 94% Less Code (ponytail)",
-      "url": "https://www.youtube.com/watch?v=2xuFcmUAQUc",
-      "author_or_channel": "Better Stack",
-      "published_at": "2026-06-20T09:00:01+00:00",
-      "kind": "tool"
     }
   ],
   "definition": "Reducing the number of tokens a model must process to do a task, to cut cost and latency and to fit more useful information in a fixed window. Because providers bill per token and attention scales with length, trimming tokens is one of the most direct levers on the economics of an LLM system.",

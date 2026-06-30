@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Reiner Pope delivers a technical lecture on chip design fundamentals, starting from logic gates and progressing to GPU, TPU, and FPGA architectures. The talk covers systolic arrays, data movement costs, caching strategies, and comparative analysis of CPU, GPU, and brain computational structures.",
   "writeup": "Reiner Pope, CEO of MatX, walks through the silicon-level mechanics of AI chip computation from first principles: starting with AND gates and working up through partial products, full adders (3-to-2 compressors), and the Dadda multiplier to show exactly how a multiply-accumulate unit is built. The through-line is that the multiply-accumulate operation is not an arbitrary convention but the natural primitive because every step of a matrix multiply is precisely one multiply-accumulate, and the algebra collapses cleanly to p x q AND gates plus p x q full adders for a p-bit by q-bit operand pair. The talk closes on the practical design tradeoff of FP4 versus FP8 silicon allocation, establishing that these precision formats are not fungible in hardware and represent a hard architectural choice.",
-  "wh": "ce2b38da91467aae",
+  "wh": "7d1721676188b05c",
   "key_points": [
     "The fundamental primitive inside an AI chip is multiply-accumulate: one multiply of two low-precision operands followed by addition into a higher-precision accumulator, which maps directly to the innermost step of a matrix multiply (output[i,k] += input[i,j] x input[j,k]).",
     "AI chips intentionally use asymmetric precision: low-precision multiplication (e.g., 4-bit) feeds into a higher-precision accumulator (e.g., 8-bit) because rounding errors compound across the many accumulation steps of a matrix multiply, not across the single multiplication step.",
@@ -67,6 +67,10 @@
       "label": "FPGAs"
     },
     {
+      "slug": "asic",
+      "label": "ASIC"
+    },
+    {
       "slug": "kv-cache",
       "label": "KV cache"
     },
@@ -92,13 +96,25 @@
       "id": "b_KxiTPBIb0",
       "title": "Google TPU 8t and 8i is here..",
       "channel": "Caleb Writes Code",
-      "score": 0.554
+      "score": 0.56
+    },
+    {
+      "id": "BAVrwcPDa-k",
+      "title": "System Design for Beginners (Full Guide)",
+      "channel": "AWS Developers",
+      "score": 0.509
+    },
+    {
+      "id": "-ANAWX8ph5o",
+      "title": "Huawei makes 1.4nm chip??",
+      "channel": "Caleb Writes Code",
+      "score": 0.504
     },
     {
       "id": "hzpAKA67dX0",
       "title": "\"An endless demand for compute\" | Jonathan Ross, founder of Groq",
       "channel": "Julia Turc",
-      "score": 0.504
+      "score": 0.501
     },
     {
       "id": "AQbXapvjBzc",
@@ -111,18 +127,6 @@
       "title": "AI System Design: From Idea to Production - Apoorva Joshi, MongoDB",
       "channel": "AI Engineer",
       "score": 0.489
-    },
-    {
-      "id": "3hltZHxTeRI",
-      "title": "Arm AGI CPU explained..",
-      "channel": "Caleb Writes Code",
-      "score": 0.485
-    },
-    {
-      "id": "23w0Oa9k70M",
-      "title": "Anthropic's AI Future: GPUs, Power & Unseen Security! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.484
     }
   ]
 }

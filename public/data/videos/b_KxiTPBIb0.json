@@ -6,9 +6,9 @@
   "published": "2026-04-30T02:16:18+00:00",
   "kind": "tool",
   "recommended": true,
-  "summary": "Google has released TPU 8t for training and TPU 8i for inference, application-specific integrated circuits deployed via the Virgo Network. The video compares TPU capabilities to NVIDIA GPUs and analyzes how scaling strategies affect token economics and LLM serving at scale.",
+  "summary": "Google released TPU 8t and 8i, ASIC processors for training and inference respectively, served via Virgo Network. The video compares these specialized chips against general-purpose GPUs and discusses how scaling strategies affect token economics for LLM serving at scale.",
   "writeup": "Google's TPU lags Nvidia on raw per-chip compute, but this analysis reframes the comparison at infrastructure scale, where Google's 4x4x4 cube topology and ICI interconnects let 9,600 AT chips form a superpod delivering 121 exaflops in FP4, outpacing Nvidia's Vera Rubin pod at 60 exaflops. The through-line is that training and inference have opposite demand profiles (network-bandwidth-bound vs. compute-bound vs. memory-latency-bound), which explains both why Google bifurcated the TPU into AT and 8i chips and why Nvidia's more balanced pod architecture targets a broader customer base rather than maximizing peak scale.",
-  "wh": "fb37bfba058450ad",
+  "wh": "04c020d81f577d43",
   "key_points": [
     "Google's 9,600-chip AT superpod delivers 121 exaflops in FP4, more than double Nvidia's Vera Rubin pod at 60 exaflops in FP4, despite the AT chip being slower than Nvidia silicon on a per-chip basis; the gap closes because Google's ICI optical interconnect and 4x4x4 cube topology reduce scaling overhead.",
     "A SemiAnalysis demand-profile analysis shows LLM training is primarily network-bandwidth-bound (not compute or memory-bound), while inference splits into a compute-bound prefill stage and a memory-bandwidth-plus-network-latency-bound decode stage, driving Google to ship two separate chips rather than one general-purpose design.",
@@ -60,62 +60,62 @@
   "ih": "f725a37236624d9a",
   "concepts": [
     {
-      "slug": "application-specific-integrated-circuit",
-      "label": "application-specific integrated circuit"
+      "slug": "asic",
+      "label": "ASIC"
     },
     {
-      "slug": "scaling",
-      "label": "scaling"
-    },
-    {
-      "slug": "inference",
-      "label": "inference"
+      "slug": "local-inference",
+      "label": "local inference"
     },
     {
       "slug": "post-training",
       "label": "post-training"
     },
     {
-      "slug": "ai-economics",
-      "label": "AI economics"
+      "slug": "scaling",
+      "label": "scaling"
+    },
+    {
+      "slug": "cost-optimization",
+      "label": "cost optimization"
     }
   ],
   "similar": [
     {
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.614
+    },
+    {
       "id": "J02-39xtlt4",
       "title": "Google strikes back! Gemini Omni, AI glasses, new models",
       "channel": "AI Search",
-      "score": 0.679
-    },
-    {
-      "id": "wzHXUtkoY-c",
-      "title": "NVIDIA’s Nemotron 3 Is... Awesome?",
-      "channel": "Caleb Writes Code",
-      "score": 0.624
-    },
-    {
-      "id": "1uypL1oNChI",
-      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
-      "channel": "AICodeKing",
-      "score": 0.6
+      "score": 0.612
     },
     {
       "id": "Dxn3BcSgsMY",
       "title": "1,000+ Tokens/Sec: Google Just Shattered the AI Speed Limit (DiffusionGemma)",
       "channel": "Better Stack",
-      "score": 0.577
+      "score": 0.599
     },
     {
-      "id": "AEH6dBOnE_U",
-      "title": "This is Gemini Omni ♾️ #GoogleIO",
-      "channel": "Google DeepMind",
+      "id": "WLtCHXdHTF0",
+      "title": "Google's New AI Architecture Changes Everything (Gemma 4 12B)",
+      "channel": "Better Stack",
+      "score": 0.595
+    },
+    {
+      "id": "1uypL1oNChI",
+      "title": "Gemma-4 12B + Hermes,Google AI Edge: EASY, GOOD & LOCAL!",
+      "channel": "AICodeKing",
+      "score": 0.592
+    },
+    {
+      "id": "YiIrnYalHS4",
+      "title": "Google’s New AI Just Broke The AI Speed Limit: DiffusionGemma",
+      "channel": "AI Revolution",
       "score": 0.576
-    },
-    {
-      "id": "R6mM0m3IZWY",
-      "title": "Gemini 3.5 Flash has landed.",
-      "channel": "Google DeepMind",
-      "score": 0.574
     }
   ]
 }

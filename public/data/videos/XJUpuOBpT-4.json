@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "DeepSeek V4 is an LLM featuring a 1M token context window and hybrid attention mechanisms including CSA, sparse selection, HCA, and sliding window attention for efficiency. The model incorporates anticipatory routing and achieves state-of-the-art results with novel training and infrastructure optimizations.",
   "writeup": "DeepSeek V4 Pro is a 1.6-trillion-parameter open-source model with a 1-million-token context window, built by a team roughly 40 times smaller than OpenAI and without access to top-tier Nvidia hardware. The video walks through the quadratic attention bottleneck and KV cache memory explosion that make long contexts prohibitively expensive, then dissects how DeepSeek's hybrid attention architecture sidesteps both problems. The through-line is resource constraint as a design forcing function: the team could not brute-force scale, so they invented a three-pathway compression strategy that cuts compute to 27% and KV cache memory to 10% of the previous V3.2 baseline while preserving retrieval fidelity.",
-  "wh": "7885b1cfa755cd35",
+  "wh": "b3c20e242e11c662",
   "key_points": [
     "DeepSeek V4 Pro reaches 1.6 trillion parameters and a 1-million-token context window while requiring only 27% of the compute (3.7x lower FLOPs) that DeepSeek V3.2 needed, according to benchmarks documented in the paper.",
     "The core problem the architecture solves is that standard attention requires every token to compare itself against all prior tokens, so at one million tokens the number of comparisons becomes astronomically expensive and the KV cache balloons to gigabytes of GPU memory per conversation.",
@@ -68,12 +68,16 @@
       "label": "context window"
     },
     {
-      "slug": "residual-connections",
-      "label": "residual connections"
+      "slug": "sensor-attention",
+      "label": "sensor attention"
     },
     {
-      "slug": "routing",
-      "label": "routing"
+      "slug": "residual-connection",
+      "label": "residual connection"
+    },
+    {
+      "slug": "smart-routing",
+      "label": "smart routing"
     },
     {
       "slug": "mixture-of-experts",
@@ -85,7 +89,13 @@
       "id": "7jrZ4JqeGyY",
       "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
       "channel": "AI Revolution",
-      "score": 0.663
+      "score": 0.69
+    },
+    {
+      "id": "3DGaFycYtVE",
+      "title": "DeepSeek V4 Analysis..",
+      "channel": "Caleb Writes Code",
+      "score": 0.654
     },
     {
       "id": "iOZf50YffCE",
@@ -94,28 +104,22 @@
       "score": 0.653
     },
     {
-      "id": "3DGaFycYtVE",
-      "title": "DeepSeek V4 Analysis..",
-      "channel": "Caleb Writes Code",
-      "score": 0.641
-    },
-    {
       "id": "TUnPNY4E2fw",
       "title": "Road to 5 Million Tokens: Breaking Barriers in Long Context Training — Max Ryabinin, Together AI",
       "channel": "AI Engineer",
-      "score": 0.634
+      "score": 0.636
     },
     {
       "id": "-z2C3B29aho",
       "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
       "channel": "Keith AI",
-      "score": 0.632
+      "score": 0.634
     },
     {
-      "id": "Lh_QUSgEWwg",
-      "title": "Meituan LongCat 2.0 (Tested): China's 1.6T OPEN MODEL looks CRAZY!",
-      "channel": "AICodeKing",
-      "score": 0.625
+      "id": "B18zBnjZKmc",
+      "title": "Why Inference is hard..",
+      "channel": "Caleb Writes Code",
+      "score": 0.629
     }
   ]
 }

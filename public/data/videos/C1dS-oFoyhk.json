@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "A benchmark comparing different allocations of planning and implementation tasks across Claude Opus and Kimi K2.6 in coding workflows. The Dark Factory experiment uses Archon to test four configurations against real GitHub issues, then evaluates outputs on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
+  "summary": "Cole Medin benchmarks mixed-provider LLM workflows by testing which model (Claude Opus or Kimi K2.6) should handle planning versus implementation in coding tasks. He measured outputs on seven dimensions using a benchmark matrix across three real GitHub issues and evaluated results with an Opus-based scorer.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "0eae960c67168dee",
+  "wh": "44633126663756cc",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,20 +56,20 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
+      "slug": "local-inference",
+      "label": "local inference"
+    },
+    {
       "slug": "agent-orchestration",
       "label": "agent orchestration"
     },
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "smart-routing",
+      "label": "smart routing"
     },
     {
-      "slug": "agentic-workflows",
-      "label": "agentic workflows"
-    },
-    {
-      "slug": "model-evaluation",
-      "label": "model evaluation"
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
     }
   ],
   "similar": [
@@ -77,37 +77,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.681
+      "score": 0.716
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.594
     },
     {
       "id": "oGE_Dwz-rMk",
       "title": "Omnigent: The New Meta-Harness for EVERY Coding Agent - Claude Code, Codex, Pi, More",
       "channel": "Cole Medin",
-      "score": 0.603
+      "score": 0.591
+    },
+    {
+      "id": "Xh1z23uBZo0",
+      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
+      "channel": "Cole Medin",
+      "score": 0.578
+    },
+    {
+      "id": "QJ2bM8Me5Fk",
+      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.577
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.596
-    },
-    {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.59
-    },
-    {
-      "id": "RSk6R_2GYZo",
-      "title": "🔴LIVE - My AI Coding Workflow has 10x'd Again with Archon - See it in Action",
-      "channel": "Cole Medin",
-      "score": 0.566
-    },
-    {
-      "id": "pmoDeA3RBZY",
-      "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff — Vincent Koc, OpenClaw",
-      "channel": "AI Engineer",
-      "score": 0.564
+      "score": 0.574
     }
   ]
 }
