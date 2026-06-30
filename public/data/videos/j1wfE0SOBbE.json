@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "AWS Developers tutorial on production-ready AI agent deployment covering streaming tool call events for UI responsiveness, multi-layer authentication with OAuth and IAM, type-safe tenant-isolated database access, cost controls via guardrails and model routing, and observability through metrics and OpenTelemetry tracing. Practical patterns apply across platforms.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "76b14f970a2e4b70",
+  "wh": "09572ff0a133d48d",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -80,8 +80,8 @@
       "label": "guardrails"
     },
     {
-      "slug": "cost-management",
-      "label": "cost management"
+      "slug": "cost-efficiency",
+      "label": "cost efficiency"
     },
     {
       "slug": "model-routing",
@@ -135,7 +135,7 @@
       "id": "JsNbFnT0QCw",
       "title": "Building long-running AI agents with ADK",
       "channel": "Google Cloud Tech",
-      "score": 0.643
+      "score": 0.642
     }
   ]
 }

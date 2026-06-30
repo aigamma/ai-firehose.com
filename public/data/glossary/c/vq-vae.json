@@ -1,13 +1,144 @@
 {
   "id": "vq-vae",
   "label": "Vector-Quantized Variational Autoencoder",
-  "kind": "technique",
-  "category": "Generative Models",
   "aliases": [
     "VQ-VAE",
     "vector quantized VAE",
     "VQ-GAN"
   ],
+  "kind": "technique",
+  "attention": 5,
+  "first_seen": "2026-06-05T17:16:21Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 96.3,
+    "sparkline": [
+      0,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "sparse-autoencoder",
+      "label": "sparse autoencoder",
+      "score": 0.834
+    },
+    {
+      "id": "vision-transformer",
+      "label": "Vision Transformer",
+      "score": 0.803
+    },
+    {
+      "id": "deep-gaussian-processes",
+      "label": "deep Gaussian processes",
+      "score": 0.799
+    },
+    {
+      "id": "supervised-fine-tuning",
+      "label": "Supervised Fine Tuning",
+      "score": 0.792
+    },
+    {
+      "id": "variational-inference",
+      "label": "variational inference",
+      "score": 0.79
+    },
+    {
+      "id": "bilstm",
+      "label": "BiLSTM",
+      "score": 0.787
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.343
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.144
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.044
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.347
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": -0.098
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.841
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.264
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Walking in the Implicit: Interactive World Exploration via Neural Scene Representation",
+      "url": "https://huggingface.co/papers/2606.30045",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-28T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "MIMFlow: Integrating Masked Image Modeling with Normalizing Flows for End-to-End Image Generation",
+      "url": "https://huggingface.co/papers/2606.26016",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-23T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "The Galaxy's Guide to the Tokenizer: A Benchmark for Scientific Foundation Models",
+      "url": "https://huggingface.co/papers/2606.25610",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-23T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Qwen-RobotWorld Technical Report: Unifying Embodied World Modeling through Language-Conditioned Video Generation",
+      "url": "http://arxiv.org/abs/2606.17030v1",
+      "author_or_channel": "Jie Zhang, Xiaoyue Chen, Anzhe Chen",
+      "published_at": "2026-06-15T17:52:31Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Drifting Models for Surrogate Flow Modeling",
+      "url": "http://arxiv.org/abs/2606.07481v1",
+      "author_or_channel": "Chris R. Jung, Markus Dörr, Natalie Jüngling",
+      "published_at": "2026-06-05T17:35:09Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Planning-aligned Token Compression for Long-Context Autonomous Driving",
+      "url": "http://arxiv.org/abs/2606.07464v1",
+      "author_or_channel": "Zhixuan Liang, Yuxiao Chen, Yurong You",
+      "published_at": "2026-06-05T17:16:21Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Generative Models",
   "durable": true,
   "source": "authored",
   "definition": "An autoencoder whose latent is discrete: it snaps each cell of an encoded image to the nearest entry in a learned codebook, so an image becomes a grid of integer tokens, a short sentence in a learned visual vocabulary. That discreteness is what lets the next-token machinery of language generate images, the discrete-token route to image synthesis that parallels continuous-latent diffusion.",
@@ -61,12 +192,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/vq-vae.webp",
     "alt": "An encoder maps an image patch to the nearest entry in a discrete codebook, replacing a continuous vector with a code index; labeled encoder and codebook.",

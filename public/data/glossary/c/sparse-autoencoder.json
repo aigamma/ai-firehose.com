@@ -1,12 +1,129 @@
 {
   "id": "sparse-autoencoder",
   "label": "Sparse Autoencoder",
-  "kind": "technique",
-  "category": "Mechanistic Interpretability",
   "aliases": [
     "SAE",
     "sparse dictionary learning"
   ],
+  "kind": "technique",
+  "attention": 3,
+  "first_seen": "2026-06-05T17:26:23Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "lagging",
+    "ratio": 96.6,
+    "momentum": 94.1,
+    "sparkline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "vq-vae",
+      "label": "VQ-VAE",
+      "score": 0.834
+    },
+    {
+      "id": "sparse-attention",
+      "label": "sparse attention",
+      "score": 0.805
+    },
+    {
+      "id": "deep-gaussian-processes",
+      "label": "deep Gaussian processes",
+      "score": 0.799
+    },
+    {
+      "id": "spline-based-gcn",
+      "label": "spline-based GCN",
+      "score": 0.78
+    },
+    {
+      "id": "neural-networks",
+      "label": "neural networks",
+      "score": 0.778
+    },
+    {
+      "id": "bilstm",
+      "label": "BiLSTM",
+      "score": 0.773
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.19
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.167
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.1
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.611
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.037
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.958
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.344
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Variational Autoencoder Layer",
+      "url": "http://arxiv.org/abs/2606.25900v1",
+      "author_or_channel": "Gananath R",
+      "published_at": "2026-06-24T14:48:23Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Unstable Features, Reproducible Subspaces: Understanding Seed Dependence in Sparse Autoencoders",
+      "url": "https://huggingface.co/papers/2606.12138",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-09T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Set-Based Transformer for Atmospheric Compensation in Standoff LWIR Hyperspectral Imaging",
+      "url": "https://huggingface.co/papers/2606.08324",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-05T20:00:00.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "Whisper Hallucination Detection and Mitigation via Hidden Representation Steering and Sparse AutoEncoders",
+      "url": "http://arxiv.org/abs/2606.07473v1",
+      "author_or_channel": "Georgii Aparin, Vadim Popov, Tasnima Sadekova",
+      "published_at": "2026-06-05T17:26:23Z",
+      "kind": "technique"
+    }
+  ],
+  "category": "Mechanistic Interpretability",
   "durable": true,
   "source": "authored",
   "definition": "An interpretability tool that learns an overcomplete, sparsely activating dictionary of directions from a network's activations, decomposing superposed and polysemantic representations into a large set of individually monosemantic features. It is the most effective known answer to superposition, and its discipline lies in a tension: reconstruction loss demands the sparse code keep everything the network computes, while a sparsity penalty forces each feature to specialize.",
@@ -65,51 +182,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 1,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [
-    {
-      "id": "deep-learning",
-      "label": "deep learning",
-      "score": 0.812
-    },
-    {
-      "id": "large-language-models",
-      "label": "large language models",
-      "score": 0.802
-    },
-    {
-      "id": "mixture-density-representation",
-      "label": "mixture-density representation",
-      "score": 0.774
-    },
-    {
-      "id": "text-embeddings",
-      "label": "text embeddings",
-      "score": 0.768
-    },
-    {
-      "id": "latent-memory",
-      "label": "latent memory",
-      "score": 0.757
-    },
-    {
-      "id": "on-policy-distillation",
-      "label": "on-policy distillation",
-      "score": 0.754
-    }
-  ],
-  "top_items": [
-    {
-      "title": "Auditing Asset-Specific Preferences in Financial Large Language Models: Evidence from Bitcoin Representations and Portfolio Allocation",
-      "url": "http://arxiv.org/abs/2606.02528v1",
-      "author_or_channel": "Wenbin Wu",
-      "published_at": "2026-06-01T17:36:06Z",
-      "kind": "technique"
-    }
-  ],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/sparse-autoencoder.png",
     "alt": "A three-part overview of the sparse autoencoder method. Part a samples internal activations from a language model. Part b shows the sparse autoencoder itself: an activation vector is multiplied by an encoder matrix, a bias is added and ReLU applied to give a wide vector of sparse feature coefficients, which is multiplied by a decoder matrix (the dictionary) to give a reconstructed activation vector. Part c shows the resulting feature dictionary as a table of features with a plain-language meaning and an interpretability score.",
@@ -119,8 +191,5 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
     "source": "https://arxiv.org/abs/2309.08600",
     "provider": "arXiv"
-  },
-  "folded_from": [
-    "sparse-autoencoders"
-  ]
+  }
 }

@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "NVIDIA released Nemotron 3 series including Nano, Super, and Ultra models. The architecture combines hybrid mamba transformer design with latent mixture of experts and MTP mechanisms.",
   "writeup": "Nvidia's Nemotron 3 comes in three size variants (Nano at 30B total/3B active, Super at 120B/10B, Ultra at 550B/50B) sized to match distinct compute tiers from consumer hardware up to multi-GPU AI factory infrastructure. The architecture departs from standard transformers in three deliberate ways: Mamba 2 state-space layers interleaved with full attention to hold 1-million-token context at near-linear memory cost; a latent mixture-of-experts design that compresses token representations before routing so more experts can weigh in at lower bandwidth cost; and multi-token prediction to accelerate autoregressive output. Together these choices let Nvidia co-design model and hardware layers they already control, producing base-model accuracy scores that, per internal evaluations, exceed any previously published base model.",
-  "wh": "17c1d7aa29a72b4c",
+  "wh": "5a0a0f86460bd0a9",
   "key_points": [
     "Nemotron 3 Nano (30B total, 3B active) runs on consumer hardware at roughly 15 GB in MX-FP4 precision; Super (120B total, 10B active) fits on one H100 80 GB in FP8 or on DGX Spark via Blackwell's compute acceleration; Ultra (550B total, 50B active) requires multi-GPU infrastructure at AI factory scale, comparable in size to DeepSeek V3.",
     "The hybrid Mamba 2 transformer architecture replaces the quadratic KV-cache growth of standard attention with a fixed-size state matrix that updates linearly as tokens are processed, enabling a 1-million-token context window without proportional memory blowout, critical for enterprise workloads that must ingest large knowledge bases for concurrent queries.",
@@ -55,8 +55,8 @@
   "ih": "1b234e31c4a8d5c2",
   "concepts": [
     {
-      "slug": "transformer",
-      "label": "Transformer"
+      "slug": "diffusion-transformers",
+      "label": "diffusion transformers"
     },
     {
       "slug": "mixture-of-experts",

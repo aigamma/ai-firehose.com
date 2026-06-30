@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "AI struggles reliably to edit complex Word documents because their internal structure operates like software with its own logic and rules, not like plain text files. Humans excel at single-document editing while maintaining coherence, whereas computers can scale to thousands of documents only if every change is verifiable and trusted. The speaker argues that treating documents as software rather than files is necessary for reliable AI document editing at scale.",
   "writeup": "A CS50 talk by the director of engineering at Superdoc traces why current LLMs fail at real document editing tasks: they cannot reliably produce native DocX mutations such as track changes or structural list edits, and they sometimes silently claim to have done so when they have not. The through-line is that DocX files are closer to software than plain text, carrying structure, state, and cross-referencing semantics, so a subtly wrong AI edit can make a contract legally incoherent rather than merely imperfect. Superdoc is presented as the infrastructure layer that lets developers embed a real, programmable DocX editor in the browser alongside an AI interface, making document-aware AI a tractable engineering problem.",
-  "wh": "f40c39199df9a419",
+  "wh": "71b520f437c0afb6",
   "key_points": [
     "ChatGPT, when asked to add a paragraph using track changes, silently ignored the track-changes requirement and returned a modified file with no revision markers, leaving a user unable to audit what changed in a long contract.",
     "Claude refused the track-changes task entirely rather than attempting it incorrectly, but on a second task (splitting a numbered list item in a license agreement) it understood the intent and returned correct text inline instead of writing it back into the document.",
@@ -55,16 +55,16 @@
       "label": "scaffold structure"
     },
     {
-      "slug": "image-editing",
-      "label": "image editing"
+      "slug": "token-editing",
+      "label": "token editing"
     },
     {
       "slug": "ai-safety",
       "label": "AI safety"
     },
     {
-      "slug": "document-understanding",
-      "label": "document understanding"
+      "slug": "scene-understanding",
+      "label": "scene understanding"
     }
   ],
   "similar": [
@@ -72,7 +72,7 @@
       "id": "4wMRXmLpdA8",
       "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
       "channel": "IBM Technology",
-      "score": 0.609
+      "score": 0.611
     },
     {
       "id": "jYvNSLQ_Qio",
@@ -84,7 +84,13 @@
       "id": "ODXdXJ322Qw",
       "title": "I let Claude Code take my job (it did better than me)",
       "channel": "Alberta Tech",
-      "score": 0.592
+      "score": 0.593
+    },
+    {
+      "id": "Nn2eXwch-K0",
+      "title": "we JUST figured out how AI thinks",
+      "channel": "Wes Roth",
+      "score": 0.584
     },
     {
       "id": "6bmM45jkMDY",
@@ -93,16 +99,10 @@
       "score": 0.582
     },
     {
-      "id": "Nn2eXwch-K0",
-      "title": "we JUST figured out how AI thinks",
-      "channel": "Wes Roth",
-      "score": 0.582
-    },
-    {
       "id": "o4pwkwg0zfk",
       "title": "Did Google Just Fall Behind Again?, WWDC Preview, Anthropic Files To Go Public",
       "channel": "Alex Kantrowitz",
-      "score": 0.581
+      "score": 0.582
     }
   ]
 }

@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Cole Medin benchmarks mixed-provider workflows using Claude Opus and Kimi K2.6 for code generation, testing which model should handle planning versus implementation. He uses Archon to run the same coding workflow four ways against three real GitHub issues, then evaluates the 12 resulting PRs on seven dimensions including correctness and code quality.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "be04577c6b1b4e34",
+  "wh": "e41f70aadeb2e306",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,8 +56,8 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "inference",
+      "label": "inference"
     },
     {
       "slug": "model-routing",
@@ -83,7 +83,7 @@
       "id": "Xh1z23uBZo0",
       "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
       "channel": "Cole Medin",
-      "score": 0.602
+      "score": 0.604
     },
     {
       "id": "RSk6R_2GYZo",

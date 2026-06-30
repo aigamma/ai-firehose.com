@@ -1,13 +1,109 @@
 {
   "id": "code-interpreter",
   "label": "Code Interpreter",
-  "kind": "tool",
-  "category": "Agents and Tool Use",
   "aliases": [
     "code interpreter",
     "code execution tool",
     "sandboxed code execution"
   ],
+  "kind": "tool",
+  "attention": 2,
+  "first_seen": "2026-06-28T16:35:19.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 126.7,
+    "sparkline": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "python-runtime",
+      "label": "Python runtime",
+      "score": 0.758
+    },
+    {
+      "id": "ai-ide",
+      "label": "AI IDE",
+      "score": 0.754
+    },
+    {
+      "id": "code-generation",
+      "label": "code generation",
+      "score": 0.743
+    },
+    {
+      "id": "code-triage",
+      "label": "code triage",
+      "score": 0.739
+    },
+    {
+      "id": "test-harness",
+      "label": "test harness",
+      "score": 0.733
+    },
+    {
+      "id": "ide-integration",
+      "label": "IDE integration",
+      "score": 0.731
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.26
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": -0.32
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.11
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": -0.015
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.009
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": -0.576
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": -0.296
+    }
+  ],
+  "top_items": [
+    {
+      "title": "I used Claude Code to get a second opinion on my MRI",
+      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
+      "author_or_channel": "engmarketer",
+      "published_at": "2026-06-28T16:35:19.000Z",
+      "kind": "opinion"
+    }
+  ],
+  "category": "Agents and Tool Use",
   "durable": true,
   "source": "authored",
   "definition": "A tool that lets a model write code, run it in a sandboxed environment, and read back the output, turning a probabilistic text generator into a system that can compute exact answers, manipulate data and files, and verify its own work by execution. The single tool it exposes, \"run this code,\" is itself general-purpose, and execution provides ground truth, which is what makes it both exact and self-checking.",
@@ -61,12 +157,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/code-interpreter.webp",
     "alt": "An AI model writes code into an editor with a Run button, whose execution produces an Output panel of charts and a checkmark; titled Code Interpreter.",
