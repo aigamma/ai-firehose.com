@@ -6,9 +6,9 @@
   "published": "2026-05-21T20:32:39+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "Cursor's Composer 2 is built on the Kimi K2.5 base model (1T params, 32B active, 256K context) and trained via continued pre-training for coding tasks followed by long-horizon reinforcement learning. The system uses reward shaping with nonlinear length penalties and self-summarization to optimize for both speed and code quality in multi-file editing scenarios.",
+  "summary": "Cursor's Composer 2 is built from Kimi K2.5 as a base model with 1T parameters and 256K context window. Training involves continued coding-focused pre-training, long-horizon reinforcement learning with auto-install verification, and reward shaping with self-summarization. Cursor Bench is used as an internal evaluation benchmark for model assessment.",
   "writeup": "Cursor researcher Sasha walks through the ML design of Composer 2, the company's in-house coding agent built on Kimi K2.5 (1T parameters, 32B activated, 256K context). The talk moves through three pillars: large-scale continued pre-training to specialize the base model, long-horizon reinforcement learning with verifiable environment setup, and an internal benchmark (CursorBench) calibrated to realistic software engineering tasks. The through-line is that typical Cursor users now expect agents to write nearly 100% of their code without supervision, which forced every design decision toward hard-task completion at scale.",
-  "wh": "c082925ac26cb9cf",
+  "wh": "0531d76291d710d4",
   "key_points": [
     "Composer 2 is built on Kimi K2.5 (1 trillion total parameters, 32 billion activated, 61 layers, 256K context, multi-head latent attention) and reaches parity with Opus 4.6 on coding benchmarks while pricing below GPT-5.4.",
     "Pre-training scale measurably affects final model quality after RL: three variants (small, medium, large continued pre-training) produce three distinct reward levels, with the larger pre-training consistently winning, demonstrating that the pre-training investment compounds through the RL phase.",
@@ -60,12 +60,12 @@
   "ih": "b89fc4377d47746b",
   "concepts": [
     {
-      "slug": "reinforcement-learning",
-      "label": "reinforcement learning"
+      "slug": "mixture-of-experts",
+      "label": "Mixture of Experts"
     },
     {
-      "slug": "continual-pretraining",
-      "label": "continual pretraining"
+      "slug": "reinforcement-learning",
+      "label": "reinforcement learning"
     },
     {
       "slug": "reward-modeling",
@@ -76,46 +76,50 @@
       "label": "text summarization"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
+      "slug": "continual-pretraining",
+      "label": "continual pretraining"
+    },
+    {
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     }
   ],
   "similar": [
     {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.62
-    },
-    {
       "id": "fYrPKhHouxs",
       "title": "The New Kimi K2.7 Model is VERY Impressive",
       "channel": "Cole Medin",
-      "score": 0.612
+      "score": 0.58
     },
     {
-      "id": "lyhnXvNnhsU",
-      "title": "Minimax Code + M3 : Crazy Alternative to Claude,Codex!",
+      "id": "qFhwsb78hko",
+      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
       "channel": "AICodeKing",
-      "score": 0.592
+      "score": 0.578
     },
     {
-      "id": "UxbULt_hCdA",
-      "title": "Introducing Cursor 3",
+      "id": "fWa7uxyhVDE",
+      "title": "Opening Keynote, Michael Truell | Compile 26",
       "channel": "Cursor",
-      "score": 0.591
+      "score": 0.565
     },
     {
-      "id": "scuzhhZpoHs",
-      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
-      "channel": "Kimi AI",
-      "score": 0.59
+      "id": "MkFThJWJgg8",
+      "title": "GLM-5.2 (Fully Tested): I got EARLY ACCESS & This MODEL is CRAZY!",
+      "channel": "AICodeKing",
+      "score": 0.559
     },
     {
       "id": "QJ2bM8Me5Fk",
       "title": "Kimi K2.6 and Agent Swarm explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.586
+      "score": 0.55
+    },
+    {
+      "id": "scuzhhZpoHs",
+      "title": "Meet Kimi K2.6: Advancing Open-Source Coding",
+      "channel": "Kimi AI",
+      "score": 0.539
     }
   ]
 }

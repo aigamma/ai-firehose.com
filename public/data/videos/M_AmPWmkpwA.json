@@ -6,9 +6,9 @@
   "published": "2026-05-02T11:45:03+00:00",
   "kind": "tool",
   "recommended": false,
-  "summary": "AI Jason discusses OpenAI Symphony, described as a new AI coding paradigm. The video covers Symphony's functionality, implementation with harness setup and auto-testing, and workflow configuration.",
+  "summary": "OpenAI Symphony is a new AI coding framework that integrates automated testing and workflow configuration. The video demonstrates setup procedures, harness configuration, and integration with development workflows via WORKFLOW.md files.",
   "writeup": "OpenAI's open-source Symphony project proposes a fundamental shift in how developers interact with coding agents: instead of managing multiple concurrent interactive sessions, engineers manage tickets in a tracker like Linear while a background scheduler picks up work, spins up isolated workspaces, and runs agents autonomously every 30 seconds. The core mechanism is a single workflow.md file that lives in the repo, version-controlled like any code, combining a YAML front matter that configures the scheduler with a Markdown prompt that defines the agent's standard operating procedure. A critical companion concern is harness engineering: the codebase must supply self-verifying tools so agents can confirm their own output end-to-end, with Playwright's CRI video-recording capability highlighted as the key missing piece most teams have not yet wired up.",
-  "wh": "9d72a3a6fa453d83",
+  "wh": "e14c6ad1b06a2e7d",
   "key_points": [
     "Symphony's central argument is that the bottleneck in agentic coding is no longer model capability but human cognitive load from context-switching across sessions; moving humans up a level to ticket management breaks that ceiling.",
     "The workflow.md file is the architectural keystone: its YAML front matter configures the scheduler (polling interval, parallelism, workspace paths, Linear project slug, post-setup hooks) and its Markdown body is the system prompt rendered to the agent on every turn, encoding the definition of done and when to request human review.",
@@ -59,54 +59,54 @@
   "ih": "a29e4dece648cf6a",
   "concepts": [
     {
-      "slug": "agent-orchestration",
-      "label": "agent orchestration"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "ai-coding-tools",
-      "label": "AI coding tools"
+      "slug": "qa-testing",
+      "label": "QA testing"
     },
     {
-      "slug": "workflow-automation",
-      "label": "workflow automation"
+      "slug": "code-generation",
+      "label": "code generation"
     }
   ],
   "similar": [
     {
-      "id": "qGm6gtHpJq0",
-      "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
-      "channel": "Cole Medin",
-      "score": 0.623
-    },
-    {
-      "id": "MfzhriTfYNY",
-      "title": "The “Final Boss” of AI Workflows: UltraCode",
-      "channel": "Keith AI",
-      "score": 0.614
-    },
-    {
-      "id": "W6x-hb44C0c",
-      "title": "wtf is Loop Engineer & how to setup for real",
-      "channel": "AI Jason",
-      "score": 0.61
-    },
-    {
-      "id": "6d__WOpZswY",
-      "title": "New #1 open-source AI model is here!",
-      "channel": "AI Search",
-      "score": 0.606
-    },
-    {
       "id": "Ya51a1EJPZk",
       "title": "Make the PERFECT Videos with Claude Code (Full Workflow)",
       "channel": "Cole Medin",
-      "score": 0.602
+      "score": 0.611
     },
     {
       "id": "vhbaZJtW2Hg",
       "title": "🔴LIVE - Full AI Video Generation Workflow Using Claude Code + Remotion + Archon",
       "channel": "Cole Medin",
-      "score": 0.597
+      "score": 0.611
+    },
+    {
+      "id": "W6x-hb44C0c",
+      "title": "wtf is Loop Engineer & how to setup for real",
+      "channel": "AI Jason",
+      "score": 0.593
+    },
+    {
+      "id": "I2uKi_DMQ0M",
+      "title": "How to ACTUALLY Use AI For Coding",
+      "channel": "Jack Roberts",
+      "score": 0.586
+    },
+    {
+      "id": "MfzhriTfYNY",
+      "title": "The “Final Boss” of AI Workflows: UltraCode",
+      "channel": "Keith AI",
+      "score": 0.583
+    },
+    {
+      "id": "8tOfGkddPNM",
+      "title": "Claude + NotebookLM: Ultimate AI Automation Workflow to Work 10x Faster",
+      "channel": "AI Master",
+      "score": 0.578
     }
   ]
 }

@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Keith AI documents a switch from Jetson Nano to Beelink SER10 Max for running local AI models including Qwen 3.5 9B, addressing the myth that local AI is free. The video compares local versus cloud speed, privacy tradeoffs, and presents a hybrid approach combining local agents with cloud services.",
   "writeup": "Running OpenCode and Hermes locally is not free: cloud credits were running $10-20 per day before the switch, and a quantized local model on a Beelink SER10 Max delivers only 12 tokens per second, which becomes a bottleneck with complex tool calls and sub-agent chains. The video argues that 'running local' is not a single choice but a stack of seven interdependent decisions, and that the best practical answer is a hybrid topology where a dedicated local mini PC handles privacy-sensitive and low-complexity tasks over a Tailscale tunnel while harder tasks route to cloud APIs. The through-line is ruthless about trade-offs: local wins on privacy and ongoing cost, cloud wins on speed and reliability, and the correct frame is 'local first, cloud when needed' rather than treating local as unconditionally superior.",
-  "wh": "0f93125bfb160f5f",
+  "wh": "46ca0dd64eb2a07f",
   "key_points": [
     "The agent runtime (Hermes, OpenCode) and the LLM model are independent layers that can run on different machines, meaning a cheap Raspberry Pi or Jetson Nano can host the agent while the LLM calls OpenAI or Claude in the cloud, or vice versa.",
     "The seven decisions that define a 'local' setup are: where the agent runs, where the LLM runs, what hardware to use, what model to choose, what runtime (Llama, llama.cpp, or vLLM) to use, whether throughput is sufficient for the task, and whether privacy is the primary motivation.",
@@ -52,16 +52,16 @@
   "ih": "a3441ba83caa2543",
   "concepts": [
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "inference-optimization",
+      "label": "inference optimization"
     },
     {
       "slug": "test-time-compute",
       "label": "test-time compute"
     },
     {
-      "slug": "production-deployment",
-      "label": "production deployment"
+      "slug": "hybrid-deployment",
+      "label": "hybrid deployment"
     },
     {
       "slug": "privacy-preserving-inference",
@@ -79,7 +79,7 @@
       "id": "pgTPCdHmOtA",
       "title": "Qwen on local mini PC (Beelink) #ai #localai #coding #hermesagent #openclaw",
       "channel": "Keith AI",
-      "score": 0.68
+      "score": 0.682
     },
     {
       "id": "C20PFYd2dOM",
@@ -94,16 +94,16 @@
       "score": 0.567
     },
     {
-      "id": "OkkfA0slYzQ",
-      "title": "AI Ecosystems: Claude vs. SAP/Salesforce & Living Artifacts Explained! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.55
-    },
-    {
       "id": "ZoBEQWxosGg",
       "title": "I Turned Cheap Cloud Storage Into a 1PB Local Drive (With JuiceFS)",
       "channel": "Better Stack",
       "score": 0.549
+    },
+    {
+      "id": "qzPOuqz0Dhw",
+      "title": "Open vs Closed AI: The Future Is CHEAPER & SMARTER #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.545
     }
   ]
 }

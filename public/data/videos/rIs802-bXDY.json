@@ -6,9 +6,9 @@
   "published": "2026-05-09T12:15:09+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "AI Jason discusses the /goal feature and autonomous coding workflows, presenting recent developments in agentic coding systems. The video covers setup, prompting strategies, and long-horizon task execution capabilities within coding frameworks.",
+  "summary": "AI Jason explores emerging autonomous coding capabilities, including the /goal feature and goal-based prompting techniques. He discusses tools like Crewlet and Superdesign that enable developers to set and execute long-horizon coding tasks with agent-like behavior.",
   "writeup": "Codex and Hermes have each shipped a persistent \"goal\" feature that keeps coding agents running for hours on complex tasks by replacing the old programmatic rough loop with an LLM judge that decides whether the goal has actually been met. The video walks through how both implementations work under the hood, the specific commands to activate and monitor the feature in Codex, and the prompting discipline required to get useful results. The through-line is precise: without an explicit, quantifiable definition of done, agents either quit too early or spiral; the feature solves early termination but transfers the hard problem to prompt authorship.",
-  "wh": "3adb32486b26f2c1",
+  "wh": "05cd07e1ffeb1102",
   "key_points": [
     "The rough loop (running a coding agent in a for-loop with a fixed iteration cap) was the prior art; the new goal feature replaces the programmatic stop condition with an LLM call that judges whether the stated objective has actually been achieved, so the agent continues working rather than prematurely declaring victory.",
     "Codex and Hermes implement the judging step differently: Codex instructs the agent to self-mark the goal complete using an `update goal --status complete` command only when the audit confirms no required work remains, while Hermes uses a separate LLM judge call external to the agent turn.",
@@ -60,20 +60,20 @@
   "ih": "c816675b78e56e6c",
   "concepts": [
     {
-      "slug": "predictive-coding",
-      "label": "predictive coding"
+      "slug": "ai-coding",
+      "label": "AI coding"
     },
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "agentic-workflows",
+      "label": "agentic workflows"
     },
     {
-      "slug": "planning",
-      "label": "planning"
+      "slug": "prompting",
+      "label": "prompting"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
+      "slug": "long-horizon-planning",
+      "label": "long-horizon planning"
     }
   ],
   "similar": [
@@ -81,37 +81,37 @@
       "id": "I2uKi_DMQ0M",
       "title": "How to ACTUALLY Use AI For Coding",
       "channel": "Jack Roberts",
-      "score": 0.759
+      "score": 0.742
     },
     {
       "id": "aMfig5cKOtY",
       "title": "Claude Code Just Dropped /Goal. (Master it in 8 Minutes).",
       "channel": "Tristen O'Brien",
-      "score": 0.723
-    },
-    {
-      "id": "5HVPeux24WU",
-      "title": "Embrace long-running tasks with Opus 4.8 and Claude Code",
-      "channel": "Claude",
-      "score": 0.635
-    },
-    {
-      "id": "2zhchG0r6iI",
-      "title": "Okay, this unleashed my agent",
-      "channel": "AI Jason",
-      "score": 0.622
-    },
-    {
-      "id": "3hXJI2q0Jz8",
-      "title": "Recursive Coding Agents - Raymond Weitekamp, OpenProse",
-      "channel": "AI Engineer",
-      "score": 0.62
+      "score": 0.673
     },
     {
       "id": "8h9j2rskP14",
       "title": "The next era of AI coding",
       "channel": "Cursor",
-      "score": 0.615
+      "score": 0.671
+    },
+    {
+      "id": "jYvNSLQ_Qio",
+      "title": "Are senior developers going back to writing code by hand?",
+      "channel": "Google Cloud Tech",
+      "score": 0.648
+    },
+    {
+      "id": "UztrFXaSWv0",
+      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
+      "channel": "Cole Medin",
+      "score": 0.643
+    },
+    {
+      "id": "DqtmZE6Hl0g",
+      "title": "The Prompt is the Platform - Dominik Tornow, Resonate HQ",
+      "channel": "AI Engineer",
+      "score": 0.641
     }
   ]
 }

@@ -6,9 +6,9 @@
   "published": "2026-06-02T18:22:23+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Best practices for deploying TypeScript AI agents to production include: streaming tool call events for UI responsiveness, layered authentication with API Gateway and Cognito, type-safe contracted database access with tenant isolation, guardrails with cost budgets and model routing, and observability via metrics and distributed tracing. These patterns apply across platforms.",
+  "summary": "Video covers five production deployment best practices for AI agents: streaming tool call events for responsive UIs, layered authentication (API Gateway, Cognito, WAF, IAM), type-safe database access with tenant isolation, guardrails and cost budgets via lifecycle hooks, and observability through metrics and distributed tracing. These patterns are implementation-agnostic though demonstrated using AWS services and Strands SDK.",
   "writeup": "A practical walkthrough of five production hardening patterns for TypeScript AI agents built with the Strands SDK, covering streaming, authentication layering, tenant-isolated database access, loop guardrails, and observability. The through-line is that none of these changes touch the agent's core logic: each practice is a layer added around the same tools and TypeScript code. The talk targets the specific failure modes that show up when a working demo hits real users: open endpoints, unbounded token loops, cross-tenant data leaks, and missing diagnostics.",
-  "wh": "6feb7bab31624e5b",
+  "wh": "aa082011ef295c0e",
   "key_points": [
     "Streaming three event types (text deltas, tool-start, tool-end) via server-sent events keeps the UI responsive during tool calls that take 10 or more seconds, replacing a blank spinner with visible activity throughout the request.",
     "Separating auth layers by keeping the agent behind IAM-only access and placing a Lambda between the OAuth gateway and the agent prevents users from bypassing rate limiting and WAF rules by calling the agent URL directly.",
@@ -56,70 +56,82 @@
   "ih": "13769c3cb8210737",
   "concepts": [
     {
-      "slug": "streaming",
-      "label": "streaming"
-    },
-    {
       "slug": "ai-agents",
       "label": "AI agents"
     },
     {
-      "slug": "cost-efficiency",
-      "label": "cost efficiency"
+      "slug": "cloud-inference",
+      "label": "cloud inference"
     },
     {
-      "slug": "agent-tracing",
-      "label": "agent tracing"
+      "slug": "access-control",
+      "label": "access control"
+    },
+    {
+      "slug": "rate-limiting",
+      "label": "rate limiting"
     },
     {
       "slug": "tenant-isolation",
       "label": "tenant isolation"
     },
     {
+      "slug": "guardrails",
+      "label": "guardrails"
+    },
+    {
+      "slug": "cost-monitoring",
+      "label": "cost monitoring"
+    },
+    {
       "slug": "observability",
       "label": "observability"
     },
     {
-      "slug": "api-integration",
-      "label": "API integration"
+      "slug": "agent-tracing",
+      "label": "agent tracing"
+    },
+    {
+      "slug": "lifecycle-hooks",
+      "label": "lifecycle hooks"
     }
   ],
   "similar": [
     {
-      "id": "14RP8liACqo",
-      "title": "How Senior Engineers Actually Build With AI in 2026 | Build a Full Stack Systems Architecture App",
-      "channel": "JavaScript Mastery",
-      "score": 0.557
-    },
-    {
-      "id": "1wfY7GCVvh0",
-      "title": "Google's Agents CLI: The CLI + Skills Combination to Ship AI Agents EASILY",
-      "channel": "Cole Medin",
-      "score": 0.555
-    },
-    {
       "id": "ObTPqBGsEbA",
       "title": "The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks",
       "channel": "AI Engineer",
-      "score": 0.552
-    },
-    {
-      "id": "uiP88SpCi1Q",
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "channel": "AI Engineer",
-      "score": 0.55
-    },
-    {
-      "id": "19HDQ9HppOA",
-      "title": "Ship your first Managed Agent",
-      "channel": "Claude",
-      "score": 0.546
+      "score": 0.679
     },
     {
       "id": "4uFVSLgD2Q4",
       "title": "Agents in Production: How OpenGov Built and Scaled OG Assist - Gabe De Mesa, OpenGov",
       "channel": "AI Engineer",
-      "score": 0.544
+      "score": 0.646
+    },
+    {
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.64
+    },
+    {
+      "id": "l6KeLCuB90o",
+      "title": "3 patterns to build long-running AI agents",
+      "channel": "Google Cloud Tech",
+      "score": 0.634
+    },
+    {
+      "id": "4Vg2aVtrX8k",
+      "title": "Building AI Agents for Real-World Problems & Workflows",
+      "channel": "IBM Technology",
+      "score": 0.626
+    },
+    {
+      "id": "3zvWHe94xCY",
+      "title": "Agents Are Just Loops",
+      "channel": "AWS Developers",
+      "score": 0.624
     }
   ]
 }

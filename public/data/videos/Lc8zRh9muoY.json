@@ -6,63 +6,67 @@
   "published": "2026-06-29T00:00:39+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "A record and replay pattern for autonomous agents captures every model invocation, tool execution, and state transition into an append-only event log to enable deterministic replay of failed production executions. The technique moves beyond durable execution and basic caching to allow engineers to perform true postmortem root cause analysis by stepping through exact historical execution paths.",
+  "summary": "The record and replay pattern captures every model invocation, tool execution, and state transition into an append-only event log to enable deterministic replay of failed agent runs. This approach allows engineers to reproduce non-deterministic production failures for postmortem analysis by stepping through exact execution paths, moving beyond basic caching or mocking solutions.",
   "writeup": "This talk from Microsoft's Tisha Chawla and Susheem Koul presents a record and replay pattern for debugging autonomous agents that fail in production and cannot be reproduced through standard logging or state recovery. The approach captures model invocations, tool executions, memory reads, and state transitions into an append-only event log, enabling deterministic replay of a failed execution. The concrete takeaway: capturing these events as an immutable log lets engineers perform postmortem root cause analysis on non-deterministic agent failures.",
-  "wh": "7623455a71e8085e",
+  "wh": "5605ebe112997d85",
   "concepts": [
     {
-      "slug": "session-replay",
-      "label": "session replay"
+      "slug": "record-and-replay",
+      "label": "record and replay"
     },
     {
       "slug": "parallel-execution",
       "label": "parallel execution"
     },
     {
-      "slug": "event-logging",
-      "label": "event logging"
-    },
-    {
       "slug": "ai-agents",
       "label": "AI agents"
+    },
+    {
+      "slug": "deterministic-replay",
+      "label": "deterministic replay"
+    },
+    {
+      "slug": "debugging",
+      "label": "debugging"
     }
   ],
   "similar": [
     {
+      "id": "APh1Vx0oLmQ",
+      "title": "Deterministic Infra for Non-Deterministic AI Agents - Nishant Gupta, Meta Superintelligence Labs",
+      "channel": "AI Engineer",
+      "score": 0.589
+    },
+    {
       "id": "UPwGaM2MKHY",
       "title": "The Log Is The Agent - Ishaan Sehgal, Omnara",
       "channel": "AI Engineer",
-      "score": 0.611
+      "score": 0.582
     },
     {
       "id": "l6KeLCuB90o",
       "title": "3 patterns to build long-running AI agents",
       "channel": "Google Cloud Tech",
-      "score": 0.606
-    },
-    {
-      "id": "UztrFXaSWv0",
-      "title": "The Creators of Claude Code and OpenClaw don't Prompt Their Agents Anymore?!",
-      "channel": "Cole Medin",
-      "score": 0.602
-    },
-    {
-      "id": "wRDk9_JoIic",
-      "title": "The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das",
-      "channel": "EO",
-      "score": 0.6
-    },
-    {
-      "id": "LrGCT7G_rU8",
-      "title": "Using RL Agent to Detect and Remediate ETL Pipeline Failures - Anna Marie Benzon",
-      "channel": "AI Engineer",
-      "score": 0.591
+      "score": 0.578
     },
     {
       "id": "4Vg2aVtrX8k",
       "title": "Building AI Agents for Real-World Problems & Workflows",
       "channel": "IBM Technology",
-      "score": 0.583
+      "score": 0.57
+    },
+    {
+      "id": "LrGCT7G_rU8",
+      "title": "Using RL Agent to Detect and Remediate ETL Pipeline Failures - Anna Marie Benzon",
+      "channel": "AI Engineer",
+      "score": 0.568
+    },
+    {
+      "id": "wRDk9_JoIic",
+      "title": "The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das",
+      "channel": "EO",
+      "score": 0.565
     }
   ]
 }

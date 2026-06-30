@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Prompt caching in Claude enables users to save millions of tokens weekly by caching input data and reusing it across requests. The technique involves understanding cache costs, cache TTL behavior, and practices that preserve cache state to maximize token efficiency.",
   "writeup": "This video explains how Claude Code prompt caching works mechanically, why session limits burn faster than expected, and what habits preserve them. Cached tokens cost only 10% of normal input, so a 91-million-token cached day effectively bills as 9 million tokens. The cache TTL is one hour on a Claude subscription but drops to 5 minutes on API or sub-agents, and several common actions (switching models mid-session, waiting over an hour, changing the system prompt) silently blow the cache and force a full re-process of every prior token in the conversation.",
-  "wh": "6059940dfe26f1c6",
+  "wh": "4b8faf352f376568",
   "key_points": [
     "Cached tokens are billed at 10% of normal input cost: a session with 91 million cached tokens costs the same as processing roughly 9 million fresh tokens.",
     "The cache TTL is one hour for Claude Code on a subscription plan but only 5 minutes for API calls and sub-agents on any plan; users who exhaust their weekly subscription limit and fall into per-token overage territory also drop to the 5-minute TTL.",
@@ -64,8 +64,8 @@
       "label": "prompt caching"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     },
     {
       "slug": "cache-hit-rate",
@@ -77,13 +77,25 @@
       "id": "uiP88SpCi1Q",
       "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
       "channel": "AI Engineer",
-      "score": 0.682
+      "score": 0.647
+    },
+    {
+      "id": "qOvc9IUKEIc",
+      "title": "How Anthropic Engineers ACTUALLY Prompt Claude Code",
+      "channel": "Austin Marchese",
+      "score": 0.627
     },
     {
       "id": "a4_t6vHMwSw",
       "title": "30 Claude Features You Need to Know NOW (Become a PRO!)",
       "channel": "AI Master",
-      "score": 0.625
+      "score": 0.626
+    },
+    {
+      "id": "sBF3UumkL4Y",
+      "title": "9 Claude Code Plugins to Build 10x Faster",
+      "channel": "Austin Marchese",
+      "score": 0.614
     },
     {
       "id": "NDb-sfHyi7A",
@@ -92,22 +104,10 @@
       "score": 0.608
     },
     {
-      "id": "qOvc9IUKEIc",
-      "title": "How Anthropic Engineers ACTUALLY Prompt Claude Code",
-      "channel": "Austin Marchese",
-      "score": 0.595
-    },
-    {
-      "id": "LIEuGD0pJ18",
-      "title": "Learn 97% of Claude in Under 12 Minutes",
-      "channel": "Jack Roberts",
-      "score": 0.594
-    },
-    {
       "id": "7zZy1QTvokM",
       "title": "Stop Prompting Claude. Use Karpathy's Method Instead.",
       "channel": "Austin Marchese",
-      "score": 0.594
+      "score": 0.601
     }
   ]
 }

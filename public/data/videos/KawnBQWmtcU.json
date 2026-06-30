@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "TurboQuant is a vector compression technique integrated into Qdrant that achieves 8x, 16x, and 32x compression with higher recall than Binary Quantization. It builds on Google Research's algorithm with Qdrant enhancements including length re-normalization, per-coordinate anisotropy compensation, and integer-arithmetic scoring.",
   "writeup": "A Qdrant engineering webinar walks through the quantization hierarchy in Qdrant 1.18, from scalar (4x compression) and binary (up to 32x) to product quantization (up to 46x), then lays the groundwork for TurboQuant, which the team built as a direct improvement on product quantization. The through-line is a concrete tradeoff analysis: each compression tier trades accuracy for memory reduction, and TurboQuant aims to recover accuracy that standard product quantization loses while preserving its aggressive compression ratio. Matryoshka dimensionality reduction is distinguished from quantization: the former truncates dimensions, the latter compresses all dimensions into fewer bits.",
-  "wh": "d4ab5879ff99c866",
+  "wh": "2fc714de9de06732",
   "key_points": [
     "Product quantization achieves up to 46x compression by clustering per-dimension value distributions and storing only the nearest cluster index (3 bits instead of 32), but this introduces approximation error and is slow at scoring because every dimension must be reconstructed.",
     "Qdrant's four quantization tiers span a wide accuracy-size tradeoff: scalar quantization (32-bit float to 8-bit int, 4x) is least lossy, binary quantization (1-2 bits, 32x) is most extreme, product quantization reaches 46x at the cost of meaningful accuracy regression, and TurboQuant targets a better accuracy-to-compression point than standard product quantization.",
@@ -59,8 +59,8 @@
       "label": "compression"
     },
     {
-      "slug": "mlp-optimization",
-      "label": "MLP optimization"
+      "slug": "inference-optimization",
+      "label": "inference optimization"
     }
   ],
   "similar": [
@@ -83,14 +83,14 @@
       "score": 0.582
     },
     {
-      "id": "WXEf6K6DBq8",
-      "title": "Qdrant Multi-Vector Search Course Overview",
-      "channel": "Qdrant Vector Search",
-      "score": 0.577
-    },
-    {
       "id": "Z5j1wx1D5wY",
       "title": "Search Relevance Built Into the Vector Index",
+      "channel": "Qdrant Vector Search",
+      "score": 0.574
+    },
+    {
+      "id": "WXEf6K6DBq8",
+      "title": "Qdrant Multi-Vector Search Course Overview",
       "channel": "Qdrant Vector Search",
       "score": 0.574
     },
@@ -98,7 +98,7 @@
       "id": "vpbPhiXQ9Ks",
       "title": "Qdrant Agent Skills - Discord Session",
       "channel": "Qdrant Vector Search",
-      "score": 0.559
+      "score": 0.56
     }
   ]
 }
