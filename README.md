@@ -8,9 +8,10 @@ It is the third in a personal trilogy. [aigamma.com](https://aigamma.com) was bu
 
 - **A daily briefing.** A cited, model-written summary of what is new and what is breaking out, the lede of the dashboard, written at full strength by Claude Opus. Every claim links to the item or the concept it came from.
 - **Trend boards, What Moved.** The topics that gained or lost the most attention this window versus the equal window before it, ranked per kind (Techniques, Tools, Opinions), with a magnitude bar and breakout and just-surfaced flags. The whole page switches between Day, Week, Month, and Quarter.
-- **A durable knowledge base.** 644 Opus-authored concepts across 33 categories, explorable as an Atlas constellation, woven into the live trending taxonomy by wiki-style auto-linking, and studyable through curated learning paths and flashcards.
+- **A durable knowledge base.** More than 1,700 Opus-authored concepts across 33 categories, explorable as an Atlas constellation, woven into the live trending taxonomy by wiki-style auto-linking, and studyable through curated learning paths and flashcards.
 - **Watch.** Favorite AI teachers in a browse directory, plus a spotlight of their latest videos, each joined to the corpus so it carries a cited summary and links into the concepts it covers. Curated in-repo.
 - **Live semantic search.** Non-chat retrieval across the corpus and knowledge base, on the Explore page alongside themes, spectrums, and connections, plus a subscribable RSS feed (`/feed.xml`).
+- **Programmatic access (MCP).** An MCP server, `ai-firehose-mcp` on npm, exposes the query surface (`search_ai`, `whats_new`, `define`, `stats`) to any MCP client such as Claude Code or Claude Desktop, with no repository, API key, or local data. See [`mcp/README.md`](mcp/README.md).
 
 ## How It Stays Fresh
 
