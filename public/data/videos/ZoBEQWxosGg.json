@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "JuiceFS is a POSIX-compliant virtual file system that layers cloud object storage like AWS S3 with a multi-tiered caching engine using local NVMe for performance. The video demonstrates setting up JuiceFS with Redis metadata, configuring local SSD cache, and running AI inference workloads directly against cloud buckets while monitoring performance via Prometheus and Better Stack observability.",
   "writeup": "JuiceFS is an open-source distributed file system that separates raw data (stored in cloud object storage like S3) from metadata (managed in a fast database such as Redis or Postgres), presenting both as a standard POSIX-compliant mount. Its defining feature is a multi-tiered caching engine that writes incoming data blocks to a local NVMe or SSD scratch partition, so subsequent reads bypass the network entirely and run at hardware line speeds. The demo shows a cold read of a large video file taking many seconds over S3, followed by a sub-second re-read from local cache, then extends to Kubernetes shared storage, ML training pipelines, and a Better Stack observability dashboard driven by JuiceFS's built-in Prometheus metrics endpoint.",
-  "wh": "62380435916a9aa8",
+  "wh": "497144427540c6d7",
   "key_points": [
     "JuiceFS stores raw file data as 4 MB chunks in any S3-compatible bucket while keeping all metadata (directory structure, permissions, file layout) in a separate fast database such as Redis, Postgres, or TiKV, allowing legacy POSIX applications to run on top of object storage without code changes.",
     "The multi-tiered caching engine silently populates a local NVMe or SSD partition on the first read of each data block; on the second access the block is served entirely from local storage, reducing latency from network-bound to hardware line speed.",
@@ -64,8 +64,8 @@
       "label": "virtualization"
     },
     {
-      "slug": "tool-integration",
-      "label": "tool integration"
+      "slug": "api-integration",
+      "label": "API integration"
     },
     {
       "slug": "posix-compliant-filesystem",
@@ -99,19 +99,19 @@
       "id": "JRe0MxtVgxE",
       "title": "EU Cloud vs US Giants: A New European Cloud Option? #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.525
-    },
-    {
-      "id": "jcUqsNpDDDk",
-      "title": "If you don’t run Pi locally you’re falling behind…",
-      "channel": "David Ondrej",
-      "score": 0.521
+      "score": 0.524
     },
     {
       "id": "C20PFYd2dOM",
       "title": "Privacy Is the Real AI Bottleneck",
       "channel": "Keith AI",
       "score": 0.517
+    },
+    {
+      "id": "qpa5XwGkLp8",
+      "title": "Claude Managed Agents Will Make Millionaires (do this now)",
+      "channel": "Liam Ottley",
+      "score": 0.498
     }
   ]
 }

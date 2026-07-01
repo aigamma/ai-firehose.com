@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Kobie Crawford demonstrates that smaller models trained with reinforcement learning to exhibit correct tool-use behavior (like proper table querying and error correction) outperform much larger models on structured query tasks. A 4B model finetuned on Snorkel's framework showed measurable gains on FinQA benchmarks with minimal training cost.",
   "writeup": "Kobe Crawford (Snorkel AI) and the UC Berkeley RLLM team demonstrate that a 4-billion-parameter model fine-tuned with reinforcement learning on expert-curated data can outperform a 235-billion-parameter reasoning model on financial tool-use tasks. The central argument is that raw reasoning scale is the wrong solution to the wrong problem: a domain-specific task like SQL-based financial analysis does not require Terence Tao-level general mathematical breadth, and RL is better suited than supervised fine-tuning for reshaping tool-use behavior. The talk grounds the claim in a live failure demo where the 235B model queries a non-existent table twice and then hallucinates an answer, a failure no amount of general reasoning prevented.",
-  "wh": "d52985b1b6fad976",
+  "wh": "114651df9c836ad5",
   "key_points": [
     "A 235-billion-parameter quantized reasoning model, when asked for the year-over-year YouTube ads revenue growth rate from 2023 to 2024, failed to inspect available database tables, queried a non-existent table twice, and fell back to a hallucinated answer, illustrating that raw reasoning capability does not guarantee disciplined tool use.",
     "The RLLM team frames oversized model selection as the 'Terence Tao effect': deploying a mathematician capable of any domain to do routine SQL queries and arithmetic is a category mismatch, and the domain-specific behavioral discipline a financial analyst needs is not the same as general brilliance.",
@@ -59,8 +59,8 @@
       "label": "tool use"
     },
     {
-      "slug": "scaling",
-      "label": "scaling"
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     },
     {
       "slug": "fine-tuning",
@@ -71,8 +71,8 @@
       "label": "Agentic training"
     },
     {
-      "slug": "creative-evaluation",
-      "label": "creative evaluation"
+      "slug": "adaptive-rubrics",
+      "label": "adaptive rubrics"
     },
     {
       "slug": "recursive-self-improvement",
@@ -80,12 +80,6 @@
     }
   ],
   "similar": [
-    {
-      "id": "fWXJM-J0ZB8",
-      "title": "Frontier results, on device - RL Nabors, Arize",
-      "channel": "AI Engineer",
-      "score": 0.644
-    },
     {
       "id": "EcqMYoIV57A",
       "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
@@ -96,25 +90,31 @@
       "id": "spNAUEgq_A8",
       "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
       "channel": "AI Engineer",
-      "score": 0.607
+      "score": 0.624
+    },
+    {
+      "id": "fWXJM-J0ZB8",
+      "title": "Frontier results, on device - RL Nabors, Arize",
+      "channel": "AI Engineer",
+      "score": 0.621
+    },
+    {
+      "id": "UNzCG3lw6O0",
+      "title": "Building Great Agent Skills: The Missing Manual",
+      "channel": "AI Engineer",
+      "score": 0.593
     },
     {
       "id": "uiP88SpCi1Q",
       "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
       "channel": "AI Engineer",
-      "score": 0.597
+      "score": 0.591
     },
     {
       "id": "QuuIywMG4s8",
       "title": "Evals Are Broken, Use Them Anyway — Ara Khan, Cline",
       "channel": "AI Engineer",
       "score": 0.587
-    },
-    {
-      "id": "XJUpuOBpT-4",
-      "title": "The insane engineering of Deepseek V4",
-      "channel": "AI Search",
-      "score": 0.584
     }
   ]
 }

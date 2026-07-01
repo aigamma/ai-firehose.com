@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "NeuralNine demonstrates two practical n8n workflows: one that automatically converts GitHub issues into pull requests, and another that turns Slack messages into GitHub issues. The video covers environment setup and implementation details for both automation pipelines.",
   "writeup": "A step-by-step build of a fully autonomous coding agent that chains N8N, Claude Code (headless), OpenAI, Python, and GitHub webhooks into two interlocked workflows: one that fires whenever a GitHub issue is created and implements the requested change via Claude Code before opening a pull request, and a second that converts a plain Slack message into a GitHub issue to kick off the first. The through-line is the practical staffing problem of letting non-technical collaborators describe work in natural language while a developer only reviews and merges the resulting pull request.",
-  "wh": "f7767264c631fe19",
+  "wh": "34149f4645cc48da",
   "key_points": [
     "The system operates through two N8N workflows: a GitHub-issue trigger that runs a local Python script invoking Claude Code in headless mode to implement changes, commit, push, and open a pull request, then notifies Slack on success; and a Slack-trigger workflow that uses an OpenAI-powered agent to convert a freeform Slack message into a structured GitHub issue, which in turn fires the first workflow.",
     "Claude Code runs in headless mode as the actual code-writing agent, meaning N8N does not do the coding but merely orchestrates the trigger and the local execution environment where Claude Code operates autonomously on the repository.",
@@ -60,8 +60,8 @@
       "label": "workflow automation"
     },
     {
-      "slug": "tool-integration",
-      "label": "tool integration"
+      "slug": "api-integration",
+      "label": "API integration"
     }
   ],
   "similar": [
@@ -69,7 +69,7 @@
       "id": "qyB52HIiou8",
       "title": "Archon + Jira: Drag a Ticket, Get a Pull Request (Live Build)",
       "channel": "Cole Medin",
-      "score": 0.635
+      "score": 0.623
     },
     {
       "id": "skU1-k7_wWE",
@@ -87,19 +87,19 @@
       "id": "8tOfGkddPNM",
       "title": "Claude + NotebookLM: Ultimate AI Automation Workflow to Work 10x Faster",
       "channel": "AI Master",
-      "score": 0.551
-    },
-    {
-      "id": "a7oMylc_SWg",
-      "title": "Automating workflows and file organization with Antigravity",
-      "channel": "Google Cloud Tech",
-      "score": 0.519
+      "score": 0.549
     },
     {
       "id": "5M_vK3Jm8_E",
       "title": "AI Digital Employee? Claude Tagging & The AI Market Revealed! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.514
+      "score": 0.533
+    },
+    {
+      "id": "a7oMylc_SWg",
+      "title": "Automating workflows and file organization with Antigravity",
+      "channel": "Google Cloud Tech",
+      "score": 0.516
     }
   ]
 }

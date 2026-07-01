@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Julia Turc provides an in-depth analysis of the Flow Matching training algorithm, covering the physics foundations including time-variant probability density, continuity equations, velocity fields, and optimal transport. The video examines Flow Matching alongside concurrent related works including Rectified Flow and Stochastic Interpolants, with detailed treatment of conditional velocity fields and the algorithmic implementation.",
   "writeup": "Flow matching is the generative modeling paradigm now underlying open-source image and video models including Flux, Stable Diffusion 3, and CogVideo, requiring only 2 to 3 denoising steps instead of the 10 to 20 steps diffusion demands. The talk traces the physics and mathematics that make this possible: the 19th-century continuity equation, which connects a time-variant velocity field to the evolution of a probability density, then explains why the seemingly naive straight-line training algorithm actually works. The central insight is a divide-and-conquer trick: training on simple conditional transports (noise to a Gaussian centered on one image) implicitly teaches the model the hard unconditional transport, a non-obvious free lunch that flow-based methods only discovered in 2023.",
-  "wh": "5c8d76f0e4bf45b9",
+  "wh": "7af7ed52c66a715f",
   "key_points": [
     "Flow matching replaced Continuous Normalizing Flows (CNF, 2018) by eliminating the costly full backward simulation during training: CNF required one model invocation per trajectory segment to compute maximum likelihood, while flow matching needs only a single forward pass per step using a mean-squared-error objective against a supervised velocity label V* = X1 - X0.",
     "The training algorithm is a deliberate approximation: rather than learning the true curved velocity field directly, flow matching trains on straight-line conditional paths between independent noise sample X0 and image X1, then relies on the mathematical guarantee that averaging over all conditionals recovers the correct marginal velocity field at inference time.",
@@ -63,10 +63,6 @@
       "label": "flow matching"
     },
     {
-      "slug": "normalizing-flows",
-      "label": "normalizing flows"
-    },
-    {
       "slug": "rectified-flow",
       "label": "Rectified Flow"
     },
@@ -92,25 +88,25 @@
       "id": "UYVObn1HUeU",
       "title": "Diffusion Models explained..",
       "channel": "Caleb Writes Code",
-      "score": 0.535
+      "score": 0.568
     },
     {
       "id": "xmP7bhigCWE",
       "title": "Claude Fable 5 sets a fluid simulation to Beethoven",
       "channel": "Claude",
-      "score": 0.523
+      "score": 0.497
     },
     {
-      "id": "LePBuCxOJhQ",
-      "title": "AI Named the 2026 FIFA World Cup Winner (Shocking Prediction)",
-      "channel": "AI Master",
-      "score": 0.473
+      "id": "7gkaWaDEpHg",
+      "title": "It's about time we learn Transformers..",
+      "channel": "Caleb Writes Code",
+      "score": 0.477
     },
     {
       "id": "MqjvfJTCuqw",
       "title": "But what exactly are world models?",
       "channel": "Julia Turc",
-      "score": 0.469
+      "score": 0.471
     },
     {
       "id": "vhbaZJtW2Hg",
@@ -119,10 +115,10 @@
       "score": 0.469
     },
     {
-      "id": "CDVIBN49YKg",
-      "title": "Gemini Omni Tutorial: How to Use Gemini Omni AI for Beginners",
-      "channel": "AI Master",
-      "score": 0.464
+      "id": "20p5-kQXF_Q",
+      "title": "What does the next training paradigm look like?",
+      "channel": "Dwarkesh Patel",
+      "score": 0.467
     }
   ]
 }

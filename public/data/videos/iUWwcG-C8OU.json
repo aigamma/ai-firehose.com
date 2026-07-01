@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "WorkOS Studio is an internal workspace enabling non-technical users to query business data sources like Snowflake, Linear, and Notion using natural language. The system generates reusable JavaScript widgets that call data sources directly, ensuring subsequent runs are deterministic and cost-efficient. Reliability is achieved through preflight schema injection, schema grounding rules, and query validation.",
   "writeup": "WorkOS product lead Garrett demos Studio, an internal AI workspace that lets non-technical teammates query Snowflake, Linear, and Notion through natural language, in Slack or a web UI. The agent, built on LangGraph with Claude Opus, goes beyond one-off answers: it generates reusable sandboxed \"widgets\" that bundle live queries, an API layer, and a UI, turning a single conversation into a persistent self-serve dashboard. The talk closes with the three engineering decisions that made the system reliable in production, beginning with sequencing and just-in-time context injection.",
-  "wh": "d3acd240b128b3f9",
+  "wh": "69df8f419115dbc9",
   "key_points": [
     "Studio routes natural-language questions through a LangGraph agent backed by Claude Opus, with an integration proxy to Snowflake, Linear, and Notion, and session state persisted in Convex, replacing the ad-hoc Slack-SQL-back-and-forth loop that consumed engineering time daily.",
     "Widgets are the core artifact: sandboxed code that the agent generates on request, bundling the query, API, and UI into a live, shareable, filterable tool that reruns against the database each time, so the same dashboard serves weekly syncs without manual upkeep.",
@@ -63,8 +63,8 @@
       "label": "test-time compute"
     },
     {
-      "slug": "semantic-grounding",
-      "label": "semantic grounding"
+      "slug": "schema-grounding",
+      "label": "schema grounding"
     },
     {
       "slug": "prompt-engineering",
@@ -86,7 +86,13 @@
       "id": "DnMtDdkSIi0",
       "title": "Finally… A NotebookLM Alternative With an API",
       "channel": "Better Stack",
-      "score": 0.521
+      "score": 0.522
+    },
+    {
+      "id": "6bmM45jkMDY",
+      "title": "You Can't Prompt the Room: The Last Skill AI Won't Replace - Balázs Horváth, VisualLabs",
+      "channel": "AI Engineer",
+      "score": 0.519
     },
     {
       "id": "so9l_MwS2yg",
@@ -98,19 +104,13 @@
       "id": "gbI7THwqEjk",
       "title": "Most people get these 3 AI terms wrong",
       "channel": "Jeff Su",
-      "score": 0.514
+      "score": 0.515
     },
     {
       "id": "rEcRuQkOOQo",
       "title": "From prompt to a fully working real-time voice app in seconds. 🎙️✨",
       "channel": "Google for Developers",
-      "score": 0.506
-    },
-    {
-      "id": "kUQD5ZElyB4",
-      "title": "The Problem Solvers: Michele Catasta at Replit",
-      "channel": "Claude",
-      "score": 0.506
+      "score": 0.507
     }
   ]
 }
