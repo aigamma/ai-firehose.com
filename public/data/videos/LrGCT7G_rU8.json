@@ -4,11 +4,11 @@
   "channel": "AI Engineer",
   "channelUrl": "https://www.youtube.com/@aiDotEngineer",
   "published": "2026-06-29T00:30:05+00:00",
-  "kind": "technique",
+  "kind": "tool",
   "recommended": false,
-  "summary": "Anna Marie Benzon describes an RL-guided pipeline health agent that automates ETL failure diagnosis and recovery. The system uses deterministic anomaly detection to identify schema drift, null-rate spikes, type changes, and runtime failures, then applies Q-learning to select remediation actions like retry, schema coercion, rollback, quarantine, or escalation. Evaluation across 30 synthetic scenarios shows minutes-scale recovery with emphasis on safety guardrails.",
+  "summary": "An RL-guided agent automates ETL pipeline failure detection and remediation, eliminating manual log inspection and diagnosis. The system detects schema drift, null-rate spikes, type changes, and runtime failures, then selects repair actions like retry, schema coercion, rollback, quarantine, or escalation with deterministic rules and safety layers.",
   "writeup": "This talk presents a reinforcement learning agent that detects and remediates ETL pipeline failures, covering schema drift, null-rate spikes, type changes, and runtime failures. The agent relies on interpretable Q-learning with a bounded action set: retry, schema coercion, rollback, quarantine, and escalation, paired with an external safety layer that constrains its choices. The interpretability and bounded actions matter because data pipeline remediation carries real risk, and keeping actions auditable and constrained limits the damage from a wrong decision. Evaluation across 30 synthetic runs reported minutes-scale recovery for the cases that were resolved.",
-  "wh": "27824bf2832f6920",
+  "wh": "e5d280c8b019ed89",
   "concepts": [
     {
       "slug": "reinforcement-learning",
@@ -19,46 +19,50 @@
       "label": "vulnerability detection"
     },
     {
-      "slug": "guardrails",
-      "label": "guardrails"
+      "slug": "schema-versioning",
+      "label": "schema versioning"
+    },
+    {
+      "slug": "quality-assurance",
+      "label": "quality assurance"
     }
   ],
   "similar": [
     {
-      "id": "Lc8zRh9muoY",
-      "title": "Your Agent Failed in Prod. Good Luck Reproducing It. - Tisha Chawla & Susheem Koul, Microsoft",
-      "channel": "AI Engineer",
-      "score": 0.633
-    },
-    {
       "id": "vljxQZfJ9wY",
       "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.633
+      "score": 0.596
     },
     {
       "id": "APh1Vx0oLmQ",
       "title": "Deterministic Infra for Non-Deterministic AI Agents - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.602
+      "score": 0.586
     },
     {
-      "id": "pSto5YaNGUo",
-      "title": "The Agentic AI Engineer - Benedikt Sanftl, Mutagent",
-      "channel": "AI Engineer",
-      "score": 0.6
+      "id": "O-QEhFFhXNA",
+      "title": "Stop AI Hallucinations With These 5 Techniques",
+      "channel": "AWS Developers",
+      "score": 0.565
     },
     {
       "id": "Iwe_RY-fYgI",
       "title": "AI-Driven Multi-Document Correlation for Financial Compliance - Varsha Shah, Independent",
       "channel": "AI Engineer",
-      "score": 0.595
+      "score": 0.552
     },
     {
       "id": "wRDk9_JoIic",
       "title": "The Problem with AI Agents No One is Talking About | Yutori, Abhishek Das",
       "channel": "EO",
-      "score": 0.577
+      "score": 0.549
+    },
+    {
+      "id": "Lc8zRh9muoY",
+      "title": "Your Agent Failed in Prod. Good Luck Reproducing It. - Tisha Chawla & Susheem Koul, Microsoft",
+      "channel": "AI Engineer",
+      "score": 0.548
     }
   ]
 }

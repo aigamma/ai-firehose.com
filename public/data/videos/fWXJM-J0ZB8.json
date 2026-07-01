@@ -6,13 +6,13 @@
   "published": "2026-06-29T03:30:03+00:00",
   "kind": "opinion",
   "recommended": false,
-  "summary": "RL Nabors argues that frontier models are overused due to cost and latency, and many calls could be handled by small local models instead. The talk introduces evaluation vocabulary and frameworks for measuring capability to make informed model selection decisions based on production data rather than benchmark scores.",
+  "summary": "RL Nabors argues that most AI applications default to expensive frontier models when small local models would suffice, incurring unnecessary latency and cost. He presents a framework for evaluating model performance using capability evals, golden datasets, and LLM-as-judge to decide when to use large remote models versus small local ones, demonstrated through production examples in agentic systems, moderation classifiers, and summarization.",
   "writeup": "RL Nabors of Arize presents a decision framework for determining when small local models can replace frontier models in production. The talk covers evaluation vocabulary including golden datasets and LLM-as-judge, methods for building evals from production traces, and concrete cases such as agentic harnesses and in-browser moderation. The central argument: most frontier model calls carry unnecessary latency, energy, and cost penalties in situations where smaller local alternatives are sufficient.",
-  "wh": "ade491232fe10e6f",
+  "wh": "282b792c520a319a",
   "concepts": [
     {
-      "slug": "model-capability",
-      "label": "model capability"
+      "slug": "model-capabilities",
+      "label": "model capabilities"
     },
     {
       "slug": "golden-datasets",
@@ -23,22 +23,22 @@
       "label": "LLM-as-judge"
     },
     {
-      "slug": "model-evaluation",
-      "label": "model evaluation"
+      "slug": "test-time-compute",
+      "label": "test-time compute"
     },
     {
-      "slug": "expert-iteration",
-      "label": "expert iteration"
+      "slug": "knowledge-distillation",
+      "label": "knowledge distillation"
     },
     {
-      "slug": "production-trace-evals",
-      "label": "production-trace evals"
+      "slug": "on-device-inference",
+      "label": "on-device inference"
     }
   ],
   "similar": [
     {
-      "id": "uiP88SpCi1Q",
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
+      "id": "SS-A8sE7hkw",
+      "title": "Sovereign Escape Velocity: Ownership w Open Models — Gus Martins, & Ian Ballantyne, Google DeepMind",
       "channel": "AI Engineer",
       "score": 0.636
     },
@@ -46,31 +46,31 @@
       "id": "TNwJ1LMiENk",
       "title": "Stop Making Models Bigger, Make Them Behave — Kobie Crawford, Snorkel",
       "channel": "AI Engineer",
-      "score": 0.621
+      "score": 0.635
     },
     {
-      "id": "spNAUEgq_A8",
-      "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
+      "id": "vljxQZfJ9wY",
+      "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.619
+      "score": 0.612
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "title": "Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo",
+      "channel": "AI Engineer",
+      "score": 0.608
     },
     {
       "id": "w1oLs1bz4PI",
       "title": "Run Powerful AI Locally: The Future is 18 Months Away! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.587
+      "score": 0.607
     },
     {
-      "id": "dRmWYHuIJxM",
-      "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
-      "channel": "AI Engineer",
-      "score": 0.586
-    },
-    {
-      "id": "2hH5vA9zQVo",
-      "title": "Smart AI routing explained",
-      "channel": "IBM Technology",
-      "score": 0.576
+      "id": "EtxJJJ_7WQY",
+      "title": "1,000 AI agents, 0 LLM calls?",
+      "channel": "Google Cloud Tech",
+      "score": 0.605
     }
   ]
 }

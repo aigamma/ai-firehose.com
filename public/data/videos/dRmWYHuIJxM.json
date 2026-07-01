@@ -6,71 +6,79 @@
   "published": "2026-06-28T22:30:29+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Rajkumar Sakthivel from Tesco describes a local code retrieval layer that reduces context tokens sent to AI coding tools from 45,000 to ~5,000 per query. The system uses AST-aware chunking with tree-sitter, combined vector and keyword search, and lightweight relationship tracking to achieve 94% token reduction while improving latency and accuracy.",
+  "summary": "Tesco built a local retrieval layer for code context using AST-aware chunking, vector search, and keyword matching to reduce tokens sent to LLMs by 94% compared to sending full files. The system uses tree-sitter for code structuring and a lightweight relationship layer to follow execution across files, achieving faster responses and better accuracy.",
   "writeup": "This talk from Tesco's Rajkumar Sakthivel details a local code retrieval layer that cut tokens sent to AI coding agents by 94%. The architecture combines AST-aware chunking, vector search paired with keyword matching, and lightweight relationship tracking, with LLM-based scoring backed by heuristic fallbacks to manage retrieval quality. The central argument is that optimizing the context fed to a model matters more than tuning the model itself, which directly addresses the cost and efficiency pressures of running coding agents at scale.",
-  "wh": "fc813fa2e4b1d62b",
+  "wh": "42de01f164e26d64",
   "concepts": [
-    {
-      "slug": "autoregressive-generation",
-      "label": "autoregressive generation"
-    },
     {
       "slug": "token-optimization",
       "label": "token optimization"
     },
     {
-      "slug": "code-generation",
-      "label": "code generation"
+      "slug": "video-generation",
+      "label": "video generation"
     },
     {
-      "slug": "parsing",
-      "label": "parsing"
+      "slug": "tokenization",
+      "label": "tokenization"
+    },
+    {
+      "slug": "ast-aware-chunking",
+      "label": "AST-aware chunking"
+    },
+    {
+      "slug": "tree-sitter",
+      "label": "tree-sitter"
     },
     {
       "slug": "vector-search",
       "label": "vector search"
     },
     {
-      "slug": "semantic-search",
-      "label": "semantic search"
+      "slug": "keyword-matching",
+      "label": "keyword matching"
+    },
+    {
+      "slug": "code-indexing",
+      "label": "code indexing"
     }
   ],
   "similar": [
     {
-      "id": "uiP88SpCi1Q",
-      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
-      "channel": "AI Engineer",
-      "score": 0.721
-    },
-    {
-      "id": "4wMRXmLpdA8",
-      "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.685
-    },
-    {
-      "id": "aF-rolD9W7I",
-      "title": "How Intuit, DoorDash, and Atlassian are adopting AI coding",
-      "channel": "Cursor",
-      "score": 0.651
-    },
-    {
-      "id": "blgUmyMiROI",
-      "title": "How are coding agents changing software engineering?",
-      "channel": "Cursor",
-      "score": 0.641
-    },
-    {
       "id": "KqdRWE1en8k",
       "title": "Headroom: The Netflix Tool That Makes AI Agents 10x Cheaper",
       "channel": "Better Stack",
-      "score": 0.635
+      "score": 0.67
+    },
+    {
+      "id": "uiP88SpCi1Q",
+      "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
+      "channel": "AI Engineer",
+      "score": 0.653
     },
     {
       "id": "w1oLs1bz4PI",
       "title": "Run Powerful AI Locally: The Future is 18 Months Away! #shorts",
       "channel": "Cyril Imhof",
-      "score": 0.625
+      "score": 0.645
+    },
+    {
+      "id": "TP73qyFWDcY",
+      "title": "Paste This Into Claude, It'll Make You Build 10x Faster.",
+      "channel": "Austin Marchese",
+      "score": 0.644
+    },
+    {
+      "id": "nPc0hIreNaQ",
+      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
+      "channel": "Cursor",
+      "score": 0.634
+    },
+    {
+      "id": "4wMRXmLpdA8",
+      "title": "AI in the SDLC: Rethinking AI Coding Tools & AI Agents",
+      "channel": "IBM Technology",
+      "score": 0.633
     }
   ]
 }

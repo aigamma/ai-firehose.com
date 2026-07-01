@@ -6,9 +6,9 @@
   "published": "2026-06-11T15:19:44+00:00",
   "kind": "technique",
   "recommended": false,
-  "summary": "Model Context Protocol (MCP) is a standard that enables AI agents and applications to connect with external tools, APIs, databases, and services through a structured client-server architecture. It uses JSON-RPC for communication and supports both local and remote server configurations with STDIO or HTTP streaming transports.",
+  "summary": "Model Context Protocol (MCP) is a standard for connecting AI applications and agents with external tools, APIs, databases, and services. The video covers MCP architecture, client-server communication using JSON-RPC, transport mechanisms like STDIO and HTTP, and integration with frameworks like LangGraph, CrewAI, and Claude Desktop.",
   "writeup": "A ground-up introduction to the Model Context Protocol (MCP) that builds the case through two concrete pain points: the explosion of bespoke API integration code in AI apps, and the inability to reuse that code across agentic frameworks such as LangGraph, OpenAI Agent SDK, and CrewAI. MCP resolves both by introducing a uniform client/server split where the AI app embeds only a thin MCP client that speaks JSON-RPC, while MCP servers encapsulate all integration complexity for any external resource, including REST APIs, databases, local files, GitHub, and internal systems. The through-line is portability and separation of concerns: one MCP server can be reused unchanged across every framework, and any number of servers can be composed inside a single multi-agent application.",
-  "wh": "1ce7a3b4a614d097",
+  "wh": "dc70790ae19ed09e",
   "key_points": [
     "Without MCP, each external service (weather, Google Drive, GitHub, PostgreSQL) requires its own bespoke integration code written to that API's request and response format, and that code must be rewritten from scratch for every agentic framework (LangGraph, OpenAI Agent SDK, CrewAI, Agno) the developer adopts.",
     "MCP splits the integration problem into two roles: an MCP client embedded in the AI application that handles only connection establishment, and an MCP server that owns all API authentication, request formatting, and response parsing, leaving the AI app with minimal integration surface.",
@@ -65,10 +65,6 @@
     {
       "slug": "ai-agents",
       "label": "AI agents"
-    },
-    {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
     }
   ],
   "similar": [
@@ -76,37 +72,37 @@
       "id": "cGuyrANVi4A",
       "title": "How Model Context Protocol (MCP) actually works",
       "channel": "Google Cloud Tech",
-      "score": 0.816
+      "score": 0.799
+    },
+    {
+      "id": "185XGEMefgc",
+      "title": "MCP vs API: The protocol every developer needs to know",
+      "channel": "Google Cloud Tech",
+      "score": 0.744
     },
     {
       "id": "wBnnA8aIxUs",
       "title": "How to build an AI Agent and MCP Server (step-by-step)",
       "channel": "Google Cloud Tech",
-      "score": 0.684
+      "score": 0.701
     },
     {
       "id": "CgwslR4pgL4",
       "title": "Governed agents: Looker + MCP explained",
       "channel": "Google Cloud Tech",
-      "score": 0.64
+      "score": 0.659
     },
     {
-      "id": "Gh1E9VgXZWs",
-      "title": "Bridging Design Systems and Code with MCP and AI Agents",
-      "channel": "IBM Technology",
-      "score": 0.587
-    },
-    {
-      "id": "yeRvxe7MRj4",
-      "title": "Your first agent configuration with MCP and Looker",
+      "id": "C5zYVlBsHLQ",
+      "title": "Build connected AI: Orchestrate tools and agents with registries and ADK",
       "channel": "Google Cloud Tech",
-      "score": 0.587
+      "score": 0.643
     },
     {
-      "id": "ghJmWQCIHRM",
-      "title": "The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google",
-      "channel": "AI Engineer",
-      "score": 0.569
+      "id": "8mimaYjCyug",
+      "title": "AI's Model Context Protocols: The Future Revealed! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.631
     }
   ]
 }

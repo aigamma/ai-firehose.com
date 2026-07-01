@@ -6,9 +6,9 @@
   "published": "2026-04-28T17:59:16+00:00",
   "kind": "technique",
   "recommended": true,
-  "summary": "A video explaining how diffusion models work as a generative process and framework. It covers the progression, strengths, weaknesses, various implementations including DiT (diffusion with transformers), and the historical and theoretical foundations of diffusion-based approaches.",
+  "summary": "A video explanation of diffusion models covering their progression, strengths, weaknesses, and underlying concepts. The discussion emphasizes that diffusion is a framework rather than a fixed architecture and can be implemented with transformers like DiT.",
   "writeup": "A conversation between Caleb (Kale Bytes Code) and Julia Turk clarifying the conceptual landscape around diffusion models: what diffusion actually is (a training framework, not an architecture), how it relates to autoregressive and world models, and why GPT-style models remain dominant despite diffusion's theoretical advantages. The through-line is distinguishing diffusion as a superset framework that can wrap transformer architecture, tracing its history from the 2015 nonequilibrium thermodynamics paper through DDPM (2020), stable diffusion (2022), and flow matching, and honestly accounting for when diffusion's data-efficiency edge applies and when it does not.",
-  "wh": "9c7796038b8af7b4",
+  "wh": "9f6c8ea277a6fd30",
   "key_points": [
     "Diffusion and transformers are orthogonal: transformers are a model architecture specifying how weights connect, while diffusion is a training framework specifying how to corrupt data, define the training objective, and run inference, which means a transformer backbone can be used inside a diffusion framework rather than competing with it.",
     "Diffusion models outperform autoregressive models in data-scarce regimes (experiments used 25 to 100 million tokens), but this advantage disappears at the scale most LLMs actually train at, which exceeds 10 trillion tokens, so the claimed data efficiency does not translate into a practical production advantage today.",
@@ -66,48 +66,44 @@
     {
       "slug": "transformer",
       "label": "transformer"
-    },
-    {
-      "slug": "generative-model",
-      "label": "generative model"
     }
   ],
   "similar": [
     {
-      "id": "7gkaWaDEpHg",
-      "title": "It's about time we learn Transformers..",
-      "channel": "Caleb Writes Code",
-      "score": 0.724
-    },
-    {
       "id": "r305-aQTaU0",
       "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
       "channel": "AI Engineer",
-      "score": 0.682
+      "score": 0.669
     },
     {
-      "id": "Qd2bAzwH9uA",
-      "title": "Karpathy Bigram explained in 10min..",
+      "id": "7gkaWaDEpHg",
+      "title": "It's about time we learn Transformers..",
       "channel": "Caleb Writes Code",
-      "score": 0.64
+      "score": 0.644
     },
     {
       "id": "ZKfd9S9lOtc",
       "title": "The most insane week in AI",
       "channel": "AI Search",
-      "score": 0.629
-    },
-    {
-      "id": "gHs5ZiY80PM",
-      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
-      "channel": "AI Engineer",
-      "score": 0.608
+      "score": 0.633
     },
     {
       "id": "VBHISHDZ3wQ",
       "title": "Is AI lying to us?👀",
       "channel": "IBM Technology",
-      "score": 0.601
+      "score": 0.624
+    },
+    {
+      "id": "qzPOuqz0Dhw",
+      "title": "Open vs Closed AI: The Future Is CHEAPER & SMARTER #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.618
+    },
+    {
+      "id": "8mimaYjCyug",
+      "title": "AI's Model Context Protocols: The Future Revealed! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.614
     }
   ]
 }

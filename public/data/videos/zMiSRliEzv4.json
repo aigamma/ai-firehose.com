@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "PostHog is building an automated pipeline where monitoring signals like rage clicks, errors, and Slack messages trigger a background agent to group related issues, research code, and open pull requests. The system learns from embedding techniques and specificity to avoid random fixes and improve actionability.",
   "writeup": "Josh from PostHog describes a production pipeline that converts observability signals (errors, logs, session replays, Slack messages) directly into GitHub pull requests without requiring a developer to look at a dashboard. The pipeline runs a Claude-powered research agent in a Modal sandbox, groups signals by LLM-generated semantic queries rather than raw embeddings, assesses actionability, then clones the repo, writes a fix, and iterates the PR until CI is green. The central argument is that the current observe-investigate-ticket-PR cycle takes hours to days and is the right target for full automation.",
-  "wh": "3d9ca0894d088261",
+  "wh": "d60e5931e4a50c7e",
   "key_points": [
     "Off-the-shelf embedding models cluster signals by structural type (all errors together, all Slack messages together) rather than by the underlying problem, so PostHog switched to embedding LLM-generated queries derived from each signal, which made cross-source grouping work significantly better.",
     "The research agent runs the Claude agent SDK inside a Modal sandbox with three tool sources: PostHog's own MCP server for pulling in additional correlated data, codebase context, and external MCPs (Linear and Notion) that ground the agent's reasoning and improve result quality.",
@@ -68,16 +68,16 @@
       "label": "AI agents"
     },
     {
-      "slug": "embeddings",
-      "label": "embeddings"
+      "slug": "embedding",
+      "label": "embedding"
     },
     {
       "slug": "error-feedback",
       "label": "Error Feedback"
     },
     {
-      "slug": "deterministic-replay",
-      "label": "deterministic replay"
+      "slug": "session-replay",
+      "label": "session replay"
     },
     {
       "slug": "test-time-compute",
@@ -105,7 +105,13 @@
       "id": "dJAVS1g3NDw",
       "title": "How Cursor builds agentic workflows across the SDLC",
       "channel": "Cursor",
-      "score": 0.578
+      "score": 0.579
+    },
+    {
+      "id": "C8El0OzQRrc",
+      "title": "This is the most useful n8n workflow I have ever built...",
+      "channel": "NeuralNine",
+      "score": 0.56
     },
     {
       "id": "T0HhO4YtTfE",
@@ -117,12 +123,6 @@
       "id": "vljxQZfJ9wY",
       "title": "Production Evals For Agentic AI Systems - Nishant Gupta, Meta Superintelligence Labs",
       "channel": "AI Engineer",
-      "score": 0.559
-    },
-    {
-      "id": "C8El0OzQRrc",
-      "title": "This is the most useful n8n workflow I have ever built...",
-      "channel": "NeuralNine",
       "score": 0.559
     }
   ]

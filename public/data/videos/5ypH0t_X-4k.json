@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "The ColPali family includes compact embedding models (ColSmol, ColFlor, ColModernVBERT) for visual document retrieval with reduced parameters compared to the base ColPali. Multilingual variants from NVIDIA and Nomic AI are available, and ViDoRe V3 serves as the benchmark for evaluating visual retrieval models. Qdrant is a vector search engine in Rust supporting semantic and hybrid search.",
   "writeup": "This lesson surveys the ColPali model family for multi-vector visual document retrieval, walking through the spectrum from the original 3B-parameter ColPali down to the 174M-parameter ColFlor (17x smaller, 9.8x faster, only about 1.8% accuracy drop on text-rich English documents). The central technical argument is that ColPali ModernBERT's bidirectional attention lets every token attend to the full input sequence, achieving near-ColPali quality at roughly 250M parameters instead of 3B. The lesson closes with a practical decision matrix: edge and browser deployments favor ColFlor or ColSmall, production efficiency favors ColPali ModernBERT, and maximum-quality unconstrained deployments warrant the full ColPali.",
-  "wh": "fd79e6cbb1a22ad3",
+  "wh": "8348651f63da333a",
   "key_points": [
     "ColFlor at 174M parameters is 17 times smaller than ColPali and up to 9.8 times faster, with a benchmark accuracy drop of only about 1.8% on text-rich English documents, making it the primary option for demos and edge or CPU-only deployments.",
     "ColSmall, built on a small vision-language model and available in 256M and 500M parameter sizes, is Apache 2 licensed for commercial use, which distinguishes it from models like Nvidia's multilingual option that restricts use to non-commercial and research contexts.",
@@ -71,8 +71,8 @@
       "label": "sparse attention"
     },
     {
-      "slug": "large-language-models",
-      "label": "large language models"
+      "slug": "text-embeddings",
+      "label": "text embeddings"
     },
     {
       "slug": "vector-database",

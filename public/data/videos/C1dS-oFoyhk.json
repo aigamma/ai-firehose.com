@@ -4,11 +4,11 @@
   "channel": "Cole Medin",
   "channelUrl": "https://www.youtube.com/@ColeMedin",
   "published": "2026-05-22T03:36:08+00:00",
-  "kind": "technique",
+  "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarks mixed-provider AI workflows by systematically varying which model (Claude Opus or Kimi K2.6) handles planning versus implementation across real GitHub issues. A benchmark matrix evaluates the resulting PRs on seven dimensions including correctness, code quality, and plan-to-implementation fidelity.",
+  "summary": "Cole Medin benchmarked mixed-provider LLM workflows by varying which model (Claude Opus or Kimi K2.6) handles planning versus implementation across three GitHub issues. An Opus-based evaluator scored each generated PR on seven dimensions including root cause identification, code quality, and plan fidelity.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "4effb3655b8effc6",
+  "wh": "fc0774dd61db72ef",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,20 +56,24 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "test-time-compute",
-      "label": "test-time compute"
+      "slug": "multi-agent-systems",
+      "label": "multi-agent systems"
     },
     {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "model-compression",
+      "label": "model compression"
     },
     {
       "slug": "ai-agents",
       "label": "AI agents"
     },
     {
-      "slug": "workflow-automation",
-      "label": "workflow automation"
+      "slug": "benchmark",
+      "label": "benchmark"
+    },
+    {
+      "slug": "task-decomposition",
+      "label": "task decomposition"
     }
   ],
   "similar": [
@@ -77,37 +81,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.693
+      "score": 0.676
     },
     {
-      "id": "Xh1z23uBZo0",
-      "title": "Claude Plans, Gemini Designs: One Workflow for Beautiful Frontends (LIVE)",
-      "channel": "Cole Medin",
-      "score": 0.632
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.58
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.629
+      "score": 0.577
     },
     {
-      "id": "iICZTWcryac",
-      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
-      "channel": "Cole Medin",
-      "score": 0.604
+      "id": "hEv_8tyfdHc",
+      "title": "I Tested GLM 5.2 vs Opus 4.8 vs GPT 5.5",
+      "channel": "Chase AI",
+      "score": 0.575
     },
     {
-      "id": "qFhwsb78hko",
-      "title": "Kimi K2.7 Code: THIS is VERY CRAZY MAN!",
-      "channel": "AICodeKing",
-      "score": 0.589
+      "id": "ij-AU9dpJjc",
+      "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
+      "channel": "AI Engineer",
+      "score": 0.554
     },
     {
-      "id": "gKBazze-8qU",
-      "title": "China’s New AI Is 6X More Efficient Than Claude",
-      "channel": "AI Revolution",
-      "score": 0.571
+      "id": "LePBuCxOJhQ",
+      "title": "AI Named the 2026 FIFA World Cup Winner (Shocking Prediction)",
+      "channel": "AI Master",
+      "score": 0.542
     }
   ]
 }
