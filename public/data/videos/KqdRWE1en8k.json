@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Headroom is an open-source tool that compresses inputs to LLMs using content-type-aware compressors and locally trained models, reducing token usage by 60-95%. Built by a Netflix engineer, it keeps compression local and uses breadcrumb hashing for on-demand retrieval of full original content.",
   "writeup": "Headroom is an open-source token-compression proxy, built by Netflix senior developer Tejas Chopra, that intercepts agent tool-call output before it reaches the LLM and compresses it by 60 to 95% using content-aware strategies. The core insight is that most tool-call payloads are redundant: build logs are mostly passing tests, JSON arrays are mostly normal rows, and log files repeat the same info line hundreds of times. Reversibility is the key design decision: Headroom embeds a hash breadcrumb in each compressed message so the model can request full data on demand, though each such retrieval adds a round-trip and can erase the savings if triggered too often.",
-  "wh": "63a14065ed150635",
+  "wh": "02c772f0ec7b74d1",
   "key_points": [
     "Headroom uses content-type detection to apply different compression strategies: statistical summarization for repetitive log lines (removing 419 similar info entries in the demo), a syntax-tree-aware compressor for code files, and a locally-run model called Compress Base, trained specifically for plain-text compression.",
     "In the demo against a log-analysis task, Headroom reduced a 17,000-plus-token tool response by 98%, producing a compressed representation that Claude used correctly to identify errors and root causes, with the full data available via hash retrieval if needed.",
@@ -60,12 +60,12 @@
   "ih": "0d2fe41ab4e56f7f",
   "concepts": [
     {
-      "slug": "compression",
-      "label": "compression"
+      "slug": "model-compression",
+      "label": "model compression"
     },
     {
-      "slug": "token-optimization",
-      "label": "token optimization"
+      "slug": "token-efficiency",
+      "label": "token efficiency"
     },
     {
       "slug": "local-inference",
@@ -81,37 +81,37 @@
       "id": "dRmWYHuIJxM",
       "title": "We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco",
       "channel": "AI Engineer",
-      "score": 0.67
+      "score": 0.641
     },
     {
       "id": "iOZf50YffCE",
       "title": "This AI Chinese model is 15X cheaper?",
       "channel": "Jack Roberts",
-      "score": 0.619
+      "score": 0.621
     },
     {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.615
+      "score": 0.616
     },
     {
       "id": "uiP88SpCi1Q",
       "title": "Your Agent Is Wasting Tokens and You Don't Know It - Erik Hanchett, AWS",
       "channel": "AI Engineer",
-      "score": 0.611
+      "score": 0.605
     },
     {
-      "id": "fWXJM-J0ZB8",
-      "title": "Frontier results, on device - RL Nabors, Arize",
+      "id": "spNAUEgq_A8",
+      "title": "The Future Is Domain-Specific Agents - Justin Schroeder, StandardAgents",
       "channel": "AI Engineer",
-      "score": 0.598
+      "score": 0.583
     },
     {
-      "id": "20GcuzdHR24",
-      "title": "Slash SaaS Costs: Build Your Own AI CRM with Chinese Models! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.594
+      "id": "66Gk8M3Eh6w",
+      "title": "MiniMax M2.7: Run AI Agents for $20/Month?",
+      "channel": "Keith AI",
+      "score": 0.582
     }
   ]
 }

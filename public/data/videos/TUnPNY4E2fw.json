@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Max Ryabinin from Together AI presents a stack of techniques for training LLMs with multi-million token context: fully sharded data parallelism, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and chunked sequence training. A novel contribution called Untied Ulysses further optimizes context parallelism by chunking attention heads and reusing buffers, enabling 25% longer sequences than prior Ulysses implementations.",
   "writeup": "Max, VP of R&D at Together AI, presents the 'Road to 5 Million Sequence Length' project, detailing how to fit 3-to-5 million training tokens into a single 8xH100 node using a stack of memory-reduction techniques. The talk traces the two core bottlenecks for long-context transformers (quadratic attention compute and linearly growing activation memory) and methodically layers FSDP, DeepSpeed Ulysses context parallelism, activation checkpointing, CPU offloading, and sequence-tiled loss/MLP computation until 3 million tokens are feasible. The primary novel contribution is U-Pipe (Untitled Ulysses), which chunks the attention head groups within a single GPU so buffers are reused across iterations, pushing the ceiling to 5 million tokens without significant throughput regression at 8B and 32B scales.",
-  "wh": "3440a04f906534e5",
+  "wh": "7a5ec660d9273cc0",
   "key_points": [
     "Transformer long-context training faces two distinct bottlenecks: quadratic computation from pairwise token interactions, and linear memory growth from attention activations; both must be addressed together before million-token training is practical on commodity GPU nodes.",
     "DeepSpeed Ulysses, introduced by Microsoft, distributes multi-head attention across GPUs so each GPU computes only its assigned heads over the full sequence and then aggregates, reducing peak memory roughly 8x and enabling use of Flash Attention kernels.",
@@ -78,6 +78,10 @@
     {
       "slug": "untied-ulysses",
       "label": "Untied Ulysses"
+    },
+    {
+      "slug": "long-context-reasoning",
+      "label": "long-context reasoning"
     }
   ],
   "similar": [
@@ -85,13 +89,7 @@
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.636
-    },
-    {
-      "id": "Z5M33oh-SAU",
-      "title": "Intelligence Efficiency, Ben Geist | Compile 26",
-      "channel": "Cursor",
-      "score": 0.578
+      "score": 0.634
     },
     {
       "id": "so9l_MwS2yg",
@@ -109,13 +107,19 @@
       "id": "ZRM_TfEZcIo",
       "title": "Turn 10,994 Notes Into Memory - Paul Iusztin, Decoding AI & Louis-François Bouchard, Towards AI",
       "channel": "AI Engineer",
-      "score": 0.571
+      "score": 0.572
     },
     {
-      "id": "7jrZ4JqeGyY",
-      "title": "Shocking New AI Just Hit 12 Million Tokens With 1000x Less Compute",
-      "channel": "AI Revolution",
-      "score": 0.571
+      "id": "r305-aQTaU0",
+      "title": "Text Diffusion — Brendon O'Donoghue, Google DeepMind",
+      "channel": "AI Engineer",
+      "score": 0.565
+    },
+    {
+      "id": "iOZf50YffCE",
+      "title": "This AI Chinese model is 15X cheaper?",
+      "channel": "Jack Roberts",
+      "score": 0.555
     }
   ]
 }

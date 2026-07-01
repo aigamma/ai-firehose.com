@@ -6,9 +6,9 @@
   "published": "2026-05-22T03:36:08+00:00",
   "kind": "opinion",
   "recommended": true,
-  "summary": "Cole Medin benchmarked mixed-provider LLM workflows by varying which model (Claude Opus or Kimi K2.6) handles planning versus implementation across three GitHub issues. An Opus-based evaluator scored each generated PR on seven dimensions including root cause identification, code quality, and plan fidelity.",
+  "summary": "Cole Medin benchmarks mixed-provider LLM workflows using Claude Opus and Kimi K2.6 in different roles for software engineering tasks. The experiment tests four configurations across planning and implementation phases, evaluated on seven dimensions including correctness, code quality, and fidelity to the plan using Archon, a benchmarking tool.",
   "writeup": "A live benchmarking session for the \"dark factory,\" an autonomous codebase that writes and reviews its own code with no human allowed to touch it. The creator runs 12 simultaneous Archon workflows across a 2x2 matrix of model pairings (Gemini 2.6 and Claude Opus 4.8 for planning and implementation respectively) on three real GitHub issues, then scores each resulting pull request against a 7-dimension rubric. The central question is how to mix frontier models to stay under worsening rate limits without sacrificing output quality.",
-  "wh": "fc0774dd61db72ef",
+  "wh": "2afeed26f524ef87",
   "key_points": [
     "Archon orchestrates four named workflow variants (KK, KO, OK, OO) representing every combination of Gemini 2.6 and Opus 4.8 at the planning and implementation nodes, with Claude Sonnet used for the cheaper codebase-exploration step in all four.",
     "The benchmark runs 12 workflows concurrently (4 model combos x 3 GitHub issues), selecting issues that stress reasoning and codebase understanding rather than raw volume of lines changed, including a cache race condition, a port mismatch, and an RRF determinism bug.",
@@ -56,24 +56,16 @@
   "ih": "08b40abf38b6da46",
   "concepts": [
     {
-      "slug": "multi-agent-systems",
-      "label": "multi-agent systems"
+      "slug": "multi-provider-workflows",
+      "label": "multi-provider workflows"
     },
     {
-      "slug": "model-compression",
-      "label": "model compression"
+      "slug": "model-evaluation",
+      "label": "model evaluation"
     },
     {
-      "slug": "ai-agents",
-      "label": "AI agents"
-    },
-    {
-      "slug": "benchmark",
-      "label": "benchmark"
-    },
-    {
-      "slug": "task-decomposition",
-      "label": "task decomposition"
+      "slug": "workflow-automation",
+      "label": "workflow automation"
     }
   ],
   "similar": [
@@ -81,37 +73,37 @@
       "id": "qGm6gtHpJq0",
       "title": "Pushing My AI Dark Factory to Its Limits with Opus + Kimi Combined",
       "channel": "Cole Medin",
-      "score": 0.676
+      "score": 0.666
+    },
+    {
+      "id": "iICZTWcryac",
+      "title": "Claude Plans, Gemini Designs: The Workflow to Build BEAUTIFUL Frontends",
+      "channel": "Cole Medin",
+      "score": 0.572
     },
     {
       "id": "-z2C3B29aho",
       "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
       "channel": "Keith AI",
-      "score": 0.58
+      "score": 0.566
     },
     {
       "id": "ptKzEs9-qm4",
       "title": "Frontier Code (GPT-5.6 VS Mythos): This BENCHMARK is ACTUALLY REAL!",
       "channel": "AICodeKing",
-      "score": 0.577
-    },
-    {
-      "id": "hEv_8tyfdHc",
-      "title": "I Tested GLM 5.2 vs Opus 4.8 vs GPT 5.5",
-      "channel": "Chase AI",
-      "score": 0.575
+      "score": 0.56
     },
     {
       "id": "ij-AU9dpJjc",
       "title": "Stop Writing Tone Instructions. Layer Them. - Isadora Martin-Dye, Isadora & Co",
       "channel": "AI Engineer",
-      "score": 0.554
+      "score": 0.558
     },
     {
-      "id": "LePBuCxOJhQ",
-      "title": "AI Named the 2026 FIFA World Cup Winner (Shocking Prediction)",
-      "channel": "AI Master",
-      "score": 0.542
+      "id": "QJ2bM8Me5Fk",
+      "title": "Kimi K2.6 and Agent Swarm explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.557
     }
   ]
 }

@@ -4,11 +4,11 @@
   "channel": "Caleb Writes Code",
   "channelUrl": "https://www.youtube.com/@CalebWritesCode",
   "published": "2026-04-20T19:26:26+00:00",
-  "kind": "opinion",
+  "kind": "technique",
   "recommended": true,
-  "summary": "Caleb Writes Code discusses the complexities of LLM inference, covering model loading methods (mmap) and quantization approaches (standard, GGUF, AWQ, EXL2, FP8, NVFP4). The video also explores inference engines (llama.cpp, vLLM, SGLang, TensorRT-LLM, TGI) and their trade-offs in pre-fill, decoding, concurrency, and scheduling.",
+  "summary": "A video overview of inference optimization techniques covering model loading strategies (mmap), quantization methods (standard, GGUF, AWQ, EXL2, FP8, NVFP4), and inference engines (llama.cpp, vLLM, SGLang, TensorRT-LLM, TGI). The presentation addresses pre-fill, decoding, concurrency, and scheduling challenges in LLM serving.",
   "writeup": "This video demystifies what actually happens when a locally run LLM goes from downloaded files to a generated token, focusing on the model-loading phase: how inference engines like llama.cpp, vLLM, and TGI differ in how they move weights through the memory hierarchy (SSD, RAM, GPU), and why programming language is not the main determinant of speed. The second half is a bottom-up walkthrough of quantization, from naive RTN grouping through symmetric and asymmetric GGUF formats (Q4_0, Q4_1) to the hierarchical K-quant formats (Q4_KS, Q4_KM) that add a second scaling level across 256-weight supergroups and apply mixed precision selectively by layer type.",
-  "wh": "a97ca31a5d6b1161",
+  "wh": "63b42dc67810fc5e",
   "key_points": [
     "Programming language is not the primary driver of inference engine speed: vLLM, written mostly in Python, outperforms llama.cpp (C++) in several throughput dimensions because algorithmic choices in scheduling and memory management matter far more than language overhead.",
     "Most inference engines use mmap (memory-mapped loading) rather than eagerly copying the full model into RAM: the OS manages weight pages lazily, and on a PCIe 4 NVMe bus running at roughly 7 GB/s, even a 5% eviction of a 15 GB model adds only about 107 ms of reload latency, making llama.cpp first-token times under 10 seconds achievable.",
@@ -72,70 +72,58 @@
       "label": "mmap"
     },
     {
-      "slug": "gguf",
-      "label": "GGUF"
+      "slug": "prefill",
+      "label": "prefill"
     },
     {
-      "slug": "awq",
-      "label": "AWQ"
+      "slug": "decode",
+      "label": "decode"
     },
     {
-      "slug": "exl2",
-      "label": "EXL2"
+      "slug": "on-device-inference",
+      "label": "on-device inference"
     },
     {
-      "slug": "fp8",
-      "label": "FP8"
-    },
-    {
-      "slug": "pre-fill",
-      "label": "pre-fill"
-    },
-    {
-      "slug": "encoder-decoder",
-      "label": "encoder-decoder"
-    },
-    {
-      "slug": "local-inference",
-      "label": "local inference"
+      "slug": "task-scheduling",
+      "label": "task scheduling"
     }
   ],
   "similar": [
     {
-      "id": "XAP78BNKGEs",
-      "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
-      "channel": "Cyril Imhof",
-      "score": 0.601
-    },
-    {
-      "id": "-z2C3B29aho",
-      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
-      "channel": "Keith AI",
-      "score": 0.575
-    },
-    {
       "id": "XJUpuOBpT-4",
       "title": "The insane engineering of Deepseek V4",
       "channel": "AI Search",
-      "score": 0.575
-    },
-    {
-      "id": "hzpAKA67dX0",
-      "title": "\"An endless demand for compute\" | Jonathan Ross, founder of Groq",
-      "channel": "Julia Turc",
-      "score": 0.565
+      "score": 0.617
     },
     {
       "id": "b_KxiTPBIb0",
       "title": "Google TPU 8t and 8i is here..",
       "channel": "Caleb Writes Code",
-      "score": 0.565
+      "score": 0.616
     },
     {
-      "id": "DAlC8mL5ZlI",
-      "title": "Why AI Models Pause to Think: Test Time Compute Explained",
-      "channel": "IBM Technology",
-      "score": 0.562
+      "id": "gHs5ZiY80PM",
+      "title": "You Might Not Need 50 Diffusion Steps — Ziv Ilan, Nvidia",
+      "channel": "AI Engineer",
+      "score": 0.612
+    },
+    {
+      "id": "UYVObn1HUeU",
+      "title": "Diffusion Models explained..",
+      "channel": "Caleb Writes Code",
+      "score": 0.593
+    },
+    {
+      "id": "XAP78BNKGEs",
+      "title": "Don't Build Your Own AI Inference! It's Too Expensive & Risky! #shorts",
+      "channel": "Cyril Imhof",
+      "score": 0.592
+    },
+    {
+      "id": "-z2C3B29aho",
+      "title": "The LLM Model Pick That Makes or Breaks Hermes & OpenClaw #minimax",
+      "channel": "Keith AI",
+      "score": 0.587
     }
   ]
 }

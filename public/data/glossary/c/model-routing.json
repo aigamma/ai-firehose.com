@@ -7,7 +7,7 @@
     "request routing"
   ],
   "kind": "technique",
-  "attention": 78,
+  "attention": 82,
   "first_seen": "2026-04-18T12:01:02+00:00",
   "rotation": null,
   "neighbors": [
@@ -20,11 +20,6 @@
       "id": "tier-routing",
       "label": "tier routing",
       "score": 0.759
-    },
-    {
-      "id": "token-routing",
-      "label": "token routing",
-      "score": 0.755
     },
     {
       "id": "model-porting",
@@ -40,23 +35,28 @@
       "id": "model-cascading",
       "label": "model cascading",
       "score": 0.74
+    },
+    {
+      "id": "model-restrictions",
+      "label": "model restrictions",
+      "score": 0.739
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.244
+      "position": -0.139
     },
     {
       "slug": "scaling-efficiency",
       "title": "Scaling and More Compute vs Efficiency and Small Models",
-      "position": -0.229
+      "position": -0.165
     },
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": 0.354
+      "position": 0.32
     },
     {
       "slug": "research-product",
@@ -66,12 +66,12 @@
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": 0.13
+      "position": 0.19
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.105
+      "position": 0.133
     },
     {
       "slug": "central-local",
@@ -85,7 +85,7 @@
       "url": "https://www.youtube.com/watch?v=uiP88SpCi1Q",
       "author_or_channel": "AI Engineer",
       "published_at": "2026-06-28T22:00:14+00:00",
-      "kind": "opinion"
+      "kind": "technique"
     },
     {
       "title": "Focusing on What Matters: Saliency-Harnessing Accurate Routing for Diffusion MoE",
@@ -120,7 +120,7 @@
       "url": "https://www.youtube.com/watch?v=qlIyqc2DP0A",
       "author_or_channel": "AI Revolution",
       "published_at": "2026-06-18T23:57:56+00:00",
-      "kind": "opinion"
+      "kind": "tool"
     }
   ],
   "definition": "Sending each request to the model best suited to it, a small fast model for easy queries and a large expensive one for hard ones, instead of paying frontier prices for every call. It treats the model not as a fixed choice but as a dispatch decision made per request, one of the most direct levers on the cost and latency of an LLM product.",
