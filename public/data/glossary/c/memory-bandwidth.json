@@ -1,13 +1,130 @@
 {
   "id": "memory-bandwidth",
   "label": "Memory Bandwidth",
-  "kind": "tool",
-  "category": "Systems and Infrastructure",
   "aliases": [
     "bandwidth",
     "memory-bound",
     "HBM bandwidth"
   ],
+  "kind": "tool",
+  "attention": 3,
+  "first_seen": "2026-05-22T22:54:57.000Z",
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "weakening",
+    "ratio": 145,
+    "momentum": 88.9,
+    "sparkline": [
+      0,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "neighbors": [
+    {
+      "id": "communication-overhead",
+      "label": "communication overhead",
+      "score": 0.823
+    },
+    {
+      "id": "memory-bound-vs-compute-bound",
+      "label": "Memory-bound vs compute-bound",
+      "score": 0.791
+    },
+    {
+      "id": "cache-efficiency",
+      "label": "cache efficiency",
+      "score": 0.79
+    },
+    {
+      "id": "cache-hit-rate",
+      "label": "cache hit rate",
+      "score": 0.786
+    },
+    {
+      "id": "low-latency",
+      "label": "low latency",
+      "score": 0.778
+    },
+    {
+      "id": "exponentially-decaying-memory",
+      "label": "exponentially decaying memory",
+      "score": 0.764
+    }
+  ],
+  "axis_positions": [
+    {
+      "slug": "open-closed",
+      "title": "Open Weights vs Closed and Proprietary",
+      "position": 0.127
+    },
+    {
+      "slug": "scaling-efficiency",
+      "title": "Scaling and More Compute vs Efficiency and Small Models",
+      "position": 0.058
+    },
+    {
+      "slug": "capability-safety",
+      "title": "Capabilities vs Safety and Alignment",
+      "position": 0.611
+    },
+    {
+      "slug": "research-product",
+      "title": "Research and Theory vs Product and Applied",
+      "position": 0.346
+    },
+    {
+      "slug": "agents-assistive",
+      "title": "Autonomy and Agents vs Assistive and Copilot",
+      "position": 0.094
+    },
+    {
+      "slug": "neural-symbolic",
+      "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
+      "position": 0.236
+    },
+    {
+      "slug": "central-local",
+      "title": "Frontier Labs and Centralized vs Local and Community",
+      "position": 0.173
+    }
+  ],
+  "top_items": [
+    {
+      "title": "Designing GPU-Accelerated Query Engines with NVIDIA GQE",
+      "url": "https://developer.nvidia.com/blog/designing-gpu-accelerated-query-engines-with-nvidia-gqe/",
+      "author_or_channel": "NVIDIA Developer",
+      "published_at": "2026-06-30T17:36:43.000Z",
+      "kind": "tool"
+    },
+    {
+      "title": "South Korean tech giants commit over $550B to ease ‘RAMageddon’",
+      "url": "https://techcrunch.com/2026/06/29/south-korean-tech-giants-commit-over-550b-to-ease-ramageddon/",
+      "author_or_channel": "TechCrunch AI",
+      "published_at": "2026-06-29T18:07:48.000Z",
+      "kind": "opinion"
+    },
+    {
+      "title": "AI Memory Boom: Micron & SK Hynix Surge! Huge Growth Ahead! #shorts",
+      "url": "https://www.youtube.com/watch?v=b9ZgG_70XqU",
+      "author_or_channel": "Cyril Imhof",
+      "published_at": "2026-06-24T04:57:25+00:00",
+      "kind": "opinion"
+    },
+    {
+      "title": "The Epoch Brief - May 22, 2026",
+      "url": "https://epochai.substack.com/p/the-epoch-brief-may-22-2026",
+      "author_or_channel": "Epoch AI",
+      "published_at": "2026-05-22T22:54:57.000Z",
+      "kind": "opinion"
+    }
+  ],
+  "category": "Systems and Infrastructure",
   "durable": true,
   "source": "authored",
   "definition": "The rate at which data moves between an accelerator's memory and its arithmetic units, frequently the true bottleneck in deep learning since many workloads stall waiting for data rather than compute. Whether a workload is bound by compute or bandwidth turns on its arithmetic intensity, and generating text one token at a time is strongly memory-bound: each step must read the entire model's weights from memory to produce one token.",
@@ -61,12 +178,6 @@
       "kind": "technique"
     }
   ],
-  "attention": 0,
-  "first_seen": "2026-06-02",
-  "rotation": null,
-  "neighbors": [],
-  "top_items": [],
-  "axis_positions": [],
   "image": {
     "src": "/images/glossary/memory-bandwidth.png",
     "alt": "A two-panel diagram of performance limits from memory. Panel A, training bottlenecks, shows activations, gradients, and optimizer state exceeding a single device's memory capacity and being sharded across several devices. Panel B, inference bottlenecks, shows a high-bandwidth memory system holding a growing KV cache feeding a compute core over a bandwidth-limited link, with the compute core marked as stalled while it waits on memory.",

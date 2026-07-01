@@ -8,7 +8,7 @@
   "recommended": true,
   "summary": "Jonathan Ross, founder of Groq, discusses his hardware chip designed for LLM inference and its $20 billion strategic agreement with NVIDIA. The conversation covers LPU vs. GPU tradeoffs, static scheduling, mixture-of-experts models, and the economic dynamics driving compute demand growth.",
   "writeup": "Jonathan Ross, who pioneered Google's TPUs before founding Groq, explains how the Language Processing Unit (LPU) architecture addresses a specific bottleneck: GPU inference is memory-bound because it relies on slow external DRAM, forcing large batch sizes that hurt latency. The LPU instead spreads models across chips using fast on-chip SRAM and uses static compile-time scheduling, achieving lower cost-per-token at high speeds where GPUs underperform. The conversation traces from the original Google compute scarcity that sparked the TPU, through how static scheduling accommodates mixture-of-experts routing, to why real-time audio quality actually improves on faster hardware by enabling larger chunk sizes.",
-  "wh": "b6e42796530ac7d1",
+  "wh": "36e4e1bc4dbde79a",
   "key_points": [
     "The original motivation for the TPU was a 2013 Google speech recognition model that beat human transcription accuracy but could not be deployed at scale, being limited to Nexus phone users because Google lacked sufficient inference compute.",
     "GPUs are memory-bottlenecked at inference time because they pull expert weights from external DRAM and must amortize that cost across large batch sizes, sometimes hundreds of queries; the LPU uses on-chip SRAM so a batch size of around 10 is economically viable, cutting queuing latency.",
@@ -68,8 +68,8 @@
       "label": "Mixture of Experts"
     },
     {
-      "slug": "autoregressive-modeling",
-      "label": "autoregressive modeling"
+      "slug": "predictive-models",
+      "label": "predictive models"
     },
     {
       "slug": "diffusion-models",

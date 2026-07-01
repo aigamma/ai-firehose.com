@@ -8,7 +8,7 @@
   "recommended": false,
   "summary": "Graphify builds a knowledge graph representation of code projects, allowing Claude to understand repository structure without re-reading entire codebases. This reduces token costs, latency, and improves accuracy when working with Claude Code for agentic systems.",
   "writeup": "Graphify is a tool that builds a persistent knowledge graph of any codebase so Claude Code can navigate it without re-reading the full repository each session. The graph clusters files into modules, ranks load-bearing files as 'god nodes,' and labels extracted facts versus inferences, enabling Claude to answer from summaries rather than raw code. The video demonstrates setup from the GitHub repo, live querying inside Claude Code, and a deeper integration into an agentic dashboard (Hermes) that makes the graph always-on and shared across devices. The core argument is that the rereading tax is the primary driver of token costs in code assistants, and a shared graph eliminates that tax at scale.",
-  "wh": "1227a1a495ffb187",
+  "wh": "77126b6a8ab8b51c",
   "key_points": [
     "Graphify reads code rather than summarizing it, clusters files into modules, ranks the most load-bearing files as 'god nodes,' and explicitly labels what it extracted versus what it inferred, giving Claude a structured map instead of raw text.",
     "The token cost saving comes from a specific mechanism: without the graph, Claude either re-reads the entire repository every session or holds it in context; with the graph, it answers from cached summaries, and every session compounds on prior work rather than starting over.",
@@ -68,8 +68,8 @@
       "label": "token optimization"
     },
     {
-      "slug": "document-understanding",
-      "label": "document understanding"
+      "slug": "code-quality",
+      "label": "code quality"
     },
     {
       "slug": "multi-agent-systems",
@@ -111,7 +111,7 @@
       "id": "Hth_tLaC2j8",
       "title": "Reflecting on a year of Claude Code",
       "channel": "Claude",
-      "score": 0.62
+      "score": 0.621
     }
   ]
 }

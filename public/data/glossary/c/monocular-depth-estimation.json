@@ -2,17 +2,42 @@
   "id": "monocular-depth-estimation",
   "label": "monocular depth estimation",
   "aliases": [
-    "depth-guided back-projection",
-    "monocular depth",
     "pose estimation",
     "depth estimation",
-    "iterative latent depth"
+    "camera pose estimation",
+    "depth-guided back-projection",
+    "monocular depth",
+    "3D pose estimation",
+    "latent depth scaling",
+    "disparity estimation",
+    "articulation estimation",
+    "zero-shot 3D reconstruction"
   ],
   "kind": "technique",
-  "attention": 6,
+  "attention": 12,
   "first_seen": "2026-06-01T17:50:28Z",
-  "rotation": null,
+  "rotation": {
+    "horizon": "week",
+    "quadrant": "leading",
+    "ratio": 145,
+    "momentum": 113.5,
+    "sparkline": [
+      2,
+      2,
+      2,
+      2,
+      3,
+      4,
+      5,
+      4
+    ]
+  },
   "neighbors": [
+    {
+      "id": "stereo-vision",
+      "label": "stereo vision",
+      "score": 0.857
+    },
     {
       "id": "3d-reconstruction",
       "label": "3D reconstruction",
@@ -24,31 +49,26 @@
       "score": 0.822
     },
     {
-      "id": "occluded-geometry",
-      "label": "occluded geometry",
-      "score": 0.821
+      "id": "wavefront-reconstruction",
+      "label": "wavefront reconstruction",
+      "score": 0.814
+    },
+    {
+      "id": "optical-flow",
+      "label": "optical flow",
+      "score": 0.787
     },
     {
       "id": "object-detection",
       "label": "object detection",
       "score": 0.783
-    },
-    {
-      "id": "point-clouds",
-      "label": "point clouds",
-      "score": 0.776
-    },
-    {
-      "id": "psf-estimation",
-      "label": "PSF estimation",
-      "score": 0.773
     }
   ],
   "axis_positions": [
     {
       "slug": "open-closed",
       "title": "Open Weights vs Closed and Proprietary",
-      "position": -0.139
+      "position": -0.195
     },
     {
       "slug": "scaling-efficiency",
@@ -58,70 +78,70 @@
     {
       "slug": "capability-safety",
       "title": "Capabilities vs Safety and Alignment",
-      "position": -0.072
+      "position": -0.002
     },
     {
       "slug": "research-product",
       "title": "Research and Theory vs Product and Applied",
-      "position": 0.318
+      "position": 0.359
     },
     {
       "slug": "agents-assistive",
       "title": "Autonomy and Agents vs Assistive and Copilot",
-      "position": -0.239
+      "position": 0.002
     },
     {
       "slug": "neural-symbolic",
       "title": "End-to-End Neural vs Structured, Symbolic, and Tool-Use",
-      "position": 0.473
+      "position": 0.514
     },
     {
       "slug": "central-local",
       "title": "Frontier Labs and Centralized vs Local and Community",
-      "position": -0.382
+      "position": -0.384
     }
   ],
   "top_items": [
     {
-      "title": "Looped World Models",
-      "url": "http://arxiv.org/abs/2606.18208v1",
-      "author_or_channel": "Hongyuan Adam Lu, Z. L. Victor Wei, Qun Zhang",
-      "published_at": "2026-06-16T17:37:27Z",
+      "title": "UnfoldArt: Zero-Shot Recovery of Full Articulated 3D Objects from Text or Image",
+      "url": "http://arxiv.org/abs/2606.30608v1",
+      "author_or_channel": "Mohamed el amine boudjoghra, Ivan Laptev, Angela Dai",
+      "published_at": "2026-06-29T17:44:53Z",
       "kind": "technique"
     },
     {
-      "title": "DepthMaster: Unified Monocular Depth Estimation for Perspective and Panoramic Images",
-      "url": "http://arxiv.org/abs/2606.12368v1",
-      "author_or_channel": "Pengfei Wang, Shihao Wang, Liyi Chen",
-      "published_at": "2026-06-10T17:35:23Z",
-      "kind": "technique"
-    },
-    {
-      "title": "Launch HN: Transload (YC P26) – Measuring freight items with CCTV",
-      "url": "https://news.ycombinator.com/item?id=48463273",
-      "author_or_channel": "nils_spatial",
-      "published_at": "2026-06-09T16:28:28.000Z",
+      "title": "Towards in-the-wild Egocentric 3D Hand-Object Pose Estimation",
+      "url": "http://arxiv.org/abs/2606.30598v1",
+      "author_or_channel": "Siddhant Bansal, Zhifan Zhu, Shashank Tripathi",
+      "published_at": "2026-06-29T17:38:12Z",
       "kind": "tool"
     },
     {
-      "title": "Latent Spatial Memory for Video World Models",
-      "url": "http://arxiv.org/abs/2606.09828v1",
-      "author_or_channel": "Weijie Wang, Haoyu Zhao, Yifan Yang",
-      "published_at": "2026-06-08T17:59:54Z",
+      "title": "Beyond 2D Matching: A Unified Single-Stage Framework for Geometry-Aware Cross-View Object Geo-Localization",
+      "url": "http://arxiv.org/abs/2606.30576v1",
+      "author_or_channel": "Liyao Wang, Ruipu Wu, Haojun Xu",
+      "published_at": "2026-06-29T17:19:49Z",
       "kind": "technique"
     },
     {
-      "title": "Latent Spatial Memory for Video World Models",
-      "url": "https://huggingface.co/papers/2606.09828",
+      "title": "PoseShield: Neural Collision Fields for Human Self-Collision Resolution",
+      "url": "https://huggingface.co/papers/2606.29686",
       "author_or_channel": "HF Papers",
-      "published_at": "2026-06-07T20:00:00.000Z",
+      "published_at": "2026-06-28T20:00:00.000Z",
       "kind": "technique"
     },
     {
-      "title": "Modeling Depth Ambiguity: A Mixture-Density Representation for Flying-Point-Free Depth Estimation",
-      "url": "http://arxiv.org/abs/2606.02552v1",
-      "author_or_channel": "Siyuan Bian, Congrong Xu, Jun Gao",
-      "published_at": "2026-06-01T17:50:28Z",
+      "title": "One Scene, Two Depths: Probing Geometric Ambiguity in Monocular Foundation Models",
+      "url": "https://huggingface.co/papers/2606.29600",
+      "author_or_channel": "HF Papers",
+      "published_at": "2026-06-27T20:00:00.000Z",
+      "kind": "technique"
+    },
+    {
+      "title": "Spherical-to-ERP Epipolar Rectification for Single-Axis Disparity in 360 Stereo",
+      "url": "http://arxiv.org/abs/2606.24847v1",
+      "author_or_channel": "Sahereh Obeidavi, Dieter Landes",
+      "published_at": "2026-06-23T17:27:07Z",
       "kind": "technique"
     }
   ]
